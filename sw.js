@@ -1,5 +1,7 @@
 // ==================== SERVICE WORKER ====================
-const CACHE_VERSION = 'quizzy-v1';
+// Bump this on every deploy — same-origin files are served cache-first, so a
+// stale version here means returning visitors keep the old CSS/JS.
+const CACHE_VERSION = 'quizzy-v2';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
@@ -7,9 +9,14 @@ const APP_SHELL_FILES = [
     './',
     './question-cafe.html',
     './index.html',
+    './about.html',
+    './contact.html',
+    './privacy.html',
+    './bookmarks.html',
     './style.css',
     './quiz-core.css',
     './quiz-components.css',
+    './app-shell.js',
     './quiz-core.js',
     './quiz-nav.js',
     './quiz-screens.js',
@@ -21,7 +28,8 @@ const APP_SHELL_FILES = [
     './quiz-offline.js',
     './quiz-custom-test.js',
     './data/manifest.json',
-    './icons/icon-512x512.png'
+    './icons/icon-512x512.png',
+    './icons/quizzy-logo.svg'
 ];
 
 const CDN_URLS = [
