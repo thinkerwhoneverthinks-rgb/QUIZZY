@@ -409,6 +409,45 @@
             cursor: not-allowed;
         }
 
+        /* ===== END-OF-SET CONTINUE PANEL ===== */
+        .continue-panel {
+            text-align: center;
+            padding: 2rem 1.25rem;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-card), rgba(255,255,255,0.02));
+            border: 1.5px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: var(--radius-lg);
+        }
+        .continue-panel h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .continue-panel p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+        .continue-panel strong { color: var(--accent); }
+        .continue-count {
+            display: inline-block;
+            margin-left: 0.4rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 50px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .continue-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         /* ===== FULL QUIZ SCROLL MODE ===== */
         .full-quiz-container {
             display: flex;
@@ -416,8 +455,10 @@
             gap: 1.5rem;
             padding-bottom: 2rem;
         }
-        .full-quiz-container .question-card {
-            scroll-margin-top: 100px;
+        /* Clears the sticky header + progress bar when jumping to a question. */
+        .full-quiz-container .question-card,
+        .test-question-list .question-card {
+            scroll-margin-top: 150px;
         }
         .full-quiz-nav {
             position: fixed;
@@ -462,9 +503,9 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border);
-            padding: 1rem;
+            background: var(--bg-secondary);
+            border-top: 1.5px solid var(--border);
+            padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
             gap: 1rem;
