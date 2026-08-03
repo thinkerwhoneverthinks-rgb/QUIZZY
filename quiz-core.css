@@ -1,10 +1,12 @@
 /* ===== QUESTION CAFE STYLES ===== */
         .screen { display: none; }
-        .screen.active { display: block; animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Opacity only — a transform here would become the containing block for
+           the fixed action bars and knock them out of place mid-animation. */
+        .screen.active { display: block; animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .subject-hero {
@@ -319,13 +321,13 @@
             color: var(--text-primary);
             margin-bottom: 1.25rem;
         }
+        /* The page itself scrolls; the action bar is pinned to the viewport,
+           so the list must NOT have its own inner scroll area. */
         .topic-select-list {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            max-height: 250px;
-            overflow-y: auto;
+            margin-bottom: 0.5rem;
         }
         .topic-select-item {
             display: flex;
@@ -415,34 +417,49 @@
         }
         .config-actions .btn { flex: 1; }
 
+        /* Action bar pinned to the bottom of the viewport, so Start/Cancel are
+           always reachable without scrolling past the whole topic list. */
         .sticky-actions {
-            position: sticky;
-            bottom: 1rem;
-            z-index: 99;
-            background: var(--bg-elevated);
-            padding: 1rem;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-md);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            margin-top: 1rem;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 500;
+            display: flex;
+            gap: 0.75rem;
+            /* Full-width bar whose contents stay inside the 720px page column. */
+            padding: 0.75rem max(1.5rem, calc(50% - 360px)) calc(0.75rem + env(safe-area-inset-bottom));
+            background: var(--bg-secondary);
+            border-top: 1.5px solid var(--border);
+            box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.22);
         }
+        .sticky-actions .btn { flex: 1; min-width: 130px; }
+        /* Reserve room so the last row is never hidden behind the bar. */
+        .screen.has-fixed-bar { padding-bottom: 110px; }
+
+        /* ===== STICKY QUIZ HEAD (header + progress bar move together) ===== */
+        .quiz-sticky-head {
+            position: sticky;
+            top: var(--nav-h, 57px);
+            z-index: 100;
+            background: var(--bg-primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .quiz-sticky-head .quiz-header { margin-bottom: 0.5rem; }
+        .quiz-sticky-head .progress-track { margin-bottom: 0; }
 
         /* ===== QUIZ HEADER ===== */
         .quiz-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.875rem 1rem;
+            padding: 0.75rem 1rem;
             margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
+            border: 1px solid var(--border);
             gap: 0.75rem;
             flex-wrap: wrap;
-            position: sticky;
-            top: 56px;
-            z-index: 100;
-            background: var(--bg-primary);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--bg-secondary);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             border-radius: var(--radius-md);
         }
@@ -663,16 +680,90 @@
             background: var(--border);
             border-radius: 3px;
         }
+        /* Context line: which file / chapter these questions came from */
+        .grid-context {
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-sm);
+        }
+        .grid-context .gc-crumb {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+        }
+        .grid-context .gc-chapter {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 0.15rem;
+        }
+        .grid-context .gc-meta {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Legend so the colour coding is self-explanatory */
+        .grid-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding-bottom: 0.9rem;
+            margin-bottom: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .grid-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .grid-legend i {
+            width: 11px;
+            height: 11px;
+            border-radius: 3px;
+            border: 1.5px solid var(--border);
+            background: var(--bg-card);
+        }
+        .grid-legend i.lg-current { background: var(--accent); border-color: var(--accent); }
+        .grid-legend i.lg-answered { background: var(--success-bg); border-color: var(--success); }
+        .grid-legend i.lg-reviewed { background: var(--warning-bg); border-color: var(--warning); }
+
         .grid-topic-section { margin-bottom: 1.25rem; }
         .grid-topic-section:last-child { margin-bottom: 0; }
         .grid-topic-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem;
             font-size: 0.78rem;
             font-weight: 700;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.75rem;
-            padding-left: 0.25rem;
+            margin-bottom: 0.6rem;
+            padding: 0 0.25rem 0.4rem;
+            border-bottom: 1px dashed var(--border);
+        }
+        .grid-topic-title .gt-count {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0;
+            text-transform: none;
+            white-space: nowrap;
+        }
+        .grid-num.reviewed {
+            border-color: var(--warning);
+            color: var(--warning);
+            background: var(--warning-bg);
         }
         .grid-nums {
             display: grid;
