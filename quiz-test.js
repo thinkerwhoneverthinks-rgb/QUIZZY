@@ -34,6 +34,7 @@ function renderTestConfig() {
                     <label>${escapeHtml(topic.topic)}</label>
                     ${countInput}
                 </div>
+                <button class="download-file-btn" onclick="event.stopPropagation(); downloadSingleTopic(${i}, this)" title="Download this topic offline">⬇️</button>
                 <span class="topic-meta-count">${qCount} Qs</span>
             </div>
         `;
