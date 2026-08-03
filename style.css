@@ -1091,6 +1091,98 @@ a:hover {
     to   { opacity: 1; }
 }
 
+/* ===== BACKUP & RESTORE PANEL (injected by app-shell.js) ===== */
+.data-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    z-index: 1100;
+}
+.data-overlay.active { display: block; animation: fadeInOverlay 0.25s ease; }
+
+.data-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(460px, 92vw);
+    max-height: 86vh;
+    z-index: 1101;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-primary);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+.data-panel.active { display: flex; }
+
+.data-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+}
+.data-panel-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.data-panel-body {
+    padding: 1.25rem;
+    overflow-y: auto;
+}
+.data-summary {
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.data-summary strong { color: var(--accent); font-weight: 700; }
+
+.data-block {
+    padding: 1.1rem;
+    margin-bottom: 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+.data-block h4 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+.data-block p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+}
+.data-block strong { color: var(--text-secondary); }
+.data-block .btn { width: 100%; }
+.data-import-actions { display: flex; gap: 0.6rem; }
+.data-import-actions .btn { flex: 1; }
+
+.data-status {
+    min-height: 1.3rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+}
+.data-status.ok { color: var(--success); }
+.data-status.err { color: var(--error); }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
     :root { --nav-h: 53px; }
