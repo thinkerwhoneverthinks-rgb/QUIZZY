@@ -56,7 +56,11 @@
         <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
         <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
         <a href="#" onclick="showCustomTestBuilder(); toggleMenu(); return false;"><span class="mi-ico">⚙️</span> Custom Test</a>
+        <a href="#" onclick="showStudyHistory(); toggleMenu(); return false;"><span class="mi-ico">🕐</span> Study History</a>
         <a href="bookmarks.html"><span class="mi-ico">🔖</span> Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
 
         <div class="menu-section">More</div>
         <a href="about.html"><span class="mi-ico">ℹ️</span> About Us</a>
@@ -89,6 +93,21 @@
                 </div>
             </section>
             <div class="subject-grid" id="subjectGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 1.5: STUDY HISTORY ===== -->
+        <div class="screen" id="screenHistory">
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="goToRoot()">← Back</div>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title">🕐 Study History</div>
+                        <div class="quiz-topic-name">Pick up exactly where you left off</div>
+                    </div>
+                    <div class="quiz-back" onclick="clearStudyHistory()">🗑️ Clear</div>
+                </section>
+            </div>
+            <div class="history-list" id="historyList"></div>
         </div>
 
         <!-- ===== SCREEN 2: CHAPTERS ===== -->
@@ -421,11 +440,15 @@
     <script src="quiz-review.js"></script>
     <script src="quiz-bookmarks.js"></script>
     <script src="quiz-custom-test.js"></script>
+    <script src="quiz-history.js"></script>
 
     <script>
         // App initialization & Service Worker Registration
         window.addEventListener('DOMContentLoaded', () => {
             initNavigation();
+
+            // Other pages link here as question-cafe.html#history
+            if (location.hash === '#history') showStudyHistory();
 
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('sw.js')
