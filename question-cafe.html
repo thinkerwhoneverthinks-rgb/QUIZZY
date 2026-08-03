@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="icons/icon-512x512.png">
 
     <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
 
     <!-- KaTeX for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -31,28 +32,46 @@
 <body>
     <nav class="navbar">
         <a href="index.html" class="logo">
-            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
             Quizzy
         </a>
-        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
-        </div>
+        </button>
     </nav>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">🏠 Home</a>
-        <a href="question-cafe.html" style="color:var(--accent);">☕ Question Cafe</a>
-        <a href="#" onclick="showCustomTestBuilder(); toggleMenu(); return false;" style="color:var(--accent-light);">⚙️ Custom Test</a>
-        <a href="manifest-editor.html">🛠️ Manifest Editor</a>
-        <a href="bookmarks.html">🔖 Bookmarks</a>
-        <a href="contact.html">📧 Contact Us</a>
-        <a href="privacy.html">🔒 Privacy Policy</a>
-        <div class="theme-option" onclick="toggleTheme()">
-            <span id="themeIcon">🌙</span>
-            <span id="themeText">Dark Mode</span>
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
         </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="#" onclick="showCustomTestBuilder(); toggleMenu(); return false;"><span class="mi-ico">⚙️</span> Custom Test</a>
+        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Bookmarks</a>
+
+        <div class="menu-section">More</div>
+        <a href="about.html"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact.html"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy.html"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
     </div>
 
     <main class="container">
@@ -60,7 +79,7 @@
         <!-- ===== SCREEN 1: SUBJECTS & FOLDERS ===== -->
         <div class="screen active" id="screenSubjects">
             <section class="subject-hero">
-                <img src="https://i.ibb.co/twcBh5cf/1000113238-removebg-preview.png" alt="Quizzy" class="hero-logo">
+                <img src="icons/quizzy-logo.svg" alt="Quizzy" class="hero-logo">
                 <h1>Question Cafe</h1>
                 <p>Choose a folder or topic to start practicing</p>
                 <div style="margin-top: 1rem; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
@@ -122,17 +141,19 @@
         </div>
 
         <!-- ===== SCREEN 2.6: TOPIC SELECTION (Practice Modes) ===== -->
-        <div class="screen" id="screenTopicSelect">
-            <section class="quiz-header">
-                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
-                <div class="quiz-title-wrap">
-                    <div class="quiz-title">Select Topic</div>
-                </div>
-                <div></div>
-            </section>
+        <div class="screen has-fixed-bar" id="screenTopicSelect">
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title" id="topicSelectTitle">Select Topic</div>
+                        <div class="quiz-topic-name" id="topicSelectSubtitle">Questions appear in serial order</div>
+                    </div>
+                    <div></div>
+                </section>
+            </div>
             <div class="test-config">
                 <h3>📚 Choose a Topic</h3>
-                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">Questions will appear in serial order</p>
                 <div class="topic-select-list" id="topicSelectListPractice"></div>
             </div>
             <div class="config-actions sticky-actions" id="topicSelectActions">
@@ -142,14 +163,16 @@
         </div>
 
         <!-- ===== SCREEN 2.7: TEST CONFIG ===== -->
-        <div class="screen" id="screenTestConfig">
-            <section class="quiz-header">
-                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
-                <div class="quiz-title-wrap">
-                    <div class="quiz-title">Test Configuration</div>
-                </div>
-                <div></div>
-            </section>
+        <div class="screen has-fixed-bar" id="screenTestConfig">
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title">Test Configuration</div>
+                    </div>
+                    <div></div>
+                </section>
+            </div>
             <div class="test-config">
                 <h3>📚 Select Topics</h3>
                 <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;">Check topics and set how many questions from each</p>
@@ -165,22 +188,24 @@
                     </div>
                     <p style="color:var(--text-muted);font-size:0.78rem;margin-top:0.5rem;">Set 1 or more minutes. No upper limit.</p>
                 </div>
-                <div class="config-actions">
-                    <button class="btn btn-ghost" onclick="showModeSelect()">Cancel</button>
-                    <button class="btn btn-primary" id="startTestBtn" onclick="updateTestTimeLimit(); startTestMode();" disabled>Start Test →</button>
-                </div>
+            </div>
+            <div class="config-actions sticky-actions">
+                <button class="btn btn-ghost" onclick="showModeSelect()">Cancel</button>
+                <button class="btn btn-primary" id="startTestBtn" onclick="updateTestTimeLimit(); startTestMode();" disabled>Start Test →</button>
             </div>
         </div>
 
         <!-- ===== SCREEN 2.8: DEDICATED CUSTOM TEST BUILDER ===== -->
-        <div class="screen" id="screenCustomTest">
-            <section class="quiz-header">
-                <div class="quiz-back" onclick="goToRoot()">← Back to Home</div>
-                <div class="quiz-title-wrap">
-                    <div class="quiz-title">Custom Test Creator</div>
-                </div>
-                <div></div>
-            </section>
+        <div class="screen has-fixed-bar" id="screenCustomTest">
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="goToRoot()">← Back to Home</div>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title">Custom Test Creator</div>
+                    </div>
+                    <div></div>
+                </section>
+            </div>
             <div class="ct-builder">
                 <h3>🛠️ Select Chapters, Folders, & Topics</h3>
                 <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">
@@ -197,34 +222,36 @@
                         <span style="color:var(--text-muted);font-size:0.85rem;">min</span>
                     </div>
                 </div>
-                <div class="config-actions" style="margin-top:1.5rem; gap:0.75rem; flex-wrap:wrap;">
-                    <button class="btn btn-ghost" onclick="goToRoot()">Cancel</button>
-                    <button class="btn btn-primary" id="btnDownloadCustomTest" onclick="downloadCustomTestForOffline(this)" disabled>
-                        ⬇️ Download Test Offline
-                    </button>
-                    <button class="btn btn-primary" id="btnStartCustomTest" onclick="startCustomTest()" disabled>
-                        🚀 Start Custom Test →
-                    </button>
-                </div>
+            </div>
+            <div class="config-actions sticky-actions" style="flex-wrap:wrap;">
+                <button class="btn btn-ghost" onclick="goToRoot()">Cancel</button>
+                <button class="btn btn-primary" id="btnDownloadCustomTest" onclick="downloadCustomTestForOffline(this)" disabled>
+                    ⬇️ Download Offline
+                </button>
+                <button class="btn btn-primary" id="btnStartCustomTest" onclick="startCustomTest()" disabled>
+                    🚀 Start Test →
+                </button>
             </div>
         </div>
 
         <!-- ===== SCREEN 3: ONE BY ONE QUIZ ===== -->
         <div class="screen" id="screenQuiz">
-            <section class="quiz-header">
-                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
-                <button class="grid-toggle-btn" id="gridToggleBtn" onclick="toggleQuestionGrid()">
-                    <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
-                    Grid
-                </button>
-                <div class="quiz-title-wrap">
-                    <div class="quiz-title" id="quizChapterTitle">Animal Tissues</div>
-                    <div class="quiz-topic-name" id="quizTopicName">Epithelial Tissue</div>
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                    <button class="grid-toggle-btn" id="gridToggleBtn" onclick="toggleQuestionGrid()">
+                        <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
+                        Grid
+                    </button>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title" id="quizChapterTitle">Animal Tissues</div>
+                        <div class="quiz-topic-name" id="quizTopicName">Epithelial Tissue</div>
+                    </div>
+                    <div class="quiz-progress" id="quizProgress">1 / 55</div>
+                </section>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill" style="width: 2%"></div>
                 </div>
-                <div class="quiz-progress" id="quizProgress">1 / 55</div>
-            </section>
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill" style="width: 2%"></div>
             </div>
             <div id="quizContainer"></div>
             <div class="quiz-nav">
@@ -235,19 +262,22 @@
 
         <!-- ===== SCREEN 3.5: FULL QUIZ SCROLL ===== -->
         <div class="screen" id="screenFullQuiz">
-            <section class="quiz-header">
-                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
-                <button class="grid-toggle-btn" id="fullGridToggleBtn" onclick="toggleQuestionGrid()">
-                    <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
-                    Grid
-                </button>
-                <div class="quiz-title-wrap">
-                    <div class="quiz-title" id="fullQuizTitle">Animal Tissues</div>
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                    <button class="grid-toggle-btn" id="fullGridToggleBtn" onclick="toggleQuestionGrid()">
+                        <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
+                        Grid
+                    </button>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title" id="fullQuizTitle">Animal Tissues</div>
+                        <div class="quiz-topic-name" id="fullQuizTopicName"></div>
+                    </div>
+                    <div class="quiz-progress" id="fullQuizProgress">0 / 55</div>
+                </section>
+                <div class="progress-track">
+                    <div class="progress-fill" id="fullProgressFill" style="width: 0%"></div>
                 </div>
-                <div class="quiz-progress" id="fullQuizProgress">0 / 55</div>
-            </section>
-            <div class="progress-track">
-                <div class="progress-fill" id="fullProgressFill" style="width: 0%"></div>
             </div>
             <div class="full-quiz-container" id="fullQuizContainer"></div>
             <div class="full-quiz-nav">
@@ -258,20 +288,22 @@
 
         <!-- ===== SCREEN 3.7: TEST MODE ===== -->
         <div class="screen" id="screenTestMode">
-            <section class="quiz-header">
-                <div class="quiz-back" onclick="confirmEndTest()">← End Test</div>
-                <button class="grid-toggle-btn" id="testGridToggleBtn" onclick="toggleQuestionGrid()">
-                    <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
-                    Grid
-                </button>
-                <div class="quiz-title-wrap">
-                    <div class="quiz-title" id="testChapterTitle">Animal Tissues</div>
+            <div class="quiz-sticky-head">
+                <section class="quiz-header">
+                    <div class="quiz-back" onclick="confirmEndTest()">← End Test</div>
+                    <button class="grid-toggle-btn" id="testGridToggleBtn" onclick="toggleQuestionGrid()">
+                        <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
+                        Grid
+                    </button>
+                    <div class="quiz-title-wrap">
+                        <div class="quiz-title" id="testChapterTitle">Animal Tissues</div>
+                    </div>
+                    <div class="quiz-timer" id="testTimer">30:00</div>
+                    <div class="quiz-progress" id="testProgress">0 / 20</div>
+                </section>
+                <div class="progress-track">
+                    <div class="progress-fill" id="testProgressFill" style="width: 0%"></div>
                 </div>
-                <div class="quiz-timer" id="testTimer">30:00</div>
-                <div class="quiz-progress" id="testProgress">0 / 20</div>
-            </section>
-            <div class="progress-track">
-                <div class="progress-fill" id="testProgressFill" style="width: 0%"></div>
             </div>
             <div class="test-question-list" id="testQuestionList"></div>
             <div class="test-submit-bar">
