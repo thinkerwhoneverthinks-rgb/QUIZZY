@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+        <style>
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 22px;
+            height: 2.5px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 260px; height: 100vh;
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border);
+            padding: 4rem 1.5rem 1.5rem;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 0.25rem;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            padding-left: 0.75rem;
+        }
+        .mobile-menu a:hover { 
+            color: var(--accent); 
+            background: var(--bg-hover);
+            padding-left: 1rem;
+        }
+        .mobile-menu .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .mobile-menu .theme-option:hover { 
+            color: var(--accent); 
+            background: var(--bg-hover);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+        }
+        .overlay.active { display: block; }
+
+        .page-hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.125rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: var(--radius-sm);
+            margin: 0 -0.5rem;
+        }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row:hover { 
+            background: var(--bg-hover);
+            padding-left: 1.25rem;
+        }
+        .contact-row:hover .contact-title { color: var(--accent); }
+        .contact-icon {
+            font-size: 1.4rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-shrink: 0;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+        .contact-content { flex: 1; }
+        .contact-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+            transition: color 0.2s ease;
+        }
+        .contact-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .contact-arrow {
+            color: var(--text-subtle);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        .contact-row:hover .contact-arrow {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+    </style>
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+    <style>.katex { color: var(--text-primary); } .katex-display { overflow-x: auto; overflow-y: hidden; }</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            Quizzy
+        </a>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 Home</a>
+        <a href="question-cafe.html">☕ Question Cafe</a>
+        <a href="contact.html" style="color:var(--accent);">📧 Contact Us</a>
+        <a href="privacy.html">🔒 Privacy Policy</a>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="page-hero">
+            <h1>Contact Us</h1>
+            <p>Reach out through any channel below.</p>
+        </section>
+
+        <section class="section" style="border-bottom:none;">
+            <div class="contact-row" onclick="window.open('https://t.me/+gCPe2h82QrhjZGI9','_blank')">
+                <div class="contact-icon">📱</div>
+                <div class="contact-content">
+                    <div class="contact-title">Telegram Channel</div>
+                    <div class="contact-meta">Daily updates, study tips, and discussions</div>
+                </div>
+                <div class="contact-arrow">→</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script>
+        // Theme functions FIRST
+        function updateToggleIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (icon && text) {
+                icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+                text.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('studycafe-theme', newTheme);
+            updateToggleIcon(newTheme);
+        }
+
+        function toggleMenu() {
+            document.getElementById('menuToggle').classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        // Apply theme on load
+        const savedTheme = localStorage.getItem('studycafe-theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('studycafe-theme')) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+            }
+        });
+    </script>
+</body>
+</html>

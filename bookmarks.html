@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 22px;
+            height: 2.5px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 260px; height: 100vh;
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border);
+            padding: 4rem 1.5rem 1.5rem;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 0.25rem;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            padding-left: 0.75rem;
+        }
+        .mobile-menu a:hover { 
+            color: var(--accent); 
+            background: var(--bg-hover);
+            padding-left: 1rem;
+        }
+        .mobile-menu .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .mobile-menu .theme-option:hover { 
+            color: var(--accent); 
+            background: var(--bg-hover);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+        }
+        .overlay.active { display: block; }
+
+        .page-hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Bookmark Manager Styles */
+        .bookmark-manager {
+            padding: 1rem 0 2rem;
+        }
+        .folder-tree {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .folder-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .folder-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--bg-secondary);
+        }
+        .folder-header:hover {
+            background: var(--bg-hover);
+        }
+        .folder-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .folder-icon {
+            font-size: 1.3rem;
+        }
+        .folder-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .folder-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+        }
+        .folder-arrow {
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+            font-size: 0.9rem;
+        }
+        .folder-section.expanded .folder-arrow {
+            transform: rotate(90deg);
+        }
+        .folder-body {
+            display: none;
+            padding: 0.5rem 1.25rem 1rem;
+        }
+        .folder-section.expanded .folder-body {
+            display: block;
+        }
+        .subfolder {
+            margin-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .subfolder-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .subfolder-header:hover {
+            color: var(--accent-light);
+        }
+        .bookmark-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        .bookmark-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+        .bookmark-item-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .bookmark-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .bookmark-item-question {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 0.35rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .bookmark-item-meta {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .bookmark-item-tag {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+        .bookmark-item-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .bookmark-action-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .bookmark-action-btn:hover {
+            border-color: var(--error);
+            color: var(--error);
+        }
+        .bookmark-action-btn.go:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .empty-bookmarks {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+        }
+        .empty-bookmarks-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        .empty-bookmarks h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .empty-bookmarks p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .manager-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .manager-actions .btn {
+            font-size: 0.85rem;
+        }
+    </style>
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\[', right: '\]', display: true},
+                {left: '\(', right: '\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+    <style>.katex { color: var(--text-primary); } .katex-display { overflow-x: auto; overflow-y: hidden; }</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            Quizzy
+        </a>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 Home</a>
+        <a href="question-cafe.html">☕ Question Cafe</a>
+        <a href="bookmarks.html" style="color:var(--accent);">🔖 Bookmarks</a>
+        <a href="contact.html">📧 Contact Us</a>
+        <a href="privacy.html">🔒 Privacy Policy</a>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="page-hero">
+            <h1>🔖 Your Bookmarks</h1>
+            <p>Manage all your saved questions</p>
+        </section>
+
+        <section class="bookmark-manager">
+            <div class="manager-actions">
+                <button class="btn btn-ghost" onclick="exportBookmarks()">📤 Export</button>
+                <button class="btn btn-ghost" onclick="importBookmarks()">📥 Import</button>
+                <button class="btn btn-ghost" onclick="clearAllBookmarks()" style="color:var(--error);">🗑️ Clear All</button>
+            </div>
+            <div class="folder-tree" id="folderTree">
+                <div class="empty-bookmarks">
+                    <div class="empty-bookmarks-icon">📚</div>
+                    <h3>No Bookmarks Yet</h3>
+                    <p>Go to Question Cafe and click the 🔖 icon on any question to save it here.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script>
+        // ==================== BOOKMARK MANAGER ====================
+        function getBookmarks() {
+            try {
+                return JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveBookmarks(bookmarks) {
+            localStorage.setItem('studycafe-bookmarks', JSON.stringify(bookmarks));
+        }
+
+        function renderBookmarkManager() {
+            const container = document.getElementById('folderTree');
+            const bookmarks = getBookmarks();
+            const sections = Object.keys(bookmarks);
+
+            if (sections.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-bookmarks">
+                        <div class="empty-bookmarks-icon">📚</div>
+                        <h3>No Bookmarks Yet</h3>
+                        <p>Go to Question Cafe and click the 🔖 icon on any question to save it here.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            sections.forEach(section => {
+                const subsections = Object.keys(bookmarks[section]);
+                let totalCount = 0;
+                subsections.forEach(sub => {
+                    totalCount += bookmarks[section][sub].length;
+                });
+
+                html += `
+                    <div class="folder-section" id="section-${escapeId(section)}">
+                        <div class="folder-header" onclick="toggleSection('${escapeId(section)}')">
+                            <div class="folder-header-left">
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-name">${escapeHtml(section)}</span>
+                                <span class="folder-count">${totalCount} items</span>
+                            </div>
+                            <span class="folder-arrow">▶</span>
+                        </div>
+                        <div class="folder-body">
+                            ${subsections.map(sub => {
+                                const items = bookmarks[section][sub];
+                                return `
+                                    <div class="subfolder">
+                                        <div class="subfolder-header" onclick="toggleSubfolder(this)">
+                                            <span>📂</span>
+                                            <span>${escapeHtml(sub)} (${items.length})</span>
+                                        </div>
+                                        <div class="subfolder-body" style="display:none;">
+                                            ${items.map((item, idx) => `
+                                                <div class="bookmark-item">
+                                                    <span class="bookmark-item-icon">📝</span>
+                                                    <div class="bookmark-item-content">
+                                                        <div class="bookmark-item-question">${escapeHtml(item.question)}</div>
+                                                        <div class="bookmark-item-meta">
+                                                            <span class="bookmark-item-tag">${escapeHtml(item.chapter)}</span>
+                                                            <span class="bookmark-item-tag">${escapeHtml(item.topic || 'General')}</span>
+                                                            <span class="bookmark-item-tag">${escapeHtml(item.type || 'MCQ')}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bookmark-item-actions">
+                                                        <button class="bookmark-action-btn go" onclick="goToQuestion('${item.subject}', '${item.chapterId}', ${item.index})" title="Go to question">→</button>
+                                                        <button class="bookmark-action-btn" onclick="deleteBookmark('${section}', '${sub}', ${idx})" title="Delete">✕</button>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function escapeId(str) {
+            return str.replace(/[^a-zA-Z0-9]/g, '-');
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById('section-' + sectionId);
+            section.classList.toggle('expanded');
+        }
+
+        function toggleSubfolder(header) {
+            const body = header.nextElementSibling;
+            body.style.display = body.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function deleteBookmark(section, subsection, index) {
+            if (!confirm('Delete this bookmark?')) return;
+            const bookmarks = getBookmarks();
+            if (bookmarks[section] && bookmarks[section][subsection]) {
+                bookmarks[section][subsection].splice(index, 1);
+                // Clean up empty subsections
+                if (bookmarks[section][subsection].length === 0) {
+                    delete bookmarks[section][subsection];
+                }
+                // Clean up empty sections
+                if (Object.keys(bookmarks[section]).length === 0) {
+                    delete bookmarks[section];
+                }
+                saveBookmarks(bookmarks);
+                renderBookmarkManager();
+            }
+        }
+
+        function goToQuestion(subject, chapterId, qIndex) {
+            // Store navigation info in sessionStorage
+            sessionStorage.setItem('studycafe-goto', JSON.stringify({subject, chapterId, qIndex}));
+            window.location.href = 'question-cafe.html';
+        }
+
+        function clearAllBookmarks() {
+            if (!confirm('Are you sure you want to delete ALL bookmarks? This cannot be undone.')) return;
+            localStorage.removeItem('studycafe-bookmarks');
+            renderBookmarkManager();
+        }
+
+        function exportBookmarks() {
+            const bookmarks = getBookmarks();
+            const dataStr = JSON.stringify(bookmarks, null, 2);
+            const blob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'studycafe-bookmarks.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function importBookmarks() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const imported = JSON.parse(event.target.result);
+                        const current = getBookmarks();
+                        // Merge imported into current
+                        Object.keys(imported).forEach(section => {
+                            if (!current[section]) current[section] = {};
+                            Object.keys(imported[section]).forEach(sub => {
+                                if (!current[section][sub]) current[section][sub] = [];
+                                imported[section][sub].forEach(item => {
+                                    if (!current[section][sub].find(b => b.key === item.key)) {
+                                        current[section][sub].push(item);
+                                    }
+                                });
+                            });
+                        });
+                        saveBookmarks(current);
+                        renderBookmarkManager();
+                        alert('Bookmarks imported successfully!');
+                    } catch (err) {
+                        alert('Invalid file format');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        // ==================== THEME ====================
+        function updateToggleIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (icon && text) {
+                icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+                text.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('studycafe-theme', newTheme);
+            updateToggleIcon(newTheme);
+        }
+
+        function toggleMenu() {
+            document.getElementById('menuToggle').classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        const savedTheme = localStorage.getItem('studycafe-theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('studycafe-theme')) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+            }
+        });
+
+        // ==================== INIT ====================
+        renderBookmarkManager();
+    </script>
+</body>
+</html>

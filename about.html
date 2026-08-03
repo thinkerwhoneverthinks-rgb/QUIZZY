@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 22px;
+            height: 2.5px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 260px; height: 100vh;
+            background: var(--bg-secondary);
+            border-left: 1px solid var(--border);
+            padding: 4rem 1.5rem 1.5rem;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 0.25rem;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            padding-left: 0.75rem;
+        }
+        .mobile-menu a:hover { 
+            color: var(--accent); 
+            background: var(--bg-hover);
+            padding-left: 1rem;
+        }
+        .mobile-menu .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        .mobile-menu .theme-option:hover { 
+            color: var(--accent); 
+            background: var(--bg-hover);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+        }
+        .overlay.active { display: block; }
+
+        .page-hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .about-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 1rem;
+            border: 1px solid var(--border-hover);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.25rem;
+            background: var(--bg-card);
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .about-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-md);
+        }
+        .about-card h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+        .about-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .about-card p strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .about-quote {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .about-quote blockquote {
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+        .about-quote cite {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .value-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .value-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+        .value-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .value-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+        .value-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+        }
+        .cta-section p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+    </style>
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+    <style>.katex { color: var(--text-primary); } .katex-display { overflow-x: auto; overflow-y: hidden; }</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            Quizzy
+        </a>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 Home</a>
+        <a href="question-cafe.html">☕ Question Cafe</a>
+        <a href="contact.html">📧 Contact Us</a>
+        <a href="privacy.html">🔒 Privacy Policy</a>
+        <a href="about.html" style="color:var(--accent);">ℹ️ About Us</a>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="page-hero">
+            <div class="about-badge">Our Story</div>
+            <h1>About Quizzy</h1>
+            <p>By a Student, For Students.</p>
+        </section>
+
+        <section class="section" style="border-bottom:none;">
+            <div class="about-card">
+                <h2>Hey there! 👋</h2>
+                <p>I'm the face behind <strong>Quizzy</strong>. Like most of you, I spend my days buried in PDFs, test planners, and exam schedules. I realized that finding the right questions to practice shouldn't be harder than the exam itself.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>Why I Built This ☕</h2>
+                <p>I'm using my tech background to take the best material from complex PDFs and turn them into easy-to-use quizzes. No more scrolling through hundreds of pages or juggling multiple apps — everything you need is right here, clean and simple.</p>
+            </div>
+
+            <div class="about-quote">
+                <blockquote>"Quizzy is my way of making exam prep less stressful and a lot more focused."</blockquote>
+                <cite>— Founder, Quizzy</cite>
+            </div>
+
+            <div class="about-card">
+                <h2>What We Stand For 🎯</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">📚</div>
+                        <div class="value-title">Student-First</div>
+                        <div class="value-desc">Built by someone who actually takes the exams</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⚡</div>
+                        <div class="value-title">No Clutter</div>
+                        <div class="value-desc">Clean interface, zero distractions</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🔒</div>
+                        <div class="value-title">Privacy First</div>
+                        <div class="value-desc">No signups, no tracking, your data stays yours</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <p>Ready to start practicing?</p>
+                <a href="question-cafe.html" class="btn btn-primary">☕ Enter Question Cafe →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script>
+        function updateToggleIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (icon && text) {
+                icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+                text.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('studycafe-theme', newTheme);
+            updateToggleIcon(newTheme);
+        }
+
+        function toggleMenu() {
+            document.getElementById('menuToggle').classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        const savedTheme = localStorage.getItem('studycafe-theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('studycafe-theme')) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+            }
+        });
+    </script>
+</body>
+</html>

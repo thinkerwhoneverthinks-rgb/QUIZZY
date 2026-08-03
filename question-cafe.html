@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy — Question Cafe</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00bfa5">
+    <meta name="description" content="Offline-first study companion with custom folder navigation, topic downloads, and multi-topic test creation.">
+    <link rel="icon" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-512x512.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+    <link rel="stylesheet" href="quiz-core.css">
+    <link rel="stylesheet" href="quiz-components.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            Quizzy
+        </a>
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 Home</a>
+        <a href="question-cafe.html" style="color:var(--accent);">☕ Question Cafe</a>
+        <a href="#" onclick="showCustomTestBuilder(); toggleMenu(); return false;" style="color:var(--accent-light);">⚙️ Custom Test</a>
+        <a href="manifest-editor.html">🛠️ Manifest Editor</a>
+        <a href="bookmarks.html">🔖 Bookmarks</a>
+        <a href="contact.html">📧 Contact Us</a>
+        <a href="privacy.html">🔒 Privacy Policy</a>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- ===== SCREEN 1: SUBJECTS & FOLDERS ===== -->
+        <div class="screen active" id="screenSubjects">
+            <section class="subject-hero">
+                <img src="https://i.ibb.co/twcBh5cf/1000113238-removebg-preview.png" alt="Quizzy" class="hero-logo">
+                <h1>Question Cafe</h1>
+                <p>Choose a folder or topic to start practicing</p>
+                <div style="margin-top: 1rem; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn btn-primary" onclick="showCustomTestBuilder()">
+                        ⚙️ Create Custom Test (Multi-Topic)
+                    </button>
+                </div>
+            </section>
+            <div class="subject-grid" id="subjectGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 2: CHAPTERS ===== -->
+        <div class="screen" id="screenChapters">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="goToRoot()">← Back</div>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title" id="chapterSubjectTitle">Biology</div>
+                </div>
+                <div></div>
+            </section>
+            <div class="chapter-list" id="chapterList"></div>
+        </div>
+
+        <!-- ===== SCREEN 2.5: MODE SELECTION ===== -->
+        <div class="screen" id="screenModeSelect">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="showChapters()">← Back</div>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title" id="modeSelectTitle">Animal Tissues</div>
+                </div>
+                <div></div>
+            </section>
+            <section class="mode-selection">
+                <h2>Choose Your Practice Mode</h2>
+                <p>Select how you want to attempt the questions</p>
+                <div class="mode-grid">
+                    <div class="mode-card" onclick="selectMode('onebyone')">
+                        <div class="mode-icon">🎯</div>
+                        <div class="mode-name">One by One</div>
+                        <div class="mode-desc">Questions appear one at a time. Click or use key 1-4 to reveal answers. Perfect for focused learning.</div>
+                        <div class="mode-badge">Practice</div>
+                    </div>
+                    <div class="mode-card" onclick="selectMode('fullquiz')">
+                        <div class="mode-icon">📜</div>
+                        <div class="mode-name">Full Quiz</div>
+                        <div class="mode-desc">All questions displayed in a scrollable list. Navigate freely between questions.</div>
+                        <div class="mode-badge">Review</div>
+                    </div>
+                    <div class="mode-card test-mode-card" onclick="selectMode('test')">
+                        <div class="mode-icon">⏱️</div>
+                        <div class="mode-content">
+                            <div class="mode-name">Test Mode</div>
+                            <div class="mode-desc">Timed test with topic selection. Get scored and review performance with detailed analysis.</div>
+                            <div class="mode-badge">Exam Simulation</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===== SCREEN 2.6: TOPIC SELECTION (Practice Modes) ===== -->
+        <div class="screen" id="screenTopicSelect">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title">Select Topic</div>
+                </div>
+                <div></div>
+            </section>
+            <div class="test-config">
+                <h3>📚 Choose a Topic</h3>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">Questions will appear in serial order</p>
+                <div class="topic-select-list" id="topicSelectListPractice"></div>
+            </div>
+            <div class="config-actions sticky-actions" id="topicSelectActions">
+                <button class="btn btn-ghost" onclick="showModeSelect()">Cancel</button>
+                <button class="btn btn-primary" onclick="startPractice()" disabled>Start Practice → (0 Qs)</button>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 2.7: TEST CONFIG ===== -->
+        <div class="screen" id="screenTestConfig">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title">Test Configuration</div>
+                </div>
+                <div></div>
+            </section>
+            <div class="test-config">
+                <h3>📚 Select Topics</h3>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:0.75rem;">Check topics and set how many questions from each</p>
+                <div class="topic-select-list" id="topicSelectList"></div>
+                <div id="testSummary" style="text-align:center;padding:0.75rem;background:var(--bg-card);border-radius:var(--radius-sm);margin-top:1rem;color:var(--text-muted);font-size:0.9rem;font-weight:600;">
+                    Select at least one topic
+                </div>
+                <div class="question-count-selector" style="margin-top:1.5rem;">
+                    <label>⏱️ Timer (minutes)</label>
+                    <div class="count-slider-wrap">
+                        <input type="number" class="int-input" id="timerInput" min="1" value="30" placeholder="Enter minutes..." style="text-align:center;font-size:1.1rem;font-weight:700;max-width:120px;">
+                        <span style="color:var(--text-muted);font-size:0.85rem;">min</span>
+                    </div>
+                    <p style="color:var(--text-muted);font-size:0.78rem;margin-top:0.5rem;">Set 1 or more minutes. No upper limit.</p>
+                </div>
+                <div class="config-actions">
+                    <button class="btn btn-ghost" onclick="showModeSelect()">Cancel</button>
+                    <button class="btn btn-primary" id="startTestBtn" onclick="updateTestTimeLimit(); startTestMode();" disabled>Start Test →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 2.8: DEDICATED CUSTOM TEST BUILDER ===== -->
+        <div class="screen" id="screenCustomTest">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="goToRoot()">← Back to Home</div>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title">Custom Test Creator</div>
+                </div>
+                <div></div>
+            </section>
+            <div class="ct-builder">
+                <h3>🛠️ Select Chapters, Folders, & Topics</h3>
+                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">
+                    Combine questions from any subject or topic. Set question limits per topic. Download for offline exam taking.
+                </p>
+                <div id="customTestTreeContainer"></div>
+                <div id="ctSummaryText" style="text-align:center;padding:0.75rem;background:var(--bg-card);border-radius:var(--radius-sm);margin-top:1rem;color:var(--text-muted);font-size:0.9rem;font-weight:600;">
+                    Select at least one topic
+                </div>
+                <div class="question-count-selector" style="margin-top:1.5rem;">
+                    <label>⏱️ Test Duration (minutes)</label>
+                    <div class="count-slider-wrap">
+                        <input type="number" class="int-input" id="ctTimerInput" min="1" value="30" style="text-align:center;font-size:1.1rem;font-weight:700;max-width:120px;">
+                        <span style="color:var(--text-muted);font-size:0.85rem;">min</span>
+                    </div>
+                </div>
+                <div class="config-actions" style="margin-top:1.5rem; gap:0.75rem; flex-wrap:wrap;">
+                    <button class="btn btn-ghost" onclick="goToRoot()">Cancel</button>
+                    <button class="btn btn-primary" id="btnDownloadCustomTest" onclick="downloadCustomTestForOffline(this)" disabled>
+                        ⬇️ Download Test Offline
+                    </button>
+                    <button class="btn btn-primary" id="btnStartCustomTest" onclick="startCustomTest()" disabled>
+                        🚀 Start Custom Test →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 3: ONE BY ONE QUIZ ===== -->
+        <div class="screen" id="screenQuiz">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                <button class="grid-toggle-btn" id="gridToggleBtn" onclick="toggleQuestionGrid()">
+                    <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
+                    Grid
+                </button>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title" id="quizChapterTitle">Animal Tissues</div>
+                    <div class="quiz-topic-name" id="quizTopicName">Epithelial Tissue</div>
+                </div>
+                <div class="quiz-progress" id="quizProgress">1 / 55</div>
+            </section>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width: 2%"></div>
+            </div>
+            <div id="quizContainer"></div>
+            <div class="quiz-nav">
+                <button class="nav-btn" id="btnPrev" onclick="prevQuestion()" disabled>← Previous</button>
+                <button class="nav-btn" id="btnNext" onclick="nextQuestion()">Next →</button>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 3.5: FULL QUIZ SCROLL ===== -->
+        <div class="screen" id="screenFullQuiz">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="showModeSelect()">← Back</div>
+                <button class="grid-toggle-btn" id="fullGridToggleBtn" onclick="toggleQuestionGrid()">
+                    <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
+                    Grid
+                </button>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title" id="fullQuizTitle">Animal Tissues</div>
+                </div>
+                <div class="quiz-progress" id="fullQuizProgress">0 / 55</div>
+            </section>
+            <div class="progress-track">
+                <div class="progress-fill" id="fullProgressFill" style="width: 0%"></div>
+            </div>
+            <div class="full-quiz-container" id="fullQuizContainer"></div>
+            <div class="full-quiz-nav">
+                <button class="full-quiz-nav-btn" onclick="scrollToPrev()" title="Previous Question">↑</button>
+                <button class="full-quiz-nav-btn" onclick="scrollToNext()" title="Next Question">↓</button>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 3.7: TEST MODE ===== -->
+        <div class="screen" id="screenTestMode">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="confirmEndTest()">← End Test</div>
+                <button class="grid-toggle-btn" id="testGridToggleBtn" onclick="toggleQuestionGrid()">
+                    <div class="grid-icon"><span></span><span></span><span></span><span></span></div>
+                    Grid
+                </button>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title" id="testChapterTitle">Animal Tissues</div>
+                </div>
+                <div class="quiz-timer" id="testTimer">30:00</div>
+                <div class="quiz-progress" id="testProgress">0 / 20</div>
+            </section>
+            <div class="progress-track">
+                <div class="progress-fill" id="testProgressFill" style="width: 0%"></div>
+            </div>
+            <div class="test-question-list" id="testQuestionList"></div>
+            <div class="test-submit-bar">
+                <div class="test-answered-count">
+                    Answered: <span class="count" id="testAnsweredCount">0</span> / <span id="testTotalCount">20</span>
+                </div>
+                <button class="test-submit-btn" onclick="submitTest()">Submit Test</button>
+            </div>
+        </div>
+
+        <!-- ===== QUESTION GRID OVERLAY ===== -->
+        <div class="question-grid-overlay" id="gridOverlay" onclick="toggleQuestionGrid()"></div>
+        <div class="question-grid-panel" id="gridPanel">
+            <div class="grid-panel-header">
+                <h3>📋 Question Navigator</h3>
+                <div class="grid-close" onclick="toggleQuestionGrid()">✕</div>
+            </div>
+            <div class="grid-panel-body" id="gridPanelBody"></div>
+        </div>
+
+        <!-- ===== BOOKMARK PANEL ===== -->
+        <div class="bookmark-overlay" id="bookmarkOverlay" onclick="closeBookmarkPanel()"></div>
+        <div class="bookmark-panel" id="bookmarkPanel">
+            <div class="bookmark-panel-header">
+                <h3>🔖 Save Bookmark</h3>
+                <div class="bookmark-close" onclick="closeBookmarkPanel()">✕</div>
+            </div>
+            <div class="bookmark-panel-body" id="bookmarkPanelBody">
+                <div class="bookmark-empty">No bookmark folders yet. Create one below.</div>
+            </div>
+            <div class="bookmark-actions">
+                <button class="btn btn-ghost" onclick="closeBookmarkPanel()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveBookmark()">Save</button>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 4: RESULTS ===== -->
+        <div class="screen" id="screenResults">
+            <section class="results-hero">
+                <h1>Quiz Complete! 🎉</h1>
+            </section>
+            <div class="results-card">
+                <div class="results-score-big" id="resultsScore">42</div>
+                <div class="results-label" id="resultsLabel">out of 55 correct</div>
+                <div class="results-percentage" id="resultsPercentage">76.4%</div>
+                <div class="results-time" id="resultsTime">Time taken: 12:34</div>
+                <div class="results-stats-row">
+                    <div class="results-stat-box">
+                        <div class="value correct" id="statCorrect">35</div>
+                        <div class="label">Correct</div>
+                    </div>
+                    <div class="results-stat-box">
+                        <div class="value wrong" id="statWrong">12</div>
+                        <div class="label">Wrong</div>
+                    </div>
+                    <div class="results-stat-box">
+                        <div class="value skipped" id="statSkipped">8</div>
+                        <div class="label">Skipped</div>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="reviewTest()">🔍 Review Answers</button>
+                    <button class="btn btn-primary" onclick="restartQuiz()">🔄 Retry</button>
+                    <button class="btn btn-ghost" onclick="goToRoot()">← Choose Another Subject</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SCREEN 5: REVIEW MODE ===== -->
+        <div class="screen" id="screenReview">
+            <section class="quiz-header">
+                <div class="quiz-back" onclick="showResults()">← Back to Results</div>
+                <div class="quiz-title-wrap">
+                    <div class="quiz-title">Review Answers</div>
+                </div>
+                <div></div>
+            </section>
+            <div class="review-header">
+                <h2>Answer Review</h2>
+                <p>See what you got right and where you went wrong</p>
+            </div>
+            <div class="review-filter-bar">
+                <button class="review-filter-btn active" onclick="filterReview('all')" id="filterAll">All</button>
+                <button class="review-filter-btn" onclick="filterReview('correct')" id="filterCorrect">Correct</button>
+                <button class="review-filter-btn" onclick="filterReview('wrong')" id="filterWrong">Wrong</button>
+                <button class="review-filter-btn" onclick="filterReview('skipped')" id="filterSkipped">Skipped</button>
+            </div>
+            <div id="reviewContainer"></div>
+        </div>
+
+        <!-- Loading -->
+        <div class="screen" id="screenLoading">
+            <div class="loading-wrap">
+                <div class="spinner"></div>
+                <p>Loading questions...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Offline Status Bar -->
+    <div class="offline-indicator" id="offlineIndicator">📴 Offline Mode</div>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script src="quiz-core.js"></script>
+    <script src="quiz-offline.js"></script>
+    <script src="quiz-nav.js"></script>
+    <script src="quiz-screens.js"></script>
+    <script src="quiz-render.js"></script>
+    <script src="quiz-test.js"></script>
+    <script src="quiz-interact.js"></script>
+    <script src="quiz-review.js"></script>
+    <script src="quiz-bookmarks.js"></script>
+    <script src="quiz-custom-test.js"></script>
+
+    <script>
+        // App initialization & Service Worker Registration
+        window.addEventListener('DOMContentLoaded', () => {
+            initNavigation();
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Quizzy Service Worker registered:', reg.scope))
+                    .catch(err => console.warn('Service Worker registration failed:', err));
+            }
+        });
+    </script>
+</body>
+</html>

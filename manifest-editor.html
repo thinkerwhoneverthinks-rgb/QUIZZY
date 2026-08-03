@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy — Visual Manifest Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .editor-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .editor-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) {
+            .editor-grid { grid-template-columns: 1fr; }
+        }
+        .panel {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Tree Node Styles */
+        .node-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .node-card:hover {
+            border-color: var(--border-hover);
+        }
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .icon-input {
+            width: 45px;
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 0.4rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+        }
+        .name-input {
+            flex: 1;
+            padding: 0.4rem 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .children-container {
+            padding-left: 1.25rem;
+            border-left: 2px dashed var(--border);
+            margin-top: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-secondary);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+        .file-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: monospace;
+            font-size: 0.88rem;
+            outline: none;
+        }
+        
+        .action-btn-sm {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.78rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+        .action-btn-sm:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .btn-danger {
+            color: var(--error);
+            border-color: rgba(248, 113, 113, 0.3);
+        }
+        .btn-danger:hover {
+            background: var(--error-bg);
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        /* JSON Code Viewer */
+        .json-code {
+            width: 100%;
+            height: 500px;
+            background: #181a20;
+            color: #6ee7d8;
+            font-family: 'Consolas', 'Fira Code', monospace;
+            font-size: 0.88rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            white-space: pre;
+            overflow: auto;
+            outline: none;
+        }
+        .json-code:focus {
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            Quizzy Manifest Builder
+        </a>
+        <a href="question-cafe.html" class="btn btn-ghost btn-sm">☕ Back to Question Cafe</a>
+    </nav>
+
+    <div class="editor-container">
+        <div class="editor-header">
+            <div>
+                <div class="editor-title">🛠️ Manifest.json Visual Editor</div>
+                <p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.25rem;">
+                    Visually manage subjects, subfolders, and JSON question files without editing code.
+                </p>
+            </div>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                <button class="btn btn-ghost btn-sm" onclick="loadLiveManifest()">🔄 Load Active Manifest</button>
+                <button class="btn btn-ghost btn-sm" onclick="document.getElementById('fileUploadInput').click()">📥 Upload manifest.json</button>
+                <input type="file" id="fileUploadInput" accept=".json" style="display:none;" onchange="handleFileUpload(event)">
+                <button class="btn btn-primary btn-sm" onclick="downloadManifest()">💾 Download manifest.json</button>
+            </div>
+        </div>
+
+        <div class="editor-grid">
+            <!-- LEFT PANEL: Visual Tree Builder -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span>📁 Structure Builder</span>
+                    <button class="action-btn-sm" onclick="addTopSubsection()">+ Add Main Section (Subject)</button>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                    <label style="font-size:0.8rem;color:var(--text-muted);display:block;margin-bottom:0.3rem;">App Name</label>
+                    <input type="text" class="name-input" id="rootNameInput" value="Quizzy" oninput="updateFromUI()">
+                </div>
+
+                <div id="treeBuilderContainer"></div>
+            </div>
+
+            <!-- RIGHT PANEL: Live JSON Preview & Direct Editor -->
+            <div class="panel">
+                <div class="panel-title">
+                    <span>📄 Live JSON Code</span>
+                    <div style="display:flex;gap:0.4rem;">
+                        <button class="action-btn-sm" onclick="copyJsonToClipboard()">📋 Copy Code</button>
+                        <button class="action-btn-sm" onclick="applyJsonFromCode()">⚡ Format & Sync</button>
+                    </div>
+                </div>
+                <textarea class="json-code" id="jsonTextarea" oninput="handleCodeInput()"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let manifestData = {
+            name: "Quizzy",
+            subsections: [
+                {
+                    name: "Physics",
+                    icon: "⚛️",
+                    subsections: [
+                        {
+                            name: "Allen 2026",
+                            icon: "📚",
+                            files: ["allen26_Units,Dimensions_and_Measurement.json"]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Load active manifest on boot
+        window.addEventListener('DOMContentLoaded', () => {
+            loadLiveManifest();
+        });
+
+        async function loadLiveManifest() {
+            try {
+                const resp = await fetch('data/manifest.json');
+                if (resp.ok) {
+                    manifestData = await resp.json();
+                }
+            } catch (e) {
+                console.warn("Using default structure", e);
+            }
+            renderEditorUI();
+        }
+
+        function renderEditorUI() {
+            document.getElementById('rootNameInput').value = manifestData.name || "Quizzy";
+            const container = document.getElementById('treeBuilderContainer');
+            container.innerHTML = '';
+
+            if (manifestData.subsections) {
+                manifestData.subsections.forEach((sub, idx) => {
+                    container.appendChild(createSectionNode(sub, [idx]));
+                });
+            }
+
+            updateJsonTextarea();
+        }
+
+        function createSectionNode(node, path) {
+            const el = document.createElement('div');
+            el.className = 'node-card';
+            
+            const hasSubsections = node.subsections && node.subsections.length > 0;
+            const hasFiles = node.files && node.files.length > 0;
+
+            el.innerHTML = `
+                <div class="node-header">
+                    <input type="text" class="icon-input" value="${escapeHtmlAttr(node.icon || '📁')}" onchange="updateNodeProp(${JSON.stringify(path)}, 'icon', this.value)" placeholder="Emoji">
+                    <input type="text" class="name-input" value="${escapeHtmlAttr(node.name || '')}" onchange="updateNodeProp(${JSON.stringify(path)}, 'name', this.value)" placeholder="Section/Folder Name">
+                    <button class="action-btn-sm" onclick="addSubsection(${JSON.stringify(path)})">+ Folder</button>
+                    <button class="action-btn-sm" onclick="addFileToSection(${JSON.stringify(path)})">+ File</button>
+                    <button class="action-btn-sm btn-danger" onclick="deleteNode(${JSON.stringify(path)})">🗑️</button>
+                </div>
+                <div class="children-container" id="child-${path.join('-')}"></div>
+            `;
+
+            const childContainer = el.querySelector('.children-container');
+
+            // Render files
+            if (node.files) {
+                node.files.forEach((file, fileIdx) => {
+                    const fileEl = document.createElement('div');
+                    fileEl.className = 'file-item';
+                    fileEl.innerHTML = `
+                        <span style="font-size:0.9rem;">📄</span>
+                        <input type="text" class="file-input" value="${escapeHtmlAttr(file)}" onchange="updateFileProp(${JSON.stringify(path)}, ${fileIdx}, this.value)" placeholder="Filename or subfolder/file.json">
+                        <button class="action-btn-sm btn-danger" onclick="deleteFile(${JSON.stringify(path)}, ${fileIdx})">✕</button>
+                    `;
+                    childContainer.appendChild(fileEl);
+                });
+            }
+
+            // Render sub-folders recursively
+            if (node.subsections) {
+                node.subsections.forEach((sub, subIdx) => {
+                    childContainer.appendChild(createSectionNode(sub, [...path, subIdx]));
+                });
+            }
+
+            return el;
+        }
+
+        // ==================== TREE MUTATION HELPERS ====================
+        function getNodeByPath(path) {
+            let current = manifestData;
+            for (let i = 0; i < path.length; i++) {
+                if (!current.subsections) return null;
+                current = current.subsections[path[i]];
+            }
+            return current;
+        }
+
+        function updateNodeProp(path, prop, value) {
+            const node = getNodeByPath(path);
+            if (node) {
+                node[prop] = value;
+                updateJsonTextarea();
+            }
+        }
+
+        function updateFileProp(path, fileIdx, value) {
+            const node = getNodeByPath(path);
+            if (node && node.files) {
+                node.files[fileIdx] = value;
+                updateJsonTextarea();
+            }
+        }
+
+        function addTopSubsection() {
+            if (!manifestData.subsections) manifestData.subsections = [];
+            manifestData.subsections.push({
+                name: "New Subject",
+                icon: "📘",
+                files: []
+            });
+            renderEditorUI();
+        }
+
+        function addSubsection(path) {
+            const node = getNodeByPath(path);
+            if (node) {
+                if (!node.subsections) node.subsections = [];
+                node.subsections.push({
+                    name: "New Subfolder",
+                    icon: "📚",
+                    files: []
+                });
+                renderEditorUI();
+            }
+        }
+
+        function addFileToSection(path) {
+            const node = getNodeByPath(path);
+            if (node) {
+                if (!node.files) node.files = [];
+                node.files.push("new_chapter.json");
+                renderEditorUI();
+            }
+        }
+
+        function deleteNode(path) {
+            if (path.length === 1) {
+                manifestData.subsections.splice(path[0], 1);
+            } else {
+                const parentPath = path.slice(0, -1);
+                const targetIdx = path[path.length - 1];
+                const parent = getNodeByPath(parentPath);
+                if (parent && parent.subsections) {
+                    parent.subsections.splice(targetIdx, 1);
+                }
+            }
+            renderEditorUI();
+        }
+
+        function deleteFile(path, fileIdx) {
+            const node = getNodeByPath(path);
+            if (node && node.files) {
+                node.files.splice(fileIdx, 1);
+                renderEditorUI();
+            }
+        }
+
+        function updateFromUI() {
+            manifestData.name = document.getElementById('rootNameInput').value || "Quizzy";
+            updateJsonTextarea();
+        }
+
+        function updateJsonTextarea() {
+            document.getElementById('jsonTextarea').value = JSON.stringify(manifestData, null, 2);
+        }
+
+        function handleCodeInput() {
+            try {
+                const parsed = JSON.parse(document.getElementById('jsonTextarea').value);
+                manifestData = parsed;
+                document.getElementById('jsonTextarea').style.borderColor = 'var(--accent)';
+            } catch (e) {
+                document.getElementById('jsonTextarea').style.borderColor = 'var(--error)';
+            }
+        }
+
+        function applyJsonFromCode() {
+            try {
+                const parsed = JSON.parse(document.getElementById('jsonTextarea').value);
+                manifestData = parsed;
+                renderEditorUI();
+                alert('✅ Manifest JSON parsed & synced to visual tree!');
+            } catch (e) {
+                alert('❌ Invalid JSON: ' + e.message);
+            }
+        }
+
+        function copyJsonToClipboard() {
+            const text = JSON.stringify(manifestData, null, 2);
+            navigator.clipboard.writeText(text).then(() => {
+                alert('📋 Manifest JSON copied to clipboard!');
+            });
+        }
+
+        function downloadManifest() {
+            const text = JSON.stringify(manifestData, null, 2);
+            const blob = new Blob([text], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'manifest.json';
+            a.click();
+            URL.revokeObjectURL(a.href);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    manifestData = JSON.parse(e.target.result);
+                    renderEditorUI();
+                    alert('✅ Manifest uploaded and loaded!');
+                } catch (err) {
+                    alert('❌ Failed to parse uploaded file: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function escapeHtmlAttr(str) {
+            return String(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+    </script>
+</body>
+</html>
