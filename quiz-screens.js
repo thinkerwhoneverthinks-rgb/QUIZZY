@@ -418,7 +418,18 @@ function renderQuestionGrid() {
     const activeScreen = document.querySelector('.screen.active');
     const isTestMode = activeScreen && activeScreen.id === 'screenTestMode';
 
-    // Group questions by topicName
+    const isDone = (idx) => {
+        const ans = userAnswers[idx];
+        if (!ans) return false;
+        if (isTestMode) {
+            if (Array.isArray(ans.selected)) return ans.selected.length > 0;
+            if (ans.selected !== undefined) return true;
+            return !!(ans.userAnswer && ans.userAnswer.trim());
+        }
+        return !!ans.revealed;
+    };
+
+    // Group questions by topicName, keeping the order they appear in.
     const groups = {};
     questions.forEach((q, i) => {
         const topicName = q.topicName || 'General Questions';
@@ -426,26 +437,48 @@ function renderQuestionGrid() {
         groups[topicName].push({ q, index: i });
     });
 
-    let html = '';
+    // Header: where these questions came from (file → chapter → topics)
+    const fileLabel = currentFileName
+        ? currentFileName.replace('.json', '').replace(/_/g, ' ').replace(/,/g, ', ')
+        : 'Custom Test';
+    const chapterLabel = currentChapter ? currentChapter.name : 'Custom Test';
+    const doneCount = questions.reduce((n, _, i) => n + (isDone(i) ? 1 : 0), 0);
+    const topicCount = Object.keys(groups).length;
+
+    let html = `
+        <div class="grid-context">
+            <div class="gc-crumb">📚 ${escapeHtml(fileLabel)}</div>
+            <div class="gc-chapter">${escapeHtml(chapterLabel)}</div>
+            <div class="gc-meta">
+                ${topicCount} topic${topicCount !== 1 ? 's' : ''} ·
+                ${questions.length} question${questions.length !== 1 ? 's' : ''} ·
+                ${doneCount} ${isTestMode ? 'answered' : 'revealed'}
+            </div>
+        </div>
+        <div class="grid-legend">
+            ${isTestMode ? '' : '<span><i class="lg-current"></i> Current</span>'}
+            <span><i class="lg-answered"></i> ${isTestMode ? 'Answered' : 'Revealed'}</span>
+            ${isTestMode ? '<span><i class="lg-reviewed"></i> Marked for review</span>' : ''}
+            <span><i></i> Not visited</span>
+        </div>
+    `;
+
     Object.entries(groups).forEach(([topicName, items]) => {
+        const topicDone = items.reduce((n, it) => n + (isDone(it.index) ? 1 : 0), 0);
         html += `<div class="grid-topic-section">`;
-        html += `<div class="grid-topic-title">📌 ${escapeHtml(topicName)} (${items.length} Qs)</div>`;
+        html += `
+            <div class="grid-topic-title">
+                <span>📌 ${escapeHtml(topicName)}</span>
+                <span class="gt-count">${topicDone} / ${items.length}</span>
+            </div>`;
         html += `<div class="grid-nums">`;
-        items.forEach(({ q, index }) => {
+        items.forEach(({ index }) => {
             const ans = userAnswers[index];
             let cls = 'grid-num';
-
-            if (isTestMode) {
-                if (ans && (ans.selected !== undefined || (ans.userAnswer && ans.userAnswer.trim()))) {
-                    cls += ' answered';
-                }
-                if (ans && ans.reviewed) cls += ' reviewed';
-            } else {
-                if (ans && ans.revealed) cls += ' answered';
-                if (index === currentQIndex) cls += ' current';
-            }
-
-            html += `<div class="${cls}" onclick="jumpToQuestion(${index})">${index + 1}</div>`;
+            if (isDone(index)) cls += ' answered';
+            if (isTestMode && ans && ans.reviewed) cls += ' reviewed';
+            if (!isTestMode && index === currentQIndex) cls += ' current';
+            html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="Question ${index + 1}">${index + 1}</div>`;
         });
         html += `</div></div>`;
     });
