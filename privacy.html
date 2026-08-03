@@ -5,84 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy — Quizzy</title>
     <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
         <style>
-        .menu-toggle {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-        .menu-toggle span {
-            width: 22px;
-            height: 2.5px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .menu-toggle.active span:nth-child(2) { opacity: 0; }
-        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0; right: 0;
-            width: 260px; height: 100vh;
-            background: var(--bg-secondary);
-            border-left: 1px solid var(--border);
-            padding: 4rem 1.5rem 1.5rem;
-            z-index: 1000;
-            flex-direction: column;
-            gap: 0.25rem;
-            box-shadow: -4px 0 20px rgba(0,0,0,0.3);
-        }
-        .mobile-menu.active { display: flex; }
-        .mobile-menu a {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            padding: 0.875rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.2s ease;
-            font-weight: 500;
-            border-radius: var(--radius-sm);
-            padding-left: 0.75rem;
-        }
-        .mobile-menu a:hover { 
-            color: var(--accent); 
-            background: var(--bg-hover);
-            padding-left: 1rem;
-        }
-        .mobile-menu .theme-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.875rem 0.75rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            cursor: pointer;
-            border-bottom: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            transition: all 0.2s ease;
-            font-weight: 500;
-        }
-        .mobile-menu .theme-option:hover { 
-            color: var(--accent); 
-            background: var(--bg-hover);
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            z-index: 999;
-        }
-        .overlay.active { display: block; }
-
         .page-hero {
             text-align: center;
             padding: 2.5rem 0 1.5rem;
@@ -160,25 +84,45 @@
 <body>
     <nav class="navbar">
         <a href="index.html" class="logo">
-            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
             Quizzy
         </a>
-        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
-        </div>
+        </button>
     </nav>
 
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">🏠 Home</a>
-        <a href="question-cafe.html">☕ Question Cafe</a>
-        <a href="contact.html">📧 Contact Us</a>
-        <a href="privacy.html" style="color:var(--accent);">🔒 Privacy Policy</a>
-        <div class="theme-option" onclick="toggleTheme()">
-            <span id="themeIcon">🌙</span>
-            <span id="themeText">Dark Mode</span>
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
         </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Bookmarks</a>
+
+        <div class="menu-section">More</div>
+        <a href="about.html"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact.html"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy.html"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
     </div>
 
     <main class="container">
@@ -239,47 +183,7 @@
     </footer>
 
     <script>
-        // Theme functions FIRST
-        function updateToggleIcon(theme) {
-            const icon = document.getElementById('themeIcon');
-            const text = document.getElementById('themeText');
-            if (icon && text) {
-                icon.textContent = theme === 'dark' ? '🌙' : '☀️';
-                text.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
-            }
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('studycafe-theme', newTheme);
-            updateToggleIcon(newTheme);
-        }
-
-        function toggleMenu() {
-            document.getElementById('menuToggle').classList.toggle('active');
-            document.getElementById('mobileMenu').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
-        }
-
-        // Apply theme on load
-        const savedTheme = localStorage.getItem('studycafe-theme');
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        } else {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-        }
-        updateToggleIcon(document.documentElement.getAttribute('data-theme'));
-
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('studycafe-theme')) {
-                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-                updateToggleIcon(document.documentElement.getAttribute('data-theme'));
-            }
-        });
+        // Theme + menu live in app-shell.js (loaded in <head>).
     </script>
 </body>
 </html>
