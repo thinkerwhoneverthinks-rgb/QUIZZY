@@ -11,12 +11,20 @@ function saveBookmarks(bookmarks) {
     localStorage.setItem('studycafe-bookmarks', JSON.stringify(bookmarks));
 }
 
+/* Entries are objects ({key, chapter, ...}); older data may hold bare strings,
+   so accept both rather than comparing an object against a string. */
+function bookmarkKeyOf(entry) {
+    if (typeof entry === 'string') return entry;
+    return entry && entry.key ? entry.key : null;
+}
+
 function isQuestionBookmarked(chapterId, qIndex) {
     const bookmarks = getBookmarks();
     const key = `${chapterId}_q${qIndex}`;
     for (const section in bookmarks) {
         for (const subsection in bookmarks[section]) {
-            if (bookmarks[section][subsection].includes(key)) {
+            const list = bookmarks[section][subsection];
+            if (Array.isArray(list) && list.some(b => bookmarkKeyOf(b) === key)) {
                 return true;
             }
         }
@@ -155,21 +163,23 @@ function saveBookmark() {
     const key = `${currentChapter.id}_q${currentBookmarkQuestion}`;
     const q = questions[currentBookmarkQuestion];
 
-    // Store question data with bookmark
+    // Store question data with bookmark. `file` (not the old `currentSubject`,
+    // which no longer exists under folder navigation) is what lets us reopen it.
     const bookmarkData = {
         key: key,
+        file: currentFileName || '',
         chapter: currentChapter.name,
         chapterId: currentChapter.id,
-        subject: currentSubject.id,
-        question: q.question,
+        question: q.question || '',
         topic: q.topicName || '',
         type: q.type || 'fill_blank',
         index: currentBookmarkQuestion,
         date: new Date().toISOString()
     };
 
-    if (!bookmarks[selectedBookmarkSection][selectedBookmarkSubsection].find(b => b.key === key)) {
-        bookmarks[selectedBookmarkSection][selectedBookmarkSubsection].push(bookmarkData);
+    const list = bookmarks[selectedBookmarkSection][selectedBookmarkSubsection];
+    if (!list.some(b => bookmarkKeyOf(b) === key)) {
+        list.push(bookmarkData);
         saveBookmarks(bookmarks);
     }
 
