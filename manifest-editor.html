@@ -4,8 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzy — Visual Manifest Editor</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="icons/icon-512x512.png">
     <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
     <style>
+        /* Admin gate — hides the editor until the passcode is entered. */
+        .admin-gate {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+        }
+        .admin-gate.hidden { display: none; }
+        .admin-card {
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            padding: 2.25rem 1.75rem;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .admin-card img { width: 64px; height: 64px; margin-bottom: 1rem; }
+        .admin-card h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+        .admin-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .admin-card input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            margin-bottom: 0.75rem;
+            background: var(--bg-primary);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            text-align: center;
+        }
+        .admin-card input:focus { border-color: var(--accent); }
+        .admin-error {
+            color: var(--error);
+            font-size: 0.82rem;
+            min-height: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .admin-gate-links {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+        #editorShell { display: none; }
+        #editorShell.unlocked { display: block; }
         .editor-container {
             max-width: 1100px;
             margin: 2rem auto;
@@ -163,12 +226,31 @@
     </style>
 </head>
 <body>
+    <!-- Admin gate: the editor stays hidden until the passcode is entered.
+         Passcode lives in app-shell.js (QUIZZY_ADMIN_PASSCODE). -->
+    <div class="admin-gate" id="adminGate">
+        <div class="admin-card">
+            <img src="icons/quizzy-logo.svg" alt="Quizzy">
+            <h1>🔒 Admin Only</h1>
+            <p>The Manifest Editor is restricted. Enter your passcode to continue.</p>
+            <input type="password" id="adminPass" placeholder="Passcode" autocomplete="off"
+                   onkeydown="if(event.key==='Enter') submitAdminPass()">
+            <div class="admin-error" id="adminError"></div>
+            <button class="btn btn-primary" style="width:100%;" onclick="submitAdminPass()">Unlock Editor</button>
+            <div class="admin-gate-links"><a href="index.html">← Back to Quizzy</a></div>
+        </div>
+    </div>
+
+    <div id="editorShell">
     <nav class="navbar">
         <a href="index.html" class="logo">
-            <img src="https://i.ibb.co/ycNDyTr0/1000113236-removebg-preview.png" alt="Quizzy" class="logo-img" style="height:28px;">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
             Quizzy Manifest Builder
         </a>
-        <a href="question-cafe.html" class="btn btn-ghost btn-sm">☕ Back to Question Cafe</a>
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+            <a href="question-cafe.html" class="btn btn-ghost btn-sm">☕ Question Cafe</a>
+            <button class="btn btn-ghost btn-sm" onclick="lockAdmin(); location.reload();">🔒 Lock</button>
+        </div>
     </nav>
 
     <div class="editor-container">
@@ -216,8 +298,32 @@
             </div>
         </div>
     </div>
+    </div><!-- /#editorShell -->
 
     <script>
+        // ===== Admin gate =====
+        function openEditor() {
+            document.getElementById('adminGate').classList.add('hidden');
+            document.getElementById('editorShell').classList.add('unlocked');
+        }
+
+        function submitAdminPass() {
+            const input = document.getElementById('adminPass');
+            const err = document.getElementById('adminError');
+            if (unlockAdmin(input.value.trim())) {
+                err.textContent = '';
+                openEditor();
+            } else {
+                err.textContent = 'Wrong passcode.';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        if (isAdminUnlocked()) {
+            document.addEventListener('DOMContentLoaded', openEditor);
+        }
+
         let manifestData = {
             name: "Quizzy",
             subsections: [
