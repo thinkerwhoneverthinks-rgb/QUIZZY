@@ -67,6 +67,9 @@ function refreshQuestionCard(idx) {
     card.innerHTML = buildQuestionCardInner(questions[idx], idx, questions.length);
     typesetMath(card);
     loadOfflineImagesInContainer(card);
+
+    // Revealing an answer is progress worth remembering.
+    if (typeof recordStudySession === 'function') recordStudySession();
 }
 
 // ==================== QUESTION RENDERING ====================
@@ -98,6 +101,8 @@ function renderQuestion() {
 
     typesetMath(container);
     loadOfflineImagesInContainer(container);
+
+    if (typeof recordStudySession === 'function') recordStudySession();
 }
 
 /* Shown on the last question so the user can jump straight into the next
@@ -383,6 +388,8 @@ function renderFullQuiz() {
 
     typesetMath(container);
     loadOfflineImagesInContainer(container);
+
+    if (typeof recordStudySession === 'function') recordStudySession();
 }
 
 function scrollToNext() {
