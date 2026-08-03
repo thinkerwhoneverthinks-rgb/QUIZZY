@@ -1,65 +1,51 @@
-// ==================== QUESTION RENDERING ====================
-function renderQuestion() {
-    const q = questions[currentQIndex];
-    const container = document.getElementById('quizContainer');
-    const total = questions.length;
+// ==================== SHARED CARD BUILDERS ====================
+/* One place that knows how each question type is labelled and drawn, so
+   practice mode, full-quiz mode and every re-render stay in sync. */
+function getTypeLabel(q) {
+    if (q.type === 'image_mcq') return 'Image MCQ';
+    if (q.type === 'integer') return 'Integer Type';
+    if (q.type === 'multi_mcq') return 'Multiple Correct MCQ';
+    if (q.type === 'mcq') return 'Single Correct MCQ';
+    return 'Fill in the Blank';
+}
 
-    document.getElementById('quizProgress').textContent = `${currentQIndex + 1} / ${total}`;
-    document.getElementById('progressFill').style.width = `${((currentQIndex + 1) / total) * 100}%`;
-    document.getElementById('quizChapterTitle').textContent = currentChapter.name;
-    document.getElementById('quizTopicName').textContent = q.topicName || '';
+function buildQuestionBody(q, idx) {
+    if (q.type === 'image_mcq') return renderImageMCQ(q, idx);
+    if (q.type === 'integer') return renderInteger(q, idx);
+    if (q.type === 'mcq' || q.type === 'multi_mcq') return renderMCQ(q, idx);
+    return renderFillBlank(q, idx); // fill_blank / untyped
+}
 
-    document.getElementById('btnPrev').disabled = currentQIndex === 0;
-    const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
-    if (currentQIndex === total - 1) {
-        document.getElementById('btnNext').textContent = nextInfo ? `Next: ${nextInfo.name} →` : 'Finish →';
-    } else {
-        document.getElementById('btnNext').textContent = 'Next →';
-    }
+/* Inner HTML of a question card (everything inside .question-card). */
+function buildQuestionCardInner(q, idx, total) {
+    const isBookmarked = (typeof isQuestionBookmarked === 'function' && currentChapter)
+        ? isQuestionBookmarked(currentChapter.id, idx)
+        : false;
 
-    let typeLabel = '';
-    let questionHTML = '';
-
-    if (q.type === 'image_mcq') {
-        typeLabel = 'Image MCQ';
-        questionHTML = renderImageMCQ(q, currentQIndex);
-    } else if (q.type === 'fill_blank' || !q.type) {
-        typeLabel = 'Fill in the Blank';
-        questionHTML = renderFillBlank(q, currentQIndex);
-    } else if (q.type === 'integer') {
-        typeLabel = 'Integer Type';
-        questionHTML = renderInteger(q, currentQIndex);
-    } else if (q.type === 'mcq' || q.type === 'multi_mcq') {
-        typeLabel = q.type === 'multi_mcq' ? 'Multiple Correct MCQ' : 'Single Correct MCQ';
-        questionHTML = renderMCQ(q, currentQIndex);
-    }
-
-    const isBookmarked = isQuestionBookmarked(currentChapter.id, currentQIndex);
-
-    container.innerHTML = `
-        <div class="question-card">
-            <div class="question-card-header">
-                <div class="type-badge">● ${typeLabel}</div>
-                <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${currentQIndex})" title="Bookmark this question">
-                    ${isBookmarked ? '🔖' : '📑'}
-                </button>
-            </div>
-            <div class="question-number">Question ${currentQIndex + 1} of ${total}</div>
-            ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
-            ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
-            ${q.image_url && q.type !== 'image_mcq' ? `
-                <div class="image-question-wrap">
-                    <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
-                </div>
-            ` : ''}
-            ${questionHTML}
+    return `
+        <div class="question-card-header">
+            <div class="type-badge">● ${getTypeLabel(q)}</div>
+            <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="Bookmark this question">
+                ${isBookmarked ? '🔖' : '📑'}
+            </button>
         </div>
+        <div class="question-number">Question ${idx + 1} of ${total}</div>
+        ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
+        ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+        ${q.image_url && q.type !== 'image_mcq' ? `
+            <div class="image-question-wrap">
+                <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
+            </div>
+        ` : ''}
+        ${buildQuestionBody(q, idx)}
     `;
+}
 
-    // Render math
+function typesetMath(el) {
+    if (!el) return;
     setTimeout(() => {
         if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(container, {
+            renderMathInElement(el, {
                 delimiters: [
                     {left: '$$', right: '$$', display: true},
                     {left: '$', right: '$', display: false},
@@ -70,9 +56,78 @@ function renderQuestion() {
             });
         }
     }, 50);
+}
 
-    // Load offline images if needed
+/* Redraw a single card wherever it currently lives (practice or full quiz). */
+function refreshQuestionCard(idx) {
+    const card = (typeof getQuestionCardElement === 'function')
+        ? getQuestionCardElement(idx)
+        : document.getElementById(`fullQ-${idx}`);
+    if (!card) return;
+    card.innerHTML = buildQuestionCardInner(questions[idx], idx, questions.length);
+    typesetMath(card);
+    loadOfflineImagesInContainer(card);
+}
+
+// ==================== QUESTION RENDERING ====================
+function renderQuestion() {
+    const q = questions[currentQIndex];
+    const container = document.getElementById('quizContainer');
+    const total = questions.length;
+
+    document.getElementById('quizProgress').textContent = `${currentQIndex + 1} / ${total}`;
+    document.getElementById('progressFill').style.width = `${((currentQIndex + 1) / total) * 100}%`;
+    document.getElementById('quizChapterTitle').textContent = currentChapter ? currentChapter.name : '';
+    document.getElementById('quizTopicName').textContent = q.topicName || '';
+
+    document.getElementById('btnPrev').disabled = currentQIndex === 0;
+    const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
+    const isLast = currentQIndex === total - 1;
+    if (isLast) {
+        document.getElementById('btnNext').textContent = nextInfo ? `Next: ${nextInfo.name} →` : 'Finish →';
+    } else {
+        document.getElementById('btnNext').textContent = 'Next →';
+    }
+
+    container.innerHTML = `
+        <div class="question-card">
+            ${buildQuestionCardInner(q, currentQIndex, total)}
+        </div>
+        ${isLast ? buildContinuePanel(nextInfo) : ''}
+    `;
+
+    typesetMath(container);
     loadOfflineImagesInContainer(container);
+}
+
+/* Shown on the last question so the user can jump straight into the next
+   topic (or next chapter) without going back through the menus. */
+function buildContinuePanel(nextInfo) {
+    if (!nextInfo) {
+        return `
+            <div class="continue-panel">
+                <h3>That was the last question! 🎉</h3>
+                <p>Nothing left in this set — see how you did.</p>
+                <div class="continue-actions">
+                    <button class="btn btn-primary" onclick="showResults()">📊 Show Results</button>
+                </div>
+            </div>
+        `;
+    }
+    const kind = nextInfo.type === 'chapter' ? 'Next chapter' : 'Next topic';
+    const meta = nextInfo.type === 'topic' && nextInfo.count
+        ? `<span class="continue-count">${nextInfo.count} questions</span>`
+        : '';
+    return `
+        <div class="continue-panel">
+            <h3>Set complete! 🎉</h3>
+            <p>${kind}: <strong>${escapeHtml(nextInfo.name)}</strong> ${meta}</p>
+            <div class="continue-actions">
+                <button class="btn btn-primary" onclick="loadNextTopicOrChapter()">➡️ Continue to ${escapeHtml(nextInfo.name)}</button>
+                <button class="btn btn-ghost" onclick="showResults()">📊 Show Results</button>
+            </div>
+        </div>
+    `;
 }
 
 // ==================== IMAGE MCQ RENDERING ====================
@@ -114,39 +169,7 @@ function renderImageMCQ(q, idx) {
 
 function updateCardInCurrentMode(idx) {
     if (currentMode === 'fullquiz') {
-        const card = document.getElementById(`fullQ-${idx}`);
-        if (card) {
-            const q = questions[idx];
-            let typeLabel = q.type === 'image_mcq' ? 'Image MCQ' : 'MCQ';
-            let questionHTML = q.type === 'image_mcq' ? renderImageMCQ(q, idx) : renderMCQ(q, idx);
-            const isBookmarked = typeof isQuestionBookmarked === 'function' && currentChapter ? isQuestionBookmarked(currentChapter.id, idx) : false;
-
-            card.innerHTML = `
-                <div class="question-card-header">
-                    <div class="type-badge">● ${typeLabel}</div>
-                    <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="Bookmark this question">
-                        ${isBookmarked ? '🔖' : '📑'}
-                    </button>
-                </div>
-                <div class="question-number">Question ${idx + 1} of ${questions.length}</div>
-                ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
-                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
-                ${questionHTML}
-            `;
-            setTimeout(() => {
-                if (typeof renderMathInElement !== 'undefined') {
-                    renderMathInElement(card, {
-                        delimiters: [
-                            {left: '$$', right: '$$', display: true},
-                            {left: '$', right: '$', display: false},
-                            {left: '\\[', right: '\\]', display: true},
-                            {left: '\\(', right: '\\)', display: false}
-                        ],
-                        throwOnError: false
-                    });
-                }
-            }, 50);
-        }
+        refreshQuestionCard(idx);
     } else {
         renderQuestion();
     }
@@ -337,79 +360,28 @@ function renderFullQuiz() {
     const container = document.getElementById('fullQuizContainer');
     const total = questions.length;
 
-    document.getElementById('fullQuizTitle').textContent = currentChapter.name;
+    const topicNames = [...new Set(questions.map(q => q.topicName).filter(Boolean))];
+
+    document.getElementById('fullQuizTitle').textContent = currentChapter ? currentChapter.name : '';
+    const topicEl = document.getElementById('fullQuizTopicName');
+    if (topicEl) {
+        topicEl.textContent = topicNames.length === 1
+            ? topicNames[0]
+            : (topicNames.length > 1 ? `${topicNames.length} topics` : '');
+    }
     document.getElementById('fullQuizProgress').textContent = `${total} Questions`;
     document.getElementById('fullProgressFill').style.width = '100%';
 
-    container.innerHTML = questions.map((q, idx) => {
-        let typeLabel = '';
-        let questionHTML = '';
-
-        if (q.type === 'image_mcq') {
-            typeLabel = 'Image MCQ';
-            questionHTML = renderImageMCQ(q, idx);
-        } else if (q.type === 'fill_blank' || !q.type) {
-            typeLabel = 'Fill in the Blank';
-            questionHTML = renderFillBlank(q, idx);
-        } else if (q.type === 'integer') {
-            typeLabel = 'Integer Type';
-            questionHTML = renderInteger(q, idx);
-        } else if (q.type === 'mcq' || q.type === 'multi_mcq') {
-            typeLabel = q.type === 'multi_mcq' ? 'Multiple Correct MCQ' : 'Single Correct MCQ';
-            questionHTML = renderMCQ(q, idx);
-        }
-
-        const isBookmarked = isQuestionBookmarked(currentChapter.id, idx);
-
-        return `
-            <div class="question-card" id="fullQ-${idx}">
-                <div class="question-card-header">
-                    <div class="type-badge">● ${typeLabel}</div>
-                    <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="Bookmark this question">
-                        ${isBookmarked ? '🔖' : '📑'}
-                    </button>
-                </div>
-                <div class="question-number">Question ${idx + 1} of ${total}</div>
-                ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
-                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
-                ${q.image_url && q.type !== 'image_mcq' ? `
-                    <div class="image-question-wrap">
-                        <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
-                    </div>
-                ` : ''}
-                ${questionHTML}
-            </div>
-        `;
-    }).join('');
+    container.innerHTML = questions.map((q, idx) => `
+        <div class="question-card" id="fullQ-${idx}">
+            ${buildQuestionCardInner(q, idx, total)}
+        </div>
+    `).join('');
 
     const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
-    if (nextInfo) {
-        container.innerHTML += `
-            <div style="text-align:center; padding:2rem 1rem; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); margin-top:1rem;">
-                <h3 style="color:var(--text-primary); margin-bottom:0.5rem;">Finished this set! 🎉</h3>
-                <p style="color:var(--text-muted); font-size:0.88rem; margin-bottom:1rem;">Move directly to the next topic/chapter or view your results.</p>
-                <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
-                    <button class="btn btn-primary" onclick="loadNextTopicOrChapter()">➡️ Continue to ${escapeHtml(nextInfo.name)} →</button>
-                    <button class="btn btn-ghost" onclick="showResults()">Show Results</button>
-                </div>
-            </div>
-        `;
-    }
+    container.insertAdjacentHTML('beforeend', buildContinuePanel(nextInfo));
 
-    setTimeout(() => {
-        if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(container, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false},
-                    {left: '\\[', right: '\\]', display: true},
-                    {left: '\\(', right: '\\)', display: false}
-                ],
-                throwOnError: false
-            });
-        }
-    }, 100);
-
+    typesetMath(container);
     loadOfflineImagesInContainer(container);
 }
 
