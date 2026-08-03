@@ -1,61 +1,19 @@
 // ==================== INTERACTIONS ====================
+/* Works for every question type, in one-by-one AND full-quiz mode: mark the
+   question revealed, then redraw the whole card from the shared builders so
+   the options get their correct/wrong colouring and the submit controls go. */
 function revealAnswer(idx) {
     if (!userAnswers[idx]) userAnswers[idx] = {};
     userAnswers[idx].revealed = true;
 
-    const fibBtn = document.getElementById(`fibBtn-${idx}`);
-    const fibAnswer = document.getElementById(`fibAnswer-${idx}`);
-    const fibExplain = document.getElementById(`fibExplain-${idx}`);
-    const intShowBtn = document.getElementById(`intShowBtn-${idx}`);
-    const intAnswer = document.getElementById(`intAnswer-${idx}`);
-    const intExplain = document.getElementById(`intExplain-${idx}`);
-    const mcqBtn = document.getElementById(`mcqBtn-${idx}`);
-    const mcqExplain = document.getElementById(`mcqExplain-${idx}`);
-
-    if (fibBtn) {
-        fibBtn.classList.add('revealed');
-        fibBtn.textContent = '✅ Answer Revealed';
-    }
-    if (fibAnswer) fibAnswer.classList.add('show');
-    if (fibExplain) fibExplain.classList.add('show');
-
-    if (intShowBtn) {
-        intShowBtn.classList.add('revealed');
-        intShowBtn.textContent = '✅ Answer Revealed';
-    }
-    if (intAnswer) intAnswer.classList.add('show');
-    if (intExplain) intExplain.classList.add('show');
-
-    if (mcqBtn) {
-        mcqBtn.classList.add('revealed');
-        mcqBtn.textContent = '✅ Answer Revealed';
-    }
-    if (mcqExplain) mcqExplain.classList.add('show');
-
     const q = questions[idx];
-    if (q.type === 'mcq') {
-        const optionsContainer = document.getElementById(`mcqOptions-${idx}`);
-        if (optionsContainer) {
-            const saved = userAnswers[idx];
-            const isMulti = q.type === 'multi_mcq';
-            const selected = saved ? (isMulti ? (saved.selected || []) : (saved.selected !== undefined ? [saved.selected] : [])) : [];
-            const letters = ['A', 'B', 'C', 'D', 'E'];
-
-            optionsContainer.innerHTML = q.options.map((opt, i) => {
-                let cls = '';
-                if (isCorrectOption(q, i)) cls = 'correct';
-                else if (selected.includes(i)) cls = 'wrong';
-                else if (isMulti && selected.includes(i) && isCorrectOption(q, i) && !allCorrectSelected(q, selected)) cls = 'partial';
-
-                return `
-                    <div class="mcq-option ${cls}">
-                        <div class="mcq-letter">${letters[i]}</div>
-                        <div class="mcq-text">${escapeHtml(opt)}</div>
-                    </div>
-                `;
-            }).join('');
-        }
+    if (q && q.type === 'multi_mcq') {
+        userAnswers[idx].correct = allCorrectSelected(q, userAnswers[idx].selected || []);
+    } else if (q && (q.type === 'mcq' || q.type === 'image_mcq') && userAnswers[idx].selected !== undefined) {
+        userAnswers[idx].correct = isCorrectOption(q, userAnswers[idx].selected);
     }
+
+    refreshQuestionCard(idx);
 }
 
 function checkInteger(idx) {
@@ -126,42 +84,12 @@ function selectMCQ(idx, optionIdx) {
             submitBtn.disabled = selected.length === 0;
         }
     } else {
+        // Single correct: one click answers AND reveals.
         userAnswers[idx].selected = optionIdx;
         userAnswers[idx].type = 'mcq';
         userAnswers[idx].correct = (optionIdx === q.correct);
         userAnswers[idx].revealed = true;
-
-        const card = getQuestionCardElement(idx);
-        if (card) {
-            const typeLabel = 'Single Correct MCQ';
-            const isBookmarked = typeof isQuestionBookmarked === 'function' && currentChapter ? isQuestionBookmarked(currentChapter.id, idx) : false;
-            card.innerHTML = `
-                <div class="question-card-header">
-                    <div class="type-badge">● ${typeLabel}</div>
-                    <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="Bookmark this question">
-                        ${isBookmarked ? '🔖' : '📑'}
-                    </button>
-                </div>
-                <div class="question-number">Question ${idx + 1} of ${questions.length}</div>
-                ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
-                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
-                ${renderMCQ(q, idx)}
-            `;
-
-            setTimeout(() => {
-                if (typeof renderMathInElement !== 'undefined') {
-                    renderMathInElement(card, {
-                        delimiters: [
-                            {left: '$$', right: '$$', display: true},
-                            {left: '$', right: '$', display: false},
-                            {left: '\\[', right: '\\]', display: true},
-                            {left: '\\(', right: '\\)', display: false}
-                        ],
-                        throwOnError: false
-                    });
-                }
-            }, 50);
-        }
+        refreshQuestionCard(idx);
     }
 }
 
@@ -170,54 +98,21 @@ function submitMultiMCQ(idx) {
     if (!userAnswers[idx]) return;
 
     userAnswers[idx].revealed = true;
-    const selected = userAnswers[idx].selected || [];
-    userAnswers[idx].correct = allCorrectSelected(q, selected);
-
-    const card = getQuestionCardElement(idx);
-    if (card) {
-        const typeLabel = 'Multiple Correct MCQ';
-        const isBookmarked = typeof isQuestionBookmarked === 'function' && currentChapter ? isQuestionBookmarked(currentChapter.id, idx) : false;
-        card.innerHTML = `
-            <div class="question-card-header">
-                <div class="type-badge">● ${typeLabel}</div>
-                <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="Bookmark this question">
-                    ${isBookmarked ? '🔖' : '📑'}
-                </button>
-            </div>
-            <div class="question-number">Question ${idx + 1} of ${questions.length}</div>
-            ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
-            ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
-            ${renderMCQ(q, idx)}
-        `;
-
-        setTimeout(() => {
-            if (typeof renderMathInElement !== 'undefined') {
-                renderMathInElement(card, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false},
-                        {left: '\\[', right: '\\]', display: true},
-                        {left: '\\(', right: '\\)', display: false}
-                    ],
-                    throwOnError: false
-                });
-            }
-        }, 50);
-    }
+    userAnswers[idx].correct = allCorrectSelected(q, userAnswers[idx].selected || []);
+    refreshQuestionCard(idx);
 }
 
 function nextQuestion() {
     if (currentQIndex < questions.length - 1) {
         currentQIndex++;
         renderQuestion();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
+        // On the last question the "Continue / Show results" panel is already
+        // on screen, so Next simply follows it instead of raising a confirm().
         const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
         if (nextInfo) {
-            if (confirm(`Topic complete! Would you like to move directly to next topic/chapter: "${nextInfo.name}"?`)) {
-                loadNextTopicOrChapter();
-            } else {
-                showResults();
-            }
+            loadNextTopicOrChapter();
         } else {
             showResults();
         }
