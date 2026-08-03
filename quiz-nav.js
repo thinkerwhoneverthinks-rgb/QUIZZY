@@ -35,12 +35,6 @@ function showChapters() {
     showScreen('screenChapters');
 }
 
-function showModeSelect() {
-    if (!currentChapter) { showChapters(); return; }
-    document.getElementById('modeSelectTitle').textContent = currentChapter.name;
-    showScreen('screenModeSelect');
-}
-
 function showQuiz() {
     if (!currentChapter) { showChapters(); return; }
     currentQIndex = 0;
@@ -59,6 +53,7 @@ function showFullQuiz() {
 function showTestConfig() {
     selectedTopics = [];
     topicQuestionCounts = {};
+    restoreAllQuestions();
     renderTestConfig();
     showScreen('screenTestConfig');
 }
@@ -81,14 +76,35 @@ function showModeSelect() {
 }
 
 // ==================== TOPIC SELECTION (One-by-One & Full Quiz) ====================
+/* startPractice() narrows `questions` to the chosen topics, so rebuild the
+   full set on re-entry — otherwise the counts and "Select All" would only
+   reflect whatever subset was practised last. */
+function restoreAllQuestions() {
+    if (topics && topics.length > 0) {
+        questions = topics.flatMap(t => (t.questions || []).map(q => ({ ...q, topicName: t.topic })));
+    }
+}
+
 function showTopicSelect() {
     selectedTopics = []; // reset on fresh entry
+    restoreAllQuestions();
     renderTopicSelect();
     showScreen('screenTopicSelect');
 }
 
 function renderTopicSelect() {
     const container = document.getElementById('topicSelectListPractice');
+
+    // Header shows the chapter (e.g. "Conceptual Questions") + chosen mode.
+    const titleEl = document.getElementById('topicSelectTitle');
+    const subtitleEl = document.getElementById('topicSelectSubtitle');
+    if (titleEl) titleEl.textContent = currentChapter ? currentChapter.name : 'Select Topic';
+    if (subtitleEl) {
+        subtitleEl.textContent = currentMode === 'fullquiz'
+            ? 'Full Quiz · serial order'
+            : 'One by One · serial order';
+    }
+
     if (!topics || topics.length === 0) {
         container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">No topics available. All questions will be used.</p>';
         return;
@@ -224,6 +240,8 @@ function getNextTopicInfo() {
     return null;
 }
 
+/* Keeps the user in the mode they chose (one-by-one or full quiz) and just
+   swaps in the next topic — or the first topic of the next chapter. */
 function loadNextTopicOrChapter() {
     const nextInfo = getNextTopicInfo();
     if (!nextInfo) {
@@ -231,67 +249,48 @@ function loadNextTopicOrChapter() {
         return;
     }
 
+    let nextTopic = null;
+
     if (nextInfo.type === 'topic') {
-        const nextTopicIndex = nextInfo.index;
-        const nextTopic = topics[nextTopicIndex];
-        if (nextTopic && nextTopic.questions) {
-            const newQuestions = nextTopic.questions.map(q => ({ ...q, topicName: nextTopic.topic }));
-            questions = newQuestions;
-            userAnswers = {};
-            currentQIndex = 0;
-            if (currentMode === 'fullquiz') {
-                renderFullQuiz();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                renderQuestion();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+        nextTopic = topics[nextInfo.index];
+        selectedTopics = [nextInfo.index];
+    } else if (nextInfo.type === 'chapter') {
+        const nextCh = (subjectData && subjectData.chapters || []).find(c => c.id === nextInfo.id);
+        if (!nextCh) { showResults(); return; }
+
+        currentChapter = nextCh;
+        if (nextCh.topics && nextCh.topics.length > 0) {
+            topics = nextCh.topics;
+        } else if (nextCh.questions && nextCh.questions.length > 0) {
+            topics = [{ topic: nextCh.name, questions: nextCh.questions }];
         } else {
             showResults();
+            return;
         }
-    } else if (nextInfo.type === 'chapter') {
-        selectChapter(nextInfo.id);
+        topicQuestionCounts = {};
+        selectedTopics = [0];
+        nextTopic = topics[0];
     }
-}
 
-// ==================== THEME ====================
-function updateToggleIcon(theme) {
-    const icon = document.getElementById('themeIcon');
-    const text = document.getElementById('themeText');
-    if (icon && text) {
-        icon.textContent = theme === 'dark' ? '🌙' : '☀️';
-        text.textContent = theme === 'dark' ? 'Dark Mode' : 'Light Mode';
+    if (!nextTopic || !nextTopic.questions || nextTopic.questions.length === 0) {
+        showResults();
+        return;
     }
-}
 
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('studycafe-theme', newTheme);
-    updateToggleIcon(newTheme);
-}
+    questions = nextTopic.questions.map(q => ({ ...q, topicName: nextTopic.topic }));
+    userAnswers = {};
+    currentQIndex = 0;
 
-function toggleMenu() {
-    document.getElementById('menuToggle').classList.toggle('active');
-    document.getElementById('mobileMenu').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
-}
-
-const savedTheme = localStorage.getItem('studycafe-theme');
-if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-} else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-}
-updateToggleIcon(document.documentElement.getAttribute('data-theme'));
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('studycafe-theme')) {
-        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        updateToggleIcon(document.documentElement.getAttribute('data-theme'));
+    if (currentMode === 'fullquiz') {
+        renderFullQuiz();
+        showScreen('screenFullQuiz');
+    } else {
+        renderQuestion();
+        showScreen('screenQuiz');
     }
-});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // ==================== INIT ====================
+/* Theme + hamburger menu live in app-shell.js, which every page loads in
+   <head> so the saved theme is applied before the first paint. */
