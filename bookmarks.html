@@ -344,31 +344,35 @@
                         </div>
                         <div class="folder-body">
                             ${subsections.map(sub => {
-                                const items = bookmarks[section][sub];
+                                const rawItems = bookmarks[section][sub];
+                                const sortedItems = [...rawItems].sort((a, b) => {
+                                    const topicA = (a.topic || a.chapter || '').toLowerCase();
+                                    const topicB = (b.topic || b.chapter || '').toLowerCase();
+                                    if (topicA !== topicB) return topicA.localeCompare(topicB);
+                                    return (a.index || 0) - (b.index || 0);
+                                });
+
                                 return `
                                     <div class="subfolder">
                                         <div class="subfolder-header" onclick="toggleSubfolder(this)">
                                             <span>📂</span>
-                                            <span>${escapeHtml(sub)} (${items.length})</span>
+                                            <span>${escapeHtml(sub)} (${sortedItems.length})</span>
                                         </div>
-                                        <div class="subfolder-body" style="display:none;">
-                                            ${items.map((item, idx) => `
-                                                <div class="bookmark-item">
-                                                    <span class="bookmark-item-icon">📝</span>
-                                                    <div class="bookmark-item-content">
-                                                        <div class="bookmark-item-question">${escapeHtml(item.question)}</div>
-                                                        <div class="bookmark-item-meta">
-                                                            <span class="bookmark-item-tag">${escapeHtml(item.chapter)}</span>
-                                                            <span class="bookmark-item-tag">${escapeHtml(item.topic || 'General')}</span>
-                                                            <span class="bookmark-item-tag">${escapeHtml(item.type || 'MCQ')}</span>
+                                        <div class="subfolder-body" style="display:block;">
+                                            ${sortedItems.map(item => {
+                                                const tagLabel = `--${item.topic || item.chapter || 'Question'} Q${(item.index || 0) + 1}`;
+                                                const fileTarget = item.file || item.subject || '';
+                                                return `
+                                                    <div class="bookmark-thin-card">
+                                                        <span class="bookmark-thin-title">${escapeHtml(tagLabel)}</span>
+                                                        <span class="bookmark-thin-text" title="${escapeHtml(item.question)}">${escapeHtml(item.question)}</span>
+                                                        <div class="bookmark-thin-actions">
+                                                            <button class="bookmark-action-btn go" onclick="goToQuestion('${fileTarget}', '${item.chapterId}', ${item.index})" title="Go to question">→</button>
+                                                            <button class="bookmark-action-btn" onclick="deleteBookmarkByKey('${section.replace(/'/g, "\\'")}', '${sub.replace(/'/g, "\\'")}', '${item.key}')" title="Delete">✕</button>
                                                         </div>
                                                     </div>
-                                                    <div class="bookmark-item-actions">
-                                                        <button class="bookmark-action-btn go" onclick="goToQuestion('${item.subject}', '${item.chapterId}', ${item.index})" title="Go to question">→</button>
-                                                        <button class="bookmark-action-btn" onclick="deleteBookmark('${section}', '${sub}', ${idx})" title="Delete">✕</button>
-                                                    </div>
-                                                </div>
-                                            `).join('')}
+                                                `;
+                                            }).join('')}
                                         </div>
                                     </div>
                                 `;
@@ -402,16 +406,14 @@
             body.style.display = body.style.display === 'none' ? 'block' : 'none';
         }
 
-        function deleteBookmark(section, subsection, index) {
+        function deleteBookmarkByKey(section, subsection, key) {
             if (!confirm('Delete this bookmark?')) return;
             const bookmarks = getBookmarks();
             if (bookmarks[section] && bookmarks[section][subsection]) {
-                bookmarks[section][subsection].splice(index, 1);
-                // Clean up empty subsections
+                bookmarks[section][subsection] = bookmarks[section][subsection].filter(b => (typeof b === 'object' ? b.key : b) !== key);
                 if (bookmarks[section][subsection].length === 0) {
                     delete bookmarks[section][subsection];
                 }
-                // Clean up empty sections
                 if (Object.keys(bookmarks[section]).length === 0) {
                     delete bookmarks[section];
                 }
@@ -420,9 +422,8 @@
             }
         }
 
-        function goToQuestion(subject, chapterId, qIndex) {
-            // Store navigation info in sessionStorage
-            sessionStorage.setItem('studycafe-goto', JSON.stringify({subject, chapterId, qIndex}));
+        function goToQuestion(file, chapterId, qIndex) {
+            sessionStorage.setItem('studycafe-goto', JSON.stringify({ file, chapterId, qIndex }));
             window.location.href = 'question-cafe.html';
         }
 

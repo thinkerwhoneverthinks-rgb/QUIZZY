@@ -61,7 +61,8 @@ function recordStudySession(extra) {
         topicNames,
         topicIndexes,
         mode: currentMode,
-        qIndex: currentMode === 'fullquiz' ? 0 : currentQIndex,
+        qIndex: currentQIndex,
+        userAnswers: userAnswers || {},
         total: questions.length,
         revealed,
         updatedAt: Date.now(),
@@ -72,6 +73,56 @@ function recordStudySession(extra) {
     if (existing >= 0) list.splice(existing, 1);
     list.unshift(entry);
     saveStudyHistory(list);
+}
+
+function restoreSavedTopicProgress() {
+    if (!currentChapter || !questions || questions.length === 0) return;
+    if (!currentMode || currentMode === 'test') return;
+
+    const topicNames = [...new Set(questions.map(q => q.topicName).filter(Boolean))];
+    const id = historySessionId(currentFileName, currentChapter.id, currentMode, topicNames);
+    const list = getStudyHistory();
+    const saved = list.find(h => h.id === id);
+
+    if (saved && saved.userAnswers) {
+        userAnswers = saved.userAnswers || {};
+
+        let firstUnsolved = -1;
+        for (let i = 0; i < questions.length; i++) {
+            if (!userAnswers[i] || !userAnswers[i].revealed) {
+                firstUnsolved = i;
+                break;
+            }
+        }
+
+        if (firstUnsolved !== -1) {
+            currentQIndex = firstUnsolved;
+        } else {
+            currentQIndex = questions.length - 1;
+        }
+    } else {
+        userAnswers = {};
+        currentQIndex = 0;
+    }
+}
+
+function resetCurrentTopicProgress() {
+    if (!confirm('Reset progress for this topic? All saved answers and progress will be cleared.')) return;
+
+    if (currentChapter && questions && questions.length > 0 && currentMode && currentMode !== 'test') {
+        const topicNames = [...new Set(questions.map(q => q.topicName).filter(Boolean))];
+        const id = historySessionId(currentFileName, currentChapter.id, currentMode, topicNames);
+        deleteStudySession(id);
+    }
+
+    userAnswers = {};
+    currentQIndex = 0;
+
+    const activeScreen = document.querySelector('.screen.active');
+    if (activeScreen) {
+        if (activeScreen.id === 'screenQuiz') renderQuestion();
+        else if (activeScreen.id === 'screenFullQuiz') renderFullQuiz();
+    }
 }
 
 function deleteStudySession(id) {
@@ -132,7 +183,7 @@ function renderStudyHistory() {
         const pct = h.total ? Math.round((h.revealed / h.total) * 100) : 0;
         const position = h.mode === 'fullquiz'
             ? `${h.revealed} of ${h.total} revealed`
-            : `Question ${Math.min(h.qIndex + 1, h.total)} of ${h.total}`;
+            : `Question ${Math.min((h.qIndex || 0) + 1, h.total)} of ${h.total}`;
 
         return `
             <div class="history-card" onclick="resumeStudySession('${h.id.replace(/'/g, "\\'")}')">
@@ -168,8 +219,6 @@ async function resumeStudySession(id) {
     showScreen('screenLoading');
 
     try {
-        // loadFile() would push us to the chapter list; we want to go deeper,
-        // so reuse its cache/offline/network chain and then drive it ourselves.
         let data = loadedFiles[entry.file];
         if (!data) {
             try {
@@ -197,7 +246,6 @@ async function resumeStudySession(id) {
             throw new Error('That chapter has no questions.');
         }
 
-        // Prefer matching topics by name — indexes shift when content is edited.
         let chosen = entry.topicNames
             .map(name => topics.findIndex(t => t.topic === name))
             .filter(i => i >= 0);
@@ -215,8 +263,20 @@ async function resumeStudySession(id) {
         if (questions.length === 0) throw new Error('No questions left in that topic.');
 
         currentMode = entry.mode === 'fullquiz' ? 'fullquiz' : 'onebyone';
-        userAnswers = {};
-        currentQIndex = Math.min(Math.max(entry.qIndex || 0, 0), questions.length - 1);
+        userAnswers = entry.userAnswers || {};
+
+        let firstUnsolved = -1;
+        for (let i = 0; i < questions.length; i++) {
+            if (!userAnswers[i] || !userAnswers[i].revealed) {
+                firstUnsolved = i;
+                break;
+            }
+        }
+        if (firstUnsolved !== -1) {
+            currentQIndex = firstUnsolved;
+        } else {
+            currentQIndex = questions.length - 1;
+        }
 
         if (currentMode === 'fullquiz') {
             renderFullQuiz();

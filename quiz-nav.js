@@ -187,8 +187,12 @@ function startPractice() {
     }
 
     questions = filteredQuestions;
-    userAnswers = {};
-    currentQIndex = 0;
+    if (typeof restoreSavedTopicProgress === 'function') {
+        restoreSavedTopicProgress();
+    } else {
+        userAnswers = {};
+        currentQIndex = 0;
+    }
     if (currentMode === 'onebyone') {
         showQuiz();
     } else if (currentMode === 'fullquiz') {

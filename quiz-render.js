@@ -25,8 +25,8 @@ function buildQuestionCardInner(q, idx, total) {
     return `
         <div class="question-card-header">
             <div class="type-badge">● ${getTypeLabel(q)}</div>
-            <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="Bookmark this question">
-                ${isBookmarked ? '🔖' : '📑'}
+            <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="${isBookmarked ? 'Bookmarked' : 'Bookmark this question'}">
+                🔖
             </button>
         </div>
         <div class="question-number">Question ${idx + 1} of ${total}</div>

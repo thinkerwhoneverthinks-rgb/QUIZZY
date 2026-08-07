@@ -13,6 +13,29 @@ async function initNavigation() {
     }
     // Check offline status
     checkAndShowOfflineStatus();
+    // Check if coming from a bookmark link
+    checkGotoBookmark();
+}
+
+async function checkGotoBookmark() {
+    try {
+        const raw = sessionStorage.getItem('studycafe-goto');
+        if (!raw) return;
+        sessionStorage.removeItem('studycafe-goto');
+        const goto = JSON.parse(raw);
+        const file = goto.file || goto.subject;
+        if (file) {
+            await loadFile(file);
+            if (goto.chapterId) {
+                await selectChapter(goto.chapterId);
+                currentMode = 'onebyone';
+                currentQIndex = Math.min(goto.qIndex || 0, questions.length - 1);
+                showQuiz();
+            }
+        }
+    } catch (e) {
+        console.warn("Could not process goto bookmark:", e);
+    }
 }
 
 // ==================== TREE RENDERING ====================
