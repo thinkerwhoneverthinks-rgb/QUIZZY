@@ -13,8 +13,10 @@ async function initNavigation() {
     }
     // Check offline status
     checkAndShowOfflineStatus();
-    // Check if coming from a bookmark link
-    checkGotoBookmark();
+    // Check if coming from a bookmark link (either flow)
+    if (!checkGotoBookmarkPractice()) {
+        checkGotoBookmark();
+    }
 }
 
 async function checkGotoBookmark() {
@@ -29,12 +31,40 @@ async function checkGotoBookmark() {
             if (goto.chapterId) {
                 await selectChapter(goto.chapterId);
                 currentMode = 'onebyone';
-                currentQIndex = Math.min(goto.qIndex || 0, questions.length - 1);
-                showQuiz();
+                const startIndex = Math.min(goto.qIndex || 0, questions.length - 1);
+                showQuiz(startIndex);
             }
         }
     } catch (e) {
         console.warn("Could not process goto bookmark:", e);
+    }
+}
+
+/* Standalone bookmark-practice flow: renders a session built entirely from stored
+   bookmark snapshots (see saveBookmark() in quiz-bookmarks.js), never touching the
+   source chapter/file. Returns true if it handled a pending payload. */
+function checkGotoBookmarkPractice() {
+    try {
+        const raw = sessionStorage.getItem('studycafe-bookmark-practice');
+        if (!raw) return false;
+        sessionStorage.removeItem('studycafe-bookmark-practice');
+        const payload = JSON.parse(raw);
+        if (!payload || !Array.isArray(payload.items) || payload.items.length === 0) return false;
+
+        questions = payload.items;
+        topics = [{ topic: payload.label || 'Bookmarks', questions: payload.items }];
+        currentChapter = { id: 'bookmark', name: payload.label || 'Bookmarked Questions' };
+        currentFileName = null;
+        subjectData = null;
+        currentMode = 'bookmark';
+        selectedTopics = [];
+
+        const startIndex = Math.min(payload.startIndex || 0, questions.length - 1);
+        showQuiz(startIndex);
+        return true;
+    } catch (e) {
+        console.warn("Could not process bookmark practice payload:", e);
+        return false;
     }
 }
 
@@ -440,6 +470,8 @@ function renderQuestionGrid() {
 
     const activeScreen = document.querySelector('.screen.active');
     const isTestMode = activeScreen && activeScreen.id === 'screenTestMode';
+    // Never reveal correct/wrong while a test is still in progress — only after submit.
+    const showCorrectness = !isTestMode || testSubmitted;
 
     const isDone = (idx) => {
         const ans = userAnswers[idx];
@@ -450,6 +482,15 @@ function renderQuestionGrid() {
             return !!(ans.userAnswer && ans.userAnswer.trim());
         }
         return !!ans.revealed;
+    };
+
+    const isBookmarked = (idx) => {
+        if (typeof isQuestionBookmarked !== 'function') return false;
+        const q = questions[idx];
+        if (currentMode === 'bookmark') {
+            return !!(q && q.origChapterId != null && isQuestionBookmarked(q.origChapterId, q.origIndex));
+        }
+        return !!(currentChapter && isQuestionBookmarked(currentChapter.id, idx));
     };
 
     // Group questions by topicName, keeping the order they appear in.
@@ -482,6 +523,8 @@ function renderQuestionGrid() {
             ${isTestMode ? '' : '<span><i class="lg-current"></i> Current</span>'}
             <span><i class="lg-answered"></i> ${isTestMode ? 'Answered' : 'Revealed'}</span>
             ${isTestMode ? '<span><i class="lg-reviewed"></i> Marked for review</span>' : ''}
+            <span><i class="lg-bookmarked"></i> Bookmarked</span>
+            ${showCorrectness ? '<span><i class="lg-correct"></i> Correct</span><span><i class="lg-wrong"></i> Wrong</span>' : ''}
             <span><i></i> Not visited</span>
         </div>
     `;
@@ -495,13 +538,19 @@ function renderQuestionGrid() {
                 <span class="gt-count">${topicDone} / ${items.length}</span>
             </div>`;
         html += `<div class="grid-nums">`;
-        items.forEach(({ index }) => {
+        items.forEach(({ q, index }) => {
             const ans = userAnswers[index];
+            const bookmarked = isBookmarked(index);
+            const status = showCorrectness ? getAnswerStatus(index) : 'skipped';
             let cls = 'grid-num';
             if (isDone(index)) cls += ' answered';
+            if (bookmarked) cls += ' bookmarked';
+            if (status === 'correct') cls += ' correct';
+            if (status === 'wrong') cls += ' wrong';
             if (isTestMode && ans && ans.reviewed) cls += ' reviewed';
             if (!isTestMode && index === currentQIndex) cls += ' current';
-            html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="Question ${index + 1}">${index + 1}</div>`;
+            const num = q.originalNumber || (index + 1);
+            html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="Question ${num}">${num}</div>`;
         });
         html += `</div></div>`;
     });

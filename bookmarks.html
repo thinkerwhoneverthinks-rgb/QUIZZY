@@ -103,61 +103,53 @@
         .subfolder-header:hover {
             color: var(--accent-light);
         }
-        .bookmark-item {
+        /* Bookmark entries within a section/subfolder (rendered by renderBookmarkManager). */
+        .subfolder-body {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .bookmark-thin-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             gap: 0.75rem;
-            padding: 0.875rem 1rem;
+            padding: 0.75rem 1rem;
             background: var(--bg-primary);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
-            margin-bottom: 0.5rem;
             transition: all 0.2s ease;
         }
-        .bookmark-item:hover {
+        .bookmark-thin-card:hover {
             border-color: var(--accent);
-            transform: translateX(4px);
+            background: var(--bg-hover);
         }
-        .bookmark-item-icon {
-            font-size: 1.2rem;
+        .bookmark-thin-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent);
+            white-space: nowrap;
             flex-shrink: 0;
-            margin-top: 0.1rem;
         }
-        .bookmark-item-content {
+        .bookmark-thin-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             flex: 1;
             min-width: 0;
         }
-        .bookmark-item-question {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            font-weight: 500;
-            line-height: 1.5;
-            margin-bottom: 0.35rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .bookmark-item-meta {
+        .bookmark-thin-actions {
             display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .bookmark-item-tag {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-        }
-        .bookmark-item-actions {
-            display: flex;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 0.4rem;
             flex-shrink: 0;
         }
         .bookmark-action-btn {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -203,6 +195,20 @@
         }
         .manager-actions .btn {
             font-size: 0.85rem;
+        }
+
+        @media (max-width: 480px) {
+            .page-hero { padding: 1.75rem 0 1rem; }
+            .page-hero h1 { font-size: 1.5rem; }
+            .manager-actions { flex-wrap: wrap; }
+            .manager-actions .btn { flex: 1 1 auto; min-width: 100px; }
+            .folder-header { padding: 0.85rem 1rem; }
+            .folder-name { font-size: 0.9rem; }
+            .bookmark-thin-card { flex-wrap: wrap; align-items: flex-start; }
+            .bookmark-thin-title { flex-basis: 100%; }
+            .bookmark-thin-text { flex-basis: 100%; white-space: normal; }
+            .bookmark-thin-actions { margin-left: auto; }
+            .bookmark-action-btn { width: 40px; height: 40px; }
         }
     </style>
     <!-- KaTeX for Math Rendering -->
@@ -296,6 +302,8 @@
 
     <script>
         // ==================== BOOKMARK MANAGER ====================
+        const DIRECT_BOOKMARK_KEY = '__direct__';
+
         function getBookmarks() {
             try {
                 return JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
@@ -326,11 +334,35 @@
 
             let html = '';
             sections.forEach(section => {
-                const subsections = Object.keys(bookmarks[section]);
-                let totalCount = 0;
+                const subsections = Object.keys(bookmarks[section]).filter(sub => sub !== DIRECT_BOOKMARK_KEY);
+                const directItems = bookmarks[section][DIRECT_BOOKMARK_KEY] || [];
+                let totalCount = directItems.length;
                 subsections.forEach(sub => {
                     totalCount += bookmarks[section][sub].length;
                 });
+
+                const sortItems = (rawItems) => [...rawItems].sort((a, b) => {
+                    const topicA = (a.topic || a.chapter || '').toLowerCase();
+                    const topicB = (b.topic || b.chapter || '').toLowerCase();
+                    if (topicA !== topicB) return topicA.localeCompare(topicB);
+                    return (a.index || 0) - (b.index || 0);
+                });
+
+                const renderThinCard = (item, sub) => {
+                    const tagLabel = `--${item.topic || item.chapter || 'Question'} Q${(item.originalNumber || (item.index || 0) + 1)}`;
+                    const secEsc = section.replace(/'/g, "\\'");
+                    const subEsc = sub.replace(/'/g, "\\'");
+                    return `
+                        <div class="bookmark-thin-card">
+                            <span class="bookmark-thin-title">${escapeHtml(tagLabel)}</span>
+                            <span class="bookmark-thin-text" title="${escapeHtml(item.question)}">${escapeHtml(item.question)}</span>
+                            <div class="bookmark-thin-actions">
+                                <button class="bookmark-action-btn go" onclick="openBookmarkPractice('${secEsc}', '${subEsc}', '${item.key}')" title="Practice this question">→</button>
+                                <button class="bookmark-action-btn" onclick="deleteBookmarkByKey('${secEsc}', '${subEsc}', '${item.key}')" title="Delete">✕</button>
+                            </div>
+                        </div>
+                    `;
+                };
 
                 html += `
                     <div class="folder-section" id="section-${escapeId(section)}">
@@ -343,15 +375,13 @@
                             <span class="folder-arrow">▶</span>
                         </div>
                         <div class="folder-body">
+                            ${directItems.length > 0 ? `
+                                <div class="subfolder-body" style="display:block;">
+                                    ${sortItems(directItems).map(item => renderThinCard(item, DIRECT_BOOKMARK_KEY)).join('')}
+                                </div>
+                            ` : ''}
                             ${subsections.map(sub => {
-                                const rawItems = bookmarks[section][sub];
-                                const sortedItems = [...rawItems].sort((a, b) => {
-                                    const topicA = (a.topic || a.chapter || '').toLowerCase();
-                                    const topicB = (b.topic || b.chapter || '').toLowerCase();
-                                    if (topicA !== topicB) return topicA.localeCompare(topicB);
-                                    return (a.index || 0) - (b.index || 0);
-                                });
-
+                                const sortedItems = sortItems(bookmarks[section][sub]);
                                 return `
                                     <div class="subfolder">
                                         <div class="subfolder-header" onclick="toggleSubfolder(this)">
@@ -359,20 +389,7 @@
                                             <span>${escapeHtml(sub)} (${sortedItems.length})</span>
                                         </div>
                                         <div class="subfolder-body" style="display:block;">
-                                            ${sortedItems.map(item => {
-                                                const tagLabel = `--${item.topic || item.chapter || 'Question'} Q${(item.index || 0) + 1}`;
-                                                const fileTarget = item.file || item.subject || '';
-                                                return `
-                                                    <div class="bookmark-thin-card">
-                                                        <span class="bookmark-thin-title">${escapeHtml(tagLabel)}</span>
-                                                        <span class="bookmark-thin-text" title="${escapeHtml(item.question)}">${escapeHtml(item.question)}</span>
-                                                        <div class="bookmark-thin-actions">
-                                                            <button class="bookmark-action-btn go" onclick="goToQuestion('${fileTarget}', '${item.chapterId}', ${item.index})" title="Go to question">→</button>
-                                                            <button class="bookmark-action-btn" onclick="deleteBookmarkByKey('${section.replace(/'/g, "\\'")}', '${sub.replace(/'/g, "\\'")}', '${item.key}')" title="Delete">✕</button>
-                                                        </div>
-                                                    </div>
-                                                `;
-                                            }).join('')}
+                                            ${sortedItems.map(item => renderThinCard(item, sub)).join('')}
                                         </div>
                                     </div>
                                 `;
@@ -422,8 +439,44 @@
             }
         }
 
-        function goToQuestion(file, chapterId, qIndex) {
-            sessionStorage.setItem('studycafe-goto', JSON.stringify({ file, chapterId, qIndex }));
+        /* Opens a standalone practice session scoped to every bookmark in this
+           section/subsection folder, starting on the one that was clicked. This
+           never touches the source chapter/file — it renders straight from the
+           question snapshots stored at bookmark time (see quiz-bookmarks.js). */
+        function openBookmarkPractice(section, subsection, clickedKey) {
+            const bookmarks = getBookmarks();
+            const rawItems = (bookmarks[section] && bookmarks[section][subsection]) || [];
+            if (rawItems.length === 0) return;
+
+            const sortedItems = [...rawItems].sort((a, b) => {
+                const topicA = (a.topic || a.chapter || '').toLowerCase();
+                const topicB = (b.topic || b.chapter || '').toLowerCase();
+                if (topicA !== topicB) return topicA.localeCompare(topicB);
+                return (a.index || 0) - (b.index || 0);
+            });
+
+            const items = sortedItems.map(item => ({
+                question: item.question,
+                type: item.type || 'fill_blank',
+                options: item.options,
+                images: item.images,
+                correct: item.correct,
+                answer: item.answer,
+                explanation: item.explanation,
+                image_url: item.image_url,
+                topicName: item.topic || item.chapter || '',
+                originalNumber: item.originalNumber || (item.index || 0) + 1,
+                origChapterId: item.chapterId,
+                origIndex: item.index,
+                bookmarkKey: item.key,
+                bookmarkSection: section,
+                bookmarkSubsection: subsection
+            }));
+
+            const startIndex = Math.max(0, sortedItems.findIndex(item => item.key === clickedKey));
+            const label = subsection && subsection !== DIRECT_BOOKMARK_KEY ? `${section} / ${subsection}` : section;
+
+            sessionStorage.setItem('studycafe-bookmark-practice', JSON.stringify({ items, startIndex, label }));
             window.location.href = 'question-cafe.html';
         }
 

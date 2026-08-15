@@ -799,6 +799,10 @@
             .test-submit-btn { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
             .full-quiz-nav { bottom: 1rem; right: 1rem; }
             .full-quiz-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .bookmark-panel { width: 94%; max-height: 85vh; }
+            .bookmark-panel-header .bookmark-close { width: 38px; height: 38px; }
+            .bookmark-actions { flex-direction: column; }
+            .bookmark-actions .btn { width: 100%; }
         }
 
         /* KaTeX overrides for dark theme */
@@ -850,27 +854,8 @@
             }
         }
 
-        /* ===== GRID NUMBERS - ENHANCED STATES ===== */
-        .grid-num.wrong {
-            border-color: var(--error);
-            color: var(--error);
-            background: rgba(231, 76, 60, 0.08);
-        }
-        .grid-num.reviewed {
-            border-color: var(--warning);
-            color: var(--warning);
-            background: rgba(243, 156, 18, 0.08);
-        }
-        .grid-num.bookmarked {
-            position: relative;
-        }
-        .grid-num.bookmarked::after {
-            content: '??';
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            font-size: 0.6rem;
-        }
+        /* Grid number states (bookmarked/correct/wrong/reviewed) live in quiz-core.css
+           alongside the rest of the grid panel styling. */
 
         /* ===== BOOKMARK BUTTON ===== */
         .bookmark-btn {

@@ -878,6 +878,9 @@
         .grid-legend i.lg-current { background: var(--accent); border-color: var(--accent); }
         .grid-legend i.lg-answered { background: var(--success-bg); border-color: var(--success); }
         .grid-legend i.lg-reviewed { background: var(--warning-bg); border-color: var(--warning); }
+        .grid-legend i.lg-bookmarked { background: rgba(148, 154, 166, 0.3); border-color: var(--text-muted); }
+        .grid-legend i.lg-correct { background: rgba(39, 174, 96, 0.3); border-color: var(--success); }
+        .grid-legend i.lg-wrong { background: rgba(231, 76, 60, 0.3); border-color: var(--error); }
 
         .grid-topic-section { margin-bottom: 1.25rem; }
         .grid-topic-section:last-child { margin-bottom: 0; }
@@ -951,4 +954,58 @@
             background: rgba(243, 156, 18, 0.08);
         }
 
-        
+        /* Bookmarked / correct / wrong — layered after .answered/.revealed so they
+           take priority when a question is both "done" and gradeable. Bookmarked +
+           graded shows a diagonal split so neither state is lost. */
+        .grid-num.bookmarked {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+            background: rgba(148, 154, 166, 0.16);
+        }
+        .grid-num.correct {
+            border-color: var(--success);
+            color: var(--success);
+            background: rgba(39, 174, 96, 0.14);
+        }
+        .grid-num.wrong {
+            border-color: var(--error);
+            color: var(--error);
+            background: rgba(231, 76, 60, 0.14);
+        }
+        .grid-num.bookmarked.correct {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+            background: linear-gradient(135deg, rgba(148, 154, 166, 0.4) 50%, rgba(39, 174, 96, 0.4) 50%);
+        }
+        .grid-num.bookmarked.wrong {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+            background: linear-gradient(135deg, rgba(148, 154, 166, 0.4) 50%, rgba(231, 76, 60, 0.4) 50%);
+        }
+        /* The currently-open question should always read clearly, regardless of
+           whatever other states also apply to it. */
+        .grid-num.current.bookmarked,
+        .grid-num.current.correct,
+        .grid-num.current.wrong {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-color: var(--accent);
+            color: var(--bg-primary);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* ===== RESPONSIVE (this file had no breakpoints at all) ===== */
+        @media (max-width: 480px) {
+            .sticky-actions { gap: 0.5rem; padding-left: 1rem; padding-right: 1rem; }
+            .sticky-actions .btn { min-width: 0; font-size: 0.85rem; padding: 0.7rem 0.75rem; }
+            .config-actions { gap: 0.5rem; }
+            .quiz-back, .grid-toggle-btn { padding: 0.55rem 0.75rem; }
+            .grid-legend { gap: 0.5rem; }
+            .grid-legend span { font-size: 0.68rem; }
+            .history-card-top { flex-wrap: wrap; }
+            .history-actions { flex-wrap: wrap; }
+            .history-actions .btn { flex: 1 1 100%; }
+            .chapter-row { padding: 0.85rem 1rem; gap: 0.75rem; }
+            .chapter-icon { width: 40px; height: 40px; font-size: 1.35rem; }
+        }
+
+

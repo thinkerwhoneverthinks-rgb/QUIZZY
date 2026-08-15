@@ -123,6 +123,7 @@ function startTestMode() {
     questions = filteredQuestions;
     userAnswers = {};
     testStartTime = Date.now();
+    testSubmitted = false;
 
     renderTestMode();
     startTestTimer();
@@ -418,5 +419,6 @@ function updateTestProgress() {
 
 function submitTest() {
     stopTestTimer();
+    testSubmitted = true;
     showResults();
 }

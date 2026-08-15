@@ -35,9 +35,9 @@ function showChapters() {
     showScreen('screenChapters');
 }
 
-function showQuiz() {
+function showQuiz(startIndex = 0) {
     if (!currentChapter) { showChapters(); return; }
-    currentQIndex = 0;
+    currentQIndex = startIndex;
     userAnswers = {};
     renderQuestion();
     showScreen('screenQuiz');

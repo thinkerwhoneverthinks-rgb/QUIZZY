@@ -1,51 +1,45 @@
 // ==================== RESULTS ====================
+/* Tri-state per-question grading, shared by showResults() and the question grid
+   (renderQuestionGrid() in quiz-screens.js) so the two never drift out of sync. */
+function getAnswerStatus(idx) {
+    const q = questions[idx];
+    const ans = userAnswers[idx];
+    if (!q || !ans) return 'skipped';
+
+    if (q.type === 'image_mcq') {
+        if (ans.selected !== undefined) return ans.selected === q.correct ? 'correct' : 'wrong';
+        return 'skipped';
+    }
+    if (q.type === 'mcq' || q.type === 'multi_mcq') {
+        if (!ans.revealed && currentMode !== 'test') return 'skipped';
+        if (q.type === 'multi_mcq') {
+            return allCorrectSelected(q, ans.selected || []) ? 'correct' : 'wrong';
+        }
+        return ans.correct ? 'correct' : 'wrong';
+    }
+    if (q.type === 'integer') {
+        if (!ans.revealed && currentMode !== 'test') return 'skipped';
+        const isCorrect = !!(ans.userAnswer && q.answer && ans.userAnswer.trim().toLowerCase() === q.answer.trim().toLowerCase());
+        return isCorrect ? 'correct' : 'wrong';
+    }
+    // fill_blank / untyped
+    if (currentMode === 'test') {
+        if (!ans.userAnswer || !ans.userAnswer.trim()) return 'skipped';
+        const isCorrect = !!(q.answer && ans.userAnswer.trim().toLowerCase() === q.answer.trim().toLowerCase());
+        return isCorrect ? 'correct' : 'wrong';
+    }
+    return ans.revealed ? 'correct' : 'skipped';
+}
+
 function showResults() {
     let correct = 0, wrong = 0, skipped = 0;
     const total = questions.length;
 
-    questions.forEach((q, i) => {
-        const ans = userAnswers[i];
-        if (!ans) {
-            skipped++;
-        } else if (q.type === 'image_mcq') {
-            // Image MCQ: check selected vs correct
-            if (ans.selected !== undefined) {
-                if (ans.selected === q.correct) correct++;
-                else wrong++;
-            } else {
-                skipped++;
-            }
-        } else if (q.type === 'mcq' || q.type === 'multi_mcq') {
-            if (ans.revealed || currentMode === 'test') {
-                if (q.type === 'multi_mcq') {
-                    const selected = ans.selected || [];
-                    if (allCorrectSelected(q, selected)) correct++;
-                    else wrong++;
-                } else {
-                    ans.correct ? correct++ : wrong++;
-                }
-            } else {
-                skipped++;
-            }
-        } else if (q.type === 'integer') {
-            const isCorrect = ans.userAnswer && ans.userAnswer.trim().toLowerCase() === q.answer.trim().toLowerCase();
-            if (ans.revealed || currentMode === 'test') {
-                isCorrect ? correct++ : wrong++;
-            } else {
-                skipped++;
-            }
-        } else {
-            if (currentMode === 'test') {
-                if (ans.userAnswer && ans.userAnswer.trim()) {
-                    const isCorrect = ans.userAnswer.trim().toLowerCase() === q.answer.trim().toLowerCase();
-                    isCorrect ? correct++ : wrong++;
-                } else {
-                    skipped++;
-                }
-            } else {
-                ans.revealed ? correct++ : skipped++;
-            }
-        }
+    questions.forEach((_, i) => {
+        const status = getAnswerStatus(i);
+        if (status === 'correct') correct++;
+        else if (status === 'wrong') wrong++;
+        else skipped++;
     });
 
     const percentage = total > 0 ? ((correct / total) * 100).toFixed(1) : 0;

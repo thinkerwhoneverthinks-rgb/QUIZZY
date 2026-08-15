@@ -19,6 +19,7 @@ let currentFileName = null; // Currently loaded file name
 let loadedFiles = {}; // Cache of loaded & normalized file data
 
 let testStartTime = null;
+let testSubmitted = false; // gates correct/wrong grid coloring so a live test never leaks answers
 let testTimerInterval = null;
 let testTimeLimit = 30 * 60; 
 let testQuestionCount = 10; 

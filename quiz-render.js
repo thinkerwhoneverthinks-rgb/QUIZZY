@@ -16,20 +16,31 @@ function buildQuestionBody(q, idx) {
     return renderFillBlank(q, idx); // fill_blank / untyped
 }
 
-/* Inner HTML of a question card (everything inside .question-card). */
+/* Inner HTML of a question card (everything inside .question-card). In bookmark
+   practice mode (currentMode === 'bookmark'), the question's identity for bookmark
+   lookups/removal is its ORIGINAL chapter position (q.origChapterId/origIndex),
+   not its position in this session's subset — and the number shown is the
+   question's real number from its source chapter (q.originalNumber), not idx+1. */
 function buildQuestionCardInner(q, idx, total) {
-    const isBookmarked = (typeof isQuestionBookmarked === 'function' && currentChapter)
-        ? isQuestionBookmarked(currentChapter.id, idx)
-        : false;
+    const inBookmarkMode = currentMode === 'bookmark';
+    const isBookmarked = inBookmarkMode
+        ? (typeof isQuestionBookmarked === 'function' && q.origChapterId ? isQuestionBookmarked(q.origChapterId, q.origIndex) : true)
+        : ((typeof isQuestionBookmarked === 'function' && currentChapter) ? isQuestionBookmarked(currentChapter.id, idx) : false);
+    const bookmarkAction = inBookmarkMode ? `removeFromBookmarkFolder(${idx})` : `toggleBookmark(${idx})`;
+    const bookmarkTitle = inBookmarkMode
+        ? (isBookmarked ? 'Remove from this folder' : 'Bookmark this question')
+        : (isBookmarked ? 'Bookmarked' : 'Bookmark this question');
+    const displayNumber = q.originalNumber || (idx + 1);
+    const questionLabel = inBookmarkMode ? `Question #${displayNumber}` : `Question ${displayNumber} of ${total}`;
 
     return `
         <div class="question-card-header">
             <div class="type-badge">● ${getTypeLabel(q)}</div>
-            <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="toggleBookmark(${idx})" title="${isBookmarked ? 'Bookmarked' : 'Bookmark this question'}">
+            <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="${bookmarkAction}" title="${bookmarkTitle}">
                 🔖
             </button>
         </div>
-        <div class="question-number">Question ${idx + 1} of ${total}</div>
+        <div class="question-number">${questionLabel}</div>
         ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
         ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
         ${q.image_url && q.type !== 'image_mcq' ? `
