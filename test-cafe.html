@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy — Test Cafe</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00bfa5">
+    <meta name="description" content="Take timed sectional tests, build custom papers from any section, and review every answer in detail.">
+    <link rel="icon" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-512x512.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test-cafe.css">
+    <script src="app-shell.js"></script>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <!-- KaTeX arrives after the first render, so typeset whatever is already on screen. -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="if (typeof tcTypeset === 'function') tcTypeset(document.body);"></script>
+    <style>.katex { color: inherit; } .katex-display { overflow-x: auto; overflow-y: hidden; }</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
+        <a href="#" onclick="showTestHistory(); toggleMenu(); return false;"><span class="mi-ico">📊</span> Test History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks.html"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
+
+        <div class="menu-section">More</div>
+        <a href="about.html"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact.html"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy.html"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <!-- ===== SCREEN: HOME (browse tests) ===== -->
+    <div class="tc-screen active" id="scHome">
+        <div class="tc-wrap">
+            <section class="tc-hero">
+                <h1>🧪 Test Cafe</h1>
+                <p>Full sectional tests with a live timer, a question navigator and answer-by-answer analysis.</p>
+                <div class="tc-hero-actions">
+                    <button class="btn btn-primary" onclick="showTestCustomBuilder()">⚙️ Create Custom Test</button>
+                    <button class="btn btn-ghost" onclick="showTestHistory()">📊 Test History</button>
+                    <a class="btn btn-ghost" href="test-bookmarks.html">🧷 Test Bookmarks</a>
+                </div>
+            </section>
+            <div id="resumeBanner"></div>
+            <div id="testTree"></div>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: TEST HISTORY ===== -->
+    <div class="tc-screen" id="scHistory">
+        <div class="tc-wrap" id="historyBody"></div>
+    </div>
+
+    <!-- ===== SCREEN: CUSTOM TEST BUILDER ===== -->
+    <div class="tc-screen" id="scCustom">
+        <div class="tc-wrap">
+            <button class="tc-back-link" onclick="goTestHome()">← Back to Test Cafe</button>
+            <section class="tc-hero" style="padding-top:1rem;">
+                <h1>⚙️ Custom Test</h1>
+                <p>Pick any section from any test — Physics from one paper, Chemistry from another, Zoology from a third — and combine them into one paper.</p>
+            </section>
+
+            <div id="customTree"></div>
+
+            <div class="ct-config">
+                <div class="ct-field">
+                    <label for="ctNameInput">Test name</label>
+                    <input type="text" id="ctNameInput" value="My Custom Test" placeholder="My Custom Test">
+                </div>
+                <div class="ct-field" style="flex:0 1 150px;">
+                    <label for="ctDurationInput">Duration (min)</label>
+                    <input type="number" id="ctDurationInput" min="1" value="60">
+                </div>
+                <label class="ct-check">
+                    <input type="checkbox" id="ctShuffleInput">
+                    Shuffle questions in each section
+                </label>
+            </div>
+
+            <div class="ct-summary" id="ctSummary">Pick at least one section to build your test.</div>
+
+            <div class="ct-actions">
+                <button class="btn btn-ghost" onclick="clearCustomSelection()">Clear selection</button>
+                <button class="btn btn-primary" id="ctStartBtn" onclick="buildAndPreviewCustomTest()" disabled>
+                    Build Test →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: TEST DETAIL / INSTRUCTIONS ===== -->
+    <div class="tc-screen" id="scInstructions">
+        <div class="tc-wrap" id="testDetail"></div>
+    </div>
+
+    <!-- ===== SCREEN: LOADING ===== -->
+    <div class="tc-screen" id="scLoading">
+        <div class="tc-loading">
+            <div class="tc-spinner"></div>
+            <p>Loading…</p>
+        </div>
+    </div>
+
+    <!-- ===== SCREEN: RUNNER (test / analysis / bookmark review) ===== -->
+    <div class="tc-screen" id="scRunner">
+        <div class="tr-shell">
+            <header class="tr-top">
+                <div class="tr-timer" id="trTimer"><span class="tr-clock-ico">⏱</span>00:00:00</div>
+                <div class="tr-title" id="trTitle"></div>
+                <div class="tr-top-actions">
+                    <button class="tr-grid-btn" id="trGridBtn" onclick="toggleMobileGrid()" aria-label="Open question navigator">▦</button>
+                    <button class="tr-submit" id="trSubmitBtn" onclick="confirmSubmit()">Submit</button>
+                </div>
+            </header>
+
+            <div class="tr-body">
+                <main class="tr-main" id="trMain"></main>
+
+                <aside class="tr-side" id="trSide">
+                    <div class="tr-side-head">
+                        <h3>📋 Question Navigator</h3>
+                        <button class="tr-side-close" onclick="closeMobileGrid()" aria-label="Close navigator">✕</button>
+                    </div>
+                    <div class="tr-tabs" id="trTabs"></div>
+                    <div class="tr-filters" id="trFilters"></div>
+                    <div class="tr-legend" id="trLegend"></div>
+                    <div class="tr-grid" id="trGrid"></div>
+                </aside>
+            </div>
+
+            <footer class="tr-foot">
+                <button class="tr-nav-btn" id="trPrev" onclick="prevQuestionTC()">‹ Prev</button>
+                <button class="tr-nav-btn next" id="trNext" onclick="nextQuestionTC()">Next ›</button>
+            </footer>
+        </div>
+        <div class="tr-side-overlay" id="trSideOverlay" onclick="closeMobileGrid()"></div>
+    </div>
+
+    <!-- ===== SCREEN: RESULTS ===== -->
+    <div class="tc-screen" id="scResults">
+        <div class="tc-wrap" id="resultsBody"></div>
+    </div>
+
+    <!-- ===== SUBMIT CONFIRMATION ===== -->
+    <div class="tc-modal-overlay" id="tcModal">
+        <div class="tc-modal">
+            <h3>Do you want to Submit?</h3>
+            <p>You will not be able to change your answers afterwards.</p>
+            <div id="tcModalBody"></div>
+            <div class="tc-modal-actions">
+                <button class="btn btn-ghost" onclick="closeSubmitModal()">No</button>
+                <button class="btn btn-primary" onclick="doSubmit()">Yes, Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TEST BOOKMARK SAVE PANEL ===== -->
+    <div class="tb-overlay" id="tbOverlay" onclick="closeTestBookmarkPanel()"></div>
+    <div class="tb-panel" id="tbPanel">
+        <div class="tb-panel-head">
+            <h3>🧷 Save to Test Bookmarks</h3>
+            <button class="tr-side-close" onclick="closeTestBookmarkPanel()" aria-label="Close">✕</button>
+        </div>
+        <div class="tb-panel-body" id="tbPanelBody"></div>
+        <div class="tb-panel-foot">
+            <button class="btn btn-ghost" onclick="closeTestBookmarkPanel()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveTestBookmark()">Save</button>
+        </div>
+    </div>
+
+    <footer class="footer" id="siteFooter">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script src="test-engine.js"></script>
+    <script src="test-history.js"></script>
+    <script src="test-bookmarks.js"></script>
+    <script src="test-ui.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            initTestCafe();
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Quizzy Service Worker registered:', reg.scope))
+                    .catch(err => console.warn('Service Worker registration failed:', err));
+            }
+        });
+    </script>
+</body>
+</html>

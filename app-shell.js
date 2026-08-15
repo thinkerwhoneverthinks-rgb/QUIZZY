@@ -131,6 +131,9 @@ var QUIZZY_BACKUP_VERSION = 1;
 /* localStorage keys that make up "the user's data". */
 var QUIZZY_DATA_KEYS = {
     bookmarks: 'studycafe-bookmarks',
+    testBookmarks: 'quizzy-test-bookmarks',
+    testAttempts: 'quizzy-test-attempts',
+    testInProgress: 'quizzy-test-inprogress',
     history: 'quizzy-history',
     theme: QUIZZY_THEME_KEY
 };
@@ -152,6 +155,9 @@ function buildBackup() {
         exportedAt: new Date().toISOString(),
         data: {
             bookmarks: readJSON(QUIZZY_DATA_KEYS.bookmarks, {}),
+            testBookmarks: readJSON(QUIZZY_DATA_KEYS.testBookmarks, {}),
+            testAttempts: readJSON(QUIZZY_DATA_KEYS.testAttempts, []),
+            testInProgress: readJSON(QUIZZY_DATA_KEYS.testInProgress, null),
             history: readJSON(QUIZZY_DATA_KEYS.history, []),
             theme: (function () {
                 try { return localStorage.getItem(QUIZZY_DATA_KEYS.theme); } catch (e) { return null; }
@@ -160,20 +166,32 @@ function buildBackup() {
     };
 }
 
-function countBackup(backup) {
-    var d = (backup && backup.data) || {};
-    var marks = 0;
-    var folders = 0;
-    var bm = d.bookmarks || {};
-    Object.keys(bm).forEach(function (section) {
-        Object.keys(bm[section] || {}).forEach(function (sub) {
-            folders++;
-            if (Array.isArray(bm[section][sub])) marks += bm[section][sub].length;
+/* Both bookmark stores share the section -> subsection -> [entries] shape. */
+function tallyBookmarkStore(store, tally) {
+    Object.keys(store || {}).forEach(function (section) {
+        Object.keys(store[section] || {}).forEach(function (sub) {
+            tally.folders++;
+            if (Array.isArray(store[section][sub])) tally.marks += store[section][sub].length;
         });
     });
+    return tally;
+}
+
+function countBackup(backup) {
+    var d = (backup && backup.data) || {};
+    var q = tallyBookmarkStore(d.bookmarks, { marks: 0, folders: 0 });
+    var t = tallyBookmarkStore(d.testBookmarks, { marks: 0, folders: 0 });
+    var attempts = Array.isArray(d.testAttempts) ? d.testAttempts : [];
+    var papers = {};
+    attempts.forEach(function (a) { if (a && a.testKey) papers[a.testKey] = true; });
+
     return {
-        bookmarks: marks,
-        folders: folders,
+        bookmarks: q.marks + t.marks,
+        questionBookmarks: q.marks,
+        testBookmarks: t.marks,
+        folders: q.folders + t.folders,
+        attempts: attempts.length,
+        papers: Object.keys(papers).length,
         history: Array.isArray(d.history) ? d.history.length : 0
     };
 }
@@ -192,17 +210,17 @@ function exportQuizzyData() {
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
 
     var c = countBackup(backup);
-    setDataStatus('ok', 'Exported ' + c.bookmarks + ' bookmark(s) and ' + c.history + ' session(s).');
+    setDataStatus('ok', 'Exported ' + c.bookmarks + ' bookmark(s), ' + c.attempts +
+        ' test attempt(s) and ' + c.history + ' session(s).');
 }
 
-/* Merge keeps what is already on this device and adds anything new.
-   Replace wipes local data first. */
-function applyBackup(backup, mode) {
-    var d = backup.data || {};
+/* Writes one bookmark store back to localStorage, keeping local entries
+   (unless mode is 'replace') and skipping incoming ones already held. */
+function mergeBookmarkStore(storageKey, incoming, mode) {
+    var target = mode === 'replace' ? {} : readJSON(storageKey, {});
+    if (!target || typeof target !== 'object') target = {};
+    incoming = incoming || {};
 
-    // --- bookmarks: section -> subsection -> [entries], de-duped by key
-    var target = mode === 'replace' ? {} : readJSON(QUIZZY_DATA_KEYS.bookmarks, {});
-    var incoming = d.bookmarks || {};
     Object.keys(incoming).forEach(function (section) {
         if (!target[section]) target[section] = {};
         Object.keys(incoming[section] || {}).forEach(function (sub) {
@@ -221,7 +239,39 @@ function applyBackup(backup, mode) {
             });
         });
     });
-    localStorage.setItem(QUIZZY_DATA_KEYS.bookmarks, JSON.stringify(target));
+
+    localStorage.setItem(storageKey, JSON.stringify(target));
+    return target;
+}
+
+/* Merge keeps what is already on this device and adds anything new.
+   Replace wipes local data first. */
+function applyBackup(backup, mode) {
+    var d = backup.data || {};
+
+    // --- both bookmark stores: section -> subsection -> [entries], de-duped by key
+    var target = mergeBookmarkStore(QUIZZY_DATA_KEYS.bookmarks, d.bookmarks, mode);
+    mergeBookmarkStore(QUIZZY_DATA_KEYS.testBookmarks, d.testBookmarks, mode);
+
+    // --- test attempts: de-duped by attempt id, newest first
+    var attempts = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.testAttempts, []);
+    if (!Array.isArray(attempts)) attempts = [];
+    var seenAttempts = {};
+    attempts.forEach(function (a) { if (a && a.id) seenAttempts[a.id] = true; });
+    (Array.isArray(d.testAttempts) ? d.testAttempts : []).forEach(function (a) {
+        if (a && a.id && !seenAttempts[a.id]) {
+            attempts.push(a);
+            seenAttempts[a.id] = true;
+        }
+    });
+    attempts.sort(function (a, b) { return (b.endedAt || 0) - (a.endedAt || 0); });
+    localStorage.setItem(QUIZZY_DATA_KEYS.testAttempts, JSON.stringify(attempts.slice(0, 400)));
+
+    /* An unfinished test only restores when this device has none of its own —
+       overwriting a live attempt with a stale one would lose real work. */
+    if (d.testInProgress && (mode === 'replace' || !localStorage.getItem(QUIZZY_DATA_KEYS.testInProgress))) {
+        localStorage.setItem(QUIZZY_DATA_KEYS.testInProgress, JSON.stringify(d.testInProgress));
+    }
 
     // --- history: newest wins per session id, most recent first
     var hist = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.history, []);
@@ -269,7 +319,8 @@ function importQuizzyFile(file, mode) {
         }
         var c = countBackup(backup);
         setDataStatus('ok', (mode === 'replace' ? 'Restored ' : 'Merged in ') +
-            c.bookmarks + ' bookmark(s) and ' + c.history + ' session(s). Reloading…');
+            c.bookmarks + ' bookmark(s), ' + c.attempts + ' test attempt(s) and ' +
+            c.history + ' session(s). Reloading…');
         setTimeout(function () { location.reload(); }, 1200);
     };
     reader.onerror = function () { setDataStatus('err', 'Could not read that file.'); };
@@ -306,8 +357,11 @@ function buildDataPanel() {
         var c = countBackup(buildBackup());
         var s = document.getElementById('dataSummary');
         if (s) {
-            s.innerHTML = '<strong>' + c.bookmarks + '</strong> bookmark' + (c.bookmarks === 1 ? '' : 's') +
+            s.innerHTML = '<strong>' + c.questionBookmarks + '</strong> question bookmark' + (c.questionBookmarks === 1 ? '' : 's') +
+                ' · <strong>' + c.testBookmarks + '</strong> test bookmark' + (c.testBookmarks === 1 ? '' : 's') +
                 ' in <strong>' + c.folders + '</strong> folder' + (c.folders === 1 ? '' : 's') +
+                '<br><strong>' + c.attempts + '</strong> test attempt' + (c.attempts === 1 ? '' : 's') +
+                ' across <strong>' + c.papers + '</strong> test' + (c.papers === 1 ? '' : 's') +
                 ' · <strong>' + c.history + '</strong> study session' + (c.history === 1 ? '' : 's');
         }
         setDataStatus('', '');
@@ -331,7 +385,7 @@ function buildDataPanel() {
             '<div class="data-summary" id="dataSummary"></div>' +
             '<div class="data-block">' +
                 '<h4>⬆️ Export</h4>' +
-                '<p>Save your bookmarks, study history and theme to one JSON file. Downloaded question packs are not included — you can re-download those on the new device.</p>' +
+                '<p>Save your bookmarks, every test attempt with its analysis, any unfinished test, your study history and your theme to one JSON file. Downloaded question packs are not included — you can re-download those on the new device.</p>' +
                 '<button class="btn btn-primary" onclick="exportQuizzyData()">Download my data</button>' +
             '</div>' +
             '<div class="data-block">' +

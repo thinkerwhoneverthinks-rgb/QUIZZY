@@ -92,6 +92,48 @@
             align-items: center;
             gap: 0.5rem;
         }
+        /* Tabs: one editor for the Question Cafe manifest, one for the Test Cafe. */
+        .editor-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .editor-tab {
+            padding: 0.7rem 1.25rem;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .editor-tab:hover { border-color: var(--accent); color: var(--accent); }
+        .editor-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .editor-scope-note {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .editor-scope-note code {
+            font-family: 'Consolas', monospace;
+            background: var(--bg-secondary);
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            color: var(--accent);
+        }
         .editor-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -249,6 +291,7 @@
         </a>
         <div style="display:flex;gap:0.5rem;align-items:center;">
             <a href="question-cafe.html" class="btn btn-ghost btn-sm">☕ Question Cafe</a>
+            <a href="test-cafe.html" class="btn btn-ghost btn-sm">🧪 Test Cafe</a>
             <button class="btn btn-ghost btn-sm" onclick="lockAdmin(); location.reload();">🔒 Lock</button>
         </div>
     </nav>
@@ -256,18 +299,24 @@
     <div class="editor-container">
         <div class="editor-header">
             <div>
-                <div class="editor-title">🛠️ Manifest.json Visual Editor</div>
-                <p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.25rem;">
+                <div class="editor-title" id="editorTitle">🛠️ Manifest Visual Editor</div>
+                <p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.25rem;" id="editorSubtitle">
                     Visually manage subjects, subfolders, and JSON question files without editing code.
                 </p>
             </div>
             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-                <button class="btn btn-ghost btn-sm" onclick="loadLiveManifest()">🔄 Load Active Manifest</button>
-                <button class="btn btn-ghost btn-sm" onclick="document.getElementById('fileUploadInput').click()">📥 Upload manifest.json</button>
+                <button class="btn btn-ghost btn-sm" onclick="loadLiveManifest()">🔄 Load Active</button>
+                <button class="btn btn-ghost btn-sm" onclick="document.getElementById('fileUploadInput').click()">📥 Upload</button>
                 <input type="file" id="fileUploadInput" accept=".json" style="display:none;" onchange="handleFileUpload(event)">
-                <button class="btn btn-primary btn-sm" onclick="downloadManifest()">💾 Download manifest.json</button>
+                <button class="btn btn-primary btn-sm" id="downloadBtn" onclick="downloadManifest()">💾 Download</button>
             </div>
         </div>
+
+        <div class="editor-tabs">
+            <button class="editor-tab active" id="tab-questions" onclick="switchEditor('questions')">📚 Questions Editor</button>
+            <button class="editor-tab" id="tab-tests" onclick="switchEditor('tests')">🧪 Test Cafe Editor</button>
+        </div>
+        <div class="editor-scope-note" id="editorScopeNote"></div>
 
         <div class="editor-grid">
             <!-- LEFT PANEL: Visual Tree Builder -->
@@ -324,42 +373,77 @@
             document.addEventListener('DOMContentLoaded', openEditor);
         }
 
-        let manifestData = {
-            name: "Quizzy",
-            subsections: [
-                {
-                    name: "Physics",
-                    icon: "⚛️",
-                    subsections: [
-                        {
-                            name: "Allen 2026",
-                            icon: "📚",
-                            files: ["allen26_Units,Dimensions_and_Measurement.json"]
-                        }
-                    ]
-                }
-            ]
+        /* Two manifests, one builder. Both files share the same tree shape
+           (name / icon / subsections / files), so the editor below is written
+           once and simply points at whichever one the active tab selects. */
+        const EDITORS = {
+            questions: {
+                path: 'data/manifest.json',
+                download: 'manifest.json',
+                title: '📚 Questions Manifest Editor',
+                subtitle: 'Organise the Question Cafe: subjects, subfolders and JSON question files.',
+                note: 'File names here are resolved against <code>data/</code> — e.g. <code>allen_26_mole_concept.json</code> loads <code>data/allen_26_mole_concept.json</code>. This manifest feeds the <strong>Question Cafe</strong>.',
+                loaded: false,
+                data: { name: 'Quizzy', subsections: [] }
+            },
+            tests: {
+                path: 'data/test-manifest.json',
+                download: 'test-manifest.json',
+                title: '🧪 Test Cafe Manifest Editor',
+                subtitle: 'Organise the Test Cafe: folders of full sectional test papers.',
+                note: 'File names here are resolved against <code>data/tests/</code> — e.g. <code>sample_test_01.json</code> loads <code>data/tests/sample_test_01.json</code>. Each test file holds <code>sections</code>, and each section holds its own <code>questions</code>.',
+                loaded: false,
+                data: { name: 'Quizzy Tests', subsections: [] }
+            }
         };
+
+        let activeEditor = 'questions';
+        let manifestData = EDITORS.questions.data;
 
         // Load active manifest on boot
         window.addEventListener('DOMContentLoaded', () => {
+            updateEditorChrome();
             loadLiveManifest();
         });
 
+        function updateEditorChrome() {
+            const cfg = EDITORS[activeEditor];
+            document.getElementById('editorTitle').textContent = cfg.title;
+            document.getElementById('editorSubtitle').textContent = cfg.subtitle;
+            document.getElementById('editorScopeNote').innerHTML = cfg.note;
+            document.getElementById('downloadBtn').textContent = `💾 Download ${cfg.download}`;
+            document.getElementById('tab-questions').classList.toggle('active', activeEditor === 'questions');
+            document.getElementById('tab-tests').classList.toggle('active', activeEditor === 'tests');
+        }
+
+        function switchEditor(which) {
+            if (!EDITORS[which] || which === activeEditor) return;
+            EDITORS[activeEditor].data = manifestData;   // keep any direct-JSON edits
+            activeEditor = which;
+            manifestData = EDITORS[which].data;
+            updateEditorChrome();
+            if (EDITORS[which].loaded) { renderEditorUI(); return Promise.resolve(); }
+            return loadLiveManifest();   // returned so callers can wait for the tree
+        }
+
         async function loadLiveManifest() {
+            const cfg = EDITORS[activeEditor];
             try {
-                const resp = await fetch('data/manifest.json');
+                const resp = await fetch(cfg.path);
                 if (resp.ok) {
                     manifestData = await resp.json();
+                    cfg.data = manifestData;
                 }
             } catch (e) {
-                console.warn("Using default structure", e);
+                console.warn('Could not load ' + cfg.path + ' — starting from an empty tree.', e);
             }
+            cfg.loaded = true;
             renderEditorUI();
         }
 
         function renderEditorUI() {
-            document.getElementById('rootNameInput').value = manifestData.name || "Quizzy";
+            document.getElementById('rootNameInput').value =
+                manifestData.name || (activeEditor === 'tests' ? 'Quizzy Tests' : 'Quizzy');
             const container = document.getElementById('treeBuilderContainer');
             container.innerHTML = '';
 
@@ -445,8 +529,8 @@
         function addTopSubsection() {
             if (!manifestData.subsections) manifestData.subsections = [];
             manifestData.subsections.push({
-                name: "New Subject",
-                icon: "📘",
+                name: activeEditor === 'tests' ? "New Test Folder" : "New Subject",
+                icon: activeEditor === 'tests' ? "🧪" : "📘",
                 files: []
             });
             renderEditorUI();
@@ -469,7 +553,7 @@
             const node = getNodeByPath(path);
             if (node) {
                 if (!node.files) node.files = [];
-                node.files.push("new_chapter.json");
+                node.files.push(activeEditor === 'tests' ? "new_test.json" : "new_chapter.json");
                 renderEditorUI();
             }
         }
@@ -497,7 +581,8 @@
         }
 
         function updateFromUI() {
-            manifestData.name = document.getElementById('rootNameInput').value || "Quizzy";
+            manifestData.name = document.getElementById('rootNameInput').value
+                || (activeEditor === 'tests' ? "Quizzy Tests" : "Quizzy");
             updateJsonTextarea();
         }
 
@@ -509,6 +594,7 @@
             try {
                 const parsed = JSON.parse(document.getElementById('jsonTextarea').value);
                 manifestData = parsed;
+                EDITORS[activeEditor].data = parsed;
                 document.getElementById('jsonTextarea').style.borderColor = 'var(--accent)';
             } catch (e) {
                 document.getElementById('jsonTextarea').style.borderColor = 'var(--error)';
@@ -519,6 +605,7 @@
             try {
                 const parsed = JSON.parse(document.getElementById('jsonTextarea').value);
                 manifestData = parsed;
+                EDITORS[activeEditor].data = parsed;
                 renderEditorUI();
                 alert('✅ Manifest JSON parsed & synced to visual tree!');
             } catch (e) {
@@ -538,7 +625,7 @@
             const blob = new Blob([text], { type: 'application/json' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'manifest.json';
+            a.download = EDITORS[activeEditor].download;
             a.click();
             URL.revokeObjectURL(a.href);
         }
@@ -550,8 +637,9 @@
             reader.onload = (e) => {
                 try {
                     manifestData = JSON.parse(e.target.result);
+                    EDITORS[activeEditor].data = manifestData;
                     renderEditorUI();
-                    alert('✅ Manifest uploaded and loaded!');
+                    alert(`✅ Loaded into the ${activeEditor === 'tests' ? 'Test Cafe' : 'Questions'} editor!`);
                 } catch (err) {
                     alert('❌ Failed to parse uploaded file: ' + err.message);
                 }

@@ -89,6 +89,25 @@
         .cta-button:active {
             transform: translateY(-1px);
         }
+        .cta-row {
+            display: flex;
+            gap: 0.85rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        /* Second entry point sits beside the first without competing with it. */
+        .cta-secondary {
+            background: var(--bg-card);
+            color: var(--accent);
+            border: 1.5px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+        .cta-secondary:hover {
+            box-shadow: 0 8px 24px var(--accent-glow), var(--shadow-md);
+        }
+        @media (max-width: 480px) {
+            .cta-row .cta-button { width: 100%; justify-content: center; padding: 0.95rem 1.5rem; }
+        }
 
         .bottom-links {
             display: flex;
@@ -164,8 +183,13 @@
         <div class="menu-section">Study</div>
         <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
         <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
         <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
-        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Bookmarks</a>
+        <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks.html"><span class="mi-ico">🧷</span> Test Bookmarks</a>
 
         <div class="menu-section">Your Data</div>
         <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
@@ -197,7 +221,10 @@
                 <strong>Keep Calm!</strong> We are currently rebuilding and upgrading Quizzy to bring you a faster, smarter, and more powerful learning experience. We'll be back to full strength shortly — thanks for your patience while we renovate!
             </div>
 
-            <a href="question-cafe.html" class="cta-button">☕ Enter Question Cafe →</a>
+            <div class="cta-row">
+                <a href="question-cafe.html" class="cta-button">☕ Question Cafe →</a>
+                <a href="test-cafe.html" class="cta-button cta-secondary">🧪 Test Cafe →</a>
+            </div>
 
             <div class="telegram-banner" onclick="window.open('https://t.me/+gCPe2h82QrhjZGI9','_blank')">
                 <div class="telegram-icon">📱</div>

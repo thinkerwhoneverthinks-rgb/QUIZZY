@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Bookmarks — Quizzy</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00bfa5">
+    <link rel="icon" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-512x512.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test-cafe.css">
+    <script src="app-shell.js"></script>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });"></script>
+    <style>.katex { color: inherit; } .katex-display { overflow-x: auto; overflow-y: hidden; }</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks.html"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
+
+        <div class="menu-section">More</div>
+        <a href="about.html"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact.html"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy.html"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <div class="tc-wrap">
+        <section class="tc-hero">
+            <h1>🧷 Test Bookmarks</h1>
+            <p>Questions you saved while reviewing a test. Tap → on any card to reopen it with its answer and explanation.</p>
+        </section>
+
+        <div class="tb-manager-actions">
+            <button class="btn btn-ghost" onclick="exportTestBookmarks()">📤 Export</button>
+            <button class="btn btn-ghost" onclick="importTestBookmarks()">📥 Import</button>
+            <button class="btn btn-ghost" onclick="clearAllTestBookmarks()" style="color:var(--error);">🗑️ Clear All</button>
+        </div>
+
+        <div id="tbFolderTree"></div>
+    </div>
+
+    <footer class="footer" id="siteFooter">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script src="test-bookmarks.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTestBookmarkManager();
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(() => { /* ignore */ });
+            }
+        });
+    </script>
+</body>
+</html>
