@@ -219,16 +219,17 @@ async function resumeStudySession(id) {
     showScreen('screenLoading');
 
     try {
-        let data = loadedFiles[entry.file];
-        if (!data) {
+        let raw = loadedFiles[entry.file];
+        if (!raw) {
             try {
-                data = await offlineStorage.getQuizData(entry.file);
+                raw = await offlineStorage.getQuizData(entry.file);
             } catch (e) { /* fall through to network */ }
         }
-        if (!data) {
+        if (!raw) {
             const response = await fetch(`data/${entry.file}`);
-            data = normalizeJsonData(await response.json(), entry.file);
+            raw = await response.json();
         }
+        const data = normalizeJsonData(raw, entry.file);
         loadedFiles[entry.file] = data;
 
         subjectData = data;

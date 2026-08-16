@@ -91,12 +91,31 @@ function normalizeTest(raw, fileName) {
     let meta = {};
 
     if (Array.isArray(raw)) {
-        sectionsRaw = [{ name: 'All Questions', questions: raw }];
+        const active = raw.filter(q => q && q.is_active !== false);
+        const hasCategories = active.some(q => q && q.category);
+        if (hasCategories) {
+            const catMap = {};
+            active.forEach(q => {
+                const c = q.category || 'General';
+                if (!catMap[c]) catMap[c] = [];
+                catMap[c].push(q);
+            });
+            sectionsRaw = Object.entries(catMap).map(([name, qs]) => ({ name, questions: qs }));
+        } else {
+            sectionsRaw = [{ name: 'All Questions', questions: active }];
+        }
     } else if (raw && Array.isArray(raw.sections)) {
         sectionsRaw = raw.sections;
         meta = raw;
     } else if (raw && Array.isArray(raw.subjects)) {
         sectionsRaw = raw.subjects;
+        meta = raw;
+    } else if (raw && Array.isArray(raw.chapters)) {
+        sectionsRaw = raw.chapters.map(ch => ({
+            name: ch.name,
+            icon: ch.icon || '',
+            questions: (ch.topics || []).flatMap(t => (t.questions || []).map(q => ({ ...q, sub_category: t.topic })))
+        }));
         meta = raw;
     } else if (raw && Array.isArray(raw.questions)) {
         sectionsRaw = [{ name: raw.name || 'All Questions', questions: raw.questions }];

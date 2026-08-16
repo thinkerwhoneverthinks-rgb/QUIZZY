@@ -31,17 +31,27 @@ function buildQuestionCardInner(q, idx, total) {
         ? (isBookmarked ? 'Remove from this folder' : 'Bookmark this question')
         : (isBookmarked ? 'Bookmarked' : 'Bookmark this question');
     const displayNumber = q.originalNumber || (idx + 1);
-    const questionLabel = inBookmarkMode ? `Question #${displayNumber}` : `Question ${displayNumber} of ${total}`;
+    const questionLabel = `Q. ${displayNumber}`;
+
+    const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
+    const markingBadge = q.marking
+        ? `<span class="question-marks-tag">+${q.marking.correct} / ${q.marking.incorrect}</span>`
+        : '';
 
     return `
         <div class="question-card-header">
-            <div class="type-badge">● ${getTypeLabel(q)}</div>
-            <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="${bookmarkAction}" title="${bookmarkTitle}">
-                🔖
-            </button>
+            <div class="question-number">${questionLabel}</div>
+            <div class="question-card-top-actions">
+                <div class="type-badge">${getTypeLabel(q)}</div>
+                <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="${bookmarkAction}" title="${bookmarkTitle}">
+                    🔖
+                </button>
+            </div>
         </div>
-        <div class="question-number">${questionLabel}</div>
-        ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
+        <div class="question-tags">
+            ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+            ${markingBadge}
+        </div>
         ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
         ${q.image_url && q.type !== 'image_mcq' ? `
             <div class="image-question-wrap">
@@ -49,6 +59,17 @@ function buildQuestionCardInner(q, idx, total) {
             </div>
         ` : ''}
         ${buildQuestionBody(q, idx)}
+    `;
+}
+
+function renderExplanationBlock(q, revealed) {
+    if (!q.explanation && !q.explanation_image) return '';
+    return `
+        <div class="explanation-box ${revealed ? 'show' : ''}">
+            <h4>💡 Explanation</h4>
+            ${q.explanation ? `<p>${escapeHtml(q.explanation)}</p>` : ''}
+            ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
+        </div>
     `;
 }
 
@@ -161,25 +182,17 @@ function renderImageMCQ(q, idx) {
                  data-original-url="${q.image_url}"
                  onerror="handleImageError(this)">
         </div>
-        <div class="image-mcq-options" id="imgMcqOptions-${idx}">
-            ${[1, 2, 3, 4].map(num => {
-                const optIdx = num - 1;
-                let cls = 'image-mcq-option';
-                if (selected.includes(optIdx)) cls += ' selected';
-                if (revealed && optIdx === q.correct) cls += ' correct';
-                if (revealed && selected.includes(optIdx) && optIdx !== q.correct) cls += ' wrong';
-                return `
-                    <div class="${cls}" onclick="selectImageMCQ(${idx}, ${optIdx})">
-                        <span class="image-mcq-num">${num}</span>
-                    </div>
-                `;
-            }).join('')}
-        </div>
-        <button class="show-answer-btn ${revealed ? 'revealed' : ''}" 
+        ${buildOptionList(q, idx, {
+            selected, revealed,
+            handler: 'selectImageMCQ',
+            containerId: `imgMcqOptions-${idx}`
+        })}
+        <button class="show-answer-btn ${revealed ? 'revealed' : ''}"
                 onclick="revealImageAnswer(${idx})" 
                 id="imgMcqBtn-${idx}">
             ${revealed ? '✅ Answer Revealed' : '💡 Show Answer'}
         </button>
+        ${renderExplanationBlock(q, revealed)}
     `;
 }
 
@@ -262,11 +275,7 @@ function renderFillBlank(q, idx) {
             <div class="fib-answer-label">Answer</div>
             <div class="fib-answer-text">${escapeHtml(q.answer)}</div>
         </div>
-        ${q.explanation ? `
-        <div class="explanation-box ${revealed ? 'show' : ''}" id="fibExplain-${idx}">
-            <h4>Explanation</h4>
-            <p>${escapeHtml(q.explanation)}</p>
-        </div>` : ''}
+        ${renderExplanationBlock(q, revealed)}
     `;
 }
 
@@ -278,7 +287,7 @@ function renderInteger(q, idx) {
 
     let feedbackHTML = '';
     if (hasAnswer && !revealed) {
-        const isCorrect = saved.userAnswer.trim().toLowerCase() === q.answer.trim().toLowerCase();
+        const isCorrect = saved.userAnswer.trim().toLowerCase() === String(q.answer).trim().toLowerCase();
         feedbackHTML = `
             <div class="int-feedback ${isCorrect ? 'correct' : 'wrong'}" id="intFeedback-${idx}">
                 ${isCorrect ? '✅ Correct!' : '❌ Incorrect. Try again or reveal answer.'}
@@ -306,21 +315,78 @@ function renderInteger(q, idx) {
             <div class="fib-answer-label">Correct Answer</div>
             <div class="fib-answer-text">${escapeHtml(q.answer)}</div>
         </div>
-        ${q.explanation ? `
-        <div class="explanation-box ${revealed ? 'show' : ''}" id="intExplain-${idx}">
-            <h4>Explanation</h4>
-            <p>${escapeHtml(q.explanation)}</p>
-        </div>` : ''}
+        ${renderExplanationBlock(q, revealed)}
     `;
 }
 
 // ==================== MCQ RENDERING ====================
+const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+/* The single source of truth for what one option row looks like, shared by every
+   question type and by both practice and test mode. It mirrors Test Cafe's
+   `.opt` markup exactly (circular key, text, optional image, reveal flag), so an
+   image question with placeholder options reads as "A / B / C / D" in the
+   Question Cafe just like it does in the Test Cafe — no separate 4-box grid.
+
+   `revealed` is false in test mode, which is what keeps the grading colours and
+   flags off screen while the test is running. */
+function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = false, handler = 'selectMCQ', containerId, readOnly = false }) {
+    /* An image-only question still needs four clickable rows — same fallback the
+       Test Cafe engine applies. The blank labels render as "Option 1..4". */
+    let options = q.options || [];
+    if (options.length === 0 && q.type === 'image_mcq') options = ['', '', '', ''];
+
+    const rows = options.map((opt, i) => {
+        const isChosen = selected.includes(i);
+        let stateCls = '';
+        let flag = '';
+
+        if (isChosen) stateCls += ' selected';
+        if (revealed) {
+            const isCorrect = isCorrectOption(q, i);
+            if (isCorrect && isChosen) {
+                stateCls += ' correct';
+                flag = 'Correct (Marked By You)';
+            } else if (isCorrect) {
+                stateCls += ' correct';
+                flag = 'Correct (Not Marked By You)';
+            } else if (isChosen) {
+                stateCls += ' wrong';
+                flag = 'Incorrect (Marked By You)';
+            }
+            if (isMulti && isChosen && isCorrect && !allCorrectSelected(q, selected)) {
+                stateCls += ' partial';
+            }
+        }
+
+        const key = OPTION_LETTERS[i] || (i + 1);
+        const optImg = q.optionImages && q.optionImages[i]
+            ? `<img class="mcq-opt-image" src="${q.optionImages[i]}" alt="Option ${key}" loading="lazy">`
+            : '';
+        const label = opt && String(opt).trim() !== ''
+            ? escapeHtml(opt)
+            : (optImg ? '' : `Option ${i + 1}`);
+
+        return `
+            <div class="mcq-option${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`}>
+                <div class="mcq-letter">${key}</div>
+                <div class="mcq-text">
+                    ${label ? `<span class="mcq-opt-text">${label}</span>` : ''}
+                    ${optImg}
+                    ${flag ? `<div class="mcq-flag">${flag}</div>` : ''}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    return `<div class="mcq-options" id="${containerId}">${rows}</div>`;
+}
+
 function renderMCQ(q, idx) {
     const saved = userAnswers[idx];
     const isMulti = q.type === 'multi_mcq';
     const selected = saved ? (isMulti ? (saved.selected || []) : (saved.selected !== undefined ? [saved.selected] : [])) : [];
     const revealed = saved && saved.revealed;
-    const letters = ['A', 'B', 'C', 'D', 'E'];
 
     let submitHTML = '';
     if (isMulti && !revealed) {
@@ -334,26 +400,18 @@ function renderMCQ(q, idx) {
     }
 
     return `
-        <div class="mcq-options" id="mcqOptions-${idx}">
-            ${q.options.map((opt, i) => `
-                <div class="mcq-option ${selected.includes(i) ? 'selected' : ''} ${revealed && isCorrectOption(q, i) ? 'correct' : ''} ${revealed && selected.includes(i) && !isCorrectOption(q, i) ? 'wrong' : ''} ${revealed && isMulti && selected.includes(i) && isCorrectOption(q, i) && !allCorrectSelected(q, selected) ? 'partial' : ''}" 
-                     onclick="selectMCQ(${idx}, ${i})">
-                    <div class="mcq-letter">${letters[i]}</div>
-                    <div class="mcq-text">${escapeHtml(opt)}</div>
-                </div>
-            `).join('')}
-        </div>
+        ${buildOptionList(q, idx, {
+            selected, revealed, isMulti,
+            handler: 'selectMCQ',
+            containerId: `mcqOptions-${idx}`
+        })}
         ${submitHTML}
         <button class="show-answer-btn ${revealed ? 'revealed' : ''}" 
                 onclick="revealAnswer(${idx})" 
                 id="mcqBtn-${idx}">
             ${revealed ? '✅ Answer Revealed' : '💡 Show Answer'}
         </button>
-        ${q.explanation ? `
-        <div class="explanation-box ${revealed ? 'show' : ''}" id="mcqExplain-${idx}">
-            <h4>Explanation</h4>
-            <p>${escapeHtml(q.explanation)}</p>
-        </div>` : ''}
+        ${renderExplanationBlock(q, revealed)}
     `;
 }
 

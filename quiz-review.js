@@ -163,59 +163,29 @@ function renderReview() {
 
         if (reviewFilter !== 'all' && status !== reviewFilter) return;
 
-        // Build user answer display
-        let userAnswerText = 'Not answered';
-        if (ans) {
-            if (q.type === 'image_mcq') {
-                if (ans.selected !== undefined) {
-                    userAnswerText = `Option ${ans.selected + 1}`;
-                }
-            } else if (q.type === 'mcq' || q.type === 'multi_mcq') {
-                const selected = ans.selected;
-                if (selected !== undefined) {
-                    if (Array.isArray(selected)) {
-                        userAnswerText = selected.map(idx => `${['A','B','C','D'][idx]}. ${q.options[idx]}`).join(', ');
-                    } else {
-                        userAnswerText = `${['A','B','C','D'][selected]}. ${q.options[selected]}`;
-                    }
-                }
-            } else if (ans.userAnswer) {
-                userAnswerText = ans.userAnswer;
-            }
-        }
+        /* Option-based questions get the very same graded option rows the Test
+           Cafe shows after submission, so the two review screens read alike.
+           Typed-answer questions keep the "Your answer / Correct answer" pair. */
+        const isOptionType = q.type === 'mcq' || q.type === 'multi_mcq' || q.type === 'image_mcq';
+        const isMulti = q.type === 'multi_mcq';
 
-        // Build correct answer display
-        let correctAnswerText = '';
-        if (q.type === 'image_mcq') {
-            correctAnswerText = `Option ${q.correct + 1}`;
-        } else if (q.type === 'mcq' || q.type === 'multi_mcq') {
-            if (q.type === 'multi_mcq' && q.correct) {
-                correctAnswerText = q.correct.map(idx => `${['A','B','C','D'][idx]}. ${q.options[idx]}`).join(', ');
-            } else if (q.correct !== undefined) {
-                correctAnswerText = `${['A','B','C','D'][q.correct]}. ${q.options[q.correct]}`;
+        let answerHTML = '';
+        if (isOptionType) {
+            let selected = [];
+            if (ans && ans.selected !== undefined && ans.selected !== null) {
+                selected = Array.isArray(ans.selected) ? ans.selected : [ans.selected];
             }
+            answerHTML = buildOptionList(q, i, {
+                selected,
+                revealed: true,
+                isMulti,
+                readOnly: true,
+                containerId: `reviewOptions-${i}`
+            });
         } else {
-            correctAnswerText = q.answer;
-        }
-
-        // Image display for image_mcq
-        let imageHTML = '';
-        if (q.type === 'image_mcq' && q.image_url) {
-            imageHTML = `
-                <div class="review-image-wrap">
-                    <img src="${q.image_url}" class="question-image" alt="Question ${i + 1}" 
-                         loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
-                </div>
-            `;
-        }
-
-        html += `
-            <div class="review-question-card ${cardClass}">
-                <div class="review-status-badge ${status}">${statusText}</div>
-                <div class="question-number">Question ${i + 1}</div>
-                ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
-                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
-                ${imageHTML}
+            const userAnswerText = (ans && ans.userAnswer) ? ans.userAnswer : 'Not answered';
+            const correctAnswerText = q.answer !== undefined && q.answer !== null ? String(q.answer) : '';
+            answerHTML = `
                 <div class="review-user-answer">
                     <div class="label">Your Answer:</div>
                     <div class="value">${escapeHtml(userAnswerText)}</div>
@@ -224,11 +194,50 @@ function renderReview() {
                     <div class="label">Correct Answer:</div>
                     <div class="value">${escapeHtml(correctAnswerText)}</div>
                 </div>
-                ${q.explanation ? `
+            `;
+        }
+
+        // Image display
+        let imageHTML = '';
+        if (q.image_url) {
+            imageHTML = `
+                <div class="image-question-wrap">
+                    <img src="${q.image_url}" class="question-image" alt="Question ${i + 1}" 
+                         loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
+                </div>
+            `;
+        }
+
+        const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
+        const markingBadge = q.marking
+            ? `<span class="question-marks-tag">+${q.marking.correct} / ${q.marking.incorrect}</span>`
+            : '';
+
+        let explanationHTML = '';
+        if (q.explanation || q.explanation_image) {
+            explanationHTML = `
                 <div class="explanation-box show" style="margin-top:1rem;">
-                    <h4>Explanation</h4>
-                    <p>${escapeHtml(q.explanation)}</p>
-                </div>` : ''}
+                    <h4>💡 Explanation</h4>
+                    ${q.explanation ? `<p>${escapeHtml(q.explanation)}</p>` : ''}
+                    ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
+                </div>
+            `;
+        }
+
+        html += `
+            <div class="review-question-card ${cardClass}">
+                <div class="question-card-header">
+                    <div class="question-number">Q. ${i + 1}</div>
+                    <div class="review-status-badge ${status}">${statusText}</div>
+                </div>
+                <div class="question-tags">
+                    ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                    ${markingBadge}
+                </div>
+                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+                ${imageHTML}
+                ${answerHTML}
+                ${explanationHTML}
             </div>
         `;
     });

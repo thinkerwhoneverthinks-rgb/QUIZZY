@@ -216,17 +216,26 @@ function renderTestMode() {
         }
 
         const isReviewed = userAnswers[idx] && userAnswers[idx].reviewed;
+        const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
+        const markingBadge = q.marking
+            ? `<span class="question-marks-tag">+${q.marking.correct} / ${q.marking.incorrect}</span>`
+            : '';
 
         return `
             <div class="question-card test-mode" id="testQ-${idx}">
                 <div class="question-card-header">
-                    <div class="type-badge">● ${typeLabel}</div>
-                    <button class="review-btn ${isReviewed ? 'active' : ''}" onclick="toggleReview(${idx})" title="Mark for review">
-                        🚩 ${isReviewed ? 'Reviewed' : 'Review'}
-                    </button>
+                    <div class="question-number">Q. ${idx + 1}</div>
+                    <div class="question-card-top-actions">
+                        <div class="type-badge">${typeLabel}</div>
+                        <button class="review-btn ${isReviewed ? 'active' : ''}" onclick="toggleReview(${idx})" title="Mark for review">
+                            🚩 ${isReviewed ? 'Reviewed' : 'Review'}
+                        </button>
+                    </div>
                 </div>
-                <div class="question-number">Question ${idx + 1} of ${total}</div>
-                ${q.topicName ? `<div class="question-topic-tag">📂 ${escapeHtml(q.topicName)}</div>` : ''}
+                <div class="question-tags">
+                    ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                    ${markingBadge}
+                </div>
                 ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
                 ${q.image_url && q.type !== 'image_mcq' ? `
                     <div class="image-question-wrap">
@@ -258,28 +267,22 @@ function renderTestMode() {
 // ==================== TEST IMAGE MCQ ====================
 function renderTestImageMCQ(q, idx) {
     const saved = userAnswers[idx];
-    const selected = saved && saved.selected !== undefined ? saved.selected : -1;
+    const selected = saved && saved.selected !== undefined ? [saved.selected] : [];
 
     return `
         <div class="image-question-wrap">
-            <img src="${q.image_url}" 
-                 class="question-image" 
-                 alt="Question ${idx + 1}" 
+            <img src="${q.image_url}"
+                 class="question-image"
+                 alt="Question ${idx + 1}"
                  loading="lazy"
                  data-original-url="${q.image_url}"
                  onerror="handleImageError(this)">
         </div>
-        <div class="image-mcq-options test-mode" id="testImgMcqOptions-${idx}">
-            ${[1, 2, 3, 4].map(num => {
-                const optIdx = num - 1;
-                return `
-                    <div class="image-mcq-option ${selected === optIdx ? 'selected' : ''}" 
-                         onclick="selectTestImageMCQ(${idx}, ${optIdx})">
-                        <span class="image-mcq-num">${num}</span>
-                    </div>
-                `;
-            }).join('')}
-        </div>
+        ${buildOptionList(q, idx, {
+            selected,
+            handler: 'selectTestImageMCQ',
+            containerId: `testImgMcqOptions-${idx}`
+        })}
     `;
 }
 
@@ -288,18 +291,12 @@ function selectTestImageMCQ(idx, optIdx) {
     userAnswers[idx].selected = optIdx;
     userAnswers[idx].type = 'image_mcq';
 
-    // Re-render just this question's options
+    // Repaint just this question's option rows — no grading while the test runs.
     const container = document.getElementById(`testImgMcqOptions-${idx}`);
     if (container) {
-        container.innerHTML = [1, 2, 3, 4].map(num => {
-            const oIdx = num - 1;
-            return `
-                <div class="image-mcq-option ${optIdx === oIdx ? 'selected' : ''}" 
-                     onclick="selectTestImageMCQ(${idx}, ${oIdx})">
-                    <span class="image-mcq-num">${num}</span>
-                </div>
-            `;
-        }).join('');
+        container.querySelectorAll('.mcq-option').forEach((el, i) => {
+            el.classList.toggle('selected', i === optIdx);
+        });
     }
 
     updateTestProgress();
@@ -342,19 +339,12 @@ function renderTestMCQ(q, idx) {
     const saved = userAnswers[idx];
     const isMulti = q.type === 'multi_mcq';
     const selected = saved ? (isMulti ? (saved.selected || []) : (saved.selected !== undefined ? [saved.selected] : [])) : [];
-    const letters = ['A', 'B', 'C', 'D', 'E'];
 
-    return `
-        <div class="mcq-options" id="testMcqOptions-${idx}">
-            ${q.options.map((opt, i) => `
-                <div class="mcq-option ${selected.includes(i) ? 'selected' : ''}" 
-                     onclick="selectTestMCQ(${idx}, ${i})">
-                    <div class="mcq-letter">${letters[i]}</div>
-                    <div class="mcq-text">${escapeHtml(opt)}</div>
-                </div>
-            `).join('')}
-        </div>
-    `;
+    return buildOptionList(q, idx, {
+        selected, isMulti,
+        handler: 'selectTestMCQ',
+        containerId: `testMcqOptions-${idx}`
+    });
 }
 
 function updateTestAnswer(idx, value) {
@@ -383,19 +373,15 @@ function selectTestMCQ(idx, optionIdx) {
         userAnswers[idx].selected = optionIdx;
     }
 
-    // Re-render just this question's options
+    /* Only the selection changed, so toggle the class rather than rebuilding the
+       rows — rebuilding here used to drop option images and the text span. */
     const optionsContainer = document.getElementById(`testMcqOptions-${idx}`);
     if (optionsContainer) {
         const saved = userAnswers[idx];
         const selected = isMulti ? (saved.selected || []) : (saved.selected !== undefined ? [saved.selected] : []);
-        const letters = ['A', 'B', 'C', 'D', 'E'];
-        optionsContainer.innerHTML = q.options.map((opt, i) => `
-            <div class="mcq-option ${selected.includes(i) ? 'selected' : ''}" 
-                 onclick="selectTestMCQ(${idx}, ${i})">
-                <div class="mcq-letter">${letters[i]}</div>
-                <div class="mcq-text">${escapeHtml(opt)}</div>
-            </div>
-        `).join('');
+        optionsContainer.querySelectorAll('.mcq-option').forEach((el, i) => {
+            el.classList.toggle('selected', selected.includes(i));
+        });
     }
 
     updateTestProgress();

@@ -214,31 +214,63 @@ function normalizeJsonData(rawData, fileName) {
         return rawData;
     }
 
-    // Case 2: Flat array of image-based questions (allen26 format)
+    // Case 2: Test Cafe format { sections: [...] } or { subjects: [...] }
+    if (rawData && (Array.isArray(rawData.sections) || Array.isArray(rawData.subjects))) {
+        const rawSections = rawData.sections || rawData.subjects;
+        const chapters = rawSections.map((s, si) => {
+            const sName = s.name || s.section || s.subject || s.title || `Section ${si + 1}`;
+            const topicMap = {};
+            (s.questions || s.qs || []).forEach(q => {
+                const subCat = q.sub_category || q.topic || 'General';
+                if (!topicMap[subCat]) topicMap[subCat] = [];
+                topicMap[subCat].push(normalizeFlatQuestion({
+                    ...q,
+                    category: sName,
+                    sub_category: subCat
+                }));
+            });
+            const topics = Object.entries(topicMap).map(([tName, qs]) => ({
+                topic: tName,
+                questions: qs
+            }));
+            return {
+                id: slugify(sName),
+                name: sName,
+                icon: s.icon || getCategoryIcon(sName),
+                topics: topics
+            };
+        });
+        return { chapters };
+    }
+
+    // Case 3: Flat array of image-based questions (allen26 format)
     if (Array.isArray(rawData)) {
         return normalizeFlatArray(rawData, fileName);
     }
 
-    // Case 3: Single chapter without wrapper
+    // Case 4: Single chapter without wrapper
     if (rawData && rawData.topics) {
         return {
             chapters: [{
                 id: slugify(rawData.name || fileName),
                 name: rawData.name || fileName.replace('.json', ''),
                 icon: '📘',
-                topics: rawData.topics
+                topics: rawData.topics.map(t => ({
+                    topic: t.topic || 'General',
+                    questions: (t.questions || []).map(q => normalizeFlatQuestion(q))
+                }))
             }]
         };
     }
 
-    // Case 4: Just questions array at root
+    // Case 5: Just questions array at root
     if (rawData && rawData.questions) {
         return {
             chapters: [{
                 id: slugify(fileName),
                 name: fileName.replace('.json', '').replace(/_/g, ' '),
                 icon: '📘',
-                topics: [{ topic: 'All Questions', questions: rawData.questions }]
+                topics: [{ topic: 'All Questions', questions: rawData.questions.map(q => normalizeFlatQuestion(q)) }]
             }]
         };
     }
@@ -288,57 +320,89 @@ function normalizeFlatArray(arr, fileName) {
     return { chapters };
 }
 
+function resolveCorrectIndex(q, options) {
+    if (typeof q.correct === 'number') return q.correct;
+    if (typeof q.correct_index === 'number') return q.correct_index;
+    if (typeof q.correct_answer === 'number') {
+        return q.correct_answer > 0 ? q.correct_answer - 1 : q.correct_answer;
+    }
+    if (typeof q.correct_option === 'number') {
+        return q.correct_option > 0 ? q.correct_option - 1 : q.correct_option;
+    }
+    if (Array.isArray(q.correct_answer)) {
+        return q.correct_answer.map(c => typeof c === 'number' && c > 0 ? c - 1 : c);
+    }
+    if (Array.isArray(q.correct)) return q.correct;
+
+    const letterOf = (val) => {
+        const s = String(val).trim();
+        if (/^[A-Za-z]$/.test(s)) return s.toUpperCase().charCodeAt(0) - 65;
+        if (/^[1-9]$/.test(s)) return Number(s) - 1;
+        return -1;
+    };
+
+    for (const candidate of [q.correct, q.correct_answer, q.answer, q.correct_option]) {
+        if (typeof candidate === 'string') {
+            const byLetter = letterOf(candidate);
+            if (byLetter >= 0) return byLetter;
+            if (Array.isArray(options)) {
+                const byText = options.findIndex(
+                    o => String(o).trim().toLowerCase() === candidate.trim().toLowerCase());
+                if (byText >= 0) return byText;
+            }
+        }
+    }
+    return 0;
+}
+
 function normalizeFlatQuestion(q) {
-    let type = q.type;
+    let type = (q.type || '').toLowerCase();
     // Normalize type string
     if (type === 'fill_blanks') type = 'fill_blank';
+    if (type === 'numerical' || type === 'integer_type') type = 'integer';
+
+    const rawOptions = q.options || q.choices || q.option_texts || null;
+    const hasTextOptions = Array.isArray(rawOptions) && rawOptions.length > 0 && rawOptions.some(o => o && String(o).trim() !== '' && !/^Option\s*\d+$/i.test(String(o)));
+    const imgUrl = q.image_url || q.image || null;
 
     // Auto-detect or sanitize question type
     if (!type) {
-        if (q.options && Array.isArray(q.options) && q.options.length > 0) {
+        if (hasTextOptions) {
             type = 'mcq';
-        } else if (q.image_url && (!q.question || q.question.trim() === '')) {
+        } else if (imgUrl && (!q.question || q.question.trim() === '' || /^Refer to the image/i.test(q.question))) {
             type = 'image_mcq';
-        } else if (q.answer !== undefined) {
-            type = 'fill_blank';
+        } else if (q.answer !== undefined && !rawOptions) {
+            type = 'integer';
         } else {
             type = 'mcq';
         }
     }
 
-    // If type is 'mcq' but question text and options are missing, treat as 'image_mcq'
-    if (type === 'mcq' && (!q.question || q.question.trim() === '') && q.image_url && (!q.options || !Array.isArray(q.options) || q.options.length === 0)) {
+    // If type is 'mcq' but there are no text options and there is an image, treat as image_mcq
+    if (type === 'mcq' && !hasTextOptions && imgUrl) {
         type = 'image_mcq';
     }
 
-    // Normalize correct answer
-    let correct = q.correct;
-    if (correct === undefined && q.correct_answer !== undefined) {
-        if (typeof q.correct_answer === 'number') {
-            correct = q.correct_answer > 0 ? q.correct_answer - 1 : q.correct_answer;
-        } else if (Array.isArray(q.correct_answer)) {
-            correct = q.correct_answer.map(c => typeof c === 'number' && c > 0 ? c - 1 : c);
-        } else {
-            correct = q.correct_answer;
-        }
-    }
+    const options = Array.isArray(rawOptions) && rawOptions.length > 0
+        ? rawOptions.map(o => (o === null || o === undefined ? '' : String(o)))
+        : (type === 'image_mcq' ? ['Option 1', 'Option 2', 'Option 3', 'Option 4'] : null);
 
-    // Options for image MCQ fallback
-    let options = q.options;
-    if (type === 'image_mcq' && (!options || !Array.isArray(options) || options.length === 0)) {
-        options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-    }
+    const optionImages = q.option_images || q.optionImages || null;
+    const correct = resolveCorrectIndex(q, options);
 
     return {
         id: q.id || `q_${Math.random().toString(36).substr(2, 9)}`,
         type: type,
-        question: q.question || '',
-        image_url: q.image_url || null,
+        question: q.question || q.text || q.question_text || '',
+        image_url: imgUrl,
         original_file: q.original_file || null,
-        options: options || null,
-        correct: correct !== undefined ? correct : 0,
-        answer: q.answer || (typeof q.correct_answer === 'string' ? q.correct_answer : String(q.correct_answer || '')),
-        explanation: q.explanation || '',
+        options: options,
+        optionImages: Array.isArray(optionImages) ? optionImages : null,
+        correct: correct,
+        answer: q.answer !== undefined ? String(q.answer) : (typeof q.correct_answer === 'string' ? q.correct_answer : String(q.correct_answer || '')),
+        explanation: q.explanation || q.solution || '',
+        explanation_image: q.explanation_image || q.solution_image || null,
+        marking: q.marking || (q.marks ? { correct: q.marks, incorrect: q.negative || -1 } : null),
         category: q.category || 'General',
         sub_category: q.sub_category || 'General'
     };
@@ -367,35 +431,40 @@ async function loadFile(fileName) {
     currentFileName = fileName;
 
     try {
-        let data = null;
+        let rawData = null;
 
-        // Try cache first
-        if (loadedFiles[fileName]) {
-            data = loadedFiles[fileName];
-        } else {
-            // Try IndexedDB (offline storage)
+        /* Network first, so an edited question file shows up without waiting for
+           a cache bust. No `?t=` buster here on purpose: the service worker
+           already serves /data/*.json network-first, and a unique query string
+           would make its offline cache entry unmatchable. */
+        if (navigator.onLine) {
+            try {
+                const response = await fetch(`data/${fileName}`);
+                if (response.ok) {
+                    rawData = await response.json();
+                }
+            } catch (netErr) { /* fallback to offline */ }
+        }
+
+        // Downloaded-for-offline copy
+        if (!rawData) {
             try {
                 const offlineData = await offlineStorage.getQuizData(fileName);
                 if (offlineData) {
-                    data = offlineData;
+                    rawData = offlineData;
                 }
             } catch (e) { /* ignore */ }
-
-            // Fall back to network
-            if (!data) {
-                try {
-                    const response = await fetch(`data/${fileName}`);
-                    const rawData = await response.json();
-                    data = normalizeJsonData(rawData, fileName);
-                } catch (fetchErr) {
-                    // If network fails and we have no offline data
-                    throw new Error('Cannot load file. You appear to be offline and this file has not been downloaded.');
-                }
-            }
-
-            loadedFiles[fileName] = data;
         }
 
+        // Last resort: let the service worker answer from its cache.
+        if (!rawData) {
+            const response = await fetch(`data/${fileName}`);
+            if (!response.ok) throw new Error(`Could not load ${fileName}`);
+            rawData = await response.json();
+        }
+
+        const data = normalizeJsonData(rawData, fileName);
+        loadedFiles[fileName] = data;
         subjectData = data;
 
         if (data.chapters && data.chapters.length > 1) {

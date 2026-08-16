@@ -40,14 +40,13 @@ async function loadAllManifestFiles() {
         if (!loadedFiles[fileName]) {
             try {
                 // Try IndexedDB first
-                let data = await offlineStorage.getQuizData(fileName);
-                if (!data && navigator.onLine) {
+                let raw = await offlineStorage.getQuizData(fileName);
+                if (!raw && navigator.onLine) {
                     const resp = await fetch(`data/${fileName}`);
-                    const raw = await resp.json();
-                    data = normalizeJsonData(raw, fileName);
+                    raw = await resp.json();
                 }
-                if (data) {
-                    loadedFiles[fileName] = data;
+                if (raw) {
+                    loadedFiles[fileName] = normalizeJsonData(raw, fileName);
                 }
             } catch (err) {
                 console.warn('Failed loading file for custom test:', fileName, err);

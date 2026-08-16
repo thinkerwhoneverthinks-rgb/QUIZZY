@@ -1,7 +1,7 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v5';
+const CACHE_VERSION = 'quizzy-v6';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
@@ -94,7 +94,8 @@ self.addEventListener('fetch', (e) => {
         return;
     }
 
-    // Data JSON files: network-first with cache fallback
+    // Data JSON files: network-first with cache fallback. ignoreSearch keeps the
+    // fallback working even if a caller appends a cache-busting query string.
     if (url.pathname.includes('/data/') && url.pathname.endsWith('.json')) {
         e.respondWith(
             fetch(e.request).then(resp => {
@@ -103,7 +104,7 @@ self.addEventListener('fetch', (e) => {
                     caches.open(APP_SHELL_CACHE).then(cache => cache.put(e.request, clone));
                 }
                 return resp;
-            }).catch(() => caches.match(e.request))
+            }).catch(() => caches.match(e.request, { ignoreSearch: true }))
         );
         return;
     }
