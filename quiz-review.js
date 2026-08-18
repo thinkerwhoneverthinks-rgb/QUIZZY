@@ -209,9 +209,6 @@ function renderReview() {
         }
 
         const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
-        const markingBadge = q.marking
-            ? `<span class="question-marks-tag">+${q.marking.correct} / ${q.marking.incorrect}</span>`
-            : '';
 
         let explanationHTML = '';
         if (q.explanation || q.explanation_image) {
@@ -232,7 +229,6 @@ function renderReview() {
                 </div>
                 <div class="question-tags">
                     ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
-                    ${markingBadge}
                 </div>
                 ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
                 ${imageHTML}

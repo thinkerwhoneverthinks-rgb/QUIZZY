@@ -231,11 +231,24 @@ function renderTestDetail(test, source) {
             <h1>${tcEsc(test.name)}</h1>
             ${test.description ? `<p class="tc-detail-desc">${tcEsc(test.description)}</p>` : ''}
 
+            <!-- No "Minutes" tile here: the editable Time Limit picker below owns
+                 the duration, and showing the same number twice read as clutter. -->
             <div class="tc-detail-stats">
                 <div><span class="v">${test.totalQuestions}</span><span class="l">Questions</span></div>
                 <div><span class="v">${test.sections.length}</span><span class="l">Sections</span></div>
-                <div><span class="v">${test.duration}</span><span class="l">Minutes</span></div>
                 <div><span class="v">${test.totalMarks}</span><span class="l">Max Marks</span></div>
+            </div>
+
+            <div class="tc-duration-picker">
+                <label for="tcDurationInput">Time limit</label>
+                <div class="tc-duration-controls">
+                    <button type="button" class="tc-dur-step" onclick="stepTestDuration(-5)" aria-label="Decrease by 5 minutes">−</button>
+                    <input type="number" id="tcDurationInput" min="1" max="600" step="1"
+                           value="${test.duration}" oninput="onTestDurationInput()">
+                    <span class="tc-dur-unit">min</span>
+                    <button type="button" class="tc-dur-step" onclick="stepTestDuration(5)" aria-label="Increase by 5 minutes">+</button>
+                </div>
+                <button type="button" class="tc-dur-reset" onclick="resetTestDuration()">Reset to ${test.duration}</button>
             </div>
 
             <h2 class="tc-detail-sub">Sections</h2>
@@ -313,6 +326,39 @@ function renderAttemptList(attempts, heading) {
         </div>`;
 }
 
+/* The duration in the JSON is only a default — the picker on the detail screen
+   lets the user set their own limit before starting. Clamped to 1..600 so a
+   blank or nonsense entry can't produce a test that ends instantly. */
+function chosenTestDuration(fallback) {
+    const input = document.getElementById('tcDurationInput');
+    if (!input) return fallback;
+    const mins = Math.round(Number(input.value));
+    if (!isFinite(mins) || mins < 1) return fallback;
+    return Math.min(600, mins);
+}
+
+function stepTestDuration(delta) {
+    const input = document.getElementById('tcDurationInput');
+    if (!input || !pendingTest) return;
+    input.value = Math.max(1, Math.min(600, chosenTestDuration(pendingTest.duration) + delta));
+    onTestDurationInput();
+}
+
+function resetTestDuration() {
+    const input = document.getElementById('tcDurationInput');
+    if (!input || !pendingTest) return;
+    input.value = pendingTest.duration;
+    onTestDurationInput();
+}
+
+function onTestDurationInput() {
+    const input = document.getElementById('tcDurationInput');
+    const reset = document.querySelector('.tc-dur-reset');
+    if (!input || !pendingTest || !reset) return;
+    const changed = chosenTestDuration(pendingTest.duration) !== pendingTest.duration;
+    reset.classList.toggle('show', changed);
+}
+
 function startPendingTest() {
     if (!pendingTest) return;
 
@@ -325,7 +371,8 @@ function startPendingTest() {
     }
     clearInProgressTest();
 
-    beginTestSession(pendingTest, pendingSource);
+    const mins = chosenTestDuration(pendingTest.duration);
+    beginTestSession({ ...pendingTest, duration: mins }, pendingSource);
     openRunner();
     startTestTimerLoop(onTimerTick, handleTimeUp);
     updateTimerDisplay(TS.remainingSec);
@@ -1117,33 +1164,34 @@ function openAnalysis() {
     openRunner();
 }
 
-/* Results are kept in history, so a re-attempt adds one rather than replacing. */
-async function reattemptTest() {
-    let test = TS.test;
-    if (!test) {
-        showTcScreen('scLoading');
-        try {
-            test = await rebuildTestFromSource(TS.source);
-        } catch (e) { /* handled below */ }
-        if (!test) {
-            alert('This test can no longer be loaded, so it cannot be re-attempted.');
-            showResultsScreen();
-            return;
-        }
-    }
+/* Results are kept in history, so a re-attempt adds one rather than replacing.
+   This returns to the test's detail screen instead of restarting straight away,
+   so the time limit can be adjusted before the clock starts again — the actual
+   restart happens when the user presses the button there (startPendingTest).
 
-    const nextNo = attemptsForKey(TS.testKey).length + 1;
-    if (!confirm(`Start this test again? It will be saved as your ${ordinal(nextNo)} attempt — earlier attempts are kept.`)) {
+   The paper is rebuilt from its source so the picker opens on the file's own
+   default: TS.test still carries whatever limit the finished attempt ran with. */
+async function reattemptTest() {
+    showTcScreen('scLoading');
+
+    let test = null;
+    try {
+        test = await rebuildTestFromSource(TS.source);
+    } catch (e) { /* fall back to the finished attempt's own copy below */ }
+
+    /* Falling back keeps re-attempt working when the file can't be re-read;
+       only the pre-filled duration may differ from the file's default. */
+    if (!test) test = TS.test;
+
+    if (!test) {
+        alert('This test can no longer be loaded, so it cannot be re-attempted.');
         showResultsScreen();
         return;
     }
 
-    clearInProgressTest();
-    beginTestSession(test, TS.source);
-    openRunner();
-    startTestTimerLoop(onTimerTick, handleTimeUp);
-    updateTimerDisplay(TS.remainingSec);
-    saveInProgressTest();
+    // renderTestDetail reads source.kind for its back link, so never hand it null.
+    renderTestDetail(test, TS.source || { kind: 'file', file: test.file || null });
+    showTcScreen('scInstructions');
 }
 
 // ==================== BOOKMARK REVIEW MODE ====================

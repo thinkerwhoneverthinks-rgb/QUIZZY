@@ -6,7 +6,7 @@
    ============================================================ */
 
 const TEST_MANIFEST_PATH = 'data/test-manifest.json';
-const TEST_DATA_DIR = 'data/tests/';
+const TEST_DATA_DIR = 'data/';
 
 /* Browsing state for the Test Cafe home screen. */
 let testManifestRoot = null;

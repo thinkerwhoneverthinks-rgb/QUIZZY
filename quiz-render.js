@@ -34,9 +34,6 @@ function buildQuestionCardInner(q, idx, total) {
     const questionLabel = `Q. ${displayNumber}`;
 
     const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
-    const markingBadge = q.marking
-        ? `<span class="question-marks-tag">+${q.marking.correct} / ${q.marking.incorrect}</span>`
-        : '';
 
     return `
         <div class="question-card-header">
@@ -50,7 +47,6 @@ function buildQuestionCardInner(q, idx, total) {
         </div>
         <div class="question-tags">
             ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
-            ${markingBadge}
         </div>
         ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
         ${q.image_url && q.type !== 'image_mcq' ? `
