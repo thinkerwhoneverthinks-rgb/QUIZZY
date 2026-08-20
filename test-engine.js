@@ -160,7 +160,9 @@ function normalizeTest(raw, fileName) {
     return {
         id: testId,
         name: testName,
+        displayName: meta.displayName || testName,
         description: meta.description || '',
+        syllabus: meta.syllabus || null,
         duration: duration,
         marking: testMarking,
         sections: sections,
@@ -266,9 +268,22 @@ async function loadTestManifest(force) {
     return testManifestRoot;
 }
 
+/* 12s cap per file so one stalled request can't hang the whole batch — it just
+   degrades to "failed" like any other bad file, instead of blocking forever. */
+const TEST_FILE_FETCH_TIMEOUT_MS = 12000;
+
 async function loadTestFile(fileName) {
     if (loadedTests[fileName]) return loadedTests[fileName];
-    const resp = await fetch(TEST_DATA_DIR + fileName);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TEST_FILE_FETCH_TIMEOUT_MS);
+    let resp;
+    try {
+        resp = await fetch(TEST_DATA_DIR + fileName, { signal: controller.signal });
+    } catch (e) {
+        throw new Error(e.name === 'AbortError' ? `Timed out loading ${fileName}` : e.message);
+    } finally {
+        clearTimeout(timer);
+    }
     if (!resp.ok) throw new Error(`Could not load ${fileName} (${resp.status})`);
     const raw = await resp.json();
     const test = normalizeTest(raw, fileName);
@@ -281,23 +296,45 @@ async function loadTestFile(fileName) {
 function collectTestFiles(node, out) {
     out = out || [];
     if (!node) return out;
-    (node.files || []).forEach(f => { if (out.indexOf(f) === -1) out.push(f); });
+    (node.files || []).forEach(f => {
+        const filePath = typeof f === 'object' ? (f.path || f.file || '') : f;
+        if (filePath && out.indexOf(filePath) === -1) out.push(filePath);
+    });
     (node.subsections || []).forEach(sub => collectTestFiles(sub, out));
     return out;
 }
 
-async function loadAllTestFiles() {
+const TEST_FILE_LOAD_CONCURRENCY = 8;
+
+/* Loads every manifest file with up to N requests in flight at once, instead of
+   one at a time — with 233 files in the manifest, sequential loading is what
+   made the custom-test builder feel hung on anything but a fast connection.
+   onProgress(done, total) lets the caller show real feedback while this runs. */
+async function loadAllTestFiles(onProgress) {
     await loadTestManifest();
     const files = collectTestFiles(testManifestRoot);
     const failed = [];
-    for (const f of files) {
-        try {
-            await loadTestFile(f);
-        } catch (e) {
-            console.warn('Test file skipped:', f, e);
-            failed.push(f);
+    let done = 0;
+    const report = () => { if (onProgress) onProgress(done, files.length); };
+    report();
+
+    let next = 0;
+    async function worker() {
+        while (next < files.length) {
+            const f = files[next++];
+            try {
+                await loadTestFile(f);
+            } catch (e) {
+                console.warn('Test file skipped:', f, e);
+                failed.push(f);
+            }
+            done++;
+            report();
         }
     }
+    const workers = Array.from({ length: Math.min(TEST_FILE_LOAD_CONCURRENCY, files.length) }, worker);
+    await Promise.all(workers);
+
     return { files: files.filter(f => loadedTests[f]), failed };
 }
 
@@ -311,7 +348,8 @@ function flattenTest(test) {
                 sectionIndex: si,
                 sectionName: section.name,
                 numberInSection: qi + 1,
-                globalIndex: flat.length
+                globalIndex: flat.length,
+                globalNumber: flat.length + 1
             });
         });
     });

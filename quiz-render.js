@@ -49,12 +49,39 @@ function buildQuestionCardInner(q, idx, total) {
             ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
         </div>
         ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+        ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
         ${q.image_url && q.type !== 'image_mcq' ? `
             <div class="image-question-wrap">
                 <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
             </div>
         ` : ''}
         ${buildQuestionBody(q, idx)}
+    `;
+}
+
+/* Renders a reconstructed "List-I / List-II" matching table (see tools/repair
+   logic that produced q.matchLists) as two labeled columns instead of the raw
+   run-on text the source scrape left behind. */
+function buildMatchLists(matchLists) {
+    function column(list) {
+        const rows = list.items.map(item => `
+            <div class="match-list-row">
+                <div class="match-list-label">${escapeHtml(item.label)}</div>
+                <div class="match-list-text">${escapeHtml(item.text)}</div>
+            </div>
+        `).join('');
+        return `
+            <div class="match-list-column">
+                <div class="match-list-heading">${escapeHtml(list.title)}</div>
+                ${rows}
+            </div>
+        `;
+    }
+    return `
+        <div class="match-lists">
+            ${column(matchLists.listI)}
+            ${column(matchLists.listII)}
+        </div>
     `;
 }
 

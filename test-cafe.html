@@ -143,7 +143,8 @@
     <div class="tc-screen" id="scLoading">
         <div class="tc-loading">
             <div class="tc-spinner"></div>
-            <p>Loading…</p>
+            <p id="scLoadingProgress">Loading…</p>
+            <button class="tc-back-link" onclick="goTestHome()">Cancel</button>
         </div>
     </div>
 
@@ -176,7 +177,7 @@
 
             <footer class="tr-foot">
                 <button class="tr-nav-btn" id="trPrev" onclick="prevQuestionTC()">‹ Prev</button>
-                <button class="tr-nav-btn next" id="trNext" onclick="nextQuestionTC()">Next ›</button>
+                <button class="tr-nav-btn next" id="trNext" onclick="handleFooterNextClick()">Next ›</button>
             </footer>
         </div>
         <div class="tr-side-overlay" id="trSideOverlay" onclick="closeMobileGrid()"></div>

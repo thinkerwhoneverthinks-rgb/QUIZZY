@@ -99,26 +99,53 @@ function renderTestTree() {
 
     folders.forEach((f, i) => {
         const count = (f.subsections || []).length + (f.files || []).length;
+        const folderName = f.displayName || f.name || 'Folder';
+        const hasSyllabus = f.syllabus && f.syllabus.enabled !== false && f.syllabus.content;
+        const sylBtn = hasSyllabus ? `
+            <span class="syllabus-btn ${f.syllabus.type === 'pdf' ? 'pdf' : ''}" 
+                  onclick="event.stopPropagation(); openSyllabus(${tcAttr(JSON.stringify(f.syllabus))}, '${tbAttr(folderName)}');"
+                  title="View Syllabus">
+                📄 ${tcEsc(f.syllabus.buttonLabel || f.syllabus.title || 'Syllabus')}
+            </span>` : '';
+
         html += `
             <button class="tc-row folder" onclick="enterTestFolder(${i})">
                 <span class="tc-row-icon">${tcEsc(f.icon || '📁')}</span>
                 <span class="tc-row-body">
-                    <span class="tc-row-name">${tcEsc(f.name)}</span>
+                    <span class="tc-row-name">${tcEsc(folderName)}</span>
                     <span class="tc-row-meta">${count} item${count !== 1 ? 's' : ''}</span>
                 </span>
+                ${sylBtn}
                 <span class="tc-row-go">›</span>
             </button>`;
     });
 
-    files.forEach(file => {
-        const label = String(file).split('/').pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ');
+    files.forEach((file) => {
+        const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
+        const fileDisplayName = typeof file === 'object' ? (file.displayName || file.name) : null;
+        const fileSyllabus = typeof file === 'object' ? file.syllabus : null;
+        const fallbackLabel = String(filePath).split('/').pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ');
+        const label = fileDisplayName || fallbackLabel;
+
+        const hasSyllabus = fileSyllabus && fileSyllabus.enabled !== false && fileSyllabus.content;
+        const sylBtn = hasSyllabus ? `
+            <span class="syllabus-btn ${fileSyllabus.type === 'pdf' ? 'pdf' : ''}" 
+                  onclick="event.stopPropagation(); openSyllabus(${tcAttr(JSON.stringify(fileSyllabus))}, '${tbAttr(label)}');"
+                  title="View Syllabus">
+                📄 ${tcEsc(fileSyllabus.buttonLabel || fileSyllabus.title || 'Syllabus')}
+            </span>` : '';
+
+        const clickArg = typeof file === 'object' ? tcAttr(JSON.stringify(file)) : `'${tbAttr(filePath)}'`;
+        const clickHandler = typeof file === 'object' ? `openTestDetail(${clickArg})` : `openTestDetail('${tbAttr(filePath)}')`;
+
         html += `
-            <button class="tc-row file" onclick="openTestDetail('${tbAttr(file)}')">
+            <button class="tc-row file" onclick="${clickHandler}">
                 <span class="tc-row-icon">📝</span>
                 <span class="tc-row-body">
                     <span class="tc-row-name">${tcEsc(label)}</span>
                     <span class="tc-row-meta">Tap to see sections &amp; start</span>
                 </span>
+                ${sylBtn}
                 <span class="tc-row-go">›</span>
             </button>`;
     });
@@ -200,11 +227,18 @@ function discardSavedTest() {
 // ==================== TEST DETAIL / INSTRUCTIONS ====================
 let pendingTest = null;
 
-async function openTestDetail(file) {
+async function openTestDetail(fileEntry) {
     showTcScreen('scLoading');
     try {
-        pendingTest = await loadTestFile(file);
-        renderTestDetail(pendingTest, { kind: 'file', file: file });
+        const filePath = typeof fileEntry === 'object' ? (fileEntry.path || fileEntry.file || '') : fileEntry;
+        const fileDisplayName = typeof fileEntry === 'object' ? (fileEntry.displayName || fileEntry.name) : null;
+        const fileSyllabus = typeof fileEntry === 'object' ? fileEntry.syllabus : null;
+
+        pendingTest = await loadTestFile(filePath);
+        if (fileDisplayName) pendingTest.displayName = fileDisplayName;
+        if (fileSyllabus) pendingTest.syllabus = fileSyllabus;
+
+        renderTestDetail(pendingTest, { kind: 'file', file: filePath });
         showTcScreen('scInstructions');
     } catch (e) {
         alert('Could not open that test: ' + e.message);
@@ -224,11 +258,22 @@ function renderTestDetail(test, source) {
     const attempts = attemptsForKey(testKey).slice().reverse();   // newest first
     const saved = getInProgressTest();
     const hasResume = saved && saved.testKey === testKey;
+    const testTitle = test.displayName || test.name;
+    const hasSyllabus = test.syllabus && test.syllabus.enabled !== false && test.syllabus.content;
+
+    const syllabusHtml = hasSyllabus ? `
+        <div style="margin: 0.6rem 0 1rem 0;">
+            <button class="syllabus-btn ${test.syllabus.type === 'pdf' ? 'pdf' : ''}" 
+                    onclick="openSyllabus(${tcAttr(JSON.stringify(test.syllabus))}, '${tbAttr(testTitle)}')">
+                📄 ${tcEsc(test.syllabus.buttonLabel || test.syllabus.title || 'View Syllabus')}
+            </button>
+        </div>` : '';
 
     el.innerHTML = `
         <button class="tc-back-link" onclick="showTcScreen('${source.kind === 'custom' ? 'scCustom' : 'scHome'}')">← Back</button>
         <div class="tc-detail-card">
-            <h1>${tcEsc(test.name)}</h1>
+            <h1>${tcEsc(testTitle)}</h1>
+            ${syllabusHtml}
             ${test.description ? `<p class="tc-detail-desc">${tcEsc(test.description)}</p>` : ''}
 
             <!-- No "Minutes" tile here: the editable Time Limit picker below owns
@@ -463,10 +508,17 @@ async function openAttemptAnalysis(id) {
 }
 
 // ==================== CUSTOM TEST BUILDER ====================
+function updateLoadingProgress(done, total) {
+    const el = document.getElementById('scLoadingProgress');
+    if (!el) return;
+    el.textContent = total ? `Loading test files… ${done} / ${total}` : '';
+}
+
 async function showTestCustomBuilder() {
     showTcScreen('scLoading');
+    updateLoadingProgress(0, 0);
     try {
-        const { failed } = await loadAllTestFiles();
+        const { failed } = await loadAllTestFiles(updateLoadingProgress);
         if (Object.keys(loadedTests).length === 0) {
             throw new Error('No readable test files were found in the test manifest.');
         }
@@ -475,7 +527,47 @@ async function showTestCustomBuilder() {
     } catch (e) {
         alert('Could not open the custom test builder: ' + e.message);
         showTcScreen('scHome');
+    } finally {
+        updateLoadingProgress(0, 0);
     }
+}
+
+/* Stable per-file DOM id so a single checkbox toggle can patch just its own
+   block instead of re-stringifying every loaded test's HTML (233 files' worth
+   on a big manifest — measurably janky on a full re-render per click). */
+let ctFileBlockId = {};
+
+function ctTestBlockHtml(file, test) {
+    return `
+        <div class="ct-test-head">
+            <span class="ct-test-name">📝 ${tcEsc(test.name)}</span>
+            <span class="ct-test-meta">${test.sections.length} sections · ${test.totalQuestions} Qs</span>
+        </div>
+        <div class="ct-section-list">
+            ${test.sections.map((s, si) => {
+                const key = customSelectionKey(file, si);
+                const pick = customSectionSelection[key];
+                const on = !!pick;
+                return `
+                    <div class="ct-section ${on ? 'on' : ''}">
+                        <label class="ct-section-main">
+                            <input type="checkbox" ${on ? 'checked' : ''}
+                                   onchange="toggleCustomSection('${tbAttr(file)}', ${si}, this.checked)">
+                            <span class="ct-section-icon">${tcEsc(s.icon || '📗')}</span>
+                            <span class="ct-section-name">${tcEsc(s.name)}</span>
+                            <span class="ct-section-count">${s.questions.length} Qs</span>
+                        </label>
+                        ${on ? `
+                            <div class="ct-section-cfg">
+                                <label>Take</label>
+                                <input type="number" min="1" max="${s.questions.length}" value="${pick.count}"
+                                       onchange="setCustomSectionCount('${tbAttr(file)}', ${si}, this.value)">
+                                <span>of ${s.questions.length}</span>
+                            </div>
+                        ` : ''}
+                    </div>`;
+            }).join('')}
+        </div>`;
 }
 
 function renderCustomBuilder(failed) {
@@ -487,42 +579,24 @@ function renderCustomBuilder(failed) {
         html += `<div class="tc-note error"><strong>${failed.length} file(s) could not be read</strong><p>${failed.map(tcEsc).join(', ')}</p></div>`;
     }
 
+    ctFileBlockId = {};
+    Object.keys(loadedTests).forEach((file, i) => { ctFileBlockId[file] = `ctTest-${i}`; });
+
     Object.entries(loadedTests).forEach(([file, test]) => {
-        html += `
-            <div class="ct-test">
-                <div class="ct-test-head">
-                    <span class="ct-test-name">📝 ${tcEsc(test.name)}</span>
-                    <span class="ct-test-meta">${test.sections.length} sections · ${test.totalQuestions} Qs</span>
-                </div>
-                <div class="ct-section-list">
-                    ${test.sections.map((s, si) => {
-                        const key = customSelectionKey(file, si);
-                        const pick = customSectionSelection[key];
-                        const on = !!pick;
-                        return `
-                            <div class="ct-section ${on ? 'on' : ''}">
-                                <label class="ct-section-main">
-                                    <input type="checkbox" ${on ? 'checked' : ''}
-                                           onchange="toggleCustomSection('${tbAttr(file)}', ${si}, this.checked)">
-                                    <span class="ct-section-icon">${tcEsc(s.icon || '📗')}</span>
-                                    <span class="ct-section-name">${tcEsc(s.name)}</span>
-                                    <span class="ct-section-count">${s.questions.length} Qs</span>
-                                </label>
-                                ${on ? `
-                                    <div class="ct-section-cfg">
-                                        <label>Take</label>
-                                        <input type="number" min="1" max="${s.questions.length}" value="${pick.count}"
-                                               onchange="setCustomSectionCount('${tbAttr(file)}', ${si}, this.value)">
-                                        <span>of ${s.questions.length}</span>
-                                    </div>
-                                ` : ''}
-                            </div>`;
-                    }).join('')}
-                </div>
-            </div>`;
+        html += `<div class="ct-test" id="${ctFileBlockId[file]}">${ctTestBlockHtml(file, test)}</div>`;
     });
 
     container.innerHTML = html;
+    updateCustomSummary();
+}
+
+/* Re-renders only the one file's block a checkbox/count change belongs to. */
+function refreshCustomTestBlock(file) {
+    const test = loadedTests[file];
+    const id = ctFileBlockId[file];
+    const el = id && document.getElementById(id);
+    if (!test || !el) { renderCustomBuilder(); return; }
+    el.innerHTML = ctTestBlockHtml(file, test);
     updateCustomSummary();
 }
 
@@ -545,7 +619,7 @@ function toggleCustomSection(file, sectionIndex, checked) {
     } else {
         delete customSectionSelection[key];
     }
-    renderCustomBuilder();
+    refreshCustomTestBlock(file);
 }
 
 function setCustomSectionCount(file, sectionIndex, value) {
@@ -699,7 +773,7 @@ function renderQuestion() {
     main.innerHTML = `
         <div class="q-card">
             <div class="q-card-top">
-                <div class="q-no">Q. ${q.numberInSection}</div>
+                <div class="q-no">Q. ${q.globalNumber || (q.globalIndex + 1)}</div>
                 <div class="q-top-actions">
                     ${timeBadge}
                     ${outcomeChip}
@@ -883,14 +957,56 @@ function switchSection(sectionIndex) {
     if (first >= 0) goToQuestion(first);
 }
 
+function handleFooterNextClick() {
+    if (!TS.flat.length) return;
+    const isLast = TS.currentIndex === TS.flat.length - 1;
+    const q = TS.flat[TS.currentIndex];
+    const rec = TS.answers[TS.currentIndex] || {};
+    const answered = isAnswered(rec, q);
+
+    if (TS.mode === 'test') {
+        if (isLast) {
+            confirmSubmit();
+            return;
+        }
+    }
+    nextQuestionTC();
+}
+
 function updateFooterNav() {
     const prev = document.getElementById('trPrev');
     const next = document.getElementById('trNext');
     if (prev) prev.disabled = TS.currentIndex === 0;
-    if (next) {
-        const last = TS.currentIndex === TS.flat.length - 1;
-        next.disabled = last;
-        next.textContent = last ? 'Last question' : 'Next ›';
+    if (!next || !TS.flat.length) return;
+
+    const isLast = TS.currentIndex === TS.flat.length - 1;
+    const q = TS.flat[TS.currentIndex];
+    const rec = TS.answers[TS.currentIndex] || {};
+    const answered = isAnswered(rec, q);
+
+    if (TS.mode === 'test') {
+        next.disabled = false;
+        if (isLast) {
+            if (answered) {
+                next.textContent = 'Submit';
+                next.className = 'tr-nav-btn next submit';
+            } else {
+                next.textContent = 'Skip';
+                next.className = 'tr-nav-btn skip';
+            }
+        } else {
+            if (answered) {
+                next.textContent = 'Next ›';
+                next.className = 'tr-nav-btn next';
+            } else {
+                next.textContent = 'Skip ›';
+                next.className = 'tr-nav-btn skip';
+            }
+        }
+    } else {
+        next.disabled = isLast;
+        next.textContent = isLast ? 'Last question' : 'Next ›';
+        next.className = 'tr-nav-btn next';
     }
 }
 
@@ -1000,7 +1116,7 @@ function renderGrid() {
             cls += ' unvisited';
         }
         if (q.globalIndex === TS.currentIndex) cls += ' current';
-        return `<button class="${cls}" onclick="goToQuestion(${q.globalIndex})">${q.numberInSection}</button>`;
+        return `<button class="${cls}" onclick="goToQuestion(${q.globalIndex})">${q.globalNumber || (q.globalIndex + 1)}</button>`;
     }).join('');
 }
 

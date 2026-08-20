@@ -1149,13 +1149,30 @@ body.tc-running { overflow-x: hidden; }
     transition: all var(--transition-fast);
 }
 .tr-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
-.tr-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.tr-nav-btn.skip {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    opacity: 0.85;
+}
+.tr-nav-btn.skip:hover:not(:disabled) {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+    opacity: 1;
+}
 .tr-nav-btn.next {
     background: linear-gradient(135deg, var(--accent-dark), var(--accent));
     border-color: transparent;
     color: #fff;
+    box-shadow: 0 3px 10px rgba(108, 92, 231, 0.3);
 }
-.tr-nav-btn.next:disabled { background: var(--bg-secondary); color: var(--text-muted); }
+.tr-nav-btn.next.submit {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(16, 185, 129, 0.35);
+}
+.tr-nav-btn.next:disabled { background: var(--bg-secondary); color: var(--text-muted); box-shadow: none; }
 
 /* ===== SUBMIT MODAL ===== */
 .tc-modal-overlay {

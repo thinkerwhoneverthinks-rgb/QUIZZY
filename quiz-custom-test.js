@@ -23,13 +23,18 @@ async function loadAllManifestFiles() {
     }
     
     // Extract all file paths recursively
-    const fileList = [];
     function collectFiles(node, currentPath = []) {
+        const nodeLabel = node.displayName || node.name || '';
         if (node.files) {
-            node.files.forEach(f => fileList.push({ file: f, path: [...currentPath, node.name || ''] }));
+            node.files.forEach(f => {
+                const filePath = typeof f === 'object' ? (f.path || f.file) : f;
+                if (filePath) {
+                    fileList.push({ file: filePath, path: [...currentPath, nodeLabel] });
+                }
+            });
         }
         if (node.subsections) {
-            node.subsections.forEach(sub => collectFiles(sub, [...currentPath, node.name || sub.name]));
+            node.subsections.forEach(sub => collectFiles(sub, [...currentPath, nodeLabel]));
         }
     }
     collectFiles(manifestRoot);

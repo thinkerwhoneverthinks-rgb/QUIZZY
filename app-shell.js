@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeMenu(); closeDataPanel(); }
+    if (e.key === 'Escape') { closeMenu(); closeDataPanel(); closeSyllabusModal(); }
 });
 
 /* Follow the OS only while the user has not made an explicit choice. */
@@ -417,4 +417,110 @@ function pickImport(mode) {
     if (!input) return;
     input._mode = mode;
     input.click();
+}
+
+/* ---- 5. Universal Syllabus Modal & Handler ---- */
+function openSyllabus(syllabusData, contextTitle) {
+    if (!syllabusData) return;
+    if (typeof syllabusData === 'string') {
+        var str = syllabusData.trim();
+        if (str.startsWith('http://') || str.startsWith('https://') || str.endsWith('.pdf')) {
+            syllabusData = { enabled: true, type: 'pdf', content: str, title: contextTitle || 'Syllabus' };
+        } else {
+            syllabusData = { enabled: true, type: 'text', content: str, title: contextTitle || 'Syllabus' };
+        }
+    }
+
+    if (syllabusData.enabled === false) return;
+
+    var type = syllabusData.type || 'text';
+    var content = (syllabusData.content || '').trim();
+    var title = syllabusData.title || contextTitle || 'Syllabus';
+
+    if (!content) {
+        alert('No syllabus details available.');
+        return;
+    }
+
+    if (type === 'pdf') {
+        try {
+            var url = new URL(content, window.location.href);
+            window.open(url.href, '_blank', 'noopener,noreferrer');
+        } catch (e) {
+            if (content.startsWith('http://') || content.startsWith('https://') || content.startsWith('/') || content.startsWith('data/')) {
+                window.open(content, '_blank', 'noopener,noreferrer');
+            } else {
+                alert('Invalid syllabus link URL: ' + content);
+            }
+        }
+        return;
+    }
+
+    // Text type - display in modal
+    buildSyllabusModal();
+    var modalTitle = document.getElementById('syllabusModalTitle');
+    var modalBody = document.getElementById('syllabusModalBody');
+    var overlay = document.getElementById('syllabusOverlay');
+    var panel = document.getElementById('syllabusPanel');
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalBody) modalBody.textContent = content;
+
+    if (overlay) overlay.classList.add('active');
+    if (panel) panel.classList.add('active');
+}
+
+function closeSyllabusModal() {
+    var overlay = document.getElementById('syllabusOverlay');
+    var panel = document.getElementById('syllabusPanel');
+    if (overlay) overlay.classList.remove('active');
+    if (panel) panel.classList.remove('active');
+}
+
+function copySyllabusText() {
+    var modalBody = document.getElementById('syllabusModalBody');
+    if (!modalBody) return;
+    var text = modalBody.textContent || '';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+            var btn = document.getElementById('syllabusCopyBtn');
+            if (btn) {
+                var orig = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                setTimeout(function() { btn.textContent = orig; }, 2000);
+            }
+        }).catch(function() {
+            alert('Copied to clipboard');
+        });
+    } else {
+        alert('Syllabus copied');
+    }
+}
+
+function buildSyllabusModal() {
+    if (document.getElementById('syllabusPanel')) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'syllabus-overlay';
+    overlay.id = 'syllabusOverlay';
+    overlay.onclick = function(e) {
+        if (e.target === overlay) closeSyllabusModal();
+    };
+
+    var panel = document.createElement('div');
+    panel.className = 'syllabus-panel';
+    panel.id = 'syllabusPanel';
+    panel.innerHTML =
+        '<div class="syllabus-header">' +
+            '<h3>📖 <span id="syllabusModalTitle">Syllabus</span></h3>' +
+            '<button class="menu-close" onclick="closeSyllabusModal()" aria-label="Close">✕</button>' +
+        '</div>' +
+        '<div class="syllabus-body" id="syllabusModalBody"></div>' +
+        '<div class="syllabus-footer">' +
+            '<button class="btn btn-ghost btn-sm" id="syllabusCopyBtn" onclick="copySyllabusText()">📋 Copy Text</button>' +
+            '<button class="btn btn-primary btn-sm" onclick="closeSyllabusModal()">Close</button>' +
+        '</div>';
+
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
 }

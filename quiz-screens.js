@@ -94,15 +94,25 @@ function renderTree(node) {
     // Render Subsections (Folders)
     if (node.subsections) {
         node.subsections.forEach(sub => {
+            const folderName = sub.displayName || sub.name || 'Folder';
+            const hasSyllabus = sub.syllabus && sub.syllabus.enabled !== false && sub.syllabus.content;
+            const sylBtn = hasSyllabus ? `
+                <span class="syllabus-btn ${sub.syllabus.type === 'pdf' ? 'pdf' : ''}" 
+                      onclick="event.stopPropagation(); openSyllabus(${escapeHtmlAttr(JSON.stringify(sub.syllabus))}, '${escapeHtmlAttr(folderName)}');"
+                      title="View Syllabus">
+                    📄 ${escapeHtml(sub.syllabus.buttonLabel || sub.syllabus.title || 'Syllabus')}
+                </span>` : '';
+
             const el = document.createElement('div');
             el.className = 'subject-rect folder-card';
             el.onclick = () => enterFolder(sub);
             el.innerHTML = `
                 <div class="rect-emoji">${sub.icon || '📁'}</div>
-                <div class="rect-info">
-                    <div class="rect-name">${escapeHtml(sub.name)}</div>
+                <div class="rect-info" style="flex:1;">
+                    <div class="rect-name">${escapeHtml(folderName)}</div>
                     <div class="rect-meta">${countItems(sub)} items</div>
                 </div>
+                ${sylBtn}
             `;
             container.appendChild(el);
         });
@@ -111,17 +121,32 @@ function renderTree(node) {
     // Render Files (Quizzes/Chapters)
     if (node.files) {
         node.files.forEach(file => {
-            const baseName = file.split('/').pop().split('\\').pop();
-            const displayName = baseName.replace('.json', '').replace(/_/g, ' ').replace(/,/g, ', ');
+            const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
+            const fileDisplayName = typeof file === 'object' ? (file.displayName || file.name) : null;
+            const fileSyllabus = typeof file === 'object' ? file.syllabus : null;
+
+            const baseName = filePath.split('/').pop().split('\\').pop();
+            const fallbackName = baseName.replace('.json', '').replace(/_/g, ' ').replace(/,/g, ', ');
+            const displayName = fileDisplayName || fallbackName;
+
+            const hasSyllabus = fileSyllabus && fileSyllabus.enabled !== false && fileSyllabus.content;
+            const sylBtn = hasSyllabus ? `
+                <span class="syllabus-btn ${fileSyllabus.type === 'pdf' ? 'pdf' : ''}" 
+                      onclick="event.stopPropagation(); openSyllabus(${escapeHtmlAttr(JSON.stringify(fileSyllabus))}, '${escapeHtmlAttr(displayName)}');"
+                      title="View Syllabus">
+                    📄 ${escapeHtml(fileSyllabus.buttonLabel || fileSyllabus.title || 'Syllabus')}
+                </span>` : '';
+
             const el = document.createElement('div');
             el.className = 'chapter-row file-card';
             el.innerHTML = `
                 <div class="chapter-icon">📄</div>
-                <div class="chapter-info">
+                <div class="chapter-info" style="flex:1;">
                     <div class="chapter-title">${escapeHtml(displayName)}</div>
                 </div>
+                ${sylBtn}
             `;
-            el.onclick = () => loadFile(file);
+            el.onclick = () => loadFile(filePath);
             container.appendChild(el);
         });
     }
@@ -529,7 +554,19 @@ async function selectChapter(id) {
 
     selectedTopics = [];
     topicQuestionCounts = {};
-    showModeSelect();
+    currentMode = 'onebyone';
+    userAnswers = {};
+    currentQIndex = 0;
+    showQuiz();
+}
+
+function backFromQuiz() {
+    closeGrid();
+    if (subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
+        showChapters();
+    } else {
+        showSubjects();
+    }
 }
 
 // ==================== GRID & UI HELPERS ====================
