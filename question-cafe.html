@@ -56,6 +56,7 @@
         <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
         <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
         <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="notes-cafe.html"><span class="mi-ico">📖</span> Notes Cafe</a>
         <a href="#" onclick="showCustomTestBuilder(); toggleMenu(); return false;"><span class="mi-ico">⚙️</span> Custom Test</a>
         <a href="#" onclick="showStudyHistory(); toggleMenu(); return false;"><span class="mi-ico">🕐</span> Study History</a>
         <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
@@ -220,41 +221,19 @@
         </div>
 
         <!-- ===== SCREEN 2.8: DEDICATED CUSTOM TEST BUILDER ===== -->
-        <div class="screen has-fixed-bar" id="screenCustomTest">
+        <div class="screen" id="screenCustomTest">
             <div class="quiz-sticky-head">
                 <section class="quiz-header">
                     <div class="quiz-back" onclick="goToRoot()">← Back to Home</div>
                     <div class="quiz-title-wrap">
                         <div class="quiz-title">Custom Test Creator</div>
+                        <div class="quiz-topic-name">Pick topics from any folder &amp; combine them</div>
                     </div>
                     <div></div>
                 </section>
             </div>
-            <div class="ct-builder">
-                <h3>🛠️ Select Chapters, Folders, & Topics</h3>
-                <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1rem;">
-                    Combine questions from any subject or topic. Set question limits per topic. Download for offline exam taking.
-                </p>
+            <div class="ct-builder" style="padding-bottom:5rem;">
                 <div id="customTestTreeContainer"></div>
-                <div id="ctSummaryText" style="text-align:center;padding:0.75rem;background:var(--bg-card);border-radius:var(--radius-sm);margin-top:1rem;color:var(--text-muted);font-size:0.9rem;font-weight:600;">
-                    Select at least one topic
-                </div>
-                <div class="question-count-selector" style="margin-top:1.5rem;">
-                    <label>⏱️ Test Duration (minutes)</label>
-                    <div class="count-slider-wrap">
-                        <input type="number" class="int-input" id="ctTimerInput" min="1" value="30" style="text-align:center;font-size:1.1rem;font-weight:700;max-width:120px;">
-                        <span style="color:var(--text-muted);font-size:0.85rem;">min</span>
-                    </div>
-                </div>
-            </div>
-            <div class="config-actions sticky-actions" style="flex-wrap:wrap;">
-                <button class="btn btn-ghost" onclick="goToRoot()">Cancel</button>
-                <button class="btn btn-primary" id="btnDownloadCustomTest" onclick="downloadCustomTestForOffline(this)" disabled>
-                    ⬇️ Download Offline
-                </button>
-                <button class="btn btn-primary" id="btnStartCustomTest" onclick="startCustomTest()" disabled>
-                    🚀 Start Test →
-                </button>
             </div>
         </div>
 

@@ -1,24 +1,26 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v8';
+const CACHE_VERSION = 'quizzy-v18';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
 const APP_SHELL_FILES = [
     './',
     './question-cafe.html',
+    './test-cafe.html',
+    './notes-cafe.html',
     './index.html',
     './about.html',
     './contact.html',
     './privacy.html',
     './bookmarks.html',
-    './test-cafe.html',
     './test-bookmarks.html',
     './style.css',
     './quiz-core.css',
     './quiz-components.css',
     './test-cafe.css',
+    './notes-cafe.css',
     './app-shell.js',
     './quiz-core.js',
     './quiz-nav.js',
@@ -31,12 +33,14 @@ const APP_SHELL_FILES = [
     './quiz-offline.js',
     './quiz-custom-test.js',
     './quiz-history.js',
+    './notes-cafe.js',
     './test-engine.js',
     './test-history.js',
     './test-bookmarks.js',
     './test-ui.js',
     './data/manifest.json',
     './data/test-manifest.json',
+    './data/notes-manifest.json',
     './icons/icon-512x512.png',
     './icons/quizzy-logo.svg'
 ];
@@ -109,8 +113,16 @@ self.addEventListener('fetch', (e) => {
         return;
     }
 
-    // Image URLs (cloudinary etc): cache-first
-    if (url.hostname.includes('cloudinary') || url.hostname.includes('ibb.co') || url.hostname.includes('i.ibb.co')) {
+    // Image URLs (S3, Allen CDN, Cloudinary, ibb, etc.): cache-first with network fallback
+    if (
+        e.request.destination === 'image' ||
+        url.hostname.includes('s3') ||
+        url.hostname.includes('amazonaws.com') ||
+        url.hostname.includes('allen') ||
+        url.hostname.includes('cloudinary') ||
+        url.hostname.includes('ibb.co') ||
+        /\.(png|jpg|jpeg|gif|webp|svg)($|\?)/i.test(url.pathname)
+    ) {
         e.respondWith(
             caches.open(CDN_CACHE).then(cache => {
                 return cache.match(e.request).then(cached => {
@@ -119,7 +131,6 @@ self.addEventListener('fetch', (e) => {
                         if (resp.ok) cache.put(e.request, resp.clone());
                         return resp;
                     }).catch(() => {
-                        // Return a placeholder for offline images
                         return new Response('', { status: 404, statusText: 'Offline' });
                     });
                 });

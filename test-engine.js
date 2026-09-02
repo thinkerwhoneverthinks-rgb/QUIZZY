@@ -39,9 +39,17 @@ const TS = {
 
 function tcEsc(text) {
     if (text === null || text === undefined) return '';
-    const div = document.createElement('div');
-    div.textContent = String(text);
-    return div.innerHTML;
+    const escaped = String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    return escaped
+        .replace(/&lt;\s*\/?br\s*\/?&gt;/gi, '<br>')
+        .replace(/(^|[\s.,;:!?()\[\]\d])\s*(?:\/br|\\br)\s*(?=[A-Z0-9(\[\s.,;:!?]|$)/gi, (match, p1) => {
+            return p1 + '<br>';
+        });
 }
 
 /* For values placed inside a double-quoted HTML attribute (src=, value=).
@@ -228,13 +236,31 @@ function normalizeTestQuestion(q, index, sectionMarking) {
         })()
     };
 
+    const qImages = [];
+    if (q.image_url || q.image) qImages.push(q.image_url || q.image);
+    if (Array.isArray(q.images)) {
+        q.images.forEach(img => { if (img && qImages.indexOf(img) === -1) qImages.push(img); });
+    }
+    if (Array.isArray(q.image_urls)) {
+        q.image_urls.forEach(img => { if (img && qImages.indexOf(img) === -1) qImages.push(img); });
+    }
+
+    const expImages = [];
+    if (q.explanation_image || q.solution_image) expImages.push(q.explanation_image || q.solution_image);
+    if (Array.isArray(q.explanation_images)) {
+        q.explanation_images.forEach(img => { if (img && expImages.indexOf(img) === -1) expImages.push(img); });
+    }
+
     const base = {
         id: q.id || `q_${index}_${Math.random().toString(36).slice(2, 8)}`,
         type: type,
         question: q.question || q.text || q.question_text || '',
-        image_url: q.image_url || q.image || null,
+        image_url: qImages[0] || null,
+        images: qImages,
+        matchLists: q.matchLists || null,
         explanation: q.explanation || q.solution || '',
-        explanation_image: q.explanation_image || q.solution_image || null,
+        explanation_image: expImages[0] || null,
+        explanation_images: expImages,
         marking: marking
     };
 
@@ -552,40 +578,54 @@ function shuffleInPlace(arr) {
     return arr;
 }
 
-/* Sections picked from different tests can share a name ("Physics" from two
-   papers), so any name used more than once gets its source test appended. */
+/* When user picks sections from different tests with the same section/subject name
+   (e.g. "Physics" from Test 1 and "Physics" from Test 2), merge them into one
+   single unified section (e.g. "Physics" with 60 questions total). */
 function buildCustomTest(opts) {
     const picks = customSelectionList();
     if (picks.length === 0) return null;
 
-    const nameCount = {};
-    picks.forEach(p => { nameCount[p.sectionName] = (nameCount[p.sectionName] || 0) + 1; });
-
-    /* `blueprint` records exactly which questions were taken, so a stored
-       attempt can rebuild this paper later from the source files alone. */
     const blueprint = [];
-    const sections = picks.map(p => {
+    const mergedSectionsMap = new Map();
+
+    picks.forEach(p => {
         const source = loadedTests[p.file];
+        if (!source || !source.sections[p.sectionIndex]) return;
         const original = source.sections[p.sectionIndex];
         let questions = original.questions.slice();
         if (opts && opts.shuffle) shuffleInPlace(questions);
         questions = questions.slice(0, Math.max(1, Math.min(p.count, questions.length)));
 
-        const name = nameCount[p.sectionName] > 1 ? `${p.sectionName} · ${source.name}` : p.sectionName;
+        // Normalize section name for grouping (e.g. "PHYSICS", "Chemistry", "Botany")
+        const normKey = (p.sectionName || original.name || 'Section').trim().toUpperCase();
+
         blueprint.push({
-            name: name,
+            name: p.sectionName || original.name,
             icon: original.icon || '',
             file: p.file,
             sectionIndex: p.sectionIndex,
             questionIds: questions.map(q => q.id)
         });
 
-        return { name: name, icon: original.icon || '', marking: original.marking, questions: questions };
+        if (mergedSectionsMap.has(normKey)) {
+            const existing = mergedSectionsMap.get(normKey);
+            existing.questions = existing.questions.concat(questions);
+        } else {
+            mergedSectionsMap.set(normKey, {
+                name: p.sectionName || original.name,
+                icon: original.icon || '',
+                marking: original.marking || { correct: 4, incorrect: -1 },
+                questions: questions
+            });
+        }
     });
+
+    const sections = Array.from(mergedSectionsMap.values());
+    if (sections.length === 0) return null;
 
     const totalQuestions = sections.reduce((n, s) => n + s.questions.length, 0);
     const totalMarks = sections.reduce(
-        (n, s) => n + s.questions.reduce((m, q) => m + q.marking.correct, 0), 0);
+        (n, s) => n + s.questions.reduce((m, q) => m + ((q.marking && q.marking.correct) || 4), 0), 0);
     const fileCount = new Set(picks.map(p => p.file)).size;
     const name = (opts && opts.name) || 'My Custom Test';
     const duration = (opts && opts.duration) || 60;
@@ -605,7 +645,6 @@ function buildCustomTest(opts) {
             kind: 'custom',
             name: name,
             duration: duration,
-            // Same mix picked again = same key, so those attempts group together.
             composition: picks.map(p => `${p.file}#${p.sectionIndex}#${p.count}`).sort().join('|'),
             sections: blueprint
         }

@@ -508,101 +508,106 @@ async function openAttemptAnalysis(id) {
 }
 
 // ==================== CUSTOM TEST BUILDER ====================
-function updateLoadingProgress(done, total) {
-    const el = document.getElementById('scLoadingProgress');
-    if (!el) return;
-    el.textContent = total ? `Loading test files… ${done} / ${total}` : '';
-}
+let ctTestDirectory = [];       // Breadcrumb stack of folder nodes for custom builder
+let ctActiveTestFile = null;    // { filePath, displayName, test } when inspecting a single test
+let ctTestDrawerOpen = false;   // Modal drawer state for reviewing chosen sections
 
 async function showTestCustomBuilder() {
     showTcScreen('scLoading');
-    updateLoadingProgress(0, 0);
     try {
-        const { failed } = await loadAllTestFiles(updateLoadingProgress);
-        if (Object.keys(loadedTests).length === 0) {
-            throw new Error('No readable test files were found in the test manifest.');
-        }
-        renderCustomBuilder(failed);
+        await loadTestManifest();
+        ctTestDirectory = [];
+        ctActiveTestFile = null;
+        ctTestDrawerOpen = false;
+        renderCustomBuilder();
         showTcScreen('scCustom');
     } catch (e) {
         alert('Could not open the custom test builder: ' + e.message);
         showTcScreen('scHome');
-    } finally {
-        updateLoadingProgress(0, 0);
     }
 }
 
-/* Stable per-file DOM id so a single checkbox toggle can patch just its own
-   block instead of re-stringifying every loaded test's HTML (233 files' worth
-   on a big manifest — measurably janky on a full re-render per click). */
-let ctFileBlockId = {};
-
-function ctTestBlockHtml(file, test) {
-    return `
-        <div class="ct-test-head">
-            <span class="ct-test-name">📝 ${tcEsc(test.name)}</span>
-            <span class="ct-test-meta">${test.sections.length} sections · ${test.totalQuestions} Qs</span>
-        </div>
-        <div class="ct-section-list">
-            ${test.sections.map((s, si) => {
-                const key = customSelectionKey(file, si);
-                const pick = customSectionSelection[key];
-                const on = !!pick;
-                return `
-                    <div class="ct-section ${on ? 'on' : ''}">
-                        <label class="ct-section-main">
-                            <input type="checkbox" ${on ? 'checked' : ''}
-                                   onchange="toggleCustomSection('${tbAttr(file)}', ${si}, this.checked)">
-                            <span class="ct-section-icon">${tcEsc(s.icon || '📗')}</span>
-                            <span class="ct-section-name">${tcEsc(s.name)}</span>
-                            <span class="ct-section-count">${s.questions.length} Qs</span>
-                        </label>
-                        ${on ? `
-                            <div class="ct-section-cfg">
-                                <label>Take</label>
-                                <input type="number" min="1" max="${s.questions.length}" value="${pick.count}"
-                                       onchange="setCustomSectionCount('${tbAttr(file)}', ${si}, this.value)">
-                                <span>of ${s.questions.length}</span>
-                            </div>
-                        ` : ''}
-                    </div>`;
-            }).join('')}
-        </div>`;
+function ctTestCurrentNode() {
+    if (ctTestDirectory.length === 0) return testManifestRoot;
+    return ctTestDirectory[ctTestDirectory.length - 1];
 }
 
-function renderCustomBuilder(failed) {
+function ctEnterTestFolder(sub) {
+    ctTestDirectory.push(sub);
+    ctActiveTestFile = null;
+    renderCustomBuilder();
+}
+
+function ctGoBackTestCustom() {
+    if (ctActiveTestFile) {
+        ctActiveTestFile = null;
+        renderCustomBuilder();
+        return;
+    }
+    if (ctTestDirectory.length > 0) {
+        ctTestDirectory.pop();
+        renderCustomBuilder();
+    } else {
+        goTestHome();
+    }
+}
+
+function ctGoToTestLevel(i) {
+    ctActiveTestFile = null;
+    ctTestDirectory = ctTestDirectory.slice(0, i + 1);
+    renderCustomBuilder();
+}
+
+function ctGoToTestRoot() {
+    ctActiveTestFile = null;
+    ctTestDirectory = [];
+    renderCustomBuilder();
+}
+
+async function ctOpenTestFile(fileEntry) {
+    const filePath = typeof fileEntry === 'object' ? (fileEntry.path || fileEntry.file || '') : fileEntry;
+    const fileDisplayName = typeof fileEntry === 'object' ? (fileEntry.displayName || fileEntry.name) : null;
+    const fallbackLabel = String(filePath).split('/').pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ');
+    const displayName = fileDisplayName || fallbackLabel;
+
+    if (loadedTests[filePath]) {
+        ctActiveTestFile = {
+            filePath: filePath,
+            displayName: displayName,
+            test: loadedTests[filePath]
+        };
+        renderCustomBuilder();
+        return;
+    }
+
     const container = document.getElementById('customTree');
-    if (!container) return;
-
-    let html = '';
-    if (failed && failed.length) {
-        html += `<div class="tc-note error"><strong>${failed.length} file(s) could not be read</strong><p>${failed.map(tcEsc).join(', ')}</p></div>`;
+    if (container) {
+        container.innerHTML = `
+            <div style="text-align:center;padding:3rem 1rem;">
+                <div class="tc-spinner" style="margin:0 auto 1rem;"></div>
+                <div style="font-weight:700;color:var(--text-primary);">Loading ${tcEsc(displayName)}…</div>
+                <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.35rem;">Fetching test sections</div>
+            </div>
+        `;
     }
 
-    ctFileBlockId = {};
-    Object.keys(loadedTests).forEach((file, i) => { ctFileBlockId[file] = `ctTest-${i}`; });
-
-    Object.entries(loadedTests).forEach(([file, test]) => {
-        html += `<div class="ct-test" id="${ctFileBlockId[file]}">${ctTestBlockHtml(file, test)}</div>`;
-    });
-
-    container.innerHTML = html;
-    updateCustomSummary();
+    try {
+        const test = await loadTestFile(filePath);
+        ctActiveTestFile = {
+            filePath: filePath,
+            displayName: displayName,
+            test: test
+        };
+        renderCustomBuilder();
+    } catch (e) {
+        alert('Could not load that test: ' + e.message);
+        renderCustomBuilder();
+    }
 }
 
-/* Re-renders only the one file's block a checkbox/count change belongs to. */
-function refreshCustomTestBlock(file) {
-    const test = loadedTests[file];
-    const id = ctFileBlockId[file];
-    const el = id && document.getElementById(id);
-    if (!test || !el) { renderCustomBuilder(); return; }
-    el.innerHTML = ctTestBlockHtml(file, test);
-    updateCustomSummary();
-}
-
-function toggleCustomSection(file, sectionIndex, checked) {
+function toggleCustomSection(file, fileDisplayName, sectionIndex, checked) {
     const key = customSelectionKey(file, sectionIndex);
-    const test = loadedTests[file];
+    const test = (ctActiveTestFile && ctActiveTestFile.filePath === file) ? ctActiveTestFile.test : loadedTests[file];
     if (!test) return;
     const section = test.sections[sectionIndex];
     if (!section) return;
@@ -610,6 +615,7 @@ function toggleCustomSection(file, sectionIndex, checked) {
     if (checked) {
         customSectionSelection[key] = {
             file: file,
+            fileDisplayName: fileDisplayName || test.name || file,
             testName: test.name,
             sectionIndex: sectionIndex,
             sectionName: section.name,
@@ -619,7 +625,7 @@ function toggleCustomSection(file, sectionIndex, checked) {
     } else {
         delete customSectionSelection[key];
     }
-    refreshCustomTestBlock(file);
+    renderCustomBuilder();
 }
 
 function setCustomSectionCount(file, sectionIndex, value) {
@@ -630,6 +636,291 @@ function setCustomSectionCount(file, sectionIndex, value) {
     if (isNaN(n) || n < 1) n = 1;
     if (n > pick.total) n = pick.total;
     pick.count = n;
+    renderCustomBuilder();
+}
+
+function removeCustomSection(key) {
+    delete customSectionSelection[key];
+    renderCustomBuilder();
+}
+
+function clearCustomSelection() {
+    if (Object.keys(customSectionSelection).length === 0) return;
+    if (!confirm('Clear all selected test sections?')) return;
+    customSectionSelection = {};
+    renderCustomBuilder();
+}
+
+function toggleCustomDrawer(force) {
+    ctTestDrawerOpen = typeof force === 'boolean' ? force : !ctTestDrawerOpen;
+    const drawerEl = document.getElementById('ctTestDrawer');
+    const overlayEl = document.getElementById('ctTestDrawerOverlay');
+    if (drawerEl) drawerEl.classList.toggle('open', ctTestDrawerOpen);
+    if (overlayEl) overlayEl.classList.toggle('open', ctTestDrawerOpen);
+}
+
+function renderCustomBuilder() {
+    const container = document.getElementById('customTree');
+    if (!container) return;
+
+    const picks = customSelectionList();
+    const totalQs = picks.reduce((n, p) => n + p.count, 0);
+    const selectedCount = picks.length;
+
+    let html = '';
+
+    // Breadcrumbs matching Test Cafe
+    html += `
+        <div class="tc-breadcrumbs" style="margin-bottom:1.25rem;">
+            <button class="tc-back-link" onclick="ctGoBackTestCustom()" style="margin-bottom:0;padding:0.35rem 0.75rem;">← Back</button>
+            <div class="tc-crumb-list" style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+                <span class="tc-crumb" onclick="ctGoToTestRoot()" style="cursor:pointer;color:var(--text-muted);font-weight:600;">🏠 Home</span>
+                ${ctTestDirectory.map((dir, i) => `
+                    <span style="color:var(--text-muted);">›</span>
+                    <span class="tc-crumb ${(!ctActiveTestFile && i === ctTestDirectory.length - 1) ? 'active' : ''}" 
+                          onclick="ctGoToTestLevel(${i})" style="cursor:pointer;font-weight:700;color:${(!ctActiveTestFile && i === ctTestDirectory.length - 1) ? 'var(--text-primary)' : 'var(--text-muted)'};">
+                        ${tcEsc(dir.displayName || dir.name || 'Folder')}
+                    </span>
+                `).join('')}
+                ${ctActiveTestFile ? `
+                    <span style="color:var(--text-muted);">›</span>
+                    <span class="tc-crumb active" style="font-weight:800;color:var(--accent);">📝 ${tcEsc(ctActiveTestFile.displayName)}</span>
+                ` : ''}
+            </div>
+        </div>
+    `;
+
+    // View: File Content (Sections) OR Folder View (Subsections & Files)
+    if (ctActiveTestFile) {
+        const test = ctActiveTestFile.test;
+        const sections = test.sections || [];
+
+        html += `
+            <div style="margin-bottom:2rem;">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+                    <div>
+                        <h2 style="font-size:1.3rem;font-weight:800;color:var(--text-primary);margin-bottom:0.25rem;">
+                            📝 ${tcEsc(ctActiveTestFile.displayName)}
+                        </h2>
+                        <div style="font-size:0.85rem;color:var(--text-muted);">
+                            ${sections.length} sections · ${test.totalQuestions} total questions. Select sections below to include.
+                        </div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" onclick="ctGoBackTestCustom()">← Back to Folders</button>
+                </div>
+
+                <div class="ct-section-list" style="display:flex;flex-direction:column;gap:0.6rem;">
+        `;
+
+        if (sections.length === 0) {
+            html += `<p style="color:var(--text-muted);padding:2rem;text-align:center;">No sections found in this test.</p>`;
+        } else {
+            sections.forEach((s, si) => {
+                const key = customSelectionKey(ctActiveTestFile.filePath, si);
+                const pick = customSectionSelection[key];
+                const on = !!pick;
+
+                html += `
+                    <div class="ct-section ${on ? 'on' : ''}" style="background:var(--bg-card);border:1.5px solid ${on ? 'var(--accent)' : 'var(--border)'};border-radius:var(--radius-md);padding:0.85rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:all 0.2s ease;">
+                        <label class="ct-section-main" style="display:flex;align-items:center;gap:0.75rem;cursor:pointer;flex:1;">
+                            <input type="checkbox" ${on ? 'checked' : ''}
+                                   onchange="toggleCustomSection('${tbAttr(ctActiveTestFile.filePath)}', '${tbAttr(ctActiveTestFile.displayName)}', ${si}, this.checked)"
+                                   style="width:18px;height:18px;accent-color:var(--accent);">
+                            <span class="ct-section-icon" style="font-size:1.2rem;">${tcEsc(s.icon || '📗')}</span>
+                            <div style="display:flex;flex-direction:column;">
+                                <span class="ct-section-name" style="font-weight:700;color:var(--text-primary);font-size:0.95rem;">${tcEsc(s.name)}</span>
+                                <span class="ct-section-count" style="font-size:0.8rem;color:var(--text-muted);">${s.questions.length} questions</span>
+                            </div>
+                        </label>
+                        ${on ? `
+                            <div class="ct-section-cfg" style="display:flex;align-items:center;gap:0.4rem;">
+                                <label style="font-size:0.78rem;font-weight:700;color:var(--text-muted);">Take</label>
+                                <input type="number" min="1" max="${s.questions.length}" value="${pick.count}"
+                                       onchange="setCustomSectionCount('${tbAttr(ctActiveTestFile.filePath)}', ${si}, this.value)"
+                                       style="width:52px;text-align:center;padding:0.25rem 0.35rem;font-size:0.9rem;font-weight:700;background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);">
+                                <span style="font-size:0.78rem;color:var(--text-muted);">of ${s.questions.length}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+        }
+
+        html += `
+                </div>
+            </div>
+        `;
+
+    } else {
+        // Folder View matching Test Cafe native list
+        const node = ctTestCurrentNode();
+        const folders = node.subsections || [];
+        const files = node.files || [];
+
+        html += `<div class="tc-tree" style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">`;
+
+        if (folders.length === 0 && files.length === 0) {
+            html += `<p style="color:var(--text-muted);padding:2rem;text-align:center;">No items in this section.</p>`;
+        }
+
+        folders.forEach((f) => {
+            const count = (f.subsections || []).length + (f.files || []).length;
+            const folderName = f.displayName || f.name || 'Folder';
+
+            html += `
+                <button class="tc-row folder" onclick="ctEnterTestFolder(${tcAttr(JSON.stringify(f))})" style="width:100%;text-align:left;">
+                    <span class="tc-row-icon">${tcEsc(f.icon || '📁')}</span>
+                    <span class="tc-row-body">
+                        <span class="tc-row-name">${tcEsc(folderName)}</span>
+                        <span class="tc-row-meta">${count} item${count !== 1 ? 's' : ''}</span>
+                    </span>
+                    <span class="tc-row-go">›</span>
+                </button>
+            `;
+        });
+
+        files.forEach((file) => {
+            const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
+            const fileDisplayName = typeof file === 'object' ? (file.displayName || file.name) : null;
+            const fallbackLabel = String(filePath).split('/').pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ');
+            const label = fileDisplayName || fallbackLabel;
+
+            // Check if any sections in this test file are selected
+            const fileSectionsSelected = Object.keys(customSectionSelection).filter(k => k.startsWith(`${filePath}::`)).length;
+
+            html += `
+                <button class="tc-row file" onclick="ctOpenTestFile(${tcAttr(JSON.stringify(file))})" style="width:100%;text-align:left;">
+                    <span class="tc-row-icon">📝</span>
+                    <span class="tc-row-body">
+                        <span class="tc-row-name" style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                            ${tcEsc(label)}
+                            ${fileSectionsSelected > 0 ? `
+                                <span style="background:var(--accent);color:#000;font-size:0.75rem;font-weight:800;padding:0.15rem 0.5rem;border-radius:12px;">
+                                    ✓ ${fileSectionsSelected} section${fileSectionsSelected !== 1 ? 's' : ''}
+                                </span>` : ''}
+                        </span>
+                        <span class="tc-row-meta">Tap to choose sections</span>
+                    </span>
+                    <span class="tc-row-go">›</span>
+                </button>
+            `;
+        });
+
+        html += `</div>`;
+    }
+
+    // Floating Summary Bar & Drawer Modal HTML
+    html += `
+        <!-- Floating Selected Summary Bar -->
+        <div class="ct-floating-bar" id="ctTestFloatingBar">
+            <div class="ct-float-info">
+                <div class="ct-float-count">
+                    ${selectedCount > 0 ? `🎯 ${selectedCount} Section${selectedCount !== 1 ? 's' : ''} (${totalQs} Qs)` : 'No sections selected'}
+                </div>
+                <div class="ct-float-sub">
+                    ${selectedCount > 0 ? 'Click View Selected to configure and build' : 'Browse folders & pick test sections'}
+                </div>
+            </div>
+            <div class="ct-float-actions">
+                ${selectedCount > 0 ? `
+                    <button class="btn btn-ghost btn-sm" onclick="toggleCustomDrawer(true)">
+                        📋 View Selected (${selectedCount})
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="buildAndPreviewCustomTest()">
+                        Build Test →
+                    </button>
+                ` : `
+                    <button class="btn btn-ghost btn-sm" disabled style="opacity:0.5;">
+                        Pick Sections Above
+                    </button>
+                `}
+            </div>
+        </div>
+
+        <!-- Selected Test Sections Drawer Overlay -->
+        <div class="ct-drawer-overlay ${ctTestDrawerOpen ? 'open' : ''}" id="ctTestDrawerOverlay" onclick="toggleCustomDrawer(false)"></div>
+
+        <!-- Selected Test Sections Drawer Modal -->
+        <div class="ct-selected-drawer ${ctTestDrawerOpen ? 'open' : ''}" id="ctTestDrawer">
+            <div class="ct-drawer-head">
+                <div>
+                    <div class="ct-drawer-title">📋 Selected Sections (${selectedCount})</div>
+                    <div class="ct-drawer-sub">Total ${totalQs} questions from ${selectedCount} section${selectedCount !== 1 ? 's' : ''}</div>
+                </div>
+                <button class="menu-close" onclick="toggleCustomDrawer(false)" aria-label="Close">✕</button>
+            </div>
+
+            <div class="ct-drawer-body">
+                ${selectedCount === 0 ? `
+                    <div style="text-align:center;padding:3rem 1rem;color:var(--text-muted);">
+                        <div style="font-size:2rem;margin-bottom:0.5rem;">📁</div>
+                        <div style="font-weight:700;font-size:1rem;color:var(--text-primary);margin-bottom:0.25rem;">No sections selected</div>
+                        <div style="font-size:0.85rem;">Open any test and check sections to add them here.</div>
+                    </div>
+                ` : `
+                    <div class="ct-selected-list">
+                        ${picks.map(p => {
+                            const key = customSelectionKey(p.file, p.sectionIndex);
+                            return `
+                                <div class="ct-selected-item">
+                                    <div class="ct-selected-item-info">
+                                        <div class="ct-selected-item-title">${tcEsc(p.sectionName)}</div>
+                                        <div class="ct-selected-item-meta">
+                                            <span>${tcEsc(p.fileDisplayName || p.testName || p.file)}</span>
+                                        </div>
+                                    </div>
+                                    <div class="ct-selected-item-ctrls">
+                                        <label style="font-size:0.78rem;color:var(--text-muted);font-weight:700;">Take</label>
+                                        <input type="number" min="1" max="${p.total}" value="${p.count}"
+                                               onchange="setCustomSectionCount('${tbAttr(p.file)}', ${p.sectionIndex}, this.value)">
+                                        <span style="font-size:0.78rem;color:var(--text-muted);">/ ${p.total}</span>
+                                        <button class="ct-remove-btn" onclick="removeCustomSection('${tbAttr(key)}')" title="Remove">✕</button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <!-- Custom Test Configurations inside Drawer -->
+                    <div class="ct-config" style="margin-top:1.5rem;padding:1rem;background:var(--bg-secondary);border-radius:var(--radius-md);border:1px solid var(--border);">
+                        <div class="ct-field">
+                            <label for="ctDrawerNameInput">Test name</label>
+                            <input type="text" id="ctDrawerNameInput" value="My Custom Test" placeholder="My Custom Test">
+                        </div>
+                        <div class="ct-field" style="flex:0 1 140px;">
+                            <label for="ctDrawerDurationInput">Duration (min)</label>
+                            <input type="number" id="ctDrawerDurationInput" min="1" value="60">
+                        </div>
+                        <label class="ct-check">
+                            <input type="checkbox" id="ctDrawerShuffleInput">
+                            Shuffle questions in each section
+                        </label>
+                    </div>
+                `}
+            </div>
+
+            <div class="ct-drawer-foot">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+                    <div style="font-size:0.9rem;font-weight:700;color:var(--text-primary);">
+                        ${selectedCount > 0 ? `Total: ${totalQs} Questions` : ''}
+                    </div>
+                    ${selectedCount > 0 ? `
+                        <button class="btn btn-ghost btn-sm" onclick="clearCustomSelection()" style="color:var(--error, #ef4444);">
+                            🗑️ Clear All
+                        </button>
+                    ` : ''}
+                </div>
+                <div style="display:flex;gap:0.75rem;justify-content:flex-end;">
+                    <button class="btn btn-ghost" onclick="toggleCustomDrawer(false)">Keep Browsing</button>
+                    <button class="btn btn-primary" onclick="buildAndPreviewCustomTest()" ${selectedCount === 0 ? 'disabled' : ''}>
+                        Build Test (${totalQs} Qs) →
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    container.innerHTML = html;
     updateCustomSummary();
 }
 
@@ -647,27 +938,29 @@ function updateCustomSummary() {
     if (startBtn) startBtn.disabled = picks.length === 0;
 }
 
-function clearCustomSelection() {
-    customSectionSelection = {};
-    renderCustomBuilder();
-}
-
 function buildAndPreviewCustomTest() {
-    const nameInput = document.getElementById('ctNameInput');
-    const durInput = document.getElementById('ctDurationInput');
-    const shuffleInput = document.getElementById('ctShuffleInput');
+    const drawerName = document.getElementById('ctDrawerNameInput');
+    const mainName = document.getElementById('ctNameInput');
+    const name = (drawerName && drawerName.value.trim()) || (mainName && mainName.value.trim()) || 'My Custom Test';
 
-    let duration = parseInt(durInput && durInput.value, 10);
+    const drawerDur = document.getElementById('ctDrawerDurationInput');
+    const mainDur = document.getElementById('ctDurationInput');
+    let durVal = (drawerDur && drawerDur.value) || (mainDur && mainDur.value) || 60;
+    let duration = parseInt(durVal, 10);
     if (isNaN(duration) || duration < 1) duration = 60;
 
+    const drawerShuffle = document.getElementById('ctDrawerShuffleInput');
+    const mainShuffle = document.getElementById('ctShuffleInput');
+    const shuffle = !!((drawerShuffle && drawerShuffle.checked) || (mainShuffle && mainShuffle.checked));
+
     const test = buildCustomTest({
-        name: (nameInput && nameInput.value.trim()) || 'My Custom Test',
+        name: name,
         duration: duration,
-        shuffle: !!(shuffleInput && shuffleInput.checked)
+        shuffle: shuffle
     });
 
     if (!test) return;
-    // customSource carries the blueprint an attempt needs to rebuild this paper.
+    toggleCustomDrawer(false);
     renderTestDetail(test, test.customSource);
     showTcScreen('scInstructions');
 }
@@ -788,8 +1081,15 @@ function renderQuestion() {
                 ${markScheme}
             </div>
 
-            ${q.question ? `<div class="q-text">${tcEsc(q.question)}</div>` : ''}
-            ${q.image_url ? `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(q.image_url)}" alt="Question diagram" loading="lazy"></div>` : ''}
+            ${q.question ? `<div class="q-text">${tcRenderText(q.question)}</div>` : ''}
+
+            ${q.images && q.images.length > 1 ? `
+                <div class="q-images-container">
+                    ${q.images.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy"></div>`).join('')}
+                </div>
+            ` : (q.image_url ? `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(q.image_url)}" alt="Question diagram" loading="lazy"></div>` : '')}
+
+            ${renderMatchLists(q)}
 
             ${q.type === 'integer' ? renderIntegerInput(q, rec) : renderOptions(q, rec)}
 
@@ -800,6 +1100,86 @@ function renderQuestion() {
     updateFooterNav();
     renderGrid();
     tcTypeset(main);
+}
+
+function tcRenderText(text) {
+    // Delegate to the shared safeHtml() utility from quiz-core.js
+    // which handles **bold**, safe HTML tags (ul/li/table/img/sup/sub/br), and markdown.
+    if (typeof safeHtml === 'function') return safeHtml(text);
+    // Fallback if safeHtml not loaded yet
+    if (!text) return '';
+    return String(text)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+}
+
+function renderMatchLists(q) {
+    if (!q || !q.matchLists) return '';
+    const ml = q.matchLists;
+    const listI = ml.listI || { title: 'Column I', items: [] };
+    const listII = ml.listII || { title: 'Column II', items: [] };
+    const itemsI = listI.items || [];
+    const itemsII = listII.items || [];
+    const maxLen = Math.max(itemsI.length, itemsII.length);
+    if (maxLen === 0) return '';
+
+    const defaultLabelsI = ['A', 'B', 'C', 'D', 'E', 'F'];
+    const defaultLabelsII = ['p', 'q', 'r', 's', 't', 'u'];
+
+    function formatLabel(lbl, defaultVal) {
+        let raw = String(lbl || defaultVal || '').trim();
+        if (!raw) return '';
+        if (raw.startsWith('(') && raw.endsWith(')')) return raw;
+        return `(${raw})`;
+    }
+
+    let rowsHtml = '';
+    for (let i = 0; i < maxLen; i++) {
+        const itI = itemsI[i];
+        const itII = itemsII[i];
+
+        const hasContentI = Boolean(itI && ((itI.text && itI.text.trim()) || (itI.title && itI.title.trim()) || itI.image_url || itI.image || itI.imageUrl));
+        const labelI = hasContentI ? formatLabel(itI.label || itI.key, defaultLabelsI[i]) : '';
+        const textI = itI ? (itI.text || itI.title || '') : '';
+        const imgI = itI ? (itI.image_url || itI.image || itI.imageUrl || null) : null;
+
+        const hasContentII = Boolean(itII && ((itII.text && itII.text.trim()) || (itII.title && itII.title.trim()) || itII.image_url || itII.image || itII.imageUrl));
+        const labelII = hasContentII ? formatLabel(itII.label || itII.key, defaultLabelsII[i]) : '';
+        const textII = itII ? (itII.text || itII.title || '') : '';
+        const imgII = itII ? (itII.image_url || itII.image || itII.imageUrl || null) : null;
+
+        rowsHtml += `
+            <tr>
+                <td class="match-col-label">${tcEsc(labelI)}</td>
+                <td class="match-col-content">
+                    ${imgI ? `<div class="match-item-img-wrap"><img class="match-item-img" src="${tcAttr(imgI)}" alt="Diagram ${tcAttr(labelI)}" loading="lazy"></div>` : ''}
+                    ${textI ? `<div class="match-item-text">${tcRenderText(textI)}</div>` : ''}
+                </td>
+                <td class="match-col-label">${tcEsc(labelII)}</td>
+                <td class="match-col-content">
+                    ${imgII ? `<div class="match-item-img-wrap"><img class="match-item-img" src="${tcAttr(imgII)}" alt="Diagram ${tcAttr(labelII)}" loading="lazy"></div>` : ''}
+                    ${textII ? `<div class="match-item-text">${tcRenderText(textII)}</div>` : ''}
+                </td>
+            </tr>
+        `;
+    }
+
+    return `
+        <div class="match-table-wrap">
+            <table class="match-table">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="match-th">${tcEsc(listI.title || 'Column I')}</th>
+                        <th colspan="2" class="match-th">${tcEsc(listII.title || 'Column II')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${rowsHtml}
+                </tbody>
+            </table>
+        </div>
+    `;
 }
 
 function renderOptions(q, rec) {
@@ -831,7 +1211,7 @@ function renderOptions(q, rec) {
             ? `<img class="opt-image" src="${tcAttr(q.optionImages[i])}" alt="Option ${TC_LETTERS[i]}" loading="lazy">`
             : '';
         const label = text && String(text).trim() !== ''
-            ? tcEsc(text)
+            ? tcRenderText(text)
             : (optImage ? '' : `Option ${i + 1}`);
 
         return `
@@ -874,14 +1254,14 @@ function renderIntegerInput(q, rec) {
             <div class="opt ${given === '' ? '' : (right ? 'correct' : 'incorrect')}">
                 <span class="opt-key">You</span>
                 <span class="opt-body">
-                    <span class="opt-text">${given === '' ? 'Not attempted' : tcEsc(given)}</span>
+                    <span class="opt-text">${given === '' ? 'Not attempted' : tcRenderText(given)}</span>
                     ${given === '' ? '' : `<span class="opt-flag">${right ? 'Correct (Marked By You)' : 'Incorrect (Marked By You)'}</span>`}
                 </span>
             </div>
             <div class="opt correct">
                 <span class="opt-key">Ans</span>
                 <span class="opt-body">
-                    <span class="opt-text">${tcEsc(correctVal)}</span>
+                    <span class="opt-text">${tcRenderText(correctVal)}</span>
                     <span class="opt-flag">${right ? 'Correct (Marked By You)' : 'Correct (Not Marked By You)'}</span>
                 </span>
             </div>
@@ -889,16 +1269,26 @@ function renderIntegerInput(q, rec) {
 }
 
 /* Explanation is optional in the data, so the block only appears when there is
-   something to show. */
+   something to show. Supports multiple explanation diagrams. */
 function renderSolutionBlock(q) {
-    if (!q.explanation && !q.explanation_image) {
+    const hasExp = !!(q.explanation && String(q.explanation).trim());
+    const expImages = [];
+    if (q.explanation_image) expImages.push(q.explanation_image);
+    if (Array.isArray(q.explanation_images)) {
+        q.explanation_images.forEach(img => { if (img && expImages.indexOf(img) === -1) expImages.push(img); });
+    }
+    if (!hasExp && expImages.length === 0) {
         return `<div class="q-explain empty">No explanation was provided for this question.</div>`;
     }
     return `
         <div class="q-explain">
-            <h4>💡 Explanation</h4>
-            ${q.explanation ? `<p>${tcEsc(q.explanation)}</p>` : ''}
-            ${q.explanation_image ? `<img class="q-explain-img" src="${tcAttr(q.explanation_image)}" alt="Solution" loading="lazy">` : ''}
+            <h4>💡 Explanation / Solution</h4>
+            ${hasExp ? `<div class="q-explain-text" style="line-height:1.7;margin-bottom:0.75rem;">${tcRenderText(q.explanation)}</div>` : ''}
+            ${expImages.length > 0 ? `
+                <div class="q-explain-images">
+                    ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy"></div>`).join('')}
+                </div>
+            ` : ''}
         </div>`;
 }
 

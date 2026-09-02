@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy — Notes Cafe</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00bfa5">
+    <meta name="description" content="High-yield revision notes, diagrams, formula summary sheets, and topic checkpoints for NEET.">
+    <link rel="icon" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-512x512.png">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="notes-cafe.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="notes-cafe.html"><span class="mi-ico">📖</span> Notes Cafe</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks.html"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container notes-container">
+
+        <!-- ===== SCREEN 1: BROWSE NOTES HOME ===== -->
+        <div id="notesHomeScreen">
+            <section class="notes-hero">
+                <img src="icons/quizzy-logo.svg" alt="Quizzy" style="width: 70px; margin-bottom: 1rem; filter: drop-shadow(0 0 12px var(--accent-glow));">
+                <h1>Notes Cafe</h1>
+                <p>High-yield revision notes, conceptual diagrams, formula sheets, and topic checkpoints for NEET.</p>
+
+                <!-- Search Input -->
+                <div class="notes-search-wrap">
+                    <span class="notes-search-icon">🔍</span>
+                    <input type="text" id="notesSearchInput" class="notes-search-input" placeholder="Search chapters, topics, or formulas..." oninput="handleNotesSearch()">
+                </div>
+
+                <!-- Subject Tabs -->
+                <div class="notes-subject-tabs" id="notesSubjectTabs"></div>
+            </section>
+
+            <!-- Chapter Cards Grid -->
+            <div class="notes-chapter-grid" id="notesChapterGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 2: READER VIEW (2-Column Layout) ===== -->
+        <div class="notes-reader-screen" id="notesReaderScreen">
+            
+            <!-- Sticky Reader Top Bar -->
+            <div class="notes-reader-bar">
+                <div class="notes-reader-bar-inner">
+                    <button class="notes-back-btn" onclick="closeNotesReader()">
+                        ← Back to Chapters
+                    </button>
+                    <div class="notes-reader-bar-title" id="notesReaderBarTitle">
+                        <!-- Chapter Title in Top Bar -->
+                    </div>
+                    <button class="notes-toc-btn" id="notesTocToggleBtn" onclick="toggleNotesTocDrawer()" aria-label="Table of Contents">
+                        📑 Table of Contents
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Table of Contents Drawer & Overlay -->
+            <div class="notes-toc-overlay" id="notesTocOverlay" onclick="toggleNotesTocDrawer(false)"></div>
+            <div class="notes-toc-drawer" id="notesTocDrawer">
+                <div class="notes-toc-drawer-head">
+                    <div>
+                        <div class="notes-sidebar-subj" id="notesDrawerSubj">BOTANY</div>
+                        <div class="notes-toc-drawer-title" id="notesDrawerChap">Chapter Title</div>
+                        <div class="notes-sidebar-meta" id="notesDrawerMeta">13 Subtopics · 95 mins</div>
+                    </div>
+                    <button class="menu-close" onclick="toggleNotesTocDrawer(false)" aria-label="Close">✕</button>
+                </div>
+                <div class="notes-toc-drawer-body">
+                    <div class="notes-sidebar-title">TABLE OF CONTENTS</div>
+                    <nav class="notes-sidebar-nav" id="notesDrawerNav">
+                        <!-- Interactive Subtopic Items -->
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Two-Column Reader Layout -->
+            <div class="notes-reader-layout">
+                
+                <!-- Left Sidebar: Interactive Table of Contents -->
+                <aside class="notes-sidebar-toc">
+                    <div class="notes-sidebar-header">
+                        <div class="notes-sidebar-subj" id="notesSidebarSubj">BOTANY</div>
+                        <div class="notes-sidebar-chap" id="notesSidebarChap">Chapter Title</div>
+                        <div class="notes-sidebar-meta" id="notesSidebarMeta">13 Subtopics · 95 mins</div>
+                    </div>
+                    <div class="notes-sidebar-title">TABLE OF CONTENTS</div>
+                    <nav class="notes-sidebar-nav" id="notesSidebarNav">
+                        <!-- Interactive Subtopic Items -->
+                    </nav>
+                </aside>
+
+                <!-- Right Main Content Canvas -->
+                <div class="notes-main-canvas">
+                    <div class="notes-doc-header">
+                        <div class="notes-doc-breadcrumb" id="notesDocBreadcrumb">BOTANY · SEXUAL REPRODUCTION IN FLOWERING PLANTS</div>
+                        <h1 class="notes-doc-title" id="notesDocTitle">Flower – A Fascinating Organ of Angiosperms</h1>
+                        <div class="notes-doc-meta" id="notesDocMeta">7 learning blocks · 4 minutes. Text, diagrams, and PYQs are arranged in the original note order.</div>
+                    </div>
+
+                    <!-- Blocks Container -->
+                    <div class="notes-blocks-container" id="notesBlocksContainer"></div>
+
+                    <!-- Bottom Navigation -->
+                    <div class="notes-nav-footer">
+                        <button class="notes-nav-btn" id="notesPrevModBtn" onclick="prevNotesModule()">
+                            ← Previous Subtopic
+                        </button>
+                        <button class="notes-nav-btn" id="notesNextModBtn" onclick="nextNotesModule()">
+                            Next Subtopic →
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="notes-cafe.js"></script>
+</body>
+</html>

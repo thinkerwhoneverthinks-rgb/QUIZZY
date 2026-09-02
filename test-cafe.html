@@ -49,6 +49,7 @@
         <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
         <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
         <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="notes-cafe.html"><span class="mi-ico">📖</span> Notes Cafe</a>
         <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
         <a href="#" onclick="showTestHistory(); toggleMenu(); return false;"><span class="mi-ico">📊</span> Test History</a>
 
@@ -99,38 +100,14 @@
 
     <!-- ===== SCREEN: CUSTOM TEST BUILDER ===== -->
     <div class="tc-screen" id="scCustom">
-        <div class="tc-wrap">
+        <div class="tc-wrap" style="padding-bottom:5rem;">
             <button class="tc-back-link" onclick="goTestHome()">← Back to Test Cafe</button>
-            <section class="tc-hero" style="padding-top:1rem;">
+            <section class="tc-hero" style="padding-top:1rem;margin-bottom:1.5rem;">
                 <h1>⚙️ Custom Test</h1>
                 <p>Pick any section from any test — Physics from one paper, Chemistry from another, Zoology from a third — and combine them into one paper.</p>
             </section>
 
             <div id="customTree"></div>
-
-            <div class="ct-config">
-                <div class="ct-field">
-                    <label for="ctNameInput">Test name</label>
-                    <input type="text" id="ctNameInput" value="My Custom Test" placeholder="My Custom Test">
-                </div>
-                <div class="ct-field" style="flex:0 1 150px;">
-                    <label for="ctDurationInput">Duration (min)</label>
-                    <input type="number" id="ctDurationInput" min="1" value="60">
-                </div>
-                <label class="ct-check">
-                    <input type="checkbox" id="ctShuffleInput">
-                    Shuffle questions in each section
-                </label>
-            </div>
-
-            <div class="ct-summary" id="ctSummary">Pick at least one section to build your test.</div>
-
-            <div class="ct-actions">
-                <button class="btn btn-ghost" onclick="clearCustomSelection()">Clear selection</button>
-                <button class="btn btn-primary" id="ctStartBtn" onclick="buildAndPreviewCustomTest()" disabled>
-                    Build Test →
-                </button>
-            </div>
         </div>
     </div>
 
@@ -219,6 +196,7 @@
         <p>Quizzy v3.0 — Built for learners</p>
     </footer>
 
+    <script src="quiz-core.js"></script>
     <script src="test-engine.js"></script>
     <script src="test-history.js"></script>
     <script src="test-bookmarks.js"></script>

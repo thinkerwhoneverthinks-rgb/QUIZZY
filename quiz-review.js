@@ -229,8 +229,10 @@ function renderReview() {
                 </div>
                 <div class="question-tags">
                     ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                    ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                 </div>
                 ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+                ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${imageHTML}
                 ${answerHTML}
                 ${explanationHTML}

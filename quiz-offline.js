@@ -223,28 +223,71 @@ class QuizOfflineStorage {
         });
     }
 
+    // Helper: Collect all possible image URLs from an array of questions
+    extractAllImagesFromQuestions(questionsArray) {
+        const urls = new Set();
+        (questionsArray || []).forEach(q => {
+            if (!q) return;
+            if (q.image_url) urls.add(q.image_url);
+            if (Array.isArray(q.images)) {
+                q.images.forEach(u => { if (u) urls.add(u); });
+            }
+            if (q.explanation_image) urls.add(q.explanation_image);
+            if (Array.isArray(q.explanation_images)) {
+                q.explanation_images.forEach(u => { if (u) urls.add(u); });
+            }
+            if (Array.isArray(q.optionImages)) {
+                q.optionImages.forEach(u => { if (u) urls.add(u); });
+            }
+            if (q.matchLists) {
+                (q.matchLists.listI?.items || []).forEach(it => {
+                    const u = it.image_url || it.image || it.imageUrl;
+                    if (u) urls.add(u);
+                });
+                (q.matchLists.listII?.items || []).forEach(it => {
+                    const u = it.image_url || it.image || it.imageUrl;
+                    if (u) urls.add(u);
+                });
+            }
+        });
+        return Array.from(urls);
+    }
+
     // ==================== DOWNLOAD TOPIC WITH IMAGES ====================
     async downloadTopicForOffline(fileId, chapterId, topicId, questionsArray, progressCb) {
-        const total = questionsArray.filter(q => q.image_url).length;
+        const allImages = this.extractAllImagesFromQuestions(questionsArray);
+        const total = allImages.length;
         let done = 0;
 
-        for (const q of questionsArray) {
-            if (q.image_url) {
-                try {
-                    const cached = await this.isImageCached(q.image_url);
-                    if (!cached) {
-                        const resp = await fetch(q.image_url);
-                        if (resp.ok) {
-                            const blob = await resp.blob();
-                            await this.saveImage(q.image_url, blob);
+        let cdnCache = null;
+        try {
+            if ('caches' in window) {
+                cdnCache = await caches.open('quizzy-v14-cdn');
+            }
+        } catch (e) { /* ignore */ }
+
+        for (const url of allImages) {
+            try {
+                const cached = await this.isImageCached(url);
+                if (!cached && navigator.onLine) {
+                    const resp = await fetch(url);
+                    if (resp.ok) {
+                        const blob = await resp.blob();
+                        await this.saveImage(url, blob);
+                        if (cdnCache) {
+                            try {
+                                await cdnCache.put(new Request(url), new Response(blob.slice(0), {
+                                    headers: { 'Content-Type': blob.type || 'image/png' }
+                                }));
+                            } catch (err) { /* ignore cross-origin cache errors */ }
                         }
                     }
-                } catch (e) {
-                    console.warn('Failed to cache image:', q.image_url, e);
                 }
-                done++;
-                if (progressCb) progressCb(done, total);
+            } catch (e) {
+                console.warn('Failed to cache image for offline:', url, e);
             }
+            done++;
+            if (progressCb) progressCb(done, total);
         }
 
         // Save download metadata
@@ -280,27 +323,40 @@ class QuizOfflineStorage {
         // Save the quiz data JSON
         await this.saveQuizData(fileName, normalizedData);
 
-        // Collect all image URLs
-        const allImages = [];
+        // Collect all image URLs across all chapters and topics
+        const allQuestions = [];
         (normalizedData.chapters || []).forEach(ch => {
             (ch.topics || []).forEach(t => {
-                (t.questions || []).forEach(q => {
-                    if (q.image_url) allImages.push(q.image_url);
-                });
+                (t.questions || []).forEach(q => allQuestions.push(q));
             });
         });
 
+        const allImages = this.extractAllImagesFromQuestions(allQuestions);
         const total = allImages.length;
         let done = 0;
+
+        let cdnCache = null;
+        try {
+            if ('caches' in window) {
+                cdnCache = await caches.open('quizzy-v14-cdn');
+            }
+        } catch (e) { /* ignore */ }
 
         for (const url of allImages) {
             try {
                 const cached = await this.isImageCached(url);
-                if (!cached) {
+                if (!cached && navigator.onLine) {
                     const resp = await fetch(url);
                     if (resp.ok) {
                         const blob = await resp.blob();
                         await this.saveImage(url, blob);
+                        if (cdnCache) {
+                            try {
+                                await cdnCache.put(new Request(url), new Response(blob.slice(0), {
+                                    headers: { 'Content-Type': blob.type || 'image/png' }
+                                }));
+                            } catch (err) { /* ignore cross-origin cache errors */ }
+                        }
                     }
                 }
             } catch (e) {
@@ -312,8 +368,7 @@ class QuizOfflineStorage {
 
         await this.saveMetadata(`file__${fileName}`, {
             fileName,
-            totalQuestions: normalizedData.chapters.reduce((sum, ch) =>
-                sum + (ch.topics || []).reduce((s, t) => s + (t.questions || []).length, 0), 0),
+            totalQuestions: allQuestions.length,
             totalImages: total,
             downloadedAt: Date.now(),
             status: 'complete'

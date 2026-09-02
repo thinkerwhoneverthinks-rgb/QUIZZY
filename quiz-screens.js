@@ -246,7 +246,7 @@ function normalizeJsonData(rawData, fileName) {
             const sName = s.name || s.section || s.subject || s.title || `Section ${si + 1}`;
             const topicMap = {};
             (s.questions || s.qs || []).forEach(q => {
-                const subCat = q.sub_category || q.topic || 'General';
+                const subCat = q.sub_category || q.subtopic || q.topic || 'General';
                 if (!topicMap[subCat]) topicMap[subCat] = [];
                 topicMap[subCat].push(normalizeFlatQuestion({
                     ...q,
@@ -428,8 +428,15 @@ function normalizeFlatQuestion(q) {
         explanation: q.explanation || q.solution || '',
         explanation_image: q.explanation_image || q.solution_image || null,
         marking: q.marking || (q.marks ? { correct: q.marks, incorrect: q.negative || -1 } : null),
+        matchLists: q.matchLists || null,
+        images: Array.isArray(q.images) ? q.images : null,
         category: q.category || 'General',
-        sub_category: q.sub_category || 'General'
+        sub_category: q.sub_category || q.subtopic || 'General',
+        exam_name: q.exam_name || null,
+        exam_type: q.exam_type || null,
+        exam_year: q.exam_year || null,
+        exam_shift: q.exam_shift || null,
+        exam_reference: q.exam_reference || null
     };
 }
 

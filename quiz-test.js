@@ -231,8 +231,10 @@ function renderTestMode() {
                 </div>
                 <div class="question-tags">
                     ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                    ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                 </div>
                 ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+                ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${q.image_url && q.type !== 'image_mcq' ? `
                     <div class="image-question-wrap">
                         <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
