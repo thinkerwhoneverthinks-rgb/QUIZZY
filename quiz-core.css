@@ -994,6 +994,72 @@
         }
 
         /* ===== RESPONSIVE (this file had no breakpoints at all) ===== */
+        @media (max-width: 600px) {
+            /* Quiz header — keep Back + title + Grid on one row but compact */
+            .quiz-header {
+                padding: 0.55rem 0.7rem;
+                gap: 0.4rem;
+                border-radius: var(--radius-sm);
+            }
+            .quiz-back {
+                padding: 0.35rem 0.55rem;
+                font-size: 0.78rem;
+                gap: 0.25rem;
+            }
+            .quiz-title-wrap {
+                min-width: 0;
+                flex: 1;
+            }
+            .quiz-title {
+                font-size: 0.75rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .quiz-topic-name {
+                font-size: 0.65rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .grid-toggle-btn {
+                padding: 0.4rem 0.65rem;
+                font-size: 0.75rem;
+                gap: 0.2rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .quiz-progress {
+                font-size: 0.72rem;
+                padding: 0.28rem 0.55rem;
+                flex-shrink: 0;
+            }
+            .quiz-timer {
+                font-size: 0.75rem;
+                padding: 0.28rem 0.55rem;
+                flex-shrink: 0;
+            }
+
+            /* Chapter list cards */
+            .chapter-row { padding: 0.85rem 1rem; gap: 0.75rem; }
+            .chapter-icon { width: 42px; height: 42px; font-size: 1.4rem; border-radius: 12px; }
+            .chapter-title { font-size: 0.9rem; }
+
+            /* Subject rects (subject list page) */
+            .subject-rect { padding: 1rem 1.25rem; gap: 1rem; }
+            .subject-rect .rect-emoji { width: 46px; height: 46px; font-size: 1.9rem; border-radius: 12px; }
+            .subject-rect .rect-name { font-size: 0.95rem; }
+            .subject-rect .rect-meta { font-size: 0.75rem; }
+
+            /* History cards */
+            .history-card { padding: 0.9rem 1rem; }
+            .history-chapter { font-size: 0.92rem; }
+
+            /* Topic select list items */
+            .topic-select-item { padding: 0.6rem 0.85rem; gap: 0.6rem; }
+            .topic-select-item label { font-size: 0.85rem; }
+        }
+
         @media (max-width: 480px) {
             .sticky-actions { gap: 0.5rem; padding-left: 1rem; padding-right: 1rem; }
             .sticky-actions .btn { min-width: 0; font-size: 0.85rem; padding: 0.7rem 0.75rem; }
@@ -1006,6 +1072,17 @@
             .history-actions .btn { flex: 1 1 100%; }
             .chapter-row { padding: 0.85rem 1rem; gap: 0.75rem; }
             .chapter-icon { width: 40px; height: 40px; font-size: 1.35rem; }
+
+            /* Quiz header goes to 2-row layout on the smallest phones */
+            .quiz-header {
+                flex-wrap: wrap;
+            }
+            .quiz-title-wrap {
+                order: 3;
+                width: 100%;
+                text-align: left;
+                margin-top: 0.1rem;
+            }
         }
 
 

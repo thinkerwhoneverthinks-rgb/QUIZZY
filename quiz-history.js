@@ -280,11 +280,11 @@ async function resumeStudySession(id) {
         }
 
         if (currentMode === 'fullquiz') {
+            showScreen('screenFullQuiz');   // show first so render lands on a visible screen
             renderFullQuiz();
-            showScreen('screenFullQuiz');
         } else {
+            showScreen('screenQuiz');       // show first so render lands on a visible screen
             renderQuestion();
-            showScreen('screenQuiz');
         }
     } catch (e) {
         alert('Could not resume this session: ' + e.message);

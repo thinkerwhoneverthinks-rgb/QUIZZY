@@ -85,8 +85,8 @@ function restartQuiz() {
 // ==================== REVIEW MODE ====================
 function reviewTest() {
     reviewFilter = 'all';
+    showScreen('screenReview');   // show first so render lands on a visible screen
     renderReview();
-    showScreen('screenReview');
 }
 
 function renderReview() {

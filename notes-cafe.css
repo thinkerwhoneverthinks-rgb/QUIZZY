@@ -753,3 +753,115 @@
     .note-q-options { grid-template-columns: 1fr; }
     .notes-chapter-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== PHONE (≤ 600px) ===== */
+@media (max-width: 600px) {
+    /* Hero */
+    .notes-hero h1 { font-size: 1.5rem; }
+    .notes-hero p { font-size: 0.88rem; }
+
+    /* Reader top bar — keep back + TOC btn side-by-side, truncate title */
+    .notes-reader-bar-inner {
+        gap: 0.4rem;
+        flex-wrap: nowrap;
+    }
+    .notes-back-btn {
+        flex-shrink: 0;
+        padding: 0.45rem 0.65rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        max-width: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .notes-reader-bar-title {
+        font-size: 0.78rem;
+        /* Truncate long chapter-path strings */
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .notes-toc-btn {
+        flex-shrink: 0;
+        padding: 0.45rem 0.6rem;
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    /* Block cards */
+    .note-block-card {
+        padding: 1rem 0.9rem;
+    }
+
+    /* Block header: number badge + title side-by-side, title wraps naturally */
+    .note-block-header {
+        gap: 0.65rem;
+        align-items: flex-start;
+    }
+    .note-block-num {
+        width: 30px;
+        height: 30px;
+        font-size: 0.82rem;
+        flex-shrink: 0;
+    }
+    /* THIS is the fix for the long vertical block title (SS1) */
+    .note-block-title {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    .note-block-subtype { font-size: 0.68rem; }
+
+    /* Block body text */
+    .note-block-body {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    /* Tags */
+    .note-block-tags { gap: 0.3rem; }
+    .note-tag-badge { font-size: 0.68rem; padding: 0.18rem 0.5rem; }
+
+    /* Document title on reading screen */
+    .notes-doc-title { font-size: 1.25rem; letter-spacing: -0.2px; }
+    .notes-doc-breadcrumb { font-size: 0.75rem; }
+    .notes-doc-meta { font-size: 0.85rem; }
+
+    /* PYQ options */
+    .note-q-options { grid-template-columns: 1fr; gap: 0.55rem; }
+    .note-q-opt { font-size: 0.88rem; padding: 0.7rem 0.85rem; }
+    .note-q-prompt { font-size: 0.95rem; }
+
+    /* Tables */
+    .note-table-wrap { margin: 0.75rem -0.1rem; }
+    .note-table th, .note-table td { padding: 0.5rem 0.65rem; font-size: 0.85rem; }
+
+    /* Chapter cards */
+    .notes-chap-title { font-size: 1rem; }
+    .notes-chap-meta { font-size: 0.78rem; }
+
+    /* Bottom navigation */
+    .notes-nav-footer { flex-wrap: wrap; gap: 0.6rem; }
+    .notes-nav-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.85rem;
+        justify-content: center;
+    }
+
+    /* TOC drawer on mobile */
+    .notes-toc-drawer { width: 100vw; max-height: 78vh; }
+    .notes-toc-drawer-title { font-size: 1rem; }
+    .notes-sidebar-item { font-size: 0.84rem; padding: 0.6rem 0.7rem; }
+}
+
+/* ===== VERY SMALL PHONES (≤ 390px) ===== */
+@media (max-width: 390px) {
+    .notes-back-btn { max-width: 70px; font-size: 0.75rem; }
+    .notes-reader-bar-title { font-size: 0.72rem; }
+    .note-block-title { font-size: 0.88rem; }
+    .notes-doc-title { font-size: 1.1rem; }
+}

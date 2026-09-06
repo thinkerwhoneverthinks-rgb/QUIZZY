@@ -565,9 +565,9 @@ function startCustomTest() {
     testStartTime = Date.now();
 
     toggleCtDrawer(false);
+    showScreen('screenTestMode');   // show first so render lands on a visible screen
     renderTestMode();
     startTestTimer();
-    showScreen('screenTestMode');
 }
 
 async function downloadCustomTestForOffline(btnElement) {

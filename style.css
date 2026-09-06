@@ -109,7 +109,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* NOTE: Keep transition scoped. Do NOT add opacity/transform here — that
+       would fight the screen fadeIn animation and cause the blink/flash. */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Prevent the universal transition above from fighting .screen display changes.
+   Screens switch instantly (display:none/block) and fade via @keyframes, so
+   they must not carry an inherited CSS transition on opacity or visibility. */
+.screen, .screen * {
+    transition: none !important;
+}
+/* Re-allow transitions on interactive children inside active screens. */
+.screen.active .mcq-option,
+.screen.active .subject-rect,
+.screen.active .chapter-row,
+.screen.active .btn,
+.screen.active button,
+.screen.active a {
+    transition: background-color 0.2s ease, color 0.2s ease,
+                border-color 0.2s ease, box-shadow 0.2s ease,
+                transform 0.2s ease, opacity 0.2s ease !important;
 }
 
 body {
@@ -1312,6 +1332,10 @@ a:hover {
     .navbar {
         padding: 0.75rem 1rem;
     }
+    /* Tighter container on phones — gives ~8px each side instead of 24px */
+    .container {
+        padding: 0 0.85rem;
+    }
     .nav-links {
         gap: 1rem;
     }
@@ -1340,4 +1364,28 @@ a:hover {
         padding: 0.75rem 1rem;
         min-width: 75px;
     }
+
+    /* Question text — prevent long physics/chemistry terms from overflowing */
+    .question-text {
+        font-size: 1rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Quiz top-bar action row — allow wrapping */
+    .quiz-actions-thin {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    /* Button sizes — touch-friendly minimum */
+    .btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.85rem;
+    }
+    .btn-sm {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.78rem;
+    }
 }
+

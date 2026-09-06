@@ -125,9 +125,9 @@ function startTestMode() {
     testStartTime = Date.now();
     testSubmitted = false;
 
+    showScreen('screenTestMode');   // show first so render lands on a visible screen
     renderTestMode();
     startTestTimer();
-    showScreen('screenTestMode');
 }
 
 function shuffleArray(array) {

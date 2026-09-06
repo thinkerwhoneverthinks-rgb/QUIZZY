@@ -119,8 +119,13 @@ function safeHtml(text) {
         s = s.replace(/\n/g, '<br>');
     }
 
-    // 7. Auto-wrap bare LaTeX superscript/subscript tokens that are outside $...$ delimiters.
-    //    e.g. "A^{2} $-$ B^{2}C^{2}" → "$A^{2}$ $-$ $B^{2}C^{2}$"
+    // 6.5. Ensure \begin{aligned|gathered|matrix|cases} blocks are properly enclosed in $$ ... $$
+    // Fix cases where opening $$ is missing (e.g. "\begin{aligned} ... \end{aligned}$$")
+    s = s.replace(/(^|[^$])\\begin\{(aligned|gathered|matrix|cases)\}([\s\S]*?)\\end\{\2\}\$\$?/g, '$1$$\\begin{$2}$3\\end{$2}$$');
+    // Fix cases where no $$ delimiters exist around the environment
+    s = s.replace(/(^|[^$])\\begin\{(aligned|gathered|matrix|cases)\}([\s\S]*?)\\end\{\2\}(?!\$)/g, '$1$$\\begin{$2}$3\\end{$2}$$');
+
+    // 7. Auto-wrap bare LaTeX tokens that are outside $...$ delimiters.
     //    Split on existing math delimiters AND HTML tags, so tags (like <img src="...">) are never corrupted
     const mathParts = s.split(/(<[^>]+>|\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g);
     s = mathParts.map(part => {
@@ -130,10 +135,14 @@ function safeHtml(text) {
             return part;
         }
         if (/[\\^_]/.test(part)) {
-            // Wrap tokens: sequences of word chars, ^{...}, _{...}, \cmd{...} not already in $
+            // Wrap entire formulas with \left...\right together if outside $ delimiters
+            if (part.includes('\\left') && part.includes('\\right')) {
+                part = part.replace(/((?:[A-Za-z0-9_^{}\\]+\s*=\s*)?[A-Za-z0-9_^{}\\]*\s*\\(?:sin|cos|tan|cot|sec|csc|ln|log|exp)?\s*[A-Za-z0-9_^{}\\]*\s*\\left[\(\[\{\|\.][^\n]*?\\right[\)\]\}\|\.]|\\left[\(\[\{\|\.][^\n]*?\\right[\)\]\}\|\.])/g, '$$$1$$');
+            }
+            // Wrap tokens: sequences of word chars, ^{...}, _{...}
             part = part.replace(/([A-Za-z0-9]+(?:\^\{[^{}]*\}|_\{[^{}]*\}|[\^_][A-Za-z0-9])+(?:\^\{[^{}]*\}|_\{[^{}]*\}|[\^_][A-Za-z0-9])*)/g, '$$$1$$');
-            // Wrap isolated \command{...} patterns
-            part = part.replace(/(\\[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)/g, '$$$1$$');
+            // Wrap isolated \command{...} patterns (excluding delimiters, environments, and text operators)
+            part = part.replace(/(\\(?!left|right|begin|end|cdot|to|pm|mp|times|div|infty|ldots|dots|vdots|cdots)[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)/g, '$$$1$$');
         }
         return part;
     }).join('');

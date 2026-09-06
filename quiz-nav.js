@@ -39,15 +39,15 @@ function showQuiz(startIndex = 0) {
     if (!currentChapter) { showChapters(); return; }
     currentQIndex = startIndex;
     userAnswers = {};
+    showScreen('screenQuiz');   // show first so render lands on a visible screen
     renderQuestion();
-    showScreen('screenQuiz');
 }
 
 function showFullQuiz() {
     if (!currentChapter) { showChapters(); return; }
     userAnswers = {};
+    showScreen('screenFullQuiz');   // show first so render lands on a visible screen
     renderFullQuiz();
-    showScreen('screenFullQuiz');
 }
 
 function showTestConfig() {
@@ -286,13 +286,12 @@ function loadNextTopicOrChapter() {
     currentQIndex = 0;
 
     if (currentMode === 'fullquiz') {
+        showScreen('screenFullQuiz');   // show first so render lands on a visible screen
         renderFullQuiz();
-        showScreen('screenFullQuiz');
     } else {
+        showScreen('screenQuiz');       // show first so render lands on a visible screen
         renderQuestion();
-        showScreen('screenQuiz');
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ==================== INIT ====================

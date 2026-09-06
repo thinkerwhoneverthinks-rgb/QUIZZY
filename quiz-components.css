@@ -1838,3 +1838,133 @@
     gap: 0.4rem;
     flex-shrink: 0;
 }
+
+/* ================================================================
+   MOBILE RESPONSIVE — Quiz Components
+   Fixes SS1 (vertical block title), SS2 (breadcrumb overflow),
+   SS3 (integer input + check button overflow), and general
+   phone-layout polish.
+   ================================================================ */
+
+/* --- 600px and below --- */
+@media (max-width: 600px) {
+
+    /* ---- Breadcrumb bar (SS2): truncate the URL path text ---------- */
+    .breadcrumb-bar {
+        gap: 0.5rem;
+        padding: 0.55rem 0.75rem;
+        flex-wrap: nowrap;
+    }
+    .breadcrumb-back {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+    .breadcrumb-path {
+        /* Allow it to shrink and clip the long jee-chapterwise/... string */
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;        /* Override flex so ellipsis works */
+        font-size: 0.78rem;
+        color: var(--accent);
+    }
+    .breadcrumb-item, .breadcrumb-sep { display: inline; }
+
+    /* ---- Integer input + Check button (SS3) ----------------------- */
+    /* Stack the input on top and make the button full-width on very
+       narrow phones so neither element is clipped */
+    .int-input-wrap {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .int-input {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        font-size: 0.95rem;
+    }
+    .int-check-btn {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* ---- Question card header ------------------------------------- */
+    .question-card-header {
+        gap: 0.4rem;
+    }
+    .question-card-top-actions {
+        gap: 0.35rem;
+        flex-wrap: wrap;
+    }
+
+    /* ---- MCQ options ---------------------------------------------- */
+    .mcq-option {
+        padding: 0.75rem 0.85rem;
+        gap: 0.6rem;
+        font-size: 0.88rem;
+    }
+
+    /* ---- Nav buttons (Prev / Next) --------------------------------- */
+    .nav-btn {
+        padding: 0.65rem 1rem;
+        font-size: 0.83rem;
+        gap: 0.35rem;
+    }
+
+    /* ---- Question tags (topic / exam) ------------------------------ */
+    .question-topic-tag,
+    .question-exam-tag {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.55rem;
+    }
+
+    /* ---- Explanation box ------------------------------------------ */
+    .explanation-box, .q-explain {
+        padding: 0.85rem 0.9rem;
+    }
+    .explanation-box p, .explanation-text,
+    .q-explain p, .q-explain-text {
+        font-size: 0.84rem;
+    }
+
+    /* ---- Bookmark panel ------------------------------------------- */
+    .bookmark-panel {
+        width: 96%;
+        max-height: 88vh;
+    }
+
+    /* ---- Custom-test builder drawer on phone ----------------------- */
+    .ct-builder { padding-bottom: 7rem; }
+}
+
+/* --- 480px and below (very small phones) --- */
+@media (max-width: 480px) {
+
+    /* Integer input stacked layout (already column above, tighten padding) */
+    .int-input { padding: 0.75rem 0.85rem; }
+    .int-check-btn { padding: 0.75rem 0.85rem; font-size: 0.88rem; }
+
+    /* Question card */
+    .question-card { padding: 1rem 0.85rem; }
+    .question-card-header { gap: 0.35rem; padding-bottom: 0.65rem; margin-bottom: 0.65rem; }
+    .question-number { font-size: 0.95rem; }
+
+    /* MCQ letter bubble */
+    .mcq-letter { width: 24px; height: 24px; font-size: 0.7rem; }
+
+    /* Question text */
+    .question-text { font-size: 0.94rem; line-height: 1.65; }
+
+    /* Breadcrumb — even shorter */
+    .breadcrumb-path { font-size: 0.72rem; }
+
+    /* Review */
+    .review-filter-btn { padding: 0.4rem 0.75rem; font-size: 0.75rem; }
+
+    /* Image cap on tiny screens */
+    .question-image { max-height: 28vh; }
+
+    /* KaTeX math display horizontal scroll */
+    .katex-display { overflow-x: auto; padding-bottom: 0.25rem; }
+}

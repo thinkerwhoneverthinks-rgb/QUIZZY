@@ -244,7 +244,10 @@ function resolveParent(manifest, underPath, dryRun) {
 
 function collectFiles(node, out) {
     out = out || [];
-    (node.files || []).forEach(f => { if (!out.includes(f)) out.push(f); });
+    (node.files || []).forEach(f => {
+        const p = typeof f === 'object' ? (f.path || f.file || '') : f;
+        if (p && !out.includes(p)) out.push(p);
+    });
     (node.subsections || []).forEach(s => collectFiles(s, out));
     return out;
 }
@@ -258,7 +261,8 @@ function printTree(node, depth) {
         printTree(s, depth + 1);
     });
     (node.files || []).forEach(f => {
-        console.log(`${pad}  📝 ${path.basename(f).replace(/\.json$/i, '')}`);
+        const p = typeof f === 'object' ? (f.displayName || f.name || f.path || '') : f;
+        console.log(`${pad}  📝 ${path.basename(String(p)).replace(/\.json$/i, '')}`);
     });
 }
 
