@@ -22,20 +22,34 @@ function showTcScreen(id) {
 }
 
 function tcTypeset(el) {
-    if (!el || typeof renderMathInElement === 'undefined') return;
-    setTimeout(() => {
-        try {
-            renderMathInElement(el, {
-                delimiters: [
-                    { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: '\\[', right: '\\]', display: true },
-                    { left: '\\(', right: '\\)', display: false }
-                ],
-                throwOnError: false
-            });
-        } catch (e) { /* ignore */ }
-    }, 30);
+    if (!el) return;
+    const render = () => {
+        if (typeof renderMathInElement !== 'undefined') {
+            try {
+                renderMathInElement(el, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false },
+                        { left: '\\[', right: '\\]', display: true },
+                        { left: '\\(', right: '\\)', display: false }
+                    ],
+                    throwOnError: false
+                });
+            } catch (e) { /* ignore */ }
+        }
+    };
+
+    if (typeof renderMathInElement !== 'undefined') {
+        render();
+    } else {
+        const interval = setInterval(() => {
+            if (typeof renderMathInElement !== 'undefined') {
+                clearInterval(interval);
+                render();
+            }
+        }, 25);
+        setTimeout(() => clearInterval(interval), 4000);
+    }
 }
 
 // ==================== BOOT ====================
@@ -1277,7 +1291,8 @@ function renderSolutionBlock(q) {
     if (Array.isArray(q.explanation_images)) {
         q.explanation_images.forEach(img => { if (img && expImages.indexOf(img) === -1) expImages.push(img); });
     }
-    if (!hasExp && expImages.length === 0) {
+    const hasVideo = Boolean(q.video && (q.video.embed_url || q.video.url));
+    if (!hasExp && expImages.length === 0 && !hasVideo) {
         return `<div class="q-explain empty">No explanation was provided for this question.</div>`;
     }
     return `
@@ -1289,6 +1304,7 @@ function renderSolutionBlock(q) {
                     ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy"></div>`).join('')}
                 </div>
             ` : ''}
+            ${hasVideo && typeof renderVideoFacade === 'function' ? renderVideoFacade(q.video, 'tc-' + (q.id || Math.random())) : ''}
         </div>`;
 }
 

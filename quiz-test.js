@@ -233,7 +233,7 @@ function renderTestMode() {
                     ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
                     ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                 </div>
-                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+                ${q.question ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(q.question) : escapeHtml(q.question)}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${q.image_url && q.type !== 'image_mcq' ? `
                     <div class="image-question-wrap">
@@ -245,19 +245,19 @@ function renderTestMode() {
         `;
     }).join('');
 
-    setTimeout(() => {
-        if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(container, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false},
-                    {left: '\\[', right: '\\]', display: true},
-                    {left: '\\(', right: '\\)', display: false}
-                ],
-                throwOnError: false
-            });
-        }
-    }, 100);
+    if (typeof typesetMath === 'function') {
+        typesetMath(container);
+    } else if (typeof renderMathInElement !== 'undefined') {
+        renderMathInElement(container, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });
+    }
 
     loadOfflineImagesInContainer(container);
 }

@@ -261,6 +261,7 @@ function normalizeTestQuestion(q, index, sectionMarking) {
         explanation: q.explanation || q.solution || '',
         explanation_image: expImages[0] || null,
         explanation_images: expImages,
+        video: q.video || null,
         marking: marking
     };
 

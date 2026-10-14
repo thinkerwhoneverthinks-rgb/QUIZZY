@@ -1,12 +1,15 @@
 // ==================== NAVIGATION ====================
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
     window.scrollTo(0, 0);
-    // Re-render math after screen change
-    setTimeout(() => {
-        if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(document.body, {
+    // Typeset math on target screen synchronously without delay
+    if (target) {
+        if (typeof typesetMath === 'function') {
+            typesetMath(target);
+        } else if (typeof renderMathInElement !== 'undefined') {
+            renderMathInElement(target, {
                 delimiters: [
                     {left: '$$', right: '$$', display: true},
                     {left: '$', right: '$', display: false},
@@ -16,7 +19,7 @@ function showScreen(id) {
                 throwOnError: false
             });
         }
-    }, 100);
+    }
 }
 
 function showSubjects() {

@@ -231,7 +231,7 @@ function renderReview() {
                     ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
                     ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                 </div>
-                ${q.question ? `<div class="question-text">${escapeHtml(q.question)}</div>` : ''}
+                ${q.question ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(q.question) : escapeHtml(q.question)}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${imageHTML}
                 ${answerHTML}
@@ -242,19 +242,19 @@ function renderReview() {
 
     container.innerHTML = html || '<p style="text-align:center;color:var(--text-muted);padding:2rem;">No questions match this filter.</p>';
 
-    setTimeout(() => {
-        if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(container, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false},
-                    {left: '\\[', right: '\\]', display: true},
-                    {left: '\\(', right: '\\)', display: false}
-                ],
-                throwOnError: false
-            });
-        }
-    }, 100);
+    if (typeof typesetMath === 'function') {
+        typesetMath(container);
+    } else if (typeof renderMathInElement !== 'undefined') {
+        renderMathInElement(container, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError: false
+        });
+    }
 
     loadOfflineImagesInContainer(container);
 }

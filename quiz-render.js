@@ -178,34 +178,106 @@ function buildMatchLists(matchLists) {
     `;
 }
 
+function renderVideoFacade(video, id) {
+    if (!video || (!video.embed_url && !video.url)) return '';
+    let embedUrl = video.embed_url || '';
+    if (!embedUrl && video.url) {
+        const m = String(video.url).match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+        embedUrl = m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : video.url;
+    }
+    const thumb = video.thumbnail || (video.image || '');
+    const duration = video.duration ? `<span class="solution-video-time-tag">⏱ ${escapeHtml(video.duration)}</span>` : '';
+    const vId = 'video-container-' + String(id || Math.random()).replace(/[^a-zA-Z0-9_-]/g, '_');
+
+    return `
+        <div class="solution-video-card" id="${vId}">
+            <div class="solution-video-facade" onclick="playSolutionVideo('${vId}', '${escapeHtmlAttr(embedUrl)}')">
+                ${thumb ? `<img src="${escapeHtmlAttr(thumb)}" alt="Video Solution" class="solution-video-thumb" loading="lazy">` : ''}
+                <div class="solution-video-play-btn" title="Click to play video solution">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="margin-left: 2px;">
+                        <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/>
+                    </svg>
+                </div>
+                ${duration}
+            </div>
+            <div class="solution-video-bar" onclick="playSolutionVideo('${vId}', '${escapeHtmlAttr(embedUrl)}')">
+                <div class="solution-video-bar-left">
+                    <span class="solution-video-bar-icon">▶</span>
+                    <span class="solution-video-bar-title">Watch Video Solution</span>
+                </div>
+                <span class="solution-video-bar-hint">Plays right here</span>
+            </div>
+        </div>
+    `;
+}
+
+function playSolutionVideo(containerId, embedUrl) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const sep = embedUrl.includes('?') ? '&' : '?';
+    const autoplayUrl = embedUrl + sep + 'autoplay=1&rel=0';
+    container.innerHTML = `
+        <div class="solution-video-iframe-wrap">
+            <iframe src="${autoplayUrl}" 
+                    title="Video Solution" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    `;
+}
+window.playSolutionVideo = playSolutionVideo;
+window.renderVideoFacade = renderVideoFacade;
+
 function renderExplanationBlock(q, revealed) {
     const expText = getActiveExplanationText(q);
-    if (!expText && !q.explanation_image) return '';
+    const hasVideo = Boolean(q.video && (q.video.embed_url || q.video.url));
+    if (!expText && !q.explanation_image && !hasVideo) return '';
     return `
         <div class="explanation-box ${revealed ? 'show' : ''}">
             <h4>💡 Explanation</h4>
             ${expText ? `<div class="explanation-text" style="line-height: 1.7; margin-top: 0.5rem;">${safeHtml(expText)}</div>` : ''}
             ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
+            ${hasVideo ? renderVideoFacade(q.video, q.id) : ''}
         </div>
     `;
 }
 
 function typesetMath(el) {
     if (!el) return;
-    setTimeout(() => {
+    const render = () => {
         if (typeof renderMathInElement !== 'undefined') {
-            renderMathInElement(el, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false},
-                    {left: '\\[', right: '\\]', display: true},
-                    {left: '\\(', right: '\\)', display: false}
-                ],
-                throwOnError: false
-            });
+            try {
+                renderMathInElement(el, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            } catch (e) {
+                console.warn('typesetMath error:', e);
+            }
         }
-    }, 50);
+    };
+
+    if (typeof renderMathInElement !== 'undefined') {
+        // Run SYNCHRONOUSLY — no setTimeout delay — before browser paints the frame
+        render();
+    } else {
+        // Cold start fallback: only if KaTeX script hasn't finished loading yet
+        const interval = setInterval(() => {
+            if (typeof renderMathInElement !== 'undefined') {
+                clearInterval(interval);
+                render();
+            }
+        }, 25);
+        setTimeout(() => clearInterval(interval), 4000);
+    }
 }
+window.typesetMath = typesetMath;
 
 /* Redraw a single card wherever it currently lives (practice or full quiz). */
 function refreshQuestionCard(idx) {
@@ -314,7 +386,11 @@ function renderImageMCQ(q, idx) {
 }
 
 function updateCardInCurrentMode(idx) {
-    if (currentMode === 'fullquiz') {
+    /* Use the surgical in-place reveal if the function exists (loaded from
+       quiz-interact.js).  Falls back to the old full-rebuild approach. */
+    if (typeof _applyRevealInPlace === 'function') {
+        _applyRevealInPlace(idx);
+    } else if (currentMode === 'fullquiz') {
         refreshQuestionCard(idx);
     } else {
         renderQuestion();

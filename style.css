@@ -109,6 +109,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
     /* NOTE: Keep transition scoped. Do NOT add opacity/transform here — that
        would fight the screen fadeIn animation and cause the blink/flash. */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -122,6 +123,11 @@
 }
 /* Re-allow transitions on interactive children inside active screens. */
 .screen.active .mcq-option,
+.screen.active .mcq-letter,
+.screen.active .mcq-flag,
+.screen.active .show-answer-btn,
+.screen.active .explanation-box,
+.screen.active .fib-answer-box,
 .screen.active .subject-rect,
 .screen.active .chapter-row,
 .screen.active .btn,
@@ -775,6 +781,8 @@ a:hover {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     font-weight: 600;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .option-row {

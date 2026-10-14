@@ -29,20 +29,34 @@ function safeNotesHtml(text) {
 
 // Typeset Math in container
 function typesetNotesMath(el) {
-    if (!el || typeof renderMathInElement === 'undefined') return;
-    setTimeout(() => {
-        try {
-            renderMathInElement(el, {
-                delimiters: [
-                    { left: '$$', right: '$$', display: true },
-                    { left: '$', right: '$', display: false },
-                    { left: '\\[', right: '\\]', display: true },
-                    { left: '\\(', right: '\\)', display: false }
-                ],
-                throwOnError: false
-            });
-        } catch (e) { /* ignore */ }
-    }, 40);
+    if (!el) return;
+    const render = () => {
+        if (typeof renderMathInElement !== 'undefined') {
+            try {
+                renderMathInElement(el, {
+                    delimiters: [
+                        { left: '$$', right: '$$', display: true },
+                        { left: '$', right: '$', display: false },
+                        { left: '\\[', right: '\\]', display: true },
+                        { left: '\\(', right: '\\)', display: false }
+                    ],
+                    throwOnError: false
+                });
+            } catch (e) { /* ignore */ }
+        }
+    };
+
+    if (typeof renderMathInElement !== 'undefined') {
+        render();
+    } else {
+        const interval = setInterval(() => {
+            if (typeof renderMathInElement !== 'undefined') {
+                clearInterval(interval);
+                render();
+            }
+        }, 25);
+        setTimeout(() => clearInterval(interval), 4000);
+    }
 }
 
 // Load manifest

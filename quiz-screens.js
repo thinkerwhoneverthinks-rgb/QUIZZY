@@ -427,6 +427,7 @@ function normalizeFlatQuestion(q) {
         answer: q.answer !== undefined ? String(q.answer) : (typeof q.correct_answer === 'string' ? q.correct_answer : String(q.correct_answer || '')),
         explanation: q.explanation || q.solution || '',
         explanation_image: q.explanation_image || q.solution_image || null,
+        video: q.video || null,
         marking: q.marking || (q.marks ? { correct: q.marks, incorrect: q.negative || -1 } : null),
         matchLists: q.matchLists || null,
         images: Array.isArray(q.images) ? q.images : null,
