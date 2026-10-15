@@ -218,11 +218,36 @@ def convert_single_book(zip_path, category):
                 if not converted_questions:
                     continue
                     
+                # Group topics
+                unique_topics = []
+                topic_map = {}
+                for cq in converted_questions:
+                    t = (cq.get('topic') or exercise_name).strip()
+                    if t not in topic_map:
+                        unique_topics.append(t)
+                        topic_map[t] = []
+                    topic_map[t].append(cq)
+
+                seen = set()
+                last = None
+                is_contiguous = True
+                for cq in converted_questions:
+                    t = (cq.get('topic') or exercise_name).strip()
+                    if t != last:
+                        if t in seen:
+                            is_contiguous = False
+                            break
+                        seen.add(t)
+                        last = t
+
+                new_topics = [{"topic": t, "questions": topic_map[t]} for t in unique_topics]
+                desc = f"{exercise_name} · {chapter_title} ({book_name})"
+
                 quizzy_file_data = {
                     "id": f"{book_slug}-{chapter_slug}-{exercise_slug}",
                     "name": exercise_name,
                     "displayName": exercise_name,
-                    "description": f"{exercise_name} · {chapter_title} ({book_name})",
+                    "description": desc,
                     "duration": max(30, len(converted_questions) * 2),
                     "marking": { "correct": 4, "incorrect": -1 },
                     "chapters": [
@@ -230,12 +255,7 @@ def convert_single_book(zip_path, category):
                             "id": f"{book_slug}-{chapter_slug}-{exercise_slug}-ch",
                             "name": exercise_name,
                             "icon": "📘",
-                            "topics": [
-                                {
-                                    "topic": "All Questions",
-                                    "questions": converted_questions
-                                }
-                            ]
+                            "topics": new_topics
                         }
                     ],
                     "sections": [

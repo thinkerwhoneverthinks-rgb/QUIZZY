@@ -65,6 +65,9 @@ function showResults() {
 
     closeGrid();
     showScreen('screenResults');
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenResults' });
+    }
 }
 
 function restartQuiz() {
@@ -86,6 +89,9 @@ function restartQuiz() {
 function reviewTest() {
     reviewFilter = 'all';
     showScreen('screenReview');   // show first so render lands on a visible screen
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenReview' });
+    }
     renderReview();
 }
 
@@ -208,14 +214,16 @@ function renderReview() {
             `;
         }
 
-        const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
+        const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
+        const qText = typeof getActiveQuestionText === 'function' ? getActiveQuestionText(q) : (q.question || '');
+        const expText = typeof getActiveExplanationText === 'function' ? getActiveExplanationText(q) : (q.explanation || '');
 
         let explanationHTML = '';
-        if (q.explanation || q.explanation_image) {
+        if (expText || q.explanation_image) {
             explanationHTML = `
                 <div class="explanation-box show" style="margin-top:1rem;">
                     <h4>💡 Explanation</h4>
-                    ${q.explanation ? `<p>${escapeHtml(q.explanation)}</p>` : ''}
+                    ${expText ? `<div class="explanation-text" style="line-height:1.7;margin-top:0.5rem;">${typeof safeHtml === 'function' ? safeHtml(expText) : escapeHtml(expText)}</div>` : ''}
                     ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
                 </div>
             `;
@@ -224,14 +232,16 @@ function renderReview() {
         html += `
             <div class="review-question-card ${cardClass}">
                 <div class="question-card-header">
-                    <div class="question-number">Q. ${i + 1}</div>
+                    <div class="question-meta-group">
+                        <span class="question-number">Q. ${i + 1}</span>
+                        <span class="meta-dot">·</span>
+                        <span class="type-badge">${typeof getTypeLabel === 'function' ? getTypeLabel(q) : 'single'}</span>
+                        ${topicLabel ? `<span class="meta-dot">·</span><span class="question-topic-tag" title="${escapeHtml(topicLabel)}">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                        ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
+                    </div>
                     <div class="review-status-badge ${status}">${statusText}</div>
                 </div>
-                <div class="question-tags">
-                    ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
-                    ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
-                </div>
-                ${q.question ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(q.question) : escapeHtml(q.question)}</div>` : ''}
+                ${qText ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(qText) : escapeHtml(qText)}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${imageHTML}
                 ${answerHTML}

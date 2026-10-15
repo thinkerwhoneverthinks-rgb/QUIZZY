@@ -24,6 +24,9 @@ async function showCustomTestBuilder() {
     ctDrawerOpen = false;
     renderCustomTestBuilder();
     showScreen('screenCustomTest');
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenCustomTest' });
+    }
 }
 
 function ctCurrentNode() {

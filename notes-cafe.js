@@ -66,6 +66,9 @@ async function loadNotesManifest() {
         notesManifest = await res.json();
         renderSubjectTabs();
         renderChapterGrid();
+        try {
+            history.replaceState({ cafe: 'notes', notesScreen: 'home' }, '');
+        } catch (e) { /* ignore */ }
     } catch (e) {
         console.error('Failed to load notes manifest:', e);
         const grid = document.getElementById('notesChapterGrid');
@@ -179,6 +182,12 @@ async function openNotesChapter(filePath) {
         readerScreen.classList.add('active');
         window.scrollTo(0, 0);
 
+        if (!isNotesHistoryNavigating) {
+            try {
+                history.pushState({ cafe: 'notes', notesScreen: 'reader', filePath: filePath }, '');
+            } catch (err) { /* ignore */ }
+        }
+
         renderSidebarToc();
         renderActiveModule();
     } catch (e) {
@@ -189,10 +198,15 @@ async function openNotesChapter(filePath) {
 
 // Close Reader & Return to Grid
 function closeNotesReader() {
-    const readerScreen = document.getElementById('notesReaderScreen');
-    readerScreen.classList.remove('active');
-    document.getElementById('notesHomeScreen').style.display = 'block';
-    window.scrollTo(0, 0);
+    if (window.history.length > 1 && history.state && history.state.cafe === 'notes' && history.state.notesScreen === 'reader') {
+        window.history.back();
+    } else {
+        const readerScreen = document.getElementById('notesReaderScreen');
+        if (readerScreen) readerScreen.classList.remove('active');
+        const homeScreen = document.getElementById('notesHomeScreen');
+        if (homeScreen) homeScreen.style.display = 'block';
+        window.scrollTo(0, 0);
+    }
 }
 
 // Toggle Mobile Table of Contents Drawer
@@ -412,6 +426,35 @@ function prevNotesModule() {
 }
 
 // Boot
+let isNotesHistoryNavigating = false;
+
 document.addEventListener('DOMContentLoaded', () => {
     loadNotesManifest();
+});
+
+// ==================== POPSTATE ROUTING (MOBILE BACK BUTTON) ====================
+window.addEventListener('popstate', function (e) {
+    // 1. If TOC drawer or mobile menu is open, close it and stay in reader
+    if (typeof closeCurrentOverlay === 'function' && closeCurrentOverlay()) {
+        const readerActive = document.getElementById('notesReaderScreen') && document.getElementById('notesReaderScreen').classList.contains('active');
+        try {
+            history.pushState({ cafe: 'notes', notesScreen: readerActive ? 'reader' : 'home' }, '');
+        } catch (err) { /* ignore */ }
+        return;
+    }
+
+    // 2. If reader was open and user pressed back -> return to home screen
+    const readerScreen = document.getElementById('notesReaderScreen');
+    if (readerScreen && readerScreen.classList.contains('active')) {
+        isNotesHistoryNavigating = true;
+        try {
+            readerScreen.classList.remove('active');
+            const homeScreen = document.getElementById('notesHomeScreen');
+            if (homeScreen) homeScreen.style.display = 'block';
+            window.scrollTo(0, 0);
+        } finally {
+            isNotesHistoryNavigating = false;
+        }
+        return;
+    }
 });

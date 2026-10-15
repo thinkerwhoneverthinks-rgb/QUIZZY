@@ -1,4 +1,20 @@
-// ==================== NAVIGATION ====================
+// ==================== NAVIGATION & HISTORY ROUTING ====================
+let isQuizHistoryNavigating = false;
+
+function pushQuizHistory(state, replace) {
+    if (isQuizHistoryNavigating) return;
+    try {
+        if (replace) {
+            history.replaceState(state, '');
+        } else {
+            if (history.state && history.state.screen === state.screen && history.state.dirLength === state.dirLength) {
+                return;
+            }
+            history.pushState(state, '');
+        }
+    } catch (e) { /* ignore */ }
+}
+
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(id);
@@ -29,13 +45,18 @@ function showSubjects() {
     closeGrid();
     stopTestTimer();
     showScreen('screenSubjects');
+    pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: (typeof currentDirectory !== 'undefined' && currentDirectory) ? currentDirectory.length : 0 });
 }
 
 function showChapters() {
-    if (!currentSubject) { showSubjects(); return; }
     closeGrid();
-    renderChapters();
-    showScreen('screenChapters');
+    if (subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
+        renderChapters();
+        showScreen('screenChapters');
+        pushQuizHistory({ cafe: 'question', screen: 'screenChapters' });
+    } else {
+        showSubjects();
+    }
 }
 
 function showQuiz(startIndex = 0) {
@@ -44,6 +65,7 @@ function showQuiz(startIndex = 0) {
     userAnswers = {};
     showScreen('screenQuiz');   // show first so render lands on a visible screen
     renderQuestion();
+    pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' });
 }
 
 function showFullQuiz() {
@@ -51,6 +73,23 @@ function showFullQuiz() {
     userAnswers = {};
     showScreen('screenFullQuiz');   // show first so render lands on a visible screen
     renderFullQuiz();
+    pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' });
+}
+
+function switchQuizViewMode(mode) {
+    if (mode === currentMode) return;
+    currentMode = mode;
+    if (currentMode === 'onebyone') {
+        showScreen('screenQuiz');
+        renderQuestion();
+        pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' }, true);
+    } else if (currentMode === 'fullquiz') {
+        showScreen('screenFullQuiz');
+        renderFullQuiz();
+        pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' }, true);
+        const card = document.getElementById(`fullQ-${currentQIndex}`);
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function showTestConfig() {
@@ -59,6 +98,7 @@ function showTestConfig() {
     restoreAllQuestions();
     renderTestConfig();
     showScreen('screenTestConfig');
+    pushQuizHistory({ cafe: 'question', screen: 'screenTestConfig' });
 }
 
 // ==================== MODE SELECTION ====================
@@ -71,11 +111,32 @@ function selectMode(mode) {
     }
 }
 
+function renderModeLangPicker() {
+    const container = document.getElementById('modeLangPickerContainer');
+    if (!container) return;
+    const hasHi = questions && questions.some(q => q.translations && q.translations.hi);
+    if (!hasHi) {
+        container.innerHTML = '';
+        return;
+    }
+    container.innerHTML = `
+        <div style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--bg-card);border:1px solid var(--border);border-radius:50px;padding:0.3rem 0.8rem;box-shadow:var(--shadow-sm);">
+            <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted);">🌐 Language:</span>
+            <div class="lang-pill-group">
+                <button class="lang-pill ${currentLanguage === 'en' ? 'active' : ''}" onclick="setQuizLanguage('en'); renderModeLangPicker();">🇬🇧 English</button>
+                <button class="lang-pill ${currentLanguage === 'hi' ? 'active' : ''}" onclick="setQuizLanguage('hi'); renderModeLangPicker();">🇮🇳 हिन्दी</button>
+            </div>
+        </div>
+    `;
+}
+
 function showModeSelect() {
     if (!currentChapter) { showChapters(); return; }
     stopTestTimer();
     document.getElementById('modeSelectTitle').textContent = currentChapter.name;
+    renderModeLangPicker();
     showScreen('screenModeSelect');
+    pushQuizHistory({ cafe: 'question', screen: 'screenModeSelect' });
 }
 
 // ==================== TOPIC SELECTION (One-by-One & Full Quiz) ====================
@@ -93,6 +154,26 @@ function showTopicSelect() {
     restoreAllQuestions();
     renderTopicSelect();
     showScreen('screenTopicSelect');
+    pushQuizHistory({ cafe: 'question', screen: 'screenTopicSelect' });
+}
+
+let practiceOrder = 'topic'; // 'topic' or 'serial'
+
+function isExerciseTopicRearranged() {
+    if (!questions || questions.length <= 1) return false;
+    for (let i = 1; i < questions.length; i++) {
+        const prev = questions[i - 1].originalNumber;
+        const curr = questions[i].originalNumber;
+        if (typeof prev === 'number' && typeof curr === 'number' && curr < prev) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function setPracticeOrder(order) {
+    practiceOrder = order;
+    renderTopicSelect();
 }
 
 function renderTopicSelect() {
@@ -101,11 +182,11 @@ function renderTopicSelect() {
     // Header shows the chapter (e.g. "Conceptual Questions") + chosen mode.
     const titleEl = document.getElementById('topicSelectTitle');
     const subtitleEl = document.getElementById('topicSelectSubtitle');
+    const isRearranged = isExerciseTopicRearranged();
     if (titleEl) titleEl.textContent = currentChapter ? currentChapter.name : 'Select Topic';
     if (subtitleEl) {
-        subtitleEl.textContent = currentMode === 'fullquiz'
-            ? 'Full Quiz · serial order'
-            : 'One by One · serial order';
+        subtitleEl.textContent = (currentMode === 'fullquiz' ? 'Full Quiz' : 'One by One') +
+            ' · ' + (isRearranged ? (practiceOrder === 'serial' ? 'Original serial order' : 'Topic-wise') : 'Serial order');
     }
 
     if (!topics || topics.length === 0) {
@@ -116,12 +197,23 @@ function renderTopicSelect() {
     const totalSelected = selectedTopics.reduce((sum, idx) => sum + (topics[idx].questions ? topics[idx].questions.length : 0), 0);
     const allSelected = selectedTopics.length === topics.length;
 
+    const orderToggleHtml = isRearranged ? `
+        <div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.45rem 0.85rem;margin-bottom:0.75rem;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">Question Order:</span>
+            <div class="lang-pill-group">
+                <button class="lang-pill ${practiceOrder === 'topic' ? 'active' : ''}" onclick="setPracticeOrder('topic')">🗂️ Topic-wise</button>
+                <button class="lang-pill ${practiceOrder === 'serial' ? 'active' : ''}" onclick="setPracticeOrder('serial')">🔢 Original Serial</button>
+            </div>
+        </div>
+    ` : '';
+
     container.innerHTML = `
+        ${orderToggleHtml}
         <div class="topic-select-item select-all-row ${allSelected ? 'selected' : ''}" onclick="togglePracticeTopic('all')">
             <input type="checkbox" ${allSelected ? 'checked' : ''} onclick="event.stopPropagation(); togglePracticeTopic('all')">
             <div style="flex:1;">
                 <label style="font-weight:700;color:var(--accent);cursor:pointer;">✓ Select All Topics</label>
-                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">All ${questions.length} questions in serial order</div>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">All ${questions.length} questions ${isRearranged ? (practiceOrder === 'serial' ? '(Original serial order 1..' + questions.length + ')' : '(Grouped topic-wise)') : 'in serial order'}</div>
             </div>
             <span class="topic-meta-count">${questions.length} Qs</span>
         </div>
@@ -173,10 +265,10 @@ function togglePracticeTopic(index) {
 }
 
 function startPractice() {
-    // Build questions from selected topics in serial order
+    // Build questions from selected topics
     let filteredQuestions = [];
     if (selectedTopics.length > 0 && topics.length > 0) {
-        selectedTopics.sort((a, b) => a - b); // keep serial order
+        selectedTopics.sort((a, b) => a - b);
         selectedTopics.forEach(idx => {
             if (topics[idx] && topics[idx].questions) {
                 topics[idx].questions.forEach(q => {
@@ -187,6 +279,10 @@ function startPractice() {
     } else {
         // fallback: use all questions
         filteredQuestions = [...questions];
+    }
+
+    if (practiceOrder === 'serial' && filteredQuestions.some(q => typeof q.originalNumber === 'number')) {
+        filteredQuestions.sort((a, b) => (a.originalNumber || 0) - (b.originalNumber || 0));
     }
 
     questions = filteredQuestions;
@@ -297,6 +393,101 @@ function loadNextTopicOrChapter() {
     }
 }
 
-// ==================== INIT ====================
+// ==================== INIT & POPSTATE ROUTING ====================
 /* Theme + hamburger menu live in app-shell.js, which every page loads in
    <head> so the saved theme is applied before the first paint. */
+
+window.addEventListener('popstate', function (e) {
+    // 1. If an overlay/modal/drawer is open, close it and stay on current screen
+    if (typeof closeCurrentOverlay === 'function' && closeCurrentOverlay()) {
+        const activeScreen = document.querySelector('.screen.active');
+        const activeId = activeScreen ? activeScreen.id : 'screenSubjects';
+        pushQuizHistory({ cafe: 'question', screen: activeId, dirLength: (typeof currentDirectory !== 'undefined' && currentDirectory) ? currentDirectory.length : 0 });
+        return;
+    }
+
+    // 2. Guard active Timed Test
+    const activeScreen = document.querySelector('.screen.active');
+    if (activeScreen && (activeScreen.id === 'screenTest' || activeScreen.id === 'screenTestMode')) {
+        const leave = confirm('Are you sure you want to end the test? Your progress will be submitted.');
+        if (leave) {
+            if (typeof submitTest === 'function') submitTest();
+        } else {
+            pushQuizHistory({ cafe: 'question', screen: activeScreen.id });
+            return;
+        }
+        return;
+    }
+
+    // 3. State navigation
+    if (e.state && e.state.cafe === 'question') {
+        isQuizHistoryNavigating = true;
+        try {
+            switch (e.state.screen) {
+                case 'screenSubjects':
+                    if (typeof closeGrid === 'function') closeGrid();
+                    if (typeof stopTestTimer === 'function') stopTestTimer();
+                    const targetLen = typeof e.state.dirLength === 'number' ? e.state.dirLength : 0;
+                    if (typeof currentDirectory !== 'undefined' && currentDirectory.length !== targetLen) {
+                        currentDirectory = currentDirectory.slice(0, targetLen);
+                        if (currentDirectory.length === 0) {
+                            if (typeof manifestRoot !== 'undefined' && typeof renderTree === 'function') renderTree(manifestRoot);
+                        } else {
+                            if (typeof renderTree === 'function') renderTree(currentDirectory[currentDirectory.length - 1]);
+                        }
+                    }
+                    showScreen('screenSubjects');
+                    break;
+                case 'screenChapters':
+                    showChapters();
+                    break;
+                case 'screenModeSelect':
+                    showModeSelect();
+                    break;
+                case 'screenTopicSelect':
+                    showTopicSelect();
+                    break;
+                case 'screenTestConfig':
+                    showTestConfig();
+                    break;
+                case 'screenQuiz':
+                    showQuiz(typeof currentQIndex === 'number' ? currentQIndex : 0);
+                    break;
+                case 'screenFullQuiz':
+                    showFullQuiz();
+                    break;
+                case 'screenResults':
+                    if (typeof showResults === 'function') showResults();
+                    break;
+                case 'screenReview':
+                    if (typeof reviewTest === 'function') reviewTest();
+                    break;
+                case 'screenHistory':
+                    if (typeof showStudyHistory === 'function') showStudyHistory();
+                    break;
+                case 'screenCustomTest':
+                    if (typeof showCustomTestBuilder === 'function') showCustomTestBuilder();
+                    break;
+                default:
+                    showSubjects();
+                    break;
+            }
+        } finally {
+            isQuizHistoryNavigating = false;
+        }
+        return;
+    }
+
+    // 4. If e.state is null or popped past root:
+    if (typeof currentDirectory !== 'undefined' && currentDirectory && currentDirectory.length > 0) {
+        currentDirectory.pop();
+        if (currentDirectory.length === 0) {
+            if (typeof manifestRoot !== 'undefined' && typeof renderTree === 'function') renderTree(manifestRoot);
+        } else {
+            if (typeof renderTree === 'function') renderTree(currentDirectory[currentDirectory.length - 1]);
+        }
+        showScreen('screenSubjects');
+        pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: currentDirectory.length });
+        return;
+    }
+});

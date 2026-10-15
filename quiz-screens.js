@@ -1,6 +1,9 @@
 // ==================== NAVIGATION LOGIC ====================
 async function initNavigation() {
     showScreen('screenSubjects'); 
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: 0 }, true);
+    }
     try {
         const response = await fetch('data/manifest.json');
         manifestRoot = await response.json();
@@ -210,26 +213,36 @@ async function handleFileDownload(fileName, btn) {
 function enterFolder(sub) {
     currentDirectory.push(sub);
     renderTree(sub);
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: currentDirectory.length });
+    }
 }
 
 function goBackInTree() {
-    currentDirectory.pop();
-    if (currentDirectory.length === 0) {
-        renderTree(manifestRoot);
+    if (window.history.length > 1 && history.state && history.state.cafe === 'question' && history.state.dirLength > 0) {
+        window.history.back();
     } else {
-        renderTree(currentDirectory[currentDirectory.length - 1]);
+        currentDirectory.pop();
+        if (currentDirectory.length === 0) {
+            renderTree(manifestRoot);
+        } else {
+            renderTree(currentDirectory[currentDirectory.length - 1]);
+        }
     }
 }
 
 function goToRoot() {
     currentDirectory = [];
     renderTree(manifestRoot);
-    showScreen('screenSubjects');
+    showSubjects();
 }
 
 function goToLevel(levelIndex) {
     currentDirectory = currentDirectory.slice(0, levelIndex + 1);
     renderTree(currentDirectory[currentDirectory.length - 1]);
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: currentDirectory.length });
+    }
 }
 
 // ==================== JSON NORMALIZATION ====================
@@ -562,6 +575,7 @@ async function selectChapter(id) {
 
     selectedTopics = [];
     topicQuestionCounts = {};
+    currentPracticeOrder = 'topic';
     currentMode = 'onebyone';
     userAnswers = {};
     currentQIndex = 0;
@@ -570,14 +584,52 @@ async function selectChapter(id) {
 
 function backFromQuiz() {
     closeGrid();
-    if (subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
-        showChapters();
+    if (window.history.length > 1 && history.state && history.state.cafe === 'question' && history.state.screen && history.state.screen !== 'screenSubjects') {
+        window.history.back();
     } else {
-        showSubjects();
+        if (subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
+            showChapters();
+        } else {
+            showSubjects();
+        }
     }
 }
 
 // ==================== GRID & UI HELPERS ====================
+let currentPracticeOrder = 'topic'; // 'topic' or 'serial'
+
+function setGridOrder(order) {
+    currentPracticeOrder = order;
+    if (order === 'serial' && questions.some(q => typeof q.originalNumber === 'number')) {
+        questions.sort((a, b) => (a.originalNumber || 0) - (b.originalNumber || 0));
+    } else if (order === 'topic') {
+        if (topics && topics.length > 0) {
+            questions = topics.flatMap(t => (t.questions || []).map(q => ({ ...q, topicName: t.topic })));
+        }
+    }
+    renderQuestionGrid();
+    const activeScreen = document.querySelector('.screen.active');
+    if (activeScreen && activeScreen.id === 'screenFullQuiz' && typeof renderFullQuiz === 'function') {
+        renderFullQuiz();
+    } else if (typeof renderQuestion === 'function') {
+        renderQuestion();
+    }
+}
+
+function jumpToTopicFromGrid(val) {
+    if (val === 'ALL') {
+        jumpToQuestion(0);
+        return;
+    }
+    const idx = parseInt(val, 10);
+    if (isNaN(idx) || !topics || !topics[idx]) return;
+    const targetTopicName = topics[idx].topic;
+    const targetQIdx = questions.findIndex(q => (q.topic === targetTopicName || q.topicName === targetTopicName));
+    if (targetQIdx !== -1) {
+        jumpToQuestion(targetQIdx);
+    }
+}
+
 function renderQuestionGrid() {
     const body = document.getElementById('gridPanelBody');
     if (!body) return;
@@ -615,17 +667,46 @@ function renderQuestionGrid() {
         groups[topicName].push({ q, index: i });
     });
 
-    // Header: where these questions came from (file → chapter → topics)
-    const fileLabel = currentFileName
-        ? currentFileName.replace('.json', '').replace(/_/g, ' ').replace(/,/g, ', ')
-        : 'Custom Test';
     const chapterLabel = currentChapter ? currentChapter.name : 'Custom Test';
     const doneCount = questions.reduce((n, _, i) => n + (isDone(i) ? 1 : 0), 0);
     const topicCount = Object.keys(groups).length;
+    const hasHi = questions && questions.some(q => q.translations && q.translations.hi);
+    const langBarHtml = hasHi ? `
+        <div class="grid-lang-bar">
+            <span>🌐 Language:</span>
+            <div class="lang-pill-group">
+                <button class="lang-pill ${currentLanguage === 'en' ? 'active' : ''}" onclick="setQuizLanguage('en'); renderQuestionGrid();">EN</button>
+                <button class="lang-pill ${currentLanguage === 'hi' ? 'active' : ''}" onclick="setQuizLanguage('hi'); renderQuestionGrid();">HI</button>
+            </div>
+        </div>
+    ` : '';
+
+    const isRearranged = typeof isExerciseTopicRearranged === 'function' && isExerciseTopicRearranged();
+    const orderBarHtml = isRearranged ? `
+        <div class="grid-order-bar">
+            <span>🔀 Order:</span>
+            <div class="lang-pill-group">
+                <button class="lang-pill ${currentPracticeOrder === 'topic' ? 'active' : ''}" onclick="setGridOrder('topic')">🗂️ Topic-wise</button>
+                <button class="lang-pill ${currentPracticeOrder === 'serial' ? 'active' : ''}" onclick="setGridOrder('serial')">🔢 Original (1..${questions.length})</button>
+            </div>
+        </div>
+    ` : '';
+
+    const topicFilterHtml = (topics && topics.length > 1) ? `
+        <div class="grid-filter-bar">
+            <span>📂 Jump to Topic:</span>
+            <select class="grid-topic-select" id="gridTopicSelect" onchange="jumpToTopicFromGrid(this.value)">
+                <option value="ALL">All Topics (${questions.length} Qs)</option>
+                ${topics.map((t, i) => {
+                    const count = t.questions ? t.questions.length : 0;
+                    return `<option value="${i}">${escapeHtml(t.topic)} (${count} Qs)</option>`;
+                }).join('')}
+            </select>
+        </div>
+    ` : '';
 
     let html = `
         <div class="grid-context">
-            <div class="gc-crumb">📚 ${escapeHtml(fileLabel)}</div>
             <div class="gc-chapter">${escapeHtml(chapterLabel)}</div>
             <div class="gc-meta">
                 ${topicCount} topic${topicCount !== 1 ? 's' : ''} ·
@@ -633,6 +714,9 @@ function renderQuestionGrid() {
                 ${doneCount} ${isTestMode ? 'answered' : 'revealed'}
             </div>
         </div>
+        ${langBarHtml}
+        ${orderBarHtml}
+        ${topicFilterHtml}
         <div class="grid-legend">
             ${isTestMode ? '' : '<span><i class="lg-current"></i> Current</span>'}
             <span><i class="lg-answered"></i> ${isTestMode ? 'Answered' : 'Revealed'}</span>

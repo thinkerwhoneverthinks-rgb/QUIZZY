@@ -9,6 +9,23 @@
 
 const TC_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
+// ==================== HISTORY / POPSTATE ROUTING ====================
+let isTcHistoryNavigating = false;
+
+function pushTcHistory(state, replace) {
+    if (isTcHistoryNavigating) return;
+    try {
+        if (replace) {
+            history.replaceState(state, '');
+        } else {
+            if (history.state && history.state.tcScreen === state.tcScreen && history.state.dirLen === state.dirLen) {
+                return;
+            }
+            history.pushState(state, '');
+        }
+    } catch (e) { /* ignore */ }
+}
+
 function showTcScreen(id) {
     document.querySelectorAll('.tc-screen').forEach(s => s.classList.remove('active'));
     const el = document.getElementById(id);
@@ -62,8 +79,12 @@ async function initTestCafe() {
         testDirectory = [];
         renderTestTree();
         renderResumeBanner();
-        if (location.hash === '#history') showTestHistory();
-        else showTcScreen('scHome');
+        if (location.hash === '#history') {
+            showTestHistory();
+        } else {
+            showTcScreen('scHome');
+            pushTcHistory({ cafe: 'test', tcScreen: 'scHome', dirLen: 0 }, true);
+        }
     } catch (e) {
         console.error(e);
         showTcScreen('scHome');
@@ -173,16 +194,22 @@ function enterTestFolder(i) {
     if (!sub) return;
     testDirectory.push(sub);
     renderTestTree();
+    pushTcHistory({ cafe: 'test', tcScreen: 'scHome', dirLen: testDirectory.length });
 }
 
 function goBackTestTree() {
-    testDirectory.pop();
-    renderTestTree();
+    if (window.history.length > 1 && history.state && history.state.cafe === 'test' && history.state.dirLen > 0) {
+        window.history.back();
+    } else {
+        testDirectory.pop();
+        renderTestTree();
+    }
 }
 
 function goToTestLevel(i) {
     testDirectory = testDirectory.slice(0, i + 1);
     renderTestTree();
+    pushTcHistory({ cafe: 'test', tcScreen: 'scHome', dirLen: testDirectory.length });
 }
 
 function goTestHome() {
@@ -190,6 +217,7 @@ function goTestHome() {
     renderTestTree();
     renderResumeBanner();
     showTcScreen('scHome');
+    pushTcHistory({ cafe: 'test', tcScreen: 'scHome', dirLen: 0 });
 }
 
 /* One unfinished test can be parked at a time; surface it wherever the user
@@ -254,6 +282,7 @@ async function openTestDetail(fileEntry) {
 
         renderTestDetail(pendingTest, { kind: 'file', file: filePath });
         showTcScreen('scInstructions');
+        pushTcHistory({ cafe: 'test', tcScreen: 'scInstructions', filePath: filePath });
     } catch (e) {
         alert('Could not open that test: ' + e.message);
         showTcScreen('scHome');
@@ -442,6 +471,7 @@ function startPendingTest() {
 function showTestHistory() {
     renderTestHistory();
     showTcScreen('scHistory');
+    pushTcHistory({ cafe: 'test', tcScreen: 'scHistory' });
 }
 
 function renderTestHistory() {
@@ -535,6 +565,7 @@ async function showTestCustomBuilder() {
         ctTestDrawerOpen = false;
         renderCustomBuilder();
         showTcScreen('scCustom');
+        pushTcHistory({ cafe: 'test', tcScreen: 'scCustom', ctDirLen: 0 });
     } catch (e) {
         alert('Could not open the custom test builder: ' + e.message);
         showTcScreen('scHome');
@@ -985,6 +1016,7 @@ function openRunner() {
     renderRunnerChrome();
     renderQuestion();
     renderSidePanel();
+    pushTcHistory({ cafe: 'test', tcScreen: 'scRunner', mode: TS.mode });
 }
 
 /* Header and footer differ per mode: a live test needs a timer and Submit,
@@ -1589,6 +1621,7 @@ function doSubmit() {
 
 function showResultsScreen() {
     showTcScreen('scResults');
+    pushTcHistory({ cafe: 'test', tcScreen: 'scResults' });
 }
 
 // ==================== RESULTS DASHBOARD ====================
@@ -1811,4 +1844,85 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') nextQuestionTC();
     else if (e.key === 'ArrowLeft') prevQuestionTC();
     else if (e.key === 'Escape') closeMobileGrid();
+});
+
+// ==================== POPSTATE ROUTING (MOBILE BACK BUTTON) ====================
+window.addEventListener('popstate', function (e) {
+    // 1. If an overlay / modal is open, close it and stay on current screen
+    if (typeof closeCurrentOverlay === 'function' && closeCurrentOverlay()) {
+        const activeSc = document.querySelector('.tc-screen.active');
+        const activeId = activeSc ? activeSc.id : 'scHome';
+        pushTcHistory({ cafe: 'test', tcScreen: activeId, dirLen: (typeof testDirectory !== 'undefined' && testDirectory) ? testDirectory.length : 0 });
+        return;
+    }
+
+    // 2. Guard active Timed Test
+    const activeSc = document.querySelector('.tc-screen.active');
+    if (activeSc && activeSc.id === 'scRunner' && typeof TS !== 'undefined' && TS.mode === 'test' && !TS.submitted) {
+        const leave = confirm('Do you want to leave this test? Your progress will be submitted.');
+        if (leave) {
+            doSubmit();
+        } else {
+            pushTcHistory({ cafe: 'test', tcScreen: 'scRunner', mode: 'test' });
+            return;
+        }
+        return;
+    }
+
+    // 3. State navigation
+    if (e.state && e.state.cafe === 'test') {
+        isTcHistoryNavigating = true;
+        try {
+            switch (e.state.tcScreen) {
+                case 'scHome':
+                    closeMobileGrid();
+                    const targetLen = typeof e.state.dirLen === 'number' ? e.state.dirLen : 0;
+                    if (typeof testDirectory !== 'undefined' && testDirectory.length !== targetLen) {
+                        testDirectory = testDirectory.slice(0, targetLen);
+                        renderTestTree();
+                    }
+                    showTcScreen('scHome');
+                    break;
+                case 'scInstructions':
+                    if (e.state.filePath && typeof openTestDetail === 'function') {
+                        openTestDetail(e.state.filePath);
+                    } else {
+                        showTcScreen('scInstructions');
+                    }
+                    break;
+                case 'scRunner':
+                    showTcScreen('scRunner');
+                    break;
+                case 'scResults':
+                    showResultsScreen();
+                    break;
+                case 'scHistory':
+                    showTestHistory();
+                    break;
+                case 'scCustom':
+                    const ctTargetLen = typeof e.state.ctDirLen === 'number' ? e.state.ctDirLen : 0;
+                    if (typeof ctTestDirectory !== 'undefined' && ctTestDirectory.length !== ctTargetLen) {
+                        ctTestDirectory = ctTestDirectory.slice(0, ctTargetLen);
+                        renderCustomTree();
+                    }
+                    showTcScreen('scCustom');
+                    break;
+                default:
+                    showTcScreen('scHome');
+                    break;
+            }
+        } finally {
+            isTcHistoryNavigating = false;
+        }
+        return;
+    }
+
+    // 4. Popped past root:
+    if (typeof testDirectory !== 'undefined' && testDirectory && testDirectory.length > 0) {
+        testDirectory.pop();
+        renderTestTree();
+        showTcScreen('scHome');
+        pushTcHistory({ cafe: 'test', tcScreen: 'scHome', dirLen: testDirectory.length });
+        return;
+    }
 });

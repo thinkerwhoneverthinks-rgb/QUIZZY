@@ -79,8 +79,61 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeMenu(); closeDataPanel(); closeSyllabusModal(); }
+    if (e.key === 'Escape') { closeCurrentOverlay(); }
 });
+
+/* ---- Universal Modal / Overlay Detector & Closer for Mobile Back Navigation ---- */
+function hasOpenOverlay() {
+    var menu = document.getElementById('mobileMenu');
+    if (menu && menu.classList.contains('active')) return 'menu';
+
+    var data = document.getElementById('dataPanel');
+    if (data && data.classList.contains('active')) return 'dataPanel';
+
+    var syl = document.getElementById('syllabusPanel');
+    if (syl && syl.classList.contains('active')) return 'syllabus';
+
+    var gridPanel = document.getElementById('gridPanel');
+    if (gridPanel && gridPanel.classList.contains('active')) return 'quizGrid';
+
+    var solModal = document.getElementById('solutionModal');
+    if (solModal && (solModal.classList.contains('active') || solModal.style.display === 'flex' || solModal.style.display === 'block')) return 'quizSolution';
+
+    var customModal = document.getElementById('customTestModal');
+    if (customModal && customModal.classList.contains('active')) return 'customTestModal';
+
+    var tcSide = document.getElementById('trSide');
+    if (tcSide && tcSide.classList.contains('open')) return 'tcGrid';
+
+    var tcModal = document.getElementById('tcModal');
+    if (tcModal && tcModal.classList.contains('active')) return 'tcSubmitModal';
+
+    var tbPanel = document.getElementById('tbPanel');
+    if (tbPanel && tbPanel.classList.contains('active')) return 'tcBookmarkPanel';
+
+    var notesToc = document.getElementById('notesTocDrawer');
+    if (notesToc && notesToc.classList.contains('open')) return 'notesToc';
+
+    return null;
+}
+
+function closeCurrentOverlay() {
+    var overlay = hasOpenOverlay();
+    if (!overlay) return false;
+    switch (overlay) {
+        case 'menu': closeMenu(); break;
+        case 'dataPanel': closeDataPanel(); break;
+        case 'syllabus': closeSyllabusModal(); break;
+        case 'quizGrid': if (typeof closeGrid === 'function') closeGrid(); break;
+        case 'quizSolution': if (typeof closeSolutionModal === 'function') closeSolutionModal(); break;
+        case 'customTestModal': if (typeof closeCustomTestModal === 'function') closeCustomTestModal(); break;
+        case 'tcGrid': if (typeof closeMobileGrid === 'function') closeMobileGrid(); break;
+        case 'tcSubmitModal': if (typeof closeSubmitModal === 'function') closeSubmitModal(); break;
+        case 'tcBookmarkPanel': if (typeof closeTestBookmarkPanel === 'function') closeTestBookmarkPanel(); break;
+        case 'notesToc': if (typeof toggleNotesTocDrawer === 'function') toggleNotesTocDrawer(false); break;
+    }
+    return true;
+}
 
 /* Follow the OS only while the user has not made an explicit choice. */
 if (window.matchMedia) {

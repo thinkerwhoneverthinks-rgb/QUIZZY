@@ -11,11 +11,11 @@ function buildExamBadge(q) {
 }
 
 function getTypeLabel(q) {
-    if (q.type === 'image_mcq') return 'Image MCQ';
-    if (q.type === 'integer') return 'Integer Type';
-    if (q.type === 'multi_mcq') return 'Multiple Correct MCQ';
-    if (q.type === 'mcq') return 'Single Correct MCQ';
-    return 'Fill in the Blank';
+    const t = (q.type || '').toLowerCase();
+    if (t === 'multi_mcq' || t === 'multi' || t === 'multiple') return 'multi';
+    if (t === 'integer' || t === 'numerical') return 'integer';
+    if (t === 'fill_blank' || t === 'subjective' || t === 'notebook') return 'subjective';
+    return 'single';
 }
 
 function getActiveQuestionText(q) {
@@ -63,33 +63,24 @@ function buildQuestionCardInner(q, idx, total) {
     const displayNumber = q.originalNumber || (idx + 1);
     const questionLabel = `Q. ${displayNumber}`;
 
-    const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
+    const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
     const examBadge = buildExamBadge(q);
-    const hasTranslation = Boolean(q.translations && q.translations.hi);
-    const langBtn = hasTranslation ? `
-        <button class="lang-toggle-btn ${currentLanguage === 'hi' ? 'active' : ''}" 
-                onclick="toggleQuestionLanguage()" 
-                title="Switch English / Hindi">
-            🌐 ${currentLanguage === 'hi' ? 'HI' : 'EN'}
-        </button>
-    ` : '';
-
     const qText = getActiveQuestionText(q);
 
     return `
         <div class="question-card-header">
-            <div class="question-number">${questionLabel}</div>
+            <div class="question-meta-group">
+                <span class="question-number">${questionLabel}</span>
+                <span class="meta-dot">·</span>
+                <span class="type-badge">${getTypeLabel(q)}</span>
+                ${topicLabel ? `<span class="meta-dot">·</span><span class="question-topic-tag" title="${escapeHtml(topicLabel)}">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                ${examBadge}
+            </div>
             <div class="question-card-top-actions">
-                ${langBtn}
-                <div class="type-badge">${getTypeLabel(q)}</div>
                 <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="${bookmarkAction}" title="${bookmarkTitle}">
                     🔖
                 </button>
             </div>
-        </div>
-        <div class="question-tags">
-            ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
-            ${examBadge}
         </div>
         ${qText ? `<div class="question-text">${safeHtml(qText)}</div>` : ''}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}

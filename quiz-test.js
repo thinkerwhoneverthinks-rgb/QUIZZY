@@ -126,6 +126,9 @@ function startTestMode() {
     testSubmitted = false;
 
     showScreen('screenTestMode');   // show first so render lands on a visible screen
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenTestMode' });
+    }
     renderTestMode();
     startTestTimer();
 }
@@ -198,42 +201,39 @@ function renderTestMode() {
     document.getElementById('testProgressFill').style.width = '0%';
 
     container.innerHTML = questions.map((q, idx) => {
-        let typeLabel = '';
-        let questionHTML = '';
+        const typeLabel = typeof getTypeLabel === 'function' ? getTypeLabel(q) : (q.type === 'multi_mcq' ? 'multi' : (q.type === 'integer' ? 'integer' : (q.type === 'fill_blank' ? 'subjective' : 'single')));
 
         if (q.type === 'image_mcq') {
-            typeLabel = 'Image MCQ';
             questionHTML = renderTestImageMCQ(q, idx);
         } else if (q.type === 'fill_blank' || !q.type) {
-            typeLabel = 'Fill in the Blank';
             questionHTML = renderTestFillBlank(q, idx);
         } else if (q.type === 'integer') {
-            typeLabel = 'Integer Type';
             questionHTML = renderTestInteger(q, idx);
-        } else if (q.type === 'mcq' || q.type === 'multi_mcq') {
-            typeLabel = q.type === 'multi_mcq' ? 'Multiple Correct MCQ' : 'Single Correct MCQ';
+        } else {
             questionHTML = renderTestMCQ(q, idx);
         }
 
         const isReviewed = userAnswers[idx] && userAnswers[idx].reviewed;
-        const topicLabel = q.topicName || (currentChapter ? currentChapter.name : '');
+        const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
+        const qText = typeof getActiveQuestionText === 'function' ? getActiveQuestionText(q) : (q.question || '');
 
         return `
             <div class="question-card test-mode" id="testQ-${idx}">
                 <div class="question-card-header">
-                    <div class="question-number">Q. ${idx + 1}</div>
+                    <div class="question-meta-group">
+                        <span class="question-number">Q. ${idx + 1}</span>
+                        <span class="meta-dot">·</span>
+                        <span class="type-badge">${typeLabel}</span>
+                        ${topicLabel ? `<span class="meta-dot">·</span><span class="question-topic-tag" title="${escapeHtml(topicLabel)}">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+                        ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
+                    </div>
                     <div class="question-card-top-actions">
-                        <div class="type-badge">${typeLabel}</div>
                         <button class="review-btn ${isReviewed ? 'active' : ''}" onclick="toggleReview(${idx})" title="Mark for review">
                             🚩 ${isReviewed ? 'Reviewed' : 'Review'}
                         </button>
                     </div>
                 </div>
-                <div class="question-tags">
-                    ${topicLabel ? `<span class="question-topic-tag">📂 ${escapeHtml(topicLabel)}</span>` : ''}
-                    ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
-                </div>
-                ${q.question ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(q.question) : escapeHtml(q.question)}</div>` : ''}
+                ${qText ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(qText) : escapeHtml(qText)}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${q.image_url && q.type !== 'image_mcq' ? `
                     <div class="image-question-wrap">

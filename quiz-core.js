@@ -32,14 +32,25 @@ try {
     if (savedLang === 'hi' || savedLang === 'en') currentLanguage = savedLang;
 } catch (e) { /* ignore */ }
 
-function toggleQuestionLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+function setQuizLanguage(lang) {
+    if (lang !== 'en' && lang !== 'hi') return;
+    currentLanguage = lang;
     try { localStorage.setItem('quizzy-language', currentLanguage); } catch (e) { /* ignore */ }
-    if (typeof updateCardInCurrentMode === 'function' && typeof currentQIndex !== 'undefined') {
-        updateCardInCurrentMode(currentQIndex);
+    const activeScreen = document.querySelector('.screen.active');
+    const screenId = activeScreen ? activeScreen.id : '';
+    if (screenId === 'screenFullQuiz' && typeof renderFullQuiz === 'function') {
+        renderFullQuiz();
+    } else if (screenId === 'screenTestMode' && typeof renderTestMode === 'function') {
+        renderTestMode();
+    } else if (screenId === 'screenReview' && typeof renderReview === 'function') {
+        renderReview();
     } else if (typeof renderQuestion === 'function') {
         renderQuestion();
     }
+}
+
+function toggleQuestionLanguage() {
+    setQuizLanguage(currentLanguage === 'en' ? 'hi' : 'en');
 }
 
 // ==================== UTILS ====================

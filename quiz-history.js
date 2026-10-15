@@ -140,6 +140,9 @@ function clearStudyHistory() {
 function showStudyHistory() {
     renderStudyHistory();
     showScreen('screenHistory');
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenHistory' });
+    }
 }
 
 function timeAgo(ts) {
