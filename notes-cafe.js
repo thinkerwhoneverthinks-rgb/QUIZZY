@@ -23,9 +23,12 @@ let isNotesHistoryNavigating = false;
 // Escape HTML utility
 function escapeNotesHtml(text) {
     if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = String(text);
-    return div.innerHTML;
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 // Safe HTML for notes
@@ -41,6 +44,10 @@ function safeNotesHtml(text) {
 // Typeset Math in container
 function typesetNotesMath(el) {
     if (!el) return;
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([el]).catch(() => {});
+        return;
+    }
     const render = () => {
         if (typeof renderMathInElement !== 'undefined') {
             try {
@@ -521,25 +528,30 @@ function renderSidebarToc() {
 
     const subjText = (currentChapterData.subject || 'NOTES').toUpperCase();
     const chapText = currentChapterData.chapter || 'Chapter';
-    const metaText = `${currentChapterData.moduleCount} Subtopics · ${currentChapterData.durationMinutes} mins`;
+    const totalModules = currentChapterData.moduleCount || (currentChapterData.modules ? currentChapterData.modules.length : 0);
+    const totalDuration = currentChapterData.durationMinutes || 45;
+    const metaText = `${totalModules} Subtopics · ${totalDuration} mins`;
 
     if (subjEl) subjEl.textContent = subjText;
     if (chapEl) chapEl.textContent = chapText;
     if (metaEl) metaEl.textContent = metaText;
-    if (topBarTitle) topBarTitle.textContent = `${currentChapterData.subject} · ${chapText}`;
+    if (topBarTitle) topBarTitle.textContent = `${currentChapterData.subject || 'Notes'} · ${chapText}`;
 
     if (drawerSubjEl) drawerSubjEl.textContent = subjText;
     if (drawerChapEl) drawerChapEl.textContent = chapText;
     if (drawerMetaEl) drawerMetaEl.textContent = metaText;
 
-    const itemsHtml = currentChapterData.modules.map((mod, idx) => {
+    const itemsHtml = (currentChapterData.modules || []).map((mod, idx) => {
         const isActive = idx === currentModuleIndex;
+        const modTitle = mod.name || mod.title || `Subtopic ${idx + 1}`;
+        const dur = mod.durationMinutes || mod.readingTimeMinutes || 5;
+        const bCount = mod.blockCount || (mod.blocks ? mod.blocks.length : 0);
         return `
             <div class="notes-sidebar-item ${isActive ? 'active' : ''}" onclick="selectNotesModule(${idx})">
                 <div class="notes-sidebar-num">${idx + 1}</div>
                 <div class="notes-sidebar-text">
-                    <div class="notes-sidebar-item-title">${escapeNotesHtml(mod.title)}</div>
-                    <div class="notes-sidebar-item-meta">${mod.readingTimeMinutes || 3} mins · ${mod.blocks ? mod.blocks.length : 0} blocks</div>
+                    <div class="notes-sidebar-item-title">${escapeNotesHtml(modTitle)}</div>
+                    <div class="notes-sidebar-dur">${dur} mins · ${bCount} blocks</div>
                 </div>
             </div>
         `;
@@ -553,7 +565,7 @@ function renderSidebarToc() {
 }
 
 function selectNotesModule(idx) {
-    if (!currentChapterData || !currentChapterData.modules[idx]) return;
+    if (!currentChapterData || !currentChapterData.modules || !currentChapterData.modules[idx]) return;
     currentModuleIndex = idx;
     toggleNotesTocDrawer(false);
     renderSidebarToc();
@@ -562,24 +574,26 @@ function selectNotesModule(idx) {
 }
 
 function renderActiveModule() {
-    if (!currentChapterData) return;
+    if (!currentChapterData || !currentChapterData.modules) return;
     const mod = currentChapterData.modules[currentModuleIndex];
     if (!mod) return;
 
     const breadcrumbEl = document.getElementById('notesDocBreadcrumb');
     if (breadcrumbEl) {
-        breadcrumbEl.textContent = `${currentChapterData.subject.toUpperCase()} · ${currentChapterData.chapter.toUpperCase()}`;
+        breadcrumbEl.textContent = `${(currentChapterData.subject || '').toUpperCase()} · ${(currentChapterData.chapter || '').toUpperCase()}`;
     }
 
     const titleEl = document.getElementById('notesDocTitle');
     if (titleEl) {
-        titleEl.textContent = `${currentModuleIndex + 1}. ${mod.title}`;
+        const modTitle = mod.name || mod.title || `Subtopic ${currentModuleIndex + 1}`;
+        titleEl.textContent = `${currentModuleIndex + 1}. ${modTitle}`;
     }
 
     const metaEl = document.getElementById('notesDocMeta');
     if (metaEl) {
-        const blockCount = mod.blocks ? mod.blocks.length : 0;
-        metaEl.textContent = `${blockCount} learning blocks · ${mod.readingTimeMinutes || 4} mins. Text, diagrams, and PYQs arranged in original order.`;
+        const blockCount = mod.blockCount || (mod.blocks ? mod.blocks.length : 0);
+        const dur = mod.durationMinutes || mod.readingTimeMinutes || 4;
+        metaEl.textContent = `${blockCount} learning blocks · ${dur} mins. High-yield concepts, diagrams, and PYQs arranged in original order.`;
     }
 
     const prevBtn = document.getElementById('notesPrevModBtn');
@@ -600,107 +614,121 @@ function renderActiveModule() {
         return;
     }
 
-    container.innerHTML = mod.blocks.map((block, bIdx) => renderNoteBlock(block, bIdx)).join('');
+    container.innerHTML = mod.blocks.map((block, bIdx) => renderBlockCard(block, bIdx)).join('');
     typesetNotesMath(container);
 }
 
-function renderNoteBlock(block, bIdx) {
-    const type = block.type || 'KEY_POINTS';
-    const title = block.title || '';
-    const body = block.body || '';
-    const tags = block.tags || [];
+function renderBlockCard(b, bIdx) {
+    const idxNum = b.index || (bIdx + 1);
+    const numStr = String(idxNum).padStart(2, '0');
+    const subtype = b.subtype || b.type || 'TEXT';
+    const title = b.title || '';
+    const tags = b.tags || [];
 
-    const badgeMap = {
-        'DEFINITION': { label: 'Definition', class: 'tag-definition', icon: '📖' },
-        'KEY_POINTS': { label: 'Key Concept', class: 'tag-concept', icon: '⭐' },
-        'FORMULA': { label: 'Formula', class: 'tag-formula', icon: '📐' },
-        'DIAGRAMS': { label: 'Diagram / Visual', class: 'tag-diagram', icon: '🖼️' },
-        'EXERCISE': { label: 'PYQ Check', class: 'tag-pyq', icon: '🎯' },
-        'COMMON_CONFUSIONS': { label: 'Exam Trap', class: 'tag-trap', icon: '⚠' },
-        'STEPS': { label: 'Process', class: 'tag-concept', icon: '🔄' },
-        'TABLE': { label: 'Summary Table', class: 'tag-diagram', icon: '📊' }
-    };
-
-    const bInfo = badgeMap[type] || { label: type, class: 'tag-concept', icon: '📌' };
+    let tagsHtml = tags.map(t => {
+        const isPyq = String(t).toUpperCase().includes('PYQ');
+        const formattedTag = String(t).replace(/_/g, ' ').toLowerCase();
+        return `<span class="note-tag-badge ${isPyq ? 'pyq' : ''}">${escapeNotesHtml(formattedTag)}</span>`;
+    }).join('');
 
     let bodyHtml = '';
 
-    if (type === 'EXERCISE') {
-        const questionText = block.question || body;
-        const options = block.options || [];
-        const correctLetter = block.answer || '';
-        const solutionText = block.solution || '';
+    if (subtype === 'TEXT') {
+        const textContent = b.text || b.body || '';
+        const lines = textContent.split('\n').map(l => l.trim()).filter(Boolean);
+        let listItems = '';
+        lines.forEach(l => {
+            let cleanLine = l.replace(/^[•\-\*]\s*/, '');
+            listItems += `<li>${safeNotesHtml(cleanLine)}</li>`;
+        });
+        bodyHtml = `<div class="note-block-body"><ul>${listItems}</ul></div>`;
 
-        const optHtml = options.map((opt, oIdx) => {
-            const letter = String.fromCharCode(65 + oIdx);
-            return `
-                <div class="note-q-opt" id="opt_${bIdx}_${letter}" onclick="checkNoteAnswer(${bIdx}, '${letter}', '${correctLetter}')">
-                    <span class="note-q-opt-letter">${letter}</span>
-                    <span class="note-q-opt-text">${safeNotesHtml(opt)}</span>
+    } else if (subtype === 'IMAGE' || subtype === 'MODEL_3D') {
+        const is3D = subtype === 'MODEL_3D';
+        const imgUrl = b.imageUrl || '';
+        if (imgUrl) {
+            bodyHtml = `
+                <div class="note-image-wrap">
+                    <div class="note-image-frame">
+                        <img src="${escapeNotesHtml(imgUrl)}" class="note-image" alt="${escapeNotesHtml(title || 'Diagram')}" loading="lazy" onerror="this.onerror=null;this.closest('.note-image-wrap').style.display='none';">
+                    </div>
+                    <div class="note-caption">${is3D ? '🧊 3D visual preview' : '📷 ' + escapeNotesHtml(b.caption || title || 'Diagram')}</div>
                 </div>
             `;
-        }).join('');
+        } else {
+            bodyHtml = `<div class="note-caption" style="padding:1rem 0;">${is3D ? '🧊 3D visual preview' : '📷 ' + escapeNotesHtml(title || 'Diagram')}</div>`;
+        }
+
+    } else if (subtype === 'QUESTION' || subtype === 'EXERCISE') {
+        const prompt = b.prompt || b.question || b.text || b.body || '';
+        const options = b.options || [];
+        const answer = (b.answer && b.answer.trim()) ? b.answer : (b.solution || 'Self-Practice Checkpoint (Solve and verify with your class notes)');
+        const blockId = `qblk_${b.id || idxNum}_${bIdx}`;
+
+        let optsHtml = '';
+        if (options.length > 0) {
+            optsHtml = `
+                <div class="note-q-options">
+                    ${options.map((opt) => `<div class="note-q-opt" onclick="revealNoteAnswer('${blockId}')">${safeNotesHtml(opt)}</div>`).join('')}
+                </div>
+            `;
+        }
 
         bodyHtml = `
-            <div class="note-q-prompt">${safeNotesHtml(questionText)}</div>
-            <div class="note-q-options">${optHtml}</div>
-            <div class="note-q-feedback" id="feedback_${bIdx}"></div>
-            ${solutionText ? `
-                <div class="note-q-ans-box" id="ansbox_${bIdx}">
-                    <span class="note-q-ans-lbl">💡 Detailed Solution:</span>
-                    <div style="margin-top:0.4rem;">${safeNotesHtml(solutionText)}</div>
-                </div>
-            ` : ''}
+            <div class="note-q-prompt">${safeNotesHtml(prompt)}</div>
+            ${optsHtml}
+            <button class="note-q-reveal-btn" onclick="revealNoteAnswer('${blockId}')">
+                💡 Reveal Solution
+            </button>
+            <div class="note-q-answer-box" id="${blockId}">
+                <div style="font-weight: 800; color: #10b981; margin-bottom: 0.35rem;">Answer &amp; Detailed Explanation:</div>
+                <div>${safeNotesHtml(answer)}</div>
+            </div>
         `;
+
+    } else if (subtype === 'TABLE') {
+        const tables = b.tables || [];
+        if (tables.length > 0) {
+            bodyHtml = tables.map(t => `
+                <div class="note-table-wrap">
+                    <table class="note-table">
+                        ${t.columns && t.columns.length ? `
+                            <thead>
+                                <tr>${t.columns.map(c => `<th>${safeNotesHtml(c)}</th>`).join('')}</tr>
+                            </thead>
+                        ` : ''}
+                        <tbody>
+                            ${(t.rows || []).map(r => `<tr>${r.map(c => `<td>${safeNotesHtml(c)}</td>`).join('')}</tr>`).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `).join('');
+        } else if (b.text || b.body) {
+            bodyHtml = `<div class="note-block-body">${safeNotesHtml(b.text || b.body)}</div>`;
+        }
     } else {
-        bodyHtml = `<div class="note-block-body">${safeNotesHtml(body)}</div>`;
+        bodyHtml = `<div class="note-block-body">${safeNotesHtml(b.text || b.body || '')}</div>`;
     }
 
     return `
         <div class="note-block-card">
             <div class="note-block-header">
-                <div class="note-block-header-left">
-                    <div class="note-block-num">${bIdx + 1}</div>
-                    <div>
-                        <div class="note-block-title">${escapeNotesHtml(title)}</div>
-                        <div class="note-block-subtype">${bInfo.icon} ${bInfo.label}</div>
-                    </div>
+                <div class="note-block-num">${numStr}</div>
+                <div class="note-block-title-wrap">
+                    <div class="note-block-subtype">${escapeNotesHtml(subtype.replace(/_/g, ' '))}</div>
+                    ${title ? `<div class="note-block-title">${safeNotesHtml(title)}</div>` : ''}
                 </div>
-                <div class="note-block-tags">
-                    <span class="note-tag-badge ${bInfo.class}">${bInfo.label}</span>
-                </div>
+                ${tagsHtml ? `<div class="note-block-tags">${tagsHtml}</div>` : ''}
             </div>
             ${bodyHtml}
         </div>
     `;
 }
 
-function checkNoteAnswer(bIdx, chosenLetter, correctLetter) {
-    const feedbackEl = document.getElementById(`feedback_${bIdx}`);
-    const ansBox = document.getElementById(`ansbox_${bIdx}`);
-    const chosenEl = document.getElementById(`opt_${bIdx}_${chosenLetter}`);
-    const correctEl = document.getElementById(`opt_${bIdx}_${correctLetter}`);
-
-    document.querySelectorAll(`[id^="opt_${bIdx}_"]`).forEach(el => {
-        el.style.pointerEvents = 'none';
-    });
-
-    if (chosenLetter === correctLetter) {
-        if (chosenEl) chosenEl.classList.add('correct');
-        if (feedbackEl) {
-            feedbackEl.className = 'note-q-feedback correct';
-            feedbackEl.innerHTML = '🎉 Correct! Well done.';
-        }
-    } else {
-        if (chosenEl) chosenEl.classList.add('wrong');
-        if (correctEl) correctEl.classList.add('correct');
-        if (feedbackEl) {
-            feedbackEl.className = 'note-q-feedback wrong';
-            feedbackEl.innerHTML = `❌ Incorrect. Correct answer is Option (${correctLetter}).`;
-        }
-    }
-
-    if (ansBox) ansBox.classList.add('show');
+function revealNoteAnswer(blockId) {
+    const box = document.getElementById(blockId);
+    if (!box) return;
+    box.classList.toggle('show');
 }
 
 function nextNotesModule() {
