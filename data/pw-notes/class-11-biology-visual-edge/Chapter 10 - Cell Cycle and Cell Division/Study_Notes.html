@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Cell Cycle — Biology</title>
+  <meta name="description" content="Cell Cycle — Biology topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Biology</div>
+        <h1>Cell Cycle</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">How cells coordinate growth, DNA replication and division to form two genetically intact daughter cells</div>
+              <h2>CELL CYCLE OVERVIEW</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Cell cycle</b> = ordered sequence in which a cell <b>duplicates genome</b>, makes cell components, then <b>divides into two daughter cells</b>.</li><li>All organisms begin as a <b>single cell</b>; multicellular bodies arise by repeated <b>growth + division</b>.</li><li>Each division of one parental cell produces <b>two daughter cells</b> that can again grow and divide.</li><li>Key coordination: <b>DNA replication</b> + <b>cell growth</b> + <b>chromosome/cytoplasm partitioning</b> must be synchronized.</li><li>Goal of coordination: each progeny cell receives an <b>intact genome</b> (complete, correctly distributed DNA).</li><li>Chromosome replication and distribution are under <b>genetic control</b> (cell-cycle regulators and checkpoints).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 8 3, 0 6' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='120' height='44' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='34' y='47' font-size='13' fill='#1f2a44'>GROWTH</text><rect x='156' y='20' width='188' height='44' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='168' y='47' font-size='13' fill='#1f2a44'>DNA REPLICATION</text><rect x='18' y='86' width='326' height='46' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='112' font-size='13' fill='#1f2a44'>DIVISION</text><text x='98' y='112' font-size='13' fill='#1f2a44'>karyokinesis + cytokinesis</text><line x1='78' y1='64' x2='78' y2='84' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='250' y1='64' x2='250' y2='84' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='180' y1='132' x2='62' y2='158' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='180' y1='132' x2='298' y2='158' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><circle cx='62' cy='166' r='18' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='46' y='170' font-size='12' fill='#1f2a44'>D1</text><circle cx='298' cy='166' r='18' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='282' y='170' font-size='12' fill='#1f2a44'>D2</text><text x='180' y='182' font-size='10.5' text-anchor='middle' fill='#1f2a44'>Genetic control + checkpoints → intact genomes</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🌱</span><span>Need: growth, repair/replacement, and reproduction depend on increasing cell number.</span></li><li><span class="ic">🧩</span><span>Three coupled processes: genome duplication, cytoplasmic growth, and cell division.</span></li><li><span class="ic">⏱️</span><span>Growth is broadly continuous, but <b>DNA synthesis occurs only in S phase</b>.</span></li><li><span class="ic">🛑</span><span>Checkpoints prevent division if DNA is unreplicated or damaged, protecting genome integrity.</span></li><li><span class="ic">🧫</span><span>Time varies widely: many human cultured cells ~24 h; yeast can be ~90 min.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY CELL DIVISION IS NEEDED</span></h2><ul class="b"><li>Single cell → multicellular body by repeated rounds of <b>growth and division</b>.</li><li>In unicellular organisms, division itself is <b>reproduction</b> (new individual).</li><li>In multicellular organisms, division increases cell number for <b>growth</b> and restores tissue via <b>repair</b>.</li><li>Maintains functional cell size: growth increases cytoplasm; division helps restore <b>nucleus:cytoplasm balance</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">COORDINATION UNDER GENETIC CONTROL</span></h2><ul class="b"><li>Replication must occur <b>once per cycle</b> before chromosome segregation.</li><li>If DNA is not fully replicated, entry into division is blocked by <b>checkpoints</b>.</li><li>Distribution of replicated chromosomes ensures each daughter cell receives a <b>complete genome</b>.</li><li>Key exam line: Interphase is not "rest"; it is a <b>highly active</b> preparation phase.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Cell growth vs DNA replication vs Cell division (what happens?)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Process</th><th>What it achieves</th><th>Key exam cue</th></tr></thead><tbody><tr><td>Cell growth</td><td>Increase in cytoplasm, organelles, biosynthesis; overall continuous</td><td>Occurs throughout interphase (mainly G<sub>1</sub>, G<sub>2</sub>)</td></tr><tr><td>DNA replication</td><td>Genome duplication so both daughters can inherit full information</td><td>Only in <b>S phase</b>; DNA amount doubles without increasing chromosome number</td></tr><tr><td>Cell division</td><td>Partitioning of replicated chromosomes and cytoplasm into two cells</td><td>M phase includes <b>karyokinesis</b> then <b>cytokinesis</b></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student says: "Interphase is a resting stage, so nothing important happens before division." Correct the statement with reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>Interphase occupies most of the cycle and is <b>metabolically active</b>.<br>During interphase, the cell grows, synthesises proteins/organelles, and in <b>S phase</b> replicates DNA.<br>Without interphase preparation, division would fail to distribute an <b>intact genome</b> to daughters.</div><div class="ans">✓&nbsp; Interphase is not a resting phase; it is an active preparatory period including growth and DNA replication.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why must DNA replication be coordinated with cell division? What would be the consequence of poor coordination?</div><div class="sol"><span class="lbl">Answer:</span><br>Division partitions chromosomes into two nuclei; this requires a prior <b>complete genome duplication</b>.<br>If replication is incomplete or uncoordinated, segregation can produce daughter cells with <b>missing or damaged genetic information</b>.<br>Genetic control via checkpoints helps ensure progeny receive <b>intact genomes</b>.</div><div class="ans">✓&nbsp; Coordination ensures each daughter cell inherits a complete, intact genome; poor coordination risks genome loss/imbalance in progeny.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Cell cycle = genome duplication + synthesis of cell constituents + division into <b>two</b> daughter cells.</li><li>Cell division must be coordinated with <b>DNA replication</b> and <b>cell growth</b> to preserve genome integrity.</li><li>DNA synthesis occurs only in <b>S phase</b>; growth is broadly continuous across interphase.</li><li>Events of chromosome replication and distribution are under <b>genetic control</b> (regulators + checkpoints).</li><li>Core outcome: two daughter cells can re-enter growth and division, forming a <b>cell population</b> from one original cell.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>G–S–D</b> (the cycle's purpose)”</div><paragraph id="6aa538a94a8f987ae6000023"><b>G</b> = Grow (cell enlarges, makes components)</paragraph><paragraph id="6aa538a9871d205aa1000024"><b>S</b> = Synthesize DNA (replicate genome once)</paragraph><paragraph id="6aa538a965a3e15f54000025"><b>D</b> = Divide (distribute genome + cytoplasm into two daughters)</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Cell cycle: genome duplication → synthesis of cell constituents → division into two daughter cells</span><span class="eq">Need for division: single cell → multicellular growth; tissue repair/replacement; reproduction in unicellular forms</span><span class="eq">Three coordinated events: DNA replication + cell growth + chromosome/cytoplasm partitioning</span><span class="eq">DNA synthesis occurs only in <b>S phase</b>; growth is broadly continuous in interphase</span><span class="eq">Genetic control + checkpoints ensure daughters receive <b>intact genomes</b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Longest, most active part of cell cycle: G1 → S → G2; plus G0 quiescence</div>
+              <h2>INTERPHASE AND G0</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Interphase</b> is the period between two successive <b>M phases</b> when cell grows and prepares for division.</li><li>Interphase occupies <b>&gt;95%</b> of a typical 24 h human cell cycle; M phase is ~1 h.</li><li>Interphase is <b>not</b> a true resting stage; it is <b>metabolically active</b> with growth and biosynthesis.</li><li>Interphase has three subphases: <b>G1</b> (growth, no DNA replication), <b>S</b> (DNA replication), <b>G2</b> (mitotic preparation).</li><li><b>G0</b> is a <b>quiescent</b> state entered from G1: cells remain metabolically active but <b>do not proliferate</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-t2-s1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#123B7A"/></marker></defs><rect x="18" y="22" width="324" height="156" rx="10" fill="#EEF4FF" stroke="#123B7A" stroke-width="2"/><text x="28" y="44" font-size="14" fill="#1f2a44">CELL CYCLE (focus: Interphase + G0)</text><g><rect x="40" y="70" width="85" height="40" rx="6" fill="#EAF7EF" stroke="#16A34A" stroke-width="2"/><text x="70" y="94" font-size="13" fill="#1f2a44">G1</text><text x="54" y="108" font-size="12" fill="#1f2a44">growth</text><rect x="135" y="70" width="85" height="40" rx="6" fill="#F4EFFE" stroke="#7C3AED" stroke-width="2"/><text x="170" y="94" font-size="13" fill="#1f2a44">S</text><text x="150" y="108" font-size="12" fill="#1f2a44">DNA synth</text><rect x="230" y="70" width="85" height="40" rx="6" fill="#FEF5E4" stroke="#F59E0B" stroke-width="2"/><text x="263" y="94" font-size="13" fill="#1f2a44">G2</text><text x="245" y="108" font-size="12" fill="#1f2a44">mitosis prep</text><line x1="125" y1="90" x2="135" y2="90" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t2-s1)"/><line x1="220" y1="90" x2="230" y2="90" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t2-s1)"/></g><g><rect x="130" y="130" width="100" height="34" rx="6" fill="#EEF4FF" stroke="#2563EB" stroke-width="2"/><text x="160" y="152" font-size="13" fill="#1f2a44">M phase</text><line x1="315" y1="90" x2="332" y2="90" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t2-s1)"/><line x1="332" y1="90" x2="332" y2="147" stroke="#123B7A" stroke-width="2"/><line x1="332" y1="147" x2="230" y2="147" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t2-s1)"/></g><g><rect x="40" y="130" width="72" height="34" rx="6" fill="#EEF4FF" stroke="#123B7A" stroke-width="2"/><text x="76" y="146" font-size="12" text-anchor="middle" fill="#1f2a44">G0</text><line x1="82" y1="110" x2="82" y2="130" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t2-s1)"/><text x="76" y="159" font-size="9.5" text-anchor="middle" fill="#1f2a44">quiescent</text></g></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⏳</span><span>Interphase = bulk of cycle time; major biosynthesis happens here, not during mitosis.</span></li><li><span class="ic">🌱</span><span>G1: growth + normal metabolism; <b>no DNA replication</b>.</span></li><li><span class="ic">🧬</span><span>S phase: <b>only stage</b> of DNA synthesis; DNA content doubles (2C → 4C) but chromosome number stays 2n.</span></li><li><span class="ic">🧰</span><span>G2: proteins for mitosis synthesized; cell growth continues.</span></li><li><span class="ic">🛑</span><span>G0: non-proliferative but metabolically active; may re-enter cycle if needed.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">INTERPHASE: WHAT HAPPENS IN EACH SUBPHASE</span></h2><ul class="b"><li><b>G1 (Gap 1)</b>: interval after mitosis till start of DNA replication; cell is metabolically active.</li><li>G1: major growth; organelle duplication mainly here; <b>DNA replication absent</b>.</li><li><b>S (Synthesis)</b>: DNA replication in nucleus; in animal cells, centriole duplicates in cytoplasm.</li><li>S phase: DNA amount doubles <b>2C → 4C</b>; chromosome number stays same (2n remains 2n).</li><li><b>G2 (Gap 2)</b>: proteins and factors made for mitosis; growth continues; final preparation for M.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">G0 (QUIESCENT) + EXAM TRAPS</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow2-t2-s2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#123B7A"/></marker></defs><rect x="22" y="22" width="316" height="156" rx="10" fill="#EEF4FF" stroke="#123B7A" stroke-width="2"/><text x="34" y="46" font-size="14" fill="#1f2a44">G1 decision: divide or quiescent</text><rect x="42" y="76" width="110" height="44" rx="6" fill="#EAF7EF" stroke="#16A34A" stroke-width="2"/><text x="72" y="102" font-size="13" fill="#1f2a44">G1</text><rect x="208" y="76" width="110" height="44" rx="6" fill="#F4EFFE" stroke="#7C3AED" stroke-width="2"/><text x="248" y="102" font-size="13" fill="#1f2a44">S → G2</text><rect x="42" y="132" width="110" height="34" rx="6" fill="#FEF5E4" stroke="#F59E0B" stroke-width="2"/><text x="78" y="154" font-size="13" fill="#1f2a44">G0</text><line x1="152" y1="98" x2="208" y2="98" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow2-t2-s2)"/><line x1="97" y1="120" x2="97" y2="132" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow2-t2-s2)"/><line x1="152" y1="149" x2="208" y2="98" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow2-t2-s2)"/><text x="162" y="142" font-size="12" fill="#1f2a44">re-entry</text></svg></div><ul class="b"><li>G0 is entered from <b>G1</b> when a cell stops dividing; it remains <b>metabolically active</b>.</li><li>Many cells can <b>re-enter</b> the cycle from G0 if called upon (e.g., to replace lost cells).</li><li>Example of largely non-dividing cells: many <b>adult heart cells</b> do not appear to divide.</li><li><b>Trap 1:</b> calling interphase a resting phase (wrong); it is highly active and biosynthetic.</li><li><b>Trap 2:</b> claiming DNA replication occurs in G1/G2 (wrong); replication is restricted to <b>S phase</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Interphase vs G0 (Quiescent State)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Interphase (G1+S+G2)</th><th>G0</th></tr></thead><tbody><tr><td>Position</td><td>Between two M phases</td><td>Exit from G1</td></tr><tr><td>Division intent</td><td>Preparation for next division</td><td>No proliferation</td></tr><tr><td>Metabolic state</td><td>Highly active</td><td>Metabolically active</td></tr><tr><td>DNA replication</td><td>Occurs only in S phase</td><td>Absent</td></tr><tr><td>Typical exam phrase</td><td>Often miscalled "resting" (wrong)</td><td>"Quiescent" / non-dividing (right)</td></tr><tr><td>Example</td><td>Cycling cultured human cells</td><td>Many adult heart cells</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A diploid cell is in S phase. Does chromosome number (2n) increase after DNA replication? Explain using the idea of DNA content.</div><div class="sol"><span class="lbl">Answer:</span><br>In S phase, <b>DNA replication</b> produces sister chromatids, so <b>DNA content doubles</b> (2C → 4C).<br>Chromosome number is counted by centromeres; sister chromatids remain joined at one centromere.<br>Hence the cell remains <b>2n</b> throughout S (and G2); only DNA amount increases.</div><div class="ans">✓&nbsp; No. In S phase, DNA content doubles but chromosome number stays 2n because sister chromatids are still one chromosome until they separate.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A statement says: "Interphase is the resting phase of the cell; DNA is synthesized during G1 and G2." Identify both errors and correct them.</div><div class="sol"><span class="lbl">Answer:</span><br>Error 1: Interphase is called "resting" in some texts, but it is <b>highly active</b> (growth + biosynthesis).<br>Error 2: DNA synthesis does <b>not</b> occur in G1 or G2; it occurs <b>only in S phase</b>.<br>G1 and G2 are gap phases mainly for growth and preparation (G2: mitotic proteins).</div><div class="ans">✓&nbsp; Interphase is metabolically active, not truly resting; DNA replication is restricted to S phase, not G1/G2.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>In a ~24 h human cell cycle, interphase takes <b>&gt;95%</b>; M phase is ~1 h.</li><li>Interphase = G1 + S + G2; growth is broadly continuous across interphase.</li><li><b>Only S phase</b> has DNA replication; DNA content 2C → 4C; chromosome number unchanged (2n).</li><li>G2 is chiefly for synthesis of proteins required for mitosis and continued growth.</li><li>G0 cells are <b>non-proliferative</b> yet metabolically active; some can re-enter the cycle.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>G1 Grow, S Synthesize, G2 Gear-up, G0 Go-out</b>”</div><paragraph id="6aa538a9da87bfe991000026"><b>G1</b> = Grow (cell mass, metabolism; no DNA replication).</paragraph><paragraph id="6aa538a93a1630e68c000027"><b>S</b> = Synthesize DNA (only here).</paragraph><paragraph id="6aa538a9224268fc26000028"><b>G2</b> = Gear-up for mitosis (mitotic proteins).</paragraph><paragraph id="6aa538a95d3a0a2d27000029"><b>G0</b> = Go-out of cycle (quiescent but active).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Interphase (G1+S+G2) is the <b>longest</b> and <b>most active</b> phase; often &gt;95% of cycle duration.</span><span class="eq">G1: growth + metabolism; <b>no DNA replication</b>.</span><span class="eq">S phase: <b>DNA replication only</b>; DNA content 2C → 4C; chromosome number stays 2n.</span><span class="eq">G2: synthesis of proteins for mitosis; growth continues.</span><span class="eq">G0: quiescent, <b>non-dividing</b> but metabolically active; may re-enter cell cycle in many tissues.</span><span class="eq">High-yield trap: "resting phase" refers to interphase historically, but it is <b>not inactive</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Track chromosome number (N) vs DNA amount (C) through G1 → S → G2 → M, especially anaphase counting</div>
+              <h2>DNA CONTENT: N Vs C (CELL CYCLE)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>N</b> = chromosome number per cell (count centromeres); <b>C</b> = DNA content relative to haploid genome.</li><li>In a diploid somatic cell: <b>G1</b> has <b>2N, 2C</b>.</li><li>During <b>S phase</b>, DNA replicates: <b>C doubles (2C → 4C)</b> but <b>N remains 2N</b>.</li><li><b>G2</b> has <b>2N, 4C</b> (each chromosome has two sister chromatids).</li><li>At <b>anaphase</b>, sister chromatids separate; each chromatid is counted as an independent chromosome in that cell.</li><li>After <b>cytokinesis</b>, each daughter cell returns to <b>2N, 2C</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='332' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='24' y='40' font-size='14' fill='#1f2a44'>Cell cycle: N vs C (diploid somatic cell)</text><rect x='24' y='58' width='74' height='42' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='42' y='78' font-size='13' fill='#1f2a44'>G1</text><text x='32' y='96' font-size='12' fill='#1f2a44'>2N, 2C</text><rect x='110' y='58' width='74' height='42' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='140' y='78' font-size='13' fill='#1f2a44'>S</text><text x='118' y='96' font-size='12' fill='#1f2a44'>2N, 2C→4C</text><rect x='196' y='58' width='74' height='42' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='222' y='78' font-size='13' fill='#1f2a44'>G2</text><text x='206' y='96' font-size='12' fill='#1f2a44'>2N, 4C</text><rect x='282' y='58' width='54' height='42' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='300' y='78' font-size='13' fill='#1f2a44'>M</text><text x='290' y='96' font-size='12' fill='#1f2a44'>see below</text><line x1='98' y1='79' x2='110' y2='79' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='184' y1='79' x2='196' y2='79' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='270' y1='79' x2='282' y2='79' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='24' y='118' width='312' height='52' rx='8' fill='#FFFFFF' stroke='#123B7A' stroke-width='1.5'/><text x='32' y='138' font-size='13' fill='#1f2a44'>M phase counting (single cell):</text><text x='82' y='158' font-size='10.5' text-anchor='middle' fill='#1f2a44'>Metaphase: 2N, 4C</text><text x='180' y='158' font-size='10.5' text-anchor='middle' fill='#1f2a44'>Anaphase: 4N, 4C</text><text x='278' y='158' font-size='10.2' text-anchor='middle' fill='#1f2a44'>After cytokinesis: 2N, 2C</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔢</span><span><b>N counts chromosomes</b> (centromeres); sister chromatids together = 1 chromosome until anaphase.</span></li><li><span class="ic">📈</span><span><b>C measures DNA amount</b>; only S phase makes <b>2C → 4C</b>.</span></li><li><span class="ic">🧷</span><span>In <b>G2/metaphase</b>: 2N chromosomes, but each is duplicated (two chromatids) so DNA is 4C.</span></li><li><span class="ic">✂️</span><span><b>Anaphase trap</b>: chromatids separate and are counted as chromosomes → chromosome count per cell doubles transiently.</span></li><li><span class="ic">✅</span><span>Mitosis is <b>equational</b>: final chromosome number in each daughter cell equals parent (2N → 2N).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">HOW TO COUNT N CORRECTLY (EXAM RULE)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#FFFFFF' stroke='#123B7A' stroke-width='2'/><text x='28' y='40' font-size='14' fill='#1f2a44'>Counting chromosomes: centromere rule</text><circle cx='120' cy='92' r='26' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='97' y='96' font-size='12' fill='#1f2a44'>1 chrom.</text><text x='94' y='112' font-size='12' fill='#1f2a44'>2 chromatids</text><circle cx='240' cy='92' r='26' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='220' y='96' font-size='12' fill='#1f2a44'>2 chrom.</text><text x='220' y='112' font-size='12' fill='#1f2a44'>after split</text><line x1='154' y1='92' x2='206' y2='92' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='160' y='80' font-size='12' fill='#1f2a44'>anaphase</text><text x='28' y='154' font-size='12' fill='#1f2a44'>Before split: one centromere → one chromosome</text><text x='28' y='172' font-size='12' fill='#1f2a44'>After split: two centromeres → two chromosomes</text></svg></div><ul class="b"><li>Count <b>chromosomes by centromeres</b>; one centromere = one chromosome.</li><li>Before anaphase, sister chromatids share one centromere → counted as <b>one</b> chromosome.</li><li>At anaphase, centromere splits; each chromatid gets its own centromere → <b>becomes a chromosome</b>.</li><li>So, a mitotic cell at anaphase has <b>double the chromosome count</b> compared to G1/G2.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">PHASE-WISE SNAPSHOT (DIPLOID MITOTIC CYCLE)</span></h2><ul class="b"><li><b>G1:</b> unreplicated chromosomes; <b>2N, 2C</b>.</li><li><b>S:</b> replication forms sister chromatids; <b>2N, 2C → 4C</b>.</li><li><b>G2:</b> replicated but joined chromatids; <b>2N, 4C</b>.</li><li><b>M (prophase→metaphase):</b> still <b>2N, 4C</b>.</li><li><b>Anaphase:</b> chromatids separate; in one cell <b>4N, 4C</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">N vs C (CLEAR DIFFERENCE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Chromosome number (N)</th><th>DNA content (C)</th></tr></thead><tbody><tr><td>What it counts</td><td>Number of chromosomes (centromeres) in a cell</td><td>Total amount of DNA relative to haploid genome</td></tr><tr><td>Changes in S phase</td><td>No change (2n stays 2n)</td><td>Doubles (2C → 4C)</td></tr><tr><td>Changes at anaphase</td><td>Doubles in the same cell (chromatids become chromosomes)</td><td>Does not increase; remains 4C in that cell</td></tr><tr><td>After cytokinesis</td><td>Returns to original per daughter cell (e.g., 2N)</td><td>Halves per daughter cell (4C → 2C)</td></tr><tr><td>Typical exam confusion</td><td>Treating chromatids as separate chromosomes in G2/metaphase</td><td>Thinking C halves at anaphase (it halves only after division)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A diploid cell has 46 chromosomes in G1. State N and C in G1, after S phase (G2), at anaphase of mitosis, and in each daughter cell after cytokinesis.</div><div class="sol"><span class="lbl">Answer:</span><br>G1: diploid means <b>2N</b>; DNA is unreplicated → <b>2C</b>.<br>After S (G2): DNA replicates → <b>C doubles to 4C</b>, but chromosomes remain joined → <b>2N</b>.<br>Anaphase: sister chromatids separate and are counted as chromosomes → <b>chromosome count doubles in that cell</b>; DNA amount is still the replicated total.<br>After cytokinesis: each daughter gets one set of chromatids (now chromosomes) → back to <b>2N, 2C</b>.</div><div class="ans">✓&nbsp; G1: 2N=46, 2C; G2: 2N=46, 4C; Anaphase: 4N=92, 4C; Each daughter after cytokinesis: 2N=46, 2C.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why does chromosome number not increase in S phase even though DNA content doubles?</div><div class="sol"><span class="lbl">Answer:</span><br>In S phase, each chromosome replicates to form <b>two sister chromatids</b>.<br>Sister chromatids remain attached at a single <b>centromere</b>.<br>Since chromosomes are counted by centromeres, the <b>chromosome number (N) stays the same</b>.<br>Only the amount of DNA (C) increases because each chromatid is a DNA double helix.</div><div class="ans">✓&nbsp; Because replication produces sister chromatids joined at one centromere, they are still counted as one chromosome; hence N constant while C doubles.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write phase-wise pairs: <b>G1 2N 2C</b> → <b>G2 2N 4C</b> → after cytokinesis <b>2N 2C</b>.</li><li><b>S phase doubles C</b>; it does not make 2n → 4n in mitosis context.</li><li>In mitosis, <b>N is conserved in daughter cells</b> (equational division).</li><li>At <b>anaphase</b>, chromatids become daughter chromosomes; temporary rise to <b>4N</b> in one cell.</li><li>Use <b>centromere rule</b> to decide whether chromatids count as one or two chromosomes.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>"S = Size of DNA"</b>”</div><paragraph id="6aa538a9d9197f905b00002a"><b>S phase</b> increases DNA <b>Size</b>: 2C → 4C.</paragraph><paragraph id="6aa538a99315593d4c00002b"><b>N</b> stays same till the centromere <b>Splits</b> at anaphase.</paragraph><paragraph id="6aa538a972508f8f6400002c">Think: <b>Split centromere ⇒ Split count</b> (chromosome count doubles).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>G1:</b> 2N, 2C</span><span class="eq"><b>S phase:</b> 2N, 2C → 4C</span><span class="eq"><b>G2 / prophase / metaphase:</b> 2N, 4C</span><span class="eq"><b>Anaphase (single cell):</b> 4N, 4C</span><span class="eq"><b>After cytokinesis (each daughter):</b> 2N, 2C</span><span class="eq"><b>Rule:</b> chromosome count = number of centromeres</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">M phase = <b>karyokinesis</b> + <b>cytokinesis</b>; mitosis is <b>equational</b> (chromosome number maintained)</div>
+              <h2>M PHASE BASICS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>M phase</b> is the division phase: <b>karyokinesis</b> (nuclear division) followed by <b>cytokinesis</b> (cytoplasmic division).</li><li><b>Karyokinesis</b> separates replicated chromosomes into two daughter nuclei (prophase → metaphase → anaphase → telophase).</li><li><b>Cytokinesis</b> physically splits the cytoplasm to form two daughter cells after nuclear division.</li><li><b>Mitosis</b> is called <b>equational division</b> because each daughter cell retains the same chromosome number as the parent cell.</li><li>Mitosis is described in stages for convenience, but it is a <b>progressive process</b>; stage boundaries are not perfectly sharp.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 8 3, 0 6' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='40' font-size='14' fill='#1f2a44'>M phase (division)</text><rect x='40' y='58' width='128' height='56' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='52' y='80' font-size='13' fill='#1f2a44'>Karyokinesis</text><text x='52' y='98' font-size='12' fill='#1f2a44'>(nuclear)</text><rect x='194' y='58' width='128' height='56' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='206' y='80' font-size='13' fill='#1f2a44'>Cytokinesis</text><text x='206' y='98' font-size='12' fill='#1f2a44'>(cytoplasm)</text><line x1='168' y1='86' x2='194' y2='86' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='40' y='132' width='282' height='36' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='181' y='155' font-size='11.2' text-anchor='middle' fill='#1f2a44'>Equational: chromosome number maintained in daughter cells</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>M phase begins with karyokinesis and usually ends with cytokinesis.</span></li><li><span class="ic">⚖️</span><span>Equational division: chromosome number is maintained in progeny cells (e.g., 2n → 2n).</span></li><li><span class="ic">🧠</span><span>Do not confuse chromosome number with DNA content: DNA doubles in S, not chromosome number.</span></li><li><span class="ic">🐝</span><span>Animals: mitosis usually in diploid somatic cells; exception: haploid male honey bee shows mitosis.</span></li><li><span class="ic">🌿</span><span>Plants: mitosis occurs in both haploid (gametophyte) and diploid (sporophyte) stages (alternation of generations).</span></li><li><span class="ic">🧫</span><span>Sometimes karyokinesis is not followed by cytokinesis, producing a multinucleate syncytium (e.g., liquid endosperm in coconut).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHAT MAKES MITOSIS "EQUATIONAL"?</span></h2><ul class="b"><li>Sister chromatids separate and are distributed equally to opposite poles during anaphase.</li><li>Each daughter nucleus receives one chromatid of every replicated chromosome.</li><li>Therefore, parent and daughter cells show the <b>same chromosome number</b> (e.g., 2n → 2n).</li><li>Remember: chromosome number is maintained; DNA content per daughter cell becomes normal only after division.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WHERE MITOSIS OCCURS: ANIMALS vs PLANTS (PLOIDY CONTEXT)</span></h2><ul class="b"><li>Animals: mitosis is generally restricted to <b>diploid somatic cells</b> (growth, repair).</li><li>Exception: some <b>haploid animal cells</b> can divide by mitosis (classic example: <b>male honey bee</b>).</li><li>Plants: mitosis occurs in <b>both haploid and diploid</b> phases.</li><li>Haploid plant stage (gametophyte) grows by mitosis; diploid stage (sporophyte) also grows by mitosis.</li><li>This fits the plant life cycle pattern of <b>alternation of generations</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">KARYOKINESIS vs CYTOKINESIS (WITH ANIMAL–PLANT NOTE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Karyokinesis</th><th>Cytokinesis</th></tr></thead><tbody><tr><td>Meaning</td><td>Division of nucleus; separation of daughter chromosomes</td><td>Division of cytoplasm; physical separation into two cells</td></tr><tr><td>Main outcome</td><td>Two daughter nuclei formed</td><td>Two daughter cells formed</td></tr><tr><td>Major stages / mechanism</td><td>Prophase, metaphase, anaphase, telophase</td><td>Animal: cleavage furrow<br>Plant: cell plate (new wall)</td></tr><tr><td>Sequence in M phase</td><td>Starts M phase</td><td>Usually ends M phase</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A diploid somatic cell undergoes mitosis. Why is mitosis called an equational division?</div><div class="sol"><span class="lbl">Answer:</span><br>In mitosis, replicated chromosomes align and then <b>sister chromatids</b> separate at anaphase.<br>Chromatids are distributed equally, so each pole receives one copy of every chromosome.<br>After cytokinesis, each daughter cell has the <b>same chromosome number</b> as the parent (2n → 2n).</div><div class="ans">✓&nbsp; Mitosis maintains chromosome number in daughter cells; hence it is an equational division.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">NEET-style: Mitosis is usually seen only in diploid cells in animals, yet a haploid stage can also show mitosis. Give an example and contrast with plants.</div><div class="sol"><span class="lbl">Answer:</span><br>In animals, mitosis commonly occurs in <b>diploid somatic cells</b> for growth and repair.<br>A well-known haploid exception is the <b>male honey bee</b>, where haploid cells can divide by mitosis.<br>In plants, mitosis occurs in <b>both</b> haploid (gametophyte) and diploid (sporophyte) phases due to <b>alternation of generations</b>.</div><div class="ans">✓&nbsp; Example: haploid male honey bee shows mitosis; plants show mitosis in both haploid and diploid phases.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>M phase = <b>karyokinesis + cytokinesis</b>; both together complete cell division.</li><li>Mitosis is <b>equational</b>: chromosome number of parent and progeny cells remains the same.</li><li>Stage names are for convenience; mitosis is <b>continuous/progressive</b> with blurred boundaries.</li><li>Animals: mitosis mainly in <b>diploid somatic</b> cells; haploid mitosis is rare but exists (male honey bee).</li><li>Plants: mitosis in <b>haploid</b> gametophyte and <b>diploid</b> sporophyte (alternation of generations).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "K-C makes two"”</div><paragraph id="6aa538a9a8fd8f287c00002d"><b>K</b>aryokinesis then <b>C</b>ytokinesis completes M phase and <b>makes two</b> cells.</paragraph><paragraph id="6aa538a9e63b90461500002e">Link word: <b>Equal</b> in mitosis = <b>Equational</b> (chromosome number stays equal).</paragraph><paragraph id="6aa538a9a87b8a106700002f">Plants do mitosis in <b>both phases</b>: Gametophyte (haploid) + Sporophyte (diploid).</paragraph><paragraph id="6aa538a98b952daac0000030">Exception hook: <b>No C</b> after K can mean <b>Coenocyte/syncytium</b> (many nuclei, one cytoplasm).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">M phase includes: <b>Karyokinesis</b> (nuclear division) + <b>Cytokinesis</b> (cytoplasmic division).</span><span class="eq">Mitosis = <b>equational division</b>: chromosome number maintained in daughter cells.</span><span class="eq">Chromosome number does <b>not</b> increase in S phase; <b>DNA content</b> doubles in S phase.</span><span class="eq">Animals: mitosis mainly in <b>diploid somatic cells</b>; haploid exception: <b>male honey bee</b>.</span><span class="eq">Plants: mitosis occurs in <b>haploid gametophyte</b> and <b>diploid sporophyte</b> (alternation of generations).</span><span class="eq">Cytokinesis: <b>animal</b> = cleavage furrow; <b>plant</b> = cell plate (new wall forms from centre outward).</span><span class="eq">Exception: karyokinesis without cytokinesis can form a <b>syncytium</b> (e.g., liquid endosperm in coconut).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Chromatin condenses, duplicated centrosomes separate, and the mitotic spindle begins to assemble</div>
+              <h2>MITOSIS: PROPHASE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Prophase</b> is the first stage of mitotic karyokinesis where <b>chromatin condenses</b> and the <b>spindle apparatus begins forming</b>.</li><li>It follows <b>S</b> and <b>G<sub>2</sub></b> phases, when DNA has replicated but remains <b>intertwined</b> and not distinctly visible as individual chromosomes.</li><li>Chromosomes become <b>clearly visible</b> as compact <b>mitotic chromosomes</b> by progressive condensation.</li><li>Each visible mitotic chromosome consists of <b>two sister chromatids</b> joined at a <b>centromere</b>.</li><li>Duplicated <b>centrosomes</b> start moving to <b>opposite poles</b> and radiate microtubules as <b>asters</b> (animal cells).</li><li><b>Asters + spindle fibres</b> together constitute the developing <b>mitotic apparatus</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='18' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><ellipse cx='180' cy='100' rx='112' ry='62' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='140' y='44' font-size='13' fill='#1f2a44'>Prophase cell</text><circle cx='84' cy='100' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><circle cx='276' cy='100' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='56' y='86' font-size='12' fill='#1f2a44'>Centrosome</text><text x='248' y='86' font-size='12' fill='#1f2a44'>Centrosome</text><line x1='94' y1='100' x2='132' y2='76' stroke='#16A34A' stroke-width='2'/><line x1='94' y1='100' x2='132' y2='100' stroke='#16A34A' stroke-width='2'/><line x1='94' y1='100' x2='132' y2='124' stroke='#16A34A' stroke-width='2'/><line x1='266' y1='100' x2='228' y2='76' stroke='#16A34A' stroke-width='2'/><line x1='266' y1='100' x2='228' y2='100' stroke='#16A34A' stroke-width='2'/><line x1='266' y1='100' x2='228' y2='124' stroke='#16A34A' stroke-width='2'/><text x='120' y='70' font-size='12' fill='#1f2a44'>Aster</text><text x='220' y='70' font-size='12' fill='#1f2a44'>Aster</text><line x1='106' y1='62' x2='254' y2='62' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='254' y1='138' x2='106' y2='138' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><text x='132' y='58' font-size='12' fill='#1f2a44'>to poles</text><text x='132' y='152' font-size='12' fill='#1f2a44'>to poles</text><path d='M165 92 C155 78, 142 78, 136 92 C142 106,155 106,165 92 Z' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><path d='M195 92 C205 78, 218 78, 224 92 C218 106,205 106,195 92 Z' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><line x1='180' y1='84' x2='180' y2='100' stroke='#7C3AED' stroke-width='3'/><text x='132' y='124' font-size='12' fill='#1f2a44'>Two chromatids</text><text x='188' y='112' font-size='12' fill='#1f2a44'>Centromere</text><line x1='90' y1='100' x2='160' y2='92' stroke='#2563EB' stroke-width='2'/><line x1='270' y1='100' x2='200' y2='92' stroke='#2563EB' stroke-width='2'/><text x='142' y='176' font-size='12' fill='#1f2a44'>Spindle fibres forming</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧵</span><span>Chromatin thread → progressively condensed, untangled <b>mitotic chromosomes</b> (visible under light microscope).</span></li><li><span class="ic">✌️</span><span>After S phase, each chromosome is <b>duplicated</b>: <b>two sister chromatids</b>, still counted as <b>one chromosome</b>.</span></li><li><span class="ic">📍</span><span><b>Centromere</b> is the region holding sister chromatids together (kinetochore is emphasized later at metaphase).</span></li><li><span class="ic">🧭</span><span>Duplicated <b>centrosomes</b> separate and move toward <b>opposite poles</b> to establish spindle polarity.</span></li><li><span class="ic">☀️</span><span>Each centrosome forms an <b>aster</b>: a star-like array of microtubules radiating outward (typical in animal cells).</span></li><li><span class="ic">🕸️</span><span>Microtubules reorganize into <b>spindle fibres</b>; with asters they form the <b>mitotic apparatus</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHAT CHANGES FROM S/G<sub>2</sub> TO PROPHASE?</span></h2><ul class="b"><li>In <b>S</b> and <b>G<sub>2</sub></b>, replicated DNA exists but is <b>not distinct</b>; newly formed DNA remains <b>intertwined</b>.</li><li>Prophase begins <b>chromatin condensation</b>: fibres shorten, thicken, and become <b>untangled</b> into chromosomes.</li><li>Visibility increases: compact chromosomes become <b>microscope-visible</b> as condensation proceeds.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">END-OF-PROPHASE FEATURES TO LABEL IN AN EXAM DIAGRAM</span></h2><ul class="b"><li><b>Mitotic chromosomes visible</b>, each with <b>two sister chromatids</b> joined at one <b>centromere</b>.</li><li><b>Centrosomes</b> start moving toward <b>opposite poles</b> (establishing bipolar spindle).</li><li><b>Asters</b> radiate from each centrosome (animal cells) as microtubules reorganize.</li><li><b>Spindle fibres</b> appear; asters + spindle fibres constitute the <b>mitotic apparatus</b>.</li><li>By the <b>end of prophase</b>, <b>nucleolus, Golgi complex, ER, and nuclear envelope</b> are <b>not visible</b> (they reappear/reform in telophase).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">CHROMATIN (INTERPHASE) vs MITOTIC CHROMOSOMES (PROPHASE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Interphase (S/G<sub>2</sub>)</th><th>Prophase (mitosis)</th></tr></thead><tbody><tr><td>DNA state</td><td>Replicated but <b>intertwined</b>, not distinct</td><td><b>Condensing</b> and becoming untangled</td></tr><tr><td>Visibility</td><td>Diffuse; individual chromosomes not clear</td><td><b>Mitotic chromosomes visible</b> (increasingly as condensation proceeds)</td></tr><tr><td>Structure per chromosome</td><td>Already duplicated after S, but not obvious</td><td><b>Two sister chromatids</b> joined at <b>centromere</b></td></tr><tr><td>Centrosomes</td><td>Duplicated earlier; not at poles yet</td><td>Move toward <b>opposite poles</b></td></tr><tr><td>Microtubule organization</td><td>Interphase microtubules for cell functions</td><td><b>Asters</b> and <b>spindle fibres</b> begin forming</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A cell in prophase shows 46 mitotic chromosomes. How many chromatids are present, and why does the chromosome number not double?</div><div class="sol"><span class="lbl">Answer:</span><br>In prophase (after S phase), each chromosome has <b>two sister chromatids</b> joined at a <b>centromere</b>.<br>Chromosome count is based on <b>centromeres</b>; sister chromatids share one centromere, so they are counted as <b>one chromosome</b>.<br>So 46 chromosomes correspond to 46 × 2 = 92 chromatids, while chromosome number stays 46 until chromatids separate later.</div><div class="ans">✓&nbsp; Chromatids = <b>92</b>; chromosome number stays <b>46</b> because sister chromatids are joined at one centromere.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In an animal cell, describe how duplicated centrosomes contribute to spindle formation during prophase.</div><div class="sol"><span class="lbl">Answer:</span><br>Centrosomes duplicate earlier in interphase and in prophase they begin moving to <b>opposite poles</b>.<br>Each centrosome nucleates microtubules that radiate outward as an <b>aster</b>.<br>Microtubules reorganize into <b>spindle fibres</b> across the cell, establishing a <b>bipolar mitotic apparatus</b> for later chromosome movement.</div><div class="ans">✓&nbsp; Centrosomes separate to opposite poles, form asters, and organize spindle fibres to establish the bipolar mitotic apparatus.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Prophase follows <b>S</b> and <b>G<sub>2</sub></b>; DNA is already replicated before prophase starts.</li><li>Key identifier: <b>chromatin condensation</b> converts diffuse chromatin into visible <b>mitotic chromosomes</b>.</li><li>Each mitotic chromosome in prophase = <b>two sister chromatids</b> + one <b>centromere</b> (still one chromosome).</li><li><b>Centrosomes</b> (duplicated earlier) migrate toward <b>opposite poles</b> and set up spindle polarity.</li><li><b>Asters</b> are radial microtubule arrays around centrosomes (prominent in animal cells).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>P</b>ROPHASE = <b>P</b>ackage + <b>P</b>oles”</div><paragraph id="6aa538a9dea60f68a3000031"><b>P</b>ackage: chromatin <b>condenses</b> into visible chromosomes.</paragraph><paragraph id="6aa538a9a683e41e75000032"><b>P</b>air: each chromosome has <b>two</b> sister chromatids at a <b>centromere</b>.</paragraph><paragraph id="6aa538a92872ea9844000033"><b>P</b>oles: centrosomes go to <b>opposite poles</b> and start <b>spindle</b> with asters.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Sequence: <b>S phase → G<sub>2</sub> → Prophase</b> (DNA already replicated; condensation starts in prophase).</span><span class="eq">Before prophase (S/G<sub>2</sub>): newly formed DNA molecules are <b>intertwined</b> and not distinct.</span><span class="eq">Prophase hallmark: <b>chromatin condensation</b> → <b>compact, visible mitotic chromosomes</b>.</span><span class="eq">Prophase chromosome: <b>2 sister chromatids</b> attached at a <b>centromere</b> (still counted as <b>1 chromosome</b>).</span><span class="eq"><b>Centrosomes</b> move toward <b>opposite poles</b>; each can form an <b>aster</b> (animal cells).</span><span class="eq"><b>Asters + spindle fibres</b> together form the developing <b>mitotic apparatus</b>.</span><span class="eq">End of prophase: <b>nucleolus, Golgi complex, ER, and nuclear envelope</b> are <b>not visible</b> (they re-form in telophase).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Metaphase alignment (equator) → Anaphase chromatid separation and poleward movement</div>
+              <h2>MITOSIS: METAPHASE AND ANAPHASE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Metaphase</b> is the mitotic stage where chromosomes align at the cell equator after nuclear envelope disintegration (as a start marker in this text).</li><li>Spindle fibres attach to <b>kinetochores</b> on centromeres, creating bipolar attachment (one sister chromatid to each pole).</li><li><b>Metaphase plate</b> is the imaginary equatorial plane on which chromosomes line up.</li><li><b>Anaphase</b> begins when <b>centromeres split simultaneously</b> and sister chromatids separate.</li><li>Separated chromatids are now <b>daughter chromosomes</b> that migrate to opposite poles with centromere leading.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='20' y='20' width='320' height='160' rx='18' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='38' font-size='13' fill='#1f2a44'>Metaphase → Anaphase</text><circle cx='70' cy='100' r='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='50' y='122' font-size='12' fill='#1f2a44'>Pole</text><circle cx='290' cy='100' r='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='270' y='122' font-size='12' fill='#1f2a44'>Pole</text><line x1='80' y1='96' x2='155' y2='78' stroke='#2563EB' stroke-width='2'/><line x1='80' y1='104' x2='155' y2='122' stroke='#2563EB' stroke-width='2'/><line x1='280' y1='96' x2='205' y2='78' stroke='#2563EB' stroke-width='2'/><line x1='280' y1='104' x2='205' y2='122' stroke='#2563EB' stroke-width='2'/><line x1='180' y1='50' x2='180' y2='150' stroke='#16A34A' stroke-width='2' stroke-dasharray='5,5'/><text x='188' y='60' font-size='12' fill='#1f2a44'>Metaphase</text><text x='188' y='74' font-size='12' fill='#1f2a44'>plate</text><line x1='160' y1='65' x2='160' y2='135' stroke='#7C3AED' stroke-width='2'/><line x1='200' y1='65' x2='200' y2='135' stroke='#7C3AED' stroke-width='2'/><circle cx='180' cy='100' r='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='142' y='58' font-size='12' fill='#1f2a44'>Sister</text><text x='202' y='58' font-size='12' fill='#1f2a44'>chromatids</text><text x='150' y='155' font-size='12' fill='#1f2a44'>Kinetochore</text><line x1='172' y1='148' x2='180' y2='106' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='38' y='68' font-size='12' fill='#1f2a44'>Spindle</text><text x='40' y='82' font-size='12' fill='#1f2a44'>fibres</text><line x1='120' y1='80' x2='98' y2='92' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='230' y='68' font-size='12' fill='#1f2a44'>Anaphase:</text><text x='230' y='82' font-size='12' fill='#1f2a44'>to poles</text><line x1='185' y1='100' x2='130' y2='100' stroke='#16A34A' stroke-width='2' marker-end='url(#arrow)'/><line x1='175' y1='100' x2='230' y2='100' stroke='#16A34A' stroke-width='2' marker-end='url(#arrow)'/></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧱</span><span><b>Metaphase start marker (as per source text)</b>: complete disintegration of nuclear envelope; chromosomes are in cytoplasm.</span></li><li><span class="ic">🎯</span><span><b>Centromere</b> joins sister chromatids; <b>kinetochore</b> on centromere binds spindle microtubules.</span></li><li><span class="ic">🧲</span><span>Bipolar attachment: each sister kinetochore connects to opposite spindle poles.</span></li><li><span class="ic">📍</span><span><b>Best stage for chromosome morphology</b>: metaphase (maximally condensed chromosomes).</span></li><li><span class="ic">↔️</span><span>Alignment at <b>metaphase plate</b> helps ensure equal distribution to daughter nuclei.</span></li><li><span class="ic">✂️</span><span>Anaphase hallmark: <b>centromere splits</b> → sister chromatids separate (not homologues).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">METAPHASE: WHAT TO WRITE IN AN EXAM DIAGRAM/ANSWER</span></h2><ul class="b"><li>Start marker (as per source): <b>complete disintegration of nuclear envelope</b>.</li><li>Chromosomes are <b>maximally condensed</b> → best stage to study morphology/karyotype.</li><li>Each chromosome has <b>two sister chromatids</b> joined at <b>centromere</b>.</li><li><b>Kinetochore</b> is a disc-like protein structure <b>on centromere</b>; spindle fibres attach here.</li><li>All chromosomes align at equator forming the <b>metaphase plate</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">ANAPHASE: SEPARATION AND MOVEMENT</span></h2><ul class="b"><li>Onset: <b>centromeres split simultaneously</b> for all chromosomes on metaphase plate.</li><li>Sister chromatids separate and are now called <b>daughter chromosomes</b>.</li><li>Daughter chromosomes migrate to opposite poles via spindle fibres.</li><li>During movement, <b>centromere faces the pole</b> (leading), arms trail behind.</li><li>Mitotic anaphase separates <b>sister chromatids</b>, not homologous chromosomes.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">CENTROMERE vs KINETOCHORE (High-yield confusion)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Centromere</th><th>Kinetochore</th></tr></thead><tbody><tr><td>Nature</td><td>Chromosomal region joining sister chromatids</td><td>Proteinaceous disc/complex on centromere</td></tr><tr><td>Main role</td><td>Holds chromatids together until anaphase</td><td>Attachment site for spindle microtubules</td></tr><tr><td>Key exam line</td><td>Splits at anaphase onset</td><td>Each kinetochore attaches to spindle fibres toward one pole; the sister kinetochore attaches toward the opposite pole.</td></tr><tr><td>What to label in diagram</td><td>Constricted region</td><td>Small discs on centromere (one per chromatid)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is metaphase considered the best stage to study chromosome morphology in mitosis?</div><div class="sol"><span class="lbl">Answer:</span><br>In metaphase, chromosome condensation is <b>complete</b>, so chromosomes are short, thick, and distinct.<br>All chromosomes are aligned at the equator, making them easier to observe and compare.<br>Therefore size, shape and centromere position are most clearly seen in metaphase.</div><div class="ans">✓&nbsp; Because chromosomes are maximally condensed and distinctly visible in metaphase, so morphology (size/shape/centromere position) is easiest to observe.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student says: "Anaphase separates homologous chromosomes." Correct the statement with reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>In <b>mitosis</b>, each metaphase chromosome consists of two <b>sister chromatids</b> joined at a centromere.<br>At anaphase onset, the <b>centromere splits</b> and sister chromatids separate into daughter chromosomes.<br>Homologous chromosomes separate in <b>anaphase I of meiosis</b>, not in mitotic anaphase.</div><div class="ans">✓&nbsp; Mitotic anaphase separates sister chromatids after centromere splitting; homologous chromosomes separate in meiosis I.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Metaphase start marker (as per source): <b>nuclear envelope completely disintegrates</b>.</li><li>Chromosomes align on the <b>metaphase plate</b> due to bipolar spindle attachment.</li><li>Do not interchange <b>centromere</b> (region) with <b>kinetochore</b> (attachment complex).</li><li>Anaphase onset is defined by <b>simultaneous centromere splitting</b>.</li><li>After separation, each chromatid becomes a <b>daughter chromosome</b> moving to opposite poles.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: META = MEET at Middle; ANA = APART and Away”</div><paragraph id="6aa538a9cd5c2c549c000034"><b>ME</b>TA: chromosomes <b>MEET</b> at the middle (metaphase plate).</paragraph><paragraph id="6aa538a90a9ffe2af6000035"><b>ANA</b>: chromatids go <b>APART</b> after centromere split.</paragraph><paragraph id="6aa538a92eddc8dd51000036">Sequence cue: <b>Attach</b> (kinetochore) → <b>Align</b> (plate) → <b>Apart</b> (centromere split) → <b>Away</b> (to poles).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Metaphase: nuclear envelope is disintegrated; chromosomes are in cytoplasm (source wording).</span><span class="eq">Metaphase: chromosomes are maximally condensed; best stage for morphology/karyotype.</span><span class="eq">Kinetochore: disc-like structure on centromere; spindle fibres attach here.</span><span class="eq">Metaphase plate: equatorial plane where chromosomes align.</span><span class="eq">Anaphase onset: centromeres split simultaneously.</span><span class="eq">Anaphase: sister chromatids become daughter chromosomes and move to opposite poles.</span><span class="eq">Movement: centromere leads toward pole; arms trail behind.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Chromosomes unwind, nuclei rebuild, then cytoplasm divides: furrow in animals, cell plate in plants; sometimes no cytokinesis → syncytium</div>
+              <h2>MITOSIS: TELOPHASE AND CYTOKINESIS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Telophase</b> is the final stage of mitotic karyokinesis in which daughter chromosomes reach opposite poles, decondense, and daughter nuclei reform.</li><li>Chromosomes lose individuality and appear as diffuse <b>chromatin</b> at each pole.</li><li><b>Nuclear envelope reforms</b> around each chromatin mass, producing two daughter nuclei.</li><li><b>Nucleolus reappears</b>; <b>Golgi complex and ER reform</b> and become distinctly visible again in each daughter-cell region.</li><li><b>Cytokinesis</b> is the division of cytoplasm after karyokinesis, producing two separate daughter cells.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><g><rect x='10' y='18' width='160' height='165' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='20' y='38' font-size='14' fill='#1f2a44'>Animal cell</text><circle cx='90' cy='100' r='55' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><path d='M35 100 C55 70, 70 65, 90 65 C110 65, 125 70, 145 100 C125 130, 110 135, 90 135 C70 135, 55 130, 35 100 Z' fill='none' stroke='#123B7A' stroke-width='2'/><line x1='90' y1='45' x2='90' y2='155' stroke='#16A34A' stroke-width='2' stroke-dasharray='4 3'/><text x='26' y='170' font-size='12' fill='#1f2a44'>Cleavage furrow</text><line x1='65' y1='165' x2='86' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></g><g><rect x='190' y='18' width='160' height='165' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='200' y='38' font-size='14' fill='#1f2a44'>Plant cell</text><rect x='220' y='55' width='100' height='110' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><line x1='220' y1='110' x2='320' y2='110' stroke='#F59E0B' stroke-width='4'/><text x='230' y='132' font-size='12' fill='#1f2a44'>Cell plate</text><line x1='250' y1='136' x2='260' y2='114' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='205' y='170' font-size='12' fill='#1f2a44'>New wall grows outward</text></g></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">chro</span><span><b>Chromosomes decondense</b> at poles → revert to chromatin; no longer distinct under light microscope.</span></li><li><span class="ic">nucl</span><span><b>Nuclear envelope reforms</b> around each chromosome cluster → two daughter nuclei form.</span></li><li><span class="ic">nucl</span><span><b>Nucleolus reappears</b>, marking return of interphase-like nuclear organisation.</span></li><li><span class="ic">endo</span><span><b>Golgi and ER reform</b> and become distinctly visible again (reverse of prophase changes).</span></li><li><span class="ic">anim</span><span>Animal cytokinesis: <b>cleavage furrow</b> deepens and meets centrally to split cytoplasm.</span></li><li><span class="ic">plan</span><span>Plant cytokinesis: <b>cell plate</b> forms at centre and grows outward; forms new wall; plate represents <b>middle lamella</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">TELOPHASE: WHAT REFORMS AND WHAT DISAPPEARS</span></h2><ul class="b"><li>Daughter chromosomes reach opposite poles and begin <b>decondensation</b> (uncoiling).</li><li>Distinct chromosomes become indistinct; chromatin forms a diffuse network at each pole.</li><li><b>Nuclear envelope reassembles</b> around each chromatin mass → two nuclei appear.</li><li><b>Nucleolus reappears</b>; interphase-like nuclear organisation returns.</li><li><b>Golgi complex and ER reform</b> and become distinctly visible again.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">CYTOKINESIS: MECHANISMS + SYNCYTIUM</span></h2><ul class="b"><li><b>Animal cells:</b> plasma membrane forms a <b>cleavage furrow</b>; furrow deepens and joins in the centre.</li><li><b>Plant cells:</b> rigid wall prevents furrowing; vesicles coalesce at centre to form <b>cell plate</b>.</li><li>Cell plate expands outward, fuses with lateral walls, and becomes the new partition wall.</li><li>Cell plate represents the <b>middle lamella</b> between the walls of two adjacent daughter cells.</li><li>During cytokinesis, organelles like <b>mitochondria and plastids</b> distribute into daughter cells.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">CYTOKINESIS: ANIMAL CELL vs PLANT CELL</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Animal cell</th><th>Plant cell</th></tr></thead><tbody><tr><td>Main constraint</td><td>Flexible plasma membrane</td><td>Rigid cell wall (relatively inextensible)</td></tr><tr><td>How division starts</td><td>Membrane constricts at equator</td><td>Partition initiates at centre</td></tr><tr><td>Key structure</td><td><b>Cleavage furrow</b></td><td><b>Cell plate</b></td></tr><tr><td>Direction of progress</td><td>Outside → inside (inward pinching)</td><td>Centre → outside (outward growth)</td></tr><tr><td>End result</td><td>Two cells separated by plasma membrane</td><td>Two cells separated by new wall; <b>middle lamella</b> between them</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student observes that chromosomes are no longer distinctly visible, and two nuclear envelopes are forming at opposite poles. Which mitotic stage is this, and name two organelles/structures that reappear.</div><div class="sol"><span class="lbl">Answer:</span><br>Loss of distinct chromosome identity due to <b>decondensation</b> plus <b>nuclear envelope reformation</b> indicates <b>telophase</b>.<br>In telophase, the <b>nucleolus</b> reappears and <b>Golgi complex</b>/<b>endoplasmic reticulum (ER)</b> reform and become distinctly visible again.</div><div class="ans">✓&nbsp; Stage: <b>Telophase</b>; any two reappearing/reforming structures: <b>nucleolus</b>, <b>Golgi complex</b>, <b>ER</b>, <b>nuclear envelope</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why is cytokinesis different in plant cells compared with animal cells? Also, what is formed if karyokinesis occurs without cytokinesis (give one example).</div><div class="sol"><span class="lbl">Answer:</span><br>Plant cells have a rigid, relatively inextensible <b>cell wall</b>, so the cell cannot pinch inward to form a cleavage furrow.<br>Therefore, plants form a <b>cell plate</b> at the centre that grows outward and fuses with existing walls to form the new partition wall.<br>If cytokinesis does not follow karyokinesis, repeated nuclear division produces a multinucleate condition called a <b>syncytium</b>.<br>Example: <b>liquid endosperm of coconut</b>.</div><div class="ans">✓&nbsp; Plants use a <b>cell plate</b> due to the rigid wall; absence of cytokinesis produces a <b>syncytium</b> (e.g., coconut liquid endosperm).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>In telophase, chromosomes at poles <b>decondense</b> and lose individuality (chromatin state).</li><li><b>Nuclear envelope reforms</b> around each chromosome cluster → two daughter nuclei form.</li><li><b>Nucleolus</b> reappears; <b>Golgi complex and ER</b> reform (reverse of prophase changes).</li><li>Mitosis (M phase) usually completes only after both <b>karyokinesis</b> and <b>cytokinesis</b>.</li><li>Animal cytokinesis: <b>cleavage furrow</b>; plant cytokinesis: <b>cell plate</b> forming new wall/middle lamella.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "TELo = TEnds &amp; Links back"”</div><paragraph id="6aa538a906e94e226d000037"><b>T</b>wo nuclei form (envelope reforms).</paragraph><paragraph id="6aa538a9bdd4d4bbd7000038"><b>E</b>xtended chromatin returns (chromosomes decondense).</paragraph><paragraph id="6aa538a97cb6131022000039"><b>L</b>ooks like interphase again: nucleolus + ER/Golgi reappear.</paragraph><paragraph id="6aa538a9f00b4a6bad00003a">Cytokinesis: animals "<b>FURrow</b>", plants "<b>PLATe</b>" (cell plate).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Telophase is the final stage of mitotic <b>karyokinesis</b>.</span><span class="eq">Telophase: chromosomes at poles <b>decondense</b> → chromatin; discrete chromosomes are not distinct under light microscope.</span><span class="eq"><b>Nuclear envelope</b> reforms around each chromosome cluster → two daughter nuclei form.</span><span class="eq"><b>Nucleolus</b> reappears; <b>Golgi complex</b> and <b>ER</b> reform.</span><span class="eq">Cytokinesis = division of cytoplasm after karyokinesis to form two daughter cells.</span><span class="eq">Animal cytokinesis: <b>cleavage furrow</b> deepens and meets in centre.</span><span class="eq">Plant cytokinesis: <b>cell plate</b> forms at centre → grows outward → new wall; plate represents <b>middle lamella</b>.</span><span class="eq">No cytokinesis after karyokinesis → <b>syncytium</b> (e.g., coconut liquid endosperm).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Why equational division is essential for growth, repair and balanced cell function</div>
+              <h2>SIGNIFICANCE OF MITOSIS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Mitosis</b> is an <b>equational division</b> producing two genetically identical daughter cells with the same chromosome number as the parent.</li><li>It increases <b>cell number</b> in multicellular organisms, forming the basis of body growth and development.</li><li>It enables <b>repair and replacement</b> of worn-out, damaged, or dead somatic cells.</li><li>In plants, mitosis in <b>meristematic tissues</b> ensures <b>continuous growth</b> throughout life.</li><li>It helps restore the <b>nucleo-cytoplasmic ratio</b> disturbed by cell growth, maintaining efficient cellular control.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='110' height='54' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='26' y='40' font-size='13' fill='#1f2a44'>Parent cell</text><text x='26' y='58' font-size='13' fill='#1f2a44'>2n, genome</text><rect x='134' y='18' width='92' height='54' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='146' y='40' font-size='13' fill='#1f2a44'>Mitosis</text><text x='146' y='58' font-size='13' fill='#1f2a44'>equational</text><line x1='124' y1='45' x2='134' y2='45' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='226' y1='45' x2='246' y2='45' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='248' y='10' width='98' height='38' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='258' y='34' font-size='13' fill='#1f2a44'>Daughter A</text><rect x='248' y='56' width='98' height='38' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='258' y='80' font-size='13' fill='#1f2a44'>Daughter B</text><text x='258' y='50' font-size='12' fill='#1f2a44'>same 2n</text><g><rect x='18' y='112' width='150' height='70' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='28' y='134' font-size='13' fill='#1f2a44'>Growth + repair</text><text x='28' y='152' font-size='12' fill='#1f2a44'>epidermis, gut lining,</text><text x='28' y='168' font-size='12' fill='#1f2a44'>blood cell renewal</text></g><g><rect x='192' y='112' width='150' height='70' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='202' y='134' font-size='13' fill='#1f2a44'>Plant meristems</text><text x='202' y='152' font-size='12' fill='#1f2a44'>apical meristem (length)</text><text x='202' y='168' font-size='12' fill='#1f2a44'>lateral cambium (girth)</text></g><line x1='180' y1='72' x2='94' y2='112' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='180' y1='72' x2='266' y2='112' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='126' y='106' font-size='12' fill='#1f2a44'>adds cells</text><text x='214' y='106' font-size='12' fill='#1f2a44'>adds cells</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚖️</span><span><b>Equational nature:</b> chromosome number is maintained; daughter cells are genetically similar to parent.</span></li><li><span class="ic">📈</span><span><b>Growth:</b> repeated mitosis increases cell population; major contributor to size increase in multicellular organisms.</span></li><li><span class="ic">🩹</span><span><b>Repair/replacement:</b> new cells replace upper epidermis and gut lining; many blood cells are continuously replaced through mitotic division of precursor/progenitor cells.</span></li><li><span class="ic">🌱</span><span><b>Plant lifelong growth:</b> apical meristem adds length; lateral cambium adds girth (secondary growth).</span></li><li><span class="ic">🎯</span><span><b>Nucleus–cytoplasm balance:</b> division restores optimal nucleus:cytoplasm for regulation and metabolism.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">HOW MITOSIS HELPS THE BODY (GROWTH + MAINTENANCE)</span></h2><ul class="b"><li><b>Growth in multicellular organisms:</b> increase in cell number is primarily due to mitotic divisions.</li><li><b>Repair:</b> replaces cells lost by injury, wear-and-tear, or programmed cell death.</li><li><b>Replacement examples:</b> cells of <b>upper epidermis</b> and <b>gut lining</b> are regularly renewed; many <b>blood cells</b> are continuously replaced through mitotic division of precursor/progenitor cells.</li><li><b>Genetic stability:</b> daughter cells inherit the same genetic complement, preserving tissue identity.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">PLANT CONTINUOUS GROWTH + NUCLEO-CYTOPLASMIC RATIO</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='24' y='24' width='150' height='64' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='34' y='46' font-size='13' fill='#1f2a44'>Cell grows</text><text x='34' y='64' font-size='12' fill='#1f2a44'>cytoplasm ↑</text><text x='34' y='80' font-size='12' fill='#1f2a44'>ratio disturbed</text><line x1='174' y1='56' x2='200' y2='56' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='202' y='24' width='134' height='64' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='212' y='46' font-size='13' fill='#1f2a44'>Mitosis</text><text x='212' y='64' font-size='12' fill='#1f2a44'>2 cells formed</text><text x='212' y='80' font-size='12' fill='#1f2a44'>ratio restored</text><rect x='24' y='118' width='150' height='58' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='34' y='140' font-size='13' fill='#1f2a44'>Apical meristem</text><text x='34' y='158' font-size='12' fill='#1f2a44'>length growth</text><rect x='202' y='118' width='134' height='58' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='212' y='140' font-size='13' fill='#1f2a44'>Lateral cambium</text><text x='212' y='158' font-size='12' fill='#1f2a44'>girth growth</text></svg></div><ul class="b"><li><b>Meristematic tissues</b> remain mitotically active throughout life, unlike many animal tissues.</li><li><b>Apical meristem:</b> mitosis increases length of root and shoot (primary growth).</li><li><b>Lateral cambium:</b> mitosis increases thickness/girth (secondary growth).</li><li>As cytoplasm increases during growth, mitosis restores a favorable <b>nucleo-cytoplasmic ratio</b> for efficient control.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Mitosis vs Meiosis (only what links to significance)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Mitosis</th><th>Meiosis</th></tr></thead><tbody><tr><td>Type of division</td><td>Equational; chromosome number maintained</td><td>Reductional (in I); chromosome number halved</td></tr><tr><td>Products</td><td>2 daughter cells, genetically similar</td><td>4 haploid cells, genetically varied</td></tr><tr><td>Major role</td><td>Growth, repair, replacement; plant meristem growth</td><td>Gamete/spore formation; variation</td></tr><tr><td>Genetic effect</td><td>Maintains genetic stability of tissues</td><td>Creates new gene combinations</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is mitosis called an equational division, and how does this relate to its significance in body tissues?</div><div class="sol"><span class="lbl">Answer:</span><br>In mitosis, <b>sister chromatids</b> separate and are distributed equally to opposite poles.<br>Each daughter cell receives one copy of every chromosome set, so <b>chromosome number remains the same</b> as the parent cell.<br>Because tissues need genetically identical cells to maintain structure and function, equational division supports <b>growth</b> and <b>repair/replacement</b> without changing ploidy.</div><div class="ans">✓&nbsp; Mitosis is equational because chromosome number is conserved in daughter cells, ensuring genetic stability needed for growth and tissue maintenance.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student claims: "Plant growth stops after maturity because mitosis is absent in adults." Correct this statement using meristems.</div><div class="sol"><span class="lbl">Answer:</span><br>Plants retain <b>meristematic tissues</b> that remain mitotically active throughout life.<br>The <b>apical meristem</b> produces new cells for primary growth (increase in length).<br>The <b>lateral cambium</b> produces new cells for secondary growth (increase in girth).<br>Hence, adult plants can show <b>continuous growth</b> due to ongoing mitosis in meristems.</div><div class="ans">✓&nbsp; Plant growth can continue throughout life because mitosis persists in apical meristems and lateral cambium.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Mitosis produces <b>genetically identical</b> daughter cells; crucial for tissue integrity.</li><li>It is <b>equational</b>: chromosome number of parent equals that of each daughter cell.</li><li>Increase in cell number for <b>growth in multicellular organisms</b> occurs via mitosis.</li><li>Constant replacement: <b>upper epidermis</b> and <b>gut lining</b> renew by mitosis; many <b>blood cells</b> are continuously replaced through mitotic division of precursor/progenitor cells.</li><li>In plants, lifelong growth depends on mitosis in <b>meristematic tissues</b> (apical meristem, lateral cambium).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>GRoP-N</b> (Significance of mitosis)”</div><paragraph id="6aa538a9748f4bb7b900003b"><b>G</b>rowth in multicellular organisms (cell number ↑).</paragraph><paragraph id="6aa538a9b90cbdf4c200003c"><b>R</b>epair &amp; replacement (epidermis, gut lining, blood cells).</paragraph><paragraph id="6aa538a979a0ad28bd00003d"><b>P</b>lant continuous growth via meristems (apical, cambium).</paragraph><paragraph id="6aa538a92ea876d59700003e"><b>N</b>ucleo-cytoplasmic ratio restored after cell growth.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Equational division:</b> chromosome number maintained in daughter cells.</span><span class="eq"><b>Genetic similarity:</b> daughter cells are genetically identical to parent (barring mutations).</span><span class="eq"><b>Growth:</b> increase in cell number in multicellular organisms occurs via mitosis.</span><span class="eq"><b>Repair/replacement:</b> renews upper epidermis and gut lining; precursor/progenitor mitosis continuously replaces many blood cells.</span><span class="eq"><b>Plant meristems:</b> apical meristem (length) and lateral cambium (girth) divide by mitosis.</span><span class="eq"><b>Nucleo-cytoplasmic ratio:</b> cell growth disturbs balance; division restores efficient regulation.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Specialised reduction division required for sexual reproduction: two divisions, one replication; recombination + assortment → four haploid cells</div>
+              <h2>MEIOSIS: CONCEPT AND FEATURES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Meiosis</b> is a specialised division that reduces chromosome number to half, forming <b>haploid</b> cells from diploid cells.</li><li>In animals, meiosis occurs during <b>gametogenesis</b>. In plants and other life cycles, <b>meiosis forms haploid products—spores or gametes depending on the life cycle</b>.</li><li>Has <b>two sequential divisions</b> (meiosis I and meiosis II) but <b>only one DNA replication</b> (before meiosis I).</li><li>Key unique events: <b>synapsis</b> of homologues and <b>crossing over</b> (recombination) in prophase I.</li><li>End result: <b>four haploid</b> daughter cells, genetically variable due to recombination and independent assortment.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='14' y='16' width='132' height='40' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='24' y='40' font-size='13' fill='#1f2a44'>Diploid cell (2n)</text><line x1='146' y1='36' x2='182' y2='36' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='184' y='16' width='160' height='40' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='194' y='33' font-size='13' fill='#1f2a44'>S phase: DNA</text><text x='194' y='49' font-size='13' fill='#1f2a44'>replication (once)</text><line x1='264' y1='56' x2='264' y2='72' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='28' y='74' width='140' height='44' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='40' y='93' font-size='13' fill='#1f2a44'>Meiosis I</text><text x='40' y='109' font-size='13' fill='#1f2a44'>Synapsis + CO</text><line x1='168' y1='96' x2='204' y2='96' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='206' y='74' width='132' height='44' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='216' y='93' font-size='13' fill='#1f2a44'>Reductional</text><text x='216' y='109' font-size='13' fill='#1f2a44'>division (n)</text><line x1='114' y1='118' x2='114' y2='134' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='272' y1='118' x2='272' y2='134' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='28' y='136' width='140' height='44' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='40' y='155' font-size='13' fill='#1f2a44'>Meiosis II</text><text x='40' y='171' font-size='13' fill='#1f2a44'>Chromatids split</text><rect x='206' y='136' width='132' height='44' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='216' y='155' font-size='13' fill='#1f2a44'>4 haploid cells</text><text x='216' y='171' font-size='13' fill='#1f2a44'>(genetically varied)</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⬇️</span><span><b>Reduction division</b>: chromosome number halves in meiosis I (2n → n).</span></li><li><span class="ic">🔁</span><span><b>One replication, two divisions</b>: DNA replicates once in S phase; no replication before meiosis II.</span></li><li><span class="ic">🤝</span><span><b>Synapsis</b>: pairing of homologous chromosomes in <b>zygotene</b> via synaptonemal complex.</span></li><li><span class="ic">🔀</span><span><b>Crossing over</b>: exchange between <b>non-sister chromatids</b> in <b>pachytene</b> → recombination.</span></li><li><span class="ic">✂️</span><span><b>Anaphase I</b> separates homologues (centromeres intact); <b>Anaphase II</b> separates sister chromatids.</span></li><li><span class="ic">🧫</span><span><b>Products</b>: four haploid cells (equal-sized in spermatogenesis; in oogenesis, one ovum forms + polar bodies due to unequal cytokinesis).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">SIGNATURE EVENTS THAT MAKE MEIOSIS UNIQUE</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='16' y='18' width='328' height='164' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='26' y='40' font-size='13' fill='#1f2a44'>Bivalent (tetrad)</text><line x1='90' y1='62' x2='90' y2='150' stroke='#2563EB' stroke-width='4'/><line x1='110' y1='62' x2='110' y2='150' stroke='#2563EB' stroke-width='4'/><line x1='250' y1='62' x2='250' y2='150' stroke='#16A34A' stroke-width='4'/><line x1='270' y1='62' x2='270' y2='150' stroke='#16A34A' stroke-width='4'/><path d='M110 108 C150 84, 210 126, 250 100' fill='none' stroke='#F59E0B' stroke-width='4'/><circle cx='180' cy='104' r='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='192' y='108' font-size='13' fill='#1f2a44'>Chiasma</text><line x1='300' y1='104' x2='246' y2='104' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='26' y='172' font-size='12' fill='#1f2a44'>Blue = one homologue, Green = other; crossing over between non-sister chromatids</text></svg></div><ul class="b"><li><b>Synapsis</b> (zygotene): homologous chromosomes pair to form a <b>bivalent</b> (also called <b>tetrad</b> because it contains 4 chromatids).</li><li><b>Crossing over</b> (pachytene): exchange between <b>non-sister chromatids</b> at recombination nodules.</li><li><b>Chiasmata</b> (diplotene): visible X-like links where homologues stay connected after crossing over.</li><li><b>Terminalisation</b> (diakinesis): chiasmata shift toward chromosome ends; spindle forms; nuclear envelope breaks.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">OUTCOME AND BIOLOGICAL SIGNIFICANCE (EXAM CORE)</span></h2><ul class="b"><li>Maintains species chromosome number: meiosis forms <b>haploid products</b> (spores or gametes depending on the life cycle); fertilisation of gametes restores <b>2n</b>.</li><li>Creates genetic variation via <b>crossing over</b> and random segregation (independent assortment) of homologous chromosomes in meiosis I.</li><li>Meiosis I is <b>reductional</b>; meiosis II is <b>equational</b> (mitosis-like).</li><li>Meiosis produces four haploid cells; cytokinesis may be equal (often male) or unequal (often female).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">MEIOSIS I vs MEIOSIS II (HIGH-YIELD DIFFERENCES)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Meiosis I</th><th>Meiosis II</th></tr></thead><tbody><tr><td>Type of division</td><td>Reductional (2n → n)</td><td>Equational (n → n)</td></tr><tr><td>What separates in anaphase</td><td>Homologous chromosomes</td><td>Sister chromatids</td></tr><tr><td>Centromere</td><td>Does not split in anaphase I</td><td>Splits in anaphase II</td></tr><tr><td>Synapsis/crossing over</td><td>Present in prophase I</td><td>Absent</td></tr><tr><td>DNA replication just before</td><td>Yes (S phase before meiosis I)</td><td>No (no S phase in interkinesis)</td></tr><tr><td>End products</td><td>Two haploid cells (dyad), chromosomes still duplicated (two chromatids each)</td><td>Four haploid daughter cells (chromosomes single-chromatid)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A diploid germ cell undergoes meiosis. State the number of DNA replications, number of divisions, and final products (ploidy and count).</div><div class="sol"><span class="lbl">Answer:</span><br>DNA replicates <b>once</b> in S phase before meiosis I, producing sister chromatids.<br>Cell undergoes <b>two</b> divisions: meiosis I (reductional) and meiosis II (equational).<br>After meiosis II and cytokinesis, <b>four</b> cells form, each with <b>haploid</b> chromosome number.</div><div class="ans">✓&nbsp; One DNA replication, two divisions, four haploid daughter cells.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In a meiotic cell, a student labels the event in anaphase I as separation of sister chromatids. Correct the statement with reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>In <b>anaphase I</b>, <b>homologous chromosomes</b> separate to opposite poles; this halves chromosome number.<br>Sister chromatids remain joined because <b>centromeres do not split</b> in anaphase I.<br>Sister chromatids separate only in <b>anaphase II</b> when centromeres split.</div><div class="ans">✓&nbsp; Anaphase I separates homologous chromosomes (centromeres intact); sister chromatids separate in anaphase II.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Meiosis is essential for sexual reproduction: it forms haploid products—spores or gametes depending on the life cycle; fertilisation restores diploidy.</li><li>Only one DNA replication occurs (before meiosis I); <b>no DNA replication</b> between I and II (interkinesis).</li><li>Synapsis occurs in <b>zygotene</b>; crossing over occurs in <b>pachytene</b> between non-sister chromatids.</li><li>Chiasmata appear in <b>diplotene</b>; terminalisation occurs in <b>diakinesis</b>.</li><li>Reduction happens in <b>meiosis I</b> (homologues separate); meiosis II is mitosis-like.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>LZPDD</b> + "<b>ZY</b> pairs, <b>PA</b> swaps"”</div><paragraph id="6aa538a9ba628e9e7f00003f"><b>LZPDD</b> = Leptotene → Zygotene → Pachytene → Diplotene → Diakinesis.</paragraph><paragraph id="6aa538a93ca5f6ecc1000040"><b>ZY</b>gotene = s<b>Y</b>napsis (pairing); <b>PA</b>chytene = exchange (crossing over).</paragraph><paragraph id="6aa538a9fa42767e88000041">Think: <b>I</b> = "Identify pairs" (homologues), <b>II</b> = "Isolate chromatids".</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Meiosis</b> is a specialised division that reduces chromosome number (2n → n) to form haploid cells.</span><span class="eq"><b>Two divisions</b> (I, II) but <b>one DNA replication</b> (S phase before meiosis I).</span><span class="eq"><b>Meiosis I</b>: synapsis + crossing over; homologous chromosomes separate → reduction in chromosome number.</span><span class="eq"><b>Meiosis II</b>: sister chromatids separate (mitosis-like); chromosome number stays n.</span><span class="eq"><b>Prophase I order</b>: Leptotene → Zygotene → Pachytene → Diplotene → Diakinesis (LZPDD).</span><span class="eq"><b>Synapsis</b> in zygotene forms a <b>bivalent</b> (tetrad of 4 chromatids).</span><span class="eq"><b>Crossing over</b> occurs in pachytene between <b>non-sister chromatids</b>; <b>chiasmata</b> are seen in diplotene.</span><span class="eq">End result: <b>four haploid</b> daughter cells, genetically variable due to recombination and independent assortment.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Longest meiotic phase: synapsis → crossing over → visible chiasmata → terminalisation</div>
+              <h2>MEIOSIS I: PROPHASE I (LZPDD)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Prophase I</b> is the first stage of meiosis I where homologous chromosomes pair (synapsis) and recombine.</li><li>It has five substages: <b>Leptotene → Zygotene → Pachytene → Diplotene → Diakinesis</b> (LZPDD).</li><li>Key outcomes: <b>bivalents/tetrads</b> formation and <b>genetic recombination</b> via crossing over.</li><li><b>Crossing over</b> is completed by the end of pachytene; <b>chiasmata</b> become <b>visible</b> in diplotene and help hold homologues together.</li><li><b>Terminalisation</b> moves chiasmata toward chromosome ends in diakinesis, preparing for metaphase I.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-t10-s1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="#123B7A"/></marker></defs><rect x="10" y="18" width="62" height="28" rx="6" fill="#EEF4FF" stroke="#2563EB"/><text x="18" y="37" font-size="12" fill="#1f2a44">Leptotene</text><rect x="82" y="18" width="62" height="28" rx="6" fill="#EAF7EF" stroke="#16A34A"/><text x="92" y="37" font-size="12" fill="#1f2a44">Zygotene</text><rect x="154" y="18" width="66" height="28" rx="6" fill="#F4EFFE" stroke="#7C3AED"/><text x="162" y="37" font-size="12" fill="#1f2a44">Pachytene</text><rect x="230" y="18" width="64" height="28" rx="6" fill="#FEF5E4" stroke="#F59E0B"/><text x="238" y="37" font-size="12" fill="#1f2a44">Diplotene</text><rect x="304" y="18" width="46" height="28" rx="6" fill="#EEF4FF" stroke="#2563EB"/><text x="308" y="37" font-size="12" fill="#1f2a44">Diak.</text><line x1="72" y1="32" x2="82" y2="32" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t10-s1)"/><line x1="144" y1="32" x2="154" y2="32" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t10-s1)"/><line x1="220" y1="32" x2="230" y2="32" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t10-s1)"/><line x1="294" y1="32" x2="304" y2="32" stroke="#123B7A" stroke-width="2" marker-end="url(#arrow-t10-s1)"/><text x="12" y="62" font-size="12" fill="#1f2a44">Key structures</text><rect x="10" y="70" width="340" height="118" rx="8" fill="#EEF4FF" stroke="#123B7A"/><line x1="38" y1="92" x2="38" y2="168" stroke="#123B7A" stroke-width="3"/><line x1="54" y1="92" x2="54" y2="168" stroke="#123B7A" stroke-width="3"/><line x1="86" y1="92" x2="86" y2="168" stroke="#16A34A" stroke-width="3"/><line x1="102" y1="92" x2="102" y2="168" stroke="#16A34A" stroke-width="3"/><text x="46" y="86" font-size="10.5" text-anchor="middle" fill="#1f2a44">Homolog A</text><text x="94" y="86" font-size="10.5" text-anchor="middle" fill="#1f2a44">Homolog B</text><rect x="58" y="104" width="24" height="48" rx="6" fill="#F4EFFE" stroke="#7C3AED"/><text x="70" y="170" font-size="9.5" text-anchor="middle" fill="#1f2a44">Synaptonemal</text><text x="70" y="182" font-size="9.5" text-anchor="middle" fill="#1f2a44">complex</text><circle cx="70" cy="112" r="4" fill="#F59E0B" stroke="#F59E0B"/><circle cx="70" cy="126" r="4" fill="#F59E0B" stroke="#F59E0B"/><text x="116" y="118" font-size="12" fill="#1f2a44">Recombination</text><text x="116" y="132" font-size="12" fill="#1f2a44">nodules</text><path d="M54 136 C64 120, 76 150, 86 134" fill="none" stroke="#2563EB" stroke-width="3"/><path d="M54 134 C64 150, 76 120, 86 136" fill="none" stroke="#2563EB" stroke-width="3"/><text x="116" y="150" font-size="12" fill="#1f2a44">Chiasma</text><text x="116" y="164" font-size="12" fill="#1f2a44">(visible in diplotene)</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔗</span><span><b>Synapsis</b> (zygotene): pairing of homologous chromosomes using the <b>synaptonemal complex</b>.</span></li><li><span class="ic">🧩</span><span><b>Bivalent/tetrad</b>: one paired homologous chromosome set with <b>4 chromatids</b> total.</span></li><li><span class="ic">🧪</span><span><b>Recombination nodules</b> (pachytene): protein sites where crossing over occurs.</span></li><li><span class="ic">🔀</span><span><b>Crossing over</b>: exchange between <b>non-sister chromatids</b> of homologues; enzyme-mediated (recombinase).</span></li><li><span class="ic">❌</span><span><b>Chiasmata</b> (diplotene): visible crossover holding points after synaptonemal complex dissolves.</span></li><li><span class="ic">🎯</span><span><b>Diakinesis</b>: terminalisation + maximum condensation + spindle assembly + nuclear envelope breakdown.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">STAGE-WISE EVENTS (LZPDD) — WHAT TO WRITE IN EXAMS</span></h2><ul class="b"><li><b>Leptotene</b>: chromosomes become visible; compaction/condensation begins and continues.</li><li><b>Zygotene</b>: <b>synapsis</b> starts; <b>synaptonemal complex</b> forms along homologues.</li><li><b>Pachytene</b>: tetrads clear; <b>recombination nodules</b> appear; <b>crossing over</b> occurs (recombination completed by end).</li><li><b>Diplotene</b>: synaptonemal complex dissolves; homologues begin to separate except at <b>chiasmata</b> (now visible).</li><li><b>Diakinesis</b>: <b>terminalisation</b> of chiasmata; max condensation; spindle forms; nuclear envelope breaks.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">KEY TERMS (VERY TESTED) — 1-LINE DEFINITIONS</span></h2><ul class="b"><li><b>Synaptonemal complex</b>: zipper-like protein scaffold that holds homologues closely during synapsis.</li><li><b>Bivalent</b>: paired homologous chromosomes during meiosis I; also called <b>tetrad</b> due to 4 chromatids.</li><li><b>Recombination nodule</b>: pachytene protein focus on synaptonemal complex where crossing over happens.</li><li><b>Crossing over</b>: exchange between <b>non-sister chromatids</b> of homologous chromosomes.</li><li><b>Chiasma</b>: visible X-shaped connection at crossover site in diplotene; helps maintain pairing until anaphase I.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ZYGOTENE vs PACHYTENE vs DIPLOTENE (DON'T MIX THESE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Zygotene</th><th>Pachytene</th><th>Diplotene</th></tr></thead><tbody><tr><td>Main event</td><td>Synapsis begins</td><td>Crossing over occurs</td><td>Homologues begin to separate but remain attached at chiasmata</td></tr><tr><td>Key structure</td><td>Synaptonemal complex forms</td><td>Recombination nodules present</td><td>Synaptonemal complex dissolves</td></tr><tr><td>What is seen</td><td>Bivalents forming</td><td>Tetrads clearly distinct</td><td>Chiasmata visible (X-shape)</td></tr><tr><td>Chromatid involvement</td><td>Homologues aligned closely</td><td>Non-sister chromatids exchange segments</td><td>Homologues linked only at chiasmata</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">An experiment shows recombination has occurred, but chiasmata are not yet visible. Identify the most likely substage and justify.</div><div class="sol"><span class="lbl">Answer:</span><br>Crossing over occurs in <b>pachytene</b> at recombination nodules on the synaptonemal complex.<br>Chiasmata become <b>visible</b> when homologues start separating after synaptonemal complex dissolves, i.e., in <b>diplotene</b>.<br>Therefore, recombination without visible chiasmata best matches <b>pachytene</b>.</div><div class="ans">✓&nbsp; Pachytene; crossing over is completed by end of pachytene, while chiasmata become visible in diplotene.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student labels the X-shaped structure in diplotene as a centromere. Correct the label and give one difference between the two.</div><div class="sol"><span class="lbl">Answer:</span><br>In diplotene, the X-shaped visible link between homologous chromatids is a <b>chiasma</b>.<br><b>Chiasma</b> = crossover-associated connection between <b>non-sister chromatids</b> of homologous chromosomes.<br><b>Centromere</b> = region joining <b>sister chromatids</b> of the same chromosome; it is not a crossover site.</div><div class="ans">✓&nbsp; Correct label: chiasma; chiasma connects homologues at crossover sites, centromere connects sister chromatids of one chromosome.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Order is exam-critical: <b>L → Z → P → D → D</b>; write full names at least once.</li><li>Synapsis is <b>zygotene</b>; crossing over is <b>pachytene</b> (not zygotene).</li><li>A <b>bivalent/tetrad</b> contains <b>two homologues</b> and <b>four chromatids</b> after S phase.</li><li>Chiasmata become visible in <b>diplotene</b> when synaptonemal complex dissolves and homologues begin to separate.</li><li>Diakinesis ends prophase I: <b>terminalisation</b>, maximum condensation, spindle assembly, nuclear envelope breakdown.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: LZPDD = "Let Zebras Pair; Then Depart, Disappear"”</div><paragraph id="6aa538a9e3659bef8f000042"><b>Let</b> = Leptotene (chromosomes start condensing; become visible)</paragraph><paragraph id="6aa538a9f04efbb5c7000043"><b>Zebras</b> = Zygotene (synapsis starts; synaptonemal complex forms)</paragraph><paragraph id="6aa538a9a1347da83f000044"><b>Pair</b> = Pachytene (tetrads distinct; crossing over at recombination nodules)</paragraph><paragraph id="6aa538a9726da7432c000045"><b>Depart</b> = Diplotene (synaptonemal complex dissolves; homologues begin separating; chiasmata visible)</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Prophase I substages (order): <b>Leptotene → Zygotene → Pachytene → Diplotene → Diakinesis</b> (LZPDD).</span><span class="eq">Synapsis occurs in <b>zygotene</b> via <b>synaptonemal complex</b> formation.</span><span class="eq">A <b>bivalent/tetrad</b> = two homologous chromosomes together = <b>4 chromatids</b>.</span><span class="eq"><b>Recombination nodules</b> appear in <b>pachytene</b> and are sites of crossing over.</span><span class="eq">Crossing over occurs between <b>non-sister chromatids</b> of homologous chromosomes (enzyme: recombinase).</span><span class="eq"><b>Chiasmata</b> are <b>visible in diplotene</b>; <b>terminalisation</b> occurs in <b>diakinesis</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Reductional division: bivalents align, homologues separate (centromeres intact), then a short pause with no DNA replication</div>
+              <h2>MEIOSIS I AND INTERKINESIS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Meiosis I</b> separates <b>homologous chromosomes</b> (not sister chromatids), reducing chromosome number by half.</li><li><b>Metaphase I</b>: bivalents (tetrads) align on the equatorial plate; each homologue attaches to opposite spindle poles.</li><li><b>Anaphase I</b>: homologous chromosomes disjoin and move to opposite poles; <b>centromeres do not split</b>.</li><li><b>Telophase I</b> restores nuclei (often) and cytokinesis forms a <b>dyad</b> (two haploid cells with duplicated chromosomes).</li><li><b>Interkinesis</b>: brief interval between meiosis I and II; <b>no DNA replication</b> occurs.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='10' y='10' width='340' height='180' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='18' y='28' font-size='13' fill='#1f2a44'>Meiosis I → Interkinesis</text><g><rect x='20' y='45' width='100' height='60' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='28' y='62' font-size='12' fill='#1f2a44'>Metaphase I</text><line x1='30' y1='86' x2='110' y2='86' stroke='#2563EB' stroke-width='2'/><text x='34' y='80' font-size='12' fill='#1f2a44'>bivalents</text><g stroke='#7C3AED' stroke-width='2' fill='none'><path d='M52 70 C45 78,45 94,52 102'/><path d='M64 70 C71 78,71 94,64 102'/><path d='M86 70 C79 78,79 94,86 102'/><path d='M98 70 C105 78,105 94,98 102'/></g><text x='70' y='101' font-size='9.5' text-anchor='middle' fill='#1f2a44'>equator</text></g><line x1='125' y1='75' x2='155' y2='75' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><g><rect x='160' y='45' width='100' height='60' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='168' y='62' font-size='12' fill='#1f2a44'>Anaphase I</text><text x='168' y='78' font-size='12' fill='#1f2a44'>homologues</text><text x='168' y='94' font-size='12' fill='#1f2a44'>separate</text><line x1='170' y1='70' x2='170' y2='100' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='250' y1='70' x2='250' y2='100' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><g stroke='#7C3AED' stroke-width='2' fill='none'><path d='M185 72 C178 80,178 94,185 102'/><path d='M200 72 C207 80,207 94,200 102'/><path d='M235 72 C228 80,228 94,235 102'/><path d='M220 72 C213 80,213 94,220 102'/></g><text x='210' y='101' font-size='9.5' text-anchor='middle' fill='#1f2a44'>centromeres intact</text></g><line x1='265' y1='75' x2='295' y2='75' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><g><rect x='300' y='45' width='40' height='60' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='304' y='62' font-size='12' fill='#1f2a44'>Telo I</text><text x='305' y='78' font-size='12' fill='#1f2a44'>dyad</text><circle cx='312' cy='98' r='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='1.5'/><circle cx='332' cy='98' r='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='1.5'/></g><g><rect x='40' y='130' width='280' height='45' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='50' y='148' font-size='12' fill='#1f2a44'>Interkinesis (between I &amp; II)</text><text x='50' y='166' font-size='12' fill='#1f2a44'>No DNA replication (no S phase)</text></g></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span><b>Bivalent</b> = pair of homologues (4 chromatids total) aligned in metaphase I.</span></li><li><span class="ic">↔️</span><span>Metaphase I orientation enables <b>independent assortment</b> of maternal vs paternal homologues.</span></li><li><span class="ic">🧲</span><span>Spindle fibres attach to kinetochores; homologues are pulled as intact chromosomes in anaphase I.</span></li><li><span class="ic">⛔</span><span>Anaphase I hallmark: <b>sister chromatids remain associated</b>; <b>centromeres stay intact</b>.</span></li><li><span class="ic">🧫</span><span>After telophase I + cytokinesis: <b>dyad</b> of cells, each <b>haploid (n)</b> but chromosomes are still duplicated.</span></li><li><span class="ic">⏸️</span><span>Interkinesis is like a short interphase without S-phase: <b>no replication</b>, prepares for meiosis II.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">STAGE-WISE SNAPSHOT (WHAT TO WRITE IN ANSWERS)</span></h2><ul class="b"><li><b>Metaphase I</b>: bivalents arranged on metaphase plate; each homologue faces opposite pole.</li><li>Spindle attachment is to <b>kinetochores of homologous chromosomes</b> (whole chromosomes behave as units).</li><li><b>Anaphase I</b>: disjunction of homologues; <b>reduction in chromosome number</b> happens here.</li><li>Because <b>centromeres do not split</b>, each migrating chromosome still has <b>two sister chromatids</b>.</li><li><b>Telophase I</b>: nuclei may re-form; cytokinesis produces <b>two haploid cells</b> (dyad).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">INTERKINESIS (HIGH-YIELD DIFFERENTIATOR)</span></h2><ul class="b"><li>A short resting interval after meiosis I; chromosomes may partly decondense but not like true interphase.</li><li><b>No DNA synthesis/replication</b>; cells enter meiosis II with chromosomes still duplicated.</li><li>Often resembles a brief G phase; prepares spindle formation for <b>prophase II</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ANAPHASE I vs ANAPHASE II (MOST TESTED CONFUSION)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Anaphase I (Meiosis I)</th><th>Anaphase II (Meiosis II)</th></tr></thead><tbody><tr><td>What separates?</td><td>Homologous chromosomes</td><td>Sister chromatids</td></tr><tr><td>Centromere behavior</td><td>Does <b>not</b> split</td><td>Splits</td></tr><tr><td>Chromatid status at poles</td><td>Chromosomes still double (2 chromatids)</td><td>Chromosomes single (1 chromatid)</td></tr><tr><td>Type of division</td><td>Reductional (2n → n)</td><td>Equational (n → n)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student states: “In anaphase I, sister chromatids separate and move to opposite poles.” Correct this statement with the precise event and one key structural reason.</div><div class="sol"><span class="lbl">Answer:</span><br>Replace the separating units: in <b>anaphase I</b>, <b>homologous chromosomes</b> separate, not sister chromatids.<br>Each homologue moves to opposite poles as an intact chromosome.<br>Structural reason: <b>centromeres do not split</b> in anaphase I, so sister chromatids remain joined and move together.</div><div class="ans">✓&nbsp; Anaphase I separates homologous chromosomes; centromeres remain intact so sister chromatids stay associated.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why is there no DNA replication during interkinesis, and what would be the consequence if replication occurred again before meiosis II?</div><div class="sol"><span class="lbl">Answer:</span><br>Meiosis has <b>one DNA replication</b> (S phase) followed by <b>two divisions</b>; interkinesis is between the two divisions and lacks S phase.<br>If DNA replicated again before meiosis II, chromosome/DNA content would increase abnormally, preventing normal haploid products and disrupting reduction logic of meiosis.</div><div class="ans">✓&nbsp; Interkinesis lacks S phase; a second replication would disturb normal haploid formation by increasing DNA content before meiosis II.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Metaphase I: <b>bivalents</b> (tetrads) align at equator, not individual chromosomes like mitosis.</li><li>Anaphase I: <b>homologues disjoin</b>; <b>centromeres do not split</b>; sister chromatids move together.</li><li>Reduction in chromosome number occurs in <b>meiosis I</b> because homologues segregate to opposite poles.</li><li>Telophase I + cytokinesis forms a <b>dyad</b>: two haploid cells, each chromosome still has two chromatids.</li><li>Interkinesis is short and has <b>no DNA replication</b>; next division is meiosis II.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: “I = Intact centromere””</div><paragraph id="6aa538a9be82122361000046">Anaphase <b>I</b>: centromere <b>intact</b> ⇒ sister chromatids stay together.</paragraph><paragraph id="6aa538a95418350146000047">Metaphase <b>I</b>: <b>two</b> homologues together at equator (a bivalent).</paragraph><paragraph id="6aa538a965d2146e5f000048">Interkinesis: “<b>Inter</b> = interval only” ⇒ <b>no</b> replication.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Metaphase I: <b>bivalents</b> align at the equator (metaphase plate).</span><span class="eq">Anaphase I: <b>homologous chromosomes separate</b> to opposite poles.</span><span class="eq">Anaphase I: <b>centromeres do not split</b> ⇒ sister chromatids remain associated.</span><span class="eq">Telophase I: cytokinesis forms a <b>dyad</b> (two cells), each haploid with duplicated chromosomes.</span><span class="eq">Interkinesis: short stage between meiosis I &amp; II with <b>no DNA replication</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-12">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">12</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Equational division: sister chromatids separate; four haploid cells form; chromosome number conserved via fertilisation</div>
+              <h2>MEIOSIS II AND SIGNIFICANCE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Meiosis II</b> is the second meiotic division that is <b>mitosis-like</b>, separating <b>sister chromatids</b>.</li><li>It is an <b>equational division</b>: chromosome number per cell remains <b>N → N</b> (no further reduction).</li><li>Starts after <b>interkinesis</b> (short gap) with <b>no DNA replication</b> in between.</li><li>Key event: <b>anaphase II</b> begins with <b>centromere splitting</b> and chromatid segregation to opposite poles.</li><li>Ends with <b>telophase II + cytokinesis</b> producing a <b>tetrad</b>: <b>four haploid</b> daughter cells.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='6' refY='3' orient='auto'><polygon points='0,0 6,3 0,6' fill='#2563EB'/></marker></defs><rect x='10' y='18' width='130' height='72' rx='6' fill='#EEF4FF' stroke='#123B7A'/><text x='18' y='36' font-size='13' fill='#1f2a44'>After meiosis I</text><text x='18' y='54' font-size='13' fill='#1f2a44'>2 cells (N)</text><text x='18' y='72' font-size='13' fill='#1f2a44'>Chromosomes</text><text x='18' y='88' font-size='13' fill='#1f2a44'>2 chromatids</text><line x1='150' y1='54' x2='210' y2='54' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='215' y='18' width='135' height='72' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='223' y='36' font-size='13' fill='#1f2a44'>Meiosis II</text><text x='223' y='54' font-size='13' fill='#1f2a44'>Equational</text><text x='223' y='72' font-size='13' fill='#1f2a44'>Sister chromatids</text><text x='223' y='88' font-size='13' fill='#1f2a44'>separate</text><line x1='280' y1='98' x2='280' y2='128' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='25' y='132' width='310' height='56' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='180' y='151' font-size='12.5' text-anchor='middle' fill='#1f2a44'>Telophase II + Cytokinesis</text><text x='180' y='168' font-size='11.2' text-anchor='middle' fill='#1f2a44'>Tetrad: 4 haploid cells (N)</text><text x='180' y='182' font-size='10.5' text-anchor='middle' fill='#1f2a44'>one chromatid per chromosome</text></svg></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Meiosis II resembles mitosis, but occurs in <b>haploid</b> cells formed after meiosis I.</span></li><li><span class="ic">🧷</span><span><b>Metaphase II</b>: chromosomes align singly; kinetochores attach to opposite poles.</span></li><li><span class="ic">✂️</span><span><b>Anaphase II</b>: <b>centromere splits</b> → sister chromatids become daughter chromosomes.</span></li><li><span class="ic">👥</span><span>Final product: <b>4 genetically different haploid cells</b> (typically).</span></li><li><span class="ic">🔁</span><span>Chromosome number across generations: <b>meiosis halves</b>, <b>fertilisation restores</b> diploidy.</span></li><li><span class="ic">🎲</span><span>Genetic variability mainly from <b>crossing over</b> (prophase I) and <b>independent assortment</b> (metaphase I).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">STAGE-WISE EVENTS (MEIOSIS II)</span></h2><ul class="b"><li><b>Prophase II</b>: chromosomes re-condense; spindle forms; nuclear envelope disappears (if present).</li><li><b>Metaphase II</b>: chromosomes align at equator; sister kinetochores attach to opposite poles.</li><li><b>Anaphase II</b>: <b>centromeres split</b>; sister chromatids move to opposite poles.</li><li><b>Telophase II</b>: nuclei reform; chromosomes decondense; cytokinesis completes the division.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SIGNIFICANCE: CHROMOSOME NUMBER + VARIATION</span></h2><ul class="b"><li><b>Conservation</b>: meiosis makes gametes haploid; <b>fertilisation (N + N)</b> restores diploidy (2N).</li><li><b>Meiosis II</b> ensures equal distribution of chromatids so each haploid daughter cell/product has one copy of each chromosome.</li><li><b>Genetic variability</b> arises due to <b>crossing over</b> (prophase I) and <b>independent assortment</b> (random bivalent orientation in metaphase I).</li><li>Variation provides raw material for <b>adaptation and evolution</b> across generations.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ANAPHASE I vs ANAPHASE II (HIGH-YIELD DIFFERENCE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Anaphase I (Meiosis I)</th><th>Anaphase II (Meiosis II)</th></tr></thead><tbody><tr><td>What separates?</td><td>Homologous chromosomes</td><td>Sister chromatids</td></tr><tr><td>Centromere</td><td>Does <b>not</b> split</td><td><b>Splits</b></td></tr><tr><td>Type of division</td><td>Reductional (2N → N)</td><td>Equational (N → N)</td></tr><tr><td>Chromatid status at poles</td><td>Chromosomes still have 2 chromatids</td><td>Each chromatid becomes a chromosome</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student claims: "Meiosis II reduces chromosome number from N to N/2." Correct the statement with reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>Meiosis I is <b>reductional</b> because homologous chromosomes separate: <b>2N → N</b>.<br>Meiosis II is <b>equational</b>: sister chromatids separate, so each daughter cell remains <b>N</b>.<br>Therefore, meiosis II does <b>not</b> halve chromosome number; it halves <b>chromatid number per chromosome</b>.</div><div class="ans">✓&nbsp; Meiosis II is equational (N → N); only sister chromatids separate after centromere split.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain why meiosis II can generate genetically different products even though crossing over occurs in meiosis I.</div><div class="sol"><span class="lbl">Answer:</span><br>Crossing over in <b>prophase I</b> makes sister chromatids within a homolog <b>non-identical</b> (recombinant vs non-recombinant).<br>In <b>meiosis II</b>, these non-identical sister chromatids are separated into different cells during <b>anaphase II</b>.<br>Thus meiosis II <b>reveals and distributes</b> the recombined chromatids into separate haploid cells.</div><div class="ans">✓&nbsp; Meiosis II segregates recombinant chromatids formed in meiosis I, producing genetically different haploid cells.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Meiosis II is <b>mitosis-like</b> but occurs in <b>haploid</b> cells (after meiosis I).</li><li>No <b>DNA replication</b> occurs between meiosis I and II (interkinesis).</li><li><b>Metaphase II</b>: single chromosomes align; not bivalents/tetrads.</li><li><b>Anaphase II hallmark</b>: <b>centromere splits</b> and chromatids separate.</li><li>End of meiosis: <b>tetrad</b> of <b>four haploid cells</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Hook: I = Homologous chromosomes separate, II = Two sisters split”</div><paragraph id="6aa538a9ba64e4eb31000049"><b>Anaphase I</b>: homologous pairs go <b>Independently</b> to poles (centromere intact).</paragraph><paragraph id="6aa538a980b65052ed00004a"><b>Anaphase II</b>: <b>2</b> sister chromatids split (centromere splits).</paragraph><paragraph id="6aa538a9513406f70400004b">Remember: <b>II</b> looks like two lines → sister chromatids separate.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Meiosis II = <b>equational</b> division; resembles mitosis.</span><span class="eq">Sequence: <b>Prophase II → Metaphase II → Anaphase II → Telophase II</b>.</span><span class="eq">Anaphase II: <b>centromere splits</b> → sister chromatids separate.</span><span class="eq">End product: <b>tetrad</b> = <b>4 haploid cells</b> (usually genetically different).</span><span class="eq">No DNA replication between meiosis I and meiosis II (<b>interkinesis</b>).</span><span class="eq">Chromosome number maintained across generations: meiosis makes <b>N</b> gametes; fertilisation restores <b>2N</b>.</span><span class="eq">Genetic variability sources: <b>crossing over</b> (prophase I) + <b>independent assortment</b> (metaphase I).</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

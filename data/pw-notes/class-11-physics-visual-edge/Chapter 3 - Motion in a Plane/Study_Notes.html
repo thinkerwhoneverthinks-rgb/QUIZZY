@@ -1,0 +1,3777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>MOTION IN A PLANE — Physics</title>
+  <meta name="description" content="MOTION IN A PLANE — Physics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Class 11 &middot; Physics</div>
+        <h1>MOTION IN A PLANE</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SCALARS AND VECTORS (MOTION IN A PLANE)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li><b>Scalar</b>: quantity specified completely by magnitude (number + unit) only.</li>
+                <li><b>Vector</b>: quantity with magnitude and direction, obeying triangle/parallelogram law of
+                  addition.</li>
+                <li>Magnitude (modulus) of a vector is written as |<b>v</b>| = <i>v</i> (a scalar).</li>
+                <li>A vector can be shifted parallel to itself without change (free vector concept).</li>
+                <li>In a plane, position is described using a chosen origin <i>O</i> and an ordered pair (x, y).</li>
+                <li>Displacement depends only on initial and final positions; path length depends on the actual route.
+                </li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox">
+    <svg viewBox="0 0 360 220"
+         preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg"
+         style="display:block;width:100%;height:auto;">
+
+      <defs>
+        <marker id="axisArrow-t1"
+                markerWidth="8"
+                markerHeight="8"
+                refX="7"
+                refY="4"
+                orient="auto">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none"
+                stroke="#222222"
+                stroke-width="1.5"/>
+        </marker>
+
+        <marker id="vectorArrow-t1"
+                markerWidth="8"
+                markerHeight="8"
+                refX="7"
+                refY="4"
+                orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#222222"/>
+        </marker>
+
+        <marker id="pathArrow-t1"
+                markerWidth="8"
+                markerHeight="8"
+                refX="7"
+                refY="4"
+                orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#00AEEF"/>
+        </marker>
+      </defs>
+
+      <!-- Coordinate axes -->
+      <line x1="65" y1="180" x2="325" y2="180"
+            stroke="#222222"
+            stroke-width="2.5"
+            marker-end="url(#axisArrow-t1)"/>
+
+      <line x1="65" y1="180" x2="65" y2="22"
+            stroke="#222222"
+            stroke-width="2.5"
+            marker-end="url(#axisArrow-t1)"/>
+
+      <!-- Axis labels -->
+      <text x="310" y="205"
+            font-size="22"
+            font-family="Times New Roman, serif"
+            font-style="italic"
+            fill="#222222">x</text>
+
+      <text x="43" y="35"
+            font-size="22"
+            font-family="Times New Roman, serif"
+            font-style="italic"
+            fill="#222222">y</text>
+
+      <text x="42" y="186"
+            font-size="20"
+            font-family="Times New Roman, serif"
+            fill="#222222">O</text>
+
+      <!-- Curved path -->
+      <path d="M70 150
+               C82 112, 95 78, 120 88
+               C148 73, 177 69, 210 58
+               C240 50, 264 38, 280 20"
+            fill="none"
+            stroke="#00AEEF"
+            stroke-width="3"
+            marker-end="url(#pathArrow-t1)"/>
+
+      <!-- Position vector r -->
+      <line x1="65" y1="180" x2="120" y2="88"
+            stroke="#222222"
+            stroke-width="2.5"
+            marker-end="url(#vectorArrow-t1)"/>
+
+      <!-- Position vector r′ -->
+      <line x1="65" y1="180" x2="210" y2="58"
+            stroke="#222222"
+            stroke-width="2.5"
+            marker-end="url(#vectorArrow-t1)"/>
+
+      <!-- Displacement P to P′ -->
+      <line x1="120" y1="88" x2="210" y2="58"
+            stroke="#222222"
+            stroke-width="2.5"
+            marker-end="url(#vectorArrow-t1)"/>
+
+      <!-- Point labels -->
+      <text x="101" y="78"
+            font-size="22"
+            font-family="Times New Roman, serif"
+            fill="#222222">P</text>
+
+      <text x="198" y="48"
+            font-size="22"
+            font-family="Times New Roman, serif"
+            fill="#222222">P′</text>
+
+      <!-- Vector labels -->
+      <text x="69" y="144"
+            font-size="22"
+            font-family="Times New Roman, serif"
+            font-style="italic"
+            fill="#222222">r</text>
+
+      <text x="122" y="139"
+            font-size="22"
+            font-family="Times New Roman, serif"
+            font-style="italic"
+            fill="#222222">r′</text>
+    </svg>
+
+    <div class="figcap" style="margin-bottom:15px;">
+      In 2D: position vectors <b>r</b>, <b>r</b>′ from origin; displacement
+      Δ<b>r</b> = <b>r</b>′ − <b>r</b> is straight-line P→P′.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">•</span><span>Scalars combine by ordinary algebra; add/subtract only if units
+                    match.</span></li>
+                <li><span class="ic">•</span><span>Vector needs direction + magnitude; direction matters for
+                    equality.</span></li>
+                <li><span class="ic">•</span><span>Vector notation: boldface <b>v</b> (print) or arrow-over-letter
+                    v&amp;#x20D7; (handwritten).</span></li>
+                <li><span class="ic">•</span><span>Triangle/parallelogram laws define vector addition
+                    geometrically.</span></li>
+                <li><span class="ic">•</span><span>Position vector: <b>r</b> = <i>x</i><b>i</b> + <i>y</i><b>j</b>;
+                    displacement: Δ<b>r</b> = <b>r</b><sub>2</sub> − <b>r</b><sub>1</sub>.</span></li>
+                <li><span class="ic">•</span><span>|Δ<b>r</b>| ≤ path length; equality only for straight-line motion
+                    without reversal.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">VECTOR NOTATION + EQUALITY</span></h2>
+              <ul class="b">
+                <li>Write vectors as boldface (<b>A</b>) or arrow-over-letter <span style="position:relative;display:inline-block;padding-top:7px;font-style:italic;line-height:1;">
+  A
+  <span style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:14px;font-style:normal;line-height:1;">&#8594;</span>
+</span>.</li>
+                <li>Magnitude is scalar: |<b>A</b>| = <i>A</i>; direction is shown by arrowhead.</li>
+                <li>Two vectors are equal iff same magnitude and same direction (location irrelevant for free vectors).
+                </li>
+                <li>Negative of a vector: (−<b>A</b>) has same magnitude, opposite direction.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">POSITION, DISPLACEMENT, PATH LENGTH</span></h2>
+              <ul class="b">
+                <li>Choose origin <i>O</i>; if particle at point P(x, y), position vector <b>r</b> = OP.</li>
+                <li>If it moves P→P′, displacement Δ<b>r</b> = PP′ = <b>r</b>′ − <b>r</b>.</li>
+                <li>Path length is distance travelled along the curve; depends on route.</li>
+                <li>Always: |Δ<b>r</b>| ≤ (path length); can be zero for a round trip (zero vector).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">SCALAR vs VECTOR</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Scalar</th>
+                  <th>Vector</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Specification</td>
+                  <td>Magnitude only (number + unit)</td>
+                  <td>Magnitude + direction (and obeys vector addition laws)</td>
+                </tr>
+                <tr>
+                  <td>Examples (plane motion)</td>
+                  <td>time, mass, temperature, path length (distance)</td>
+                  <td>displacement, velocity, acceleration, force</td>
+                </tr>
+                <tr>
+                  <td>Addition</td>
+                  <td>Ordinary algebra</td>
+                  <td>Triangle/parallelogram law; components add</td>
+                </tr>
+                <tr>
+                  <td>Equality condition</td>
+                  <td>Same numerical value (with unit)</td>
+                  <td>Same magnitude AND same direction</td>
+                </tr>
+                <tr>
+                  <td>Can it be negative?</td>
+                  <td>Yes (e.g., −5 °C) but no direction implied</td>
+                  <td>Yes; indicates opposite direction relative to chosen reference</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Displacement is change in position vector:</div>
+                <div class="eqbox"><span class="eq">Δ<b>r</b> = <b>r</b>′ − <b>r</b></span></div>
+                <div class="fstep">In components (x–y plane):</div>
+                <div class="eqbox"><span class="eq"><b>r</b> = <i>x</i><b>i</b> + <i>y</i><b>j</b>, &nbsp; <b>r</b>′ =
+                    <i>x</i>′<b>i</b> + <i>y</i>′<b>j</b></span></div>
+              </div>
+              <div>
+                <div class="fstep">Subtract to get component form of displacement:</div>
+                <div class="eqbox blue"><span class="eq">Δ<b>r</b> = ( <i>x</i>′−<i>x</i> )<b>i</b> + (
+                    <i>y</i>′−<i>y</i> )<b>j</b> = Δ<i>x</i><b>i</b> + Δ<i>y</i><b>j</b></span></div>
+                <div class="fstep">Magnitude of displacement (straight-line distance between points):</div>
+                <div class="eqbox blue"><span class="eq">|Δ<b>r</b>| = √( (Δ<i>x</i>)<sup>2</sup> +
+                    (Δ<i>y</i>)<sup>2</sup> )</span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><b>r</b>&nbsp;=</td>
+                    <td>position vector OP at time <i>t</i> (m)</td>
+                  </tr>
+                  <tr>
+                    <td><b>r</b>′&nbsp;=</td>
+                    <td>position vector OP′ at time <i>t</i>′ (m)</td>
+                  </tr>
+                  <tr>
+                    <td>Δ<b>r</b>&nbsp;=</td>
+                    <td>displacement vector PP′ (m)</td>
+                  </tr>
+                  <tr>
+                    <td>Δ<i>x</i>, Δ<i>y</i>&nbsp;=</td>
+                    <td>changes in coordinates: Δ<i>x</i> = <i>x</i>′−<i>x</i>, Δ<i>y</i> = <i>y</i>′−<i>y</i></td>
+                  </tr>
+                  <tr>
+                    <td><b>i</b>, <b>j</b>&nbsp;=</td>
+                    <td>unit vectors along +x and +y directions</td>
+                  </tr>
+                </table>
+                <div class="hibox">Core 2D result (position → displacement)<div class="eqbox gold"
+                    style="margin-top:1mm"><span class="eq">Δ<b>r</b> = Δ<i>x</i><b>i</b> + Δ<i>y</i><b>j</b>, &nbsp;
+                      |Δ<b>r</b>| = √( (Δ<i>x</i>)<sup>2</sup> + (Δ<i>y</i>)<sup>2</sup> )</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>A vector is defined operationally by triangle/parallelogram law of addition.</li>
+                <li>Magnitude of a vector is scalar; do not attach direction to |<b>A</b>|.</li>
+                <li>Displacement is independent of path; distance (path length) is path-dependent.</li>
+                <li>Zero (null) vector has zero magnitude; direction is undefined.</li>
+                <li>Equality of vectors: same magnitude and same direction, even if drawn at different places.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Treating distance and displacement as interchangeable in 2D motion problems.</li>
+                <li>Adding vector magnitudes directly (e.g., 3 m + 4 m = 7 m) instead of vector addition.</li>
+                <li>Writing |Δ<b>r</b>| as negative or giving a direction to a scalar magnitude.</li>
+                <li>Confusing position vector OP with displacement PP′ when origin changes or is not specified.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“S-V: <b>S</b>ingle number vs <b>V</b>iew (direction)”</div>
+                <paragraph id="6a9fdca50eec9fc00d0003e2"><b>S</b>calar = <b>S</b>ingle number + unit (no arrow).</paragraph>
+                <paragraph id="6a9fdca5b899dd874e0003e3"><b>V</b>ector = needs a <b>V</b>iew/heading (arrow + magnitude).</paragraph>
+                <paragraph id="6a9fdca58a782e88ba0003e4">Distance follows the <b>path</b>; displacement is the <b>straight</b> shortcut between start and end.
+                </paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq">Scalar: magnitude only; Vector: magnitude + direction; vectors obey
+                  triangle/parallelogram law.</span><span class="eq">Vector notation: boldface <b>A</b> or
+                  arrow-over-letter A&amp;#x20D7;; magnitude |<b>A</b>| = <i>A</i>.</span><span class="eq"><b>r</b> =
+                  <i>x</i><b>i</b> + <i>y</i><b>j</b> (position vector in plane).</span><span class="eq">Δ<b>r</b> =
+                  <b>r</b>′ − <b>r</b> = Δ<i>x</i><b>i</b> + Δ<i>y</i><b>j</b>.</span><span class="eq">|Δ<b>r</b>| = √(
+                  (Δ<i>x</i>)<sup>2</sup> + (Δ<i>y</i>)<sup>2</sup> ).</span><span class="eq">Path length ≥ |Δ<b>r</b>|;
+                  equality only for straight-line motion.</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>EQUALITY OF VECTORS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li><b>Two vectors</b> <i>A</i> and <i>B</i> are <b>equal</b> iff they have <b>same magnitude</b> and
+                  <b>same direction</b>.</li>
+                <li>Equality is written as <b><i>A</i> = <i>B</i></b>; it does <b>not</b> depend on where the arrows are
+                  drawn (for free vectors).</li>
+                <li>If one has same length but different direction, vectors are <b>unequal</b> (like <i>A</i>′ and
+                  <i>B</i>′ in Fig. 3.2(b)).</li>
+                <li>To test equality, <b>shift</b> one vector <b>parallel to itself</b> (no rotation) so tails coincide;
+                  then heads must coincide too.</li>
+                <li>In most kinematics problems, vectors are treated as <b>free vectors</b>; their parallel shift leaves
+                  them unchanged.</li>
+                <li>In some applications, <b>location/line of action matters</b>; such vectors are <b>localised
+                    vectors</b> (not freely shiftable).</li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox">
+    <svg viewBox="0 0 360 210"
+         preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg"
+         style="display:block;width:100%;height:auto;">
+
+      <defs>
+        <marker id="vectorLineArrow-t2"
+                markerWidth="7"
+                markerHeight="7"
+                refX="6.5"
+                refY="3.5"
+                orient="auto">
+          <path d="M0,0 L7,3.5 L0,7"
+                fill="none"
+                stroke="#222222"
+                stroke-width="1.3"/>
+        </marker>
+      </defs>
+
+      <rect x="12" y="12" width="336" height="186" rx="10"
+            fill="#EEF4FF"
+            stroke="#123B7A"
+            stroke-width="2"/>
+
+      <text x="24" y="34"
+            font-size="14"
+            font-family="Times New Roman, serif"
+            fill="#1f2a44">
+        Fig. idea: Equality &amp; inequality
+      </text>
+
+      <!-- Figure (a): Equal vectors -->
+      <line x1="42" y1="128" x2="112" y2="58"
+            stroke="#222222"
+            stroke-width="1.8"
+            marker-end="url(#vectorLineArrow-t2)"/>
+
+      <line x1="96" y1="148" x2="166" y2="78"
+            stroke="#222222"
+            stroke-width="1.8"
+            marker-end="url(#vectorLineArrow-t2)"/>
+
+      <text x="30" y="145" font-size="14"
+            font-family="Times New Roman, serif">O</text>
+
+      <text x="114" y="58" font-size="14"
+            font-family="Times New Roman, serif">P</text>
+
+      <text x="86" y="165" font-size="14"
+            font-family="Times New Roman, serif">Q</text>
+
+      <text x="168" y="78" font-size="14"
+            font-family="Times New Roman, serif">S</text>
+
+      <text x="67" y="86" font-size="14"
+            font-style="italic"
+            font-family="Times New Roman, serif">A</text>
+
+      <text x="128" y="124" font-size="14"
+            font-style="italic"
+            font-weight="700"
+            font-family="Times New Roman, serif">B</text>
+
+      <text x="96" y="190"
+            text-anchor="middle"
+            font-size="14"
+            font-family="Times New Roman, serif">(a)</text>
+
+      <!-- Figure (b): Unequal vectors -->
+      <line x1="218" y1="142" x2="252" y2="52"
+            stroke="#222222"
+            stroke-width="1.8"
+            marker-end="url(#vectorLineArrow-t2)"/>
+
+      <line x1="264" y1="150" x2="326" y2="82"
+            stroke="#222222"
+            stroke-width="1.8"
+            marker-end="url(#vectorLineArrow-t2)"/>
+
+      <text x="204" y="157" font-size="14"
+            font-family="Times New Roman, serif">O′</text>
+
+      <text x="254" y="52" font-size="14"
+            font-family="Times New Roman, serif">P′</text>
+
+      <text x="250" y="168" font-size="14"
+            font-family="Times New Roman, serif">Q′</text>
+
+      <text x="328" y="82" font-size="14"
+            font-family="Times New Roman, serif">S′</text>
+
+      <text x="223" y="91" font-size="14"
+            font-style="italic"
+            font-family="Times New Roman, serif">A′</text>
+
+      <text x="286" y="125" font-size="14"
+            font-style="italic"
+            font-weight="700"
+            font-family="Times New Roman, serif">B′</text>
+
+      <text x="270" y="190"
+            text-anchor="middle"
+            font-size="14"
+            font-family="Times New Roman, serif">(b)</text>
+    </svg>
+
+    <div class="figcap" style="margin-bottom:15px;">
+      Vectors are equal after a parallel shift if both tails and tips coincide
+      (Fig. 3.2 concept).
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">📏</span><span>Equal vectors: <b>same magnitude</b> (length) and <b>same
+                      direction</b> (arrow orientation).</span></li>
+                <li><span class="ic">🧲</span><span>Parallel shift test: translate a vector without rotation; equality
+                    is checked by tail &amp; head coincidence.</span></li>
+                <li><span class="ic">🆓</span><span><b>Free vector</b>: can be moved parallel anywhere; only magnitude
+                    and direction define it.</span></li>
+                <li><span class="ic">📍</span><span><b>Localised vector</b>: point/line of application is important
+                    (e.g. forces in rigid-body problems).</span></li>
+                <li><span class="ic">↗️</span><span>Same length alone is insufficient: <i>A</i>′ and <i>B</i>′ can be
+                    equal-length yet unequal due to direction.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">HOW TO CHECK <i>A</i> = <i>B</i> (PARALLEL-SHIFT
+                  TEST)</span></h2>
+              <ul class="b">
+                <li>Check lengths: if |<i>A</i>| ≠ |<i>B</i>|, vectors are unequal immediately.</li>
+                <li>If lengths match, <b>slide</b> <i>B</i> parallel to itself so its tail meets <i>A</i>'s tail.</li>
+                <li>If the heads coincide after the slide, directions are identical ⇒ <b><i>A</i> = <i>B</i></b>.</li>
+                <li>If heads do not coincide, directions differ ⇒ vectors are unequal (case of <i>A</i>′, <i>B</i>′).
+                </li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">FREE VECTORS vs LOCALISED VECTORS (WHY LOCATION MAY
+                  MATTER)</span></h2>
+              <ul class="b">
+                <li><b>Free vector</b>: defined only by magnitude + direction; can be moved anywhere by parallel
+                  translation.</li>
+                <li>In particle motion/kinematics, displacement, velocity, acceleration are treated as free vectors.
+                </li>
+                <li><b>Localised vector</b>: point/line of application matters; shifting can change physical effect.
+                </li>
+                <li>Typical example: a force on a rigid body; shifting the line of action can change torque.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">FREE VECTOR vs LOCALISED VECTOR</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Free vector</th>
+                  <th>Localised vector</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Defined by</td>
+                  <td>Magnitude + direction only</td>
+                  <td>Magnitude + direction + line/point of application (as required by the situation)</td>
+                </tr>
+                <tr>
+                  <td>Parallel shift effect</td>
+                  <td>No change in the vector</td>
+                  <td>May change the physical outcome</td>
+                </tr>
+                <tr>
+                  <td>Used commonly in</td>
+                  <td>Kinematics of a particle (displacement, velocity)</td>
+                  <td>Rigid-body mechanics (forces causing rotation)</td>
+                </tr>
+                <tr>
+                  <td>Equality check</td>
+                  <td>Same magnitude and direction (location irrelevant)</td>
+                  <td>Same magnitude and direction, and same line of action (and same point of application if specified)
+                  </td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+
+
+          
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">7</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Vector equality means <b>same magnitude</b> + <b>same direction</b>; not merely same length.</li>
+                <li>A <b>parallel shift</b> does not alter a free vector; rotation would change direction and hence the
+                  vector.</li>
+                <li>Notation: <b><i>A</i> = <i>B</i></b> indicates equality of vectors, not just equality of magnitudes.
+                </li>
+                <li>If two vectors are equal, their components along any axis are equal.</li>
+                <li>Direction must be exactly same (angle 0°), not anti-parallel.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">8</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Saying vectors are equal when only magnitudes match (ignoring direction).</li>
+                <li>Allowing rotation during the shift test; only <b>parallel translation</b> is allowed.</li>
+                <li>Confusing equal vectors with vectors having same starting point (start point is irrelevant for free
+                  vectors).</li>
+                <li>Treating all forces as free vectors in rigid-body questions; line of action can matter.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">9</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“Mnemonic: <b>MSD</b> for equality”</div>
+                <paragraph id="6a9fdca57ea61e79e00003e5"><b>M</b>agnitude same</paragraph>
+                <paragraph id="6a9fdca5573fb338e10003e6"><b>S</b>ense (direction) same</paragraph>
+                <paragraph id="6a9fdca5de6132f5680003e7"><b>D</b>on’t care about position (for free vectors)</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">10</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2>
+              <div class="fs"><span class="eq">Equality condition: <b><i>A</i> = <i>B</i></b> ⇔ same magnitude and same
+                  direction.</span><span class="eq">Parallel shift rule (free vectors): shifting a vector parallel to
+                  itself leaves it unchanged.</span><span class="eq">Same length but different direction ⇒ vectors
+                  unequal (e.g. <i>A</i>′ ≠ <i>B</i>′).</span><span class="eq">Free vector: location irrelevant;
+                  Localised vector: line/point of application may matter.</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SCALAR MULTIPLICATION (VECTORS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li>Multiplying a vector <i>A</i> by a real number <i>λ</i> gives a new vector <i>λA</i> with scaled
+                  magnitude.</li>
+                <li>If <i>λ</i> &gt; 0: direction of <i>λA</i> is same as <i>A</i>; magnitude becomes <i>λ|A|</i>.</li>
+                <li>If <i>λ</i> &lt; 0: direction of <i>λA</i> reverses; magnitude becomes <i>|λ||A|</i>.</li>
+                <li>If <i>λ</i> = 0: <i>0A</i> is the zero (null) vector with magnitude 0; direction undefined.</li>
+                <li><i>λ</i> can carry physical dimensions; then <i>dim(λA) = dim(λ)·dim(A)</i> (e.g., <i>Δr</i> =
+                  <i>v</i><i>t</i> for constant velocity in a straight line).</li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox">
+    <svg viewBox="0 0 360 200"
+         preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg"
+         style="display:block;width:100%;height:auto;">
+
+      <defs>
+        <marker id="scalarArrow-t3"
+                markerWidth="8"
+                markerHeight="8"
+                refX="7"
+                refY="4"
+                orient="auto">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none"
+                stroke="#222222"
+                stroke-width="1.3"/>
+        </marker>
+      </defs>
+
+      <text x="20" y="25"
+            font-size="14"
+            font-family="Times New Roman, serif"
+            fill="#1f2a44">
+        Scalar multiplication on a line
+      </text>
+
+      <!-- Figure (a): positive scalar multiplication -->
+      <line x1="20" y1="78" x2="90" y2="60"
+            stroke="#222222"
+            stroke-width="1.7"
+            marker-end="url(#scalarArrow-t3)"/>
+
+      <text x="52" y="55"
+            font-size="15"
+            font-style="italic"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        A
+      </text>
+
+      <line x1="28" y1="115" x2="165" y2="82"
+            stroke="#222222"
+            stroke-width="1.7"
+            marker-end="url(#scalarArrow-t3)"/>
+
+      <text x="90" y="118"
+            font-size="15"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        2A
+      </text>
+
+      <text x="92" y="148"
+            text-anchor="middle"
+            font-size="15"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        (a)
+      </text>
+
+      <!-- Figure (b): negative scalar multiplication -->
+      <line x1="258" y1="52" x2="332" y2="32"
+            stroke="#222222"
+            stroke-width="1.7"
+            marker-end="url(#scalarArrow-t3)"/>
+
+      <text x="290" y="27"
+            font-size="15"
+            font-style="italic"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        A
+      </text>
+
+      <line x1="306" y1="72" x2="222" y2="91"
+            stroke="#222222"
+            stroke-width="1.7"
+            marker-end="url(#scalarArrow-t3)"/>
+
+      <text x="258" y="70"
+            font-size="15"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        −A
+      </text>
+
+      <line x1="326" y1="105" x2="205" y2="134"
+            stroke="#222222"
+            stroke-width="1.7"
+            marker-end="url(#scalarArrow-t3)"/>
+
+      <text x="260" y="126"
+            font-size="15"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        −1.5A
+      </text>
+
+      <text x="270" y="148"
+            text-anchor="middle"
+            font-size="15"
+            font-family="Times New Roman, serif"
+            fill="#222222">
+        (b)
+      </text>
+
+      <rect x="20" y="158" width="320" height="32" rx="6"
+            fill="#EEF4FF"
+            stroke="#123B7A"/>
+
+      <text x="30" y="178"
+            font-size="11"
+            font-family="Arial, sans-serif"
+            fill="#1f2a44">
+        λ&gt;0 scales |A|; λ&lt;0 reverses its direction.
+      </text>
+    </svg>
+
+    <div class="figcap" style="margin-bottom:15px;">
+      Multiplying by a positive scalar stretches/shrinks; a negative scalar also
+      reverses direction.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">📏</span><span>Magnitude rule: <b>|λA| = |λ| |A|</b> for any real <i>λ</i>.</span>
+                </li>
+                <li><span class="ic">➡️</span><span>Sign rule: <i>λ</i>&gt;0 keeps direction; <i>λ</i>&lt;0 reverses
+                    direction.</span></li>
+                <li><span class="ic">🧊</span><span>Dimension rule: multiplying by a dimensional scalar changes the
+                    physical quantity type.</span></li>
+                <li><span class="ic">🧷</span><span>Zero vector facts: <i>A</i> + <i>0</i> (zero vector) = <i>A</i>, and
+                    <i>0A</i> = <i>0</i> (zero vector).</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">SIGN EFFECTS (DIRECTION) + SIZE</span></h2>
+              <ul class="b">
+                <li>For <i>λ</i>&gt;0: <i>λA</i> is colinear with <i>A</i> and points the same way.</li>
+                <li>For <i>λ</i>&lt;0: <i>λA</i> is colinear but points opposite to <i>A</i>.</li>
+                <li>If <i>|λ|</i>&gt;1, vector stretches; if 0&lt;<i>|λ|</i>&lt;1, vector shrinks.</li>
+                <li>Special cases: <i>1A</i>=<i>A</i>, <i>(−1)A</i>=<i>−A</i>, <i>0A</i>=<i>0</i>.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">DIMENSIONAL MEANING (PHYSICS USE)</span></h2>
+              <ul class="b">
+                <li>If <i>λ</i> has units, <i>λA</i> represents a different physical vector quantity.</li>
+                <li>Example (constant velocity, straight-line motion): <i>Δr</i> = <i>v</i> <i>t</i>, where <i>t</i> is
+                  a scalar time interval.</li>
+                <li>Units check: (<i>m s</i><sup>−1</sup>)×(s) = m, so <i>v t</i> has displacement units.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">Effect of scalar <i>λ</i> on vector <i>A</i></span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Case</th>
+                  <th>Magnitude of <i>λA</i></th>
+                  <th>Direction of <i>λA</i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><i>λ</i> &gt; 0</td>
+                  <td><i>|λA| = λ|A|</i></td>
+                  <td>Same as <i>A</i></td>
+                </tr>
+                <tr>
+                  <td><i>λ</i> &lt; 0</td>
+                  <td><i>|λA| = (−λ)|A| = |λ||A|</i></td>
+                  <td>Opposite to <i>A</i></td>
+                </tr>
+                <tr>
+                  <td><i>λ</i> = 0</td>
+                  <td><i>|0A| = 0</i></td>
+                  <td>Undefined (zero vector)</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Start with magnitude scaling for positive scalar (definition).</div>
+                <div class="eqbox"><span class="eq">If <i>λ</i> &gt; 0, then <i>|λA| = λ|A|</i></span></div>
+                <div class="fstep">For negative scalar, write <i>λ = −|λ|</i>; direction flips but magnitude stays
+                  positive.</div>
+                <div class="eqbox"><span class="eq">If <i>λ</i> &lt; 0, then <i>λA = (−|λ|)A</i> so <i>|λA| =
+                      |λ||A|</i></span></div>
+              </div>
+              <div>
+                <div class="fstep">Combine both cases into one compact rule.</div>
+                <div class="eqbox blue"><span class="eq"><b>|λA| = |λ| |A|</b> (for any real <i>λ</i>)</span></div>
+                <div class="fstep">Dimensional consequence when <i>λ</i> has units.</div>
+                <div class="eqbox blue"><span class="eq"><i>dim(λA) = dim(λ)·dim(A)</i></span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>A</i>&nbsp;=</td>
+                    <td>Given vector (magnitude <i>|A|</i>, some direction)</td>
+                  </tr>
+                  <tr>
+                    <td><i>λ</i>&nbsp;=</td>
+                    <td>Real scalar multiplier (may be dimensionless or have units)</td>
+                  </tr>
+                  <tr>
+                    <td><i>|A|</i>&nbsp;=</td>
+                    <td>Magnitude (length) of vector <i>A</i></td>
+                  </tr>
+                  <tr>
+                    <td><i>0</i>&nbsp;=</td>
+                    <td>Zero (null) vector with magnitude 0; no defined direction</td>
+                  </tr>
+                  <tr>
+                    <td><i>dim( )</i>&nbsp;=</td>
+                    <td>Physical dimensions (e.g., <i>L</i>, <i>T</i>)</td>
+                  </tr>
+                </table>
+                <div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span
+                      class="eq"><b>|λA| = |λ| |A|</b> and sign of <i>λ</i> decides direction</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Direction changes only due to sign of <i>λ</i>; size changes due to <i>|λ|</i>.</li>
+                <li>Do not write <i>|λA| = λ|A|</i> unless you also state <i>λ</i>&gt;0.</li>
+                <li>Zero vector arises from <i>0A</i> or from <i>A + (−A)</i>; direction is not defined.</li>
+                <li>Scalar <i>λ</i> may be dimensionless (pure scaling) or dimensional (creates new physical quantity).
+                </li>
+                <li>Vector scaling keeps the vector colinear with <i>A</i> for any real <i>λ</i>.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Using <i>|λA| = λ|A|</i> even when <i>λ</i> is negative.</li>
+                <li>Assigning a direction to the zero (null) vector <i>0</i>.</li>
+                <li>Forgetting that <i>λ</i> can have units, so <i>λA</i> may represent a different quantity.</li>
+                <li>Treating <i>λA</i> as a scalar; it is still a vector (except it becomes the zero vector when
+                  <i>λ=0</i>).</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“SIGN-ARROW RULE”</div>
+                <paragraph id="6a9fdca5acc053fc270003e8">Think: <b>+ keeps arrow</b>, <b>− flips arrow</b>.</paragraph>
+                <paragraph id="6a9fdca5f32feb60fa0003e9">Magnitude ignores sign: <b>length uses |λ|</b>.</paragraph>
+                <paragraph id="6a9fdca537a1b43c810003ea">Zero makes it vanish: <b>0 → zero vector</b>.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><b>|λA| = |λ| |A|</b></span><span class="eq">If <i>λ</i>&gt;0: direction
+                  same; if <i>λ</i>&lt;0: direction opposite</span><span class="eq"><i>0A = 0</i> (zero vector), and
+                  <i>|0|=0</i></span><span class="eq"><i>A + 0</i> (zero vector) <i>= A</i></span><span
+                  class="eq"><i>dim(λA) = dim(λ)·dim(A)</i></span><span class="eq">Physics example: <i>Δr = v t</i> for
+                  constant velocity in a straight line</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>GRAPHICAL VECTOR OPERATIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li>Graphical vector addition: place vectors head-to-tail; the resultant joins the first tail to the
+                  last head.</li>
+                <li>Triangle (head-to-tail) method gives the sum <i>R</i> = <i>A</i> + <i>B</i> as the third side of a
+                  triangle.</li>
+                <li>Parallelogram method: draw <i>A</i> and <i>B</i> from a common tail; the diagonal from the common
+                  tail gives the resultant.</li>
+                <li>Vector subtraction is defined using a negative vector: <i>A</i> − <i>B</i> = <i>A</i> + (−<i>B</i>).
+                </li>
+                <li>Zero (null) vector <b>0</b> has magnitude 0; its direction is not defined.</li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox">
+    <svg viewBox="0 0 720 660"
+         preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg"
+         style="display:block;width:100%;height:auto;font-family:'Times New Roman',serif;">
+
+      <defs>
+        <marker id="blackArrowVector-t4" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none" stroke="#111" stroke-width="1.3"/>
+        </marker>
+
+        <marker id="blueArrowVector-t4" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none" stroke="#00AEEF" stroke-width="1.3"/>
+        </marker>
+      </defs>
+
+      <rect x="5" y="5" width="710" height="650" rx="12"
+            fill="#FFFFFF" stroke="#123B7A" stroke-width="2"/>
+
+      <!-- First diagram: (a) -->
+      <g font-size="17" fill="#111">
+        <line x1="95" y1="48" x2="35" y2="195"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="75" y1="128" x2="235" y2="95"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <text x="38" y="115" font-weight="700">B</text>
+        <text x="140" y="87" font-weight="700">A</text>
+        <text x="125" y="225" text-anchor="middle">(a)</text>
+      </g>
+
+      <!-- First diagram: (b) -->
+      <g font-size="17" fill="#111">
+        <line x1="390" y1="68" x2="610" y2="35"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="610" y1="35" x2="520" y2="205"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="390" y1="68" x2="520" y2="205"
+              stroke="#00AEEF" stroke-width="2.4"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <text x="372" y="72">O</text>
+        <text x="616" y="40">P</text>
+        <text x="514" y="222">Q</text>
+
+        <text x="500" y="42" font-weight="700">A</text>
+        <text x="580" y="126" font-weight="700">B</text>
+
+        <text x="442" y="126" font-weight="700"
+              transform="rotate(46 442 126)">R=A+B</text>
+
+        <text x="505" y="225" text-anchor="middle">(b)</text>
+      </g>
+
+      <!-- First diagram: (c) -->
+      <g font-size="17" fill="#111">
+        <line x1="45" y1="410" x2="140" y2="265"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="45" y1="410" x2="285" y2="375"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="140" y1="265" x2="285" y2="375"
+              stroke="#00AEEF" stroke-width="2.4"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <text x="31" y="425">S</text>
+        <text x="132" y="255">Q</text>
+        <text x="290" y="381">P</text>
+
+        <text x="72" y="330" font-weight="700">B</text>
+        <text x="155" y="404" font-weight="700">A</text>
+
+        <text x="205" y="303" font-weight="700"
+              transform="rotate(37 205 303)">R=B+A</text>
+
+        <text x="155" y="450" text-anchor="middle">(c)</text>
+      </g>
+
+      <!-- First diagram: (d) -->
+      <g font-size="15" fill="#111">
+        <line x1="405" y1="285" x2="625" y2="240"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="625" y1="240" x2="565" y2="390"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="565" y1="390" x2="435" y2="408"
+              stroke="#111" stroke-width="1.8"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="405" y1="285" x2="565" y2="390"
+              stroke="#00AEEF" stroke-width="2.1"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <line x1="625" y1="240" x2="435" y2="408"
+              stroke="#00AEEF" stroke-width="2.1"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <line x1="405" y1="285" x2="435" y2="408"
+              stroke="#00AEEF" stroke-width="2.4"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <text x="515" y="252" font-weight="700">A</text>
+        <text x="605" y="326" font-weight="700">B</text>
+        <text x="505" y="420" font-weight="700">C</text>
+
+        <text x="480" y="323"
+              transform="rotate(33 480 323)">(A+B)</text>
+
+        <text x="535" y="320"
+              transform="rotate(-40 535 320)">(B+C)</text>
+
+        <text x="400" y="350"
+              transform="rotate(77 400 350)">A+(B+C)</text>
+
+        <text x="446" y="348"
+              transform="rotate(68 446 348)">(A+B)+C</text>
+
+        <text x="515" y="450" text-anchor="middle">(d)</text>
+      </g>
+
+      <!-- Second diagram: (a) -->
+      <g font-size="15" fill="#111">
+        <line x1="25" y1="600" x2="190" y2="600"
+              stroke="#111" stroke-width="1.7"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="25" y1="600" x2="100" y2="500"
+              stroke="#111" stroke-width="1.7"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <text x="10" y="606">O</text>
+        <text x="195" y="606">P</text>
+        <text x="95" y="491">Q</text>
+
+        <text x="100" y="620" font-weight="700">A</text>
+        <text x="55" y="548" font-weight="700">B</text>
+        <text x="105" y="642" text-anchor="middle">(a)</text>
+      </g>
+
+      <!-- Second diagram: (b) -->
+      <g font-size="15" fill="#111">
+        <line x1="245" y1="600" x2="390" y2="600"
+              stroke="#111" stroke-width="1.7"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="245" y1="600" x2="310" y2="500"
+              stroke="#111" stroke-width="1.7"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="310" y1="500" x2="465" y2="500"
+              stroke="#777" stroke-width="1.1"
+              stroke-dasharray="5,4"/>
+
+        <line x1="390" y1="600" x2="465" y2="500"
+              stroke="#777" stroke-width="1.1"
+              stroke-dasharray="5,4"/>
+
+        <line x1="245" y1="600" x2="465" y2="500"
+              stroke="#00AEEF" stroke-width="2.3"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <text x="230" y="606">O</text>
+        <text x="394" y="606">P</text>
+        <text x="305" y="491">Q</text>
+        <text x="470" y="505">S</text>
+
+        <text x="310" y="620" font-weight="700">A</text>
+        <text x="270" y="548" font-weight="700">B</text>
+        <text x="345" y="548" font-weight="700">R</text>
+        <text x="350" y="642" text-anchor="middle">(b)</text>
+      </g>
+
+      <!-- Second diagram: (c) -->
+      <g font-size="15" fill="#111">
+        <line x1="500" y1="600" x2="625" y2="600"
+              stroke="#111" stroke-width="1.7"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="625" y1="600" x2="700" y2="500"
+              stroke="#111" stroke-width="1.7"
+              marker-end="url(#blackArrowVector-t4)"/>
+
+        <line x1="500" y1="600" x2="555" y2="500"
+              stroke="#777" stroke-width="1.1"
+              stroke-dasharray="5,4"/>
+
+        <line x1="555" y1="500" x2="700" y2="500"
+              stroke="#777" stroke-width="1.1"
+              stroke-dasharray="5,4"/>
+
+        <line x1="500" y1="600" x2="700" y2="500"
+              stroke="#00AEEF" stroke-width="2.3"
+              marker-end="url(#blueArrowVector-t4)"/>
+
+        <text x="485" y="606">O</text>
+        <text x="630" y="606">P</text>
+        <text x="550" y="491">Q</text>
+        <text x="704" y="505">S</text>
+
+        <text x="555" y="620" font-weight="700">A</text>
+        <text x="660" y="550" font-weight="700">B</text>
+        <text x="585" y="548" font-weight="700">R</text>
+        <text x="600" y="642" text-anchor="middle">(c)</text>
+      </g>
+    </svg>
+
+    <div class="figcap" style="margin-bottom:15px;">
+      Same resultant <i>R</i> is obtained by triangle (head-to-tail) and
+      parallelogram methods.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">➡️</span><span>Head-to-tail: shift vectors parallel to themselves; only magnitude
+                    and direction matter (free vectors).</span></li>
+                <li><span class="ic">🔁</span><span>Commutative: <i>A</i> + <i>B</i> = <i>B</i> + <i>A</i> (same
+                    resultant vector).</span></li>
+                <li><span class="ic">🧩</span><span>Associative: (<i>A</i> + <i>B</i>) + <i>C</i> = <i>A</i> + (<i>B</i>
+                    + <i>C</i>) (grouping doesn’t change sum).</span></li>
+                <li><span class="ic">➖</span><span>Subtract by reversing: −<i>B</i> has the same magnitude as <i>B</i>
+                    but opposite direction.</span></li>
+                <li><span class="ic">⭕</span><span>Additive identity: <i>A</i> + <b>0</b> = <i>A</i>; inverse: <i>A</i>
+                    + (−<i>A</i>) = <b>0</b>.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">HOW TO DRAW (EXAM-SAFE STEPS)</span></h2>
+              <ul class="b">
+                <li>Choose a convenient scale (example: 1 cm = 2 N) and use the same scale in the whole diagram.</li>
+                <li>Triangle: draw <i>A</i>; from its head draw <i>B</i>; <i>R</i> joins first tail to last head.</li>
+                <li>Parallelogram: draw <i>A</i> and <i>B</i> from the same tail; complete the parallelogram; diagonal
+                  is <i>R</i>.</li>
+                <li>Arrow of <i>R</i> is from the start point (common/first tail) to the final point (last head).</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">SUBTRACTION &amp; ZERO VECTOR</span></h2>
+              <ul class="b">
+                <li>Construct −<i>B</i> by reversing the direction of <i>B</i> without changing its length.</li>
+                <li>Then <i>A</i> − <i>B</i> is the head-to-tail sum of <i>A</i> and −<i>B</i>.</li>
+                <li>If the final head coincides with the initial tail, the resultant is <b>0</b> (null vector).</li>
+                <li><b>0</b> has |<b>0</b>| = 0, so its direction is undefined; it acts as additive identity.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">Triangle vs Parallelogram Method (Graphical
+                Addition)</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Triangle (head-to-tail)</th>
+                  <th>Parallelogram</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>How to place vectors</td>
+                  <td>Tail of <i>B</i> at head of <i>A</i></td>
+                  <td>Tails of <i>A</i>, <i>B</i> at same point</td>
+                </tr>
+                <tr>
+                  <td>Resultant drawn as</td>
+                  <td>First tail → last head</td>
+                  <td>Diagonal from common tail</td>
+                </tr>
+                <tr>
+                  <td>Best used when</td>
+                  <td>Adding many vectors sequentially</td>
+                  <td>Adding exactly two vectors from a point</td>
+                </tr>
+                <tr>
+                  <td>Common output</td>
+                  <td>Same <i>R</i> as parallelogram</td>
+                  <td>Same <i>R</i> as triangle</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+
+
+          
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">7</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>In head-to-tail addition, the resultant connects the first tail to the last head.</li>
+                <li>A vector can be shifted parallel to itself without change (free vector).</li>
+                <li>Triangle and parallelogram methods give the same sum for two vectors.</li>
+                <li>Vector addition is commutative and associative; vector subtraction is not commutative.</li>
+                <li>Zero vector has zero magnitude; its direction cannot be specified.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">8</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Drawing the resultant from head to tail (wrong arrow direction).</li>
+                <li>For <i>A</i> − <i>B</i>, subtracting lengths instead of adding −<i>B</i> graphically.</li>
+                <li>Changing a vector’s length while reversing it to make a negative vector.</li>
+                <li>Changing the scale mid-diagram, giving a wrong magnitude for the resultant.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">9</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“TAIL-TO-HEAD: "THEN JOIN"”</div>
+                <paragraph id="6a9fdca5785ab3ee280003eb">Place <b>T</b>ail of next at <b>H</b>ead of previous.</paragraph>
+                <paragraph id="6a9fdca5ccd5a991860003ec">After chaining, <b>JOIN</b> first tail to last head to get resultant.</paragraph>
+                <paragraph id="6a9fdca5edabc83a110003ed">For subtraction: reverse <i>B</i> to make −<i>B</i>, then add normally.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">10</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2>
+              <div class="fs"><span class="eq">Triangle law (head-to-tail): resultant joins first tail to last
+                  head.</span><span class="eq">Parallelogram law: diagonal from the common tail gives the
+                  sum.</span><span class="eq">Commutative: <i>A</i> + <i>B</i> gives the same resultant as <i>B</i> +
+                  <i>A</i> (same start and end points).</span><span class="eq">Associative: chaining vectors in
+                  different groups gives the same overall resultant.</span><span class="eq">Subtraction idea: <i>A</i> −
+                  <i>B</i> means add <i>A</i> and −<i>B</i> graphically.</span><span class="eq">Null/zero vector:
+                  produced when initial and final points coincide; magnitude 0, direction undefined.</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>VECTOR RESOLUTION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li>Vector resolution is expressing a vector as the sum of component vectors along specified directions.
+                </li>
+                <li>In a plane, any vector <i>A</i> can be written as <i>A</i> = <i>l</i><i>a</i> + <i>μ</i><i>b</i> for
+                  two non-collinear vectors <i>a</i>, <i>b</i>.</li>
+                <li>Along rectangular axes, components are taken along perpendicular unit vectors <b>î</b>, <b>ĵ</b>
+                  (and <b>k̂</b> in 3D).</li>
+                <li>Components can be positive, negative, or zero depending on the vector’s direction.</li>
+                <li>A vector can be specified either by (<i>A</i>, <i>θ</i>) or by (<i>A</i><sub>x</sub>,
+                  <i>A</i><sub>y</sub>).</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">2</span><span class="htext">Diagram</span></h2>
+              <div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200'
+                  xmlns='http://www.w3.org/2000/svg'>
+                  <defs>
+                    <marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'
+                      markerUnits='strokeWidth'>
+                      <path d='M0,0 L8,3 L0,6 Z' fill='#123B7A' />
+                    </marker>
+                  </defs>
+                  <g>
+                    <line x1='50' y1='170' x2='330' y2='170' stroke='#123B7A' stroke-width='2'
+                      marker-end='url(#arrow)' />
+                    <line x1='50' y1='170' x2='50' y2='25' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)' />
+                    <text x='320' y='186' font-size='13' fill='#1f2a44'>x</text><text x='34' y='35' font-size='13'
+                      fill='#1f2a44'>y</text>
+                    <line x1='50' y1='170' x2='250' y2='70' stroke='#7C3AED' stroke-width='3'
+                      marker-end='url(#arrow)' /><text x='255' y='75' font-size='13' fill='#1f2a44'>A</text>
+                    <line x1='50' y1='170' x2='250' y2='170' stroke='#2563EB' stroke-width='3'
+                      marker-end='url(#arrow)' /><text x='180' y='186' font-size='13' fill='#1f2a44'>A<tspan
+                        baseline-shift='sub'>x</tspan></text>
+                    <line x1='250' y1='170' x2='250' y2='70' stroke='#16A34A' stroke-width='3'
+                      marker-end='url(#arrow)' /><text x='258' y='120' font-size='13' fill='#1f2a44'>A<tspan
+                        baseline-shift='sub'>y</tspan></text>
+                    <path d='M95 170 A45 45 0 0 1 110 150' fill='none' stroke='#F59E0B' stroke-width='3' /><text x='112'
+                      y='155' font-size='13' fill='#1f2a44'>θ</text>
+                    <circle cx='50' cy='170' r='3' fill='#123B7A' />
+                  </g>
+                </svg>
+                <div class="figcap">Resolving <i>A</i> into perpendicular components <i>A</i><sub>x</sub> and
+                  <i>A</i><sub>y</sub> along x- and y-axes.</div>
+              </div>
+            </div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">🧩</span><span>Component vectors add vectorially: <i>A</i> =
+                    <i>A</i><sub>x</sub><b>î</b> + <i>A</i><sub>y</sub><b>ĵ</b> (+
+                    <i>A</i><sub>z</sub><b>k̂</b>).</span></li>
+                <li><span class="ic">📏</span><span>Trigonometric links (2D, <i>θ</i> from +x-axis):
+                    <i>A</i><sub>x</sub> = <i>A</i>cos<i>θ</i>, <i>A</i><sub>y</sub> = <i>A</i>sin<i>θ</i>.</span></li>
+                <li><span class="ic">🧠</span><span>Recover magnitude and angle: <i>A</i> =
+                    √(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²). For direction use correct quadrant (best:
+                    <i>θ</i>=atan2(<i>A</i><sub>y</sub>,<i>A</i><sub>x</sub>)).</span></li>
+                <li><span class="ic">🧱</span><span>General resolution along non-perpendicular directions: <i>A</i> =
+                    <i>l</i><i>a</i> + <i>μ</i><i>b</i> (find <i>l</i>, <i>μ</i> from geometry/components).</span></li>
+                <li><span class="ic">🎯</span><span>Unit vectors have magnitude 1 and specify direction only:
+                    |<b>î</b>|=|<b>ĵ</b>|=|<b>k̂</b>|=1.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+  <div class="card" style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+    <h2>
+      <span class="secno">4</span>
+      <span class="htext">RESOLUTION ALONG ANY TWO DIRECTIONS (NON-COLLINEAR)</span>
+    </h2>
+
+    <div class="figbox" style="height:auto;margin-bottom:1.5mm">
+      <svg viewBox="0 0 360 200"
+           preserveAspectRatio="xMidYMid meet"
+           xmlns="http://www.w3.org/2000/svg"
+           style="display:block;width:100%;height:auto;font-family:'Times New Roman',serif;">
+
+        <defs>
+          <marker id="resolutionBlackArrow-t5"
+                  markerWidth="8" markerHeight="8"
+                  refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8"
+                  fill="none" stroke="#111" stroke-width="1.3"/>
+          </marker>
+
+          <marker id="resolutionBlueArrow-t5"
+                  markerWidth="8" markerHeight="8"
+                  refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8"
+                  fill="none" stroke="#00AEEF" stroke-width="1.3"/>
+          </marker>
+        </defs>
+
+        <!-- Figure (a): two non-parallel vectors -->
+        <g font-size="15" fill="#111">
+          <line x1="25" y1="105" x2="105" y2="123"
+                stroke="#111" stroke-width="1.8"
+                marker-end="url(#resolutionBlackArrow-t5)"/>
+
+          <text x="57" y="132"
+                font-style="italic"
+                font-weight="700">a</text>
+
+          <line x1="102" y1="85" x2="70" y2="35"
+                stroke="#111" stroke-width="1.8"
+                marker-end="url(#resolutionBlackArrow-t5)"/>
+
+          <text x="72" y="73"
+                font-style="italic"
+                font-weight="700">b</text>
+
+          <text x="67" y="175" text-anchor="middle">(a)</text>
+        </g>
+
+        <!-- Figure (b): resolution of A -->
+        <g font-size="15" fill="#111">
+          <!-- Vector A -->
+          <line x1="175" y1="125" x2="207" y2="25"
+                stroke="#111" stroke-width="1.8"
+                marker-end="url(#resolutionBlackArrow-t5)"/>
+
+          <!-- Component λa -->
+          <line x1="175" y1="125" x2="310" y2="145"
+                stroke="#00AEEF" stroke-width="2.2"
+                marker-end="url(#resolutionBlueArrow-t5)"/>
+
+          <!-- Component μb -->
+          <line x1="207" y1="25" x2="310" y2="145"
+                stroke="#00AEEF" stroke-width="2.2"
+                marker-end="url(#resolutionBlueArrow-t5)"/>
+
+          <text x="160" y="133">O</text>
+          <text x="203" y="18">P</text>
+          <text x="315" y="151">Q</text>
+
+          <text x="180" y="76"
+                font-style="italic"
+                font-weight="700">A</text>
+
+          <text x="238" y="145"
+                font-style="italic">
+            λa
+          </text>
+
+          <text x="258" y="85"
+                font-style="italic">
+            μb
+          </text>
+
+          <text x="240" y="175" text-anchor="middle">(b)</text>
+        </g>
+      </svg>
+    </div>
+
+    <ul class="b">
+      <li>Choose two non-zero, non-parallel vectors <i>a</i> and <i>b</i> in the same plane.</li>
+      <li>Construct a line through tail of <i>A</i> parallel to <i>a</i>, and a line through head of <i>A</i>
+        parallel to <i>b</i> (they meet at a point).</li>
+      <li>Then <i>A</i> = <i>l</i><i>a</i> + <i>μ</i><i>b</i>; <i>l</i>, <i>μ</i> are real numbers (can be
+        negative).</li>
+      <li>If <i>a</i> ⟂ <i>b</i> and are unit vectors, then <i>l</i> and <i>μ</i> are the scalar components
+        along those directions (equal to <i>A</i><sub>x</sub>, <i>A</i><sub>y</sub> for standard x–y axes).
+      </li>
+    </ul>
+  </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">RESOLUTION ALONG COORDINATE AXES (UNIT-VECTOR
+                  FORM)</span></h2>
+              <ul class="b">
+                <li>In 2D: <i>A</i> = <i>A</i><sub>x</sub><b>î</b> + <i>A</i><sub>y</sub><b>ĵ</b>.</li>
+                <li>If <i>θ</i> is measured from +x-axis: <i>A</i><sub>x</sub> = <i>A</i>cos<i>θ</i>,
+                  <i>A</i><sub>y</sub> = <i>A</i>sin<i>θ</i>.</li>
+                <li>Magnitude: <i>A</i> = √(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²). Direction: use correct
+                  quadrant (atan2 preferred).</li>
+                <li>In 3D: <i>A</i> = <i>A</i><sub>x</sub><b>î</b> + <i>A</i><sub>y</sub><b>ĵ</b> +
+                  <i>A</i><sub>z</sub><b>k̂</b> and <i>A</i> =
+                  √(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²+<i>A</i><sub>z</sub>²).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">SPECIFYING A 2D VECTOR: MAGNITUDE–ANGLE vs
+                COMPONENTS</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th><i>A</i>, <i>θ</i> form</th>
+                  <th><i>A</i><sub>x</sub>, <i>A</i><sub>y</sub> form</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Given data</td>
+                  <td>Magnitude <i>A</i> and direction <i>θ</i> from +x-axis</td>
+                  <td>Signed projections on axes</td>
+                </tr>
+                <tr>
+                  <td>Convert to components</td>
+                  <td><i>A</i><sub>x</sub>=<i>A</i>cos<i>θ</i><br><i>A</i><sub>y</sub>=<i>A</i>sin<i>θ</i></td>
+                  <td>Already known</td>
+                </tr>
+                <tr>
+                  <td>Convert to magnitude–angle</td>
+                  <td>Already known</td>
+                  <td>
+                    <i>A</i>=√(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²)<br>tan<i>θ</i>=<i>A</i><sub>y</sub>/<i>A</i><sub>x</sub>
+                    (choose correct quadrant; preferably use atan2)</td>
+                </tr>
+                <tr>
+                  <td>Sign &amp; quadrant</td>
+                  <td><i>θ</i> decides signs of components</td>
+                  <td>Use signs of <i>A</i><sub>x</sub>, <i>A</i><sub>y</sub> to choose correct <i>θ</i></td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">From right-triangle formed by dropping perpendiculars to axes (vector makes angle
+                  <i>θ</i> with +x-axis):</div>
+                <div class="eqbox"><span class="eq"><i>A</i><sub>x</sub>=<i>A</i>cos<i>θ</i>,
+                    <i>A</i><sub>y</sub>=<i>A</i>sin<i>θ</i></span></div>
+                <div class="fstep">Square and add components to eliminate <i>θ</i>:</div>
+                <div class="eqbox"><span
+                    class="eq"><i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²=<i>A</i>²(cos²<i>θ</i>+sin²<i>θ</i>)=<i>A</i>²</span>
+                </div>
+                <div class="fstep">Hence magnitude and direction relations:</div>
+                <div class="eqbox"><span
+                    class="eq"><i>A</i>=√(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²),<br>tan<i>θ</i>=<span
+                      class='frac'><span><i>A</i><sub>y</sub></span><span><i>A</i><sub>x</sub></span></span> (quadrant
+                    must be chosen correctly)</span></div>
+              </div>
+              <div>
+                <div class="fstep">Unit-vector (component vector) form in 2D:</div>
+                <div class="eqbox blue"><span
+                    class="eq"><i>A</i>=<i>A</i><sub>x</sub><b>î</b>+<i>A</i><sub>y</sub><b>ĵ</b></span></div>
+                <div class="fstep">Resolution along any two non-collinear directions in a plane:</div>
+                <div class="eqbox blue"><span class="eq"><i>A</i>=<i>l</i><i>a</i>+<i>μ</i><i>b</i></span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>A</i>&nbsp;=</td>
+                    <td>Vector (or its magnitude when written as <i>A</i> without arrow/bold), same units as components
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><i>A</i><sub>x</sub>, <i>A</i><sub>y</sub>, <i>A</i><sub>z</sub>&nbsp;=</td>
+                    <td>Signed scalar components of <i>A</i> along x, y, z axes</td>
+                  </tr>
+                  <tr>
+                    <td><b>î</b>, <b>ĵ</b>, <b>k̂</b>&nbsp;=</td>
+                    <td>Unit vectors along +x, +y, +z directions (dimensionless)</td>
+                  </tr>
+                  <tr>
+                    <td><i>θ</i>&nbsp;=</td>
+                    <td>Angle made by <i>A</i> with +x-axis in x–y plane (take correct quadrant)</td>
+                  </tr>
+                  <tr>
+                    <td><i>l</i>, <i>μ</i>&nbsp;=</td>
+                    <td>Real numbers multiplying direction vectors <i>a</i>, <i>b</i> in general resolution</td>
+                  </tr>
+                </table>
+                <div class="hibox">Core 2D resolution<div class="eqbox gold" style="margin-top:1mm"><span
+                      class="eq"><i>A</i>=<i>A</i><sub>x</sub><b>î</b>+<i>A</i><sub>y</sub><b>ĵ</b>, where
+                      <i>A</i><sub>x</sub>=<i>A</i>cos<i>θ</i>, <i>A</i><sub>y</sub>=<i>A</i>sin<i>θ</i></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Components are scalars; component vectors are <i>A</i><sub>x</sub><b>î</b>,
+                  <i>A</i><sub>y</sub><b>ĵ</b>.</li>
+                <li>Always state the angle reference: usually measured from +x-axis, anticlockwise positive.</li>
+                <li>Signs of components follow projection direction; do not force all components positive.</li>
+                <li>Magnitude uses squares, so sign disappears in √(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²).</li>
+                <li>For direction from components, choose the correct quadrant using signs of <i>A</i><sub>x</sub>,
+                  <i>A</i><sub>y</sub>.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Writing <i>A</i> = <i>A</i><sub>x</sub> + <i>A</i><sub>y</sub> (adding scalars) instead of vector
+                  sum with unit vectors.</li>
+                <li>Interchanging sin and cos when <i>θ</i> is given with a different reference axis.</li>
+                <li>Using tan<sup>−1</sup>(<i>A</i><sub>y</sub>/<i>A</i><sub>x</sub>) without correcting for quadrant.
+                </li>
+                <li>Treating <b>î</b>, <b>ĵ</b> as numbers and dropping them in final vector form.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“COS-TO-AXIS, SIN-TO-PERP”</div>
+                <paragraph id="6a9fdca5560b9a75050003ee">Component along the axis from which <i>θ</i> is measured: multiply by cos<i>θ</i>.</paragraph>
+                <paragraph id="6a9fdca51116ca2b8c0003ef">Component perpendicular to that axis (in the plane): multiply by sin<i>θ</i>.</paragraph>
+                <paragraph id="6a9fdca55f932480a00003f0">Then attach directions: <i>A</i><sub>x</sub> with <b>î</b>, <i>A</i><sub>y</sub> with <b>ĵ</b>.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><i>A</i>=<i>l</i><i>a</i>+<i>μ</i><i>b</i> (resolution along two
+                  non-collinear directions)</span><span
+                  class="eq"><i>A</i>=<i>A</i><sub>x</sub><b>î</b>+<i>A</i><sub>y</sub><b>ĵ</b>
+                  (+<i>A</i><sub>z</sub><b>k̂</b>)</span><span class="eq"><i>A</i><sub>x</sub>=<i>A</i>cos<i>θ</i>,
+                  <i>A</i><sub>y</sub>=<i>A</i>sin<i>θ</i> (for <i>θ</i> from +x-axis)</span><span
+                  class="eq"><i>A</i>=√(<i>A</i><sub>x</sub>²+<i>A</i><sub>y</sub>²); direction: use correct quadrant
+                  (atan2 preferred)</span><span class="eq">|<b>î</b>|=|<b>ĵ</b>|=|<b>k̂</b>|=1 (unit vectors)</span>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ANALYTICAL VECTOR ADDITION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li>Analytical vector addition means adding vectors by adding their <i>x</i>-, <i>y</i>- (and <i>z</i>-)
+                  components.</li>
+                <li>Write each vector in unit-vector form: <i>A</i> = <i>A</i><sub>x</sub><b>i</b> +
+                  <i>A</i><sub>y</sub><b>j</b> (+ <i>A</i><sub>z</sub><b>k</b>).</li>
+                <li>Resultant components: <i>R</i><sub>x</sub> = <i>A</i><sub>x</sub> + <i>B</i><sub>x</sub>,
+                  <i>R</i><sub>y</sub> = <i>A</i><sub>y</sub> + <i>B</i><sub>y</sub> (similarly <i>R</i><sub>z</sub>).
+                </li>
+                <li>Magnitude from components: <i>R</i> = √(<i>R</i><sub>x</sub>² + <i>R</i><sub>y</sub>²) (2D) or
+                  √(<i>R</i><sub>x</sub>² + <i>R</i><sub>y</sub>² + <i>R</i><sub>z</sub>²) (3D).</li>
+                <li>Direction in 2D: tan<i>θ</i> = <span
+                    class='frac'><span><i>R</i><sub>y</sub></span><span><i>R</i><sub>x</sub></span></span>; choose
+                  quadrant using signs of <i>R</i><sub>x</sub>, <i>R</i><sub>y</sub>.</li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox">
+    <svg viewBox="0 0 360 350"
+         preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg"
+         style="display:block;width:100%;height:auto;font-family:'Times New Roman',serif;">
+
+      <defs>
+        <marker id="axisArrow3d-t6" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none" stroke="#111" stroke-width="1.3"/>
+        </marker>
+
+        <marker id="blueArrow3d-t6" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none" stroke="#00AEEF" stroke-width="1.3"/>
+        </marker>
+
+        <marker id="doubleArrow3d-t6" markerWidth="8" markerHeight="8"
+                refX="7" refY="4" orient="auto-start-reverse">
+          <path d="M0,0 L8,4 L0,8"
+                fill="none" stroke="#222" stroke-width="1.3"/>
+        </marker>
+      </defs>
+
+      <!-- Coordinate axes -->
+      <line x1="118" y1="210" x2="325" y2="210"
+            stroke="#111" stroke-width="1.8"
+            marker-end="url(#axisArrow3d-t6)"/>
+
+      <line x1="118" y1="210" x2="118" y2="10"
+            stroke="#111" stroke-width="1.8"
+            marker-end="url(#axisArrow3d-t6)"/>
+
+      <line x1="118" y1="210" x2="40" y2="330"
+            stroke="#111" stroke-width="1.8"
+            marker-end="url(#axisArrow3d-t6)"/>
+
+      <text x="329" y="216" font-size="18" font-style="italic">x</text>
+      <text x="125" y="17" font-size="18" font-style="italic">y</text>
+      <text x="43" y="343" font-size="18" font-style="italic">z</text>
+
+      <!-- Dashed parallelepiped -->
+      <g fill="none" stroke="#666" stroke-width="1"
+         stroke-dasharray="3,3">
+        <line x1="118" y1="42" x2="68" y2="118"/>
+        <line x1="68" y1="118" x2="118" y2="210"/>
+        <line x1="68" y1="118" x2="205" y2="118"/>
+
+        <line x1="118" y1="42" x2="255" y2="42"/>
+        <line x1="255" y1="42" x2="205" y2="118"/>
+        <line x1="255" y1="42" x2="260" y2="210"/>
+
+        <line x1="118" y1="42" x2="205" y2="118"/>
+        <line x1="205" y1="118" x2="260" y2="210"/>
+
+        <line x1="68" y1="118" x2="68" y2="285"/>
+        <line x1="68" y1="285" x2="205" y2="285"/>
+        <line x1="205" y1="118" x2="205" y2="285"/>
+
+        <line x1="118" y1="210" x2="205" y2="285"/>
+        <line x1="260" y1="210" x2="205" y2="285"/>
+      </g>
+
+      <!-- Vector components -->
+      <line x1="118" y1="210" x2="260" y2="210"
+            stroke="#00AEEF" stroke-width="2.3"
+            marker-end="url(#blueArrow3d-t6)"/>
+
+      <line x1="118" y1="210" x2="118" y2="42"
+            stroke="#00AEEF" stroke-width="2.3"
+            marker-end="url(#blueArrow3d-t6)"/>
+
+      <line x1="118" y1="210" x2="68" y2="285"
+            stroke="#00AEEF" stroke-width="2.3"
+            marker-end="url(#blueArrow3d-t6)"/>
+
+      <!-- Resultant vector A -->
+      <line x1="118" y1="210" x2="205" y2="118"
+            stroke="#00AEEF" stroke-width="2.8"
+            marker-end="url(#blueArrow3d-t6)"/>
+
+      <text x="158" y="159"
+            font-size="18"
+            font-style="italic"
+            font-weight="700"
+            transform="rotate(-45 158 159)">A</text>
+
+      <!-- Component labels -->
+      <text x="221" y="201" font-size="17">
+        A<tspan baseline-shift="sub" font-size="12">x</tspan>
+      </text>
+
+      <text x="91" y="137" font-size="17">
+        A<tspan baseline-shift="sub" font-size="12">y</tspan>
+      </text>
+
+      <text x="78" y="273" font-size="17">
+        A<tspan baseline-shift="sub" font-size="12">z</tspan>
+      </text>
+
+      <!-- Direction angles -->
+      <path d="M151 210 A33 33 0 0 0 141 187"
+            fill="none" stroke="#111" stroke-width="1.1"/>
+
+      <path d="M141 187 A33 33 0 0 0 118 177"
+            fill="none" stroke="#111" stroke-width="1.1"/>
+
+      <path d="M118 177 A33 33 0 0 0 96 210"
+            fill="none" stroke="#111" stroke-width="1.1"/>
+
+      <text x="143" y="204" font-size="17" font-style="italic">α</text>
+      <text x="121" y="178" font-size="17" font-style="italic">β</text>
+      <text x="94" y="206" font-size="17" font-style="italic">γ</text>
+
+      <!-- Ax dimension -->
+      <line x1="55" y1="307" x2="205" y2="307"
+            stroke="#222" stroke-width="1.3"
+            marker-start="url(#doubleArrow3d-t6)"
+            marker-end="url(#doubleArrow3d-t6)"/>
+
+      <line x1="68" y1="285" x2="55" y2="307"
+            stroke="#222" stroke-width="1"/>
+
+      <line x1="205" y1="285" x2="205" y2="307"
+            stroke="#222" stroke-width="1"/>
+
+      <text x="130" y="326" text-anchor="middle" font-size="17">
+        A<tspan baseline-shift="sub" font-size="12">x</tspan>
+      </text>
+
+      <!-- Ay dimension -->
+      <line x1="282" y1="42" x2="282" y2="210"
+            stroke="#222" stroke-width="1.3"
+            marker-start="url(#doubleArrow3d-t6)"
+            marker-end="url(#doubleArrow3d-t6)"/>
+
+      <line x1="255" y1="42" x2="290" y2="42"
+            stroke="#222" stroke-width="1"/>
+
+      <line x1="260" y1="210" x2="290" y2="210"
+            stroke="#222" stroke-width="1"/>
+
+      <text x="276" y="130" text-anchor="end" font-size="17">
+        A<tspan baseline-shift="sub" font-size="12">y</tspan>
+      </text>
+
+      <!-- Az dimension -->
+      <line x1="268" y1="245" x2="225" y2="292"
+            stroke="#222" stroke-width="1.3"
+            marker-start="url(#doubleArrow3d-t6)"
+            marker-end="url(#doubleArrow3d-t6)"/>
+
+      <text x="248" y="272" font-size="17">
+        A<tspan baseline-shift="sub" font-size="12">z</tspan>
+      </text>
+
+      <text x="180" y="342"
+            text-anchor="middle"
+            font-size="16">(d)</text>
+    </svg>
+
+    <div class="figcap" style="margin-bottom:15px;">
+      Head-to-tail gives <i>R</i> = <i>A</i> + <i>B</i>; analytically add components along axes.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">🧩</span><span>Component method works for any number of vectors: add each axis
+                    separately.</span></li>
+                <li><span class="ic">➖</span><span>Subtraction: <i>A</i> − <i>B</i> = <i>A</i> + (−<i>B</i>); components
+                    subtract correspondingly.</span></li>
+                <li><span class="ic">📐</span><span>If two magnitudes and included angle <i>θ</i> are known, use cosine
+                    law for resultant.</span></li>
+<li>
+  <span class="ic">🧭</span>
+  <span>
+    Angle with +x axis: tan<i>α</i> =
+    <span class="frac">
+      <span><i>B</i> sin<i>θ</i></span>
+      <span><i>A</i> + <i>B</i> cos<i>θ</i></span>
+    </span>
+  </span>
+</li>              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">WORKING (COMPONENT METHOD)</span></h2>
+              <ul class="b">
+                <li>Resolve: <i>A</i><sub>x</sub> = <i>A</i>cos<i>θ</i><sub>A</sub>, <i>A</i><sub>y</sub> =
+                  <i>A</i>sin<i>θ</i><sub>A</sub> (angle from +x).</li>
+                <li>Add: <i>R</i><sub>x</sub> = Σ<i>A</i><sub>x</sub>, <i>R</i><sub>y</sub> = Σ<i>A</i><sub>y</sub> (and
+                  <i>R</i><sub>z</sub> similarly).</li>
+                <li>Magnitude: <i>R</i> = √(<i>R</i><sub>x</sub>² + <i>R</i><sub>y</sub>²) in 2D; include
+                  <i>R</i><sub>z</sub>² in 3D.</li>
+                <li>Direction: <i>θ</i><sub>R</sub> from +x using tan<i>θ</i><sub>R</sub> =
+                  <i>R</i><sub>y</sub>/<i>R</i><sub>x</sub>; check quadrant by signs.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">WHEN COSINE/SINE LAWS ARE FASTER (TWO VECTORS)</span>
+              </h2>
+              <ul class="b">
+                <li>If <i>A</i>, <i>B</i> and included angle <i>θ</i> are known: <i>R</i>² = <i>A</i>² + <i>B</i>² +
+                  2<i>A</i><i>B</i>cos<i>θ</i>.</li>
+                <li>Angle <i>α</i> between <i>R</i> and <i>A</i>: sin<i>α</i> = (<i>B</i>sin<i>θ</i>)/<i>R</i> (sine
+                  law; side opposite <i>α</i> is <i>B</i>).</li>
+                <li>Equivalent tangent form: tan<i>α</i> = <span
+                    class='frac'><span><i>B</i>sin<i>θ</i></span><span><i>A</i> + <i>B</i>cos<i>θ</i></span></span>.
+                </li>
+                <li>Use components if angles are given w.r.t. axes or vectors are more than two.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">COMPONENT METHOD vs COSINE/SINE LAW</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Component method</th>
+                  <th>Cosine/Sine law</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Best for</td>
+                  <td>Many vectors; axis-given angles; 2D/3D</td>
+                  <td>Exactly two vectors; included angle known</td>
+                </tr>
+                <tr>
+                  <td>Core idea</td>
+                  <td>Add corresponding components</td>
+                  <td>Treat as triangle/parallelogram geometry</td>
+                </tr>
+                <tr>
+                  <td>Direction</td>
+                  <td>tan<i>θ</i><sub>R</sub> = <i>R</i><sub>y</sub>/<i>R</i><sub>x</sub></td>
+                  <td>If triangle formed by <i>A</i>, <i>B</i>, <i>R</i>: sin<i>α</i> = (<i>B</i>sin<i>θ</i>)/<i>R</i>
+                    where <i>θ</i> is angle between <i>A</i> and <i>B</i>, <i>α</i> is angle between <i>R</i> and
+                    <i>A</i></td>
+                </tr>
+                <tr>
+                  <td>Common risk</td>
+                  <td>Wrong quadrant/signs</td>
+                  <td>Using wrong angle (not included angle)</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Write vectors in components (2D):</div>
+                <div class="eqbox"><span class="eq"><i>A</i> = <i>A</i><sub>x</sub><b>i</b> +
+                    <i>A</i><sub>y</sub><b>j</b>, &nbsp; <i>B</i> = <i>B</i><sub>x</sub><b>i</b> +
+                    <i>B</i><sub>y</sub><b>j</b></span></div>
+                <div class="fstep">Add and regroup unit vectors:</div>
+                <div class="eqbox"><span class="eq"><i>R</i> = <i>A</i> + <i>B</i> = (<i>A</i><sub>x</sub> +
+                    <i>B</i><sub>x</sub>)<b>i</b> + (<i>A</i><sub>y</sub> + <i>B</i><sub>y</sub>)<b>j</b></span></div>
+                <div class="fstep">So components add axis-wise:</div>
+                <div class="eqbox"><span class="eq"><i>R</i><sub>x</sub> = <i>A</i><sub>x</sub> + <i>B</i><sub>x</sub>,
+                    &nbsp; <i>R</i><sub>y</sub> = <i>A</i><sub>y</sub> + <i>B</i><sub>y</sub></span></div>
+              </div>
+              <div>
+                <div class="fstep">Magnitude from Pythagoras (2D):</div>
+                <div class="eqbox blue"><span class="eq"><i>R</i> = √(<i>R</i><sub>x</sub>² +
+                    <i>R</i><sub>y</sub>²)</span></div>
+                <div class="fstep">Direction from right-triangle definition:</div>
+                <div class="eqbox blue"><span class="eq">tan<i>θ</i><sub>R</sub> = <span
+                      class='frac'><span><i>R</i><sub>y</sub></span><span><i>R</i><sub>x</sub></span></span></span>
+                </div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>A</i>, <i>B</i>, <i>R</i>&nbsp;=</td>
+                    <td>Magnitudes of vectors <i>A</i>, <i>B</i>, resultant <i>R</i></td>
+                  </tr>
+                  <tr>
+                    <td><i>A</i><sub>x</sub>, <i>A</i><sub>y</sub>, (<i>A</i><sub>z</sub>)&nbsp;=</td>
+                    <td>Cartesian components of <i>A</i> along x, y (and z)</td>
+                  </tr>
+                  <tr>
+                    <td><b>i</b>, <b>j</b>, <b>k</b>&nbsp;=</td>
+                    <td>Unit vectors along +x, +y, +z axes</td>
+                  </tr>
+                  <tr>
+                    <td><i>θ</i>&nbsp;=</td>
+                    <td>Angle between two vectors (cosine/sine laws) or from +x axis (components), as stated</td>
+                  </tr>
+                  <tr>
+                    <td><i>θ</i><sub>R</sub>&nbsp;=</td>
+                    <td>Angle made by resultant with +x axis</td>
+                  </tr>
+                  <tr>
+                    <td><i>α</i>&nbsp;=</td>
+                    <td>Angle between <i>R</i> and <i>A</i> (triangle method; opposite side <i>B</i>)</td>
+                  </tr>
+                </table>
+                <div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span
+                      class="eq"><i>R</i> = (Σ<i>A</i><sub>x</sub>)<b>i</b> + (Σ<i>A</i><sub>y</sub>)<b>j</b> (+
+                      (Σ<i>A</i><sub>z</sub>)<b>k</b>)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Use one reference: angles from +x, counterclockwise positive.</li>
+                <li>Component addition applies to displacement, velocity, force, momentum.</li>
+                <li>For subtraction, reverse: −<i>B</i> has same magnitude, opposite direction.</li>
+                <li>tan<i>θ</i> alone is ambiguous; always apply quadrant correction.</li>
+                <li>Cosine law needs included angle between <i>A</i> and <i>B</i>.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Swapping sin/cos for <i>x</i>- and <i>y</i>-components.</li>
+                <li>Missing negative signs in 2nd/3rd/4th quadrants.</li>
+                <li>Using √(<i>A</i>²+<i>B</i>²) when vectors are not perpendicular.</li>
+                <li>Reporting direction from tan<i>θ</i> without quadrant correction.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“ADD: Axes → Add → Diagonal”</div>
+                <paragraph id="6a9fdca54079c08c200003f1"><b>A</b>xes: resolve into <i>x</i>, <i>y</i> (and <i>z</i>).</paragraph>
+                <paragraph id="6a9fdca50fd94a47390003f2"><b>A</b>dd: sum components separately: Σ<i>x</i>, Σ<i>y</i>, Σ<i>z</i>.</paragraph>
+                <paragraph id="6a9fdca5dfa94b31990003f3"><b>D</b>iagonal: √(Σ components²) for magnitude; tan = Σ<i>y</i>/Σ<i>x</i> + quadrant.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><i>A</i> = <i>A</i><sub>x</sub><b>i</b> + <i>A</i><sub>y</sub><b>j</b> (+
+                  <i>A</i><sub>z</sub><b>k</b>)</span><span class="eq"><i>R</i> = <i>A</i> + <i>B</i> ⇒
+                  <i>R</i><sub>x</sub> = <i>A</i><sub>x</sub> + <i>B</i><sub>x</sub>, <i>R</i><sub>y</sub> =
+                  <i>A</i><sub>y</sub> + <i>B</i><sub>y</sub>, <i>R</i><sub>z</sub> = <i>A</i><sub>z</sub> +
+                  <i>B</i><sub>z</sub></span><span class="eq"><i>R</i> (2D) = √(<i>R</i><sub>x</sub>² +
+                  <i>R</i><sub>y</sub>²); &nbsp;<i>R</i> (3D) = √(<i>R</i><sub>x</sub>² + <i>R</i><sub>y</sub>² +
+                  <i>R</i><sub>z</sub>²)</span><span class="eq">tan<i>θ</i><sub>R</sub> = <span
+                    class='frac'><span><i>R</i><sub>y</sub></span><span><i>R</i><sub>x</sub></span></span> (quadrant by
+                  signs of <i>R</i><sub>x</sub>, <i>R</i><sub>y</sub>)</span><span class="eq"><i>A</i><sub>x</sub> =
+                  <i>A</i>cos<i>θ</i>, <i>A</i><sub>y</sub> = <i>A</i>sin<i>θ</i> (θ from +x)</span><span class="eq">Law
+                  of cosines (two vectors): <i>R</i>² = <i>A</i>² + <i>B</i>² + 2<i>A</i><i>B</i>cos<i>θ</i></span><span
+                  class="eq">Law of sines (triangle of <i>A</i>, <i>B</i>, <i>R</i>): <span
+                    class='frac'><span>sin<i>α</i></span><span><i>B</i></span></span> = <span
+                    class='frac'><span>sin<i>θ</i></span><span><i>R</i></span></span> = <span
+                    class='frac'><span>sin<i>β</i></span><span><i>A</i></span></span></span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Vectors in a plane: <i>r</i>, Δ<i>r</i>, <i>v</i>, <i>a</i> and their x–y components;
+            <i>v</i> is tangent to path</div>
+              <h2>KINEMATICS IN TWO DIMENSIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li>Motion in a plane is described using vectors: position <i>r</i>, displacement Δ<i>r</i>, velocity
+                  <i>v</i>, acceleration <i>a</i>.</li>
+                <li>Position vector: <i>r</i> = x<i>i</i> + y<i>j</i>, where x,y are coordinates in an x–y frame.</li>
+                <li>Displacement: Δ<i>r</i> = <i>r</i>′ − <i>r</i> = (Δx)<i>i</i> + (Δy)<i>j</i>; depends only on
+                  endpoints, not path.</li>
+                <li>Average velocity: <i>v</i><sub>avg</sub> = Δ<i>r</i>/Δt; direction is same as Δ<i>r</i>.</li>
+                <li>Instantaneous velocity: <i>v</i> = d<i>r</i>/dt = (dx/dt)<i>i</i> + (dy/dt)<i>j</i>; direction is
+                  tangent to trajectory.</li>
+                <li>Acceleration: <i>a</i> = d<i>v</i>/dt = (d<i>v</i><sub>x</sub>/dt)<i>i</i> +
+                  (d<i>v</i><sub>y</sub>/dt)<i>j</i>; need not be along <i>v</i>.</li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox image-figure">
+    <img src="img/001.Webp" alt="Position and displacement vector diagram">
+
+    <div class="figcap" style="margin-bottom: 15px;">
+      At any point, <i>r</i> gives position from origin; Δ<i>r</i> joins endpoints;
+      <i>v</i> is along tangent to path.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">📍</span><span><b>Components</b>: treat plane motion as simultaneous x- and y-
+                    motions with shared time <i>t</i>.</span></li>
+                <li><span class="ic">➡️</span><span><b>Speed</b> is scalar: <i>v</i> =
+                    √(<i>v</i><sub>x</sub>²+<i>v</i><sub>y</sub>²); different from |Δ<i>r</i>|/Δt for curved
+                    paths.</span></li>
+                <li><span class="ic">🧵</span><span><b>Tangent rule</b>: as Δt→0, chord PP′ becomes tangent; <i>v</i>
+                    points along tangent.</span></li>
+                <li><span class="ic">🧩</span><span><b>Direction angle</b>: tanθ =
+                    <i>v</i><sub>y</sub>/<i>v</i><sub>x</sub>; use quadrant from signs of
+                    <i>v</i><sub>x</sub>,<i>v</i><sub>y</sub>.</span></li>
+                <li><span class="ic">🧨</span><span><b>Acceleration components</b>: <i>a</i><sub>x</sub> =
+                    d<i>v</i><sub>x</sub>/dt, <i>a</i><sub>y</sub> = d<i>v</i><sub>y</sub>/dt; vector change of <i>v</i>
+                    matters.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">COMPONENT FORM (MOST USED IN EXAMS)</span></h2>
+              <ul class="b">
+                <li><b>Position</b>: <i>r</i> = x<i>i</i> + y<i>j</i>.</li>
+                <li><b>Displacement</b>: Δ<i>r</i>= (Δx)<i>i</i>+(Δy)<i>j</i>.</li>
+                <li><b>Velocity</b>: <i>v</i> = d<i>r</i>/dt = <i>v</i><sub>x</sub><i>i</i> +
+                  <i>v</i><sub>y</sub><i>j</i>, with <i>v</i><sub>x</sub>=dx/dt, <i>v</i><sub>y</sub>=dy/dt.</li>
+                <li><b>Speed</b>: <i>v</i> = √(<i>v</i><sub>x</sub>²+<i>v</i><sub>y</sub>²); <b>direction</b>: tanθ =
+                  <i>v</i><sub>y</sub>/<i>v</i><sub>x</sub>.</li>
+                <li><b>Acceleration</b>: <i>a</i> = d<i>v</i>/dt = <i>a</i><sub>x</sub><i>i</i> +
+                  <i>a</i><sub>y</sub><i>j</i>, with <i>a</i><sub>x</sub>=d<i>v</i><sub>x</sub>/dt,
+                  <i>a</i><sub>y</sub>=d<i>v</i><sub>y</sub>/dt.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">GEOMETRIC INTERPRETATION (TANGENT IDEA)</span></h2>
+              <ul class="b">
+                <li>Average velocity points along chord: <i>v</i><sub>avg</sub> ∥ Δ<i>r</i> for a finite Δt.</li>
+                <li>Instantaneous velocity: as Δt→0, chord becomes tangent; hence <i>v</i> is tangent to trajectory.
+                </li>
+                <li>Acceleration depends on change of velocity vector (magnitude and/or direction), not on path alone.
+                </li>
+                <li>In 2D, <i>v</i> and <i>a</i> can make any angle between 0° and 180°.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">AVERAGE vs INSTANTANEOUS (VECTOR VIEW)</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Average (over Δt)</th>
+                  <th>Instantaneous (at time t)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Definition</td>
+                  <td><i>v</i><sub>avg</sub> = Δ<i>r</i>/Δt, <i>a</i><sub>avg</sub> = Δ<i>v</i>/Δt</td>
+                  <td><i>v</i> = d<i>r</i>/dt, <i>a</i> = d<i>v</i>/dt</td>
+                </tr>
+                <tr>
+                  <td>Direction</td>
+                  <td>Along displacement chord PP&amp;#8242;</td>
+                  <td>Along tangent at the point (for <i>v</i>)</td>
+                </tr>
+                <tr>
+                  <td>How to compute</td>
+                  <td>Use endpoints (x,y) at t and t&amp;#8242;</td>
+                  <td>Differentiate x(t), y(t)</td>
+                </tr>
+                <tr>
+                  <td>Depends on</td>
+                  <td>Overall change in position/velocity</td>
+                  <td>Local behavior at that instant</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Start from position vector in plane</div>
+                <div class="eqbox"><span class="eq"><i>r</i>(t) = x(t)<i>i</i> + y(t)<i>j</i></span></div>
+                <div class="fstep">Displacement between t and t&amp;#8242;</div>
+                <div class="eqbox"><span class="eq">Δ<i>r</i> = <i>r</i>(t&amp;#8242;) − <i>r</i>(t) = (Δx)<i>i</i> +
+                    (Δy)<i>j</i></span></div>
+                <div class="fstep">Average velocity then limit Δt→0</div>
+                <div class="eqbox"><span class="eq"><i>v</i><sub>avg</sub> = <span
+                      class='frac'><span>Δ<i>r</i></span><span>Δt</span></span> ⇒ <i>v</i> = <span
+                      class='frac'><span>d<i>r</i></span><span>dt</span></span></span></div>
+              </div>
+              <div>
+                <div class="fstep">Differentiate component-wise</div>
+                <div class="eqbox blue"><span class="eq"><i>v</i> = <span
+                      class='frac'><span>dx</span><span>dt</span></span><i>i</i> + <span
+                      class='frac'><span>dy</span><span>dt</span></span><i>j</i></span></div>
+                <div class="fstep">Acceleration as time-derivative of velocity</div>
+                <div class="eqbox blue"><span class="eq"><i>a</i> = <span
+                      class='frac'><span>d<i>v</i></span><span>dt</span></span> = <span
+                      class='frac'><span>d<i>v</i><sub>x</sub></span><span>dt</span></span><i>i</i> + <span
+                      class='frac'><span>d<i>v</i><sub>y</sub></span><span>dt</span></span><i>j</i></span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>r</i>&nbsp;=</td>
+                    <td>Position vector from origin (m)</td>
+                  </tr>
+                  <tr>
+                    <td>x, y&nbsp;=</td>
+                    <td>Coordinates/components of <i>r</i> (m)</td>
+                  </tr>
+                  <tr>
+                    <td>Δ<i>r</i>&nbsp;=</td>
+                    <td>Displacement vector (m)</td>
+                  </tr>
+                  <tr>
+                    <td><i>v</i><sub>x</sub>, <i>v</i><sub>y</sub>&nbsp;=</td>
+                    <td>Velocity components (m s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>a</i><sub>x</sub>, <i>a</i><sub>y</sub>&nbsp;=</td>
+                    <td>Acceleration components (m s<sup>−2</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td>θ&nbsp;=</td>
+                    <td>Angle made by <i>v</i> with +x-axis (use quadrant by signs)</td>
+                  </tr>
+                </table>
+                <div class="hibox">Core result (2D kinematics in components)<div class="eqbox gold"
+                    style="margin-top:1mm"><span class="eq"><i>v</i> = <span
+                        class='frac'><span>d<i>r</i></span><span>dt</span></span> = <span
+                        class='frac'><span>dx</span><span>dt</span></span><i>i</i> + <span
+                        class='frac'><span>dy</span><span>dt</span></span><i>j</i>, &nbsp; <i>a</i> = <span
+                        class='frac'><span>d<i>v</i></span><span>dt</span></span> = <span
+                        class='frac'><span>d<i>v</i><sub>x</sub></span><span>dt</span></span><i>i</i> + <span
+                        class='frac'><span>d<i>v</i><sub>y</sub></span><span>dt</span></span><i>j</i></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Use vectors: <i>r</i>, Δ<i>r</i>, <i>v</i>, <i>a</i>; write each in <i>i</i>,<i>j</i> component
+                  form.</li>
+                <li>Displacement depends on initial and final position only; path length can be larger than |Δ<i>r</i>|.
+                </li>
+                <li>Instantaneous velocity is tangent to trajectory; it is <b>not</b> generally along Δ<i>r</i> for
+                  finite intervals.</li>
+                <li>Compute <i>v</i> and <i>a</i> by differentiating x(t), y(t) separately: <i>v</i><sub>x</sub>=dx/dt,
+                  <i>a</i><sub>x</sub>=d²x/dt².</li>
+                <li>Direction requires signs of components; report angle with correct quadrant.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Mixing up speed (<i>v</i>) with velocity vector <i>v</i>; speed has no direction.</li>
+                <li>Using tanθ = <i>v</i><sub>x</sub>/<i>v</i><sub>y</sub> (inverted) or ignoring quadrant when θ is
+                  negative.</li>
+                <li>Writing <i>v</i> = (Δx/Δt)<i>i</i> + (Δy/Δt)<i>j</i> for instantaneous without taking
+                  limit/differentiating.</li>
+                <li>Assuming <i>a</i> is always tangent to path; only <i>v</i> is tangent.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“RVD: <b>R</b>ight order, <b>V</b>ia derivative, <b>D</b>irection”</div>
+                <paragraph id="6a9fdca52f493714910003f4"><b>R</b>: Write <i>r</i>=x<i>i</i>+y<i>j</i>.</paragraph>
+                <paragraph id="6a9fdca50b9779267c0003f5"><b>V</b>: Differentiate once for <i>v</i>, twice for <i>a</i>.</paragraph>
+                <paragraph id="6a9fdca524ec2c20b50003f6"><b>D</b>: <i>v</i> points along <b>tangent</b>; use component signs for direction.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><i>r</i> = x<i>i</i> + y<i>j</i></span><span class="eq">Δ<i>r</i> =
+                  <i>r</i>′ − <i>r</i> = (Δx)<i>i</i> + (Δy)<i>j</i></span><span class="eq"><i>v</i><sub>avg</sub> =
+                  Δ<i>r</i>/Δt</span><span class="eq"><i>v</i> = d<i>r</i>/dt = (dx/dt)<i>i</i> +
+                  (dy/dt)<i>j</i></span><span class="eq">speed <i>v</i> = √(<i>v</i><sub>x</sub>² +
+                  <i>v</i><sub>y</sub>²), tanθ = <i>v</i><sub>y</sub>/<i>v</i><sub>x</sub></span><span
+                  class="eq"><i>a</i> = d<i>v</i>/dt = (d<i>v</i><sub>x</sub>/dt)<i>i</i> +
+                  (d<i>v</i><sub>y</sub>/dt)<i>j</i></span><span class="eq"><i>a</i><sub>x</sub> = d²x/dt²,
+                  <i>a</i><sub>y</sub> = d²y/dt²</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Vector equations + component form; perpendicular components evolve independently</div>
+              <h2>CONSTANT ACCELERATION IN PLANE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li><b>Motion in a plane with constant acceleration</b> means <i>a</i> is time-independent (vector
+                  constant).</li>
+                <li>Use vectors: <i>r</i>(<i>t</i>) for position, <i>v</i>(<i>t</i>) for velocity, <i>a</i> for
+                  acceleration.</li>
+                <li>Core results: <i>v</i> = <i>v</i><sub>0</sub> + <i>a</i><i>t</i>, and <i>r</i> =
+                  <i>r</i><sub>0</sub> + <i>v</i><sub>0</sub><i>t</i> + <span
+                    class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup>.</li>
+                <li>In x–y plane: treat as two simultaneous 1D motions along perpendicular axes.</li>
+                <li>Independence: x-motion depends only on <i>v</i><sub>0x</sub>, <i>a</i><sub>x</sub>; y-motion depends
+                  only on <i>v</i><sub>0y</sub>, <i>a</i><sub>y</sub>.</li>
+              </ul>
+            </div>      <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox image-figure">
+    <img src="img/002.Webp" alt="Position and displacement vector diagram" style="max-width: 60%; height: auto;">
+
+    <div class="figcap" style="margin-bottom: 15px;">
+      At any point, r gives position from origin; Δr joins endpoints; v is along tangent to path.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">➡️</span><span>Vector kinematics: write one equation for <i>r</i>, then read
+                    components.</span></li>
+                <li><span class="ic">🧩</span><span>Superposition: 2D motion = sum of two perpendicular 1D
+                    motions.</span></li>
+                <li><span class="ic">⏱️</span><span>Same time <i>t</i> appears in x and y equations; that couples the
+                    trajectory.</span></li>
+                <li><span class="ic">📌</span><span>If <i>a</i> is constant, x(t), y(t) are quadratic; <i>v</i>(t) is
+                    linear.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">DERIVATION (VECTOR → COMPONENTS)</span></h2>
+              <ul class="b">
+                <li>Start from definitions: <i>a</i> = d<i>v</i>/d<i>t</i> and <i>v</i> = d<i>r</i>/d<i>t</i>.</li>
+                <li>If <i>a</i> is constant, integrate d<i>v</i>/d<i>t</i> = <i>a</i> to get <i>v</i> =
+                  <i>v</i><sub>0</sub> + <i>a</i><i>t</i>.</li>
+                <li>For constant <i>a</i>, average velocity: <i>v</i><sub>avg</sub> = <span
+                    class='frac'><span><i>v</i>+<i>v</i><sub>0</sub></span><span>2</span></span>.</li>
+                <li>Use <i>r</i>−<i>r</i><sub>0</sub> = <i>v</i><sub>avg</sub><i>t</i> and substitute <i>v</i> =
+                  <i>v</i><sub>0</sub> + <i>a</i><i>t</i> to get <i>r</i> = <i>r</i><sub>0</sub> +
+                  <i>v</i><sub>0</sub><i>t</i> + <span
+                    class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup>.</li>
+                <li>Project on axes: <i>r</i> = <i>x</i>î + <i>y</i>ĵ, <i>v</i> = <i>v</i><sub>x</sub>î +
+                  <i>v</i><sub>y</sub>ĵ, <i>a</i> = <i>a</i><sub>x</sub>î + <i>a</i><sub>y</sub>ĵ.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">INDEPENDENCE OF PERPENDICULAR MOTIONS (EXAM
+                  FAVORITE)</span></h2>
+              <ul class="b">
+                <li>x-equations use only (<i>x</i><sub>0</sub>, <i>v</i><sub>0x</sub>, <i>a</i><sub>x</sub>);
+                  y-equations use only (<i>y</i><sub>0</sub>, <i>v</i><sub>0y</sub>, <i>a</i><sub>y</sub>).</li>
+                <li>Changing <i>v</i><sub>0x</sub> or <i>a</i><sub>x</sub> does not directly change y(t), and
+                  vice-versa.</li>
+                <li>Trajectory is obtained by eliminating <i>t</i> between x(t) and y(t); that mixes them
+                  mathematically.</li>
+                <li>Special case: projectile has <i>a</i><sub>x</sub>=0, <i>a</i><sub>y</sub>=−<i>g</i> (not covered in
+                  detail here).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">Vector form vs Component form (same physics)</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Vector equations</th>
+                  <th>Component equations (x, y)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Velocity update</td>
+                  <td><i>v</i> = <i>v</i><sub>0</sub> + <i>a</i><i>t</i></td>
+                  <td>
+                    <i>v</i><sub>x</sub>=<i>v</i><sub>0x</sub>+<i>a</i><sub>x</sub><i>t</i><br><i>v</i><sub>y</sub>=<i>v</i><sub>0y</sub>+<i>a</i><sub>y</sub><i>t</i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Position update</td>
+                  <td><i>r</i> = <i>r</i><sub>0</sub> + <i>v</i><sub>0</sub><i>t</i> + <span
+                      class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup></td>
+                  <td><i>x</i>=<i>x</i><sub>0</sub>+<i>v</i><sub>0x</sub><i>t</i>+<span
+                      class='frac'><span>1</span><span>2</span></span><i>a</i><sub>x</sub><i>t</i><sup>2</sup><br><i>y</i>=<i>y</i><sub>0</sub>+<i>v</i><sub>0y</sub><i>t</i>+<span
+                      class='frac'><span>1</span><span>2</span></span><i>a</i><sub>y</sub><i>t</i><sup>2</sup></td>
+                </tr>
+                <tr>
+                  <td>Independence statement</td>
+                  <td>One vector law; components follow automatically</td>
+                  <td>Solve x(t) and y(t) separately; combine using same <i>t</i></td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Definitions:</div>
+                <div class="eqbox"><span class="eq"><i>a</i> = d<i>v</i>/d<i>t</i>, and <i>v</i> =
+                    d<i>r</i>/d<i>t</i></span></div>
+                <div class="fstep">For constant <i>a</i>, integrate from 0 to <i>t</i>:</div>
+                <div class="eqbox"><span class="eq"><i>v</i>−<i>v</i><sub>0</sub> = <i>a</i><i>t</i> ⇒ <i>v</i> =
+                    <i>v</i><sub>0</sub> + <i>a</i><i>t</i></span></div>
+                <div class="fstep">For constant <i>a</i>, average velocity:</div>
+                <div class="eqbox"><span class="eq"><i>v</i><sub>avg</sub> = <span
+                      class='frac'><span><i>v</i>+<i>v</i><sub>0</sub></span><span>2</span></span></span></div>
+              </div>
+              <div>
+                <div class="fstep">Displacement using <i>r</i>−<i>r</i><sub>0</sub> = <i>v</i><sub>avg</sub><i>t</i>:
+                </div>
+                <div class="eqbox blue"><span class="eq"><i>r</i>−<i>r</i><sub>0</sub> = <span
+                      class='frac'><span><i>v</i>+<i>v</i><sub>0</sub></span><span>2</span></span><i>t</i></span></div>
+                <div class="fstep">Substitute <i>v</i> = <i>v</i><sub>0</sub> + <i>a</i><i>t</i>:</div>
+                <div class="eqbox blue"><span class="eq"><i>r</i> = <i>r</i><sub>0</sub> + <i>v</i><sub>0</sub><i>t</i>
+                    + <span class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup></span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>r</i>, <i>r</i><sub>0</sub>&nbsp;=</td>
+                    <td>position vector at time <i>t</i>, and at <i>t</i>=0 (m)</td>
+                  </tr>
+                  <tr>
+                    <td><i>v</i>, <i>v</i><sub>0</sub>&nbsp;=</td>
+                    <td>velocity vector at time <i>t</i>, and at <i>t</i>=0 (m s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>a</i>&nbsp;=</td>
+                    <td>constant acceleration vector (m s<sup>−2</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>x</i>, <i>y</i>&nbsp;=</td>
+                    <td>coordinates/components of <i>r</i> along x and y (m)</td>
+                  </tr>
+                  <tr>
+                    <td><i>v</i><sub>x</sub>, <i>v</i><sub>y</sub>&nbsp;=</td>
+                    <td>components of velocity (m s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>a</i><sub>x</sub>, <i>a</i><sub>y</sub>&nbsp;=</td>
+                    <td>components of acceleration (m s<sup>−2</sup>)</td>
+                  </tr>
+                </table>
+                <div class="hibox">Master equation (use, then resolve)<div class="eqbox gold" style="margin-top:1mm">
+                    <span class="eq"><i>r</i> = <i>r</i><sub>0</sub> + <i>v</i><sub>0</sub><i>t</i> + <span
+                        class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row c2" style="grid-template-columns:1fr 1.6fr">
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">8</span><span class="htext">Graph</span></h2>
+              <div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200'
+                  xmlns='http://www.w3.org/2000/svg'>
+                  <defs>
+                    <marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'>
+                      <polygon points='0,0 8,4 0,8' fill='#123B7A' />
+                    </marker>
+                  </defs>
+                  <rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A'
+                    stroke-width='1.5' />
+                  <line x1='55' y1='155' x2='330' y2='155' stroke='#123B7A' stroke-width='2'
+                    marker-end='url(#arrow2)' />
+                  <line x1='55' y1='155' x2='55' y2='35' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)' />
+                  <text x='318' y='172' font-size='13' fill='#1f2a44'>t</text><text x='30' y='42' font-size='13'
+                    fill='#1f2a44'>v</text>
+                  <polyline points='55,135 105,120 155,105 205,90 255,75 305,60' fill='none' stroke='#2563EB'
+                    stroke-width='3' /><text x='210' y='78' font-size='12' fill='#1f2a44'>slope = a</text>
+                  <circle cx='55' cy='135' r='3' fill='#2563EB' /><text x='62' y='138' font-size='12'
+                    fill='#1f2a44'>v₀</text>
+                </svg>
+                <div class="figcap">For constant acceleration, <i>v</i>–<i>t</i> is a straight line; slope = <i>a</i>.
+                </div>
+              </div>
+            </div>
+            
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Always start from vector laws; component equations are direct projections on axes.</li>
+                <li>For constant <i>a</i>, <i>v</i>(<i>t</i>) is linear and <i>r</i>(<i>t</i>) is quadratic in <i>t</i>.
+                </li>
+                <li>Independence: solve x(t) and y(t) separately; then use same <i>t</i> to combine.</li>
+                <li>Trajectory: eliminate <i>t</i> between x(t), y(t); the path can be a parabola if one acceleration is
+                  zero.</li>
+                <li>Units check: <i>v</i><sub>0</sub><i>t</i> is m; <i>a</i><i>t</i><sup>2</sup> is m; consistent
+                  addition required.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Using different times for x and y parts (must use the same <i>t</i>).</li>
+                <li>Forgetting initial coordinates (<i>x</i><sub>0</sub>, <i>y</i><sub>0</sub>) when origin is not the
+                  start.</li>
+                <li>Mixing up <i>v</i> and speed |<i>v</i>|; speed is always non-negative.</li>
+                <li>Dropping the <span class='frac'><span>1</span><span>2</span></span> in displacement term <span
+                    class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup>.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“Mnemonic: "VRA 1-2"”</div>
+                <paragraph id="6a9fdca672bfd0859f0003f7"><b>V</b>: <i>v</i> = <i>v</i><sub>0</sub> + <i>a</i><i>t</i></paragraph>
+                <paragraph id="6a9fdca6d6ad0ed77b0003f8"><b>R</b>: <i>r</i> = <i>r</i><sub>0</sub> + <i>v</i><sub>0</sub><i>t</i> +
+                  <b>1/2</b><i>a</i><i>t</i><sup>2</sup></paragraph>
+                <paragraph id="6a9fdca6a4888b29dd0003f9">Apply separately to x and y; then combine using the same <i>t</i>.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><i>v</i> = <i>v</i><sub>0</sub> + <i>a</i><i>t</i></span><span
+                  class="eq"><i>r</i> = <i>r</i><sub>0</sub> + <i>v</i><sub>0</sub><i>t</i> + <span
+                    class='frac'><span>1</span><span>2</span></span><i>a</i><i>t</i><sup>2</sup></span><span
+                  class="eq"><i>v</i><sub>x</sub>=<i>v</i><sub>0x</sub>+<i>a</i><sub>x</sub><i>t</i>,
+                  <i>v</i><sub>y</sub>=<i>v</i><sub>0y</sub>+<i>a</i><sub>y</sub><i>t</i></span><span
+                  class="eq"><i>x</i>=<i>x</i><sub>0</sub>+<i>v</i><sub>0x</sub><i>t</i>+<span
+                    class='frac'><span>1</span><span>2</span></span><i>a</i><sub>x</sub><i>t</i><sup>2</sup></span><span
+                  class="eq"><i>y</i>=<i>y</i><sub>0</sub>+<i>v</i><sub>0y</sub><i>t</i>+<span
+                    class='frac'><span>1</span><span>2</span></span><i>a</i><sub>y</sub><i>t</i><sup>2</sup></span><span
+                  class="eq">|<i>v</i>| = √(<i>v</i><sub>x</sub><sup>2</sup>+<i>v</i><sub>y</sub><sup>2</sup>)</span>
+              </div>
+            </div>
+          </div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">2D motion with <i>a</i><sub>x</sub>=0 and <i>a</i><sub>y</sub>=−<i>g</i> → parabolic
+            trajectory</div>
+              <h2>PROJECTILE MOTION (UNDER GRAVITY)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li>Projectile: body projected with initial speed <i>v</i><sub>0</sub> at angle <i>θ</i><sub>0</sub>,
+                  then moves only under gravity (air resistance neglected).</li>
+                <li>Acceleration components: <i>a</i><sub>x</sub>=0, <i>a</i><sub>y</sub>=−<i>g</i> (constant).</li>
+                <li>Horizontal and vertical motions are independent but share the same time <i>t</i>.</li>
+                <li><i>x</i>(<i>t</i>) is uniform motion; <i>y</i>(<i>t</i>) is uniformly accelerated motion downward.
+                </li>
+                <li>Eliminating time gives a parabolic path in the <i>x</i>–<i>y</i> plane.</li>
+              </ul>
+            </div>
+         <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox image-figure">
+    <img src="img/003.Webp" alt="Position and displacement vector diagram" style="max-width: 80%; height: auto;">
+
+    <div class="figcap" style="margin-bottom: 15px;">
+      Projectile launched at angle; path is parabola with constant horizontal velocity and downward acceleration.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">🧭</span><span>Resolve:
+                    <i>v</i><sub>0x</sub>=<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>,
+                    <i>v</i><sub>0y</sub>=<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span></li>
+                <li><span class="ic">➡️</span><span>Horizontal:
+                    <i>v</i><sub>x</sub>=<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub> (constant), so
+                    <i>x</i>∝<i>t</i></span></li>
+                <li><span class="ic">⬇️</span><span>Vertical:
+                    <i>v</i><sub>y</sub>=<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>−<i>g</i><i>t</i>, so motion is
+                    symmetric about the top (for level ground).</span></li>
+                <li><span class="ic">⛰️</span><span>At top: <i>v</i><sub>y</sub>=0 ⇒ <i>t</i><sub>up</sub>=<span
+                      class='frac'><span><i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span><span><i>g</i></span></span></span>
+                </li>
+                <li><span class="ic">📏</span><span>Range on level ground: <i>R</i>=<span
+                      class='frac'><span><i>v</i><sub>0</sub>²
+                        sin2<i>θ</i><sub>0</sub></span><span><i>g</i></span></span>; maximum at
+                    <i>θ</i><sub>0</sub>=45°.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">EQUATIONS (COMPONENT FORM)</span></h2>
+              <ul class="b">
+                <li>Choose origin at launch; x-axis horizontal, y-axis upward; take <i>g</i>=9.8 m s<sup>−2</sup> unless
+                  stated.</li>
+                <li><i>x</i>(<i>t</i>)=(<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>)<i>t</i>;
+                  <i>v</i><sub>x</sub>=<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub> (constant).</li>
+                <li><i>y</i>(<i>t</i>)=(<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>)<i>t</i>−<span
+                    class='frac'><span>1</span><span>2</span></span><i>g</i><i>t</i><sup>2</sup>;
+                  <i>v</i><sub>y</sub>=<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>−<i>g</i><i>t</i>.</li>
+                <li>Speed: <i>v</i>=√(<i>v</i><sub>x</sub><sup>2</sup>+<i>v</i><sub>y</sub><sup>2</sup>); direction
+                  tan<i>θ</i>=<span
+                    class='frac'><span><i>v</i><sub>y</sub></span><span><i>v</i><sub>x</sub></span></span>.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">RESULTS ON LEVEL GROUND (LAUNCH &amp; LAND AT SAME
+                  HEIGHT)</span></h2>
+              <ul class="b">
+                <li>Time to top: <i>t</i><sub>up</sub>=<span
+                    class='frac'><span><i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span><span><i>g</i></span></span>;
+                  total time of flight: <i>T</i>=2<i>t</i><sub>up</sub>=<span
+                    class='frac'><span>2<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span><span><i>g</i></span></span>.
+                </li>
+                <li>Maximum height: <i>H</i><sub>max</sub>=<span
+                    class='frac'><span>(<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>)<sup>2</sup></span><span>2<i>g</i></span></span>.
+                </li>
+                <li>Range: <i>R</i>=(<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>)<i>T</i>=<span
+                    class='frac'><span><i>v</i><sub>0</sub><sup>2</sup>
+                      sin2<i>θ</i><sub>0</sub></span><span><i>g</i></span></span>.</li>
+                <li>Same range for complementary angles: <i>R</i>(<i>θ</i>)=<i>R</i>(90°−<i>θ</i>) since
+                  sin2<i>θ</i>=sin(180°−2<i>θ</i>).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">HORIZONTAL vs VERTICAL MOTION (PROJECTILE)</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Horizontal (x)</th>
+                  <th>Vertical (y)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Acceleration</td>
+                  <td><i>a</i><sub>x</sub>=0</td>
+                  <td><i>a</i><sub>y</sub>=−<i>g</i></td>
+                </tr>
+                <tr>
+                  <td>Velocity</td>
+                  <td><i>v</i><sub>x</sub>=<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub> (constant)</td>
+                  <td><i>v</i><sub>y</sub>=<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>−<i>g</i><i>t</i></td>
+                </tr>
+                <tr>
+                  <td>Displacement</td>
+                  <td><i>x</i>=(<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>)<i>t</i></td>
+                  <td><i>y</i>=(<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>)<i>t</i>−<span
+                      class='frac'><span>1</span><span>2</span></span><i>g</i><i>t</i><sup>2</sup></td>
+                </tr>
+                <tr>
+                  <td>Nature</td>
+                  <td>Uniform motion</td>
+                  <td>Uniformly accelerated motion</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Start with component equations (origin at launch).</div>
+                <div class="eqbox"><span
+                    class="eq"><i>x</i>=(<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>)<i>t</i>,<br><i>y</i>=(<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>)<i>t</i>−<span
+                      class='frac'><span>1</span><span>2</span></span><i>g</i><i>t</i><sup>2</sup></span></div>
+                <div class="fstep">Eliminate <i>t</i> using <i>t</i>=<span
+                    class='frac'><span><i>x</i></span><span><i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub></span></span>.
+                </div>
+                <div class="eqbox"><span class="eq"><i>y</i>=<i>x</i>tan<i>θ</i><sub>0</sub>−<span
+                      class='frac'><span><i>g</i></span><span>2<i>v</i><sub>0</sub><sup>2</sup>cos<sup>2</sup><i>θ</i><sub>0</sub></span></span><i>x</i><sup>2</sup></span>
+                </div>
+              </div>
+              <div>
+                <div class="fstep">For level ground, set <i>y</i>=0 at landing to get time of flight and range.</div>
+                <div class="eqbox blue"><span class="eq"><i>T</i>=<span
+                      class='frac'><span>2<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span><span><i>g</i></span></span>,<br><i>R</i>=(<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>)<i>T</i>=<span
+                      class='frac'><span><i>v</i><sub>0</sub><sup>2</sup>
+                        sin2<i>θ</i><sub>0</sub></span><span><i>g</i></span></span></span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>v</i><sub>0</sub>&nbsp;=</td>
+                    <td>initial speed (m s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>θ</i><sub>0</sub>&nbsp;=</td>
+                    <td>launch angle from +x-axis (rad or °)</td>
+                  </tr>
+                  <tr>
+                    <td><i>g</i>&nbsp;=</td>
+                    <td>acceleration due to gravity (≈9.8 m s<sup>−2</sup>, downward)</td>
+                  </tr>
+                  <tr>
+                    <td><i>T</i>&nbsp;=</td>
+                    <td>time of flight (s) for same launch/landing height</td>
+                  </tr>
+                  <tr>
+                    <td><i>H</i><sub>max</sub>&nbsp;=</td>
+                    <td>maximum height above launch point (m)</td>
+                  </tr>
+                  <tr>
+                    <td><i>R</i>&nbsp;=</td>
+                    <td>horizontal range on level ground (m)</td>
+                  </tr>
+                </table>
+                <div class="hibox">Trajectory (parabola) and range<div class="eqbox gold" style="margin-top:1mm"><span
+                      class="eq"><i>y</i>=<i>x</i>tan<i>θ</i><sub>0</sub>−<span
+                        class='frac'><span><i>g</i></span><span>2<i>v</i><sub>0</sub><sup>2</sup>cos<sup>2</sup><i>θ</i><sub>0</sub></span></span><i>x</i><sup>2</sup>,<br><i>R</i>=<span
+                        class='frac'><span><i>v</i><sub>0</sub><sup>2</sup>
+                          sin2<i>θ</i><sub>0</sub></span><span><i>g</i></span></span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Projectile assumptions: only gravity acts; neglect air resistance; <i>g</i> constant and vertical.
+                </li>
+                <li>Always resolve along x (horizontal) and y (vertical); then use 1D kinematics separately.</li>
+                <li>Trajectory is parabola in <i>x</i>–<i>y</i> plane (after eliminating <i>t</i>).</li>
+                <li>On level ground: ascent time = descent time; <i>v</i><sub>x</sub> same at all times.</li>
+                <li>Maximum range occurs at 45° for given <i>v</i><sub>0</sub> and <i>g</i> (level ground).</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Using <i>a</i><sub>y</sub>=+<i>g</i> while taking y upward; sign mismatch ruins results.</li>
+                <li>Assuming <i>v</i> is constant; only <i>v</i><sub>x</sub> is constant, not total speed.</li>
+                <li>Applying <i>R</i>=<span class='frac'><span><i>v</i><sub>0</sub><sup>2</sup>
+                      sin2<i>θ</i></span><span><i>g</i></span></span> when landing height differs from launch height.
+                </li>
+                <li>Forgetting sin2<i>θ</i> uses double angle (2<i>θ</i>), not (sin<i>θ</i>)<sup>2</sup>.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“X-UNO, Y-UAG”</div>
+                <paragraph id="6a9fdca6e8237c9b620003fa"><b>X-UNO:</b> x-motion is <b>U</b>niform, <b>N</b>o acceleration, <b>O</b>nly <i>v</i><sub>x</sub>
+                  constant.</paragraph>
+                <paragraph id="6a9fdca632454063d00003fb"><b>Y-UAG:</b> y-motion is <b>U</b>niformly <b>A</b>ccelerated by <b>G</b>ravity (−<i>g</i>).</paragraph>
+                <paragraph id="6a9fdca67800e8b3590003fc">Top point reminder: <i>v</i><sub>y</sub>=0, but <i>v</i><sub>x</sub> stays same.</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><i>a</i><sub>x</sub>=0, <i>a</i><sub>y</sub>=−<i>g</i></span><span
+                  class="eq"><i>v</i><sub>0x</sub>=<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>,
+                  <i>v</i><sub>0y</sub>=<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span><span
+                  class="eq"><i>x</i>=(<i>v</i><sub>0</sub>cos<i>θ</i><sub>0</sub>)<i>t</i></span><span
+                  class="eq"><i>y</i>=(<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>)<i>t</i>−<span
+                    class='frac'><span>1</span><span>2</span></span><i>g</i><i>t</i><sup>2</sup></span><span
+                  class="eq"><i>v</i><sub>y</sub>=<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>−<i>g</i><i>t</i></span><span
+                  class="eq"><i>H</i><sub>max</sub>=<span
+                    class='frac'><span>(<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub>)<sup>2</sup></span><span>2<i>g</i></span></span></span><span
+                  class="eq"><i>T</i>=<span
+                    class='frac'><span>2<i>v</i><sub>0</sub>sin<i>θ</i><sub>0</sub></span><span><i>g</i></span></span>
+                  (level ground)</span><span class="eq"><i>R</i>=<span
+                    class='frac'><span><i>v</i><sub>0</sub><sup>2</sup>
+                      sin2<i>θ</i><sub>0</sub></span><span><i>g</i></span></span> (level ground)</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Constant speed on a circle; acceleration is always towards the centre</div>
+              <h2>UNIFORM CIRCULAR MOTION (UCM)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3">
+            <div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF">
+              <h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2>
+              <ul class="b">
+                <li><b>Uniform circular motion</b>: motion along a circle of radius <i>R</i> with constant speed
+                  <i>v</i>.</li>
+                <li>Velocity changes continuously because its <b>direction</b> changes; hence acceleration is non-zero.
+                </li>
+                <li>Acceleration is <b>centripetal</b> (radially inward), perpendicular to instantaneous velocity.</li>
+                <li>Angular displacement <i>Δθ</i> is measured at the centre; one round corresponds to <i>2π</i> rad.
+                </li>
+                <li>Angular speed <i>ω</i> is constant in UCM; linear speed relates as <i>v</i> = <i>Rω</i>.</li>
+              </ul>
+            </div>
+            <div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox image-figure">
+    <img src="img/004.Webp" alt="Position and displacement vector diagram" style="max-width: 100%; height: auto;">
+
+    <div class="figcap" style="margin-bottom: 15px;">
+      In UCM: v is tangent, ac is radial inward; both magnitudes constant but v direction changes.
+    </div>
+  </div>
+</div>
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2>
+              <ul class="kc">
+                <li><span class="ic">🎯</span><span>Centripetal acceleration: <i>a</i><sub>c</sub> points to centre;
+                    magnitude constant for UCM.</span></li>
+                <li><span class="ic">🧭</span><span>Instantaneous velocity is <b>tangential</b>; <i>a</i><sub>c</sub> is
+                    <b>radial</b> ⇒ always perpendicular.</span></li>
+                <li><span class="ic">⏱️</span><span>Time variables: period <i>T</i> (one revolution), frequency <i>n</i>
+                    = 1/<i>T</i>.</span></li>
+                <li><span class="ic">🔁</span><span>Angular links: <i>ω</i> = 2π/<i>T</i> = 2π<i>n</i>, and
+                    <i>a</i><sub>c</sub> = <i>ω</i><sup>2</sup><i>R</i>.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row c2">
+            <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+              <h2><span class="secno">4</span><span class="htext">CENTRIPETAL ACCELERATION (WHY NON-ZERO?)</span></h2>
+              <ul class="b">
+                <li>Even if speed is constant, changing direction means velocity changes ⇒ acceleration exists.</li>
+                <li>For small turn <i>Δθ</i>, change in velocity magnitude ≈ <i>vΔθ</i> (vector tip moves on circle).
+                </li>
+                <li>Magnitude: <i>a</i><sub>c</sub> = <span
+                    class='frac'><span><i>v</i><sup>2</sup></span><span><i>R</i></span></span>; direction always towards
+                  centre.</li>
+              </ul>
+            </div>
+            <div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2">
+              <h2><span class="secno">5</span><span class="htext">ANGULAR VARIABLES &amp; TIME RELATIONS</span></h2>
+              <ul class="b">
+                <li>Angular speed: <i>ω</i> = <span class='frac'><span><i>Δθ</i></span><span><i>Δt</i></span></span>
+                  (rad s<sup>−1</sup>); in UCM, <i>ω</i> is constant.</li>
+                <li>Linear–angular link: <i>v</i> = <i>Rω</i>; larger radius needs larger <i>v</i> for same <i>ω</i>.
+                </li>
+                <li>Period: <i>T</i> = time for <i>2π</i> rad; frequency: <i>n</i> = 1/<i>T</i> (Hz).</li>
+                <li>Hence <i>ω</i> = <span class='frac'><span>2π</span><span><i>T</i></span></span> = 2π<i>n</i> and
+                  <i>a</i><sub>c</sub> = <i>ω</i><sup>2</sup><i>R</i>.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC">
+            <h2><span class="secno">6</span><span class="htext">Tangential vs Centripetal (Radial) Quantities in
+                UCM</span></h2>
+            <div class="tbl-scroll"><table class="ctab">
+              <thead>
+                <tr>
+                  <th>Basis</th>
+                  <th>Tangential (along tangent)</th>
+                  <th>Centripetal / Radial (towards centre)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Direction</td>
+                  <td>Along motion at that instant</td>
+                  <td>Towards centre (inward)</td>
+                </tr>
+                <tr>
+                  <td>Vector symbol</td>
+                  <td><i>v</i></td>
+                  <td><i>a</i><sub>c</sub></td>
+                </tr>
+                <tr>
+                  <td>Relation</td>
+                  <td><i>v</i> = <i>Rω</i></td>
+                  <td><i>a</i><sub>c</sub> = <span
+                      class='frac'><span><i>v</i><sup>2</sup></span><span><i>R</i></span></span> =
+                    <i>ω</i><sup>2</sup><i>R</i></td>
+                </tr>
+                <tr>
+                  <td>Mutual angle</td>
+                  <td>Perpendicular to radius</td>
+                  <td>Along radius</td>
+                </tr>
+                <tr>
+                  <td>Changes in UCM</td>
+                  <td>Magnitude constant; direction changes</td>
+                  <td>Magnitude constant; direction changes</td>
+                </tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB">
+            <h2><span class="secno">7</span><span class="htext">Formulas</span></h2>
+            <div class="f3">
+              <div>
+                <div class="fstep">Speed is constant: in time <i>Δt</i>, particle turns by <i>Δθ</i> so velocity
+                  direction changes by <i>Δθ</i>.</div>
+                <div class="eqbox"><span class="eq"><i>Δv</i> ≈ <i>vΔθ</i></span></div>
+                <div class="fstep">Divide by time and use <i>ω</i> = <i>Δθ</i>/<i>Δt</i>.</div>
+                <div class="eqbox"><span class="eq"><i>a</i> = <span
+                      class='frac'><span><i>Δv</i></span><span><i>Δt</i></span></span> ≈ <i>v</i><span
+                      class='frac'><span><i>Δθ</i></span><span><i>Δt</i></span></span> = <i>vω</i></span></div>
+              </div>
+              <div>
+                <div class="fstep">Using <i>v</i> = <i>Rω</i> gives standard centripetal forms.</div>
+                <div class="eqbox blue"><span class="eq"><i>a</i><sub>c</sub> = <i>vω</i> = <span
+                      class='frac'><span><i>v</i><sup>2</sup></span><span><i>R</i></span></span> =
+                    <i>ω</i><sup>2</sup><i>R</i></span></div>
+              </div>
+              <div>
+                <table class="wtab">
+                  <tr>
+                    <td><i>R</i>&nbsp;=</td>
+                    <td>Radius of circular path (m)</td>
+                  </tr>
+                  <tr>
+                    <td><i>v</i>&nbsp;=</td>
+                    <td>Speed (m s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>θ</i>, <i>Δθ</i>&nbsp;=</td>
+                    <td>Angular position / angular displacement (rad)</td>
+                  </tr>
+                  <tr>
+                    <td><i>ω</i>&nbsp;=</td>
+                    <td>Angular speed (rad s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>T</i>&nbsp;=</td>
+                    <td>Time period (s)</td>
+                  </tr>
+                  <tr>
+                    <td><i>n</i>&nbsp;=</td>
+                    <td>Frequency (Hz = s<sup>−1</sup>)</td>
+                  </tr>
+                  <tr>
+                    <td><i>a</i><sub>c</sub>&nbsp;=</td>
+                    <td>Centripetal acceleration magnitude (m s<sup>−2</sup>)</td>
+                  </tr>
+                </table>
+                <div class="hibox">Core result (UCM)<div class="eqbox gold" style="margin-top:1mm"><span
+                      class="eq"><i>a</i><sub>c</sub> = <span
+                        class='frac'><span><i>v</i><sup>2</sup></span><span><i>R</i></span></span> =
+                      <i>ω</i><sup>2</sup><i>R</i> (towards centre)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+                    <div class="row c4">
+            <div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6">
+              <h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span>
+              </h2>
+              <ul class="b">
+                <li>Uniform circular motion has <b>constant speed</b> but <b>non-zero acceleration</b> due to changing
+                  direction.</li>
+                <li><i>a</i><sub>c</sub> is always <b>towards centre</b> and perpendicular to instantaneous <i>v</i>.
+                </li>
+                <li>Use radians: 1 revolution = 2π rad; do not mix degrees in formulas unless converted.</li>
+                <li>Key links: <i>v</i> = <i>Rω</i>, <i>ω</i> = 2π/<i>T</i> = 2π<i>n</i>, <i>a</i><sub>c</sub> =
+                  <i>v</i><sup>2</sup>/<i>R</i> = <i>ω</i><sup>2</sup><i>R</i>.</li>
+                <li>If <i>R</i> increases at fixed <i>v</i>, <i>a</i><sub>c</sub> decreases; at fixed <i>ω</i>,
+                  <i>a</i><sub>c</sub> increases with <i>R</i>.</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF">
+              <h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span>
+              </h2>
+              <ul class="b">
+                <li>Saying acceleration is zero because speed is constant (ignores direction change of velocity).</li>
+                <li>Using <i>a</i><sub>c</sub> = <i>v</i>/<i>R</i> (missing one <i>v</i>). Correct:
+                  <i>v</i><sup>2</sup>/<i>R</i>.</li>
+                <li>For rpm problems, forgetting to convert rpm → Hz before using <i>ω</i> = 2π<i>n</i>.</li>
+                <li>Taking <i>a</i><sub>c</sub> along tangent; actually it is radial inward (tangential acceleration is
+                  zero in UCM).</li>
+              </ul>
+            </div>
+            <div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0">
+              <h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span>
+              </h2>
+              <div class="mem">
+                <div class="big">“R-ω-v-a chain: "ROVA"”</div>
+                <paragraph id="6a9fdca697142b5aad0003fd"><b>R</b> sets the circle, <b>ω</b> sets turning rate.</paragraph>
+                <paragraph id="6a9fdca6706f3cb3ce0003fe"><b>v</b> = <b>Rω</b> (tangent).</paragraph>
+                <paragraph id="6a9fdca63db40e6bd70003ff"><b>a</b><sub>c</sub> = <b>v</b><sup>2</sup>/<b>R</b> = <b>ω</b><sup>2</sup><b>R</b> (centre).</paragraph>
+              </div>
+            </div>
+            <div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4">
+              <h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span>
+              </h2>
+              <div class="fs"><span class="eq"><i>ω</i> = <span
+                    class='frac'><span><i>Δθ</i></span><span><i>Δt</i></span></span> (uniform ⇒ constant
+                  <i>ω</i>)</span><span class="eq"><i>v</i> = <i>Rω</i></span><span class="eq"><i>T</i> = <span
+                    class='frac'><span>2π</span><span><i>ω</i></span></span></span><span class="eq"><i>n</i> = <span
+                    class='frac'><span>1</span><span><i>T</i></span></span></span><span class="eq"><i>ω</i> =
+                  2π<i>n</i></span><span class="eq"><i>a</i><sub>c</sub> = <span
+                    class='frac'><span><i>v</i><sup>2</sup></span><span><i>R</i></span></span> = <i>vω</i> =
+                  <i>ω</i><sup>2</sup><i>R</i> (direction: centre)</span></div>
+            </div>
+          </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

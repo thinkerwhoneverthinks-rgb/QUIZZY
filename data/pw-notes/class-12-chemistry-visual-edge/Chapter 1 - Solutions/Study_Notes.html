@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title> — Chemistry</title>
+  <meta name="description" content=" — Chemistry topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Class 12 / JEE / NEET &middot; Chemistry</div>
+        <h1></h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SOLUTIONS AND COMPONENTS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Solution</b>: a <b>homogeneous mixture</b> of two or more components; properties are uniform throughout.</li><li><b>Homogeneous</b> means same composition at every point; no visible boundaries between components.</li><li><b>Solvent</b>: component present in the largest amount; it determines the <b>physical state</b> (gas/liquid/solid) of the solution.</li><li><b>Solute(s)</b>: one or more component(s) other than the solvent; may be solid/liquid/gas.</li><li><b>Binary solution</b>: solution with exactly <b>two</b> components (one solvent + one solute).</li><li>Solution properties depend strongly on <b>composition</b>; tiny amounts can matter (e.g., fluoride in water).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'><path d='M0,0 L9,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='18' y='22' width='324' height='156' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='45' font-size='14' fill='#1f2a44'>Solution (homogeneous)</text><rect x='36' y='60' width='140' height='52' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='50' y='82' font-size='13' fill='#1f2a44'>Solvent</text><text x='50' y='100' font-size='12' fill='#1f2a44'>largest amount</text><rect x='194' y='60' width='140' height='52' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='208' y='82' font-size='13' fill='#1f2a44'>Solute</text><text x='208' y='100' font-size='12' fill='#1f2a44'>other component(s)</text><line x1='106' y1='112' x2='106' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='264' y1='112' x2='264' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='36' y='142' width='298' height='30' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='48' y='162' font-size='13' fill='#1f2a44'>Binary solution: exactly 2 components</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔍</span><span>State of solution is named by the <b>solvent</b>, not by the solute.</span></li><li><span class="ic">🧊</span><span>Liquid solutions: solvent is liquid; solute may be gas, liquid, or solid.</span></li><li><span class="ic">🧱</span><span>Solid solutions include <b>alloys</b>; composition changes material properties.</span></li><li><span class="ic">💧</span><span>Trace composition is often expressed in <b>ppm</b> (e.g., fluoride levels in water).</span></li><li><span class="ic">🏥</span><span>Intravenous injections are solutions with salt concentration matched to blood plasma.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CLASSIFICATION BY PHYSICAL STATE (SOLVENT-BASED)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'><path d='M0,0 L9,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='20' y='18' width='320' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='42' font-size='14' fill='#1f2a44'>State decided by solvent</text><rect x='40' y='56' width='88' height='48' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='52' y='84' font-size='12' fill='#1f2a44'>Gas solvent</text><rect x='136' y='56' width='88' height='48' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='146' y='84' font-size='12' fill='#1f2a44'>Liquid solvent</text><rect x='232' y='56' width='88' height='48' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='244' y='84' font-size='12' fill='#1f2a44'>Solid solvent</text><line x1='84' y1='104' x2='84' y2='136' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='180' y1='104' x2='180' y2='136' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='276' y1='104' x2='276' y2='136' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='48' y='154' font-size='12' fill='#1f2a44'>air-like mix</text><text x='144' y='154' font-size='12' fill='#1f2a44'>salt water</text><text x='244' y='154' font-size='12' fill='#1f2a44'>alloys</text></svg></div><ul class="b"><li><b>Gaseous solution</b>: solvent is gas; solute may be gas/liquid/solid (e.g., O<sub>2</sub> in N<sub>2</sub>, air-like homogeneous mixture).</li><li><b>Liquid solution</b>: solvent is liquid; solute may be gas/liquid/solid (e.g., O<sub>2</sub> in water; ethanol in water; glucose in water).</li><li><b>Solid solution</b>: solvent is solid; solute may be gas/liquid/solid (e.g., Cu in Au; H in Pd; amalgam: Hg with Na).</li><li>Exam trap: classify the solution by the <b>solvent phase</b>, not the solute.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">EVERYDAY RELEVANCE: COMPOSITION MATTERS</span></h2><ul class="b"><li><b>Alloys</b>: brass (Cu+Zn), bronze (Cu+Sn), German silver (Cu+Zn+Ni) differ by composition and hence properties.</li><li><b>Fluoride in water</b>: around <b>1 ppm</b> helps prevent tooth decay; around <b>1.5 ppm</b> may cause mottling.</li><li>At high fluoride concentration, it is poisonous (e.g., NaF has been used in rat poison).</li><li><b>IV injections</b>: prepared with salt concentration matched to blood plasma to avoid harm.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">SOLVENT vs SOLUTE vs BINARY SOLUTION</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Solvent</th><th>Solute / Binary solution</th></tr></thead><tbody><tr><td>Meaning</td><td>Major component of a solution</td><td>Solute: component(s) other than solvent<br>Binary: exactly 2 components</td></tr><tr><td>Decides physical state</td><td>Yes; the <b>state/name</b> of the solution is based on the solvent (gas/liquid/solid)</td><td>No; solute does not decide the state/name</td></tr><tr><td>How to identify quickly</td><td>Present in larger amount</td><td>Anything other than solvent</td></tr><tr><td>Typical examples</td><td>Water in salt solution</td><td>NaCl in water (solute)<br>Ethanol + water (binary)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Air is mainly N<sub>2</sub> with smaller O<sub>2</sub>. Is it a solution? Identify solvent and solute.</div><div class="sol"><span class="lbl">Answer:</span><br>A solution is a <b>homogeneous mixture</b>; air is homogeneous on the macroscopic scale.<br>The component present in the largest amount is the <b>solvent</b> (N<sub>2</sub>).<br>Other components present in smaller amounts act as <b>solute(s)</b> (O<sub>2</sub> and trace gases).</div><div class="ans">✓&nbsp; Yes. Air is a gaseous solution; solvent: N<sub>2</sub>; solute(s): O<sub>2</sub> and other minor gases.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student calls "O<sub>2</sub> dissolved in water" a gaseous solution because the solute is a gas. Correct the statement with reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>Solution type (gaseous/liquid/solid) is decided by the <b>solvent</b>.<br>Here, the solvent is <b>water</b>, which is liquid.<br>So it is a <b>gas-in-liquid</b> example, i.e., a liquid solution.</div><div class="ans">✓&nbsp; It is a <b>liquid solution</b> (gas-in-liquid) because the solvent is liquid water.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Solution = <b>homogeneous mixture</b>; uniform composition and properties throughout.</li><li>Solvent = component in the <b>largest amount</b>; it determines the solution’s state.</li><li>Solute(s) = component(s) other than solvent.</li><li>Binary solution = exactly <b>two components</b> (not two phases).</li><li>Solutions are classified as gaseous/liquid/solid based on the <b>solvent</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>SoLVe</b> = <b>Solvent Largest, decides (V)ersion/state</b>”</div><paragraph id="6a9fd602da2738b261000216"><b>So</b>lution is homogeneous.</paragraph><paragraph id="6a9fd6026276680be4000217"><b>L</b>argest component = solvent.</paragraph><paragraph id="6a9fd6026d33ec586b000218">Sol<b>Ve</b>: the solvent decides the solution’s state.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Solution: homogeneous mixture with uniform composition and properties.</span><span class="eq">Solvent: component present in the largest quantity; determines the physical state of solution.</span><span class="eq">Solute(s): component(s) other than the solvent.</span><span class="eq">Binary solution: exactly two components (one solvent + one solute).</span><span class="eq">Classification is solvent-based: gaseous solution (gas solvent), liquid solution (liquid solvent), solid solution (solid solvent).</span><span class="eq">Examples to remember: O<sub>2</sub> in N<sub>2</sub> (gas in gas); O<sub>2</sub> in water (gas in liquid); Cu in Au (solid in solid).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>TYPES OF SOLUTIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Solution</b>: homogeneous mixture of two or more components with uniform composition throughout.</li><li><b>Solvent</b>: component present in larger amount; it <b>decides the physical state</b> of the solution.</li><li><b>Solute</b>: component(s) other than solvent; usually present in smaller amount(s).</li><li>Each component (solute/solvent) can be <b>solid, liquid, or gas</b> → different types possible.</li><li>Classification of types is done by the <b>state of solvent</b>, not by the state of solute.</li><li><b>Binary solution</b>: only two components (commonly asked for examples).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><path d='M0,0 L8,4 L0,8 Z' fill='#2563EB'/></marker></defs><rect x='15' y='20' width='140' height='40' rx='6' fill='#EEF4FF' stroke='#123B7A'/><text x='28' y='45' font-size='13' fill='#1f2a44'>Solvent state</text><rect x='205' y='20' width='140' height='40' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='218' y='45' font-size='13' fill='#1f2a44'>Solution state</text><line x1='155' y1='40' x2='205' y2='40' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='20' y='85' width='100' height='35' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='50' y='107' font-size='13' fill='#1f2a44'>Gas</text><rect x='130' y='85' width='100' height='35' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='156' y='107' font-size='13' fill='#1f2a44'>Liquid</text><rect x='240' y='85' width='100' height='35' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='270' y='107' font-size='13' fill='#1f2a44'>Solid</text><line x1='70' y1='120' x2='70' y2='150' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='180' y1='120' x2='180' y2='150' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='290' y1='120' x2='290' y2='150' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='20' y='155' width='100' height='30' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='30' y='175' font-size='12' fill='#1f2a44'>Gaseous</text><rect x='130' y='155' width='100' height='30' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='145' y='175' font-size='12' fill='#1f2a44'>Liquid</text><rect x='240' y='155' width='100' height='30' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='255' y='175' font-size='12' fill='#1f2a44'>Solid</text></svg><div class="figcap">Classification is based on <b>solvent</b>: solvent state fixes the solution’s physical state.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>Rule: <b>Solution state = solvent state</b> (gas solvent → gaseous solution, etc.).</span></li><li><span class="ic">🧩</span><span>For each solvent state (gas/liquid/solid), solute may be <b>gas or liquid or solid</b>.</span></li><li><span class="ic">⚠️</span><span>Exam trap: do <b>not</b> name solution as “solid solution” just because solute is solid.</span></li><li><span class="ic">📌</span><span>Write examples as “<b>solute in solvent</b>” (e.g., O<sub>2</sub> in water).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">MASTER CLASSIFICATION (SOLVENT-BASED)</span></h2><ul class="b"><li><b>Gaseous solutions</b>: solvent is gas; solute can be gas/liquid/solid.</li><li><b>Liquid solutions</b>: solvent is liquid; solute can be gas/liquid/solid.</li><li><b>Solid solutions</b>: solvent is solid; solute can be gas/liquid/solid.</li><li>Write type as: <b>(state of solute) in (state of solvent)</b>, then name by solvent state.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">STANDARD EXAMPLES (MUST REMEMBER)</span></h2><ul class="b"><li><b>Gas in gas</b>: O<sub>2</sub> in N<sub>2</sub> (air-like mixture) → <b>gaseous solution</b>.</li><li><b>Liquid in gas</b>: chloroform in N<sub>2</sub> (vapour mixed with nitrogen) → <b>gaseous solution</b>.</li><li><b>Solid in gas</b>: camphor in N<sub>2</sub> (vapour in nitrogen) → <b>gaseous solution</b>.</li><li><b>Gas in liquid</b>: O<sub>2</sub> dissolved in water → <b>liquid solution</b>.</li><li><b>Liquid in liquid</b>: ethanol dissolved in water → <b>liquid solution</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Types of solutions based on <b>state of solvent</b></span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Solvent state (decides type)</th><th>Possible solute state</th><th>Standard example</th></tr></thead><tbody><tr><td>Gas</td><td>Gas</td><td>O<sub>2</sub> in N<sub>2</sub> (air-like mixture)</td></tr><tr><td>Gas</td><td>Liquid</td><td>Chloroform in N<sub>2</sub> (chloroform vapour mixed with nitrogen)</td></tr><tr><td>Gas</td><td>Solid</td><td>Camphor in N<sub>2</sub> (camphor vapour in nitrogen)</td></tr><tr><td>Liquid</td><td>Gas</td><td>O<sub>2</sub> in water</td></tr><tr><td>Liquid</td><td>Liquid</td><td>Ethanol in water</td></tr><tr><td>Liquid</td><td>Solid</td><td>Glucose in water</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student says: “Glucose in water is a <b>solid solution</b> because glucose is solid.” Identify and correct the statement.</div><div class="sol"><span class="lbl">Answer:</span><br>Classification is based on the <b>state of solvent</b>, not solute.<br>Here, <b>water is the solvent</b> and is liquid → the solution is a <b>liquid solution</b>.<br>Correct naming: <b>solid in liquid</b> (glucose in water), hence a <b>liquid solution</b>.</div><div class="ans">✓&nbsp; Wrong reasoning; glucose in water is a <b>liquid solution</b> (solid-in-liquid).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In a sodium amalgam (Na in Hg), which component decides the solution type in this chapter’s classification scheme?</div><div class="sol"><span class="lbl">Answer:</span><br>This classification names the solution by the <b>physical state of the solvent</b>.<br>In amalgam examples, <b>Hg is treated as the solvent</b> (present in larger amount).<br>So the solution is named by the state of Hg under the given conditions (liquid Hg at room temperature gives a <b>liquid solution</b>; if Hg were solid, it would be a <b>solid solution</b>).</div><div class="ans">✓&nbsp; The <b>solvent (Hg)</b> decides the type; name the solution by Hg’s physical state under the stated conditions.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always classify by <b>solvent’s physical state</b>; solvent fixes whether solution is gas/liquid/solid.</li><li>Every type can be written as <b>solute state in solvent state</b> (e.g., gas in liquid).</li><li>Standard 9 examples span: gas-solvent (3), liquid-solvent (3), solid-solvent (3).</li><li>Alloys are typically <b>solid solutions</b> (solid solute in solid solvent), e.g., Cu in Au.</li><li>Some solids dissolve gases (H<sub>2</sub> in Pd): still a <b>solid solution</b> (solid solvent).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>SoLvent Leads</b>”</div><paragraph id="6a9fd602488b4f6c7a000219"><b>SoL</b> in solvent reminds: <b>SoLvent Leads</b> the label of the solution.</paragraph><paragraph id="6a9fd60222b0036fce00021a">First decide solvent state (G/L/S), then place solute as G/L/S to pick the right example.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Core rule</b>: <b>Solution state = solvent state</b> (not solute state).</span><span class="eq">Gaseous solutions: solvent = <b>gas</b>; possible solutes: gas/liquid/solid.</span><span class="eq">Liquid solutions: solvent = <b>liquid</b>; possible solutes: gas/liquid/solid.</span><span class="eq">Solid solutions: solvent = <b>solid</b>; possible solutes: gas/liquid/solid.</span><span class="eq">Must-know 9 examples: O<sub>2</sub> in N<sub>2</sub>; chloroform in N<sub>2</sub>; camphor in N<sub>2</sub>; O<sub>2</sub> in water; ethanol in water; glucose in water; H<sub>2</sub> in Pd; Na in Hg (amalgam); Cu in Au (alloy).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>CONCENTRATION EXPRESSIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Concentration = amount of solute present in a specified amount of solution (or solvent) using a defined scale.</li><li>Qualitative terms: <b>dilute</b>, <b>concentrated</b> are vague; exams prefer numerical (quantitative) expressions.</li><li>Mass-based terms (<b>w/w</b>, ppm by mass, <i>m</i>) use masses; volume-based terms (<b>v/v</b>, <b>w/V</b>, <b>M</b>) use solution volume.</li><li>Mole fraction <i>x</i> uses moles; sum of all mole fractions in a mixture is 1.</li><li>Temperature dependence: <b><i>M</i> changes with temperature</b> (volume changes); <b><i>m</i>, <i>x</i>, mass %, ppm do not</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='332' height='42' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='24' y='44' font-size='13' fill='#1f2a44'>Concentration terms (choose by what you measure)</text><rect x='14' y='74' width='160' height='52' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='24' y='98' font-size='13' fill='#1f2a44'>Mass-based</text><text x='24' y='116' font-size='12' fill='#1f2a44'>w/w, ppm (by mass), m</text><rect x='186' y='74' width='160' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='196' y='98' font-size='13' fill='#1f2a44'>Volume-based</text><text x='196' y='116' font-size='12' fill='#1f2a44'>v/v, w/V, M</text><rect x='100' y='140' width='160' height='46' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='110' y='163' font-size='13' fill='#1f2a44'>Mole-based</text><text x='110' y='181' font-size='12' fill='#1f2a44'>mole fraction x</text><line x1='94' y1='126' x2='128' y2='140' stroke='#123B7A' marker-end='url(#arrow)'/><line x1='266' y1='126' x2='232' y2='140' stroke='#123B7A' marker-end='url(#arrow)'/></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔎</span><span>Always read denominator: some use <b>solution</b>, some use <b>solvent</b>.</span></li><li><span class="ic">⚖️</span><span>w/w and molality use mass; use kg for molality.</span></li><li><span class="ic">🧊</span><span>Molarity is volume-based → changes on heating/cooling; molality stays same.</span></li><li><span class="ic">🧮</span><span>Mole fraction needs moles; never equate mass % with mole fraction.</span></li><li><span class="ic">🚰</span><span>For dilute aqueous solutions: 1 ppm ≈ 1 mg L<sup>−1</sup> (density ≈ 1 g mL<sup>−1</sup>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PERCENT &amp; TRACE SCALES (w/w, v/v, w/V, ppm)</span></h2><ul class="b"><li><b>Mass % (w/w)</b> = mass of solute in 100 g of <b>solution</b>.</li><li><b>Volume % (v/v)</b> = volume of component in 100 mL of <b>solution</b> (not solvent).</li><li><b>w/V %</b> = grams of solute in 100 mL of <b>solution</b> (medicine/pharmacy).</li><li><b>ppm</b> = (parts of component/total parts) × 10<sup>6</sup>; specify mass/volume basis if needed.</li><li>For dilute aqueous solutions: 1 ppm ≈ 1 mg L<sup>−1</sup> since 1 L water ≈ 1 kg.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MOLE-BASED SCALES (<i>x</i>, <i>M</i>, <i>m</i>) + TEMPERATURE TRAPS</span></h2><ul class="b"><li>Mole fraction: <i>x</i><sub>i</sub> = <span class='frac'><span><i>n</i><sub>i</sub></span><span>Σ<i>n</i></span></span>; for binary, <i>x</i><sub>A</sub>+<i>x</i><sub>B</sub>=1.</li><li>Molarity: <i>M</i> = <span class='frac'><span>moles of solute</span><span>volume of solution (L)</span></span> → changes with temperature.</li><li>Molality: <i>m</i> = <span class='frac'><span>moles of solute</span><span>mass of solvent (kg)</span></span> → temperature independent.</li><li>Exam trigger words: “<b>in 1 L solution</b>” → molarity; “<b>in 1 kg solvent</b>” → molality.</li><li>Dilute solution shortcut: for gas dissolved in water, <i>n</i><sub>solute</sub> ≪ <i>n</i><sub>water</sub> often simplifies <i>x</i> algebra.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">MOLARITY (<i>M</i>) vs MOLALITY (<i>m</i>)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Molarity (<i>M</i>)</th><th>Molality (<i>m</i>)</th></tr></thead><tbody><tr><td>Definition</td><td>moles solute per L of <b>solution</b></td><td>moles solute per kg of <b>solvent</b></td></tr><tr><td>Unit</td><td>mol L<sup>−1</sup> (M)</td><td>mol kg<sup>−1</sup> (m)</td></tr><tr><td>Uses</td><td>titrations, lab prep by volume</td><td>colligative properties, temperature-varying setups</td></tr><tr><td>Temperature effect</td><td><b>Changes</b> (volume expands/contracts)</td><td><b>No change</b> (mass-based)</td></tr><tr><td>Common trap</td><td>using solvent volume instead of solution volume</td><td>using kg of solution instead of kg of solvent</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start from definition of mass percent (w/w).</div><div class="eqbox"><span class="eq">Mass % (w/w) = <span class='frac'><span>mass of solute</span><span>mass of solution</span></span> × 100</span></div><div class="fstep">For molarity, convert given mass to moles and mL to L.</div><div class="eqbox"><span class="eq"><i>M</i> = <span class='frac'><span><i>n</i><sub>solute</sub></span><span><i>V</i><sub>solution</sub> (L)</span></span>, <i>n</i> = <span class='frac'><span>given mass</span><span>molar mass</span></span></span></div></div><div><div class="fstep">For molality, use solvent mass in kg.</div><div class="eqbox blue"><span class="eq"><i>m</i> = <span class='frac'><span><i>n</i><sub>solute</sub></span><span>mass of solvent (kg)</span></span></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>number of moles (mol)</td></tr><tr><td><i>V</i>&nbsp;=</td><td>volume of solution (L)</td></tr><tr><td><i>x</i><sub>i</sub>&nbsp;=</td><td>mole fraction of component <i>i</i> (dimensionless)</td></tr><tr><td><i>M</i>&nbsp;=</td><td>molarity (mol L<sup>−1</sup>)</td></tr><tr><td><i>m</i>&nbsp;=</td><td>molality (mol kg<sup>−1</sup>)</td></tr></table><div class="hibox">Fast temperature rule<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>Volume-based</b> (<i>M</i>, v/v, w/V) depend on temperature; <b>mass/mole-based</b> (w/w, ppm, <i>x</i>, <i>m</i>) do not.</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span </span></h2></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A solution contains 20% (w/w) ethylene glycol (C<sub>2</sub>H<sub>6</sub>O<sub>2</sub>) in water. Find mole fraction of ethylene glycol and water.</div><div class="sol"><span class="lbl">Solution:</span><br>Assume 100 g solution ⇒ glycol = 20 g, water = 80 g.<br>Molar masses: glycol = 62 g mol<sup>−1</sup>, water = 18 g mol<sup>−1</sup>.<br><i>n</i><sub>gly</sub> = <span class='frac'><span>20</span><span>62</span></span> = 0.3226 mol; <i>n</i><sub>w</sub> = <span class='frac'><span>80</span><span>18</span></span> = 4.4444 mol.<br>Total moles = 0.3226 + 4.4444 = 4.7670 mol.<br><i>x</i><sub>gly</sub> = <span class='frac'><span>0.3226</span><span>4.7670</span></span> = 0.0677 ≈ 0.068; <i>x</i><sub>w</sub> = 1 − 0.0677 = 0.9323 ≈ 0.932.</div><div class="ans">✓&nbsp; <i>x</i><sub>ethylene glycol</sub> ≈ 0.068, <i>x</i><sub>water</sub> ≈ 0.932</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Calculate molarity of a solution containing 5.00 g NaOH in 450 mL of solution.</div><div class="sol"><span class="lbl">Solution:</span><br>Molar mass of NaOH = 40.0 g mol<sup>−1</sup>.<br><i>n</i> = <span class='frac'><span>5.00</span><span>40.0</span></span> = 0.125 mol.<br>Volume = 450 mL = 0.450 L.<br><i>M</i> = <span class='frac'><span>0.125</span><span>0.450</span></span> = 0.2777… mol L<sup>−1</sup> ≈ 0.278 M.</div><div class="ans">✓&nbsp; 0.278 M (≈ 0.278 mol L<sup>−1</sup>)</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>In % expressions, denominator is <b>solution</b> (total), not solvent.</li><li>ppm is just like % but ×10<sup>6</sup>; always specify what “parts” mean (mass/volume).</li><li>For mole fraction, convert to moles; check that <i>x</i><sub>1</sub> + <i>x</i><sub>2</sub> = 1.</li><li>Molarity uses final volume of solution (after dissolution/mixing), not water added.</li><li>Molality uses <b>kg of solvent</b>; preferred in colligative properties due to temperature independence.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Rule: "V makes it Vary"”</div><paragraph id="6a9fd6021392e00f5d00021b">If the formula has <b>volume of solution</b> in denominator (v/v, w/V, <i>M</i>) → it varies with temperature.</paragraph><paragraph id="6a9fd602a85e9b768a00021c">If it uses <b>mass</b> or <b>moles</b> (w/w, ppm, <i>x</i>, <i>m</i>) → temperature independent.</paragraph><paragraph id="6a9fd6023c78837d8f00021d">Molality cue: <b>m</b> for <b>mass</b> of solvent (kg) in the denominator.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Mass % (w/w) = <span class='frac'><span>mass of solute</span><span>mass of solution</span></span> × 100</span><span class="eq">Volume % (v/v) = <span class='frac'><span>volume of component</span><span>volume of solution</span></span> × 100</span><span class="eq">w/V % = grams of solute per 100 mL of solution</span><span class="eq">ppm = <span class='frac'><span>parts of component</span><span>total parts</span></span> × 10<sup>6</sup> (specify mass/volume basis)</span><span class="eq">Mole fraction: <i>x</i><sub>i</sub> = <span class='frac'><span><i>n</i><sub>i</sub></span><span>Σ<i>n</i></span></span> and Σ<i>x</i> = 1</span><span class="eq">Molarity: <i>M</i> = <span class='frac'><span><i>n</i><sub>solute</sub></span><span><i>V</i><sub>solution</sub>(L)</span></span></span><span class="eq">Molality: <i>m</i> = <span class='frac'><span><i>n</i><sub>solute</sub></span><span>mass of solvent (kg)</span></span></span><span class="eq">Temperature: volume-based terms (<i>M</i>, v/v, w/V) depend on temperature; w/w, ppm, <i>x</i>, <i>m</i> do not</span></div></div></div></span>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SOLUBILITY AND SATURATION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Solubility</b> = maximum amount of solute that can dissolve in a <b>specified amount of solvent</b> at specified <i>T</i> (and pressure where relevant).</li><li>At the solubility limit, the solution is <b>saturated</b>: dissolved solute is in equilibrium with undissolved solute (for a solid solute) at fixed <i>T</i>, <i>p</i>.</li><li><b>Unsaturated</b> solution contains less solute than its solubility at the same conditions; more can dissolve.</li><li><b>Like dissolves like</b>: polar solutes dissolve better in polar solvents; non-polar in non-polar.</li><li>Saturation is not “very concentrated”; it means <b>maximum at equilibrium</b> at stated <i>T</i>, <i>p</i>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='150' height='70' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='32' y='42' font-size='13' fill='#1f2a44'>Dissolution</text><text x='32' y='62' font-size='12' fill='#1f2a44'>solid → solvated</text><rect x='192' y='18' width='150' height='70' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='206' y='42' font-size='13' fill='#1f2a44'>Crystallisation</text><text x='206' y='62' font-size='12' fill='#1f2a44'>solvated → solid</text><line x1='168' y1='53' x2='192' y2='53' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='192' y1='67' x2='168' y2='67' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='110' width='324' height='72' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='134' font-size='13' fill='#1f2a44'>Saturated: dynamic equilibrium</text><text x='30' y='154' font-size='12' fill='#1f2a44'>rate(dissolution) = rate(crystallisation)</text><text x='30' y='172' font-size='12' fill='#1f2a44'>concentration stays constant (at fixed T, p)</text></svg><div class="figcap">At saturation, opposing processes continue but cancel in rate: equilibrium is dynamic, not static.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧲</span><span>Polarity match matters: similar intermolecular forces favour dissolution.</span></li><li><span class="ic">⚖️</span><span>At saturation (equilibrium): rate of dissolution = rate of crystallisation (dynamic equilibrium).</span></li><li><span class="ic">🧊</span><span>Crystallisation = solute particles leaving solution to form solid again.</span></li><li><span class="ic">🌡️</span><span>Temperature effect depends on enthalpy: many <b>solids</b> have solubility ↑ with <i>T</i> if dissolution is endothermic; for <b>gases</b>, solubility generally ↓ as <i>T</i> rises (gas dissolution is treated as exothermic).</span></li><li><span class="ic">🔁</span><span>Adding more solute to a saturated solution does not increase dissolved amount at the same <i>T</i>, <i>p</i>; excess remains undissolved.</span></li><li><span class="ic">🫧</span><span>For <b>gases</b> in liquids: higher pressure of the gas above the liquid increases gas solubility (qualitatively, more gas dissolves until a new equilibrium).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">LIKE DISSOLVES LIKE (POLARITY LOGIC)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='20' y='24' width='150' height='66' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='34' y='48' font-size='13' fill='#1f2a44'>Polar solute</text><text x='34' y='68' font-size='12' fill='#1f2a44'>+ Polar solvent</text><rect x='190' y='24' width='150' height='66' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='216' y='48' font-size='13' fill='#1f2a44'>High solubility</text><text x='216' y='68' font-size='12' fill='#1f2a44'>often</text><line x1='170' y1='57' x2='190' y2='57' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='20' y='112' width='150' height='66' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='34' y='136' font-size='13' fill='#1f2a44'>Non-polar solute</text><text x='34' y='156' font-size='12' fill='#1f2a44'>+ Non-polar solvent</text><rect x='190' y='112' width='150' height='66' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='216' y='136' font-size='13' fill='#1f2a44'>High solubility</text><text x='216' y='156' font-size='12' fill='#1f2a44'>often</text><line x1='170' y1='145' x2='190' y2='145' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/></svg></div><ul class="b"><li><b>Polar solvent</b> (e.g., water) stabilises ions/polar molecules via ion–dipole, dipole–dipole, and hydrogen bonding interactions.</li><li><b>Non-polar solvent</b> (e.g., benzene) stabilises non-polar solutes mainly via dispersion forces.</li><li>Examples: NaCl, sugar dissolve in water; naphthalene dissolves in benzene but not in water.</li><li>If solute–solvent attractions are weak compared to solute–solute, solubility is low.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SATURATION + LE CHATELIER (TEMPERATURE &amp; PRESSURE EFFECTS)</span></h2><ul class="b"><li>Think of dissolution as an equilibrium: <b>solute (separate phase)</b> ⇌ <b>solute in solution</b>.</li><li>For many <b>solids in liquids</b>: if dissolution is endothermic (<i>ΔH</i><sub>sol</sub> &gt; 0), solubility increases with <i>T</i>; if exothermic (<i>ΔH</i><sub>sol</sub> &lt; 0), solubility decreases with <i>T</i>.</li><li>Pressure has negligible effect on solubility of <b>solids</b> in liquids (both nearly incompressible).</li><li>For <b>gases</b> in liquids: solubility increases with increase of gas pressure above the solution; solubility generally decreases as temperature increases.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">UNSATURATED vs SATURATED SOLUTION</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Unsaturated</th><th>Saturated</th></tr></thead><tbody><tr><td>Meaning</td><td>Contains solute less than solubility at given <i>T</i>, <i>p</i></td><td>Contains maximum dissolved solute at given <i>T</i>, <i>p</i></td></tr><tr><td>What happens on adding more solute</td><td>More solute dissolves</td><td>No net dissolution; excess remains undissolved</td></tr><tr><td>Equilibrium with solid solute</td><td>Not necessarily in contact with undissolved solid</td><td>In dynamic equilibrium with undissolved solute (for solid solutes)</td></tr><tr><td>Rates (if undissolved solid is present)</td><td>rate(dissolution) &gt; rate(crystallisation)</td><td>rate(dissolution) = rate(crystallisation)</td></tr><tr><td>Common lab observation</td><td>Clear solution; still can dissolve more</td><td>Undissolved solid persists after stirring</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why does a saturated solution still show movement of particles even though concentration remains constant?</div><div class="sol"><span class="lbl">Answer:</span><br>In a saturated solution (with a solid solute), undissolved solid can be present along with dissolved solute.<br>Solute particles continuously leave the solid (dissolution) while some dissolved particles return to solid (crystallisation).<br>At equilibrium, <b>rates are equal</b>, so the <b>amount dissolved stays constant</b> though both processes continue.</div><div class="ans">✓&nbsp; Because saturation is a <b>dynamic equilibrium</b>: rates match, so concentration is constant while particles keep exchanging.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student says: “Sugar dissolves in water because water breaks the sugar into ions.” Identify the error and correct it using the idea of solubility.</div><div class="sol"><span class="lbl">Answer:</span><br>Sugar is a molecular (covalent) solid; it does not ionise into ions like NaCl in water.<br>Sugar dissolves because polar water forms strong solute–solvent interactions (especially hydrogen bonding) with sugar molecules.<br>So sugar has high solubility in water without ion formation.</div><div class="ans">✓&nbsp; Error: assuming ion formation. Correction: sugar dissolves as molecules due to strong polar interactions with water (<b>like dissolves like</b>).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always state solubility with conditions: <b>specified solvent</b>, <b>temperature</b>, and pressure if relevant.</li><li>Saturated means <b>maximum dissolved at equilibrium</b>, not merely “highly concentrated”.</li><li>Dynamic equilibrium (solid solute): <b>rate(dissolution) = rate(crystallisation)</b>; concentration stays constant at fixed <i>T</i>, <i>p</i>.</li><li>Polarity rule: polar–polar and non-polar–non-polar pairs generally show higher solubility.</li><li>For solids in liquids, temperature effect depends on sign of <i>ΔH</i><sub>sol</sub> (Le Chatelier).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: PO-PO / NO-NO and SAT = Equal Rates”</div><paragraph id="6a9fd602bbc896eb8500021e"><b>PO-PO, NO-NO</b>: <b>PO</b>lar solute in <b>PO</b>lar solvent; <b>NO</b>n-polar in <b>NO</b>n-polar.</paragraph><paragraph id="6a9fd6020f86addff200021f"><b>SAT</b>urated ⇒ <b>S</b>ame <b>A</b>mount stays dissolved because <b>T</b>wo rates are equal (dissolution = crystallisation).</paragraph><paragraph id="6a9fd6025fe064f9a0000220">Gas in liquid: <b>Pressure ↑ ⇒ Solubility ↑</b>; usually <b>Temperature ↑ ⇒ Solubility ↓</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Solubility</b>: maximum amount dissolved in a specified amount of solvent at specified <i>T</i> (and <i>p</i> if relevant).</span><span class="eq"><b>Saturated solution</b>: cannot dissolve more solute at the same <i>T</i>, <i>p</i>; (for solid solutes) in equilibrium with undissolved solute.</span><span class="eq"><b>Unsaturated solution</b>: contains less solute than its solubility at the same conditions; can dissolve more.</span><span class="eq"><b>Dynamic equilibrium</b> (solid solute): dissolution and crystallisation continue with equal rates; concentration remains constant at fixed <i>T</i>, <i>p</i>.</span><span class="eq"><b>Like dissolves like</b>: similar intermolecular forces favour dissolution (polar↔polar, non-polar↔non-polar).</span><span class="eq">Temperature trend (solids): if <i>ΔH</i><sub>sol</sub> &gt; 0, solubility tends to increase with <i>T</i>; if <i>ΔH</i><sub>sol</sub> &lt; 0, it tends to decrease with <i>T</i>.</span><span class="eq">Pressure trend: negligible for most <b>solids</b> in liquids; important for <b>gases</b> (pressure ↑ ⇒ gas solubility ↑).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>FACTORS AFFECTING SOLUBILITY (SOLIDS IN LIQUIDS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Solubility of a solid in a liquid is the concentration of solute in a <b>saturated solution</b> at a specified <b>temperature</b> (pressure usually irrelevant).</li><li>In a saturated solution, <b>rate of dissolution = rate of crystallisation</b> (dynamic equilibrium).</li><li>Changing temperature shifts this equilibrium according to <b>Le Chatelier’s principle</b>.</li><li>If dissolution is <b>endothermic</b> (ΔH<sub>sol</sub> &gt; 0), solubility generally <b>increases</b> with temperature.</li><li>If dissolution is <b>exothermic</b> (ΔH<sub>sol</sub> &lt; 0), solubility generally <b>decreases</b> with temperature.</li><li>Pressure has <b>no significant effect</b> on solubility of solids in liquids because solids and liquids are nearly incompressible.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='40' font-size='14' fill='#1f2a44'>Solute(s) + Solvent(l)</text><line x1='150' y1='58' x2='210' y2='58' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='210' y1='78' x2='150' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='226' y='70' font-size='14' fill='#1f2a44'>Solution</text><rect x='26' y='92' width='150' height='78' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='36' y='114' font-size='13' fill='#1f2a44'>Endothermic</text><text x='36' y='134' font-size='13' fill='#1f2a44'>ΔH<text baseline-shift='sub'>sol</text> &gt; 0</text><text x='36' y='154' font-size='13' fill='#1f2a44'>T ↑ ⇒ S ↑</text><rect x='184' y='92' width='150' height='78' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='194' y='114' font-size='13' fill='#1f2a44'>Exothermic</text><text x='194' y='134' font-size='13' fill='#1f2a44'>ΔH<text baseline-shift='sub'>sol</text> &lt; 0</text><text x='194' y='154' font-size='13' fill='#1f2a44'>T ↑ ⇒ S ↓</text></svg><div class="figcap"><sub></sub>.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚖️</span><span>Nearly saturated solution: tiny T change noticeably shifts dissolution ⇌ crystallisation equilibrium.</span></li><li><span class="ic">🔥</span><span>Treat heat as a reagent: endothermic dissolution needs heat; exothermic dissolution produces heat.</span></li><li><span class="ic">🧠</span><span>Le Chatelier: system shifts to oppose the temperature change.</span></li><li><span class="ic">🧱</span><span>Pressure effect is negligible: condensed phases (solid/liquid) show minimal volume change with pressure.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">TEMPERATURE EFFECT (LE CHATELIER LOGIC)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#2563EB'/></marker></defs><rect x='20' y='20' width='320' height='160' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><rect x='36' y='44' width='288' height='52' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='48' y='66' font-size='13' fill='#1f2a44'>ΔH<text baseline-shift='sub'>sol</text> &gt; 0 : Heat needed</text><text x='48' y='86' font-size='13' fill='#1f2a44'>T ↑ pushes → more dissolved</text><line x1='140' y1='108' x2='220' y2='108' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow2)'/><text x='48' y='114' font-size='12' fill='#1f2a44'></text><rect x='36' y='124' width='288' height='42' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='48' y='150' font-size='13' fill='#1f2a44'>ΔH<text baseline-shift='sub'>sol</text> &lt; 0 : Heat released → T ↑ opposes</text></svg></div><ul class="b"><li>Write dissolution as: <b>Solid + Solvent ⇌ Solute in solution</b> (saturated state).</li><li>If ΔH<sub>sol</sub> &gt; 0, heat is effectively on <b>reactant side</b>; T ↑ drives more dissolving.</li><li>If ΔH<sub>sol</sub> &lt; 0, heat is effectively on <b>product side</b>; T ↑ favours crystallisation.</li><li>Hence solubility–temperature curves can slope upward or downward depending on ΔH<sub>sol</sub>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WHY PRESSURE EFFECT IS NEGLIGIBLE (SOLIDS IN LIQUIDS)</span></h2><ul class="b"><li>Pressure changes matter when volume changes significantly between states.</li><li>Solids and liquids are <b>highly incompressible</b> → volume changes on pressurising are tiny.</li><li>Dissolving a solid into a liquid does not create a gas phase; hence pressure cannot “push” solute in.</li><li>So even large pressure changes cause <b>no significant change</b> in solubility of solids in liquids.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Temperature Trend vs Sign of ΔH<sub>sol</sub> (Solids in Liquids)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Endothermic dissolution</th><th>Exothermic dissolution</th></tr></thead><tbody><tr><td>Sign of ΔH<sub>sol</sub></td><td>ΔH<sub>sol</sub> &gt; 0</td><td>ΔH<sub>sol</sub> &lt; 0</td></tr><tr><td>Heat role in equilibrium view</td><td>Heat acts like a reactant</td><td>Heat acts like a product</td></tr><tr><td>Effect of T increase</td><td>Solubility increases (more dissolves)</td><td>Solubility decreases (more crystallises)</td></tr><tr><td>Exam phrasing</td><td>Heating favours dissolution</td><td>Heating favours precipitation</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A salt shows ΔH<sub>sol</sub> &gt; 0. A nearly saturated solution is heated. Predict the change in solubility and justify.</div><div class="sol"><span class="lbl">Answer:</span><br>ΔH<sub>sol</sub> &gt; 0 means dissolution is <b>endothermic</b> (absorbs heat).<br>On heating, the system shifts to <b>consume</b> the added heat (Le Chatelier).<br>Hence equilibrium shifts toward <b>more solute in solution</b> (less crystallisation relative to dissolution).</div><div class="ans">✓&nbsp; Solubility increases on heating for ΔH<sub>sol</sub> &gt; 0.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student claims: “Increasing pressure increases solubility of a solid in water because particles are forced closer.” Explain why this is incorrect.</div><div class="sol"><span class="lbl">Answer:</span><br>Pressure strongly affects <b>gases</b> because gas volume changes a lot with pressure.<br>For solids and liquids, compressibility is very small; their volumes change negligibly even at high pressure.<br>Dissolving a solid in a liquid does not involve creating a compressible gas phase; so pressure cannot significantly shift the dissolution equilibrium.</div><div class="ans">✓&nbsp; Pressure has negligible effect on solubility of solids in liquids because solids/liquids are nearly incompressible.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always link temperature trend to <b>sign of ΔH<sub>sol</sub></b>, not to “solid vs gas” blindly.</li><li>Use <b>nearly saturated solution</b> for Le Chatelier arguments (equilibrium present).</li><li>Endothermic dissolution: T ↑ ⇒ solubility ↑; exothermic dissolution: T ↑ ⇒ solubility ↓.</li><li>Pressure effect for solids in liquids is negligible due to <b>incompressibility</b> of condensed phases.</li><li>Do not mix this with Henry’s law; that applies to <b>gases in liquids</b>, not solids in liquids.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>Endo ENters on heating</b>”</div><paragraph id="6a9fd602da948a6217000221"><b>Endo</b>thermic: heat must <b>ENter</b> dissolution → heating helps solubility.</paragraph><paragraph id="6a9fd60237c4918542000222"><b>Exo</b>thermic: heat <b>EXits</b> on dissolving → heating opposes solubility.</paragraph><paragraph id="6a9fd602fc0e8cb48b000223">Pressure: remember <b>S &amp; L = Stiff</b> (incompressible) → negligible effect.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">At saturation: <b>rate of dissolution = rate of crystallisation</b> (dynamic equilibrium).</span><span class="eq">If ΔH<sub>sol</sub> &gt; 0 (endothermic): <b>T ↑ ⇒ solubility ↑</b>.</span><span class="eq">If ΔH<sub>sol</sub> &lt; 0 (exothermic): <b>T ↑ ⇒ solubility ↓</b>.</span><span class="eq">Pressure effect on solids in liquids: <b>negligible</b> because solids/liquids are <b>nearly incompressible</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>GAS SOLUBILITY &amp; HENRY'S LAW</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>At constant <i>T</i>, solubility of a gas in a liquid is proportional to its <b>partial pressure</b> above the solution (Henry’s law).</li><li>For gas–liquid equilibrium: gas dissolves and escapes simultaneously; at equilibrium their rates are equal.</li><li>If solubility is measured as mole fraction <i>x</i> of gas in solution: <b><i>p</i> = K<sub>H</sub><i>x</i></b>.</li><li>At fixed <i>p</i>, <i>x</i> = <i>p</i>/K<sub>H</sub>; hence larger K<sub>H</sub> means <b>lower</b> solubility.</li><li>For most gases in water, K<sub>H</sub> increases with temperature, so gas solubility <b>decreases</b> on heating.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"></h2><di<h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">EQUI</span><span>Dynamic equilibrium: rate of dissolution = rate of escape (no net change in dissolved gas).</span></li><li><span class="ic">PRES</span><span>Pressure effect: increasing gas pressure increases collisions at surface → higher solubility (new equilibrium).</span></li><li><span class="ic">HENR</span><span>Henry form (mole fraction basis): <i>x</i> = <span class='frac'><span><i>p</i></span><span>K<sub>H</sub></span></span>.</span></li><li><span class="ic">TEMP</span><span>Heating lowers gas solubility: gas dissolution is like condensation and is generally exothermic.</span></li><li><span class="ic">APPL</span><span>Soft drinks: CO<sub>2</sub> dissolved under high pressure; on opening, <i>p</i> drops and bubbles form.</span></li><li><span class="ic">APPL</span><span>Bends: at high pressure more N<sub>2</sub> dissolves in blood; rapid ascent releases bubbles.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">DYNAMIC EQUILIBRIUM VIEW (WHY PRESSURE INCREASES SOLUBILITY)</span></h2><ul class="b"><li>At equilibrium: gas molecules enter solution and escape back at equal rates.</li><li>Increase <i>p</i> by compression → more molecules per unit volume above liquid.</li><li>More surface collisions per second → dissolution rate increases temporarily.</li><li>New equilibrium forms with larger dissolved gas concentration (higher <i>x</i>).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">TEMPERATURE TREND + EXAM APPLICATIONS</span></h2><ul class="b"><li>For most gases: dissolution is exothermic; heating shifts equilibrium to gas phase → solubility decreases.</li><li>K<sub>H</sub> generally increases with <i>T</i> (e.g., N<sub>2</sub>, O<sub>2</sub> in water) so <i>x</i> decreases at fixed <i>p</i>.</li><li>Soft drinks: bottle sealed at high <i>p</i>(CO<sub>2</sub>); opening lowers <i>p</i> → CO<sub>2</sub> escapes as bubbles.</li><li>Bends: on rapid ascent, pressure drops fast → dissolved N<sub>2</sub> forms bubbles blocking capillaries.</li><li>Anoxia: high altitude lowers <i>p</i>(O<sub>2</sub>) → reduced O<sub>2</sub> in blood/tissues.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">HOW GAS SOLUBILITY CHANGES (HENRY, MOLE-FRACTION FORM; NOTE: HENRY VALID AT CONSTANT T)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Change</th><th>From Henry (<i>x</i> = <i>p</i>/K<sub>H</sub>)</th><th>Conclusion</th></tr></thead><tbody><tr><td><i>p</i> increases (same gas, same <i>T</i>)</td><td><i>x</i> ∝ <i>p</i></td><td>Solubility increases</td></tr><tr><td>K<sub>H</sub> increases (same <i>p</i>, same <i>T</i>)</td><td><i>x</i> ∝ <span class='frac'><span>1</span><span>K<sub>H</sub></span></span></td><td>Solubility decreases</td></tr><tr><td><i>T</i> increases (most gases in water)</td><td>K<sub>H</sub> generally increases with <i>T</i></td><td>At fixed <i>p</i>, solubility decreases</td></tr><tr><td>Mixture of gases above liquid</td><td>Use partial pressure of the gas only</td><td>Solubility depends on that gas’s <i>p</i></td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Henry statement at constant <i>T</i>: solubility (as mole fraction) is proportional to partial pressure.</div><div class="eqbox"><span class="eq"><i>p</i> ∝ <i>x</i></span></div><div class="fstep">Introduce proportionality constant K<sub>H</sub> (depends on gas–solvent pair and <i>T</i>).</div><div class="eqbox"><span class="eq"><i>p</i> = K<sub>H</sub><i>x</i></span></div></div><div><div class="fstep">Rearrange for solubility used in numericals.</div><div class="eqbox blue"><span class="eq"><i>x</i> = <span class='frac'><span><i>p</i></span><span>K<sub>H</sub></span></span></span></div><div class="fstep">Link <i>x</i> to moles dissolved when gas is very dilute in water.</div><div class="eqbox blue"><span class="eq"><i>x</i> = <span class='frac'><span><i>n</i><sub>gas</sub></span><span><i>n</i><sub>gas</sub> + <i>n</i><sub>water</sub></span></span> ≈ <span class='frac'><span><i>n</i><sub>gas</sub></span><span><i>n</i><sub>water</sub></span></span></span></div></div><div><table class="wtab"><tr><td><i>p</i>&nbsp;=</td><td>Partial pressure of gas above solution (bar, atm, Pa; use same unit as K<sub>H</sub>).</td></tr><tr><td><i>x</i>&nbsp;=</td><td>Mole fraction of dissolved gas in liquid phase (dimensionless).</td></tr><tr><td>K<sub>H</sub>&nbsp;=</td><td>Henry’s constant for given gas–solvent at given <i>T</i> (pressure units if <i>x</i> is mole fraction).</td></tr><tr><td><i>n</i><sub>water</sub>&nbsp;=</td><td>Moles of water; for 1 L water, <i>n</i> ≈ 55.5 mol (using density ≈ 1 g mL<sup>−1</sup>).</td></tr></table><div class="hibox">Core result (mole-fraction form)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b><i>p</i> = K<sub>H</sub><i>x</i></b> <br>so <b><i>x</i> = <span class='frac'><span><i>p</i></span><span>K<sub>H</sub></span></span></b></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">📈</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='30' y='18' width='300' height='160' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><line x1='70' y1='150' x2='310' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#arr2)'/><line x1='70' y1='150' x2='70' y2='40' stroke='#123B7A' stroke-width='2' marker-end='url(#arr2)'/><text x='285' y='170' font-size='13' fill='#1f2a44'>x</text><text x='50' y='48' font-size='13' fill='#1f2a44'>p</text><line x1='70' y1='150' x2='290' y2='60' stroke='#2563EB' stroke-width='3'/><text x='195' y='78' font-size='12' fill='#1f2a44'>slope = K<tspan baseline-shift='sub'>H</tspan></text><circle cx='180' cy='102' r='4' fill='#2563EB'/></svg><div class="figcap"></sub>.</div></div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">At 293 K, N<sub>2</sub> is in contact with water at partial pressure <i>p</i> = 0.987 bar. Given K<sub>H</sub>(N<sub>2</sub>, 293 K) = 76.48 kbar. Find millimoles of N<sub>2</sub> dissolved in 1 L water.</div><div class="sol"><span class="lbl">Solution:</span><br>Convert K<sub>H</sub> to bar: 76.48 kbar = 76.48 × 1000 bar = 76480 bar.<br>Henry: <i>x</i> = <span class='frac'><span><i>p</i></span><span>K<sub>H</sub></span></span> = <span class='frac'><span>0.987</span><span>76480</span></span> = 1.29 × 10<sup>−5</sup>.<br>For 1 L water: <i>n</i><sub>water</sub> ≈ 55.5 mol. Since gas is very dilute, <i>x</i> ≈ <span class='frac'><span><i>n</i><sub>gas</sub></span><span>55.5</span></span>.<br>So <i>n</i><sub>N2</sub> = <i>x</i> × 55.5 = (1.29 × 10<sup>−5</sup>) × 55.5 = 7.16 × 10<sup>−4</sup> mol.<br>Convert to mmol: 7.16 × 10<sup>−4</sup> mol × 1000 mmol mol<sup>−1</sup> = 0.716 mmol.</div><div class="ans">✓&nbsp; 0.716 mmol of N<sub>2</sub> dissolves in 1 L water (at 293 K, 0.987 bar).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">At 293 K, O<sub>2</sub> is above water at partial pressure 0.21 bar. Given K<sub>H</sub>(O<sub>2</sub>, 293 K) = 34.86 kbar. Estimate mmol of O<sub>2</sub> dissolved in 1 L water.</div><div class="sol"><span class="lbl">Solution:</span><br>Convert K<sub>H</sub>: 34.86 kbar = 34860 bar.<br><i>x</i> = <span class='frac'><span>0.21</span><span>34860</span></span> = 6.025 × 10<sup>−6</sup> ≈ 6.03 × 10<sup>−6</sup>.<br>Use <i>n</i><sub>water</sub> ≈ 55.5 mol and <i>x</i> ≈ <span class='frac'><span><i>n</i><sub>O2</sub></span><span>55.5</span></span>.<br><i>n</i><sub>O2</sub> = 55.5 × 6.025 × 10<sup>−6</sup> = 3.344 × 10<sup>−4</sup> mol.<br>Convert to mmol: 3.344 × 10<sup>−4</sup> mol × 1000 = 0.334 mmol (3 s.f.).</div><div class="ans">✓&nbsp; ≈ 0.334 mmol O<sub>2</sub> dissolves in 1 L water (293 K, <i>p</i>(O<sub>2</sub>) = 0.21 bar).</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Use <b>partial pressure</b> of the gas, not total pressure (Dalton’s idea).</li><li>Henry’s law is applied at constant <i>T</i>; K<sub>H</sub> is strongly temperature dependent.</li><li>From <i>x</i> = <i>p</i>/K<sub>H</sub>: at fixed <i>p</i>, larger K<sub>H</sub> means smaller solubility.</li><li>For many gases in water, K<sub>H</sub> increases with <i>T</i> → solubility decreases on heating.</li><li>For dilute dissolved gas in 1 L water, take <i>n</i><sub>water</sub> ≈ 55.5 mol for quick conversion to moles dissolved.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“PHK Rule: <b>P</b>ush gas in, <b>H</b>igher <b>K</b> throws it out”</div><paragraph id="6a9fd6022518824ff0000224"><b>P</b>ressure ↑ ⇒ <i>x</i> ↑ (more gas dissolves).</paragraph><paragraph id="6a9fd60230a67b1574000225">K<sub>H</sub> ↑ ⇒ <i>x</i> ↓ (since <i>x</i> = <i>p</i>/K<sub>H</sub>).</paragraph><paragraph id="6a9fd602168e2b3112000226">Heating usually makes K<sub>H</sub> ↑ ⇒ gas solubility ↓.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Henry (mole-fraction form, constant T): <i>p</i> = K<sub>H</sub><i>x</i></span><span class="eq">So solubility (mole fraction): <i>x</i> = <span class='frac'><span><i>p</i></span><span>K<sub>H</sub></span></span></span><span class="eq">Mole fraction definition: <i>x</i><sub>gas</sub> = <span class='frac'><span><i>n</i><sub>gas</sub></span><span><i>n</i><sub>gas</sub> + <i>n</i><sub>water</sub></span></span></span><span class="eq">If <i>n</i><sub>gas</sub> ≪ <i>n</i><sub>water</sub>, then <i>n</i><sub>gas</sub> ≈ <i>x</i> × <i>n</i><sub>water</sub></span><span class="eq">1 L water ≈ 1000 g ⇒ <i>n</i><sub>water</sub> ≈ <span class='frac'><span>1000</span><span>18</span></span> = 55.5 mol</span><span class="eq">Trends: at fixed <i>T</i>, <i>p</i> ↑ ⇒ solubility ↑; at fixed <i>p</i>, K<sub>H</sub> ↑ ⇒ solubility ↓; for most gases in water, <i>T</i> ↑ ⇒ K<sub>H</sub> ↑ ⇒ solubility ↓</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>RAOULT’S LAW: IDEAL BINARY VOLATILE SOLUTIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Ideal binary volatile solution</b> obeys Raoult’s law for both components at a fixed <i>T</i>.</li><li>Partial vapour pressure: <i>p</i><sub>i</sub> is proportional to liquid mole fraction <i>x</i><sub>i</sub>.</li><li>Total vapour pressure follows Dalton: <i>p</i><sub>total</sub> = <i>p</i><sub>1</sub> + <i>p</i><sub>2</sub>.</li><li>Vapour-phase composition: <i>y</i><sub>i</sub> = <i>p</i><sub>i</sub>/<i>p</i><sub>total</sub> (so vapour can differ from liquid).</li><li>More volatile component has larger pure vapour pressure (<i>p</i><sub>i</sub><sup>°</sup>) and for 0&lt;<i>x</i>&lt;1 gives <i>y</i> &gt; <i>x</i>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <div style="font-family:'Times New Roman',serif;background:#fff;padding:5px;">
+
+<svg viewBox="0 0 360 330"
+     xmlns="http://www.w3.org/2000/svg"
+     style="display:block;width:100%;max-width:360px;height:auto;margin:auto;">
+
+  <defs>
+    <marker id="arrowBlack-t7" markerWidth="8" markerHeight="8"
+            refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <!-- Graph background -->
+  <rect x="68" y="20"
+        width="235" height="235"
+        fill="#FFFDD0"
+        stroke="#333"
+        stroke-width="1.5"/>
+
+  <!-- Y-axis arrow and label -->
+  <line x1="35" y1="255"
+        x2="35" y2="60"
+        stroke="#222"
+        stroke-width="1.4"
+        marker-end="url(#arrowBlack-t7)"/>
+
+  <text x="18" y="160"
+        transform="rotate(-90 18 160)"
+        text-anchor="middle"
+        font-size="16"
+        fill="#222">
+    Vapour pressure
+  </text>
+
+  <!-- X-axis -->
+  <line x1="68" y1="255"
+        x2="303" y2="255"
+        stroke="#333"
+        stroke-width="1.5"/>
+
+  <!-- p1° mark -->
+  <line x1="61" y1="132"
+        x2="68" y2="132"
+        stroke="#333"
+        stroke-width="1.2"/>
+
+  <text x="48" y="136"
+        font-size="14"
+        fill="#222">
+    p<tspan baseline-shift="sub" font-size="10">1</tspan><tspan baseline-shift="super" font-size="10">°</tspan>
+  </text>
+
+  <!-- p2° mark -->
+  <line x1="303" y1="54"
+        x2="310" y2="54"
+        stroke="#333"
+        stroke-width="1.2"/>
+
+  <text x="311" y="57"
+        font-size="14"
+        fill="#222">
+    p<tspan baseline-shift="sub" font-size="10">2</tspan><tspan baseline-shift="super" font-size="10">°</tspan>
+  </text>
+
+  <!-- TOTAL VAPOUR PRESSURE -->
+  <line x1="68" y1="132"
+        x2="303" y2="54"
+        stroke="#12A85A"
+        stroke-width="2.2"/>
+
+  <!-- p1 line -->
+  <line x1="68" y1="255"
+        x2="303" y2="54"
+        stroke="#12A85A"
+        stroke-width="2"
+        stroke-dasharray="6 4"/>
+
+  <!-- p2 line -->
+  <line x1="68" y1="132"
+        x2="303" y2="255"
+        stroke="#12A85A"
+        stroke-width="2"
+        stroke-dasharray="6 4"/>
+
+  <!-- Total pressure label -->
+  <text x="155" y="103"
+        font-size="14"
+        font-style="italic"
+        fill="#333"
+        transform="rotate(-18 155 103)">
+    p<tspan baseline-shift="sub" font-size="10">total</tspan>
+    = p<tspan baseline-shift="sub" font-size="10">1</tspan>
+    + p<tspan baseline-shift="sub" font-size="10">2</tspan>
+  </text>
+
+  <!-- p1 label -->
+  <text x="182" y="168"
+        font-size="15"
+        font-style="italic"
+        fill="#333"
+        transform="rotate(-39 182 168)">
+    p<tspan baseline-shift="sub" font-size="10">1</tspan>
+  </text>
+
+  <!-- p2 label -->
+  <text x="217" y="208"
+        font-size="15"
+        font-style="italic"
+        fill="#333"
+        transform="rotate(28 217 208)">
+    p<tspan baseline-shift="sub" font-size="10">2</tspan>
+  </text>
+
+  <!-- Regions -->
+  <text x="278" y="225"
+        font-size="15"
+        fill="#222">I</text>
+
+  <text x="278" y="96"
+        font-size="15"
+        fill="#222">II</text>
+
+  <text x="278" y="46"
+        font-size="15"
+        fill="#222">III</text>
+
+  <!-- LEFT x labels -->
+  <text x="68" y="274"
+        text-anchor="middle"
+        font-size="13"
+        fill="#222">
+    x<tspan baseline-shift="sub" font-size="9">1</tspan> = 1
+  </text>
+
+  <text x="68" y="291"
+        text-anchor="middle"
+        font-size="13"
+        fill="#222">
+    x<tspan baseline-shift="sub" font-size="9">2</tspan> = 0
+  </text>
+
+  <!-- RIGHT x labels -->
+  <text x="303" y="274"
+        text-anchor="middle"
+        font-size="13"
+        fill="#222">
+    x<tspan baseline-shift="sub" font-size="9">1</tspan> = 0
+  </text>
+
+  <text x="303" y="291"
+        text-anchor="middle"
+        font-size="13"
+        fill="#222">
+    x<tspan baseline-shift="sub" font-size="9">2</tspan> = 1
+  </text>
+
+  <!-- Mole fraction -->
+  <text x="185" y="276"
+        text-anchor="middle"
+        font-size="15"
+        fill="#222">
+    Mole fraction
+  </text>
+
+  <!-- x2 arrow -->
+  <text x="175" y="306"
+        text-anchor="middle"
+        font-size="14"
+        font-style="italic"
+        fill="#222">
+    x<tspan baseline-shift="sub" font-size="10">2</tspan>
+  </text>
+
+  <line x1="195" y1="302"
+        x2="225" y2="302"
+        stroke="#222"
+        stroke-width="1.2"
+        marker-end="url(#arrowBlack-t7)"/>
+
+</svg>
+
+</div>
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>Raoult: <i>p</i><sub>1</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>, <i>p</i><sub>2</sub>=<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup> (same <i>T</i>).</span></li><li><span class="ic">➕</span><span>Dalton: <i>p</i><sub>total</sub>=<i>p</i><sub>1</sub>+<i>p</i><sub>2</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup>.</span></li><li><span class="ic">📈</span><span><i>p</i><sub>total</sub> vs <i>x</i> is a straight line between <i>p</i><sub>1</sub><sup>°</sup> and <i>p</i><sub>2</sub><sup>°</sup> for ideal solutions.</span></li><li><span class="ic">🌫️</span><span>Vapour composition: <i>y</i><sub>1</sub>=<span class='frac'><span><i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup></span><span><i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></span>, similarly for 2.</span></li><li><span class="ic">⚡</span><span>If <i>p</i><sub>2</sub><sup>°</sup> &gt; <i>p</i><sub>1</sub><sup>°</sup>, component 2 is more volatile and for 0&lt;<i>x</i><sub>2</sub>&lt;1, <i>y</i><sub>2</sub> &gt; <i>x</i><sub>2</sub>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WORKING MAP (x → p → y)</span></h2><ul class="b"><li>Step 1: Find liquid mole fractions: <i>x</i><sub>1</sub>+<i>x</i><sub>2</sub>=1.</li><li>Step 2: Raoult: <i>p</i><sub>1</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>, <i>p</i><sub>2</sub>=<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup>.</li><li>Step 3: Dalton: <i>p</i><sub>total</sub>=<i>p</i><sub>1</sub>+<i>p</i><sub>2</sub>.</li><li>Step 4: Vapour composition: <i>y</i><sub>i</sub>=<i>p</i><sub>i</sub>/<i>p</i><sub>total</sub>; compare <i>y</i> with <i>x</i>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">KEY CONSEQUENCES EXAMINERS LOVE</span></h2><ul class="b"><li><b>Linear law</b>: <i>p</i><sub>total</sub>=<i>p</i><sub>1</sub><sup>°</sup>+(<i>p</i><sub>2</sub><sup>°</sup>−<i>p</i><sub>1</sub><sup>°</sup>)<i>x</i><sub>2</sub>.</li><li>If <i>p</i><sub>2</sub><sup>°</sup>&gt;<i>p</i><sub>1</sub><sup>°</sup>, then as <i>x</i><sub>2</sub> increases, <i>p</i><sub>total</sub> increases.</li><li>Vapour is enriched in more volatile component: if <i>p</i><sub>2</sub><sup>°</sup>&gt;<i>p</i><sub>1</sub><sup>°</sup>, then for 0&lt;<i>x</i><sub>2</sub>&lt;1, <i>y</i><sub>2</sub>&gt;<i>x</i><sub>2</sub>.</li><li>At <i>x</i><sub>2</sub>=0: <i>p</i><sub>total</sub>=<i>p</i><sub>1</sub><sup>°</sup>; at <i>x</i><sub>2</sub>=1: <i>p</i><sub>total</sub>=<i>p</i><sub>2</sub><sup>°</sup>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext"><i>x</i> vs <i>y</i> (liquid vs vapour composition)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Liquid phase (<i>x</i><sub>i</sub>)</th><th>Vapour phase (<i>y</i><sub>i</sub>)</th></tr></thead><tbody><tr><td>Meaning</td><td>Mole fraction in solution (liquid)</td><td>Mole fraction in vapour at equilibrium</td></tr><tr><td>Linked to pressure by</td><td>Raoult: <i>p</i><sub>i</sub>=<i>x</i><sub>i</sub><i>p</i><sub>i</sub><sup>°</sup></td><td>Dalton: <i>p</i><sub>i</sub>=<i>y</i><sub>i</sub><i>p</i><sub>total</sub></td></tr><tr><td>Sum rule</td><td><i>x</i><sub>1</sub>+<i>x</i><sub>2</sub>=1</td><td><i>y</i><sub>1</sub>+<i>y</i><sub>2</sub>=1</td></tr><tr><td>Enrichment trend</td><td>Reflects mixing amounts</td><td>Richer in more volatile component: <i>y</i><sub>volatile</sub>&gt;<i>x</i><sub>volatile</sub> (for 0&lt;<i>x</i>&lt;1)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Raoult’s law for each component in an ideal binary solution:</div><div class="eqbox"><span class="eq"><i>p</i><sub>1</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>, &nbsp; <i>p</i><sub>2</sub>=<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></div><div class="fstep">Dalton’s law gives total pressure:</div><div class="eqbox"><span class="eq"><i>p</i><sub>total</sub>=<i>p</i><sub>1</sub>+<i>p</i><sub>2</sub></span></div><div class="fstep">Substitute Raoult into Dalton:</div><div class="eqbox"><span class="eq"><i>p</i><sub>total</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></div></div><div><div class="fstep">Using <i>x</i><sub>1</sub>=1−<i>x</i><sub>2</sub>, linear form:</div><div class="eqbox blue"><span class="eq"><i>p</i><sub>total</sub>=<i>p</i><sub>1</sub><sup>°</sup>+(<i>p</i><sub>2</sub><sup>°</sup>−<i>p</i><sub>1</sub><sup>°</sup>)<i>x</i><sub>2</sub></span></div><div class="fstep">Vapour-phase composition from Dalton:</div><div class="eqbox blue"><span class="eq"><i>y</i><sub>i</sub>=<span class='frac'><span><i>p</i><sub>i</sub></span><span><i>p</i><sub>total</sub></span></span> &nbsp;⇒&nbsp; <i>y</i><sub>1</sub>=<span class='frac'><span><i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup></span><span><i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></span></span></div></div><div><table class="wtab"><tr><td><i>x</i><sub>i</sub>&nbsp;=</td><td>Mole fraction of component <i>i</i> in liquid solution (dimensionless)</td></tr><tr><td><i>y</i><sub>i</sub>&nbsp;=</td><td>Mole fraction of component <i>i</i> in vapour phase (dimensionless)</td></tr><tr><td><i>p</i><sub>i</sub>&nbsp;=</td><td>Partial vapour pressure of component <i>i</i> over the solution (mm Hg, bar, etc.)</td></tr><tr><td><i>p</i><sub>i</sub><sup>°</sup>&nbsp;=</td><td>Vapour pressure of pure component <i>i</i> at the same temperature</td></tr><tr><td><i>p</i><sub>total</sub>&nbsp;=</td><td>Total vapour pressure over the solution (sum of partial pressures)</td></tr></table><div class="hibox">Bridge from liquid composition to vapour composition<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>y</i><sub>2</sub>=<span class='frac'><span><i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span><span><i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></span> &nbsp;and&nbsp; <i>p</i><sub>total</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">📈</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><g><line x1='50' y1='165' x2='330' y2='165' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='50' y1='165' x2='50' y2='25' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='210' y='185' font-size='13' fill='#1f2a44'>x<tspan baseline-shift='sub'>2</tspan> (liquid)</text><text x='15' y='35' font-size='13' fill='#1f2a44'>y<tspan baseline-shift='sub'>2</tspan> </text><path d='M50,165 C120,120 200,70 330,25' fill='none' stroke='#F59E0B' stroke-width='3'/><line x1='50' y1='165' x2='330' y2='25' stroke='#94a3b8' stroke-width='2'/><text x='240' y='150' font-size='12' fill='#94a3b8'>y=x</text><text x='215' y='55' font-size='12' fill='#F59E0B'>y<tspan baseline-shift='sub'>2</tspan> &gt; x<tspan baseline-shift='sub'>2</tspan></text><text x='45' y='180' font-size='12' fill='#1f2a44'>0</text><text x='325' y='180' font-size='12' fill='#1f2a44'>1</text><text x='35' y='168' font-size='12' fill='#1f2a44'></text><text x='35' y='30' font-size='12' fill='#1f2a44'>1</text></g></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">At 298 K, a binary ideal solution has <i>p</i><sub>1</sub><sup>°</sup>=100 mm Hg and <i>p</i><sub>2</sub><sup>°</sup>=300 mm Hg. If <i>x</i><sub>2</sub>=0.40, find (i) <i>p</i><sub>1</sub>, <i>p</i><sub>2</sub>, <i>p</i><sub>total</sub> (ii) <i>y</i><sub>2</sub> and identify the more volatile component.</div><div class="sol"><span class="lbl">Solution:</span><br>Given <i>x</i><sub>2</sub>=0.40 ⇒ <i>x</i><sub>1</sub>=1−0.40=0.60.<br>Raoult: <i>p</i><sub>1</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>=0.60×100=60 mm Hg.<br>Raoult: <i>p</i><sub>2</sub>=<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup>=0.40×300=120 mm Hg.<br>Dalton: <i>p</i><sub>total</sub>=60+120=180 mm Hg.<br>Vapour fraction: <i>y</i><sub>2</sub>=<span class='frac'><span>120</span><span>180</span></span>=0.6667 (≈0.667).<br>Since <i>p</i><sub>2</sub><sup>°</sup>(300) &gt; <i>p</i><sub>1</sub><sup>°</sup>(100), component 2 is more volatile; also <i>y</i><sub>2</sub>(0.667) &gt; <i>x</i><sub>2</sub>(0.40).</div><div class="ans">✓&nbsp; <i>p</i><sub>1</sub>=60 mm Hg, <i>p</i><sub>2</sub>=120 mm Hg, <i>p</i><sub>total</sub>=180 mm Hg; <i>y</i><sub>2</sub>=0.667. More volatile: component 2.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">CHCl<sub>3</sub> (1) and CH<sub>2</sub>Cl<sub>2</sub> (2) form an ideal solution at 298 K with <i>p</i><sub>1</sub><sup>°</sup>=200 mm Hg and <i>p</i><sub>2</sub><sup>°</sup>=415 mm Hg. If 25.5 g CHCl<sub>3</sub> and 40.0 g CH<sub>2</sub>Cl<sub>2</sub> are mixed, calculate <i>p</i><sub>total</sub> and vapour mole fractions <i>y</i><sub>1</sub>, <i>y</i><sub>2</sub>. (M: CHCl<sub>3</sub>=119.5 g mol<sup>−1</sup>, CH<sub>2</sub>Cl<sub>2</sub>=85 g mol<sup>−1</sup>)</div><div class="sol"><span class="lbl">Solution:</span><br>Moles: <i>n</i><sub>1</sub>=25.5/119.5=0.2134 mol; <i>n</i><sub>2</sub>=40.0/85=0.4706 mol.<br>Total moles =0.2134+0.4706=0.6840 mol.<br>Liquid mole fractions: <i>x</i><sub>2</sub>=0.4706/0.6840=0.6886; <i>x</i><sub>1</sub>=1−0.6886=0.3114.<br>Partial pressures: <i>p</i><sub>2</sub>=0.6886×415=285.77 mm Hg; <i>p</i><sub>1</sub>=0.3114×200=62.28 mm Hg.<br>Total pressure: <i>p</i><sub>total</sub>=285.77+62.28=348.05 mm Hg (≈348.1 mm Hg).<br>Vapour fractions: <i>y</i><sub>2</sub>=285.77/348.05=0.8211 (≈0.82); <i>y</i><sub>1</sub>=62.28/348.05=0.1789 (≈0.18).</div><div class="ans">✓&nbsp; <i>p</i><sub>total</sub>≈348.1 mm Hg; <i>y</i><sub>2</sub>≈0.82 (CH<sub>2</sub>Cl<sub>2</sub>), <i>y</i><sub>1</sub>≈0.18 (CHCl<sub>3</sub>).</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Use <b>same temperature</b> for <i>p</i><sub>1</sub><sup>°</sup>, <i>p</i><sub>2</sub><sup>°</sup> and the mixture equilibrium.</li><li>For ideal solutions, <i>p</i><sub>1</sub> vs <i>x</i><sub>1</sub>, <i>p</i><sub>2</sub> vs <i>x</i><sub>2</sub>, and <i>p</i><sub>total</sub> vs composition are <b>straight lines</b>.</li><li>Always compute vapour composition using <i>y</i><sub>i</sub>=<i>p</i><sub>i</sub>/<i>p</i><sub>total</sub>, not from liquid <i>x</i> directly.</li><li>More volatile component: larger <i>p</i><sub>i</sub><sup>°</sup>; for 0&lt;<i>x</i>&lt;1 its vapour is enriched: <i>y</i><sub>volatile</sub>&gt;<i>x</i><sub>volatile</sub>.</li><li>End points: at <i>x</i><sub>1</sub>=1, <i>p</i><sub>total</sub>=<i>p</i><sub>1</sub><sup>°</sup>; at <i>x</i><sub>2</sub>=1, <i>p</i><sub>total</sub>=<i>p</i><sub>2</sub><sup>°</sup>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>x</b> stays in liquid, <b>y</b> flies (vapour)”</div><paragraph id="6a9fd60278bb27cd2b000227">Raoult: <b>x</b> × <i>p</i><sup>°</sup> gives <i>p</i> (liquid decides partial pressure).</paragraph><paragraph id="6a9fd6025639e173d5000228">Dalton: <i>p</i>/<i>p</i><sub>total</sub> gives <b>y</b> (vapour mole fraction).</paragraph><paragraph id="6a9fd602111cc06d87000229">Higher <i>p</i><sup>°</sup> ⇒ more volatile ⇒ vapour richer: <b>y</b> &gt; <b>x</b> (for 0&lt;<b>x</b>&lt;1).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>p</i><sub>1</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>, &nbsp; <i>p</i><sub>2</sub>=<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span><span class="eq"><i>p</i><sub>total</sub>=<i>p</i><sub>1</sub>+<i>p</i><sub>2</sub>=<i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span><span class="eq"><i>p</i><sub>total</sub>=<i>p</i><sub>1</sub><sup>°</sup>+(<i>p</i><sub>2</sub><sup>°</sup>−<i>p</i><sub>1</sub><sup>°</sup>)<i>x</i><sub>2</sub></span><span class="eq"><i>y</i><sub>i</sub>=<span class='frac'><span><i>p</i><sub>i</sub></span><span><i>p</i><sub>total</sub></span></span></span><span class="eq"><i>y</i><sub>2</sub>=<span class='frac'><span><i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span><span><i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>+<i>x</i><sub>2</sub><i>p</i><sub>2</sub><sup>°</sup></span></span></span><span class="eq">More volatile component: larger <i>p</i><sup>°</sup>; for 0&lt;<i>x</i>&lt;1, <i>y</i><sub>volatile</sub> &gt; <i>x</i><sub>volatile</sub></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>VAPOUR PRESSURE LOWERING BY NON-VOLATILE SOLUTE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>In a solution containing a non-volatile solute, the vapour pressure is due only to the solvent and is lower than that of the pure solvent at the same <i>T</i>.</b></li><li>Lowering occurs because the solvent’s mole fraction (and its surface fraction) decreases on adding solute.</li><li>For an ideal solution, solvent vapour pressure follows Raoult’s law: <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°.</li><li>Vapour-pressure lowering depends on composition (mole fraction). For many dilute ideal solutions it behaves as a colligative-type effect.</li><li>Typical case: solid non-volatile solute in liquid solvent (e.g., glucose/urea in water). For electrolytes, the number of solute particles differs due to dissociation; use mole fractions of species present.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"></text></svg><div class="figcap"><div style="font-family:'Times New Roman',serif;background:#fff;padding:8px;">
+
+<svg viewBox="0 0 520 340"
+     xmlns="http://www.w3.org/2000/svg"
+     style="display:block;width:100%;max-width:520px;height:auto;margin:auto;">
+
+  <defs>
+    <radialGradient id="solventBall-t8" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#d9e3ff"/>
+      <stop offset="55%" stop-color="#7d8ed8"/>
+      <stop offset="100%" stop-color="#3b4f9f"/>
+    </radialGradient>
+
+    <radialGradient id="soluteBall-t8" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#e8ffe8"/>
+      <stop offset="55%" stop-color="#7fcf77"/>
+      <stop offset="100%" stop-color="#3f8d40"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ================= LEFT CONTAINER ================= -->
+
+  <!-- vessel outline -->
+  <path d="M60 260
+           L60 85
+           C60 45 100 22 150 22
+           C200 22 240 45 240 85
+           L240 260"
+        fill="none"
+        stroke="#222"
+        stroke-width="2"/>
+
+  <!-- liquid -->
+  <path d="M80 145
+           C110 149 190 149 220 145
+           L220 260
+           L80 260 Z"
+        fill="#DDF3FA"
+        stroke="#222"
+        stroke-width="1.5"/>
+
+  <!-- liquid surface -->
+  <line x1="80" y1="145" x2="220" y2="145"
+        stroke="#222" stroke-width="1.5"/>
+
+  <!-- vapour particles -->
+  <g fill="url(#solventBall-t8)" stroke="#33477f" stroke-width="0.8">
+    <circle cx="85"  cy="72" r="7"/>
+    <circle cx="126" cy="58" r="7"/>
+    <circle cx="172" cy="42" r="7"/>
+    <circle cx="182" cy="76" r="7"/>
+    <circle cx="228" cy="84" r="7"/>
+    <circle cx="85"  cy="118" r="7"/>
+    <circle cx="140" cy="99" r="7"/>
+    <circle cx="204" cy="118" r="7"/>
+  </g>
+
+  <!-- surface solvent molecules -->
+  <g fill="url(#solventBall-t8)" stroke="#33477f" stroke-width="0.7">
+    <circle cx="82"  cy="145" r="6"/>
+    <circle cx="94"  cy="145" r="6"/>
+    <circle cx="106" cy="145" r="6"/>
+    <circle cx="118" cy="145" r="6"/>
+    <circle cx="130" cy="145" r="6"/>
+    <circle cx="142" cy="145" r="6"/>
+    <circle cx="154" cy="145" r="6"/>
+    <circle cx="166" cy="145" r="6"/>
+    <circle cx="178" cy="145" r="6"/>
+    <circle cx="190" cy="145" r="6"/>
+    <circle cx="202" cy="145" r="6"/>
+    <circle cx="214" cy="145" r="6"/>
+  </g>
+
+  <!-- label -->
+  <text x="150" y="205"
+        text-anchor="middle"
+        font-size="22"
+        fill="#333">
+    Pure Solvent
+  </text>
+
+  <!-- base -->
+  <line x1="40" y1="260" x2="260" y2="260"
+        stroke="#222" stroke-width="2"/>
+
+  <!-- (a) -->
+  <text x="150" y="300"
+        text-anchor="middle"
+        font-size="20">
+    (a)
+  </text>
+
+
+  <!-- ================= RIGHT CONTAINER ================= -->
+
+  <!-- vessel outline -->
+  <path d="M290 260
+           L290 85
+           C290 45 330 22 380 22
+           C430 22 470 45 470 85
+           L470 260"
+        fill="none"
+        stroke="#222"
+        stroke-width="2"/>
+
+  <!-- liquid -->
+  <path d="M310 145
+           C340 149 420 149 450 145
+           L450 260
+           L310 260 Z"
+        fill="#DDF3FA"
+        stroke="#222"
+        stroke-width="1.5"/>
+
+  <!-- liquid surface -->
+  <line x1="310" y1="145" x2="450" y2="145"
+        stroke="#222" stroke-width="1.5"/>
+
+  <!-- vapour solvent particles -->
+  <g fill="url(#solventBall-t8)" stroke="#33477f" stroke-width="0.8">
+    <circle cx="345" cy="112" r="7"/>
+    <circle cx="380" cy="78" r="7"/>
+    <circle cx="420" cy="120" r="7"/>
+    <circle cx="450" cy="98" r="7"/>
+  </g>
+
+  <!-- surface particles mixed -->
+  <g stroke-width="0.7">
+    <circle cx="312" cy="145" r="6" fill="url(#soluteBall-t8)" stroke="#3f8d40"/>
+    <circle cx="324" cy="145" r="6" fill="url(#solventBall-t8)" stroke="#33477f"/>
+    <circle cx="336" cy="145" r="6" fill="url(#soluteBall-t8)" stroke="#3f8d40"/>
+    <circle cx="348" cy="145" r="6" fill="url(#solventBall-t8)" stroke="#33477f"/>
+    <circle cx="360" cy="145" r="6" fill="url(#solventBall-t8)" stroke="#33477f"/>
+    <circle cx="372" cy="145" r="6" fill="url(#soluteBall-t8)" stroke="#3f8d40"/>
+    <circle cx="384" cy="145" r="6" fill="url(#solventBall-t8)" stroke="#33477f"/>
+    <circle cx="396" cy="145" r="6" fill="url(#soluteBall-t8)" stroke="#3f8d40"/>
+    <circle cx="408" cy="145" r="6" fill="url(#solventBall-t8)" stroke="#33477f"/>
+    <circle cx="420" cy="145" r="6" fill="url(#soluteBall-t8)" stroke="#3f8d40"/>
+    <circle cx="432" cy="145" r="6" fill="url(#solventBall-t8)" stroke="#33477f"/>
+    <circle cx="444" cy="145" r="6" fill="url(#soluteBall-t8)" stroke="#3f8d40"/>
+  </g>
+
+  <!-- solution label -->
+  <text x="382" y="205"
+        text-anchor="middle"
+        font-size="20">
+    <tspan x="382" dy="0">1 mol of solvent</tspan>
+    <tspan x="382" dy="21">1 mol of solute</tspan>
+  </text>
+
+  <!-- base -->
+  <line x1="270" y1="260" x2="490" y2="260"
+        stroke="#222" stroke-width="2"/>
+
+  <!-- (b) -->
+  <text x="380" y="300"
+        text-anchor="middle"
+        font-size="20">
+    (b)
+  </text>
+
+
+  <!-- ================= LEGEND ================= -->
+
+  <circle cx="330" cy="325" r="7"
+          fill="url(#solventBall-t8)"
+          stroke="#33477f"/>
+
+  <text x="342" y="330"
+        font-size="18">
+    Solvent
+  </text>
+
+  <circle cx="405" cy="325" r="7"
+          fill="url(#soluteBall-t8)"
+          stroke="#3f8d40"/>
+
+  <text x="418" y="330"
+        font-size="18">
+    Solute
+  </text>
+
+</svg>
+
+</div>.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">Conc</span><span>Non-volatile solute: its vapour pressure is negligible; total vapour pressure comes from solvent only.</span></li><li><span class="ic">Raou</span><span>Adding solute decreases <i>x</i><sub>1</sub> of solvent ⇒ <i>p</i><sub>1</sub> decreases linearly for ideal solutions.</span></li><li><span class="ic">Surf</span><span>Solute reduces the fraction of solvent molecules at the surface, reducing the solvent’s tendency to escape.</span></li><li><span class="ic">Amou</span><span>For ideal dilute solutions of non-electrolytes, same number of solute particles gives similar relative lowering at the same <i>T</i>.</span></li><li><span class="ic">Equi</span><span>At equilibrium: evaporation rate = condensation rate; equilibrium is re-established at a lower solvent vapour pressure.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY VAPOUR PRESSURE DECREASES (SURFACE + EQUILIBRIUM VIEW)</span></h2><ul class="b"><li>In pure solvent, the surface is only solvent molecules, so evaporation is maximum at a given <i>T</i>.</li><li>After dissolving a non-volatile solute, the surface contains solute + solvent; solvent surface fraction decreases.</li><li>At equilibrium, solvent vapour pressure adjusts so that evaporation rate equals condensation rate at a lower <i>p</i><sub>1</sub>.</li><li>Non-volatile solute has negligible vapour pressure and does not add to the vapour phase.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">RAOULT’S LAW FOR SOLVENT (NON-VOLATILE SOLUTE CASE)</span></h2><ul class="b"><li>General Raoult: vapour pressure of each volatile component is proportional to its liquid-phase mole fraction (ideal solution).</li><li>Here only solvent is volatile ⇒ total vapour pressure <i>p</i> = <i>p</i><sub>1</sub>.</li><li>Thus <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°; since <i>x</i><sub>1</sub> &lt; 1, <i>p</i><sub>1</sub> &lt; <i>p</i><sub>1</sub>°.</li><li>Vapour-pressure lowering: Δ<i>p</i> = <i>p</i><sub>1</sub>° − <i>p</i><sub>1</sub> depends on composition via mole fraction.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">PURE SOLVENT vs SOLUTION WITH NON-VOLATILE SOLUTE</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Pure solvent</th><th>Solution (non-volatile solute)</th></tr></thead><tbody><tr><td>Vapour phase contains</td><td>Only solvent vapour</td><td>Only solvent vapour (solute vapour pressure negligible)</td></tr><tr><td>Surface composition</td><td>All solvent molecules</td><td>Solvent + solute particles</td></tr><tr><td>Solvent vapour pressure</td><td><i>p</i><sub>1</sub>°</td><td><i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>° (&lt; <i>p</i><sub>1</sub>°)</td></tr><tr><td>Depends mainly on</td><td><i>T</i> and nature of solvent</td><td><i>T</i>, solvent, and composition (mole fraction)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start with Raoult’s law for the volatile component (solvent).</div><div class="eqbox"><span class="eq"><i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°</span></div><div class="fstep">Define vapour-pressure lowering of the solvent.</div><div class="eqbox"><span class="eq">Δ<i>p</i> = <i>p</i><sub>1</sub>° − <i>p</i><sub>1</sub></span></div><div class="fstep">Substitute <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°.</div><div class="eqbox"><span class="eq">Δ<i>p</i> = <i>p</i><sub>1</sub>° − <i>x</i><sub>1</sub><i>p</i><sub>1</sub>° = <i>p</i><sub>1</sub>°(1 − <i>x</i><sub>1</sub>)</span></div></div><div><div class="fstep">For a binary solution, 1 − <i>x</i><sub>1</sub> = <i>x</i><sub>2</sub> (solute mole fraction).</div><div class="eqbox blue"><span class="eq">Δ<i>p</i> = <i>p</i><sub>1</sub>°<i>x</i><sub>2</sub></span></div><div class="fstep">Relative lowering (often tested): divide by <i>p</i><sub>1</sub>°.</div><div class="eqbox blue"><span class="eq"><span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub>°</span></span> = <i>x</i><sub>2</sub></span></div></div><div><table class="wtab"><tr><td><i>p</i><sub>1</sub>°&nbsp;=</td><td>Vapour pressure of pure solvent at the same <i>T</i></td></tr><tr><td><i>p</i><sub>1</sub>&nbsp;=</td><td>Vapour pressure of solvent over the solution (also total vapour pressure here)</td></tr><tr><td><i>x</i><sub>1</sub>&nbsp;=</td><td>Mole fraction of solvent in the liquid solution</td></tr><tr><td><i>x</i><sub>2</sub>&nbsp;=</td><td>Mole fraction of non-volatile solute in the liquid solution (binary case)</td></tr><tr><td>Δ<i>p</i>&nbsp;=</td><td>Lowering in vapour pressure of solvent due to solute</td></tr></table><div class="hibox">Most important result (non-volatile solute, ideal solution)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°; &nbsp; <span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub>°</span></span> = <i>x</i><sub>2</sub></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">📈</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker><div style="font-family:'Times New Roman',serif;background:#fff;padding:8px;">
+
+<svg viewBox="0 0 300 300"
+     xmlns="http://www.w3.org/2000/svg"
+     style="display:block;width:100%;max-width:300px;height:auto;margin:auto;">
+
+  <defs>
+    <marker id="arrowBlack-t8"
+            markerWidth="8"
+            markerHeight="8"
+            refX="7"
+            refY="4"
+            orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <!-- Graph background -->
+  <rect x="50" y="20"
+        width="200" height="200"
+        fill="#FFFDD0"
+        stroke="#222"
+        stroke-width="1.5"/>
+
+  <!-- Green straight line -->
+  <line x1="50" y1="220"
+        x2="250" y2="40"
+        stroke="#10A84F"
+        stroke-width="2"/>
+
+  <!-- Y-axis arrow -->
+  <line x1="25" y1="220"
+        x2="25" y2="60"
+        stroke="#222"
+        stroke-width="1.4"
+        marker-end="url(#arrowBlack-t8)"/>
+
+  <!-- Y-axis label -->
+  <text x="12" y="142"
+        text-anchor="middle"
+        transform="rotate(-90 12 142)"
+        font-size="17"
+        fill="#222">
+    Vapour pressure
+  </text>
+
+  <!-- X-axis -->
+  <line x1="50" y1="220"
+        x2="250" y2="220"
+        stroke="#222"
+        stroke-width="1.5"/>
+
+  <!-- Origin -->
+  <text x="45" y="238"
+        font-size="14"
+        fill="#222">
+    0
+  </text>
+
+  <!-- Right value -->
+  <text x="248" y="238"
+        font-size="14"
+        fill="#222">
+    1
+  </text>
+
+  <!-- X-axis title -->
+  <text x="150" y="242"
+        text-anchor="middle"
+        font-size="16"
+        fill="#222">
+    Mole fraction of solvent
+  </text>
+
+  <!-- x solvent -->
+  <text x="135" y="265"
+        text-anchor="middle"
+        font-size="14"
+        font-style="italic"
+        fill="#222">
+    x
+    <tspan baseline-shift="sub" font-size="10">solvent</tspan>
+  </text>
+
+  <!-- x-axis direction arrow -->
+  <line x1="165" y1="260"
+        x2="205" y2="260"
+        stroke="#222"
+        stroke-width="1.2"
+        marker-end="url(#arrowBlack-t8)"/>
+
+  <!-- Top annotation -->
+  <text x="205" y="40"
+        text-anchor="middle"
+        font-size="16"
+        fill="#222">
+    <tspan x="205" dy="0">Vapour pressure</tspan>
+    <tspan x="205" dy="18">of pure solvent</tspan>
+  </text>
+
+  <!-- Small pointer arrow -->
+  <line x1="228" y1="48"
+        x2="248" y2="40"
+        stroke="#222"
+        stroke-width="1"
+        marker-end="url(#arrowBlack-t8)"/>
+
+</svg>
+
+</div>
+
+</defs></text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">At 298 K, vapour pressure of pure water is 23.8 mmHg. A solution contains 1.00 mol glucose (non-volatile) dissolved in 9.00 mol water. Find vapour pressure of water over the solution and Δ<i>p</i>.</div><div class="sol"><span class="lbl">Solution:</span><br>Mole fraction of water: <i>x</i><sub>1</sub> = <span class='frac'><span>9.00</span><span>9.00 + 1.00</span></span> = <span class='frac'><span>9.00</span><span>10.00</span></span> = 0.900<br>Raoult’s law (solvent): <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>° = 0.900 × 23.8 = 21.42 mmHg<br>Lowering: Δ<i>p</i> = <i>p</i><sub>1</sub>° − <i>p</i><sub>1</sub> = 23.8 − 21.42 = 2.38 mmHg</div><div class="ans">✓&nbsp; <i>p</i><sub>solution</sub> = 21.42 mmHg; Δ<i>p</i> = 2.38 mmHg</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">At a fixed temperature, pure benzene has vapour pressure 100 mmHg. In a benzene solution with a non-volatile solute, the vapour pressure is 92 mmHg. Find mole fraction of solute in the solution.</div><div class="sol"><span class="lbl">Solution:</span><br>Raoult’s law: <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>° ⇒ <i>x</i><sub>1</sub> = <span class='frac'><span><i>p</i><sub>1</sub></span><span><i>p</i><sub>1</sub>°</span></span> = <span class='frac'><span>92</span><span>100</span></span> = 0.92<br>Binary solution: <i>x</i><sub>2</sub> = 1 − <i>x</i><sub>1</sub> = 1 − 0.92 = 0.08</div><div class="ans">✓&nbsp; Mole fraction of solute, <i>x</i><sub>2</sub> = 0.08</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For non-volatile solute, <b>only solvent</b> contributes to vapour pressure: <i>p</i> = <i>p</i><sub>1</sub>.</li><li>Since <i>x</i><sub>1</sub> &lt; 1, always <i>p</i><sub>1</sub> &lt; <i>p</i><sub>1</sub>° at the same <i>T</i>.</li><li>Relative lowering (ideal binary solution): <span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub>°</span></span> = <i>x</i><sub>2</sub>.</li><li>Lowering depends on composition (mole fraction). The solute’s chemical nature matters mainly via non-volatility and non-ideality.</li><li>Do not use these simplified relations for volatile solutes; then both components contribute to vapour pressure.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "NON-VOL = NO VAP"”</div><paragraph id="6a9fd602d66b65dfd100022a"><b>NON-VOL</b> solute gives <b>NO VAP</b> (negligible vapour pressure).</paragraph><paragraph id="6a9fd6021c395786ba00022b">So total vapour pressure comes from solvent: <i>p</i> = <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°.</paragraph><paragraph id="6a9fd6028bc6681add00022c">More solute ⇒ smaller <i>x</i><sub>1</sub> ⇒ lower <i>p</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Non-volatile solute ⇒ solute vapour pressure negligible; <i>p</i><sub>total</sub> = <i>p</i><sub>1</sub> (solvent).</span><span class="eq">Raoult’s law for solvent (ideal): <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub>°.</span><span class="eq">Lowering: Δ<i>p</i> = <i>p</i><sub>1</sub>° − <i>p</i><sub>1</sub>.</span><span class="eq">Binary ideal: Δ<i>p</i> = <i>p</i><sub>1</sub>°<i>x</i><sub>2</sub> and relative lowering <span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub>°</span></span> = <i>x</i><sub>2</sub>.</span><span class="eq">Mole fractions (binary): <i>x</i><sub>1</sub> = <span class='frac'><span><i>n</i><sub>1</sub></span><span><i>n</i><sub>1</sub> + <i>n</i><sub>2</sub></span></span>, and <i>x</i><sub>2</sub> = 1 − <i>x</i><sub>1</sub>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>IDEAL AND NON-IDEAL SOLUTIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Ideal solution</b>: obeys Raoult’s law for <b>each component</b> over the entire composition range (at a given temperature).</li><li>For an ideal solution: <b>Δ<i>H</i><sub>mix</sub> = 0</b> (no heat absorbed/evolved on mixing).</li><li>For an ideal solution: <b>Δ<i>V</i><sub>mix</sub> = 0</b> (no volume change on mixing).</li><li><b>Non-ideal solution</b>: does <b>not</b> obey Raoult’s law over the entire composition range.</li><li>Non-ideal solutions show <b>positive</b> or <b>negative</b> deviation depending on the relative strength of <b>A–B</b> interactions compared to A–A and B–B.</li><li>Deviation criterion (at same composition, same T): <b><i>p</i><sub>actual</sub> &gt; <i>p</i><sub>Raoult</sub></b> (positive), <b><i>p</i><sub>actual</sub> &lt; <i>p</i><sub>Raoult</sub></b> (negative).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox">
+<div style="font-family:'Times New Roman',serif;background:#fff;padding:5px;">
+
+<svg viewBox="0 0 760 410"
+     xmlns="http://www.w3.org/2000/svg"
+     style="display:block;width:100%;max-width:760px;height:auto;margin:auto;">
+
+  <defs>
+    <marker id="arr-t9"
+            markerWidth="7"
+            markerHeight="7"
+            refX="6"
+            refY="3.5"
+            orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#222"/>
+    </marker>
+  </defs>
+
+  <!-- ================= LEFT GRAPH (a) ================= -->
+
+  <!-- Yellow graph area -->
+  <rect x="55" y="20"
+        width="280" height="245"
+        fill="#FFFDD0"
+        stroke="#222"
+        stroke-width="1.5"/>
+
+  <!-- Y-axis arrow -->
+  <line x1="30" y1="265"
+        x2="30" y2="65"
+        stroke="#222"
+        stroke-width="1.4"
+        marker-end="url(#arr-t9)"/>
+
+  <!-- Y-axis title -->
+  <text x="13" y="165"
+        text-anchor="middle"
+        transform="rotate(-90 13 165)"
+        font-size="17">
+    Vapour pressure
+  </text>
+
+  <!-- Vapour pressure of solution -->
+  <text x="270" y="38"
+        text-anchor="middle"
+        font-size="17">
+    <tspan x="270">Vapour pressure</tspan>
+    <tspan x="270" dy="18">of solution</tspan>
+  </text>
+
+  <!-- Pointer -->
+  <polyline points="250,43 205,43 185,68"
+            fill="none"
+            stroke="#222"
+            stroke-width="1.2"/>
+
+  <!-- Total vapour pressure curve -->
+  <path d="M55 68
+           C120 86, 205 100, 335 145"
+        fill="none"
+        stroke="#2536B8"
+        stroke-width="2"/>
+
+  <!-- p1 solid curved line -->
+  <path d="M55 265
+           C130 190, 225 145, 335 145"
+        fill="none"
+        stroke="#2536B8"
+        stroke-width="2"/>
+
+  <!-- p2 solid curved line -->
+  <path d="M55 68
+           C130 120, 235 190, 335 265"
+        fill="none"
+        stroke="#2536B8"
+        stroke-width="2"/>
+
+  <!-- Ideal dashed p1 -->
+  <line x1="55" y1="265"
+        x2="335" y2="145"
+        stroke="#0AA85A"
+        stroke-width="2"
+        stroke-dasharray="8 5"/>
+
+  <!-- Ideal dashed p2 -->
+  <line x1="55" y1="68"
+        x2="335" y2="265"
+        stroke="#0AA85A"
+        stroke-width="2"
+        stroke-dasharray="8 5"/>
+
+  <!-- p1 label -->
+  <text x="112" y="194"
+        font-size="17"
+        font-style="italic"
+        transform="rotate(-35 112 194)">
+    p<tspan baseline-shift="sub" font-size="11">1</tspan>
+  </text>
+
+  <!-- p2 label -->
+  <text x="285" y="195"
+        font-size="17"
+        font-style="italic"
+        transform="rotate(28 285 195)">
+    p<tspan baseline-shift="sub" font-size="11">2</tspan>
+  </text>
+
+  <!-- x labels left -->
+  <text x="55" y="288"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">1</tspan> = 0
+  </text>
+
+  <text x="55" y="314"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">2</tspan> = 1
+  </text>
+
+  <!-- x labels right -->
+  <text x="335" y="288"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">1</tspan> = 1
+  </text>
+
+  <text x="335" y="314"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">2</tspan> = 0
+  </text>
+
+  <!-- Mole fraction -->
+  <text x="195" y="290"
+        text-anchor="middle"
+        font-size="17">
+    Mole fraction
+  </text>
+
+  <!-- x1 arrow -->
+  <text x="195" y="320"
+        text-anchor="middle"
+        font-size="16"
+        font-style="italic">
+    x<tspan baseline-shift="sub" font-size="11">1</tspan>
+  </text>
+
+  <line x1="215" y1="316"
+        x2="245" y2="316"
+        stroke="#222"
+        marker-end="url(#arr-t9)"/>
+
+  <!-- x2 left arrow -->
+  <line x1="185" y1="343"
+        x2="153" y2="343"
+        stroke="#222"
+        marker-end="url(#arr-t9)"/>
+
+  <text x="200" y="348"
+        text-anchor="middle"
+        font-size="16"
+        font-style="italic">
+    x<tspan baseline-shift="sub" font-size="11">2</tspan>
+  </text>
+
+  <!-- (a) -->
+  <text x="195" y="375"
+        text-anchor="middle"
+        font-size="17">
+    (a)
+  </text>
+
+
+  <!-- ================= RIGHT GRAPH (b) ================= -->
+
+  <rect x="430" y="20"
+        width="280" height="245"
+        fill="#FFFDD0"
+        stroke="#222"
+        stroke-width="1.5"/>
+
+  <!-- Y axis -->
+  <line x1="405" y1="265"
+        x2="405" y2="65"
+        stroke="#222"
+        stroke-width="1.4"
+        marker-end="url(#arr-t9)"/>
+
+  <text x="388" y="165"
+        text-anchor="middle"
+        transform="rotate(-90 388 165)"
+        font-size="17">
+    Vapour pressure
+  </text>
+
+  <!-- Heading -->
+  <text x="645" y="38"
+        text-anchor="middle"
+        font-size="17">
+    <tspan x="645">Vapour pressure</tspan>
+    <tspan x="645" dy="18">of solution</tspan>
+  </text>
+
+  <!-- pointer -->
+  <polyline points="625,42 545,42 520,108"
+            fill="none"
+            stroke="#222"
+            stroke-width="1.2"/>
+
+  <!-- Total solution curve -->
+  <path d="M430 68
+           C500 125, 590 142, 710 145"
+        fill="none"
+        stroke="#2536B8"
+        stroke-width="2"/>
+
+  <!-- p2 curved line -->
+  <path d="M430 68
+           C470 175, 555 220, 710 265"
+        fill="none"
+        stroke="#2536B8"
+        stroke-width="2"/>
+
+  <!-- p1 curved line -->
+  <path d="M430 265
+           C560 250, 650 190, 710 145"
+        fill="none"
+        stroke="#2536B8"
+        stroke-width="2"/>
+
+  <!-- ideal dashed -->
+  <line x1="430" y1="68"
+        x2="710" y2="265"
+        stroke="#0AA85A"
+        stroke-width="2"
+        stroke-dasharray="8 5"/>
+
+  <line x1="430" y1="265"
+        x2="710" y2="145"
+        stroke="#0AA85A"
+        stroke-width="2"
+        stroke-dasharray="8 5"/>
+
+  <!-- p2 -->
+  <text x="485" y="155"
+        font-size="17"
+        font-style="italic">
+    p<tspan baseline-shift="sub" font-size="11">2</tspan>
+  </text>
+
+  <!-- p1 -->
+  <text x="660" y="185"
+        font-size="17"
+        font-style="italic"
+        transform="rotate(-30 660 185)">
+    p<tspan baseline-shift="sub" font-size="11">1</tspan>
+  </text>
+
+  <!-- left values -->
+  <text x="430" y="288"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">1</tspan> = 0
+  </text>
+
+  <text x="430" y="314"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">2</tspan> = 1
+  </text>
+
+  <!-- right values -->
+  <text x="710" y="288"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">1</tspan> = 1
+  </text>
+
+  <text x="710" y="314"
+        text-anchor="middle"
+        font-size="15">
+    x<tspan baseline-shift="sub" font-size="10">2</tspan> = 0
+  </text>
+
+  <!-- Mole fraction -->
+  <text x="570" y="290"
+        text-anchor="middle"
+        font-size="17">
+    Mole fraction
+  </text>
+
+  <!-- x1 right -->
+  <text x="570" y="320"
+        text-anchor="middle"
+        font-size="16"
+        font-style="italic">
+    x<tspan baseline-shift="sub" font-size="11">1</tspan>
+  </text>
+
+  <line x1="590" y1="316"
+        x2="620" y2="316"
+        stroke="#222"
+        marker-end="url(#arr-t9)"/>
+
+  <!-- x2 left -->
+  <line x1="560" y1="343"
+        x2="528" y2="343"
+        stroke="#222"
+        marker-end="url(#arr-t9)"/>
+
+  <text x="575" y="348"
+        text-anchor="middle"
+        font-size="16"
+        font-style="italic">
+    x<tspan baseline-shift="sub" font-size="11">2</tspan>
+  </text>
+
+  <!-- (b) -->
+  <text x="570" y="375"
+        text-anchor="middle"
+        font-size="17">
+    (b)
+  </text>
+
+</svg>
+
+</div>
+
+
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📏</span><span>Raoult’s law idea: at fixed T, each volatile component’s <b>partial</b> vapour pressure depends on its mole fraction in the liquid.</span></li><li><span class="ic">🧲</span><span>Ideality requires <b>A–A ≈ B–B ≈ A–B</b> so average attractions do not change on mixing.</span></li><li><span class="ic">🔥</span><span>Positive deviation: <b>A–B weaker</b> → higher escaping tendency → vapour pressure higher than Raoult prediction.</span></li><li><span class="ic">🧘</span><span>Negative deviation: <b>A–B stronger</b> → lower escaping tendency → vapour pressure lower than Raoult prediction.</span></li><li><span class="ic">🧩</span><span>Ethanol–acetone: acetone disrupts ethanol H-bond network → <b>positive deviation</b>.</span></li><li><span class="ic">🔗</span><span>Chloroform–acetone: specific H-bonding strengthens A–B → <b>negative deviation</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY IDEAL SOLUTIONS HAVE Δ<i>H</i><sub>mix</sub> = 0 AND Δ<i>V</i><sub>mix</sub> = 0</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><g><rect x='18' y='28' width='150' height='64' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='30' y='50' font-size='13' fill='#1f2a44'>Pure A</text><text x='30' y='70' font-size='13' fill='#1f2a44'>A–A</text><rect x='192' y='28' width='150' height='64' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='204' y='50' font-size='13' fill='#1f2a44'>Pure B</text><text x='204' y='70' font-size='13' fill='#1f2a44'>B–B</text><line x1='168' y1='60' x2='192' y2='60' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='104' y='118' width='150' height='64' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='116' y='140' font-size='13' fill='#1f2a44'>Mixture</text><text x='116' y='160' font-size='13' fill='#1f2a44'>A–B forms</text></g></svg></div><ul class="b"><li>In pure liquids: attractions are <b>A–A</b> in A and <b>B–B</b> in B.</li><li>On mixing: new attractions <b>A–B</b> appear along with A–A and B–B.</li><li>If <b>A–B ≈ A–A ≈ B–B</b>, replacing contacts gives no net energy change → <b>Δ<i>H</i><sub>mix</sub> = 0</b>.</li><li>Similar sizes and packing keep volume nearly additive → <b>Δ<i>V</i><sub>mix</sub> = 0</b>.</li><li>Nearly ideal examples: <b>n-hexane + n-heptane</b>, <b>benzene + toluene</b>, <b>bromoethane + chloroethane</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">DEVIATIONS FROM RAOULT’S LAW: WHAT CHANGES AND WHY</span></h2><ul class="b"><li><b>Positive deviation</b>: <b>A–B</b> weaker than <b>A–A</b> and <b>B–B</b> → molecules escape easier → <b>p</b> increases vs Raoult prediction.</li><li>Microscopic cause: disruption of strong like–like interactions (often H-bonding) on mixing.</li><li>Example: <b>ethanol + acetone</b> (acetone breaks some ethanol H-bonds) → positive deviation.</li><li><b>Negative deviation</b>: <b>A–B</b> stronger than <b>A–A</b> and <b>B–B</b> → molecules held tighter → <b>p</b> decreases vs Raoult prediction.</li><li>Example: <b>chloroform + acetone</b> (specific H-bonding) → negative deviation.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Ideal vs Non-ideal (Positive / Negative Deviation)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Ideal solution</th><th>Non-ideal: Positive deviation</th><th>Non-ideal: Negative deviation</th></tr></thead><tbody><tr><td>Raoult’s law</td><td>Obeys for all compositions (at a fixed temperature)</td><td>Does not obey (shows positive deviation)</td><td>Does not obey (shows negative deviation)</td></tr><tr><td>Key interaction order</td><td>A–A ≈ B–B ≈ A–B</td><td>A–B &lt; A–A and B–B</td><td>A–B &gt; A–A and B–B</td></tr><tr><td>Vapour pressure vs Raoult prediction</td><td>As predicted</td><td>Higher than predicted</td><td>Lower than predicted</td></tr><tr><td>Mixing enthalpy</td><td>Δ<i>H</i><sub>mix</sub> = 0</td><td>Often Δ<i>H</i><sub>mix</sub> &gt; 0 (endothermic mixing)</td><td>Often Δ<i>H</i><sub>mix</sub> &lt; 0 (exothermic mixing)</td></tr><tr><td>Mixing volume</td><td>Δ<i>V</i><sub>mix</sub> = 0</td><td>Often Δ<i>V</i><sub>mix</sub> &gt; 0 (expansion)</td><td>Often Δ<i>V</i><sub>mix</sub> &lt; 0 (contraction)</td></tr><tr><td>Examples</td><td>Benzene + toluene</td><td>Ethanol + acetone</td><td>Chloroform + acetone</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A liquid mixture shows vapour pressure higher than Raoult’s law prediction at a given composition (same temperature). Predict the nature of A–B interactions and the type of deviation.</div><div class="sol"><span class="lbl">Answer:</span><br>Given <b><i>p</i><sub>actual</sub> &gt; <i>p</i><sub>Raoult</sub></b> at the same composition.<br>Higher vapour pressure means molecules escape more easily than in an ideal solution.<br>Easier escape implies weaker solute–solvent attraction: <b>A–B weaker than A–A and B–B</b>.</div><div class="ans">✓&nbsp; <b>Positive deviation</b>; <b>A–B interactions are weaker</b> than A–A and B–B.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain why ethanol + acetone shows positive deviation, while chloroform + acetone shows negative deviation.</div><div class="sol"><span class="lbl">Answer:</span><br>In ethanol, strong <b>H-bonding</b> exists between ethanol molecules (like–like attraction).<br>Adding acetone disrupts ethanol’s H-bond network → average attraction decreases → higher escaping tendency.<br>Hence <b>ethanol + acetone</b> shows <b>positive deviation</b>.<br>Chloroform forms a specific H-bond with acetone → <b>A–B becomes stronger</b> than like–like interactions.<br>Stronger attraction reduces escaping tendency → vapour pressure lower than ideal → negative deviation.</div><div class="ans">✓&nbsp; Ethanol–acetone: H-bonds disrupted → <b>A–B weaker</b> → <b>positive deviation</b>.<br>Chloroform–acetone: specific H-bond forms → <b>A–B stronger</b> → <b>negative deviation</b>.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For ideal solutions (standard textbook criteria): <b>Raoult’s law for all compositions</b> and typically <b>Δ<i>H</i><sub>mix</sub> = 0</b>, <b>Δ<i>V</i><sub>mix</sub> = 0</b>.</li><li>Deviation criterion is an inequality at the same composition and temperature: <b><i>p</i><sub>actual</sub> vs <i>p</i><sub>Raoult</sub></b>, not just curve shape.</li><li>Positive deviation implies <b>weaker A–B</b> and higher vapour pressure relative to Raoult prediction (higher volatility).</li><li>Negative deviation implies <b>stronger A–B</b> and lower vapour pressure relative to Raoult prediction (lower volatility).</li><li>Explain deviation using <b>A–A, B–B, A–B</b> interactions (microscopic reasoning).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Memory hook: <b>W</b>eak A–B goes <b>U</b>p, strong A–B goes <b>D</b>own”</div><paragraph id="6a9fd602cf4c735f8c00022d"><b>W</b>eak A–B ⇒ vapour pressure goes <b>U</b>p (vs Raoult) ⇒ <b>Positive</b> deviation.</paragraph><paragraph id="6a9fd602aaa50a6b7f00022e"><b>S</b>trong A–B ⇒ vapour pressure goes <b>D</b>own (vs Raoult) ⇒ <b>Negative</b> deviation.</paragraph><paragraph id="6a9fd602e05d1a0bef00022f">Examples: ethanol–acetone breaks like–like H-bonds (weaker average) → Up; chloroform–acetone makes a specific H-bond (stronger A–B) → Down.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Ideal solution</b>: obeys Raoult’s law for all compositions (at fixed T); <b>Δ<i>H</i><sub>mix</sub> = 0</b>, <b>Δ<i>V</i><sub>mix</sub> = 0</b> (standard criteria).</span><span class="eq">Microscopic condition for ideality: <b>A–A ≈ B–B ≈ A–B</b>.</span><span class="eq"><b>Positive deviation</b>: <b>A–B weaker</b> ⇒ <b><i>p</i><sub>actual</sub> &gt; <i>p</i><sub>Raoult</sub></b> (at same composition, same T).</span><span class="eq"><b>Negative deviation</b>: <b>A–B stronger</b> ⇒ <b><i>p</i><sub>actual</sub> &lt; <i>p</i><sub>Raoult</sub></b> (at same composition, same T).</span><span class="eq">Examples: nearly ideal <b>benzene + toluene</b>; positive <b>ethanol + acetone</b>; negative <b>chloroform + acetone</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>AZEOTROPES (CONSTANT-BOILING MIXTURES)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Azeotrope</b>: a binary liquid mixture that boils at constant temperature with <b>same composition in liquid and vapour</b> at that pressure (<i>x</i> = <i>y</i>).</li><li>At the azeotropic composition, the vapour formed is <b>not richer in any one component</b> than the liquid.</li><li>Hence <b>fractional distillation cannot separate beyond the azeotropic composition</b> at a given pressure.</li><li>Azeotropes arise from <b>large deviations from Raoult’s law</b> in non-ideal solutions.</li><li>They correspond to an <b>extremum</b> (minimum or maximum) in boiling point versus composition (at fixed pressure).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">♨️</span><span>Azeotrope = <b>constant-boiling</b> mixture at one specific composition (at fixed pressure).</span></li><li><span class="ic">🧩</span><span>At azeotrope: <b><i>x</i><sub>A</sub> = <i>y</i><sub>A</sub></b> (liquid composition equals vapour composition).</span></li><li><span class="ic">📉</span><span><b>Positive deviation</b> (A–B weaker) → <b>minimum-boiling azeotrope</b> can form.</span></li><li><span class="ic">📈</span><span><b>Negative deviation</b> (A–B stronger) → <b>maximum-boiling azeotrope</b> can form.</span></li><li><span class="ic">🧯</span><span>Distillation: vapour usually enriches the more volatile component, <b>except at azeotrope</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY AZEOTROPES FORM (LINK TO RAOULT’S LAW)</span></h2><ul class="b"><li>Non-ideal solutions deviate because A–B interactions differ from A–A and B–B interactions.</li><li><b>Positive deviation</b>: A–B weaker → vapour pressure higher than Raoult prediction.</li><li>Higher vapour pressure implies lower boiling temperature → can give a <b>minimum</b> in boiling point.</li><li><b>Negative deviation</b>: A–B stronger → vapour pressure lower than ideal → boiling temperature higher.</li><li>At the extremum, the mixture boils at constant composition: <b>x = y</b> (azeotrope).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">TYPES + STANDARD EXAMPLES TO MEMORISE</span></h2><ul class="b"><li><b>Minimum-boiling azeotrope</b> (positive deviation): boils at lower <i>T</i> than either pure component.</li><li>Example (1 atm): <b>ethanol–water</b> azeotrope at about <b>95% (v/v) ethanol</b>.</li><li><b>Maximum-boiling azeotrope</b> (negative deviation): boils at higher <i>T</i> than either pure component.</li><li>Example (1 atm): <b>nitric acid–water</b> azeotrope at about <b>68% (w/w) HNO<sub>3</sub></b>.</li><li>Implication: simple/fractional distillation cannot produce ethanol above ~95% (v/v) from aqueous ethanol at 1 atm.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">MINIMUM- vs MAXIMUM-BOILING AZEOTROPES</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Minimum-boiling azeotrope</th><th>Maximum-boiling azeotrope</th></tr></thead><tbody><tr><td>Raoult’s law deviation</td><td><b>Positive</b> deviation</td><td><b>Negative</b> deviation</td></tr><tr><td>Intermolecular interaction</td><td>A–B <b>weaker</b> than A–A, B–B</td><td>A–B <b>stronger</b> than A–A, B–B</td></tr><tr><td>Vapour pressure vs ideal</td><td>Higher than Raoult prediction</td><td>Lower than Raoult prediction</td></tr><tr><td>Boiling point nature</td><td><b>Minimum</b> in <i>T<sub>b</sub></i> vs composition</td><td><b>Maximum</b> in <i>T<sub>b</sub></i> vs composition</td></tr><tr><td>Relative <i>T<sub>b</sub></i> at azeotrope</td><td>Lower than both pure liquids</td><td>Higher than both pure liquids</td></tr><tr><td>Common example</td><td>Ethanol–water (~95% v/v ethanol)</td><td>HNO<sub>3</sub>–water (~68% w/w HNO<sub>3</sub>)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why can’t fractional distillation give 100% ethanol from an ethanol–water mixture at 1 atm?</div><div class="sol"><span class="lbl">Answer:</span><br>Fractional distillation works when vapour is richer in the more volatile component (<i>y</i> differs from <i>x</i>).<br>Ethanol–water forms a <b>minimum-boiling azeotrope</b> at about <b>95% (v/v) ethanol</b> (1 atm).<br>At the azeotropic composition, <b>liquid and vapour compositions are identical</b> (<i>x</i> = <i>y</i>), so repeated boiling/condensation does not change composition further.<br>Therefore distillation hits a composition limit at that pressure.</div><div class="ans">✓&nbsp; Because ethanol–water forms a <b>minimum-boiling azeotrope (~95% v/v ethanol)</b> where <b><i>x</i> = <i>y</i></b>, so distillation cannot enrich ethanol beyond it at 1 atm.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A binary mixture shows a boiling point <b>maximum</b> at an intermediate composition. What does this indicate about Raoult’s law deviation and A–B interactions?</div><div class="sol"><span class="lbl">Answer:</span><br>A boiling point maximum implies the mixture has <b>minimum vapour pressure</b> at that composition (hardest to vaporise).<br>Lower vapour pressure than ideal behaviour corresponds to a <b>negative deviation</b> from Raoult’s law.<br>Negative deviation occurs when unlike interactions are strongest: <b>A–B attraction &gt; A–A and B–B</b>.</div><div class="ans">✓&nbsp; It indicates a <b>maximum-boiling azeotrope</b>: <b>negative deviation</b> from Raoult’s law with <b>strong A–B interactions</b>.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Core property: at azeotrope (boiling, fixed pressure), <b>composition of vapour = composition of liquid</b>.</li><li>Azeotropes are tied to <b>large non-ideality</b> (strong positive or strong negative deviations).</li><li>Minimum-boiling azeotrope ↔ <b>positive deviation</b>; maximum-boiling azeotrope ↔ <b>negative deviation</b>.</li><li>Azeotropic composition is a <b>distillation barrier</b> at fixed pressure.</li><li>Must-know examples: ethanol–water (~95% v/v) and HNO<sub>3</sub>–water (~68% w/w).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Hook: “+ is Low, − is High””</div><paragraph id="6a9fd6024ff5e69269000230"><b>Positive</b> deviation → vapour pressure higher → boils <b>lower</b> → <b>minimum</b>-boiling azeotrope.</paragraph><paragraph id="6a9fd60204bbbeb7bf000231"><b>Negative</b> deviation → vapour pressure lower → boils <b>higher</b> → <b>maximum</b>-boiling azeotrope.</paragraph><paragraph id="6a9fd602da71cc2b54000232">Azeotrope test line: at that composition, <b><i>x</i> = <i>y</i></b> (liquid = vapour composition).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Azeotrope</b>: at a fixed pressure, a mixture that boils at constant temperature with <b>same liquid and vapour composition</b> (<i>x</i> = <i>y</i>).</span><span class="eq"><b>Minimum-boiling azeotrope</b>: shows <b>positive deviation</b> from Raoult’s law (A–B weaker), so vapour pressure is higher and boiling point is lower.</span><span class="eq"><b>Maximum-boiling azeotrope</b>: shows <b>negative deviation</b> from Raoult’s law (A–B stronger), so vapour pressure is lower and boiling point is higher.</span><span class="eq">At the azeotropic composition, <b>fractional distillation cannot change composition</b> at that pressure.</span><span class="eq">Standard examples (1 atm): ethanol–water ≈ <b>95% v/v ethanol</b>; HNO<sub>3</sub>–water ≈ <b>68% w/w HNO<sub>3</sub></b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>COLLIGATIVE PROPERTIES OVERVIEW</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno"> 📖 </span>
+      
+      
+      <span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Colligative properties</b> are solution properties that depend only on <b>number of solute particles</b>, not their chemical nature.</li><li>Applicable mainly for <b>dilute solutions</b>; for electrolytes, particle number changes and colligative effects are corrected using the van’t Hoff factor (<i>i</i>).</li><li>For a <b>non-volatile, non-electrolyte</b> solute in a volatile solvent, vapour pressure of solution is lower than pure solvent.</li><li>Key measurable: <b>relative lowering of vapour pressure</b> (RLVP) Δ<i>p</i>/<i>p</i><sub>1</sub><sup>°</sup>, which equals solute mole fraction <i>x</i><sub>2</sub> for ideal solutions with non-volatile solute.</li><li>RLVP can be used to determine <b>molar mass</b> of an unknown solute from vapour-pressure measurements.</li></ul></div>
+    
+    
+    
+    
+  
+  
+  
+  
+  <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔢</span><span>Colligative effect depends on total particles in solution (electrolytes require van’t Hoff factor correction).</span></li><li><span class="ic">🌫️</span><span>Raoult’s law for solvent (1): <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup> (ideal solutions).</span></li><li><span class="ic">⬇️</span><span>Relative lowering (non-volatile solute): Δ<i>p</i>/<i>p</i><sub>1</sub><sup>°</sup> = <i>x</i><sub>2</sub>.</span></li><li><span class="ic">⚖️</span><span>Exact mole fraction: <i>x</i><sub>2</sub> = <i>n</i><sub>2</sub>/(<i>n</i><sub>1</sub>+<i>n</i><sub>2</sub>); dilute: <i>n</i><sub>2</sub> ≪ <i>n</i><sub>1</sub> ⇒ <i>x</i><sub>2</sub> ≈ <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub>.</span></li><li><span class="ic">🧾</span><span>Molar mass from RLVP (dilute): <i>M</i><sub>2</sub> ≈ (<i>w</i><sub>2</sub><i>M</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>)/(<i>w</i><sub>1</sub>Δ<i>p</i>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">FOUR COLLIGATIVE PROPERTIES (LIST ONLY)</span></h2><ul class="b"><li><b>Relative lowering of vapour pressure</b> (RLVP): depends on number of solute particles via <i>x</i><sub>2</sub>.</li><li><b>Elevation of boiling point</b> (Δ<i>T</i><sub>b</sub>): solution boils at higher temperature than pure solvent.</li><li><b>Depression of freezing point</b> (Δ<i>T</i><sub>f</sub>): solution freezes at lower temperature than pure solvent.</li><li><b>Osmotic pressure</b> (π): pressure needed to stop solvent flow through semipermeable membrane.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WHEN Δp/p1° WORKS BEST (ASSUMPTIONS)</span></h2><ul class="b"><li>Solute must be <b>non-volatile</b> so vapour pressure comes only from solvent.</li><li>Solution should be <b>ideal</b> and sufficiently <b>dilute</b> for Raoult’s law.</li><li>For electrolytes/association, use van’t Hoff factor correction; otherwise RLVP gives wrong particle count.</li><li>Dilute simplification: <i>n</i><sub>2</sub> ≪ <i>n</i><sub>1</sub> ⇒ <i>x</i><sub>2</sub> ≈ <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Colligative vs Non-colligative (Quick Contrast)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Colligative</th><th>Non-colligative</th></tr></thead><tbody><tr><td>Depends on</td><td>Number of solute particles</td><td>Nature/identity of solute</td></tr><tr><td>Examples</td><td>Δp/p<sub>1</sub><sup>°</sup>, ΔT<sub>b</sub>, ΔT<sub>f</sub>, π</td><td>Colour, taste, reactivity</td></tr><tr><td>Best validity</td><td>Dilute/ideal solutions (or corrected using van’t Hoff factor for electrolytes)</td><td>All concentrations (property-specific)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Raoult’s law for solvent (component 1):</div><div class="eqbox"><span class="eq"><i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup></span></div><div class="fstep">Lowering in vapour pressure (solvent):</div><div class="eqbox"><span class="eq">Δ<i>p</i> = <i>p</i><sub>1</sub><sup>°</sup> − <i>p</i><sub>1</sub></span></div><div class="fstep">Substitute Raoult’s law:</div><div class="eqbox"><span class="eq">Δ<i>p</i> = <i>p</i><sub>1</sub><sup>°</sup>(1 − <i>x</i><sub>1</sub>)</span></div></div><div><div class="fstep">Use <i>x</i><sub>1</sub> + <i>x</i><sub>2</sub> = 1:</div><div class="eqbox blue"><span class="eq">Δ<i>p</i> = <i>p</i><sub>1</sub><sup>°</sup><i>x</i><sub>2</sub></span></div><div class="fstep">Relative lowering of vapour pressure (RLVP):</div><div class="eqbox blue"><span class="eq"><span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub><sup>°</sup></span></span> = <i>x</i><sub>2</sub> = <span class='frac'><span><i>n</i><sub>2</sub></span><span><i>n</i><sub>1</sub> + <i>n</i><sub>2</sub></span></span></span></div><div class="fstep">Dilute solution (<i>n</i><sub>2</sub> ≪ <i>n</i><sub>1</sub>):</div><div class="eqbox blue"><span class="eq"><i>x</i><sub>2</sub> ≈ <span class='frac'><span><i>n</i><sub>2</sub></span><span><i>n</i><sub>1</sub></span></span></span></div></div><div><table class="wtab"><tr><td><i>p</i><sub>1</sub><sup>°</sup>&nbsp;=</td><td>Vapour pressure of pure solvent at the same temperature</td></tr><tr><td><i>p</i><sub>1</sub>&nbsp;=</td><td>Vapour pressure of solvent over the solution (with non-volatile solute, total pressure equals this)</td></tr><tr><td>Δ<i>p</i>&nbsp;=</td><td>Lowering in vapour pressure = <i>p</i><sub>1</sub><sup>°</sup> − <i>p</i><sub>1</sub></td></tr><tr><td><i>x</i><sub>1</sub>, <i>x</i><sub>2</sub>&nbsp;=</td><td>Mole fractions of solvent (1) and solute (2) in the liquid phase</td></tr><tr><td><i>n</i><sub>1</sub>, <i>n</i><sub>2</sub>&nbsp;=</td><td>Moles of solvent and solute</td></tr><tr><td><i>w</i><sub>1</sub>, <i>w</i><sub>2</sub>&nbsp;=</td><td>Masses of solvent and solute (g)</td></tr><tr><td><i>M</i><sub>1</sub>, <i>M</i><sub>2</sub>&nbsp;=</td><td>Molar masses of solvent and solute (g mol<sup>−1</sup>)</td></tr></table><div class="hibox">Core result (ideal solution, non-volatile solute)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub><sup>°</sup></span></span> = <i>x</i><sub>2</sub> ≈ <span class='frac'><span><i>w</i><sub>2</sub><i>M</i><sub>1</sub></span><span><i>w</i><sub>1</sub><i>M</i><sub>2</sub></span></span></span></div>
+    
+    
+    
+    
+    
+    
+    
+    </div></div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A non-volatile solute (2.00 g) is dissolved in water (50.0 g). Vapour pressure of pure water at the temperature is 23.8 mmHg, and that of solution is 23.6 mmHg. Find molar mass of solute. (Assume non-electrolyte, dilute.)</div><div class="sol"><span class="lbl">Solution:</span><br>Lowering: Δ<i>p</i> = 23.8 − 23.6 = 0.2 mmHg<br>RLVP: <span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub><sup>°</sup></span></span> = 0.2/23.8 = 0.00840 (approx.)<br>Use <i>M</i><sub>2</sub> ≈ (<i>w</i><sub>2</sub><i>M</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>)/(<i>w</i><sub>1</sub>Δ<i>p</i>) with <i>M</i><sub>1</sub>(H<sub>2</sub>O)=18 g mol<sup>−1</sup><br><i>M</i><sub>2</sub> = (2.00×18×23.8)/(50.0×0.2) = 856.8/10.0 = 85.68 g mol<sup>−1</sup></div><div class="ans">✓&nbsp; <i>M</i><sub>2</sub> ≈ 85.7 g mol<sup>−1</sup></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">10.0 g of a non-volatile non-electrolyte is dissolved in 90.0 g benzene (<i>M</i><sub>1</sub>=78 g mol<sup>−1</sup>). Vapour pressure of pure benzene is 100 mmHg and solution vapour pressure is 96.0 mmHg. Determine molar mass of solute.</div><div class="sol"><span class="lbl">Solution:</span><br>Δ<i>p</i> = 100 − 96.0 = 4.0 mmHg<br>RLVP: <span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub><sup>°</sup></span></span> = 4.0/100 = 0.040<br><i>M</i><sub>2</sub> ≈ (<i>w</i><sub>2</sub><i>M</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup>)/(<i>w</i><sub>1</sub>Δ<i>p</i>)<br><i>M</i><sub>2</sub> = (10.0×78×100)/(90.0×4.0) = 78000/360 = 216.67 g mol<sup>−1</sup></div><div class="ans">✓&nbsp; <i>M</i><sub>2</sub> ≈ 217 g mol<sup>−1</sup></div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Colligative properties depend on <b>number of solute particles</b> (concentration), not chemical identity.</li><li>For a non-volatile solute: vapour pressure over solution is due to solvent only, so total vapour pressure equals <i>p</i><sub>1</sub>.</li><li>Exact RLVP: Δ<i>p</i>/<i>p</i><sub>1</sub><sup>°</sup> = <i>x</i><sub>2</sub> = <i>n</i><sub>2</sub>/(<i>n</i><sub>1</sub>+<i>n</i><sub>2</sub>); dilute: <i>n</i><sub>2</sub> ≪ <i>n</i><sub>1</sub> ⇒ <i>x</i><sub>2</sub> ≈ <i>n</i><sub>2</sub>/<i>n</i><sub>1</sub>.</li><li>Molar mass from RLVP uses solvent mass (<i>w</i><sub>1</sub>), solute mass (<i>w</i><sub>2</sub>), and measured Δ<i>p</i> at fixed temperature.</li><li>Electrolytes/association change particle count; observed colligative effect differs and needs correction using van’t Hoff factor.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "V-B-F-O" (the 4 colligative effects)”</div><paragraph id="6a9fd6029f527776c4000233"><b>V</b>apour pressure lowering, <b>B</b>oiling point elevation, <b>F</b>reezing point depression, <b>O</b>smotic pressure.</paragraph><paragraph id="6a9fd602f5fc1f7357000234">For RLVP: <b>"Lowering / Pure = Solute fraction"</b> ⇒ Δ<i>p</i>/<i>p</i><sub>1</sub><sup>°</sup> = <i>x</i><sub>2</sub>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Colligative properties depend on number of solute particles; electrolytes need van’t Hoff factor correction.</span><span class="eq">Raoult (solvent 1): <i>p</i><sub>1</sub> = <i>x</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup> (ideal).</span><span class="eq">Lowering: Δ<i>p</i> = <i>p</i><sub>1</sub><sup>°</sup> − <i>p</i><sub>1</sub>.</span><span class="eq">RLVP (non-volatile solute): <span class='frac'><span>Δ<i>p</i></span><span><i>p</i><sub>1</sub><sup>°</sup></span></span> = <i>x</i><sub>2</sub> = <span class='frac'><span><i>n</i><sub>2</sub></span><span><i>n</i><sub>1</sub> + <i>n</i><sub>2</sub></span></span>.</span><span class="eq">Dilute: <i>x</i><sub>2</sub> ≈ <span class='frac'><span><i>n</i><sub>2</sub></span><span><i>n</i><sub>1</sub></span></span>.</span><span class="eq">Molar mass from RLVP (dilute): <i>M</i><sub>2</sub> ≈ <span class='frac'><span><i>w</i><sub>2</sub><i>M</i><sub>1</sub><i>p</i><sub>1</sub><sup>°</sup></span><span><i>w</i><sub>1</sub>Δ<i>p</i></span></span>.</span><span class="eq">Non-volatile solute: total vapour pressure over solution equals solvent vapour pressure.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-12">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">12</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>BOILING POINT ELEVATION, FREEZING POINT DEPRESSION &amp; OSMOSIS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Colligative properties</b> are solution properties that depend only on solute particle count, not nature.</li><li>Non-volatile solute lowers vapour pressure, causing <b>boiling point elevation</b> and <b>freezing point depression</b>.</li><li>Boiling occurs when vapour pressure equals external pressure; lowered vapour pressure needs higher <i>T</i>.</li><li>Freezing occurs when chemical potentials of solid and liquid match; solute stabilises liquid, lowering <i>T</i><sub>f</sub>.</li><li><b>Osmosis</b>: solvent flows through a semipermeable membrane from dilute to concentrated solution.</li><li><b>Osmotic pressure</b> Π is the pressure needed to stop osmosis; it obeys van’t Hoff equation for dilute solutions.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <div style="font-family:'Times New Roman',serif;background:#fff;padding:8px;">
+
+  <svg viewBox="0 0 760 360"
+       xmlns="http://www.w3.org/2000/svg"
+       style="display:block;width:100%;max-width:760px;height:auto;margin:auto;">
+
+    <defs>
+      <marker id="arrBlack-t12"
+              markerWidth="8"
+              markerHeight="8"
+              refX="7"
+              refY="4"
+              orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" fill="#222"/>
+      </marker>
+
+      <marker id="arrRed-t12"
+              markerWidth="8"
+              markerHeight="8"
+              refX="7"
+              refY="4"
+              orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" fill="#D93A2E"/>
+      </marker>
+    </defs>
+
+    <!-- ================================================= -->
+    <!-- LEFT GRAPH : ELEVATION IN BOILING POINT -->
+    <!-- ================================================= -->
+
+    <!-- Axes -->
+    <line x1="80" y1="285"
+          x2="80" y2="70"
+          stroke="#222" stroke-width="1.6"/>
+
+    <line x1="80" y1="285"
+          x2="330" y2="285"
+          stroke="#222" stroke-width="1.6"/>
+
+    <!-- Y arrow -->
+    <line x1="57" y1="245"
+          x2="57" y2="115"
+          stroke="#222"
+          stroke-width="1.3"
+          marker-end="url(#arrBlack-t12)"/>
+
+    <!-- Y title -->
+    <text x="38" y="182"
+          text-anchor="middle"
+          transform="rotate(-90 38 182)"
+          font-size="16">
+      Vapour pressure
+    </text>
+
+    <!-- X title -->
+    <text x="203" y="310"
+          text-anchor="middle"
+          font-size="16">
+      Temperature/K
+    </text>
+
+    <!-- X direction arrow -->
+    <line x1="255" y1="307"
+          x2="315" y2="307"
+          stroke="#222"
+          stroke-width="1.2"
+          marker-end="url(#arrBlack-t12)"/>
+
+    <!-- Horizontal atmospheric pressure -->
+    <line x1="80" y1="92"
+          x2="310" y2="92"
+          stroke="#12A85A"
+          stroke-width="1.6"
+          stroke-dasharray="6 4"/>
+
+    <text x="8" y="73"
+          font-size="15">
+      1.013 bar
+    </text>
+
+    <text x="17" y="92"
+          font-size="15">
+      or 1 Atm
+    </text>
+
+    <!-- Solvent line -->
+    <line x1="145" y1="173"
+          x2="247" y2="91"
+          stroke="#F07822"
+          stroke-width="2.2"/>
+
+    <!-- Solution line -->
+    <line x1="170" y1="188"
+          x2="285" y2="93"
+          stroke="#3144B5"
+          stroke-width="2.2"/>
+
+    <!-- labels on curves -->
+    <text x="177" y="145"
+          font-size="15"
+          transform="rotate(-38 177 145)">
+      Solvent
+    </text>
+
+    <text x="198" y="164"
+          font-size="15"
+          transform="rotate(-38 198 164)">
+      Solution
+    </text>
+
+    <!-- top title -->
+    <text x="255" y="28"
+          text-anchor="middle"
+          font-size="15">
+      Boiling point of
+    </text>
+
+    <text x="230" y="49"
+          text-anchor="middle"
+          font-size="15">
+      Solvent
+    </text>
+
+    <text x="285" y="49"
+          text-anchor="middle"
+          font-size="15">
+      Solution
+    </text>
+
+    <!-- arrows from labels -->
+    <line x1="230" y1="55"
+          x2="230" y2="88"
+          stroke="#D93A2E"
+          stroke-width="1.4"
+          marker-end="url(#arrRed-t12)"/>
+
+    <line x1="285" y1="55"
+          x2="285" y2="91"
+          stroke="#222"
+          stroke-width="1.4"
+          marker-end="url(#arrBlack-t12)"/>
+
+    <!-- vertical guides -->
+    <line x1="230" y1="92"
+          x2="230" y2="285"
+          stroke="#12A85A"
+          stroke-width="1.5"
+          stroke-dasharray="6 4"/>
+
+    <line x1="285" y1="92"
+          x2="285" y2="285"
+          stroke="#12A85A"
+          stroke-width="1.5"
+          stroke-dasharray="6 4"/>
+
+    <!-- T labels -->
+    <text x="214" y="273"
+          font-size="15"
+          font-style="italic">
+      T<tspan baseline-shift="sub" font-size="10">b</tspan><tspan baseline-shift="super" font-size="10">0</tspan>
+    </text>
+
+    <text x="290" y="273"
+          font-size="15"
+          font-style="italic">
+      T<tspan baseline-shift="sub" font-size="10">b</tspan>
+    </text>
+
+    <!-- Delta Tb -->
+    <text x="258" y="248"
+          text-anchor="middle"
+          font-size="15"
+          font-style="italic">
+      ΔT<tspan baseline-shift="sub" font-size="10">b</tspan>
+    </text>
+
+    <line x1="230" y1="257"
+          x2="285" y2="257"
+          stroke="#12A85A"
+          stroke-width="1.3"/>
+
+    <line x1="230" y1="252"
+          x2="230" y2="262"
+          stroke="#12A85A"
+          stroke-width="1.3"/>
+
+    <line x1="285" y1="252"
+          x2="285" y2="262"
+          stroke="#12A85A"
+          stroke-width="1.3"/>
+
+
+    <!-- ================================================= -->
+    <!-- RIGHT GRAPH : DEPRESSION IN FREEZING POINT -->
+    <!-- ================================================= -->
+
+    <!-- Axes -->
+    <line x1="430" y1="285"
+          x2="430" y2="55"
+          stroke="#222"
+          stroke-width="1.6"/>
+
+    <line x1="430" y1="285"
+          x2="720" y2="285"
+          stroke="#222"
+          stroke-width="1.6"/>
+
+    <!-- Y arrow -->
+    <line x1="407" y1="245"
+          x2="407" y2="120"
+          stroke="#222"
+          stroke-width="1.3"
+          marker-end="url(#arrBlack-t12)"/>
+
+    <!-- Y label -->
+    <text x="388" y="183"
+          text-anchor="middle"
+          transform="rotate(-90 388 183)"
+          font-size="16">
+      Vapour pressure
+    </text>
+
+    <!-- X label -->
+    <text x="575" y="310"
+          text-anchor="middle"
+          font-size="16">
+      Temperature/K
+    </text>
+
+    <!-- X arrow -->
+    <line x1="625" y1="307"
+          x2="690" y2="307"
+          stroke="#222"
+          stroke-width="1.2"
+          marker-end="url(#arrBlack-t12)"/>
+
+    <!-- Frozen solvent curve -->
+    <line x1="470" y1="190"
+          x2="585" y2="105"
+          stroke="#222"
+          stroke-width="2"/>
+
+    <!-- Liquid solvent curve -->
+    <path d="M585 105
+             C625 88, 675 66, 710 48"
+          fill="none"
+          stroke="#F07822"
+          stroke-width="2.2"/>
+
+    <!-- Solution curve -->
+    <path d="M500 190
+             C565 175, 640 130, 710 86"
+          fill="none"
+          stroke="#3144B5"
+          stroke-width="2.2"/>
+
+    <!-- labels -->
+    <text x="498" y="170"
+          font-size="15"
+          transform="rotate(-34 498 170)">
+      frozen solvent
+    </text>
+
+    <text x="621" y="95"
+          font-size="15"
+          transform="rotate(-22 621 95)">
+      liquid solvent
+    </text>
+
+    <text x="625" y="135"
+          font-size="15"
+          transform="rotate(-22 625 135)">
+      solution
+    </text>
+
+    <!-- intersection point -->
+    <circle cx="585" cy="105"
+            r="3.2"
+            fill="#fff"
+            stroke="#222"
+            stroke-width="1"/>
+
+    <!-- vertical guides -->
+    <line x1="525" y1="150"
+          x2="525" y2="285"
+          stroke="#12A85A"
+          stroke-width="1.5"
+          stroke-dasharray="6 4"/>
+
+    <line x1="585" y1="105"
+          x2="585" y2="285"
+          stroke="#12A85A"
+          stroke-width="1.5"
+          stroke-dasharray="6 4"/>
+
+    <!-- Delta Tf bracket -->
+    <line x1="525" y1="220"
+          x2="585" y2="220"
+          stroke="#12A85A"
+          stroke-width="1.4"/>
+
+    <line x1="525" y1="215"
+          x2="525" y2="225"
+          stroke="#12A85A"
+          stroke-width="1.4"/>
+
+    <line x1="585" y1="215"
+          x2="585" y2="225"
+          stroke="#12A85A"
+          stroke-width="1.4"/>
+
+    <text x="555" y="216"
+          text-anchor="middle"
+          font-size="15"
+          font-style="italic">
+      ΔT<tspan baseline-shift="sub" font-size="10">f</tspan>
+    </text>
+
+    <!-- Tf labels -->
+    <text x="505" y="274"
+          font-size="15"
+          font-style="italic">
+      T<tspan baseline-shift="sub" font-size="10">f</tspan>
+    </text>
+
+    <text x="590" y="274"
+          font-size="15"
+          font-style="italic">
+      T<tspan baseline-shift="sub" font-size="10">f</tspan><tspan baseline-shift="super" font-size="10">0</tspan>
+    </text>
+
+  </svg>
+
+</div>
+
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔥</span><span>Elevation: Δ<i>T</i><sub>b</sub> = <i>K</i><sub>b</sub><i>m</i> (ebullioscopic constant <i>K</i><sub>b</sub>)</span></li><li><span class="ic">❄️</span><span>Depression: Δ<i>T</i><sub>f</sub> = <i>K</i><sub>f</sub><i>m</i> (cryoscopic constant <i>K</i><sub>f</sub>)</span></li><li><span class="ic">🧫</span><span>Molality <i>m</i> = moles solute per kg solvent; best for colligative properties (T-independent)</span></li><li><span class="ic">🧵</span><span><i>K</i><sub>b</sub> = <span class='frac'><span><i>R</i><i>T</i><sub>b</sub><sup>2</sup><i>M</i><sub>1</sub></span><span>1000Δ<i>H</i><sub>vap</sub></span></span>, <i>K</i><sub>f</sub> = <span class='frac'><span><i>R</i><i>T</i><sub>f</sub><sup>2</sup><i>M</i><sub>1</sub></span><span>1000Δ<i>H</i><sub>fus</sub></span></span></span></li><li><span class="ic">💧</span><span>van’t Hoff: Π = <i>C</i><i>R</i><i>T</i> = <span class='frac'><span><i>n</i><i>R</i><i>T</i></span><span><i>V</i></span></span>; for dilute solutions it is an ideal-gas-like analogy for solute particles in solution</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">BOILING &amp; FREEZING: WHAT CHANGES AND WHY</span></h2><ul class="b"><li>Adding non-volatile solute lowers solvent vapour pressure at same <i>T</i>.</li><li>To reach 1 atm vapour pressure, solution needs higher <i>T</i> ⇒ <b>Δ<i>T</i><sub>b</sub> &gt; 0</b>.</li><li>Freezing point depression means <i>T</i><sub>f</sub>(solution) decreases; define <b>Δ<i>T</i><sub>f</sub> = <i>T</i><sub>f</sub><sup>0</sup> − <i>T</i><sub>f</sub>(solution) &gt; 0</b>.</li><li>For dilute solutions: colligative changes are proportional to <i>m</i> (molality).</li><li>If solute dissociates/associates: use van’t Hoff factor <i>i</i> ⇒ Δ<i>T</i><sub>b</sub> = <i>iK</i><sub>b</sub><i>m</i>, Δ<i>T</i><sub>f</sub> = <i>iK</i><sub>f</sub><i>m</i>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">OSMOTIC PRESSURE: MOLAR MASS FROM Π</span></h2><ul class="b"><li>For dilute solutions: Π<i>V</i> = <i>n</i><sub>solute</sub><i>R</i><i>T</i> (analogy with ideal gas).</li><li>If <i>w</i> g solute of molar mass <i>M</i> in volume <i>V</i> L: <i>n</i> = <span class='frac'><span><i>w</i></span><span><i>M</i></span></span>.</li><li>Then Π = <span class='frac'><span><i>w</i><i>R</i><i>T</i></span><span><i>M</i><i>V</i></span></span> ⇒ <i>M</i> = <span class='frac'><span><i>w</i><i>R</i><i>T</i></span><span>Π<i>V</i></span></span>.</li><li>Use <i>T</i> in K; <i>V</i> in L; Π in atm with <i>R</i> = 0.0821 L atm mol<sup>−1</sup> K<sup>−1</sup>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Δ<i>T</i><sub>b</sub> vs Δ<i>T</i><sub>f</sub> vs Osmosis</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Boiling point elevation</th><th>Freezing point depression</th><th>Osmosis / Π</th></tr></thead><tbody><tr><td>Core idea</td><td>Needs higher <i>T</i> to reach given vapour pressure</td><td>Needs lower <i>T</i> to form solid phase</td><td>Solvent flow through SPM; Π stops net flow</td></tr><tr><td>Main equation</td><td>Δ<i>T</i><sub>b</sub> = <i>iK</i><sub>b</sub><i>m</i></td><td>Δ<i>T</i><sub>f</sub> = <i>iK</i><sub>f</sub><i>m</i></td><td>Π = <i>iC</i><i>R</i><i>T</i></td></tr><tr><td>Depends on</td><td>Molality and particle number</td><td>Molality and particle number</td><td>Molarity (or <i>n</i>/<i>V</i>) and particle number</td></tr><tr><td>Typical use</td><td>Molar mass by ebullioscopy</td><td>Molar mass by cryoscopy</td><td>Molar mass of polymers/proteins</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Define changes in phase-change temperatures:</div><div class="eqbox"><span class="eq">Δ<i>T</i><sub>b</sub> = <i>T</i><sub>b</sub>(solution) − <i>T</i><sub>b</sub><sup>0</sup>(solvent), &nbsp; Δ<i>T</i><sub>f</sub> = <i>T</i><sub>f</sub><sup>0</sup>(solvent) − <i>T</i><sub>f</sub>(solution)</span></div><div class="fstep">For dilute solutions (non-volatile solute), colligative proportionality:</div><div class="eqbox"><span class="eq">Δ<i>T</i><sub>b</sub> ∝ <i>m</i>, &nbsp; Δ<i>T</i><sub>f</sub> ∝ <i>m</i></span></div><div class="fstep">Introduce solvent constants (<i>K</i><sub>b</sub>, <i>K</i><sub>f</sub>):</div><div class="eqbox"><span class="eq">Δ<i>T</i><sub>b</sub> = <i>K</i><sub>b</sub><i>m</i>, &nbsp; Δ<i>T</i><sub>f</sub> = <i>K</i><sub>f</sub><i>m</i></span></div></div><div><div class="fstep">Osmotic pressure from ideal behaviour of solute particles:</div><div class="eqbox blue"><span class="eq">Π<i>V</i> = <i>n</i><i>R</i><i>T</i> ⇒ Π = <span class='frac'><span><i>n</i></span><span><i>V</i></span></span><i>R</i><i>T</i> = <i>C</i><i>R</i><i>T</i></span></div><div class="fstep">Molar mass from osmotic pressure (non-electrolyte):</div><div class="eqbox blue"><span class="eq"><i>M</i> = <span class='frac'><span><i>w</i><i>R</i><i>T</i></span><span>Π<i>V</i></span></span></span></div></div><div><table class="wtab"><tr><td>Δ<i>T</i><sub>b</sub>&nbsp;=</td><td>Elevation in boiling point (K or °C)</td></tr><tr><td>Δ<i>T</i><sub>f</sub>&nbsp;=</td><td>Depression in freezing point, defined as <i>T</i><sub>f</sub><sup>0</sup> − <i>T</i><sub>f</sub>(solution) (K or °C)</td></tr><tr><td><i>K</i><sub>b</sub>&nbsp;=</td><td>Ebullioscopic constant of solvent (K kg mol<sup>−1</sup>)</td></tr><tr><td><i>K</i><sub>f</sub>&nbsp;=</td><td>Cryoscopic constant of solvent (K kg mol<sup>−1</sup>)</td></tr><tr><td><i>m</i>&nbsp;=</td><td>Molality = moles solute per kg solvent (mol kg<sup>−1</sup>)</td></tr><tr><td><i>i</i>&nbsp;=</td><td>van’t Hoff factor (accounts for dissociation/association)</td></tr><tr><td>Π&nbsp;=</td><td>Osmotic pressure (Pa or atm)</td></tr><tr><td><i>C</i>&nbsp;=</td><td>Molar concentration = <i>n</i>/<i>V</i> (mol L<sup>−1</sup>)</td></tr></table><div class="hibox">Most important results (dilute solutions)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Δ<i>T</i><sub>b</sub> = <i>iK</i><sub>b</sub><i>m</i>, &nbsp; Δ<i>T</i><sub>f</sub> = <i>iK</i><sub>f</sub><i>m</i>, &nbsp; Π = <i>iC</i><i>R</i><i>T</i></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">📈</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto">
+<div style="font-family:'Times New Roman',serif;background:#fff;padding:8px;">
+
+<svg viewBox="0 0 560 420"
+     xmlns="http://www.w3.org/2000/svg"
+     style="display:block;width:100%;max-width:560px;height:auto;margin:auto;">
+
+  <defs>
+    <marker id="arrowBlack-t12"
+            markerWidth="8"
+            markerHeight="8"
+            refX="7"
+            refY="4"
+            orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#222"/>
+    </marker>
+
+    <!-- Liquid pattern -->
+    <pattern id="waterPattern-t12"
+             width="22"
+             height="14"
+             patternUnits="userSpaceOnUse">
+      <rect width="22" height="14" fill="#DDF3FA"/>
+      <line x1="3" y1="5" x2="10" y2="5"
+            stroke="#6B8794" stroke-width="1"/>
+      <line x1="13" y1="10" x2="19" y2="10"
+            stroke="#6B8794" stroke-width="1"/>
+    </pattern>
+
+    <!-- Hatch pattern for piston -->
+    <pattern id="hatch-t12"
+             width="8"
+             height="8"
+             patternUnits="userSpaceOnUse"
+             patternTransform="rotate(20)">
+      <rect width="8" height="8" fill="#F3F3F3"/>
+      <line x1="0" y1="0" x2="0" y2="8"
+            stroke="#777" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- ================= LEFT VESSEL ================= -->
+
+  <!-- Vessel -->
+  <path d="M55 95
+           L55 275
+           Q55 310 90 310
+           L175 310
+           Q210 310 210 275
+           L210 95"
+        fill="url(#waterPattern-t12)"
+        stroke="#333"
+        stroke-width="1.8"/>
+
+  <!-- Left piston -->
+  <rect x="55" y="82"
+        width="155" height="22"
+        fill="url(#hatch-t12)"
+        stroke="#333"
+        stroke-width="1.5"/>
+
+  <!-- piston upper rods -->
+  <line x1="55" y1="45" x2="55" y2="82"
+        stroke="#333" stroke-width="1.5"/>
+  <line x1="210" y1="45" x2="210" y2="82"
+        stroke="#333" stroke-width="1.5"/>
+
+  <!-- Pressure text -->
+  <text x="95" y="22"
+        text-anchor="middle"
+        font-size="16"
+        font-style="italic">
+    p<tspan baseline-shift="sub" font-size="11">atm</tspan> + Π
+  </text>
+
+  <!-- Pressure arrow -->
+  <line x1="95" y1="30"
+        x2="95" y2="76"
+        stroke="#222"
+        stroke-width="1.3"
+        marker-end="url(#arrowBlack-t12)"/>
+
+  <!-- Left label -->
+  <text x="132" y="342"
+        text-anchor="middle"
+        font-size="18">
+    Solution
+  </text>
+
+
+  <!-- ================= RIGHT VESSEL ================= -->
+
+  <!-- Vessel -->
+  <path d="M350 95
+           L350 275
+           Q350 310 385 310
+           L470 310
+           Q505 310 505 275
+           L505 95"
+        fill="url(#waterPattern-t12)"
+        stroke="#333"
+        stroke-width="1.8"/>
+
+  <!-- Right piston -->
+  <rect x="350" y="82"
+        width="155" height="22"
+        fill="url(#hatch-t12)"
+        stroke="#333"
+        stroke-width="1.5"/>
+
+  <!-- piston upper rods -->
+  <line x1="350" y1="45" x2="350" y2="82"
+        stroke="#333" stroke-width="1.5"/>
+  <line x1="505" y1="45" x2="505" y2="82"
+        stroke="#333" stroke-width="1.5"/>
+
+  <!-- Patm -->
+  <text x="425" y="22"
+        text-anchor="middle"
+        font-size="16"
+        font-style="italic">
+    p<tspan baseline-shift="sub" font-size="11">atm</tspan>
+  </text>
+
+  <!-- arrow -->
+  <line x1="425" y1="30"
+        x2="425" y2="76"
+        stroke="#222"
+        stroke-width="1.3"
+        marker-end="url(#arrowBlack-t12)"/>
+
+  <!-- Right label -->
+  <text x="427" y="342"
+        text-anchor="middle"
+        font-size="18">
+    Solvent
+  </text>
+
+
+  <!-- ================= CONNECTING TUBE ================= -->
+
+  <!-- Tube liquid body -->
+  <path d="M210 165
+           L350 165
+           L350 205
+           L210 205 Z"
+        fill="url(#waterPattern-t12)"
+        stroke="#333"
+        stroke-width="1.5"/>
+
+  <!-- SPM membrane -->
+  <rect x="270" y="165"
+        width="20" height="40"
+        fill="#F6F6F6"
+        stroke="#333"
+        stroke-width="1.4"/>
+
+  <!-- SPM label box -->
+  <rect x="228" y="205"
+        width="105" height="58"
+        fill="#fff"
+        stroke="#333"
+        stroke-width="1.4"/>
+
+  <text x="280" y="238"
+        text-anchor="middle"
+        font-size="18">
+    SPM
+  </text>
+
+
+  <!-- ================= CAPTION ================= -->
+
+  <text x="20" y="372"
+        font-size="16"
+        font-weight="bold">
+    Fig. 1.10:
+  </text>
+
+  <text x="100" y="372"
+        font-size="16"
+        font-style="italic">
+    The excess pressure equal to the
+  </text>
+
+  <text x="100" y="394"
+        font-size="16"
+        font-style="italic">
+    osmotic pressure must be applied on
+  </text>
+
+  <text x="100" y="416"
+        font-size="16"
+        font-style="italic">
+    the solution side to prevent osmosis.
+  </text>
+
+</svg>
+
+</div>
+
+    </div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A solution has 18.0 g glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, <i>M</i>=180 g mol<sup>−1</sup>) dissolved in 250 g water. For water, <i>K</i><sub>b</sub>=0.512 K kg mol<sup>−1</sup>, <i>K</i><sub>f</sub>=1.86 K kg mol<sup>−1</sup>. Find Δ<i>T</i><sub>b</sub> and Δ<i>T</i><sub>f</sub>.</div><div class="sol"><span class="lbl">Solution:</span><br>Moles of glucose = <span class='frac'><span>18.0</span><span>180</span></span> = 0.100 mol.<br>Mass of solvent = 250 g = 0.250 kg.<br>Molality <i>m</i> = <span class='frac'><span>0.100</span><span>0.250</span></span> = 0.400 mol kg<sup>−1</sup>.<br>Δ<i>T</i><sub>b</sub> = <i>K</i><sub>b</sub><i>m</i> = 0.512 × 0.400 = 0.2048 K ≈ 0.205 K.<br>Δ<i>T</i><sub>f</sub> = <i>K</i><sub>f</sub><i>m</i> = 1.86 × 0.400 = 0.744 K.</div><div class="ans">✓&nbsp; Δ<i>T</i><sub>b</sub> ≈ 0.205 K; Δ<i>T</i><sub>f</sub> = 0.744 K.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">0.500 g of a polymer is dissolved to make 250 mL solution at 300 K. Osmotic pressure is 0.246 atm. Find molar mass of polymer. Use <i>R</i>=0.0821 L atm mol<sup>−1</sup> K<sup>−1</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Use <i>M</i> = <span class='frac'><span><i>w</i><i>R</i><i>T</i></span><span>Π<i>V</i></span></span> with <i>w</i>=0.500 g, <i>V</i>=0.250 L, <i>T</i>=300 K, Π=0.246 atm.<br>Numerator <i>w</i><i>R</i><i>T</i> = 0.500 × 0.0821 × 300 = 12.315.<br>Denominator Π<i>V</i> = 0.246 × 0.250 = 0.0615.<br><i>M</i> = <span class='frac'><span>12.315</span><span>0.0615</span></span> = 200 g mol<sup>−1</sup>.</div><div class="ans">✓&nbsp; <i>M</i> = 200 g mol<sup>−1</sup>.</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Use molality (<i>m</i>) for Δ<i>T</i><sub>b</sub>, Δ<i>T</i><sub>f</sub>; it is independent of temperature.</li><li>Δ<i>T</i><sub>b</sub> and Δ<i>T</i><sub>f</sub> depend on solvent constants (<i>K</i><sub>b</sub>, <i>K</i><sub>f</sub>), not solute nature (for non-volatile dilute).</li><li>Always define Δ<i>T</i><sub>f</sub> as <i>T</i><sub>f</sub><sup>0</sup> − <i>T</i><sub>f</sub>(solution) (a positive value).</li><li>For electrolytes/association, multiply by van’t Hoff factor <i>i</i>.</li><li>For osmotic pressure problems, keep units consistent: Π in atm with <i>R</i>=0.0821 and <i>V</i> in L.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“B-F-O: Boil rises, Freeze falls, Osmosis pressure”</div><paragraph id="6a9fd60214e2b91c20000235"><b>B</b>oiling: solute makes vapour pressure low ⇒ need higher <i>T</i> (Δ<i>T</i><sub>b</sub> up).</paragraph><paragraph id="6a9fd602c18647066d000236"><b>F</b>reezing: solute stabilises liquid ⇒ <i>T</i><sub>f</sub> decreases (Δ<i>T</i><sub>f</sub> = <i>T</i><sub>f</sub><sup>0</sup> − <i>T</i><sub>f</sub> is positive).</paragraph><paragraph id="6a9fd6021c346ac89c000237"><b>O</b>smosis: solvent goes dilute → concentrated; Π is pressure to stop it (Π = <i>C</i><i>R</i><i>T</i>).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Δ<i>T</i><sub>b</sub> = <i>K</i><sub>b</sub><i>m</i> (or Δ<i>T</i><sub>b</sub> = <i>iK</i><sub>b</sub><i>m</i>)</span><span class="eq">Δ<i>T</i><sub>f</sub> = <i>K</i><sub>f</sub><i>m</i> with Δ<i>T</i><sub>f</sub> ≡ <i>T</i><sub>f</sub><sup>0</sup> − <i>T</i><sub>f</sub>(solution) (or Δ<i>T</i><sub>f</sub> = <i>iK</i><sub>f</sub><i>m</i>)</span><span class="eq"><i>m</i> = <span class='frac'><span>moles of solute</span><span>kg of solvent</span></span></span><span class="eq"><i>K</i><sub>b</sub> = <span class='frac'><span><i>R</i><i>T</i><sub>b</sub><sup>2</sup><i>M</i><sub>1</sub></span><span>1000Δ<i>H</i><sub>vap</sub></span></span> (thermodynamic expression; <i>M</i><sub>1</sub> = molar mass of solvent in g mol<sup>−1</sup>)</span><span class="eq"><i>K</i><sub>f</sub> = <span class='frac'><span><i>R</i><i>T</i><sub>f</sub><sup>2</sup><i>M</i><sub>1</sub></span><span>1000Δ<i>H</i><sub>fus</sub></span></span> (thermodynamic expression; <i>M</i><sub>1</sub> = molar mass of solvent in g mol<sup>−1</sup>)</span><span class="eq">Π = <i>C</i><i>R</i><i>T</i> = <span class='frac'><span><i>n</i><i>R</i><i>T</i></span><span><i>V</i></span></span> (or Π = <i>iC</i><i>R</i><i>T</i>)</span><span class="eq">Molar mass from Π (non-electrolyte): <i>M</i> = <span class='frac'><span><i>w</i><i>R</i><i>T</i></span><span>Π<i>V</i></span></span></span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

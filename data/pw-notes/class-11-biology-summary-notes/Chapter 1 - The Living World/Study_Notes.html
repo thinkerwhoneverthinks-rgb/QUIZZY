@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Living World: Biology &amp; the Idea of Diversity</title>
+  <link href="data:," rel="icon"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="container chapter-wrap" id="main-content"><paragraph class="page-label" id="6a8c169fc01a40070bd78a33">Handwritten Notes</paragraph>
+<h1>Ch-01 : The Living World</h1>
+
+<h2>Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a34"><b>Biology</b> is the <b>science of life forms</b> and <b>living processes</b>.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a35">The <b>living world</b> shows an <b>amazing diversity</b> of organisms.</paragraph>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78a36">Humans historically distinguished <b>living (animate)</b> from <b>non-living (inanimate)</b> matter. Early humans often <b>deified</b> (treated as divine) some inanimate forms (e.g., <b>wind, sea, fire</b>) and also some animals/plants—driven by <b>awe or fear</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a37"><b>Why systematic biology became necessary:</b> Once humans began <b>describing organisms</b> in a structured way, it required reliable systems of:</paragraph>
+<ul class="check-list">
+<li><b>Identification</b> (knowing exactly which organism is being referred to)</li>
+<li><b>Nomenclature</b> (standardised naming)</li>
+<li><b>Classification</b> (organising organisms into groups based on similarities)</li>
+</ul>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78a38">Societies with an <b>anthropocentric view of biology</b> (human-centred view) made only <b>limited progress</b>, because such a view tends to undervalue non-human life and broader biological relationships.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a39"><b>Major outcome (“spin-off”) of studying and describing life forms:</b> Recognition that organisms share <b>similarities</b>:</paragraph>
+<ul class="star-list">
+<li><b>Horizontally</b>: among present-day organisms living at the same time (comparisons across groups existing now)</li>
+<li><b>Vertically</b>: across time, linking present-day organisms to those that lived earlier (evolutionary relatedness)</li>
+</ul>
+<paragraph id="6a8c169fc01a40070bd78a3a">This led to the major realisation that <b>all present-day organisms are related</b> to each other and also to <b>all organisms that ever lived</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a3b"><b>Consequence of recognising relatedness:</b> It “humbled” humans and contributed to cultural movements aimed at <b>conservation of biodiversity</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c169fc01a40070bd78a3c"><b>Analogy:</b> Classification in biology is like organising a huge library: without a system, different regions would use different titles for the same book, and the same title might be used for different books—creating confusion.</paragraph>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78a3d">This unit approaches organisms from a <b>taxonomist’s perspective</b>—i.e., with emphasis on <b>description, naming, and classification</b> of plants and animals.</paragraph>
+
+
+<h2>Ernst Mayr (1904–2004): Context for Species &amp; Diversity</h2>
+
+<paragraph id="6a8c169fc01a40070bd78a3e"><b>Ernst Mayr</b> (born <b>5 July 1904</b>, <b>Kempten, Germany</b>) was a Harvard evolutionary biologist, often called <b>“The Darwin of the 20th century”</b>.</paragraph>
+
+<ul class="check-list">
+<li>Joined <b>Harvard Faculty of Arts and Sciences</b> in <b>1953</b></li>
+<li>Retired in <b>1975</b> as <b>Alexander Agassiz Professor of Zoology Emeritus</b></li>
+<li>Career span: nearly <b>80 years</b></li>
+</ul>
+
+<div class="tile-grid">
+<div class="tile">Ornithology<span class="tile-sub">study of birds</span></div>
+<div class="tile">Taxonomy<span class="tile-sub">naming and grouping organisms</span></div>
+<div class="tile">Zoogeography<span class="tile-sub">animal distribution patterns</span></div>
+<div class="tile">Evolution<span class="tile-sub">change in populations over time</span></div>
+<div class="tile">Systematics<span class="tile-sub">relationships among organisms</span></div>
+<div class="tile">History &amp; philosophy of biology<span class="tile-sub">conceptual foundations</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a3f"><b>Key contributions (exam-relevant):</b></paragraph>
+<ul class="star-list">
+<li>Made the <b>origin of species diversity</b> a central question of evolutionary biology.</li>
+<li><b>Pioneered</b> the currently accepted definition of a <b>biological species</b> (the “biological species concept”).</li>
+</ul>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78a40"><b>Major honours (“triple crown of biology”):</b></paragraph>
+<ul class="star-list">
+<li><b>Balzan Prize</b> (1983)</li>
+<li><b>International Prize for Biology</b> (1994)</li>
+<li><b>Crafoord Prize</b> (1999)</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78a41">Mayr died at age <b>100</b> in <b>2004</b>.</paragraph>
+
+
+<h2>What is “Living”? The Two Questions</h2>
+
+<paragraph id="6a8c169fc01a40070bd78a42">The living world inspires wonder because organisms occupy extraordinary habitats (e.g., <b>cold mountains, deciduous forests, oceans, fresh water lakes, deserts, hot springs</b>) and show striking behaviours and forms (e.g., galloping horse, migrating birds, valley of flowers, attacking shark).</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a43">The question <b>“What is life?”</b> contains <b>two implicit questions</b>:</paragraph>
+<ol>
+<li><b>Technical question</b>: What is <b>living</b> as opposed to <b>non-living</b>?</li>
+<li><b>Philosophical question</b>: What is the <b>purpose</b> of life?</li>
+</ol>
+<paragraph id="6a8c169fc01a40070bd78a44">As scientists (in this chapter’s approach), we <b>do not attempt</b> to answer the philosophical question; we focus on the <b>technical</b> meaning of “living”.</paragraph>
+</div>
+
+
+<h2>1.1 Diversity in the Living World</h2>
+
+<paragraph id="6a8c169fc01a40070bd78a45">When you observe your surroundings you find many living organisms—potted plants, insects, birds, pets, and other plants/animals. Many more organisms exist that are <b>not visible to the naked eye</b>, yet are present all around.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a46"><b>Observation principle:</b> If you expand the area of observation, the <b>range and variety</b> of organisms observed increases (e.g., a <b>dense forest</b> typically contains many more kinds of organisms than a small local area).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a47"><b>Species:</b> Each different kind of plant/animal/organism you see represents a <b>species</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a48"><b>Biodiversity:</b> Refers to the <b>number and types of organisms present on Earth</b>.</paragraph>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78a49">The number of <b>known and described species</b> ranges between <b>1.7–1.8 million</b>. This number is not final: as we explore <b>new areas</b> (and even revisit <b>old ones</b>), <b>new organisms are continuously identified</b>.</paragraph>
+
+
+<h2>Need for Naming: Identification &amp; Nomenclature</h2>
+
+<paragraph id="6a8c169fc01a40070bd78a4a">We often know local plants and animals by <b>local (vernacular) names</b>. These names vary <b>from place to place</b>, even within the same country—creating confusion in communication.</paragraph>
+
+<div class="remember-box">⚠ Common confusion: a <b>single organism</b> may have <b>many local names</b>, and the <b>same local name</b> may be used for <b>different organisms</b> in different regions.</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a4b"><b>Nomenclature</b>: The process of <b>standardising the naming</b> of living organisms so that a particular organism is known by the <b>same name worldwide</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a4c"><b>Identification</b>: Correctly <b>describing</b> an organism and determining <b>which organism</b> a name is attached to. (Naming is only possible when identification is correct.)</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Correct description</div><span class="flow-arrow">→</span><div class="flow-box">Identification</div><span class="flow-arrow">→</span><div class="flow-box">Nomenclature (standard name)</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a4d">Scientists have established <b>procedures</b> for assigning a <b>scientific name</b> to each known organism that is accepted globally by biologists.</paragraph>
+</div>
+
+<h3>International Codes for Scientific Naming</h3>
+
+<div class="tile-grid">
+<div class="tile">ICBN<span class="tile-sub">International Code for Botanical Nomenclature (plants)</span></div>
+<div class="tile">ICZN<span class="tile-sub">International Code of Zoological Nomenclature (animals)</span></div>
+</div>
+
+<ul class="check-list">
+<li>These codes provide the <b>agreed principles and criteria</b> for naming.</li>
+<li>Scientific naming ensures <b>one organism has only one scientific name</b>.</li>
+<li>A proper description should allow people anywhere in the world to arrive at the <b>same name</b>.</li>
+<li>The codes help ensure a name has <b>not been used for any other known organism</b>.</li>
+</ul>
+
+<h2>Binomial Nomenclature (Linnaeus)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a4e"><b>Binomial nomenclature</b> = a universally used scientific naming system where each organism has a <b>two-part name</b>:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Generic name<span class="tile-sub">= Genus</span></div>
+    <div class="tile">Specific epithet<span class="tile-sub">= species descriptor</span></div>
+  </div>
+  <paragraph id="6a8c169fc01a40070bd78a4f">Proposed by <b>Carolus Linnaeus</b> and used worldwide because the <b>two-word format</b> is convenient + standardised.</paragraph>
+</div>
+
+<h3>Worked Example: Mango</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a50"><b>Scientific name of mango:</b> <i>Mangifera indica</i></paragraph>
+  <div class="tile-grid">
+    <div class="tile">Mangifera<span class="tile-sub">genus (generic name)</span></div>
+    <div class="tile">indica<span class="tile-sub">specific epithet (species within the genus)</span></div>
+  </div>
+  <paragraph id="6a8c169fc01a40070bd78a51"><b>Reasoning:</b> Many related species can share the same <b>genus</b> name (<i>Mangifera</i>), but each species has a different <b>specific epithet</b>; together they uniquely identify the organism.</paragraph>
+</div>
+
+<h3>Universal Rules of Nomenclature (as given)</h3>
+
+<ol>
+  <li>
+    <b>Language &amp; style:</b> Biological names are generally in <b>Latin</b> and written in <b>italics</b>. They are <b>Latinised</b> or derived from Latin, irrespective of origin.
+  </li>
+  <li>
+    <b>Order of words:</b> The <b>first word</b> is the <b>genus</b>; the <b>second</b> is the <b>specific epithet</b>.
+  </li>
+  <li>
+    <b>Handwriting vs printing:</b> When <b>handwritten</b>, both words are <b>separately underlined</b>; when <b>printed</b>, they are in <b>italics</b>—to indicate Latin origin.
+  </li>
+</ol>
+
+<div class="remember-box">
+  <paragraph id="6a8c169fc01a40070bd78a52"><b>Exam tips / common errors:</b></paragraph>
+  <ul>
+    <li>Do not swap the order: <b>Genus always comes first</b>, then specific epithet.</li>
+    <li>When writing by hand, <b>underline each word separately</b> (not one continuous underline for both).</li>
+    <li>Scientific names are <b>italicised in print</b>; avoid writing them as plain non-italic text in formal answers.</li>
+  </ul>
+</div>
+
+<h2>Rules of Binomial Nomenclature (as used here)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a53"><b>Binomial name</b> = two-word scientific name:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Genus</div><span class="flow-arrow">+</span><div class="flow-box">specific epithet</div><span class="flow-arrow">→</span><div class="flow-box">species name</div>
+  </div>
+</div>
+
+<h3>Capitalisation rule</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a54"><b>Genus</b> starts with a <b>capital letter</b>, while the <b>specific epithet</b> starts with a <b>small letter</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Mangifera indica</b>: <b>Mangifera</b> = genus (capital M), <b>indica</b> = specific epithet (small i).</li>
+</ul>
+
+<h3>Author citation (author name after the species name)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a55">The <b>author’s name</b> appears <b>after the specific epithet</b> (at the end of the biological name) and is written in an <b>abbreviated</b> form.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Mangifera indica Linn.</b> <span class="flow-arrow">→</span> indicates the species was <b>first described by Linnaeus</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169fc01a40070bd78a56">Do not place the author name between genus and specific epithet; it is written <b>at the end</b> of the biological name.</paragraph>
+</div>
+
+<h2>Classification, Taxa, Taxonomy and Systematics</h2>
+
+<h3>Why classification is needed</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a57">It is nearly impossible to study <b>all living organisms</b> individually, so we organise them. This organising process is called <b>classification</b>.</paragraph>
+</div>
+
+<h3>Classification: definition and basis</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a58"><b>Classification</b> = grouping things into <b>convenient categories</b> based on <b>easily observable characters</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169fc01a40070bd78a59">Hearing “dog” instantly brings “dog-features” to mind (not a cat) — this mental grouping shows why categories make learning + communication faster.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Common everyday categories: <b>plants</b>, <b>animals</b>, <b>dogs</b>, <b>cats</b>, <b>insects</b>, <b>mammals</b>, <b>wheat</b>, <b>rice</b>.</li>
+  <li>These categories quickly link to characters (e.g., <b>mammals</b> <span class="flow-arrow">→</span> external ears + body hair).</li>
+</ul>
+
+<h3>Taxa (singular: taxon)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a5a">Scientific term for these categories = <b>taxa</b> (singular: <b>taxon</b>).</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a5b"><b>Taxa exist at different levels</b>: “plants” is a taxon; “wheat” is also a taxon; “animals”, “mammals”, “dogs” are all taxa at <b>different hierarchical levels</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Animals</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Mammals</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Dogs</div>
+</div>
+
+<h3>Taxonomy: definition and modern basis</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a5c"><b>Taxonomy</b> = classifying living organisms into different taxa <b>based on characteristics</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a5d"><b>Modern taxonomic studies</b> are based on:</paragraph>
+  <ul class="check-list">
+    <li><b>External structure</b></li>
+    <li><b>Internal structure</b></li>
+    <li><b>Structure of the cell</b></li>
+    <li><b>Developmental processes</b></li>
+    <li><b>Ecological information</b></li>
+  </ul>
+</div>
+
+<h3>Core processes basic to taxonomy</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a5e">Processes that form the basis of taxonomy:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Characterisation<span class="tile-sub">describing features/characters</span></div>
+    <div class="tile">Identification<span class="tile-sub">recognising the organism based on characters</span></div>
+    <div class="tile">Classification<span class="tile-sub">placing into categories/taxa</span></div>
+    <div class="tile">Nomenclature<span class="tile-sub">providing scientific names</span></div>
+  </div>
+</div>
+
+<h3>Early classification: based on human use</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a5f">Taxonomy is ancient: early humans classified organisms mainly by their <b>uses</b> for basic needs like <b>food, clothing and shelter</b>.</paragraph>
+</div>
+
+<h3>Systematics: meaning, scope, and evolutionary basis</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a60"><b>Systematics</b> = study of organismal diversity and the <b>relationships</b> among organisms.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a61">From Latin <b>“systema”</b> meaning <b>systematic arrangement of organisms</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Linnaeus used <b>Systema Naturae</b> as the title of his publication.</li>
+  <li>Scope later enlarged to include <b>identification, nomenclature and classification</b>.</li>
+  <li><b>Systematics</b> takes into account <b>evolutionary relationships</b> between organisms.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169fc01a40070bd78a62">In exam answers: <b>taxonomy</b> focuses on classification into taxa using characters; <b>systematics</b> additionally emphasises <b>relationships/evolution</b> (and includes identification, nomenclature, classification).</paragraph>
+</div>
+
+<h2>Taxonomic Categories and Taxonomic Hierarchy</h2>
+
+<h3>Hierarchy: classification as a multi-step ranked arrangement</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a63">Classification is <b>not</b> a single-step process; it happens through a <b>hierarchy of steps</b> where each step is a <b>rank/category</b>.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a64">A category in this overall arrangement is a <b>taxonomic category</b>; all categories together form the <b>taxonomic hierarchy</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Think of it like nesting folders: big folder → smaller folder → smallest file (each “level” = a rank).
+</div>
+
+<h3>Taxon as a unit of classification</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a65">Each category is a <b>unit of classification</b> representing a <b>rank</b> and is called a <b>taxon</b> (plural: <b>taxa</b>).</paragraph>
+</div>
+
+<h3>Illustration using insects (what makes a group a category)</h3>
+<ul class="star-list">
+  <li><b>Insects</b> are a recognisable group sharing a key common feature: <b>three pairs of jointed legs</b>.</li>
+  <li>Because such groups are concrete and recognisable, they can be classified and assigned a <b>rank/category</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a66"><b>Group</b> represents <b>category</b> → category denotes <b>rank</b> → each rank/taxon is a <b>unit of classification</b>.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a67">Taxonomic groups/categories are <b>distinct biological entities</b>, not merely <b>morphological aggregates</b>.</paragraph>
+</div>
+
+<h3>Common taxonomic categories (standard hierarchy)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a68">Commonly developed categories: <b>Kingdom</b>, <b>Phylum</b> (or <b>Division</b> for plants), <b>Class</b>, <b>Order</b>, <b>Family</b>, <b>Genus</b>, <b>Species</b>.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a69"><b>Species</b> is the <b>lowest category</b> for all organisms (plants and animals).</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Kingdom</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Phylum/<br/>Division</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Class</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Order</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Family</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Genus</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Species</div>
+</div>
+
+<h3>How organisms are placed into categories (requirement)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a6a">Basic requirement to place an organism into categories: <b>knowledge of characters</b> of an individual or group.</paragraph>
+  <ul class="check-list">
+    <li>Helps identify <b>similarities and dissimilarities</b> among individuals of the same kind</li>
+    <li>Helps compare with <b>other kinds of organisms</b></li>
+  </ul>
+</div>
+
+<h2>1.2.1 Species</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a6b">In taxonomic studies, a <b>species</b> is a group of individual organisms with <b>fundamental similarities</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a6c">To recognise a species, one must distinguish it from <b>closely related species</b> using <b>distinct morphological differences</b>.</paragraph>
+</div>
+
+<h3>Species names in examples (specific epithets vs genera)</h3>
+<div class="tile-grid">
+  <div class="tile"><b>Mangifera indica</b><span class="tile-sub">Genus: <b>Mangifera</b> • Specific epithet: <b>indica</b></span></div>
+  <div class="tile"><b>Solanum tuberosum</b> (potato)<span class="tile-sub">Genus: <b>Solanum</b> • Specific epithet: <b>tuberosum</b></span></div>
+  <div class="tile"><b>Panthera leo</b> (lion)<span class="tile-sub">Genus: <b>Panthera</b> • Specific epithet: <b>leo</b></span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a6d">Each <b>genus</b> may have <b>one or more</b> specific epithets representing different organisms that still show <b>morphological similarities</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile"><b>Panthera</b><span class="tile-sub">includes <b>Panthera tigris</b> (tiger)</span></div>
+  <div class="tile"><b>Solanum</b><span class="tile-sub">includes <b>Solanum nigrum</b> and <b>Solanum melongena</b></span></div>
+</div>
+
+<h3>Human species example</h3>
+<ul class="star-list">
+  <li>Humans belong to species <b>sapiens</b>, grouped in genus <b>Homo</b>.</li>
+  <li>Scientific name of humans: <b>Homo sapiens</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169fc01a40070bd78a6e">In binomials, the first word (genus) indicates a <b>higher taxon</b> than the second word (specific epithet).</paragraph>
+</div>
+
+<h2>1.2.2 Genus</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a6f"><b>Genus</b> = a group of <b>related species</b> having <b>more characters in common</b> compared to species of other genera.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a70">Genera are <b>aggregates of closely related species</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Solanum<span class="tile-sub">potato + brinjal = different species, same genus</span></div>
+  <div class="tile">Panthera<span class="tile-sub"><b>P. leo</b>, <b>P. pardus</b>, <b>P. tigris</b> share common features</span></div>
+  <div class="tile">Felis<span class="tile-sub">different from <b>Panthera</b>; includes cats</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169fc01a40070bd78a71">After first mention, genus may be abbreviated (e.g., <b>P. tigris</b>), but the genus concept remains the same.</paragraph>
+</div>
+
+<h2>1.2.3 Family</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a72"><b>Family</b> = a group of <b>related genera</b> with <b>fewer similarities</b> than those within a genus or within a species.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169fc01a40070bd78a73">In plants, families are characterised using <b>both vegetative and reproductive features</b> of plant species.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Solanaceae<span class="tile-sub">plant family: genera <b>Solanum</b>, <b>Petunia</b>, <b>Datura</b></span></div>
+  <div class="tile">Felidae<span class="tile-sub">animal family: genera <b>Panthera</b> + <b>Felis</b></span></div>
+  <div class="tile">Felidae vs Canidae<span class="tile-sub">cats and dogs placed in different families: <b>Felidae</b> (cats), <b>Canidae</b> (dogs)</span></div>
+</div>
+
+<h2>1.2.4 Order</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a74">Higher categories (like <b>order</b> and above) are identified using <b>aggregates of characters</b>, not a large number of detailed shared similarities.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a75"><b>Order</b> = an assemblage of <b>families</b> showing <b>a few similar characters</b>.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a76">Since order is higher than family, the number of similar characters used is <b>less</b> than those used to group genera into a family.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Polymoniales<span class="tile-sub">plant order: families <b>Convolvulaceae</b> + <b>Solanaceae</b> (mainly <b>floral characters</b>)</span></div>
+  <div class="tile">Carnivora<span class="tile-sub">animal order: includes families <b>Felidae</b> + <b>Canidae</b></span></div>
+</div>
+
+<h2>1.2.5 Class</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a77"><b>Class</b> includes <b>related orders</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Order <b>Primata</b> (monkey, gorilla, gibbon) is placed in class <b>Mammalia</b>.</li>
+  <li>Order <b>Carnivora</b> (tiger, cat, dog) is also placed in class <b>Mammalia</b>.</li>
+  <li>Class <b>Mammalia</b> includes <b>other orders</b> as well (besides Primata and Carnivora).</li>
+</ul>
+
+<h2>1.2.6 Phylum</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169fc01a40070bd78a78"><b>Phylum</b> is the next higher category formed by grouping classes.</paragraph>
+  <paragraph id="6a8c169fc01a40070bd78a79">Classes comprising animals such as <b>fishes, amphibians, reptiles, birds, and mammals</b> constitute this higher category called <b>Phylum</b>.</paragraph>
+</div>
+
+<h2>Kingdom (Taxonomic Category)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a7a"><b>Kingdom</b> = the <b>highest taxonomic category</b> in the basic hierarchy used here (<b>species → kingdom</b>).</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a7b">It includes organisms collected from many lower categories based on <b>broad similarities</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a7c"><b>Animal classification:</b> All animals belonging to various <b>phyla</b> are placed under the highest category <b>Kingdom Animalia</b>.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a7d"><b>Plant classification:</b> All plants belonging to various <b>divisions</b> are placed under the highest category <b>Kingdom Plantae</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c169fc01a40070bd78a7e"><b>Key contrast:</b> In animals, the major high-level group is called <b>Phylum</b>; in plants, the comparable level is called <b>Division</b> (both are large groupings below kingdom).</paragraph>
+</div>
+
+<h3>Phylum (Animals) vs Division (Plants): Why the Terms Differ</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a7f"><b>Phylum (animals):</b> A high-rank grouping of organisms sharing major <b>body-plan features</b>.</paragraph>
+<ul class="star-list">
+<li><b>Example basis:</b> presence of a <b>notochord</b> + a <b>dorsal hollow neural system</b> → places organisms in <b>Phylum Chordata</b>.</li>
+</ul>
+<paragraph id="6a8c169fc01a40070bd78a80"><b>Division (plants):</b> In plants, classes with a few similar characters are assigned to a higher category called a <b>Division</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78a81"><b>Exam trap:</b> Don’t write <b>“phylum”</b> for plants (use <b>division</b>). Don’t write <b>“division”</b> for animals (use <b>phylum</b>).</paragraph>
+</div>
+
+<h3>Taxonomic Hierarchy (Species → Kingdom): What Happens as You Go Up?</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a82"><b>Taxonomic categories</b> from <b>species to kingdom</b> are arranged in <b>ascending order</b> starting with <b>species</b>.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a83">These are <b>broad categories</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Species</div><span class="flow-arrow">→</span>
+<div class="flow-box">Genus</div><span class="flow-arrow">→</span>
+<div class="flow-box">Family</div><span class="flow-arrow">→</span>
+<div class="flow-box">Order</div><span class="flow-arrow">→</span>
+<div class="flow-box">Class</div><span class="flow-arrow">→</span>
+<div class="flow-box">Phylum/Division</div><span class="flow-arrow">→</span>
+<div class="flow-box">Kingdom</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a84"><b>Basis of arrangement:</b> As we go higher from <b>species → kingdom</b>, the <b>number of common characteristics decreases</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+<li><b>Lower taxa</b> (e.g., species, genus): members share <b>more</b> common characteristics.</li>
+<li><b>Higher categories</b> (e.g., class, phylum/division, kingdom): members share <b>fewer</b> common characteristics.</li>
+<li>As you move upward, it becomes <b>harder</b> to determine relationships among taxa at the <b>same level</b>.</li>
+<li>Therefore, the <b>problem of classification becomes more complex</b> at higher ranks.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a85"><b>Sub-categories:</b> Taxonomists have developed <b>sub-categories</b> within the hierarchy to allow a <b>more sound and scientific placement</b> of various taxa (finer grouping where needed).</paragraph>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+<span class="mnemonic-word">SGFOCPK</span>
+<div class="mnemonic-expand">
+S — Smart (Species)<br/>
+G — Girls (Genus)<br/>
+F — Find (Family)<br/>
+O — Out (Order)<br/>
+C — Clever (Class)<br/>
+P/D — Patterns (Phylum/Division)<br/>
+K — Keenly (Kingdom)
+</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78a86"><b>Common exam wording:</b> “As we go up the hierarchy, similarity decreases; as we go down, similarity increases.” Write this explicitly.</paragraph>
+</div>
+
+<h3>Worked Examples: Taxonomic Categories of Common Organisms (Table 1.1)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a87">Each organism can be placed into each rank of the hierarchy.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a88">The examples below are standard and must be memorised with <b>correct spelling</b> and <b>correct order</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Man<span class="tile-sub">Homo sapiens</span></div>
+<div class="tile">Housefly<span class="tile-sub">Musca domestica</span></div>
+<div class="tile">Mango<span class="tile-sub">Mangifera indica</span></div>
+<div class="tile">Wheat<span class="tile-sub">Triticum aestivum</span></div>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78a89"><b>Man</b> (Common name: Man)</paragraph>
+<ul class="star-list">
+<li><b>Biological name (species):</b> <i>Homo sapiens</i></li>
+<li><b>Genus:</b> <i>Homo</i></li>
+<li><b>Family:</b> Hominidae</li>
+<li><b>Order:</b> Primata</li>
+<li><b>Class:</b> Mammalia</li>
+<li><b>Phylum:</b> Chordata</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78a8a"><b>Housefly</b> (Common name: Housefly)</paragraph>
+<ul class="star-list">
+<li><b>Biological name (species):</b> <i>Musca domestica</i></li>
+<li><b>Genus:</b> <i>Musca</i></li>
+<li><b>Family:</b> Muscidae</li>
+<li><b>Order:</b> Diptera</li>
+<li><b>Class:</b> Insecta</li>
+<li><b>Phylum:</b> Arthropoda</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78a8b"><b>Mango</b> (Common name: Mango)</paragraph>
+<ul class="star-list">
+<li><b>Biological name (species):</b> <i>Mangifera indica</i></li>
+<li><b>Genus:</b> <i>Mangifera</i></li>
+<li><b>Family:</b> Anacardiaceae</li>
+<li><b>Order:</b> Sapindales</li>
+<li><b>Class:</b> Dicotyledonae</li>
+<li><b>Division:</b> Angiospermae</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78a8c"><b>Wheat</b> (Common name: Wheat)</paragraph>
+<ul class="star-list">
+<li><b>Biological name (species):</b> <i>Triticum aestivum</i></li>
+<li><b>Genus:</b> <i>Triticum</i></li>
+<li><b>Family:</b> Poaceae</li>
+<li><b>Order:</b> Poales</li>
+<li><b>Class:</b> Monocotyledonae</li>
+<li><b>Division:</b> Angiospermae</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78a8d"><b>Exam precision:</b> “Angiospermae” is <b>Division</b> for both mango and wheat; mango is <b>Dicotyledonae</b>, wheat is <b>Monocotyledonae</b>. Don’t interchange.</paragraph>
+</div>
+
+<h2>Chapter Summary: The Living World (Taxonomy Essentials)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a8e">The living world shows enormous variety.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a8f">Although <b>millions</b> of plants and animals have been identified and described, many organisms remain <b>unknown</b>.</paragraph>
+</div>
+
+<h3>Need for Defining Characteristics</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a90">Because organisms differ widely in <b>size</b>, <b>colour</b>, <b>habitat</b>, <b>physiology</b>, and <b>morphology</b>, biologists seek <b>defining characteristics</b> of living organisms to study and organise this diversity.</paragraph>
+</div>
+
+<h3>Taxonomy: What It Includes and Why It Matters</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a91"><b>Taxonomy</b> = branch of knowledge dealing with:</paragraph>
+<ul class="check-list">
+<li><b>Identification</b></li>
+<li><b>Nomenclature</b> (naming)</li>
+<li><b>Classification</b></li>
+</ul>
+<paragraph id="6a8c169fc01a40070bd78a92">…based on evolved rules and principles.</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Taxonomic studies of species are useful in <b>agriculture</b>, <b>forestry</b>, and <b>industry</b>.</li>
+<li>They help in understanding <b>bio-resources</b> and their <b>diversity</b>.</li>
+</ul>
+
+<h3>International Codes and Binomial Nomenclature</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78a93">The basics of taxonomy—<b>identification</b>, <b>naming</b>, <b>classification</b>—are universally evolved under <b>international codes</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a94">Each organism is identified and assigned a correct <b>scientific/biological name</b> consisting of <b>two words</b> according to the <b>binomial system of nomenclature</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78a95"><b>Exam writing:</b> Always state “<b>two-word</b> scientific name as per binomial nomenclature” (don’t write “one word” or “many words”).</paragraph>
+</div>
+
+<h3>Taxon and Taxonomic Hierarchy</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78a96">An organism occupies a specific <b>place/position</b> in a classification system.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a97">There are many <b>categories/ranks</b>, generally called <b>taxonomic categories</b> or <b>taxa</b>.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78a98">Together, all categories form a <b>taxonomic hierarchy</b>.</paragraph>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

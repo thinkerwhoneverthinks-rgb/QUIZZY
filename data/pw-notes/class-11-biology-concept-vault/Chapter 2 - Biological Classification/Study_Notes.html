@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biological Classification: Need, History &amp; Changing Criteria</title>
+  <link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="container chapter-wrap" id="main-content"><paragraph class="page-label" id="6a8c169dc01a40070bd7823b">Handwritten Notes</paragraph>
+<h1> Biological Classification: Need, History &amp; Changing Criteria</h1>
+
+<h2>Biological Classification: Need, History &amp; Changing Criteria</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+Biological classification = arranging living organisms into groups based on shared characteristics. Human attempts began “instinctively” (non-scientific), driven by <b>utility</b> (food, shelter, clothing). With time, classification shifted toward <b>scientific criteria</b> and <b>evolutionary relationships</b>.
+</div>
+
+<div class="sticky-note">
+Think of it like sorting a huge library: first by “what helps me now” (usefulness), later by “what it truly is” (scientific + evolutionary relatedness).
+</div>
+
+<h3>Early attempts: Aristotle</h3>
+<paragraph id="6a8c169dc01a40070bd7823c"><b>Aristotle</b> was among the earliest to attempt a more scientific classification using <b>morphological characters</b> (observable form/structure).</paragraph>
+
+<div class="tile-grid">
+  <div class="tile">Plants<span class="tile-sub">classified as trees, shrubs, herbs (simple morphology)</span></div>
+  <div class="tile">Animals<span class="tile-sub">divided into red-blooded vs not red-blooded</span></div>
+</div>
+
+<h3>Two-Kingdom Classification (Linnaeus)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<b>Two-Kingdom system</b> (developed in Linnaeus’ time): all organisms placed into either <b>Kingdom Plantae</b> or <b>Kingdom Animalia</b>.
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<b>Why it became inadequate:</b> It did <u>not</u> distinguish between key biological differences:
+<ul class="check-list">
+  <li><b>Eukaryotes vs prokaryotes</b></li>
+  <li><b>Unicellular vs multicellular</b></li>
+  <li><b>Photosynthetic</b> organisms (e.g., green algae) vs <b>non-photosynthetic</b> organisms (e.g., fungi)</li>
+</ul>
+Although easy to understand, many organisms did not fit neatly into “plant” or “animal.”
+</div>
+
+<h3>Expansion of classification criteria beyond gross morphology</h3>
+<paragraph id="6a8c169dc01a40070bd7823d">As limitations became clear, classification increasingly used multiple criteria, not just gross morphology.</paragraph>
+
+<ul class="star-list">
+  <li><b>Cell structure</b></li>
+  <li><b>Nature of cell wall</b></li>
+  <li><b>Mode of nutrition</b></li>
+  <li><b>Habitat</b></li>
+  <li><b>Methods of reproduction</b></li>
+  <li><b>Evolutionary (phylogenetic) relationships</b></li>
+</ul>
+
+<div class="remember-box">
+⚠ <b>Exam trap:</b> “Plant” and “animal” kingdoms remained present across systems, but <b>which organisms belong</b> to them and the <b>number/nature of other kingdoms</b> changed as criteria improved.
+</div>
+
+
+
+<h2>Whittaker’s Five Kingdom Classification (1969)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<b>R.H. Whittaker (1969)</b> proposed the <b>Five Kingdom Classification</b>: <b>Monera, Protista, Fungi, Plantae, Animalia</b>.
+</div>
+
+<h3>Main criteria used by Whittaker</h3>
+<ul class="check-list">
+  <li><b>Cell structure</b></li>
+  <li><b>Body organisation</b></li>
+  <li><b>Mode of nutrition</b></li>
+  <li><b>Reproduction</b></li>
+  <li><b>Phylogenetic relationships</b> (evolutionary relationships)</li>
+</ul>
+
+<h3>Three-domain system (context only)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+A <b>three-domain system</b> has also been proposed in which <b>Kingdom Monera is split into two domains</b>, and the remaining eukaryotic kingdoms fall into a third domain, effectively giving a <b>six-kingdom classification</b>. (Details are deferred to higher classes.)
+</div>
+
+<h3>Why earlier “Plants” grouping caused problems (and what Whittaker fixed)</h3>
+<paragraph id="6a8c169dc01a40070bd7823e">Earlier systems placed <b>bacteria, blue-green algae, fungi, mosses, ferns, gymnosperms, angiosperms</b> under “Plants,” mainly because they <b>all had cell walls</b>. This single-character approach grouped very different organisms together.</paragraph>
+
+<div class="flow-row">
+  <div class="flow-box">Earlier “Plants” = all with cell wall</div><span class="flow-arrow">→</span><div class="flow-box">Mixed very different groups</div><span class="flow-arrow">→</span><div class="flow-box">Need for new kingdoms based on deeper criteria</div>
+</div>
+
+<ul class="star-list">
+  <li><b>Prokaryotes</b> (bacteria, cyanobacteria/blue-green algae) were grouped with <b>eukaryotes</b> (many algae, fungi, land plants).</li>
+  <li><b>Unicellular</b> and <b>multicellular</b> forms were mixed (e.g., <b>Chlamydomonas</b> and <b>Spirogyra</b> both placed under algae).</li>
+  <li><b>Heterotrophs</b> (fungi) were not separated from <b>autotrophs</b> (green plants), despite major differences, including cell wall chemistry.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<b>Cell wall composition difference that supported separation:</b>
+<div class="tile-grid">
+  <div class="tile">Fungi<span class="tile-sub">cell wall contains <b>chitin</b></span></div>
+  <div class="tile">Green plants<span class="tile-sub">cell wall is <b>cellulosic (cellulose)</b></span></div>
+</div>
+Considering such characteristics led to placing <b>fungi in a separate kingdom</b> (Kingdom Fungi).
+</div>
+
+<h3>Comparative characteristics of the Five Kingdoms (Table 2.1 content)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<b>Five-kingdom comparison must be learnt as a set of linked features:</b> cell type, cell wall, nuclear membrane, body organisation, and mode of nutrition.
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Monera<span class="tile-sub">Prokaryotic; wall non-cellulosic (polysaccharide + amino acid); nuclear membrane absent; body organisation cellular; nutrition autotrophic (chemosynthetic/photosynthetic) and heterotrophic (saprophytic/parasitic)</span></div>
+  <div class="tile">Protista<span class="tile-sub">Eukaryotic; cell wall present in some; nuclear membrane present; body organisation cellular; nutrition autotrophic (photosynthetic) and heterotrophic</span></div>
+  <div class="tile">Fungi<span class="tile-sub">Eukaryotic; wall present with chitin; nuclear membrane present; body organisation multicellular/loose tissue; nutrition heterotrophic (saprophytic/parasitic)</span></div>
+  <div class="tile">Plantae<span class="tile-sub">Eukaryotic; wall present (cellulose); nuclear membrane present; body organisation tissue/organ; nutrition autotrophic (photosynthetic)</span></div>
+  <div class="tile">Animalia<span class="tile-sub">Eukaryotic; wall absent; nuclear membrane present; body organisation tissue/organ/organ system; nutrition heterotrophic (holozoic/saprophytic etc.)</span></div>
+</div>
+
+<div class="remember-box">
+⚠ <b>Exam tip:</b> Do not write “all protists have a cell wall.” Correct: <b>cell wall present in some</b>. Also, <b>Monera = prokaryotic = nuclear membrane absent</b> is a frequent 1-mark check.
+</div>
+
+<h3>Kingdom Protista as a “new grouping” under changed criteria</h3>
+<paragraph id="6a8c169dc01a40070bd7823f">Whittaker’s system grouped <b>unicellular eukaryotes</b> into <b>Kingdom Protista</b>, even if earlier systems placed them in different kingdoms.</paragraph>
+
+<ul class="star-list">
+  <li><b>Chlamydomonas</b> and <b>Chlorella</b>: earlier placed in algae within Plants (both have cell walls).</li>
+  <li><b>Paramoecium</b> and <b>Amoeba</b>: earlier placed in Animal kingdom (lack cell wall).</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+This mixing happened because <b>classification criteria changed</b>. Such changes can continue in the future as understanding of characteristics and evolutionary relationships improves.
+</div>
+
+<h3>Modern goal: phylogenetic classification</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+Over time, classification aims to reflect not only <b>morphological, physiological, and reproductive similarities</b> but also be <b>phylogenetic</b>—i.e., based on <b>evolutionary relationships</b>.
+</div>
+
+<h3>Scope note for this chapter</h3>
+<paragraph id="6a8c169dc01a40070bd78240">In this chapter (as stated in the text), the focus is on characteristics of:</paragraph>
+<ul class="check-list">
+  <li><b>Kingdom Monera</b></li>
+  <li><b>Kingdom Protista</b></li>
+  <li><b>Kingdom Fungi</b></li>
+</ul>
+<paragraph id="6a8c169dc01a40070bd78241"><b>Kingdom Plantae</b> and <b>Kingdom Animalia</b> (plant and animal kingdoms) are treated separately in later chapters.</paragraph>
+
+<h2>Kingdom Monera: Bacteria (Introduction)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78242"><b>Kingdom Monera</b> contains <b>bacteria as the sole members</b>.</paragraph>
+</div>
+
+<h3>Occurrence and abundance</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="star-list">
+    <li><b>Most abundant micro-organisms</b></li>
+    <li>Occur <b>almost everywhere</b></li>
+    <li><b>Hundreds</b> may be present in a <b>handful of soil</b></li>
+    <li>Live in <b>extreme habitats</b>: hot springs, deserts, snow, deep oceans (where few life forms survive)</li>
+    <li>Many live <b>in or on other organisms</b> as <b>parasites</b></li>
+  </ul>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169dc01a40070bd78243"><b>Analogy to remember ubiquity:</b> If most organisms need “comfortable conditions,” bacteria are the “survivors” that can occupy nearly every niche—from boiling springs to deep oceans—and can also live on/in hosts as parasites.</paragraph>
+</div>
+
+<h3>Classification of bacteria based on shape (Figure 2.1)</h3>
+<div style="display: flex; justify-content: center;">
+    <img alt="Fig 2.1" class="zoomable" data-full="img/Fig_2.1.webp" decoding="async" height="724" loading="lazy" src="img/Fig_2.1.webp" style="max-width: 100%; height: auto;" width="2172"/>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78244"><b>Bacteria are grouped into four categories based on shape:</b></paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Coccus<span class="tile-sub">spherical; plural: <b>cocci</b></span></div>
+  <div class="tile">Bacillus<span class="tile-sub">rod-shaped; plural: <b>bacilli</b></span></div>
+  <div class="tile">Vibrium<span class="tile-sub">comma-shaped; plural: <b>vibrio</b></span></div>
+  <div class="tile">Spirillum<span class="tile-sub">spiral; plural: <b>spirilla</b></span></div>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+  <span class="mnemonic-word">Co-Ba-Vi-Spi</span>
+  <div class="mnemonic-expand">
+    Co — <b>Co</b>ccus (sphere)<br/>
+    Ba — <b>Ba</b>cillus (rod)<br/>
+    Vi — <b>Vi</b>brium (comma)<br/>
+    Spi — <b>Spi</b>rillum (spiral)
+  </div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78245"><b>Plural forms are examinable:</b> coccus→cocci; bacillus→bacilli; vibrium→vibrio; spirillum→spirilla.</paragraph>
+</div>
+
+
+<h2>Biological Classification: Bacteria (overview)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78246"><b>Bacteria: structure vs behaviour</b></paragraph>
+  <ul class="check-list">
+    <li><b>Structure:</b> very simple</li>
+    <li><b>Behaviour/metabolism:</b> very complex; as a group they show the <b>most extensive metabolic diversity</b> compared to many other organisms</li>
+  </ul>
+</div>
+
+<h3>Nutrition in bacteria: Autotrophs vs heterotrophs</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78247"><b>Autotrophic bacteria</b> synthesise their own food from <b>inorganic substrates</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Photosynthetic autotrophs<span class="tile-sub">Use light energy to synthesise food</span></div>
+  <div class="tile">Chemosynthetic autotrophs<span class="tile-sub">Use energy released by oxidising inorganic substances</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78248"><b>Heterotrophic bacteria</b> depend on <b>other organisms</b> or <b>dead organic matter</b> for food.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd78249"><b>Majority of bacteria are heterotrophs.</b></paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd7824a">Do not mix up: <b>autotrophs</b> use <b>inorganic substrates</b> to make food; <b>heterotrophs</b> rely on <b>pre-formed organic matter</b> (living or dead).</paragraph>
+</div>
+
+
+<h2>Archaebacteria</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7824b"><b>Archaebacteria</b> are special bacteria that live in <b>extreme (harsh) habitats</b>. Their key distinguishing feature is a <b>different cell wall structure</b> from other bacteria, which enables survival under extreme conditions.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Halophiles<span class="tile-sub">Live in extremely salty areas</span></div>
+  <div class="tile">Thermoacidophiles<span class="tile-sub">Live in hot springs</span></div>
+  <div class="tile">Methanogens<span class="tile-sub">Live in marshy areas; produce methane</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7824c"><b>Methanogens</b> occur in the <b>gut of ruminants</b> (e.g., cows, buffaloes) and are responsible for <b>methane (biogas) production</b> from the dung of these animals.</paragraph>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169dc01a40070bd7824d"><b>Real-life link:</b> Biogas plants exploit methane production from dung; methanogens are the biological agents behind this conversion.</paragraph>
+</div>
+
+
+<h2>Eubacteria (“true bacteria”)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7824e"><b>Eubacteria</b> are the <b>‘true bacteria’</b> and include <b>thousands</b> of different forms.</paragraph>
+</div>
+
+<h3>General characteristics</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="check-list">
+    <li><b>Cell wall:</b> rigid cell wall present</li>
+    <li><b>Motility:</b> if motile, they have a <b>flagellum</b></li>
+  </ul>
+</div>
+
+<h3>Cyanobacteria (blue-green algae)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7824f"><b>Cyanobacteria</b> (also called <b>blue-green algae</b>) contain <b>chlorophyll a</b> similar to green plants and hence are <b>photosynthetic autotrophs</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Organisation<span class="tile-sub">Unicellular / Colonial / Filamentous</span></div>
+  <div class="tile">Habitat<span class="tile-sub">Freshwater / Marine / Terrestrial</span></div>
+  <div class="tile">Colony feature<span class="tile-sub">Often surrounded by a gelatinous sheath</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78250"><b>Blooms:</b> Cyanobacteria often form <b>blooms</b> in <b>polluted water bodies</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78251"><b>Nitrogen fixation:</b> Some cyanobacteria can fix atmospheric nitrogen in specialised cells called <b>heterocysts</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Examples (heterocystous N<sub>2</sub>-fixers):</b> <b>Nostoc</b>, <b>Anabaena</b></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78252">Exam trap: “Blue-green algae” are <b>bacteria</b> (prokaryotic), not true algae (eukaryotic), even though they are photosynthetic.</paragraph>
+</div>
+
+<h3>Chemosynthetic autotrophic bacteria</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78253"><b>Chemosynthetic autotrophic bacteria</b> obtain energy by <b>oxidising inorganic substances</b> and use this released energy for <b>ATP production</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>They oxidise substances such as <b>nitrates</b>, <b>nitrites</b> and <b>ammonia</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78254"><b>Ecological role:</b> They play a major role in <b>recycling nutrients</b> such as <b>nitrogen, phosphorous, iron and sulphur</b>.</paragraph>
+</div>
+
+<h3>Heterotrophic bacteria: importance and harm</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78255"><b>Heterotrophic bacteria</b> are the <b>most abundant</b> bacteria in nature; most act as <b>decomposers</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Useful roles<span class="tile-sub">Curd formation; antibiotic production; nitrogen fixation in legume roots</span></div>
+  <div class="tile">Harmful roles<span class="tile-sub">Pathogens of humans, crops, farm animals and pets</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Helpful examples/uses:</b> making <b>curd from milk</b>; <b>production of antibiotics</b>; <b>fixing nitrogen</b> in <b>legume roots</b></li>
+  <li><b>Pathogenic examples (diseases):</b> <b>cholera</b>, <b>typhoid</b>, <b>tetanus</b>, <b>citrus canker</b></li>
+</ul>
+
+<h3>Reproduction in bacteria</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78256"><b>Main mode:</b> Bacteria reproduce mainly by <b>fission</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd78257"><b>Under unfavourable conditions:</b> they may form <b>spores</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd78258"><b>Genetic exchange:</b> they also show a primitive “sexual” process via <b>DNA transfer from one bacterium to another</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Favourable conditions</div><span class="flow-arrow">→</span><div class="flow-box">Fission (main method)</div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Unfavourable conditions</div><span class="flow-arrow">→</span><div class="flow-box">Spore formation</div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Bacterium A</div><span class="flow-arrow">→</span><div class="flow-box">DNA transfer</div><span class="flow-arrow">→</span><div class="flow-box">Bacterium B</div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78259">“Sexual reproduction” in bacteria here refers to <b>DNA transfer</b> (genetic recombination), not gamete formation as in eukaryotes.</paragraph>
+</div>
+
+<h3>Mycoplasma</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7825a"><b>Mycoplasma</b> are organisms that <b>completely lack a cell wall</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="check-list">
+    <li><b>Smallest living cells known</b></li>
+    <li>Can <b>survive without oxygen</b></li>
+    <li>Many are <b>pathogenic</b> in <b>animals and plants</b></li>
+  </ul>
+</div>
+
+<h2>Kingdom Protista</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7825b"><b>Protista</b> includes <b>all single-celled eukaryotes</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd7825c"><b>Boundary note:</b> Kingdom limits are <b>not well defined</b> (e.g., one biologist’s “photosynthetic protistan” may be another’s “plant”).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7825d"><b>Included here:</b> <b>Chrysophytes, Dinoflagellates, Euglenoids, Slime moulds, Protozoans</b>.</paragraph>
+  <ul class="check-list">
+    <li><b>Habitat:</b> primarily <b>aquatic</b></li>
+    <li><b>Linking role:</b> connects features of kingdoms dealing with <b>plants, animals and fungi</b></li>
+  </ul>
+</div>
+
+<h3>General features of protists</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7825e"><b>Eukaryotic cell plan</b> → protist cells have:</paragraph>
+  <ul class="check-list">
+    <li>a well-defined <b>nucleus</b></li>
+    <li><b>membrane-bound organelles</b></li>
+    <li>in some, <b>flagella</b> or <b>cilia</b></li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7825f"><b>Reproduction in Protista</b> occurs by:</paragraph>
+  <ul class="check-list">
+    <li><b>Asexual</b> methods</li>
+    <li><b>Sexual</b> methods involving <b>cell fusion</b> and <b>zygote formation</b></li>
+  </ul>
+</div>
+
+<h2>Chrysophytes</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78260"><b>Chrysophytes</b> include:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Diatoms<span class="tile-sub">major chrysophyte group</span></div>
+  <div class="tile">Golden algae (desmids)<span class="tile-sub">major chrysophyte group</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="check-list">
+    <li><b>Habitat:</b> <b>fresh water</b> + <b>marine</b></li>
+    <li><b>Size/position:</b> microscopic; float passively as <b>plankton</b></li>
+    <li><b>Nutrition:</b> most are <b>photosynthetic</b></li>
+  </ul>
+</div>
+
+<h3>Diatoms: cell wall structure and significance</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78261"><b>Diatom cell wall</b> forms <b>two thin overlapping shells</b> that fit together <b>like a soap box</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd78262">Walls embedded with <b>silica</b> → walls are <b>indestructible</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169dc01a40070bd78263"><b>Analogy:</b> diatom wall = a <b>two-part soap box</b> (lid + base) made rigid by <b>silica</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78264"><b>Diatomaceous earth</b> = large deposits of diatom cell walls accumulated in habitats over <b>billions of years</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78265"><b>Uses of diatomaceous earth:</b> gritty soil used for:</paragraph>
+  <ul class="star-list">
+    <li><b>Polishing</b></li>
+    <li><b>Filtration</b> of oils and syrups</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78266"><b>Ecological importance:</b> Diatoms are the chief <b>“producers”</b> in the oceans.</paragraph>
+</div>
+
+<h2>Dinoflagellates</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78267"><b>Dinoflagellates</b> are mostly <b>marine</b> and <b>photosynthetic</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78268"><b>Colour variation:</b> may appear <b>yellow, green, brown, blue or red</b> depending on the main pigments in their cells.</paragraph>
+</div>
+
+<h3>Cell covering and flagella arrangement</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78269"><b>Cell wall:</b> stiff <b>cellulose plates</b> on the outer surface.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd7826a"><b>Flagella:</b> most have <b>two flagella</b>:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Longitudinal flagellum<span class="tile-sub">runs along the length</span></div>
+  <div class="tile">Transverse flagellum<span class="tile-sub">lies in a furrow between wall plates</span></div>
+</div>
+
+<h3>Red tides and toxicity</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7826b"><b>Red tides:</b> rapid multiplication of <b>red dinoflagellates</b> can make seawater appear <b>red</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Example:</b> <b>Gonyaulax</b></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7826c"><b>Toxins</b> released during blooms (large numbers) may kill other marine animals such as <b>fishes</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd7826d">Exam phrasing to remember: “Red dinoflagellates undergo rapid multiplication” → sea appears red; “toxins released” → fish kills.</paragraph>
+</div>
+
+<h2>Euglenoids</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7826e"><b>Euglenoids</b> are mostly <b>freshwater</b> organisms found in <b>stagnant water</b>.</paragraph>
+</div>
+
+<h3>Pellicle (in place of a cell wall)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7826f">Instead of a cell wall, euglenoids have a protein-rich layer called <b>pellicle</b>, which makes the body <b>flexible</b>.</paragraph>
+</div>
+
+<h3>Flagella and nutrition (mixotrophy)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78270"><b>Flagella:</b> two flagella—<b>one short</b> and <b>one long</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd78271"><b>Nutrition:</b></paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Sunlight present</div><span class="flow-arrow">→</span><div class="flow-box">Photosynthetic</div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Sunlight absent</div><span class="flow-arrow">→</span><div class="flow-box">Heterotrophic (predates on smaller organisms)</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78272"><b>Pigments:</b> Euglenoid pigments are <b>identical</b> to those in <b>higher plants</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Example:</b> <b>Euglena</b></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78273">Common confusion: euglenoids are not “plants”; they are protists that can switch between <b>photosynthesis</b> and <b>heterotrophy</b> depending on light.</paragraph>
+</div>
+
+<h2>Slime Moulds</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78274"><b>Slime moulds</b> are <b>saprophytic protists</b>.</paragraph>
+</div>
+
+<h3>Feeding and movement</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78275">The body moves along <b>decaying twigs and leaves</b>, <b>engulfing organic material</b>.</paragraph>
+</div>
+
+<h3>Plasmodium formation and spore-bearing fruiting bodies</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78276"><b>Suitable conditions:</b> slime moulds form an aggregation called <b>plasmodium</b>, which may grow and spread over <b>several feet</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd78277"><b>Unfavourable conditions:</b> plasmodium differentiates into <b>fruiting bodies</b> that bear <b>spores</b> at their tips.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="check-list">
+    <li><b>Spores have true walls</b></li>
+    <li><b>Extremely resistant</b>—can survive for <b>many years</b> even under adverse conditions</li>
+    <li><b>Dispersal:</b> spores are dispersed by <b>air currents</b></li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78278">Do not omit the condition-dependence in answers: <b>suitable</b> → plasmodium; <b>unfavourable</b> → fruiting bodies + spores.</paragraph>
+</div>
+
+<h2>Protozoans</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78279"><b>Protozoans</b> are <b>heterotrophs</b> that live as <b>predators</b> or <b>parasites</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd7827a">They are believed to be <b>primitive relatives of animals</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7827b">There are <b>four major groups</b> of protozoans (classification begins here).</paragraph>
+</div>
+
+<h3>Amoeboid protozoans</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7827c"><b>Amoeboid protozoans</b> live in <b>fresh water</b>, <b>sea water</b> or <b>moist soil</b>.</paragraph>
+  <paragraph id="6a8c169dc01a40070bd7827d">They <b>move and capture</b> food (capture method continues in the next portion of the chapter).</paragraph>
+</div>
+
+<h2>Protozoans (continued): Major Groups &amp; Key Features</h2>
+
+<h3>Sarcodines (Amoeboid protozoans): pseudopodia, shells, parasitism</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7827e"><b>Sarcodines (amoeboid protozoans)</b> capture prey by extending <b>pseudopodia</b> (“false feet”), as in <b>Amoeba</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Nutrition/feeding<span class="tile-sub">engulf prey using pseudopodia</span></div>
+  <div class="tile">Marine forms<span class="tile-sub">often have <b>silica shells</b> on their surface</span></div>
+  <div class="tile">Parasitic members<span class="tile-sub">e.g., <b>Entamoeba</b></span></div>
+</div>
+
+<h3>Flagellated protozoans: flagella; free-living or parasitic; disease</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7827f"><b>Flagellated protozoans</b> possess <b>flagella</b> for movement; they may be <b>free-living</b> or <b>parasitic</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78280">Some parasitic flagellates cause severe human diseases, e.g., <b>sleeping sickness</b> caused by <b>Trypanosoma</b>.</paragraph>
+</div>
+
+<h3>Ciliated protozoans: cilia-driven feeding via gullet</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78281"><b>Ciliated protozoans</b> are aquatic and move actively due to <b>thousands of cilia</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Gullet (cavity):</b> a cavity that <b>opens to the outside</b> of the cell surface.</li>
+</ul>
+
+<div class="flow-row">
+  <div class="flow-box">Rows of cilia beat in coordination</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Water + food are steered inward</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Food enters the <b>gullet</b></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Example:</b> <b>Paramoecium</b> (Paramecium).</li>
+</ul>
+
+<h3>Sporozoans: infectious spore-like stage; malaria</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78282"><b>Sporozoans</b> are diverse protozoans that have an <b>infectious spore-like stage</b> in the life cycle.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78283"><b>Plasmodium</b> is the malarial parasite; it causes <b>malaria</b>, a disease with a staggering effect on human population.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Fig 2.4" class="zoomable" data-full="img/Fig_2.4.webp" decoding="async" height="635" loading="lazy" src="img/Fig_2.4.webp" style="max-width: 100%; height: auto;" width="2172"/>
+</div>
+<h2>Kingdom Fungi (2.3): Characteristics, Structure, Nutrition, Symbiosis &amp; Reproduction</h2>
+
+<h3>General nature, diversity, occurrence, and importance</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78284"><b>Fungi</b> form a unique kingdom of <b>heterotrophic</b> organisms showing great diversity in <b>morphology</b> and <b>habitat</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">On food<span class="tile-sub">moist bread; rotten fruits</span></div>
+  <div class="tile">Edible forms<span class="tile-sub">mushrooms; toadstools (fungi)</span></div>
+  <div class="tile">Plant infection<span class="tile-sub">white spots on mustard leaves (parasitic fungus)</span></div>
+  <div class="tile">Industry<span class="tile-sub">yeast used in bread and beer</span></div>
+  <div class="tile">Diseases<span class="tile-sub">wheat rust: <b>Puccinia</b></span></div>
+  <div class="tile">Medicines<span class="tile-sub">antibiotics: <b>Penicillium</b></span></div>
+</div>
+
+<ul class="check-list">
+  <li><b>Cosmopolitan distribution:</b> occur in <b>air, water, soil</b>, and <b>on plants and animals</b>.</li>
+  <li><b>Preferred conditions:</b> grow best in <b>warm and humid</b> places.</li>
+</ul>
+
+<div class="sticky-note">
+<paragraph id="6a8c169dc01a40070bd78285"><b>Why refrigeration slows spoilage:</b> keeping food in a refrigerator helps prevent food from going bad by slowing <b>bacterial or fungal infections</b> that grow well in warm, humid conditions.</paragraph>
+</div>
+
+<h3>Body organisation: hyphae, mycelium, septate vs coenocytic; cell wall</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78286">Except <b>yeasts</b> (unicellular), fungi are typically <b>filamentous</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Hyphae<br/><span class="tile-sub">thread-like filaments</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Mycelium<br/><span class="tile-sub">network of hyphae</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Coenocytic hyphae<span class="tile-sub">continuous tubes with multinucleated cytoplasm (aseptate)</span></div>
+  <div class="tile">Septate hyphae<span class="tile-sub">hyphae have septae (cross walls)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78287"><b>Fungal cell wall composition:</b> mainly <b>chitin</b> and <b>polysaccharides</b>.</paragraph>
+</div>
+
+<h3>Modes of nutrition: saprophytes, parasites, symbionts (lichens, mycorrhiza)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78288"><b>Most fungi are heterotrophic</b> and absorb <b>soluble organic matter</b> from their surroundings.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Saprophytes<span class="tile-sub">absorb soluble organic matter from dead substrates</span></div>
+  <div class="tile">Parasites<span class="tile-sub">depend on living plants/animals</span></div>
+  <div class="tile">Symbionts<span class="tile-sub">mutual association with other organisms</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Lichens:</b> fungal association with <b>algae</b>.</li>
+  <li><b>Mycorrhiza:</b> fungal association with <b>roots of higher plants</b>.</li>
+</ul>
+
+<h3>Reproduction in fungi: vegetative, asexual, sexual; fruiting bodies</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78289">Fungi reproduce by <b>vegetative</b>, <b>asexual</b>, and <b>sexual</b> methods. Spores are formed in specialised structures called <b>fruiting bodies</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Vegetative reproduction<span class="tile-sub">fragmentation; fission; budding</span></div>
+  <div class="tile">Asexual reproduction<span class="tile-sub">conidia; sporangiospores; zoospores</span></div>
+  <div class="tile">Sexual reproduction<span class="tile-sub">oospores; ascospores; basidiospores</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd7828a"><b>Exam trap:</b> “Fruiting bodies” are the <i>structures</i> where specific spores are produced; don’t confuse the spore type with the body type (e.g., ascospores in asci within ascocarps; basidiospores on basidia within basidiocarps).</paragraph>
+</div>
+
+<h3>Sexual cycle (three steps): plasmogamy → karyogamy → meiosis</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7828b">The fungal <b>sexual cycle</b> proceeds through <b>three essential steps</b>:</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">(i) Plasmogamy<br/><span class="tile-sub">fusion of protoplasms between two motile/non-motile gametes</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">(ii) Karyogamy<br/><span class="tile-sub">fusion of two nuclei</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">(iii) Meiosis<br/><span class="tile-sub">in zygote producing haploid spores</span></div>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+<span class="mnemonic-word">PKM</span>
+<div class="mnemonic-expand">
+P — Plasmogamy<br/>
+K — Karyogamy<br/>
+M — Meiosis
+</div>
+</div>
+
+<h3>Dikaryon and dikaryophase (n + n): where it occurs and significance</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7828c">During sexual reproduction, <b>two haploid hyphae</b> of compatible mating types fuse.</paragraph>
+</div>
+
+<ul>
+  <li>In some fungi, fusion of haploid cells leads <b>immediately</b> to <b>diploid (2n)</b> cells.</li>
+  <li>In <b>ascomycetes and basidiomycetes</b>, there is an intervening <b>dikaryotic stage</b> where each cell contains <b>two nuclei</b> (<b>n + n</b>).</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7828d"><b>Dikaryon:</b> the condition of having two haploid nuclei per cell (<b>n + n</b>).</paragraph>
+<paragraph id="6a8c169dc01a40070bd7828e"><b>Dikaryophase:</b> the phase in the fungal life cycle where the dikaryon condition persists.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Parental nuclei remain separate<br/><span class="tile-sub">dikaryon (n + n)</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Karyogamy<br/><span class="tile-sub">diploid cells form</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Fruiting bodies develop<br/><span class="tile-sub">meiosis occurs inside</span></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Haploid spores produced<br/><span class="tile-sub">reduction division (meiosis)</span></div>
+</div>
+
+<h3>Basis of fungal classification</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7828f">Fungal classes are distinguished using:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Mycelium morphology<span class="tile-sub">overall structure/organisation</span></div>
+  <div class="tile">Mode of spore formation<span class="tile-sub">how spores are produced</span></div>
+  <div class="tile">Type of fruiting bodies<span class="tile-sub">structures bearing spores</span></div>
+</div>
+
+<h2>Classes of Fungi (2.3.1–2.3.4)</h2>
+
+<h3>Phycomycetes (2.3.1): habitat, mycelium type, spores, sexual reproduction, examples</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78290"><b>Phycomycetes</b> occur in aquatic habitats, on decaying wood in moist/damp places, or as <b>obligate parasites</b> on plants.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub">Aquatic / moist decaying wood / obligate plant parasites</span></div>
+  <div class="tile">Mycelium<span class="tile-sub"><b>aseptate</b> + <b>coenocytic</b></span></div>
+  <div class="tile">Asexual spores<span class="tile-sub"><b>zoospores</b> (motile) / <b>aplanospores</b> (non-motile)</span></div>
+  <div class="tile">Spore formation site<span class="tile-sub"><b>endogenous</b> spores inside <b>sporangium</b></span></div>
+  <div class="tile">Sexual reproduction<span class="tile-sub">fusion of gametes → <b>zygospore</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78291"><b>Gamete types in phycomycetes:</b></paragraph>
+<ul>
+<li><b>Isogamous:</b> gametes similar in morphology</li>
+<li><b>Anisogamous:</b> gametes dissimilar</li>
+<li><b>Oogamous:</b> a type of dissimilar gametes (egg and sperm-type)</li>
+</ul>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Mucor<span class="tile-sub">common phycomycete</span>
+   </div>
+  <div class="tile">Rhizopus<span class="tile-sub">bread mould</span>
+  </div>
+  <div class="tile">Albugo<span class="tile-sub">parasitic fungus on mustard</span>
+    </div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Fig 2.5(a,b,c)" class="zoomable" data-full="img/Fig_2.5(a,b,c).webp" decoding="async" height="724" loading="lazy" src="https://pikachu-books.vercel.app/api/reader/6a8d106badc4d7111c929807/6a8d21cb330e421e6315ea78/img/Fig_2.5(a,b,c).webp" style="max-width: 100%; height: auto;" width="2172"/>
+</div>
+   
+</div>
+
+<h3>Ascomycetes (2.3.2): sac fungi; lifestyle; conidia &amp; asci; ascocarps; examples &amp; uses</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78292"><b>Ascomycetes</b> are <b>sac-fungi</b>; mostly multicellular (e.g., <b>Penicillium</b>), rarely unicellular (e.g., yeast <b>Saccharomyces</b>).</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Modes of life<span class="tile-sub">saprophytic / parasitic / <b>coprophilous</b> (on dung)</span></div>
+  <div class="tile">Mycelium<span class="tile-sub"><b>branched</b> + <b>septate</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78293"><b>Asexual reproduction (Ascomycetes):</b></paragraph>
+<ul>
+<li><b>Asexual spores:</b> <b>conidia</b></li>
+<li><b>Where formed:</b> produced <b>exogenously</b> on special mycelium called <b>conidiophores</b></li>
+<li><b>After germination:</b> conidia germinate to form <b>mycelium</b></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78294"><b>Sexual reproduction (Ascomycetes):</b></paragraph>
+<ul>
+<li><b>Sexual spores:</b> <b>ascospores</b></li>
+<li><b>Where formed:</b> produced <b>endogenously</b> in sac-like <b>asci</b> (singular: <b>ascus</b>)</li>
+<li><b>Fruiting body:</b> asci are arranged into <b>ascocarps</b></li>
+</ul>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Aspergillus<span class="tile-sub">ascomycete example</span></div>
+  <div class="tile">Claviceps<span class="tile-sub">ascomycete example</span></div>
+  <div class="tile">Neurospora<span class="tile-sub">used in biochemical &amp; genetic work</span></div>
+</div>
+
+<ul class="star-list">
+<li><b>Edible ascomycetes:</b> <b>morels</b> and <b>truffles</b> (considered delicacies).</li>
+</ul>
+
+<h3>Basidiomycetes (2.3.3): mushrooms/rusts/smuts; dikaryon; basidium &amp; basidiospores; basidiocarp</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78295"><b>Basidiomycetes</b> include mushrooms, bracket fungi and puffballs; also important parasites like rusts and smuts.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub">soil / logs / tree stumps; also inside living plant bodies (parasitic)</span></div>
+  <div class="tile">Mycelium<span class="tile-sub"><b>branched</b> + <b>septate</b></span></div>
+  <div class="tile">Asexual spores<span class="tile-sub">generally <b>absent</b></span></div>
+  <div class="tile">Vegetative reproduction<span class="tile-sub">commonly by <b>fragmentation</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78296"><b>Sexual process (Basidiomycetes):</b></paragraph>
+
+<div class="flow-row">
+  <div class="flow-box">Sex organs absent</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Plasmogamy: fusion of 2 vegetative/somatic cells (different strains/genotypes)</div><span class="flow-arrow">→</span>
+  <div class="flow-box"><b>Dikaryotic</b> structure forms</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Gives rise to <b>basidium</b></div><span class="flow-arrow">→</span>
+  <div class="flow-box">In basidium: <b>karyogamy</b> then <b>meiosis</b></div><span class="flow-arrow">→</span>
+  <div class="flow-box">Product: <b>four basidiospores</b></div>
+</div>
+
+<ul>
+<li><b>Spore position:</b> basidiospores are produced <b>exogenously</b> on the <b>basidium</b> (plural: <b>basidia</b>).</li>
+<li><b>Fruiting body:</b> basidia are arranged in <b>basidiocarps</b>.</li>
+</ul>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Agaricus<span class="tile-sub">mushroom</span></div>
+  <div class="tile">Ustilago<span class="tile-sub">smut</span></div>
+  <div class="tile">Puccinia<span class="tile-sub">rust fungus</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78297"><b>High-yield distinction:</b> In basidiomycetes, basidiospores are formed <b>exogenously</b> on basidia (contrast: ascospores formed <b>endogenously</b> in asci).</paragraph>
+</div>
+
+<h3>Deuteromycetes (2.3.4): imperfect fungi; naming issue; conidia only; ecological role; examples</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78298"><b>Deuteromycetes</b> are called <b>imperfect fungi</b> because only their <b>asexual/vegetative</b> phases are known.</paragraph>
+</div>
+
+<div class="sticky-note">
+A “temporary folder” in classification: once the sexual stage is discovered, the fungus gets shifted to its correct group (often <b>ascomycetes</b> or <b>basidiomycetes</b>).
+</div>
+
+<paragraph id="6a8c169dc01a40070bd78299">When sexual forms were discovered, these fungi were moved to the appropriate class. Sometimes the <b>asexual/vegetative stage</b> had one name (placed in deuteromycetes) and the <b>sexual stage</b> another (placed elsewhere); once linkages were established, correct identification led to reclassification—often into <b>ascomycetes</b> or <b>basidiomycetes</b>.</paragraph>
+
+<div class="tile-grid">
+  <div class="tile">Reproduction<span class="tile-sub">only asexual spores called <b>conidia</b></span></div>
+  <div class="tile">Mycelium<span class="tile-sub"><b>septate</b> + <b>branched</b></span></div>
+  <div class="tile">Nutrition/ecology<span class="tile-sub">saprophytes or parasites; many are <b>decomposers of litter</b> aiding <b>mineral cycling</b></span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Alternaria<span class="tile-sub">deuteromycete example</span></div>
+  <div class="tile">Colletotrichum<span class="tile-sub">deuteromycete example</span></div>
+  <div class="tile">Trichoderma<span class="tile-sub">deuteromycete example</span></div>
+</div>
+
+<h2>Kingdom Plantae</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7829a"><b>Kingdom Plantae</b> includes all <b>eukaryotic</b>, <b>chlorophyll-containing</b> organisms commonly called <b>plants</b>.</paragraph>
+</div>
+
+<h3>General characteristics</h3>
+
+<div class="tile-grid">
+  <div class="tile">Cell type<span class="tile-sub">eukaryotic cells with <b>prominent chloroplasts</b></span></div>
+  <div class="tile">Cell wall<span class="tile-sub">present; mainly made of <b>cellulose</b></span></div>
+  <div class="tile">Nutrition<span class="tile-sub">mostly autotrophic (photosynthetic), but <b>some are partially heterotrophic</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7829b"><b>Partially heterotrophic plants</b> occur as:</paragraph>
+<ul class="star-list">
+<li><b>Insectivorous plants</b> (supplement nutrients by trapping insects): <b>Bladderwort</b>, <b>Venus fly trap</b>.</li>
+<li><b>Parasitic plants</b> (derive nutrition from host): <b>Cuscuta</b>.</li>
+</ul>
+</div>
+
+<h3>Major groups included in Plantae</h3>
+
+<div class="tile-grid">
+  <div class="tile">Algae<span class="tile-sub">Plant kingdom group</span></div>
+  <div class="tile">Bryophytes<span class="tile-sub">Plant kingdom group</span></div>
+  <div class="tile">Pteridophytes<span class="tile-sub">Plant kingdom group</span></div>
+  <div class="tile">Gymnosperms<span class="tile-sub">Plant kingdom group</span></div>
+  <div class="tile">Angiosperms<span class="tile-sub">Plant kingdom group</span></div>
+</div>
+
+<h3>Alternation of generations</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7829c"><b>Alternation of generations</b> = plant life cycle shows two distinct phases that <b>alternate</b>:</paragraph>
+<ul class="star-list">
+<li><b>Diploid sporophytic phase</b> (<b>2n</b>)</li>
+<li><b>Haploid gametophytic phase</b> (<b>n</b>)</li>
+</ul>
+<paragraph id="6a8c169dc01a40070bd7829d">The <b>length</b> of each phase and whether each is <b>free-living or dependent</b> varies among different plant groups.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd7829e"><b>Exam trap:</b> “Alternation of generations” is not just the presence of two phases; it specifically means they <b>alternate</b> and may differ in <b>duration</b> and <b>independence</b> across groups (algae → bryophytes → pteridophytes → gymnosperms → angiosperms).</paragraph>
+</div>
+
+<h2>Kingdom Animalia</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7829f"><b>Kingdom Animalia</b> consists of <b>heterotrophic, eukaryotic</b> organisms that are typically <b>multicellular</b> and whose cells <b>lack cell walls</b>.</paragraph>
+</div>
+
+<h3>Nutrition and storage</h3>
+
+<div class="tile-grid">
+  <div class="tile">Dependence for food<span class="tile-sub">directly or indirectly depend on <b>plants</b> for food</span></div>
+  <div class="tile">Digestion<span class="tile-sub">food digested in an <b>internal cavity</b></span></div>
+  <div class="tile">Reserve food<span class="tile-sub">stored as <b>glycogen</b> or <b>fat</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd782a0"><b>Mode of nutrition:</b> <b>Holozoic</b> = nutrition by <b>ingestion</b> of food (followed by internal digestion).</paragraph>
+</div>
+
+<h3>Growth, coordination and movement</h3>
+
+<div class="tile-grid">
+  <div class="tile">Growth pattern<span class="tile-sub">definite; adults have <b>definite shape and size</b></span></div>
+  <div class="tile">Higher forms<span class="tile-sub">elaborate <b>sensory</b> + <b>neuromotor</b> mechanisms</span></div>
+  <div class="tile">Locomotion<span class="tile-sub">most are capable of locomotion</span></div>
+</div>
+
+<h3>Reproduction</h3>
+
+<div class="flow-row">
+  <div class="flow-box">Copulation (male + female)</div><span class="flow-arrow">→</span><div class="flow-box">Sexual reproduction</div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Fertilisation</div><span class="flow-arrow">→</span><div class="flow-box">Embryological development</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd782a1"><b>Write precisely:</b> Animalia = <b>heterotrophic + multicellular + no cell wall + holozoic ingestion + internal digestion + glycogen/fat storage</b>. Missing any of these commonly loses marks in short answers.</paragraph>
+</div>
+
+
+
+<h2>Viruses, Viroids, Prions and Lichens</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd782a2">In Whittaker’s <b>five-kingdom classification</b>, there is <b>no mention</b> of:</paragraph>
+<ul class="star-list">
+<li><b>Lichens</b></li>
+<li>Some <b>acellular organisms</b>: <b>viruses, viroids, prions</b></li>
+</ul>
+</div>
+
+<h3>Viruses</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd782a3"><b>Viruses</b> are <b>non-cellular</b> organisms. Outside a living cell they exist as an <b>inert crystalline structure</b>; inside a host cell they replicate by taking over the host machinery, often <b>killing the host</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd782a4">This is why viruses are not considered truly “living” if living organisms are defined as those having a <b>cell structure</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c169dc01a40070bd782a5"><b>Living vs non-living angle (typical exam discussion point):</b> Viruses behave like chemicals (inert crystals) outside a host, but show biological reproduction only inside a host cell.</paragraph>
+</div>
+
+<h3>Historical milestones and terminology</h3>
+
+<div class="tile-grid">
+  <div class="tile">Meaning of “virus”<span class="tile-sub">venom or poisonous fluid</span></div>
+  <div class="tile">Dmitri Ivanowsky (1892)<span class="tile-sub">tobacco mosaic disease microbe passed through <b>bacteria-proof filters</b> → smaller than bacteria</span></div>
+  <div class="tile">M.W. Beijerinck (1898)<span class="tile-sub">infected extract infects healthy plants; named <b>“virus”</b>; <b>Contagium vivum fluidum</b></span></div>
+  <div class="tile">W.M. Stanley (1935)<span class="tile-sub">viruses can be <b>crystallised</b>; crystals largely <b>proteins</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd782a6"><b>Obligate parasites:</b> Viruses are inert outside their specific host cell and can replicate only inside it.</paragraph>
+</div>
+
+<h3>Structure and genetic material</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd782a7">A virus is a <b>nucleoprotein</b> (nucleic acid + protein). The <b>genetic material is infectious</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd782a8"><b>Genetic material rule:</b> Viral genetic material is <b>either RNA or DNA</b>; <b>no virus contains both RNA and DNA</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Plant viruses<span class="tile-sub">generally <b>single-stranded RNA (ssRNA)</b></span></div>
+  <div class="tile">Animal viruses<span class="tile-sub"><b>ssRNA</b> or <b>double-stranded RNA</b> or <b>double-stranded DNA (dsDNA)</b></span></div>
+  <div class="tile">Bacteriophages<span class="tile-sub">(infect bacteria) usually <b>dsDNA</b></span></div>
+</div>
+
+<h3>Capsid, capsomeres and symmetry</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd782a9"><b>Capsid</b> = protein coat that protects viral nucleic acid.</paragraph>
+<paragraph id="6a8c169dc01a40070bd782aa"><b>Capsomeres</b> = small subunits making up the capsid.</paragraph>
+</div>
+
+<ul class="check-list">
+<li><b>Arrangement of capsomeres:</b> in <b>helical</b> or <b>polyhedral</b> geometric forms.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd782ab"><b>Do not confuse:</b> capsid (entire coat) vs capsomeres (subunits). Also, “helical/polyhedral” refers to <b>capsomere arrangement</b>.</paragraph>
+</div>
+
+<h3>Diseases caused by viruses</h3>
+
+<div class="tile-grid">
+  <div class="tile">Human diseases<span class="tile-sub">mumps, small pox, herpes, influenza; <b>AIDS</b> also caused by a virus</span></div>
+  <div class="tile">Plant symptoms<span class="tile-sub">mosaic formation; leaf rolling &amp; curling; yellowing; vein clearing; dwarfing; stunted growth</span></div>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Fig 2.6" class="zoomable" data-full="img/Fig_2.6.webp" decoding="async" height="887" loading="lazy" src="img/Fig_2.6.webp" style="max-width: 100%; height: auto;" width="1774"/>
+</div>
+
+<h3>Viroids</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd782ac"><b>Viroids</b> are infectious agents discovered by <b>T.O. Diener (1971)</b>, smaller than viruses, causing <b>potato spindle tuber disease</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li><b>Composition:</b> free <b>RNA</b> only.</li>
+<li><b>No protein coat</b> (unlike viruses) → hence the name <b>viroid</b>.</li>
+<li><b>RNA has low molecular weight.</b></li>
+</ul>
+</div>
+
+<h3>Prions</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd782ad"><b>Prions</b> are infectious agents made of <b>abnormally folded protein</b> (no nucleic acid mentioned here) and are similar in size to viruses.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd782ae"><b>Notable prion diseases:</b></paragraph>
+<ul class="star-list">
+<li><b>Bovine spongiform encephalopathy (BSE)</b> = “mad cow disease” in cattle</li>
+<li>Analogous human disease: <b>Creutzfeldt–Jacob disease (CJD)</b></li>
+</ul>
+</div>
+
+<h3>Lichens</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd782af"><b>Lichens</b> are <b>symbiotic</b> (mutually useful) associations between <b>algae</b> and <b>fungi</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="star-list">
+<li><b>Phycobiont</b> = algal component (<b>autotrophic</b>)</li>
+<li><b>Mycobiont</b> = fungal component (<b>heterotrophic</b>)</li>
+</ul>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Algae (phycobiont)</div><span class="flow-arrow">→</span><div class="flow-box">Prepare food for fungus</div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Fungus (mycobiont)</div><span class="flow-arrow">→</span><div class="flow-box">Provides shelter + absorbs minerals &amp; water</div>
+</div>
+
+<paragraph id="6a8c169dc01a40070bd782b0">The association is so close that a lichen appears as a <b>single organism</b> in nature though it contains <b>two different organisms</b>.</paragraph>
+
+<div class="sticky-note">
+<paragraph id="6a8c169dc01a40070bd782b1"><b>Environmental application:</b> Lichens are <b>very good pollution indicators</b> because they <b>do not grow in polluted areas</b>.</paragraph>
+</div>
+
+
+
+<h2>Chapter wrap-up (key classification takeaways from this portion)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<div class="tile-grid">
+  <div class="tile">Plantae<span class="tile-sub">eukaryotic, chlorophyll-containing; cellulose cell wall; includes algae → angiosperms; life cycle shows <b>alternation of generations</b> (gametophyte n and sporophyte 2n)</span></div>
+  <div class="tile">Animalia<span class="tile-sub">multicellular eukaryotic heterotrophs; <b>no cell wall</b>; <b>holozoic</b> ingestion; internal digestion; store <b>glycogen/fat</b>; usually locomotory; sexual reproduction by copulation + embryological development</span></div>
+  <div class="tile">Viruses/viroids/prions<span class="tile-sub">acellular infectious agents not placed in Whittaker’s five kingdoms; viruses are nucleoproteins with either RNA or DNA (not both); viroids are free RNA without protein coat; prions are abnormally folded proteins causing BSE/CJD</span></div>
+  <div class="tile">Lichens<span class="tile-sub">symbiosis of algae (phycobiont) and fungi (mycobiont); pollution indicators</span></div>
+</div>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

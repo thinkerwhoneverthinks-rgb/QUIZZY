@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structural Organisation in Plants and Animals (Unit 2): Why Morphology/Anatomy Matter</title>
+  <link href="data:," rel="icon"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="container chapter-wrap" id="main-content"><paragraph class="page-label" id="6a8c16a0c01a40070bd78bdb">Handwritten Notes</paragraph>
+<h1>Ch-05 : Morphology of Flowering Plants</h1>
+
+<h2>Structural Organisation in Plants and Animals (Unit 2): Why Morphology/Anatomy Matter</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78bdc"><b>Descriptive biology (Natural history)</b> = early biology based mainly on <b>observation</b> (naked eye → magnifying lens → microscope), recording:</paragraph>
+  <ul class="check-list">
+    <li><b>Gross structural features</b> (external + internal)</li>
+    <li><b>Observable living phenomena</b> (perceivable life processes/behaviours as seen directly)</li>
+  </ul>
+</div>
+
+<paragraph id="6a8c16a0c01a40070bd78bdd">Before <b>experimental biology</b> (especially <b>physiology</b>) became established, naturalists mostly described organisms; hence biology remained largely <b>natural history</b> for a long time.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78bde"><b>Why detailed description is exam-relevant:</b> even though students may initially find it “boring”, detailed morphology/anatomy later became essential in <b>reductionist biology</b> because it:</paragraph>
+  <ul class="star-list">
+    <li>Provides the structural context needed to study <b>living processes</b> (physiology).</li>
+    <li>Helps frame <b>research questions</b> in physiology and <b>evolutionary biology</b>.</li>
+    <li>Explains the <b>structural basis</b> of physiological and behavioural phenomena.</li>
+  </ul>
+</div>
+
+<paragraph id="6a8c16a0c01a40070bd78bdf">In this unit, structural organisation of plants and animals is treated, presenting <b>morphological</b> and <b>anatomical</b> features separately for convenience.</paragraph>
+
+<div class="tile-grid">
+  <div class="tile">Chapter 5<span class="tile-sub">Morphology of Flowering Plants</span></div>
+  <div class="tile">Chapter 6<span class="tile-sub">Anatomy of Flowering Plants</span></div>
+  <div class="tile">Chapter 7<span class="tile-sub">Structural Organisation in Animals</span></div>
+</div>
+
+
+<h2>Katherine Esau (1898–1997): Significance in Plant Anatomy</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78be0"><b>Katherine Esau</b> was a major figure who revived and shaped modern plant anatomy through a <b>dynamic, developmental approach</b> to understanding plant structure.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Born<span class="tile-sub">Ukraine, 1898</span></div>
+  <div class="tile">Education<span class="tile-sub">Agriculture in Russia + Germany; <b>doctorate (1931)</b> in the United States</span></div>
+  <div class="tile">Early research finding<span class="tile-sub"><b>Curly top virus</b> spreads via <b>phloem</b> (food-conducting tissue)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78be1"><b>Major books:</b></paragraph>
+  <ul class="star-list">
+    <li><i>Plant Anatomy</i> (1954): developmental approach; huge worldwide impact; revived the discipline.</li>
+    <li><i>The Anatomy of Seed Plants</i> (1960): called “<b>Webster’s of plant biology</b>” for its encyclopaedic nature.</li>
+  </ul>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Honours (1957)<span class="tile-sub">Elected to the <b>National Academy of Sciences</b> — sixth woman to receive that honour</span></div>
+  <div class="tile">Honours (1989)<span class="tile-sub"><b>National Medal of Science</b> awarded by President George Bush</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Legacy:</b> On her death (1997), Peter Raven (Missouri Botanical Garden) noted she “<b>absolutely dominated</b>” the field even at age 99.</li>
+</ul>
+
+
+<h2>Morphology of Flowering Plants: Overview and Need for Terminology</h2>
+
+<paragraph id="6a8c16a0c01a40070bd78be2">Angiosperms show great diversity in external structure (<b>morphology</b>), yet all are characterised by presence of:</paragraph>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.1" class="zoomable" data-full="img/Figure_5.1.webp" decoding="async" height="1202" loading="lazy" src="img/Figure_5.1.webp" style="max-width: 100%; height: auto;" width="912"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78be3" style="text-align:center;"><b>Figure:</b> Parts of a flowering plant</paragraph>
+<div class="tile-grid">
+  <div class="tile">Roots<span class="tile-sub">underground organ system</span></div>
+  <div class="tile">Stems<span class="tile-sub">ascending axis</span></div>
+  <div class="tile">Leaves<span class="tile-sub">main photosynthetic organ</span></div>
+  <div class="tile">Flowers<span class="tile-sub">reproductive structure</span></div>
+  <div class="tile">Fruits<span class="tile-sub">develop from flower/ovary</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78be4"><b>For classification and understanding any higher plant</b>, you must know:</paragraph>
+  <ul class="check-list">
+    <li><b>Standard technical terms</b></li>
+    <li><b>Standard definitions</b></li>
+    <li><b>Variations in parts</b> as <b>adaptations</b> to environment (habitat, protection, climbing, storage, etc.)</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78be5"><b>Two main plant body divisions:</b></paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Root system</div><span class="flow-arrow">→</span><div class="flow-box">Underground part of flowering plant</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-box">Shoot system</div><span class="flow-arrow">→</span><div class="flow-box">Above-ground portion</div>
+  </div>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c16a0c01a40070bd78be6">Pulling out a weed commonly reveals the basic plan: <b>roots, stem, leaves</b>, and often <b>flowers/fruits</b>—the same fundamental organisation despite huge diversity.</paragraph>
+</div>
+
+
+<h2>The Root (5.1)</h2>
+
+<h3>Origin and Types of Root Systems</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78be7"><b>Primary root</b> forms by <b>direct elongation of the radicle</b> (embryonic root) and grows into the soil (common in dicots).</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Lateral roots</b> arise from the primary root in <b>several orders</b>:
+    <ul>
+      <li><b>Secondary</b> roots</li>
+      <li><b>Tertiary</b> roots (and higher orders)</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Tap root system<span class="tile-sub">Primary root + its branches; typical of many dicots</span></div>
+  <div class="tile">Fibrous root system<span class="tile-sub">Many roots from stem base; typical of many monocots</span></div>
+  <div class="tile">Adventitious roots<span class="tile-sub">Roots from parts other than radicle</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Tap root system:</b> primary root persists and branches; example: <b>mustard</b>.</li>
+  <li><b>Fibrous root system:</b> in <b>monocotyledonous plants</b>, the primary root is <b>short-lived</b> and replaced by many roots originating from the <b>base of the stem</b>; example: <b>wheat</b>.</li>
+  <li><b>Adventitious roots:</b> arise from parts other than radicle; examples: <b>grass</b>, <b>Monstera</b>, <b>banyan tree</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78be8"><b>Exam trap:</b> “Adventitious” does <i>not</i> mean “aerial only”. It means <b>origin other than the radicle</b> (may be aerial or underground depending on plant).</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.2" class="zoomable" data-full="img/Figure_5.2.webp" decoding="async" height="771" loading="lazy" src="img/Figure_5.2.webp" style="max-width: 100%; height: auto;" width="1961"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78be9" style="text-align:center;"><b>Figure:</b> Different types of roots : (a) Tap (b) Fibrous (c) dventitious </paragraph> 
+
+<h3>Functions of the Root System</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78bea"><b>Main functions of roots:</b></paragraph>
+  <ul class="check-list">
+    <li><b>Absorption</b> of water and minerals from soil</li>
+    <li><b>Anchorage</b> (proper support/firm fixing of plant parts)</li>
+    <li><b>Storage</b> of reserve food material</li>
+    <li><b>Synthesis</b> of plant growth regulators</li>
+  </ul>
+</div>
+
+
+<h3>Regions of the Root (5.1.1)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78beb">The root tip shows distinct functional regions arranged from the apex upwards:</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Root cap</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Meristematic region</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Region of elongation</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Region of maturation</div>
+</div>
+
+<ul class="star-list">
+  <li><b>Root cap:</b> thimble-like structure covering the apex; <b>protects</b> the tender root tip as it penetrates soil.</li>
+  <li><b>Region of meristematic activity:</b> a few millimetres above root cap; cells are:
+    <ul>
+      <li><b>Very small</b></li>
+      <li><b>Thin-walled</b></li>
+      <li>Have <b>dense protoplasm</b></li>
+      <li><b>Divide repeatedly</b> (mitotic activity)</li>
+    </ul>
+  </li>
+  <li><b>Region of elongation:</b> cells just proximal to the meristematic region undergo rapid <b>elongation and enlargement</b>; responsible for increase in <b>root length</b>.</li>
+  <li><b>Region of maturation:</b> proximal to elongation zone; cells <b>differentiate and mature</b>.</li>
+  <li><b>Root hairs:</b> in maturation region, some epidermal cells form fine, delicate, thread-like <b>root hairs</b> that <b>absorb water and minerals</b> from soil.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78bec"><b>Common confusion:</b> Root hairs are associated with the <b>region of maturation (differentiation)</b>, not the root cap or meristematic region.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.3" class="zoomable" data-full="img/Figure_5.3.webp" decoding="async" height="793" loading="lazy" src="img/Figure_5.3.webp" style="max-width: 100%; height: auto;" width="937"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78bed" style="text-align:center;"><b>Figure:</b> The regions of the root-tip </paragraph>
+<h2>The Stem (5.2)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78bee"><b>Stem</b> = ascending part of the plant axis that bears <b>branches, leaves, flowers and fruits</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Origin:</b> develops from the <b>plumule</b> of the embryo in a germinating seed.</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Nodes<span class="tile-sub">regions of the stem where <b>leaves are born</b></span></div>
+  <div class="tile">Internodes<span class="tile-sub">portions <b>between two nodes</b></span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Buds:</b> stem bears buds that may be:</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Terminal bud<span class="tile-sub">at the apex</span></div>
+  <div class="tile">Axillary bud<span class="tile-sub">in the axil of a leaf</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Appearance with age:</b> generally <b>green when young</b>; later often becomes <b>woody and dark brown</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78bef"><b>Functions of stem:</b></paragraph>
+  <ul class="check-list">
+    <li><b>Spreads out branches</b> bearing leaves, flowers, fruits</li>
+    <li><b>Conducts</b> water, minerals and <b>photosynthates</b></li>
+    <li>May also perform: <b>storage of food</b>, <b>support</b>, <b>protection</b>, and <b>vegetative propagation</b></li>
+  </ul>
+</div>
+
+
+
+<h2>The Leaf (5.3)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78bf0"><b>Leaf</b> = lateral, generally flattened structure borne on the stem.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Site of origin on plant:</b> develops at the <b>node</b>.</li>
+  <li><b>Axil and axillary bud:</b> leaf bears a bud in its <b>axil</b>; the <b>axillary bud</b> later develops into a <b>branch</b>.</li>
+  <li><b>Origin (developmental):</b> leaves originate from <b>shoot apical meristems</b>.</li>
+</ul>
+
+<div class="flow-row">
+  <div class="flow-box">Leaf arrangement</div><span class="flow-arrow">→</span><div class="flow-box"><b>Acropetal order</b></div><span class="flow-arrow">→</span><div class="flow-box">Younger leaves nearer the tip (towards apex)</div>
+</div>
+
+<ul class="star-list">
+  <li><b>Importance:</b> leaves are the most important vegetative organs for <b>photosynthesis</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78bf1"><b>Exam phrasing to use:</b> Leaf is “<b>lateral</b>” and “<b>borne on stem</b>”; do not describe it as an axial organ (that is stem/root).</paragraph>
+</div>
+
+
+
+<h2>Structure of a Typical Leaf</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78bf2">A typical leaf has <b>three main parts</b>:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Leaf base<span class="tile-sub">attaches leaf to the stem; may bear stipules; may form sheath/pulvinus</span></div>
+    <div class="tile">Petiole<span class="tile-sub">stalk that holds lamina to light; allows movement/cooling</span></div>
+    <div class="tile">Lamina (leaf blade)<span class="tile-sub">green expanded part with veins/veinlets; major photosynthetic surface</span></div>
+  </div>
+</div>
+
+<h3>Leaf base, stipules, sheath and pulvinus</h3>
+
+<ul class="check-list">
+  <li><b>Leaf base</b> attaches the leaf to the stem.</li>
+  <li><b>Stipules</b> = two lateral small leaf-like structures that the leaf base <b>may</b> bear.</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Monocotyledons<span class="tile-sub">leaf base expands into a <b>sheath</b> covering stem <b>partially or wholly</b></span></div>
+  <div class="tile">Leguminous plants<span class="tile-sub">swollen leaf base called <b>pulvinus</b></span></div>
+</div>
+
+<h3>Petiole: functions and significance</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="star-list">
+    <li><b>Positions the lamina toward light</b> (helps hold the blade to light).</li>
+    <li><b>Long, thin, flexible petioles</b> allow leaf blades to flutter in wind → <b>cools the leaf</b> and <b>brings fresh air</b> to the leaf surface.</li>
+  </ul>
+</div>
+
+<h3>Lamina (leaf blade), midrib and veins</h3>
+
+<ul class="check-list">
+  <li><b>Lamina</b> is the green expanded part of leaf, containing <b>veins</b> and <b>veinlets</b>.</li>
+  <li>A usually prominent middle vein is the <b>midrib</b>.</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Veins: rigidity<span class="tile-sub">provide <b>rigidity</b> to the leaf blade</span></div>
+  <div class="tile">Veins: transport<span class="tile-sub">channels for <b>water, minerals and food materials</b></span></div>
+</div>
+
+<ul class="check-list">
+  <li>Leaf lamina varies in <b>shape</b>, <b>margin</b>, <b>apex</b>, <b>surface</b>, and <b>extent of incision</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78bf3"><b>Exam trap:</b> Don’t confuse <b>midrib</b> (main central vein of lamina) with <b>rachis</b> (common axis in pinnately compound leaves that represents the midrib of the whole leaf).</paragraph>
+</div>
+
+
+
+<h2>Venation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78bf4"><b>Venation</b> = arrangement of veins and veinlets in the lamina of the leaf.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Reticulate venation<span class="tile-sub">veinlets form a network</span></div>
+  <div class="tile">Parallel venation<span class="tile-sub">veins run parallel to each other within the lamina</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="star-list">
+    <li><b>Dicotyledonous leaves</b> generally show <b>reticulate</b> venation.</li>
+    <li><b>Monocotyledonous leaves</b> characteristically show <b>parallel</b> venation.</li>
+  </ul>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.4" class="zoomable" data-full="img/Figure_5.4.webp" decoding="async" height="1441" loading="lazy" src="img/Figure_5.4.webp" style="max-width: 100%; height: auto;" width="823"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78bf5" style="text-align:center;"><b>Figure:</b> Structure of a leaf : (a) Parts of a leaf (b) Reticulate venation (c) Parallel venation
+
+</paragraph><h2>Types of Leaves (Simple and Compound)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul class="check-list">
+    <li><b>Simple leaf</b>: lamina is <b>entire</b>, OR if incised, the incisions <b>do not touch the midrib</b>.</li>
+    <li><b>Compound leaf</b>: incisions of lamina reach up to the <b>midrib</b>, breaking it into a number of <b>leaflets</b>.</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78bf6"><b>Bud criterion (very examinable):</b></paragraph>
+  <ul class="star-list">
+    <li>An <b>axillary bud</b> is present in the axil of the <b>petiole</b> in <b>both</b> simple and compound leaves.</li>
+    <li><b>No bud</b> occurs in the axil of <b>leaflets</b> of a compound leaf.</li>
+  </ul>
+</div>
+
+<h3>Types of compound leaves</h3>
+
+<div class="tile-grid">
+  <div class="tile">Pinnately compound<span class="tile-sub">leaflets on a common axis called <b>rachis</b> (represents midrib); example: <b>neem</b></span></div>
+  <div class="tile">Palmately compound<span class="tile-sub">leaflets attached at a common point at tip of petiole; example: <b>silk cotton</b></span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78bf7"><b>How to distinguish:</b> In <b>pinnate</b> compound leaves, look for a <b>rachis</b> with leaflets along it; in <b>palmate</b> compound leaves, leaflets arise from <b>one point</b> like fingers from a palm.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.5" class="zoomable" data-full="img/Figure_5.5.webp" decoding="async" height="689" loading="lazy" src="img/Figure_5.5.webp" style="max-width: 100%; height: auto;" width="870"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78bf8" style="text-align:center;"><b>Figure:</b> Compound leaves : (a) pinnately compound leaf (b) palmately compound leaf
+
+
+</paragraph><h2>Phyllotaxy</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78bf9"><b>Phyllotaxy</b> = pattern of arrangement of leaves on the stem or branch.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Alternate<span class="tile-sub">single leaf at each node in alternate manner</span></div>
+  <div class="tile">Opposite<span class="tile-sub">pair of leaves at each node, opposite each other</span></div>
+  <div class="tile">Whorled<span class="tile-sub">more than two leaves at a node forming a whorl</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Alternate</b>: china rose, mustard, sunflower</li>
+  <li><b>Opposite</b>: Calotropis, guava</li>
+  <li><b>Whorled</b>: Alstonia</li>
+</ul>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.6" class="zoomable" data-full="img/Figure_5.6.webp" decoding="async" height="975" loading="lazy" src="img/Figure_5.6.webp" style="max-width: 100%; height: auto;" width="870"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78bfa" style="text-align:center;"><b>Figure:</b> Different types of phyllotaxy :
+(a) Alternate (b) Opposite (c) Whorled </paragraph>
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+  <span class="mnemonic-word">AOW</span>
+  <div class="mnemonic-expand">
+    A — <b>Alternate</b> = <b>1</b> per node<br/>
+    O — <b>Opposite</b> = <b>2</b> per node<br/>
+    W — <b>Whorled</b> = <b>≥3</b> per node
+  </div>
+</div>
+
+<h2>The Inflorescence</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li>A <b>flower</b> is a <b>modified shoot</b>.</li>
+  <li>In flower formation, the <b>shoot apical meristem</b> changes into a <b>floral meristem</b>.</li>
+  <li><b>Internodes do not elongate</b> and the axis becomes <b>condensed</b>.</li>
+  <li>The apex produces <b>floral appendages</b> laterally at successive nodes instead of leaves.</li>
+  <li>If a shoot tip transforms into a <b>flower</b>, it is always <b>solitary</b>.</li>
+  <li><b>Inflorescence</b> = arrangement of flowers on the floral axis.</li>
+</ul>
+</div>
+
+<div class="sticky-note">
+Think “shoot → switches job”: instead of making leaves + long internodes, it makes flower parts on a short, condensed axis.
+</div>
+
+<h3>Major types of inflorescence: racemose vs cymose</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78bfb">Classification depends on whether the apex becomes a flower or continues growth:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Racemose<span class="tile-sub">main axis continues to grow; flowers borne laterally in acropetal succession</span></div>
+  <div class="tile">Cymose<span class="tile-sub">main axis terminates in a flower (limited growth); flowers borne in basipetal order</span></div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Racemose: axis keeps growing</div><span class="flow-arrow">→</span><div class="flow-box">flowers lateral</div><span class="flow-arrow">→</span><div class="flow-box">acropetal succession</div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Cymose: axis ends in a flower</div><span class="flow-arrow">→</span><div class="flow-box">growth limited</div><span class="flow-arrow">→</span><div class="flow-box">basipetal order</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78bfc"><b>Order words:</b> <b>Acropetal</b> = towards the apex (younger towards top); <b>Basipetal</b> = towards the base (younger towards base). Link this directly to racemose vs cymose in answers.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.7" class="zoomable" data-full="img/Figure_5.7.webp" decoding="async" height="1000" loading="lazy" src="img/Figure_5.7.webp" style="max-width: 100%; height: auto;" width="825"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78bfd" style="text-align:center;"><b>Figure:</b> Racemose inflorescence </paragraph>   
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.8" class="zoomable" data-full="img/Figure_5.8.webp" decoding="async" height="512" loading="lazy" src="img/Figure_5.8.webp" style="max-width: 100%; height: auto;" width="869"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78bfe" style="text-align:center;"><b>Figure:</b> Cymose inflorescence </paragraph>
+<h2>The Flower</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li><b>Flower</b> = reproductive unit in <b>angiosperms</b>; meant for <b>sexual reproduction</b>.</li>
+  <li>Floral whorls are arranged successively on the swollen end of the stalk (<b>pedicel</b>) called <b>thalamus</b> or <b>receptacle</b>.</li>
+  <li>A typical flower has <b>four whorls</b>: <b>calyx</b>, <b>corolla</b>, <b>androecium</b>, <b>gynoecium</b>.</li>
+  <li><b>Accessory organs</b>: calyx + corolla</li>
+  <li><b>Reproductive organs</b>: androecium + gynoecium</li>
+</ul>
+</div>
+
+<h3>Perianth</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78bff">In some flowers (e.g., <b>lily</b>), <b>calyx and corolla are not distinct</b>; collectively they are called <b>perianth</b>.</paragraph>
+</div>
+
+<h3>Sexuality: bisexual vs unisexual flowers</h3>
+<div class="tile-grid">
+  <div class="tile">Bisexual<span class="tile-sub">has both androecium and gynoecium</span></div>
+  <div class="tile">Unisexual<span class="tile-sub">has either only stamens or only carpels</span></div>
+</div>
+
+<h3>Symmetry: actinomorphic, zygomorphic, asymmetric</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li><b>Actinomorphic (radial symmetry)</b>: can be divided into two equal radial halves in <b>any</b> radial plane through the centre.</li>
+  <li><b>Zygomorphic (bilateral symmetry)</b>: can be divided into two similar halves in <b>only one</b> particular vertical plane.</li>
+  <li><b>Asymmetric (irregular)</b>: cannot be divided into two similar halves by <b>any</b> vertical plane through the centre.</li>
+</ul>
+</div>
+
+<ul class="star-list">
+  <li><b>Actinomorphic examples</b>: mustard, datura, chilli</li>
+  <li><b>Zygomorphic examples</b>: pea, gulmohur, bean, Cassia</li>
+  <li><b>Asymmetric example</b>: canna</li>
+</ul>
+
+<h3>Merosity: trimerous, tetramerous, pentamerous</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c00">A flower is:</paragraph>
+<ul class="check-list">
+  <li><b>Trimerous</b> if floral appendages are in multiples of <b>3</b></li>
+  <li><b>Tetramerous</b> if in multiples of <b>4</b></li>
+  <li><b>Pentamerous</b> if in multiples of <b>5</b></li>
+</ul>
+</div>
+
+<h3>Bracts: bracteate vs ebracteate</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li><b>Bract</b> = reduced leaf found at the base of the pedicel.</li>
+  <li><b>Bracteate flowers</b> = flowers with bracts.</li>
+  <li><b>Ebracteate flowers</b> = flowers without bracts.</li>
+</ul>
+</div>
+
+<h3>Position of floral parts on thalamus: hypogynous, perigynous, epigynous</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c01">Classification is based on the position of <b>calyx, corolla and androecium</b> with respect to the <b>ovary</b> on the thalamus.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Hypogynous<span class="tile-sub">gynoecium highest; other parts below; ovary superior</span></div>
+  <div class="tile">Perigynous<span class="tile-sub">gynoecium central; other parts on rim of thalamus at same level; ovary half inferior</span></div>
+  <div class="tile">Epigynous<span class="tile-sub">thalamus margin encloses ovary and fuses; other parts above; ovary inferior</span></div>
+</div>
+
+<div class="sticky-note">
+Quick cue: “<b>Hypo</b> = below, <b>epi</b> = above” (think where the other whorls sit relative to the ovary).
+</div>
+
+<ul class="star-list">
+  <li><b>Hypogynous (superior ovary)</b>: mustard, china rose, brinjal</li>
+  <li><b>Perigynous (half inferior ovary)</b>: plum, rose, peach</li>
+  <li><b>Epigynous (inferior ovary)</b>: guava, cucumber, ray florets of sunflower</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c02"><b>Exam wording precision:</b> In <b>epigynous</b> flowers, the thalamus margin grows upward, <b>encloses the ovary completely</b> and <b>fuses with it</b>; then other whorls arise <b>above</b> the ovary.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.9" class="zoomable" data-full="img/Figure_5.9.webp" decoding="async" height="746" loading="lazy" src="img/Figure_5.9.webp" style="max-width: 100%; height: auto;" width="1800"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c03" style="text-align:center;"><b>Figure:</b> Position of floral parts on thalamus : (a) Hypogynous (b) and (c) Perigynous (d) Epigynous </paragraph>
+<h2>Parts of a Flower</h2>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.10" class="zoomable" data-full="img/Figure_5.10.webp" decoding="async" height="454" loading="lazy" src="img/Figure_5.10.webp" style="max-width: 100%; height: auto;" width="1950"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c04" style="text-align:center;"><b>Figure:</b> Parts of a flower </paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c05">Each flower normally has <b>four floral whorls</b>:</paragraph>
+<div class="tile-grid">
+  <div class="tile">Calyx<span class="tile-sub">sepals</span></div>
+  <div class="tile">Corolla<span class="tile-sub">petals</span></div>
+  <div class="tile">Androecium<span class="tile-sub">male reproductive whorl</span></div>
+  <div class="tile">Gynoecium<span class="tile-sub">female reproductive whorl</span></div>
+</div>
+</div>
+
+<h3>Calyx</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li><b>Calyx</b> = outermost whorl; members are <b>sepals</b>.</li>
+  <li>Sepals are generally <b>green</b>, <b>leaf-like</b>, and <b>protect the flower in bud stage</b>.</li>
+  <li>Calyx may be:
+    <ul>
+      <li><b>Gamosepalous</b> = sepals united</li>
+      <li><b>Polysepalous</b> = sepals free</li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<h3>Corolla</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li><b>Corolla</b> is composed of <b>petals</b>.</li>
+  <li>Petals are usually <b>brightly coloured</b> to <b>attract insects for pollination</b>.</li>
+  <li>Corolla may be:
+    <ul>
+      <li><b>Gamopetalous</b> = petals united</li>
+      <li><b>Polypetalous</b> = petals free</li>
+    </ul>
+  </li>
+  <li>Corolla shows great variation in <b>shape</b> and <b>colour</b>.</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c06"><b>Common corolla shapes (name them exactly):</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Tubular<span class="tile-sub">tube-like</span></div>
+  <div class="tile">Bell-shaped<span class="tile-sub">campanulate form</span></div>
+  <div class="tile">Funnel-shaped<span class="tile-sub">widens gradually like a funnel</span></div>
+  <div class="tile">Wheel-shaped<span class="tile-sub">flat, spreading like a wheel</span></div>
+</div>
+</div>
+
+<h3>Aestivation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c07"><b>Aestivation</b> = mode of arrangement of sepals or petals in a <b>floral bud</b> with respect to other members of the <b>same whorl</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c08"><b>Main types of aestivation (must list):</b> <b>valvate</b>, <b>twisted</b>, <b>imbricate</b>.</paragraph>
+</div>
+
+<h2>Aestivation (Arrangement of sepals/petals in a whorl)</h2>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.11" class="zoomable" data-full="img/Figure_5.11.webp" decoding="async" height="785" loading="lazy" src="img/Figure_5.11.webp" style="max-width: 100%; height: auto;" width="1337"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c09" style="text-align:center;"><b>Figure:</b> Types of aestivation in corolla : (a) Valvate (b) Twisted (c) Imbricate (d) Vexillary </paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c0a"><b>Aestivation</b> = arrangement of sepals or petals in a floral bud with respect to other members of the same whorl.</paragraph>
+</div>
+
+<h3>Types of aestivation</h3>
+
+<div class="tile-grid">
+  <div class="tile">Valvate<span class="tile-sub">Margins just touch; no overlap (e.g., Calotropis)</span></div>
+  <div class="tile">Twisted<span class="tile-sub">One margin overlaps the next consistently (e.g., china rose, lady’s finger, cotton)</span></div>
+  <div class="tile">Imbricate<span class="tile-sub">Overlap occurs but not in a definite direction (e.g., Cassia, gulmohur)</span></div>
+  <div class="tile">Vexillary / Papilionaceous<span class="tile-sub">Largest petal (standard) overlaps wings; wings overlap keel (e.g., pea, bean)</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c0b"><b>Exam trap:</b> Imbricate ≠ twisted. Twisted has a definite, uniform direction of overlap; imbricate has overlap but no fixed order.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.12" class="zoomable" data-full="img/Figure_5.12.webp" decoding="async" height="2216" loading="lazy" src="img/Figure_5.12.webp" style="max-width: 100%; height: auto;" width="363"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c0c" style="text-align:center;"><b>Figure:</b> Types of placentation :
+(a) Marginal
+(b) Axile
+(c) Parietal
+(d) Free central
+(e) Basal </paragraph>
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78c0d"><b>Visual cue:</b> Vexillary (pea family) looks like a “flag” (standard) covering the two side “wings”, which cover the “boat” (keel).</paragraph>
+</div>
+
+<h2>Androecium</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c0e"><b>Androecium</b> = male reproductive whorl of a flower, composed of <b>stamens</b>.</paragraph>
+
+<paragraph id="6a8c16a0c01a40070bd78c0f"><b>Stamen</b> (male reproductive organ) has:</paragraph>
+<ul class="check-list">
+  <li><b>Filament</b> (stalk)</li>
+  <li><b>Anther</b></li>
+</ul>
+
+<paragraph id="6a8c16a0c01a40070bd78c10"><b>Anther structure:</b> usually <b>bilobed</b>; each lobe has <b>two chambers</b> called <b>pollen sacs</b> where <b>pollen grains</b> are produced.</paragraph>
+
+<paragraph id="6a8c16a0c01a40070bd78c11"><b>Staminode</b> = sterile (non-functional) stamen.</paragraph>
+</div>
+
+<h3>Attachment and cohesion of stamens</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c12">Stamens may be united with <b>other floral parts</b> (adhesion) or <b>among themselves</b> (cohesion).</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Adhesion</div><span class="flow-arrow">→</span><div class="flow-box">United with other floral parts</div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Cohesion</div><span class="flow-arrow">→</span><div class="flow-box">United among themselves</div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Epipetalous<span class="tile-sub">Stamens attached to petals (e.g., brinjal)</span></div>
+  <div class="tile">Epiphyllous<span class="tile-sub">Stamens attached to perianth (e.g., lily)</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Polyandrous<span class="tile-sub">Stamens free from each other</span></div>
+  <div class="tile">Monoadelphous<span class="tile-sub">Stamens united into one bundle (e.g., china rose)</span></div>
+  <div class="tile">Diadelphous<span class="tile-sub">Stamens united into two bundles (e.g., pea)</span></div>
+  <div class="tile">Polyadelphous<span class="tile-sub">Stamens united into more than two bundles (e.g., citrus)</span></div>
+</div>
+
+<paragraph id="6a8c16a0c01a40070bd78c13">There may be variation in <b>filament length</b> within the same flower, e.g., <b>Salvia</b> and <b>mustard</b>.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c14"><b>Exam tip:</b> “-adelphous” refers to <b>bundles of stamens (cohesion)</b>, not attachment to petals/perianth (that is epipetalous/epiphyllous).</paragraph>
+</div>
+
+<h2>Gynoecium</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c15"><b>Gynoecium</b> = female reproductive part of a flower, made of one or more <b>carpels</b>.</paragraph>
+
+<paragraph id="6a8c16a0c01a40070bd78c16"><b>Carpel parts</b> (3):</paragraph>
+<ul class="check-list">
+  <li><b>Stigma</b> = receptive surface for pollen (usually at tip)</li>
+  <li><b>Style</b> = elongated tube connecting stigma and ovary</li>
+  <li><b>Ovary</b> = enlarged basal part containing ovules</li>
+</ul>
+
+<paragraph id="6a8c16a0c01a40070bd78c17"><b>Ovules</b> are attached to a flattened, cushion-like <b>placenta</b>.</paragraph>
+</div>
+
+<h3>Apocarpous vs syncarpous gynoecium</h3>
+
+<div class="tile-grid">
+  <div class="tile">Apocarpous<span class="tile-sub">Carpels free (e.g., lotus, rose)</span></div>
+  <div class="tile">Syncarpous<span class="tile-sub">Carpels fused (e.g., mustard, tomato)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c18"><b>Post-fertilisation changes:</b></paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Ovules</div><span class="flow-arrow">→</span><div class="flow-box"><b>Seeds</b></div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Ovary</div><span class="flow-arrow">→</span><div class="flow-box"><b>Fruit</b></div>
+</div>
+
+<h3>Placentation (arrangement of ovules in ovary)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c19"><b>Placentation</b> = arrangement of ovules within the ovary.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Marginal<span class="tile-sub">Placenta as ridge along ventral suture; ovules in two rows (e.g., pea)</span></div>
+  <div class="tile">Axile<span class="tile-sub">Placenta axial; ovules attached to it in a multilocular ovary (e.g., china rose, tomato, lemon)</span></div>
+  <div class="tile">Parietal<span class="tile-sub">Ovules on inner wall/peripheral region; ovary one-chambered; may become two-chambered due to false septum (e.g., mustard, Argemone)</span></div>
+  <div class="tile">Free central<span class="tile-sub">Ovules on central axis; septa absent (e.g., Dianthus, Primrose)</span></div>
+  <div class="tile">Basal<span class="tile-sub">Placenta at base; single ovule (e.g., sunflower, marigold)</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c1a"><b>Parietal vs free central:</b> both can look “central” in diagrams, but <b>parietal</b> has ovules on inner wall/periphery (often with a false septum), while <b>free central</b> has a central axis with <b>no septa</b>.</paragraph>
+</div>
+
+<h2>The Fruit</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c1b"><b>Fruit</b> = mature/ripened <b>ovary</b> developed <b>after fertilisation</b>; characteristic feature of flowering plants.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c1c"><b>Parthenocarpic fruit</b> = fruit formed <b>without fertilisation</b> of the ovary.</paragraph>
+</div>
+
+<h3>General structure of fruit</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c1d">Typically fruit consists of:</paragraph>
+<ul class="check-list">
+  <li><b>Pericarp</b> (fruit wall)</li>
+  <li><b>Seeds</b></li>
+</ul>
+
+<paragraph id="6a8c16a0c01a40070bd78c1e"><b>Pericarp</b> may be <b>dry</b> or <b>fleshy</b>. If thick and fleshy, it differentiates into:</paragraph>
+<ul class="check-list">
+  <li><b>Epicarp</b> (outer)</li>
+  <li><b>Mesocarp</b> (middle)</li>
+  <li><b>Endocarp</b> (inner)</li>
+</ul>
+</div>
+
+<h3>Drupe: mango and coconut</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c1f"><b>Drupe</b> (e.g., mango, coconut): develops from <b>monocarpellary</b> <b>superior</b> ovaries; usually <b>one-seeded</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Mango:</b> pericarp clearly differentiated into <b>thin epicarp</b>, <b>fleshy edible mesocarp</b>, and <b>stony hard endocarp</b>.</li>
+  <li><b>Coconut:</b> also a drupe; <b>mesocarp is fibrous</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c20"><b>Exam tip:</b> In drupe, the “stone” is the <b>endocarp</b> (hard, stony layer).</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.13" class="zoomable" data-full="img/Figure_5.13.webp" decoding="async" height="554" loading="lazy" src="img/Figure_5.13.webp" style="max-width: 100%; height: auto;" width="1125"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c21" style="text-align:center;"><b>Figure:</b> Parts of a fruit : (a) Mango (b) Coconut </paragraph>
+<h2>The Seed</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c22">After fertilisation, <b>ovules develop into seeds</b>.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c23"><b>Seed</b> = <b>seed coat</b> + <b>embryo</b>.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c24"><b>Embryo</b> consists of:</paragraph>
+<ul class="check-list">
+  <li><b>Radicle</b></li>
+  <li><b>Embryonal axis</b></li>
+  <li><b>Cotyledons</b>: one (e.g., wheat, maize) or two (e.g., gram, pea)</li>
+</ul>
+</div>
+
+<h3>Structure of a dicotyledonous seed</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c25"><b>Seed coat</b> has two layers:</paragraph>
+<ul class="check-list">
+  <li><b>Testa</b> (outer)</li>
+  <li><b>Tegmen</b> (inner)</li>
+</ul>
+<paragraph id="6a8c16a0c01a40070bd78c26"><b>Hilum</b> = scar on seed coat showing attachment of developing seed to fruit.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c27"><b>Micropyle</b> = small pore above hilum.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78c28"><b>Visual cue:</b> Think of the hilum like a “navel scar” on the seed coat; the micropyle is the tiny pore just above it.</paragraph>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.14" class="zoomable" data-full="img/Figure_5.14.webp" decoding="async" height="468" loading="lazy" src="img/Figure_5.14.webp" style="max-width: 100%; height: auto;" width="893"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c29" style="text-align:center;"><b>Figure:</b> Structure of dicotyledonous seed </paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c2a"><b>Embryo inside seed coat:</b> embryonal axis + <b>two cotyledons</b>. Cotyledons often fleshy and store reserve food.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c2b"><b>Ends of embryonal axis:</b> <b>radicle</b> and <b>plumule</b>.</paragraph>
+
+<div class="tile-grid">
+  <div class="tile">Endospermic seeds<span class="tile-sub">Endosperm persists as food-storing tissue (e.g., castor)</span></div>
+  <div class="tile">Non-endospermous seeds<span class="tile-sub">Endosperm absent in mature seed (e.g., bean, gram, pea)</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c2c"><b>Don’t confuse:</b> “Endospermic” refers to presence of <b>endosperm in mature seed</b>, not just its formation (endosperm forms due to <b>double fertilisation</b>).</paragraph>
+</div>
+
+<h3>Structure of a monocotyledonous seed (maize as example)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c2d">Generally <b>monocot seeds are endospermic</b>; some (e.g., <b>orchids</b>) are non-endospermic.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Seed coat</b> in cereals (e.g., maize) is <b>membranous</b> and generally <b>fused with fruit wall</b>.</li>
+  <li><b>Endosperm</b> is bulky and stores food.</li>
+  <li>Outer covering of endosperm separates the embryo by a protein-rich <b>aleurone layer</b>.</li>
+  <li><b>Embryo</b> is small, located in a groove at one end of endosperm.</li>
+  <li>Embryo has one large shield-shaped cotyledon called <b>scutellum</b> and a short axis with <b>plumule</b> and <b>radicle</b>.</li>
+  <li><b>Protective sheaths:</b> plumule in <b>coleoptile</b>; radicle in <b>coleorhiza</b>.</li>
+</ul>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.15" class="zoomable" data-full="img/Figure_5.15.webp" decoding="async" height="784" loading="lazy" src="img/Figure_5.15.webp" style="max-width: 100%; height: auto;" width="1537"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c2e" style="text-align:center;"><b>Figure:</b> Structure of a monocotyledonous seed </paragraph>
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+<span class="mnemonic-word">C-C</span>
+<div class="mnemonic-expand">
+C — <b>Coleoptile</b> covers plumule<br/>
+C — <b>Coleorhiza</b> covers radicle
+</div>
+</div>
+
+<h2>Semi-technical description of a typical flowering plant</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c2f">A <b>semi-technical description</b> uses morphological features in a brief, simple, scientific language in a <b>proper sequence</b>.</paragraph>
+</div>
+
+<h3>Correct sequence of description</h3>
+
+<div class="flow-row">
+  <div class="flow-box">Habit</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Vegetative characters (root, stem, leaves)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Floral characters (inflorescence, flower parts)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Floral diagram + Floral formula</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c30"><b>Floral formula</b> is represented by symbols (must know meanings):</paragraph>
+<div class="tile-grid">
+  <div class="tile">Br<span class="tile-sub">bracteate</span></div>
+  <div class="tile">K<span class="tile-sub">calyx</span></div>
+  <div class="tile">C<span class="tile-sub">corolla</span></div>
+  <div class="tile">P<span class="tile-sub">perianth</span></div>
+  <div class="tile">A<span class="tile-sub">androecium</span></div>
+  <div class="tile">G<span class="tile-sub">gynoecium</span></div>
+  <div class="tile">G (bar below)<span class="tile-sub"><b>superior ovary</b></span></div>
+  <div class="tile">G (bar above)<span class="tile-sub"><b>inferior ovary</b></span></div>
+  <div class="tile">♂<span class="tile-sub">male</span></div>
+  <div class="tile">♀<span class="tile-sub">female</span></div>
+  <div class="tile">⚥<span class="tile-sub">bisexual</span></div>
+  <div class="tile">⊕<span class="tile-sub">actinomorphic</span></div>
+</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c31"><b>Exam tip:</b> Always present description in the prescribed order; marks are commonly allotted for correct sequencing plus correct symbol usage in the floral formula.</paragraph>
+</div>
+
+<h2>Floral Diagram &amp; Floral Formula (representation of floral features)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c32"><b>Floral diagram</b> = a diagrammatic representation of a flower showing <b>number of parts</b>, their <b>arrangement</b> (whorls), and the <b>relationships</b> among floral parts (e.g., fusion/cohesion and adhesion).</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c33"><b>Floral formula</b> = a <b>symbolic summary</b> of the floral characters (sex, symmetry, number of floral parts, fusion, adhesion, ovary position, etc.). It also indicates <b>cohesion</b> and <b>adhesion</b>.</paragraph>
+</div>
+
+<h3>How features are shown in floral formula/diagram</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+  <li><b>Fusion (cohesion)</b> of similar floral parts is indicated by <b>enclosing the number in brackets</b> in the floral formula (e.g., fused sepals/petals).</li>
+  <li><b>Adhesion</b> (union between different whorls) is shown by a <b>line drawn above the symbols</b> of the floral parts involved.</li>
+  <li><b>Zygomorphic nature</b> (bilateral symmetry) is specifically represented by the appropriate symbol in the floral formula (as used earlier in the chapter).</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c34"><b>Mother axis position</b> in a floral diagram is shown by a <b>dot at the top</b> of the diagram.</paragraph>
+</div>
+
+<h3>Standard order/arrangement in a floral diagram</h3>
+
+<div class="flow-row">
+  <div class="flow-box">Calyx (outermost)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Corolla</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Androecium</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Gynoecium (centre)</div>
+</div>
+
+<paragraph id="6a8c16a0c01a40070bd78c35">In the floral diagram, these whorls are drawn successively from outside to inside: <b>calyx</b> outermost and <b>gynoecium</b> in the centre.</paragraph>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78c36"><b>Why diagrams matter:</b> In one glance, a floral diagram tells you the <b>number</b> of each part, their <b>relative position</b>, and whether parts are <b>free or fused</b>—useful for identifying families.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>A floral diagram provides information about: <b>number of parts</b>, their <b>arrangement</b>, and their <b>relations</b> with one another.</li>
+  <li>Floral formula and floral diagram together summarise: <b>cohesion</b> (within a whorl) and <b>adhesion</b> (between whorls).</li>
+  <li>The given example referenced (Fig. 5.16) represents <b>mustard</b> (Family: <b>Brassicaceae</b>).</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c37"><b>Exam tip:</b> Always mention the <b>mother axis dot</b> and draw whorls in the correct order (calyx outermost → gynoecium centre). Missing these is a common diagram-mark loss.</paragraph>
+</div>
+
+<h2>Family Solanaceae (Potato family)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c38"><b>Solanaceae</b> = a large angiosperm family commonly called the <b>potato family</b>.</paragraph>
+</div>
+
+<h3>Distribution</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c39">Widely distributed in <b>tropics</b>, <b>subtropics</b> and even <b>temperate zones</b>.</paragraph>
+</div>
+
+<h3>Vegetative characters</h3>
+
+<div class="tile-grid">
+  <div class="tile">Habit<span class="tile-sub">Mostly herbs, shrubs; rarely small trees</span></div>
+  <div class="tile">Stem<span class="tile-sub">Herbaceous (rarely woody), aerial; erect, cylindrical, branched; solid or hollow; hairy or glabrous; underground stem in potato</span></div>
+  <div class="tile">Leaves<span class="tile-sub">Alternate; simple (rarely pinnately compound); exstipulate; reticulate venation</span></div>
+</div>
+
+<ul class="check-list">
+  <li><b>Potato (Solanum tuberosum)</b> has an <b>underground stem</b> (tuber) — important as a stem modification within this family description.</li>
+  <li>Leaves are typically <b>alternate</b> and <b>exstipulate</b> with <b>reticulate venation</b>.</li>
+</ul>
+
+<h3>Floral characters</h3>
+
+<div class="tile-grid">
+  <div class="tile">Inflorescence<span class="tile-sub">Solitary, axillary or cymose (as in Solanum)</span></div>
+  <div class="tile">Flower<span class="tile-sub">Bisexual; actinomorphic</span></div>
+  <div class="tile">Calyx<span class="tile-sub">5 sepals; united; persistent; valvate aestivation</span></div>
+  <div class="tile">Corolla<span class="tile-sub">5 petals; united; valvate aestivation</span></div>
+  <div class="tile">Androecium<span class="tile-sub">5 stamens; epipetalous</span></div>
+  <div class="tile">Gynoecium<span class="tile-sub">Bicarpellary; obliquely placed; syncarpous; ovary superior; bilocular; axile placentation; placenta swollen with many ovules</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c3a"><b>Must-remember diagnostic points (Solanaceae):</b></paragraph>
+<ul class="star-list">
+  <li>Flower: <b>bisexual</b>, <b>actinomorphic</b></li>
+  <li>Calyx and corolla: <b>pentamerous</b> and <b>gamosepalous/gamopetalous</b> (united), with <b>valvate aestivation</b></li>
+  <li>Androecium: <b>5 stamens, epipetalous</b> (stamens attached to petals)</li>
+  <li>Gynoecium: <b>bicarpellary, syncarpous</b>, <b>superior ovary</b>, typically <b>bilocular</b> with <b>axile placentation</b> and <b>many ovules</b></li>
+</ul>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 5.17" class="zoomable" data-full="img/Figure_5.17.webp" decoding="async" height="835" loading="lazy" src="img/Figure_5.17.webp" style="max-width: 100%; height: auto;" width="1408"/>
+</div>
+<paragraph id="6a8c16a0c01a40070bd78c3b" style="text-align:center;"><b>Figure:</b> Solanum nigrum (makoi) plant : (a) Flowering twig (b) Flower
+(c) L.S. of flower (d) Stamens (e) Carpel (f) Floral diagram </paragraph>
+<h3>Fruit and seed</h3>
+<div class="tile-grid">
+  <div class="tile">Fruit<span class="tile-sub">Berry or capsule</span></div>
+  <div class="tile">Seeds<span class="tile-sub">Many; endospermous</span></div>
+</div>
+
+<h3>Floral formula (as given)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8c16a0c01a40070bd78c3c"><b>Floral Formula:</b><br/><img alt="Figure Floral Formula" class="zoomable" data-full="img/Figure_Floral Formula.webp" decoding="async" height="724" loading="lazy" src="https://pikachu-books.vercel.app/api/reader/6a8d0edd15b7c42ced94c166/6a8d13923c5a672597229e9e/img/Figure_Floral Formula.webp" style="max-width: 20%; height: auto;" width="2172"/> </paragraph>
+</div>
+
+<h3>Economic importance</h3>
+<div class="tile-grid">
+  <div class="tile">Food<span class="tile-sub">tomato, brinjal (eggplant), potato</span></div>
+  <div class="tile">Spice<span class="tile-sub">chilli</span></div>
+  <div class="tile">Medicine<span class="tile-sub">belladonna, ashwagandha</span></div>
+  <div class="tile">Fumigatory<span class="tile-sub">tobacco</span></div>
+  <div class="tile">Ornamentals<span class="tile-sub">petunia</span></div>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78c3d"><b>Everyday link:</b> Many kitchen and garden plants (tomato, chilli, brinjal, petunia) belong to the same family because they share a characteristic floral plan: <b>5 fused petals</b>, <b>5 epipetalous stamens</b>, and a <b>superior bicarpellary ovary</b>.</paragraph>
+</div>
+
+<h2>Chapter Summary (Morphology of Flowering Plants — key takeaways from this portion)</h2>
+
+<h3>Overall variation and plant body organisation</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c3e">Flowering plants show enormous variation in <b>shape</b>, <b>size</b>, <b>structure</b>, <b>mode of nutrition</b>, <b>life span</b>, <b>habit</b> and <b>habitat</b>.</paragraph>
+</div>
+<ul class="check-list">
+  <li>They possess well-developed <b>root system</b> and <b>shoot system</b>.</li>
+</ul>
+
+<h3>Root system: types and modifications</h3>
+<ul class="check-list">
+  <li>Root system is either <b>tap root</b> or <b>fibrous</b>.</li>
+  <li>Generally: <b>dicots</b> have <b>tap roots</b>; <b>monocots</b> have <b>fibrous roots</b>.</li>
+  <li>Roots may be modified for: <b>storage of food</b>, <b>mechanical support</b>, and <b>respiration</b>.</li>
+</ul>
+
+<h3>Shoot system: parts and stem/leaf features</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c3f">The shoot system is differentiated into <b>stem</b>, <b>leaves</b>, <b>flowers</b> and <b>fruits</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c40"><b>Stem vs root (morphological distinction):</b> stem shows <b>nodes and internodes</b>, may bear <b>multicellular hairs</b>, and is <b>positively phototropic</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c41"><b>Leaf</b> = a <b>lateral outgrowth</b> of stem developed <b>exogenously</b> at the <b>node</b>. Usually green and the main organ of <b>photosynthesis</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Leaves show variations in <b>shape</b>, <b>size</b>, <b>margin</b>, <b>apex</b>, and <b>extent of incisions</b> of the <b>lamina</b>.</li>
+</ul>
+
+<h3>Flower, inflorescence, fruit and seed (core morphological sequence)</h3>
+<div class="flow-row">
+  <div class="flow-box">Flower (modified shoot)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Fertilisation</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Ovary → Fruit</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Ovules → Seeds</div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c42"><b>Flower</b> = a <b>modified shoot</b> meant for <b>sexual reproduction</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+  <li>Flowers are arranged in different types of <b>inflorescences</b>.</li>
+  <li>Flowers vary in: <b>symmetry</b>, <b>ovary position</b> relative to other parts, arrangement of <b>petals</b>, <b>sepals</b>, <b>ovules</b>, etc.</li>
+  <li>After fertilisation: <b>ovary → fruit</b>; <b>ovules → seeds</b>.</li>
+  <li>Seeds may be <b>monocotyledonous</b> or <b>dicotyledonous</b>, and vary in <b>shape</b>, <b>size</b>, and <b>viability period</b>.</li>
+</ul>
+
+<h3>Basis of classification and the role of descriptions/diagrams</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c43"><b>Floral characteristics</b> form the basis of <b>classification</b> and <b>identification</b> of flowering plants.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c44">This is illustrated using <b>semi-technical descriptions</b> of families.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c45">A flowering plant is described in a <b>definite sequence</b> using <b>scientific terms</b>.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c46">Floral features are summarised using <b>floral diagrams</b> and <b>floral formula</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c47"><b>Exam writing tip:</b> When asked for a family description (e.g., Solanaceae), present it in the standard order: <b>vegetative characters → floral characters → fruit/seed → floral formula → economic importance</b>, and accompany with a <b>floral diagram</b> if asked.</paragraph>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

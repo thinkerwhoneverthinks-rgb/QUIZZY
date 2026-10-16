@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title></title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c00799e0b8ef8128040a7/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Ch07: Gravitation</h1>
+
+<h2>7.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a5e"><b>Gravitation (everyday idea):</b> Objects naturally get pulled towards Earth.</paragraph>
+  <ul>
+    <li>Throw something up → it falls back down</li>
+    <li>Walking/moving uphill feels harder than downhill</li>
+    <li>Raindrops fall from clouds to Earth</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a5f"><b>Galileo (1564–1642):</b> Noted that <b>all bodies (whatever their mass)</b> fall with the same <b>constant acceleration</b> (ideal conditions).</paragraph>
+  <ul>
+    <li>Often said to have shown this publicly</li>
+    <li>Definitely did experiments with bodies rolling down <b>inclined planes</b></li>
+    <li>Got a value of acceleration due to gravity close to later accurate values</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a60"><b>Astronomical observations:</b> Since ancient times people watched stars + planets.</paragraph>
+  <ul>
+    <li><b>Stars:</b> positions look unchanged year after year (fixed background)</li>
+    <li><b>Planets:</b> show regular motion against the star background (so key for motion models)</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a61"><b>Ptolemy’s model (≈ 2000 years ago):</b> <b>Geocentric</b> idea → stars, Sun, and planets all revolve around Earth.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a62">Back then, the only “allowed” celestial motion was thought to be <b>circular motion</b>.</paragraph>
+  <ul>
+    <li>To fit observations: used complex circles-on-circles</li>
+    <li>Planets move in circles whose <b>centres move in larger circles</b> (epicycle-type description)</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a63"><b>Indian contributions:</b> Similar theories appeared ~400 years later.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a64">A cleaner idea—Sun at the centre, planets revolve around it = <b>heliocentric model</b>—was already mentioned by <b>Aryabhata (5th century A.D.)</b> in his treatise.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a65"><b>Copernicus (1473–1543):</b> Proposed a clear heliocentric model: planets move in circles around a fixed central Sun.</paragraph>
+  <ul>
+    <li>Church discredited the theory</li>
+    <li>Galileo supported it and was prosecuted by the state for his beliefs</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a66"><b>Tycho Brahe (1546–1601):</b> Danish nobleman; recorded planetary observations (naked-eye) throughout his life.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a67"><b>Johannes Kepler (1571–1640):</b> Used Brahe’s data to get three elegant laws = <b>Kepler’s laws</b>.</paragraph>
+  <ul>
+    <li>Newton knew these laws</li>
+    <li>They helped enable the big step towards the universal law of gravitation</li>
+  </ul>
+</div>
+
+<h2>7.2 Kepler’s laws</h2>
+
+<h3>Kepler’s First Law: Law of Orbits</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a68"><b>Statement:</b> Planets move in <b>elliptical orbits</b>, with the <b>Sun at one focus</b>.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a69"><b>Significance:</b> Breaks from Copernicus’ <b>circular-only</b> idea. (Circle = special case of ellipse.)</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a6a"><b>Ellipse (string method picture):</b></paragraph>
+  <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/3.webp" decoding="async" fetchpriority="high" height="915" loading="eager" sizes="(max-width: 700px) 100vw, 640px" src="img/3.webp" srcset="img/3.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1493"/>
+    </button>
+  </div>
+</figure>
+
+  <ul>
+    <li>Pick 2 fixed points <b>F<sub>1</sub></b>, <b>F<sub>2</sub></b>.</li>
+    <li>Tie a string with ends pinned at <b>F<sub>1</sub></b> and <b>F<sub>2</sub></b>.</li>
+    <li>Pull string taut with a pencil tip; move pencil while keeping it taut → closed curve is an <b>ellipse</b>.</li>
+    <li>Any point <b>T</b> on ellipse satisfies: <b>TF<sub>1</sub> + TF<sub>2</sub> = constant</b>.</li>
+    <li><b>F<sub>1</sub>, F<sub>2</sub> are the foci</b> (spelt “focii” in the text).</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a6b"><b>Orbit-diagram terms (Fig. 7.1a idea):</b></paragraph>
+  <ul>
+    <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/1.webp" decoding="async" height="925" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/1.webp" srcset="img/1.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1301"/>
+    </button>
+  </div>
+</figure>
+
+    <li><b>Perihelion (P):</b> closest point to the Sun.</li>
+    <li><b>Aphelion (A):</b> farthest point from the Sun.</li>
+    <li>Join <b>F<sub>1</sub>F<sub>2</sub></b> and extend to cut ellipse at <b>P</b> and <b>A</b>.</li>
+    <li><b>Centre (O):</b> midpoint of <b>PA</b>.</li>
+    <li><b>Semi-major axis:</b> <b>PO = AO</b> = ½<b>AP</b>.</li>
+    <li><b>Circle special case:</b> foci merge into one; semi-major axis becomes the <b>radius</b>.</li>
+  </ul>
+</div>
+
+<h3>Kepler’s Second Law: Law of Areas</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a6c"><b>Statement:</b> The Sun–planet line sweeps <b>equal areas in equal times</b>.</paragraph>
+  <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/2.webp" decoding="async" height="957" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/2.webp" srcset="img/2.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1471"/>
+    </button>
+  </div>
+</figure>
+
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a6d"><b>Physical meaning (from observation):</b> Planets move <b>slower when farther</b> from the Sun and <b>faster when nearer</b>. The equal-area rule captures this changing speed along the orbit.</paragraph>
+</div>
+
+<h3>Kepler’s Third Law: Law of Periods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a6e"><b>Statement:</b> <b>T<sup>2</sup></b> is proportional to <b>a<sup>3</sup></b>, where <b>a</b> is the semi-major axis of the ellipse.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979a6f"><b>Kepler’s law of periods (proportional):</b> T<sup>2</sup> ∝ a<sup>3</sup></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a70">T = time period of revolution</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a71">a = semi-major axis of orbit</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a72"><b>Check using planet data (Table 7.1 idea):</b> For 8 planets, <b>Q = T<sup>2</sup>/a<sup>3</sup></b> comes out ~ constant → supports Kepler’s 3rd law.</paragraph>
+  <ul>
+    <li><b>a</b> in units of <b>10<sup>10</sup> m</b></li>
+    <li><b>T</b> in <b>years (y)</b></li>
+    <li><b>Q</b> in units of <b>10<sup>−34</sup> y<sup>2</sup> m<sup>−3</sup></b></li>
+  </ul>
+  <paragraph id="6a8930d8a5300d7c87979a73">Values (a, T, Q): Mercury (5.79, 0.24, 2.95); Venus (10.8, 0.615, 3.00); Earth (15.0, 1, 2.96); Mars (22.8, 1.88, 2.98); Jupiter (77.8, 11.9, 3.01); Saturn (143, 29.5, 2.98); Uranus (287, 84, 2.98); Neptune (450, 165, 2.99). Near-constant <b>Q ≈ 3</b> ⇒ <b>T<sup>2</sup> ∝ a<sup>3</sup></b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979a74"><b>Exam tip:</b> In Kepler’s 3rd law (planets about the Sun), <b>a</b> = <b>semi-major axis</b> (NOT perihelion/aphelion distance). Only for a <b>circle</b> does <b>a = radius</b>.</paragraph>
+</div>
+
+<h3>Law of Areas as a consequence of conservation of angular momentum</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a75"><b>Central force:</b> force on the planet acts along the Sun–planet line (along radius vector <b>r</b>).</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a76">Gravity is a <b>central force</b> ⇒ angular momentum is conserved.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a77"><b>Set-up:</b> Put Sun at origin. Planet has:</paragraph>
+  <ul>
+    <li>position vector <b>r</b></li>
+    <li>momentum <b>p</b></li>
+    <li>velocity <b>v</b></li>
+    <li>mass <b>m</b></li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979a78"><b>Area swept in small time Δt:</b> ΔA = ½ (r × v Δt)   (Eq. 7.1)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a79">ΔA = area swept by radius vector in time Δt</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a7a">r = position vector (Sun → planet)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a7b">v = planet velocity</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a7c">× = cross product (magnitude = r v sinθ)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a7d">Δt = small time interval</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979a7e"><b>Areal velocity:</b> ΔA/Δt = ½ (r × p)/m = L/(2m)   (Eq. 7.2)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a7f">p = linear momentum (= m v)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a80">L = angular momentum about Sun (= r × p)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a81">m = mass of planet</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a82"><b>Key reasoning:</b> Central force acts along <b>r</b> ⇒ torque about origin = 0 ⇒ <b>L constant</b>. Then from ΔA/Δt = L/(2m), <b>areal velocity is constant</b> ⇒ <b>equal areas in equal times</b> (Kepler’s 2nd law).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979a83"><b>Common mistake:</b> Writing “equal distances in equal times.” Kepler’s 2nd law is <b>equal areas</b>, not equal arc lengths.</paragraph>
+</div>
+
+<h3>Example 7.1 (Using angular momentum and the law of areas)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a84"><b>Problem set-up:</b> Speed at perihelion P = <b>v<sub>P</sub></b>, Sun–planet distance <b>SP = r<sub>P</sub></b>. Relate {<b>r<sub>P</sub>, v<sub>P</sub></b>} to aphelion {<b>r<sub>A</sub>, v<sub>A</sub></b>}. Also decide if time to traverse arcs <b>BAC</b> and <b>CPB</b> are equal (figure context).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a85"><b>Step 1: Angular momentum at perihelion &amp; aphelion</b></paragraph>
+  <ul>
+    <li>At perihelion P: L<sub>P</sub> = m<sub>p</sub> r<sub>P</sub> v<sub>P</sub>, since (by inspection) <b>r<sub>P</sub> ⟂ v<sub>P</sub></b> at closest/farthest points.</li>
+    <li>At aphelion A: L<sub>A</sub> = m<sub>p</sub> r<sub>A</sub> v<sub>A</sub>.</li>
+  </ul>
+  <paragraph id="6a8930d8a5300d7c87979a86"><b>Step 2: Use angular momentum conservation (central force)</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a87">m<sub>p</sub> r<sub>P</sub> v<sub>P</sub> = m<sub>p</sub> r<sub>A</sub> v<sub>A</sub> ⇒ <b>v<sub>P</sub>/v<sub>A</sub> = r<sub>A</sub>/r<sub>P</sub></b>.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a88">Since r<sub>A</sub> &gt; r<sub>P</sub> ⇒ <b>v<sub>P</sub> &gt; v<sub>A</sub></b> (faster near perihelion).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a89"><b>Step 3: Time for arcs BAC vs CPB (use Kepler’s 2nd law)</b></paragraph>
+  <ul>
+    <li>Area <b>SBAC</b> (aphelion side) is <b>larger</b> than area <b>SBPC</b> (perihelion side), per diagram context.</li>
+    <li>Kepler’s 2nd law: <b>equal areas ↔ equal times</b> ⇒ <b>larger area</b> needs <b>more time</b>.</li>
+  </ul>
+  <paragraph id="6a8930d8a5300d7c87979a8a"><b>Conclusion:</b> Time for <b>BAC</b> is <b>longer</b> than for <b>CPB</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979a8b"><b>Exam tip:</b> At perihelion/aphelion, use <b>L = m r v</b> only after stating <b>r ⟂ v</b> there; otherwise stick to <b>L = r × p</b>.</paragraph>
+</div>
+
+<h2>7.3 Universal Law of Gravitation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a8c"><b>Newton’s motivation (legend + goal):</b> Apple story = spark for a <b>universal</b> gravity law linking <b>terrestrial gravitation</b> + <b>Kepler’s laws</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a8d"><b>Newton’s reasoning with the Moon:</b> Moon moves in an (approx.) circular orbit of radius <b>R<sub>m</sub></b> → needs <b>centripetal acceleration</b>, supplied by Earth’s gravity.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979a8e"><b>Centripetal acceleration of the Moon:</b> a<sub>m</sub> = V<sub>m</sub><sup>2</sup>/R<sub>m</sub> = 4π<sup>2</sup>R<sub>m</sub>/T<sup>2</sup>   (Eq. 7.3)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a8f">a<sub>m</sub> = Moon’s centripetal acceleration due to Earth’s gravity</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a90">V<sub>m</sub> = Moon’s orbital speed</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a91">R<sub>m</sub> = Moon’s orbital radius</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a92">T = time period of Moon’s revolution</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a93">π = 3.14159...</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979a94"><b>Speed–period relation (circular orbit):</b> V<sub>m</sub> = 2πR<sub>m</sub>/T</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a95">V<sub>m</sub> = orbital speed of the Moon</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a96">R<sub>m</sub> = orbital radius</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a97">T = orbital time period</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a98"><b>Numerical facts used by Newton (as stated):</b></paragraph>
+  <ul>
+    <li>Moon’s time period: T ≈ <b>27.3 days</b></li>
+    <li>Moon’s orbital radius: R<sub>m</sub> ≈ <b>3.84 × 10<sup>8</sup> m</b></li>
+  </ul>
+  <paragraph id="6a8930d8a5300d7c87979a99">Putting these into Eq. (7.3) gives a<sub>m</sub> that’s <b>much smaller</b> than <b>g</b> at Earth’s surface, even though both are due to Earth’s pull. (Sets up: gravity weakens with distance.)</paragraph>
+</div>
+
+<h2>Inverse-square dependence and origin of the Universal Law</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a9a">Earth’s gravitational effect decreases with distance from Earth’s centre. If it follows an inverse-square dependence with distance <em>R</em>, then gravitational acceleration also obeys: <em>g</em> ∝ 1/R<sup>2</sup>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979a9b"><b>Inverse-square scaling (Earth):</b> g ∝ 1/R<sup>2</sup></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a9c">g = acceleration due to gravity at distance R from Earth’s centre</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979a9d">R = distance from Earth’s centre</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979a9e">This inverse-square idea explains: (i) why gravity drops with height, and (ii) how Newton linked the Moon’s orbital acceleration to surface gravity (matches g ≈ 9.8 m s<sup>−2</sup>), pushing him toward the Universal Law of Gravitation.</paragraph>
+</div>
+
+<h2>Newton’s Universal Law of Gravitation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979a9f"><b>Statement (Newton):</b> Every body attracts every other body with a force ∝ product of their masses, and ∝ 1/(distance)<sup>2</sup>.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa0">Quoted from <b>Mathematical Principles of Natural Philosophy</b> (<b>Principia</b>).</paragraph>
+</div>
+
+<h3>Scalar form (magnitude)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979aa1"><b>Newton’s law (magnitude):</b> F = G m<sub>1</sub> m<sub>2</sub> / r<sup>2</sup>   (Eq. 7.5)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa2">F = magnitude of gravitational force between two point masses</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa3">G = universal gravitational constant</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa4">m<sub>1</sub>, m<sub>2</sub> = interacting point masses</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa5">r = distance between the two masses</paragraph>
+</div>
+
+<h3>Vector form and direction (attractive nature)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979aa6"><b>Newton’s law (vector form):</b> <b>F</b> = − (G m<sub>1</sub> m<sub>2</sub> / r<sup>2</sup>) <b>r̂</b></paragraph>
+  <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/4.webp" decoding="async" height="978" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/4.webp" srcset="img/4.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1440"/>
+    </button>
+  </div>
+</figure>
+
+  <paragraph id="6a8930d8a5300d7c87979aa7">Equivalently: <b>F</b> = − G m<sub>1</sub> m<sub>2</sub> <b>r̂</b> / r<sup>3</sup></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa8"><b>F</b> = force on m<sub>2</sub> due to m<sub>1</sub></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aa9"><b>r</b> = <b>r</b><sub>2</sub> − <b>r</b><sub>1</sub> (displacement from m<sub>1</sub> to m<sub>2</sub>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aaa">r = |<b>r</b>| (separation distance)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aab"><b>r̂</b> = unit vector from m<sub>1</sub> to m<sub>2</sub></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979aac"><b>Gravity is attractive:</b> the “−” sign means <b>F</b> points along −<b>r̂</b>, i.e. from m<sub>2</sub> towards m<sub>1</sub> (towards the attracting mass).</paragraph>
+</div>
+
+<h3>Action–reaction pair (Newton’s third law)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979aad"><b>Mutual forces:</b> $\overrightarrow{\mathrm{F}}_{12}$ = − <b>$\overrightarrow{\mathrm{F}}_{21}$</b></paragraph><b>
+  </b><paragraph id="6a8930d8a5300d7c87979aae"><b><b>$\overrightarrow{\mathrm{F}}_{12}$</b></b> = force on body 1 due to body 2</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aaf"><b>$\overrightarrow{\mathrm{F}}_{21}$ </b>= force on body 2 due to body 1</paragraph>
+</div>
+
+<h2>Applying the law to many particles and extended bodies</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979ab0">Eq. (7.5) is for <b>point masses</b>. Real objects are <b>extended</b>, so different parts pull in different directions. Net force = add all tiny contributions <b>vectorially</b> (often needs calculus).</paragraph>
+</div>
+
+<h3>Principle of superposition (vector sum)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ab1"><b>Superposition:</b> Total gravitational force on a mass from several masses = <b>vector sum</b> of the forces from each mass acting alone.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ab2"><b>Net force on m<sub>1</sub> due to m<sub>2</sub>, m<sub>3</sub>, m<sub>4</sub>:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ab3"><b>F</b><sub>1</sub> = <b>F</b><sub>21</sub> + <b>F</b><sub>31</sub> + <b>F</b><sub>41</sub></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ab4">with <b>F</b><sub>k1</sub> = G m<sub>k</sub> m<sub>1</sub> / r<sub>k1</sub><sup>2</sup> (along the line joining them, towards m<sub>k</sub>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ab5">r<sub>k1</sub> = distance between masses k and 1</paragraph>
+</div>
+
+<h3>Two special results for a hollow spherical shell (uniform density)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ab6"><b>(1) Outside a hollow spherical shell:</b> Attraction between a uniform hollow spherical shell and a point mass <b>outside</b> it is the same as if <b>all the shell’s mass were concentrated at the centre</b>.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ab7"><b>Qualitative reason:</b> Perpendicular components cancel; only components along the centre–mass line add → net force along the radius line.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ab8"><b>(2) Inside a hollow spherical shell:</b> Force due to a uniform hollow spherical shell on a point mass <b>inside</b> the shell is <b>zero</b>.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ab9"><b>Qualitative reason:</b> Pulls from different regions act in different directions and cancel fully.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979aba">These shell results let us treat a spherically symmetric body (e.g. Earth) as if its mass is at the centre for points <b>outside</b>. For points <b>inside</b>, only mass at smaller radius contributes (outer shells give zero).</paragraph>
+</div>
+
+<h2>Worked Example 7.2: Three equal masses at vertices of an equilateral triangle</h2>
+
+<h3>Problem setup</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979abb">3 equal point masses (each = m) fixed at vertices A, B, C of an equilateral triangle.</paragraph>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/5.webp" decoding="async" height="1106" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/5.webp" srcset="img/5.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1226"/>
+    </button>
+  </div>
+</figure>
+
+  <paragraph id="6a8930d8a5300d7c87979abc">A mass 2m is placed at the centroid G.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979abd">Given (geometry): AG = BG = CG = 1 m.</paragraph>
+</div>
+
+<h3>(a) Net gravitational force on mass 2m at the centroid</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979abe">Use superposition + resolve into x- and y-components. From the geometry:</paragraph>
+  <ul>
+    <li>Angle between GC and +x-axis = 30°</li>
+    <li>Angle between GB and −x-axis = 30°</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979abf"><strong>Force on (2m) due to mass at A:</strong> <strong>F</strong><sub>GA</sub> = (G m(2m) / GA<sup>2</sup>) <strong>ĵ</strong></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ac0">GA = distance from G to A</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ac1"><strong>ĵ</strong> = unit vector along +y (chosen along GA in the diagram’s axes)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ac2"><strong>Force on (2m) due to mass at B:</strong> <strong>F</strong><sub>GB</sub> = (G m(2m) / GB<sup>2</sup>) (− <strong>î</strong> cos30° − <strong>ĵ</strong> sin30°)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ac3">GB = distance from G to B</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ac4"><strong>î</strong> = unit vector along +x</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ac5"><strong>Force on (2m) due to mass at C:</strong> <strong>F</strong><sub>GC</sub> = (G m(2m) / GC<sup>2</sup>) (+ <strong>î</strong> cos30° − <strong>ĵ</strong> sin30°)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ac6">GC = distance from G to C</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ac7"><strong>Resultant (superposition):</strong> <strong>F</strong><sub>R</sub> = <strong>F</strong><sub>GA</sub> + <strong>F</strong><sub>GB</sub> + <strong>F</strong><sub>GC</sub></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979ac8">Put GA = GB = GC = 1 m. Then x-components cancel:</paragraph>
+  <ul>
+    <li>From B: −(2Gm<sup>2</sup>)cos30° in x</li>
+    <li>From C: +(2Gm<sup>2</sup>)cos30° in x</li>
+  </ul>
+  <paragraph id="6a8930d8a5300d7c87979ac9">y-components also cancel because:</paragraph>
+  <ul>
+    <li>Up from A: +(2Gm<sup>2</sup>) in y</li>
+    <li>Down from B and C: −(2Gm<sup>2</sup>)sin30° − (2Gm<sup>2</sup>)sin30° = −(2Gm<sup>2</sup>) in y</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979aca"><strong>Final answer (a):</strong> <strong>F</strong><sub>R</sub> = 0</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979acb">You can spot <strong>F</strong><sub>R</sub> = 0 by symmetry too: 3 equal forces separated by 120° (centroid of equilateral triangle) ⇒ resultant = 0.</paragraph>
+</div>
+
+<h3>(b) If the mass at vertex A is doubled</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979acc">Doubling mass at A breaks symmetry, so the neat cancellation is gone.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979acd">Redo by superposition: keep B and C forces the same, but replace m at A by 2m (so force due to A doubles).</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ace">The resultant points along the unbalanced direction (along GA in the chosen axes).</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979acf">Exam approach: write <strong>F</strong><sub>R</sub> = <strong>F</strong><sub>GA</sub>(with 2m at A) + <strong>F</strong><sub>GB</sub> + <strong>F</strong><sub>GC</sub>, cancel x first (B and C still cancel in x), then add y-components.</paragraph>
+</div>
+
+<h2>The gravitational constant (G) and Cavendish experiment</h2>
+
+<h3>Historical determination</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ad0">G in Newton’s law is measurable experimentally.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ad1">First measured by <strong>Henry Cavendish (1798)</strong> using a torsion balance.</paragraph>
+</div>
+
+<h3>Cavendish torsion balance: idea and torques</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ad2">A light bar AB with 2 small lead spheres at the ends is hung by a fine wire.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ad3">2 large lead spheres are placed near the small ones on opposite sides.</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ad4">Each large sphere attracts its nearby small sphere → equal and opposite forces on the bar → <strong>no net force</strong> but a <strong>net torque</strong> (wire twists).</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ad5">Move the large spheres to the other side → torque reverses → bar rotates through a small measurable angle.</paragraph>
+  <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/6.webp" decoding="async" height="923" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/6.webp" srcset="img/6.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1384"/>
+    </button>
+  </div>
+</figure>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979ad6">The wire gives a restoring torque proportional to twist angle θ:</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ad7">restoring torque = τ θ, where τ is the torsion constant (restoring couple per unit angle).</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ad8">τ can be found independently by applying a known torque and measuring θ.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ad9"><strong>Force between one big and neighbouring small sphere:</strong> F = G M m / d<sup>2</sup> (Eq. 7.6)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ada">F = gravitational attraction (pair)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979adb">M = mass of big sphere</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979adc">m = mass of small sphere</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979add">d = centre-to-centre separation</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ade">G = gravitational constant</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979adf"><strong>Equilibrium of torques:</strong> (F)(L) = τ θ  ⇒  G M m L / d<sup>2</sup> = τ θ (Eq. 7.7)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ae0">L = length of bar AB (lever arm as stated: torque from F is F × L)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ae1">τ = restoring couple per unit twist angle</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ae2">θ = equilibrium twist angle</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979ae3">Measure θ; with M, m, d, L known and τ known independently → compute G from Eq. (7.7).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ae4"><strong>Accepted value:</strong> G = 6.67 × 10<sup>−11</sup> N m<sup>2</sup> kg<sup>−2</sup> (Eq. 7.8)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ae5">G = universal gravitational constant</paragraph>
+</div>
+
+<h2>Acceleration due to gravity of the Earth </h2>
+
+<h3>Earth treated as concentric spherical shells</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ae6">Model Earth as many concentric spherical shells (tiny at centre → biggest at surface).</paragraph>
+  <ul>
+    <li><strong>Point outside Earth:</strong> outside every shell ⇒ each shell acts like its mass is at the centre ⇒ same as <strong>all Earth’s mass</strong> at the centre.</li>
+    <li><strong>Point inside Earth:</strong> shells with radius bigger than the point’s distance give <strong>zero</strong> net force (shell theorem); only enclosed mass matters.</li>
+  </ul>
+</div>
+
+<h3>Force at a point inside Earth at distance r from centre</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ae7">Take a point mass m at P, distance r from Earth’s centre:</paragraph>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/7.webp" decoding="async" height="1058" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/7.webp" srcset="img/7.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1362"/>
+    </button>
+  </div>
+</figure>
+  <ul>
+    <li>Shells with radius &gt; r: P is inside them ⇒ net gravitational force on m = 0.</li>
+    <li>Shells with radius ≤ r: together make a solid sphere of radius r, mass M<sub>r</sub> ⇒ acts like M<sub>r</sub> is at the centre.</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ae8"><strong>Magnitude of force at radius r (inside):</strong> F = G m M<sub>r</sub> / r<sup>2</sup> (Eq. 7.9)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ae9">F = gravitational force on m at distance r from Earth’s centre</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aea">M<sub>r</sub> = mass enclosed within radius r</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aeb">m = mass placed at radius r</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aec">r = distance of m from Earth’s centre</paragraph>
+</div>
+
+<h3>Uniform-density assumption (expressing masses)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979aed">Assume Earth has uniform density ρ.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979aee"><strong>Mass of Earth:</strong> M<sub>E</sub> = (4/3) π R<sub>E</sub><sup>3</sup> ρ</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979aef">M<sub>E</sub> = mass of Earth</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979af0">R<sub>E</sub> = radius of Earth</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979af1">ρ = (uniform) density of Earth</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979af2"><strong>Mass enclosed within radius r:</strong> M<sub>r</sub> = (4/3) π r<sup>3</sup> ρ</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979af3">M<sub>r</sub> = mass of sphere of radius r (enclosed mass)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979af4">r = distance from Earth’s centre</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979af5">ρ = uniform density</paragraph>
+</div>
+
+<h2>Gravitational force on a mass at Earth and the meaning of “Cavendish weighed the Earth”</h2>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979af6"><b>Gravitational force between Earth and a point mass m at distance r from Earth’s centre</b> (Eq. 7.10)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979af7">F = (G m M<sub>E</sub>) / r<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979af8">F = magnitude of gravitational force on m (points towards Earth’s centre)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979af9">G = universal gravitational constant</paragraph>
+<paragraph id="6a8930d8a5300d7c87979afa">m = mass of the particle/body</paragraph>
+<paragraph id="6a8930d8a5300d7c87979afb">M<sub>E</sub> = mass of Earth</paragraph>
+<paragraph id="6a8930d8a5300d7c87979afc">r = distance of m from Earth’s centre</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979afd"><b>Gravitational force on Earth’s surface</b> (r = R<sub>E</sub>) (Eq. 7.11)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979afe">F = (G M<sub>E</sub> m) / R<sub>E</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979aff">R<sub>E</sub> = radius of Earth</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b00"><b>Acceleration due to gravity (g):</b> acceleration caused by Earth’s gravitational force on a body near Earth.</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b01">Newton’s 2nd law: F = mg.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b02"><b>g on Earth’s surface</b> (Eq. 7.12)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b03">g = F/m = (G M<sub>E</sub>) / R<sub>E</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b04">g = acceleration due to gravity at Earth’s surface</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b05">F = gravitational force on mass m at the surface</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b06"><b>Why “Cavendish weighed the Earth”:</b></paragraph>
+<ul>
+<li>g can be measured, and R<sub>E</sub> is known.</li>
+<li>If G is measured (Cavendish experiment), then from Eq. (7.12):</li>
+</ul>
+<paragraph id="6a8930d8a5300d7c87979b07">M<sub>E</sub> = g R<sub>E</sub><sup>2</sup> / G</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b08">So measuring G lets us estimate Earth’s mass.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979b09">Don’t mix up <b>g</b> (varies with location; here = Earth’s surface unless stated) with <b>G</b> (universal constant).</paragraph>
+</div>
+
+<h2>7.6 Acceleration due to gravity below and above the surface of Earth</h2>
+
+<h3>g at a height h above Earth’s surface</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b0a">At height h: distance from Earth’s centre is</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b0b">r = R<sub>E</sub> + h</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b0c">So the inverse-square law uses r = R<sub>E</sub> + h.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b0d"><b>Force at height h</b> (Eq. 7.13)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b0e">F(h) = (G M<sub>E</sub> m) / (R<sub>E</sub> + h)<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b0f">F(h) = magnitude of force on mass m at height h</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b10">h = height above Earth’s surface</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b11"><b>Acceleration due to gravity at height h</b> (Eq. 7.14)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b12">g(h) ≡ F(h)/m = (G M<sub>E</sub>) / (R<sub>E</sub> + h)<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b13">g(h) = acceleration due to gravity at height h</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b14">Because R<sub>E</sub> + h &gt; R<sub>E</sub> ⇒ g(h) &lt; g (surface value).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b15"><b>Small-height approximation:</b> if h ≪ R<sub>E</sub>, use binomial expansion.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b16"><b>g at small height (binomial approximation)</b> (Eq. 7.15)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b17">g(h) ≅ g (1 − 2h/R<sub>E</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b18">g = (G M<sub>E</sub>) / R<sub>E</sub><sup>2</sup> = surface value</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b19">Valid when h/R<sub>E</sub> ≪ 1</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b1a">Eq. (7.15): for small heights, g drops by the factor (1 − 2h/R<sub>E</sub>).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979b1b">Binomial used: (1 + x)<sup>−2</sup> ≈ 1 − 2x for |x| ≪ 1, with x = h/R<sub>E</sub>.</paragraph>
+</div>
+
+<h3>g at a depth d below Earth’s surface</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b1c">At depth d: distance from Earth’s centre is</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b1d">r = R<sub>E</sub> − d</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b1e">Model Earth as:</paragraph>
+<ul>
+<li>a smaller solid sphere of radius (R<sub>E</sub> − d), plus</li>
+<li>an outer spherical shell of thickness d.</li>
+</ul>
+<paragraph id="6a8930d8a5300d7c87979b1f">Outer shell’s force on an interior point = <b>zero</b> (a spherical shell gives no net gravitational force inside it).</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b20">The smaller sphere attracts like all its mass is concentrated at the centre.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b21"><b>Mass of the smaller sphere (uniform density)</b> (Eq. 7.16)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b22">M<sub>s</sub>/M<sub>E</sub> = (R<sub>E</sub> − d)<sup>3</sup> / R<sub>E</sub><sup>3</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b23">M<sub>s</sub> = mass of inner sphere of radius (R<sub>E</sub> − d)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b24">Uses: mass of sphere ∝ (radius)<sup>3</sup></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b25"><b>Force at depth d</b> (Eq. 7.17)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b26">F(d) = (G M<sub>s</sub> m) / (R<sub>E</sub> − d)<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b27">F(d) = magnitude of gravitational force on m at depth d</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b28"><b>Force at depth d after substituting M<sub>s</sub></b> (Eq. 7.18)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b29">F(d) = G M<sub>E</sub> m (R<sub>E</sub> − d) / R<sub>E</sub><sup>3</sup></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b2a"><b>Acceleration due to gravity at depth d</b> (Eq. 7.19)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b2b">g(d) = F(d)/m = (G M<sub>E</sub> (R<sub>E</sub> − d)) / R<sub>E</sub><sup>3</sup> = g (1 − d/R<sub>E</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b2c">g = (G M<sub>E</sub>) / R<sub>E</sub><sup>2</sup> = surface value</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b2d">Going below the surface (uniform-density model): g decreases <b>linearly</b> with depth by factor (1 − d/R<sub>E</sub>).</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b2e"><b>Remarkable conclusion:</b> g is <b>maximum at Earth’s surface</b> — it decreases if you go <b>up</b> (height) or <b>down</b> (depth).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979b2f">“Outer shell gives zero force” applies only for points <b>inside</b> a spherical shell, not <b>outside</b>.</paragraph>
+</div>
+
+<h2>7.7 Gravitational potential energy</h2>
+
+<h3>Potential energy, work, and conservative nature of gravity</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b30"><b>Potential energy</b> = energy stored due to <b>position</b>. If position changes under a force, the <b>change</b> in PE matches the work done by that force .</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b31"><b>Conservative force</b> = work done is <b>path independent</b>. <b>Gravity is conservative.</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b32">PE due to gravity = <b>gravitational potential energy</b>.</paragraph>
+</div>
+
+<h3>Near Earth’s surface: constant g approximation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b33">For heights ≪ R<sub>E</sub>, gravitational force is ~constant: <b>F ≈ mg</b>, directed toward Earth’s centre (downward).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b34"><b>Work done lifting m from h<sub>1</sub> to h<sub>2</sub> (near Earth)</b> (Eq. 7.20)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b35">W<sub>12</sub> = Force · displacement = mg (h<sub>2</sub> − h<sub>1</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b36">W<sub>12</sub> = work done moving from position 1 (h<sub>1</sub>) to position 2 (h<sub>2</sub>) vertically upward</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b37">g = (approximately constant) acceleration due to gravity near surface</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b38"><b>Potential energy function near Earth</b> (Eq. 7.21)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b39">W(h) = mgh + W<sub>0</sub></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b3a">W(h) = gravitational potential energy at height h</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b3b">W<sub>0</sub> = constant (reference level choice)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b3c"><b>Potential energy difference = work done</b> (Eq. 7.22)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b3d">W<sub>12</sub> = W(h<sub>2</sub>) − W(h<sub>1</sub>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b3e">W<sub>0</sub> cancels in differences → only <b>ΔPE</b> matters physically. If you set h = 0, then W(h=0) = W<sub>0</sub> (i.e. PE “at the surface” in that reference choice).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979b3f">⚠ <b>mgh</b> works only when g is effectively constant (heights ≪ Earth’s radius). For large distances use the inverse-square result below.</paragraph>
+</div>
+
+<h3>At arbitrary distance r from Earth’s centre (r &gt; R<sub>E</sub>)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b40"><b>Gravitational force magnitude outside Earth</b> (Eq. 7.23)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b41">F = (G M<sub>E</sub> m) / r<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b42">r = distance of the particle from Earth’s centre</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b43"><b>Work done lifting m from r = r<sub>1</sub> to r = r<sub>2</sub> (r<sub>2</sub> &gt; r<sub>1</sub>)</b> (Eq. 7.24)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b44">W<sub>12</sub> = ∫<sub></sub><sup></sup> F · dr = −G M<sub>E</sub> m (1/r<sub>2</sub> − 1/r<sub>1</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b45">Equivalently: W<sub>12</sub> = G M<sub>E</sub> m (1/r<sub>1</sub> − 1/r<sub>2</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b46">Negative sign: gravity acts inward, while lifting displacement is outward.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b47"><b>Potential energy at distance r (outside Earth)</b> (Eq. 7.25)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b48">W(r) = −(G M<sub>E</sub> m)/r + W<sub>1</sub>    (valid for r &gt; R<sub>E</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b49">W<sub>1</sub> = constant (chosen reference; equals PE at infinity if r → ∞)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b4a">From Eq. (7.25): r → ∞ ⇒ W(∞) = W<sub>1</sub>. Convention: choose <b>W(∞) = 0</b> ⇒ W<sub>1</sub> = 0, so</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b4b"><b>W(r) = −G M<sub>E</sub> m / r</b> (for r &gt; R<sub>E</sub>).</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b4c">Meaning: PE at a point = work needed to bring the mass from <b>infinity</b> to that point (with W(∞)=0).</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b4d">Only PE <b>differences</b> are physically definite (see Eq. 7.22, 7.24). Absolute zero is just a convention.</paragraph>
+</div>
+
+<h3>Gravitational potential and two-particle gravitational potential energy</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b4e"><b>Gravitational potential</b> at a point (due to Earth) = <b>potential energy per unit mass</b> at that point.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b4f"><b>Potential energy of two masses m<sub>1</sub>, m<sub>2</sub> separated by r</b> (with V = 0 as r → ∞)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b50">V = −(G m<sub>1</sub> m<sub>2</sub>)/r</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b51">V = gravitational potential energy of the pair</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b52">r = separation between the two masses</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b53"><b>Superposition (isolated system):</b> total PE = sum of pairwise PEs over <b>all possible pairs</b> in the system.</paragraph>
+</div>
+
+<h3>Example 7.3: four equal masses at the corners of a square</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b54">System: 4 particles, each mass m, at corners of a square of side l.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/8.webp" decoding="async" height="1235" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/8.webp" srcset="img/8.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1103"/>
+    </button>
+  </div>
+</figure>
+
+<ul>
+<li>4 side pairs, separation l</li>
+<li>2 diagonal pairs, separation √2 l</li>
+</ul>
+<paragraph id="6a8930d8a5300d7c87979b55">Total PE = sum over all distinct pairs using V = −Gm<sub>1</sub>m<sub>2</sub>/r.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b56"><b>Total potential energy of the four-mass system</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b57">U = 4 [−G m<sup>2</sup>/l] + 2 [−G m<sup>2</sup>/(√2 l)]</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b58">U = −(G m<sup>2</sup>/l) (4 + √2)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b59">Numerically: (4 + √2) ≈ 5.41, so U ≈ −5.41 (G m<sup>2</sup>/l)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b5a"><b>Potential at the centre of the square</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b5b">Centre → vertex distance: r = l/√2</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b5c">Potential (per unit mass) at centre due to 4 masses:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b5d">U(r) = −4 G m / (l/√2) = −(4√2 G m)/l</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b5e">U(r) = gravitational potential at the centre (PE of a unit mass placed there)</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979b5f">⚠ Don’t mix up:</paragraph>
+<ul>
+<li><b>Potential energy</b> of the whole system (depends on pair separations, scales like m<sup>2</sup>)</li>
+<li><b>Potential</b> at a point (per unit mass, scales like m)</li>
+</ul>
+</div>
+
+<h2>7.8 Escape speed </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b60"><b>Escape question:</b> can you launch an object fast enough that it never returns (i.e. reaches infinity)? Use conservation of mechanical energy: <b>K + U</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b61">Let the object reach infinity with speed V<sub>f</sub>. Let W<sub>1</sub> be the gravitational PE at infinity (often later set to 0 by convention, but kept as W<sub>1</sub> for now).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b62"><b>Total energy at infinity</b> (Eq. 7.26)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b63">E = W<sub>1</sub> + (1/2) m V<sub>f</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b64">E = total mechanical energy (conserved)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b65">V<sub>f</sub> = speed at infinity</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b66"><b>Total energy at launch from distance (R<sub>E</sub> + h) from Earth’s centre</b> (Eq. 7.27)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b67">E = (1/2) m V<sub>i</sub><sup>2</sup> − (G m M<sub>E</sub>)/(R<sub>E</sub> + h) + W<sub>1</sub></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b68">V<sub>i</sub> = initial (launch) speed</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b69">h = height above Earth’s surface</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b6a">R<sub>E</sub> = Earth’s radius</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b6b">Escape speed comes from energy conservation between launch point and infinity. Minimum escape condition usually uses <b>V<sub>f</sub> = 0</b> at infinity (just reaches infinity).</paragraph>
+</div>
+
+<h2>Escape Speed (Escape Velocity)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b6c">To <b>reach infinity</b> (escape the gravitational field), total mechanical energy must be <b>≥ 0</b> (take GPE = 0 at infinity). By <b>conservation of mechanical energy</b>, the launch energy must be enough so that at infinity the object can have at least <b>zero speed</b> and <b>zero PE</b>.</paragraph>
+</div>
+
+<h3>Energy condition for reaching infinity</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b6d"><b>Energy equality (conservation):</b> Eqs. (7.26) and (7.27) ⇒</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b6e">mV<sub>i</sub><sup>2</sup>/2 − GmM<sub>E</sub>/(R<sub>E</sub> + h) = mV<sub>f</sub><sup>2</sup>/2</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b6f"><b>Symbols:</b> m = mass of object; V<sub>i</sub> = initial speed; V<sub>f</sub> = speed at infinity; G = universal gravitational constant; M<sub>E</sub> = mass of Earth; R<sub>E</sub> = radius of Earth; h = height above Earth’s surface at launch.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b70">RHS = mV<sub>f</sub><sup>2</sup>/2 is always <b>≥ 0</b> (min = 0). So the <b>LHS must be ≥ 0</b> if escape is to happen.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b71"><b>Condition to reach infinity:</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b72">mV<sub>i</sub><sup>2</sup>/2 − GmM<sub>E</sub>/(R<sub>E</sub> + h) ≥ 0</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b73"><b>Symbols:</b> same as above.</paragraph>
+</div>
+
+<h3>Minimum (escape) speed at height h</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b74"><b>Minimum</b> escape case = when inequality becomes <b>equality</b> (object just reaches infinity with <b>V<sub>f</sub> = 0</b>).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b75"><b>Minimum speed to escape from height h:</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b76">mV<sub>i,min</sub><sup>2</sup>/2 = GmM<sub>E</sub>/(R<sub>E</sub> + h)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b77"><b>Symbols:</b> V<sub>i,min</sub> = minimum initial speed for escape; other symbols as above.</paragraph>
+</div>
+
+<h3>Escape speed from Earth’s surface (h = 0)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b78"><b>Escape speed from surface:</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b79">V<sub>esc</sub> = V<sub>i,min</sub> = √(2GM<sub>E</sub>/R<sub>E</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b7a"><b>Symbols:</b> V<sub>esc</sub> = escape speed; G, M<sub>E</sub>, R<sub>E</sub> as defined.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b7b"><b>Using g = GM<sub>E</sub>/R<sub>E</sub><sup>2</sup>:</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b7c">V<sub>esc</sub> = √(2gR<sub>E</sub>)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b7d"><b>Symbols:</b> g = acceleration due to gravity at Earth’s surface; R<sub>E</sub> = Earth radius.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b7e">For Earth: <b>V<sub>esc</sub> ≈ 11.2 km s<sup>−1</sup></b>. This is the <b>escape speed</b> (often loosely called “escape velocity”).</paragraph>
+</div>
+
+<h3>Escape speed for the Moon and implication for atmosphere</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b7f">Formula V<sub>esc</sub> = √(2gR) works for any spherical body: use that body’s <b>surface g</b> and <b>radius R</b>.</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b80">Moon: both <b>g</b> and <b>R</b> are smaller than Earth’s ⇒ <b>escape speed ≈ 2.3 km s<sup>−1</sup></b> (≈ 5× smaller than Earth).</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b81">So the <b>Moon has no atmosphere</b>: gas molecules from the surface with speeds above this can <b>escape</b> the Moon’s gravity.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979b82"><b>Exam tip:</b> “Escape speed” depends on <b>GM/R</b> (or <b>gR</b>), not on the escaping mass <b>m</b> (it cancels).</paragraph>
+</div>
+
+<h2>Example 7.4: Projectile between two fixed spheres (neutral point method)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d8a5300d7c87979b83">If two gravitational pulls act in opposite directions along a line, there’s a <b>neutral point</b> where net gravitational force is <b>zero</b>. If the projectile just reaches this point with zero speed, then beyond it the stronger pull drags it to the other mass.</paragraph>
+</div>
+
+<h3>Problem setup</h3>
+<paragraph id="6a8930d8a5300d7c87979b84">Two uniform solid spheres, equal radii <b>R</b>, masses <b>M</b> and <b>4M</b>, fixed with centre separation <b>6R</b>. A projectile (mass <b>m</b>) is fired from the surface of the <b>M</b> sphere straight toward the centre of the <b>4M</b> sphere. Find the <b>minimum</b> speed <b>v</b> so it just reaches the surface of the second sphere.</paragraph>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/9.webp" decoding="async" height="694" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/9.webp" srcset="img/9.webp 505w" style="border: 1.5px solid #ffffff09 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff09 !important;" width="1654"/>
+    </button>
+  </div>
+</figure>
+
+<h3>Step 1: Locate the neutral point N</h3>
+<paragraph id="6a8930d8a5300d7c87979b85">Let ON = r (distance from centre O of the M-sphere to N). Then distance from N to the centre of the 4M-sphere is (6R − r).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b86"><b>Neutral point condition (forces cancel):</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b87">GMm/r<sup>2</sup> = G(4M)m/(6R − r)<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b88"><b>Symbols:</b> r = ON; 6R − r = distance to the other centre; G = gravitational constant; M, 4M = sphere masses; m = projectile mass.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979b89">Cancel G, M, m:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b8a">(6R − r)<sup>2</sup> = 4r<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b8b">6R − r = ±2r ⇒ r = 2R or r = −6R</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b8c">r = −6R doesn’t apply (that point is on the far side). So the <b>neutral point is between the spheres</b> at <b>r = 2R</b> from the lighter sphere’s centre.</paragraph>
+</div>
+
+<h3>Step 2: Use energy conservation between launch point and N</h3>
+<paragraph id="6a8930d8a5300d7c87979b8d">Minimum speed means it just reaches N with speed → 0. Work out total mechanical energy at:</paragraph>
+<ul>
+<li><paragraph id="6a8930d8a5300d7c87979b8e"><b>Initial point:</b> on surface of M-sphere ⇒ distance to M-centre = R; distance to 4M-centre = 6R − R = 5R.</paragraph></li>
+<li><paragraph id="6a8930d8a5300d7c87979b8f"><b>Neutral point N:</b> distance to M-centre = r = 2R; distance to 4M-centre = 6R − 2R = 4R.</paragraph></li>
+</ul>
+
+<paragraph id="6a8930d8a5300d7c87979b90"><b>Initial mechanical energy E<sub>i</sub>:</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b91">KE = (1/2)mv<sup>2</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b92">PE due to M: −GMm/R</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b93">PE due to 4M at 5R: −G(4M)m/(5R)</paragraph>
+
+<paragraph id="6a8930d8a5300d7c87979b94"><b>Energy at N, E<sub>N</sub>:</b> speed ≈ 0 ⇒ only potential energy</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b95">PE due to M at 2R: −GMm/(2R)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b96">PE due to 4M at 4R: −G(4M)m/(4R)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d8a5300d7c87979b97">Net force is zero at N, but <b>both gravitational potentials still exist</b>—so include <b>both</b> PEs in energy.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979b98">Apply conservation: E<sub>i</sub> = E<sub>N</sub></paragraph>
+
+<paragraph id="6a8930d8a5300d7c87979b99">(1/2)mv<sup>2</sup> − GMm/R − (4GMm)/(5R) = −GMm/(2R) − (4GMm)/(4R)</paragraph>
+
+<paragraph id="6a8930d8a5300d7c87979b9a">Divide by m and simplify:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b9b">(1/2)v<sup>2</sup> − GM/R − 4GM/(5R) = −GM/(2R) − GM/R</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b9c">(1/2)v<sup>2</sup> = 4GM/(5R) − GM/(2R)</paragraph>
+<paragraph id="6a8930d8a5300d7c87979b9d">(1/2)v<sup>2</sup> = ( (8 − 5) / 10 ) (GM/R) = (3/10)(GM/R)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d8a5300d7c87979b9e"><b>Minimum launch speed:</b></paragraph>
+<paragraph id="6a8930d8a5300d7c87979b9f">v = √( (3/5) GM/R )</paragraph>
+<paragraph id="6a8930d8a5300d7c87979ba0"><b>Symbols:</b> v = minimum projection speed from surface of M; G = gravitational constant; M = smaller sphere mass; R = sphere radius.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d8a5300d7c87979ba1"><b>Point to note (explicitly stated):</b> speed is <b>zero at N</b>, but it hits the heavier sphere (4M) with <b>non-zero speed</b>. (That impact speed is not found here.)</paragraph>
+</div>
+
+<h2>Earth Satellites</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d8a5300d7c87979ba2"><b>Earth satellites</b> = objects revolving around Earth. Motion is like planets around Sun ⇒ <b>Kepler’s laws</b> apply. Orbits may be <b>circular</b> or <b>elliptic</b>.</paragraph>
+</div>
+
+<h3>Natural and artificial satellites</h3>
+<paragraph id="6a8930d8a5300d7c87979ba3"><b>Moon</b> = Earth’s only natural satellite; orbit nearly circular; period ≈ <b>27.3 days</b> ≈ its rotation period about its own axis.</paragraph>
+<paragraph id="6a8930d8a5300d7c87979ba4">Since <b>1957</b>, many <b>artificial satellites</b> launched for <b>telecommunication, geophysics, meteorology</b>, etc.</paragraph>
+
+<h3>Satellite in circular orbit of radius (R<sub>E</sub> + h)</h3>
+<paragraph id="6a8930d8a5300d7c87979ba5">Take orbital radius from Earth’s centre = (R<sub>E</sub> + h); satellite mass = m; speed = V.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ba6"><b>Centripetal force needed:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ba7">F<sub>c</sub> = mV<sup>2</sup>/(R<sub>E</sub> + h)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979ba8"><b>Symbols:</b> F<sub>c</sub> = centripetal force; m = satellite mass; V = orbital speed; R<sub>E</sub> = Earth radius; h = height above surface.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979ba9"><b>Gravitational force by Earth:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979baa">F<sub>g</sub> = GmM<sub>E</sub>/(R<sub>E</sub> + h)<sup>2</sup></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bab"><b>Symbols:</b> F<sub>g</sub> = gravitational force magnitude; G = gravitational constant; M<sub>E</sub> = mass of Earth; others as above.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979bac">For circular orbit: F<sub>c</sub> = F<sub>g</sub> ⇒ cancel m:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bad"><b>Orbital speed:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bae">V = √(GM<sub>E</sub>/(R<sub>E</sub> + h))</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979baf"><b>Symbols:</b> V = satellite speed in circular orbit; G, M<sub>E</sub>, R<sub>E</sub>, h as defined.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979bb0">From V = √(GM<sub>E</sub>/(R<sub>E</sub> + h)) ⇒ <b>V decreases when h increases</b>.</paragraph>
+</div>
+
+<h3>Special case: orbit close to Earth (h = 0)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bb1"><b>Speed for h = 0:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bb2">V(h=0) = √(GM<sub>E</sub>/R<sub>E</sub>) = √(gR<sub>E</sub>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bb3"><b>Symbols:</b> g = GM<sub>E</sub>/R<sub>E</sub><sup>2</sup>; others as above.</paragraph>
+</div>
+
+<h3>Time period of a circular satellite orbit</h3>
+<paragraph id="6a8930d8a5300d7c87979bb4">Distance in one round = 2π(R<sub>E</sub> + h). So time period T = distance/speed:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bb5"><b>Time period:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bb6">T = 2π(R<sub>E</sub> + h)/V = 2π(R<sub>E</sub> + h)<sup>3/2</sup>/√(GM<sub>E</sub>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bb7"><b>Symbols:</b> T = orbital period; V = orbital speed; other symbols as defined.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979bb8">Squaring:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bb9"><b>Kepler’s law of periods (Earth satellites):</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bba">T<sup>2</sup> = k (R<sub>E</sub> + h)<sup>3</sup>, where k = 4π<sup>2</sup>/(GM<sub>E</sub>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bbb"><b>Symbols:</b> k = constant for a given central mass (Earth here); T = period; (R<sub>E</sub> + h) = orbital radius.</paragraph>
+</div>
+
+<h3>Very close satellites (h ≪ R<sub>E</sub>)</h3>
+<paragraph id="6a8930d8a5300d7c87979bbc">If h is tiny compared to R<sub>E</sub>, neglect h:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bbd"><b>Near-Earth orbital period:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bbe">T<sub>0</sub> = 2π √(R<sub>E</sub>/g)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bbf"><b>Symbols:</b> T<sub>0</sub> = period very close to Earth’s surface; R<sub>E</sub> = Earth radius; g = surface gravity.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979bc0">Using g ≈ 9.8 m s<sup>−2</sup>, R<sub>E</sub> = 6400 km ⇒ T<sub>0</sub> ≈ <b>85 minutes</b>.</paragraph>
+</div>
+
+<h2>Example 7.5: Moons of Mars and Martian year (Kepler’s third law applications)</h2>
+
+<h3>(i) Mass of Mars from Phobos orbit</h3>
+<paragraph id="6a8930d8a5300d7c87979bc1">Given: Phobos period T = 7 h 39 min = 459 min; orbital radius R = 9.4 × 10<sup>3</sup> km.</paragraph>
+<paragraph id="6a8930d8a5300d7c87979bc2">Use Kepler’s 3rd law for a satellite around Mars (central mass M<sub>m</sub>):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bc3"><b>Mass from orbital data:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bc4">T<sup>2</sup> = 4π<sup>2</sup>R<sup>3</sup>/(GM<sub>m</sub>)  ⇒  M<sub>m</sub> = 4π<sup>2</sup>R<sup>3</sup>/(GT<sup>2</sup>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bc5"><b>Symbols:</b> M<sub>m</sub> = mass of Mars; R = Phobos orbital radius; T = Phobos period; G = gravitational constant.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979bc6">Substitution (as in text) ⇒</paragraph>
+<paragraph id="6a8930d8a5300d7c87979bc7">M<sub>m</sub> = 6.48 × 10<sup>23</sup> kg.</paragraph>
+
+<h3>(ii) Length of the Martian year</h3>
+<paragraph id="6a8930d8a5300d7c87979bc8">Assume Earth + Mars move in circular orbits about Sun. Mars orbital radius = 1.52 × Earth’s. By Kepler’s 3rd law (about Sun):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bc9"><b>Kepler scaling (planets about Sun):</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bca">(T<sub>M</sub>/T<sub>E</sub>)<sup>2</sup> = (R<sub>MS</sub>/R<sub>ES</sub>)<sup>3</sup></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bcb"><b>Symbols:</b> T<sub>M</sub> = Martian year; T<sub>E</sub> = Earth year (365 d); R<sub>MS</sub> = Mars–Sun distance; R<sub>ES</sub> = Earth–Sun distance.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979bcc">So:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979bcd">T<sub>M</sub> = (1.52)<sup>3/2</sup> × 365 = 684 days.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979bce">Planetary orbits are nearly circular (except Mercury and Mars). For Earth, ellipticity is tiny: <b>b/a = 0.99986</b> (semi-minor/semi-major axis).</paragraph>
+</div>
+
+<h2>Example 7.6: Weighing the Earth (two methods to find M<sub>E</sub>)</h2>
+
+<h3>Method 1: Using surface gravity g</h3>
+<paragraph id="6a8930d8a5300d7c87979bcf">Given: g = 9.81 m s<sup>−2</sup>, R<sub>E</sub> = 6.37 × 10<sup>6</sup> m.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bd0"><b>Earth’s mass from g:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bd1">g = GM<sub>E</sub>/R<sub>E</sub><sup>2</sup>  ⇒  M<sub>E</sub> = gR<sub>E</sub><sup>2</sup>/G</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bd2"><b>Symbols:</b> M<sub>E</sub> = mass of Earth; g = surface gravity; R<sub>E</sub> = Earth radius; G = gravitational constant.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979bd3">Numerical value:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979bd4">M<sub>E</sub> = 5.97 × 10<sup>24</sup> kg.</paragraph>
+
+<h3>Method 2: Using Moon as Earth’s satellite (Kepler’s third law)</h3>
+<paragraph id="6a8930d8a5300d7c87979bd5">Given: Moon distance R = 3.84 × 10<sup>8</sup> m; period T = 27.3 days.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bd6"><b>Earth’s mass from Moon’s orbit:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bd7">T<sup>2</sup> = 4π<sup>2</sup>R<sup>3</sup>/(GM<sub>E</sub>)  ⇒  M<sub>E</sub> = 4π<sup>2</sup>R<sup>3</sup>/(GT<sup>2</sup>)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bd8"><b>Symbols:</b> R = Earth–Moon distance; T = Moon’s orbital period; M<sub>E</sub>, G as defined.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979bd9">Numerical value:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979bda">M<sub>E</sub> = 6.02 × 10<sup>24</sup> kg.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979bdb">Both methods match closely; difference <b>&lt; 1%</b>.</paragraph>
+</div>
+
+<h2>Example 7.7: Converting k units and Moon’s period from k</h2>
+
+<h3>Convert k from SI to (days, kilometres)</h3>
+<paragraph id="6a8930d8a5300d7c87979bdc">Given: k = 10<sup>−13</sup> s<sup>2</sup> m<sup>−3</sup>.</paragraph>
+<paragraph id="6a8930d8a5300d7c87979bdd">Need: seconds → days, metres → kilometres:</paragraph>
+<ul>
+  <li><paragraph id="6a8930d8a5300d7c87979bde">1 day = 24×60×60 s</paragraph></li>
+  <li><paragraph id="6a8930d8a5300d7c87979bdf">1 km = 1000 m</paragraph></li>
+</ul>
+
+<paragraph id="6a8930d8a5300d7c87979be0">Result (as in text):</paragraph>
+<paragraph id="6a8930d8a5300d7c87979be1">k = 1.33 × 10<sup>−14</sup> d<sup>2</sup> km<sup>−3</sup>.</paragraph>
+
+<h3>Moon’s time period using k</h3>
+<paragraph id="6a8930d8a5300d7c87979be2">Moon’s distance = 3.84 × 10<sup>5</sup> km.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979be3"><b>Kepler form used:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979be4">T<sup>2</sup> = kR<sup>3</sup></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979be5"><b>Symbols:</b> T = time period; R = orbital radius (from Earth’s centre); k = 4π<sup>2</sup>/(GM<sub>E</sub>) in chosen units.</paragraph>
+</div>
+
+<paragraph id="6a8930d8a5300d7c87979be6">Compute:</paragraph>
+<paragraph id="6a8930d8a5300d7c87979be7">T<sup>2</sup> = (1.33 × 10<sup>−14</sup>)(3.84 × 10<sup>5</sup>)<sup>3</sup></paragraph>
+<paragraph id="6a8930d8a5300d7c87979be8">T = 27.3 d.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979be9">Kepler’s law of periods (T<sup>2</sup> ∝ a<sup>3</sup>) also works for <b>elliptical</b> orbits if (R<sub>E</sub> + h) is replaced by the <b>semi-major axis</b> of the ellipse. Earth lies at <b>one focus</b>.</paragraph>
+</div>
+
+<h2>Energy of an Orbiting Satellite</h2>
+
+<h3>Kinetic energy in a circular orbit</h3>
+<paragraph id="6a8930d8a5300d7c87979bea">Using orbital speed: v<sup>2</sup> = GM<sub>E</sub>/(R<sub>E</sub> + h)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979beb"><b>Kinetic energy:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bec">KE = (1/2)mv<sup>2</sup> = GmM<sub>E</sub>/[2(R<sub>E</sub> + h)]</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bed"><b>Symbols:</b> KE = kinetic energy; m = satellite mass; v = orbital speed; G = gravitational constant; M<sub>E</sub> = Earth mass; R<sub>E</sub> = Earth radius; h = orbital height.</paragraph>
+</div>
+
+<h3>Potential energy (zero at infinity)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bee"><b>Gravitational potential energy:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bef">PE = −GmM<sub>E</sub>/(R<sub>E</sub> + h)</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bf0"><b>Symbols:</b> PE = potential energy (taking PE = 0 at infinity); other symbols as defined.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979bf1">KE is <b>+</b>, PE is <b>−</b>. Magnitudes: <b>KE = (1/2)|PE|</b>.</paragraph>
+</div>
+
+<h3>Total energy of a circularly orbiting satellite</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d8a5300d7c87979bf2"><b>Total energy:</b></paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bf3">E = KE + PE = −GmM<sub>E</sub>/[2(R<sub>E</sub> + h)]</paragraph>
+  <paragraph id="6a8930d8a5300d7c87979bf4"><b>Symbols:</b> E = total mechanical energy; other symbols as defined.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d8a5300d7c87979bf5">Total energy for a circular orbit is <b>negative</b>. PE is negative and has <b>2× the magnitude</b> of the +KE.</paragraph>
+</div>
+
+<h3>Elliptic orbit case (energy interpretation)</h3>
+<paragraph id="6a8930d8a5300d7c87979bf6">For an <b>elliptic</b> orbit: KE and PE <b>change from point to point</b>, but <b>total energy stays constant</b> and is still <b>negative</b>.</paragraph>
+
+<div class="remember-box">
+  <paragraph id="6a8930d8a5300d7c87979bf7"><b>Core link to escape:</b> If total energy is <b>≥ 0</b>, the object can <b>escape to infinity</b>. Satellites stay at finite distance, so total energy <b>cannot be ≥ 0</b>.</paragraph>
+</div>
+<paragraph id="6a8930d8a5300d7c87979bf8"></paragraph>
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

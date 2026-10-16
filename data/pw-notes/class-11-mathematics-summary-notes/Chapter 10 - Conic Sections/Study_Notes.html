@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-10 : Conic Sections</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929d33141cde18a73ccd0c/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929d33141cde18a73ccd0c/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-10 : Conic Sections</h1>
+
+<h2>10.1 Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="ba537afbd22aa880d81bcdb7"><b>Conic sections (conics)</b> = curves formed when a plane cuts a <b>double-napped right circular cone</b>.</paragraph>
+</div>
+<paragraph id="82f33e5c7fac103479c91dc7">In this chapter (after equations of a line), we study: <b>circle, ellipse, parabola, hyperbola</b>.</paragraph>
+<paragraph id="18239c3f1aa5231de3f1d497">Names <b>parabola</b> + <b>hyperbola</b> were given by <b>Apollonius</b>. Conics come from slicing a cone with a plane; used in planetary motion, telescopes/antennas, reflectors (flashlights, car headlights), etc.</paragraph>
+
+<h2>10.2 Sections of a Cone</h2>
+<h3>Formation and parts of the cone</h3>
+<paragraph id="777649270208db5f25dac9e4">Let <b>l</b> be a fixed vertical line and <b>m</b> another line meeting it at fixed point <b>V</b> and making angle <b>α</b> with it. Rotate <b>m</b> about <b>l</b>, keeping <b>α</b> constant → forms a <b>double-napped right circular hollow cone</b> extending infinitely both ways.</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-3.webp" decoding="async" height="247" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-3.webp" srcset="img/Untitled-3.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="223"/>
+    </button>
+  </div>
+</figure>
+
+    <li><b>Vertex</b>: fixed point <b>V</b></li>
+    <li><b>Axis</b>: line <b>l</b></li>
+    <li><b>Generator</b>: rotating line <b>m</b></li>
+    <li><b>Nappes</b>: the 2 parts of the cone separated by the vertex</li>
+  </ul>
+</div>
+
+<h3>Conic section and the role of the cutting plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6327c656f0d2a83512df9d88"><b>Conic section</b> = curve made by intersecting a right circular cone with a plane.</paragraph>
+</div>
+<paragraph id="4641f64787f9724a4c7cd616">The type of conic depends on the plane’s position + the angle it makes with the cone’s vertical axis.</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6927755d3390abdeae57c68e">Let <b>β</b> be the angle between the <b>cutting plane</b> and the cone’s <b>vertical axis</b>. The plane may cut the cone <b>at the vertex</b> or <b>elsewhere</b> (on one nappe or both).</paragraph>
+</div>
+
+<h3>10.2.1 Circle, ellipse, parabola and hyperbola (non-degenerate cases)</h3>
+<paragraph id="c47ab8e77c9306148f635c3f">If the plane cuts the cone <b>at a point other than the vertex</b> (hits a nappe away from the vertex), then the conic depends on how <b>β</b> compares to <b>α</b>:</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Circle</b>: <b>β = 90°</b></li>
+    <li><b>Ellipse</b>: <b>α &lt; β &lt; 90°</b></li>
+    <li><b>Parabola</b>: <b>β = α</b></li>
+    <li><b>Hyperbola</b>: <b>0 ≤ β &lt; α</b></li>
+  </ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>For <b>circle, ellipse, parabola</b>: plane cuts across <b>one nappe</b> only.</li>
+    <li>For <b>hyperbola</b>: plane cuts through <b>both nappes</b>.</li>
+  </ul>
+</div>
+
+<h3>10.2.2 Degenerated conic sections (cuts through the vertex)</h3>
+<paragraph id="1dbdb5ff9079f83191da1b9c">If the plane cuts the cone <b>at the vertex</b>, the intersection can “degenerate” into simpler shapes:</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Point</b>: when <b>α &lt; β ≤ 90°</b></li>
+    <li><b>Straight line</b>: when <b>β = α</b> (plane contains a generator). This is the <b>degenerate parabola</b>.</li>
+    <li><b>Pair of intersecting straight lines</b>: when <b>0 ≤ β &lt; α</b>. This is the <b>degenerate hyperbola</b>.</li>
+  </ul>
+</div>
+<paragraph id="5c11e02da4a385d6e9514ed9">Later: we get equations of these conics in <b>standard form</b> using their <b>geometric definitions</b>.</paragraph>
+
+<h2>10.3 Circle</h2>
+<h3>Definition and basic terms</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="51e9bb6dee6a889c663fb215"><b>Definition (Circle)</b>: set of all points in a plane at the same distance from a fixed point.</paragraph>
+  <ul>
+    <li>Fixed point = <b>centre</b></li>
+    <li>Constant distance = <b>radius</b></li>
+  </ul>
+</div>
+
+<h3>Equation of a circle with given centre and radius</h3>
+<paragraph id="d0316d4f3d87c6423a13051a">Equation is simplest if the centre is at the origin, but we derive it for any centre.</paragraph>
+<paragraph id="467d3946da4f176290595950">Centre <b>C(h, k)</b>, radius <b>r</b>. For any point <b>P(x, y)</b> on the circle:</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-4.webp" decoding="async" height="198" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-4.webp" srcset="img/Untitled-4.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="225"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="89de958bbc25c2a1c9e8d9ae">|CP| = r</paragraph>
+<paragraph id="931881df2c9ee25a1f3163e6">Using distance formula:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6804eac4dfd7d8f985e1452a"><b>(x − h)<sup>2</sup> + (y − k)<sup>2</sup> = r<sup>2</sup></b></paragraph>
+  <paragraph id="47915365134282de15e5643f">x, y: coordinates of any point on the circle</paragraph>
+  <paragraph id="391eac69e594f0a30398b39b">h, k: coordinates of the centre</paragraph>
+  <paragraph id="7146c3d120521b3d07d160ca">r: radius (positive real number)</paragraph>
+</div>
+
+<h3>Worked examples on the circle</h3>
+
+<h3>Example 1: centre at origin</h3>
+<paragraph id="099244a406a15fea5abf26a7"><b>Find an equation of the circle with centre (0,0) and radius r.</b></paragraph>
+<paragraph id="a7512a8943b89df5b35d2fa5">Here h = 0, k = 0. Substitute into (x − h)<sup>2</sup> + (y − k)<sup>2</sup> = r<sup>2</sup>:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6c0107e96dfafcca566ca901"><b>x<sup>2</sup> + y<sup>2</sup> = r<sup>2</sup></b></paragraph>
+  <paragraph id="e09c2f1baebd8e58bd87f326">x, y: coordinates of any point on the circle</paragraph>
+  <paragraph id="f0b07c62368d25c891f88fc3">r: radius</paragraph>
+</div>
+
+<h3>Example 2: given centre and radius</h3>
+<paragraph id="1faf3d89d2eb9597b33a959f"><b>Find the equation of the circle with centre (−3, 2) and radius 4.</b></paragraph>
+<paragraph id="0f40874a183dff220db37487">h = −3, k = 2, r = 4:</paragraph>
+<paragraph id="bbcd376182a061301be03a9c">(x − (−3))<sup>2</sup> + (y − 2)<sup>2</sup> = 4<sup>2</sup></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="cc5f35307841ccd1ff207b1d"><b>(x + 3)<sup>2</sup> + (y − 2)<sup>2</sup> = 16</b></paragraph>
+  <paragraph id="6fbd38d4496523580943ac1e">x, y: coordinates of any point on the circle</paragraph>
+  <paragraph id="c5d4f3d166d12669d1b3d834">Centre: (−3, 2)</paragraph>
+  <paragraph id="df1b59f82f9dbb14d231a5cf">Radius: 4</paragraph>
+</div>
+
+<h3>Example 3: find centre and radius from general form (complete squares)</h3>
+<paragraph id="6d467a2dbb5c0fcb57bd35a1"><b>Find the centre and the radius of the circle</b> x<sup>2</sup> + y<sup>2</sup> + 8x + 10y − 8 = 0.</paragraph>
+<paragraph id="a49d013cf793d7daa3dac8be">Move constant to RHS; group x-terms and y-terms:</paragraph>
+<paragraph id="d16c33ffd18fe2211c85dc5c">(x<sup>2</sup> + 8x) + (y<sup>2</sup> + 10y) = 8</paragraph>
+<paragraph id="cd0e51eaf166c2186a7d90e6">Complete the squares:</paragraph>
+<ul>
+  <li>x<sup>2</sup> + 8x + 16 = (x + 4)<sup>2</sup></li>
+  <li>y<sup>2</sup> + 10y + 25 = (y + 5)<sup>2</sup></li>
+</ul>
+<paragraph id="45d0f9019a5e07325152233f">Add the same constants to both sides:</paragraph>
+<paragraph id="df053aaeaa8fe712d167ce62">(x<sup>2</sup> + 8x + 16) + (y<sup>2</sup> + 10y + 25) = 8 + 16 + 25</paragraph>
+<paragraph id="bad8f029831bd2e5ee253b1c">So:</paragraph>
+<paragraph id="7daad931fabc932f806b4cb8">(x + 4)<sup>2</sup> + (y + 5)<sup>2</sup> = 49</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Match to (x − h)<sup>2</sup> + (y − k)<sup>2</sup> = r<sup>2</sup>. Note: (x + 4)<sup>2</sup> = (x − (−4))<sup>2</sup>, similarly for y.</li>
+    <li>Centre = <b>(−4, −5)</b>, radius = <b>7</b>.</li>
+  </ul>
+</div>
+<div class="remember-box">
+  <paragraph id="4ac300733955ee395f61b78b">Completing the square: add (coefficient of x / 2)<sup>2</sup> inside. For x<sup>2</sup> + 8x add (8/2)<sup>2</sup> = 16; for y<sup>2</sup> + 10y add (10/2)<sup>2</sup> = 25. Whatever you add on LHS, add on RHS too.</paragraph>
+</div>
+
+<h3>Example 4: circle through two points with centre on a given line</h3>
+<paragraph id="f9d19cc693f3caac32c55c7e"><b>Find the equation of the circle which passes through (2, −2) and (3, 4) and whose centre lies on the line x + y = 2.</b></paragraph>
+<paragraph id="2208a497fd172814b0261259">Let centre be (h, k), radius r. General circle:</paragraph>
+<paragraph id="dd3d565067b2e7d701948947">(x − h)<sup>2</sup> + (y − k)<sup>2</sup> = r<sup>2</sup></paragraph>
+<paragraph id="0ea4acded37f97ccdbd8e632">Turn each condition into an equation:</paragraph>
+<ul>
+  <li>Through (2, −2): (2 − h)<sup>2</sup> + (−2 − k)<sup>2</sup> = r<sup>2</sup> ...(1)</li>
+  <li>Through (3, 4): (3 − h)<sup>2</sup> + (4 − k)<sup>2</sup> = r<sup>2</sup> ...(2)</li>
+  <li>Centre on x + y = 2: h + k = 2 ...(3)</li>
+</ul>
+<paragraph id="409a910bad806befccaaae48">Solving (1), (2), (3):</paragraph>
+<paragraph id="938ce4c567ac99a0da7c6996">h = 0.7, k = 1.3, and r<sup>2</sup> = 12.58</paragraph>
+<paragraph id="1be4283b8d903dc02f9bbd74">So the circle is:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3eb47291b79eca8bbe98fd98"><b>(x − 0.7)<sup>2</sup> + (y − 1.3)<sup>2</sup> = 12.58</b></paragraph>
+  <paragraph id="8ef7c5d5448971af7147475e">(h, k) = (0.7, 1.3): centre</paragraph>
+  <paragraph id="b4538648529fe288005ce4d1">r<sup>2</sup> = 12.58: square of radius</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="36cbee994fe1e006946dcf2d">Coordinate-geometry tip: convert every geometric condition into an equation, then solve the simultaneous equations (usually for h, k, r).</paragraph>
+</div>
+
+<h2>10.4 Parabola</h2>
+
+<h3>Definition and basic terms</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="f1e021af18438f2f1825e146"><b>Parabola:</b> locus of all points in a plane that are at the same distance from:</paragraph>
+  <ul>
+    <li>a fixed line = <b>directrix</b>, and</li>
+    <li>a fixed point <b>F</b> not on the line = <b>focus</b>.</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8d192c312e61ae33cbdf7889">Meaning note: “Para” = “for”, “bola” = “throwing” → path traced by a thrown ball.</paragraph>
+</div>
+
+<h3>Degenerate case of a parabola (focus lies on directrix)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="56a3b25137071814973fea77">If the fixed point lies on the fixed line, then points equidistant from them form the <b>straight line through the fixed point and ⟂ to the fixed line</b>. This is the <b>degenerate parabola</b>.</paragraph>
+</div>
+
+<h3>Axis and vertex of a parabola</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Axis:</b> line through the focus and ⟂ to the directrix.</li>
+    <li><b>Vertex:</b> point where the parabola meets its axis.</li>
+  </ul>
+</div>
+
+<h3>10.4.1 Standard equations of parabola (set-up)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="0e96b33defcb5d86676f3864">Parabola equations are simplest when the <b>vertex is at the origin</b> and the <b>axis of symmetry</b> is along the <b>x-axis</b> or <b>y-axis</b>.</paragraph>
+  <paragraph id="fe8841fdd20cc029886539e0">Then there are <b>4 orientations</b> (Fig. 10.15 a–d): opening right, left, up, or down.</paragraph>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-5.webp" decoding="async" height="197" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-5.webp" srcset="img/Untitled-5.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="214"/>
+    </button>
+  </div>
+</figure>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-6.webp" decoding="async" height="202" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-6.webp" srcset="img/Untitled-6.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="222"/>
+    </button>
+  </div>
+</figure>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-7.webp" decoding="async" height="245" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-7.webp" srcset="img/Untitled-7.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="185"/>
+    </button>
+  </div>
+</figure>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-7.webp" decoding="async" height="245" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-7.webp" srcset="img/Untitled-7.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="185"/>
+    </button>
+  </div>
+</figure>
+</div>
+
+<h2>Equation of a Parabola (Focus on x-axis, Vertex at Origin)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="95a54c8c6c27c9fa36d33885"><b>Parabola (definition):</b> locus of all points <b>P</b> such that distance <b>P → focus</b> equals the <b>perpendicular</b> distance <b>P → directrix</b>.</paragraph>
+</div>
+
+<h3>Derivation of the standard equation y<sup>2</sup> = 4ax</h3>
+<paragraph id="e6c6c9f50c3f8d2e2f74b050">Take focus <b>F(a,0)</b> with <b>a &gt; 0</b>, and directrix <b>x = −a</b> (i.e. <b>x + a = 0</b>).</paragraph>
+<ul>
+  <li>Distance between focus and directrix = <b>2a</b>.</li>
+  <li>Let <b>FM</b> be ⟂ to the directrix, and <b>O</b> the midpoint of <b>FM</b>. Then <b>O</b> lies on the parabola = the <b>vertex</b>.</li>
+  <li>Choose <b>O</b> as origin, <b>OX</b> as x-axis, and <b>OY</b> ⟂ to it as y-axis.</li>
+</ul>
+
+<paragraph id="9bd2c86d00dd339f2d3e1872">Let <b>P(x, y)</b> be any point on the parabola. Drop <b>PB ⟂</b> directrix, meeting it at <b>B</b>.</paragraph>
+ <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-9.webp" decoding="async" height="279" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-9.webp" srcset="img/Untitled-9.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="356"/>
+    </button>
+  </div>
+</figure>
+<ul>
+  <li>Directrix is <b>x = −a</b> ⇒ foot <b>B = (−a, y)</b>.</li>
+  <li>Parabola condition: <b>PF = PB</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="c95b19312317c43942a80259"><b>Distance PF:</b> PF = √((x − a)<sup>2</sup> + y<sup>2</sup>)</paragraph>
+  <paragraph id="7c41fe2bde80abd39c1ce575">x, y = coordinates of point P</paragraph>
+  <paragraph id="cb916d353902ada0e158cf52">a = x-coordinate of the focus (a &gt; 0)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d8d3979007079f72f3961ce9"><b>Perpendicular distance to x = −a:</b> PB = |x + a|</paragraph>
+  <paragraph id="dbb808df665a46b133b6c355">x = x-coordinate of point P</paragraph>
+  <paragraph id="59b628ba12f5a1d653e23b66">a = positive constant locating the directrix</paragraph>
+</div>
+
+<paragraph id="c99fcbe623e97130632ba764">Equate PF and PB (points on parabola):</paragraph>
+<ul>
+  <li>√((x − a)<sup>2</sup> + y<sup>2</sup>) = |x + a|</li>
+  <li>Square: (x − a)<sup>2</sup> + y<sup>2</sup> = (x + a)<sup>2</sup></li>
+  <li>x<sup>2</sup> − 2ax + a<sup>2</sup> + y<sup>2</sup> = x<sup>2</sup> + 2ax + a<sup>2</sup></li>
+  <li>y<sup>2</sup> = 4ax</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="a319b8993dd35e5ac5c02a80"><b>Standard parabola (opens right):</b> y<sup>2</sup> = 4ax, a &gt; 0</paragraph>
+  <paragraph id="3365bda1f55a8d4ed708bf98">a = distance (vertex → focus) = distance (vertex → directrix)</paragraph>
+</div>
+
+<h3>Converse check (point satisfying the equation lies on the parabola)</h3>
+<paragraph id="9e5812ed4d76cb2be1dbd791">If <b>P(x,y)</b> satisfies y<sup>2</sup> = 4ax, then:</paragraph>
+<ul>
+  <li>PF = √((x − a)<sup>2</sup> + y<sup>2</sup>) = √((x − a)<sup>2</sup> + 4ax) = √(x<sup>2</sup> + 2ax + a<sup>2</sup>) = |x + a|</li>
+  <li>But PB = |x + a|</li>
+  <li>So PF = PB ⇒ P lies on the parabola.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="a8c8e934236d52e903aa65c2">So <b>y<sup>2</sup> = 4ax</b> is <b>exactly</b> the parabola with <b>vertex (0,0)</b>, <b>focus (a,0)</b>, <b>directrix x = −a</b>, with <b>a &gt; 0</b>.</paragraph>
+</div>
+
+<h3>Discussion: domain and quadrants for y<sup>2</sup> = 4ax</h3>
+<ul>
+  <li>y<sup>2</sup> ≥ 0 and 4a &gt; 0 ⇒ <b>x ≥ 0</b>.</li>
+  <li>No point on the curve has <b>x &lt; 0</b>.</li>
+  <li>Curve goes infinitely into the <b>1st</b> and <b>4th</b> quadrants.</li>
+  <li><b>Axis</b> is the <b>positive x-axis</b>.</li>
+</ul>
+
+<h3>Standard equations of parabolas (four orientations)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="ee47643eceabce12f167bde5"><b>Opens right:</b> y<sup>2</sup> = 4ax</paragraph>
+  <paragraph id="405b5eb0c4889f675f3fd685">a &gt; 0; axis along x-axis; focus towards +x</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="37f7ac70f62e324d52e9cf3f"><b>Opens left:</b> y<sup>2</sup> = −4ax</paragraph>
+  <paragraph id="bbc6b4f36e31435c4990b5e0">a &gt; 0; axis along x-axis; focus towards −x</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="225773ab615ead3bd3eb0a83"><b>Opens up:</b> x<sup>2</sup> = 4ay</paragraph>
+  <paragraph id="fb74f05c58285751f23fc845">a &gt; 0; axis along y-axis; focus towards +y</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8426648fa0171a90244c89d5"><b>Opens down:</b> x<sup>2</sup> = −4ay</paragraph>
+  <paragraph id="09799ebc3c6d2ec60ab0a8c0">a &gt; 0; axis along y-axis; focus towards −y</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8fdd623d180c80632b2ca5fb"><b>Note (what “standard” means here):</b> in all above, <b>vertex at origin</b>, <b>focus on a coordinate axis</b>, and <b>directrix ∥ the other axis</b>. (Other focus/directrix positions are outside this scope.)</paragraph>
+</div>
+
+<h3>Observations from standard parabola equations (symmetry and opening)</h3>
+<ol>
+  <li>
+    <paragraph id="b2ca9d38dc540cb3268d2299"><b>Symmetry:</b> parabola is symmetric about its <b>axis</b>.</paragraph>
+    <ul>
+      <li>If equation has <b>y<sup>2</sup></b> ⇒ axis is along <b>x-axis</b>.</li>
+      <li>If equation has <b>x<sup>2</sup></b> ⇒ axis is along <b>y-axis</b>.</li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="70dc31fcb50d7b6fa6e5976d"><b>Axis along x-axis</b> (equations in y<sup>2</sup>):</paragraph>
+    <ul>
+      <li>Opens <b>right</b> if coefficient of x is <b>+</b>.</li>
+      <li>Opens <b>left</b> if coefficient of x is <b>−</b>.</li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="469e4e8dd50078c77ad48c44"><b>Axis along y-axis</b> (equations in x<sup>2</sup>):</paragraph>
+    <ul>
+      <li>Opens <b>up</b> if coefficient of y is <b>+</b>.</li>
+      <li>Opens <b>down</b> if coefficient of y is <b>−</b>.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="remember-box">
+  <paragraph id="b09bffc123d10dab6ed56a08"><b>Exam tip:</b> squared variable (x<sup>2</sup> or y<sup>2</sup>) gives the <b>axis</b>; sign of the non-squared term gives the <b>opening direction</b>.</paragraph>
+</div>
+
+<h2>Latus Rectum of a Parabola</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="7b7e0cd6566308d08e2339f8"><b>Latus rectum (parabola):</b> a line segment <b>⊥ to the axis</b>, passing through the <b>focus</b>, with its endpoints on the parabola.</paragraph>
+</div>
+
+<h3>Length of the latus rectum for y<sup>2</sup> = 4ax</h3>
+<paragraph id="84c8c4937f0ccc238848e804">For y<sup>2</sup> = 4ax (axis = x-axis, focus = (a,0)):</paragraph>
+<ul>
+<li>Using parabola property: for endpoints A and C on the latus rectum, <b>AF = AC</b>.</li>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-10.webp" decoding="async" height="305" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-10.webp" srcset="img/Untitled-10.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="357"/>
+    </button>
+  </div>
+</figure>
+
+<li>Distance focus → directrix: <b>FM = 2a</b> ⇒ <b>AC = FM = 2a</b>.</li>
+<li>So <b>AF = 2a</b>.</li>
+<li>By symmetry about x-axis: <b>AF = FB</b>.</li>
+<li>Total latus rectum length: <b>AB = AF + FB = 2a + 2a = 4a</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ea93d94ffa4934b0efa2f784"><b>Length of latus rectum (standard parabola):</b> 4a</paragraph>
+<paragraph id="3c99087ff8a8c0475c830cab">a = distance from vertex to focus</paragraph>
+</div>
+
+<h3>Example 5: Focus, axis, directrix, latus rectum for y<sup>2</sup> = 8x</h3>
+<ul>
+<li>Has <b>y<sup>2</sup></b> ⇒ axis of symmetry is the <b>x-axis</b>.</li>
+<li>x coefficient is positive ⇒ opens to the <b>right</b>.</li>
+<li>Compare y<sup>2</sup> = 8x with y<sup>2</sup> = 4ax ⇒ 4a = 8 ⇒ <b>a = 2</b>.</li>
+<li>Focus = <b>(a,0) = (2,0)</b>.</li>
+<li>Directrix: x = −a ⇒ <b>x = −2</b>.</li>
+<li>Length of latus rectum = 4a = 8.</li>
+</ul>
+
+<h3>Example 6: Equation given focus (2,0) and directrix x = −2</h3>
+<ul>
+<li>Focus on x-axis ⇒ axis is x-axis ⇒ form: y<sup>2</sup> = 4ax or y<sup>2</sup> = −4ax.</li>
+<li>Directrix x = −2 with focus (2,0) ⇒ opens right ⇒ pick y<sup>2</sup> = 4ax.</li>
+<li>a = 2 ⇒ y<sup>2</sup> = 4(2)x = <b>8x</b>.</li>
+</ul>
+
+<h3>Example 7: Equation given vertex (0,0) and focus (0,2)</h3>
+<ul>
+<li>Focus on y-axis ⇒ axis is y-axis.</li>
+<li>Vertex at origin ⇒ standard form x<sup>2</sup> = 4ay.</li>
+<li>a = 2 ⇒ x<sup>2</sup> = 4(2)y = <b>8y</b>.</li>
+</ul>
+
+<h3>Example 8: Parabola symmetric about y-axis and passing through (2, −3)</h3>
+<ul>
+<li>Symmetric about y-axis + vertex at origin ⇒ x<sup>2</sup> = 4ay or x<sup>2</sup> = −4ay.</li>
+<li>(2, −3) has y &lt; 0 ⇒ opens <b>downwards</b> ⇒ x<sup>2</sup> = −4ay.</li>
+<li>Sub (2,−3): 2<sup>2</sup> = −4a(−3) ⇒ 4 = 12a ⇒ a = 1/3.</li>
+<li>Equation: x<sup>2</sup> = −4(1/3)y = −(4/3)y ⇒ <b>3x<sup>2</sup> = −4y</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="24fdd4d853b6ce029a9398c5"><b>Common mistake:</b> picking x<sup>2</sup> = 4ay vs x<sup>2</sup> = −4ay without checking if the point is above/below the x-axis (sign of y).</paragraph>
+</div>
+
+<h2>Ellipse: Basic Definitions and Axes</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="0a87db8a59728e5e2819c948"><b>Ellipse (definition):</b> locus of points such that the <b>sum</b> of distances from two fixed points is constant.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-11.webp" decoding="async" height="257" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-11.webp" srcset="img/Untitled-11.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="358"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="09d742761541193a0ad0bc1c">Those fixed points are the <b>foci</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="50d21e96ab640fd87a750fa9"><b>Note:</b> this constant sum is always <b>greater than</b> the distance between the two foci.</paragraph>
+</div>
+
+<h3>Centre, major axis, minor axis, vertices</h3>
+<ul>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-12.webp" decoding="async" height="282" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-12.webp" srcset="img/Untitled-12.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="456"/>
+    </button>
+  </div>
+</figure>
+
+<li><b>Centre:</b> midpoint of the segment joining the foci.</li>
+<li><b>Major axis:</b> segment passing through both foci.</li>
+<li><b>Minor axis:</b> segment through the centre, <b>⊥</b> to the major axis.</li>
+<li><b>Vertices:</b> endpoints of the major axis.</li>
+</ul>
+
+<h3>Standard ellipse notation (lengths)</h3>
+<ul>
+<li>Major axis length = <b>2a</b> ⇒ semi-major = <b>a</b>.</li>
+<li>Minor axis length = <b>2b</b> ⇒ semi-minor = <b>b</b>.</li>
+<li>Distance between foci = <b>2c</b> ⇒ centre → each focus = <b>c</b>.</li>
+</ul>
+
+<h2>Ellipse: Relationship Among a, b, c</h2>
+
+<h3>Relationship between semi-major axis, semi-minor axis and focus distance</h3>
+<paragraph id="8dd9ec2f91c6abc549204cfa">Let centre be O, foci be F<sub>1</sub>, F<sub>2</sub>. Pick two special points:</paragraph>
+<ul>
+<li><b>P</b>: endpoint of major axis (a vertex).</li>
+<li><b>Q</b>: endpoint of minor axis.</li>
+</ul>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-13.webp" decoding="async" height="270" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-13.webp" srcset="img/Untitled-13.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="405"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="fc120b45f97b091b40da14f6"><b>At P (end of major axis):</b></paragraph>
+<ul>
+<li>F<sub>1</sub>P + F<sub>2</sub>P = (F<sub>1</sub>O + OP) + F<sub>2</sub>P</li>
+<li>F<sub>1</sub>O = c, OP = a, and F<sub>2</sub>P = a − c (P is a from centre; focus is c from centre on same line)</li>
+<li>Sum = (c + a) + (a − c) = <b>2a</b></li>
+</ul>
+
+<paragraph id="0c90b552b38b9616a68d9106"><b>At Q (end of minor axis):</b></paragraph>
+<ul>
+<li>By symmetry: Q is equally far from each focus.</li>
+<li>Each distance = √(b<sup>2</sup> + c<sup>2</sup>)</li>
+<li>So F<sub>1</sub>Q + F<sub>2</sub>Q = 2√(b<sup>2</sup> + c<sup>2</sup>)</li>
+</ul>
+
+<paragraph id="8f98ace1e981330d276642d7">Same ellipse ⇒ same constant sum:</paragraph>
+<ul>
+<li>2√(b<sup>2</sup> + c<sup>2</sup>) = 2a</li>
+<li>√(b<sup>2</sup> + c<sup>2</sup>) = a</li>
+<li>a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup></li>
+<li>c = √(a<sup>2</sup> − b<sup>2</sup>)</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="04b69a8a16d3529d70de4db1"><b>Ellipse relation:</b> a<sup>2</sup> = b<sup>2</sup> + c<sup>2</sup></paragraph>
+<paragraph id="ea51974d6aaa38b5a3e75fca">a = semi-major axis</paragraph>
+<paragraph id="1804edfa0cfa8d0fae6d86d1">b = semi-minor axis</paragraph>
+<paragraph id="4810b633af12142d2fdff7a7">c = distance from centre to a focus</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="008a4bebcfa7939a397308fe"><b>Focus distance:</b> c = √(a<sup>2</sup> − b<sup>2</sup>)</paragraph>
+<paragraph id="283c7504ac621652e790af84">a = semi-major axis</paragraph>
+<paragraph id="7d2026d2443e995fb3253799">b = semi-minor axis</paragraph>
+</div>
+
+<h2>Eccentricity of an Ellipse</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6dd4004c3f8001238c829752"><b>Eccentricity (ellipse):</b> ratio = (centre → focus) ÷ (centre → vertex).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f813d43cd20a350d94b9a159"><b>Eccentricity:</b> e = c/a</paragraph>
+<paragraph id="23eadc27981dcdd9617d24ca">e = eccentricity</paragraph>
+<paragraph id="59d59da17ac87ffcdba50590">c = distance from centre to focus</paragraph>
+<paragraph id="d7f844609f8656477e5cf7e4">a = distance from centre to vertex (semi-major axis)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b0817da5b8efaa87edefc8ca">Since c = ae, each focus is <b>ae</b> from the centre along the major axis.</paragraph>
+</div>
+
+<h2>Standard Equations of an Ellipse (Orientation)</h2>
+
+<h3>When the equation is simplest</h3>
+<ul>
+<li>Equation is simplest when the <b>centre is at the origin</b>.</li>
+<li>Foci lie on either the <b>x-axis</b> or the <b>y-axis</b> (2 orientations).</li>
+</ul>
+
+<h3>Next step (setup for derivation with foci on x-axis)</h3>
+<paragraph id="ef62880c09a0239aa71ea2ae">Next, we derive the ellipse equation with its <b>foci on the x-axis</b> (as in the referenced figure).</paragraph>
+
+<h2>Equation of an Ellipse with Centre at Origin and Major Axis along the x-axis</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="c0046263347278c8b7895c60"><b>Set-up (standard position)</b>:</paragraph>
+<ul>
+<li>Foci: <b>F<sub>1</sub>(−c, 0)</b>, <b>F<sub>2</sub>(c, 0)</b></li>
+<li><b>O</b> is midpoint of F<sub>1</sub>F<sub>2</sub> (so centre at origin)</li>
+<li>x-axis along the line through the foci; y-axis ⟂ to it through O</li>
+</ul>
+<paragraph id="0e795247db01e04833b6eeae"><b>Ellipse (focus definition)</b>: points P(x, y) such that</paragraph>
+<paragraph id="88e0e3c9ccec228f356aae0e"><b>PF<sub>1</sub> + PF<sub>2</sub> = 2a</b>, with <b>0 &lt; c &lt; a</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="988e517808a98fc6c52a6b80"><b>Distances to foci</b></paragraph>
+<paragraph id="beb75dd1f35ea5ea2b77ee24">PF<sub>1</sub> = √((x + c)<sup>2</sup> + y<sup>2</sup>)</paragraph>
+<paragraph id="4eacae7f4d1533ced812e3af">PF<sub>2</sub> = √((x − c)<sup>2</sup> + y<sup>2</sup>)</paragraph>
+<paragraph id="8ff94bfa01cfbefd2ae7be5c"><b>Symbols</b>: P(x, y) on ellipse; c = focus distance from origin; a = semi-major axis.</paragraph>
+</div>
+
+<paragraph id="18337fce1650510fe7349dde">Using PF<sub>1</sub> + PF<sub>2</sub> = 2a:</paragraph>
+<paragraph id="5004d4ae2c1e83d2770e202f">√((x + c)<sup>2</sup> + y<sup>2</sup>) + √((x − c)<sup>2</sup> + y<sup>2</sup>) = 2a  …(1)</paragraph>
+
+<paragraph id="207dd00f2128d619b394c90d">Rearrange (1) then square:</paragraph>
+<paragraph id="8e250e526b988362c6b630c4">√((x + c)<sup>2</sup> + y<sup>2</sup>) = 2a − √((x − c)<sup>2</sup> + y<sup>2</sup>)</paragraph>
+<paragraph id="e7ee2723071f7d5272650827">Squaring:</paragraph>
+<paragraph id="cbbccb467472b635c41df56b">(x + c)<sup>2</sup> + y<sup>2</sup> = 4a<sup>2</sup> − 4a√((x − c)<sup>2</sup> + y<sup>2</sup>) + (x − c)<sup>2</sup> + y<sup>2</sup></paragraph>
+
+<paragraph id="b197f1c776a94944cc0f3704">Simplify → get an expression that can be squared again; after the <b>second squaring</b> and simplification:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2486d6aed70e2f6b272b195f"><b>Intermediate form</b></paragraph>
+<paragraph id="f74ea9bfd8954662bfd99144">(a<sup>2</sup> − c<sup>2</sup>)x<sup>2</sup> + a<sup>2</sup>y<sup>2</sup> = a<sup>2</sup>(a<sup>2</sup> − c<sup>2</sup>)</paragraph>
+<paragraph id="29458c8304ff33f85560ea26"><b>Symbols</b>: a = semi-major axis; c = focus distance; x, y = coordinates of P.</paragraph>
+</div>
+
+<paragraph id="4db09951e12791697971d0aa">Let <b>b<sup>2</sup> = a<sup>2</sup> − c<sup>2</sup></b> (so <b>c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup></b>). Then:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7ef9a7fe624667d5169976c9"><b>Standard equation (major axis along x-axis)</b></paragraph>
+<paragraph id="c5b33c507281b6e5f6c477b1">x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</paragraph>
+<paragraph id="1e18cf8887b392d7aeb5d5ad"><b>Symbols</b>: a = semi-major axis; b = semi-minor axis; foci (±c, 0) with c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup>.</paragraph>
+</div>
+
+<h3>Converse: Equation ⇒ Focus Property</h3>
+
+<paragraph id="6b39403b7d63c09bb203e2cc">Assume P(x, y) satisfies:</paragraph>
+<paragraph id="37cd7a30385852ff9aa97811">x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1, with <b>0 &lt; c &lt; a</b> and <b>b<sup>2</sup> = a<sup>2</sup> − c<sup>2</sup></b>.</paragraph>
+
+<paragraph id="9de1dd35e797f61d64e4b04b">Then:</paragraph>
+<paragraph id="ab75df810bd17295f0c63893">y<sup>2</sup> = b<sup>2</sup>(1 − x<sup>2</sup>/a<sup>2</sup>)</paragraph>
+
+<paragraph id="18bc15c0ad9d1515c27d4e29">Compute PF<sub>1</sub>:</paragraph>
+<paragraph id="a858547677008054289c504b">PF<sub>1</sub> = √((x + c)<sup>2</sup> + y<sup>2</sup>)</paragraph>
+<paragraph id="7e1df8497bf1de6ca5f37047">= √((x + c)<sup>2</sup> + b<sup>2</sup>(1 − x<sup>2</sup>/a<sup>2</sup>))</paragraph>
+<paragraph id="333b332f8d7816f9dc8fe01b">Using b<sup>2</sup> = a<sup>2</sup> − c<sup>2</sup>, this simplifies to:</paragraph>
+<paragraph id="3c690eadefc28ffe0d53dac6">PF<sub>1</sub> = a + (cx)/a</paragraph>
+
+<paragraph id="685f5bece18b676109004b6d">Similarly:</paragraph>
+<paragraph id="b629718da457b2c703bb852d">PF<sub>2</sub> = a − (cx)/a</paragraph>
+
+<paragraph id="6b1425b74710f6da2e2f4249">Hence:</paragraph>
+<paragraph id="a195bf0e0918e51983f3e6b8">PF<sub>1</sub> + PF<sub>2</sub> = (a + cx/a) + (a − cx/a) = 2a</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ac63632408fedef5b4d435e5">This proves the equivalence:</paragraph>
+<ul>
+<li>Geometric definition (sum of distances to foci = 2a) ⇔ standard equation x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1 (with foci at (±c, 0) and c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup>).</li>
+</ul>
+</div>
+
+<h3>Discussion/Consequences from the Standard Equation</h3>
+
+<paragraph id="ce2eed9799a9057b2cf0793c">From x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1:</paragraph>
+<paragraph id="eb6f51d9a3b719419612279d">y<sup>2</sup>/b<sup>2</sup> = 1 − x<sup>2</sup>/a<sup>2</sup> ≤ 1 ⇒ x<sup>2</sup> ≤ a<sup>2</sup> ⇒ <b>−a ≤ x ≤ a</b>.</paragraph>
+<paragraph id="d148db011d7cf6ea289f6089">So the ellipse lies between (and touches) <b>x = −a</b> and <b>x = a</b>.</paragraph>
+<paragraph id="7140b434e8eb37bab90ba8e2">Similarly, y<sup>2</sup> ≤ b<sup>2</sup> ⇒ <b>−b ≤ y ≤ b</b>, so it lies between (and touches) <b>y = −b</b> and <b>y = b</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="a85f23dacb2e6db1644f4537"><b>Standard equation (major axis along y-axis)</b></paragraph>
+<paragraph id="820bc23dc8df3329348c6fba">x<sup>2</sup>/b<sup>2</sup> + y<sup>2</sup>/a<sup>2</sup> = 1</paragraph>
+<paragraph id="9d50d2b5cfe8455949c20867"><b>Symbols</b>: a = semi-major axis (along y); b = semi-minor axis (along x).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="13be2f3c739a5dc4254971a7"><b>Standard ellipses</b>:</paragraph>
+<ul>
+<li>Centre at origin</li>
+<li>Major/minor axes along coordinate axes</li>
+</ul>
+<paragraph id="26da836e9d44476c87c7dc3b">Ellipses with centre not at origin and/or rotated axes are beyond the present scope.</paragraph>
+</div>
+
+<h3>Observations from the Standard Equations</h3>
+
+<ol>
+<li>
+<paragraph id="9b6b9578759a222b4936f913"><b>Symmetry</b>: symmetric about both coordinate axes. If (x, y) is on the ellipse, then (−x, y), (x, −y), (−x, −y) are also on it.</paragraph>
+</li>
+<li>
+<paragraph id="da3b23554d5089571b5f32ec"><b>Location of foci</b>: foci always lie on the <b>major axis</b>.</paragraph>
+</li>
+<li>
+<paragraph id="2d7f78b553a7e11e9e253d4f"><b>How to spot the major axis from the equation</b>:</paragraph>
+<ul>
+<li>Use intercepts on axes of symmetry, or</li>
+<li>In standard form, the axis with the <b>larger denominator</b> is the <b>major axis</b>:</li>
+<li>If a<sup>2</sup> is under x<sup>2</sup> (larger denom under x<sup>2</sup>) → major axis along x-axis.</li>
+<li>If a<sup>2</sup> is under y<sup>2</sup> (larger denom under y<sup>2</sup>) → major axis along y-axis.</li>
+</ul>
+</li>
+</ol>
+
+<div class="remember-box">
+<paragraph id="7aa1b65f33ac6f50ad725478"><b>Exam pitfall</b>: don’t pick major axis by the bigger <b>coefficient</b>. Pick by bigger <b>denominator</b> (or rewrite into standard form first).</paragraph>
+</div>
+
+<h2>Latus Rectum of an Ellipse</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f6c285aa8cab8eadd5c4d53e"><b>Definition (latus rectum)</b>: a line segment <b>perpendicular to the major axis</b>, through a <b>focus</b>, with endpoints on the ellipse.</paragraph>
+</div>
+
+<h3>Length of Latus Rectum for x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</h3>
+
+<paragraph id="7f371e0bcefa978bbf1bf055">Take focus F<sub>2</sub>(c, 0). Let A be an endpoint of the latus rectum through F<sub>2</sub>.</paragraph>
+<paragraph id="09d742fe714ec892f4beee52">Since it’s ⟂ to the major axis (x-axis), it’s a vertical line through x = c, so:</paragraph>
+<paragraph id="1217c3895920350b84dd521c">A(c, l) = (ae, l) (since c = ae)</paragraph>
+
+<paragraph id="bafaa22878b231ec4b644b46">Because A lies on the ellipse:</paragraph>
+<paragraph id="bd88771ebe562d4446c1e2e8">(ae)<sup>2</sup>/a<sup>2</sup> + l<sup>2</sup>/b<sup>2</sup> = 1</paragraph>
+<paragraph id="b29fae5caa25a6e3beea4fb5">⇒ e<sup>2</sup> + l<sup>2</sup>/b<sup>2</sup> = 1</paragraph>
+<paragraph id="19cd79ec68e821df95e0a8a6">⇒ l<sup>2</sup> = b<sup>2</sup>(1 − e<sup>2</sup>)</paragraph>
+
+<paragraph id="175228fd75336656a00ce554">But:</paragraph>
+<paragraph id="8f92614b7f5372af5b5159d1">e = c/a, and c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup> ⇒ e<sup>2</sup> = (a<sup>2</sup> − b<sup>2</sup>)/a<sup>2</sup> ⇒ 1 − e<sup>2</sup> = b<sup>2</sup>/a<sup>2</sup></paragraph>
+
+<paragraph id="27ce099ab99a8323d66b4dc4">Therefore:</paragraph>
+<paragraph id="d91db77419dc52616d5f6dc7">l<sup>2</sup> = b<sup>2</sup>·(b<sup>2</sup>/a<sup>2</sup>) = b<sup>4</sup>/a<sup>2</sup> ⇒ <b>l = b<sup>2</sup>/a</b></paragraph>
+
+<paragraph id="449a6320d0f1174b0a689126">By symmetry about the x-axis, the other endpoint B is (c, −l), so latus rectum length:</paragraph>
+<paragraph id="a66618ec273eef5b464dae09">AB = 2l</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="03584cba8999f05678f70e3b"><b>Length of latus rectum (standard ellipse)</b></paragraph>
+<paragraph id="999f6119b1e14ca1c7d339bc">L = 2b<sup>2</sup>/a</paragraph>
+<paragraph id="33ad6bd0d013c54f563f305c"><b>Symbols</b>: L = length of latus rectum; a = semi-major axis; b = semi-minor axis.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="d2362532a5c1c216082082bf"><b>Exam pitfall</b>: l = b<sup>2</sup>/a is the <i>semi</i>-latus-rectum (focus to one endpoint). Full length is <b>2b<sup>2</sup>/a</b>.</paragraph>
+</div>
+
+<h2>Worked Examples (Ellipse)</h2>
+
+<h3>Example 9: x<sup>2</sup>/25 + y<sup>2</sup>/9 = 1</h3>
+<paragraph id="56c19692b0315fb2df953709">Since 25 (under x<sup>2</sup>) &gt; 9 (under y<sup>2</sup>) ⇒ <b>major axis along x-axis</b>.</paragraph><paragraph id="d6ad0257200ff4e33808f75c"> Compare with: x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</paragraph>
+<ul>
+  <li>a = 5, b = 3</li>
+  <li>c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup> = 25 − 9 = 16 ⇒ c = 4</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Foci</b>: (−c, 0), (c, 0) = (−4, 0), (4, 0)</li>
+    <li><b>Vertices</b>: (±a, 0) = (−5, 0), (5, 0)</li>
+    <li><b>Length of major axis</b>: 2a = 10</li>
+    <li><b>Length of minor axis</b>: 2b = 6</li>
+    <li><b>Eccentricity</b>: e = c/a = 4/5</li>
+    <li><b>Latus rectum length</b>: 2b<sup>2</sup>/a = 2·9/5 = 18/5</li>
+  </ul>
+</div>
+
+<h3>Example 10: 9x<sup>2</sup> + 4y<sup>2</sup> = 36</h3>
+<paragraph id="e426379d72d6e68540667cd0">Convert to standard form (divide by 36):</paragraph>
+<paragraph id="b978c0a35312de4145e4a71a">x<sup>2</sup>/4 + y<sup>2</sup>/9 = 1</paragraph>
+
+<paragraph id="669a8dc30b99fe827b73f645">Since 9 (under y<sup>2</sup>) is larger ⇒ <b>major axis along y-axis</b>.</paragraph><paragraph id="4bf9ca3bc2cb9de09d1bd7a1"> Compare with: x<sup>2</sup>/b<sup>2</sup> + y<sup>2</sup>/a<sup>2</sup> = 1</paragraph>
+<ul>
+  <li>b = 2, a = 3</li>
+  <li>c = √(a<sup>2</sup> − b<sup>2</sup>) = √(9 − 4) = √5</li>
+  <li>e = c/a = √5/3</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Foci</b>: (0, ±c) = (0, √5) and (0, −√5)</li>
+    <li><b>Vertices</b>: (0, ±a) = (0, 3) and (0, −3)</li>
+    <li><b>Length of major axis</b>: 2a = 6</li>
+    <li><b>Length of minor axis</b>: 2b = 4</li>
+    <li><b>Eccentricity</b>: √5/3</li>
+  </ul>
+</div>
+
+<h3>Example 11: Vertices (±13, 0), foci (±5, 0)</h3>
+<paragraph id="cbf3ce79fd5b6abc1f345004">Vertices on x-axis ⇒ <b>major axis along x-axis</b> ⇒ use: x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</paragraph>
+<ul>
+  <li>a = 13</li>
+  <li>c = 5</li>
+  <li>c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup> ⇒ b<sup>2</sup> = a<sup>2</sup> − c<sup>2</sup> = 169 − 25 = 144 ⇒ b = 12</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="956a98540f42cc35335ec0c2"><b>Required ellipse</b></paragraph>
+  <paragraph id="5bddf330e2dc6f90813ce69c">x<sup>2</sup>/169 + y<sup>2</sup>/144 = 1</paragraph>
+  <paragraph id="84a1be2d471b91a99b77db98"><b>Symbols</b>: a = 13, b = 12.</paragraph>
+</div>
+
+<h3>Example 12: Major axis length 20; foci (0, ±5)</h3>
+<paragraph id="b7ace5221184bf2ff013d2a9">Foci on y-axis ⇒ <b>major axis along y-axis</b> ⇒ use: x<sup>2</sup>/b<sup>2</sup> + y<sup>2</sup>/a<sup>2</sup> = 1</paragraph>
+<ul>
+  <li>Major axis length = 2a = 20 ⇒ a = 10</li>
+  <li>c = 5</li>
+  <li>c<sup>2</sup> = a<sup>2</sup> − b<sup>2</sup> ⇒ b<sup>2</sup> = a<sup>2</sup> − c<sup>2</sup> = 100 − 25 = 75</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="489852635fcc4c919f04f02b"><b>Required ellipse</b></paragraph>
+  <paragraph id="ce6575735ed6510f74c9aa0b">x<sup>2</sup>/75 + y<sup>2</sup>/100 = 1</paragraph>
+  <paragraph id="db4639b6f9e292ff8b45b742"><b>Symbols</b>: a = 10 (along y), b<sup>2</sup> = 75, c = 5.</paragraph>
+</div>
+
+<h3>Example 13: Major axis along x-axis; passes through (4, 3) and (−1, 4)</h3>
+<paragraph id="d16fa2d3e32b93a88c63646d">Major axis along x-axis ⇒ start with standard form:</paragraph>
+<paragraph id="038e8f4d9b9526d479c72612">x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</paragraph>
+
+<paragraph id="662ba82457d7d3e882afa405">Sub (4, 3):</paragraph>
+<paragraph id="9d7763a6b91e3e1f0d2dd6d0">16/a<sup>2</sup> + 9/b<sup>2</sup> = 1 …(1)</paragraph>
+
+<paragraph id="8f272c6ed24c257a75c432f0">Sub (−1, 4):</paragraph>
+<paragraph id="0d502dfc98fde125c7729c32">1/a<sup>2</sup> + 16/b<sup>2</sup> = 1 …(2)</paragraph>
+
+<paragraph id="1c7e227ba640f85f4d10d021">Solve (1) &amp; (2):</paragraph>
+<ul>
+  <li>a<sup>2</sup> = 247/7</li>
+  <li>b<sup>2</sup> = 247/15</li>
+</ul>
+
+<paragraph id="3b6e2121c723be03c60a8410">So:</paragraph>
+<paragraph id="70e9f24ac0c498ea3c5c7574">x<sup>2</sup>/(247/7) + y<sup>2</sup>/(247/15) = 1</paragraph>
+<paragraph id="bea7f46ee4cb62ea53783c6c">Multiply through by 247:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="b6bfb0227da615cea597768a"><b>Required equation</b></paragraph>
+  <paragraph id="95400f7025bfacd6cde08e87">7x<sup>2</sup> + 15y<sup>2</sup> = 247</paragraph>
+  <paragraph id="230c5117cb9df6624bf30e37"><b>Symbols</b>: (a<sup>2</sup>, b<sup>2</sup>) chosen so that both given points satisfy the standard ellipse equation.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="baf2403c87fff762883208c7"><b>Exam pitfall</b>: For an ellipse through points, keep a<sup>2</sup>, b<sup>2</sup> unknown and form 2 linear equations in 1/a<sup>2</sup> and 1/b<sup>2</sup>. Faster + fewer algebra slips.</paragraph>
+</div>
+
+<h2>Hyperbola (Start of Next Section)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6368799efac28fe1fcf52e1a"><b>Definition</b>: A hyperbola = set of points where the <b>difference</b> of distances from two fixed points is constant.</paragraph>
+</div>
+
+<h2>Hyperbola: basic terminology and parameters</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="8ed9a31588248c30368ee2e2"><b>Hyperbola (focus definition):</b> “difference” means:</paragraph>
+  <paragraph id="8ac366726ef04767828c3637"><b>(distance to the farther focus) − (distance to the nearer focus) = constant.</b></paragraph>
+</div>
+<ul>
+  <li><paragraph id="7f8c6e8b23d3ad23d17197c3"><b>Foci</b>: the two fixed points.</paragraph></li>
+  <li><paragraph id="fc2d24f51be43b58f333651a"><b>Centre</b>: midpoint of the segment joining the foci.</paragraph></li>
+  <li><paragraph id="9f2cfe35d81bf2ceba2bc9ec"><b>Transverse axis</b>: the line through the foci.</paragraph></li>
+  <li><paragraph id="ce0210a60bfb269de2c8327e"><b>Conjugate axis</b>: line through the centre ⟂ transverse axis.</paragraph></li>
+  <li><paragraph id="a9f4865aff29e845401aa854"><b>Vertices</b>: intersection points of the hyperbola with the transverse axis.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="b41b098b2885b17ed6b468af"><b>Standard parameters + relation:</b></paragraph>
+  <paragraph id="b3e0a822dc9ea4987fb6db10">Distance between foci = <b>2c</b></paragraph>
+  <paragraph id="1507aac1146fdb7f3b4dc2d5">Distance between vertices (transverse axis length) = <b>2a</b></paragraph>
+  <paragraph id="a77ecf289f3f88ad9a3a4506"><b>b</b> is defined by: <b>b = √(c² − a²)</b> (so <b>b² = c² − a²</b>)</paragraph>
+  <paragraph id="3afe987b22d8b79508edb47d">Length of conjugate axis = <b>2b</b></paragraph>
+  <paragraph id="6dcd6f0233e9dcea3826474d"><b>a</b>: semi-transverse axis length</paragraph>
+  <paragraph id="7ff5a7569a4224e06f7f200a"><b>b</b>: semi-conjugate axis length</paragraph>
+  <paragraph id="48c6d0df336e70c2d867ce67"><b>c</b>: distance from centre to each focus</paragraph>
+</div>
+
+<h3>Constant difference equals 2a (why the constant is 2a)</h3>
+<paragraph id="d9fe2df48b59a5ab43edfd10">To get the constant (difference of distances) for a hyperbola in standard position:</paragraph>
+<ul>
+  <li><paragraph id="e0508262eb32438f36553ed6">Pick point <b>P</b> at the vertices <b>A</b> and <b>B</b> on the transverse axis.</paragraph></li>
+  <li>
+    <paragraph id="2a384baaecb3768fe9801966">Using “difference of distances is constant”:</paragraph>
+    <paragraph id="6fc3b3750a501ddfe9adb3d4"><b>BF₁ − BF₂ = AF₂ − AF₁</b></paragraph>
+  </li>
+  <li>
+    <paragraph id="d707a4fbb8064089810b3a8f">Split along the axis and rearrange:</paragraph>
+    <paragraph id="a61e81629a4ab1b914eb8ddc"><b>BA + AF₁ − BF₂ = AB + BF₂ − AF₁</b></paragraph>
+    <paragraph id="56e4706f5ddb20adc73b41c7">So <b>AF₁ = BF₂</b>.</paragraph>
+  </li>
+  <li>
+    <paragraph id="42e3d6876478fd73a66a6943">Then:</paragraph>
+    <paragraph id="a0cb792d3b11f9c5d67e7a24"><b>BF₁ − BF₂ = BA + AF₁ − BF₂ = BA = 2a</b></paragraph>
+  </li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="902cde01462e73de47ae80d2">The constant difference in the focus-definition is <b>2a</b> (i.e. the transverse axis length = distance between vertices).</paragraph>
+</div>
+
+<h2>Eccentricity of a hyperbola</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="221c5390eb015ca63959832c"><b>Eccentricity (hyperbola)</b>: <b>e = c/a</b></paragraph>
+</div>
+<ul>
+  <li><paragraph id="bdadc2b52102742404dd7b95">Since <b>c ≥ a</b>, hyperbola eccentricity is <b>never &lt; 1</b> ⇒ <b>e ≥ 1</b>.</paragraph></li>
+  <li><paragraph id="1200997ada82ea01d9384c25">In terms of <b>e</b>, each focus is <b>ae</b> from the centre.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3fa66d1b579e78ae8fca867a"><b>e = c/a</b></paragraph>
+  <paragraph id="8e884257bdda21751a00ecde"><b>e</b>: eccentricity</paragraph>
+  <paragraph id="39db6ea10204a3d5738038f7"><b>c</b>: distance from centre to focus</paragraph>
+  <paragraph id="d27366f0558d8fd7579c250c"><b>a</b>: semi-transverse axis length</paragraph>
+</div>
+
+<h2>Standard equations of a hyperbola</h2>
+
+<h3>Case 1: Transverse axis along x-axis</h3>
+<paragraph id="3e25852869ba7bb2c21fc585">Assume centre at origin + foci on the x-axis.</paragraph>
+<ul>
+  <li><paragraph id="b2ac5269b80b57df073ab94d">Centre: <b>O(0,0)</b></paragraph></li>
+  <li><paragraph id="23524ad0df9d378a1dea098c">Foci: <b>F₁(−c,0)</b>, <b>F₂(c,0)</b></paragraph></li>
+  <li>
+    <paragraph id="7bbf70214e63f797f945fac1">Any point <b>P(x,y)</b> on the hyperbola satisfies:</paragraph>
+    <paragraph id="9b8c93abd66c0d05c93f2a6c"><b>PF₁ − PF₂ = 2a</b></paragraph>
+  </li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="98a8095d5b36a0955d923ec4"><b>Distance forms:</b></paragraph>
+  <paragraph id="2b0dabb2da08daff7e565a9c"><b>PF₁ = √((x + c)² + y²)</b></paragraph>
+  <paragraph id="6facafe11581c9a3c590f56a"><b>PF₂ = √((x − c)² + y²)</b></paragraph>
+  <paragraph id="effb79fe9ef5cb17041c1c8d"><b>x, y:</b> coordinates of <b>P</b></paragraph>
+  <paragraph id="e45dce85066822466c8baf9b"><b>c:</b> distance of each focus from origin</paragraph>
+</div>
+
+<paragraph id="3f6e655d1a2f54d09c8e359b">Start with:</paragraph>
+<paragraph id="d21c78dc8db15c655f23aec8"><b>√((x + c)² + y²) − √((x − c)² + y²) = 2a</b></paragraph>
+<paragraph id="479409b5db3ce9dd077068c3">Rearrange → square once → simplify → square again; final result:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="aa5746f7a992928e545a58e6"><b>Standard form (transverse axis along x-axis):</b></paragraph>
+  <paragraph id="58bfaeba81d087b39378faa3"><b>x²/a² − y²/b² = 1</b></paragraph>
+  <paragraph id="0e07bcc729f6cb8ee262c551"><b>a &gt; 0:</b> semi-transverse axis</paragraph>
+  <paragraph id="219bdcda9c2f8c855e909bc4"><b>b &gt; 0:</b> semi-conjugate axis</paragraph>
+  <paragraph id="229849ab12aee7a6bb0013cb"><b>c:</b> satisfies <b>c² = a² + b²</b></paragraph>
+</div>
+
+<h3>Converse check (every point on the equation satisfies the distance definition)</h3>
+<paragraph id="015485c2cda355a795c4755a">Let <b>P(x,y)</b> satisfy <b>x²/a² − y²/b² = 1</b> with <b>0 &lt; a &lt; c</b>. Then:</paragraph>
+<ul>
+  <li>
+    <paragraph id="1a2e6e57c974ca0cd8ad9a6c">From <b>x²/a² − y²/b² = 1</b>, rewrite:</paragraph>
+    <paragraph id="88325e7c2ce3de72bbaa2ae4"><b>y² = b²((x² − a²)/a²)</b></paragraph>
+  </li>
+  <li>
+    <paragraph id="3d282cf249addcb65ba5ef6a">Compute:</paragraph>
+    <paragraph id="c617cc4af139a3ec0ccdba65"><b>PF₁ = √((x + c)² + y²)</b></paragraph>
+    <paragraph id="abf4fb0bfad4bc6f6d02022a">Sub in <b>y²</b> and use <b>b² = c² − a²</b>; simplifies to:</paragraph>
+    <paragraph id="b8253cf19785f58ef739fdf2"><b>PF₁ = a + (c/a)x</b></paragraph>
+  </li>
+  <li>
+    <paragraph id="e354ea0c10b568aa99f99cce">Similarly:</paragraph>
+    <paragraph id="e7a90f6aad2bfdffde9d0f10"><b>PF₂ = a − (c/a)x</b>, but on the right branch <b>x &gt; a</b> and <b>c &gt; a</b>, so <b>a − (c/a)x</b> is negative; distance must be positive ⇒</paragraph>
+    <paragraph id="3a12aa8f2fb0c4da70c44add"><b>PF₂ = (c/a)x − a</b></paragraph>
+  </li>
+  <li>
+    <paragraph id="4c90153e40303eba6c29171e">So for the right branch:</paragraph>
+    <paragraph id="2ced17c8809ed893b5e28a4e"><b>PF₁ − PF₂ = (a + (c/a)x) − ((c/a)x − a) = 2a</b></paragraph>
+  </li>
+  <li>
+    <paragraph id="9d9a933c5cb3780257fa7ff9">For the left branch (left of <b>x = −a</b>):</paragraph>
+    <paragraph id="d81c60e28da6303d67765a7b"><b>PF₂ − PF₁ = 2a</b></paragraph>
+  </li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="7fdcb4f4c94485d12e5ac7e1">The equation <b>x²/a² − y²/b² = 1</b> gives <b>two branches</b>:</paragraph>
+  <ul>
+    <li><paragraph id="90df4ad3ea716231de30c342"><b>Right branch:</b> <b>PF₁ − PF₂ = 2a</b></paragraph></li>
+    <li><paragraph id="dbdee395954c277d1f073f44"><b>Left branch:</b> <b>PF₂ − PF₁ = 2a</b></paragraph></li>
+  </ul>
+</div>
+
+<h3>Equilateral hyperbola</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="9261a806cf81e4bc9cb082cb"><b>Equilateral hyperbola:</b> hyperbola with <b>a = b</b>.</paragraph>
+</div>
+
+<h3>Region where the curve cannot lie (no points between x = −a and x = +a)</h3>
+<paragraph id="67fafec50960e3c2bcabb5e5">From:</paragraph>
+<paragraph id="e8cd9667b7c2aa4925c316ae"><b>x²/a² − y²/b² = 1</b> implies</paragraph>
+<paragraph id="da867e41c04e74272e9e60f2"><b>x²/a² = 1 + y²/b² ≥ 1</b></paragraph>
+<paragraph id="5af971e957989c2fcbac0df4">So <b>|x|/a ≥ 1</b> ⇒ <b>|x| ≥ a</b> ⇒ <b>x ≤ −a</b> or <b>x ≥ a</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="11a1e0b91ba92492dfa0d78a">No part of the hyperbola lies between <b>x = −a</b> and <b>x = +a</b>.</paragraph>
+  <paragraph id="8d5a8a0b2ec72b85e8486e34">So there is <b>no real intercept on the conjugate axis</b> (here: the y-axis).</paragraph>
+</div>
+
+<h3>Case 2: Transverse axis along y-axis</h3>
+<paragraph id="7517cb48e0d64cb2f86d6a7c">If the transverse axis is along the y-axis (centre at origin), then:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="0910ba9c6ad588dc71f323fc"><b>Standard form (transverse axis along y-axis):</b></paragraph>
+  <paragraph id="bdcd4817152e445d643079f6"><b>y²/a² − x²/b² = 1</b></paragraph>
+  <paragraph id="7481a23e970e989e4e1f5921"><b>a:</b> semi-transverse axis (along y-axis)</paragraph>
+  <paragraph id="24990894fe012b0372685142"><b>b:</b> semi-conjugate axis (along x-axis)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="60bf07d19ed443e6d01839d2"><b>Standard equations</b> assume:</paragraph>
+  <ul>
+    <li><paragraph id="232b89930c3087ffafb6c36a">Centre at the origin</paragraph></li>
+    <li><paragraph id="b40883bc6db9b474bb064b8e">Transverse + conjugate axes along the coordinate axes</paragraph></li>
+  </ul>
+  <paragraph id="19d48b274db3e3da6f733c32">Hyperbolas can have any perpendicular pair of axes (done later).</paragraph>
+</div>
+
+<h3>Observations from the standard equations</h3>
+<ol>
+  <li>
+    <paragraph id="48d34692e15d103b3d1c5ef4"><b>Symmetry:</b> symmetric about both axes.</paragraph>
+    <paragraph id="119ea1b80501075f786c196f">If <b>(x,y)</b> lies on it, then <b>(−x,y)</b>, <b>(x,−y)</b>, <b>(−x,−y)</b> also lie on it.</paragraph>
+  </li>
+  <li>
+    <paragraph id="48a99cdd09089d2ad531cb4c"><b>Foci lie on the transverse axis:</b> the transverse axis matches the <b>positive term</b> in the standard equation (the variable with the + sign).</paragraph>
+    <ul>
+      <li><paragraph id="38fc58c3a29a4e76a8d6b277">Example: <b>x²/9 − y²/16 = 1</b> ⇒ transverse axis along x-axis; length <b>2a = 6</b>.</paragraph></li>
+      <li><paragraph id="e9b22a8574013d2b4b422ce2">Example: <b>y²/25 − x²/16 = 1</b> ⇒ transverse axis along y-axis; length <b>2a = 10</b>.</paragraph></li>
+    </ul>
+  </li>
+</ol>
+
+<div class="remember-box">
+  <paragraph id="56cda08275b86d89e9864ecd"><b>Exam tip:</b> Transverse axis = the squared variable with the <b>positive</b> sign.</paragraph>
+  <paragraph id="f0e48eafd390e187154d6cf0">That denominator is <b>a²</b> ⇒ <b>a = √(denominator)</b>.</paragraph>
+</div>
+
+<h2>Latus rectum of a hyperbola</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="81c43a4351f21fd1b5f92b50"><b>Latus rectum:</b> line segment ⟂ transverse axis, through a focus, endpoints on the hyperbola.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3c9afffcc58f44dfd1db4d84"><b>Length of latus rectum (hyperbola):</b> <b>2b²/a</b></paragraph>
+  <paragraph id="481e3046da24d015bfe04ab8"><b>a:</b> semi-transverse axis</paragraph>
+  <paragraph id="e1ac496c2efda89e7563ff6d"><b>b:</b> semi-conjugate axis</paragraph>
+</div>
+
+<h2>Worked examples on hyperbola</h2>
+
+<h3>Example 14: foci, vertices, eccentricity, latus rectum</h3>
+<paragraph id="9f2e059b7843d31998d4d92e"><b>Find</b> foci, vertices, eccentricity, and latus rectum length for:</paragraph>
+<paragraph id="9357834df7ee6b141f4aa1fd">(i) <b>x²/9 − y²/16 = 1</b>   (ii) <b>y² − 16x² = 16</b></paragraph>
+
+<paragraph id="4a82d046399f3a18ee0a7624"><b>(i)</b> Compare <b>x²/9 − y²/16 = 1</b> with <b>x²/a² − y²/b² = 1</b>:</paragraph>
+<ul>
+  <li><paragraph id="fcf166b1d53ffaf6db7bc462"><b>a = 3</b>, <b>b = 4</b></paragraph></li>
+  <li><paragraph id="318a45e943c77c3526fb9178"><b>c = √(a² + b²) = √(9 + 16) = 5</b></paragraph></li>
+  <li><paragraph id="83128f2873783191c60cf74b"><b>Foci:</b> <b>(±c, 0) = (±5, 0)</b></paragraph></li>
+  <li><paragraph id="83d12e7ca5e0a1123f325764"><b>Vertices:</b> <b>(±a, 0) = (±3, 0)</b></paragraph></li>
+  <li><paragraph id="71b49ebeaf5cbc846fe77271"><b>Eccentricity:</b> <b>e = c/a = 5/3</b></paragraph></li>
+  <li><paragraph id="e8e9a7e3087fb41eb05fe3b2"><b>Latus rectum length:</b> <b>2b²/a = 2·16/3 = 32/3</b></paragraph></li>
+</ul>
+
+<paragraph id="a3fb2f291548bd6127d48961"><b>(ii)</b> Given <b>y² − 16x² = 16</b>. Divide by 16:</paragraph>
+<paragraph id="b51bd87c8f336efc933a0797"><b>y²/16 − x²/1 = 1</b></paragraph>
+<paragraph id="40f0d3436ddeeddc6ada6736">Compare with <b>y²/a² − x²/b² = 1</b>:</paragraph>
+<ul>
+  <li><paragraph id="7ae488e3a8555c86fd1f35dd"><b>a = 4</b>, <b>b = 1</b></paragraph></li>
+  <li><paragraph id="6079ac2fd1b15181ab990ec6"><b>c = √(a² + b²) = √(16 + 1) = √17</b></paragraph></li>
+  <li><paragraph id="b59ec2e005cdfff4e98eb02d"><b>Foci:</b> <b>(0, ±c) = (0, ±√17)</b></paragraph></li>
+  <li><paragraph id="c0c23e2fb7fc9b6a84c52d0b"><b>Vertices:</b> <b>(0, ±a) = (0, ±4)</b></paragraph></li>
+  <li><paragraph id="e15abb3bee5045d7000e8007"><b>Eccentricity:</b> <b>e = c/a = √17/4</b></paragraph></li>
+  <li><paragraph id="0922becee359ed3ddb20dfd5"><b>Latus rectum length:</b> <b>2b²/a = 2·1/4 = 1/2</b></paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="ab5b19028fdab515d56e80cf"><b>Common slip:</b> For a hyperbola, <b>c² = a² + b²</b> (NOT <b>a² − b²</b>).</paragraph>
+  <paragraph id="3eb9c4fbb0afadcf8d2215a5">So compute <b>c</b> using a <b>plus</b>.</paragraph>
+</div>
+
+<h3>Example 15: equation from foci and vertices</h3>
+<paragraph id="80a5e1ab28949ca96a717fa2"><b>Given:</b> foci <b>(0, ±3)</b>, vertices <b>(0, ±11/2)</b>. Find the equation.</paragraph>
+<ul>
+  <li>
+    <paragraph id="e68d04d4788ba22c80a461b3">Foci + vertices on <b>y-axis</b> ⇒ use:</paragraph>
+    <paragraph id="594dcea16988f69a3cd44500"><b>y²/a² − x²/b² = 1</b></paragraph>
+  </li>
+  <li><paragraph id="34b8fa6c82c6e976419b1bc8">Vertices <b>(0, ±a)</b> ⇒ <b>a = 11/2</b></paragraph></li>
+  <li><paragraph id="a48831e91da78a413d0ac48d">Foci <b>(0, ±c)</b> ⇒ <b>c = 3</b></paragraph></li>
+  <li><paragraph id="b268fbe5182bf1966e6ffad4"><b>b² = c² − a² = 9 − (121/4) = (36 − 121)/4 = 25/4</b></paragraph></li>
+</ul>
+<paragraph id="dcfd3f34c183ab29222294ab">Equation:</paragraph>
+<paragraph id="4ec384b1879fdada9c24a4ca"><b>y²/(121/4) − x²/(25/4) = 1</b></paragraph>
+<paragraph id="7ab683163c351a6de2ae9556">Multiply through to get the stated simplified form:</paragraph>
+<paragraph id="0c2642cd6b3feb5ab068d358"><b>100y² − 44x² = 275</b></paragraph>
+
+<h3>Example 16: equation from foci and latus rectum length</h3>
+<paragraph id="401ecdde3681378da85c53be"><b>Given:</b> foci <b>(0, ±12)</b>, latus rectum length = <b>36</b>. Find the equation.</paragraph>
+<ul>
+  <li><paragraph id="7cda9fdcacde9118ae740978">Foci on y-axis ⇒ use <b>y²/a² − x²/b² = 1</b></paragraph></li>
+  <li><paragraph id="caebed840f1038e4c58142f5"><b>c = 12</b></paragraph></li>
+  <li><paragraph id="a53735da21d5c72be37a0936">Latus rectum: <b>2b²/a = 36</b> ⇒ <b>b²/a = 18</b> ⇒ <b>b² = 18a</b></paragraph></li>
+  <li>
+    <paragraph id="23c2e496dc47fe7506401617">Use <b>c² = a² + b²</b>:</paragraph>
+    <paragraph id="4f78238503f9de474aeb4bcb"><b>144 = a² + 18a</b></paragraph>
+  </li>
+  <li><paragraph id="54f8d0763f6d138be66e15f8">Solve <b>a² + 18a − 144 = 0</b> ⇒ <b>a = −24, 6</b></paragraph></li>
+  <li><paragraph id="a014b3599af30d99ccb8578f">Since <b>a &gt; 0</b>, take <b>a = 6</b></paragraph></li>
+  <li><paragraph id="7e22a23683e3de73492ea8bb">Then <b>b² = 18a = 108</b></paragraph></li>
+</ul>
+<paragraph id="e69a295c61acf6a554fec9ac">Equation:</paragraph>
+<paragraph id="46a45d365fabe31fa419402b"><b>y²/36 − x²/108 = 1</b>, i.e. <b>3y² − x² = 108</b>.</paragraph>
+
+<div class="remember-box">
+  <paragraph id="05b0082048a26152bf771f7c"><b>Exam tip:</b> If you get a quadratic in <b>a</b>, reject negative <b>a</b> (since <b>a</b> is a length).</paragraph>
+</div>
+
+<h2>Miscellaneous example (parabola application)</h2>
+
+<h3>Example 17: parabolic mirror depth and aperture</h3>
+<paragraph id="087277eac840dcbe25d8df5e"><b>Given:</b> Focus is 5 cm from vertex, mirror is 45 cm deep. Find aperture width <b>AB</b>.</paragraph>
+<ul>
+  <li>
+    <paragraph id="152b4359c3831cb63daed749">Parabola with vertex at origin + axis along +x:</paragraph>
+    <paragraph id="e271d456ceed7eeb0b6eda67"><b>y² = 4ax</b></paragraph>
+  </li>
+  <li><paragraph id="86392ccbc43b575947150dd7">Focus 5 cm from vertex ⇒ <b>a = 5</b></paragraph></li>
+  <li><paragraph id="10d08d4e6561b4612007ff30">So equation: <b>y² = 4(5)x = 20x</b></paragraph></li>
+  <li><paragraph id="50685f27a8ba5541fd8d6774">Depth 45 cm ⇒ at opening plane <b>x = 45</b></paragraph></li>
+  <li><paragraph id="786984b4ecba5e89d2f1ff6b"><b>y² = 20·45 = 900</b> ⇒ <b>y = ±30</b></paragraph></li>
+  <li><paragraph id="757f72c76fda8748a42855dc">Full width <b>AB = 2|y| = 2·30 = 60 cm</b></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="0b31ddfdc884d5e7d7256319"><b>Parabola (axis along +x, vertex at origin):</b> <b>y² = 4ax</b></paragraph>
+  <paragraph id="ffc2030ecd5c41b03725aa77"><b>a:</b> vertex-to-focus distance</paragraph>
+  <paragraph id="396d56acf69e83f54a2684b4"><b>(x,y):</b> any point on the parabola</paragraph>
+</div>
+
+<h2>Worked Examples (Applications of Conics)</h2>
+
+<h3>Parabolic deflection of a beam (finding where deflection is 1 cm)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="ab7e467da5ba01e42682b22e">Beam bends into a <b>parabola</b> → pick axes so:</paragraph>
+  <ul>
+    <li>vertex = <b>lowest point</b></li>
+    <li>axis of parabola = <b>vertical</b></li>
+  </ul>
+  <paragraph id="bd857f41c657ea6282d41376">Standard form (opens up, vertex at origin): <b>x<sup>2</sup> = 4ay</b></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="00eaf647100b37a2fa321738"><b>x<sup>2</sup> = 4ay</b></paragraph>
+  <paragraph id="8f1cfcd1c6d4ca43a2e22a56"><b>a</b> = parameter (distance vertex → focus)</paragraph>
+  <paragraph id="a635dd9affbf300505339825"><b>(x, y)</b> = any point on parabola (vertex at origin, axis along +y)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="d4414b92f7f2196ed879fc87"><b>Given:</b> max (central) deflection = <b>3 cm</b></paragraph>
+  <ul>
+    <li>horizontal distance from centre = <b>6 m</b></li>
+    <li>vertical rise from vertex = <b>3 cm = 3/100 m</b></li>
+  </ul>
+  <paragraph id="f811d3e5f3cdffd3bf2ba5d8">So parabola passes through <b>(6, 3/100)</b>.</paragraph>
+</div>
+
+<paragraph id="c9fb2f274ffde97c7a28cbf1"><b>Step 1: Find a using point (6, 3/100).</b></paragraph>
+<paragraph id="28514d9449eb8f1b685b59c1">Use <b>x<sup>2</sup> = 4ay</b>:</paragraph>
+<paragraph id="f446662037ffe9758f5763a7">6<sup>2</sup> = 4a(3/100)</paragraph>
+<paragraph id="f66b783e4146dbdf7fa90569">36 = (12a)/100</paragraph>
+<paragraph id="a126046ef824565272c0dfb6">a = (36 × 100)/12 = <b>300 m</b></paragraph>
+
+<paragraph id="25b7ec66662e5bfd10b8666f"><b>Step 2: Find x when deflection is 1 cm.</b></paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="f424e619e83a98a9a3afff34">Deflection <b>1 cm</b> ⇒ vertical rise from vertex = <b>1/100 m</b>.</paragraph>
+  <paragraph id="547b20fab97f582e588f888c">In the textbook’s coordinate choice, point <b>B</b> for “deflection 1 cm” has <b>y = 2/100 m</b>.</paragraph>
+  <paragraph id="c01ecac79ec4c384d6049e9f">So take <b>B = (x, 2/100)</b>.</paragraph>
+</div>
+
+<paragraph id="8ddce26072742dc380e3c6f8">Substitute <b>y = 2/100</b> and <b>a = 300</b> into <b>x<sup>2</sup> = 4ay</b>:</paragraph>
+<paragraph id="a9fd90ad99a914b6c0c53f2e">x<sup>2</sup> = 4 × 300 × (2/100) = 24</paragraph>
+<paragraph id="b903293cec21fe516574e7dd">x = √24 = <b>2√6 m</b></paragraph>
+
+<div class="remember-box">
+  <paragraph id="716c03421c792d6cee2da520">Always keep units consistent: <b>1 cm = 1/100 m</b>, <b>3 cm = 3/100 m</b>.</paragraph>
+</div>
+
+<h3>Example 19: Locus of a point on a rod between coordinate axes (ellipse)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="aca00ecb8aa7621e93525e23">Segment <b>AB</b> has ends on the axes (A on x-axis, B on y-axis).</paragraph>
+  <paragraph id="b7db8fc68059700417521a6b">If point <b>P</b> divides AB in a <b>fixed ratio</b> (fixed AP and PB), then the locus of <b>P</b> is an <b>ellipse</b> (standard form).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8745087aff8176869bdb0886"><b>Given:</b> AB = <b>15 cm</b>, A on x-axis, B on y-axis.</paragraph>
+  <paragraph id="70c04cdad2c94cbf6157f4e5">P(x, y) on rod with <b>AP = 6 cm</b>.</paragraph>
+  <paragraph id="147d0f381b2e7e5f0f10f39b">So <b>PB = AB − AP = 15 − 6 = 9 cm</b>.</paragraph>
+</div>
+
+<paragraph id="e87afa2e93173990a1a12816"><b>Geometric setup (as in figure):</b></paragraph>
+<ul>
+  <li>Rod <b>AB</b> makes angle <b>θ</b> with +x-axis (OX).</li>
+  <li>Drop perpendiculars: <b>PR ⟂ x-axis</b>, <b>PQ ⟂ y-axis</b>.</li>
+</ul>
+
+<paragraph id="7a9625b4a9f1e2732aae234a"><b>Step 1: Write cos θ in terms of x.</b></paragraph>
+<paragraph id="21c41861208ecac9f3910b04">From right △<b>PBQ</b> (PB hypotenuse, horizontal component = x):</paragraph>
+<paragraph id="9fffc671d964aa72c0615277"><b>cos θ = x/9</b></paragraph>
+
+<paragraph id="9491afbff2d7d1fb1dbfbff1"><b>Step 2: Write sin θ in terms of y.</b></paragraph>
+<paragraph id="4cd5480c4688a906c3bf5e2d">From right △<b>PRA</b> (AP hypotenuse, vertical component = y):</paragraph>
+<paragraph id="86c5d0cc6ceaf854832274d8"><b>sin θ = y/6</b></paragraph>
+
+<paragraph id="6e54db2dbbc24c9a3f32ba97"><b>Step 3: Use cos<sup>2</sup>θ + sin<sup>2</sup>θ = 1.</b></paragraph>
+<paragraph id="2171270def8c3e8dc8b25042">(x/9)<sup>2</sup> + (y/6)<sup>2</sup> = 1</paragraph>
+<paragraph id="12f4da472d8db1611d6c5a12"><b>x<sup>2</sup>/81 + y<sup>2</sup>/36 = 1</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="f3baddf2ae55d3f62065962f">Locus is an <b>ellipse</b>:</paragraph>
+  <paragraph id="0837977e0d20195d55ad18cf"><b>x<sup>2</sup>/81 + y<sup>2</sup>/36 = 1</b></paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="8912c767a503b9eafa54f1f7">Common slip: writing cos θ = 9/x or sin θ = 6/y.</paragraph>
+  <paragraph id="66a65e601a25fff8d9a15ea4">Stick to: cos θ = (adjacent)/(hypotenuse), sin θ = (opposite)/(hypotenuse).</paragraph>
+</div>
+
+<h2>Chapter Summary (Conic Sections)</h2>
+
+<h3>Circle</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="3051866d8ea29177617282bb"><b>Circle:</b> set of points in a plane at a fixed distance from a fixed point (<b>centre</b>).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="7eb85e547756615bb5aa4e9c"><b>(x − h)<sup>2</sup> + (y − k)<sup>2</sup> = r<sup>2</sup></b></paragraph>
+  <paragraph id="1aae319674634544983ee2ac">(h, k) = centre</paragraph>
+  <paragraph id="ccae9091707544b12f681f5c">r = radius</paragraph>
+  <paragraph id="c4b244464e90710fe801f08e">(x, y) = any point on circle</paragraph>
+</div>
+
+<h3>Parabola</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="cc3382953d5ec432bd2b8813"><b>Parabola:</b> set of points equidistant from a fixed point (<b>focus</b>) and a fixed line (<b>directrix</b>).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="0ee916b1fa2e49d711537c0b"><b>y<sup>2</sup> = 4ax</b> (axis along x-axis)</paragraph>
+  <paragraph id="3e9168ad5fd65d40567e560d">Focus = <b>(a, 0)</b>, with <b>a &gt; 0</b></paragraph>
+  <paragraph id="3972c5e9fca90f0750e03b4e">Directrix: <b>x = −a</b></paragraph>
+  <paragraph id="d12e55f11fe912c5eb597262">(x, y) = any point on parabola</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6fc231c6d4f75cd05da60e83"><b>Latus rectum (parabola):</b> chord ⟂ axis, through focus, endpoints on parabola.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="a9a2cc568f0e1fa208301bc1"><b>Length of latus rectum</b> for <b>y<sup>2</sup> = 4ax</b> is <b>4a</b></paragraph>
+  <paragraph id="439bd18882cf353bcf61d210">a = parameter of parabola</paragraph>
+</div>
+
+<h3>Ellipse</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="70901353f7cb102c0749f459"><b>Ellipse:</b> set of points where the <b>sum</b> of distances from two fixed points (<b>foci</b>) is constant.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="cc6afad763ed3323597a1c76"><b>x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</b> (foci on x-axis)</paragraph>
+  <paragraph id="77cb05900cbb1d519c738dcd">a = semi-major axis</paragraph>
+  <paragraph id="a7e70e63a3a969f0ed037d5f">b = semi-minor axis</paragraph>
+  <paragraph id="0552283b7851e35d9f198ddd">(x, y) = any point on ellipse</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="ad81a13fa0571c8f6245790e"><b>Latus rectum (ellipse):</b> chord ⟂ major axis, through a focus, endpoints on ellipse.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="103ea15a79297ae45a2249f1"><b>Length of latus rectum</b> for <b>x<sup>2</sup>/a<sup>2</sup> + y<sup>2</sup>/b<sup>2</sup> = 1</b> is <b>(2b<sup>2</sup>)/a</b></paragraph>
+  <paragraph id="a34e70a088ed10e6f66c9423">a = semi-major axis</paragraph>
+  <paragraph id="3c8f26c0ae7189a3a857b3a0">b = semi-minor axis</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="7c892c7797c7c281e5638532"><b>Eccentricity (ellipse):</b> (distance centre → focus) / (distance centre → vertex on major axis).</paragraph>
+</div>
+
+<h3>Hyperbola</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="7d4613d1410c6f1661e1a59b"><b>Hyperbola:</b> set of points where the <b>difference</b> of distances from two fixed points (<b>foci</b>) is constant.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="68cdd9d4968119a718cb9a63"><b>x<sup>2</sup>/a<sup>2</sup> − y<sup>2</sup>/b<sup>2</sup> = 1</b> (foci on x-axis)</paragraph>
+  <paragraph id="ddc2a6a9dbccddc865eb6ba5">a = semi-transverse axis</paragraph>
+  <paragraph id="a3777c58a4c990344c44f401">b = semi-conjugate axis</paragraph>
+  <paragraph id="240e166b9ff64d76f7a2a19d">(x, y) = any point on hyperbola</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="0076f79e069ffd17077e85f3"><b>Latus rectum (hyperbola):</b> chord ⟂ transverse axis, through a focus, endpoints on hyperbola.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="06d6dce973c5e95a947c4bc9"><b>Length of latus rectum</b> for <b>x<sup>2</sup>/a<sup>2</sup> − y<sup>2</sup>/b<sup>2</sup> = 1</b> is <b>(2b<sup>2</sup>)/a</b></paragraph>
+  <paragraph id="39aaa20cfb0d589eece2c0f3">a = semi-transverse axis</paragraph>
+  <paragraph id="d7833ba585b3db5011a55e8b">b = semi-conjugate axis</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="3d9ddd6fadf55c6b9c0442a0"><b>Eccentricity (hyperbola):</b> (distance centre → focus) / (distance centre → vertex on transverse axis).</paragraph>
+</div>
+
+<h2>Historical Note (Analytical Geometry and Conics)</h2>
+
+<h3>Origins and key contributors</h3>
+<ul>
+  <li><paragraph id="f89ca627ee64e38f7853364d"><b>Geometry</b> = one of the oldest branches of maths; Greek geometers studied curves with both theory + real-life use.</paragraph></li>
+  <li><paragraph id="7c621f7115baf0746879d6fa"><b>Euclid (c. 300 B.C.)</b>: wrote a treatise setting up geometry from axioms based on physical ideas.</paragraph></li>
+  <li><paragraph id="d294f1373eca71f2b254138e">Early geometry (by <b>ancient Indians and Greeks</b>) was mainly <b>synthetic</b> (almost no algebra). This style (Euclid, <b>Sulbasutras</b>, etc.) continued for ~ <b>1300 years</b>.</paragraph></li>
+  <li><paragraph id="7126a1b39567870cdb18f178"><b>Apollonius (c. 200 B.C.)</b>: wrote <b>‘The Conic’</b>; results on conic sections stayed unmatched for ~ <b>18 centuries</b>.</paragraph></li>
+  <li><paragraph id="d793d78908f7c62341ce871c">Modern analytic geometry = <b>Cartesian</b> (named after <b>Rene Descartes (1596–1650)</b>); his <b>‘La Geometrie’</b> came out in <b>1637</b>.</paragraph></li>
+  <li><paragraph id="b0b0f352ae093151c05f31f0">But the core method was already found by <b>Pierre de Fermat (1601–1665)</b>. His <b>Ad Locus Planos et Solidos Isagoge</b> was published after his death in <b>1679</b>, which helped Descartes get seen as the “single inventor”.</paragraph></li>
+  <li><paragraph id="47613391680cdeefce2c59be"><b>Isaac Barrow</b>: avoided the Cartesian method.</paragraph></li>
+  <li><paragraph id="58f96b1cdbaa7c9cdef7171f"><b>Newton</b>: used <b>undetermined coefficients</b> to get curve equations; worked with multiple coordinate systems incl. <b>polar</b> + <b>bipolar</b>.</paragraph></li>
+  <li><paragraph id="df9ea12b40cc66a9c11612b2"><b>Leibnitz</b>: introduced the terms <b>abscissa</b>, <b>ordinate</b>, <b>coordinate</b>.</paragraph></li>
+  <li><paragraph id="5ea36dab8443bf18529a923e"><b>L’ Hospital (about 1700)</b>: wrote an important analytic geometry textbook.</paragraph></li>
+  <li><paragraph id="c1d893779d33a69a7b3f66b5"><b>Clairaut (1729)</b>: first gave the <b>distance formula</b> (clumsy version) + the <b>intercept form</b> of a line.</paragraph></li>
+  <li><paragraph id="986d5070a29d7c683bbeec35"><b>Cramer (1750)</b>: formally used the two axes; gave circle equation as <b>(y − a)<sup>2</sup> + (b − x)<sup>2</sup> = r</b> (as stated in the text).</paragraph></li>
+  <li><paragraph id="1462b80bdba2f7b99210b30f"><b>Monge (1781)</b>: gave the modern <b>point-slope form</b> of a line + the <b>perpendicularity condition</b> for two lines.</paragraph></li>
+  <li><paragraph id="bd0aa4f1dc874f7585d73759"><b>S.F. Lacroix (1765–1843)</b>: gave the <b>two-point form</b>, the <b>length of perpendicular</b> from a point to a line, and a formula for the <b>angle between two lines</b> (noting it took a long time historically to reach these formulas).</paragraph></li>
+  <li><paragraph id="d36f43a1f494987fc4bdd420"><b>C. Lame (1818)</b> (civil engineer): gave the combined equation <b>mE + m′E′ = 0</b> for the curve through intersection points of loci <b>E = 0</b> and <b>E′ = 0</b>.</paragraph></li>
+  <li><paragraph id="6eecf84af991d92ea132cb30">Conics connect to many discoveries in maths + science: Greeks studied them for beauty (esp. <b>Archimedes (287–212 B.C.)</b> + <b>Apollonius</b>), and today they appear in <b>outer space exploration</b> and in research on <b>atomic particle behaviour</b>.</paragraph></li>
+</ul>
+
+<h3>Named line formulas and conditions mentioned</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8b89171de3aeaff8b4888017"><b>Point-slope form (Monge, 1781): y − y′ = a (x − x′)</b></paragraph>
+  <paragraph id="fa6157c4a77a111600edbe4d">(x′, y′) = fixed point on the line</paragraph>
+  <paragraph id="e079607d2a5e6c4f373e7cb7">a = slope of the line (historical notation)</paragraph>
+  <paragraph id="660a3c41787669d20b5bace9">(x, y) = general point on the line</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="763eb89639b5dcee0a6aa0d1"><b>Condition of perpendicularity (Monge): aa′ + 1 = 0</b></paragraph>
+  <paragraph id="9358e7dbe545db3833229e58">a = slope of one line</paragraph>
+  <paragraph id="f1b75232949fccee40289651">a′ = slope of the other line</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="379945d33828c09403eb4ff1"><b>Two-point form (Lacroix): (y − β)/(y′ − β) = (x − α)/(x′ − α)</b> (text’s notation)</paragraph>
+  <paragraph id="6cb0dd30016db0c9222c980e">(α, β) = one fixed point</paragraph>
+  <paragraph id="538c1ffcae41cf2ed574c42e">(x′, y′) = second fixed point</paragraph>
+  <paragraph id="ab2d588115319e062b402c18">(x, y) = general point on the line</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="347e5be2ea51f1476bbeeb34"><b>Perpendicular distance from (α, β) to y = ax + b (Lacroix): |β − aα − b| / √(1 + a<sup>2</sup>)</b> (text’s notation)</paragraph>
+  <paragraph id="75d4195cd5f756b374490025">(α, β) = point from which perpendicular is drawn</paragraph>
+  <paragraph id="a17e89b8d3c0409fa2120339">y = ax + b = given line</paragraph>
+  <paragraph id="e5233b6978e96be8023e3cd0">a = slope, b = y-intercept</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3562af7e03a30ffdd3e90ae0"><b>Angle between two lines with slopes a and a′ (Lacroix): tan θ = (a − a′)/(1 + aa′)</b> (as stated)</paragraph>
+  <paragraph id="2095a7e49709f803a0be8fa4">θ = angle between the two lines</paragraph>
+  <paragraph id="e5cb9705568c8c4d8d8b479f">a, a′ = slopes of the lines</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="796fa0f669b41877ae0d9c29"><b>Curve through intersection of E = 0 and E′ = 0 (Lame, 1818): mE + m′E′ = 0</b></paragraph>
+  <paragraph id="90c71404a155e2bb4c13df54">E = 0 and E′ = 0 = two given loci</paragraph>
+  <paragraph id="fdd97f2ba2cbcd49e69d1c77">m, m′ = arbitrary constants</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="0f72d3d2ff590a58c8a04db3">⚠ Exam tip: don’t mix these up — ellipse: <b>sum</b> of distances = constant; hyperbola: <b>difference</b> of distances = constant.</paragraph>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

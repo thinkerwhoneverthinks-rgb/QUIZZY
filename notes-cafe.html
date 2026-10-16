@@ -13,11 +13,36 @@
     <link rel="stylesheet" href="style.css">
     <script src="app-shell.js"></script>
 
-    <!-- KaTeX for Math Rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
+    <!-- MathJax 3.2.2 with Chemistry (mhchem), Physics (cancel), and NoErrors -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {'[+]': ['noerrors', 'mhchem', 'cancel', 'enclose']}
+        },
+        loader: {
+            load: ['[tex]/noerrors', '[tex]/mhchem', '[tex]/cancel', '[tex]/enclose']
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        chtml: {
+            fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+        },
+        startup: {
+            typeset: false
+        }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js"></script>
+    <style>
+        mjx-container { color: inherit; outline: none; }
+        mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; margin: 0.5rem 0; max-width: 100%; }
+    </style>
     <link rel="stylesheet" href="notes-cafe.css">
 </head>
 <body>
@@ -68,28 +93,119 @@
     <!-- Main Container -->
     <main class="container notes-container">
 
-        <!-- ===== SCREEN 1: BROWSE NOTES HOME ===== -->
+        <!-- ===== SCREEN 1: BROWSE NOTES HOME (PROVIDER HUBS) ===== -->
         <div id="notesHomeScreen">
             <section class="notes-hero">
                 <img src="icons/quizzy-logo.svg" alt="Quizzy" style="width: 70px; margin-bottom: 1rem; filter: drop-shadow(0 0 12px var(--accent-glow));">
                 <h1>Notes Cafe</h1>
-                <p>High-yield revision notes, conceptual diagrams, formula sheets, and topic checkpoints for NEET.</p>
-
-                <!-- Search Input -->
-                <div class="notes-search-wrap">
-                    <span class="notes-search-icon">🔍</span>
-                    <input type="text" id="notesSearchInput" class="notes-search-input" placeholder="Search chapters, topics, or formulas..." oninput="handleNotesSearch()">
-                </div>
-
-                <!-- Subject Tabs -->
-                <div class="notes-subject-tabs" id="notesSubjectTabs"></div>
+                <p>Comprehensive revision notes, visual infographics, and digital handbooks.</p>
             </section>
 
-            <!-- Chapter Cards Grid -->
-            <div class="notes-chapter-grid" id="notesChapterGrid"></div>
+            <!-- Provider Selection Grid -->
+            <div class="notes-provider-grid" id="notesProviderGrid">
+                <!-- Allen Hub Card -->
+                <div class="notes-provider-card allen" onclick="openAllenHub()">
+                    <div>
+                        <div class="notes-provider-badge">🌱 NEET Checkpoints</div>
+                        <div class="notes-provider-header">
+                            <span class="notes-provider-icon">🌱</span>
+                            <div class="notes-provider-title">Allen Revision Notes</div>
+                        </div>
+                        <p class="notes-provider-desc">High-yield topic checkpoints, conceptual diagrams, formula summaries, and quick interactive PYQs for NEET.</p>
+                    </div>
+                    <div class="notes-provider-foot">
+                        <span>4 Subjects · 82 Chapters</span>
+                        <span class="notes-provider-cta">Browse Notes →</span>
+                    </div>
+                </div>
+
+                <!-- PW Hub Card -->
+                <div class="notes-provider-card pw" onclick="openPwHub()">
+                    <div>
+                        <div class="notes-provider-badge">⚡ PW Digital Series</div>
+                        <div class="notes-provider-header">
+                            <span class="notes-provider-icon">⚡</span>
+                            <div class="notes-provider-title">Physics Wallah Digital Books</div>
+                        </div>
+                        <p class="notes-provider-desc">Visual Edge infographics, Summary Notes, Concept Vaults, and Formula Handbooks for Class 11, 12 & 9.</p>
+                    </div>
+                    <div class="notes-provider-foot">
+                        <span>17 Books · 228 Chapters</span>
+                        <span class="notes-provider-cta">Browse Books →</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- ===== SCREEN 2: READER VIEW (2-Column Layout) ===== -->
+        <!-- ===== SCREEN 1A: ALLEN NOTES VIEW ===== -->
+        <div id="allenScreen" style="display: none;">
+            <div class="notes-view-bar">
+                <button class="notes-crumb-link" onclick="goNotesHome()">
+                    ← Back to Notes Cafe
+                </button>
+                <div class="notes-crumb-current">
+                    🌱 Allen Revision Notes
+                </div>
+            </div>
+
+            <!-- Subject Pills -->
+            <div class="notes-subject-tabs" id="allenSubjectTabs"></div>
+
+            <!-- Allen Chapter Grid -->
+            <div class="notes-chapter-grid" id="allenChapterGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 1B: PW BOOKS VIEW ===== -->
+        <div id="pwScreen" style="display: none;">
+            <div class="notes-view-bar">
+                <button class="notes-crumb-link" onclick="goNotesHome()">
+                    ← Back to Notes Cafe
+                </button>
+                <div class="notes-crumb-current">
+                    ⚡ Physics Wallah Digital Books
+                </div>
+            </div>
+
+            <!-- Book Type Filter Pills -->
+            <div class="notes-subject-tabs" id="pwFilterTabs">
+                <button class="notes-tab-btn active" onclick="filterPwBooks('all')">📚 All Books (17)</button>
+                <button class="notes-tab-btn" onclick="filterPwBooks('Visual Edge')">🎨 Visual Edge (8)</button>
+                <button class="notes-tab-btn" onclick="filterPwBooks('Summary Notes')">📝 Summary Notes (3)</button>
+                <button class="notes-tab-btn" onclick="filterPwBooks('Formula Handbook')">📐 Formula Handbooks (4)</button>
+                <button class="notes-tab-btn" onclick="filterPwBooks('Concept Vault')">💡 Concept Vaults (2)</button>
+            </div>
+
+            <!-- PW Books Grid -->
+            <div class="pw-books-grid" id="pwBooksGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 1C: PW BOOK CHAPTERS VIEW ===== -->
+        <div id="pwBookScreen" style="display: none;">
+            <div class="notes-view-bar">
+                <button class="notes-crumb-link" onclick="openPwHub()">
+                    ← Back to PW Books
+                </button>
+                <div class="notes-crumb-current" id="pwBookCrumb">
+                    Book Chapters
+                </div>
+            </div>
+
+            <!-- Book Hero Info -->
+            <div class="pw-chapters-hero" id="pwBookHero">
+                <div class="pw-chapters-hero-info">
+                    <span class="pw-chapters-hero-icon" id="pwHeroIcon">📖</span>
+                    <div>
+                        <div class="pw-chapters-hero-title" id="pwHeroTitle">Class 11 Biology Visual Edge</div>
+                        <div class="pw-chapters-hero-meta" id="pwHeroMeta">19 Chapters · Visual Edge Infographics</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PW Chapters List -->
+            <div class="pw-chapters-grid" id="pwChaptersGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 2: READER VIEW (2-Column Layout for Allen) ===== -->
         <div class="notes-reader-screen" id="notesReaderScreen">
             
             <!-- Sticky Reader Top Bar -->
@@ -165,6 +281,31 @@
                 </div>
 
             </div>
+        </div>
+
+        <!-- ===== SCREEN 3: PW HTML CHAPTER READER SCREEN ===== -->
+        <div class="pw-reader-screen" id="pwReaderScreen">
+            <div class="pw-reader-bar">
+                <button class="notes-back-btn" onclick="closePwReader()">
+                    ← Back to Book
+                </button>
+                <div class="pw-reader-info">
+                    <div class="pw-reader-book-title" id="pwReaderBookTitle">BOOK TITLE</div>
+                    <div class="pw-reader-chap-title" id="pwReaderChapTitle">Chapter Title</div>
+                </div>
+                <div class="pw-reader-actions">
+                    <button class="pw-reader-btn" id="pwPrevChapBtn" onclick="navPwChapter(-1)" title="Previous Chapter">
+                        ← Prev
+                    </button>
+                    <button class="pw-reader-btn" id="pwNextChapBtn" onclick="navPwChapter(1)" title="Next Chapter">
+                        Next →
+                    </button>
+                    <button class="pw-reader-btn" onclick="openPwInNewTab()" title="Open Chapter in New Tab">
+                        ↗ Full
+                    </button>
+                </div>
+            </div>
+            <iframe id="pwReaderFrame" class="pw-reader-frame" src="about:blank" title="Chapter Notes"></iframe>
         </div>
 
     </main>

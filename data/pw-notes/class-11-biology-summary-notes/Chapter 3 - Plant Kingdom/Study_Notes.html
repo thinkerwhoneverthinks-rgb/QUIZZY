@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Kingdom (Kingdom Plantae): Scope &amp; Changing Concepts</title>
+  <link href="data:," rel="icon"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap container" id="main-content">
+
+<div class="container"><paragraph class="page-label" id="6a8c169fc01a40070bd78b10">Handwritten Notes</paragraph>
+<h1>Ch-03 : Plant Kingdom</h1>
+
+<h2>Plant Kingdom (Kingdom Plantae): Scope &amp; Changing Concepts</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b11"><b>Whittaker (1969) Five Kingdom Classification:</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Monera<span class="tile-sub">Prokaryotes</span></div>
+  <div class="tile">Protista<span class="tile-sub">Unicellular eukaryotes</span></div>
+  <div class="tile">Fungi<span class="tile-sub">Absorptive heterotrophs</span></div>
+  <div class="tile">Animalia<span class="tile-sub">Ingestive heterotrophs</span></div>
+  <div class="tile">Plantae<span class="tile-sub">Photosynthetic eukaryotes (concept changed)</span></div>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b12">This chapter focuses on <b>further classification within Kingdom Plantae</b> (Plant Kingdom).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b13"><b>Modern concept of Plantae has changed over time:</b></paragraph>
+<ul class="check-list">
+<li><b>Fungi</b> are now excluded from Plantae (though earlier systems grouped them with plants).</li>
+<li><b>Monera/Protista members with cell walls</b> are also excluded from Plantae in modern understanding.</li>
+<li><b>Cyanobacteria</b> (blue-green algae) are <b>not algae</b> anymore; they belong to <b>Monera</b>.</li>
+</ul>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b14"><b>Groups described under Plantae in this chapter:</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Algae<span class="tile-sub">Thalloid, chlorophyll-bearing forms</span></div>
+  <div class="tile">Bryophytes<span class="tile-sub">Non-vascular land plants</span></div>
+  <div class="tile">Pteridophytes<span class="tile-sub">Vascular cryptogams</span></div>
+  <div class="tile">Gymnosperms<span class="tile-sub">Naked-seeded plants</span></div>
+  <div class="tile">Angiosperms<span class="tile-sub">Flowering plants; seeds enclosed</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b15">Do not write “blue-green algae” as algae in modern classification. In exams: state clearly <b>cyanobacteria = Monera</b>.</paragraph>
+</div>
+
+
+<h2>Classification Systems in Angiosperms: Artificial → Natural → Phylogenetic</h2>
+
+<div class="flow-row">
+  <div class="flow-box">Artificial</div><span class="flow-arrow">→</span><div class="flow-box">Natural</div><span class="flow-arrow">→</span><div class="flow-box">Phylogenetic</div>
+</div>
+
+<h3>Artificial Systems (Early Systems)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b16"><b>Artificial classification systems</b> used a few <b>gross, superficial morphological characters</b>, e.g.:</paragraph>
+<ul class="star-list">
+<li><b>Habit</b></li>
+<li><b>Colour</b></li>
+<li><b>Number and shape of leaves</b></li>
+</ul>
+<paragraph id="6a8c169fc01a40070bd78b17">They were based mainly on <b>vegetative characters</b> or sometimes on <b>androecium structure</b> (e.g. <b>Linnaeus</b> system).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b18"><b>Why artificial systems are considered inadequate:</b></paragraph>
+<ul class="check-list">
+<li>They may <b>separate closely related species</b> because they rely on only a few traits.</li>
+<li>They give <b>equal weightage</b> to vegetative and sexual characters.</li>
+<li>This is not acceptable because <b>vegetative characters are more easily affected by environment</b>, hence can mislead relationships.</li>
+</ul>
+</div>
+
+<h3>Natural Classification Systems</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b19"><b>Natural classification systems</b> are based on <b>natural affinities</b> among organisms and use:</paragraph>
+<ul class="check-list">
+<li><b>External features</b></li>
+<li><b>Internal features</b> such as <b>ultrastructure</b>, <b>anatomy</b>, <b>embryology</b>, <b>phytochemistry</b></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b1a">A major natural classification for flowering plants was given by:</paragraph>
+<div class="tile-grid">
+  <div class="tile">George Bentham<span class="tile-sub">Natural system for flowering plants</span></div>
+  <div class="tile">Joseph Dalton Hooker<span class="tile-sub">Co-developer of the natural system</span></div>
+</div>
+</div>
+
+<h3>Phylogenetic Classification Systems (Modern/Accepted)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b1b"><b>Phylogenetic classification</b> is based on <b>evolutionary relationships</b>.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78b1c"><b>Assumption:</b> organisms belonging to the same taxa have a <b>common ancestor</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b1d"><b>Modern taxonomy uses multiple data sources</b>, especially important when <b>fossil evidence is absent</b>.</paragraph>
+</div>
+
+<h3>Modern Supporting Approaches in Taxonomy</h3>
+
+<div class="tile-grid">
+  <div class="tile">Numerical Taxonomy<span class="tile-sub">Uses all observable characters; computer-based coding &amp; processing</span></div>
+  <div class="tile">Cytotaxonomy<span class="tile-sub">Uses cytological info: chromosome number, structure, behaviour</span></div>
+  <div class="tile">Chemotaxonomy<span class="tile-sub">Uses chemical constituents to resolve confusions</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b1e"><b>Numerical Taxonomy:</b></paragraph>
+<ul class="check-list">
+<li>Based on <b>all observable characteristics</b>.</li>
+<li><b>Numbers/codes</b> assigned to characters; data processed (now easy using <b>computers</b>).</li>
+<li>Each character gets <b>equal importance</b>.</li>
+<li><b>Hundreds of characters</b> can be considered simultaneously.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b1f">Exam phrasing: “Natural system = natural affinities + internal features”; “Phylogenetic = evolutionary relationships + common ancestry.”</paragraph>
+</div>
+
+<h2>Algae (3.1): General Characters, Reproduction &amp; Importance</h2>
+
+<h3>General Characteristics &amp; Habitat</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b20"><b>Algae:</b> chlorophyll-bearing, <b>simple</b>, <b>thalloid</b>, <b>autotrophic</b> and largely <b>aquatic</b> organisms (freshwater and marine).</paragraph>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b21"><b>Habitats (besides water):</b></paragraph>
+<ul class="star-list">
+<li>Moist stones</li>
+<li>Soils</li>
+<li>Wood</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78b22"><b>Associations:</b></paragraph>
+<ul class="star-list">
+<li>With fungi <span class="flow-arrow">→</span> <b>lichen</b></li>
+<li>With animals <span class="flow-arrow">→</span> e.g. <b>on sloth bear</b></li>
+</ul>
+
+<h3>Thallus Form and Size Variation (Examples)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b23"><b>Algal forms show high variability:</b></paragraph>
+<div class="tile-grid">
+<div class="tile">Colonial<span class="tile-sub"><b>Volvox</b></span></div>
+<div class="tile">Filamentous<span class="tile-sub"><b>Ulothrix</b>, <b>Spirogyra</b></span></div>
+<div class="tile">Massive marine forms<span class="tile-sub"><b>kelps</b> form very large plant bodies</span></div>
+</div>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c169fc01a40070bd78b24">Think “thallus-based” bodies: from tiny unicells/colonies (<b>Volvox</b>) to giant marine kelps forming underwater forests.</paragraph>
+</div>
+
+<h3>Reproduction in Algae</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b25">Algae reproduce by <b>vegetative</b>, <b>asexual</b>, and <b>sexual</b> methods.</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Vegetative</div><span class="flow-arrow">→</span><div class="flow-box">Fragmentation</div><span class="flow-arrow">→</span><div class="flow-box">Each fragment forms a new thallus</div>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Asexual</div><span class="flow-arrow">→</span><div class="flow-box">Spore formation</div><span class="flow-arrow">→</span><div class="flow-box">Common: zoospores (flagellated, motile)</div><span class="flow-arrow">→</span><div class="flow-box">Germination gives new plants</div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b26"><b>Sexual reproduction</b> occurs via <b>fusion of two gametes</b>. Gametes may be:</paragraph>
+<ul class="check-list">
+<li><b>Flagellated</b> (motile) or <b>non-flagellated</b> (non-motile)</li>
+<li><b>Similar</b> or <b>dissimilar</b> in size</li>
+</ul>
+</div>
+
+<h3>Types of Sexual Reproduction (Definitions + Examples)</h3>
+<div class="tile-grid">
+<div class="tile">Isogamous<span class="tile-sub">Gametes similar in size (may be motile or non-motile)</span></div>
+<div class="tile">Anisogamous<span class="tile-sub">Gametes dissimilar in size</span></div>
+<div class="tile">Oogamous<span class="tile-sub">Large non-motile female gamete + small motile male gamete</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b27"><b>Isogamy:</b> fusion of two gametes <b>similar in size</b>.</paragraph>
+<ul class="star-list">
+<li><b>Ulothrix</b>: gametes are <b>flagellated</b> and similar in size.</li>
+<li><b>Spirogyra</b>: gametes are <b>non-flagellated (non-motile)</b> but similar in size.</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78b28"><b>Anisogamy:</b> fusion of two gametes <b>dissimilar in size</b>.</paragraph>
+<ul class="star-list">
+<li><b>Eudorina</b> species</li>
+</ul>
+
+<paragraph id="6a8c169fc01a40070bd78b29"><b>Oogamy:</b> fusion between <b>one large non-motile female gamete</b> and a <b>smaller motile male gamete</b>.</paragraph>
+<ul class="star-list">
+<li><b>Volvox</b></li>
+<li><b>Fucus</b></li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b2a">Common exam confusion: <b>isogamy</b> can involve <b>motile</b> (Ulothrix) or <b>non-motile</b> (Spirogyra) gametes—key is <b>same size</b>.</paragraph>
+</div>
+
+<h3>Economic &amp; Ecological Importance of Algae</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li><b>CO₂ fixation:</b> algae perform <b>at least half</b> of total CO₂ fixation on Earth via photosynthesis.</li>
+<li><b>Increase dissolved oxygen</b> level in their immediate environment (due to photosynthesis).</li>
+<li><b>Primary producers</b>: form the base of food cycles of <b>aquatic animals</b> by producing energy-rich compounds.</li>
+</ul>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b2b"><b>Algae as food:</b></paragraph>
+<ul class="star-list">
+<li>About <b>70 species</b> of marine algae used as food.</li>
+</ul>
+<div class="tile-grid">
+<div class="tile">Porphyra<span class="tile-sub">Edible marine alga</span></div>
+<div class="tile">Laminaria<span class="tile-sub">Edible marine alga</span></div>
+<div class="tile">Sargassum<span class="tile-sub">Edible marine alga</span></div>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b2c"><b>Commercial products (hydrocolloids: water-holding substances):</b></paragraph>
+<div class="tile-grid">
+<div class="tile">Algin<span class="tile-sub">from <b>brown algae</b></span></div>
+<div class="tile">Carrageen<span class="tile-sub">from <b>red algae</b></span></div>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b2d"><b>Agar:</b></paragraph>
+<ul class="star-list">
+<li>Obtained from <b>Gelidium</b> and <b>Gracilaria</b></li>
+</ul>
+<div class="flow-row">
+<div class="flow-box">Agar</div><span class="flow-arrow">→</span><div class="flow-box">Used to <b>grow microbes</b></div><span class="flow-arrow">→</span><div class="flow-box">Used in <b>ice-creams</b> and <b>jellies</b></div>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b2e"><b>Protein-rich supplement:</b></paragraph>
+<ul class="star-list">
+<li><b>Chlorella</b> (unicellular, rich in proteins) used as food supplement, even by <b>space travellers</b>.</li>
+</ul>
+
+<h3>Major Classes of Algae</h3>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 3.1" class="zoomable" data-full="img/Figure_3.1.webp" decoding="async" height="1536" loading="lazy" src="img/Figure_3.1.webp" style="max-width: 100%; height: auto;" width="1024"/>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b2f">Algae are divided into <b>three main classes</b>:</paragraph>
+</div>
+<div class="tile-grid">
+<div class="tile">Chlorophyceae<span class="tile-sub">Green algae</span></div>
+<div class="tile">Phaeophyceae<span class="tile-sub">Brown algae</span></div>
+<div class="tile">Rhodophyceae<span class="tile-sub">Red algae</span></div>
+</div>
+
+<h2>Chlorophyceae (3.1.1): Green Algae</h2>
+
+<h3>Thallus Organisation and Pigments</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b30"><b>Chlorophyceae</b> members are commonly called <b>green algae</b>.</paragraph>
+<ul class="check-list">
+<li>Plant body may be <b>unicellular</b>, <b>colonial</b>, or <b>filamentous</b>.</li>
+<li>Usually <b>grass green</b> due to dominance of <b>chlorophyll a</b> and <b>chlorophyll b</b>.</li>
+<li>Pigments are localised in <b>definite chloroplasts</b>.</li>
+</ul>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b31"><b>Chloroplast shapes (species-dependent):</b></paragraph>
+<div class="tile-grid">
+<div class="tile">Discoid<span class="tile-sub">Disc-like</span></div>
+<div class="tile">Plate-like<span class="tile-sub">Flat plates</span></div>
+<div class="tile">Reticulate<span class="tile-sub">Net-like</span></div>
+<div class="tile">Cup-shaped<span class="tile-sub">Cup form</span></div>
+<div class="tile">Spiral<span class="tile-sub">Helical</span></div>
+<div class="tile">Ribbon-shaped<span class="tile-sub">Long band</span></div>
+</div>
+
+<h3>Pyrenoids and Food Storage</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b32">Most members have one or more storage bodies called <b>pyrenoids</b> located in the <b>chloroplasts</b>.</paragraph>
+<ul class="check-list">
+<li>Pyrenoids contain <b>protein</b> besides <b>starch</b>.</li>
+<li>Some green algae may store food as <b>oil droplets</b>.</li>
+</ul>
+</div>
+
+<h3>Cell Wall Composition</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b33">Green algae have a <b>rigid cell wall</b> with:</paragraph>
+<ul class="check-list">
+<li><b>Inner layer:</b> cellulose</li>
+<li><b>Outer layer:</b> pectose</li>
+</ul>
+</div>
+
+<h3>Reproduction in Chlorophyceae</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li><b>Vegetative reproduction:</b> usually by <b>fragmentation</b>.</li>
+<li><b>Asexual reproduction:</b> by <b>flagellated zoospores</b> produced in <b>zoosporangia</b>.</li>
+<li><b>Sexual reproduction:</b> variable—may be <b>isogamous</b>, <b>anisogamous</b>, or <b>oogamous</b>.</li>
+</ul>
+</div>
+
+<h3>Common Examples</h3>
+<div class="tile-grid">
+<div class="tile">Chlamydomonas<span class="tile-sub">Green alga</span></div>
+<div class="tile">Volvox<span class="tile-sub">Colonial green alga</span></div>
+<div class="tile">Ulothrix<span class="tile-sub">Filamentous; isogamous with motile gametes</span></div>
+<div class="tile">Spirogyra<span class="tile-sub">Filamentous; isogamous with non-motile gametes</span></div>
+<div class="tile">Chara<span class="tile-sub">Common green alga</span></div>
+</div>
+
+<h2>Phaeophyceae (3.1.2): Brown Algae (Start of Section)</h2>
+
+<h3>Habitat, Size Range, and Forms</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b34"><b>Phaeophyceae</b> (brown algae) are found <b>primarily in marine habitats</b>.</paragraph>
+<paragraph id="6a8c169fc01a40070bd78b35">They show great variation in <b>size</b> and <b>form</b>:</paragraph>
+<div class="tile-grid">
+<div class="tile">Simple branched, filamentous forms<span class="tile-sub">e.g. <b>Ectocarpus</b></span></div>
+<div class="tile">Profusely branched kelps<span class="tile-sub">may reach <b>100 metres</b> in height</span></div>
+</div>
+</div>
+
+<h3>Pigments and Colour</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b36">Brown algae possess:</paragraph>
+<div class="tile-grid">
+<div class="tile">Chlorophyll a<span class="tile-sub">photosynthetic pigment</span></div>
+<div class="tile">Chlorophyll c<span class="tile-sub">photosynthetic pigment</span></div>
+<div class="tile">Carotenoids<span class="tile-sub">accessory pigments</span></div>
+<div class="tile">Xanthophylls<span class="tile-sub">accessory pigments</span></div>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b37">Colour varies from <b>olive green</b> to different shades of <b>brown</b> depending upon the amount of xanthophyll pigment <b>fucoxanthin</b> present.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b38">For brown algae pigmentation questions: mention <b>chlorophyll a, c</b> and the key brown colour pigment <b>fucoxanthin</b>.</paragraph>
+</div>
+
+<h2>Plant Kingdom: Algae (continued) — Phaeophyceae (Brown algae)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b39"><b>Phaeophyceae (brown algae)</b> are mainly <b>marine</b> algae with a characteristic <b>brown colour</b> due to pigments (notably <b>fucoxanthin</b> along with chlorophylls).</paragraph>
+</div>
+
+<h3>Food reserve, cell wall and cell organisation</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b3a"><b>Stored food</b> is in the form of <b>complex carbohydrates</b>—commonly <b>laminarin</b> or <b>mannitol</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+<li><b>Cell wall</b>: mainly <b>cellulosic</b>, usually with an outer <b>gelatinous coating of algin</b>.</li>
+<li><b>Protoplast</b> (cell contents): contains plastids, a <b>centrally located vacuole</b> and a <b>nucleus</b>.</li>
+</ul>
+
+<h3>Thallus organisation (plant body)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b3b">The plant body is typically differentiated into:</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Holdfast</div><span class="flow-arrow">→</span><div class="flow-box">Stipe</div><span class="flow-arrow">→</span><div class="flow-box">Frond</div>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Holdfast<span class="tile-sub">Anchors the plant body to the substratum</span></div>
+<div class="tile">Stipe<span class="tile-sub">Stalk-like region</span></div>
+<div class="tile">Frond<span class="tile-sub">Leaf-like, photosynthetic region</span></div>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c169fc01a40070bd78b3c"><b>Structure analogy:</b> Holdfast–stipe–frond resembles “root–stem–leaf”, but these are <i>thallus parts</i> (not true roots/stems/leaves).</paragraph>
+</div>
+
+<h3>Reproduction in brown algae</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b3d"><b>Vegetative reproduction</b>: by <b>fragmentation</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b3e"><b>Asexual reproduction</b> (in most brown algae): by <b>biflagellate zoospores</b> which are:</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Pear-shaped (pyriform)</b></li>
+<li>Have <b>two unequal flagella</b></li>
+<li>Flagella are <b>laterally attached</b></li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b3f"><b>Sexual reproduction</b> may be:</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Isogamous<span class="tile-sub">Gametes similar in form/size</span></div>
+<div class="tile">Anisogamous<span class="tile-sub">Gametes dissimilar (usually size)</span></div>
+<div class="tile">Oogamous<span class="tile-sub">Large non-motile egg + smaller motile male gamete</span></div>
+</div>
+
+<ul class="check-list">
+<li><b>Site of gamete fusion</b>: either <b>in water</b> or <b>within the oogonium</b> (in oogamous forms).</li>
+<li><b>Gametes</b>: typically <b>pyriform</b> with <b>two laterally attached flagella</b>.</li>
+</ul>
+
+<h3>Common examples of brown algae</h3>
+
+<div class="tile-grid">
+<div class="tile">Ectocarpus<span class="tile-sub">Common brown alga genus</span></div>
+<div class="tile">Dictyota<span class="tile-sub">Common brown alga genus</span></div>
+<div class="tile">Laminaria<span class="tile-sub">Kelp-type brown algae</span></div>
+<div class="tile">Sargassum<span class="tile-sub">Marine brown alga</span></div>
+<div class="tile">Fucus<span class="tile-sub">Marine brown alga</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b40"><b>Exam pitfall:</b> Don’t mix up <b>stored food</b>: brown algae store <b>laminarin/mannitol</b>, not starch.</paragraph>
+</div>
+
+<h2>Rhodophyceae (Red algae)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b41"><b>Rhodophyceae</b> are called <b>red algae</b> due to predominance of the red pigment <b>r-phycoerythrin</b> in the body.</paragraph>
+</div>
+
+<h3>Habitat and distribution</h3>
+
+<ul class="check-list">
+<li><b>Majority marine</b>, with greater concentrations in <b>warmer areas</b>.</li>
+<li>Found both:
+<ul>
+<li>near the surface in <b>well-lighted regions</b>, and</li>
+<li>at <b>great ocean depths</b> where relatively <b>little light penetrates</b>.</li>
+</ul>
+</li>
+</ul>
+
+<h3>Thallus organisation and food reserve</h3>
+
+<ul class="check-list">
+<li><b>Thallus</b>: most are <b>multicellular</b>; some show <b>complex body organisation</b>.</li>
+<li><b>Stored food</b>: <b>floridean starch</b>, structurally very similar to <b>amylopectin</b> and <b>glycogen</b>.</li>
+</ul>
+
+<h3>Reproduction in red algae</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b42"><b>Key reproductive feature:</b> <b>Non-motile</b> reproductive units dominate—both in asexual spores and sexual gametes.</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Vegetative: fragmentation</div><span class="flow-arrow">→</span><div class="flow-box">Asexual: non-motile spores</div><span class="flow-arrow">→</span><div class="flow-box">Sexual: non-motile gametes</div>
+</div>
+
+<ul class="check-list">
+<li><b>Vegetative reproduction</b>: by <b>fragmentation</b>.</li>
+<li><b>Asexual reproduction</b>: by <b>non-motile spores</b>.</li>
+<li><b>Sexual reproduction</b>: by <b>non-motile gametes</b>.</li>
+<li>Sexual reproduction is <b>oogamous</b> and accompanied by <b>complex post-fertilisation developments</b>.</li>
+</ul>
+
+<h3>Common examples of red algae</h3>
+
+<div class="tile-grid">
+<div class="tile">Polysiphonia<span class="tile-sub">Red alga genus</span></div>
+<div class="tile">Porphyra<span class="tile-sub">Red alga genus</span></div>
+<div class="tile">Gracilaria<span class="tile-sub">Red alga genus</span></div>
+<div class="tile">Gelidium<span class="tile-sub">Red alga genus</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b43"><b>Exam pitfall:</b> If asked “motile vs non-motile” — <b>Rhodophyceae lack flagellated stages</b> (flagella absent in this group).</paragraph>
+</div>
+
+<h2>Divisions of Algae and Their Main Characteristics (Table 3.1)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b44">Algae are compared using: <b>common name</b>, <b>major pigments</b>, <b>stored food</b>, <b>cell wall</b>, <b>flagellar number &amp; insertion</b>, and <b>habitat</b>.</paragraph>
+</div>
+
+<h3>Chlorophyceae (Green algae)</h3>
+
+<div class="tile-grid">
+<div class="tile">Major pigments<span class="tile-sub">chlorophyll <b>a, b</b></span></div>
+<div class="tile">Stored food<span class="tile-sub"><b>starch</b></span></div>
+<div class="tile">Cell wall<span class="tile-sub"><b>cellulose</b></span></div>
+<div class="tile">Flagella<span class="tile-sub"><b>2–8</b>, <b>equal</b>, <b>apical</b> insertion</span></div>
+<div class="tile">Habitat<span class="tile-sub"><b>fresh water</b>, <b>brackish water</b>, <b>salt water</b></span></div>
+</div>
+
+<h3>Phaeophyceae (Brown algae)</h3>
+
+<div class="tile-grid">
+<div class="tile">Major pigments<span class="tile-sub">chlorophyll <b>a, c</b>, <b>fucoxanthin</b></span></div>
+<div class="tile">Stored food<span class="tile-sub"><b>mannitol</b>, <b>laminarin</b></span></div>
+<div class="tile">Cell wall<span class="tile-sub"><b>cellulose</b> + <b>algin</b></span></div>
+<div class="tile">Flagella<span class="tile-sub"><b>2</b>, <b>unequal</b>, <b>lateral</b> insertion</span></div>
+<div class="tile">Habitat<span class="tile-sub"><b>fresh water (rare)</b>, <b>brackish water</b>, <b>salt water</b></span></div>
+</div>
+
+<h3>Rhodophyceae (Red algae)</h3>
+
+<div class="tile-grid">
+<div class="tile">Major pigments<span class="tile-sub">chlorophyll <b>a, d</b>, <b>phycoerythrin</b></span></div>
+<div class="tile">Stored food<span class="tile-sub"><b>floridean starch</b></span></div>
+<div class="tile">Cell wall<span class="tile-sub"><b>cellulose</b>, <b>pectin</b> and <b>poly sulphate esters</b></span></div>
+<div class="tile">Flagella<span class="tile-sub"><b>absent</b></span></div>
+<div class="tile">Habitat<span class="tile-sub"><b>fresh water (some)</b>, <b>brackish water</b>, <b>salt water (most)</b></span></div>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+<span class="mnemonic-word">GBR</span>
+<div class="mnemonic-expand">
+G — Green: <b>Starch</b><br/>
+B — Brown: <b>Mannitol/Laminarin</b><br/>
+R — Red: <b>Floridean starch</b>
+</div>
+</div>
+
+<h2>Bryophytes</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b45"><b>Bryophytes</b> include <b>mosses</b> and <b>liverworts</b>, commonly found in <b>moist shaded</b> areas (often in hills).</paragraph>
+</div>
+
+<h3>“Amphibians of the plant kingdom” </h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b46">Bryophytes are called <b>amphibians of the plant kingdom</b> because they live on soil but are <b>dependent on water for sexual reproduction</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+Water = “bridge” for male gametes to swim to the egg → without water, fertilisation can’t happen.
+</div>
+
+<ul class="check-list">
+<li>Occur in <b>damp, humid, shaded</b> localities.</li>
+<li>Important in <b>plant succession</b> on <b>bare rocks/soil</b>.</li>
+</ul>
+
+<h3>Plant body organisation: gametophyte dominance</h3>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 3.2" class="zoomable" data-full="img/Figure_3.2.webp" decoding="async" height="1278" loading="lazy" src="img/Figure_3.2.webp" style="max-width: 100%; height: auto;" width="1230"/>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b47" style="text-align:center;"><b>Figure:</b> Bryophytes: A liverwort – Marchantia (a) Female thallus (b) Male thallus
+Mosses – (c) Funaria, gametophyte and sporophyte (d) Sphagnum gametophyte</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b48"><b>Main plant body is haploid</b> and produces gametes → called <b>gametophyte</b> (this is the dominant generation).</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Plant body is <b>more differentiated than algae</b>.</li>
+<li>Body is <b>thallus-like</b> (prostrate or erect).</li>
+<li>Attachment: by <b>unicellular or multicellular rhizoids</b>.</li>
+<li><b>Lack true roots, stem, leaves</b> (may have root-like/leaf-like/stem-like structures).</li>
+<li><b>Main plant body is haploid</b> and produces gametes → called <b>gametophyte</b>.</li>
+</ul>
+
+<h3>Sex organs and fertilisation (water-dependent)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b49">Sex organs in bryophytes are <b>multicellular</b>:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Antheridium<span class="tile-sub">Male sex organ; produces biflagellate antherozoids</span></div>
+  <div class="tile">Archegonium<span class="tile-sub">Female sex organ; flask-shaped; produces a single egg</span></div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Antherozoids released into water</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Reach archegonium</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Fusion with egg</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Zygote formed</div>
+</div>
+
+<h3>Sporophyte formation, meiosis and spores</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b4a"><b>Zygote does not undergo immediate reduction division.</b> It develops into a multicellular <b>sporophyte</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+<li><b>Sporophyte</b> is <b>not free-living</b>; remains <b>attached</b> to the photosynthetic gametophyte and derives nourishment from it.</li>
+<li>Some sporophyte cells undergo <b>reduction division (meiosis)</b> → produce <b>haploid spores</b>.</li>
+<li><b>Spores germinate</b> → form the <b>gametophyte</b>.</li>
+</ul>
+
+<h3>Economic and ecological importance</h3>
+
+<div class="sticky-note">
+Think: bryophytes = “nature’s first carpet” on rocks + “mini sponges” holding water.
+</div>
+
+<ul class="star-list">
+<li>Generally <b>little economic importance</b>.</li>
+<li>Some mosses provide <b>food</b> for herbaceous mammals, birds and other animals.</li>
+<li><b>Sphagnum</b> forms <b>peat</b> used as <b>fuel</b>.</li>
+<li><b>Sphagnum</b> used as <b>packing material</b> for trans-shipment of living material due to high <b>water-holding capacity</b>.</li>
+<li>Mosses + lichens are <b>first colonisers</b> of rocks → <b>ecological importance</b>.</li>
+<li>They <b>decompose rocks</b> to make substrate suitable for higher plants.</li>
+<li>Dense moss mats reduce rain impact → <b>prevent soil erosion</b>.</li>
+</ul>
+
+<h3>Major groups of bryophytes</h3>
+
+<div class="tile-grid">
+  <div class="tile">Liverworts<span class="tile-sub">Bryophyte division 1</span></div>
+  <div class="tile">Mosses<span class="tile-sub">Bryophyte division 2</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b4b"><b>Exam pitfall:</b> In bryophytes, the <b>gametophyte is dominant</b> and the <b>sporophyte is dependent</b>—don’t reverse this with pteridophytes.</paragraph>
+</div>
+
+<h2>Liverworts (Bryophytes: 3.2.1)</h2>
+
+<h3>Habitat</h3>
+
+<ul class="check-list">
+<li>Grow in <b>moist, shady</b> habitats: banks of streams, marshy ground, damp soil, bark of trees, deep woods.</li>
+</ul>
+
+<h3>Plant body form</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b4c">Liverwort body is commonly <b>thalloid</b> and sits <b>flat + close</b> to the surface (substrate).</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Plant body often <b>thalloid</b> (example: <b>Marchantia</b>).</li>
+<li>Thallus is <b>dorsiventral</b> and <b>closely appressed</b> to the substrate.</li>
+<li><b>Leafy liverworts</b>: have tiny <b>leaf-like appendages</b> arranged in <b>two rows</b> on stem-like structures.</li>
+</ul>
+
+<h3>Asexual reproduction</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b4d">Asexual reproduction occurs by:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Fragmentation<span class="tile-sub">Thallus breaks; each part can form a new plant</span></div>
+  <div class="tile">Gemmae formation<span class="tile-sub">Specialised asexual buds formed in gemma cups</span></div>
+</div>
+
+<ul class="check-list">
+<li><b>Gemmae</b> (sing. gemma): <b>green</b>, <b>multicellular</b>, <b>asexual buds</b>.</li>
+<li>Produced in small receptacles called <b>gemma cups</b> located on the <b>thalli</b>.</li>
+<li>Gemmae detach and germinate → <b>new individuals</b>.</li>
+</ul>
+
+<h3>Sexual reproduction and sporophyte structure</h3>
+
+<ul class="check-list">
+<li>Male and female sex organs produced either on the <b>same</b> thallus or on <b>different</b> thalli.</li>
+<li>Sporophyte is differentiated into:</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Foot<span class="tile-sub">Part of sporophyte (attached region)</span></div>
+  <div class="tile">Seta<span class="tile-sub">Stalk region of sporophyte</span></div>
+  <div class="tile">Capsule<span class="tile-sub">Spore-producing region</span></div>
+</div>
+
+<ul class="check-list">
+<li><b>Meiosis</b> in capsule → <b>spores</b> formed inside capsule.</li>
+<li>Spores germinate → <b>free-living gametophytes</b>.</li>
+</ul>
+
+<h2>Mosses (Bryophytes: 3.2.2)</h2>
+
+<h3>Dominant stage and two gametophyte stages</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b4e">The <b>predominant stage</b> in moss life cycle is the <b>gametophyte</b>, which has <b>two stages</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Protonema stage<span class="tile-sub">Develops directly from spore; creeping, green, branched, often filamentous</span></div>
+  <div class="tile">Leafy stage<span class="tile-sub">Develops from secondary protonema as a lateral bud; upright axes with spirally arranged leaves</span></div>
+</div>
+
+<ul class="check-list">
+<li>Leafy stage has upright, slender axes with <b>spirally arranged leaves</b>.</li>
+<li>Attachment to soil: <b>multicellular, branched rhizoids</b>.</li>
+<li>Leafy stage bears <b>sex organs</b>.</li>
+</ul>
+
+<h3>Vegetative reproduction</h3>
+
+<ul class="check-list">
+<li>By <b>fragmentation</b>.</li>
+<li>By <b>budding</b> in the <b>secondary protonema</b>.</li>
+</ul>
+
+<h3>Sexual reproduction and sporophyte</h3>
+
+<ul class="check-list">
+<li><b>Antheridia</b> and <b>archegonia</b> produced at the <b>apex of leafy shoots</b>.</li>
+<li>After fertilisation, zygote develops into sporophyte with:</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Foot<span class="tile-sub">Part of sporophyte (attached region)</span></div>
+  <div class="tile">Seta<span class="tile-sub">Stalk region of sporophyte</span></div>
+  <div class="tile">Capsule<span class="tile-sub">Contains spores (after meiosis)</span></div>
+</div>
+
+<ul class="check-list">
+<li>Sporophyte in mosses is <b>more elaborate</b> than in liverworts.</li>
+<li><b>Capsule contains spores</b> formed after <b>meiosis</b>.</li>
+<li>Mosses show an <b>elaborate mechanism of spore dispersal</b>.</li>
+</ul>
+
+<h3>Examples of mosses</h3>
+
+<div class="tile-grid">
+  <div class="tile">Funaria<span class="tile-sub">Common moss</span></div>
+  <div class="tile">Polytrichum<span class="tile-sub">Common moss</span></div>
+  <div class="tile">Sphagnum<span class="tile-sub">Peat moss; high water-holding</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b4f"><b>Exam pitfall:</b> The <b>protonema</b> is a moss feature—don’t attribute it to liverworts in answers unless asked generally about bryophytes.</paragraph>
+</div>
+
+<h2>Pteridophytes (3.3)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b50"><b>Pteridophytes</b> include <b>horsetails</b> and <b>ferns</b> are evolutionarily the <b>first terrestrial plants with vascular tissues</b>:</paragraph>
+<ul class="star-list">
+<li><b>Xylem</b></li>
+<li><b>Phloem</b></li>
+</ul>
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 3.3" class="zoomable" data-full="img/Figure_3.3.webp" decoding="async" height="1276" loading="lazy" src="img/Figure_3.3.webp" style="max-width: 100%; height: auto;" width="1163"/>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b51" style="text-align:center;"><b>Figure:</b> Pteridophytes : (a) Selaginella (b) Equisetum (c) Fern (d) Salvinia</paragraph>
+<h3>Uses and habitat</h3>
+
+<div class="tile-grid">
+  <div class="tile">Medicinal<span class="tile-sub">Used for <b>medicinal purposes</b></span></div>
+  <div class="tile">Soil-binders<span class="tile-sub">Help in binding soil</span></div>
+  <div class="tile">Ornamentals<span class="tile-sub">Frequently grown as <b>ornamentals</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b52"><b>Where they thrive:</b> mostly in <b>cool, damp, shady</b> places — but some can flourish in <b>sandy-soil</b> conditions too.</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Common in <b>cool, damp, shady</b> places.</li>
+<li>Some flourish in <b>sandy-soil</b> conditions.</li>
+</ul>
+
+<h3>Dominant plant body (sporophyte) and differentiation</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b53"><b>Key contrast:</b> Unlike bryophytes (dominant <b>gametophyte</b>), pteridophytes have a dominant <b>sporophyte</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Main plant body is a <b>sporophyte</b> differentiated into <b>true root, stem and leaves</b>.</li>
+<li>These organs possess well-differentiated <b>vascular tissues</b>.</li>
+</ul>
+
+<h3>Leaves: microphylls vs macrophylls</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b54"><b>Pteridophyte leaves may be:</b></paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Microphylls<span class="tile-sub">Small leaves (e.g., <b>Selaginella</b>)</span></div>
+  <div class="tile">Macrophylls<span class="tile-sub">Large leaves (e.g., <b>ferns</b>)</span></div>
+</div>
+
+<h3>Sporangia, sporophylls and strobili</h3>
+
+<div class="flow-row">
+  <div class="flow-box"><b>Sporophyte</b> bears <b>sporangia</b></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Sporangia subtended by <b>sporophylls</b></div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Sporophylls may pack into <b>strobili (cones)</b></div>
+</div>
+
+<ul class="check-list">
+<li>Sporophytes bear <b>sporangia</b>.</li>
+<li>Sporangia are subtended by leaf-like appendages called <b>sporophylls</b>.</li>
+<li>In some cases, sporophylls form compact structures called <b>strobili (cones)</b> (examples: <b>Selaginella</b>, <b>Equisetum</b>).</li>
+</ul>
+
+<h3>Spore formation and early gametophyte</h3>
+
+<div class="flow-row">
+  <div class="flow-box">Spore mother cells in sporangia</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Meiosis</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Haploid spores</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Germination</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Inconspicuous small multicellular stage (<b>gametophyte</b>)</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b55"><b>Exam pitfall:</b> In pteridophytes, <b>sporangia occur on sporophyte</b> (not on the gametophyte), and spores are formed by <b>meiosis in spore mother cells</b>.</paragraph>
+</div>
+
+<h2>Pteridophytes (continued): Gametophyte, Fertilisation, Spore Types &amp; Classification</h2>
+
+<h3>Prothallus (gametophyte) and habitat requirement</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b56"><b>Prothallus</b> = free-living, mostly photosynthetic, <b>thalloid gametophyte</b> of pteridophytes.</paragraph>
+</div>
+
+<div class="sticky-note">
+Prothalli are picky about conditions: they prefer <b>cool + damp + shady</b> spots, so pteridophytes often end up restricted to <b>narrow geographical regions</b>.
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b57">Prothalli typically require <b>cool, damp, shady places</b> to grow. Because they need such restricted conditions and because <b>water is essential for fertilisation</b>, living pteridophytes are often limited to <b>narrow geographical regions</b>.</paragraph>
+
+<h3>Sex organs and water-dependent fertilisation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+<li><b>Antheridia</b> = male sex organs on the gametophyte</li>
+<li><b>Archegonia</b> = female sex organs on the gametophyte</li>
+<li><b>Antherozoids</b> = male gametes released from antheridia</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b58"><b>Water is required</b> for transfer of antherozoids from <b>antheridium</b> to the <b>mouth of archegonium</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Antheridia release antherozoids</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Water carries antherozoids to archegonium</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Fusion with egg in archegonium</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Zygote</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Multicellular, well-differentiated <b>sporophyte</b> (dominant phase)</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b59">Exam trap: In pteridophytes, the <b>dominant phase is the sporophyte</b>, but <b>fertilisation still requires water</b> because the male gametes are motile and must reach the archegonium.</paragraph>
+</div>
+
+<h3>Homosporous vs heterosporous pteridophytes; evolutionary significance</h3>
+
+<div class="tile-grid">
+  <div class="tile">Homosporous<span class="tile-sub">All spores are similar in size and type</span></div>
+  <div class="tile">Heterosporous<span class="tile-sub">Two spore types: <b>microspores</b> (small) + <b>megaspores</b> (large)</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="star-list">
+<li><b>Homosporous</b> pteridophytes: produce only one kind of spore (majority of pteridophytes).</li>
+<li><b>Heterosporous</b> pteridophytes: produce <b>microspores</b> and <b>megaspores</b>.</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b5a"><b>Examples of heterosporous pteridophytes:</b> <b>Selaginella</b>, <b>Salvinia</b>.</paragraph>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b5b">In heterosporous forms:</paragraph>
+<ul class="check-list">
+<li><b>Microspores</b> germinate to form <b>male gametophytes</b>.</li>
+<li><b>Megaspores</b> germinate to form <b>female gametophytes</b>.</li>
+<li><b>Female gametophyte is retained on the parent sporophyte</b> for variable periods.</li>
+<li><b>Zygote develops into a young embryo within the female gametophyte</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b5c">This retention and in-gametophyte embryo development is a <b>precursor to seed habit</b> (an important evolutionary step).</paragraph>
+</div>
+
+<h3>Classes of pteridophytes (with examples)</h3>
+
+<div class="tile-grid">
+  <div class="tile">Psilopsida<span class="tile-sub"><b>Psilotum</b></span></div>
+  <div class="tile">Lycopsida<span class="tile-sub"><b>Selaginella</b>, <b>Lycopodium</b></span></div>
+  <div class="tile">Sphenopsida<span class="tile-sub"><b>Equisetum</b></span></div>
+  <div class="tile">Pteropsida<span class="tile-sub"><b>Dryopteris</b>, <b>Pteris</b>, <b>Adiantum</b></span></div>
+</div>
+
+<h2>Gymnosperms (3.4): Naked Seeds, Plant Body, Reproduction &amp; Cones</h2>
+
+<h3>Definition: “naked-seeded” condition</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b5d"><b>Gymnosperms</b> (gymnos = naked; sperma = seeds) are plants in which <b>ovules are not enclosed by an ovary wall</b> and remain <b>exposed</b> before and after fertilisation. Hence, the seeds formed are <b>not covered</b> (naked).</paragraph>
+</div>
+<div class="sticky-note">
+Think: “seed sitting out in the open” — no fruit covering it.
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 3.4" class="zoomable" data-full="img/Figure_3.4.webp" decoding="async" height="566" loading="lazy" src="img/Figure_3.4.webp" style="max-width: 100%; height: auto;" width="211"/>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b5e" style="text-align:center;"><b>Figure:</b> Gymnosperms: (a) Cycas (b) Pinus (c) Ginkgo</paragraph>
+<h3>Habit and examples</h3>
+<ul class="star-list">
+<li>Include <b>medium-sized trees</b>, <b>tall trees</b> and <b>shrubs</b>.</li>
+<li><b>Sequoia</b> (giant redwood) is among the <b>tallest tree species</b>.</li>
+</ul>
+
+<h3>Roots, stems and leaves: key adaptations</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+<li><b>Roots</b>: generally <b>tap roots</b>.</li>
+<li><b>Mycorrhiza</b>: fungal association in roots of some genera (e.g., <b>Pinus</b>).</li>
+<li><b>Coralloid roots</b>: small specialised roots in <b>Cycas</b>, associated with <b>N<sub>2</sub>-fixing cyanobacteria</b>.</li>
+<li><b>Stems</b>: <b>unbranched</b> in <b>Cycas</b>; <b>branched</b> in <b>Pinus</b>, <b>Cedrus</b>.</li>
+<li><b>Leaves</b>: may be <b>simple or compound</b>; <b>Cycas</b> has <b>pinnate leaves</b> that persist for a few years.</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b5f"><b>Conifer leaf adaptations</b> for reducing water loss and tolerating extremes:</paragraph>
+<ul class="check-list">
+<li><b>Needle-like leaves</b> reduce surface area.</li>
+<li><b>Thick cuticle</b> reduces transpiration.</li>
+<li><b>Sunken stomata</b> reduce water loss in dry/windy/cold conditions.</li>
+</ul>
+</div>
+
+<h3>Heterospory and strobili (cones)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b60">Gymnosperms are <b>heterosporous</b>: they produce <b>haploid microspores</b> and <b>megaspores</b>.</paragraph>
+</div>
+
+<paragraph id="6a8c169fc01a40070bd78b61">Spore production occurs in <b>sporangia</b> borne on <b>sporophylls</b> that are arranged <b>spirally along an axis</b> to form <b>strobili (cones)</b>, which may be <b>lax or compact</b>.</paragraph>
+
+<div class="tile-grid">
+<div class="tile">Microsporangiate (male) strobilus<span class="tile-sub">Microsporophylls + microsporangia</span></div>
+<div class="tile">Macrosporangiate (female) strobilus<span class="tile-sub">Megasporophylls + ovules/megasporangia</span></div>
+</div>
+
+<h3>Male gametophyte: pollen grain (highly reduced)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b62"><b>Microspore</b> develops into the <b>male gametophyte</b>, which is <b>highly reduced</b> and confined to a limited number of cells; this reduced gametophyte is the <b>pollen grain</b>.</paragraph>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b63"><b>Pollen grains develop within microsporangia</b> and are later released.</paragraph>
+
+<h3>Female gametophyte formation inside the ovule</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+<li><b>Megaspore mother cell</b> differentiates from a cell of the <b>nucellus</b>.</li>
+<li><b>Nucellus</b> is protected by envelopes; the composite structure is an <b>ovule</b>.</li>
+<li>Ovules are borne on <b>megasporophylls</b> (often clustered into female cones).</li>
+<li>Megaspore mother cell undergoes <b>meiosis</b> to form <b>four megaspores</b>.</li>
+<li><b>One megaspore</b> (within the megasporangium) develops into a <b>multicellular female gametophyte</b>.</li>
+<li>The female gametophyte bears <b>two or more archegonia</b> (female sex organs).</li>
+<li>The female gametophyte is <b>retained within the megasporangium</b>.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169fc01a40070bd78b64">Exam trap: In gymnosperms, <b>both male and female gametophytes are not free-living</b>; they remain within sporangia retained on the sporophyte (contrast with bryophytes/pteridophytes).</paragraph>
+</div>
+
+<h3>Arrangement of male and female cones on plants</h3>
+<ul class="star-list">
+<li><b>Pinus</b>: male and female cones may be borne on the <b>same tree</b>.</li>
+<li><b>Cycas</b>: male cones and megasporophylls are borne on <b>different trees</b>.</li>
+</ul>
+
+<h3>Pollination, pollen tube and fertilisation; seed formation</h3>
+<div class="flow-row">
+<div class="flow-box">Pollen grain released from microspor-angium</div><span class="flow-arrow">→</span><div class="flow-box">Carried by air currents</div><span class="flow-arrow">→</span><div class="flow-box">Contacts opening of ovule on megasporo-phyll</div><span class="flow-arrow">→</span><div class="flow-box">Pollen tube grows toward archegonia</div><span class="flow-arrow">→</span><div class="flow-box">Male gametes discharged near archegonium mouth</div><span class="flow-arrow">→</span><div class="flow-box">Fertilisation → zygote → embryo</div><span class="flow-arrow">→</span><div class="flow-box">Ovule becomes seed (naked)</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b65"><b>Key outcome:</b> After fertilisation, the <b>zygote forms an embryo</b> and the <b>ovule forms a seed</b>; gymnosperm seeds remain <b>uncovered (naked)</b>.</paragraph>
+</div>
+
+<h2>Angiosperms (3.5): Flowers, Fruits, Diversity &amp; Classes</h2>
+
+<h3>Defining features: flowers and enclosed seeds</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169fc01a40070bd78b66"><b>Angiosperms (flowering plants)</b> develop <b>pollen grains and ovules in specialised structures called flowers</b>. Their <b>seeds are enclosed in fruits</b> (unlike gymnosperms with naked ovules/seeds).</paragraph>
+</div>
+<div class="sticky-note">
+Gymnosperms: “seed exposed” • Angiosperms: “seed packed inside fruit”
+</div>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 3.5" class="zoomable" data-full="img/Figure_3.5.webp" decoding="async" height="1024" loading="lazy" src="img/Figure_3.5.webp" style="max-width: 100%; height: auto;" width="1536"/>
+</div>
+<paragraph id="6a8c169fc01a40070bd78b67" style="text-align:center;"><b>Figure:</b> Angiosperms : (a) A dicotyledon (b) A monocotyledon </paragraph>
+<h3>Range, habitats and importance</h3>
+<ul class="check-list">
+<li>Exceptionally large group found in a <b>wide range of habitats</b>.</li>
+<li>Size range: from <b>Wolffia</b> (smallest) to <b>Eucalyptus</b> (over 100 m tall).</li>
+<li>Provide <b>food</b>, <b>fodder</b>, <b>fuel</b>, <b>medicines</b> and many commercially important products.</li>
+</ul>
+
+<h3>Major classes of angiosperms</h3>
+<div class="tile-grid">
+<div class="tile">Dicotyledons<span class="tile-sub">Angiosperms with two cotyledons (as per standard classification)</span></div>
+<div class="tile">Monocotyledons<span class="tile-sub">Angiosperms with one cotyledon (as per standard classification)</span></div>
+</div>
+
+<h2>Chapter Summary </h2>
+<h3>Algae (key recall points)</h3>
+* Algae are chlorophyll-bearing, simple, thalloid, autotrophic and largely aquatic organisms.<br/>
+* They occur as colonial forms (Volvox), filamentous forms (Ulothrix, Spirogyra) and massive marine forms such as kelps.<br/>
+* They reproduce by vegetative (fragmentation), asexual (mainly zoospores) and sexual methods.<br/>
+* Sexual reproduction may be isogamous (Ulothrix, Spirogyra), anisogamous (Eudorina) or oogamous (Volvox, Fucus).<br/>
+* Algae are important primary producers and are classified into three main classes: Chlorophyceae, Phaeophyceae and Rhodophyceae.
+<h3>Bryophytes (key recall points)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li>Live on soil but depend on <b>water for sexual reproduction</b>.</li>
+<li>Plant body more differentiated than algae; thallus-like, prostrate/erect; attached by <b>rhizoids</b>; possess root-like, stem-like, leaf-like structures.</li>
+<li>Divided into <b>liverworts</b> (thalloid, dorsiventral) and <b>mosses</b> (upright slender axes with spirally arranged leaves).</li>
+<li>Main plant body is <b>gametophyte</b> bearing <b>antheridia</b> and <b>archegonia</b>.</li>
+<li>Gamete fusion → <b>zygote</b> → multicellular <b>sporophyte</b> producing <b>haploid spores</b> → spores germinate → gametophytes.</li>
+</ul>
+</div>
+
+<h3>Pteridophytes (key recall points)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li>Main plant body is <b>sporophyte</b> with <b>true root, stem, leaves</b> and well-differentiated <b>vascular tissues</b>.</li>
+<li>Sporophyte bears <b>sporangia</b> → spores.</li>
+<li>Spores germinate into gametophytes (prothallus) needing <b>cool, damp places</b>.</li>
+<li>Gametophyte bears <b>antheridia</b> and <b>archegonia</b>; water needed for male gamete transfer to archegonium.</li>
+<li>Fertilisation → zygote → sporophyte.</li>
+</ul>
+</div>
+
+<h3>Gymnosperms (key recall points)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li><b>Ovules not enclosed</b> by ovary wall; seeds are <b>naked</b>.</li>
+<li><b>Microspores and megaspores</b> produced in microsporangia and megasporangia on sporophylls.</li>
+<li>Sporophylls arranged spirally to form <b>male and female cones</b>.</li>
+<li>Pollen grain germinates; pollen tube releases male gamete into ovule; male gamete fuses with egg in archegonium.</li>
+<li>Post-fertilisation: zygote → embryo; ovule → seed.</li>
+</ul>
+</div>
+
+<h3>Angiosperms (key recall points)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169fc01a40070bd78b68">Angiosperms are divided into two classes: <b>dicotyledons</b> and <b>monocotyledons</b>.</paragraph>
+</div>
+  </div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

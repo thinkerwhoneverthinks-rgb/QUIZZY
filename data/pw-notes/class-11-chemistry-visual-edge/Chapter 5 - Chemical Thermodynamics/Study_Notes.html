@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>THERMODYNAMICS — Chemistry</title>
+  <meta name="description" content="THERMODYNAMICS — Chemistry topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Class 11 &middot; Chemistry</div>
+        <h1>THERMODYNAMICS</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SYSTEM AND SURROUNDINGS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>System</b> = the part of the universe under observation for a thermodynamic study.</li><li><b>Surroundings</b> = everything outside the system that can interact with it.</li><li><b>Universe</b> = <b>System + Surroundings</b>.</li><li><b>Boundary</b> = real or imaginary surface separating system and surroundings.</li><li>All heat and work bookkeeping is done <b>with respect to the boundary</b> and the direction of transfer.</li></ul></div><div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox" style="height:auto; padding:14px; box-sizing:border-box; overflow:visible;">
+    <div style="
+      max-width:640px;
+      margin:0 auto;
+      border:2px solid #123B7A;
+      border-radius:10px;
+      background:#EEF4FF;
+      padding:14px 14px 34px 14px;
+      box-sizing:border-box;
+      font-family:'Times New Roman',serif;
+      color:#1f2a44;
+      position:relative;
+    ">
+
+      <!-- Heading -->
+      <div style="
+        font-size:18px;
+        margin-bottom:14px;
+      ">
+        Surroundings
+      </div>
+
+      <!-- Diagram Area -->
+      <div style="
+        position:relative;
+        width:100%;
+        height:150px;
+      ">
+
+        <!-- Boundary -->
+        <div style="
+          position:absolute;
+          left:50%;
+          top:6px;
+          transform:translateX(-50%);
+          width:170px;
+          height:118px;
+          border:2px dashed #7C3AED;
+          border-radius:12px;
+          box-sizing:border-box;
+        ">
+          <div style="
+            position:absolute;
+            top:-18px;
+            left:16px;
+            font-size:14px;
+            background:#EEF4FF;
+            padding:0 4px;
+          ">
+            Boundary
+          </div>
+        </div>
+
+        <!-- System -->
+        <div style="
+          position:absolute;
+          left:50%;
+          top:16px;
+          transform:translateX(-50%);
+          width:150px;
+          height:98px;
+          border:2px solid #16A34A;
+          border-radius:10px;
+          background:#EAF7EF;
+          box-sizing:border-box;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:flex-start;
+          padding-top:12px;
+        ">
+          <div style="
+            font-size:18px;
+            margin-bottom:10px;
+          ">
+            System
+          </div>
+
+          <!-- Beaker -->
+          <div style="
+            width:82px;
+            height:48px;
+            border:2px solid #F59E0B;
+            border-radius:8px;
+            background:#FEF5E4;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            box-sizing:border-box;
+            font-size:15px;
+            line-height:1.15;
+          ">
+            <div>Beaker</div>
+            <div>mixture</div>
+          </div>
+        </div>
+
+        <!-- Heat/work arrow -->
+        <div style="
+          position:absolute;
+          left:calc(50% + 88px);
+          top:28px;
+          display:flex;
+          flex-direction:column;
+          align-items:flex-start;
+          gap:4px;
+        ">
+          <div style="font-size:14px;">Heat/work</div>
+          <div style="display:flex; align-items:center;">
+            <span style="
+              display:inline-block;
+              width:52px;
+              height:2px;
+              background:#123B7A;
+            "></span>
+            <span style="
+              width:0;
+              height:0;
+              border-top:5px solid transparent;
+              border-bottom:5px solid transparent;
+              border-left:8px solid #123B7A;
+            "></span>
+          </div>
+        </div>
+
+        <!-- Matter arrow -->
+        <div style="
+          position:absolute;
+          left:calc(50% + 88px);
+          top:82px;
+          display:flex;
+          flex-direction:column;
+          align-items:flex-start;
+          gap:4px;
+        ">
+          <div style="display:flex; align-items:center;">
+            <span style="
+              width:0;
+              height:0;
+              border-top:5px solid transparent;
+              border-bottom:5px solid transparent;
+              border-right:8px solid #123B7A;
+            "></span>
+            <span style="
+              display:inline-block;
+              width:52px;
+              height:2px;
+              background:#123B7A;
+            "></span>
+          </div>
+          <div style="font-size:14px;">Matter</div>
+        </div>
+      </div>
+
+      <!-- Note -->
+      <div style="
+        font-size:12px;
+        margin-top:8px;
+        line-height:1.35;
+      ">
+        Arrows indicate possible transfers; actual transfers depend on system type (open/closed/isolated).
+      </div>
+    </div>
+
+    <div class="figcap" style="margin-top:10px; text-align:center; line-height:1.4;">
+      Boundary separates system and surroundings; transfers shown are possible and depend on system type.
+    </div>
+  </div>
+</div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧪</span><span>Pick the system clearly (reaction mixture, gas in cylinder, solution in beaker).</span></li><li><span class="ic">🧱</span><span>Boundary can be <b>real</b> (walls, piston) or <b>imaginary</b> (drawn around a region).</span></li><li><span class="ic">🔁</span><span>Across boundary, track (i) <b>matter transfer</b> and (ii) <b>energy transfer</b> as <b>heat/work</b>.</span></li><li><span class="ic">🔥</span><span>Energy exchange can occur even when matter cannot (sealed conducting vessel).</span></li><li><span class="ic">🚫</span><span>If neither matter nor energy (heat/work) crosses, the system is <b>isolated</b> (ideal thermos).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO CHOOSE THE SYSTEM (EXAM STYLE)</span></h2><ul class="b"><li>Choose the <b>minimum region</b> needed to answer the question (often the reacting mixture).</li><li>State the boundary explicitly: beaker walls, piston face, membrane, or an imaginary surface.</li><li>Decide what is in surroundings: air/room, water bath, container walls, piston weights.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">EXCHANGE ACROSS BOUNDARY (WHAT YOU TRACK)</span></h2><ul class="b"><li><b>Matter exchange</b>: molecules/ions enter or leave system (e.g., evaporation, gas escape, inlet/outlet).</li><li><b>Energy exchange</b>: transfer as <b>heat</b> and/or <b>work</b> across the boundary (e.g., heating, electrical work, expansion work).</li><li>A boundary may be <b>diathermic</b> (heat can pass) or <b>adiabatic</b> (heat cannot pass).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">OPEN vs CLOSED vs ISOLATED SYSTEM (based on what crosses boundary)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Open</th><th>Closed</th><th>Isolated</th></tr></thead><tbody><tr><td>Matter exchange</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Energy exchange (heat/work)</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Typical boundary</td><td>Open to atmosphere / permeable boundary</td><td>Sealed boundary (no mass transfer)</td><td>Sealed + insulated (no mass or energy transfer)</td></tr><tr><td>Example</td><td>Reactants in open beaker</td><td>Sealed conducting vessel (e.g., copper)</td><td>Thermos flask (ideal)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A and B react in a beaker kept on a table in a room. Identify system, surroundings, boundary, and what can be exchanged.</div><div class="sol"><span class="lbl">Answer:</span><br><b>System</b>: reaction mixture inside the beaker (A + B + products).<br><b>Boundary</b>: surface separating mixture from rest (beaker walls + an imaginary surface across the open top).<br><b>Surroundings</b>: beaker material, table, air of the room, and everything outside the boundary.<br>Because the beaker is open, <b>matter</b> (vapours/gases) and <b>energy</b> (heat/work) can be exchanged with surroundings.</div><div class="ans">✓&nbsp; System = mixture; boundary = beaker walls + imaginary top surface; surroundings = everything outside; open system so both matter and energy can cross.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A reaction occurs in a sealed copper vessel placed in a water bath. Classify the system and justify using boundary exchanges.</div><div class="sol"><span class="lbl">Answer:</span><br>Sealing prevents <b>matter exchange</b> across the boundary (no mass enters/leaves).<br>Copper is a good conductor, so <b>heat</b> can pass between system and water bath (energy exchange occurs).<br>Hence it is a <b>closed system</b>: energy can cross, matter cannot.</div><div class="ans">✓&nbsp; Closed system: no matter transfer through the sealed boundary, but heat can be exchanged through copper walls.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><b>Universe = System + Surroundings</b> is the starting statement.</li><li>Thermodynamic quantities like heat and work are defined only after fixing the <b>boundary</b>.</li><li>A boundary may be <b>real</b> (wall, membrane) or <b>imaginary</b> (drawn surface).</li><li>System type is decided by <b>what crosses boundary</b>: matter, energy (heat/work), both, or neither.</li><li>In most chemistry problems, <b>system = reacting mixture</b>; surroundings = container + environment (if outside the chosen boundary).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Calling the container (beaker) the system when the question intends the <b>contents</b> as system.</li><li>Forgetting that an <b>imaginary boundary</b> is allowed (system need not be a physical vessel).</li><li>Confusing <b>closed</b> with <b>isolated</b>: closed allows energy exchange; isolated does not.</li><li>Ignoring that surroundings can include <b>container walls</b> if system is defined as only the contents.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>SUM</b>”</div><paragraph id="6a9fdc9def6a4b04590002bf"><b>S</b>ystem: Selected part under study</paragraph><paragraph id="6a9fdc9df2348e7e6b0002c0"><b>U</b>niverse: System + Surroundings</paragraph><paragraph id="6a9fdc9d896505dfb30002c1"><b>M</b>arker line: Boundary tracks Matter and Heat/Work crossing</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">System: part of the universe under observation.</span><span class="eq">Surroundings: everything outside the system that can interact with it.</span><span class="eq">Universe = System + Surroundings.</span><span class="eq">Boundary: real or imaginary surface separating system and surroundings; all heat/work bookkeeping is relative to it.</span><span class="eq">Open system: exchanges both matter and energy (heat/work) with surroundings.</span><span class="eq">Closed system: exchanges energy (heat/work) but not matter.</span><span class="eq">Isolated system: exchanges neither matter nor energy (ideal case).</span><span class="eq">Diathermic boundary: allows heat transfer; adiabatic boundary: does not allow heat transfer.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>TYPES OF SYSTEMS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>System type</b> is decided by whether <b>matter</b> and/or <b>energy</b> (<b>heat</b> and/or <b>work</b>) can cross the boundary.</li><li>A <b>boundary</b> (real/imaginary) separates system from surroundings; exchanges are tracked across it.</li><li><b>Open system</b>: matter exchange allowed; energy exchange (heat/work) allowed.</li><li><b>Closed system</b>: no matter exchange; energy exchange allowed (heat/work).</li><li><b>Isolated system</b>: neither matter nor energy exchange across boundary (<b>ideal</b> case).</li></ul></div><div class="card" style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2;">
+  <h2>
+    <span class="secno">2</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox" style="height:auto; padding:14px; box-sizing:border-box; overflow:visible;">
+    <div style="
+      max-width:660px;
+      margin:0 auto;
+      border:2px solid #123B7A;
+      border-radius:10px;
+      background:#EEF4FF;
+      padding:14px;
+      box-sizing:border-box;
+      font-family:'Times New Roman',serif;
+      color:#1f2a44;
+    ">
+
+      <!-- Heading -->
+      <div style="
+        font-size:18px;
+        margin-bottom:16px;
+      ">
+        Surroundings
+      </div>
+
+      <!-- 3 Column Layout -->
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:12px;
+        align-items:stretch;
+      ">
+
+        <!-- OPEN -->
+        <div style="
+          background:#FEF5E4;
+          border:2px solid #F59E0B;
+          border-radius:8px;
+          padding:10px 8px 12px;
+          box-sizing:border-box;
+          min-height:180px;
+          text-align:center;
+        ">
+          <div style="
+            font-size:17px;
+            margin-bottom:14px;
+          ">
+            OPEN
+          </div>
+
+          <div style="
+            width:74px;
+            height:52px;
+            margin:0 auto 14px;
+            border:1.5px dashed #F59E0B;
+            border-radius:6px;
+            background:#FFF;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:15px;
+            box-sizing:border-box;
+          ">
+            System
+          </div>
+
+          <div style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+            margin-bottom:12px;
+          ">
+            <div style="
+              display:flex;
+              align-items:center;
+            ">
+              <span style="
+                width:20px;
+                height:2px;
+                background:#123B7A;
+                display:inline-block;
+              "></span>
+              <span style="
+                width:0;
+                height:0;
+                border-top:5px solid transparent;
+                border-bottom:5px solid transparent;
+                border-left:8px solid #123B7A;
+              "></span>
+            </div>
+
+            <div style="
+              display:flex;
+              align-items:center;
+            ">
+              <span style="
+                width:0;
+                height:0;
+                border-top:5px solid transparent;
+                border-bottom:5px solid transparent;
+                border-right:8px solid #123B7A;
+              "></span>
+              <span style="
+                width:20px;
+                height:2px;
+                background:#123B7A;
+                display:inline-block;
+              "></span>
+            </div>
+          </div>
+
+          <div style="
+            font-size:14px;
+            line-height:1.3;
+          ">
+            Matter + Heat/Work
+          </div>
+        </div>
+
+        <!-- CLOSED -->
+        <div style="
+          background:#EAF7EF;
+          border:2px solid #16A34A;
+          border-radius:8px;
+          padding:10px 8px 12px;
+          box-sizing:border-box;
+          min-height:180px;
+          text-align:center;
+        ">
+          <div style="
+            font-size:17px;
+            margin-bottom:14px;
+          ">
+            CLOSED
+          </div>
+
+          <div style="
+            width:74px;
+            height:52px;
+            margin:0 auto 14px;
+            border:2px solid #16A34A;
+            border-radius:6px;
+            background:#FFF;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:15px;
+            box-sizing:border-box;
+          ">
+            System
+          </div>
+
+          <div style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:12px;
+          ">
+            <span style="
+              width:24px;
+              height:2px;
+              background:#2563EB;
+              display:inline-block;
+            "></span>
+            <span style="
+              width:0;
+              height:0;
+              border-top:5px solid transparent;
+              border-bottom:5px solid transparent;
+              border-left:8px solid #2563EB;
+            "></span>
+          </div>
+
+          <div style="
+            font-size:14px;
+            line-height:1.3;
+            margin-bottom:4px;
+          ">
+            Heat/Work only
+          </div>
+
+          <div style="
+            font-size:13px;
+            line-height:1.2;
+          ">
+            (sealed)
+          </div>
+        </div>
+
+        <!-- ISOLATED -->
+        <div style="
+          background:#F4EFFE;
+          border:2px solid #7C3AED;
+          border-radius:8px;
+          padding:10px 8px 12px;
+          box-sizing:border-box;
+          min-height:180px;
+          text-align:center;
+        ">
+          <div style="
+            font-size:17px;
+            margin-bottom:14px;
+          ">
+            ISOLATED
+          </div>
+
+          <div style="
+            width:74px;
+            height:52px;
+            margin:0 auto 14px;
+            border:3px solid #7C3AED;
+            border-radius:6px;
+            background:#FFF;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:15px;
+            box-sizing:border-box;
+          ">
+            System
+          </div>
+
+          <div style="
+            font-size:14px;
+            line-height:1.3;
+            margin-bottom:4px;
+          ">
+            No exchange
+          </div>
+
+          <div style="
+            font-size:13px;
+            line-height:1.2;
+          ">
+            (idealised)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="figcap" style="margin-top:10px; text-align:center; line-height:1.4;">
+      Systems are classified by boundary exchange: open (matter + heat/work), closed (heat/work only), isolated (neither, ideal).
+    </div>
+  </div>
+</div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🚪</span><span><b>Boundary decides type</b>: focus on what crosses it, not what is inside.</span></li><li><span class="ic">💨</span><span><b>Matter exchange</b> means mass can enter/leave (e.g., evaporation, diffusion, flow).</span></li><li><span class="ic">🔥</span><span><b>Energy exchange</b> includes <b>heat</b> and <b>work</b>; it can occur even without mass transfer.</span></li><li><span class="ic">🧊</span><span><b>Thermos/insulated vessel</b> approximates isolated: minimises heat flow and prevents leakage.</span></li><li><span class="ic">🔒</span><span><b>Sealed vessel</b> gives a closed system if walls can still transfer heat and/or allow work interaction.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO DECIDE THE TYPE (EXAM METHOD)</span></h2><div class="figbox" style="
+  height:auto;
+  margin-bottom:1.5mm;
+  padding:12px;
+  box-sizing:border-box;
+  overflow:visible;
+">
+
+  <div style="
+    max-width:640px;
+    margin:0 auto;
+    border:2px solid #123B7A;
+    border-radius:10px;
+    background:#EEF4FF;
+    padding:14px;
+    box-sizing:border-box;
+    font-family:'Times New Roman',serif;
+    color:#1f2a44;
+  ">
+
+    <!-- Title -->
+    <div style="
+      font-size:18px;
+      margin-bottom:16px;
+    ">
+      Decide type
+    </div>
+
+    <!-- Flowchart -->
+    <div style="
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    ">
+
+      <!-- Row 1 -->
+      <div style="
+        display:grid;
+        grid-template-columns:minmax(0,1fr) 56px minmax(0,1.1fr);
+        align-items:center;
+        gap:10px;
+      ">
+
+        <!-- Matter Box -->
+        <div style="
+          min-height:60px;
+          border:2px solid #F59E0B;
+          background:#FEF5E4;
+          border-radius:8px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          padding:8px 10px;
+          box-sizing:border-box;
+          font-size:16px;
+          line-height:1.3;
+        ">
+          Matter crosses?
+        </div>
+
+        <!-- Arrow -->
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        ">
+          <span style="
+            display:inline-block;
+            width:34px;
+            height:2px;
+            background:#123B7A;
+          "></span>
+
+          <span style="
+            width:0;
+            height:0;
+            border-top:5px solid transparent;
+            border-bottom:5px solid transparent;
+            border-left:8px solid #123B7A;
+          "></span>
+        </div>
+
+        <!-- Open Box -->
+        <div style="
+          min-height:60px;
+          border:2px solid #16A34A;
+          background:#EAF7EF;
+          border-radius:8px;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          padding:8px 12px;
+          box-sizing:border-box;
+          font-size:16px;
+          line-height:1.35;
+        ">
+          <div>Yes → <b>OPEN</b></div>
+          <div>No → check energy</div>
+        </div>
+
+      </div>
+
+
+      <!-- Row 2 -->
+      <div style="
+        display:grid;
+        grid-template-columns:minmax(0,1fr) 56px minmax(0,1.1fr);
+        align-items:center;
+        gap:10px;
+      ">
+
+        <!-- Energy Box -->
+        <div style="
+          min-height:60px;
+          border:2px solid #7C3AED;
+          background:#F4EFFE;
+          border-radius:8px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          padding:8px 10px;
+          box-sizing:border-box;
+          font-size:16px;
+          line-height:1.3;
+        ">
+          Energy (heat/work)?
+        </div>
+
+        <!-- Arrow -->
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+        ">
+          <span style="
+            display:inline-block;
+            width:34px;
+            height:2px;
+            background:#123B7A;
+          "></span>
+
+          <span style="
+            width:0;
+            height:0;
+            border-top:5px solid transparent;
+            border-bottom:5px solid transparent;
+            border-left:8px solid #123B7A;
+          "></span>
+        </div>
+
+        <!-- Closed / Isolated Box -->
+        <div style="
+          min-height:60px;
+          border:2px solid #2563EB;
+          background:#FFFFFF;
+          border-radius:8px;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          padding:8px 12px;
+          box-sizing:border-box;
+          font-size:16px;
+          line-height:1.35;
+        ">
+          <div>Yes → <b>CLOSED</b></div>
+          <div>No → <b>ISOLATED</b></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ul class="b">
+  <li>
+    Step 1: Identify the <b>system</b> (reaction mixture, gas in cylinder)
+    and draw a boundary.
+  </li>
+
+  <li>
+    Step 2: Ask <b>Can mass cross?</b>
+    If yes → open; if no → closed/isolated.
+  </li>
+
+  <li>
+    Step 3: Ask <b>Can energy cross (heat/work)?</b>
+    If yes → open/closed; if no → isolated (ideal).
+  </li>
+
+  <li>
+    Heat can cross through conducting walls; work can cross via a moving
+    boundary (piston).
+  </li>
+
+  <li>
+    A system may be <b>closed but not isolated</b>:
+    sealed yet thermally conducting vessel.
+  </li>
+</ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STANDARD EXAMPLES (JEE/NEET FAVOURITES)</span></h2><ul class="b"><li><b>Open</b>: reaction in an open beaker; evaporating water; living organism exchanging gases/food.</li><li><b>Closed</b>: gas in a <b>sealed vessel</b> (can absorb/release heat through walls).</li><li><b>Isolated (approx.)</b>: <b>thermos flask</b> / well-<b>insulated vessel</b> with tight stopper.</li><li>In practice, a perfectly isolated system is idealised; real systems only approximate isolation.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">OPEN vs CLOSED vs ISOLATED SYSTEM</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Open</th><th>Closed</th><th>Isolated</th></tr></thead><tbody><tr><td>Matter exchange</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Energy exchange (heat/work)</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Typical boundary</td><td>Open boundary (mass flow possible)</td><td>Sealed boundary (no mass flow)</td><td>Sealed + insulated + rigid boundary (ideal)</td></tr><tr><td>Example</td><td>Reactants in an open beaker</td><td>Sealed conducting vessel (e.g., copper)</td><td>Thermos flask / well-insulated vessel (approx.)</td></tr><tr><td>Key idea tested</td><td>Matter and energy can cross</td><td>Only energy (heat/work) can cross</td><td>Neither matter nor energy crosses (ideal)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A reaction is carried out in a stoppered thermos flask. Classify the system and justify.</div><div class="sol"><span class="lbl">Answer:</span><br>Stopper prevents <b>matter exchange</b> across the boundary (no mass enters/leaves).<br>Insulation minimises <b>energy exchange</b> (mainly heat) with surroundings.<br>So, for exam purposes it is treated as an <b>isolated system (approx.)</b>, because both exchanges are intended to be negligible.</div><div class="ans">✓&nbsp; Approximately isolated system: matter exchange is prevented and energy exchange is minimised.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Gas is taken in a sealed metal container and kept in a room. Is it closed or isolated? Explain.</div><div class="sol"><span class="lbl">Answer:</span><br>Sealing prevents <b>matter exchange</b> → not an open system.<br>Metal walls allow <b>heat transfer</b> with the room → energy exchange occurs.<br>Therefore the system is <b>closed</b>, not isolated.</div><div class="ans">✓&nbsp; Closed system: no matter exchange, but energy (heat) can cross the boundary.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Classification depends only on <b>boundary</b> behaviour: what crosses it.</li><li>Closed system can exchange <b>heat</b> and/or <b>work</b> without exchanging mass.</li><li>For an <b>ideal isolated</b> system, <b>no heat and no work</b> are exchanged with surroundings (often written as q = 0 and w = 0).</li><li>A <b>sealed vessel</b> is not automatically isolated; check if it is <b>insulated</b> and whether work interaction is possible.</li><li>Thermos flask is an <b>approximation</b> to isolation; perfection is not required in exams unless specified.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Calling every <b>sealed</b> container an <b>isolated</b> system (ignoring heat transfer through walls).</li><li>Mixing up <b>adiabatic</b> (no heat exchange) with <b>isolated</b> (no heat, no work, no matter exchange).</li><li>Assuming open system means only matter exchange; actually <b>energy exchange also occurs</b>.</li><li>Forgetting that <b>work</b> is also an energy transfer mode (not just heat).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: O–C–I as 2–1–0 types of exchange”</div><paragraph id="6a9fdc9df69aa20d550002c2"><b>Open</b>: 2 types of exchange → <b>matter + energy</b>.</paragraph><paragraph id="6a9fdc9d08c7afdf0d0002c3"><b>Closed</b>: 1 type of exchange → <b>energy only</b>.</paragraph><paragraph id="6a9fdc9d1b5e0f7fbf0002c4"><b>Isolated</b>: 0 types of exchange → <b>neither</b>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>State Functions and Variables</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>The <b>state of a system</b> is specified by measurable macroscopic variables like <i>p</i>, <i>V</i>, <i>T</i>, <i>n</i>.</li><li>A <b>state function</b> depends only on the current state (initial &amp; final), not on how the state was reached.</li><li>A <b>path function</b> depends on the route/process followed between two states.</li><li>Only a <b>minimum set</b> of independent variables needs to be fixed; others become definite automatically (for a specified system under given constraints).</li><li>Examples: <i>U</i>, <i>H</i>, <i>S</i>, <i>G</i>, <i>p</i>, <i>V</i>, <i>T</i> are state functions; <i>q</i> and <i>w</i> are not.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox" style="
+  height:auto;
+  margin-bottom:1.5mm;
+  padding:12px;
+  box-sizing:border-box;
+  overflow:visible;
+">
+
+  <svg
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 360 205"
+    xmlns="http://www.w3.org/2000/svg"
+    style="display:block;width:100%;height:auto;overflow:visible;"
+  >
+
+    <defs>
+      <marker
+        id="arr-t3"
+        markerWidth="8"
+        markerHeight="8"
+        refX="7"
+        refY="4"
+        orient="auto"
+      >
+        <polygon
+          points="0,0 8,4 0,8"
+          fill="#123B7A"
+        />
+      </marker>
+
+      <marker
+        id="arrPurple-t3"
+        markerWidth="8"
+        markerHeight="8"
+        refX="7"
+        refY="4"
+        orient="auto"
+      >
+        <polygon
+          points="0,0 8,4 0,8"
+          fill="#7C3AED"
+        />
+      </marker>
+
+      <marker
+        id="arrOrange-t3"
+        markerWidth="8"
+        markerHeight="8"
+        refX="7"
+        refY="4"
+        orient="auto"
+      >
+        <polygon
+          points="0,0 8,4 0,8"
+          fill="#F59E0B"
+        />
+      </marker>
+    </defs>
+
+
+    <!-- Main outer box -->
+    <rect
+      x="10"
+      y="10"
+      width="340"
+      height="185"
+      rx="10"
+      fill="#FFFFFF"
+      stroke="#123B7A"
+      stroke-width="2"
+    />
+
+
+    <!-- Information box -->
+    <rect
+      x="20"
+      y="18"
+      width="320"
+      height="38"
+      rx="6"
+      fill="#EEF4FF"
+      stroke="#2563EB"
+      stroke-width="1.5"
+    />
+
+    <text
+      x="180"
+      y="34"
+      text-anchor="middle"
+      font-size="11.5"
+      fill="#1f2a44"
+    >
+      Same endpoints, different paths ⇒
+    </text>
+
+    <text
+      x="180"
+      y="49"
+      text-anchor="middle"
+      font-size="11.5"
+      fill="#1f2a44"
+    >
+      <tspan font-style="italic">q</tspan>,
+      <tspan font-style="italic">w</tspan>
+      differ; state functions same
+    </text>
+
+
+    <!-- Y-axis -->
+    <line
+      x1="58"
+      y1="166"
+      x2="58"
+      y2="67"
+      stroke="#123B7A"
+      stroke-width="2"
+      marker-end="url(#arr-t3)"
+    />
+
+    <!-- X-axis -->
+    <line
+      x1="58"
+      y1="166"
+      x2="325"
+      y2="166"
+      stroke="#123B7A"
+      stroke-width="2"
+      marker-end="url(#arr-t3)"
+    />
+
+
+    <!-- Axis labels -->
+    <text
+      x="327"
+      y="184"
+      font-size="13"
+      fill="#1f2a44"
+      font-style="italic"
+    >
+      V
+    </text>
+
+    <text
+      x="41"
+      y="72"
+      font-size="13"
+      fill="#1f2a44"
+      font-style="italic"
+    >
+      p
+    </text>
+
+
+    <!-- State 1 -->
+    <circle
+      cx="98"
+      cy="132"
+      r="6"
+      fill="#2563EB"
+    />
+
+    <text
+      x="72"
+      y="150"
+      font-size="12"
+      fill="#1f2a44"
+    >
+      State 1
+    </text>
+
+
+    <!-- State 2 -->
+    <circle
+      cx="272"
+      cy="79"
+      r="6"
+      fill="#16A34A"
+    />
+
+    <text
+      x="278"
+      y="77"
+      font-size="12"
+      fill="#1f2a44"
+    >
+      State 2
+    </text>
+
+
+    <!-- Path A -->
+    <path
+      d="
+        M 104 129
+        C 145 95,
+          205 112,
+          266 82
+      "
+      fill="none"
+      stroke="#7C3AED"
+      stroke-width="3"
+      stroke-linecap="round"
+      marker-end="url(#arrPurple-t3)"
+    />
+
+    <text
+      x="165"
+      y="100"
+      font-size="12"
+      fill="#7C3AED"
+    >
+      Path A
+    </text>
+
+
+    <!-- Path B -->
+    <path
+      d="
+        M 104 135
+        C 145 153,
+          210 72,
+          266 78
+      "
+      fill="none"
+      stroke="#F59E0B"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-dasharray="6 5"
+      marker-end="url(#arrOrange-t3)"
+    />
+
+    <text
+      x="165"
+      y="157"
+      font-size="12"
+      fill="#B45309"
+    >
+      Path B
+    </text>
+
+  </svg>
+
+
+  <div
+    class="figcap"
+    style="
+      margin-top:8px;
+      text-align:center;
+      line-height:1.4;
+    "
+  >
+    Two different paths between the same states: state functions give the same change,
+    but <i>q</i> and <i>w</i> can differ.
+  </div>
+
+</div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧪</span><span>Macroscopic properties are bulk-measurable; they ignore molecular-level details.</span></li><li><span class="ic">📌</span><span>Fixing state variables fixes the state; same state ⇒ same values of all state functions.</span></li><li><span class="ic">🛣️</span><span>Path matters for <i>q</i> and <i>w</i>: different processes can give different heat/work for same endpoints.</span></li><li><span class="ic">🔁</span><span>Cyclic process: change in any state function over a cycle is zero.</span></li><li><span class="ic">⚖️</span><span>State functions enable comparison using only initial and final equilibrium states.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STATE VARIABLES (MACROSCOPIC DESCRIPTION)</span></h2><ul class="b"><li>Common variables: <i>p</i> (pressure), <i>V</i> (volume), <i>T</i> (temperature), <i>n</i> (amount of substance).</li><li>These are called <b>state variables</b> because their values define the equilibrium state.</li><li>Not all variables are independent; the minimum independent set depends on the system and constraints.</li><li>If the system returns to the same state, each state variable returns to its original value (net change = 0).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STATE FUNCTION vs PATH FUNCTION (EXAM FAVORITE)</span></h2><ul class="b"><li><b>State function</b>: depends only on state; change is fixed by endpoints (e.g., Δ<i>U</i>, Δ<i>H</i>, Δ<i>S</i>, Δ<i>G</i>).</li><li><b>Path function</b>: depends on process details (e.g., reversible/irreversible); <i>q</i> and <i>w</i> are path functions.</li><li>Different paths between same states can have different <i>q</i> and <i>w</i>, even though Δ<i>U</i> is the same.</li><li>In a cycle: Δ(state function) = 0, but net <i>q</i> and net <i>w</i> need not be zero individually.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">STATE FUNCTIONS vs PATH FUNCTIONS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>State function</th><th>Path function</th></tr></thead><tbody><tr><td>Depends on</td><td>Only the state (initial &amp; final)</td><td>The path/process taken</td></tr><tr><td>Notation idea</td><td>Δ<i>X</i> is meaningful</td><td>Only <i>q</i>, <i>w</i> for a specified path</td></tr><tr><td>Examples</td><td><i>U</i>, <i>H</i>, <i>S</i>, <i>G</i>, <i>p</i>, <i>V</i>, <i>T</i></td><td><i>q</i>, <i>w</i></td></tr><tr><td>Cyclic change</td><td>Δ over cycle = 0</td><td>Net values can be nonzero</td></tr><tr><td>Key test</td><td>Same endpoints ⇒ same change</td><td>Same endpoints ⇒ change may differ</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Two different processes take an ideal gas from state 1 (<i>p</i><sub>1</sub>, <i>V</i><sub>1</sub>, <i>T</i><sub>1</sub>) to state 2 (<i>p</i><sub>2</sub>, <i>V</i><sub>2</sub>, <i>T</i><sub>2</sub>). Can Δ<i>U</i> be different for the two processes? What about <i>q</i> and <i>w</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>Δ<i>U</i> is a <b>state function</b>, so it depends only on the initial and final states.<br>Therefore, for the same state 1 and state 2, Δ<i>U</i> must be <b>the same</b> for both processes.<br><i>q</i> and <i>w</i> describe energy transfer during a process, so they are <b>path functions</b>.<br>Hence, for different paths between the same endpoints, <i>q</i> and <i>w</i> can take different values, while giving the same Δ<i>U</i> for fixed endpoints.</div><div class="ans">✓&nbsp; Δ<i>U</i> is identical for both paths; <i>q</i> and <i>w</i> can be different.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A system undergoes a cyclic process and returns to its initial state. What can you conclude about changes in <i>p</i>, <i>V</i>, <i>T</i>, <i>U</i>, <i>H</i>, <i>S</i>, <i>G</i> and about net <i>q</i>, net <i>w</i> over the cycle?</div><div class="sol"><span class="lbl">Answer:</span><br>In a cycle, the <b>initial state equals the final state</b>.<br>So all <b>state variables</b> (<i>p</i>, <i>V</i>, <i>T</i>) and <b>state functions</b> (<i>U</i>, <i>H</i>, <i>S</i>, <i>G</i>) have <b>zero net change</b> over the cycle.<br><i>q</i> and <i>w</i> are <b>path functions</b>; their net values over a cycle depend on the specific cycle and need not be zero individually.</div><div class="ans">✓&nbsp; Net change in all state variables/functions is zero; net <i>q</i> and net <i>w</i> may be nonzero.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>State of a system is defined by macroscopic variables (<i>p</i>, <i>V</i>, <i>T</i>, <i>n</i>) at equilibrium.</li><li>State functions are path-independent properties: <i>U</i>, <i>H</i>, <i>S</i>, <i>G</i>, and also <i>p</i>, <i>V</i>, <i>T</i> as state variables.</li><li><i>q</i> and <i>w</i> are not properties of a state; they describe energy transfer during a process.</li><li>Same initial and final states guarantee the same change in any state function, regardless of reversibility.</li><li>For any cycle, Δ<i>U</i> = Δ<i>H</i> = Δ<i>S</i> = Δ<i>G</i> = 0 because the system returns to the initial state.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Calling <i>q</i> or <i>w</i> a state function because Δ<i>U</i> is fixed for given endpoints.</li><li>Thinking fixing any two of <i>p</i>, <i>V</i>, <i>T</i> always defines the state for all systems (depends on system/constraints).</li><li>Confusing the terms ‘state variable’ and ‘state function’; both are path-independent state properties, while <i>q</i>, <i>w</i> are not properties.</li><li>Assuming in a cycle net <i>q</i> = 0 and net <i>w</i> = 0 individually (only state function changes must be zero).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: UPVT HSG (state cares only WHERE, not HOW)”</div><paragraph id="6a9fdc9d31916af1ce0002c5">State functions: <b>U P V T H S G</b> are fixed by the state (path independent).</paragraph><paragraph id="6a9fdc9db7d73ca1a00002c6">Path functions: think of a <b>journey</b> → <i>q</i>, <i>w</i> depend on the route taken (path dependent).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>FIRST LAW AND INTERNAL ENERGY</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Internal energy</b> (<i>U</i>) is total energy stored within a system; only <b>Δ<i>U</i></b> is measurable.</li><li><b>State function</b>: Δ<i>U</i> depends only on initial and final states, not on path.</li><li><b>Joule (adiabatic) experiments</b> show same adiabatic work gives same state change ⇒ Δ<i>U</i> = <i>w</i><sub>ad</sub>.</li><li>At <b>constant volume</b> (Δ<i>V</i>=0), PV-work is zero, so heat supplied changes <i>U</i>: Δ<i>U</i> = <i>q</i><sub>V</sub>.</li><li><b>First Law (IUPAC)</b>: Δ<i>U</i> = <i>q</i> + <i>w</i>, where energy gained by system is taken positive.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='a' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#2563EB'/></marker></defs><rect x='18' y='26' width='150' height='148' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='52' y='52' font-size='14' fill='#1f2a44'>SYSTEM</text><rect x='206' y='26' width='136' height='148' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='222' y='52' font-size='14' fill='#1f2a44'>SURROUNDINGS</text><line x1='206' y1='84' x2='168' y2='84' stroke='#2563EB' stroke-width='2' marker-end='url(#a)'/><text x='216' y='79' font-size='12' fill='#1f2a44'>heat in</text><text x='176' y='98' font-size='12' fill='#1f2a44'>+<tspan font-style='italic'>q</tspan></text><line x1='206' y1='126' x2='168' y2='126' stroke='#7C3AED' stroke-width='2' marker-end='url(#a)'/><text x='212' y='121' font-size='12' fill='#1f2a44'>work on</text><text x='176' y='140' font-size='12' fill='#1f2a44'>+<tspan font-style='italic'>w</tspan></text><text x='42' y='106' font-size='12' fill='#1f2a44'>First Law:</text><text x='42' y='126' font-size='12' fill='#1f2a44'>Δ<tspan font-style='italic'>U</tspan> = <tspan font-style='italic'>q</tspan> + <tspan font-style='italic'>w</tspan></text><text x='42' y='154' font-size='12' fill='#1f2a44'>gain = positive</text></svg><div class="figcap">IUPAC sign convention: energy entering system is positive; Δ<i>U</i> links heat and work.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span><i>U</i> is a state function; <i>q</i> and <i>w</i> are path functions.</span></li><li><span class="ic">🧊</span><span>Adiabatic process: <i>q</i> = 0 ⇒ Δ<i>U</i> = <i>w</i><sub>ad</sub>.</span></li><li><span class="ic">🧱</span><span>Constant volume: PV work = 0 ⇒ Δ<i>U</i> = <i>q</i><sub>V</sub>.</span></li><li><span class="ic">➕</span><span>IUPAC signs: <i>q</i> positive into system; <i>w</i> positive on system.</span></li><li><span class="ic">♻️</span><span>Isolated system: <i>q</i>=0 and <i>w</i>=0 ⇒ Δ<i>U</i>=0 (energy conserved).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">JOULE EXPERIMENTS ⇒ <i>U</i> IS A STATE FUNCTION</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='b' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#16A34A'/></marker></defs><rect x='26' y='36' width='132' height='56' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='56' y='60' font-size='13' fill='#1f2a44'>State 1</text><rect x='200' y='36' width='132' height='56' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='230' y='60' font-size='13' fill='#1f2a44'>State 2</text><line x1='158' y1='64' x2='200' y2='64' stroke='#16A34A' stroke-width='2' marker-end='url(#b)'/><text x='86' y='118' font-size='12' fill='#1f2a44'>adiabatic: <tspan font-style='italic'>q</tspan>=0</text><text x='86' y='138' font-size='12' fill='#1f2a44'>method A / B</text><text x='86' y='158' font-size='12' fill='#1f2a44'>same <tspan font-style='italic'>w</tspan><tspan baseline-shift='sub' font-size='10'>ad</tspan></text></svg></div><ul class="b"><li>Adiabatic wall: <i>q</i> = 0, so any energy change is due to work only.</li><li>Same initial → final state reached by different adiabatic methods (stirring, electrical heating).</li><li>Measured adiabatic work is identical for the same state change ⇒ Δ<i>U</i> depends only on states.</li><li>Hence for adiabatic change: Δ<i>U</i> = <i>w</i><sub>ad</sub> (path-independence of Δ<i>U</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">FIRST LAW (MASTER EQUATION) + SPECIAL CASES</span></h2><ul class="b"><li>First Law: Δ<i>U</i> = <i>q</i> + <i>w</i> (for a closed system).</li><li>Isolated: <i>q</i>=0, <i>w</i>=0 ⇒ Δ<i>U</i>=0.</li><li>Adiabatic: <i>q</i>=0 ⇒ Δ<i>U</i>=<i>w</i><sub>ad</sub>.</li><li>Constant volume: Δ<i>V</i>=0 ⇒ PV-work = 0 ⇒ Δ<i>U</i>=<i>q</i><sub>V</sub>.</li><li>Sign sense: system gains heat/work ⇒ <i>q</i>, <i>w</i> positive; system loses ⇒ negative.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">IUPAC SIGN CONVENTION: HEAT vs WORK</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Quantity</th><th>Positive (+)</th><th>Negative (−)</th></tr></thead><tbody><tr><td>Heat, <i>q</i></td><td>Heat flows <b>into</b> system</td><td>Heat flows <b>out of</b> system</td></tr><tr><td>Work, <i>w</i></td><td>Work done <b>on</b> system (compression, stirring)</td><td>Work done <b>by</b> system (expansion)</td></tr><tr><td>Internal energy change, Δ<i>U</i></td><td>System energy increases</td><td>System energy decreases</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Adiabatic Joule result (<i>q</i>=0):</div><div class="eqbox"><span class="eq">Δ<i>U</i> = <i>w</i><sub>ad</sub></span></div><div class="fstep">Constant volume (no PV-work):</div><div class="eqbox"><span class="eq">Δ<i>U</i> = <i>q</i><sub>V</sub></span></div></div><div><div class="fstep">General energy balance (First Law, IUPAC):</div><div class="eqbox blue"><span class="eq">Δ<i>U</i> = <i>q</i> + <i>w</i></span></div></div><div><table class="wtab"><tr><td><i>U</i>&nbsp;=</td><td>internal energy (J or kJ)</td></tr><tr><td>Δ<i>U</i>&nbsp;=</td><td><i>U</i><sub>2</sub> − <i>U</i><sub>1</sub> (state function change)</td></tr><tr><td><i>q</i>&nbsp;=</td><td>heat transferred to system at specified conditions; + into system</td></tr><tr><td><i>w</i>&nbsp;=</td><td>work done on system; + on system (IUPAC)</td></tr><tr><td><i>w</i><sub>ad</sub>&nbsp;=</td><td>work in an adiabatic process (<i>q</i>=0)</td></tr><tr><td><i>q</i><sub>V</sub>&nbsp;=</td><td>heat at constant volume (PV-work = 0)</td></tr></table><div class="hibox">First Law (most used)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Δ<i>U</i> = <i>q</i> + <i>w</i></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A gas in a closed system absorbs 250 J heat. During the process it does 100 J work on the surroundings. Find Δ<i>U</i> (IUPAC).</div><div class="sol"><span class="lbl">Solution:</span><br>Heat absorbed by system ⇒ <i>q</i> = +250 J.<br>Work done <b>by</b> system = 100 J ⇒ work <b>on</b> system <i>w</i> = −100 J.<br>Apply First Law: Δ<i>U</i> = <i>q</i> + <i>w</i> = 250 + (−100) = 150 J.</div><div class="ans">✓&nbsp; Δ<i>U</i> = +150 J</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In an adiabatic compression of a gas, 2.5 kJ work is done on the system. Calculate Δ<i>U</i>.</div><div class="sol"><span class="lbl">Solution:</span><br>Adiabatic ⇒ <i>q</i> = 0.<br>Work done on system ⇒ <i>w</i> = +2.5 kJ.<br>Δ<i>U</i> = <i>q</i> + <i>w</i> = 0 + 2.5 = 2.5 kJ.</div><div class="ans">✓&nbsp; Δ<i>U</i> = +2.5 kJ</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Joule experiments establish Δ<i>U</i> depends only on state, not on how work is performed.</li><li>In adiabatic change, heat exchange is zero: <i>q</i>=0, so Δ<i>U</i> equals adiabatic work.</li><li>At constant volume, PV-work is zero; measured heat equals Δ<i>U</i>.</li><li>First Law is conservation of energy for thermodynamic systems: Δ<i>U</i>=<i>q</i>+<i>w</i>.</li><li>Always state sign convention: IUPAC takes <i>w</i> positive for work done on the system.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using old physics sign convention (<i>w</i> by system positive) without noticing IUPAC requirement.</li><li>Writing Δ<i>U</i> = <i>q</i> − <i>w</i> while still using IUPAC signs (double sign error).</li><li>Saying "adiabatic means temperature constant"; actually adiabatic means <i>q</i>=0.</li><li>Assuming constant volume implies Δ<i>U</i>=0; actually Δ<i>U</i>=<i>q</i><sub>V</sub> may be nonzero.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“IN = PLUS, OUT = MINUS”</div><paragraph id="6a9fdc9da8c13e0bcf0002c7">Draw the system boundary; ask: did energy <b>enter</b> the system?</paragraph><paragraph id="6a9fdc9d34e47eae900002c8">Heat in ⇒ +<i>q</i>; work done on system ⇒ +<i>w</i>.</paragraph><paragraph id="6a9fdc9d1394948d370002c9">Then use Δ<i>U</i> = <i>q</i> + <i>w</i> without changing signs again.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">First Law (IUPAC): Δ<i>U</i> = <i>q</i> + <i>w</i></span><span class="eq">IUPAC signs: <i>q</i> &gt; 0 into system; <i>q</i> &lt; 0 out of system</span><span class="eq">IUPAC signs: <i>w</i> &gt; 0 work on system; <i>w</i> &lt; 0 work by system</span><span class="eq">Adiabatic: <i>q</i> = 0 ⇒ Δ<i>U</i> = <i>w</i><sub>ad</sub></span><span class="eq">Constant volume: PV-work = 0 ⇒ Δ<i>U</i> = <i>q</i><sub>V</sub></span><span class="eq">Isolated system: <i>q</i>=0 and <i>w</i>=0 ⇒ Δ<i>U</i>=0</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>PRESSURE–VOLUME WORK</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Pressure–volume work</b> is work associated with volume change of a gas against external pressure <i>p</i><sub>ex</sub>.</li><li>IUPAC sign: <i>w</i> is <b>positive</b> when work is done <b>on</b> the system; <b>negative</b> when done <b>by</b> the system.</li><li>For expansion: Δ<i>V</i> &gt; 0 ⇒ <i>w</i> &lt; 0; for compression: Δ<i>V</i> &lt; 0 ⇒ <i>w</i> &gt; 0.</li><li>Irreversible expansion at constant <i>p</i><sub>ex</sub>: <i>w</i> depends on <i>p</i><sub>ex</sub>, hence on the path.</li><li>Reversible expansion/compression occurs via infinitesimal pressure difference, giving maximum |<i>w</i>| for a given initial and final state.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='28' width='150' height='110' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='34' y='52' font-size='13' fill='#1f2a44'>Gas in cylinder</text><rect x='58' y='64' width='70' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='70' y='94' font-size='13' fill='#1f2a44'>Gas</text><rect x='58' y='54' width='70' height='12' rx='3' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='138' y='63' font-size='12' fill='#1f2a44'>Piston</text><line x1='93' y1='54' x2='93' y2='36' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='24' y='158' font-size='12' fill='#1f2a44'>Against <i>p</i><sub>ex</sub></text><rect x='210' y='28' width='132' height='110' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='228' y='52' font-size='13' fill='#1f2a44'>P–V graph</text><line x1='230' y1='120' x2='230' y2='70' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='230' y1='120' x2='322' y2='120' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='218' y='74' font-size='12' fill='#1f2a44'><i>p</i></text><text x='312' y='140' font-size='12' fill='#1f2a44'><i>V</i></text><polyline points='238,106 262,98 288,90 314,84' fill='none' stroke='#2563EB' stroke-width='3'/><polyline points='238,106 314,106' fill='none' stroke='#F59E0B' stroke-width='3' stroke-dasharray='5,4'/><text x='242' y='132' font-size='12' fill='#1f2a44'>Area = |<i>w</i>|</text><text x='242' y='156' font-size='12' fill='#1f2a44'>Blue: reversible</text><text x='242' y='172' font-size='12' fill='#1f2a44'>Orange: constant <i>p</i><sub>ex</sub></text></svg><div class="figcap">On a <i>p</i>–<i>V</i> plot, the area under the curve gives |<i>w</i>|; reversible path gives maximum magnitude.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span><b>Core formula</b>: <i>w</i> = −<i>p</i><sub>ex</sub>Δ<i>V</i> (constant external pressure).</span></li><li><span class="ic">🧩</span><span>Finite-step path: <i>w</i> = −Σ <i>p</i><sub>ex</sub>Δ<i>V</i> (sum over steps).</span></li><li><span class="ic">♾️</span><span>Reversible path: <i>w</i><sub>rev</sub> = −∫<sub><i>V</i><sub>i</sub></sub><sup><i>V</i><sub>f</sub></sup> <i>p</i> d<i>V</i> (use internal pressure <i>p</i>).</span></li><li><span class="ic">🌡️</span><span>Ideal-gas isothermal reversible: <i>p</i> = <span class='frac'><span><i>nRT</i></span><span><i>V</i></span></span> ⇒ <i>w</i><sub>rev</sub> = −2.303 <i>nRT</i> log(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>).</span></li><li><span class="ic">🕳️</span><span>Free expansion (into vacuum): <i>p</i><sub>ex</sub> = 0 ⇒ <i>w</i> = 0 even though Δ<i>V</i> &gt; 0.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">CONSTANT EXTERNAL PRESSURE (IRREVERSIBLE) &amp; FINITE STEPS</span></h2><ul class="b"><li>If surroundings exert constant <i>p</i><sub>ex</sub>, then <i>w</i> = −<i>p</i><sub>ex</sub>(<i>V</i><sub>f</sub>−<i>V</i><sub>i</sub>).</li><li>Expansion: system pushes surroundings ⇒ <i>w</i> negative; compression: surroundings push system ⇒ <i>w</i> positive.</li><li>If <i>p</i><sub>ex</sub> changes in stages: <i>w</i> = −Σ <i>p</i><sub>ex</sub>Δ<i>V</i> (use each step’s external pressure).</li><li>Irreversible work depends on chosen <i>p</i><sub>ex</sub>; different paths give different <i>w</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">REVERSIBLE WORK &amp; ISOTHERMAL IDEAL-GAS EXPANSION</span></h2><ul class="b"><li>Reversible (quasi-static): system is in mechanical equilibrium, so <i>p</i> differs from <i>p</i><sub>ex</sub> infinitesimally.</li><li><i>w</i><sub>rev</sub> = −∫ <i>p</i> d<i>V</i>; for an ideal gas isothermal, <i>p</i> = <span class='frac'><span><i>nRT</i></span><span><i>V</i></span></span>.</li><li>So <i>w</i><sub>rev</sub> = −<i>nRT</i> ln(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>) = −2.303 <i>nRT</i> log(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>).</li><li>For given <i>V</i><sub>i</sub>→<i>V</i><sub>f</sub>, |<i>w</i><sub>rev</sub>| &gt; |<i>w</i><sub>irrev</sub>| (maximum work in reversible expansion).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">REVERSIBLE vs IRREVERSIBLE vs FREE EXPANSION (WORK)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Reversible</th><th>Irreversible (finite step)</th><th>Free expansion</th></tr></thead><tbody><tr><td>Pressure used</td><td>Internal <i>p</i> at each instant</td><td>Constant or stepwise <i>p</i><sub>ex</sub></td><td><i>p</i><sub>ex</sub> = 0</td></tr><tr><td>Work expression</td><td><i>w</i><sub>rev</sub> = −∫ <i>p</i> d<i>V</i></td><td><i>w</i> = −<i>p</i><sub>ex</sub>Δ<i>V</i> or −Σ<i>p</i><sub>ex</sub>Δ<i>V</i></td><td><i>w</i> = 0</td></tr><tr><td>Work magnitude (expansion)</td><td>Maximum |<i>w</i>|</td><td>Less than reversible</td><td>Zero</td></tr><tr><td>Reversibility</td><td>Reversed by infinitesimal change</td><td>Cannot be reversed by infinitesimal change</td><td>Strongly irreversible</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start with mechanical definition for a piston: force × displacement</div><div class="eqbox"><span class="eq"><i>w</i> = −<i>F</i><sub>ex</sub>Δ<i>x</i></span></div><div class="fstep">Use <i>F</i><sub>ex</sub> = <i>p</i><sub>ex</sub><i>A</i> and Δ<i>V</i> = <i>A</i>Δ<i>x</i></div><div class="eqbox"><span class="eq"><i>w</i> = −(<i>p</i><sub>ex</sub><i>A</i>)Δ<i>x</i> = −<i>p</i><sub>ex</sub>(<i>A</i>Δ<i>x</i>) = −<i>p</i><sub>ex</sub>Δ<i>V</i></span></div></div><div><div class="fstep">For a reversible path, external pressure matches internal pressure at each step</div><div class="eqbox blue"><span class="eq"><i>w</i><sub>rev</sub> = −∫<sub><i>V</i><sub>i</sub></sub><sup><i>V</i><sub>f</sub></sup> <i>p</i> d<i>V</i></span></div><div class="fstep">Isothermal ideal gas: substitute <i>p</i> = <span class='frac'><span><i>nRT</i></span><span><i>V</i></span></span></div><div class="eqbox blue"><span class="eq"><i>w</i><sub>rev</sub> = −∫ <span class='frac'><span><i>nRT</i></span><span><i>V</i></span></span> d<i>V</i> = −<i>nRT</i> ln(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>) = −2.303 <i>nRT</i> log(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>)</span></div></div><div><table class="wtab"><tr><td><i>w</i>&nbsp;=</td><td>work (J); + on system, − by system (IUPAC)</td></tr><tr><td><i>p</i><sub>ex</sub>&nbsp;=</td><td>external pressure against which system expands/compresses</td></tr><tr><td><i>p</i>&nbsp;=</td><td>pressure of the gas at each step (use for reversible path)</td></tr><tr><td>Δ<i>V</i>&nbsp;=</td><td><i>V</i><sub>f</sub>−<i>V</i><sub>i</sub> (volume change)</td></tr><tr><td><i>n</i>, <i>R</i>, <i>T</i>&nbsp;=</td><td>moles, gas constant, temperature (K)</td></tr><tr><td>ln, log&nbsp;=</td><td>ln = natural log; log = base-10 log</td></tr></table><div class="hibox">Ideal-gas isothermal reversible work<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>w</i><sub>rev</sub> = −<i>nRT</i> ln(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>) = −2.303 <i>nRT</i> log(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>)</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg
+  preserveAspectRatio="xMidYMid meet"
+  viewBox="0 0 360 200"
+  xmlns="http://www.w3.org/2000/svg"
+  style="display:block;width:100%;height:auto;"
+>
+  <defs>
+    <marker
+      id="arrow2-t5"
+      markerWidth="8"
+      markerHeight="8"
+      refX="7"
+      refY="4"
+      orient="auto"
+    >
+      <polygon points="0,0 8,4 0,8" fill="#123B7A"/>
+    </marker>
+  </defs>
+
+  <!-- Smaller centered outer box -->
+  <rect
+    x="38"
+    y="18"
+    width="284"
+    height="165"
+    rx="6"
+    fill="#EEF4FF"
+    stroke="#2563EB"
+    stroke-width="2"
+  />
+
+  <!-- Y-axis -->
+  <line
+    x1="82"
+    y1="155"
+    x2="82"
+    y2="45"
+    stroke="#123B7A"
+    stroke-width="2"
+    marker-end="url(#arrow2-t5)"
+  />
+
+  <!-- X-axis -->
+  <line
+    x1="82"
+    y1="155"
+    x2="305"
+    y2="155"
+    stroke="#123B7A"
+    stroke-width="2"
+    marker-end="url(#arrow2-t5)"
+  />
+
+  <!-- Axis labels -->
+  <text
+    x="64"
+    y="52"
+    font-size="12"
+    fill="#1f2a44"
+    font-style="italic"
+  >
+    p
+  </text>
+
+  <text
+    x="298"
+    y="175"
+    font-size="12"
+    fill="#1f2a44"
+    font-style="italic"
+  >
+    V
+  </text>
+
+  <!-- Reversible curve -->
+  <path
+    d="M92 140
+       C125 116, 152 101, 182 92
+       C213 84, 250 78, 296 72"
+    fill="none"
+    stroke="#2563EB"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <!-- Constant external pressure -->
+  <line
+    x1="92"
+    y1="118"
+    x2="296"
+    y2="118"
+    stroke="#F59E0B"
+    stroke-width="3"
+    stroke-dasharray="6,4"
+    stroke-linecap="round"
+  />
+
+  <!-- Constant p_ex label -->
+  <text
+    x="103"
+    y="111"
+    font-size="12"
+    fill="#1f2a44"
+  >
+    const
+    <tspan font-style="italic">p</tspan>
+    <tspan baseline-shift="sub" font-size="9">ex</tspan>
+  </text>
+
+  <!-- Reversible label -->
+  <text
+    x="205"
+    y="65"
+    font-size="12"
+    fill="#1f2a44"
+  >
+    reversible
+  </text>
+
+  <!-- Initial point -->
+  <circle
+    cx="100"
+    cy="140"
+    r="4"
+    fill="#16A34A"
+  />
+
+  <!-- Final point -->
+  <circle
+    cx="288"
+    cy="72"
+    r="4"
+    fill="#16A34A"
+  />
+
+  <!-- Vi -->
+  <text
+    x="91"
+    y="153"
+    font-size="12"
+    fill="#1f2a44"
+  >
+    <tspan font-style="italic">V</tspan>
+    <tspan baseline-shift="sub" font-size="9">i</tspan>
+  </text>
+
+  <!-- Vf -->
+  <text
+    x="279"
+    y="153"
+    font-size="12"
+    fill="#1f2a44"
+  >
+    <tspan font-style="italic">V</tspan>
+    <tspan baseline-shift="sub" font-size="9">f</tspan>
+  </text>
+</svg>
+
+<div
+  class="figcap"
+  style="
+    margin-top:8px;
+    text-align:center;
+    line-height:1.4;
+  "
+>
+  Same Δ<i>V</i>: reversible curve (blue) encloses larger area ⇒ larger magnitude of work.
+</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A gas expands irreversibly against constant <i>p</i><sub>ex</sub> = 1.20 bar from 5.00 L to 8.00 L. Calculate <i>w</i> in J (IUPAC sign).</div><div class="sol"><span class="lbl">Solution:</span><br>Δ<i>V</i> = <i>V</i><sub>f</sub>−<i>V</i><sub>i</sub> = 8.00−5.00 = 3.00 L<br><i>w</i> = −<i>p</i><sub>ex</sub>Δ<i>V</i> = −(1.20 bar)(3.00 L) = −3.60 bar·L<br>Use 1 bar·L = 100 J ⇒ <i>w</i> = −3.60×100 = −360 J</div><div class="ans">✓&nbsp; <i>w</i> = −360 J (negative: work done by the system during expansion)</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">1.00 mol ideal gas expands isothermally and reversibly at 300 K from 2.00 L to 10.00 L. Find <i>w</i><sub>rev</sub> in kJ. (Given <i>R</i> = 8.314 J K<sup>−1</sup> mol<sup>−1</sup>; ln 5 = 1.609)</div><div class="sol"><span class="lbl">Solution:</span><br><i>w</i><sub>rev</sub> = −<i>nRT</i> ln(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>)<br><i>V</i><sub>f</sub>/<i>V</i><sub>i</sub> = 10.00/2.00 = 5.00 ⇒ ln(5.00) = 1.609<br><i>nRT</i> = (1.00)(8.314)(300) = 2494.2 J<br><i>w</i><sub>rev</sub> = −(2494.2)(1.609) = −4013.9 J ≈ −4.01 kJ</div><div class="ans">✓&nbsp; <i>w</i><sub>rev</sub> ≈ −4.01 kJ</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always state sign convention: IUPAC uses <i>w</i> (+) on system, (−) by system.</li><li>For constant <i>p</i><sub>ex</sub>, use <i>w</i> = −<i>p</i><sub>ex</sub>Δ<i>V</i>; do not use internal <i>p</i>.</li><li>Reversible work uses <i>w</i><sub>rev</sub> = −∫ <i>p</i> d<i>V</i>; for ideal gas isothermal substitute <i>p</i> = <i>nRT</i>/<i>V</i>.</li><li>Free expansion: <i>p</i><sub>ex</sub> = 0 ⇒ <i>w</i> = 0, regardless of Δ<i>V</i>.</li><li>For same initial and final states, |<i>w</i><sub>rev</sub>| is maximum; irreversible gives smaller magnitude.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting the minus sign in <i>w</i> = −<i>p</i><sub>ex</sub>Δ<i>V</i>, flipping expansion/compression signs.</li><li>Using <i>p</i> of the gas instead of <i>p</i><sub>ex</sub> for irreversible constant-pressure work.</li><li>Mixing log and ln without the 2.303 factor in isothermal reversible work.</li><li>Unit mismatch: using <i>R</i> in J but pressure-volume in L·atm or bar·L without conversion.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Sign snap: <b>Expand = Exit</b>, <b>Compress = Comes in</b>”</div><paragraph id="6a9fdc9d67c561f26e0002ca">Volume increases (expansion) ⇒ energy leaves as work ⇒ <i>w</i> is negative.</paragraph><paragraph id="6a9fdc9d1cb078751b0002cb">Volume decreases (compression) ⇒ work enters system ⇒ <i>w</i> is positive.</paragraph><paragraph id="6a9fdc9d332f0bbc000002cc">Vacuum outside? <i>p</i><sub>ex</sub>=0 ⇒ <i>w</i>=0 (no push-back).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>w</i> = −<i>p</i><sub>ex</sub>Δ<i>V</i> (constant external pressure)</span><span class="eq"><i>w</i> = −Σ <i>p</i><sub>ex</sub>Δ<i>V</i> (finite steps)</span><span class="eq">
+  <i>w</i><sub>rev</sub> = −
+  <span style="
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    vertical-align:middle;
+    line-height:0.9;
+    margin:0 3px;
+  ">
+    <span style="font-size:0.7em; margin-bottom:-2px;">
+      <i>V</i><sub>f</sub>
+    </span>
+
+    <span style="font-size:1.8em; line-height:1;">
+      ∫
+    </span>
+
+    <span style="font-size:0.7em; margin-top:-2px;">
+      <i>V</i><sub>i</sub>
+    </span>
+  </span>
+  <i>p</i>&nbsp;d<i>V</i>
+</span><span class="eq">Ideal gas (isothermal): <i>p</i> = <span class='frac'><span><i>nRT</i></span><span><i>V</i></span></span></span><span class="eq"><i>w</i><sub>rev</sub> = −<i>nRT</i> ln(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>) = −2.303 <i>nRT</i> log(<i>V</i><sub>f</sub>/<i>V</i><sub>i</sub>)</span><span class="eq">Free expansion: <i>p</i><sub>ex</sub>=0 ⇒ <i>w</i>=0</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ENTHALPY AND HEAT CAPACITIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Enthalpy</b> is a state function defined as <i>H</i> = <i>U</i> + <i>pV</i>.</li><li>At constant pressure (and for a closed system doing only <i>pV</i>-work), heat exchanged equals enthalpy change: Δ<i>H</i> = <i>q</i><sub>p</sub>.</li><li>At constant volume (and for a closed system doing only <i>pV</i>-work), heat exchanged equals internal energy change: Δ<i>U</i> = <i>q</i><sub>V</sub>.</li><li>For reactions involving gases (ideal-gas approximation), Δ<i>H</i> and Δ<i>U</i> differ by Δ<i>n</i><sub>g</sub><i>RT</i>.</li><li>Heat capacity links heat and temperature rise: <i>q</i> = <i>C</i>Δ<i>T</i>; molar heat capacity <i>C</i><sub>m</sub> = <span class='frac'><span><i>C</i></span><span><i>n</i></span></span>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><div class="figbox" style="
+  height:auto;
+  margin-bottom:1.5mm;
+  padding:12px;
+  box-sizing:border-box;
+  overflow:visible;
+">
+
+  <div style="
+    max-width:600px;
+    margin:0 auto;
+    font-family:'Times New Roman',serif;
+    color:#1f2a44;
+  ">
+
+    <!-- Top Row -->
+    <div style="
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);
+      align-items:center;
+      gap:10px;
+    ">
+
+      <!-- Constant V -->
+      <div style="
+        min-height:72px;
+        border:2px solid #2563EB;
+        background:#EEF4FF;
+        border-radius:8px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        padding:8px 12px;
+        box-sizing:border-box;
+      ">
+        <div style="font-size:17px; margin-bottom:5px;">
+          Constant <i>V</i>
+        </div>
+
+        <div style="font-size:15px;">
+          Heat → Δ<i>U</i>
+        </div>
+      </div>
+
+      <!-- Horizontal Arrow -->
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      ">
+        <span style="
+          display:inline-block;
+          width:32px;
+          height:2px;
+          background:#123B7A;
+        "></span>
+
+        <span style="
+          width:0;
+          height:0;
+          border-top:5px solid transparent;
+          border-bottom:5px solid transparent;
+          border-left:8px solid #123B7A;
+        "></span>
+      </div>
+
+      <!-- Constant p -->
+      <div style="
+        min-height:72px;
+        border:2px solid #16A34A;
+        background:#EAF7EF;
+        border-radius:8px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        padding:8px 12px;
+        box-sizing:border-box;
+      ">
+        <div style="font-size:17px; margin-bottom:5px;">
+          Constant <i>p</i>
+        </div>
+
+        <div style="font-size:15px;">
+          Heat → Δ<i>H</i>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Downward Connecting Arrows -->
+    <div style="
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);
+      align-items:center;
+      height:48px;
+    ">
+
+      <!-- Left diagonal arrow -->
+      <div style="
+        display:flex;
+        justify-content:flex-end;
+        padding-right:22px;
+      ">
+        <div style="
+          width:44px;
+          height:2px;
+          background:#7C3AED;
+          transform:rotate(32deg);
+          position:relative;
+        ">
+          <span style="
+            position:absolute;
+            right:-7px;
+            top:-4px;
+            width:0;
+            height:0;
+            border-top:5px solid transparent;
+            border-bottom:5px solid transparent;
+            border-left:8px solid #7C3AED;
+          "></span>
+        </div>
+      </div>
+
+      <div></div>
+
+      <!-- Right diagonal arrow -->
+      <div style="
+        display:flex;
+        justify-content:flex-start;
+        padding-left:22px;
+      ">
+        <div style="
+          width:44px;
+          height:2px;
+          background:#7C3AED;
+          transform:rotate(-32deg);
+          position:relative;
+        ">
+          <span style="
+            position:absolute;
+            left:-7px;
+            top:-4px;
+            width:0;
+            height:0;
+            border-top:5px solid transparent;
+            border-bottom:5px solid transparent;
+            border-right:8px solid #7C3AED;
+          "></span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Bridge Box -->
+    <div style="
+      width:58%;
+      min-width:240px;
+      margin:0 auto;
+      min-height:78px;
+      border:2px solid #7C3AED;
+      background:#F4EFFE;
+      border-radius:8px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:10px 14px;
+      box-sizing:border-box;
+      line-height:1.35;
+    ">
+
+      <div style="font-size:17px; margin-bottom:5px;">
+        Bridge (gases)
+      </div>
+
+      <div style="font-size:15px;">
+        Δ<i>H</i> − Δ<i>U</i> depends on
+      </div>
+
+      <div style="font-size:15px;">
+        Δ<i>n</i><sub>g</sub> and <i>T</i>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="figcap" style="
+    margin-top:10px;
+    text-align:center;
+    line-height:1.4;
+  ">
+    At constant <i>V</i>: measured heat gives Δ<i>U</i>;
+    at constant <i>p</i>: measured heat gives Δ<i>H</i>
+    (when only <i>pV</i>-work is involved).
+  </div>
+
+</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span><i>H</i> includes the “flow work” term <i>pV</i>; that’s why it matches constant-pressure heats (under only <i>pV</i>-work).</span></li><li><span class="ic">📌</span><span>Sign (IUPAC): exothermic → Δ<i>H</i> &lt; 0; endothermic → Δ<i>H</i> &gt; 0. Also, heat into system: <i>q</i> &gt; 0.</span></li><li><span class="ic">🔁</span><span>For ideal gases: Δ<i>H</i> = Δ<i>U</i> + Δ<i>n</i><sub>g</sub><i>RT</i> (Δ<i>n</i><sub>g</sub> counts gaseous moles only).</span></li><li><span class="ic">⚖️</span><span><i>C</i><sub>p</sub> &gt; <i>C</i><sub>V</sub> for gases since some heat at constant <i>p</i> does expansion work.</span></li><li><span class="ic">📈</span><span>For 1 mol ideal gas: <i>C</i><sub>p</sub> − <i>C</i><sub>V</sub> = <i>R</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">EXTENSIVE vs INTENSIVE (EXAM FAVOURITE)</span></h2><ul class="b"><li><b>Extensive</b> depends on amount: <i>U</i>, <i>H</i>, <i>V</i>, mass, heat capacity <i>C</i>.</li><li><b>Intensive</b> independent of amount: <i>T</i>, <i>p</i>, density, molar heat capacity <i>C</i><sub>m</sub>.</li><li>Doubling the system doubles extensive properties; intensive properties remain unchanged.</li><li>Enthalpy is extensive: multiplying a thermochemical equation by <i>k</i> multiplies Δ<i>H</i> by <i>k</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">HEAT CAPACITIES: <i>C</i>, <i>C</i><sub>p</sub>, <i>C</i><sub>V</sub></span></h2><ul class="b"><li>Heat capacity: <i>q</i> = <i>C</i>Δ<i>T</i>; units J K<sup>−1</sup> (or kJ K<sup>−1</sup>).</li><li>Molar heat capacity: <i>C</i><sub>m</sub> = <span class='frac'><span><i>C</i></span><span><i>n</i></span></span>; units J mol<sup>−1</sup> K<sup>−1</sup>.</li><li>At constant volume (closed system, only <i>pV</i>-work): <i>q</i><sub>V</sub> = Δ<i>U</i>; for temperature change, <i>q</i><sub>V</sub> = <i>nC</i><sub>V</sub>Δ<i>T</i>.</li><li>At constant pressure (closed system, only <i>pV</i>-work): <i>q</i><sub>p</sub> = Δ<i>H</i>; for temperature change, <i>q</i><sub>p</sub> = <i>nC</i><sub>p</sub>Δ<i>T</i>.</li><li>For 1 mol ideal gas: <i>C</i><sub>p</sub> − <i>C</i><sub>V</sub> = <i>R</i> (8.314 J mol<sup>−1</sup> K<sup>−1</sup>).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Constant Pressure vs Constant Volume (Chemistry Convention)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Constant <i>p</i></th><th>Constant <i>V</i></th></tr></thead><tbody><tr><td>Typical setup</td><td>Open beaker / coffee-cup calorimeter</td><td>Bomb calorimeter (sealed)</td></tr><tr><td>Heat measured equals (if only <i>pV</i>-work)</td><td>Δ<i>H</i> = <i>q</i><sub>p</sub></td><td>Δ<i>U</i> = <i>q</i><sub>V</sub></td></tr><tr><td>PV work</td><td><i>w</i> = −<i>p</i><sub>ext</sub>Δ<i>V</i> possible</td><td>Δ<i>V</i> = 0 ⇒ <i>w</i><sub>pV</sub> = 0</td></tr><tr><td>When Δ<i>H</i> ≈ Δ<i>U</i> (reactions at same <i>T</i>)</td><td>If Δ<i>n</i><sub>g</sub> = 0 or no gaseous species</td><td>Not a general identity; constant <i>V</i> only ensures <i>q</i><sub>V</sub> = Δ<i>U</i> (under stated conditions)</td></tr><tr><td>Heat capacity symbol commonly used</td><td><i>C</i><sub>p</sub> (at constant <i>p</i>)</td><td><i>C</i><sub>V</sub> (at constant <i>V</i>)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start with enthalpy definition</div><div class="eqbox"><span class="eq"><i>H</i> = <i>U</i> + <i>pV</i></span></div><div class="fstep">Take change (general)</div><div class="eqbox"><span class="eq">Δ<i>H</i> = Δ<i>U</i> + Δ(<i>pV</i>) = Δ<i>U</i> + <i>p</i>Δ<i>V</i> + <i>V</i>Δ<i>p</i></span></div><div class="fstep">At constant pressure (Δ<i>p</i> = 0)</div><div class="eqbox"><span class="eq">Δ<i>H</i> = Δ<i>U</i> + <i>p</i>Δ<i>V</i></span></div></div><div><div class="fstep">If only <i>pV</i>-work, <i>w</i> = −<i>p</i><sub>ext</sub>Δ<i>V</i> and first law Δ<i>U</i> = <i>q</i> + <i>w</i></div><div class="eqbox blue"><span class="eq">At constant <i>p</i>: Δ<i>U</i> = <i>q</i><sub>p</sub> − <i>p</i>Δ<i>V</i> ⇒ Δ<i>H</i> = <i>q</i><sub>p</sub></span></div><div class="fstep">For reactions with ideal gases at the same <i>T</i>: use <i>pV</i> = <i>nRT</i></div><div class="eqbox blue"><span class="eq">Δ(<i>pV</i>) = Δ(<i>nRT</i>) = Δ<i>n</i><sub>g</sub><i>RT</i> ⇒ Δ<i>H</i> = Δ<i>U</i> + Δ<i>n</i><sub>g</sub><i>RT</i></span></div><div class="fstep">For 1 mol ideal gas heating: Δ<i>H</i> = <i>C</i><sub>p</sub>Δ<i>T</i>, Δ<i>U</i> = <i>C</i><sub>V</sub>Δ<i>T</i></div><div class="eqbox blue"><span class="eq">(<i>C</i><sub>p</sub> − <i>C</i><sub>V</sub>)Δ<i>T</i> = <i>R</i>Δ<i>T</i> ⇒ <i>C</i><sub>p</sub> − <i>C</i><sub>V</sub> = <i>R</i></span></div></div><div><table class="wtab"><tr><td><i>H</i>&nbsp;=</td><td>Enthalpy (J or kJ); state function</td></tr><tr><td><i>U</i>&nbsp;=</td><td>Internal energy (J or kJ); state function</td></tr><tr><td><i>q</i><sub>p</sub>, <i>q</i><sub>V</sub>&nbsp;=</td><td>Heat exchanged at constant pressure / constant volume</td></tr><tr><td><i>w</i>&nbsp;=</td><td>Work (IUPAC): + when done on system; for <i>pV</i>-work <i>w</i> = −<i>p</i><sub>ext</sub>Δ<i>V</i></td></tr><tr><td>Δ<i>n</i><sub>g</sub>&nbsp;=</td><td>Moles of gaseous products − moles of gaseous reactants (from balanced equation)</td></tr><tr><td><i>C</i>, <i>C</i><sub>p</sub>, <i>C</i><sub>V</sub>&nbsp;=</td><td>Heat capacity (system); at constant <i>p</i> or constant <i>V</i></td></tr><tr><td><i>R</i>&nbsp;=</td><td>Gas constant = 8.314 J mol<sup>−1</sup> K<sup>−1</sup></td></tr></table><div class="hibox">Key connection (gas reactions)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Δ<i>H</i> = Δ<i>U</i> + Δ<i>n</i><sub>g</sub><i>RT</i></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto'><polygon points='0,0 10,4 0,8' fill='#123B7A'/></marker></defs><line x1='50' y1='165' x2='320' y2='165' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='50' y1='165' x2='50' y2='25' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='255' y='186' font-size='12' fill='#1f2a44'>T</text><text x='14' y='38' font-size='12' fill='#1f2a44'>H,U</text><line x1='70' y1='135' x2='305' y2='55' stroke='#16A34A' stroke-width='3'/><line x1='70' y1='145' x2='305' y2='85' stroke='#2563EB' stroke-width='3'/><text x='248' y='60' font-size='12' fill='#1f2a44'>H (Cp)</text><text x='248' y='90' font-size='12' fill='#1f2a44'>U (Cv)</text><text x='72' y='28' font-size='12' fill='#1f2a44'>slope ∝ C</text></svg><div class="figcap">For an ideal gas, <i>H</i> rises faster with <i>T</i> than <i>U</i>: slopes correspond to <i>C</i><sub>p</sub> and <i>C</i><sub>V</sub>.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">For the reaction <b>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) → 2NH<sub>3</sub>(g)</b> at 298 K, given Δ<i>U</i> = −90.0 kJ mol<sup>−1</sup> (per reaction as written). Find Δ<i>H</i> (ideal-gas).</div><div class="sol"><span class="lbl">Solution:</span><br>Compute gaseous mole change: Δ<i>n</i><sub>g</sub> = (2) − (1 + 3) = −2.<br>Use Δ<i>H</i> = Δ<i>U</i> + Δ<i>n</i><sub>g</sub><i>RT</i>.<br>Δ<i>n</i><sub>g</sub><i>RT</i> = (−2)×(8.314 J mol<sup>−1</sup> K<sup>−1</sup>)×(298 K) = −4953 J mol<sup>−1</sup> ≈ −4.95 kJ mol<sup>−1</sup>.<br>So Δ<i>H</i> = −90.0 kJ mol<sup>−1</sup> + (−4.95 kJ mol<sup>−1</sup>) = −94.95 kJ mol<sup>−1</sup>.</div><div class="ans">✓&nbsp; Δ<i>H</i> ≈ <b>−95.0 kJ mol<sup>−1</sup></b> (exothermic; more negative than Δ<i>U</i> because Δ<i>n</i><sub>g</sub> is negative).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">1.00 mol of an ideal gas is heated from 300 K to 350 K at constant pressure. Given <i>C</i><sub>p</sub> = 29.0 J mol<sup>−1</sup> K<sup>−1</sup>. Find (i) heat absorbed <i>q</i><sub>p</sub>, (ii) Δ<i>U</i>, using <i>R</i> = 8.314 J mol<sup>−1</sup> K<sup>−1</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Δ<i>T</i> = 350 − 300 = 50 K.<br>(i) At constant pressure: <i>q</i><sub>p</sub> = <i>nC</i><sub>p</sub>Δ<i>T</i> = (1.00)(29.0)(50) = 1450 J = 1.45 kJ.<br>For ideal gas: <i>C</i><sub>V</sub> = <i>C</i><sub>p</sub> − <i>R</i> = 29.0 − 8.314 = 20.686 J mol<sup>−1</sup> K<sup>−1</sup>.<br>(ii) Δ<i>U</i> = <i>nC</i><sub>V</sub>Δ<i>T</i> = (1.00)(20.686)(50) = 1034.3 J ≈ 1.03 kJ.</div><div class="ans">✓&nbsp; <b><i>q</i><sub>p</sub> = +1.45 kJ</b>, <b>Δ<i>U</i> ≈ +1.03 kJ</b> (remaining ≈0.416 kJ goes into expansion work at constant <i>p</i>).</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Δ<i>H</i> equals heat only under constant <i>p</i> and only when only <i>pV</i>-work occurs (closed system).</li><li>Δ<i>U</i> equals heat only under constant <i>V</i> and when only <i>pV</i>-work is possible (then Δ<i>V</i> = 0 ⇒ <i>w</i><sub>pV</sub> = 0).</li><li>Δ<i>H</i> − Δ<i>U</i> depends on gaseous mole change: use Δ<i>n</i><sub>g</sub>, not total moles.</li><li>If Δ<i>n</i><sub>g</sub> = 0 (or no gases), then Δ<i>H</i> ≈ Δ<i>U</i> at the same <i>T</i>.</li><li>For ideal gases: <i>C</i><sub>p</sub> − <i>C</i><sub>V</sub> = <i>R</i>; for gases, typically <i>C</i><sub>p</sub> &gt; <i>C</i><sub>V</sub>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using total Δ<i>n</i> instead of Δ<i>n</i><sub>g</sub> in Δ<i>H</i> = Δ<i>U</i> + Δ<i>n</i><sub>g</sub><i>RT</i>.</li><li>Forgetting unit conversion: using <i>R</i> in J but keeping Δ<i>U</i> in kJ (or vice versa).</li><li>Assuming Δ<i>H</i> = <i>q</i> for any process; it is specifically <i>q</i><sub>p</sub> under stated conditions.</li><li>Mixing sign conventions for work; in chemistry (IUPAC) work done on system is +.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Hook: “<b>P</b> for <b>H</b>””</div><paragraph id="6a9fdc9d90f526f2750002cd"><b>P</b>ressure constant ⇒ heat equals <b>H</b>: Δ<i>H</i> = <i>q</i><sub>p</sub> (only <i>pV</i>-work).</paragraph><paragraph id="6a9fdc9d4b0bb0f1870002ce"><b>V</b>olume constant ⇒ heat equals <b>U</b>: Δ<i>U</i> = <i>q</i><sub>V</sub> (only <i>pV</i>-work).</paragraph><paragraph id="6a9fdc9db5dc34ef360002cf">Extra at constant <i>p</i>: <b>P</b>ushes boundary (expansion), so <i>C</i><sub>p</sub> &gt; <i>C</i><sub>V</sub> (for gases).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>H</i> = <i>U</i> + <i>pV</i></span><span class="eq">Δ<i>H</i> = <i>q</i><sub>p</sub> (constant <i>p</i>, closed system, only <i>pV</i>-work)</span><span class="eq">Δ<i>U</i> = <i>q</i><sub>V</sub> (constant <i>V</i>, closed system, only <i>pV</i>-work)</span><span class="eq">Δ<i>H</i> = Δ<i>U</i> + Δ<i>n</i><sub>g</sub><i>RT</i> (ideal gases)</span><span class="eq"><i>q</i> = <i>C</i>Δ<i>T</i>; <i>q</i><sub>p</sub> = <i>nC</i><sub>p</sub>Δ<i>T</i>; <i>q</i><sub>V</sub> = <i>nC</i><sub>V</sub>Δ<i>T</i></span><span class="eq"><i>C</i><sub>p</sub> − <i>C</i><sub>V</sub> = <i>R</i> (1 mol ideal gas)</span><span class="eq">Exothermic: Δ<i>H</i> &lt; 0; Endothermic: Δ<i>H</i> &gt; 0</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>CALORIMETRY FOR ΔU AND ΔH</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Calorimetry measures heat of a process from <b>temperature change</b> in a calorimeter of known heat capacity.</li><li>In a <b>bomb calorimeter</b> (sealed, rigid): <b>ΔV=0</b> so PV-work is zero; measured heat gives <b>q<sub>v</sub>=ΔU</b>.</li><li>In a <b>coffee-cup calorimeter</b> (open to air): <b>p≈constant</b>; measured heat gives <b>q<sub>p</sub>=ΔH</b>.</li><li><b>Heat of reaction</b> at constant pressure is <b>Δ<sub>r</sub>H</b>; exothermic: negative, endothermic: positive.</li><li>Use calorimeter + solution heat capacities to relate observed <i>ΔT</i> to reaction heat, then divide by moles for molar values.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><div class="figbox" style="
+  height:auto;
+  margin-bottom:1.5mm;
+  padding:12px;
+  box-sizing:border-box;
+  overflow:visible;
+">
+
+  <div style="
+    max-width:680px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+    font-family:'Times New Roman',serif;
+    color:#1f2a44;
+    box-sizing:border-box;
+  ">
+
+    <!-- LEFT : BOMB CALORIMETER -->
+    <div style="
+      border:2px solid #2563EB;
+      background:#EEF4FF;
+      border-radius:10px;
+      padding:14px;
+      box-sizing:border-box;
+      min-height:275px;
+    ">
+
+      <div style="
+        font-size:17px;
+        margin-bottom:14px;
+        text-align:left;
+      ">
+        Bomb (const <i>V</i>)
+      </div>
+
+      <!-- Water Bath -->
+      <div style="
+        width:82%;
+        min-height:145px;
+        margin:0 auto;
+        border:2px solid #F59E0B;
+        background:#FEF5E4;
+        border-radius:10px;
+        padding:12px 10px;
+        box-sizing:border-box;
+      ">
+
+        <div style="
+          font-size:15px;
+          text-align:center;
+          margin-bottom:12px;
+        ">
+          Water bath
+        </div>
+
+        <!-- O2 -->
+        <div style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:8px;
+          margin-bottom:8px;
+          font-size:13px;
+        ">
+          <span>O<sub>2</sub></span>
+
+          <span style="
+            display:flex;
+            align-items:center;
+          ">
+            <span style="
+              width:28px;
+              height:2px;
+              background:#123B7A;
+              display:inline-block;
+            "></span>
+
+            <span style="
+              width:0;
+              height:0;
+              border-top:4px solid transparent;
+              border-bottom:4px solid transparent;
+              border-left:7px solid #123B7A;
+            "></span>
+          </span>
+        </div>
+
+        <!-- Steel Bomb -->
+        <div style="
+          width:68px;
+          min-height:54px;
+          margin:0 auto 14px;
+          border:2px solid #7C3AED;
+          background:#F4EFFE;
+          border-radius:7px;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          box-sizing:border-box;
+          font-size:13px;
+          line-height:1.2;
+        ">
+          <div>Steel</div>
+          <div>bomb</div>
+        </div>
+
+        <!-- Thermometer line -->
+        <div style="
+          width:70%;
+          height:2px;
+          background:#16A34A;
+          margin:0 auto;
+        "></div>
+
+      </div>
+
+      <div style="
+        font-size:14px;
+        text-align:center;
+        margin-top:10px;
+      ">
+        Thermometer
+      </div>
+
+    </div>
+
+
+    <!-- RIGHT : COFFEE CUP CALORIMETER -->
+    <div style="
+      border:2px solid #16A34A;
+      background:#EAF7EF;
+      border-radius:10px;
+      padding:14px;
+      box-sizing:border-box;
+      min-height:275px;
+    ">
+
+      <div style="
+        font-size:17px;
+        margin-bottom:14px;
+        text-align:left;
+      ">
+        Coffee-cup (const <i>p</i>)
+      </div>
+
+      <!-- Open Air -->
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        gap:8px;
+        margin-bottom:8px;
+        padding-right:8px;
+        font-size:13px;
+      ">
+        <span>Open air</span>
+
+        <span style="
+          display:flex;
+          align-items:center;
+        ">
+          <span style="
+            width:28px;
+            height:2px;
+            background:#123B7A;
+            display:inline-block;
+          "></span>
+
+          <span style="
+            width:0;
+            height:0;
+            border-top:4px solid transparent;
+            border-bottom:4px solid transparent;
+            border-left:7px solid #123B7A;
+          "></span>
+        </span>
+      </div>
+
+      <!-- Insulated Cup -->
+      <div style="
+        width:84%;
+        min-height:145px;
+        margin:0 auto;
+        border:2px solid #2563EB;
+        background:#EEF4FF;
+        border-radius:10px;
+        padding:12px 10px;
+        box-sizing:border-box;
+      ">
+
+        <div style="
+          font-size:15px;
+          text-align:center;
+          margin-bottom:14px;
+        ">
+          Insulated cup
+        </div>
+
+        <!-- Reaction Mixture -->
+        <div style="
+          width:92px;
+          min-height:62px;
+          margin:0 auto;
+          border:2px solid #F59E0B;
+          background:#FEF5E4;
+          border-radius:8px;
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          text-align:center;
+          box-sizing:border-box;
+          font-size:13px;
+          line-height:1.25;
+        ">
+          <div>Reaction</div>
+          <div>mixture</div>
+        </div>
+
+      </div>
+
+      <!-- Stirrer + Thermometer -->
+      <div style="
+        width:76%;
+        height:2px;
+        background:#7C3AED;
+        margin:12px auto 8px;
+      "></div>
+
+      <div style="
+        font-size:14px;
+        text-align:center;
+        line-height:1.3;
+      ">
+        Stirrer + thermometer
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="figcap" style="
+    margin-top:10px;
+    text-align:center;
+    line-height:1.4;
+  ">
+    Two calorimeters: rigid sealed bomb gives <b>ΔU</b>;
+    open cup at constant <i>p</i> gives <b>ΔH</b>.
+  </div>
+
+</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔒</span><span>Bomb calorimeter: rigid sealed steel bomb ⇒ <i>w</i><sub>PV</sub>=0 ⇒ <b>q<sub>v</sub>=ΔU</b>.</span></li><li><span class="ic">☕</span><span>Coffee-cup: open, constant <i>p</i> ⇒ <b>q<sub>p</sub>=ΔH=Δ<sub>r</sub>H</b>.</span></li><li><span class="ic">🧊</span><span>Heat gained by calorimeter + solution (surroundings): <i>q</i><sub>cal</sub>=(<i>C</i><sub>cal</sub>+<i>m</i><sub>sol</sub><i>c</i><sub>sol</sub>)<i>ΔT</i> (sign follows <i>ΔT</i>).</span></li><li><span class="ic">↔️</span><span>Heat of reaction: <i>q</i><sub>rxn</sub>=−<i>q</i><sub>cal</sub> (energy conservation within calorimeter assembly).</span></li><li><span class="ic">🎈</span><span>For reactions involving gases: <b>ΔH=ΔU+Δn<sub>g</sub>RT</b> (connects bomb to enthalpy).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WORKING EQUATIONS (WHAT YOU ACTUALLY COMPUTE)</span></h2><ul class="b"><li>Measure <i>ΔT</i>; compute heat absorbed by calorimeter assembly: <i>q</i><sub>cal</sub>=(<i>C</i><sub>cal</sub>+<i>m</i><sub>sol</sub><i>c</i><sub>sol</sub>)<i>ΔT</i>.</li><li>Heat of reaction at that constraint: <i>q</i><sub>rxn</sub>=−<i>q</i><sub>cal</sub> (exothermic gives negative <i>q</i><sub>rxn</sub>).</li><li>Bomb: <i>q</i><sub>v</sub>=<i>q</i><sub>rxn</sub>=Δ<i>U</i> for the reaction as carried out (at constant <i>V</i>).</li><li>Coffee-cup: <i>q</i><sub>p</sub>=<i>q</i><sub>rxn</sub>=Δ<i>H</i>=Δ<sub>r</sub><i>H</i> (heat of reaction).</li><li>Molar value: Δ<sub>r</sub><i>U</i> or Δ<sub>r</sub><i>H</i> = <span class='frac'><span><i>q</i><sub>rxn</sub></span><span>moles reacted (limiting)</span></span> with sign.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">CONNECTING BOMB DATA TO ENTHALPY (GAS REACTIONS)</span></h2><ul class="b"><li>Use <b>ΔH=ΔU+Δn<sub>g</sub>RT</b> (ideal gas, same <i>T</i>) when products/reactants include gases.</li><li>Δn<sub>g</sub> = (moles of gaseous products) − (moles of gaseous reactants) from balanced equation.</li><li>At 298 K, RT ≈ 2.48 kJ mol<sup>−1</sup>; correction can be significant if |Δn<sub>g</sub>| is large.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Bomb vs Coffee-cup Calorimetry (ΔU vs ΔH)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Bomb calorimeter</th><th>Coffee-cup calorimeter</th></tr></thead><tbody><tr><td>Constraint</td><td>Constant <i>V</i> (rigid sealed bomb)</td><td>Constant <i>p</i> (open to atmosphere)</td></tr><tr><td>Heat measured</td><td><i>q</i><sub>v</sub></td><td><i>q</i><sub>p</sub></td></tr><tr><td>Thermo quantity</td><td><b><i>q</i><sub>v</sub>=Δ<i>U</i></b></td><td><b><i>q</i><sub>p</sub>=Δ<i>H</i>=Δ<sub>r</sub><i>H</i></b></td></tr><tr><td>PV-work</td><td><i>w</i><sub>PV</sub>=0 (ΔV=0)</td><td>Nonzero generally (system may expand/contract)</td></tr><tr><td>Typical use</td><td>Combustion of solids/liquids; high <i>T</i> rise</td><td>Neutralisation/solution; aqueous reactions</td></tr><tr><td>Sign clue (observed in surroundings)</td><td><i>ΔT</i>↑ ⇒ surroundings gain heat ⇒ <i>q</i><sub>rxn</sub>&lt;0 (exothermic)</td><td><i>ΔT</i>↓ ⇒ surroundings lose heat ⇒ <i>q</i><sub>rxn</sub>&gt;0 (endothermic)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">First Law with only PV-work: <i>ΔU</i>=<i>q</i>+<i>w</i>, and <i>w</i>=−<i>p</i><sub>ext</sub><i>ΔV</i></div><div class="eqbox"><span class="eq"><i>ΔU</i>=<i>q</i>−<i>p</i><sub>ext</sub><i>ΔV</i></span></div><div class="fstep">Constant volume calorimeter: <i>ΔV</i>=0</div><div class="eqbox"><span class="eq"><b><i>q</i><sub>v</sub>=<i>ΔU</i></b></span></div></div><div><div class="fstep">Define enthalpy: <i>H</i>=<i>U</i>+<i>pV</i>; at constant <i>p</i> (only PV-work)</div><div class="eqbox blue"><span class="eq"><b><i>ΔH</i>=<i>q</i><sub>p</sub></b></span></div><div class="fstep">For reactions with ideal gases (same <i>T</i>): <i>pΔV</i>=Δ<i>n</i><sub>g</sub><i>RT</i></div><div class="eqbox blue"><span class="eq"><b><i>ΔH</i>=<i>ΔU</i>+Δ<i>n</i><sub>g</sub><i>RT</i></b></span></div></div><div><table class="wtab"><tr><td><i>q</i><sub>v</sub>&nbsp;=</td><td>Heat at constant volume (J or kJ)</td></tr><tr><td><i>q</i><sub>p</sub>&nbsp;=</td><td>Heat at constant pressure (J or kJ)</td></tr><tr><td><i>C</i><sub>cal</sub>&nbsp;=</td><td>Heat capacity of calorimeter (J K<sup>−1</sup>)</td></tr><tr><td><i>m</i><sub>sol</sub>&nbsp;=</td><td>Mass of solution/water (g)</td></tr><tr><td><i>c</i><sub>sol</sub>&nbsp;=</td><td>Specific heat capacity (J g<sup>−1</sup> K<sup>−1</sup>)</td></tr><tr><td><i>ΔT</i>&nbsp;=</td><td>Temperature change, <i>T</i><sub>f</sub>−<i>T</i><sub>i</sub> (K or °C difference)</td></tr><tr><td>Δ<i>n</i><sub>g</sub>&nbsp;=</td><td>Change in moles of gaseous species (products − reactants)</td></tr><tr><td><i>R</i>&nbsp;=</td><td>Gas constant 8.314 J K<sup>−1</sup> mol<sup>−1</sup></td></tr></table><div class="hibox">Exam focus: which heat equals which state function?<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b><i>q</i><sub>v</sub>=<i>ΔU</i></b> (bomb, const <i>V</i>) <span class='frac'><span>and</span><span></span></span> <b><i>q</i><sub>p</sub>=<i>ΔH</i>=Δ<sub>r</sub><i>H</i></b> (coffee-cup, const <i>p</i>)</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><line x1='45' y1='165' x2='330' y2='165' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='45' y1='165' x2='45' y2='25' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='250' y='186' font-size='12' fill='#1f2a44'>time</text><text x='12' y='38' font-size='12' fill='#1f2a44'>T</text><polyline points='55,145 110,145 135,95 170,90 250,90 305,90' fill='none' stroke='#2563EB' stroke-width='3'/><text x='75' y='158' font-size='12' fill='#1f2a44'>baseline</text><text x='140' y='82' font-size='12' fill='#1f2a44'>ΔT</text><line x1='140' y1='145' x2='140' y2='90' stroke='#F59E0B' stroke-width='2'/></svg><div class="figcap">Typical calorimetry trace: reaction causes a temperature jump; use <i>ΔT</i> to compute heat.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Bomb calorimeter: A sample is combusted in a bomb calorimeter with total heat capacity <i>C</i><sub>cal</sub>=5.00 kJ K<sup>−1</sup>. Temperature rises from 298.00 K to 300.00 K. If 0.500 mol of reaction occurred, find (i) heat released <i>q</i><sub>v</sub>, (ii) Δ<sub>r</sub><i>U</i> (kJ mol<sup>−1</sup>).</div><div class="sol"><span class="lbl">Solution:</span><br><b>Step 1:</b> <i>ΔT</i>=300.00−298.00=2.00 K<br><b>Step 2:</b> Heat absorbed by calorimeter: <i>q</i><sub>cal</sub>=<i>C</i><sub>cal</sub><i>ΔT</i>=5.00×2.00=10.0 kJ<br><b>Step 3:</b> Heat of reaction at constant <i>V</i>: <i>q</i><sub>v</sub>=<i>q</i><sub>rxn</sub>=−<i>q</i><sub>cal</sub>=−10.0 kJ<br><b>Step 4:</b> Since bomb ⇒ <i>q</i><sub>v</sub>=Δ<i>U</i> (for the amount reacted). So Δ<i>U</i>=−10.0 kJ for 0.500 mol reaction.<br><b>Step 5:</b> Molar internal energy change: Δ<sub>r</sub><i>U</i>=<span class='frac'><span>−10.0</span><span>0.500</span></span>=−20.0 kJ mol<sup>−1</sup></div><div class="ans">✓&nbsp; <i>q</i><sub>v</sub>=−10.0 kJ; Δ<sub>r</sub><i>U</i>=−20.0 kJ mol<sup>−1</sup>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Coffee-cup calorimeter: 50.0 mL of 1.00 M HCl is mixed with 50.0 mL of 1.00 M NaOH in an insulated cup. Temperature rises from 25.0°C to 31.8°C. Assume density = 1.00 g mL<sup>−1</sup>, <i>c</i><sub>sol</sub>=4.18 J g<sup>−1</sup> K<sup>−1</sup>, and negligible calorimeter heat capacity. Find Δ<sub>r</sub><i>H</i> for neutralisation (kJ mol<sup>−1</sup>).</div><div class="sol"><span class="lbl">Solution:</span><br><b>Step 1:</b> Moles reacting (limiting): HCl moles = 0.0500 L×1.00 = 0.0500 mol; NaOH moles = 0.0500 mol ⇒ 0.0500 mol reaction.<br><b>Step 2:</b> Total solution mass: (50.0+50.0) mL × 1.00 g mL<sup>−1</sup> = 100.0 g<br><b>Step 3:</b> <i>ΔT</i>=31.8−25.0=6.8 K<br><b>Step 4:</b> Heat gained by solution: <i>q</i><sub>cal</sub>=<i>m</i><sub>sol</sub><i>c</i><sub>sol</sub><i>ΔT</i>=100.0×4.18×6.8 J = 2842.4 J ≈ 2.84 kJ<br><b>Step 5:</b> At constant <i>p</i>, <i>q</i><sub>p</sub>=Δ<i>H</i> for the amount reacted. Reaction is exothermic, so <i>q</i><sub>rxn</sub>=−2.84 kJ.<br><b>Step 6:</b> Molar enthalpy change: Δ<sub>r</sub><i>H</i>=<span class='frac'><span>−2.84</span><span>0.0500</span></span>=−56.8 kJ mol<sup>−1</sup></div><div class="ans">✓&nbsp; Δ<sub>r</sub><i>H</i> ≈ −56.8 kJ mol<sup>−1</sup> (per mole of reaction as written; here per mole of water formed).</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Bomb calorimeter gives <b>Δ<sub>r</sub>U</b> directly because <i>ΔV</i>=0 ⇒ <i>w</i><sub>PV</sub>=0.</li><li>Coffee-cup calorimeter gives <b>Δ<sub>r</sub>H</b> directly because process occurs at constant atmospheric <i>p</i>.</li><li>Always compute <i>q</i><sub>rxn</sub> as negative of heat gained/lost by calorimeter: <i>q</i><sub>rxn</sub>=−<i>q</i><sub>cal</sub>.</li><li>Use balanced equation to define “per mole of reaction”; divide by moles actually reacted.</li><li>Convert bomb result to enthalpy when needed using <b>ΔH=ΔU+Δn<sub>g</sub>RT</b>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Taking <i>q</i><sub>cal</sub> as reaction heat without the minus sign.</li><li>Using °C instead of K in <i>T</i> within Δn<sub>g</sub><i>RT</i> correction (temperature must be in K).</li><li>Forgetting to include calorimeter constant (<i>C</i><sub>cal</sub>) or mixing it with <i>mc</i> incorrectly.</li><li>Dividing by total moles present instead of moles that actually reacted (limiting reagent).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>V-U</b> and <b>P-H</b>”</div><paragraph id="6a9fdc9deebe4ffb380002d0"><b>V</b>olume constant ⇒ internal energy <b>U</b>: <b>q<sub>v</sub>=ΔU</b>.</paragraph><paragraph id="6a9fdc9d221c42ec870002d1"><b>P</b>ressure constant ⇒ enthalpy <b>H</b>: <b>q<sub>p</sub>=ΔH</b>.</paragraph><paragraph id="6a9fdc9dff3ed193b50002d2">Think: Bomb is a rigid <b>V</b>ault; Coffee-cup is open to <b>P</b>ressure.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b><i>q</i><sub>v</sub>=Δ<i>U</i></b> (constant volume, bomb calorimeter)</span><span class="eq"><b><i>q</i><sub>p</sub>=Δ<i>H</i>=Δ<sub>r</sub><i>H</i></b> (constant pressure, coffee-cup)</span><span class="eq"><i>q</i><sub>cal</sub>=(<i>C</i><sub>cal</sub>+<i>m</i><sub>sol</sub><i>c</i><sub>sol</sub>)<i>ΔT</i> (or <i>q</i><sub>cal</sub>=<i>C</i><sub>cal</sub><i>ΔT</i> when only calorimeter constant is used)</span><span class="eq"><i>q</i><sub>rxn</sub>=−<i>q</i><sub>cal</sub></span><span class="eq"><b>Δ<i>H</i>=Δ<i>U</i>+Δ<i>n</i><sub>g</sub><i>RT</i></b> (ideal gases; <i>T</i> in K)</span><span class="eq">Sign check: <i>ΔT</i>&gt;0 ⇒ <i>q</i><sub>cal</sub>&gt;0 ⇒ <i>q</i><sub>rxn</sub>&lt;0 (exothermic); <i>ΔT</i>&lt;0 ⇒ <i>q</i><sub>cal</sub>&lt;0 ⇒ <i>q</i><sub>rxn</sub>&gt;0 (endothermic)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>REACTION ENTHALPY &amp; HESS'S LAW</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Reaction enthalpy</b> <i>Δ<sub>r</sub>H</i> is heat change at constant pressure for the balanced reaction.</li><li><i>Δ<sub>r</sub>H</i> = Σ<i>a</i><sub>i</sub><i>H</i><sub>i</sub>(products) − Σ<i>b</i><sub>i</sub><i>H</i><sub>i</sub>(reactants); coefficients are stoichiometric moles.</li><li><b>Standard reaction enthalpy</b> <i>Δ<sub>r</sub>H°</i> applies when all substances are in <b>standard states</b> (pure, 1 bar; usually 298 K).</li><li>Phase transition enthalpies: <i>ΔH</i><sub>fus</sub>°, <i>ΔH</i><sub>vap</sub>°, <i>ΔH</i><sub>sub</sub>° are defined for 1 mol change at constant <i>T</i>, <i>p</i> (typically endothermic).</li><li><b>Standard enthalpy of formation</b> <i>Δ<sub>f</sub>H°</i>: enthalpy change to form exactly 1 mol compound from elements in reference states; elements in reference state have <i>Δ<sub>f</sub>H°</i>=0.</li><li><b>Hess’s law</b>: since enthalpy is a state function, overall <i>ΔH</i> equals sum of <i>ΔH</i> values of any set of steps giving the same net reaction.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='18' y='28' width='130' height='46' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='34' y='56' font-size='13' fill='#1f2a44'>Reactants</text><rect x='212' y='28' width='130' height='46' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='238' y='56' font-size='13' fill='#1f2a44'>Products</text><line x1='148' y1='51' x2='212' y2='51' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><rect x='18' y='116' width='130' height='46' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='30' y='144' font-size='13' fill='#1f2a44'>Step 1</text><rect x='212' y='116' width='130' height='46' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='224' y='144' font-size='13' fill='#1f2a44'>Step 2 + Step 3</text><line x1='83' y1='74' x2='83' y2='116' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='277' y1='74' x2='277' y2='116' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='148' y1='139' x2='212' y2='139' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='152' y='44' font-size='12' fill='#1f2a44'>Direct</text><text x='152' y='152' font-size='12' fill='#1f2a44'>Indirect</text><text x='98' y='98' font-size='12' fill='#1f2a44'>ΣΔH</text></svg><div class="figcap">Hess’s law: direct ΔrH equals sum of ΔH values along any indirect path with same net reaction.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>Thermochemical equation must include physical states; <i>ΔH</i> belongs to that exact balanced equation.</span></li><li><span class="ic">🔁</span><span>Multiply equation by <i>n</i> ⇒ multiply <i>ΔH</i> by <i>n</i>; reverse equation ⇒ change sign of <i>ΔH</i>.</span></li><li><span class="ic">🏷️</span><span>Standard state is <b>1 bar</b> (not 1 atm); temperature must be specified if not 298 K.</span></li><li><span class="ic">🧊</span><span>Phase changes: solid→liquid <i>ΔH</i><sub>fus</sub>°&gt;0; liquid→gas <i>ΔH</i><sub>vap</sub>°&gt;0; solid→gas <i>ΔH</i><sub>sub</sub>°&gt;0.</span></li><li><span class="ic">🧮</span><span>Using formation enthalpies: <i>Δ<sub>r</sub>H°</i> = Σ<i>ν</i><sub>p</sub><i>Δ<sub>f</sub>H°</i>(products) − Σ<i>ν</i><sub>r</sub><i>Δ<sub>f</sub>H°</i>(reactants).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD STATES &amp; STANDARD ENTHALPY (ΔrH°)</span></h2><ul class="b"><li>Standard state: pure substance at <b>1 bar</b>; solutions usually at 1 mol L<sup>−1</sup> (if specified).</li><li>Temperature is commonly 298 K; always write physical state: (s), (l), (g), (aq).</li><li>Allotropic caution: <i>Δ<sub>f</sub>H°</i>[C(graphite)]=0 but <i>Δ<sub>f</sub>H°</i>[C(diamond)] ≠ 0.</li><li>Meaning of units: kJ mol<sup>−1</sup> is <b>per mole of reaction as written</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">THERMOCHEMICAL EQUATION RULES (EXAM MUSTS)</span></h2><ul class="b"><li>Scale: if coefficients are multiplied by <i>n</i>, then <i>ΔH</i> is also multiplied by <i>n</i>.</li><li>Reverse: reactants ⇌ products swapped ⇒ <i>ΔH</i> changes sign.</li><li>Add: when equations add to target, add their <i>ΔH</i> values (after scaling/reversing).</li><li>Never mix states: H<sub>2</sub>O(l) and H<sub>2</sub>O(g) have different enthalpies; include phase transition if needed.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Key Enthalpy Types (standard conditions unless stated)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Quantity</th><th>Definition (per 1 mol)</th><th>Sign / Notes</th></tr></thead><tbody><tr><td><i>Δ<sub>r</sub>H</i></td><td>Heat change at constant <i>p</i> for reaction as balanced</td><td>Exothermic: negative; endothermic: positive</td></tr><tr><td><i>Δ<sub>r</sub>H°</i></td><td><i>Δ<sub>r</sub>H</i> when all species in standard states (1 bar)</td><td>Write ° and physical states; often at 298 K</td></tr><tr><td><i>ΔH</i><sub>fus</sub>°</td><td>Solid → liquid at melting point (constant <i>T</i>, <i>p</i>)</td><td>Usually positive</td></tr><tr><td><i>ΔH</i><sub>vap</sub>°</td><td>Liquid → gas at boiling point (constant <i>T</i>, <i>p</i>)</td><td>Usually positive</td></tr><tr><td><i>ΔH</i><sub>sub</sub>°</td><td>Solid → gas directly (constant <i>T</i>, <i>p</i>)</td><td>Usually positive; often <i>ΔH</i><sub>sub</sub>° ≈ <i>ΔH</i><sub>fus</sub>° + <i>ΔH</i><sub>vap</sub>° (same <i>T</i>)</td></tr><tr><td><i>Δ<sub>f</sub>H°</i></td><td>Formation of 1 mol compound from elements in reference states</td><td>Elements in reference state have <i>Δ<sub>f</sub>H°</i>=0</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">From definition of reaction enthalpy in terms of molar enthalpies (<i>H</i> as state function):</div><div class="eqbox"><span class="eq"><i>Δ<sub>r</sub>H</i> = <span class='frac'><span>(H<sub>final</sub> − H<sub>initial</sub>)</span><span>1 mol reaction</span></span></span></div><div class="fstep">For a balanced reaction Σ<i>b</i><sub>i</sub>Reactant<sub>i</sub> → Σ<i>a</i><sub>i</sub>Product<sub>i</sub>:</div><div class="eqbox"><span class="eq"><i>Δ<sub>r</sub>H</i> = Σ<i>a</i><sub>i</sub><i>H</i><sub>i</sub>(products) − Σ<i>b</i><sub>i</sub><i>H</i><sub>i</sub>(reactants)</span></div></div><div><div class="fstep">Using standard enthalpies of formation as reference values:</div><div class="eqbox blue"><span class="eq"><i>Δ<sub>r</sub>H°</i> = Σ<i>ν</i><sub>p</sub><i>Δ<sub>f</sub>H°</i>(products) − Σ<i>ν</i><sub>r</sub><i>Δ<sub>f</sub>H°</i>(reactants)</span></div><div class="fstep">Hess’s law for an indirect route made of steps 1,2,3,... giving same net reaction:</div><div class="eqbox blue"><span class="eq"><i>ΔH</i><sub>overall</sub> = <i>ΔH</i><sub>1</sub> + <i>ΔH</i><sub>2</sub> + <i>ΔH</i><sub>3</sub> + ...</span></div></div><div><table class="wtab"><tr><td><i>Δ<sub>r</sub>H</i>&nbsp;=</td><td>reaction enthalpy (kJ mol<sup>−1</sup> of reaction as written)</td></tr><tr><td><i>H</i><sub>i</sub>&nbsp;=</td><td>molar enthalpy of species <i>i</i> in the stated condition/state</td></tr><tr><td><i>a</i><sub>i</sub>, <i>b</i><sub>i</sub>&nbsp;=</td><td>stoichiometric coefficients of products and reactants</td></tr><tr><td><i>Δ<sub>f</sub>H°</i>&nbsp;=</td><td>standard enthalpy of formation at 1 bar, specified <i>T</i> (often 298 K)</td></tr><tr><td>°&nbsp;=</td><td>standard-state condition (1 bar) for each substance</td></tr></table><div class="hibox">Most-used computation (formation enthalpy method)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>Δ<sub>r</sub>H°</i> = Σ<i>ν</i><sub>p</sub><i>Δ<sub>f</sub>H°</i>(products) − Σ<i>ν</i><sub>r</sub><i>Δ<sub>f</sub>H°</i>(reactants)</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Calculate <i>Δ<sub>r</sub>H°</i> for CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l) at 298 K using: <i>Δ<sub>f</sub>H°</i>[CH<sub>4</sub>(g)]=−74.8, <i>Δ<sub>f</sub>H°</i>[CO<sub>2</sub>(g)]=−393.5, <i>Δ<sub>f</sub>H°</i>[H<sub>2</sub>O(l)]=−285.8, <i>Δ<sub>f</sub>H°</i>[O<sub>2</sub>(g)]=0 (kJ mol<sup>−1</sup>).</div><div class="sol"><span class="lbl">Solution:</span><br>Use <i>Δ<sub>r</sub>H°</i> = Σ<i>ν</i><sub>p</sub><i>Δ<sub>f</sub>H°</i>(products) − Σ<i>ν</i><sub>r</sub><i>Δ<sub>f</sub>H°</i>(reactants).<br>Products: CO<sub>2</sub>(g): 1×(−393.5) = −393.5 kJ<br>2H<sub>2</sub>O(l): 2×(−285.8) = −571.6 kJ<br>Σ(products) = −393.5 − 571.6 = −965.1 kJ<br>Reactants: CH<sub>4</sub>(g): 1×(−74.8)= −74.8 kJ<br>2O<sub>2</sub>(g): 2×0 = 0 kJ<br>Σ(reactants) = −74.8 kJ<br><i>Δ<sub>r</sub>H°</i> = (−965.1) − (−74.8) = −965.1 + 74.8 = −890.3 kJ mol<sup>−1</sup></div><div class="ans">✓&nbsp; <i>Δ<sub>r</sub>H°</i> = −890.3 kJ mol<sup>−1</sup> (exothermic, per mole of reaction as written).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Use Hess’s law to find <i>ΔH°</i> for C(graphite) + <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub>(g) → CO(g) given:<br>(1) C(graphite)+O<sub>2</sub>(g) → CO<sub>2</sub>(g); <i>ΔH°</i>=−393.5 kJ mol<sup>−1</sup><br>(2) CO(g)+<span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub>(g) → CO<sub>2</sub>(g); <i>ΔH°</i>=−283.0 kJ mol<sup>−1</sup></div><div class="sol"><span class="lbl">Solution:</span><br>Target: C + <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub> → CO<br>Reverse (2) to place CO on product side: CO<sub>2</sub>(g) → CO(g)+<span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub>(g); <i>ΔH°</i>= +283.0 kJ mol<sup>−1</sup><br>Add (1) + reversed(2):<br>C + O<sub>2</sub> → CO<sub>2</sub><br>CO<sub>2</sub> → CO + <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub><br>Net: C + O<sub>2</sub> → CO + <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub><br>Cancel <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub> from both sides ⇒ C + <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub> → CO (target obtained).<br>Add enthalpies: <i>ΔH°</i> = (−393.5) + (+283.0) = −110.5 kJ mol<sup>−1</sup></div><div class="ans">✓&nbsp; <i>ΔH°</i>[C + <span class='frac'><span>1</span><span>2</span></span>O<sub>2</sub> → CO] = −110.5 kJ mol<sup>−1</sup>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><i>ΔH</i> is a state function: depends only on initial and final states, enabling Hess cycles.</li><li>Standard state is <b>1 bar</b>; do not silently use 1 atm in definitions.</li><li>Formation enthalpy applies only to formation from elements in reference states and exactly 1 mol product.</li><li>Elements in reference state have <i>Δ<sub>f</sub>H°</i>=0; non-reference allotropes are not zero.</li><li>Phase labels matter: H<sub>2</sub>O(l) vs H<sub>2</sub>O(g) changes <i>ΔH</i> substantially; include <i>ΔH</i><sub>vap</sub>° when converting.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to multiply <i>ΔH</i> when multiplying a thermochemical equation by a factor.</li><li>Reversing an equation but not reversing the sign of <i>ΔH</i>.</li><li>Using <i>Δ<sub>f</sub>H°</i>=0 for elements in non-reference forms (e.g., diamond, O<sub>3</sub>).</li><li>Omitting physical states; mixing H<sub>2</sub>O(l) data with H<sub>2</sub>O(g) reaction equation.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“HESS: <b>H</b>Flip, <b>E</b>Scale, <b>S</b>um, <b>S</b>tate”</div><paragraph id="6a9fdc9de31c51ba3f0002d3"><b>HFlip</b>: reverse equation ⇒ flip sign of <i>ΔH</i>.</paragraph><paragraph id="6a9fdc9d50a47ac9620002d4"><b>EScale</b>: multiply coefficients ⇒ multiply <i>ΔH</i> same factor.</paragraph><paragraph id="6a9fdc9d28cca7a12c0002d5"><b>SSum</b>: add equations to get target; add their <i>ΔH</i> values.</paragraph><paragraph id="6a9fdc9d386dc0f1470002d6"><b>SState</b>: check (s,l,g,aq); fix with <i>ΔH</i><sub>fus</sub>°, <i>ΔH</i><sub>vap</sub>°, <i>ΔH</i><sub>sub</sub>° if needed.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>Δ<sub>r</sub>H</i> = Σ<i>a</i><sub>i</sub><i>H</i><sub>i</sub>(products) − Σ<i>b</i><sub>i</sub><i>H</i><sub>i</sub>(reactants)</span><span class="eq"><i>Δ<sub>r</sub>H°</i> = Σ<i>ν</i><sub>p</sub><i>Δ<sub>f</sub>H°</i>(products) − Σ<i>ν</i><sub>r</sub><i>Δ<sub>f</sub>H°</i>(reactants)</span><span class="eq">Hess: <i>ΔH</i><sub>overall</sub> = Σ<i>ΔH</i><sub>steps</sub> (after reversing/scaling equations as needed)</span><span class="eq">Thermochemical rules: multiply equation ⇒ multiply <i>ΔH</i>; reverse ⇒ sign change</span><span class="eq">Standard state: pure substance at 1 bar (usually 298 K); write ° only for standard conditions</span><span class="eq">Phase changes: <i>ΔH</i><sub>sub</sub>° ≈ <i>ΔH</i><sub>fus</sub>° + <i>ΔH</i><sub>vap</sub>° (at same <i>T</i>)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ENTHALPIES OF REACTIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Standard reaction enthalpy: <b>ΔrH° = Σν<i>H</i><sub>m</sub>°(products) − Σν<i>H</i><sub>m</sub>°(reactants)</b>, per mole of balanced reaction (ν = stoichiometric coefficients; <i>H</i><sub>m</sub>° = molar enthalpy in standard state).</li><li>Standard symbol (°): each substance in its standard state at <b>1 bar</b> and at the <b>specified temperature</b> (often 298 K).</li><li>Enthalpy is a state function: use Hess’s law cycles to compute hard-to-measure enthalpies.</li><li>Signs: exothermic <b>ΔH&lt;0</b>, endothermic <b>ΔH&gt;0</b>; values depend on physical states.</li><li>Be explicit: “kJ mol<sup>−1</sup>” refers to <b>per mole of reaction as written</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='150' height='48' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='24' y='38' font-size='13' fill='#1f2a44'>Combustion</text><text x='24' y='56' font-size='12' fill='#1f2a44'>ΔcH°</text><rect x='196' y='18' width='150' height='48' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='206' y='38' font-size='13' fill='#1f2a44'>Atomization</text><text x='206' y='56' font-size='12' fill='#1f2a44'>ΔaH°</text><rect x='14' y='86' width='150' height='48' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='24' y='106' font-size='13' fill='#1f2a44'>Bond enthalpy</text><text x='24' y='124' font-size='12' fill='#1f2a44'>D / mean D</text><rect x='196' y='86' width='150' height='48' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='206' y='106' font-size='13' fill='#1f2a44'>Lattice</text><text x='206' y='124' font-size='12' fill='#1f2a44'>Born–Haber</text><rect x='105' y='150' width='150' height='40' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='115' y='172' font-size='13' fill='#1f2a44'>Solution / dilution</text><line x1='89' y1='66' x2='89' y2='86' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='271' y1='66' x2='271' y2='86' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='164' y1='42' x2='196' y2='42' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='164' y1='110' x2='196' y2='110' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='164' y1='134' x2='180' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='196' y1='134' x2='180' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='14' y='14' font-size='12' fill='#1f2a44'>Enthalpies of reactions (standard)</text></svg><div class="figcap">Map of key reaction enthalpies and where Hess’s law cycles are commonly used.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔥</span><span><b>ΔcH°</b>: standard enthalpy change for <b>complete</b> combustion in O<sub>2</sub>; for hydrocarbons, products include CO<sub>2</sub>(g) and H<sub>2</sub>O(l) in standard states.</span></li><li><span class="ic">⚛️</span><span><b>ΔaH°</b>: standard enthalpy change to form gaseous atoms from the element in its standard state; diatomic element: equals bond dissociation enthalpy; metals: equals sublimation enthalpy.</span></li><li><span class="ic">🔗</span><span>Bond enthalpy: <b>dissociation</b> (specific bond in a gaseous molecule) vs <b>mean</b> (average for polyatomic).</span></li><li><span class="ic">🧮</span><span>Bond-enthalpy method (gas phase, approximate): <b>ΔrH° ≈ Σ<i>D</i>(bonds broken) − Σ<i>D</i>(bonds formed)</b>.</span></li><li><span class="ic">🧱</span><span><b>ΔlatticeH</b> (dissociation): NaCl(s) → Na<sup>+</sup>(g)+Cl<sup>−</sup>(g) is endothermic; obtained via Born–Haber cycle (Hess’s law).</span></li><li><span class="ic">💧</span><span>Solution (ionic solids): <b>Δ<sub>sol</sub>H = Δ<sub>lattice</sub>H + Δ<sub>hyd</sub>H</b>; dilution enthalpy tends to 0 as solution approaches infinite dilution.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">BORN–HABER CYCLE (LATTICE ENTHALPY)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='16' y='20' width='150' height='40' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='26' y='44' font-size='13' fill='#1f2a44'>Na(s)+½Cl2(g)</text><rect x='194' y='20' width='150' height='40' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='204' y='44' font-size='13' fill='#1f2a44'>NaCl(s)</text><rect x='16' y='90' width='150' height='40' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x="26" y="114" font-size="13" fill="#1f2a44">
+  Na<tspan baseline-shift="super" font-size="9">+</tspan>(g)
+  +
+  Cl<tspan baseline-shift="super" font-size="9">−</tspan>(g)
+</text><line x1='166' y1='40' x2='194' y2='40' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='91' y1='60' x2='91' y2='90' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='166' y1='110' x2='194' y2='60' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='206' y='78' font-size='12' fill='#1f2a44'>−ΔlatticeH(form)</text><text x='20' y='148' font-size='12' fill='#1f2a44'>Bottom path: Δsub + ½D + IE + EA</text></svg></div><ul class="b"><li>Target definition (common in JEE): <b>ΔlatticeH</b> for <i>M</i>X(s) → <i>M</i><sup>+</sup>(g)+X<sup>−</sup>(g) is <b>positive</b> (lattice dissociation enthalpy).</li><li>Formation route: elements → atoms → ions → ionic solid; apply Hess’s law around the cycle.</li><li>For NaCl: ΔfH° = ΔsubH(Na) + <span class='frac'><span>1</span><span>2</span></span><i>D</i>(Cl–Cl) + IE(Na) + EA(Cl) − ΔlatticeH(form).</li><li>Careful with sign: lattice <b>formation</b> enthalpy is negative; <b>dissociation</b> lattice enthalpy is positive (equal magnitude).</li><li>IE always endothermic; EA here is used as <b>electron gain enthalpy</b> (often negative for halogens).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">BOND ENTHALPIES: DISSOCIATION vs MEAN + USING THEM</span></h2><ul class="b"><li>Bond dissociation enthalpy: energy to break <b>one mole of a specific bond</b> in a gaseous molecule.</li><li>Mean bond enthalpy: average of successive dissociations in a polyatomic molecule (values differ stepwise).</li><li>Approximate gas-phase reaction enthalpy: <b>ΔrH°(gas) ≈ Σ<i>D</i>(broken) − Σ<i>D</i>(formed)</b>.</li><li>Better accuracy when bonds and environments are similar; poor for highly polar/ionic or non-gas-phase reactions.</li><li>For diatomic molecules: <b>ΔaH° = bond dissociation enthalpy</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Commonly confused enthalpy terms (JEE/NEET traps)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Term</th><th>What it means</th><th>Key exam cue</th></tr></thead><tbody><tr><td>ΔcH°</td><td>Standard enthalpy change when 1 mol of a substance undergoes complete combustion in O<sub>2</sub> (all substances in standard states, specified T).</td><td>Always exothermic; specify H<sub>2</sub>O(l) vs H<sub>2</sub>O(g).</td></tr><tr><td>ΔaH°</td><td>Standard enthalpy change when 1 mol of an element in its standard state forms gaseous atoms (complete atomization).</td><td>Diatomic element: equals bond dissociation enthalpy; metal: equals sublimation enthalpy.</td></tr><tr><td>Bond dissociation enthalpy</td><td>Enthalpy to break 1 mol of a specific bond in the gas phase (molecular environment fixed).</td><td>Depends on molecule; not a universal constant for a bond type like “C–H”.</td></tr><tr><td>Mean bond enthalpy</td><td>Average enthalpy over successive dissociations of identical bonds in a polyatomic molecule (gas phase).</td><td>Used for approximate ΔrH°(gas) by bond-enthalpy method.</td></tr><tr><td>ΔlatticeH</td><td>Lattice enthalpy (dissociation): ionic solid → gaseous ions (1 mol formula units).</td><td>Positive; obtained via Born–Haber (Hess cycle).</td></tr><tr><td>ΔsolH / ΔdilH</td><td>Enthalpy of solution / enthalpy of dilution (specified amounts; depends on concentration).</td><td>For ionic solids: ΔsolH = ΔlatticeH + ΔhydH; dilution enthalpy → 0 as concentration → 0.</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Bond-enthalpy estimate comes from Hess’s law: break all reactant bonds (endothermic), then form product bonds (exothermic).</div><div class="eqbox"><span class="eq"><b>ΔrH°(gas) ≈ Σ<i>D</i><sub>broken</sub> − Σ<i>D</i><sub>formed</sub></b></span></div><div class="fstep">Born–Haber (example MX): relate ΔfH° to steps from elements to gaseous ions and then to solid; lattice term depends on whether formation or dissociation is used.</div><div class="eqbox"><span class="eq"><b>ΔfH°</b> = ΔsubH + <span class='frac'><span>1</span><span>2</span></span><i>D</i>(X–X) + IE + EA − ΔlatticeH(form)</span></div></div><div><div class="fstep">Enthalpy of solution (ionic solids): sum of lattice dissociation and hydration enthalpies.</div><div class="eqbox blue"><span class="eq"><b>Δ<sub>sol</sub>H</b> = <b>Δ<sub>lattice</sub>H</b> + <b>Δ<sub>hyd</sub>H</b></span></div></div><div><table class="wtab"><tr><td>ΔrH°&nbsp;=</td><td>standard reaction enthalpy (kJ mol<sup>−1</sup> of reaction)</td></tr><tr><td>ΔcH°&nbsp;=</td><td>standard enthalpy of combustion (kJ mol<sup>−1</sup> of substance combusted)</td></tr><tr><td>ΔaH°&nbsp;=</td><td>standard enthalpy of atomization (kJ mol<sup>−1</sup>)</td></tr><tr><td><i>D</i>&nbsp;=</td><td>bond enthalpy / bond dissociation enthalpy (kJ mol<sup>−1</sup>)</td></tr><tr><td>ΔlatticeH&nbsp;=</td><td>lattice enthalpy of dissociation: ionic solid → gaseous ions (kJ mol<sup>−1</sup>)</td></tr><tr><td>IE&nbsp;=</td><td>ionization enthalpy (always positive) (kJ mol<sup>−1</sup>)</td></tr><tr><td>EA&nbsp;=</td><td>electron gain enthalpy for X(g)+e<sup>−</sup>→X<sup>−</sup>(g) (often negative for halogens) (kJ mol<sup>−1</sup>)</td></tr><tr><td>ΔhydH&nbsp;=</td><td>hydration enthalpy of ions (usually negative) (kJ mol<sup>−1</sup>)</td></tr></table><div class="hibox">Most-used exam result<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>ΔrH°(gas) ≈ Σ<i>D</i>(bonds broken) − Σ<i>D</i>(bonds formed)</b></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrowg' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><line x1='46' y1='168' x2='330' y2='168' stroke='#123B7A' stroke-width='2' marker-end='url(#arrowg)'/><line x1='46' y1='168' x2='46' y2='26' stroke='#123B7A' stroke-width='2' marker-end='url(#arrowg)'/><text x='250' y='188' font-size='12' fill='#1f2a44'>progress</text><text x='10' y='36' font-size='12' fill='#1f2a44'>H (enthalpy)</text><polyline points='60,60 150,60 150,140 310,140' fill='none' stroke='#2563EB' stroke-width='3'/><text x='62' y='52' font-size='12' fill='#1f2a44'>bonds broken</text><text x='154' y='156' font-size='12' fill='#1f2a44'>bonds formed</text><line x1='150' y1='60' x2='150' y2='140' stroke='#F59E0B' stroke-width='2'/><text x='160' y='104' font-size='12' fill='#1f2a44'>ΔrH°(gas)</text></svg><div class="figcap">Hess idea behind bond-enthalpy method: raise H to break bonds, drop H to form bonds.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Using mean bond enthalpies, estimate ΔrH°(gas) for: H<sub>2</sub>(g) + Cl<sub>2</sub>(g) → 2HCl(g). Given: <i>D</i>(H–H)=436 kJ mol<sup>−1</sup>, <i>D</i>(Cl–Cl)=242 kJ mol<sup>−1</sup>, <i>D</i>(H–Cl)=431 kJ mol<sup>−1</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Bonds broken: 1×(H–H) and 1×(Cl–Cl).<br>Σ<i>D</i><sub>broken</sub> = 436 + 242 = 678 kJ mol<sup>−1</sup>.<br>Bonds formed: 2×(H–Cl).<br>Σ<i>D</i><sub>formed</sub> = 2×431 = 862 kJ mol<sup>−1</sup>.<br>ΔrH°(gas) ≈ Σ<i>D</i><sub>broken</sub> − Σ<i>D</i><sub>formed</sub> = 678 − 862 = −184 kJ mol<sup>−1</sup>.</div><div class="ans">✓&nbsp; ΔrH°(gas) ≈ <b>−184 kJ mol<sup>−1</sup></b> (per mole of reaction as written; exothermic).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Calculate lattice enthalpy (dissociation) of NaCl(s) using Born–Haber data: ΔfH°[NaCl(s)]=−411.2 kJ mol<sup>−1</sup>, ΔsubH[Na]=+108.4, IE[Na]=+496, <span class='frac'><span>1</span><span>2</span></span><i>D</i>(Cl–Cl)=+121, EA[Cl]=−348.6 (all kJ mol<sup>−1</sup>).</div><div class="sol"><span class="lbl">Solution:</span><br>Born–Haber relation (with EA as electron gain enthalpy): ΔfH° = ΔsubH + <span class='frac'><span>1</span><span>2</span></span><i>D</i> + IE + EA − ΔlatticeH(form).<br>Substitute: −411.2 = 108.4 + 121 + 496 − 348.6 − ΔlatticeH(form).<br>Compute RHS without lattice term: 108.4 + 121 + 496 − 348.6 = 376.8 kJ mol<sup>−1</sup>.<br>So −411.2 = 376.8 − ΔlatticeH(form) ⇒ ΔlatticeH(form) = 376.8 + 411.2 = 788.0 kJ mol<sup>−1</sup>.<br>Dissociation lattice enthalpy is opposite sign: NaCl(s) → Na<sup>+</sup>(g)+Cl<sup>−</sup>(g) is +788.0 kJ mol<sup>−1</sup>.</div><div class="ans">✓&nbsp; <b>ΔlatticeH(dissociation) = +788 kJ mol<sup>−1</sup></b> (and lattice formation enthalpy = −788 kJ mol<sup>−1</sup>).</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always write physical states in thermochemical equations; ΔcH° differs for H<sub>2</sub>O(l) vs H<sub>2</sub>O(g).</li><li>ΔcH° is defined for <b>complete</b> combustion; incomplete combustion gives different enthalpy.</li><li>ΔaH°: diatomic element: equals bond dissociation enthalpy; metals: equals sublimation enthalpy.</li><li>Mean bond enthalpy is an <b>average</b>; hence bond-enthalpy method gives approximate ΔrH°(gas) values.</li><li>Born–Haber is Hess’s law in cycle form; track signs carefully for EA (electron gain enthalpy) and lattice formation/dissociation.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using Σ(products) − Σ(reactants) but forgetting stoichiometric coefficients ν.</li><li>Treating mean bond enthalpy as a fixed constant for a bond across all molecules.</li><li>Applying bond-enthalpy estimation to reactions with liquids/solids without noting the gas-phase approximation.</li><li>Sign confusion: quoting lattice enthalpy as negative while using the dissociation definition (should be positive).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "C A B L S" = Combustion–Atomization–Bond–Lattice–Solution”</div><paragraph id="6a9fdc9ddc40b17e8d0002d7">Think of energy ladder: <b>burn</b> (combustion) → <b>atoms</b> → <b>bonds</b> → <b>ionic lattice</b> → <b>solution</b>.</paragraph><paragraph id="6a9fdc9d613b1a8ac70002d8">Lattice: <b>Dissociate = +</b>, <b>Form = −</b> (same magnitude).</paragraph><paragraph id="6a9fdc9d1911044f5f0002d9">Bond method (gas phase): <b>ΣD(broken) − ΣD(formed)</b> gives ΔrH°(gas).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>ΔrH° = Σν<i>H</i><sub>m</sub>°(products) − Σν<i>H</i><sub>m</sub>°(reactants)</b> (kJ mol<sup>−1</sup> of reaction).</span><span class="eq"><b>ΔcH°</b>: enthalpy change for complete combustion of 1 mol substance in O<sub>2</sub> (standard states, specified T).</span><span class="eq"><b>ΔaH°</b>: enthalpy to form gaseous atoms from an element in its standard state; diatomic element: ΔaH° = <i>D</i>(bond).</span><span class="eq"><b>ΔrH°(gas) ≈ Σ<i>D</i>(broken) − Σ<i>D</i>(formed)</b> (approximation; gas phase).</span><span class="eq"><b>ΔlatticeH</b> (dissociation): ionic solid → gaseous ions (positive); obtained via Born–Haber cycle.</span><span class="eq"><b>ΔsolH = ΔlatticeH + ΔhydH</b> (ionic solids; sign depends on relative magnitudes).</span><span class="eq">Enthalpy of dilution: heat change on adding solvent; tends to <b>0</b> as concentration → 0 (infinite dilution).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SPONTANEITY AND ENTROPY</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Spontaneous process</b>: can occur without continuous external assistance; criterion is thermodynamic, not kinetic.</li><li>A spontaneous change is <b>irreversible</b> in practice; reversal requires an external agency.</li><li><b>Spontaneous ≠ fast</b>: rate depends on activation energy/mechanism (kinetics), not on spontaneity criteria.</li><li>Δ<i>H</i> alone is <b>not sufficient</b>: some endothermic (Δ<i>H</i>&gt;0) processes are spontaneous due to entropy increase.</li><li><b>Entropy</b> (<i>S</i>) is a state function measuring dispersal of energy/matter (often linked to disorder/randomness).</li><li>Spontaneity criterion (system + surroundings): <b>Δ<i>S</i><sub>total</sub> &gt; 0</b>; at equilibrium: <b>Δ<i>S</i><sub>total</sub> = 0</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='24' width='150' height='62' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='32' y='47' font-size='13' fill='#1f2a44'>System</text><text x='32' y='66' font-size='12' fill='#1f2a44'>ΔSsys</text><rect x='192' y='24' width='150' height='62' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='206' y='47' font-size='13' fill='#1f2a44'>Surroundings</text><text x='206' y='66' font-size='12' fill='#1f2a44'>ΔSsurr</text><line x1='168' y1='55' x2='192' y2='55' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='138' y='44' font-size='12' fill='#1f2a44'>heat</text><rect x='18' y='110' width='324' height='70' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='30' y='134' font-size='13' fill='#1f2a44'>Universe (system + surroundings)</text><text x='30' y='154' font-size='12' fill='#1f2a44'>ΔStotal = ΔSsys + ΔSsurr</text><text x='30' y='172' font-size='12' fill='#1f2a44'>Spontaneous: ΔStotal &gt; 0 | Equilibrium: = 0</text></svg><div class="figcap">Spontaneity test uses total entropy change of system + surroundings.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">K</span><span>Thermodynamics predicts <b>direction/feasibility</b>; kinetics predicts <b>rate</b>.</span></li><li><span class="ic">H</span><span>Exothermicity often helps spontaneity because surroundings gain entropy when they receive heat.</span></li><li><span class="ic">M</span><span>Mixing of gases can be spontaneous even with Δ<i>H</i> ≈ 0 because Δ<i>S</i><sub>sys</sub> increases.</span></li><li><span class="ic">2</span><span>Second Law idea: for an isolated universe, spontaneous change occurs with increasing total entropy.</span></li><li><span class="ic">3</span><span>Third Law: entropy of a perfect crystal approaches 0 as <i>T</i> approaches 0 K (ideal limit); basis of absolute entropies.</span></li><li><span class="ic">E</span><span>At equilibrium (for fixed constraints): Δ<i>S</i><sub>total</sub> = 0 and total entropy is at a maximum.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">SPONTANEOUSNESS VS RATE (KINETICS)</span></h2><ul class="b"><li>Spontaneous means <b>thermodynamically feasible</b>; it may still be extremely slow.</li><li>Example: H<sub>2</sub> + O<sub>2</sub> at room temperature is feasible but needs spark/catalyst to proceed fast.</li><li>Rate depends on activation energy/pathway; spontaneity depends on state functions and total entropy.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WHY ΔH ALONE FAILS + ENTROPY INTUITION</span></h2><ul class="b"><li>Many spontaneous processes are exothermic (Δ<i>H</i>&lt;0), but some spontaneous processes are endothermic (Δ<i>H</i>&gt;0).</li><li>Entropy often increases on going from solid → liquid → gas (typical trend; exceptions exist).</li><li>Mixing of gases: Δ<i>H</i> ≈ 0 yet spontaneous because number of accessible microstates increases.</li><li>Second Law criterion uses the <b>total</b> entropy change of system + surroundings.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Spontaneous vs Non-spontaneous vs Equilibrium (Entropy Criterion)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Spontaneous</th><th>Non-spontaneous</th><th>Equilibrium</th></tr></thead><tbody><tr><td>Δ<i>S</i><sub>total</sub> (universe)</td><td>&gt; 0</td><td>&lt; 0</td><td>= 0</td></tr><tr><td>Direction (for given constraints)</td><td>Proceeds on its own</td><td>Requires continuous driving</td><td>No net driving force</td></tr><tr><td>Reversibility</td><td>Irreversible in practice</td><td>Reverse direction is spontaneous</td><td>Reversible limit (infinitesimal change)</td></tr><tr><td>Entropy status (constraints fixed)</td><td>Moves toward maximum possible</td><td>Moves away from maximum</td><td>At maximum</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A reaction has Δ<i>S</i><sub>sys</sub> &lt; 0 but is strongly exothermic at room temperature. Can it still be spontaneous? Explain.</div><div class="sol"><span class="lbl">Answer:</span><br>Spontaneity depends on Δ<i>S</i><sub>total</sub> = Δ<i>S</i><sub>sys</sub> + Δ<i>S</i><sub>surr</sub>, not on Δ<i>S</i><sub>sys</sub> alone.<br>If the reaction releases heat, the surroundings typically gain entropy (Δ<i>S</i><sub>surr</sub> &gt; 0).<br>If the entropy gain of surroundings outweighs the entropy decrease of the system, then Δ<i>S</i><sub>total</sub> becomes positive.</div><div class="ans">✓&nbsp; Yes. Even with Δ<i>S</i><sub>sys</sub> &lt; 0, a sufficiently exothermic process can have Δ<i>S</i><sub>total</sub> &gt; 0, making it spontaneous.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A reversible heat transfer occurs between a system and surroundings maintained at the same temperature. What is Δ<i>S</i><sub>total</sub> and what does it indicate about the driving force?</div><div class="sol"><span class="lbl">Answer:</span><br>For a reversible process, the system and surroundings remain in equilibrium at each stage (no finite temperature difference).<br>Entropy gained by one part equals entropy lost by the other under reversible heat exchange.<br>Therefore, the total entropy change for the universe is zero.</div><div class="ans">✓&nbsp; Δ<i>S</i><sub>total</sub> = 0. This indicates the reversible (equilibrium-limit) case with no net driving force.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Spontaneous process is <b>irreversible</b>; reversibility is an ideal limit with Δ<i>S</i><sub>total</sub> = 0.</li><li>Never judge spontaneity from Δ<i>S</i><sub>system</sub> alone; always consider system + surroundings.</li><li>Δ<i>H</i>&lt;0 often helps spontaneity, but Δ<i>H</i> is not a universal criterion.</li><li>For an isolated universe: spontaneous direction corresponds to increasing total entropy.</li><li>At equilibrium (fixed constraints): total entropy is maximum and Δ<i>S</i><sub>total</sub> = 0.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Treating "spontaneous" as "fast"; rate is a kinetics concept.</li><li>Concluding non-spontaneous from Δ<i>S</i><sub>sys</sub>&lt;0 without including surroundings.</li><li>Stating that entropy must always increase for the system; the criterion is for the total (system + surroundings).</li><li>Claiming the Third Law means all substances have zero entropy at 0 K; it applies to a <b>perfect crystal</b> in the ideal limit.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“FAST check: "S-TOTAL"”</div><paragraph id="6a9fdc9dae7ac948190002da"><b>S</b>pontaneous ≠ <b>F</b>ast (rate is kinetics).</paragraph><paragraph id="6a9fdc9df0210344820002db">Use <b>TOTAL</b> entropy: Δ<i>S</i><sub>total</sub> = Δ<i>S</i><sub>sys</sub> + Δ<i>S</i><sub>surr</sub>.</paragraph><paragraph id="6a9fdc9d49dd41d5a80002dc">Spontaneous: <b>+</b> ; Equilibrium: <b>0</b> ; Non-spontaneous: <b>−</b>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>GIBBS ENERGY AND EQUILIBRIUM</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Gibbs energy <i>G</i> is a state function: <i>G</i> = <i>H</i> − <i>T</i><i>S</i>, useful at constant <i>T</i> and pressure.</li><li>At constant <i>T</i>, Δ<i>G</i> = Δ<i>H</i> − <i>T</i>Δ<i>S</i> helps decide spontaneity for a process (with appropriate constraints).</li><li>For a reaction at constant <i>T</i>, <i>p</i>: Δ<sub>r</sub><i>G</i> &lt; 0 (forward spontaneous), Δ<sub>r</sub><i>G</i> = 0 (equilibrium), Δ<sub>r</sub><i>G</i> &gt; 0 (forward non-spontaneous).</li><li>At equilibrium, <i>G</i> is minimum for fixed <i>T</i>, <i>p</i>; hence reaction Gibbs change Δ<sub>r</sub><i>G</i> = 0.</li><li>Standard relation links equilibrium: Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i> = −2.303 <i>R</i><i>T</i> log <i>K</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><div class="figbox" style="height:auto; margin-bottom:1.5mm; overflow:visible;">
+  <svg
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 360 205"
+    xmlns="http://www.w3.org/2000/svg"
+    style="display:block; width:100%; height:auto; overflow:visible;"
+  >
+    <defs>
+      <marker
+        id="arrow-t11"
+        viewBox="0 0 10 10"
+        refX="9"
+        refY="5"
+        markerWidth="7"
+        markerHeight="7"
+        orient="auto"
+      >
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#123B7A"/>
+      </marker>
+    </defs>
+
+    <!-- Outer box -->
+    <rect
+      x="16"
+      y="18"
+      width="328"
+      height="180"
+      rx="10"
+      fill="#EEF4FF"
+      stroke="#123B7A"
+      stroke-width="2"
+    />
+
+    <!-- Title -->
+    <text x="26" y="40" font-size="14" fill="#1f2a44">
+      Constant <tspan font-style="italic">T</tspan>, <tspan font-style="italic">p</tspan>
+    </text>
+
+    <!-- Left box -->
+    <rect
+      x="26"
+      y="56"
+      width="140"
+      height="46"
+      rx="8"
+      fill="#FEF5E4"
+      stroke="#F59E0B"
+      stroke-width="2"
+    />
+    <text x="96" y="82" text-anchor="middle" font-size="13" fill="#1f2a44">
+      ΔG &lt; 0
+    </text>
+    <text x="96" y="97" text-anchor="middle" font-size="12" fill="#1f2a44">
+      spontaneous
+    </text>
+
+    <!-- Right box -->
+    <rect
+      x="194"
+      y="56"
+      width="140"
+      height="46"
+      rx="8"
+      fill="#F4EFFE"
+      stroke="#7C3AED"
+      stroke-width="2"
+    />
+    <text x="264" y="82" text-anchor="middle" font-size="13" fill="#1f2a44">
+      ΔG &gt; 0
+    </text>
+    <text x="264" y="97" text-anchor="middle" font-size="12" fill="#1f2a44">
+      non-spont.
+    </text>
+
+    <!-- Bottom center box -->
+    <rect
+      x="108"
+      y="118"
+      width="144"
+      height="48"
+      rx="8"
+      fill="#EAF7EF"
+      stroke="#16A34A"
+      stroke-width="2"
+    />
+    <text x="180" y="143" text-anchor="middle" font-size="13" fill="#1f2a44">
+      ΔG = 0
+    </text>
+    <text x="180" y="158" text-anchor="middle" font-size="12" fill="#1f2a44">
+      equilibrium
+    </text>
+
+    <!-- Connecting arrows -->
+    <line
+      x1="96"
+      y1="106"
+      x2="140"
+      y2="118"
+      stroke="#123B7A"
+      stroke-width="2"
+      marker-end="url(#arrow-t11)"
+    />
+    <line
+      x1="264"
+      y1="106"
+      x2="220"
+      y2="118"
+      stroke="#123B7A"
+      stroke-width="2"
+      marker-end="url(#arrow-t11)"
+    />
+
+    <!-- Bottom relation -->
+    <text x="26" y="178" font-size="12" fill="#1f2a44">
+      Equilibrium link: <tspan font-style="italic">K</tspan>
+    </text>
+
+    <line
+      x1="118"
+      y1="176"
+      x2="166"
+      y2="176"
+      stroke="#2563EB"
+      stroke-width="2"
+      marker-end="url(#arrow-t11)"
+    />
+
+    <text x="176" y="178" font-size="12" fill="#1f2a44">
+      Δ<tspan baseline-shift="sub" font-size="10">r</tspan>G°
+    </text>
+  </svg>
+
+  <div class="figcap" style="margin-top:8px; text-align:center; line-height:1.4;">
+    For a reaction at constant <i>T</i>, <i>p</i>, the sign of
+    Δ<sub>r</sub><i>G</i> gives direction; at equilibrium
+    Δ<sub>r</sub><i>G</i> = 0 and <i>K</i> is fixed.
+  </div>
+</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>At constant <i>T</i>, <i>p</i>, the sign of Δ<sub>r</sub><i>G</i> gives reaction direction; Δ<i>H</i> or Δ<i>S</i> alone is not sufficient.</span></li><li><span class="ic">🌡️</span><span>A sign-change temperature (Δ<i>G</i> crossing zero) occurs only when Δ<i>H</i> and Δ<i>S</i> have the same sign.</span></li><li><span class="ic">🔗</span><span>Δ<sub>r</sub><i>G</i><sup>°</sup> &lt; 0 ⇔ <i>K</i> &gt; 1 (products favoured); Δ<sub>r</sub><i>G</i><sup>°</sup> &gt; 0 ⇔ <i>K</i> &lt; 1.</span></li><li><span class="ic">📉</span><span>At equilibrium: Δ<sub>r</sub><i>G</i> = 0, but generally Δ<sub>r</sub><i>G</i><sup>°</sup> ≠ 0 unless <i>K</i> = 1.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">TEMPERATURE DEPENDENCE (SIGNS OF ΔH, ΔS)</span></h2><ul class="b"><li>Use Δ<i>G</i> = Δ<i>H</i> − <i>T</i>Δ<i>S</i>: increasing <i>T</i> increases the magnitude of the entropy term.</li><li>Δ<i>H</i>&lt;0, Δ<i>S</i>&gt;0 ⇒ Δ<i>G</i>&lt;0 for all <i>T</i> (always spontaneous).</li><li>Δ<i>H</i>&gt;0, Δ<i>S</i>&lt;0 ⇒ Δ<i>G</i>&gt;0 for all <i>T</i> (never spontaneous).</li><li>Δ<i>H</i>&lt;0, Δ<i>S</i>&lt;0 ⇒ spontaneous at low <i>T</i>; becomes non-spontaneous at high <i>T</i>.</li><li>Δ<i>H</i>&gt;0, Δ<i>S</i>&gt;0 ⇒ non-spontaneous at low <i>T</i>; spontaneous at high <i>T</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">EQUILIBRIUM CONNECTION: ΔrG°, K</span></h2><ul class="b"><li>For reaction quotient <i>Q</i>: Δ<sub>r</sub><i>G</i> = Δ<sub>r</sub><i>G</i><sup>°</sup> + <i>R</i><i>T</i> ln <i>Q</i> (direction test at a given composition).</li><li>At equilibrium <i>Q</i> = <i>K</i> and Δ<sub>r</sub><i>G</i> = 0 ⇒ Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i>.</li><li>If <i>K</i>&gt;1, ln<i>K</i> positive ⇒ Δ<sub>r</sub><i>G</i><sup>°</sup> negative (products favoured).</li><li>If <i>K</i>&lt;1, ln<i>K</i> negative ⇒ Δ<sub>r</sub><i>G</i><sup>°</sup> positive (reactants favoured).</li><li>Also: Δ<sub>r</sub><i>G</i><sup>°</sup> = Δ<sub>r</sub><i>H</i><sup>°</sup> − <i>T</i>Δ<sub>r</sub><i>S</i><sup>°</sup> links thermochemistry to equilibrium.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">SPONTANEITY &amp; EQUILIBRIUM CRITERIA (CONSTANT <i>T</i>, <i>p</i>)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Condition</th><th>Meaning</th></tr></thead><tbody><tr><td>Spontaneous direction</td><td>Δ<sub>r</sub><i>G</i> &lt; 0</td><td>Reaction proceeds forward; <i>G</i> decreases</td></tr><tr><td>Equilibrium</td><td>Δ<sub>r</sub><i>G</i> = 0</td><td>No net change; <i>Q</i> = <i>K</i></td></tr><tr><td>Opposite direction</td><td>Δ<sub>r</sub><i>G</i> &gt; 0</td><td>Forward reaction not feasible; reverse is favoured</td></tr><tr><td>Standard vs actual</td><td>Δ<sub>r</sub><i>G</i><sup>°</sup> vs Δ<sub>r</sub><i>G</i></td><td>Δ<sub>r</sub><i>G</i><sup>°</sup> uses standard states; Δ<sub>r</sub><i>G</i> depends on composition via <i>Q</i></td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start from definition of Gibbs energy:</div><div class="eqbox"><span class="eq"><i>G</i> = <i>H</i> − <i>T</i><i>S</i></span></div><div class="fstep">For a change at constant temperature (<i>T</i> constant):</div><div class="eqbox"><span class="eq">Δ<i>G</i> = Δ<i>H</i> − <i>T</i>Δ<i>S</i></span></div><div class="fstep">For a reaction mixture of any composition (reaction quotient <i>Q</i>):</div><div class="eqbox"><span class="eq">Δ<sub>r</sub><i>G</i> = Δ<sub>r</sub><i>G</i><sup>°</sup> + <i>R</i><i>T</i> ln <i>Q</i></span></div></div><div><div class="fstep">At equilibrium, Δ<sub>r</sub><i>G</i>=0 and <i>Q</i>=<i>K</i>:</div><div class="eqbox blue"><span class="eq">Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i> = −2.303 <i>R</i><i>T</i> log <i>K</i></span></div><div class="fstep">Standard relation via enthalpy and entropy:</div><div class="eqbox blue"><span class="eq">Δ<sub>r</sub><i>G</i><sup>°</sup> = Δ<sub>r</sub><i>H</i><sup>°</sup> − <i>T</i>Δ<sub>r</sub><i>S</i><sup>°</sup></span></div></div><div><table class="wtab"><tr><td><i>G</i>&nbsp;=</td><td>Gibbs energy (J or kJ)</td></tr><tr><td><i>H</i>&nbsp;=</td><td>Enthalpy (J or kJ)</td></tr><tr><td><i>S</i>&nbsp;=</td><td>Entropy (J K<sup>−1</sup>)</td></tr><tr><td><i>T</i>&nbsp;=</td><td>Absolute temperature (K)</td></tr><tr><td>Δ<sub>r</sub><i>G</i>&nbsp;=</td><td>Reaction Gibbs energy change at given composition</td></tr><tr><td>Δ<sub>r</sub><i>G</i><sup>°</sup>&nbsp;=</td><td>Standard reaction Gibbs energy change</td></tr><tr><td><i>R</i>&nbsp;=</td><td>Gas constant = 8.314 J K<sup>−1</sup> mol<sup>−1</sup></td></tr><tr><td><i>Q</i>, <i>K</i>&nbsp;=</td><td>Reaction quotient and equilibrium constant (dimensionless)</td></tr></table><div class="hibox">Thermo–equilibrium bridge<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='16' width='324' height='168' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='60' y1='160' x2='320' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='60' y1='160' x2='60' y2='36' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='310' y='176' font-size='12' fill='#1f2a44'><i>T</i></text><text x='30' y='46' font-size='12' fill='#1f2a44'>Δ<i>G</i> (for given Δ<i>H</i>, Δ<i>S</i>)</text><line x1='60' y1='105' x2='320' y2='105' stroke='#7C3AED' stroke-width='2' stroke-dasharray='6 5'/><text x='66' y='98' font-size='12' fill='#1f2a44'>ΔG=0</text><line x1='78' y1='70' x2='306' y2='140' stroke='#2563EB' stroke-width='3'/><text x='86' y='64' font-size='12' fill='#1f2a44'>ΔH&gt;0, ΔS&gt;0</text><text x='238' y='152' font-size='12' fill='#1f2a44'>spont. at high T</text><line x1='78' y1='140' x2='306' y2='70' stroke='#16A34A' stroke-width='3'/><text x='86' y='154' font-size='12' fill='#1f2a44'>ΔH&lt;0, ΔS&lt;0</text><text x='224' y='64' font-size='12' fill='#1f2a44'>spont. at low T</text></svg><div class="figcap">For cases where Δ<i>H</i> and Δ<i>S</i> have the same sign, Δ<i>G</i> varies linearly with <i>T</i> and can cross zero at a threshold temperature.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">At 298 K, for a reaction Δ<sub>r</sub><i>H</i><sup>°</sup> = −40.0 kJ mol<sup>−1</sup> and Δ<sub>r</sub><i>S</i><sup>°</sup> = −100 J K<sup>−1</sup> mol<sup>−1</sup>. Find Δ<sub>r</sub><i>G</i><sup>°</sup> and state spontaneity under standard conditions.</div><div class="sol"><span class="lbl">Solution:</span><br>Convert entropy to kJ: Δ<sub>r</sub><i>S</i><sup>°</sup> = −100 J K<sup>−1</sup> mol<sup>−1</sup> = −0.100 kJ K<sup>−1</sup> mol<sup>−1</sup>.<br>Compute <i>T</i>Δ<sub>r</sub><i>S</i><sup>°</sup>: 298 × (−0.100) = −29.8 kJ mol<sup>−1</sup>.<br>Use Δ<sub>r</sub><i>G</i><sup>°</sup> = Δ<sub>r</sub><i>H</i><sup>°</sup> − <i>T</i>Δ<sub>r</sub><i>S</i><sup>°</sup> = (−40.0) − (−29.8) = −10.2 kJ mol<sup>−1</sup>.<br>Since Δ<sub>r</sub><i>G</i><sup>°</sup> &lt; 0, the reaction is spontaneous under standard conditions at 298 K.</div><div class="ans">✓&nbsp; Δ<sub>r</sub><i>G</i><sup>°</sup> = −10.2 kJ mol<sup>−1</sup>; spontaneous at 298 K (standard state).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">At 298 K, Δ<sub>r</sub><i>G</i><sup>°</sup> = +5.70 kJ mol<sup>−1</sup>. Calculate equilibrium constant <i>K</i> at 298 K. (<i>R</i> = 8.314 J K<sup>−1</sup> mol<sup>−1</sup>)</div><div class="sol"><span class="lbl">Solution:</span><br>Use Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i> ⇒ ln <i>K</i> = −Δ<sub>r</sub><i>G</i><sup>°</sup> ÷ (<i>R</i><i>T</i>).<br>Convert Δ<sub>r</sub><i>G</i><sup>°</sup> to J: 5.70 kJ mol<sup>−1</sup> = 5700 J mol<sup>−1</sup>.<br>Compute <i>R</i><i>T</i>: 8.314 × 298 = 2477.6 J mol<sup>−1</sup>.<br>ln <i>K</i> = −5700 ÷ 2477.6 = −2.301 (approx).<br><i>K</i> = e<sup>−2.301</sup> ≈ 0.100.</div><div class="ans">✓&nbsp; <i>K</i> ≈ 0.10 at 298 K (reactants favoured).</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Δ<sub>r</sub><i>G</i> criterion for direction is used for reactions at constant <i>T</i> and pressure.</li><li>Keep units consistent: if <i>R</i> = 8.314 J K<sup>−1</sup> mol<sup>−1</sup>, use Δ<sub>r</sub><i>G</i><sup>°</sup> in J mol<sup>−1</sup>.</li><li>At equilibrium, Δ<sub>r</sub><i>G</i> = 0 but Δ<sub>r</sub><i>G</i><sup>°</sup> need not be zero; it depends on <i>K</i>.</li><li>If Δ<i>H</i> and Δ<i>S</i> have opposite signs, spontaneity does not switch with <i>T</i> (Δ<i>G</i> stays one sign).</li><li>Larger |Δ<sub>r</sub><i>G</i><sup>°</sup>| indicates stronger equilibrium bias: negative → products, positive → reactants.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using <i>T</i> in °C instead of K in Δ<i>G</i> = Δ<i>H</i> − <i>T</i>Δ<i>S</i> or in −<i>R</i><i>T</i> ln <i>K</i>.</li><li>Mixing kJ and J without conversion (especially with <i>R</i> in J K<sup>−1</sup> mol<sup>−1</sup>).</li><li>Forgetting the negative sign in Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i>.</li><li>Using log base 10 without the 2.303 factor (or using ln but still multiplying by 2.303).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "G HATES S"”</div><paragraph id="6a9fdc9d61ac91d4050002dd"><b>G</b> = <b>H</b> − <b>T</b><b>S</b> (G subtracts the <i>T</i><i>S</i> term).</paragraph><paragraph id="6a9fdc9d18b5bfbec90002de">Spontaneous: Δ<i>G</i> negative; Equilibrium: Δ<i>G</i> zero.</paragraph><paragraph id="6a9fdc9d93271103a90002df">Sign-link: Δ<sub>r</sub><i>G</i><sup>°</sup> negative ⇒ <i>K</i> greater than 1 (products favoured).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>G</i> = <i>H</i> − <i>T</i><i>S</i></span><span class="eq">At constant <i>T</i>: Δ<i>G</i> = Δ<i>H</i> − <i>T</i>Δ<i>S</i></span><span class="eq">At constant <i>T</i>, <i>p</i> (reaction): Δ<sub>r</sub><i>G</i>&lt;0 forward; Δ<sub>r</sub><i>G</i>=0 equilibrium; Δ<sub>r</sub><i>G</i>&gt;0 reverse favoured</span><span class="eq">Δ<sub>r</sub><i>G</i> = Δ<sub>r</sub><i>G</i><sup>°</sup> + <i>R</i><i>T</i> ln <i>Q</i></span><span class="eq">At equilibrium: Δ<sub>r</sub><i>G</i><sup>°</sup> = −<i>R</i><i>T</i> ln <i>K</i> = −2.303 <i>R</i><i>T</i> log <i>K</i></span><span class="eq">Δ<sub>r</sub><i>G</i><sup>°</sup> = Δ<sub>r</sub><i>H</i><sup>°</sup> − <i>T</i>Δ<sub>r</sub><i>S</i><sup>°</sup></span><span class="eq">Threshold (when Δ<i>H</i> and Δ<i>S</i> have same sign): <i>T</i><sub>eq</sub> = <span class='frac'><span>Δ<i>H</i></span><span>Δ<i>S</i></span></span> (at Δ<i>G</i>=0)</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

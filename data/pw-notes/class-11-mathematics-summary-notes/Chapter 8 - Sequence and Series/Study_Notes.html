@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-08 : Sequence and Series</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929c8d94c8ed79d2414e37/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929c8d94c8ed79d2414e37/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-08 : Sequence and Series</h1>
+
+<h2>8.1 Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="2b71794c95b70064a39f3b5c"><b>Sequence (idea):</b> An ordered list of objects/numbers with a clear 1st term, 2nd term, 3rd term, …</paragraph>
+<ul>
+<li>Real-life examples: population at different times; money deposited over years; depreciated values of a commodity.</li>
+</ul>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e4d01ea544ab3b440085ec42"><b>Progressions:</b> Sequences that follow a fixed pattern are called <b>progressions</b>.</paragraph>
+<ul>
+<li>This chapter builds on <b>Arithmetic Progression (A.P.)</b> (done earlier) and also covers: arithmetic mean, geometric mean, relation between A.M. and G.M., and special sums (consecutive natural numbers, squares, cubes).</li>
+</ul>
+</div>
+
+<h2>8.2 Sequences</h2>
+
+<h3>Meaning of a sequence; terms; nth term</h3>
+<paragraph id="583252889ef3fb1aaf84aeba"><b>Example (ancestors):</b> If generation gap = 30 years, then over 300 years:</paragraph>
+<ul>
+<li>Total generations = \(\dfrac{300}{30} = 10\).</li>
+<li>Ancestors in 1st, 2nd, 3rd, …, 10th generations: 2, 4, 8, 16, 32, …, 1024.</li>
+<li>This ordered list forms a <b>sequence</b>.</li>
+</ul>
+
+<paragraph id="dfb9da8178d0ff69e9bed4ec"><b>Example (successive quotients in division):</b> Dividing 10 by 3 step-by-step gives successive quotients:</paragraph>
+<ul>
+<li>3, 3.3, 3.33, 3.333, … (goes on forever) → also a sequence.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="84308cc71508af11e72e5def"><b>Terms of a sequence:</b> The numbers in the sequence are called its <b>terms</b>.</paragraph>
+<paragraph id="dc577b69d8bc3bb0ade34009">We write them as <b>a</b><sub>1</sub>, <b>a</b><sub>2</sub>, <b>a</b><sub>3</sub>, …, <b>a</b><sub>n</sub>, … where the subscript = position.</paragraph>
+<paragraph id="a982f77ca4612f0145b6cdde"><b>nth term / general term:</b> The term in the nth position is the <b>nth term</b>, written <b>a</b><sub>n</sub>. (Also called the <b>general term</b>.)</paragraph>
+</div>
+
+<ul>
+<li>Ancestors sequence: a<sub>1</sub>=2, a<sub>2</sub>=4, a<sub>3</sub>=8, …, a<sub>10</sub>=1024.</li>
+<li>Successive quotients: a<sub>1</sub>=3, a<sub>2</sub>=3.3, a<sub>3</sub>=3.33, …, a<sub>6</sub>=3.33333, etc.</li>
+</ul>
+
+<h3>Finite and infinite sequences</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Finite sequence:</b> Has a fixed (limited) number of terms. Example: ancestors sequence has 10 terms → finite.</li>
+<li><b>Infinite sequence:</b> Does not end. Example: 3, 3.3, 3.33, 3.333, … → infinite.</li>
+</ul>
+</div>
+
+<h3>Describing sequences by formulas and rules</h3>
+<paragraph id="8398888ace97b20f5d2ffe1c">Often, we can generate terms using an algebraic formula.</paragraph>
+
+<paragraph id="fb89f5e0fce76519fe28a6d9"><b>Even natural numbers:</b> 2, 4, 6, 8, …</paragraph>
+<ul>
+<li>a<sub>1</sub>=2=2×1</li>
+<li>a<sub>2</sub>=4=2×2</li>
+<li>a<sub>3</sub>=6=2×3</li>
+<li>a<sub>4</sub>=8=2×4</li>
+<li>… a<sub>23</sub>=46=2×23, a<sub>24</sub>=48=2×24, …</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5d98a2b241444cbc7e93f510"><b>Even numbers (nth term):</b> a<sub>n</sub> = 2n</paragraph>
+<ul>
+<li>a<sub>n</sub> = nth term</li>
+<li>n = natural number (position)</li>
+</ul>
+</div>
+
+<paragraph id="7a308acabb218dda620c4721"><b>Odd natural numbers:</b> 1, 3, 5, …</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="dde83206801c2c26e4d1fad9"><b>Odd numbers (nth term):</b> a<sub>n</sub> = 2n − 1</paragraph>
+<ul>
+<li>a<sub>n</sub> = nth term</li>
+<li>n = natural number</li>
+</ul>
+</div>
+
+<h3>Recurrence relations: Fibonacci sequence</h3>
+<paragraph id="d689fe140b681abba3d1910f">Some sequences aren’t best described by a direct formula; instead we use a recurrence rule.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="9c29b13dd0ea363a32dd56ad"><b>Fibonacci sequence:</b> Given by starting terms + a recurrence relation:</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d7cabf0219cdf583500fd055"><b>Fibonacci recurrence:</b></paragraph>
+<paragraph id="8fad3ca5138a64d6dd238332">a<sub>1</sub> = a<sub>2</sub> = 1</paragraph>
+<paragraph id="e9bae571778c51af04e74bae">a<sub>3</sub> = a<sub>1</sub> + a<sub>2</sub></paragraph>
+<paragraph id="812b6532e88ce07399f2c377">a<sub>n</sub> = a<sub>n−2</sub> + a<sub>n−1</sub>, for n &gt; 2</paragraph>
+<ul>
+<li>a<sub>n</sub> = nth term</li>
+<li>n &gt; 2 → rule applies from the 3rd term onwards</li>
+</ul>
+</div>
+
+<h3>When no nth-term formula exists; sequences as functions</h3>
+<paragraph id="eeeb20471fa758d0f14e636e"><b>Prime numbers sequence:</b> 2, 3, 5, 7, … has no known nth-term formula (at this level); we may describe it in words.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="d69bea714eb4724d36c1a663">Not every sequence has a neat explicit algebraic formula. But there must be a <b>rule/scheme</b> to generate a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, … in order (explicit formula, recurrence relation, or verbal rule).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="452a9a57b8ed698ad21a06de"><b>Sequence as a function:</b> Think of a sequence as a function with domain = natural numbers (or part of them).</paragraph>
+<ul>
+<li>Sometimes write <b>a(n)</b> instead of <b>a</b><sub>n</sub>.</li>
+</ul>
+</div>
+
+<h2>8.3 Series</h2>
+
+<h3>Definition of a series and sigma notation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d39334f56905e0836ba760b7">If a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, …, a<sub>n</sub>, … is a sequence, then</paragraph>
+<paragraph id="b80bfe07864cde5797b36d74">a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + … + a<sub>n</sub> + …</paragraph>
+<paragraph id="7aa8825c52c22606fa4b0897">is the <b>series associated</b> with that sequence.</paragraph>
+<ul>
+<li>Series is <b>finite</b> if the sequence is finite; <b>infinite</b> if the sequence is infinite.</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c0cc15c18fa88806d2abfec4"><b>Sigma notation (short summation):</b></paragraph>
+<paragraph id="3fe04b48b281b93fbec178fe">a<sub>1</sub> + a<sub>2</sub> + … + a<sub>n</sub> = ∑<sub>k=1</sub><sup>n</sup> a<sub>k</sub></paragraph>
+<ul>
+<li>∑ = sigma (summation sign)</li>
+<li>k = index of summation</li>
+<li>1 = starting value of k</li>
+<li>n = final value of k</li>
+<li>a<sub>k</sub> = kth term being added</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="1be43b6d049a07920ef6d36c"><b>Remark (exam wording):</b> “The series” means the <b>written sum</b> (the expression), not the final total.</paragraph>
+<ul>
+<li>Example: 1 + 3 + 5 + 7 is a finite series with four terms.</li>
+<li><b>Sum of the series</b> = after adding: 1 + 3 + 5 + 7 = 16.</li>
+</ul>
+</div>
+
+<h3>Example 1: Finding initial terms from a formula</h3>
+<paragraph id="5dd97423b294f9f03207d2f4"><b>Question:</b> Write the first three terms of each sequence:</paragraph>
+<ul>
+<li>(i) a<sub>n</sub> = 2n + 5</li>
+<li>(ii) \(a_n = \dfrac{n-3}{4}\)</li>
+</ul>
+
+<paragraph id="a18f20b75aebfa88a6422496"><b>Solution (i):</b> Put n = 1, 2, 3.</paragraph>
+<ul>
+<li>a<sub>1</sub> = 2(1) + 5 = 7</li>
+<li>a<sub>2</sub> = 2(2) + 5 = 9</li>
+<li>a<sub>3</sub> = 2(3) + 5 = 11</li>
+</ul>
+<paragraph id="f7328b295d715b93b68bfca2">First three terms: 7, 9, 11.</paragraph>
+
+<paragraph id="01f745cc553286670ca72e34"><b>Solution (ii):</b> \(a_n = \dfrac{n-3}{4}\). Put n = 1, 2, 3.</paragraph>
+<ul>
+<li>\(a_1 = \dfrac{1-3}{4} = \dfrac{-2}{4} = -\dfrac{1}{2}\)</li>
+<li>\(a_2 = \dfrac{2-3}{4} = -\dfrac{1}{4}\)</li>
+<li>\(a_3 = \dfrac{3-3}{4} = 0\)</li>
+</ul>
+<paragraph id="18dceec2c77d5b0c5c62ecb5">First three terms: \(-\dfrac{1}{2}, -\dfrac{1}{4}, 0\).</paragraph>
+
+<div class="remember-box">
+<paragraph id="ae313b7484d098fbb8b52fe6"><b>Tip:</b> For “first few terms”, substitute n = 1, 2, 3, … carefully, and simplify signs/fractions fully.</paragraph>
+</div>
+
+<h3>Example 2: Finding a specific term</h3>
+<paragraph id="841bf2796b6a386c45c12735"><b>Question:</b> Find the 20th term when a<sub>n</sub> = (n − 1)(2 − n)(3 + n).</paragraph>
+<paragraph id="1f86083da24cd61ae3bbfb4b"><b>Solution:</b> Put n = 20.</paragraph>
+<ul>
+<li>a<sub>20</sub> = (20 − 1)(2 − 20)(3 + 20)</li>
+<li>= 19 × (−18) × 23</li>
+<li>= −7866</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="88e79a88cd0a9ea58b9057ac"><b>Common mistake:</b> Dropping the negative sign from (2 − n). Evaluate each bracket first, then multiply.</paragraph>
+</div>
+
+<h3>Example 3: Sequence given by recurrence; writing the series</h3>
+<paragraph id="eba88278ccfb8e31d3fde357"><b>Question:</b> a<sub>1</sub> = 1, and a<sub>n</sub> = a<sub>n−1</sub> + 2 for n ≥ 2. Find first five terms and write the corresponding series.</paragraph>
+<paragraph id="0d8ad7275983b93cb20dfa70"><b>Solution:</b> Build term-by-term.</paragraph>
+<ul>
+<li>a<sub>1</sub> = 1</li>
+<li>a<sub>2</sub> = a<sub>1</sub> + 2 = 1 + 2 = 3</li>
+<li>a<sub>3</sub> = a<sub>2</sub> + 2 = 3 + 2 = 5</li>
+<li>a<sub>4</sub> = a<sub>3</sub> + 2 = 5 + 2 = 7</li>
+<li>a<sub>5</sub> = a<sub>4</sub> + 2 = 7 + 2 = 9</li>
+</ul>
+<paragraph id="0940c02c4290e790629d056f">First five terms: 1, 3, 5, 7, 9.</paragraph>
+<paragraph id="6d2c4a4ba9f68291c6d896bc"><b>Corresponding series:</b> 1 + 3 + 5 + 7 + 9 + …</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b7a8eb224808079c64fa0055">If a sequence is recursive, you must find terms in order: a<sub>1</sub> → a<sub>2</sub> → a<sub>3</sub> → …</paragraph>
+</div>
+
+<h2>8.4 Geometric Progression (G.P.)</h2>
+
+<h3>Recognising constant ratio</h3>
+<paragraph id="bba889ef1e3571944634b353">Look at these sequences:</paragraph>
+<ul>
+  <li>(i) 2, 4, 8, 16, …</li>
+  <li>(ii) \(-1, \dfrac{1}{3}, -\dfrac{1}{9}, \dfrac{1}{27}, -\dfrac{1}{81}, \dfrac{1}{243}, \ldots\)</li>
+  <li>(iii) 0.1, 0.001, 0.00001, …</li>
+</ul>
+
+<paragraph id="b186ef6521ba6be1b9620729"><b>How terms move:</b> compare each term with the one just before it.</paragraph>
+<ul>
+  <li>In (i): \(\dfrac{a_2}{a_1} = 2, \dfrac{a_3}{a_2} = 2, \dfrac{a_4}{a_3} = 2, \ldots\) ⇒ constant ratio = 2.</li>
+  <li>In (ii): \(\dfrac{a_2}{a_1} = -\dfrac{1}{3}, \dfrac{a_3}{a_2} = -\dfrac{1}{3}, \dfrac{a_4}{a_3} = -\dfrac{1}{3}, \ldots\) ⇒ constant ratio = \(-\dfrac{1}{3}\).</li>
+  <li>In (iii): each term = (previous term) × 0.01 ⇒ constant ratio = 0.01.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="272df962a8b0356875ea85fb"><b>Geometric progression (G.P.) / geometric sequence:</b> a sequence a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, … is a G.P. when each term is non-zero and the ratio (next ÷ previous) stays constant.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="98ad9b409eaffe00e18c5b63"><b>Common ratio definition:</b> \(\dfrac{a_{k+1}}{a_k} = r\) (constant), for k ≥ 1</paragraph>
+  <ul>
+    <li>a<sub>k</sub> = kth term</li>
+    <li>a<sub>k+1</sub> = next term</li>
+    <li>r = common ratio (same throughout)</li>
+    <li>k ≥ 1 = start checking from 1st → 2nd onward</li>
+  </ul>
+</div>
+
+<h3>Standard form of a G.P.</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="525e143bdc03405e00c1f6e4">If a<sub>1</sub> = a, then the G.P. looks like:</paragraph>
+  <paragraph id="3f93190dbc1e71b85a4fb864">a, ar, ar<sup>2</sup>, ar<sup>3</sup>, …</paragraph>
+  <ul>
+    <li>a = first term</li>
+    <li>r = common ratio</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="ea2123fa986b7017ba8e635d">Common ratios for the examples:</paragraph>
+  <ul>
+    <li>(i) r = 2</li>
+    <li>(ii) \(r = -\dfrac{1}{3}\)</li>
+    <li>(iii) r = 0.01</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="0241ae67e2cd0c5cd2a740dc"><b>Exam caution:</b> G.P. definition needs <b>every term non-zero</b>, so \(\dfrac{a_{k+1}}{a_k}\) is always defined.</paragraph>
+</div>
+
+<h2>Notations for Geometric Progression (G.P.) Formulae</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="a4a419aa0061566074ab2020">Standard symbols you’ll see in G.P. formulae:</paragraph>
+  <ul>
+    <li><paragraph id="abaf0edb823e84bd66cbe5ee"><b>a</b> = first term</paragraph></li>
+    <li><paragraph id="28155f7871b387afe8953d6a"><b>r</b> = common ratio</paragraph></li>
+    <li><paragraph id="43562e91ee96d1d85ff51b1a"><b>l</b> = last term</paragraph></li>
+    <li><paragraph id="fc24b9b1c1c71420d618b7e1"><b>n</b> = number of terms</paragraph></li>
+    <li><paragraph id="b1893102c65ac0fd43bb8b79"><b>S<sub>n</sub></b> = sum of first <b>n</b> terms</paragraph></li>
+  </ul>
+</div>
+
+<h2>8.4.1 General Term of a G.P.</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="e27ba9e16f1567c6419aeea8">A sequence is a <b>G.P.</b> if every term after the first is found by multiplying the previous term by a fixed non-zero number <b>r</b> (the common ratio).</paragraph>
+</div>
+
+<paragraph id="2a384ef4470f1da46e474bd2">For a G.P. with first non-zero term <b>a</b> and common ratio <b>r</b>:</paragraph>
+<ul>
+  <li><paragraph id="1f5e00efed2f5441e5e40754">2nd term: a<sub>2</sub> = ar</paragraph></li>
+  <li><paragraph id="f8de167026742519e7915ea0">3rd term: a<sub>3</sub> = a<sub>2</sub>r = ar<sup>2</sup></paragraph></li>
+  <li><paragraph id="4a05ec869aab95974b7dfa1f">4th term: a<sub>4</sub> = ar<sup>3</sup></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="dfbb347309e122bd4c63fcc7"><b>nth term of a G.P.:</b></paragraph>
+  <paragraph id="eedeaf13f08714ce88dea224">a<sub>n</sub> = ar<sup>n−1</sup></paragraph>
+  <ul>
+    <li><paragraph id="48e5d67ca95798d238876456">a<sub>n</sub> = nth term</paragraph></li>
+    <li><paragraph id="e4d2e8272adbb96149d7a430">a = first term</paragraph></li>
+    <li><paragraph id="a15f547f35594301f98c7e4e">r = common ratio</paragraph></li>
+    <li><paragraph id="2d868ea0ee62c62aabddc3b7">n = term number (positive integer)</paragraph></li>
+  </ul>
+</div>
+
+<paragraph id="c3abf402dc5981d8eac94509">So a G.P. can be written as:</paragraph>
+<ul>
+  <li><paragraph id="2f4281bafede2d11b162622a"><b>Finite</b> (n terms): a, ar, ar<sup>2</sup>, ar<sup>3</sup>, …, ar<sup>n−1</sup></paragraph></li>
+  <li><paragraph id="e10b76a05b5158767b4bb8c5"><b>Infinite</b>: a, ar, ar<sup>2</sup>, ar<sup>3</sup>, … (goes on forever)</paragraph></li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="721e0cdb789a84341a258413"><b>Geometric series:</b></paragraph>
+  <ul>
+    <li><paragraph id="b0d3595c4180a116a7f71ca1"><b>Finite geometric series</b>: a + ar + ar<sup>2</sup> + … + ar<sup>n−1</sup></paragraph></li>
+    <li><paragraph id="4ae1d3195bdfef7cab29656c"><b>Infinite geometric series</b>: a + ar + ar<sup>2</sup> + … (no last term)</paragraph></li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="c3bf0322b6eed7e26e5ab06f">Quick pattern for terms: 1st = ar<sup>0</sup>, 2nd = ar<sup>1</sup>, …, nth = ar<sup>n−1</sup>. So 16th term = ar<sup>15</sup>.</paragraph>
+</div>
+
+<h3>Example 4: 10th and nth terms</h3>
+<paragraph id="c65780fdbd2c7953acfe3656"><b>G.P.</b> 5, 25, 125, … so a = 5, r = 5.</paragraph>
+<ul>
+  <li><paragraph id="70ec6e101b3c33f6e3942323">a<sub>10</sub> = 5·5<sup>9</sup> = 5<sup>10</sup></paragraph></li>
+  <li><paragraph id="b7a54316535e475dca9ace89">a<sub>n</sub> = 5·5<sup>n−1</sup> = 5<sup>n</sup></paragraph></li>
+</ul>
+
+<h3>Example 5: Identify which term equals a given value</h3>
+<paragraph id="ffc654fe32e37f37a32e6988"><b>G.P.</b> 2, 8, 32, … so a = 2, r = 4. Let 131072 be the nth term.</paragraph>
+<paragraph id="b3b8dbc93e5c8a5b1e032a0b">Use a<sub>n</sub> = ar<sup>n−1</sup>:</paragraph>
+<ul>
+  <li><paragraph id="f76c7e3bba4bbc542241f879">131072 = 2·4<sup>n−1</sup> ⟹ 65536 = 4<sup>n−1</sup></paragraph></li>
+  <li><paragraph id="e2f5e3de325b376ac76f367b">Since 65536 = 4<sup>8</sup>, n − 1 = 8 ⟹ n = 9</paragraph></li>
+</ul>
+<paragraph id="2db9ce65c3953bb7e7050407">So 131072 is the <b>9th</b> term.</paragraph>
+
+<h3>Example 6: Find r and a from two given terms</h3>
+<paragraph id="d2637badf657064745fe70c3">Given: 3rd term = 24 and 6th term = 192.</paragraph>
+<paragraph id="d1f8e2302df17b6027b08347">Using a<sub>n</sub> = ar<sup>n−1</sup>:</paragraph>
+<ul>
+  <li><paragraph id="c1a0e1ae47d15f09d56de745">a<sub>3</sub> = ar<sup>2</sup> = 24 … (1)</paragraph></li>
+  <li><paragraph id="7ed17c4efd4242dcb60372b6">a<sub>6</sub> = ar<sup>5</sup> = 192 … (2)</paragraph></li>
+</ul>
+<paragraph id="181b3ab0d093be33ed9cd78a">Divide (2) by (1): \(r^3 = \dfrac{192}{24} = 8 \Rightarrow r = 2\).</paragraph>
+<paragraph id="d701a166c4979b53f4096af1">Sub into (1): a·2<sup>2</sup> = 24 ⟹ a = 6.</paragraph>
+<paragraph id="e05c09432edf2ee15f3e02e5">10th term: a<sub>10</sub> = ar<sup>9</sup> = 6·2<sup>9</sup> = 3072.</paragraph>
+
+<div class="remember-box">
+  <paragraph id="67a140099f5f20b7626b3f0c">Common exam slip: when dividing terms, subtract powers properly: ar<sup>5</sup> ÷ ar<sup>2</sup> = r<sup>3</sup> (NOT r<sup>7</sup> or r<sup>2</sup>).</paragraph>
+</div>
+
+<h2>8.4.2 Sum to n Terms of a G.P.</h2>
+<paragraph id="e0f2604885b97f43da020e4f">Let first term = <b>a</b>, common ratio = <b>r</b>. Sum of first <b>n</b> terms:</paragraph>
+<paragraph id="d24a42e05567cfef3beda4e5">S<sub>n</sub> = a + ar + ar<sup>2</sup> + … + ar<sup>n−1</sup>  … (1)</paragraph>
+
+<h3>Case 1: r = 1</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="18652ac9911d668d63fe513c">If r = 1, every term is a, so:</paragraph>
+<paragraph id="770d95f284622476422193bc">S<sub>n</sub> = na</paragraph>
+<ul>
+<li><paragraph id="dd97c8ecb0fc24ffb51e4986">S<sub>n</sub> = sum of first n terms</paragraph></li>
+<li><paragraph id="c4b4c704a4e9c0ec74012e29">n = number of terms</paragraph></li>
+<li><paragraph id="58964897f6956580dc43b9aa">a = first term</paragraph></li>
+</ul>
+</div>
+
+<h3>Case 2: r ≠ 1</h3>
+<paragraph id="a6af02ee300d10e17ab2d008">Multiply (1) by r:</paragraph>
+<paragraph id="6a94245a9b25e977e8925ee7">rS<sub>n</sub> = ar + ar<sup>2</sup> + ar<sup>3</sup> + … + ar<sup>n</sup>  … (2)</paragraph>
+<paragraph id="243cdea237ede4e1a7f82ae5">Subtract (2) from (1):</paragraph>
+<paragraph id="f51e6029d04765afb166c19b">(1 − r)S<sub>n</sub> = a − ar<sup>n</sup> = a(1 − r<sup>n</sup>)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="710eeea9a48d48c43752faa4"><b>Sum of first n terms of a G.P. (r ≠ 1)</b>:</paragraph>
+<paragraph id="c48cef93331129f2ee7f011f">\(S_n = \dfrac{a(1 - r^n)}{1 - r}\)</paragraph>
+<ul>
+<li><paragraph id="ccca23006154825c5570bb92">S<sub>n</sub> = sum of first n terms</paragraph></li>
+<li><paragraph id="36795bbb59cb963de17e4fa2">a = first term</paragraph></li>
+<li><paragraph id="05d007fd45a02faa9be3d2b6">r = common ratio (r ≠ 1)</paragraph></li>
+<li><paragraph id="ab6303737cb978810eb45bf9">n = number of terms</paragraph></li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="18df7ffdd084826c8ea27312">Equivalent form: \(S_n = \dfrac{a(r^n - 1)}{r - 1}\). Same answer — pick the one that avoids sign slips.</paragraph>
+</div>
+
+<h3>Example 7: Sum to n terms and sum of first 5 terms</h3>
+<paragraph id="b3cdea9c8c2e4ace80fb3eeb">G.P.: \(1 + \dfrac{2}{3} + \dfrac{4}{9} + \ldots\)</paragraph>
+<ul>
+<li><paragraph id="e168fde598dd8bfc24438942">a = 1</paragraph></li>
+<li><paragraph id="73027c169482cd1157fa8ebb">\(r = \dfrac{2}{3}\)</paragraph></li>
+</ul>
+<paragraph id="99f5ffbc865fd396569d5211">Use \(S_n = \dfrac{a(1 - r^n)}{1 - r}\):</paragraph>
+<paragraph id="1354df93e6859a48a0eef509">\(S_n = \dfrac{1 - (2/3)^n}{1 - 2/3} = 3\left[1 - \left(\dfrac{2}{3}\right)^n\right]\)</paragraph>
+<paragraph id="7d0104f2a6d38e075c5a8bf7">So:</paragraph>
+<paragraph id="55748bf7ba78ac16ef03eae3">\(S_n = 3 - 3\left(\dfrac{2}{3}\right)^n\)</paragraph>
+<paragraph id="6bb6a99f060a80b8b0233c16">For n = 5:</paragraph>
+<paragraph id="26cef36152abd52e83a1ed2f">\(S_5 = 3\left[1 - \left(\dfrac{2}{3}\right)^5\right] = 3\left[1 - \dfrac{32}{243}\right] = 3\cdot\dfrac{211}{243} = \dfrac{211}{81}\)</paragraph>
+
+<h3>Example 8: Find number of terms from a given sum</h3>
+<paragraph id="5b1661e27db26a8975f8c94e">G.P.: \(3, \dfrac{3}{2}, \dfrac{3}{4}, \ldots\) so \(a = 3, r = \dfrac{1}{2}\).</paragraph>
+<paragraph id="e4af05751bb55fd3e618f01c">Given \(S_n = \dfrac{3069}{512}\).</paragraph>
+<paragraph id="7f701542b7ba06de4bf7f92d">Use \(S_n = \dfrac{a(1 - r^n)}{1 - r}\):</paragraph>
+<paragraph id="bfa165390578519ff80da2d2">\(S_n = \dfrac{3(1 - (1/2)^n)}{1 - 1/2} = 6(1 - (1/2)^n)\)</paragraph>
+<paragraph id="bfe13954ededd48497325c72">Set equal to \(\dfrac{3069}{512}\):</paragraph>
+<ul>
+<li><paragraph id="997a9174aae41063f7afad74">\(6(1 - (1/2)^n) = \dfrac{3069}{512}\)</paragraph></li>
+<li><paragraph id="0b08e2e20871fb7f3375881f">\(1 - (1/2)^n = \dfrac{3069}{3072}\)</paragraph></li>
+<li><paragraph id="6b88fd96913bc8ad6f7526e4">\((1/2)^n = 1 - \dfrac{3069}{3072} = \dfrac{3}{3072} = \dfrac{1}{1024}\)</paragraph></li>
+<li><paragraph id="541dcd1302a3c705f3359c4c">2<sup>n</sup> = 1024 = 2<sup>10</sup> ⟹ n = 10</paragraph></li>
+</ul>
+
+<h3>Example 9: Use sum and product of first three terms to find r and the terms</h3>
+<paragraph id="e9aab141165b6590cf944b85">Let first three terms be: \(\dfrac{a}{r}, a, ar\).</paragraph>
+<paragraph id="33c459c36d4106cb7180953c">Given:</paragraph>
+<ul>
+<li><paragraph id="6a2638400842eda28327ef7d">\(\dfrac{a}{r} + a + ar = \dfrac{13}{12}\)  … (1)</paragraph></li>
+<li><paragraph id="e43de63facd40d94f751659d">\(\dfrac{a}{r}\cdot a\cdot(ar) = -1\)  … (2)</paragraph></li>
+</ul>
+<paragraph id="9e29f0b6b06f05d68718151d">From (2): a<sup>3</sup> = −1 ⟹ a = −1 (real root only).</paragraph>
+<paragraph id="70ca7629e44f90e1101c4d84">Sub into (1):</paragraph>
+<paragraph id="95359d91048007fccc2b1a83">\(-\dfrac{1}{r} - 1 - r = \dfrac{13}{12}\)</paragraph>
+<paragraph id="1d8fa8859056dcc5b940104e">Multiply by 12r, simplify → quadratic:</paragraph>
+<paragraph id="216deaa0bcd6401eed89cd47">12r<sup>2</sup> + 25r + 12 = 0</paragraph>
+<paragraph id="5edb51ee45e6baf5a8508cfd">Solve: \(r = -\dfrac{3}{4}\) or \(r = -\dfrac{4}{3}\).</paragraph>
+<paragraph id="b25df7bf6cb7227d5d883790">So the terms:</paragraph>
+<ul>
+<li><paragraph id="c69551170f680d33d4046fd0">If \(r = -\dfrac{3}{4}\): \(\dfrac{a}{r} = \dfrac{-1}{-3/4} = \dfrac{4}{3}\), \(a = -1\), \(ar = (-1)(-3/4) = \dfrac{3}{4}\)</paragraph></li>
+<li><paragraph id="2f0a4e10820f3fbc4549ce0e">If \(r = -\dfrac{4}{3}\): \(\dfrac{a}{r} = \dfrac{-1}{-4/3} = \dfrac{3}{4}\), \(a = -1\), \(ar = (-1)(-4/3) = \dfrac{4}{3}\)</paragraph></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="d9c388bb2e427d24f48d2672">In \(\dfrac{a}{r}, a, (ar)\): product is \(\dfrac{a}{r}\cdot a\cdot(ar) = a^3\) (the r cancels!). Don’t wrongly keep an r factor.</paragraph>
+</div>
+
+<h3>Example 10: Sum of 7, 77, 777, … to n terms</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4429dd84002246ba60ff54af">This is <b>not</b> a G.P. directly — rewrite using powers of 10, then link to a G.P.</paragraph>
+</div>
+<paragraph id="0fba4134ff81490085eb4182">Let:</paragraph>
+<paragraph id="b6fcfa555bf0c8aab76f6754">S<sub>n</sub> = 7 + 77 + 777 + … (n terms)</paragraph>
+<paragraph id="88b6f372f6b3c6aab72efb7b">Rewrite terms: \(7 = 7\cdot\dfrac{9}{9}, 77 = 7\cdot\dfrac{99}{9}, 777 = 7\cdot\dfrac{999}{9}, \ldots\)</paragraph>
+<paragraph id="991e8b3f6e9e43d474a66ef4">So:</paragraph>
+<paragraph id="dc869c26ea0df8b3db7f4091">\(S_n = \dfrac{7[9 + 99 + 999 + \ldots \text{(n terms)}]}{9}\)</paragraph>
+<paragraph id="4c0b1a3f12604dce55fd2edb">And 9 = 10 − 1, 99 = 10<sup>2</sup> − 1, …, nth term = 10<sup>n</sup> − 1:</paragraph>
+<paragraph id="c05dece5fa8a60e8a2c7f93d">\(S_n = \dfrac{7}{9}\left[(10-1) + (10^2-1) + \ldots + (10^n-1)\right]\)</paragraph>
+<paragraph id="1552c906dc9ef417936ed8ec">\(= \dfrac{7}{9}\left[(10 + 10^2 + \ldots + 10^n) - (1 + 1 + \ldots + 1)\right]\)</paragraph>
+<paragraph id="261f61873b003f25b2b21e84">(1 + 1 + … + 1) has n terms ⇒ equals n.</paragraph>
+<paragraph id="7467be8a7bda0e0d72b488ed">(10 + 10<sup>2</sup> + … + 10<sup>n</sup>) is a G.P. with a = 10, r = 10, n terms:</paragraph>
+<paragraph id="3f70a49b34f4d6150468fbe9">Sum \(= \dfrac{10(10^n - 1)}{10 - 1} = \dfrac{10(10^n - 1)}{9}\)</paragraph>
+<paragraph id="b60ed5fda1b382dc94a9c29f">Therefore:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="042d4cffaae4323c3e14fa2c"><b>Sum of 7, 77, 777, … (n terms)</b>:</paragraph>
+<paragraph id="857cc6d7366c7473ea2f32aa">\(S_n = \dfrac{7}{9}\left[\dfrac{10(10^n - 1)}{9} - n\right] = \dfrac{7}{81}\left[10(10^n - 1) - 9n\right]\)</paragraph>
+<ul>
+<li><paragraph id="47e20962aecd42c27e921b98">S<sub>n</sub> = sum of first n terms of 7, 77, 777, …</paragraph></li>
+<li><paragraph id="fac546ce26204139b1873453">n = number of terms</paragraph></li>
+</ul>
+</div>
+
+<h3>Example 11: Ancestors over 10 generations</h3>
+<paragraph id="d7d3cf97a53333d163080986">Ancestors per generation: 2, 4, 8, … is a G.P.</paragraph>
+<ul>
+<li><paragraph id="9a22fd3b6736983ec04073e0">a = 2, r = 2, n = 10</paragraph></li>
+</ul>
+<paragraph id="8b593a31daffb56bcaf08d2f">Sum:</paragraph>
+<paragraph id="1c00fae2d21ba1249b5fe5ec">\(S_{10} = \dfrac{a(r^{10} - 1)}{r - 1} = 2(2^{10} - 1) = 2(1024 - 1) = 2046\)</paragraph>
+<paragraph id="5bfd6334aa737607f80b0138">So ancestors in the ten preceding generations = <b>2046</b>.</paragraph>
+
+<h2>8.4.3 Geometric Mean (G.M.)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="cf55f366fa186cd68b502bd5"><b>Geometric mean (G.M.)</b> of two positive numbers a and b:</paragraph>
+<paragraph id="d84bd327c921bd6917ba3cb6">G = √(ab)</paragraph>
+</div>
+
+<paragraph id="2842d6b40c474ef779b685a5">Example: G.M. of 2 and 8 = √(16) = 4, and 2, 4, 8 are consecutive terms of a G.P.</paragraph>
+
+<h3>Inserting n geometric means between two positive numbers</h3>
+<paragraph id="b612ad0618755e4efd811d77">Given positive a and b. Insert n numbers G<sub>1</sub>, G<sub>2</sub>, …, G<sub>n</sub> so that:</paragraph>
+<paragraph id="b98f178d000fa0394e040ce5">a, G<sub>1</sub>, G<sub>2</sub>, …, G<sub>n</sub>, b is a G.P.</paragraph>
+<paragraph id="07bbb0d817183a784fddd6dc">b is the (n+2)th term, so:</paragraph>
+<paragraph id="0766055b1128757d0215eacb">\(b = ar^{n+1} \Rightarrow r = (b/a)^{1/(n+1)}\)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4d14d01ec17db1d5ceca93c7"><b>Common ratio when inserting n G.M.s</b>:</paragraph>
+<paragraph id="70e1789843aa1b4611a6a2f4">\(r = (b/a)^{1/(n+1)}\)</paragraph>
+<ul>
+<li><paragraph id="c4a07e17b370c1b29ebdb282">a, b = given positive numbers (end terms)</paragraph></li>
+<li><paragraph id="b947bdb7ec7bba5090868c3c">n = number of G.M.s inserted</paragraph></li>
+<li><paragraph id="b94d21f6f47aa7d6dc607493">r = common ratio of the new G.P.</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="07e4d81cdb4689741a16a5ee">Inserted terms:</paragraph>
+<ul>
+<li><paragraph id="8ee9cfb7788d9140fb7977fd">\(G_1 = ar = a(b/a)^{1/(n+1)}\)</paragraph></li>
+<li><paragraph id="8aabd547b38dea3006863411">\(G_2 = ar^2 = a(b/a)^{2/(n+1)}\)</paragraph></li>
+<li><paragraph id="9954d49965c0ac9c42277ee6">…</paragraph></li>
+<li><paragraph id="ea1aa8fa9d0c0132b79ae859">\(G_n = ar^n = a(b/a)^{n/(n+1)}\)</paragraph></li>
+</ul>
+
+<h3>Example 12: Insert three numbers between 1 and 256 to form a G.P.</h3>
+<paragraph id="8ee567c11130cbbc5e00dac1">Need: 1, G<sub>1</sub>, G<sub>2</sub>, G<sub>3</sub>, 256 in G.P.</paragraph>
+<paragraph id="f04ffc8fafb3746712659b74">a = 1 and 256 is the 5th term, so:</paragraph>
+<paragraph id="9201acb0ffadd3e1b4a2eeab">256 = ar<sup>4</sup> = r<sup>4</sup> ⟹ r = ±4 (real roots only)</paragraph>
+<paragraph id="5b9513583c8d6fcc7860686d">If r = 4:</paragraph>
+<ul>
+<li><paragraph id="d7597fdf68319ee0bc8541d4">G<sub>1</sub> = ar = 4</paragraph></li>
+<li><paragraph id="d52fac86c483b4e9c5d889db">G<sub>2</sub> = ar<sup>2</sup> = 16</paragraph></li>
+<li><paragraph id="79b19106595b7232be4a8a2f">G<sub>3</sub> = ar<sup>3</sup> = 64</paragraph></li>
+</ul>
+<paragraph id="e5bfbf9ad2b191f9f851589c">If r = −4:</paragraph>
+<ul>
+<li><paragraph id="6d6bcd9c79a9ec74ec5f6829">G<sub>1</sub> = −4, G<sub>2</sub> = 16, G<sub>3</sub> = −64</paragraph></li>
+</ul>
+<paragraph id="a869c9414ba93c327728e977">So one valid insertion is <b>4, 16, 64</b> (also: −4, 16, −64).</paragraph>
+
+<div class="remember-box">
+<paragraph id="c95067ef442d8e8376e558d1">“Insert n numbers between a and b”: total terms = n+2, so b = ar<sup>n+1</sup>. Count terms carefully.</paragraph>
+</div>
+
+<h2>8.5 Relationship Between A.M. and G.M.</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="994ef747f53dc223cb5b3592">For two positive real numbers a and b:</paragraph>
+<ul>
+<li><paragraph id="f4b927bf4d04329d4b7300a2"><b>A.M.</b>: \(A = \dfrac{a+b}{2}\)</paragraph></li>
+<li><paragraph id="4275c77bf632cb649926bbda"><b>G.M.</b>: G = √(ab)</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="9512a92fdf7dd4e30ac10ea6">Consider:</paragraph>
+<paragraph id="55d31b77609466c88346368f">\(A - G = \dfrac{a+b}{2} - \sqrt{ab}\)</paragraph>
+<paragraph id="c082f5ce37fdd49f69e1d93e">\(= \dfrac{a + b - 2\sqrt{ab}}{2}\)</paragraph>
+<paragraph id="0a4603a21624d2259800a663">\(= \dfrac{(\sqrt{a} - \sqrt{b})^2}{2} \ge 0\)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="8372f2cd8c4e72712c983f2c"><b>A.M.–G.M. inequality</b> (positive reals): A ≥ G, with equality iff a = b.</paragraph>
+</div>
+
+<h3>Example 13: Given A.M. and G.M., find the numbers</h3>
+<paragraph id="895f1f3bf816bb3d2d22914f">Given A = 10 and G = 8 for positive a and b.</paragraph>
+<paragraph id="ee75a8d2b284c7c382fda607">So:</paragraph>
+<ul>
+<li><paragraph id="c3c3abf0726f180791e661fa">\(\dfrac{a+b}{2} = 10 \Rightarrow a + b = 20\)  … (3)</paragraph></li>
+<li><paragraph id="6cb563323f7532629d56c896">√(ab) = 8 ⟹ ab = 64  … (4)</paragraph></li>
+</ul>
+<paragraph id="6b945e9cefe2e89083427d3e">Use:</paragraph>
+<paragraph id="a214696a922569eef1eee49d">(a − b)<sup>2</sup> = (a + b)<sup>2</sup> − 4ab</paragraph>
+<paragraph id="252f5d6b0cd12842eec3de59">= 20<sup>2</sup> − 4·64 = 400 − 256 = 144</paragraph>
+<paragraph id="b40f83513311498dc427e9cd">So a − b = ±12  … (5)</paragraph>
+<paragraph id="91f7d3d33703d3fce0263f73">Solve with a + b = 20:</paragraph>
+<ul>
+<li><paragraph id="2b601279ceeccca3c1317103">If a − b = 12: a = 16, b = 4</paragraph></li>
+<li><paragraph id="e7d6835b469de9abda9fa562">If a − b = −12: a = 4, b = 16</paragraph></li>
+</ul>
+<paragraph id="36cbc976868ed4bcf916b06e">Thus the numbers are <b>4 and 16</b> (either order).</paragraph>
+
+<h2>Miscellaneous Examples</h2>
+
+<h3>Example 14: Condition implying four numbers are in G.P.</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="46593dab2c8687f63b50bfa2">If an expression is a <b>sum of squares</b> and it’s given ≤ 0, then it must be <b>exactly 0</b> ⇒ each square term = 0.</paragraph>
+</div>
+
+<paragraph id="5c439fca428c160daaf6f2b5"><b>Given:</b> a, b, c, d and p are different real numbers such that</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b2c04c714fc28cccebadfbaa">(a<sup>2</sup> + b<sup>2</sup> + c<sup>2</sup>)p<sup>2</sup> − 2(ab + bc + cd)p + (b<sup>2</sup> + c<sup>2</sup> + d<sup>2</sup>) ≤ 0</paragraph>
+<paragraph id="10478ab65f87ff2c13233508">a, b, c, d, p: real numbers (given different)</paragraph>
+</div>
+
+<paragraph id="d987cd02850a39a83a04bcc1"><b>Group the LHS:</b></paragraph>
+<paragraph id="0ecdb09e8ad36845c4fe8170">(a<sup>2</sup>p<sup>2</sup> − 2abp + b<sup>2</sup>) + (b<sup>2</sup>p<sup>2</sup> − 2bcp + c<sup>2</sup>) + (c<sup>2</sup>p<sup>2</sup> − 2cdp + d<sup>2</sup>)</paragraph>
+
+<paragraph id="4b123e31df69e143e9fd2017"><b>Spot perfect squares:</b></paragraph>
+<paragraph id="9842bda1c222ea441970d8cc">(ap − b)<sup>2</sup> + (bp − c)<sup>2</sup> + (cp − d)<sup>2</sup> ≥ 0</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6edb035f65b7d69cf60347f2">Each square ≥ 0 ⇒ sum ≥ 0. But we’re given the same thing ≤ 0 ⇒ the only way is <b>= 0</b>.</paragraph>
+</div>
+
+<paragraph id="28c91d28494984f2974eb256">So,</paragraph>
+<paragraph id="2b77a939b0928929c9258c62">(ap − b)<sup>2</sup> + (bp − c)<sup>2</sup> + (cp − d)<sup>2</sup> = 0</paragraph>
+
+<paragraph id="50a148aa7779fb086d0e6327">Sum of squares = 0 ⇒ each square = 0:</paragraph>
+<ul>
+<li>ap − b = 0 ⇒ b = ap</li>
+<li>bp − c = 0 ⇒ c = bp</li>
+<li>cp − d = 0 ⇒ d = cp</li>
+</ul>
+
+<paragraph id="587e91c65f91ab775908607c">Hence,</paragraph>
+<paragraph id="9fd261509ec3a9c8830ac28f">\(\dfrac{b}{a} = p, \dfrac{c}{b} = p, \dfrac{d}{c} = p\)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ad8108a897652e9af5670c29">Equal successive ratios ⇒ a, b, c, d are in <b>G.P.</b> (common ratio = p).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="825db3cff3063b9224af0b52"><b>Exam tip:</b> Main move = rewrite as <b>sum of squares</b>. Once you get “sum of squares ≤ 0” ⇒ instantly write “each square = 0”.</paragraph>
+</div>
+
+<h2>Summary (Sequences and Series)</h2>
+
+<h3>Sequence: meaning and types</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="83e7adf78c787cd85e8e59c6"><b>Sequence:</b> numbers written in a fixed order, following some rule.</paragraph>
+<paragraph id="b4d438bce84b7354b6219be0"><b>Functional view:</b> a sequence is a function with domain <b>N</b> or a finite starting set {1, 2, 3, …, k}.</paragraph>
+</div>
+
+<ul>
+<li><b>Finite sequence:</b> has finitely many terms.</li>
+<li><b>Infinite sequence:</b> goes on indefinitely (not finite).</li>
+</ul>
+
+<h3>Series: meaning and finite series</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f4c5f86602455e098baeebbc">If a sequence is a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, … then a<sub>1</sub> + a<sub>2</sub> + a<sub>3</sub> + … is a <b>series</b>.</paragraph>
+<paragraph id="5f70d82405adb5b8f9c42e22"><b>Finite series:</b> a series with a finite number of terms.</paragraph>
+</div>
+
+<h3>Geometric Progression (G.P.)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="4e236d6599587a792abe14de">A sequence is a <b>G.P.</b> if \(\dfrac{\text{term}}{\text{previous term}}\) is the <b>same constant</b> throughout.</paragraph>
+<paragraph id="1822df0352738c048df8f1bd">This constant is the <b>common ratio</b>.</paragraph>
+<paragraph id="698e10efb5f7cce847f2ac4d">Convention:</paragraph>
+<ul>
+<li>first term = a</li>
+<li>common ratio = r</li>
+</ul>
+</div>
+
+<h3>nth term of a G.P.</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="58d60e4cac55ec98dfe4f2f9">a<sub>n</sub> = ar<sup>n−1</sup></paragraph>
+<paragraph id="eb8da2ccd0a32c26a48165e7">a<sub>n</sub>: nth term of the G.P.</paragraph>
+<paragraph id="422c920293b322eac144b195">a: first term</paragraph>
+<paragraph id="a4c8672d82c5ad214914233f">r: common ratio</paragraph>
+<paragraph id="3b34e7024b2b0d4fe1044302">n: term number (natural number)</paragraph>
+</div>
+
+<h3>Sum of first n terms of a G.P.</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7ebe0057bcdaf5e76cd6618c">\(S_n = \dfrac{a(1-r^n)}{1-r}\), if r ≠ 1</paragraph>
+<paragraph id="da958aaa2606cc2c941ce98b">Equivalently, \(S_n = \dfrac{a(r^n-1)}{r-1}\), if r ≠ 1</paragraph>
+<paragraph id="7638b970ac3cdcb2d22ab302">S<sub>n</sub>: sum of first n terms</paragraph>
+<paragraph id="96c184f74982e7cb3fe77fce">a: first term</paragraph>
+<paragraph id="e51328fea913509131be5971">r: common ratio</paragraph>
+<paragraph id="9cac532bc58cbee9f615b5de">n: number of terms</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="659592c2cd4dcd5a53a5aa24"><b>Common mistake:</b> Using the G.P. sum formula when r = 1. (If r = 1, every term = a, so S<sub>n</sub> = na.)</paragraph>
+</div>
+
+<h3>Geometric Mean (G.M.)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="144c4c14a9f39945ab631a0d">The <b>geometric mean</b> of two positive numbers a and b is √(ab).</paragraph>
+<paragraph id="d4ee0031df25ae21326761bd">Also: if G = √(ab), then a, G, b are in G.P.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c148f0ebf0cc023b968252a5">G = √(ab)</paragraph>
+<paragraph id="d4d1da060b1d7b73736c384e">G: geometric mean between positive numbers a and b</paragraph>
+</div>
+
+<h2>Historical Note (Sequences and Series)</h2>
+
+<ul>
+<li>Evidence suggests <b>Babylonians</b> knew arithmetic + geometric sequences about <b>4000 years ago</b>.</li>
+<li>As per <b>Boethius (510)</b>, arithmetic + geometric sequences were known to early Greek writers.</li>
+<li>In India, <b>Aryabhatta (476)</b> first gave formulas for <b>sum of squares and cubes</b> of natural numbers in <b>Aryabhatiyam</b> (around <b>499</b>).</li>
+<li>Aryabhatta also gave a formula for the <b>sum to n terms of an arithmetic sequence starting with the pth term</b>.</li>
+<li><b>Brahmgupta (598)</b>, <b>Mahavira (850)</b>, and <b>Bhaskara (1114–1185)</b> also worked on sums of squares and cubes.</li>
+<li>The <b>Fibonacci sequence</b> (useful in applications) was discovered by <b>Leonardo Fibonacci (1170–1250)</b>.</li>
+<li>The <b>17th century</b> brought classification of series into specific forms.</li>
+<li>In <b>1671</b>, <b>James Gregory</b> used the term <b>infinite series</b> linked with infinite sequences.</li>
+<li>With rigorous development of <b>algebraic</b> + <b>set-theoretic</b> tools, the modern form of sequences and series became possible.</li>
+</ul></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

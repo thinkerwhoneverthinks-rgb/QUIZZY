@@ -2253,11 +2253,16 @@ body.tc-running { overflow-x: hidden; }
     }
 }
 
-/* KaTeX display formula margins */
-.katex-display {
+/* MathJax & KaTeX display formula margins */
+.katex, mjx-container {
+    color: inherit;
+    outline: none;
+}
+.katex-display, mjx-container[jax="CHTML"][display="true"] {
     overflow-x: auto !important;
     overflow-y: hidden !important;
     max-width: 100% !important;
-    margin: 0.45em 0 !important;
+    margin: 0.55em 0 !important;
+    padding: 0.25rem 0 !important;
     -webkit-overflow-scrolling: touch;
 }

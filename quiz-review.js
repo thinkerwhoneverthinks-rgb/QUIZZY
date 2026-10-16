@@ -223,7 +223,7 @@ function renderReview() {
             explanationHTML = `
                 <div class="explanation-box show" style="margin-top:1rem;">
                     <h4>💡 Explanation</h4>
-                    ${expText ? `<div class="explanation-text" style="line-height:1.7;margin-top:0.5rem;">${typeof safeHtml === 'function' ? safeHtml(expText) : escapeHtml(expText)}</div>` : ''}
+                    ${expText ? `<div class="explanation-text" style="line-height:1.7;margin-top:0.5rem;">${typeof renderSmartExplanationText === 'function' ? renderSmartExplanationText(q) : (typeof safeHtml === 'function' ? safeHtml(expText) : escapeHtml(expText))}</div>` : ''}
                     ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
                 </div>
             `;
@@ -241,7 +241,7 @@ function renderReview() {
                     </div>
                     <div class="review-status-badge ${status}">${statusText}</div>
                 </div>
-                ${qText ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(qText) : escapeHtml(qText)}</div>` : ''}
+                ${qText ? `<div class="question-text">${typeof renderSmartQuestionText === 'function' ? renderSmartQuestionText(q) : (typeof safeHtml === 'function' ? safeHtml(qText) : escapeHtml(qText))}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${imageHTML}
                 ${answerHTML}

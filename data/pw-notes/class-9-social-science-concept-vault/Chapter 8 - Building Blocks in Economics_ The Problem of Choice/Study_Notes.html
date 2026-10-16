@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>Chapter 8: Building Blocks in Economics​</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="chapter-wrap" id="main-content"><div class="container"><h1>Chapter 8: Building Blocks in Economics​</h1>
+
+<h2>The Problem of Choice: Building Blocks in Economics</h2>
+
+<h3>The Big Questions</h3>
+<ul>
+  <li><paragraph id="6a868d6c0bfa30c8a072b4f7">Economics = how people + society choose how to use <b>limited resources</b> to satisfy <b>needs</b> + <b>wants</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c0bfa30c8a072b4f8">Key Qs: <b>What</b> to produce, <b>How</b> to produce, <b>For whom</b> to produce.</paragraph></li>
+  <li><paragraph id="6a868d6c0bfa30c8a072b4f9">Different economic systems answer these differently (esp. the <b>“how”</b>).</paragraph></li>
+</ul>
+
+<h3>Economic Choices, Needs and Wants</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b4fa"><b>Economic choice</b>: choosing because resources (money, time, land, labour, etc.) are <b>limited</b> but human wants are <b>many</b>.</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a868d6c0bfa30c8a072b4fb"><b>Choices happen at every level</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b4fc"><b>Individual</b>: child chooses snacks now vs saving for shoes.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b4fd"><b>Institution (school)</b>: share 5 storybooks among 20 students vs buy more books.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b4fe"><b>Producer (farmer)</b>: pick crops based on soil, rainfall, market demand.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b4ff"><b>Enterprise</b>: decide on more labour vs more capital.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b500"><b>Government</b>: highways vs hospitals.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b501"><b>Needs</b>: essentials for living (food, water, shelter).</paragraph>
+  <paragraph id="6a868d6c0bfa30c8a072b502"><b>Wants</b>: desired goods/experiences (gadgets, vacations, luxury items).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><paragraph id="6a868d6c0bfa30c8a072b503"><b>Human wants are unlimited + keep changing</b> (e.g., bicycle → motorbike → car).</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b504">Wants grow, resources don’t ⇒ <b>people, firms, governments must choose</b>.</paragraph></li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b505"><b>Market</b>: physical or online place where goods + services are bought and sold.</paragraph>
+</div>
+
+<h3>Choices and Limited Resources</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b506"><b>Resources</b>: inputs used to produce goods + services.</paragraph>
+  <ul>
+    <li><paragraph id="6a868d6c0bfa30c8a072b507"><b>Natural resources</b>: from nature (water, coal).</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b508"><b>Human-made resources</b>: made by people (capital, technology).</paragraph></li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b509"><b>Factors of production</b>: land, labour, capital, technology.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><paragraph id="6a868d6c0bfa30c8a072b50a"><b>Resources are limited</b>, but usually have <b>alternative uses</b>.</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b50b">Household example: same money can buy <b>fruit</b> or <b>shoes</b>.</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b50c">Economy example: scarce resources must be allocated to best meet unlimited wants + raise quality of life.</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b50d">Input example: <b>steel</b> → medical equipment OR aircraft OR refrigerators.</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b50e"><b>Choosing one option = giving up another</b> (trade-off).</paragraph></li>
+  </ul>
+</div>
+
+<h3>Opportunity Cost</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b50f"><b>Opportunity cost</b>: value of the <b>next-best alternative</b> you give up when you choose.</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a868d6c0bfa30c8a072b510"><b>Farmer example (reasoning)</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b511">Land, water, labour = limited.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b512">If resources go to <b>more barley</b> instead of <b>wheat</b>, wheat output falls.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b513">The <b>wheat sacrificed</b> = opportunity cost of extra barley.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c0bfa30c8a072b514"><b>Exam tip</b>: Opportunity cost is <b>not</b> “everything you give up” — it’s the <b>next best</b> alternative foregone.</paragraph>
+</div>
+
+<h3>Production Possibility Curve (PPC)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b515"><b>Production Possibility Curve (PPC)</b>: shows combinations of goods possible using <b>all resources</b> — highlights the <b>trade-off</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b516"><b>Given combinations (Barley vs Wheat)</b>:</paragraph>
+  <ul>
+    <li><paragraph id="6a868d6c0bfa30c8a072b517">A: Barley 0 kg, Wheat 100 kg</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b518">B: Barley 25 kg, Wheat 90 kg</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b519">C: Barley 50 kg, Wheat 70 kg</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b51a">D: Barley 75 kg, Wheat 40 kg</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b51b">E: Barley 100 kg, Wheat 0 kg</paragraph></li>
+  </ul>
+</div>
+
+<ul>
+  <li><paragraph id="6a868d6c0bfa30c8a072b51c"><b>How to draw (must-know steps)</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b51d">Put <b>barley on x-axis</b>.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b51e">Put <b>wheat on y-axis</b>.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b51f">Plot points A–E from the data.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b520">Join A–E → <b>downward-sloping curve</b>.</paragraph></li>
+    </ul>
+  </li>
+
+  <li><paragraph id="6a868d6c0bfa30c8a072b521"><b>Interpretation</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b522">Move <b>A → E</b> = <b>more barley</b>, <b>less wheat</b>.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b523"><b>Wheat given up</b> = <b>opportunity cost of barley</b>.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b524"><b>Any point on PPC</b> = <b>max output</b> with <b>efficient use</b> (no wastage).</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b525"><b>Use of PPC</b>: helps firms + governments with <b>planning/decisions</b>.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c0bfa30c8a072b526"><b>Common mistake</b>: mixing axes. Here: <b>Barley = x-axis</b>, <b>Wheat = y-axis</b> (as stated).</paragraph>
+</div>
+
+<h2>What Does Economics Deal With?</h2>
+
+<h3>Meaning and Origin of “Economics”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b527"><b>Economics</b> comes from the Greek <b>oikonomia</b>:</paragraph>
+  <ul>
+    <li><paragraph id="6a868d6c0bfa30c8a072b528"><b>oikos</b> = household</paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b529"><b>nemein</b> = management</paragraph></li>
+  </ul>
+  <paragraph id="6a868d6c0bfa30c8a072b52a">So originally, economics = <b>household management</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b52b"><b>Core idea</b>: Families + nations must plan the <b>efficient use of limited resources</b> to meet <b>unlimited wants</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b52c"><b>Economics (as a study)</b>: how people make choices to <b>optimise limited resources</b> to satisfy needs + wants.</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a868d6c0bfa30c8a072b52d"><b>Why choices matter</b>: resources have <b>competing uses</b> → decisions by individuals, enterprises, and governments affect people’s + society’s <b>well-being</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c0bfa30c8a072b52e"><b>Economics studies interactions</b> between consumers, producers, governments, enterprises, and financial institutions.</paragraph></li>
+  <li>
+    <paragraph id="6a868d6c0bfa30c8a072b52f"><b>What economics explains</b> (examples):</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b530">work and wages</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b531">distribution of wealth and resources</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b532">market price determination</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b533">role of education and technology in investment</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b534">influence of government policy and trade on prices and employment</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b535"><b>Economy</b>: the system/condition of a country/region linked to <b>production, distribution, trade, consumption</b> of goods + services, and the <b>flow of money</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b536"><b>Economic entities</b>: participants in economic activity (e.g., consumers, producers, governments, enterprises, financial institutions).</paragraph>
+</div>
+
+<h3>Data, Analysis and Economic Decisions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b537"><b>Data</b>: facts + statistics collected for reference/analysis.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b538"><b>Sound economic decisions</b> depend on <b>data + analysis</b> (not guesswork).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b539"><b>Surveys</b>: a systematic way to collect + analyse data on economic conditions and population behaviour.</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a868d6c0bfa30c8a072b53a"><b>How different decision-makers use data</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b53b"><b>Families</b>: split income into essentials (food, medicine, school supplies), non-essentials (jewellery, entertainment, restaurant meals) + savings.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b53c"><b>Governments</b>: use tax revenue to plan infrastructure + welfare spending.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b53d"><b>Enterprises</b>: track market trends + innovations to serve customers + maximise profit.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b53e"><b>Economists</b>: compare alternatives, opportunity costs, outcomes, risks + opportunities.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b53f"><b>Sources economists use</b>: government reports (e.g., economic surveys) + company financial statements.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Scope of an Economist’s Work</h3>
+<ul>
+  <li><paragraph id="6a868d6c0bfa30c8a072b540"><b>Policy-making</b>: advising govt. on taxation + welfare spending.</paragraph></li>
+  <li><paragraph id="6a868d6c0bfa30c8a072b541"><b>Business consulting</b>: helping firms plan growth + improve efficiency.</paragraph></li>
+  <li><paragraph id="6a868d6c0bfa30c8a072b542"><b>Research and education</b>: studying trends + teaching economics.</paragraph></li>
+  <li><paragraph id="6a868d6c0bfa30c8a072b543"><b>Finance</b>: guiding investors on where to invest.</paragraph></li>
+</ul>
+
+<h3>Economic Survey of India</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b544"><b>Economic Survey of India</b>: an important <b>annual report</b> by the <b>Ministry of Finance</b>, presented in <b>Parliament</b> before the <b>Union Budget</b>.</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a868d6c0bfa30c8a072b545"><b>What it does</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b546">reviews last year’s economic performance</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b547">analyses agriculture, industry, services, employment, inflation, education, health, infrastructure, etc.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b548">discusses future challenges + opportunities</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b549">explains how the economy is doing + what govt. may do to improve growth + development</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a868d6c0bfa30c8a072b54a"><b>Why it is important</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b54b">serves as a <b>blueprint for the Union Budget</b></paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b54c">gives policymakers key <b>evidence</b> for decisions</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b54d">explains economic data clearly to citizens</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b54e"><b>Policy</b>: a course/principle of action adopted or proposed by an organisation or an individual.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b54f"><b>Official link (as given)</b>: https://www.indiabudget.gov.in/economicsurvey/</paragraph>
+</div>
+
+<h2>Three Key Questions in Economics</h2>
+
+<h3>Scarcity and the Need for Key Questions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b550"><b>Scarcity</b>: the mismatch between <b>unlimited wants</b> and <b>limited resources</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b551">Since scarcity forces choice, every economy must answer:</paragraph>
+  <ol>
+    <li><paragraph id="6a868d6c0bfa30c8a072b552"><b>What to produce?</b></paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b553"><b>How to produce?</b></paragraph></li>
+    <li><paragraph id="6a868d6c0bfa30c8a072b554"><b>For whom to produce?</b></paragraph></li>
+  </ol>
+</div>
+
+<h3>What to Produce — and in What Quantity?</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b555"><b>What to produce?</b>: choosing which goods/services, and <b>how much</b> of each, to produce in a given time period.</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a868d6c0bfa30c8a072b556"><b>Farmer example (choice set)</b>: choose between:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b557"><b>Water-intensive crops</b>: sugarcane + paddy</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b558"><b>Drought-resistant crops</b>: millets + pulses</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a868d6c0bfa30c8a072b559"><b>Trade-offs (reasoning)</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c0bfa30c8a072b55a"><b>Sugarcane</b> can give high profit + support the sugar industry.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b55b"><b>Millets and pulses</b> save water, improve soil health, + support sustainable agriculture.</paragraph></li>
+      <li><paragraph id="6a868d6c0bfa30c8a072b55c"><b>Opportunity cost framing</b>: if sugarcane is chosen, the <b>forgone benefit</b> of water conservation + better soil health is the <b>opportunity cost</b> of sugarcane.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c0bfa30c8a072b55d"><b>Exam tip</b>: For “opportunity cost”, write: <b>benefit of the next best alternative not chosen</b> (here: water conservation + soil health from millets/pulses when choosing sugarcane).</paragraph>
+</div>
+
+<h2>For Whom to Produce?</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b55e"><b>Meaning:</b> “For whom to produce?” = <b>who consumes the output</b> + <b>who benefits</b>. Covers the <b>purpose</b> of production, the <b>method of production + distribution</b>, and the <b>target consumer group</b>.</paragraph>
+</div>
+<paragraph id="6a868d6c0bfa30c8a072b55f">People differ in <b>needs, income, tastes, lifestyles</b> and <b>purchasing power</b> → producers pick which group to serve (i.e., choose a <b>target market</b>).</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b560"><b>Exam focus:</b> This question is about <b>distribution of benefits</b> from output (who gets what). It’s shaped by consumer differences (income, preferences, etc.).</paragraph>
+</div>
+
+<h3>Example: Footwear types and target users</h3>
+<ul>
+  <li><b>School shoes</b>
+    <ul>
+      <li><b>Target users:</b> Students</li>
+      <li><b>Main features:</b> Simple, durable, affordable</li>
+    </ul>
+  </li>
+  <li><b>Office-wear shoes</b>
+    <ul>
+      <li><b>Target users:</b> Working professionals</li>
+      <li><b>Main features:</b> Comfortable, formal, high-quality; often leather/polished materials</li>
+    </ul>
+  </li>
+  <li><b>Sports shoes</b>
+    <ul>
+      <li><b>Target users:</b> Athletes and fitness enthusiasts</li>
+      <li><b>Main features:</b> Special rubber soles; lightweight; grip, flexibility, support</li>
+    </ul>
+  </li>
+  <li><b>Casual shoes/slippers</b>
+    <ul>
+      <li><b>Target users:</b> Daily users</li>
+      <li><b>Main features:</b> Comfortable, affordable</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Material choice reflects the target group</h3>
+<ul>
+  <li><b>Leather shoes</b> generally for <b>office-goers</b> + <b>higher-income</b> customers.</li>
+  <li><b>Rubber/synthetic footwear</b> for <b>sports players, factory workers</b> + people needing <b>affordable durability</b>.</li>
+</ul>
+
+<h3>Efficient use of scarce resources</h3>
+<ul>
+  <li>Producers study <b>consumer preferences, income, demand</b>.</li>
+  <li>Purpose: use <b>scarce resources</b> <b>efficiently</b> and <b>avoid waste</b> on goods people don’t want/can’t buy.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c0bfa30c8a072b561"><b>Common exam mistake:</b> Writing “for whom to produce” as only “rich vs poor.” It’s broader: <b>target group selection</b>, <b>distribution</b>, and <b>who benefits</b>, influenced by income, tastes, lifestyle, purchasing power.</paragraph>
+</div>
+
+<h2>How to Produce?</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b562"><b>Meaning:</b> After deciding output, producers choose <b>methods, resources, technology</b> (e.g., <b>automation</b> vs more <b>labour</b>). They pick the best <b>mix</b> of <b>land, labour, capital, technology</b>.</paragraph>
+</div>
+
+<h3>Production methods: labour-intensive vs capital-intensive</h3>
+<ul>
+  <li><b>Labour-intensive method</b>
+    <ul>
+      <li><b>Meaning:</b> <b>More workers</b> + <b>less machinery</b></li>
+      <li><b>Common examples:</b> Agriculture, handicrafts</li>
+    </ul>
+  </li>
+  <li><b>Capital-intensive method</b>
+    <ul>
+      <li><b>Meaning:</b> <b>More machines/technology</b> + <b>fewer workers</b></li>
+      <li><b>Common examples:</b> Steel industry, automobile industry</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Factors affecting the choice of technique</h3>
+<ul>
+  <li><b>Cost and availability of capital and labour</b></li>
+  <li><b>Available technology</b></li>
+  <li><b>Nature of the product</b></li>
+  <li><b>National laws and regulations</b></li>
+</ul>
+
+<h3>Illustrations (Garments/clothing examples)</h3>
+<ul>
+  <li><b>Cost of machines:</b>
+    <ul>
+      <li>Machines <b>costly</b> → tends towards <b>labour-intensive</b>.</li>
+      <li>Machines <b>affordable</b> → producers may <b>automate</b> more.</li>
+    </ul>
+  </li>
+  <li><b>Technology level:</b>
+    <ul>
+      <li><b>Advanced technology</b> → more <b>machine use</b>.</li>
+      <li><b>Limited technology</b> → more <b>manual production</b>.</li>
+    </ul>
+  </li>
+  <li><b>Type of product:</b>
+    <ul>
+      <li><b>Customised/designer clothing</b> → needs <b>skilled labour</b>.</li>
+      <li><b>Mass-produced garments</b> → better for <b>machines</b>.</li>
+    </ul>
+  </li>
+  <li><b>Wage/availability of labour:</b>
+    <ul>
+      <li><b>Cheap, plentiful labour</b> → favours <b>labour-intensive</b>.</li>
+      <li><b>Costly/scarce labour</b> → machines become more <b>efficient</b>.</li>
+    </ul>
+  </li>
+  <li><b>Legal environment:</b>
+    <ul>
+      <li><b>Labour laws</b> + <b>incentives for machinery</b> affect enterprise decisions.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b563"><b>Exam-ready phrasing:</b> “How to produce” = <b>choice of technique</b>: a cost-effective + feasible mix of <b>factors of production</b> (land, labour, capital, technology) given technology, product needs, factor prices, and laws.</paragraph>
+</div>
+
+<h2>Economic Systems and the Making of Choices</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b564"><b>Economic system:</b> The <b>mechanism</b> a country uses to <b>organise + control</b> production, consumption, distribution, and use of goods/services/resources.</paragraph>
+  <paragraph id="6a868d6c0bfa30c8a072b565"><b>Core link:</b> The system decides <b>who answers</b> the 3 basic questions: <b>what</b> to produce, <b>how</b> to produce, <b>for whom</b> to produce.</paragraph>
+</div>
+
+<h2>Planned Economy</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b566"><b>Planned economy:</b> A <b>central government authority</b> (e.g., planning commission) decides <b>what + how much</b> to produce, <b>how</b> to produce, <b>who receives</b> it, and <b>at what price</b>.</paragraph>
+</div>
+<ul>
+  <li><b>Ownership:</b> Govt owns most major resources/sectors (land, factories, banks, transport); <b>private ownership limited</b>.</li>
+  <li><b>Enterprise behaviour:</b> Firms follow <b>official targets</b> (not market demand); strict <b>permits, licences, regulation</b>.</li>
+  <li><b>Competition effect:</b> Restricted entry → less private competition → <b>weaker incentives</b> for quality improvement/innovation.</li>
+  <li><b>Examples:</b> Former Soviet Union, North Korea, Cuba.</li>
+</ul>
+<div class="remember-box">
+  <paragraph id="6a868d6c0bfa30c8a072b567"><b>Don’t miss:</b> Planned economy controls not just output, but also <b>distribution</b> (“who receives it”) and <b>prices</b>.</paragraph>
+</div>
+
+<h2>Market Economy</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b568"><b>Market economy:</b> <b>Demand + supply</b> mainly decide <b>resource allocation</b>, <b>prices</b>, and <b>what + how much</b> to produce, with <b>little government intervention</b>.</paragraph>
+</div>
+<ul>
+  <li><b>Government role:</b> Like a <b>referee</b>—maintains safety, law &amp; order; provides <b>public goods</b> + <b>physical infrastructure</b>; usually doesn’t control production/prices.</li>
+  <li><b>Ownership:</b> Factories, shops, land, etc. largely <b>privately owned</b>.</li>
+  <li><b>Competition:</b> Pushes <b>better quality</b>, <b>lower prices</b>, <b>innovation</b>.</li>
+  <li><b>Examples:</b> USA, Japan, Hong Kong.</li>
+  <li><b>Note:</b> Even these have an <b>important government role</b>.</li>
+</ul>
+
+<h2>Mixed Economy</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b569"><b>Mixed economy:</b> Blend of <b>market</b> + <b>planned</b>. Individuals, private firms, and government all take part in decisions.</paragraph>
+</div>
+<ul>
+  <li><b>Structure:</b> Private ownership + competition + <b>government regulation</b> + big <b>public-sector enterprises</b> together.</li>
+  <li><b>Government functions:</b> Ensures <b>fair competition</b>, <b>consumer protection</b>, <b>transparency</b>; provides <b>public goods</b> + <b>welfare programmes</b>.</li>
+  <li><b>Market functions:</b> Encourages <b>profit-making</b>, <b>innovation</b>, <b>competition</b>.</li>
+  <li><b>Examples:</b> India (post-1991), China (post-1978), Germany, Sweden.</li>
+  <li><b>Note:</b> Even USA and Singapore have strong government involvement.</li>
+  <li><b>Reality statement:</b> Almost all real economies are <b>mixed</b>.</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b56a"><b>Exam line:</b> “Mixed economy = market allocation + government regulation + public sector,” since pure market/pure planned systems are rare.</paragraph>
+</div>
+
+<h2>Public Goods</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c0bfa30c8a072b56b"><b>Public goods:</b> Goods/services available to everyone <b>without exclusion</b>, and <b>one person’s use doesn’t stop others</b> from using them.</paragraph>
+</div>
+<ul>
+  <li><b>Examples:</b> Parks, roads, police services, streetlights, basic education.</li>
+</ul>
+<div class="remember-box">
+  <paragraph id="6a868d6c0bfa30c8a072b56c"><b>Key properties to write exactly:</b> (1) <b>Non-excludable</b> (no exclusion) (2) <b>Non-rival</b> (one person’s use doesn’t reduce availability for others).</paragraph>
+</div>
+
+<h2>India’s Economic System: Evolution</h2>
+
+<h3>Post-Independence: state-led planning</h3>
+<ul>
+  <li>After Independence, India followed a more <b>state-led, planned economy</b>.</li>
+  <li>Govt <b>controlled industries</b>, <b>allocated resources</b>, and regulated production using <b>licences + permits</b>.</li>
+  <li><b>Public sector dominance:</b> <b>public sector</b> led banking, transport, and heavy industries.</li>
+</ul>
+
+<h3>1991 reforms and shift toward the market</h3>
+<ul>
+  <li>Major economic difficulties by <b>1991</b> pushed reforms that:</li>
+  <li>Cut <b>excessive regulation</b></li>
+  <li>Boosted <b>private enterprise</b></li>
+  <li>Opened India to <b>global trade + investment</b></li>
+  <li>Raised <b>competition</b></li>
+  <li>India became more <b>market-oriented</b> but govt still stayed important → India = <b>mixed economy</b>.</li>
+</ul>
+
+<h2>Quick Comparison of Economic Systems</h2>
+
+<h3>Main decision-maker</h3>
+<ul>
+  <li><b>Planned:</b> Central government</li>
+  <li><b>Market:</b> Demand + supply + private actors</li>
+  <li><b>Mixed:</b> Government + private sector</li>
+</ul>
+
+<h3>Ownership</h3>
+<ul>
+  <li><b>Planned:</b> Mostly government</li>
+  <li><b>Market:</b> Mostly private</li>
+  <li><b>Mixed:</b> Public + private</li>
+</ul>
+
+<h3>Prices and output determination</h3>
+<ul>
+  <li><b>Planned:</b> Govt decides</li>
+  <li><b>Market:</b> Mainly market decides</li>
+  <li><b>Mixed:</b> Market + regulation</li>
+</ul>
+
+<h3>Strength</h3>
+<ul>
+  <li><b>Planned:</b> Coordination + social priorities</li>
+  <li><b>Market:</b> Competition + innovation</li>
+  <li><b>Mixed:</b> Balances enterprise + public interest</li>
+</ul>
+
+<h3>Limitation</h3>
+<ul>
+  <li><b>Planned:</b> Low competition/innovation</li>
+  <li><b>Market:</b> May need public safeguards</li>
+  <li><b>Mixed:</b> Needs effective regulation</li>
+</ul>
+
+<h2>Chapter Conclusion (from this portion)</h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c0bfa30c8a072b56d">Economics = study of <b>choices</b> when resources are <b>scarce</b> but wants are <b>unlimited</b>. Individuals, firms, and govt must use resources carefully and always think about <b>opportunity cost</b>.</paragraph>
+  <paragraph id="6a868d6c0bfa30c8a072b56e">Choices answer: <b>what</b>, <b>how</b>, and <b>for whom</b> to produce. Different economic systems answer these differently, and most modern economies <b>mix</b> planned + market features. Daily choices, public policy, and the economic system together shape production, distribution, and resource use.</paragraph>
+</div>
+
+<h2>End-of-Chapter Questions: Revision Checklist (Exam Skills)</h2>
+
+<h3>Wants: why they change, effects on production, and why all wants cannot be satisfied</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b56f"><b>Wants</b> = human desires for goods/services beyond basic needs → <b>unlimited</b>.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b570"><b>Why wants change</b>: tastes/preferences, income, fashion, technology, advertising, demographics, seasons, social + cultural influences.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b571"><b>How changing wants affect production</b>: firms shift resources (land, labour, capital, enterprise) toward rising-demand goods/services + away from falling-demand ones → changes <b>what</b>, <b>how</b>, and <b>for whom</b> to produce.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b572"><b>Why all wants can’t be satisfied</b>: <b>scarce</b> resources vs <b>unlimited</b> wants → choices + trade-offs.</paragraph></li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c0bfa30c8a072b573">Exam focus: Link “unlimited wants + scarce resources” → <b>choice</b> + <b>opportunity cost</b>.</paragraph>
+</div>
+
+<h3>Unlimited/changing wants and environmental pressure; balancing fulfilment with resource extraction</h3>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b574"><b>How wants pressure the environment</b>: more + changing consumption → more resource extraction, energy use, pollution, waste, habitat loss, depletion of non-renewables.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b575"><b>Why changing wants intensify pressure</b>: frequent replacement (fast fashion, electronics) → higher waste + resource throughput even if population stays stable.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b576"><b>Balancing wants vs extraction</b>: sustainable use—meet wants while limiting damage via regulation, cleaner tech, recycling/reuse, conservation, responsible production/consumption.</paragraph></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c0bfa30c8a072b577">Good exam wording: <b>trade-off</b> between present consumption and long-run sustainability; policy/regulation helps align private choices with social/environmental costs.</paragraph>
+</div>
+
+<h3>Scarce but wastefully used local resource: identification and better management</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b578"><b>Scarce resource</b> = limited supply vs demand. <b>Wasteful use</b> = inefficient consumption that cuts availability for others/for the future.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b579"><b>Identify</b> a local scarce resource that’s often wasted (e.g., water, electricity, fuel, public land, clean air, skilled labour time).</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b57a"><b>Suggest better management</b>: cut leakage/loss, raise efficiency standards, pricing to discourage overuse, awareness campaigns, monitoring/enforcement, infrastructure investment, recycling/reuse, allocate to higher-value uses.</paragraph></li>
+</ul>
+
+<h3>Economic systems: greatest freedom vs best for innovation (comparison with reasons)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b57b"><b>Economic system</b> = how a society organises production + resource allocation, and how prices/outputs are decided.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b57c"><b>Greatest freedom</b>: usually a <b>market economy</b> → consumers + firms choose what to buy/produce; prices guide decisions; less direct government control.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b57d"><b>Best for innovation</b>: often a <b>market economy</b> → competition + profit incentives drive new products/processes; risk-taking + efficiency get rewarded.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b57e"><b>Make reasoning explicit</b>: freedom = choice + private decision-making; innovation = incentives + competition + rewards for entrepreneurship.</paragraph></li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c0bfa30c8a072b57f">Don’t write “market economy is always best” without limits: market failure, inequality, under-provision of public goods.</paragraph>
+</div>
+
+<h3>Why pure systems rarely exist; limits of pure systems; practicality of a mixed economy</h3>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b580"><b>Pure systems rarely exist</b>: real economies mix markets + government planning (stability, equity, public goods, regulation).</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b581"><b>Limits of a pure market economy</b>: inequality, ignores external costs (e.g., pollution), underprovides public goods; may not match social priorities.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b582"><b>Limits of a pure planned economy</b>: inefficient central decisions, less consumer choice, weaker incentives for efficiency/innovation, information problems (can’t track changing preferences well).</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b583"><b>Why a mixed economy is practical</b>: combines market efficiency/innovation with government roles—regulation, redistribution, public goods, fixing market failures.</paragraph></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c0bfa30c8a072b584">Exam structure: (1) say why “pure” is unrealistic, (2) give 1–2 limits of each pure system, (3) show how mixed economy solves/softens them.</paragraph>
+</div>
+
+<h3>Opportunity cost: ₹100 choice example (notebook vs saving for tennis racket)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b585"><b>Opportunity cost</b> = the <b>value of the next-best alternative forgone</b> after choosing.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b586"><b>Example</b>: You have ₹100 → choose: buy a notebook OR save for a tennis racket.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b587"><b>Opportunity cost depends on the choice</b>:</paragraph>
+<ol>
+<li><paragraph id="6a868d6c0bfa30c8a072b588">If you buy the notebook → opp. cost = <b>saving ₹100 toward the tennis racket</b>.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b589">If you save for the tennis racket → opp. cost = <b>the notebook you didn’t buy</b>.</paragraph></li>
+</ol>
+</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c0bfa30c8a072b58a">Opportunity cost ≠ all alternatives. It’s only the <b>next-best</b> one.</paragraph>
+</div>
+
+<h3>How opportunity-cost awareness improves economic decisions</h3>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b58b">It forces you to compare benefits with what you must give up.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b58c">Improves decisions by helping allocate scarce resources (money, time, labour, land) to the option with the highest net benefit vs the next-best option.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b58d">Applies to: individuals (spend vs save), firms (product A vs B), governments (health vs defence).</paragraph></li>
+</ul>
+
+<h3>Decision-making and data: can sound decisions be made without reliable data?</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b58e"><b>Data</b> = facts + statistics collected for reference/analysis → supports informed economic decisions.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b58f"><b>Assessment</b>: sound decisions are hard without reliable data → choices may rely on assumptions, bias, incomplete info.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b590"><b>Use an example in answers</b>: firm sets output with no demand data → overproduce (waste) or underproduce (lost sales); government sets policy without accurate inflation/unemployment data → worsens outcomes.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b591"><b>Reliability matters</b>: bad data can mislead as much as no data → accuracy + relevance are key.</paragraph></li>
+</ul>
+
+<h3>How present choices shape a country’s long-term future; why future consequences matter</h3>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b592"><b>Present choices → long-run outcomes</b>: education, infrastructure, health, technology, environment, savings/investment shape future productivity, growth, living standards, sustainability.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b593"><b>Why future consequences matter</b>: ignoring long-run effects can cause irreversible damage (depletion/pollution), long-term debt, skill shortages, weak productive capacity; good policy weighs current benefits vs future costs.</paragraph></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c0bfa30c8a072b594">In exams, connect clearly: <b>today’s allocation of scarce resources</b> → <b>future production possibilities</b> (what the economy can produce later).</paragraph>
+</div>
+
+<h3>Interpreting a news report: producers deciding supply/output (2–3 sentence summary)</h3>
+<ul>
+<li><paragraph id="6a868d6c0bfa30c8a072b595"><b>What to find</b>: a report on a commodity/product where producers raise/cut output or supply.</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b596"><b>How to summarise (2–3 sentences)</b>:</paragraph>
+<ol>
+<li><paragraph id="6a868d6c0bfa30c8a072b597">State the decision (e.g., “Producers cut output by X%”).</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b598">State the reason (e.g., falling prices, rising costs, weak demand, expected recession, poor harvest, policy changes).</paragraph></li>
+<li><paragraph id="6a868d6c0bfa30c8a072b599">Optional: intended effect (e.g., stabilise prices / avoid losses / meet higher demand).</paragraph></li>
+</ol>
+</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c0bfa30c8a072b59a">Strictly 2–3 sentences only: decision + reason (+ effect if needed). Skip background.</paragraph>
+</div>
+
+<h2>Key Terms at a Glance (Definitions for Exam)</h2>
+
+<h3>Market</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b59b"><b>Market</b>: a physical or online place where goods + services are bought and sold.</paragraph>
+</div>
+
+<h3>Resources</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b59c"><b>Resources</b>: natural or human-made inputs used to produce goods + services.</paragraph>
+</div>
+
+<h3>Opportunity cost</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b59d"><b>Opportunity cost</b>: the value of the next-best alternative you give up.</paragraph>
+</div>
+
+<h3>PPC</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b59e"><b>PPC (Production Possibility Curve)</b>: shows the possible output combinations using all available resources.</paragraph>
+</div>
+
+<h3>Economy</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b59f"><b>Economy</b>: production, distribution, trade, consumption, + money flow in an area.</paragraph>
+</div>
+
+<h3>Economic entity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a0"><b>Economic entity</b>: a participant (actor) in economic activity.</paragraph>
+</div>
+
+<h3>Data</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a1"><b>Data</b>: facts + statistics collected for reference or analysis.</paragraph>
+</div>
+
+<h3>Survey</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a2"><b>Survey</b>: systematic collection + analysis of population-related economic data.</paragraph>
+</div>
+
+<h3>Policy</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a3"><b>Policy</b>: an adopted or proposed course/principle of action.</paragraph>
+</div>
+
+<h3>Planned economy</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a4"><b>Planned economy</b>: government mainly decides allocation + prices.</paragraph>
+</div>
+
+<h3>Market economy</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a5"><b>Market economy</b>: market forces mainly decide allocation + prices.</paragraph>
+</div>
+
+<h3>Mixed economy</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a6"><b>Mixed economy</b>: public + private sectors both operate, under regulation.</paragraph>
+</div>
+
+<h3>Public goods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c0bfa30c8a072b5a7"><b>Public goods</b>: <b>non-excludable</b> goods/services where one person’s use does not stop others using it (<b>non-rival</b>).</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a868d6c0bfa30c8a072b5a8">Public goods = 2-part definition. Learn both: <b>non-excludable</b> + <b>non-rival</b> (“one person’s use doesn’t reduce others’ use”).</paragraph>
+</div></div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

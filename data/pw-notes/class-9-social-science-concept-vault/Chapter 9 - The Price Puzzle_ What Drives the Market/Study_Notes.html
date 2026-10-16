@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>Chapter 9: The Price Puzzle—What Drives the Market </title>
+  <link rel="stylesheet" href="css/style.css">
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="chapter-wrap" id="main-content"><div class="container"><h1>Chapter 9: The Price Puzzle—What Drives the Market </h1>
+
+<h2>Introduction: Why Do Prices Change?</h2>
+<paragraph id="6a868d6c39d8f02db40f7ecc">Prices change in real life: mangoes get cheaper later in the season; vegetables cost more in the morning and less in the evening; onion prices can jump over months; the same flight seat may be ₹3,000 one day and ₹9,000 another; seasonal/festival discounts happen. These changes are <paragraph id="6a868d6c39d8f02db40f7ecd">not random</paragraph>.</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7ece">Prices respond to many influences:</paragraph>
+<ul>
+<li>Consumer demand</li>
+<li>Availability or supply</li>
+<li>Seasons</li>
+<li>Festivals</li>
+<li>Trends</li>
+<li>Expectations</li>
+<li>Rumours</li>
+<li>Production conditions</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7ecf">But the <paragraph id="6a868d6c39d8f02db40f7ed0">main market forces</paragraph> that decide prices are <paragraph id="6a868d6c39d8f02db40f7ed1">demand and supply</paragraph>.</paragraph>
+</div>
+
+<h2>Demand</h2>
+
+<h3>1. Meaning of Demand</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7ed2"><paragraph id="6a868d6c39d8f02db40f7ed3">Demand</paragraph> = the <paragraph id="6a868d6c39d8f02db40f7ed4">quantity</paragraph> of a product consumers are <paragraph id="6a868d6c39d8f02db40f7ed5">willing and able</paragraph> to buy at a <paragraph id="6a868d6c39d8f02db40f7ed6">given price</paragraph>.</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7ed7">Demand depends on:</paragraph>
+<ul>
+<li>Need</li>
+<li>Preference</li>
+<li>Price</li>
+<li>Income</li>
+<li>Season</li>
+<li>Trends</li>
+<li>Purchasing power</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7ed8"><paragraph id="6a868d6c39d8f02db40f7ed9">Desire alone ≠ demand.</paragraph> For demand, the buyer must have:</paragraph>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f7eda">Willingness</paragraph> to buy</li>
+<li><paragraph id="6a868d6c39d8f02db40f7edb">Ability</paragraph> to pay</li>
+</ul>
+</div>
+
+<h3>Purchasing Power</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7edc"><paragraph id="6a868d6c39d8f02db40f7edd">Purchasing power</paragraph> = how much one unit of currency can buy at a particular time.</paragraph>
+</div>
+
+<h3>2. Law of Demand</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7ede"><paragraph id="6a868d6c39d8f02db40f7edf">Law of demand</paragraph>:</paragraph>
+<ul>
+<li>If <paragraph id="6a868d6c39d8f02db40f7ee0">price rises</paragraph> → <paragraph id="6a868d6c39d8f02db40f7ee1">quantity demanded falls</paragraph> (generally).</li>
+<li>If <paragraph id="6a868d6c39d8f02db40f7ee2">price falls</paragraph> → <paragraph id="6a868d6c39d8f02db40f7ee3">quantity demanded rises</paragraph> (generally).</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7ee4">So, price and quantity demanded have an <paragraph id="6a868d6c39d8f02db40f7ee5">inverse relationship</paragraph>, with <paragraph id="6a868d6c39d8f02db40f7ee6">other factors unchanged</paragraph>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7ee7">Price rises ⇒ Quantity demanded falls</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7ee8">Price falls ⇒ Quantity demanded rises</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7ee9">Price = money cost per unit of the good</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7eea">Quantity demanded = amount consumers plan to buy at that price</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7eeb">Other factors unchanged = income, taste, and other conditions stay constant</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7eec">In exams, always write the condition <paragraph id="6a868d6c39d8f02db40f7eed">“other factors remaining unchanged”</paragraph> (ceteris paribus). Without it, the law of demand is incomplete.</paragraph>
+</div>
+
+<h3>3. Individual Demand</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7eee"><paragraph id="6a868d6c39d8f02db40f7eef">Individual demand</paragraph> = quantity of a good/service that <paragraph id="6a868d6c39d8f02db40f7ef0">one consumer</paragraph> wants to buy at different prices, with other factors constant.</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7ef1"><paragraph id="6a868d6c39d8f02db40f7ef2">Worked example: Srivalli’s demand for mangoes</paragraph> (inverse price–quantity link):</paragraph>
+<ul>
+<li>₹150 per kg → Srivalli buys 1 kg</li>
+<li>₹100 per kg → Srivalli buys 2 kg</li>
+<li>₹50 per kg → Srivalli buys 3 kg</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7ef3">This shows the law of demand: as price falls ₹150 → ₹50, quantity demanded rises 1 kg → 3 kg.</paragraph>
+</div>
+
+<h3>4. Demand Schedule and Demand Curve</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7ef4"><paragraph id="6a868d6c39d8f02db40f7ef5">Demand schedule</paragraph> = quantities demanded at different prices (shown in a table).</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7ef6">Plot the schedule on a graph → you get the <paragraph id="6a868d6c39d8f02db40f7ef7">demand curve</paragraph>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7ef8">Demand graph rules:</paragraph>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f7ef9">Price</paragraph> on <paragraph id="6a868d6c39d8f02db40f7efa">vertical (y) axis</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7efb">Quantity demanded</paragraph> on <paragraph id="6a868d6c39d8f02db40f7efc">horizontal (x) axis</paragraph></li>
+<li>Join the plotted points → <paragraph id="6a868d6c39d8f02db40f7efd">downward-sloping</paragraph> demand curve</li>
+<li>Downward slope shows the <paragraph id="6a868d6c39d8f02db40f7efe">inverse relationship</paragraph> (assuming <paragraph id="6a868d6c39d8f02db40f7eff">income, taste and other conditions</paragraph> stay unchanged)</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f00">Don’t swap axes in demand diagram: <paragraph id="6a868d6c39d8f02db40f7f01">P on Y</paragraph>, <paragraph id="6a868d6c39d8f02db40f7f02">Q on X</paragraph>.</paragraph>
+</div>
+
+<h2>Market Demand</h2>
+
+<h3>5. Meaning of Market Demand</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f03"><paragraph id="6a868d6c39d8f02db40f7f04">Market demand</paragraph> = <paragraph id="6a868d6c39d8f02db40f7f05">total quantity demanded</paragraph> by <paragraph id="6a868d6c39d8f02db40f7f06">all consumers</paragraph> at different prices.</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f07">Found by <paragraph id="6a868d6c39d8f02db40f7f08">adding individual demands</paragraph>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f09">Q<sub>D</sub> = Q<sub>1</sub> + Q<sub>2</sub> + Q<sub>3</sub> + …</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f0a">Q<sub>D</sub> = market quantity demanded at a given price</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f0b">Q<sub>1</sub>, Q<sub>2</sub>, Q<sub>3</sub>, … = quantities demanded by individual consumers at that same price</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7f0c"><paragraph id="6a868d6c39d8f02db40f7f0d">Worked example: Market demand for mangoes</paragraph> (sum of individuals):</paragraph>
+<ul>
+<li>₹150: Srivalli 1 kg + Alex 2 kg + Israt 3 kg = Market demand 6 kg</li>
+<li>₹100: Srivalli 2 kg + Alex 4 kg + Israt 6 kg = Market demand 12 kg</li>
+<li>₹50: Srivalli 3 kg + Alex 6 kg + Israt 9 kg = Market demand 18 kg</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f0e">Market demand = <paragraph id="6a868d6c39d8f02db40f7f0f">horizontal addition</paragraph> of individual demands (add quantities at the same price).</paragraph>
+</div>
+
+<h3>6. Market Demand Curve</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f10">Plot total market demand at different prices → <paragraph id="6a868d6c39d8f02db40f7f11">market demand curve</paragraph>.</paragraph>
+</div>
+<ul>
+<li>It slopes <paragraph id="6a868d6c39d8f02db40f7f12">downward</paragraph>, like an individual demand curve.</li>
+<li>It is usually <paragraph id="6a868d6c39d8f02db40f7f13">flatter</paragraph> because it combines many consumers’ reactions.</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7f14"><paragraph id="6a868d6c39d8f02db40f7f15">From the example:</paragraph></paragraph>
+<ul>
+<li>Price ₹150 → ₹50: Srivalli rises by 2 kg (1 → 3).</li>
+<li>Same price fall: market demand rises by 12 kg (6 → 18).</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f16">Since many consumers respond to one price change, the market shows a <paragraph id="6a868d6c39d8f02db40f7f17">bigger total quantity change</paragraph> than any single buyer → market curve often looks <paragraph id="6a868d6c39d8f02db40f7f18">flatter</paragraph>.</paragraph>
+</div>
+
+<h2>Other Determinants of Demand (Demand can change even if price is unchanged)</h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f19">Demand can change even when the product’s <paragraph id="6a868d6c39d8f02db40f7f1a">own price</paragraph> stays the same — because other factors shift consumers’ willingness/ability to buy.</paragraph>
+</div>
+
+<h3>7. Prices of Related Goods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f1b"><paragraph id="6a868d6c39d8f02db40f7f1c">Related goods</paragraph> = goods with linked demand: change in price/availability of one affects demand for the other.</paragraph>
+</div>
+
+<h3>A. Substitute Goods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f1d"><paragraph id="6a868d6c39d8f02db40f7f1e">Substitutes</paragraph> = goods that can <paragraph id="6a868d6c39d8f02db40f7f1f">replace</paragraph> each other.</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7f20">Examples of substitutes:</paragraph>
+<ul>
+<li>Tea and coffee</li>
+<li>Mangoes and bananas</li>
+<li>Apples and bananas</li>
+<li>Air conditioners and coolers</li>
+<li>Laptops and desktop computers</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7f21">If coffee becomes costlier while tea’s price is unchanged, many buyers shift to tea.</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f22">Price of one substitute rises ⇒ Demand for the other rises</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f23">Substitute = replacement good</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f24">Demand for the other = quantity consumers want of the alternative good (at its current price)</paragraph>
+</div>
+
+<h3>B. Complementary Goods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f25"><paragraph id="6a868d6c39d8f02db40f7f26">Complementary goods</paragraph> = goods <paragraph id="6a868d6c39d8f02db40f7f27">used together</paragraph>.</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7f28">Examples of complements:</paragraph>
+<ul>
+<li>Smartphone and earphones</li>
+<li>Car and petrol</li>
+<li>Printer and cartridge</li>
+<li>Cinema ticket and popcorn</li>
+<li>Pencil and eraser</li>
+<li>Notebook and pen</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7f29">Demand link examples:</paragraph>
+<ul>
+<li>If demand for printers rises, demand for cartridges may also rise.</li>
+<li>If cinema tickets become expensive and fewer people go, demand for cinema-hall popcorn may fall.</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f2a">Exam trap: don’t mix them up. <paragraph id="6a868d6c39d8f02db40f7f2b">Substitutes</paragraph> replace each other; <paragraph id="6a868d6c39d8f02db40f7f2c">complements</paragraph> are consumed together.</paragraph>
+</div>
+
+<h3>8. Consumer Income</h3>
+<ul>
+<li>If household income rises, consumers can generally:</li>
+<ul>
+<li>Buy more goods</li>
+<li>Buy better-quality goods</li>
+<li>Spend with more confidence</li>
+</ul>
+<li>So, demand for many goods can rise even if prices don’t change.</li>
+<li>But income does <paragraph id="6a868d6c39d8f02db40f7f2d">not</paragraph> affect demand for every product in the same way.</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f2e">Always add the qualifier: income rise <paragraph id="6a868d6c39d8f02db40f7f2f">generally</paragraph> raises demand for many goods, but the effect varies by product type.</paragraph>
+</div>
+
+<h3>9. Tastes and Preferences</h3>
+<ul>
+<li>Consumers differ in likes, habits, and preferences.</li>
+<li>If someone strongly prefers mangoes, they may not switch to cheaper oranges.</li>
+<li>Ads, fashion, and lifestyle changes shape preferences → demand changes.</li>
+</ul>
+
+<h3>10. Population Size and Composition</h3>
+<ul>
+<li>Bigger population → higher <paragraph id="6a868d6c39d8f02db40f7f30">total market demand</paragraph> (generally).</li>
+<li>India’s large domestic market supports economic growth.</li>
+<li><paragraph id="6a868d6c39d8f02db40f7f31">Population composition</paragraph> (age structure) changes <paragraph id="6a868d6c39d8f02db40f7f32">what</paragraph> is demanded:</li>
+<ul>
+<li>More children → more demand for sports shoes + school-related goods</li>
+<li>More working adults → more demand for formal shoes + professional services</li>
+<li>More elderly → more demand for comfortable/orthopaedic footwear + healthcare</li>
+</ul>
+</ul>
+
+<h3>11. Diminishing Marginal Utility</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f33"><paragraph id="6a868d6c39d8f02db40f7f34">Principle of diminishing marginal utility</paragraph>: the 1st unit gives high satisfaction; each extra unit usually gives <paragraph id="6a868d6c39d8f02db40f7f35">less extra satisfaction</paragraph> than the previous one.</paragraph>
+</div>
+<ul>
+<li>When marginal utility falls, <paragraph id="6a868d6c39d8f02db40f7f36">willingness to pay</paragraph> falls.</li>
+<li>So consumers usually buy extra units only at <paragraph id="6a868d6c39d8f02db40f7f37">lower prices</paragraph>.</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f38">This supports the downward-sloping demand curve: less extra satisfaction from extra units → buyers need lower prices to buy more.</paragraph>
+</div>
+
+<h3>12. Seasonality</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f39"><paragraph id="6a868d6c39d8f02db40f7f3a">Seasonality</paragraph> = demand changes with time due to changing conditions, even if price stays the same.</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7f3b">Demand may vary due to:</paragraph>
+<ul>
+<li>Weather</li>
+<li>Festivals</li>
+<li>Academic sessions</li>
+<li>Cultural habits</li>
+<li>Seasonal requirements</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7f3c">Examples:</paragraph>
+<ul>
+<li>Books at the start of an academic session</li>
+<li>Sweets during festivals</li>
+<li>Sweaters and jackets in winter</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f3d">Seasonal demand shifts can happen <paragraph id="6a868d6c39d8f02db40f7f3e">without any change in the good’s price</paragraph>.</paragraph>
+</div>
+
+<h3>13. Expectations of Future Prices</h3>
+<ul>
+<li>If consumers expect prices to <paragraph id="6a868d6c39d8f02db40f7f3f">fall</paragraph>, they may <paragraph id="6a868d6c39d8f02db40f7f40">postpone</paragraph> buying → current demand falls.</li>
+<li>If consumers expect prices to <paragraph id="6a868d6c39d8f02db40f7f41">rise</paragraph>, they may buy <paragraph id="6a868d6c39d8f02db40f7f42">now</paragraph> → current demand rises.</li>
+<li>Example: People may delay buying durable goods before Diwali/New Year expecting discounts.</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f43">Expectations change <paragraph id="6a868d6c39d8f02db40f7f44">current</paragraph> demand: expected fall → wait; expected rise → buy now.</paragraph>
+</div>
+
+<h2>Supply</h2>
+
+<h3>14. Meaning of Supply</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f45"><paragraph id="6a868d6c39d8f02db40f7f46">Supply</paragraph> = quantity sellers are <paragraph id="6a868d6c39d8f02db40f7f47">willing and able</paragraph> to offer at a <paragraph id="6a868d6c39d8f02db40f7f48">given price</paragraph>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f49">Supply is <paragraph id="6a868d6c39d8f02db40f7f4a">not just production</paragraph>; it’s what is <paragraph id="6a868d6c39d8f02db40f7f4b">offered for sale</paragraph>.</paragraph>
+</div>
+
+<h3>15. Law of Supply</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f4c"><paragraph id="6a868d6c39d8f02db40f7f4d">Law of supply</paragraph>:</paragraph>
+<ul>
+<li>Price <paragraph id="6a868d6c39d8f02db40f7f4e">rises</paragraph> → <paragraph id="6a868d6c39d8f02db40f7f4f">quantity supplied</paragraph> generally <paragraph id="6a868d6c39d8f02db40f7f50">rises</paragraph>.</li>
+<li>Price <paragraph id="6a868d6c39d8f02db40f7f51">falls</paragraph> → <paragraph id="6a868d6c39d8f02db40f7f52">quantity supplied</paragraph> generally <paragraph id="6a868d6c39d8f02db40f7f53">falls</paragraph>.</li>
+</ul>
+<paragraph id="6a868d6c39d8f02db40f7f54">So, price and quantity supplied have a <paragraph id="6a868d6c39d8f02db40f7f55">direct relationship</paragraph>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f56">Price rises ⇒ Quantity supplied rises</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f57">Price falls ⇒ Quantity supplied falls</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f58">Quantity supplied = amount sellers plan to offer for sale at that price</paragraph>
+</div>
+
+<h3>Reasons (Higher prices)</h3>
+<paragraph id="6a868d6c39d8f02db40f7f59">The text begins the section “Reasons: Higher prices:” here; the detailed reasons continue beyond this portion.</paragraph>
+
+<h2>Individual Supply</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f5a"><b>Individual supply</b> = quantity of a good that <b>one seller</b> is willing and able to offer for sale at <b>different prices</b> (over a given time period, other factors constant).</paragraph>
+</div>
+<h3>Seller A’s Supply Schedule (Example)</h3>
+<ul>
+<li>At price ₹50 per kg → quantity supplied = 1 kg</li>
+<li>At price ₹100 per kg → quantity supplied = 2 kg</li>
+<li>At price ₹150 per kg → quantity supplied = 3 kg</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f5b">A supply schedule = a list of price–quantity pairs for a seller; used to draw the supply curve.</paragraph>
+</div>
+
+<h2>Individual Supply Curve</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f5c"><b>Individual supply curve</b> = graph showing relationship between <b>price</b> and <b>quantity supplied</b> by <b>one seller</b>.</paragraph>
+</div>
+<ul>
+<li><b>Axes:</b> Price on <b>y-axis</b>; Quantity supplied on <b>x-axis</b>.</li>
+<li><b>Slope:</b> Since <b>price and supply move together</b>, supply curve usually <b>slopes upward</b> (higher price → higher quantity supplied).</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f5d">Diagram tip: don’t swap axes — here, <b>price is always on y-axis</b> and quantity on x-axis.</paragraph>
+</div>
+
+<h2>Seasonal Mango Supply</h2>
+<ul>
+<li><b>Beginning of mango season:</b> supply <b>low</b> → prices <b>high</b>.</li>
+<li><b>Middle of the season:</b> supply <b>rises</b> → prices <b>fall</b>.</li>
+<li>If <b>supply &lt; demand</b>, prices tend to <b>rise</b>.</li>
+<li>If <b>supply &gt; demand</b>, prices tend to <b>fall</b>.</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f5e">Seasonality shifts market conditions over time: harvest/availability changes supply and therefore the market price.</paragraph>
+</div>
+
+<h2>Market Supply</h2>
+
+<h3>Meaning of Market Supply</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f5f"><b>Market supply</b> = the <b>total quantity</b> of a good offered by <b>all sellers together</b> at different prices.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f60"><b>Market supply:</b> Q<sub>S</sub> = S<sub>A</sub> + S<sub>B</sub> + S<sub>C</sub> + …</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f61">Q<sub>S</sub> = total quantity supplied in the market (at a given price)</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f62">S<sub>A</sub>, S<sub>B</sub>, S<sub>C</sub> = quantities supplied by individual sellers A, B, C (at the same price)</paragraph>
+</div>
+
+<h3>Mango Market-Supply Schedule (Worked Example)</h3>
+<ul>
+<li><b>At ₹50:</b> A = 1 kg, B = 3 kg, C = 2 kg → <b>Market supply = 6 kg</b></li>
+<li><b>At ₹100:</b> A = 2 kg, B = 4 kg, C = 6 kg → <b>Market supply = 12 kg</b></li>
+<li><b>At ₹150:</b> A = 3 kg, B = 7 kg, C = 8 kg → <b>Market supply = 18 kg</b></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f63"><b>Add</b> all individual supplies at each price = <b>market supply</b>. Plot these totals → <b>upward-sloping market supply curve</b>.</paragraph>
+</div>
+
+<h2>Other Determinants of Supply</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f64"><b>Determinants of supply</b> (other than the good’s own price) = factors that change how much producers are willing/able to supply <b>at each price</b>.</paragraph>
+</div>
+
+<h3>Prices of Related Goods</h3>
+<ul>
+<li>Producers compare <b>profitability</b> of other goods they could make.</li>
+<li>Example: if <b>wheat prices are low</b> + <b>chickpea prices are high</b>, farmers may shift to chickpeas next season.</li>
+<li>Consequences:</li>
+<ul>
+<li><b>Chickpea supply ↑</b></li>
+<li><b>Wheat supply may ↓</b></li>
+</ul>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f65">“Related goods” here = <b>alternative products for producers</b> (what to produce), not consumer substitutes/complements.</paragraph>
+</div>
+
+<h3>Number of Sellers</h3>
+<ul>
+<li><b>More sellers</b> + more production → <b>market supply ↑</b></li>
+<li>If <b>supply &gt; demand</b> → prices tend to <b>fall</b></li>
+<li><b>Fewer sellers</b> → supply <b>↓</b></li>
+<li>If <b>supply &lt; demand</b> → prices tend to <b>rise</b></li>
+</ul>
+
+<h3>Technology</h3>
+<ul>
+<li><b>Better technology</b> → lower costs + higher productivity.</li>
+<li>So sellers can supply <b>more at each price</b> (i.e., supply increases).</li>
+<li>Examples:</li>
+<ul>
+<li>Drip irrigation</li>
+<li>Weather sensors</li>
+<li>Improved seeds</li>
+<li>Mechanised production</li>
+<li>Cold-storage facilities</li>
+</ul>
+<li><b>Cold storage example:</b> mangoes reach distant markets with less spoilage → <b>market supply ↑</b></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f66">Technology changes supply mainly via <b>costs</b> + <b>effective output</b> (incl. less spoilage/wastage).</paragraph>
+</div>
+
+<h3>Future Expectations of Producers</h3>
+<ul>
+<li>Expect <b>higher future demand</b> → may <b>increase current production</b></li>
+<li>Expect <b>lower future demand</b> → may <b>reduce production</b></li>
+<li>If wholesalers expect <b>future prices ↑</b> → may <b>withhold current stock</b> and sell later</li>
+<li>Example: potato wholesalers may cut <b>present supply</b> expecting peak-season prices</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f67">Expectations can change <b>current supply</b> even if current costs/technology don’t change (e.g., withholding stock reduces current market supply).</paragraph>
+</div>
+
+<h3>Other Factors Affecting Supply</h3>
+<paragraph id="6a868d6c39d8f02db40f7f68">Supply may also change due to:</paragraph>
+<ul>
+<li>Input costs</li>
+<li>Availability of alternative inputs</li>
+<li>Resource depletion</li>
+<li>Weather</li>
+<li>Natural disasters</li>
+<li>Taxes</li>
+<li>Transport conditions</li>
+<li>Labour costs</li>
+<li>Government rules</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f69">In exam answers, explain supply changes using: costs (inputs, labour, taxes), conditions (weather, disasters, transport), resources (depletion, input availability), policy (government rules), and producer expectations.</paragraph>
+</div>
+
+<h2>Market Equilibrium</h2>
+
+<h3>Price Determination</h3>
+<ul>
+<li>Buyers show what they’re <b>willing to pay</b>.</li>
+<li>Sellers show what they’re <b>willing to accept</b>.</li>
+<li><b>Market price</b> comes from interaction of <b>demand + supply</b>.</li>
+</ul>
+
+<h3>Meaning of Market Equilibrium</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f6a"><b>Market equilibrium</b> = where <b>quantity demanded = quantity supplied</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f6b"><b>Equilibrium condition:</b> Q<sub>D</sub> = Q<sub>S</sub></paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f6c">Q<sub>D</sub> = quantity demanded</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f6d">Q<sub>S</sub> = quantity supplied</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7f6e">At equilibrium:</paragraph>
+<ul>
+<li><b>No excess demand</b></li>
+<li><b>No excess supply</b></li>
+<li>Market is <b>“cleared”</b></li>
+<li>Price stays fairly <b>stable</b> unless outside conditions change</li>
+</ul>
+
+<h3>Mango-Market Equilibrium (Worked Example)</h3>
+<ul>
+<li><b>At ₹40:</b> Q<sub>D</sub> = 38 kg, Q<sub>S</sub> = 6 kg → <b>Excess demand</b></li>
+<li><b>At ₹100:</b> Q<sub>D</sub> = 12 kg, Q<sub>S</sub> = 12 kg → <b>Equilibrium</b></li>
+<li><b>At ₹150:</b> Q<sub>D</sub> = 8 kg, Q<sub>S</sub> = 43 kg → <b>Excess supply</b></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f7f6f"><b>Equilibrium price</b> = ₹100 and <b>equilibrium quantity</b> = 12 kg (because Q<sub>D</sub> = Q<sub>S</sub>).</paragraph>
+</div>
+
+<h3>Excess Demand (Shortage)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f70"><b>Excess demand / shortage</b> = when quantity demanded is <b>greater</b> than quantity supplied.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f71"><b>Shortage condition:</b> Q<sub>D</sub> &gt; Q<sub>S</sub></paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f72">Q<sub>D</sub> = quantity demanded</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f73">Q<sub>S</sub> = quantity supplied</paragraph>
+</div>
+<ul>
+<li>Example (₹40): demand = 38 kg, supply = 6 kg → shortage.</li>
+<li>Shortage creates <b>upward pressure on price</b>.</li>
+<li>As price rises, it may:</li>
+<ul>
+<li><b>Reduce demand</b></li>
+<li><b>Increase supply</b></li>
+<li><b>Push market towards equilibrium</b></li>
+</ul>
+</ul>
+
+<h3>Excess Supply (Surplus)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f7f74"><b>Excess supply / surplus</b> = when quantity supplied is <b>greater</b> than quantity demanded.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a868d6c39d8f02db40f7f75"><b>Surplus condition:</b> Q<sub>S</sub> &gt; Q<sub>D</sub></paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f76">Q<sub>S</sub> = quantity supplied</paragraph>
+<paragraph id="6a868d6c39d8f02db40f7f77">Q<sub>D</sub> = quantity demanded</paragraph>
+</div>
+<ul>
+<li>Example (₹150): supply = 43 kg, demand = 8 kg → surplus (unsold stock).</li>
+<li>Surplus creates <b>downward pressure on price</b>.</li>
+<li>As price falls, it may:</li>
+<ul>
+<li><b>Increase demand</b></li>
+<li><b>Reduce supply</b></li>
+<li><b>Push market towards equilibrium</b></li>
+</ul>
+</ul>
+
+<h3>Equilibrium Graph</h3>
+<ul>
+<li><b>Demand curve</b> slopes <b>downward</b></li>
+<li><b>Supply curve</b> slopes <b>upward</b></li>
+<li>Intersection = <b>equilibrium point E</b></li>
+<li>In this chapter’s example, E shows:</li>
+<ul>
+<li>Price = ₹100</li>
+<li>Quantity = 12 kg</li>
+</ul>
+</ul>
+<div class="remember-box">
+<paragraph id="6a868d6c39d8f02db40f7f78">When drawing the graph, use prices ₹40, ₹100, ₹150 and label each point clearly as <b>shortage</b>, <b>equilibrium</b>, or <b>surplus</b>.</paragraph>
+</div>
+
+<h2>Does Equilibrium Exist in the Real World?</h2>
+
+<h3>Dynamic Nature of Markets</h3>
+<ul>
+  <li>In theory, equilibrium = the <b>exact intersection</b> of demand + supply.</li>
+  <li>Real markets keep changing because of:</li>
+  <ul>
+    <li>Technology</li>
+    <li>Wages</li>
+    <li>Interest rates</li>
+    <li>Political events</li>
+    <li>Wars</li>
+    <li>Pandemics</li>
+    <li>Weather</li>
+    <li>Natural disasters</li>
+    <li>Income</li>
+    <li>Consumer trends</li>
+  </ul>
+  <li>So equilibrium is <b>rarely permanent</b>.</li>
+  <li>Markets keep <b>adjusting towards new equilibrium points</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f7f79">Exam idea: treat equilibrium like a moving target — shifts in demand/supply move the intersection, and the market adjusts via price changes.</paragraph>
+</div>
+
+<h3>Face Masks During COVID-19 (Illustration of Adjustment)</h3>
+<ul>
+  <li>In 2020, <b>demand for masks jumped suddenly</b>.</li>
+  <li>Supply couldn’t rise immediately.</li>
+  <li>This caused a <b>shortage</b> + <b>sharp price rise</b>.</li>
+  <li>Later, producers expanded supply → prices <b>fell</b>.</li>
+  <li>After the pandemic, demand fell more and prices moved back towards earlier levels.</li>
+</ul>
+
+<h2>Hotel Tariffs: Dynamic Pricing</h2>
+
+<h3>Meaning of Tariff</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f7a">A hotel room’s <b>price</b> is also called its <b>tariff</b>.</paragraph>
+</div>
+<ul>
+  <li>Hotels change tariffs based on <b>demand</b> and <b>availability</b>.</li>
+</ul>
+
+<h3>Goa Hotel Example (Dynamic Pricing in Practice)</h3>
+<ul>
+  <li>A 100-room hotel might charge:</li>
+  <ul>
+    <li>Off-season weekday in July: ₹1,500 per night</li>
+    <li>Tourist-season weekend in December: ₹8,000 per night</li>
+    <li>New Year’s Eve: ₹25,000 per night</li>
+  </ul>
+  <li>If a big tour group cancels, the hotel may cut prices by <b>40% overnight</b> to fill rooms.</li>
+  <li>Tariffs can change <b>several times a day</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f7f7b">Applied example: prices adjust frequently as demand/supply conditions change = <b>dynamic pricing</b>.</paragraph>
+</div>
+
+<h3>Factors Affecting Hotel Tariffs</h3>
+<ul>
+  <li>Speed of bookings</li>
+  <li>Prices charged by nearby hotels</li>
+  <li>Festivals</li>
+  <li>Conferences</li>
+  <li>Local events</li>
+  <li>Weather forecasts</li>
+  <li>Number of days before arrival</li>
+  <li>Past booking patterns</li>
+</ul>
+
+<h3>Revenue</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f7c"><b>Revenue</b> = <b>total income</b> from selling goods/services <b>before expenses</b> are subtracted.</paragraph>
+</div>
+<paragraph id="6a868d6c39d8f02db40f7f7d">Other dynamic price examples:</paragraph>
+<ul>
+  <li>Air tickets</li>
+  <li>Taxi fares</li>
+  <li>Event tickets</li>
+  <li>Vegetables</li>
+  <li>Electricity tariffs</li>
+  <li>Online shopping products</li>
+</ul>
+
+<h2>Markets and Sustainability</h2>
+
+<h3>Present Demand and Future Supply</h3>
+<ul>
+  <li>Today’s consumer choices can harm future resources.</li>
+  <li>Examples:</li>
+  <ul>
+    <li>Fast fashion</li>
+    <li>Overfishing</li>
+    <li>Excessive groundwater extraction</li>
+  </ul>
+  <li>Markets shouldn’t focus only on <b>short-term gain</b>.</li>
+  <li><b>Sustainable consumption</b> protects future supply.</li>
+  <li>If resources run out, <b>future supply falls</b> and <b>equilibrium prices may rise a lot</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c39d8f02db40f7f7e">Link sustainability to supply: resource depletion shifts supply left (lower supply) → tends to raise equilibrium price in the long run.</paragraph>
+</div>
+
+<h2>Role of Government in the Economy</h2>
+
+<h3>Nature of the Indian Economy</h3>
+<ul>
+  <li>India = a <b>large, market-based and regulated economy</b>.</li>
+  <li>Market prices usually respond to <b>demand and supply</b>.</li>
+  <li>But markets don’t always give <b>fair outcomes</b>.</li>
+  <li>Markets distribute goods by <b>willingness + ability to pay</b>.</li>
+  <li>This can make essentials like <b>medicines</b> unreachable for <b>low-income groups</b>.</li>
+  <li>Government steps in for <b>fairness, equity, and social welfare</b>.</li>
+</ul>
+
+<h3>Regulation of Unfair Practices</h3>
+
+<h3>Protection of Economic Participants</h3>
+<ul>
+  <li>Government regulates markets to protect:</li>
+  <ul>
+    <li>Consumers</li>
+    <li>Workers</li>
+    <li>Producers</li>
+    <li>Vulnerable and low-income groups</li>
+  </ul>
+</ul>
+
+<h3>Price Ceiling</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f7f"><b>Price ceiling</b> = the <b>highest legal price</b> a seller can charge.</paragraph>
+</div>
+<ul>
+  <li>Used for <b>essential goods</b> (e.g., medicines) to stop overcharging.</li>
+  <li>If set <b>below equilibrium</b>, it can:</li>
+  <ul>
+    <li><b>Increase demand</b></li>
+    <li><b>Reduce supply</b></li>
+    <li>Cause a <b>shortage</b></li>
+  </ul>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f7f80">Key exam linkage: a binding price ceiling (below equilibrium price) gives <b>Q<sub>D</sub> &gt; Q<sub>S</sub></b> → shortage.</paragraph>
+</div>
+
+<h2>Price Floor</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f81"><b>Price floor</b> = the <b>lowest legal price</b> for a good, service, or labour.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f82"><b>Effectiveness condition:</b> A price floor is <b>effective (binding)</b> only if set <b>above equilibrium price</b>. If below equilibrium, it won’t change the market outcome.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f83"><b>Example:</b> <b>Minimum wage</b> = a price floor to protect workers, so wages don’t fall below a legal minimum.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f84"><b>Possible market outcome:</b> Can create <b>excess supply</b> when <b>Q<sub>S</sub> &gt; Q<sub>D</sub></b> at the floor price.</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c39d8f02db40f7f85"><b>Exam tip:</b> Always write <b>“above equilibrium”</b> for an effective price floor + link it to <b>excess supply</b> (surplus).</paragraph>
+</div>
+
+<h2>Monopoly</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f86"><b>Monopoly</b> = a market run by <b>one seller/producer</b> with <b>no close substitutes</b>.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f87"><b>Market power:</b> monopolist can strongly influence <b>price</b> + <b>output</b>.</paragraph></li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7f88"><b>How monopoly can harm consumers:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7f89"><b>Higher prices</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7f8a"><b>Restricted supply</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7f8b"><b>Lower quality</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7f8c"><b>Less consumer choice</b></paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f8d"><b>Government response:</b> may regulate monopolies by monitoring <b>prices</b>, <b>competition</b>, and <b>quantity supplied</b>.</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f7f8e">Exam must include: (1) <b>definition</b> (one seller, no close substitutes) + (2) at least <b>two consumer harms</b> + idea of <b>regulation</b>.</paragraph>
+</div>
+
+<h2>Market Regulators</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f8f"><b>Market regulators</b> = bodies that supervise markets to ensure <b>transparency</b>, <b>accountability</b>, and <b>fairness</b>.</paragraph>
+</div>
+
+<h3>Reserve Bank of India (RBI)</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f90">Regulates <b>banking</b> and <b>monetary institutions</b>.</paragraph></li>
+</ul>
+
+<h3>Central Consumer Protection Authority (CCPA)</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f91">Protects <b>consumer rights</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f92">Takes action against <b>unfair trade practices</b>.</paragraph></li>
+</ul>
+
+<h3>Telecom Regulatory Authority of India (TRAI)</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f93">Regulates the <b>telecommunications sector</b>.</paragraph></li>
+</ul>
+
+<h3>Securities and Exchange Board of India (SEBI)</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f94">Regulates the <b>securities market</b>.</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c39d8f02db40f7f95"><b>Common mistake:</b> mixing up regulators. Fix it as: <b>RBI–banks</b>, <b>CCPA–consumers</b>, <b>TRAI–telecom</b>, <b>SEBI–securities</b>.</paragraph>
+</div>
+
+<h2>Sanitiser Prices During COVID-19</h2>
+
+<h3>Market Problem</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f96"><b>Demand</b> for sanitisers shot up.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f97"><b>Supply ran out</b> → shortage.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f98"><b>Prices increased</b>.</paragraph></li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7f99">Some sellers reacted by:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7f9a"><b>Hoarding</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7f9b"><b>Black marketing</b></paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Hoarding</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f9c"><b>Hoarding</b> = storing/accumulating <b>too much</b> <b>goods or money</b>, usually because people expect <b>shortages</b> or <b>price rises</b>.</paragraph>
+</div>
+
+<h3>Black Marketing</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7f9d"><b>Black marketing</b> = <b>illegal</b> buying/selling of <b>prohibited</b>, <b>scarce</b>, or <b>regulated</b> goods/services.</paragraph>
+</div>
+
+<h3>Government Response</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7f9e">Sanitisers declared <b>essential commodities</b> under the <b>Essential Commodities Act, 1955</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7f9f"><b>MRP</b> fixed at <b>₹100 for a 200 ml bottle</b> → a <b>price ceiling/price control</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fa0"><b>New companies</b> started making sanitisers.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fa1"><b>Supply expanded</b> → sanitisers became widely available at <b>fairer prices</b>.</paragraph></li>
+</ul>
+
+<h3>Effects of Temporary Price Control</h3>
+<ul>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fa2"><b>For consumers:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fa3">Stops <b>extreme overcharging</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fa4">Improves <b>affordability</b></paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fa5"><b>For suppliers:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fa6">Caps the <b>price</b> they can charge</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fa7">Can reduce <b>profit incentive</b> if continued too long</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f7fa8"><b>Conclusion to write in exams:</b> Emergency price controls help if used <b>temporarily</b>, but <b>permanent controls</b> can discourage production and create <b>shortages</b>.</paragraph>
+</div>
+
+<h2>Provision of Public Goods</h2>
+
+<h3>Meaning of Public Goods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7fa9"><b>Public goods/services</b> = goods/services <b>provided or funded by the government</b> for the <b>benefit of society</b>.</paragraph>
+</div>
+<ul>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7faa"><b>Examples:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fab">Roads</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fac">Bridges</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fad">Public parks</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fae">Streetlights</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7faf">National defence</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fb0">Sanitation</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fb1">Drainage</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fb2">Police services</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Why Private Markets May Underprovide Them</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb3">Public goods often don’t give <b>direct private profit</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb4">People may benefit even if they <b>don’t pay</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb5">This creates the <b>free-rider problem</b> (benefit without paying) → under-provision.</paragraph></li>
+</ul>
+
+<h3>Neighbourhood-Park Example (Free-Rider Problem)</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb6">A park benefits lots of families.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb7">Each family must contribute <b>₹5,000</b>.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb8">Some families may wait for others to pay, expecting to use it <b>free</b> later.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fb9">So total contributions become <b>insufficient</b> → park not built.</paragraph></li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fba"><b>Government funding</b> fixes this and supports:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fbb"><b>Social welfare</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fbc"><b>Equal access</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fbd"><b>Economic development</b></paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Public-Goods Activity (What to be able to do)</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7fbe">Identify <b>two</b> publicly provided goods/services and explain:</paragraph></li>
+  <li>
+    <ol>
+      <li><paragraph id="6a868d6c39d8f02db40f7fbf"><b>Who benefits</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fc0"><b>Why private provision is difficult</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fc1"><b>What problems would arise</b> if government stopped providing them</paragraph></li>
+    </ol>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c39d8f02db40f7fc2"><b>Exam structure tip:</b> For “why govt provides public goods,” always write: <b>no direct profit → free-rider problem → under-provision → govt provision/funding</b>.</paragraph>
+</div>
+
+<h2>Limitations of Government Intervention</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7fc3">Govt regulation is sometimes needed, but <b>too much intervention</b> can cause <b>adverse effects</b>.</paragraph>
+</div>
+
+<h3>Price Distortions and Reduced Incentives</h3>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7fc4">If govt fixes prices <b>below market price</b>, producers get <b>lower returns</b>.</paragraph></li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fc5"><b>Example (wheat):</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fc6">Market price of wheat = <b>₹30/kg</b></paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fc7">Govt maximum price = <b>₹20/kg</b></paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fc8"><b>Likely producer responses:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fc9">Reduce production</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fca">Shift to other crops</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fcb">Cut investment</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fcc">Supply less</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fcd"><b>Result:</b> may create <b>shortages</b>.</paragraph></li>
+</ul>
+
+<h3>Compliance Burdens</h3>
+<ul>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fce">Intervention may require:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fcf">Licences</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd0">Permits</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd1">Inspections</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd2">Forms</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd3">Regulatory clearances</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fd4"><b>Problem:</b> small businesses may find the <b>time</b> + <b>cost</b> too heavy.</paragraph></li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fd5"><b>Example (restaurant approvals):</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd6">Food safety</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd7">Fire safety</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd8">Pollution control</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fd9">Local government rules</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fda"><b>Consequence:</b> too much compliance can stop entrepreneurs from <b>starting</b> or <b>expanding</b> businesses.</paragraph></li>
+</ul>
+
+<h3>Ease of Doing Business</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f7fdb"><b>Ease of doing business</b> = how easy it is to <b>start</b>, <b>run</b>, and <b>close</b> a business.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a868d6c39d8f02db40f7fdc">Depends on <b>regulation</b>, <b>bureaucracy</b>, and <b>legal systems</b>.</paragraph></li>
+</ul>
+
+<h3>Reduced Innovation and Entrepreneurship</h3>
+<ul>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fdd">Heavy price controls/regulation can reduce incentives to:</paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fde">Invest</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fdf">Experiment</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fe0">Adopt technology</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fe1">Improve production</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fe2"><b>Agriculture example:</b> if farmers can’t earn enough, they may avoid spending on better seeds/irrigation.</paragraph></li>
+  <li><paragraph id="6a868d6c39d8f02db40f7fe3"><b>Long-run result:</b> productivity + output may fall.</paragraph></li>
+</ul>
+
+<h3>Democratic Decision-Making</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f7fe4">A democracy should choose the <b>type + extent</b> of intervention by thinking about all stakeholders and <b>long-term public welfare</b> (not just short-run price changes).</paragraph>
+</div>
+<ul>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fe5"><b>Stakeholders to consider:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fe6">Consumers</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fe7">Producers</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fe8">Workers</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fe9">Small businesses</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fea">Vulnerable communities</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7feb">Long-term public welfare</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a868d6c39d8f02db40f7fec"><b>Intervention should balance:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a868d6c39d8f02db40f7fed">Fairness</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fee">Affordability</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7fef">Producer incentives</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7ff0">Competition</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7ff1">Innovation</paragraph></li>
+      <li><paragraph id="6a868d6c39d8f02db40f7ff2">Sustainability</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Applying Demand and Supply</h2>
+
+<h3>Income and Demand</h3>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f7ff3">Income ↑ does <b>not</b> mean demand ↑ for <b>all</b> goods.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7ff4">Income ↑ → demand for <b>normal</b> / <b>higher-quality</b> goods tends to ↑.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7ff5">Income ↑ → demand for some <b>lower-quality</b> / <b>less-preferred alternatives</b> can ↓ (people switch to better options).</paragraph></li>
+</ul>
+<div class="remember-box"><paragraph id="6a868d6c39d8f02db40f7ff6"><b>Exam phrasing:</b> “As income rises, demand rises for <b>normal</b> goods, but may fall for <b>inferior/lower-quality substitutes</b>.”</paragraph></div>
+
+<h3>Doubling of Petrol Prices</h3>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f7ff7">If petrol prices double, likely <b>demand-side</b> effects:</paragraph></li>
+<li>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f7ff8"><b>Diesel cars:</b> demand may ↑ if diesel stays relatively cheaper.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7ff9"><b>Electric cars:</b> demand may ↑.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7ffa"><b>Car accessories:</b> demand may ↓ if overall car use/purchases fall.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7ffb"><b>Public transport:</b> demand may ↑.</paragraph></li>
+</ul>
+</li>
+<li><paragraph id="6a868d6c39d8f02db40f7ffc"><b>Dependence factors:</b> depends on prices of related fuels, vehicle costs, and consumer preferences.</paragraph></li>
+</ul>
+
+<h3>Drip-Irrigation Technology</h3>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f7ffd">Given: drip irrigation cuts water use by <b>40%</b> and increases yield by <b>30%</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7ffe"><b>Cost + supply effect:</b> cost per unit may ↓, so farmers are willing to <b>supply more at each price</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f7fff">If many farmers adopt it → <b>market supply ↑</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8000"><b>Graph:</b> supply curve <b>shifts right</b> (more quantity supplied).</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8001"><b>New equilibrium:</b> price may <b>fall</b> and quantity may <b>rise</b>.</paragraph></li>
+</ul>
+
+<h3>Online Festival Sales</h3>
+<ul>
+<li>
+<paragraph id="6a868d6c39d8f02db40f8002"><b>Why prices can be low:</b></paragraph>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f8003">Bulk sales</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8004">Clearance of older inventory</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8005">Competition among sellers</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8006">Lower digital selling costs</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8007">Promotional strategies</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8008">Expectations of sharply increased demand</paragraph></li>
+</ul>
+</li>
+<li><paragraph id="6a868d6c39d8f02db40f8009"><b>Demand effect:</b> price ↓ → <b>quantity demanded</b> ↑.</paragraph></li>
+<li>
+<paragraph id="6a868d6c39d8f02db40f800a"><b>How sellers may still benefit:</b></paragraph>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f800b">Higher sales volume</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f800c">Inventory clearance</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f800d">Customer acquisition</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f800e">Increased market share</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<h3>Vaccine Price Ceiling</h3>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f800f">A maximum vaccine price set <b>below equilibrium</b> will likely cause a <b>shortage</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8010"><b>Reason (demand):</b> price ↓ → quantity demanded ↑.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8011"><b>Reason (supply):</b> producers get less → quantity supplied may ↓.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8012"><b>Policy implication:</b> government procurement, subsidies, or production support may be needed to keep supply going.</paragraph></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f8013">For any <b>price ceiling below equilibrium</b>, write the full chain: <b>price ↓ → Qd ↑ and Qs ↓ → shortage</b>, then add possible government steps to stop supply collapse.</paragraph>
+</div>
+
+<h3>Taxes on Harmful Goods</h3>
+<ul>
+<li>
+<paragraph id="6a868d6c39d8f02db40f8014">Governments impose <b>high taxes</b> on <b>tobacco</b> and <b>alcohol</b> to:</paragraph>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f8015">Raise prices</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8016">Reduce consumption</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8017">Promote healthier choices</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8018">Recover some social + healthcare costs</paragraph></li>
+</ul>
+</li>
+<li><paragraph id="6a868d6c39d8f02db40f8019">Similar controls may be used for other <b>harmful</b>, <b>scarce</b>, or <b>essential</b> products.</paragraph></li>
+</ul>
+
+<h2>Demand and Supply Graph Activities (Skills to Practise)</h2>
+
+<h3>Guava Demand Survey</h3>
+<ol>
+<li><paragraph id="6a868d6c39d8f02db40f801a">Write how much guava you’d buy at <b>₹100</b>, <b>₹80</b>, <b>₹50</b>, <b>₹20</b> per kg.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f801b">Ask <b>three friends</b> the same.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f801c">Add individual quantities to get <b>market demand</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f801d">Draw <b>individual demand curves</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f801e">Draw the combined <b>market demand curve</b>.</paragraph></li>
+</ol>
+<div class="remember-box"><paragraph id="6a868d6c39d8f02db40f801f"><b>Common mistake:</b> Market demand = <b>horizontal addition</b> (add quantities at the same price), not averaging prices.</paragraph></div>
+
+<h3>Vegetable-Market Study</h3>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f8020">Observe + explain:</paragraph></li>
+<li>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f8021">Who influences daily vegetable prices</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8022">Why some vegetables become unusually expensive/cheap</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8023">Why perishable tomatoes may cost more in the morning but less in the evening</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<h3>Evening Price Fall (Reasoning)</h3>
+<ul>
+<li><paragraph id="6a868d6c39d8f02db40f8024">Vegetables are <b>perishable</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8025">Unsold stock can <b>spoil overnight</b>.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8026">Demand often <b>falls later</b> in the day.</paragraph></li>
+<li><paragraph id="6a868d6c39d8f02db40f8027">Sellers choose a <b>lower price</b> instead of a <b>total loss</b> from spoiled unsold goods.</paragraph></li>
+</ul>
+
+<h2>Interpreting an Equilibrium Graph</h2>
+
+<h3>Point E (Market Equilibrium)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a868d6c39d8f02db40f8028"><b>Point E</b> = intersection of <b>demand</b> and <b>supply</b>.</paragraph>
+<ul>
+<li>It shows <b>market equilibrium</b> (market-clearing point).</li>
+<li>At equilibrium: <b>Qd = Qs</b>.</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f8029">In Fig. 9.8, equilibrium is approx:</paragraph>
+<ul>
+<li><b>Equilibrium price</b> ≈ ₹200</li>
+<li><b>Equilibrium quantity</b> ≈ 30 kg</li>
+</ul>
+</div>
+
+<h3>Upper Price Line (High Price Above Equilibrium)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Point A</b> (on demand curve) = <b>Qd</b> at the higher price.</li>
+<li><b>Point B</b> (on supply curve) = <b>Qs</b> at the same higher price.</li>
+<li>Price &gt; equilibrium → <b>Qs &gt; Qd</b>.</li>
+<li><b>Gap A to B</b> = <b>excess supply</b> = <b>surplus</b>.</li>
+</ul>
+</div>
+<div class="remember-box"><paragraph id="6a868d6c39d8f02db40f802a"><b>Exam tip:</b> Price <b>above equilibrium</b> ⇒ <b>surplus / excess supply</b> (S &gt; D). Don’t mix it up with shortage.</paragraph></div>
+
+<h3>Lower Price Line (Low Price Below Equilibrium)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Point C</b> (on supply curve) = <b>Qs</b> at the lower price.</li>
+<li><b>Point F</b> (on demand curve) = <b>Qd</b> at the same lower price.</li>
+<li>Price &lt; equilibrium → <b>Qd &gt; Qs</b>.</li>
+<li><b>Gap C to F</b> = <b>excess demand</b> = <b>shortage</b>.</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a868d6c39d8f02db40f802b">If a <b>low price</b> continues in a <b>free market</b>, buyer competition can <b>push price up</b> toward equilibrium.</paragraph>
+</div>
+<div class="remember-box"><paragraph id="6a868d6c39d8f02db40f802c"><b>Exam tip:</b> Price <b>below equilibrium</b> ⇒ <b>shortage / excess demand</b> (D &gt; S). This creates upward pressure on price in a free market.</paragraph></div>
+
+<h2>Numerical Equilibrium Exercise (Using a Schedule)</h2>
+
+<h3>Given Schedule: Identifying Equilibrium</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f802d"><b>Equilibrium (from a schedule)</b> = where <b>Qd = Qs</b> at the <b>same price</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f802e">Given data (Price; Quantity demanded; Quantity supplied):</paragraph>
+  <ul>
+    <li>₹10; 5 kg; 25 kg</li>
+    <li>₹20; 10 kg; 20 kg</li>
+    <li>₹30; 15 kg; 15 kg</li>
+    <li>₹40; 20 kg; 10 kg</li>
+    <li>₹50; 25 kg; 5 kg</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Equilibrium price = ₹30</b></li>
+    <li><b>Equilibrium quantity = 15 kg</b></li>
+  </ul>
+</div>
+
+<h3>Calculating Excess Supply and Excess Demand from the Schedule</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Excess supply (surplus)</b>: when <b>Qs &gt; Qd</b></li>
+    <li><b>Excess demand (shortage)</b>: when <b>Qd &gt; Qs</b></li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f802f">At <b>₹20</b>:</paragraph>
+  <ul>
+    <li>Demand = 10 kg</li>
+    <li>Supply = 20 kg</li>
+    <li><b>Excess supply = 10 kg</b> (20 − 10)</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8030">At <b>₹40</b>:</paragraph>
+  <ul>
+    <li>Demand = 20 kg</li>
+    <li>Supply = 10 kg</li>
+    <li><b>Excess demand = 10 kg</b> (20 − 10)</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a868d6c39d8f02db40f8031"><b>Common mistake:</b> For “excess”, always find the <b>difference</b> at that price + label it correctly: <b>surplus</b> (S − D) or <b>shortage</b> (D − S).</paragraph>
+</div>
+
+<h3>Note on Unusual Shapes in the Plotted Data</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8032">In this exercise, the figures give an <b>unusual pattern</b>:</paragraph>
+  <ul>
+    <li>Demand seems to move <b>upward</b> with price.</li>
+    <li>Supply seems to move <b>downward</b> with price.</li>
+  </ul>
+  <paragraph id="6a868d6c39d8f02db40f8033">Even if it looks odd, <b>plot exactly what’s given</b> and mark equilibrium where <b>both quantities = 15 kg</b>.</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="6a868d6c39d8f02db40f8034"><b>Exam tip:</b> Don’t “fix” numbers to match theory. In schedule/numerical Qs, equilibrium is strictly where <b>Qd = Qs</b> in the given data.</paragraph>
+</div>
+
+<h2>Chapter Summary (Demand, Supply, Equilibrium, and Policy)</h2>
+
+<h3>Demand and the Law of Demand</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Demand</b> = quantity consumers are <b>willing</b> + <b>able</b> to buy.</li>
+    <li><b>Law of Demand</b>: <b>inverse</b> relation between <b>price</b> and <b>Qd</b> (P↑ → Qd↓, P↓ → Qd↑).</li>
+  </ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8035">Determinants of demand (demand depends on):</paragraph>
+  <ul>
+    <li>Income</li>
+    <li>Population</li>
+    <li>Preferences</li>
+    <li>Related goods</li>
+    <li>Seasons</li>
+    <li>Utility</li>
+    <li>Future expectations</li>
+  </ul>
+</div>
+
+<h3>Supply and the Law of Supply</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Supply</b> = quantity sellers are <b>willing</b> + <b>able</b> to offer.</li>
+    <li><b>Law of Supply</b>: <b>direct</b> relation between <b>price</b> and <b>Qs</b> (P↑ → Qs↑, P↓ → Qs↓).</li>
+  </ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8036">Determinants of supply (supply is influenced by):</paragraph>
+  <ul>
+    <li>Related-goods prices</li>
+    <li>Sellers</li>
+    <li>Technology</li>
+    <li>Inputs</li>
+    <li>Expectations</li>
+    <li>Weather and disasters</li>
+  </ul>
+</div>
+
+<h3>Market Equilibrium, Shortages, and Surpluses</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Market equilibrium</b> = where <b>Qd = Qs</b>.</li>
+    <li>In <b>shortage</b> (excess demand), prices tend to <b>rise</b>.</li>
+    <li>In <b>surplus</b> (excess supply), prices tend to <b>fall</b>.</li>
+    <li>Real markets are <b>dynamic</b> → keep moving towards <b>new equilibrium</b>.</li>
+  </ul>
+</div>
+
+<h3>Why Government Intervention May Be Required</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8037">Government intervention may be needed when markets:</paragraph>
+  <ul>
+    <li>Make essential goods unaffordable</li>
+    <li>Encourage exploitation</li>
+    <li>Permit monopoly abuse</li>
+    <li>Underprovide public goods</li>
+    <li>Produce seriously unequal outcomes</li>
+  </ul>
+</div>
+
+<h3>Government Measures and Risks of Excessive Intervention</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8038">Government measures include:</paragraph>
+  <ul>
+    <li>Price ceilings</li>
+    <li>Price floors</li>
+    <li>Regulation</li>
+    <li>Taxation</li>
+    <li>Public provision</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a868d6c39d8f02db40f8039">Too much intervention may:</paragraph>
+  <ul>
+    <li>Distort prices</li>
+    <li>Reduce supply</li>
+    <li>Impose compliance costs</li>
+    <li>Discourage innovation</li>
+  </ul>
+</div>
+
+<h3>Balancing Goals in Sound Economic Policy</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a868d6c39d8f02db40f803a">Sound economic policy = balance:</paragraph>
+  <ul>
+    <li>Consumer welfare</li>
+    <li>Producer incentives</li>
+    <li>Equality</li>
+    <li>Competition</li>
+    <li>Long-term sustainability</li>
+  </ul>
+</div></div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

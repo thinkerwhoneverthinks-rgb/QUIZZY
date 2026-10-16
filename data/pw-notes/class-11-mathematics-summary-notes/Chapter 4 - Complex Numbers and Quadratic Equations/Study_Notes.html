@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-04 : Complex Numbers and Quadratic Equations</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+
+
+  <style>
+    math, math * { font-family:'Kalam',cursive !important; }
+    math { font-size:1.05em; vertical-align:middle; }
+    .container { overflow-wrap:anywhere; }
+  </style>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-04 : Complex Numbers and Quadratic Equations</h1>
+
+<h2>Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="c9978624447992b4184febd2">In the real numbers, the equation </paragraph><paragraph id="7ab84772b0502c4f618e82e9">x<sup>2</sup> + 1 = 0</paragraph> has <b>no solution</b> because it gives <paragraph id="ea2e22508fe05e786be76617">x<sup>2</sup> = −1</paragraph>, and any real square is <b>≥ 0</b>.<paragraph id="fafb96df2d330705dac6d7cf"></paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="7f119db8078204b730cce334">To solve quadratics </paragraph><paragraph id="673e714934a3e59f66177dca">ax<sup>2</sup> + bx + c = 0</paragraph> when the discriminant <paragraph id="ed797c5aa7060dd17d2e8f48">D = b<sup>2</sup> − 4ac &lt; 0</paragraph>, we must <b>extend</b> the real number system to include numbers whose square can be negative.<paragraph id="4e1c31eb22598f74022e96bf"></paragraph>
+</div>
+
+<h2>Complex Numbers</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="403ac31983e9f9437cc510bd">Define i by i = √(−1), so i<sup>2</sup> = −1. Therefore i solves x<sup>2</sup> + 1 = 0.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="46de49caf063bd278a978801">A <b>complex number</b> has the form a + ib, where a and b are real.
+</paragraph><ul>
+<li>Examples: 2 + i3, (−1) + i√3, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mi>i</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>11</mn><mn>5</mn>
+</mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>.</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="748b3a5d27a2472d99615c5f">For z = a + ib:
+</paragraph><ul>
+<li><b>Real part</b>: Re(z) = a</li>
+<li><b>Imaginary part</b>: Im(z) = b</li>
+</ul>
+Example: if z = 2 + i5, then Re(z) = 2, Im(z) = 5.
+
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5f6347b9336f129de74d3632"><b>Equality of complex numbers</b>: If z<sub>1</sub> = a + ib and z<sub>2</sub> = c + id, then
+z<sub>1</sub> = z<sub>2</sub> ⇔ a = c and b = d.
+
+</paragraph></div>
+
+<h3>Worked Example 1: Equating real and imaginary parts</h3>
+<paragraph id="5a2c4b0385188c45fd5ef301"><b>Given</b>: </paragraph><paragraph id="feca02fd120e7f99de7af4e5">4x + i(3x − y) = 3 + i(−6)</paragraph>, where <paragraph id="ad98cd8abca2714ee9340500">x, y</paragraph> are real.<paragraph id="286d4e738eff5f84404b6e5f"></paragraph>
+<paragraph id="ee670eaf39db2a25f364c654">Match real parts + match imaginary parts:</paragraph>
+<ul>
+<li>Real parts: <paragraph id="8773cfef51d604613b8df63e">4x = 3</paragraph> ⟹ <paragraph id="f5f7e4740eca3f484b77b20f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mfrac displaystyle="true"><mn>3</mn><mn>4</mn></mfrac></mrow></math></paragraph></li>
+<li>Imaginary parts: <paragraph id="14074129ec0ea8b6b1339e8d">3x − y = −6</paragraph></li>
+</ul>
+<paragraph id="8e62e75a56b94d8420bc4541">Substitute </paragraph><paragraph id="8365b04f290ab11d7c149d35"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mfrac displaystyle="true"><mn>3</mn><mn>4</mn></mfrac></mrow></math></paragraph> into <paragraph id="4d8c4937265b4cb72a286ea7">3x − y = −6</paragraph>:<paragraph id="f767bbf46f9fc420a275aec5"></paragraph>
+<paragraph id="174405fcdf8ea95c2b6baf75"></paragraph><paragraph id="5370ab8901dea3b5d3d3a317"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>3</mn><mn>4</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><mi>y</mi><mo>=</mo><mo>−</mo><mn>6</mn></mrow></math></paragraph> ⟹ <paragraph id="8452a65b909da2f84f38f514"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>9</mn><mn>4</mn></mfrac><mo>−</mo><mi>y</mi><mo>=</mo><mo>−</mo><mn>6</mn></mrow></math></paragraph> ⟹ <paragraph id="0c5bce296e71435c6a955afb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mi>y</mi><mo>=</mo><mo>−</mo><mn>6</mn><mo>−</mo><mfrac displaystyle="true"><mn>9</mn><mn>4</mn></mfrac><mo>=</mo><mo>−</mo><mfrac displaystyle="true"><mn>33</mn><mn>4</mn></mfrac></mrow></math></paragraph> ⟹ <paragraph id="40c85487e7adcd4250fcb91a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mfrac displaystyle="true"><mn>33</mn><mn>4</mn></mfrac></mrow></math></paragraph>.<paragraph id="8a74a0e483b860b4ac02ff87"></paragraph>
+<div class="remember-box">
+<paragraph id="f39383ba4a24aeeb93191a93">⚠ If two complex numbers are equal: equate <b>real with real</b> and <b>imaginary with imaginary</b> (don’t cross-match).</paragraph>
+</div>
+
+<h2>Algebra of Complex Numbers</h2>
+
+<h3>Addition of two complex numbers</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7d58cb3dd465c88d4ffaea70">Let z<sub>1</sub> = a + ib, z<sub>2</sub> = c + id</paragraph>
+<paragraph id="642630c297963462d2a68d09">z<sub>1</sub> + z<sub>2</sub> = (a + c) + i(b + d)</paragraph>
+<ul>
+<li><paragraph id="3b6fa8394b01a096308029b8">a, b, c, d are real numbers</paragraph></li>
+<li><paragraph id="3840265005abcef6d73cd608">i is the imaginary unit, i<sup>2</sup> = −1</paragraph></li>
+</ul>
+</div>
+<paragraph id="6a45d9f44facfb1bdc1d67aa">Example:</paragraph>
+<paragraph id="1ab8f366c101ce32960dda05">(2 + i3) + (−6 + i5) = (2−6) + i(3+5) = −4 + i8</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="59ea091a0013a5aace334852"><b>Properties of addition</b> (for all complex numbers z, z<sub>1</sub>, z<sub>2</sub>, z<sub>3</sub>):</paragraph>
+<ul>
+<li><b>Closure</b>: z<sub>1</sub> + z<sub>2</sub> is complex.</li>
+<li><b>Commutative</b>: z<sub>1</sub> + z<sub>2</sub> = z<sub>2</sub> + z<sub>1</sub>.</li>
+<li><b>Associative</b>: (z<sub>1</sub> + z<sub>2</sub>) + z<sub>3</sub> = z<sub>1</sub> + (z<sub>2</sub> + z<sub>3</sub>).</li>
+<li><b>Additive identity</b>: 0 + i0 (written 0) so z + 0 = z.</li>
+<li><b>Additive inverse</b>: if z = a + ib then −z = −a + i(−b), and z + (−z) = 0.</li>
+</ul>
+</div>
+
+<h3>Difference of two complex numbers</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="34ac8c3d35a4a6219d4f0461">z<sub>1</sub> − z<sub>2</sub> = z<sub>1</sub> + (−z<sub>2</sub>)</paragraph>
+<ul>
+<li><paragraph id="1c72703970b74b572892eee5">−z<sub>2</sub> is the additive inverse of z<sub>2</sub></paragraph></li>
+</ul>
+</div>
+<ul>
+<li><paragraph id="0bdaabcf33838e2fae6d88f2">(6 + 3i) − (2 − i) = (6 + 3i) + (−2 + i) = 4 + 4i</paragraph></li>
+<li><paragraph id="cd69d7f1a8e89f2693db4a36">(2 − i) − (6 + 3i) = (2 − i) + (−6 − 3i) = −4 − 4i</paragraph></li>
+</ul>
+
+<h3>Multiplication of two complex numbers</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0bd491662608608d54889afd">Let z<sub>1</sub> = a + ib, z<sub>2</sub> = c + id</paragraph>
+<paragraph id="7038a3a5a7e41b516bc8e4fa">z<sub>1</sub>z<sub>2</sub> = (ac − bd) + i(ad + bc)</paragraph>
+<ul>
+<li><paragraph id="89fff0975de044880c6d672b">a, b, c, d are real numbers</paragraph></li>
+</ul>
+</div>
+<paragraph id="c504e796068ce2a54d7e91ca">Example:</paragraph>
+<paragraph id="ea9bf7c04a657aad5d0705b2">(3 + i5)(2 + i6) = (3·2 − 5·6) + i(3·6 + 5·2) = −24 + i28</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="77eb7e2dc4cb31e20e646f6d"><b>Properties of multiplication</b> (no proofs):</paragraph>
+<ul>
+<li><b>Closure</b>: z<sub>1</sub>z<sub>2</sub> is complex.</li>
+<li><b>Commutative</b>: z<sub>1</sub>z<sub>2</sub> = z<sub>2</sub>z<sub>1</sub>.</li>
+<li><b>Associative</b>: (z<sub>1</sub>z<sub>2</sub>)z<sub>3</sub> = z<sub>1</sub>(z<sub>2</sub>z<sub>3</sub>).</li>
+<li><b>Multiplicative identity</b>: 1 + i0 (written 1) so z·1 = z.</li>
+<li><b>Multiplicative inverse</b>: for each non-zero z = a + ib, there is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mn>1</mn><mi>z</mi></mfrac></math> such that z·(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mn>1</mn><mi>z</mi></mfrac></math>) = 1.</li>
+<li><b>Distributive</b>:
+<ul>
+<li><paragraph id="10d475c2639666a04db15908">z<sub>1</sub>(z<sub>2</sub> + z<sub>3</sub>) = z<sub>1</sub>z<sub>2</sub> + z<sub>1</sub>z<sub>3</sub></paragraph></li>
+<li><paragraph id="e6695ebb413aa497c25ce281">(z<sub>1</sub> + z<sub>2</sub>)z<sub>3</sub> = z<sub>1</sub>z<sub>3</sub> + z<sub>2</sub>z<sub>3</sub></paragraph></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5bf76e7e57029bc3463d1f74"><b>Multiplicative inverse (explicit)</b>:</paragraph>
+<paragraph id="9cec631b400578c1dd30b2cb">For z = a + ib ≠ 0,</paragraph>
+<paragraph id="933f8d759efb3241d9f231f6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mi>z</mi></mfrac><mo>=</mo><mfrac displaystyle="true"><mi>a</mi><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac><mo>−</mo><mi>i</mi><mfrac displaystyle="true"><mi>b</mi><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></paragraph>
+<ul>
+<li><paragraph id="6cdf26144bc515e935411771">a, b real; not both zero</paragraph></li>
+<li><paragraph id="679f48b9ae933f627d9e1e6e">a<sup>2</sup>+b<sup>2</sup> is real and positive when z ≠ 0</paragraph></li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="2b7c19123e025c4192f718ff">Don’t leave the inverse as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mn>1</mn><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></mfrac></math>. In exams you must simplify to standard p + iq (use the conjugate or the explicit formula).</paragraph>
+</div>
+
+<h3>Division of two complex numbers</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="440f23b17955762af69e9b70"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub></mfrac><mo>=</mo><msub><mi>z</mi><mn>1</mn></msub><mo>⋅</mo><mfrac displaystyle="true"><mn>1</mn><msub><mi>z</mi><mn>2</mn></msub></mfrac><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>z</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math></paragraph>
+<ul>
+<li><paragraph id="01a8a52a2003df0956ede15b">z<sub>1</sub>, z<sub>2</sub> are complex numbers</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="329371829dd4379c5ba246f1"><b>Worked example (as in text)</b>: let z<sub>1</sub> = 6 + 3i, z<sub>2</sub> = 2 − i.</paragraph>
+<paragraph id="7686d274adaf92b4b24e7a37">Compute <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub></mfrac></math> by multiplying top &amp; bottom by the conjugate of 2 − i, i.e. 2 + i:</paragraph>
+<paragraph id="e1b436e85e1ee2dea4bbe270"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mrow><mn>6</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>6</mn><mo>+</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>+</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>+</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></mfrac></mrow></math></paragraph>
+<ul>
+<li><paragraph id="0b2b72f3a049db6c9be68719">Denominator: (2−i)(2+i) = 2<sup>2</sup> + 1<sup>2</sup> = 5</paragraph></li>
+<li><paragraph id="d351726e726ef3dd49a775b5">Numerator: (6+3i)(2+i) = 12 + 6i + 6i + 3i<sup>2</sup> = 12 + 12i − 3 = 9 + 12i</paragraph></li>
+</ul>
+<paragraph id="53311723f2d9f16d811578ec">So <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mrow><mn>6</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>9</mn><mo>+</mo><mn>12</mn><mi>i</mi></mrow><mn>5</mn></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>9</mn><mn>5</mn></mfrac><mo>+</mo><mfrac displaystyle="true"><mn>12</mn><mn>5</mn></mfrac><mi>i</mi></mrow></math></paragraph>
+<div class="remember-box">
+<paragraph id="102c793c01a57d2fdbb8e6e7">For division: always remove i from the denominator using the conjugate, and check z<sub>2</sub> ≠ 0.</paragraph>
+</div>
+
+<h3>Powers of i</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="073d1da4e82f1c0df841e96a">Using i<sup>2</sup> = −1:</paragraph>
+<ul>
+<li><paragraph id="1e47049caf44ee635391bafa">i<sup>3</sup> = i<sup>2</sup>·i = (−1)i = −i</paragraph></li>
+<li><paragraph id="18f7f2d39d622b7c35c2add5">i<sup>4</sup> = (i<sup>2</sup>)<sup>2</sup> = (−1)<sup>2</sup> = 1</paragraph></li>
+<li><paragraph id="982039251c37e5ac19ad78c6">i<sup>5</sup> = i<sup>4</sup>·i = 1·i = i</paragraph></li>
+<li><paragraph id="e2012706ac452446fb95d95b">i<sup>6</sup> = i<sup>4</sup>·i<sup>2</sup> = 1·(−1) = −1</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="a506eb1cf6f5bce097659175"><b>Negative powers</b> (examples from text):</paragraph>
+<ul>
+<li><paragraph id="f4a68db75fd5b1fca0bcc811"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><mo>⋅</mo><mfrac displaystyle="true"><mi>i</mi><mi>i</mi></mfrac><mo>=</mo><mfrac displaystyle="true"><mi>i</mi><msup><mi>i</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mo>−</mo><mi>i</mi></mrow></math></paragraph></li>
+<li><paragraph id="2ea2f4f447adbceeb7b07cd5"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><msup><mi>i</mi><mn>2</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math></paragraph></li>
+<li><paragraph id="25631e691110ec0c523b8e95"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><msup><mi>i</mi><mn>3</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mo>−</mo><mi>i</mi></mrow></mfrac><mo>=</mo><mi>i</mi></mrow></math></paragraph></li>
+<li><paragraph id="508c6b9a146851fe8c68ca65"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mo>−</mo><mn>4</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><msup><mi>i</mi><mn>4</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>1</mn></mfrac><mo>=</mo><mn>1</mn></mrow></math></paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0558529cdd27c30ad40cde70"><b>General cycle</b>: for any integer k,</paragraph>
+<ul>
+<li><paragraph id="0cc700b557d078d10a80db51">i<sup>4k</sup> = 1</paragraph></li>
+<li><paragraph id="4463f617abe276374980e5de">i<sup>4k+1</sup> = i</paragraph></li>
+<li><paragraph id="3d74a4618515a8e90a50608f">i<sup>4k+2</sup> = −1</paragraph></li>
+<li><paragraph id="faa520a0f644c0ea4af4d900">i<sup>4k+3</sup> = −i</paragraph></li>
+</ul>
+<ul>
+<li><paragraph id="682342f9f96bb926c42fd753">k can be any integer (positive, negative, or 0)</paragraph></li>
+</ul>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+<span class="mnemonic-word">CYCLE</span>
+<div class="mnemonic-expand">
+C — Comes back every 4<br/>
+Y — Your list is: 1, i, −1, −i<br/>
+C — Continue repeating<br/>
+L — Look at power mod 4<br/>
+E — End result from the list
+</div>
+</div>
+
+<h3>The square roots of a negative real number</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="708a5c0b8f2e5e991fe2f836">Since i<sup>2</sup> = −1 and (−i)<sup>2</sup> = (−1)<sup>2</sup>i<sup>2</sup> = −1, the square roots of −1 are i and −i.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="deefd996031a7779e2e9789c">Convention: √(−1) means i only (not both roots).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="edd98e41ad943dd60c6b956a">Example: square roots of −3:</paragraph>
+<ul>
+<li><paragraph id="c06174aefd0c14871d557e46">(√3 i)<sup>2</sup> = 3i<sup>2</sup> = −3</paragraph></li>
+<li><paragraph id="6936cc69f5b4faa5f4ea58d5">(−√3 i)<sup>2</sup> = (−1)<sup>2</sup>·3·i<sup>2</sup> = −3</paragraph></li>
+</ul>
+<paragraph id="dca80e45f64dee6924a1db4c">So the square roots of −3 are √3 i and −√3 i, while √(−3) means √3 i only.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="efac44c37c1e80d461cca2a6">For a positive real number a:</paragraph>
+<paragraph id="14df1394374e36fa1e4cf629">√(−a) = √(−1)·√a = i√a</paragraph>
+<ul>
+<li><paragraph id="da35d9aca90b5a419e82c678">a is positive real</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="0c4c510ebfed428275328556"><b>Caution: multiplying square roots</b></paragraph>
+<paragraph id="25aaf41d5aacd3fda6433f26">We know √a · √b = √(ab) for positive real a, b.</paragraph>
+<paragraph id="3842d37137e2f0c9be95f983">This is still true when exactly one of a, b is negative (a&gt;0, b&lt;0 or a&lt;0, b&gt;0).</paragraph>
+<paragraph id="5df39c74244988eb1d389cad">But if a&lt;0 and b&lt;0, then (in general):</paragraph>
+<paragraph id="97fe7beb169e75d7f4c88d22">√a · √b ≠ √(ab)</paragraph>
+</div>
+
+<paragraph id="7f657006a8129e55ca816d72"><b>Reason (contradiction from text)</b>:</paragraph>
+<paragraph id="d85d71308ba1285b9b8a7c40">If we (wrongly) assume √a · √b = √(ab) for all reals, then</paragraph>
+<paragraph id="9bd44af100245318c87f9b56">√(−1) · √(−1) = √((−1)(−1)) = √1 = 1</paragraph>
+<paragraph id="008a74ca68fd4d11bbc88d38">But √(−1) = i, so LHS = i·i = i<sup>2</sup> = −1. Contradiction.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="47fbc0a77244faa5fee41d89">If a = 0 or b = 0, then √a · √b = √(ab) = 0.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="408536f8e7f92a932b861ae1">Common exam mistake: √(−1)√(−1) → √1. Wrong. Correct: i·i = −1.</paragraph>
+</div>
+
+<h3>Identities</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="29c1d89857dfcd1a63075bfc"><b>Square of a sum</b> (works for all complex z<sub>1</sub>, z<sub>2</sub>):</paragraph>
+<paragraph id="ad11f618b766d06c726b7d73">(z<sub>1</sub> + z<sub>2</sub>)<sup>2</sup> = z<sub>1</sub><sup>2</sup> + 2z<sub>1</sub>z<sub>2</sub> + z<sub>2</sub><sup>2</sup></paragraph>
+<ul>
+<li><paragraph id="bfb4e1e790a4f32d771855db">z<sub>1</sub>, z<sub>2</sub> are complex</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="fdbfe5ce281a9aa51d87a8ab"><b>Proof idea (as in text: distributive + commutative)</b>:</paragraph>
+<paragraph id="c74a4f090baf36b7716b3b2b">(z<sub>1</sub> + z<sub>2</sub>)<sup>2</sup> = (z<sub>1</sub> + z<sub>2</sub>)(z<sub>1</sub> + z<sub>2</sub>)</paragraph>
+<ul>
+<li><paragraph id="d0e73da9d45bf45d42ac3030">Distribute: (z<sub>1</sub> + z<sub>2</sub>)z<sub>1</sub> + (z<sub>1</sub> + z<sub>2</sub>)z<sub>2</sub></paragraph></li>
+<li><paragraph id="23a3ebeed02316cb38f7a7fd">Distribute again: z<sub>1</sub><sup>2</sup> + z<sub>2</sub>z<sub>1</sub> + z<sub>1</sub>z<sub>2</sub> + z<sub>2</sub><sup>2</sup></paragraph></li>
+<li><paragraph id="96468fad171672105c651237">Commutative mult.: z<sub>2</sub>z<sub>1</sub> = z<sub>1</sub>z<sub>2</sub></paragraph></li>
+<li><paragraph id="b344468a38e88234330ecc74">Collect terms: z<sub>1</sub><sup>2</sup> + 2z<sub>1</sub>z<sub>2</sub> + z<sub>2</sub><sup>2</sup></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4fc3bdf9ed06e71382b6cfd1"><b>Other identities (also for all complex numbers)</b>:</paragraph>
+<ul>
+<li><paragraph id="054c00c1e2da5c6b19a7d5ce">(z<sub>1</sub> − z<sub>2</sub>)<sup>2</sup> = z<sub>1</sub><sup>2</sup> − 2z<sub>1</sub>z<sub>2</sub> + z<sub>2</sub><sup>2</sup></paragraph></li>
+<li><paragraph id="3aa7a84ec232442aafe21474">(z<sub>1</sub> + z<sub>2</sub>)<sup>3</sup> = z<sub>1</sub><sup>3</sup> + 3z<sub>1</sub><sup>2</sup>z<sub>2</sub> + 3z<sub>1</sub>z<sub>2</sub><sup>2</sup> + z<sub>2</sub><sup>3</sup></paragraph></li>
+<li><paragraph id="0661cfbeceb069b0e697a055">(z<sub>1</sub> − z<sub>2</sub>)<sup>3</sup> = z<sub>1</sub><sup>3</sup> − 3z<sub>1</sub><sup>2</sup>z<sub>2</sub> + 3z<sub>1</sub>z<sub>2</sub><sup>2</sup> − z<sub>2</sub><sup>3</sup></paragraph></li>
+<li><paragraph id="812405c2e2305d7ce5455452">(z<sub>1</sub> − z<sub>2</sub>)(z<sub>1</sub> + z<sub>2</sub>) = z<sub>1</sub><sup>2</sup> − z<sub>2</sub><sup>2</sup></paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="1078cdb8b541de221a1fd902">Most real-number algebra identities still work for complex numbers because the same laws (commutative, associative, distributive) hold.</paragraph>
+</div>
+
+<h3>Worked Example 2: Express in the form a + bi</h3>
+<paragraph id="25a689167b9b070b3fb3f99a"><b>(i)</b> Express <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>8</mn><mi>i</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></math> in a + bi form.</paragraph>
+<paragraph id="e0dc7690e0600e90eb79b913">Key step: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><mo>=</mo><mo>−</mo><mi>i</mi></mrow></math> (since i·(−i)=1).</paragraph>
+<paragraph id="d207ce01a023c8cea79ddc95"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>8</mn><mi>i</mi></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>−</mo><mn>8</mn><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>−</mo><mn>8</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>+</mo><mn>8</mn><mi>i</mi></mrow></math></paragraph>
+<paragraph id="0020203f920af6973ee562dd">So <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>,</mo><mspace width="1.0em"></mspace><mi>b</mi><mo>=</mo><mn>8</mn></mrow></math>.</paragraph>
+
+<paragraph id="b4621a853fb7e201fe24cc94"><b>(ii)</b> Express <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>3</mn><mn>8</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mn>8</mn><mi>i</mi></mrow></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> in a + bi form.</paragraph>
+<paragraph id="687e8d757df6aa79adc2b73a">First simplify <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mn>1</mn><mrow><mn>8</mn><mi>i</mi></mrow></mfrac></math>:</paragraph>
+<ul>
+<li><paragraph id="66cb6f8167c3396a8657d11b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mrow><mn>8</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>8</mn></mfrac><mo>⋅</mo><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>8</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mfrac displaystyle="true"><mi>i</mi><mn>8</mn></mfrac></mrow></math></paragraph></li>
+</ul>
+<paragraph id="8a6feb5be14b6c26496e31bc">So the second bracket is:</paragraph>
+<paragraph id="aa542b037044de6edf6e96b7"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>3</mn><mn>8</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mn>8</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>3</mn><mn>8</mn></mfrac><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac displaystyle="true"><mi>i</mi><mn>8</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mn>3</mn><mn>8</mn></mfrac><mo>+</mo><mfrac displaystyle="true"><mi>i</mi><mn>8</mn></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>3</mn><mo>+</mo><mi>i</mi></mrow><mn>8</mn></mfrac></mrow></math></paragraph>
+<paragraph id="3bd7c000df775b29fb035d18">Now multiply:</paragraph>
+<paragraph id="3e52cbfdd43e7753acb1d778"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mfrac displaystyle="true"><mrow><mn>3</mn><mo>+</mo><mi>i</mi></mrow><mn>8</mn></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>8</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>+</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph>
+<paragraph id="1e38270ac93d7e57907113bf">Compute (2 − i)(3+i):</paragraph>
+<ul>
+<li><paragraph id="4718a9145b3e0c4676277019">(2 − i)(3+i) = 6 + 2i − 3i − i<sup>2</sup> = 6 − i + 1 = 7 − i</paragraph></li>
+</ul>
+<paragraph id="81de7a7e46a7b76835901aa2">Hence:</paragraph>
+<paragraph id="2d772422eae2a58fea613039"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mn>8</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>7</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mn>7</mn><mn>8</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>1</mn><mn>8</mn></mfrac><mi>i</mi></mrow></math></paragraph>
+
+<div class="remember-box">
+<paragraph id="bc65ea8e8f5d9d7a81ffe374">To get a + bi: kill i in denominators using <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><mo>=</mo><mo>−</mo><mi>i</mi></mrow></math> (or multiply by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mi>i</mi><mi>i</mi></mfrac></math>), then simplify fully.</paragraph>
+</div>
+
+<h2>Expanding and Simplifying Powers/Fractions of Complex Numbers (Worked Examples)</h2>
+
+<h3>Example 3: Express <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mo>−</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>3</mn></msup></math> in the form <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math></h3>
+<paragraph id="3d34f5ec6a3174c69f54b6ad">Use binomial: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>3</mn></msup><mo>=</mo><msup><mi>a</mi><mn>3</mn></msup><mo>−</mo><mn>3</mn><msup><mi>a</mi><mn>2</mn></msup><mi>b</mi><mo>+</mo><mn>3</mn><mi>a</mi><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>3</mn></msup></mrow></math>, with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mn>5</mn></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>b</mi><mo>=</mo><mn>3</mn><mi>i</mi></mrow></math>.</paragraph>
+<paragraph id="2410c4d1cf85ab3bd16e6f47"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mo>−</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>3</mn></msup><mo>=</mo><msup><mn>5</mn><mn>3</mn></msup><mo>−</mo><mn>3</mn><mo>⋅</mo><msup><mn>5</mn><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>3</mn><mo>⋅</mo><mn>5</mn><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>3</mn></msup></mrow></math></paragraph>
+<paragraph id="e317075bcbdfe848de9ed369">Work term-by-term:</paragraph>
+<ul>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mn>5</mn><mn>3</mn></msup><mo>=</mo><mn>125</mn></mrow></math></li>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>3</mn><mo>⋅</mo><msup><mn>5</mn><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mn>3</mn><mo>⋅</mo><mn>25</mn><mo>⋅</mo><mn>3</mn><mi>i</mi><mo>=</mo><mo>−</mo><mn>225</mn><mi>i</mi></mrow></math></li>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>9</mn><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mn>9</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mn>9</mn></mrow></math> so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>3</mn><mo>⋅</mo><mn>5</mn><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>15</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>9</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mn>135</mn></mrow></math></li>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>3</mn></msup><mo>=</mo><mn>27</mn><msup><mi>i</mi><mn>3</mn></msup><mo>=</mo><mn>27</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mn>27</mn><mi>i</mi></mrow></math>, so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>3</mn></msup><mo>=</mo><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>27</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>+</mo><mn>27</mn><mi>i</mi></mrow></math></li>
+</ul>
+<paragraph id="3099087fddc0653eeb660e8f">So: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>125</mn><mo>−</mo><mn>225</mn><mi>i</mi><mo>−</mo><mn>135</mn><mo>+</mo><mn>27</mn><mi>i</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>125</mn><mo>−</mo><mn>135</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>225</mn><mo>+</mo><mn>27</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>i</mi><mo>=</mo><mo>−</mo><mn>10</mn><mo>−</mo><mn>198</mn><mi>i</mi></mrow></math>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="7e1274f009247e248a813dfe">Simplifying powers of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math>: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>3</mn></msup><mo>=</mo><mo>−</mo><mi>i</mi></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>4</mn></msup><mo>=</mo><mn>1</mn></mrow></math>. Reduce any higher power using these.</paragraph>
+</div>
+
+<h3>Example 4: Express <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>3</mn><mn>2</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>2</mn><mn>3</mn></mfrac><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>2</mn><mn>3</mn></mfrac><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> in the form <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math></h3>
+<paragraph id="e5f1d59e73c31b6e9e59ad07">Multiply like normal binomials + use <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math>. Safe method: expand fully, then collect real + <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math> parts.</paragraph>
+<ul>
+  <li>Multiply the real parts and the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math>-parts carefully.</li>
+  <li>Any <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>⋅</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>⋅</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> gives an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math> term → becomes real.</li>
+  <li>Finish as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtext mathvariant="normal">(real)</mtext><mo>+</mo><mi>i</mi><mtext mathvariant="normal">(real)</mtext></mrow></math>.</li>
+</ul>
+<div class="remember-box">
+  <paragraph id="e30148bddffc5e89b906864d">In multiplying complex numbers, the main sign “flip” happens only when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>i</mi><mn>2</mn></msup></math> shows up (since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math>). Most mistakes come from missing this.</paragraph>
+</div>
+
+<h2>Modulus and Conjugate of a Complex Number</h2>
+
+<h3>Definitions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="1eececb5f483986db20ac579">Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>.</paragraph>
+  <ul>
+    <li><paragraph id="5116dc8c80bd727cce2ea4a8"><b>Modulus</b> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow></math>: the non-negative real number <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt></math>.</paragraph></li>
+    <li><paragraph id="387e71378c145e58d70da532"><b>Conjugate</b> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mover><mi>z</mi><mo accent="true">¯</mo></mover></math>: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></math>.</paragraph></li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="b6c1a8b741e9d5b37037e882"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph>
+  <paragraph id="0449bcfbdeacd109580fe224"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math></paragraph>
+  <paragraph id="d84e701abd86e01feae5db63"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo></mrow></math> real part of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>z</mi></math></paragraph>
+  <paragraph id="a75d4db493c15044f1852649"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>b</mi><mo>=</mo></mrow></math> imaginary coefficient of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>z</mi></math></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8f3c107fadf425859144cd11"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></math></paragraph>
+  <paragraph id="7e075d163c42d8629bec411e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math></paragraph>
+  <paragraph id="a87be2d4c9fac71e18afefde"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo></mrow></math> change the sign of the imaginary part</paragraph>
+</div>
+
+<h3>Examples of modulus and conjugate</h3>
+<paragraph id="1889aeb097d014c90442ddfa">Modulus examples:</paragraph>
+<ul>
+  <li><paragraph id="8f871752ffb381f06234b15d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mn>3</mn><mo>+</mo><mi>i</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><msqrt><mrow><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><msup><mn>1</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mn>10</mn></msqrt></mrow></math></paragraph></li>
+  <li><paragraph id="24153cd895875f50b3f98ca5"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mn>5</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><msqrt><mrow><msup><mn>5</mn><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mn>29</mn></msqrt></mrow></math></paragraph></li>
+</ul>
+<paragraph id="b651f640526ae5aeb5695a69">Conjugate examples:</paragraph>
+<ul>
+  <li><paragraph id="a5dcb48934478b730ab785a9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mn>3</mn><mo>+</mo><mi>i</mi></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mn>3</mn><mo>−</mo><mi>i</mi></mrow></math></paragraph></li>
+  <li><paragraph id="b868ce28638463a6a1bbf6cd"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mn>5</mn><mo>−</mo><mn>2</mn><mi>i</mi></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mn>5</mn><mo>+</mo><mn>2</mn><mi>i</mi></mrow></math></paragraph></li>
+  <li><paragraph id="76ef226969b683f87758ec44"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mo>−</mo><mn>5</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mo>−</mo><mn>5</mn><mo>−</mo><mn>3</mn><mi>i</mi></mrow></math> (only the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math>-part sign changes)</paragraph></li>
+</ul>
+
+<h2>Multiplicative Inverse of a Complex Number</h2>
+
+<h3>Derivation and standard form</h3>
+<paragraph id="3c478be614258029751e4a54">For non-zero <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>, the multiplicative inverse is:</paragraph>
+<paragraph id="056d509c539300f4e564a38f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></mfrac></mrow></math>.</paragraph>
+<paragraph id="1982574da047a9497233e016">Multiply top + bottom by the conjugate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></math>:</paragraph>
+<paragraph id="9a382a7efb045f4e84e3bae4"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></mfrac><mo>⋅</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="50efced654f81c1c8b43515b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mover><mi>z</mi><mo accent="true">¯</mo></mover><msup><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup></mfrac></mrow></math>, for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow></math></paragraph>
+  <paragraph id="38c18e38047162d5429b191d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math></paragraph>
+  <paragraph id="e5577a633a6ed6bd870349f1"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></math></paragraph>
+  <paragraph id="79a1c8c20d3e8c63680e4ebe"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></math></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="91a6066ceaef3079435fe3bd"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></math> is always real and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>≥</mo><mn>0</mn></mrow></math>, and it’s <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math> only if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mo>=</mo><mn>0</mn></mrow></math> (so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>). Inverse exists exactly when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow></math>.</paragraph>
+</div>
+
+<h3>Properties involving conjugate</h3>
+<paragraph id="8e10d7a911a31803f8868b2f">For any complex numbers <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub></mrow></math>:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="21d7be5370454b2b5dff8417">(i) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mover><msub><mi>z</mi><mn>1</mn></msub><mo accent="true">¯</mo></mover><mspace width="0.167em"></mspace><mover><msub><mi>z</mi><mn>2</mn></msub><mo accent="true">¯</mo></mover></mrow></math></paragraph>
+  <paragraph id="fb0029704ab7830930434300"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>,</mo><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo></mrow></math> complex numbers</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8132e68318d892eff2867c98">(ii) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mfrac displaystyle="true"><mover><msub><mi>z</mi><mn>1</mn></msub><mo accent="true">¯</mo></mover><mover><msub><mi>z</mi><mn>2</mn></msub><mo accent="true">¯</mo></mover></mfrac></mrow></math>, provided <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math></paragraph>
+  <paragraph id="657c378dc17fff31842bced6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math> ensures division is defined</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="be047f9fe9b56f4c1f887fca">(iii) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>z</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">|</mo></mrow><mspace width="0.167em"></mspace><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>z</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph>
+  <paragraph id="0230aee8ed778a3adcf5fa96"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mo>⋅</mo><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo></mrow></math> modulus</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="336db6bab9cf604bb62abed1">(iv) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>z</mi><mn>1</mn></msub><mo>±</mo><msub><mi>z</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mover><msub><mi>z</mi><mn>1</mn></msub><mo accent="true">¯</mo></mover><mo>±</mo><mover><msub><mi>z</mi><mn>2</mn></msub><mo accent="true">¯</mo></mover></mrow></math></paragraph>
+  <paragraph id="576db6d1be130d6df80294a0"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>±</mo></math> means both plus and minus cases work</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="dcc7f9078c2e6dde8c020993">(v) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mfrac displaystyle="true"><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub></mfrac><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>z</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">|</mo></mrow><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>z</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">|</mo></mrow></mfrac></mrow></math>, provided <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math></paragraph>
+  <paragraph id="fdbf83f6cebc9875cf913371"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math> ensures division is defined</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="659c5a98fa8e6309c973155a">Don’t mix up <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mover><mi>z</mi><mo accent="true">¯</mo></mover></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow></math>: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mover><mi>z</mi><mo accent="true">¯</mo></mover></math> is a complex number; <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow></math> is a non-negative real number.</paragraph>
+</div>
+
+<h3>Example 5: Find the multiplicative inverse of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mo>−</mo><mn>3</mn><mi>i</mi></mrow></math></h3>
+<paragraph id="05f5ba1198637dd28a3b8269">Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mn>2</mn><mo>−</mo><mn>3</mn><mi>i</mi></mrow></math>. Then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>4</mn><mo>+</mo><mn>9</mn><mo>=</mo><mn>13</mn></mrow></math>.</paragraph>
+<paragraph id="c2d4bc74456ba7fe72e3006a">So: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mover><mi>z</mi><mo accent="true">¯</mo></mover><msup><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mn>13</mn></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>2</mn><mn>13</mn></mfrac><mo>+</mo><mfrac displaystyle="true"><mn>3</mn><mn>13</mn></mfrac><mi>i</mi></mrow></math>.</paragraph>
+<paragraph id="a8b284fe50236a7d90af0e76">Equivalent working (rationalising the denominator):</paragraph>
+<paragraph id="c084084567400502bbf557da"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mn>1</mn><mrow><mn>2</mn><mo>−</mo><mn>3</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mn>2</mn><mo>−</mo><mn>3</mn><mi>i</mi></mrow></mfrac><mo>⋅</mo><mfrac displaystyle="true"><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi></mrow><mn>13</mn></mfrac></mrow></math>.</paragraph>
+
+<h3>Example 6: Express in the form <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math></h3>
+
+<h3>(i) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mrow><mn>5</mn><mo>+</mo><mn>2</mn><mi>i</mi></mrow><mrow><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi></mrow></mfrac></math></h3>
+<paragraph id="e501c5e6c919235cc59bcdaa">Multiply top + bottom by conjugate of denominator <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></math>:</paragraph>
+<paragraph id="54ed390cd3558f33eb946e79"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mrow><mn>5</mn><mo>+</mo><mn>2</mn><mi>i</mi></mrow><mrow><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi></mrow></mfrac><mo>⋅</mo><mfrac displaystyle="true"><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi></mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></mfrac></mrow></math>.</paragraph>
+<ul>
+  <li><paragraph id="3aa6830069cf1511d3adc205">Denominator: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>1</mn><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>1</mn><mo>−</mo><mn>4</mn><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>5</mn></mrow></math>.</paragraph></li>
+  <li><paragraph id="ec4603c36f1273f316980fdc">Numerator: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>5</mn><mo>+</mo><mn>10</mn><mi>i</mi><mo>+</mo><mn>2</mn><mi>i</mi><mo>+</mo><mn>4</mn><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mn>5</mn><mo>+</mo><mn>12</mn><mi>i</mi><mo>−</mo><mn>4</mn><mo>=</mo><mn>1</mn><mo>+</mo><mn>12</mn><mi>i</mi></mrow></math>.</paragraph></li>
+</ul>
+<paragraph id="36752c865983a14a9a1b1053">Hence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mrow><mn>5</mn><mo>+</mo><mn>2</mn><mi>i</mi></mrow><mrow><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>1</mn><mo>+</mo><mn>12</mn><mi>i</mi></mrow><mn>5</mn></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>5</mn></mfrac><mo>+</mo><mfrac displaystyle="true"><mn>12</mn><mn>5</mn></mfrac><mi>i</mi></mrow></math>.</paragraph>
+
+<h3>(ii) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>i</mi><mrow><mo>−</mo><mn>35</mn></mrow></msup></math></h3>
+<paragraph id="1b028b9c6ab80cfa59366d56">Powers of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math> cycle every 4 since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mn>4</mn></msup><mo>=</mo><mn>1</mn></mrow></math>. Reduce the exponent mod 4.</paragraph>
+<paragraph id="348ae87b03ab3daee5c33082"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>35</mn><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo form="prefix" stretchy="false">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>4</mn><mo form="postfix" stretchy="false">)</mo></mrow></mrow></math> because <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>35</mn><mo>=</mo><mo>−</mo><mn>36</mn><mo>+</mo><mn>1</mn></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mo>−</mo><mn>36</mn></mrow></msup><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>i</mi><mn>4</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo>−</mo><mn>9</mn></mrow></msup><mo>=</mo><mn>1</mn></mrow></math>.</paragraph>
+<paragraph id="54aabef6cee0a941a549efe0">So <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mo>−</mo><mn>35</mn></mrow></msup><mo>=</mo><msup><mi>i</mi><mrow><mo>−</mo><mn>36</mn></mrow></msup><mo>⋅</mo><msup><mi>i</mi><mn>1</mn></msup><mo>=</mo><mn>1</mn><mo>⋅</mo><mi>i</mi><mo>=</mo><mi>i</mi></mrow></math>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="98e25b0aaacda2c7d138edb8">For any integer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math>: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi></mrow></msup><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>i</mi><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi><mo>+</mo><mn>2</mn></mrow></msup><mo>=</mo><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi><mo>+</mo><mn>3</mn></mrow></msup><mo>=</mo><mo>−</mo><mi>i</mi></mrow></math></paragraph>
+  <paragraph id="d518c117a859ee8cbb3fad32"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi><mo>=</mo></mrow></math> any integer</paragraph>
+</div>
+
+<h2>Argand Plane and Polar Representation (Geometric Meaning)</h2>
+
+<h3>Complex number as a point in a plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="ba98239224f16a86165044cd"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>, i.e. point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> on a plane.</paragraph>
+  <paragraph id="2c9d61fa5dd098f86142b8be">This plane is the <b>complex plane</b> / <b>Argand plane</b>.</paragraph>
+</div>
+
+<paragraph id="078f90827e575765dca9fcbf">Examples (complex number <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>↔</mo></math> point):</paragraph>
+<ul>
+  <li><paragraph id="3ade19ce228d24d36d4244e0"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mo>+</mo><mn>4</mn><mi>i</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>,</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph></li>
+  <li><paragraph id="afb1d47edc3b5e46b96c4cd1"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>2</mn><mo>+</mo><mn>3</mn><mi>i</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph></li>
+  <li><paragraph id="82a6418ee652c4f9174591d2"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>+</mo><mn>1</mn><mi>i</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph></li>
+  <li><paragraph id="92cde7d6647caec1e261b247"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mo>+</mo><mn>0</mn><mi>i</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph></li>
+  <li><paragraph id="6eb21a16e87da994e17f78f9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>5</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>5</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph></li>
+  <li><paragraph id="ddfe4a78acfd4dab122a4b33"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo>↔</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph></li>
+</ul>
+
+<h3>Real axis, imaginary axis, and modulus as distance</h3>
+<paragraph id="f41743bfae4ec23458452e3f">In the Argand plane:</paragraph>
+<ul>
+  <li><paragraph id="042af0f458e2ca95e62f3ebf">Points on the x-axis ↔ <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mn>0</mn></mrow></math> (purely real).</paragraph></li>
+  <li><paragraph id="0b4aa7362d3e374061f2845c">Points on the y-axis ↔ <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math> (purely imaginary).</paragraph></li>
+  <li><paragraph id="2dbedfe40ac85d7efbcc1135">x-axis = <b>real axis</b>; y-axis = <b>imaginary axis</b>.</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="73f137950cf706e932f3bbb5">If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi></mrow></math> is point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">|</mo><mi>z</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mrow></math> is the distance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mi>P</mi></mrow></math> from <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math>.</paragraph>
+</div>
+
+<h3>Geometric meaning of conjugate</h3>
+<paragraph id="c327f35d91f0f8d88fe42b19">If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi></mrow></math> is point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>x</mi><mo>−</mo><mi>i</mi><mi>y</mi></mrow></math> is point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mo>−</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>.</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="2e7047135bee8f2911e8180d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mo>−</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></math> is the mirror image of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></math> in the real axis ⇒ <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mover><mi>z</mi><mo accent="true">¯</mo></mover></math> is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>z</mi></math> reflected across the real axis on the Argand plane.</paragraph>
+</div>
+
+<h2>Miscellaneous Worked Examples</h2>
+
+<h3>Example 7: Conjugate of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac displaystyle="true"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></mfrac></math></h3>
+<paragraph id="88a13749a2e6136431b703dc">Step 1: simplify the whole complex number into <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>.</paragraph>
+<paragraph id="c4983ccffa169843f35fe6a6">Step 2: take conjugate by flipping the sign of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math>-part.</paragraph>
+<paragraph id="f359ab3d46b52b76af182c79">Textbook simplification:</paragraph>
+<paragraph id="2ee5c1985d71ce619a9771db"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac displaystyle="true"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mn>3</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>63</mn><mn>25</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>16</mn><mn>25</mn></mfrac><mi>i</mi></mrow></math>.</paragraph>
+<paragraph id="5344582638a221f8b700ae9a">So the conjugate is:</paragraph>
+<paragraph id="bf89f23b1d44bcef356e974e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mn>63</mn><mn>25</mn></mfrac><mo>−</mo><mfrac displaystyle="true"><mn>16</mn><mn>25</mn></mfrac><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mfrac displaystyle="true"><mn>63</mn><mn>25</mn></mfrac><mo>+</mo><mfrac displaystyle="true"><mn>16</mn><mn>25</mn></mfrac><mi>i</mi></mrow></math>.</paragraph>
+
+<div class="remember-box">
+  <paragraph id="18888188f77b483e86b7efce">⚠ Conjugate AFTER simplifying: if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>w</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>w</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></math>.</paragraph>
+  <paragraph id="284b34a9cf85128700a9bae8">Don’t conjugate top/bottom separately unless you’re using <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mfrac><mover><msub><mi>z</mi><mn>1</mn></msub><mo accent="true">¯</mo></mover><mover><msub><mi>z</mi><mn>2</mn></msub><mo accent="true">¯</mo></mover></mfrac></mrow></math>.</paragraph>
+</div>
+
+<h3>Example 8: If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></mfrac></mrow></math>, prove <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math></h3>
+<paragraph id="d2587ae054f03a5923eeeebb">Start + rationalise (multiply by conjugate of the denominator):</paragraph>
+<paragraph id="cab9bd315d6399ac74ca62f6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></mfrac><mo>⋅</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math>.</paragraph>
+<paragraph id="724c8a45f92c5bee2d83b741">Expand:</paragraph>
+<paragraph id="9616bd97614e76921e159d00"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>a</mi><mi>b</mi><mi>i</mi><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>i</mi><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>a</mi><mi>b</mi><mi>i</mi></mrow></math>.</paragraph>
+<paragraph id="00fdf8eda06d9342e1666681">So split into real + imaginary parts:</paragraph>
+<paragraph id="cbe70c9315af98bfdf45d5da"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi><mo>=</mo><mfrac displaystyle="true"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mi>i</mi><mo>⋅</mo><mfrac displaystyle="true"><mrow><mn>2</mn><mi>a</mi><mi>b</mi></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math>.</paragraph>
+<paragraph id="eb6e9b31f08ac4d35bc0fe36">Hence:</paragraph>
+<ul>
+  <li><paragraph id="a7144d304ead13154bc4aad1"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mfrac displaystyle="true"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></paragraph></li>
+  <li><paragraph id="0a150d677a01d53fbb6fa507"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>2</mn><mi>a</mi><mi>b</mi></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></paragraph></li>
+</ul>
+<paragraph id="8d25fe593f7fce1e65a36e61">Now compute <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></math>:</paragraph>
+<paragraph id="9f0f8231cecf10b6be638a15"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mfrac displaystyle="true"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>a</mi><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><msup><mi>a</mi><mn>4</mn></msup><mo>−</mo><mn>2</mn><msup><mi>a</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>4</mn></msup><mo>+</mo><mn>4</mn><msup><mi>a</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><msup><mi>a</mi><mn>4</mn></msup><mo>+</mo><mn>2</mn><msup><mi>a</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>4</mn></msup></mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mfrac displaystyle="true"><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><msup><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn><mi>.</mi></mrow></math></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="a6358e01cc09118e6b252d47">Key identity: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>+</mo><mi>i</mi><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>i</mi><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></math>.</paragraph>
+  <paragraph id="f4bb63a3ffb4dde7cd48bae1">Use it to turn a complex expression into something purely real.</paragraph>
+</div>
+
+<h2>Chapter Summary (This Portion)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="95c3d93494578bc8149034ee"><b>Complex number</b>: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>, where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>.</paragraph>
+  <paragraph id="f624fa3d137130b354eab929"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math> = real part, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math> = imaginary part (the coefficient of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math>).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="619f57f493aca3bc2ea3d356">If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo><mi>c</mi><mo>+</mo><mi>i</mi><mi>d</mi></mrow></math>:</paragraph>
+  <paragraph id="7ba13598af6d59de7905da63"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>+</mo><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>i</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>b</mi><mo>+</mo><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph>
+  <paragraph id="52a06f2d99dfee15e25f8c65"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>z</mi><mn>1</mn></msub><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>c</mi><mo>−</mo><mi>b</mi><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>i</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>d</mi><mo>+</mo><mi>b</mi><mi>c</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph>
+  <paragraph id="735ac06235317442580c0ebb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo>∈</mo><mi>ℝ</mi></mrow></math></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="def490d443edd6604bb91da4">For non-zero <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>:</paragraph>
+  <paragraph id="cc62e6af7ee611e37565b07a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac displaystyle="true"><mrow><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mfrac></mrow></math></paragraph>
+  <paragraph id="02cd385a6f20bcfa36ae0ab3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow></math> needed for the inverse to exist.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3989b54199fac00b00858b43">Conjugate:</paragraph>
+  <paragraph id="89cf3bb098f4df913e99aee7">If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mover><mi>z</mi><mo accent="true">¯</mo></mover><mo>=</mo><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mrow></math></paragraph>
+  <paragraph id="4b9f5ae3ab303cf6bafc19ae"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mover><mi>z</mi><mo accent="true">¯</mo></mover></math> = reflection in the real axis (Argand plane).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="76fbb5e2ccaac927ec08b48c">Powers of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math> (any integer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math>):</paragraph>
+  <paragraph id="dc7e9c621a53c72180a2bcc8"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi></mrow></msup><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>i</mi><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi><mo>+</mo><mn>2</mn></mrow></msup><mo>=</mo><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>i</mi><mrow><mn>4</mn><mi>k</mi><mo>+</mo><mn>3</mn></mrow></msup><mo>=</mo><mo>−</mo><mi>i</mi></mrow></math></paragraph>
+  <paragraph id="0b9caf1fa0bc0392cf6c919b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow></math></paragraph>
+</div>
+
+<h2>Historical Note (Complex Numbers)</h2>
+<paragraph id="71ef96b46a72f2256a74de6b">Early issue: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mtext mathvariant="normal">negative</mtext></msqrt></math> doesn’t exist in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>ℝ</mi></math>. Mahavira (850) clearly said a negative quantity has no square root; Bhaskara (1150) also noted there’s no square root of a negative quantity.</paragraph>
+<paragraph id="754c9bce3a02fae333487705">Cardan (1545), solving <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>10</mn></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mi>y</mi><mo>=</mo><mn>40</mn></mrow></math>, got <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mn>5</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>15</mn></mrow></msqrt></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mn>5</mn><mo>−</mo><msqrt><mrow><mo>−</mo><mn>15</mn></mrow></msqrt></mrow></math>, but rejected them as “useless”. Albert Girard (about 1625) accepted square roots of negatives, saying this gives as many roots as the degree of a polynomial.</paragraph>
+<paragraph id="4a02192f60f7fd957fb09111">Euler introduced the symbol <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><mo>−</mo><mn>1</mn></mrow></msqrt></math>. W. R. Hamilton (about 1830) defined <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mrow></math> as an ordered pair <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="true">)</mo></mrow></math>, giving a fully mathematical foundation.</paragraph></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

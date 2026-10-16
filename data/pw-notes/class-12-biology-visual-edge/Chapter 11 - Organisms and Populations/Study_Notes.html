@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title> — Biology</title>
+  <meta name="description" content=" — Biology topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Biology</div>
+        <h1></h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Study life at different levels; at any level, ask <b>how</b> (mechanism) and <b>why</b> (significance)</div>
+              <h2>Organisms and Populations</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Levels of biological organisation</b> are hierarchical stages used to study complexity, from biomolecules to higher ecological units.</li><li>Lower levels help explain structure and immediate processes; higher levels show interactions and emergent properties.</li><li><b>How-type questions</b> ask the <b>mechanism</b>: how a process occurs (structures, steps, immediate causes).</li><li><b>Why-type questions</b> ask the <b>significance</b>: what the process achieves/why it matters (function, advantage, outcome).</li><li>The same observation (at the same level) can generate both how-type and why-type questions.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 220' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'><path d='M0,0 L10,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='12' y='16' width='150' height='22' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='22' y='32' font-size='12' fill='#1f2a44'>Macromolecules</text><line x1='162' y1='27' x2='190' y2='27' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='190' y='16' width='70' height='22' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='206' y='32' font-size='12' fill='#1f2a44'>Cells</text><line x1='260' y1='27' x2='288' y2='27' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='288' y='16' width='60' height='22' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='299' y='32' font-size='12' fill='#1f2a44'>Tissues</text><rect x='12' y='52' width='70' height='22' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='28' y='68' font-size='12' fill='#1f2a44'>Organs</text><line x1='82' y1='63' x2='110' y2='63' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='110' y='52' width='92' height='22' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='122' y='68' font-size='12' fill='#1f2a44'>Organism</text><line x1='202' y1='63' x2='230' y2='63' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='230' y='52' width='92' height='22' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='242' y='68' font-size='12' fill='#1f2a44'>Population</text><line x1='322' y1='63' x2='348' y2='63' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='12' y='88' width='92' height='22' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='22' y='104' font-size='12' fill='#1f2a44'>Community</text><line x1='104' y1='99' x2='132' y2='99' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='132' y='88' width='92' height='22' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='148' y='104' font-size='12' fill='#1f2a44'>Ecosystem</text><line x1='224' y1='99' x2='252' y2='99' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='252' y='88' width='60' height='22' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='266' y='104' font-size='12' fill='#1f2a44'>Biome</text><line x1='312' y1='99' x2='340' y2='99' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='12' y='124' width='106' height='22' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='22' y='140' font-size='12' fill='#1f2a44'>Biosphere</text><rect x='128' y='120' width='220' height='30' rx='6' fill='#EEF4FF' stroke='#123B7A'/><text x='140' y='138' font-size='13' fill='#1f2a44'><tspan font-weight='700'>Same level</tspan>: ask <tspan font-weight='700'>HOW</tspan> and <tspan font-weight='700'>WHY</tspan></text><rect x='12' y='160' width='162' height='48' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='22' y='180' font-size='12' fill='#1f2a44'><tspan font-weight='700'>HOW</tspan> = mechanism</text><text x='22' y='196' font-size='12' fill='#1f2a44'>structures, steps, causes</text><rect x='186' y='160' width='162' height='48' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='196' y='180' font-size='12' fill='#1f2a44'><tspan font-weight='700'>WHY</tspan> = significance</text><text x='196' y='196' font-size='12' fill='#1f2a44'>function, advantage, outcome</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧪</span><span>Levels (basic): macromolecules → cells → tissues → organs → organism</span></li><li><span class="ic">🌍</span><span>Ecology levels (chapter use): organism → population → community → biome (biosphere is global sum of ecosystems)</span></li><li><span class="ic">🧩</span><span>Higher levels show <b>emergent properties</b> due to interactions among components</span></li><li><span class="ic">🔍</span><span><b>How</b> = mechanism; <b>Why</b> = significance in ecological/evolutionary context</span></li><li><span class="ic">🦜</span><span>Bulbul: <b>how</b> sings (voice box, vibrations) vs <b>why</b> sings (communication in breeding/territory)</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">LEVELS OF ORGANISATION (WHAT EACH LEVEL MEANS)</span></h2><ul class="b"><li><b>Macromolecules</b>: DNA, proteins, lipids etc. that underlie cell functions.</li><li><b>Cell</b>: basic unit of life; smallest unit showing life processes.</li><li><b>Tissue</b>: similar cells (plus intercellular material) performing a function.</li><li><b>Organ</b>: multiple tissues integrated into one functional unit (e.g., leaf, kidney).</li><li><b>Organism</b>: one living individual showing homeostasis and responses.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">HOW-TYPE vs WHY-TYPE QUESTIONS (EXAM-READY EXAMPLES)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto' markerUnits='strokeWidth'><path d='M0,0 L10,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='16' y='24' width='152' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='28' y='45' font-size='13' fill='#1f2a44'>Observation</text><text x='110' y='45' font-size='13' fill='#1f2a44'>: Bulbul sings</text><line x1='168' y1='41' x2='198' y2='41' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='198' y='14' width='146' height='42' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='210' y='36' font-size='13' fill='#1f2a44'><tspan font-weight='700'>HOW?</tspan> voice box</text><text x='210' y='52' font-size='12' fill='#1f2a44'>vibration → sound</text><line x1='168' y1='41' x2='198' y2='90' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='198' y='74' width='146' height='42' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='210' y='96' font-size='13' fill='#1f2a44'><tspan font-weight='700'>WHY?</tspan> significance</text><text x='210' y='112' font-size='12' fill='#1f2a44'>mate/territory</text><rect x='16' y='90' width='152' height='86' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='28' y='112' font-size='13' fill='#1f2a44'><tspan font-weight='700'>Tip</tspan>: write both</text><text x='28' y='132' font-size='12' fill='#1f2a44'>HOW = steps/parts</text><text x='28' y='150' font-size='12' fill='#1f2a44'>WHY = function</text><text x='28' y='168' font-size='12' fill='#1f2a44'>in context</text></svg></div><ul class="b"><li><b>Bulbul singing</b>: <b>how</b>—voice box and vibrating structures generate sound.</li><li><b>Bulbul singing</b>: <b>why</b>—communicates with mate during breeding season; signals territory.</li><li>Night-blooming flowers: <b>why</b> many are white—better visibility to nocturnal pollinators in low light.</li><li>Bee and nectar: <b>how</b> a bee chooses a flower—uses sensory cues (odour/visual patterns) to locate nectar.</li><li>Cactus thorns: <b>why</b>—defence against herbivores; also reduces water loss by shading and reducing air movement near surface.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">HOW-type vs WHY-type Questions</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>HOW-type (Mechanism)</th><th>WHY-type (Significance)</th></tr></thead><tbody><tr><td>Asks about</td><td>How a process occurs</td><td>What the process achieves/why it matters</td></tr><tr><td>Key words</td><td>How, by what mechanism, which steps/structures</td><td>Why, what for, significance, advantage</td></tr><tr><td>Answer should include</td><td>Structures/steps/immediate causes</td><td>Functional role in context (e.g., survival, reproduction)</td></tr><tr><td>Bulbul example</td><td>Voice box and vibrating structures produce sound</td><td>Communicates with mate during breeding; signals territory</td></tr><tr><td>Common mistake</td><td>Giving only a purpose without mechanism</td><td>Naming an organ but not stating its significance</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A question asks: <b>Why does cactus have so many thorns?</b> Identify the question type and write a model answer in one line.</div><div class="sol"><span class="lbl">Answer:</span><br>This asks for <b>significance</b> (what the trait achieves), not the mechanism of thorn formation.<br>State a survival advantage in habitat.</div><div class="ans">✓&nbsp; <b>WHY-type</b>; thorns protect against herbivores and can reduce water loss in arid conditions.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Convert the statement into two exam questions: <b>Night-blooming flowers are generally white.</b></div><div class="sol"><span class="lbl">Answer:</span><br>Frame a <b>HOW</b> question about the immediate cause/feature (pigments/reflectance) that makes petals appear white.<br>Frame a <b>WHY</b> question about the advantage in the pollination context at night.</div><div class="ans">✓&nbsp; <b>HOW?</b> How do petal pigments/reflectance make night-bloomers appear white in low light?<br><b>WHY?</b> Why does white colour help attract nocturnal pollinators at night?</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>In this chapter, ecology is discussed mainly at four levels: <b>organism, population, community, biome</b>.</li><li>Population = <b>same species</b> in a <b>well-defined geographical area</b>, sharing resources and potentially interbreeding.</li><li><b>How</b> answers need structures/steps; <b>why</b> answers must state significance (what it achieves) in context.</li><li>A single observation can generate both how-type and why-type questions at the same level.</li><li>Do not answer a WHY-type question by only naming an organ/structure; also state its role/advantage.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>MCTOO P C E B</b> + <b>HOW = steps, WHY = significance</b>”</div><paragraph id="6a9fd5fecaa6dbef5600012c"><b>M</b>acromolecule → <b>C</b>ell → <b>T</b>issue → <b>O</b>rgan → <b>O</b>rganism → <b>P</b>opulation → <b>C</b>ommunity → <b>E</b>cosystem → <b>B</b>iome</paragraph><paragraph id="6a9fd5fe8d5aeb0cf900012d">Think <b>HOW</b>: parts/steps/immediate cause.</paragraph><paragraph id="6a9fd5fe5f7d7296a600012e">Think <b>WHY</b>: what it achieves (role/advantage) in context.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">At any level of organisation, you can ask two question types: <b>HOW</b> (mechanism) and <b>WHY</b> (significance).</span><span class="eq">HOW-type answers: structures involved + sequence of steps + immediate causes.</span><span class="eq">WHY-type answers: function/outcome + advantage/role in context (often linked to survival/reproduction).</span><span class="eq">Bulbul singing: HOW—voice box and vibrating structures produce sound; WHY—communication with mate/territory (breeding season).</span><span class="eq">Ecology levels used in chapter: organism, population, community, biome (biosphere is global sum of ecosystems).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Same species + same area + similar resources ⇒ unit of ecology, selection, and evolution</div>
+              <h2>POPULATION CONCEPT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Population</b> = individuals of the <b>same species</b> living in a <b>well-defined geographical area</b>, sharing/competing for similar resources, and <b>potentially interbreeding</b>.</li><li>Population is the key ecological level where organisms behave as an <b>organised group</b> rather than isolated individuals.</li><li><b>Interbreeding</b> implies sexual reproduction; however, for ecological studies, a group of individuals of the <b>same species</b> produced by <b>asexual reproduction</b> in a defined area is also treated as a population.</li><li>A population is defined by both <b>species identity</b> and a <b>spatial boundary</b> (pond, wetland, forest tract, culture plate, dwelling).</li><li>Population ecology uses this unit to study how environments shape <b>survival and reproduction</b> across generations.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='18' y='22' width='140' height='74' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='44' font-size='13' fill='#1f2a44'>Same species</text><text x='30' y='64' font-size='13' fill='#1f2a44'>Same area</text><text x='30' y='84' font-size='13' fill='#1f2a44'>Similar resources</text><rect x='202' y='22' width='140' height='74' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='214' y='44' font-size='13' fill='#1f2a44'>Potential</text><text x='214' y='64' font-size='13' fill='#1f2a44'>interbreeding</text><text x='214' y='84' font-size='13' fill='#1f2a44'>(or asexual group)</text><line x1='158' y1='59' x2='202' y2='59' stroke='#123B7A' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='78' y='122' width='204' height='58' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='92' y='146' font-size='13' fill='#1f2a44'>POPULATION (ecological unit)</text><text x='92' y='166' font-size='12' fill='#1f2a44'>selection + genetics + evolution</text><line x1='110' y1='96' x2='140' y2='122' stroke='#7C3AED' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='250' y1='96' x2='220' y2='122' stroke='#7C3AED' stroke-width='2.5' marker-end='url(#arrow)'/></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🗺️</span><span>Boundary matters: a population is tied to a <b>specific habitat/area</b>, not the whole species globally.</span></li><li><span class="ic">🍽️</span><span>Members <b>share/compete</b> for similar resources (food, space, nesting sites, light, nutrients).</span></li><li><span class="ic">🧬</span><span><b>Gene pool</b> idea: populations contain heritable variation; evolution is tracked as changes in populations over generations.</span></li><li><span class="ic">🔁</span><span>Asexual groups (e.g., bacteria on a plate) still form a population for ecological study if they are the <b>same species</b> in a <b>defined space</b>.</span></li><li><span class="ic">🎯</span><span><b>Natural selection operates at population level</b>: differential survival/reproduction changes population trait frequencies over time.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">EXAMPLES (ALL MUST BE SAME SPECIES + DEFINED CONTEXT)</span></h2><ul class="b"><li><b>Cormorants</b> in a wetland (one species within that wetland boundary).</li><li><b>Rats</b> in an abandoned dwelling (dwelling = spatial unit).</li><li><b>Teakwood trees</b> in a forest tract (tract = defined area).</li><li><b>Bacteria</b> on a <b>culture plate</b> (asexual, yet treated as a population).</li><li>Reject mixed-species examples: “birds in a wetland” is a <b>community</b>, not one population.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WHY POPULATION ECOLOGY LINKS TO SELECTION, GENETICS &amp; EVOLUTION</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='18' y='34' width='100' height='46' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='61' font-size='13' fill='#1f2a44'>Environment</text><rect x='132' y='34' width='98' height='46' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='146' y='61' font-size='13' fill='#1f2a44'>Selection</text><rect x='244' y='34' width='98' height='46' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='258' y='61' font-size='13' fill='#1f2a44'>Reproduction</text><line x1='118' y1='57' x2='132' y2='57' stroke='#123B7A' stroke-width='2.5' marker-end='url(#arrow2)'/><line x1='230' y1='57' x2='244' y2='57' stroke='#123B7A' stroke-width='2.5' marker-end='url(#arrow2)'/><rect x='92' y='118' width='176' height='54' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='106' y='142' font-size='13' fill='#1f2a44'>Population gene pool</text><text x='106' y='162' font-size='12' fill='#1f2a44'>changes over generations</text><line x1='293' y1='80' x2='220' y2='118' stroke='#7C3AED' stroke-width='2.5' marker-end='url(#arrow2)'/></svg></div><ul class="b"><li>Selection acts on <b>phenotypes of individuals</b>, but the outcome is a <b>change in population composition</b> over generations.</li><li>Ecological pressures (climate, predators, resources) cause <b>differential survival and reproduction</b> among individuals.</li><li>Over generations, this shifts the <b>population gene pool</b> (evolution).</li><li>Thus population connects <b>ecology</b> with <b>population genetics</b> and <b>evolution</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Population vs Community vs Species (Exam Confusions)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Population</th><th>Community</th><th>Species (concept)</th></tr></thead><tbody><tr><td>Members</td><td>Same species</td><td>Many species (many populations)</td><td>All organisms that can interbreed (share a gene pool)</td></tr><tr><td>Area requirement</td><td>Defined geographical area (local boundary)</td><td>Same area (habitat) containing many populations</td><td>Not defined by one local boundary; has a distribution/range</td></tr><tr><td>Key link</td><td>Resource sharing/competition + (potential) reproduction within the area</td><td>Interspecific interactions among populations</td><td>Reproductive isolation from other species</td></tr><tr><td>Example</td><td>Cormorants in a wetland</td><td>Birds + fish + plants in a wetland</td><td>Cormorants across their entire distribution</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A pond has lotus plants, fish, algae, and frogs. What is the population and what is the community?</div><div class="sol"><span class="lbl">Answer:</span><br>A <b>population</b> is <b>one species</b> within the pond boundary (e.g., <b>lotus plants in that pond</b>).<br>A <b>community</b> includes <b>all interacting populations</b> in that pond (lotus + fish + algae + frogs).</div><div class="ans">✓&nbsp; Population: any one species group in that pond (e.g., lotus plants). Community: all species/populations together in that pond.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why is bacterial growth on a culture plate treated as a population even though there is no interbreeding?</div><div class="sol"><span class="lbl">Answer:</span><br>Population ecology needs a group of the <b>same species</b> in a <b>defined space</b> sharing and competing for resources.<br>Even in <b>asexual reproduction</b>, individuals show group-level dynamics (competition, changes in number and traits over time).</div><div class="ans">✓&nbsp; Because it is the same species confined to a defined area sharing resources; ecological studies treat such asexual groups as populations.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Population needs: <b>same species</b> + <b>well-defined area</b> + <b>shared/competing resources</b> + <b>potential reproduction</b> (sexual; asexual groups also considered).</li><li>Population is the key unit for studying <b>group responses</b> to environment.</li><li><b>Natural selection operates at population level</b>: changes are seen as shifts in population traits/gene pool over generations.</li><li>Do not mix levels: one species group = population; many species together = community.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>SASP</b> = Species–Area–Similar resources–(Potential) reproduction”</div><paragraph id="6a9fd5fe803bd4fbc600012f"><b>S</b>: Same species</paragraph><paragraph id="6a9fd5fe00da9a1799000130"><b>A</b>: Same area (well-defined)</paragraph><paragraph id="6a9fd5fef412836fb8000131"><b>S</b>: Share/compete for similar resources</paragraph><paragraph id="6a9fd5fe4c8eca151a000132"><b>P</b>: Potential to reproduce (sexual) or asexual group (same species) treated similarly</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Population (ecology): individuals of the <b>same species</b> in a <b>well-defined geographical area</b>.</span><span class="eq">Members <b>share/compete</b> for similar resources.</span><span class="eq">Members <b>potentially interbreed</b>; groups of the <b>same species</b> reproducing asexually in a defined area are also treated as populations.</span><span class="eq">Examples: cormorants (wetland), rats (dwelling), teakwood (forest tract), bacteria (culture plate), lotus (pond).</span><span class="eq">Natural selection: acts on individuals, but <b>operates at the population level</b> in terms of evolutionary outcome.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Population-level features: rates, ratios and age-structure that reveal growth status</div>
+              <h2>POPULATION ATTRIBUTES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Population attributes</b> are characteristics of a population that <b>an individual organism does not have</b>.</li><li>They are measured for a <b>group of same species</b> in a defined area and time interval.</li><li>Key attributes: <b>per capita</b> birth/death rates, <b>sex ratio</b>, and <b>age distribution</b>.</li><li>These attributes help predict whether a population is <b>growing</b>, <b>stable</b>, or <b>declining</b>.</li><li>Always specify the <b>time unit</b> when describing rates (per year, per week, etc.).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L9,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='10' y='12' width='340' height='176' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='22' y='34' font-size='14' fill='#1f2a44'>Population attributes</text><rect x='22' y='48' width='150' height='54' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='32' y='70' font-size='13' fill='#1f2a44'>Per capita rates</text><text x='32' y='90' font-size='12' fill='#1f2a44'>Birth (b), Death (d)</text><rect x='188' y='48' width='150' height='54' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='198' y='70' font-size='13' fill='#1f2a44'>Sex ratio</text><text x='198' y='90' font-size='12' fill='#1f2a44'>% females : % males</text><rect x='22' y='116' width='316' height='62' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='32' y='138' font-size='13' fill='#1f2a44'>Age distribution → Age pyramid</text><text x='62' y='156' font-size='12' fill='#1f2a44'>Growing</text><line x1='76' y1='160' x2='130' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><polygon points='145,170 165,135 185,170' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='194' y='156' font-size='12' fill='#1f2a44'>Stable</text><line x1='206' y1='160' x2='238' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='244' y='140' width='34' height='30' rx='4' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='286' y='156' font-size='12' fill='#1f2a44'>Declining</text><line x1='298' y1='160' x2='322' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><polygon points='326,135 336,170 346,135' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/></svg><div class="figcap">Three core population attributes and how age pyramid shape reflects growth status.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">👶</span><span>Per capita birth rate: new individuals added relative to initial population, per time unit.</span></li><li><span class="ic">⚰️</span><span>Per capita death rate: individuals died relative to initial population, per time unit.</span></li><li><span class="ic">⏱️</span><span>Rates without a time unit are incomplete in ecology answers.</span></li><li><span class="ic">♀️♂️</span><span>Sex ratio expresses proportion/percentage of females and males in a population.</span></li><li><span class="ic">🎂</span><span>Age distribution: percent individuals in age groups (pre-reproductive, reproductive, post-reproductive).</span></li><li><span class="ic">🔺</span><span>Age pyramid shape indicates growth status: growing, stable, or declining.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PER CAPITA BIRTH &amp; DEATH RATES (b, d)</span></h2><ul class="b"><li>A population has <b>rates</b>; an individual has only birth/death <b>events</b>.</li><li>Per capita rate means contribution <b>per individual</b> during a stated interval.</li><li>Birth rate example idea: if 20 lotus become 28 in a year, births are expressed per lotus per year (added/initial).</li><li>Death rate example idea: if 4 out of 40 fruitflies die in a week, deaths are expressed per fruitfly per week (deaths/initial).</li><li>Always write the <b>time unit</b> with the rate (per year, per week, etc.).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">AGE DISTRIBUTION &amp; AGE PYRAMIDS</span></h2>
+      
+      <h2>
+    <span class="secno">🖼️</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+
+    <img src="img/Untitled-11.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+
+
+    
+    
+    </div><ul class="b"><li>Age distribution = <b>percentage</b> in each age group of a population.</li><li>Human age pyramids often plot <b>males vs females</b> across age classes.</li><li>Broad base (more young) suggests future recruitment is high ⇒ <b>growing</b>.</li><li>Nearly uniform width suggests births ≈ deaths over long term ⇒ <b>stable</b>.</li><li>Narrow base (fewer young) suggests fewer replacements ⇒ <b>declining</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">AGE PYRAMID SHAPE vs POPULATION STATUS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Growing</th><th>Stable</th><th>Declining</th></tr></thead><tbody><tr><td>Base (young)</td><td>Broad base; many young</td><td>Moderate base</td><td>Narrow base; few young</td></tr><tr><td>Relative pattern</td><td>Pre-reproductive &gt; reproductive</td><td>Pre-reproductive ≈ reproductive</td><td>Pre-reproductive &lt; reproductive/older</td></tr><tr><td>Future trend</td><td>High replacement potential</td><td>Population roughly constant</td><td>Low replacement; may shrink</td></tr><tr><td>Typical diagram</td><td>Triangle-like</td><td>Bell/rectangle-like</td><td>Urn/inverted triangle-like</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why are birth rate and death rate called <b>population attributes</b> and not individual attributes?</div><div class="sol"><span class="lbl">Answer:</span><br>An individual organism shows a <b>birth</b> or <b>death</b> only as an event.<br>A <b>rate</b> needs a reference <b>population size</b> and a defined <b>time interval</b>.<br>So per capita birth/death rates describe change per individual per unit time, which is meaningful only for a population.</div><div class="ans">✓&nbsp; Because rates require population size and time, they apply to populations, not to a single individual.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A human population shows an age pyramid with a <b>narrow base</b>. What does it indicate, and why?</div><div class="sol"><span class="lbl">Answer:</span><br>Narrow base means <b>fewer pre-reproductive individuals</b> than older groups.<br>Fewer young individuals means fewer future adults entering the reproductive group.<br>Therefore replacement potential is low and the population tends to <b>decline</b>.</div><div class="ans">✓&nbsp; It indicates a <b>declining population</b> due to low proportion of young individuals (low replacement potential).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always express birth/death as <b>per capita</b> values and write the <b>time unit</b>.</li><li>Do not report just "8 births" or "4 deaths" as population attributes; state per capita rates.</li><li>Sex ratio is a <b>population proportion</b>; it can shift due to differential mortality or migration.</li><li>Age distribution is best written as <b>percent in age groups</b>, not as a list of ages.</li><li>Age pyramid shape is a fast indicator of <b>growing vs stable vs declining</b> populations.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>R-S-A</b> = Rates, Sex, Age”</div><paragraph id="6a9fd5fe0ddee4d44c000133"><b>R</b>ates: per capita birth and death (always add time).</paragraph><paragraph id="6a9fd5fe2500630f7b000134"><b>S</b>ex: female : male proportion.</paragraph><paragraph id="6a9fd5fe3fa651de08000135"><b>A</b>ge: distribution → pyramid → growing/stable/declining.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Population attributes are measurable properties of a <b>population</b>, not of a single individual.</span><span class="eq">Per capita birth rate and per capita death rate are expressed <b>per individual per unit time</b>.</span><span class="eq">For per capita birth/death during an interval, the reference is the <b>initial population size</b> for that interval.</span><span class="eq">Sex ratio describes the <b>proportion/percentage</b> of females and males in a population.</span><span class="eq">Age distribution is the <b>% individuals</b> in age groups (pre-reproductive, reproductive, post-reproductive).</span><span class="eq">Age pyramids indicate growth status: <b>growing</b> (broad base), <b>stable</b> (nearly uniform), <b>declining</b> (narrow base).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">How ecologists express/estimate population size (<b>N</b>) when counting individuals is hard or misleading</div>
+              <h2>POPULATION DENSITY MEASURES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Population density</b> (<b>N</b>) is the population size in a habitat; the basic reference for population ecology.</li><li>Change in <b>N</b> indicates <b>status of population</b> (flourishing/declining) and tracks effects of competition, predation, pesticides.</li><li><b>N</b> need not mean only total number; it can be expressed as number, percent cover, biomass, or indices.</li><li>Choose a measure that is <b>practical</b> and reflects the organism’s <b>ecological role</b> in that habitat.</li><li>Often, <b>relative density</b> is sufficient; <b>indirect signs</b> can substitute direct sighting/counting.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='110' height='36' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='30' y='41' font-size='13' fill='#1f2a44'>Population</text><rect x='142' y='18' width='200' height='36' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='154' y='41' font-size='13' fill='#1f2a44'>Density / size: N</text><line x1='128' y1='36' x2='142' y2='36' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='78' width='100' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='30' y='100' font-size='13' fill='#1f2a44'>Number</text><rect x='130' y='78' width='100' height='34' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='138' y='100' font-size='13' fill='#1f2a44'>% cover</text><rect x='242' y='78' width='100' height='34' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='258' y='100' font-size='13' fill='#1f2a44'>Biomass</text><line x1='238' y1='54' x2='68' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='238' y1='54' x2='180' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='238' y1='54' x2='292' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='134' width='160' height='46' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='28' y='156' font-size='13' fill='#1f2a44'>Relative index</text><text x='28' y='174' font-size='12' fill='#1f2a44'>Fish / trap</text><rect x='192' y='134' width='150' height='46' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='202' y='156' font-size='13' fill='#1f2a44'>Indirect index</text><text x='202' y='174' font-size='12' fill='#1f2a44'>Pug marks</text><line x1='238' y1='112' x2='98' y2='134' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='238' y1='112' x2='268' y2='134' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg><div class="figcap">Population density (<b>N</b>) can be expressed directly (number/% cover/biomass) or estimated (relative/indirect indices).</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span>Ecology evaluates any population process by observing <b>change in N</b> over time.</span></li><li><span class="ic">🔢</span><span><b>Total number</b> is best when individuals are countable and similar in impact.</span></li><li><span class="ic">🌿</span><span><b>Percent cover</b> suits plants/colonies where area occupied matters more than counts.</span></li><li><span class="ic">⚖️</span><span><b>Biomass</b> suits populations with huge size differences among individuals.</span></li><li><span class="ic">🪤</span><span><b>Relative indices</b> estimate density via catch/encounter rates (e.g., fish per trap).</span></li><li><span class="ic">🐾</span><span><b>Indirect indices</b> use signs like pug marks and faecal pellets (e.g., tiger census).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHEN 'NUMBER OF INDIVIDUALS' FAILS</span></h2><ul class="b"><li>Counting may be <b>impractical</b> for extremely large populations (e.g., dense microbes).</li><li>Counting may be <b>misleading</b> when individuals differ greatly in size/impact.</li><li>Example: 200 <i>Parthenium</i> plants + 1 huge banyan; banyan count is low but role is high.</li><li>Then prefer <b>% cover</b> (space occupied) or <b>biomass</b> (living mass contribution).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">RELATIVE &amp; INDIRECT ESTIMATION (FIELD ECOLOGY)</span></h2><ul class="b"><li><b>Relative density</b>: compare sites/times using an index; absolute N not essential.</li><li>Example: <b>fish caught per trap</b> as a proxy for lake population density.</li><li><b>Indirect estimation</b>: use signs/traces when organisms are elusive or nocturnal.</li><li>Tiger census examples: <b>pug marks</b> and <b>faecal pellets</b> as field indices.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">WAYS TO EXPRESS/ESTIMATE POPULATION DENSITY (N)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Measure</th><th>What is recorded</th><th>Best used when</th></tr></thead><tbody><tr><td>Total number</td><td>Individuals counted</td><td>Counting is feasible; individuals similar in size/impact</td></tr><tr><td>Percent cover</td><td>Area occupied/canopy cover</td><td>Plants/colonies; space captured matters more than counts</td></tr><tr><td>Biomass</td><td>Total mass of living matter</td><td>Individuals vary greatly in size; want ecological contribution</td></tr><tr><td>Relative index</td><td>Catch/encounter rate (proxy)</td><td>Only comparison needed; sampling gives consistent index</td></tr><tr><td>Indirect index</td><td>Signs (tracks, pellets, etc.)</td><td>Species hard to see/count directly; large-area surveys</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why can percent cover or biomass be a better measure of population density than total number in some plant communities?</div><div class="sol"><span class="lbl">Answer:</span><br>If individuals differ greatly in size, a simple count underestimates large, dominant individuals.<br>In a plot with many small weeds (<i>Parthenium</i>) but one huge banyan, banyan count is low yet it controls light, space and resources.<br>So <b>% cover</b> (space/canopy occupied) or <b>biomass</b> better reflects ecological importance.</div><div class="ans">✓&nbsp; Because counts ignore size/space capture; % cover/biomass better represent ecological role when individuals vary greatly.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In a lake study, why might an ecologist report 'fish caught per trap per day' instead of absolute number of fish?</div><div class="sol"><span class="lbl">Answer:</span><br>Direct counting of all fish is impractical in open water and large areas.<br>A standardised trapping effort gives a repeatable proxy linked to abundance.<br>For many questions (trend, site comparison, pesticide impact), <b>relative density</b> is sufficient if sampling is consistent.</div><div class="ans">✓&nbsp; Because a standardised catch-per-trap index is practical and adequate for relative density comparisons when absolute counts are unnecessary.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><b>N</b> (population density) is the basic reference to study competition, predation and pesticide effects.</li><li>Density is not always 'number of individuals'; pick the measure matching ecological meaning.</li><li><b>% cover</b> is especially useful for vegetation where area occupied drives interactions.</li><li><b>Biomass</b> is preferred when individuals differ widely in size and contribution.</li><li><b>Relative/indirect indices</b> are valid when absolute density is not required or cannot be obtained.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“NCBI + TI: measures of N”</div><paragraph id="6a9fd5fe7eb3282ca6000136"><b>N</b> can be: <b>N</b>umber, <b>C</b>over (%), <b>B</b>iomass, <b>I</b>ndex.</paragraph><paragraph id="6a9fd5fe1557a46fda000137">Indices can be <b>T</b>rap-based (fish/trap) or <b>I</b>ndirect (pug marks/pellets).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>N</b> = population density / population size used as the core ecological reference.</span><span class="eq">Best direct measures: <b>number</b>, <b>% cover</b>, <b>biomass</b> (choose by meaning + practicality).</span><span class="eq">Number may be misleading when individuals vary greatly in size (banyan vs <i>Parthenium</i>).</span><span class="eq">Relative density uses a proxy: e.g., <b>fish caught per trap</b> to compare abundance.</span><span class="eq">Indirect estimation uses signs: e.g., tiger census via <b>pug marks</b> and <b>faecal pellets</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Change in population density via births, deaths, entry and exit: the balance idea</div>
+              <h2>POPULATION GROWTH BALANCE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Population density <i>N</i> changes over time due to four processes: natality, mortality, immigration, emigration.</li><li>Natality (<i>B</i>) and immigration (<i>I</i>) add individuals to a population.</li><li>Mortality (<i>D</i>) and emigration (<i>E</i>) remove individuals from a population.</li><li>Net change depends on the balance between additions and losses during the same time interval.</li><li>Immigration becomes especially important when a new habitat is being colonised.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='135' y='60' width='90' height='70' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='160' y='95' font-size='14' fill='#1f2a44'>Population</text><text x='173' y='113' font-size='14' fill='#1f2a44'>N</text><rect x='20' y='28' width='90' height='44' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='35' y='55' font-size='13' fill='#1f2a44'>Natality (B)</text><rect x='20' y='128' width='100' height='44' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='30' y='155' font-size='13' fill='#1f2a44'>Immigration (I)</text><rect x='245' y='28' width='95' height='44' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='256' y='55' font-size='13' fill='#1f2a44'>Mortality (D)</text><rect x='245' y='128' width='95' height='44' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='255' y='155' font-size='13' fill='#1f2a44'>Emigration (E)</text><line x1='110' y1='50' x2='135' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='120' y1='150' x2='135' y2='115' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='225' y1='80' x2='245' y2='55' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='225' y1='120' x2='245' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='52' y='22' font-size='12' fill='#16A34A'>Add</text><text x='285' y='22' font-size='12' fill='#F59E0B'>Remove</text></svg><div class="figcap">Population density <i>N</i> increases by <i>B</i> and <i>I</i>, decreases by <i>D</i> and <i>E</i>.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span>Additions: <i>B</i> (births) + <i>I</i> (immigrants)</span></li><li><span>Losses: <i>D</i> (deaths) + <i>E</i> (emigrants)</span></li><li><span>Use brackets: compute ( <i>B</i> + <i>I</i> ) and ( <i>D</i> + <i>E</i> ) separately, then subtract.</span></li><li><span>Colonisation: <i>I</i> may strongly raise <i>N</i> even when <i>B</i> is low.</span></li><li><span>Increase if ( <i>B</i> + <i>I</i> ) &gt; ( <i>D</i> + <i>E</i> ); decrease if ( <i>B</i> + <i>I</i> ) &lt; ( <i>D</i> + <i>E</i> ).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">POPULATION BALANCE (DISCRETE TIME STEP)</span></h2><ul class="b"><li>From time <i>t</i> to <i>t</i>+1, start with <i>N</i><sub>t</sub> and update using net gain/loss.</li><li>Net gain/loss over the interval = (births + entrants) − (deaths + leavers).</li><li>Bracket rule: evaluate ( <i>B</i> + <i>I</i> ) and ( <i>D</i> + <i>E</i> ) first, then subtract to avoid sign errors.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">INCREASE / DECREASE CONDITIONS (EXAM-FAVOURITE)</span></h2><ul class="b"><li>Increase: ( <i>B</i> + <i>I</i> ) &gt; ( <i>D</i> + <i>E</i> ) means additions exceed losses in that interval.</li><li>Decrease: ( <i>B</i> + <i>I</i> ) &lt; ( <i>D</i> + <i>E</i> ) means losses exceed additions in that interval.</li><li>No change: ( <i>B</i> + <i>I</i> ) = ( <i>D</i> + <i>E</i> ) means stable population size for that interval.</li><li>Special case: in a newly colonised habitat, immigration (<i>I</i>) may contribute more than births (<i>B</i>).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">FOUR PROCESSES AFFECTING POPULATION DENSITY</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Process</th><th>Symbol</th><th>Effect on <i>N</i></th></tr></thead><tbody><tr><td>Natality (births)</td><td><i>B</i></td><td>Increases <i>N</i></td></tr><tr><td>Immigration (entry)</td><td><i>I</i></td><td>Increases <i>N</i></td></tr><tr><td>Mortality (deaths)</td><td><i>D</i></td><td>Decreases <i>N</i></td></tr><tr><td>Emigration (exit)</td><td><i>E</i></td><td>Decreases <i>N</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Concept check: If a population shows no net change in size between <i>t</i> and <i>t</i>+1, what must be true about additions and losses?</div><div class="sol"><span class="lbl">Answer:</span><br>No net change means the number added equals the number removed in the same interval.<br>Additions are births plus immigration: ( <i>B</i> + <i>I</i> ).<br>Losses are deaths plus emigration: ( <i>D</i> + <i>E</i> ).<br>Therefore, stability requires ( <i>B</i> + <i>I</i> ) = ( <i>D</i> + <i>E</i> ).</div><div class="ans">✓&nbsp; Stable population for that interval requires ( <i>B</i> + <i>I</i> ) = ( <i>D</i> + <i>E</i> ).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Reasoning: In a newly colonised habitat, population size can increase even if deaths exceed births. Explain.</div><div class="sol"><span class="lbl">Answer:</span><br>In colonisation, immigration (<i>I</i>) can be large because individuals enter from outside.<br>Even if local births are low and deaths are relatively high, total additions are ( <i>B</i> + <i>I</i> ).<br>If immigration is high enough that ( <i>B</i> + <i>I</i> ) &gt; ( <i>D</i> + <i>E</i> ), the population still increases.<br>Thus, migration terms can outweigh local natality and mortality during colonisation.</div><div class="ans">✓&nbsp; High immigration can make total additions exceed total losses, so <i>N</i> increases despite deaths being more than births.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always group additions and losses using brackets to avoid sign mistakes.</li><li>Compare ( <i>B</i> + <i>I</i> ) with ( <i>D</i> + <i>E</i> ) for increase/decrease questions.</li><li>Births and deaths are usually the main drivers; migration matters mainly in special situations.</li><li>Colonisation is a key case where immigration can dominate population increase.</li><li><i>N</i> denotes population size/density; the balance statement applies to a specified time interval.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“BI adds, DE subtracts”</div><paragraph id="6a9fd5fe1115a40c0d000138">Births (<b>B</b>) and <b>I</b>ncoming add to <i>N</i>.</paragraph><paragraph id="6a9fd5fec331873097000139"><b>D</b>eaths and <b>E</b>xiting subtract from <i>N</i>.</paragraph><paragraph id="6a9fd5feb6420fa6ed00013a">Write as: <b>+ (B+I) − (D+E)</b> (brackets prevent sign errors).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Four processes changing <i>N</i>: natality (<i>B</i>), mortality (<i>D</i>), immigration (<i>I</i>), emigration (<i>E</i>).</span><span class="eq">Additions in an interval: ( <i>B</i> + <i>I</i> ).</span><span class="eq">Losses in an interval: ( <i>D</i> + <i>E</i> ).</span><span class="eq">Increase condition: ( <i>B</i> + <i>I</i> ) &gt; ( <i>D</i> + <i>E</i> ).</span><span class="eq">Decrease condition: ( <i>B</i> + <i>I</i> ) &lt; ( <i>D</i> + <i>E</i> ).</span><span class="eq">Stable condition: ( <i>B</i> + <i>I</i> ) = ( <i>D</i> + <i>E</i> ).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Unlimited resources → per capita rates constant → J-shaped increase in population size</div>
+              <h2>EXPONENTIAL GROWTH MODEL</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Exponential (geometric) growth</b> is population increase under <b>unlimited resources</b> with constant per capita rates.</li><li>Population size/density is denoted by <b><i>N</i></b>; plot of <i>N</i> vs time gives a <b>J-shaped curve</b>.</li><li><b><i>b</i></b> and <b><i>d</i></b> are <b>per capita</b> birth and death rates (per individual per unit time).</li><li>Net per capita increase is <b><i>r</i> = (<i>b</i> − <i>d</i>)</b>, called <b>intrinsic rate of natural increase</b>.</li><li>Differential form: <b><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i></b>; integrated form: <b><i>N</i><sub>t</sub> = <i>N</i><sub>0</sub> e<sup><i>rt</i></sup></b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><g><rect x='10' y='10' width='340' height='180' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='55' y1='165' x2='330' y2='165' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='55' y1='165' x2='55' y2='30' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='305' y='183' font-size='12' fill='#1f2a44'>time (t)</text><text x='18' y='40' font-size='12' fill='#1f2a44'>population (N)</text><path d='M55 160 C95 158, 120 155, 145 148 C170 140, 185 130, 200 115 C215 98, 230 78, 245 60 C262 40, 285 28, 330 26' fill='none' stroke='#16A34A' stroke-width='4'/><text x='210' y='52' font-size='12' fill='#16A34A'>J-curve</text><rect x='200' y='132' width='140' height='44' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='1.5'/><text x='210' y='150' font-size='12' fill='#1f2a44'>resources</text><text x='210' y='166' font-size='12' fill='#1f2a44'>unlimited</text></g></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧬</span><span><i>r</i> is a crucial parameter to assess the impact of any biotic or abiotic factor on population growth.</span></li><li><span class="ic">👤</span><span><i>b</i>, <i>d</i> are per capita; total births and deaths scale with <i>N</i> (rates <i>bN</i> and <i>dN</i>).</span></li><li><span class="ic">⏱️</span><span>If <i>r</i> is constant, growth rate increases as <i>N</i> increases because <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> ∝ <i>N</i>.</span></li><li><span class="ic">🔢</span><span><i>e</i> = 2.71828 appears in the integrated solution of the differential equation.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">DERIVATION SNAPSHOT (FROM PER CAPITA RATES)</span></h2><ul class="b"><li>In a short interval <i>dt</i>: births = <i>bNdt</i>, deaths = <i>dNdt</i>.</li><li>Net change: <i>dN</i> = (<i>bNdt</i> − <i>dNdt</i>) = (<i>b</i> − <i>d</i>)<i>Ndt</i>.</li><li>So <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = (<i>b</i> − <i>d</i>)<i>N</i> = <i>rN</i>.</li><li>Separate and integrate: <span class='frac'><span>d<i>N</i></span><span><i>N</i></span></span> = <i>r</i> d<i>t</i> → ln<i>N</i> = <i>rt</i> + constant.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">EXAM NUMBERS TO REMEMBER (MAGNITUDE OF <i>r</i>)</span></h2><ul class="b"><li>Norway rat: <i>r</i> = 0.015 (per unit time).</li><li>Flour beetle: <i>r</i> = 0.12 (per unit time).</li><li>Human population in India (1981): <i>r</i> = 0.0205 year<sup>−1</sup>.</li><li>Larger <i>r</i> → faster rise of <i>N</i> under ideal (unlimited-resource) conditions.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">EXPONENTIAL MODEL: SYMBOLS AND MEANINGS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Symbol</th><th>Meaning</th><th>Exam cue</th></tr></thead><tbody><tr><td><i>N</i></td><td>Population size/density at a given time</td><td>Variable that changes with time</td></tr><tr><td><i>b</i></td><td>Per capita birth rate</td><td>Not total births; has time<sup>−1</sup> unit</td></tr><tr><td><i>d</i></td><td>Per capita death rate</td><td>Not total deaths; has time<sup>−1</sup> unit</td></tr><tr><td><i>r</i> = (<i>b</i> − <i>d</i>)</td><td>Intrinsic rate of natural increase (net per capita growth rate)</td><td>Key parameter in exponential model</td></tr><tr><td><i>e</i></td><td>Base of natural logarithms = 2.71828</td><td>Arises in integrated form</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start with per capita births and deaths over a small time <i>dt</i>:</div><div class="eqbox"><span class="eq"><i>dN</i> = (<i>bNdt</i>) − (<i>dNdt</i>)</span></div><div class="fstep">Divide by <i>dt</i>:</div><div class="eqbox"><span class="eq"><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = (<i>b</i> − <i>d</i>)<i>N</i></span></div><div class="fstep">Define intrinsic rate:</div><div class="eqbox"><span class="eq"><i>r</i> = (<i>b</i> − <i>d</i>) ⇒ <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i></span></div></div><div><div class="fstep">Separate variables and integrate from (<i>N</i><sub>0</sub>, 0) to (<i>N</i><sub>t</sub>, <i>t</i>):</div><div class="eqbox blue"><span class="eq">∫<span class='frac'><span>d<i>N</i></span><span><i>N</i></span></span> = ∫ <i>r</i> d<i>t</i></span></div><div class="fstep">Result:</div><div class="eqbox blue"><span class="eq">ln(<i>N</i><sub>t</sub>) − ln(<i>N</i><sub>0</sub>) = <i>rt</i> ⇒ <i>N</i><sub>t</sub> = <i>N</i><sub>0</sub> e<sup><i>rt</i></sup></span></div></div><div><table class="wtab"><tr><td><i>N</i>&nbsp;=</td><td>Population size/density</td></tr><tr><td><i>b</i>&nbsp;=</td><td>Per capita birth rate (per individual per unit time)</td></tr><tr><td><i>d</i>&nbsp;=</td><td>Per capita death rate (per individual per unit time)</td></tr><tr><td><i>r</i>&nbsp;=</td><td>Intrinsic rate of natural increase = (<i>b</i> − <i>d</i>)</td></tr><tr><td><i>N</i><sub>0</sub>&nbsp;=</td><td>Population size at time zero</td></tr><tr><td><i>N</i><sub>t</sub>&nbsp;=</td><td>Population size after time <i>t</i></td></tr><tr><td><i>t</i>&nbsp;=</td><td>Time interval (use same time unit as <i>r</i>)</td></tr><tr><td><i>e</i>&nbsp;=</td><td>2.71828 (base of natural logarithms)</td></tr></table><div class="hibox">Most important results<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i> ; <br><i>N</i><sub>t</sub> = <i>N</i><sub>0</sub> e<sup><i>rt</i></sup></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">📈</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><g><rect x='10' y='10' width='340' height='180' rx='8' fill='#FEF5E4' stroke='#123B7A' stroke-width='2'/><line x1='55' y1='165' x2='330' y2='165' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='55' y1='165' x2='55' y2='30' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='304' y='183' font-size='12' fill='#1f2a44'>t</text><text x='25' y='40' font-size='12' fill='#1f2a44'>N</text><path d='M55 160 C95 158, 125 154, 150 146 C175 137, 195 124, 212 108 C229 90, 245 70, 260 55 C278 37, 298 28, 330 25' fill='none' stroke='#F59E0B' stroke-width='4'/><text x='205' y='28' font-size='12' fill='#1f2a44'>increasing slope</text><line x1='210' y1='32' x2='235' y2='52' stroke='#1f2a44' stroke-width='1.5' marker-end='url(#arrow2)'/></g></svg><div class="figcap">In exponential growth, slope increases with time because growth rate is proportional to <i>N</i>.</div></div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A bacterial population has per capita birth rate <i>b</i> = 0.60 day<sup>−1</sup> and per capita death rate <i>d</i> = 0.10 day<sup>−1</sup>. If <i>N</i><sub>0</sub> = 200, find <i>N</i> after 3 days using <i>N</i><sub>t</sub> = <i>N</i><sub>0</sub> e<sup><i>rt</i></sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Compute intrinsic rate: <i>r</i> = (<i>b</i> − <i>d</i>) = 0.60 − 0.10 = 0.50 day<sup>−1</sup>.<br>Use exponential model: <i>N</i><sub>t</sub> = 200 × e<sup>(0.50×3)</sup> = 200 × e<sup>1.5</sup>.<br>Numerical value: e<sup>1.5</sup> ≈ 4.4817, so <i>N</i><sub>t</sub> ≈ 200 × 4.4817 = 896.34.<br>Population count is reported as a whole number (approx.): 896.34 ≈ 896.</div><div class="ans">✓&nbsp; <i>N</i> after 3 days ≈ <b>896</b> individuals (≈ 8.96 × 10<sup>2</sup>).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">For a population growing exponentially with <i>r</i> = 0.0205 year<sup>−1</sup> (India, 1981), estimate the time to double (<i>N</i><sub>t</sub> = 2<i>N</i><sub>0</sub>).</div><div class="sol"><span class="lbl">Solution:</span><br>Set 2<i>N</i><sub>0</sub> = <i>N</i><sub>0</sub> e<sup><i>rt</i></sup> ⇒ 2 = e<sup><i>rt</i></sup>.<br>Take ln both sides: ln 2 = <i>rt</i> ⇒ <i>t</i> = (ln 2)/<i>r</i>.<br>Compute: ln 2 ≈ 0.6931; <i>t</i> = 0.6931 ÷ 0.0205 ≈ 33.81 years.</div><div class="ans">✓&nbsp; Doubling time ≈ <b>33.8 years</b> (about 34 years).</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Exponential growth assumes <b>unlimited resources</b>; otherwise model fails over long time.</li><li><i>b</i> and <i>d</i> are <b>per capita</b> rates; total births/deaths per unit time are <i>bN</i> and <i>dN</i>.</li><li><i>r</i> = (<i>b</i> − <i>d</i>) decides sign of growth: <i>r</i> &gt; 0 increase, <i>r</i> &lt; 0 decline.</li><li><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i> means growth rate is proportional to present <i>N</i>.</li><li>Integrated form uses <i>e</i>; plotting <i>N</i> vs <i>t</i> gives a <b>J-shaped curve</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "b Builds, d Destroys"”</div><paragraph id="6a9fd5fe27a80a50f900013b"><i>b</i> adds individuals, <i>d</i> removes individuals: net = (<i>b</i> − <i>d</i>).</paragraph><paragraph id="6a9fd5fee0762e2a1500013c">So remember <i>r</i> as net per capita growth: <i>r</i> = <i>b</i> − <i>d</i>.</paragraph><paragraph id="6a9fd5fede42a91a6b00013d">Then "Rate is <i>r</i>×Now" → <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Unlimited resources → exponential (geometric) growth → J-shaped curve.</span><span class="eq"><i>r</i> = (<i>b</i> − <i>d</i>) is the intrinsic rate of natural increase (units: time<sup>−1</sup>).</span><span class="eq"><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = (<i>b</i> − <i>d</i>)<i>N</i> = <i>rN</i>.</span><span class="eq"><i>N</i><sub>t</sub> = <i>N</i><sub>0</sub> e<sup><i>rt</i></sup>, with <i>e</i> = 2.71828 and <i>t</i> in the same time unit as <i>r</i>.</span><span class="eq">Typical <i>r</i> magnitudes (NCERT examples): Norway rat 0.015; flour beetle 0.12; India humans (1981) 0.0205 year<sup>−1</sup>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Resource limitation makes growth density-dependent and S-shaped around carrying capacity <i>K</i></div>
+              <h2>LOGISTIC GROWTH MODEL (VERHULST–PEARL)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Logistic growth describes population increase under limited resources, approaching a maximum sustainable size called <i>K</i>.</li><li>Growth rate is density-dependent: it increases initially, then slows as competition intensifies.</li><li>Curve of <i>N</i> vs <i>t</i> is sigmoid (S-shaped) and typically shows: lag → acceleration → deceleration → asymptote at <i>K</i> (under resource limitation).</li><li>At <i>N</i> close to <i>K</i>, net growth tends to zero; population stabilises around the habitat limit.</li><li>More realistic than exponential growth because no natural habitat provides unlimited resources indefinitely.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 10 3, 0 6' fill='#123B7A'/></marker></defs><g><line x1='46' y1='170' x2='330' y2='170' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='46' y1='170' x2='46' y2='20' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='292' y='188' font-size='13' fill='#1f2a44'>Time (t)</text><text x='10' y='28' font-size='13' fill='#1f2a44'>Population (N)</text><line x1='46' y1='55' x2='330' y2='55' stroke='#F59E0B' stroke-width='2' stroke-dasharray='6 5'/><text x='334' y='59' font-size='13' fill='#1f2a44'>K</text><path d='M 55 165 C 95 165, 105 152, 122 140 C 145 122, 165 95, 188 78 C 214 58, 240 55, 326 56' fill='none' stroke='#16A34A' stroke-width='3'/><circle cx='72' cy='163' r='4' fill='#7C3AED'/><circle cx='150' cy='120' r='4' fill='#7C3AED'/><circle cx='220' cy='65' r='4' fill='#7C3AED'/><text x='58' y='150' font-size='12' fill='#1f2a44'>Lag</text><text x='128' y='108' font-size='12' fill='#1f2a44'>Accel.</text><text x='202' y='86' font-size='12' fill='#1f2a44'>Decel.</text><text x='250' y='44' font-size='12' fill='#1f2a44'>Asymptote</text></g></svg><div class="figcap">Sigmoid (S-shaped) <i>N</i>–<i>t</i> curve: growth slows and levels off at carrying capacity <i>K</i>.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Verhulst–Pearl idea: environment imposes resistance that increases with population density.</span></li><li><span class="ic">🧱</span><span>Carrying capacity <i>K</i>: maximum population size a habitat can support for that species.</span></li><li><span class="ic">⚔️</span><span>Limiting resources cause competition; per capita growth falls as <i>N</i> rises.</span></li><li><span class="ic">🎯</span><span>Maximum growth rate occurs at intermediate density (at <i>N</i> = <span class='frac'><span><i>K</i></span><span>2</span></span>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PHASES OF THE SIGMOID CURVE (WHAT TO WRITE IN ANSWERS)</span></h2><ul class="b"><li><b>Lag</b>: few reproducers; adjustment to new habitat; slow increase in <i>N</i>.</li><li><b>Acceleration</b>: resources relatively abundant; births exceed deaths; rapid rise in <i>N</i>.</li><li><b>Deceleration</b>: resources start limiting; competition increases; growth rate falls.</li><li><b>Asymptote</b>: <i>N</i> fluctuates around <i>K</i>; net growth ≈ 0.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WHY LOGISTIC IS MORE REALISTIC THAN EXPONENTIAL</span></h2><ul class="b"><li>Exponential assumes unlimited resources; nature usually imposes limits (food, space, nesting sites).</li><li>Environmental resistance increases with density; hence per capita growth is not constant.</li><li>Logistic predicts a stable upper bound (<i>K</i>) and density-dependent regulation.</li><li>As <i>N</i> approaches <i>K</i>, the factor <span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span> tends to 0, so growth slows.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">EXPONENTIAL vs LOGISTIC GROWTH</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Exponential (J-curve)</th><th>Logistic (S-curve)</th></tr></thead><tbody><tr><td>Resource assumption</td><td>Unlimited</td><td>Limited; becomes increasingly limiting</td></tr><tr><td>Key feature</td><td>Constant per capita growth (<i>r</i>)</td><td>Per capita growth falls as <i>N</i> approaches <i>K</i></td></tr><tr><td>Curve</td><td>J-shaped</td><td>Sigmoid; asymptote at <i>K</i></td></tr><tr><td>Upper bound</td><td>No bound in model</td><td>Bounded by carrying capacity <i>K</i></td></tr><tr><td>Realism in nature</td><td>Often short-term only</td><td>Generally more realistic for natural populations</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Density-dependent reduction factor:</div><div class="eqbox"><span class="eq">Effective growth term = <i>rN</i> × <span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span></span></div><div class="fstep">Logistic (Verhulst–Pearl) differential equation:</div><div class="eqbox"><span class="eq"><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i><span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span></span></div></div><div><div class="fstep">Useful expanded form (for maxima and checks):</div><div class="eqbox blue"><span class="eq"><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i> − <span class='frac'><span><i>r</i></span><span><i>K</i></span></span><i>N</i><sup>2</sup></span></div></div><div><table class="wtab"><tr><td><i>N</i>&nbsp;=</td><td>Population size/density at time <i>t</i></td></tr><tr><td><i>t</i>&nbsp;=</td><td>Time</td></tr><tr><td><i>r</i>&nbsp;=</td><td>Intrinsic rate of natural increase (per unit time)</td></tr><tr><td><i>K</i>&nbsp;=</td><td>Carrying capacity (maximum sustainable population size/density)</td></tr><tr><td><span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span>&nbsp;=</td><td>Unused fraction of carrying capacity; equals 1 at very low <i>N</i> and 0 at <i>N</i> = <i>K</i></td></tr></table><div class="hibox">Logistic growth equation (must-remember)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i><span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">📈</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 10 3, 0 6' fill='#123B7A'/></marker></defs><g><rect x='0' y='0' width='360' height='200' fill='#EEF4FF'/><line x1='48' y1='168' x2='332' y2='168' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='48' y1='168' x2='48' y2='24' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='286' y='190' font-size='13' fill='#1f2a44'>t</text><text x='30' y='30' font-size='13' fill='#1f2a44'>N</text><line x1='48' y1='58' x2='332' y2='58' stroke='#F59E0B' stroke-width='2' stroke-dasharray='6 5'/><text x='336' y='62' font-size='13' fill='#1f2a44'>K</text><path d='M 58 162 C 100 162, 112 150, 130 136 C 155 116, 175 86, 198 72 C 225 55, 250 58, 328 58' fill='none' stroke='#16A34A' stroke-width='3'/><path d='M 58 162 C 112 150, 155 115, 190 90' fill='none' stroke='#2563EB' stroke-width='2' stroke-dasharray='5 5'/><text x='206' y='108' font-size='12' fill='#1f2a44'>Max slope near K/2</text></g></svg><div class="figcap">Logistic curve approaches <i>K</i>; steepest rise occurs at intermediate density (~<span class='frac'><span><i>K</i></span><span>2</span></span>).</div></div></div><div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A habitat has carrying capacity <i>K</i> = 1000 and intrinsic rate <i>r</i> = 0.2 day<sup>−1</sup>. Find <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> when <i>N</i> = 100.</div><div class="sol"><span class="lbl">Solution:</span><br>Use <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i><span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span>.<br>Substitute: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = 0.2 × 100 × <span class='frac'><span>(1000 − 100)</span><span>1000</span></span>.<br>Compute: (1000 − 100) = 900, so factor = 900/1000 = 0.9.<br>Thus <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = 0.2 × 100 × 0.9 = 18.</div><div class="ans">✓&nbsp; Growth rate = 18 individuals day<sup>−1</sup>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">For the same habitat (<i>K</i> = 1000, <i>r</i> = 0.2 day<sup>−1</sup>), compare growth rates at <i>N</i> = 500 and <i>N</i> = 900. Also identify where growth is faster.</div><div class="sol"><span class="lbl">Solution:</span><br>At <i>N</i> = 500: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = 0.2 × 500 × <span class='frac'><span>(1000 − 500)</span><span>1000</span></span> = 0.2 × 500 × 0.5 = 50.<br>At <i>N</i> = 900: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = 0.2 × 900 × <span class='frac'><span>(1000 − 900)</span><span>1000</span></span> = 0.2 × 900 × 0.1 = 18.<br>Since the factor <span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span> is larger at 500 than at 900, growth is faster at 500.</div><div class="ans">✓&nbsp; At 500: 50 individuals day<sup>−1</sup>; at 900: 18 individuals day<sup>−1</sup>. Growth is faster at <i>N</i> = 500 (near <span class='frac'><span><i>K</i></span><span>2</span></span>).</div></div></div></div></div></div>
+    
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always link logistic growth to <b>resource limitation</b> and <b>competition</b> (density dependence).</li><li><i>K</i> is habitat- and species-specific; changing resources changes <i>K</i>.</li><li>At <i>N</i> ≪ <i>K</i>, logistic approximates exponential: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> ≈ <i>rN</i>.</li><li>At <i>N</i> = <i>K</i>, growth becomes zero: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = 0 (asymptote).</li><li>Maximum growth rate occurs at <i>N</i> = <span class='frac'><span><i>K</i></span><span>2</span></span> and equals <span class='frac'><span><i>rK</i></span><span>4</span></span>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“L-A-D-A → phases of logistic curve”</div><paragraph id="6a9fd5fe40767d633600013e"><b>L</b>ag → <b>A</b>cceleration → <b>D</b>eceleration → <b>A</b>symptote (at <i>K</i>).</paragraph><paragraph id="6a9fd5fe30e6ba5b5500013f">Recall: growth slows and becomes ~0 as <i>N</i> approaches <i>K</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Logistic (Verhulst–Pearl): <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i><span class='frac'><span>(<i>K</i> − <i>N</i>)</span><span><i>K</i></span></span></span><span class="eq">Expanded: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = <i>rN</i> − <span class='frac'><span><i>r</i></span><span><i>K</i></span></span><i>N</i><sup>2</sup></span><span class="eq">At <i>N</i> = <i>K</i>: <span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span> = 0.</span><span class="eq">Max growth at <i>N</i> = <span class='frac'><span><i>K</i></span><span>2</span></span>.</span><span class="eq">(<span class='frac'><span>d<i>N</i></span><span>d<i>t</i></span></span>)<sub>max</sub> = <span class='frac'><span><i>rK</i></span><span>4</span></span>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">How organisms allocate energy to growth, survival and reproduction to maximise <b>Darwinian fitness</b> (habitat-dependent trade-offs)</div>
+              <h2>LIFE HISTORY STRATEGIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Life history strategies are evolved patterns of <b>age at first reproduction</b>, <b>offspring number/size</b> and <b>breeding frequency</b> that maximise reproductive success in a habitat.</li><li>They are shaped by <b>selection pressures</b> from abiotic and biotic constraints (resources, mortality risk, competition, predation).</li><li>Fitness here means <b>reproductive fitness</b>: leaving the maximum number of viable, reproducing descendants.</li><li>Different habitats favour different trait combinations; there is <b>no single best strategy</b> across all species.</li><li>Key outcome is trade-offs: investing more in one function (e.g., many offspring) reduces investment in others (e.g., offspring size or parental care).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='20' y='20' width='145' height='55' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='32' y='42' font-size='13' fill='#1f2a44'>Selection</text><text x='32' y='60' font-size='13' fill='#1f2a44'>pressures</text><rect x='195' y='20' width='145' height='55' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='210' y='42' font-size='13' fill='#1f2a44'>Life-history</text><text x='210' y='60' font-size='13' fill='#1f2a44'>traits</text><line x1='165' y1='47' x2='195' y2='47' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='20' y='95' width='320' height='85' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='32' y='118' font-size='13' fill='#1f2a44'><tspan font-weight='bold'>Trade-offs</tspan> (limited energy)</text><text x='32' y='140' font-size='13' fill='#1f2a44'>Semelparity ↔ Iteroparity</text><text x='32' y='160' font-size='13' fill='#1f2a44'>Many small ↔ Few large</text><text x='245' y='140' font-size='13' fill='#1f2a44'>Early ↔ Late maturity</text><text x='245' y='160' font-size='13' fill='#1f2a44'>High fecundity ↔ Survival</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span><b>Darwinian fitness</b> = relative reproductive success; strategies evolve to maximise it in given conditions.</span></li><li><span class="ic">📈</span><span><b>Intrinsic rate of increase (r)</b> can be high when rapid population increase is advantageous, but life-history traits are chosen by selection based on habitat constraints, not by a single universal rule.</span></li><li><span class="ic">⚖️</span><span><b>Trade-offs</b>: energy/time are limited; improvement in one trait usually reduces another.</span></li><li><span class="ic">🔁</span><span><b>Iteroparity</b>: repeated breeding over life (most birds and mammals).</span></li><li><span class="ic">🔥</span><span><b>Semelparity</b>: one massive reproductive episode, then death (Pacific salmon, bamboo).</span></li><li><span class="ic">🫧</span><span>Many small offspring (oysters, many pelagic fishes) vs few large offspring (many birds, mammals) reflects differences in offspring survival probability and parental investment.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CORE TRADE-OFFS EXAMINERS ASK</span></h2><ul class="b"><li><b>Offspring number vs offspring size</b>: more offspring usually means less investment per offspring.</li><li><b>Current reproduction vs future reproduction</b>: heavy reproduction now can reduce adult survival and later breeding.</li><li><b>Early vs late reproduction</b>: early maturity can boost rapid increase but may reduce body size and lifespan.</li><li><b>Parental care</b>: high care → fewer, larger young; low care → many, smaller young.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SELECTION PRESSURES THAT SHIFT STRATEGY</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='30' width='150' height='55' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='30' y='52' font-size='13' fill='#1f2a44'>Unpredictable</text><text x='30' y='70' font-size='13' fill='#1f2a44'>high mortality</text><rect x='192' y='30' width='150' height='55' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='205' y='52' font-size='13' fill='#1f2a44'>Many small</text><text x='205' y='70' font-size='13' fill='#1f2a44'>offspring</text><line x1='168' y1='58' x2='192' y2='58' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='18' y='115' width='150' height='55' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='30' y='137' font-size='13' fill='#1f2a44'>Stable</text><text x='30' y='155' font-size='13' fill='#1f2a44'>high survival</text><rect x='192' y='115' width='150' height='55' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='205' y='137' font-size='13' fill='#1f2a44'>Few larger</text><text x='205' y='155' font-size='13' fill='#1f2a44'>+ care</text><line x1='168' y1='143' x2='192' y2='143' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/></svg></div><ul class="b"><li>High juvenile mortality or unpredictable habitats often favour <b>many offspring</b> and may favour <b>semelparity</b>.</li><li>Stable environments and higher adult survival often favour <b>iteroparity</b> with repeated breeding chances.</li><li>When each offspring needs high investment to survive (care, feeding), selection favours <b>few larger offspring</b>.</li><li>Important line: strategy is habitat-specific; write <b>"no universal best"</b> in answers.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Semelparity vs Iteroparity (breed once vs many times)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Semelparity</th><th>Iteroparity</th></tr></thead><tbody><tr><td>Breeding pattern</td><td>Single, often massive reproductive event</td><td>Multiple reproductive episodes across lifespan</td></tr><tr><td>Energy allocation</td><td>Heavy investment in one event; post-reproductive survival may be low</td><td>Energy spread across events; survival between events is important</td></tr><tr><td>When favoured</td><td>When future reproduction is unlikely (e.g., high adult mortality or predictable end after spawning/flowering)</td><td>When adult survival is relatively high and multiple future breeding seasons are likely</td></tr><tr><td>Examples</td><td>Pacific salmon, bamboo</td><td>Most birds and mammals</td></tr><tr><td>Exam phrasing</td><td>Can maximise lifetime reproductive success when later breeding is unlikely</td><td>Can maximise lifetime reproductive success when repeated breeding opportunities exist</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why are oysters and many pelagic fishes described as producing "many small offspring" as a life history strategy? Explain using fitness and selection pressures.</div><div class="sol"><span class="lbl">Answer:</span><br>In open water, eggs/larvae often face <b>very high mortality</b> due to predation and variable conditions.<br>Parental care is typically minimal; so each offspring has a <b>low probability of survival</b> to adulthood.<br>Selection favours <b>high fecundity</b> (many small offspring) to increase the chance that <i>some</i> survive and reproduce.<br>This can increase reproductive success under those habitat conditions.</div><div class="ans">✓&nbsp; They maximise reproductive fitness by producing many small young when individual survival is low and parental care is minimal.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student claims: "Semelparous organisms always have higher fitness than iteroparous ones because they produce a huge number of offspring at once." Correct this statement with one example.</div><div class="sol"><span class="lbl">Answer:</span><br>Fitness is <b>environment-dependent</b>; the best strategy depends on selection pressures and constraints.<br>Semelparity can be favoured when <b>future reproduction is unlikely</b>, so one-time heavy investment may maximise lifetime reproductive success.<br>Iteroparity can be favoured when <b>adult survival is high</b>, because repeated breeding can yield higher lifetime reproductive success.<br>Example: <b>Pacific salmon</b> are semelparous; <b>most birds and mammals</b> are iteroparous.</div><div class="ans">✓&nbsp; The claim is wrong: there is no universal best; semelparity or iteroparity is favoured depending on habitat and survival patterns.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write: <b>life history traits maximise Darwinian (reproductive) fitness</b> under given selection pressures.</li><li>Mention <b>trade-offs</b> explicitly; do not present traits as independently optimisable.</li><li>Use correct contrasts: <b>semelparity</b> (one breeding) vs <b>iteroparity</b> (many breeding episodes).</li><li>Examples to quote: <b>Pacific salmon, bamboo</b> (semelparous); <b>oysters, pelagic fishes</b> (many small offspring).</li><li>Always add: <b>no single best strategy</b>; it varies with habitat constraints and mortality patterns.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>S</b>ingle vs <b>I</b>ntervals”</div><paragraph id="6a9fd5fef41cf0921e000140"><b>S</b>emelparity = <b>S</b>ingle big shot (salmon, bamboo).</paragraph><paragraph id="6a9fd5feace6712641000141"><b>I</b>teroparity = repeated at <b>I</b>ntervals (most birds, mammals).</paragraph><paragraph id="6a9fd5feb1f7b9e237000142">Many <b>s</b>mall often = low care + high juvenile loss (e.g., oysters, many pelagic fishes); Few <b>l</b>arge often = higher care + better survival (many birds, mammals).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Life history strategy = evolved pattern of age at first reproduction, breeding frequency, fecundity (offspring number), offspring size, and parental care.</span><span class="eq">Darwinian (reproductive) fitness = success in leaving viable, reproducing descendants (relative to others) in that habitat.</span><span class="eq">Core principle: <b>trade-offs</b> occur because energy/time are limited (e.g., many small vs few large offspring).</span><span class="eq">Semelparity: one major reproductive episode in lifetime (examples: Pacific salmon, bamboo).</span><span class="eq">Iteroparity: multiple reproductive episodes across lifetime (examples: most birds and mammals).</span><span class="eq">Many small offspring strategy is common where juvenile mortality is high and parental care is low (examples: oysters, many pelagic fishes).</span><span class="eq">Few larger offspring strategy is common where investment per offspring is high and care improves survival (examples: many birds and mammals).</span><span class="eq">Exam line: <b>No universal best strategy</b>; optimum traits depend on abiotic/biotic constraints and selection pressures.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Classify species interactions using +, −, 0 outcomes (Table 11.1 core)</div>
+              <h2>INTERSPECIFIC INTERACTIONS (POPULATION INTERACTIONS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Interspecific interactions</b> are interactions between populations of two different species in a community.</li><li>Outcome is expressed by sign convention: <b>+</b> benefit, <b>−</b> harm, <b>0</b> no significant effect.</li><li>Each interaction is written as (effect on species 1 / effect on species 2), e.g. +/−.</li><li>Different interactions shape population size, distribution, and community stability.</li><li>Same sign outcome may represent different processes; identify using <b>who benefits</b> and <b>how</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='16' y='14' width='328' height='36' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='28' y='37' font-size='13' fill='#1f2a44'>Sign outcomes: + benefit | − harm | 0 neutral</text><rect x='16' y='62' width='156' height='54' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='28' y='84' font-size='13' fill='#1f2a44'>+/+ Mutualism</text><text x='28' y='104' font-size='12' fill='#1f2a44'>both benefit</text><rect x='188' y='62' width='156' height='54' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='200' y='84' font-size='13' fill='#1f2a44'>−/− Competition</text><text x='200' y='104' font-size='12' fill='#1f2a44'>both lose</text><rect x='16' y='128' width='156' height='56' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='28' y='150' font-size='13' fill='#1f2a44'>+/− Predation</text><text x='28' y='170' font-size='12' fill='#1f2a44'>predator eats prey</text><rect x='188' y='128' width='156' height='56' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='200' y='150' font-size='13' fill='#1f2a44'>+/− Parasitism</text><text x='200' y='170' font-size='12' fill='#1f2a44'>parasite on/in host</text><line x1='172' y1='89' x2='188' y2='89' stroke='#123B7A' marker-end='url(#arrow)'/><text x='122' y='124' font-size='12' fill='#1f2a44'>same sign ≠ same process</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Sign convention: + (fitness gain), − (fitness loss), 0 (no measurable change).</span></li><li><span class="ic">🧩</span><span>Table 11.1 set: mutualism +/+, competition −/−, predation +/−, parasitism +/−, commensalism +/0, amensalism −/0.</span></li><li><span class="ic">🦁</span><span>Predation includes herbivory: animals feeding on plants are predators in ecology.</span></li><li><span class="ic">🪱</span><span>Parasitism: parasite lives on/in host; often host-specific and co-evolves with host.</span></li><li><span class="ic">🧠</span><span>Competition can occur even when resources are not limiting (interference competition).</span></li><li><span class="ic">🧷</span><span>Commensalism: beneficiary gets food/transport/support/protection; other species unaffected.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">HOW TO IDENTIFY THE INTERACTION QUICKLY</span></h2><ul class="b"><li>First write signs for each species: <b>+</b>, <b>−</b>, or <b>0</b> (fitness change).</li><li>Then decide the <b>mechanism</b>: feeding, living on/in, resource overlap, or passive benefit.</li><li>If +/−: check identity—<b>predator–prey</b> (kills/consumes) vs <b>parasite–host</b> (lives on/in).</li><li>If +/0: beneficiary gets <b>food/support/transport/protection</b>; partner truly unaffected.</li><li>If −/0: one harmed by chemicals/shading/space; other unaffected (amensalism).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">STANDARD EXAMPLES (NCERT-LEVEL)</span></h2><ul class="b"><li><b>Mutualism (+/+)</b>: lichen (fungus + algae/cyanobacteria); mycorrhiza (fungus + plant roots).</li><li><b>Commensalism (+/0)</b>: orchid on mango; barnacles on whale; cattle egret with grazing cattle.</li><li><b>Predation (+/−)</b>: tiger–deer; sparrow eating seeds; herbivores feeding on plants; predators regulate prey density.</li><li><b>Parasitism (+/−)</b>: lice on humans (ecto-); liver fluke (needs snail, fish); malarial parasite in humans (mosquito is vector); Cuscuta on host plant.</li><li><b>Competition (−/−)</b>: species reduce each other’s fitness; can be via interference, not only resource shortage.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">TABLE 11.1: INTERSPECIFIC INTERACTIONS BY SIGN OUTCOME</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Type (sign)</th><th>Core idea</th><th>Typical examples / cues</th></tr></thead><tbody><tr><td>Mutualism (+/+)</td><td>Both species benefit; often close association and co-evolution</td><td>Lichen; mycorrhiza; plant–pollinator / seed disperser mutualisms</td></tr><tr><td>Competition (−/−)</td><td>Both lose fitness due to shared resource use or interference</td><td>Gause competitive exclusion; Paramecium aurelia vs P. caudatum (resource overlap)</td></tr><tr><td>Predation (+/−)</td><td>Predator captures and consumes prey (includes herbivory)</td><td>Tiger–deer; sparrow eating seed; insect–leaf; plant defences: thorns, toxins</td></tr><tr><td>Parasitism (+/−)</td><td>Parasite lives on/in host; feeds without immediate killing</td><td>Lice/ticks; liver fluke; Plasmodium in humans (mosquito as vector); Cuscuta</td></tr><tr><td>Commensalism (+/0)</td><td>One benefits; other unaffected (no measurable gain/loss)</td><td>Orchid on mango; barnacles on whale; cattle egret with grazing cattle</td></tr><tr><td>Amensalism (−/0)</td><td>One harmed; other unaffected (often chemical inhibition)</td><td>Penicillium inhibiting bacteria (antibiotic effect); allelopathy in plants</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student writes: "Predation and parasitism are the same because both are +/−." Correct this statement using one clear distinguishing feature and one example each.</div><div class="sol"><span class="lbl">Answer:</span><br>Both are <b>+/−</b>, but the <b>mode of exploitation</b> differs.<br><b>Predation</b>: predator typically kills and consumes prey (e.g., tiger eating deer; caterpillar feeding on leaf is herbivory-predation).<br><b>Parasitism</b>: parasite lives on/in host, draws nourishment over time, usually does not immediately kill (e.g., lice on humans; Plasmodium in human blood).</div><div class="ans">✓&nbsp; Same sign outcome does not imply same interaction; predation involves capture/consumption, parasitism involves living on/in host for nourishment.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Classify the interaction and write sign outcomes: (i) orchid growing on mango branch, (ii) Penicillium mould secreting antibiotic that suppresses nearby bacteria. Justify briefly.</div><div class="sol"><span class="lbl">Answer:</span><br>(i) Orchid uses mango only for <b>support and better light</b>; mango is not significantly affected → <b>commensalism (+/0)</b>.<br>(ii) Bacteria are harmed by antibiotic; mould is not affected by bacteria presence in this context → <b>amensalism (−/0)</b>.</div><div class="ans">✓&nbsp; (i) Commensalism (+/0) (ii) Amensalism (−/0).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write signs in the order of species mentioned; avoid swapping beneficiary/harmed species.</li><li>Competition is defined via reduced <b>fitness</b> in presence of another species; not just "fighting".</li><li>Competition can occur even without resource limitation (interference competition).</li><li>Predation includes herbivory; plant thorns and toxins are anti-predator (anti-herbivore) defences.</li><li>Predators regulate prey density and can maintain diversity by preventing competitive dominance.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "MU CO PR PA CO AM" + sign map”</div><paragraph id="6a9fd5feb0a04231c5000143">Order: <b>MU</b>tualism, <b>CO</b>mpetition, <b>PR</b>edation, <b>PA</b>rasitism, <b>CO</b>mmensalism, <b>AM</b>ensalism.</paragraph><paragraph id="6a9fd5fe23a9e493f1000144">Signs: <b>MU</b> ++, <b>CO</b> −−, <b>PR/PA</b> +−, <b>CO</b> +0, <b>AM</b> −0.</paragraph><paragraph id="6a9fd5fe544735e39a000145">Key cue: <b>PR kills</b>; <b>PA lives</b> (on/in host).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Sign convention: <b>+</b> benefit, <b>−</b> harm, <b>0</b> neutral.</span><span class="eq">Mutualism: <b>+/+</b> (both benefit).</span><span class="eq">Competition: <b>−/−</b> (both lose fitness).</span><span class="eq">Predation: <b>+/−</b> (predator benefits, prey harmed; includes herbivory).</span><span class="eq">Parasitism: <b>+/−</b> (parasite benefits, host harmed; parasite lives on/in).</span><span class="eq">Commensalism: <b>+/0</b> (one benefits, other unaffected).</span><span class="eq">Amensalism: <b>−/0</b> (one harmed, other unaffected).</span><span class="eq">Same sign ≠ same interaction: distinguish by <b>mechanism</b> and <b>who is resident on/in</b> whom.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Predator–prey (including herbivory): energy transfer, population regulation, diversity maintenance, and evolved defences</div>
+              <h2>PREDATION AND DEFENCES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Predation</b> is a +/− interaction where a predator captures/feeds on prey, harming the prey.</li><li>In ecology, <b>herbivores</b> are also predators (they consume living plant parts).</li><li>Predation transfers energy fixed by <b>autotrophs</b> to higher trophic levels.</li><li>Predators regulate prey density, preventing overpopulation and ecosystem instability.</li><li>Prey and plants evolve <b>morphological</b> and <b>chemical</b> defences to reduce predation.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      
+   
+  </h2>
+
+  <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+
+    <img src="img/Untitled-12.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+
+
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>Energy conduit: plants → herbivores → carnivores; predation enables upward energy transfer in food chains.</span></li><li><span class="ic">⚖️</span><span>Population control: predators can suppress prey outbreaks and help stabilise community structure.</span></li><li><span class="ic">🧩</span><span>Diversity effect: keystone predators can reduce competitive exclusion among prey species.</span></li><li><span class="ic">🧠</span><span>Overexploitation risk: if predators eliminate prey locally, predator populations also decline due to food shortage.</span></li><li><span class="ic">🎭</span><span>Camouflage/cryptic colouration lowers detection (common in insects and frogs).</span></li><li><span class="ic">🧪</span><span>Chemical defence: distasteful/toxic prey are avoided by predators after experience (e.g., Monarch butterfly).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">ECOLOGICAL ROLES OF PREDATION (EXAM CORE)</span></h2><ul class="b"><li><b>Energy transfer</b>: herbivory/predation channel plant-fixed energy to higher trophic levels.</li><li><b>Population regulation</b>: predators prevent prey from reaching damaging densities.</li><li><b>Community stability</b>: reduces extreme prey booms that can destabilise ecosystems.</li><li><b>Diversity maintenance</b>: predators may reduce dominance of one prey species, lowering competition intensity.</li><li>Key predator example: <b>Pisaster</b> starfish removal caused loss of many invertebrates (competition increased).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">DEFENCES AGAINST PREDATION (ANIMALS + PLANTS)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='22' y='22' width='150' height='58' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='34' y='46' font-size='13' fill='#1f2a44'>Camouflage</text><text x='34' y='66' font-size='12' fill='#1f2a44'>cryptic colours</text><rect x='188' y='22' width='150' height='58' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='200' y='46' font-size='13' fill='#1f2a44'>Chemicals</text><text x='200' y='66' font-size='12' fill='#1f2a44'>toxic/distasteful</text><rect x='22' y='112' width='150' height='58' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='34' y='136' font-size='13' fill='#1f2a44'>Thorns</text><text x='34' y='156' font-size='12' fill='#1f2a44'>Acacia, cactus</text><rect x='188' y='112' width='150' height='58' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='200' y='136' font-size='13' fill='#1f2a44'>Cardiac glycosides</text><text x='200' y='156' font-size='12' fill='#1f2a44'>Calotropis</text><line x1='172' y1='51' x2='188' y2='51' stroke='#123B7A' stroke-width='2.5' marker-end='url(#arrow2)'/><text x='134' y='98' font-size='12' fill='#1f2a44'>Defences</text></svg></div><ul class="b"><li><b>Cryptic colouration</b>: insects/frogs blend with background to avoid detection.</li><li><b>Chemical defence</b>: unpalatable/toxic prey are avoided by predators after experience.</li><li>Example: <b>Monarch butterfly</b> is distasteful; chemicals are acquired from host plant during caterpillar stage.</li><li><b>Plant morphological defence</b>: thorns/spines deter browsing (Acacia, cactus).</li><li><b>Plant chemical defence</b>: toxins inhibit feeding/digestion, disrupt reproduction, or kill herbivore.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ANIMAL (PREY) VS PLANT DEFENCES (HERBIVORY IS A FORM OF PREDATION IN ECOLOGY)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Prey (animals)</th><th>Plants (against herbivores)</th></tr></thead><tbody><tr><td>Predator pressure</td><td>Avoid being found/caught</td><td>Reduce being eaten (cannot move away)</td></tr><tr><td>Morphological defence</td><td>Camouflage, mimicry</td><td>Thorns/spines: Acacia, cactus</td></tr><tr><td>Chemical defence</td><td>Toxins/distastefulness: Monarch butterfly</td><td>Toxins: Calotropis cardiac glycosides</td></tr><tr><td>Outcome on predator</td><td>Predator learns/avoids; attack rate reduces</td><td>Herbivore feeding/digestion/reproduction impaired; may die</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Explain why the prickly pear cactus became invasive in Australia, and how it was controlled using ecology.</div><div class="sol"><span class="lbl">Answer:</span><br>In Australia, the introduced cactus lacked its <b>natural enemies</b> from its native range, so populations rose rapidly.<br>This matches the role of predators in <b>population regulation</b>: when enemies are absent, a prey/invader can increase strongly.<br>Control used <b>biological control</b>: introducing a cactus-feeding <b>moth</b> from the cactus native range.<br>The herbivore acted as a natural enemy and reduced cactus density.</div><div class="ans">✓&nbsp; Absence of natural enemies favoured invasion; biological control by introducing a cactus-feeding moth reduced the cactus population.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Pisaster starfish is called a key predator. Using the intertidal experiment, justify how predators can maintain species diversity.</div><div class="sol"><span class="lbl">Answer:</span><br>With <b>Pisaster</b> present, it preys on competitive dominants, preventing any one prey from monopolising space/resources.<br>When starfish were removed, <b>interspecific competition</b> among prey increased greatly.<br>One/few superior competitors excluded others, causing loss of multiple invertebrate species.<br>Thus a <b>keystone predator</b> can maintain diversity by reducing competitive exclusion.</div><div class="ans">✓&nbsp; By suppressing dominant competitors, Pisaster prevents competitive exclusion; its removal increases competition and reduces diversity.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write predation as <b>+/−</b>; predator benefits, prey is harmed.</li><li>State key roles: <b>energy transfer</b> across trophic levels and <b>prey population regulation</b>.</li><li>Herbivory is predation on plants; plant–herbivore is a predator–prey interaction in ecology.</li><li>Keystone predator concept: removing a predator can sharply reduce diversity (Pisaster experiment).</li><li>Invasive species may spread due to <b>absence of natural enemies</b>; control can use biological control.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“PRED = "E‑S‑D" + DEF = "C‑C"”</div><paragraph id="6a9fd5fe906aeca62a000146"><b>E</b>nergy transfer, <b>S</b>tability (population control), <b>D</b>iversity (keystone predators).</paragraph><paragraph id="6a9fd5fe877951cf17000147">Defences: <b>C</b>amouflage (cryptic) and <b>C</b>hemicals (toxins/distasteful).</paragraph><paragraph id="6a9fd5fe46853bdf4b000148">Examples hook: <b>Pisaster</b> = Diversity; <b>Prickly pear</b> = Enemy absence; <b>Monarch</b>/<b>Calotropis</b> = Chemicals.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Predation is a <b>+/−</b> interaction: predator benefits, prey is harmed.</span><span class="eq">Herbivory is a form of predation in ecology (herbivores consume living plant parts).</span><span class="eq">Predation helps transfer energy from producers to higher trophic levels.</span><span class="eq">Predators can regulate prey populations and contribute to ecosystem stability.</span><span class="eq">Keystone predators (e.g., <b>Pisaster</b>) can maintain diversity by preventing competitive exclusion.</span><span class="eq">Defences in animals: camouflage/cryptic colouration; unpalatability/toxins (e.g., Monarch).</span><span class="eq">Defences in plants: thorns/spines (Acacia, cactus); toxins such as cardiac glycosides (Calotropis).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">When the presence of another species lowers <i>r</i>, and how species still share habitats</div>
+              <h2>COMPETITION AND COEXISTENCE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Competition</b>: interaction where fitness of one species (often measured using intrinsic rate <i>r</i>) is lower in presence of another.</li><li>Outcome is <b>−/−</b>: both competitors pay a cost (reduced growth, survival, or reproduction).</li><li>Darwin’s <b>struggle for existence</b>: competition can drive natural selection and evolutionary change.</li><li>Competitors need not be closely related; even <b>unrelated species</b> can compete for a shared limiting resource.</li><li>Competition may occur even if resources are not obviously limiting, via <b>interference</b> (direct inhibition).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='a' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='150' height='48' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='26' y='39' font-size='13' fill='#1f2a44'>Species A</text><text x='26' y='56' font-size='13' fill='#1f2a44'>Fitness (<tspan font-style='italic'>r</tspan>)</text><rect x='196' y='18' width='150' height='48' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='208' y='39' font-size='13' fill='#1f2a44'>Species B</text><text x='208' y='56' font-size='13' fill='#1f2a44'>Fitness (<tspan font-style='italic'>r</tspan>)</text><line x1='90' y1='72' x2='90' y2='92' stroke='#123B7A' stroke-width='2' marker-end='url(#a)'/><line x1='270' y1='72' x2='270' y2='92' stroke='#123B7A' stroke-width='2' marker-end='url(#a)'/><rect x='34' y='96' width='292' height='36' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='46' y='118' font-size='13' fill='#1f2a44'>COMPETITION: presence lowers <tspan font-style='italic'>r</tspan> of both (−/−)</text><line x1='180' y1='132' x2='180' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#a)'/><rect x='18' y='152' width='156' height='36' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='28' y='174' font-size='13' fill='#1f2a44'>Exclusion</text><rect x='186' y='152' width='156' height='36' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='196' y='174' font-size='13' fill='#1f2a44'>Partitioning → Coexist</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📉</span><span>Definition is tied to <b>reduced fitness</b>: lower intrinsic growth potential (<i>r</i>) in competitor’s presence.</span></li><li><span class="ic">🦌</span><span>Competition is not restricted to close relatives: any two species with <b>overlapping niches</b> can compete for the same limiting resource.</span></li><li><span class="ic">🛑</span><span><b>Interference competition</b>: one species directly prevents the other from accessing resources (aggression/territoriality/chemical inhibition).</span></li><li><span class="ic">🧪</span><span><b>Gause experiments</b>: under limiting resources, the competitively superior species eliminates the other in lab cultures.</span></li><li><span class="ic">🏝️</span><span><b>Competitive exclusion principle</b>: two species using the same limiting resources in the same way cannot coexist indefinitely.</span></li><li><span class="ic">🧩</span><span><b>Coexistence mechanism</b>: <b>resource partitioning</b> (same broad resource used differently in space/time/mode).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">INTERFERENCE COMPETITION (KEY TWIST)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='b' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='26' width='150' height='46' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='52' font-size='13' fill='#1f2a44'>Species A feeds</text><rect x='192' y='26' width='150' height='46' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='204' y='52' font-size='13' fill='#1f2a44'>Food present</text><line x1='92' y1='78' x2='92' y2='116' stroke='#123B7A' stroke-width='2' marker-end='url(#b)'/><rect x='18' y='120' width='150' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='146' font-size='13' fill='#1f2a44'>B interferes</text><text x='30' y='164' font-size='13' fill='#1f2a44'>A feeding ↓</text><line x1='267' y1='78' x2='267' y2='116' stroke='#123B7A' stroke-width='2' marker-end='url(#b)'/><rect x='192' y='120' width='150' height='52' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='204' y='146' font-size='13' fill='#1f2a44'>Fitness (<tspan font-style='italic'>r</tspan>) ↓</text><text x='204' y='164' font-size='13' fill='#1f2a44'>despite food</text></svg></div><ul class="b"><li>Not only exploitation of scarce resources; <b>direct inhibition</b> can reduce access to resources.</li><li>Can operate <b>even when food/space seem abundant</b>; the competitor’s behaviour becomes the limiting factor.</li><li>Exam line: competition ≠ always shortage; <b>interference</b> can reduce fitness without obvious depletion.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">EXCLUSION, RELEASE &amp; COEXISTENCE: CLASSIC EVIDENCE</span></h2><ul class="b"><li><b>Competitive exclusion</b> (Gause): with limiting resources, superior competitor eliminates inferior in lab cultures.</li><li><b>Competitive release</b>: removal/absence of superior competitor → restricted species expands its realised niche.</li><li>Connell barnacles: <b>Balanus</b> restricts <b>Chthamalus</b> to upper zones; removal allows downward expansion.</li><li><b>Coexistence</b>: species evolve/maintain differences that reduce niche overlap (<b>resource partitioning</b>).</li><li>MacArthur warblers: multiple species coexist on one tree by using different parts/foraging zones.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Competition outcomes: exclusion vs release vs coexistence</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Competitive exclusion</th><th>Competitive release</th><th>Coexistence (partitioning)</th></tr></thead><tbody><tr><td>Core idea</td><td>One species eliminates the other when niches overlap strongly and a resource is limiting</td><td>Inferior species expands when the superior competitor is removed</td><td>Both persist by reducing niche overlap</td></tr><tr><td>Typical condition</td><td>Resources limiting; high niche overlap; superior competitor consistently wins</td><td>Experimental/natural removal or absence of superior competitor</td><td>Differences in microhabitat, time of activity, or mode of resource use</td></tr><tr><td>Signature observation</td><td>Inferior declines to local extinction (or disappears from that niche zone)</td><td>Range/abundance increases after removal; realised niche expands toward fundamental niche</td><td>Stable sympatry across time with reduced direct overlap</td></tr><tr><td>Named examples</td><td>Gause lab cultures (Paramecium): one excludes the other under limiting food</td><td>Connell barnacles: removing Balanus allows Chthamalus to occupy lower zones (release from competition)</td><td>MacArthur warblers: different foraging positions on the same tree</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">NEET-style: Two bird species feed in the same wetland. Species B frequently drives Species A away from feeding spots by aggressive behaviour, even though food appears adequate. Identify the interaction and justify using the definition of competition.</div><div class="sol"><span class="lbl">Answer:</span><br>Competition is identified by <b>reduced fitness</b> (lower growth/survival/reproduction; often expressed via lower <i>r</i>) in the presence of another species.<br>Here Species A loses access to feeding spots due to aggression by Species B, so A’s feeding success and fitness decrease.<br>Because the mechanism is <b>direct behavioural inhibition</b>, this is <b>interference competition</b> (not just exploitation).</div><div class="ans">✓&nbsp; It is <b>interference competition</b>; Species B directly reduces Species A’s feeding success, lowering fitness in B’s presence.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Boards reasoning: Connell removed the barnacle <b>Balanus</b> from a rocky intertidal zone and observed that <b>Chthamalus</b> expanded into zones where it was earlier absent. What does this demonstrate about the role of competition in Chthamalus distribution?</div><div class="sol"><span class="lbl">Answer:</span><br>Expansion after removal of a competitor indicates <b>competitive release</b>.<br>It shows that the earlier absence of <b>Chthamalus</b> from that zone was largely due to <b>competition from Balanus</b>, not only abiotic intolerance.<br>Thus, competition restricted Chthamalus to a smaller <b>realised niche</b> than its potential (fundamental) niche.</div><div class="ans">✓&nbsp; It demonstrates <b>competitive release</b>; Chthamalus was earlier restricted mainly due to competition from Balanus, so its realised niche expanded after removal.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write definition using <b>fitness</b> and (where appropriate) intrinsic rate <i>r</i>, not only "same resource".</li><li>Competition can occur between <b>unrelated species</b> if niches overlap.</li><li>Competition may occur even without obvious scarcity via <b>interference</b>.</li><li><b>Gause</b> supports exclusion under limiting resources (strong lab evidence).</li><li><b>Competitive release</b> is shown by range expansion after competitor removal (Connell barnacles).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“EIRP: Exclusion–Interference–Release–Partitioning”</div><paragraph id="6a9fd5fec3fce5774d000149"><b>E</b>xclusion: one out (Gause) when overlap + limiting resources.</paragraph><paragraph id="6a9fd5fe457e0591fb00014a"><b>I</b>nterference: inhibit access directly; scarcity may not be obvious.</paragraph><paragraph id="6a9fd5fe082582a61b00014b"><b>R</b>elease: remove rival → restricted species expands.</paragraph><paragraph id="6a9fd5fea9d700d29100014c"><b>P</b>artitioning: split resource in space/time/mode → coexist.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Competition is a <b>−/−</b> interspecific interaction: both species show reduced fitness in each other’s presence.</span><span class="eq">Fitness impact is often discussed using intrinsic rate of increase <i>r</i> (competition lowers effective <i>r</i>).</span><span class="eq">Two species with the same limiting resource use in the same way cannot coexist indefinitely (competitive exclusion principle).</span><span class="eq">Interference competition: direct inhibition (aggression/territoriality/chemical inhibition) reduces access to resources.</span><span class="eq">Competitive release: removing/absent competitor expands the other species’ realised niche toward its fundamental niche.</span><span class="eq">Coexistence commonly occurs via resource partitioning by space, time, or mode of use (e.g., MacArthur warblers).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-12">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">12</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Parasite benefits (+), host harmed (−): specificity, co-evolution, adaptations and life cycles</div>
+              <h2>PARASITISM TYPES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Parasitism</b>: one organism (<b>parasite</b>) lives <b>on/in</b> another (<b>host</b>), gaining food/shelter at host’s expense (+/−).</li><li>Parasites are often <b>host-specific</b>: adapted to one (or few) host species.</li><li>Host and parasite show <b>co-evolution</b>: host resistance selects for parasite counter-defences.</li><li>Parasites commonly show <b>structural simplification</b> and <b>high reproductive capacity</b> for successful transmission.</li><li>Many parasites have <b>complex life cycles</b> using <b>intermediate hosts</b> and/or <b>vectors</b> to reach the primary host.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='16' y='18' width='152' height='54' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='28' y='40' font-size='13' fill='#1f2a44'>Host</text><text x='28' y='58' font-size='12' fill='#1f2a44'>harm (−)</text><rect x='192' y='18' width='152' height='54' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='204' y='40' font-size='13' fill='#1f2a44'>Parasite</text><text x='204' y='58' font-size='12' fill='#1f2a44'>benefit (+)</text><line x1='168' y1='45' x2='192' y2='45' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='16' y='92' width='328' height='92' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='28' y='114' font-size='13' fill='#1f2a44'>Transmission routes</text><rect x='28' y='128' width='96' height='40' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='40' y='152' font-size='12' fill='#1f2a44'>Intermediate</text><rect x='138' y='128' width='74' height='40' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='150' y='152' font-size='12' fill='#1f2a44'>Vector</text><rect x='226' y='128' width='96' height='40' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='238' y='152' font-size='12' fill='#1f2a44'>Primary host</text><line x1='124' y1='148' x2='138' y2='148' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='212' y1='148' x2='226' y2='148' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Outcome sign: parasite benefits, host harmed (<b>+/−</b>), unlike mutualism (<b>+/+</b>).</span></li><li><span class="ic">🎯</span><span><b>Host specificity</b> increases efficiency on a host but restricts host range.</span></li><li><span class="ic">🛡️</span><span><b>Co-evolution</b>: host defences evolve → parasite evolves counter-mechanisms.</span></li><li><span class="ic">🧲</span><span>Attachment adaptations: <b>suckers</b>, hooks, adhesive organs to remain on/in host.</span></li><li><span class="ic">🧠</span><span>Simplification: <b>loss of unnecessary sense organs</b> in stable host environment.</span></li><li><span class="ic">🍽️</span><span>Reduced digestion: many endoparasites show <b>loss/reduction of digestive system</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CLASSIFICATION: WHERE THE PARASITE LIVES</span></h2><ul class="b"><li><b>Ectoparasites</b>: live on host surface; usually cause irritation, blood loss, disease transfer.</li><li>Examples: <b>lice</b> on humans; <b>ticks</b> on dogs; ectoparasitic <b>copepods</b> on marine fishes.</li><li><b>Endoparasites</b>: live inside the host body (organs/tissues/cells, e.g., intestine, liver, RBCs); show extreme specialization.</li><li>Endoparasites commonly have <b>more complex life cycles</b> and very high reproductive potential.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SPECIAL TYPE: BROOD PARASITISM (BIRDS)</span></h2><ul class="b"><li><b>Brood parasitism</b>: parasite bird lays eggs in host’s nest; host incubates and rears young.</li><li>Key adaptation: parasite eggs <b>mimic</b> host eggs (size/colour) → lowers rejection by host.</li><li>This reflects <b>co-evolution</b>: host egg recognition vs parasite egg mimicry.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ECTOPARASITISM vs ENDOPARASITISM vs BROOD PARASITISM</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Ectoparasite</th><th>Endoparasite</th><th>Brood parasite</th></tr></thead><tbody><tr><td>Where it lives</td><td>On body surface</td><td>Inside host body (organs/tissues/cells)</td><td>Uses host nest/parental care</td></tr><tr><td>Typical adaptations</td><td>Attachment; piercing-sucking mouthparts</td><td>Suckers/adhesive organs; reduced sense + digestive systems; high fecundity</td><td>Egg mimicry; timing of laying</td></tr><tr><td>Life cycle</td><td>Often simpler; direct contact common</td><td>Often complex; intermediate host(s)/vector common</td><td>Not physiological; behavioural strategy</td></tr><tr><td>Examples</td><td>Lice, ticks, ectoparasitic copepods on fishes</td><td>Tapeworm; liver fluke; <b>Plasmodium</b> (in liver cells and RBCs)</td><td>Cuckoo/koel (egg mimicry)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Explain <b>host specificity</b> and <b>co-evolution</b> in parasitism with a general mechanism.</div><div class="sol"><span class="lbl">Answer:</span><br>Many parasites are adapted to a <b>single host species</b> → they recognise host cues and survive in that host environment.<br>Host evolves <b>resistance</b> (e.g., immune rejection, behavioural removal).<br>Parasite variants with <b>counter-mechanisms</b> survive and reproduce better on the same host.<br>Thus, both sides show reciprocal adaptations: <b>host resistance ↔ parasite counter-resistance</b>.</div><div class="ans">✓&nbsp; Host specificity arises from tight adaptation to one host; co-evolution is the reciprocal arms race of host defence and parasite counter-defence.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why is a <b>female mosquito</b> usually <b>not</b> considered a true parasite though it takes blood from humans?</div><div class="sol"><span class="lbl">Answer:</span><br>A parasite typically <b>lives on or in</b> the host for a significant period and depends on the host for nourishment/shelter.<br>Female mosquito is a <b>temporary feeder</b>: it visits briefly to obtain a blood meal and then leaves.<br>Hence it behaves as a <b>biting insect</b> and often a <b>vector</b> rather than a resident parasite.</div><div class="ans">✓&nbsp; Because it does not reside on/in the host as a dependent organism; it is a temporary blood feeder (often a vector), not a true parasite.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write parasitism as <b>+/−</b>; parasite gains nourishment (often shelter) and host is harmed.</li><li>Differentiate <b>predation</b> vs <b>parasitism</b>: both (+/−), but parasite usually does not kill immediately and lives on/in host.</li><li>List parasite adaptations: <b>loss of sense organs</b>, <b>suckers/adhesive organs</b>, <b>loss/reduction of digestive system</b>, <b>high fecundity</b>.</li><li>Endoparasites show greater <b>specialisation</b> and often <b>complex life cycles</b> with intermediate hosts/vectors.</li><li>Know examples: <b>Fasciola</b> (liver fluke) uses a <b>snail</b> as intermediate host; malaria parasite needs <b>Anopheles mosquito</b> as vector.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>SALH</b> = Parasite adaptations”</div><paragraph id="6a9fd5fee8b8ca021800014d"><b>S</b>: <b>Suckers</b>/adhesive organs for attachment</paragraph><paragraph id="6a9fd5fe0dbb2bd50700014e"><b>A</b>: <b>Atrophied</b> sense organs (loss/reduction)</paragraph><paragraph id="6a9fd5feef33fcf48500014f"><b>L</b>: <b>Lost</b> digestive system (nutrients from host)</paragraph><paragraph id="6a9fd5fe6adf19a996000150"><b>H</b>: <b>High</b> reproductive capacity</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Parasitism = <b>+/−</b>; parasite lives <b>on/in</b> host and gains nourishment (often shelter) at host’s expense.</span><span class="eq"><b>Host specificity</b>: many parasites infect only one host species (or a narrow host range).</span><span class="eq"><b>Co-evolution</b>: host resistance evolves → parasite counter-mechanisms evolve.</span><span class="eq">Key adaptations: <b>suckers/hooks/adhesive organs</b>; reduced/lost <b>digestive system</b>; reduced <b>sense organs</b>; <b>high fecundity</b>.</span><span class="eq">Transmission: many endoparasites use <b>intermediate hosts</b> and/or <b>vectors</b> to complete the life cycle.</span><span class="eq">Examples: <b>Fasciola</b> (liver fluke) has <b>snail</b> intermediate host; <b>Plasmodium</b> is transmitted by <b>Anopheles</b> mosquito (vector).</span><span class="eq">Types to recall: <b>ectoparasite</b>, <b>endoparasite</b>, <b>brood parasite</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-13">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">13</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Interspecific interaction: one benefits, other remains unaffected (+/0)</div>
+              <h2>COMMENSALISM EXAMPLES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Commensalism</b> is an interspecific interaction where one species benefits and the other is unaffected (<b>+ / 0</b>).</li><li>The benefited species may gain food, shelter, support, transport, or protection.</li><li>The "host/partner" shows <b>no measurable benefit or harm</b> (neutral outcome).</li><li>Key exam line: <b>not mutualism</b> because only one partner gains.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='40' font-size='14' fill='#1f2a44'>COMMENSALISM</text><text x='155' y='40' font-size='14' fill='#1f2a44'>(+ / 0)</text><rect x='40' y='62' width='120' height='52' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='58' y='84' font-size='13' fill='#1f2a44'>Species A</text><text x='66' y='104' font-size='13' fill='#1f2a44'>Benefited (+)</text><rect x='200' y='62' width='120' height='52' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='218' y='84' font-size='13' fill='#1f2a44'>Species B</text><text x='214' y='104' font-size='13' fill='#1f2a44'>Unaffected (0)</text><line x1='160' y1='88' x2='200' y2='88' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='125' y='132' font-size='12' fill='#1f2a44'>A gains benefit</text><text x='214' y='132' font-size='12' fill='#1f2a44'>B unchanged</text><rect x='40' y='146' width='280' height='26' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='1.5'/><text x='52' y='163' font-size='12' fill='#1f2a44'>Not mutualism: B does not benefit</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Sign convention: beneficiary = <b>+</b>, unaffected partner = <b>0</b></span></li><li><span class="ic">🏡</span><span>Common benefits: <b>support</b>, <b>better light</b>, <b>transport</b>, <b>protection</b>, <b>easy prey</b></span></li><li><span class="ic">🧭</span><span>Best description: <b>"free ride without damage"</b> to the other species</span></li><li><span class="ic">⚖️</span><span>If the second partner also gains clearly, the interaction becomes <b>mutualism (+/+)</b></span></li><li><span class="ic">🔍</span><span>Neutrality is context-dependent; in answers state <b>host unaffected</b></span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">STANDARD TEXTBOOK EXAMPLES (WRITE WITH BENEFIT + NEUTRALITY)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#2563EB'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='26' y='40' font-size='13' fill='#1f2a44'>Examples map (benefit → neutral partner)</text><rect x='28' y='54' width='150' height='38' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='1.5'/><text x='36' y='77' font-size='12' fill='#1f2a44'>Orchid (+)</text><rect x='210' y='54' width='122' height='38' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='1.5'/><text x='218' y='77' font-size='12' fill='#1f2a44'>Mango (0)</text><line x1='178' y1='73' x2='210' y2='73' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow2)'/><rect x='28' y='100' width='150' height='38' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='1.5'/><text x='36' y='123' font-size='12' fill='#1f2a44'>Barnacle (+)</text><rect x='210' y='100' width='122' height='38' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='1.5'/><text x='232' y='123' font-size='12' fill='#1f2a44'>Whale (0)</text><line x1='178' y1='119' x2='210' y2='119' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow2)'/><rect x='28' y='146' width='150' height='38' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='1.5'/><text x='36' y='169' font-size='12' fill='#1f2a44'>Egret / Remora (+)</text><rect x='210' y='146' width='122' height='38' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='1.5'/><text x='222' y='169' font-size='12' fill='#1f2a44'>Cattle / Shark (0)</text><line x1='178' y1='165' x2='210' y2='165' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow2)'/></svg></div><ul class="b"><li><b>Orchid epiphyte on mango</b>: orchid gets support + better light; mango unaffected.</li><li><b>Barnacles on whale</b>: barnacles get transport + feeding opportunity; whale unaffected.</li><li><b>Cattle egret with grazing cattle</b>: cattle flush insects; egret catches prey; cattle unaffected.</li><li><b>Remora fish with shark</b>: remora gets transport + food scraps; shark unaffected.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">HOW IT DIFFERS FROM MUTUALISM (EXAM-USEFUL CLARITY)</span></h2><ul class="b"><li><b>Commensalism (+/0)</b>: only one partner benefits; other shows no clear effect.</li><li><b>Mutualism (+/+)</b>: both partners benefit; often involves exchange of resources/services.</li><li>If evidence shows the "unaffected" partner gains, reclassify as <b>mutualism</b> in answers.</li><li>Write neutrality explicitly: <b>"host unaffected"</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">COMMENSALISM vs MUTUALISM</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Commensalism</th><th>Mutualism</th></tr></thead><tbody><tr><td>Sign outcome</td><td><b>+ / 0</b></td><td><b>+ / +</b></td></tr><tr><td>Benefit distribution</td><td>Only one species benefits</td><td>Both species benefit</td></tr><tr><td>Partner effect</td><td>Other partner is <b>unaffected</b></td><td>Other partner shows <b>clear gain</b></td></tr><tr><td>Typical nature</td><td>Often "hitchhiking" / shelter / support</td><td>Often nutrient/service exchange, co-adaptations common</td></tr><tr><td>Example</td><td>Orchid on mango; barnacles on whale; cattle egret with grazing cattle</td><td>Mycorrhiza; lichen; pollination mutualisms</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A question says: "Orchid grows on mango tree; orchid gets support and better light." Identify the interaction and justify using sign convention.</div><div class="sol"><span class="lbl">Answer:</span><br>Orchid gains <b>support + better light</b> ⇒ orchid benefits (<b>+</b>).<br>Mango tree shows no apparent gain/loss due to orchid ⇒ mango is neutral (<b>0</b>).<br>So the interaction is <b>commensalism (+/0)</b> (not parasitism because host is not harmed).</div><div class="ans">✓&nbsp; Commensalism (+/0): orchid benefits; mango unaffected.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Classify the interaction: "Barnacles attached to a whale." Also state one example of mutualism.</div><div class="sol"><span class="lbl">Answer:</span><br>Barnacles get <b>transport</b> and better access to food particles in water ⇒ barnacles benefit (<b>+</b>).<br>Whale generally shows <b>no clear benefit or harm</b> in the standard textbook description ⇒ whale is neutral (<b>0</b>).<br>Hence it is <b>commensalism (+/0)</b>.<br>Example of mutualism: <b>mycorrhiza</b> (plant gets minerals; fungus gets carbohydrates) ⇒ <b>(+/+)</b>.</div><div class="ans">✓&nbsp; Barnacle–whale: commensalism (+/0); mycorrhiza: mutualism (+/+).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always write commensalism as <b>(+ / 0)</b> with partners identified.</li><li>State the <b>exact benefit</b>: support/light, transport, protection, easy prey capture.</li><li>State neutrality clearly: <b>"host/partner unaffected"</b> (no harm and no help).</li><li>Use standard examples: <b>orchid–mango</b>, <b>barnacles–whale</b>, <b>egret–cattle</b>, <b>remora–shark</b>.</li><li>Do not call it mutualism unless the second partner has a <b>demonstrable benefit</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "COMME = COMe, ME alone"”</div><paragraph id="6a9fd5fe0ec5db428e000151"><b>COMME</b>nsalism: one species <b>COMe</b>s ahead (+).</paragraph><paragraph id="6a9fd5fe0aabe9846d000152">The other partner is <b>ME alone</b>: stays same (0).</paragraph><paragraph id="6a9fd5fe1f6c140c3a000153">Hook image: <b>barnacle hitchhikes</b>; whale neither helped nor harmed.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Commensalism: <b>(+ / 0)</b> interaction (one benefits; other unaffected).</span><span class="eq">Exam writing rule: mention <b>benefit</b> and explicitly state <b>host unaffected</b>.</span><span class="eq">Orchid epiphyte on mango: orchid gets <b>support/light</b>; mango <b>unaffected</b>.</span><span class="eq">Barnacles on whale: barnacles get <b>transport/feeding chance</b>; whale <b>unaffected</b>.</span><span class="eq">Cattle egret with grazing cattle: cattle <b>flush insects</b>; egret gets <b>easy prey</b>; cattle <b>unaffected</b>.</span><span class="eq">Remora with shark: remora gets <b>transport + scraps</b>; shark <b>unaffected</b>.</span><span class="eq">Mutualism differs: <b>(+ / +)</b>, both benefit (e.g., <b>mycorrhiza</b>, <b>lichen</b>).</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

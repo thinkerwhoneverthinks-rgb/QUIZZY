@@ -1147,18 +1147,22 @@
             .question-image { max-height: 30vh; }
         }
 
-        /* KaTeX overrides for dark theme & formula horizontal containment */
-        .katex { color: var(--text-primary); max-width: 100%; }
-        .katex-display {
+        /* MathJax & KaTeX styling for dark/light themes and horizontal overflow */
+        .katex, mjx-container { color: var(--text-primary); max-width: 100%; outline: none; }
+        .katex-display, mjx-container[jax="CHTML"][display="true"] {
             overflow-x: auto !important;
             overflow-y: hidden !important;
             max-width: 100% !important;
-            margin: 0.45em 0 !important;
+            margin: 0.55em 0 !important;
+            padding: 0.25rem 0 !important;
             -webkit-overflow-scrolling: touch;
         }
         .question-text .katex-html,
         .mcq-text .katex-html,
-        .explanation-text .katex-html {
+        .explanation-text .katex-html,
+        .question-text mjx-container,
+        .mcq-text mjx-container,
+        .explanation-text mjx-container {
             max-width: 100%;
         }
     

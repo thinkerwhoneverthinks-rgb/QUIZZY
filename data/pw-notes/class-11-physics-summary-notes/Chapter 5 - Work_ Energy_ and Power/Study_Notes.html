@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>CHAPTER FIVE</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8becb77fc48c3e4955e067/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Ch 05 : Work Energy and Power</h1>
+
+<h2>5.1 Introduction</h2>
+<paragraph id="6a8930d352e455c61471aa8a">In everyday talk, “work”, “energy”, “power” are loose ideas. In physics, they’re tightly defined:</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="6a8930d352e455c61471aa8b"><b>Work</b>: a specific quantity involving a <b>force</b> and the <b>displacement it causes</b> (later defined via scalar product).</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa8c"><b>Energy</b>: closely linked to the <b>capacity to do work</b>.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa8d"><b>Power</b>: how <b>fast</b> work is done (everyday “powerful” often ≈ fast, but physics uses an exact definition).</paragraph></li>
+</ul>
+</div>
+<paragraph id="6a8930d352e455c61471aa8e">To build these ideas, we need a math tool first: the <b>scalar (dot) product</b> of vectors.</paragraph>
+
+<h3>5.1.1 The Scalar Product</h3>
+<paragraph id="6a8930d352e455c61471aa8f">Many physics quantities are vectors (displacement, velocity, acceleration, force). Beyond +/−, we also need <b>vector multiplication</b>, in two forms:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aa90"><b>Scalar product (dot product)</b>: vector × vector → <b>scalar</b> (this section).</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa91"><b>Vector product</b>: vector × vector → <b>vector</b> (later, Chapter 6).</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aa92"><b>Definition of dot product</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aa93">A·B = AB cosθ   (Eq. 5.1a)</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aa94">A, B = magnitudes of vectors A and B</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa95">θ = angle between A and B</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa96">A·B = <b>scalar</b> (magnitude only, no direction)</paragraph></li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471aa97"><b>Geometric meaning (projection idea)</b>:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aa98">A·B = A(B cosθ) = B(A cosθ)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa99">B cosθ = <b>component (projection) of B along A</b></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa9a">A cosθ = <b>component (projection) of A along B</b></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa9b">So <b>A·B</b> = (size of one vector) × (component of the other along it).</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471aa9c"><b>Algebraic properties of scalar product</b>:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aa9d"><b>Commutative</b>: A·B = B·A</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa9e"><b>Distributive</b>: A·(B + C) = A·B + A·C</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aa9f"><b>Scalar multiplication</b>: A·(λB) = λ(A·B), λ real</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aaa0"><b>Dot products of unit vectors</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aaa1">î·î = ĵ·ĵ = k̂·k̂ = 1</paragraph>
+<paragraph id="6a8930d352e455c61471aaa2">î·ĵ = ĵ·k̂ = k̂·î = 0</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aaa3">î, ĵ, k̂ = mutually perpendicular unit vectors along x, y, z</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aaa4"><b>Dot product (component form)</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aaa5">If A = A<sub>x</sub>î + A<sub>y</sub>ĵ + A<sub>z</sub>k̂ and B = B<sub>x</sub>î + B<sub>y</sub>ĵ + B<sub>z</sub>k̂, then</paragraph>
+<paragraph id="6a8930d352e455c61471aaa6">A·B = A<sub>x</sub>B<sub>x</sub> + A<sub>y</sub>B<sub>y</sub> + A<sub>z</sub>B<sub>z</sub>   (Eq. 5.1b)</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aaa7">A<sub>x</sub>, A<sub>y</sub>, A<sub>z</sub> = components of A</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aaa8">B<sub>x</sub>, B<sub>y</sub>, B<sub>z</sub> = components of B</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aaa9"><b>Magnitude from dot product</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aaaa">A·A = A<sup>2</sup> = A<sub>x</sub><sup>2</sup> + A<sub>y</sub><sup>2</sup> + A<sub>z</sub><sup>2</sup>   (Eq. 5.1c)</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aaab">Since A·A = |A||A|cos0 = A<sup>2</sup></paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471aaac"><b>Key result</b>: A·B = 0 if A ⟂ B (perpendicular vectors).</paragraph>
+</div>
+
+<h3>Example 5.1: Angle between two vectors; projection using dot product</h3>
+<paragraph id="6a8930d352e455c61471aaad"><b>Given</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aaae">Force vector: F = (3î + 4ĵ − 5k̂) (unit as given)</paragraph>
+<paragraph id="6a8930d352e455c61471aaaf">Displacement vector: d = (5î + 4ĵ + 3k̂) (unit as given)</paragraph>
+<paragraph id="6a8930d352e455c61471aab0"><b>To find</b>:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aab1">Angle θ between F and d</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aab2">Projection of F on d</paragraph></li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471aab3"><b>Step 1: Dot product</b></paragraph>
+<paragraph id="6a8930d352e455c61471aab4">F·d = 3×5 + 4×4 + (−5)×3 = 15 + 16 − 15 = 16 (unit)</paragraph>
+
+<paragraph id="6a8930d352e455c61471aab5"><b>Step 2: Use</b> F·d = |F||d| cosθ</paragraph>
+
+<paragraph id="6a8930d352e455c61471aab6"><b>Step 3: Magnitudes (self dot)</b></paragraph>
+<paragraph id="6a8930d352e455c61471aab7">F·F = |F|<sup>2</sup> = 3<sup>2</sup> + 4<sup>2</sup> + (−5)<sup>2</sup> = 9 + 16 + 25 = 50</paragraph>
+<paragraph id="6a8930d352e455c61471aab8">d·d = |d|<sup>2</sup> = 5<sup>2</sup> + 4<sup>2</sup> + 3<sup>2</sup> = 25 + 16 + 9 = 50</paragraph>
+<paragraph id="6a8930d352e455c61471aab9">So |F| = √50 and |d| = √50.</paragraph>
+
+<paragraph id="6a8930d352e455c61471aaba"><b>Step 4: Solve for cosθ, then θ</b></paragraph>
+<paragraph id="6a8930d352e455c61471aabb">cosθ = (F·d)/(|F||d|) = 16/(√50·√50) = 16/50 = 0.32</paragraph>
+<paragraph id="6a8930d352e455c61471aabc">θ = cos<sup>−1</sup>(0.32)</paragraph>
+
+<paragraph id="6a8930d352e455c61471aabd"><b>Projection of F on d</b>:</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471aabe">The projection (scalar component) of F along d:</paragraph>
+<paragraph id="6a8930d352e455c61471aabf">(component of F along d) = |F|cosθ = (F·d)/|d|</paragraph>
+<paragraph id="6a8930d352e455c61471aac0">Here, |d| = √50, so component = 16/√50 (in force units).</paragraph>
+<paragraph id="6a8930d352e455c61471aac1">This comes from: F·d = |d|(|F|cosθ).</paragraph>
+</div>
+
+<div class="remember-box">
+<ul>
+<li><paragraph id="6a8930d352e455c61471aac2">Don’t mix up <b>projection (a scalar component)</b> with a <b>projection vector</b>. Here it’s the <b>scalar component</b> along the other vector.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aac3">In A·B = A<sub>x</sub>B<sub>x</sub> + A<sub>y</sub>B<sub>y</sub> + A<sub>z</sub>B<sub>z</sub>, watch signs carefully (e.g. the −5 in F).</paragraph></li>
+</ul>
+</div>
+
+<h2>5.2 Notions of Work and Kinetic Energy: The Work-Energy Theorem</h2>
+<paragraph id="6a8930d352e455c61471aac4">Start with a standard kinematics result for <b>straight-line motion</b> with <b>constant acceleration</b>:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aac5">v<sup>2</sup> − u<sup>2</sup> = 2as  (Eq. 5.2)</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aac6">u = initial speed</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aac7">v = final speed</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aac8">a = constant acceleration (1D)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aac9">s = distance travelled</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930d352e455c61471aaca">Multiply both sides by m/2:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aacb">(1/2)mv<sup>2</sup> − (1/2)mu<sup>2</sup> = mas  (Eq. 5.2a)</paragraph>
+<paragraph id="6a8930d352e455c61471aacc">Use Newton II: F = ma ⇒ mas = Fs.</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aacd">m = mass</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aace">F = (net) force along the line of motion (this 1D case)</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930d352e455c61471aacf"><b>Generalise to 3D</b> using vectors (displacement d, acceleration a):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aad0">v<sup>2</sup> − u<sup>2</sup> = 2 a·d</paragraph>
+<paragraph id="6a8930d352e455c61471aad1">Multiply by m/2:</paragraph>
+<paragraph id="6a8930d352e455c61471aad2">(1/2)mv<sup>2</sup> − (1/2)mu<sup>2</sup> = m a·d = F·d  (Eq. 5.2b)</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aad3">a = acceleration vector</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aad4">d = displacement vector</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aad5">F = ma = net force vector</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aad6">a·d, F·d are <b>dot products</b> → only the component along displacement counts</paragraph></li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471aad7"><b>Why these definitions appear</b>:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aad8">(1/2)mv<sup>2</sup> is called <b>kinetic energy</b>, K</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aad9">F·d is called <b>work</b>, W (work done by the force over displacement d)</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aada"><b>Work–energy link (constant force over a displacement)</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aadb">K<sub>f</sub> − K<sub>i</sub> = W  (Eq. 5.3)</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aadc">K<sub>i</sub> = initial kinetic energy</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aadd">K<sub>f</sub> = final kinetic energy</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aade">W = work done on the body (here: by the net force)</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471aadf"><b>Work–Energy (WE) Theorem</b>:</paragraph>
+<paragraph id="6a8930d352e455c61471aae0">Change in <b>kinetic energy</b> = <b>work done</b> by the <b>net force</b>.</paragraph>
+<paragraph id="6a8930d352e455c61471aae1">Eq. (5.2) is just a <b>special case</b> (constant acceleration/force). Later: varying force.</paragraph>
+</div>
+
+<h3>Example 5.2: Raindrop—work done by gravity and a resistive force (using WE theorem)</h3>
+<paragraph id="6a8930d352e455c61471aae2"><b>Situation</b>: Raindrop falls under gravity (down) + an unknown resistive force (opposes motion). Resistive force ∝ speed (details not needed).</paragraph>
+<paragraph id="6a8930d352e455c61471aae3"><b>Given</b>:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aae4">m = 1.00 g = 10<sup>−3</sup> kg</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aae5">h = 1.00 km = 10<sup>3</sup> m</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aae6">impact speed v = 50.0 m s<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aae7">initial speed u = 0 (starts from rest)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aae8">g = 10 m s<sup>−2</sup> (constant)</paragraph></li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471aae9"><b>(a) Work done by gravitational force</b></paragraph>
+<paragraph id="6a8930d352e455c61471aaea">First find the change in kinetic energy:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aaeb">ΔK = K<sub>f</sub> − K<sub>i</sub> = (1/2)mv<sup>2</sup> − (1/2)mu<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471aaec">Here u = 0 ⇒ ΔK = (1/2)mv<sup>2</sup></paragraph>
+</div>
+<paragraph id="6a8930d352e455c61471aaed">ΔK = (1/2)×10<sup>−3</sup>×(50)<sup>2</sup> = (1/2)×10<sup>−3</sup>×2500 = 1.25 J</paragraph>
+
+<paragraph id="6a8930d352e455c61471aaee">Work done by gravity:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aaef">W<sub>g</sub> = mgh</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aaf0">W<sub>g</sub> = work done by gravity</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aaf1">m = mass, g = gravitational acceleration, h = vertical drop</paragraph></li>
+</ul>
+</div>
+<paragraph id="6a8930d352e455c61471aaf2">W<sub>g</sub> = 10<sup>−3</sup> × 10 × 10<sup>3</sup> = 10.0 J</paragraph>
+
+<paragraph id="6a8930d352e455c61471aaf3"><b>(b) Work done by the resistive force</b></paragraph>
+<paragraph id="6a8930d352e455c61471aaf4">WE theorem with two forces (gravity + resistive):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aaf5">ΔK = W<sub>g</sub> + W<sub>r</sub></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aaf6">W<sub>r</sub> = work done by resistive force</paragraph></li>
+</ul>
+</div>
+<paragraph id="6a8930d352e455c61471aaf7">So:</paragraph>
+<paragraph id="6a8930d352e455c61471aaf8">W<sub>r</sub> = ΔK − W<sub>g</sub> = 1.25 − 10.0 = −8.75 J</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471aaf9"><b>Meaning</b>: W<sub>r</sub> is <b>negative</b> because the resistive force is opposite the motion (it removes mechanical energy).</paragraph>
+</div>
+
+<div class="remember-box">
+<ul>
+<li><paragraph id="6a8930d352e455c61471aafa">Multiple forces ⇒ always use <b>net work</b>: ΔK = ΣW</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aafb"><b>Negative work</b> ⇒ force has a component opposite displacement (typical: drag/friction)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aafc">Watch units: 1 g = 10<sup>−3</sup> kg, 1 km = 10<sup>3</sup> m</paragraph></li>
+</ul>
+</div>
+
+<h2>5.3 Work</h2>
+<paragraph id="6a8930d352e455c61471aafd">Work links a <b>force</b> to the <b>displacement</b> over which it acts.</paragraph>
+<paragraph id="6a8930d352e455c61471aafe">Think of a <b>constant force</b> F on a mass m causing a displacement d in the <b>+x direction</b> (as in the figure). This leads to the exact definition.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471aaff"><b>Core idea</b>: work by a constant force depends only on the force component <b>along the displacement</b> → captured by the dot product <b>F·d</b>.</paragraph>
+</div>
+
+<h2>Example 5.3: Work in skidding stop; Third-law forces vs work</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab00"><b>Work by a force</b> depends on the force <b>and</b> the displacement of the point where it acts. A Newton’s 3rd law pair (equal + opposite forces) can still do <b>different works</b> because the two bodies can have <b>different displacements</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ab01"><b>Given</b>: skid displacement <b>d = 10 m</b>, friction magnitude <b>F = 200 N</b>, friction directly opposes motion.</paragraph>
+
+<paragraph id="6a8930d352e455c61471ab02"><b>(a) Work done by the road on the cycle</b></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab03">Force opposite displacement ⇒ <b>θ = 180° = π rad</b></paragraph></li>
+<li>
+<paragraph id="6a8930d352e455c61471ab04">Work by road on cycle:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab05"><b>Work (constant force)</b>: <b>W = F d cos θ</b> (also: <b>W = F·d</b>)</paragraph>
+<paragraph id="6a8930d352e455c61471ab06"><b>W</b> = work (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab07"><b>F</b> = force magnitude (N)</paragraph>
+<paragraph id="6a8930d352e455c61471ab08"><b>d</b> = displacement magnitude (m)</paragraph>
+<paragraph id="6a8930d352e455c61471ab09"><b>θ</b> = angle between force and displacement</paragraph>
+</div>
+</li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ab0a">So:</paragraph>
+<paragraph id="6a8930d352e455c61471ab0b">W<sub>r</sub> = 200 × 10 × cos(π) = 200 × 10 × (−1) = <b>−2000 J</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab0c"><b>Negative work</b> when force opposes displacement (θ between 90° and 180°; for stopping friction, θ = 180°). This negative work reduces kinetic energy → matches the <b>WE theorem</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ab0d"><b>(b) Work done by the cycle on the road</b></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab0e">By <b>Newton’s Third Law</b>, cycle pushes on road with 200 N, opposite to road’s force on cycle</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab0f">But the <b>road doesn’t move</b> (no displacement)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab10">So work done by cycle on road: <b>W = 0</b></paragraph></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ab11"><b>Exam trap:</b> “equal and opposite forces” ≠ “equal and opposite work”. Work needs <b>force × displacement (along the force)</b>. If displacement is zero, work is zero even if force is big.</paragraph>
+</div>
+
+<h2>Work done by a constant force: meaning, sign, and when work is zero</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab12"><b>Work (constant force)</b> = (component of force <b>along the displacement</b>) × (displacement).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab13"><b>Work by constant force</b>: <b>W = (F cos θ)d = F·d</b></paragraph>
+<paragraph id="6a8930d352e455c61471ab14"><b>W</b> = work done (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab15"><b>F cos θ</b> = force component in direction of displacement (N)</paragraph>
+<paragraph id="6a8930d352e455c61471ab16"><b>d</b> = magnitude of displacement (m)</paragraph>
+<paragraph id="6a8930d352e455c61471ab17"><b>F·d</b> = dot product (force vector · displacement vector)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab18"><b>No displacement ⇒ no work</b>, even if force is huge (e.g. pushing hard on a rigid wall: <b>W = 0</b>). “Work” in physics ≠ everyday meaning: you may get tired (internal energy used), but mechanical work on the wall is zero.</paragraph>
+</div>
+
+<h3>Conditions for zero work</h3>
+<ul>
+<li><b>(i) Displacement is zero (d = 0):</b> e.g. weightlifter holds a 150 kg mass steady for 30 s → <b>no work on the load</b> in that time.</li>
+<li><b>(ii) Force is zero (F = 0):</b> e.g. block on a smooth horizontal table: no horizontal force (no friction), can still move a long distance → horizontal work is zero.</li>
+<li><b>(iii) Force ⟂ displacement (θ = 90° = π/2):</b> cos(π/2) = 0 ⇒ <b>W = 0</b>.
+<ul>
+<li>e.g. block moves horizontally on smooth table: gravity <b>mg</b> is vertical, displacement is horizontal → gravity does no work.</li>
+<li>e.g. perfectly circular moon orbit: Earth’s gravity is radial, moon’s instantaneous displacement is tangential → θ = 90° → gravity does no work on the moon.</li>
+</ul>
+</li>
+</ul>
+
+<h3>Positive and negative work (sign of work)</h3>
+<ul>
+<li>If <b>0° ≤ θ &lt; 90°</b>, then <b>cos θ &gt; 0</b> ⇒ <b>W is positive</b>.</li>
+<li>If <b>90° &lt; θ ≤ 180°</b>, then <b>cos θ &lt; 0</b> ⇒ <b>W is negative</b>.</li>
+<li>Common case: friction opposite motion has <b>θ = 180°</b> ⇒ cos 180° = −1 ⇒ <b>negative work</b>.</li>
+</ul>
+
+<h3>Dimensions and units of work and energy</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab19">From <b>W = Fd</b>, with [F] = [MLT<sup>−2</sup>] and [d] = [L], so <b>[Work] = [Energy] = [ML<sup>2</sup>T<sup>−2</sup>]</b>.</paragraph>
+</div>
+<ul>
+<li><b>SI unit</b>: <b>joule (J)</b>, named after <b>James Prescott Joule (1811–1869)</b>.</li>
+<li>There are <b>alternative units</b> of work/energy (see Table 5.1).</li>
+</ul>
+
+<h2>5.4 Kinetic Energy</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab1a"><b>Kinetic energy</b> = energy due to motion; it tells how much work an object can do because it’s moving.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab1b"><b>Kinetic energy</b>: <b>K = (1/2) m v<sup>2</sup></b> (Eq. 5.5)</paragraph>
+<paragraph id="6a8930d352e455c61471ab1c"><b>K</b> = kinetic energy (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab1d"><b>m</b> = mass (kg)</paragraph>
+<paragraph id="6a8930d352e455c61471ab1e"><b>v</b> = speed (m s<sup>−1</sup>)</paragraph>
+</div>
+
+<ul>
+<li><b>K is scalar.</b></li>
+<li>Illustrations: KE of fast streams used to grind corn; sailing ships use KE of wind.</li>
+<li>Typical K values for objects are listed (Table 5.2).</li>
+</ul>
+
+<h3>Example 5.4: Bullet emerging with 10% of initial kinetic energy</h3>
+<paragraph id="6a8930d352e455c61471ab1f"><b>Given:</b> m = 50.0 g = <b>0.050 kg</b>, v<sub>i</sub> = <b>200 m s<sup>−1</sup></b>, bullet emerges with <b>10%</b> of initial KE.</paragraph>
+
+<paragraph id="6a8930d352e455c61471ab20"><b>Step 1: Initial KE</b></paragraph>
+<paragraph id="6a8930d352e455c61471ab21">K<sub>i</sub> = (1/2)mv<sub>i</sub><sup>2</sup> = (1/2)(0.050)(200)<sup>2</sup> = <b>1000 J</b>.</paragraph>
+
+<paragraph id="6a8930d352e455c61471ab22"><b>Step 2: Final KE</b></paragraph>
+<paragraph id="6a8930d352e455c61471ab23">K<sub>f</sub> = 0.1K<sub>i</sub> = 0.1 × 1000 = <b>100 J</b>.</paragraph>
+
+<paragraph id="6a8930d352e455c61471ab24"><b>Step 3: Emergent speed v<sub>f</sub></b></paragraph>
+<paragraph id="6a8930d352e455c61471ab25">K<sub>f</sub> = (1/2)mv<sub>f</sub><sup>2</sup> ⇒ v<sub>f</sub> = √(2K<sub>f</sub>/m) = √(2×100/0.050) = <b>63.2 m s<sup>−1</sup></b>.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ab26"><b>Key inference:</b> “KE becomes 10%” ≠ “speed becomes 10%”. Since <b>K ∝ v<sup>2</sup></b>, speed scales as √K. Here v<sub>f</sub>/v<sub>i</sub> = √0.1 ≈ 0.316, so speed drops by about <b>68%</b> (not 90%).</paragraph>
+</div>
+
+<h2>5.5 Work done by a variable force</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab27">Truly <b>constant</b> forces are rare. Often force changes with position: <b>F(x)</b>. Then work is found by adding up tiny bits over small displacements.</paragraph>
+</div>
+
+<h3>Approximation by small intervals and summation (Riemann sum)</h3>
+<ul>
+<li>For a small displacement <b>Δx</b>, treat the force as roughly constant at <b>F(x)</b>.</li>
+<li>Small work done:
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab28"><b>Small work element (1D)</b>: <b>ΔW = F(x)Δx</b></paragraph>
+<paragraph id="6a8930d352e455c61471ab29"><b>ΔW</b> = work over small displacement (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab2a"><b>F(x)</b> = force at position x (N)</paragraph>
+<paragraph id="6a8930d352e455c61471ab2b"><b>Δx</b> = small displacement (m)</paragraph>
+</div>
+</li>
+<li>Total work from x<sub>i</sub> to x<sub>f</sub> ≈ sum of rectangle areas under the F–x graph:
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab2c"><b>Approx. work (sum)</b>: <b>W ≅ Σ F(x)Δx</b> (Eq. 5.6), summed from <b>x<sub>i</sub></b> to <b>x<sub>f</sub></b></paragraph>
+<paragraph id="6a8930d352e455c61471ab2d"><b>W</b> = total work (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab2e"><b>F(x)</b> = force at position x (N)</paragraph>
+<paragraph id="6a8930d352e455c61471ab2f"><b>Δx</b> = width of each small interval (m)</paragraph>
+<paragraph id="6a8930d352e455c61471ab30"><b>x<sub>i</sub>, x<sub>f</sub></b> = initial and final positions</paragraph>
+</div>
+</li>
+</ul>
+
+<h3>Exact expression using integration: area under the F–x curve</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab31">As <b>Δx → 0</b>, the sum approaches a definite limit = <b>area under the force–displacement curve</b>. That gives the exact work for a variable force.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab32"><b>Work by variable force (1D)</b>: <b>W = ∫<sub>x<sub>i</sub></sub><sup>x<sub>f</sub></sup> F(x) dx</b> (Eq. 5.7)</paragraph>
+<paragraph id="6a8930d352e455c61471ab33"><b>W</b> = work done (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab34"><b>F(x)</b> = force as a function of x (N)</paragraph>
+<paragraph id="6a8930d352e455c61471ab35"><b>dx</b> = infinitesimal displacement (m)</paragraph>
+<paragraph id="6a8930d352e455c61471ab36"><b>x<sub>i</sub>, x<sub>f</sub></b> = initial and final positions</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ab37"><b>Sign from graph:</b> any part of the graph below the x-axis (force opposite the chosen + direction) gives <b>negative work</b>.</paragraph>
+</div>
+
+<h3>Example 5.5: Work from a changing push and constant friction (area method)</h3>
+<paragraph id="6a8930d352e455c61471ab38"><b>Situation:</b> a woman pushes a trunk on a rough platform.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-17.webp" decoding="async" fetchpriority="high" height="141" loading="eager" src="img/Untitled-17.webp" width="276"/>
+<ul>
+<li>Applied force = <b>100 N</b> for first <b>10 m</b>.</li>
+<li>Then applied force <b>decreases linearly</b> to <b>50 N</b> by the time total displacement is <b>20 m</b>.</li>
+<li>Friction is constant magnitude <b>|f| = 50 N</b>, opposing motion.</li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ab39"><b>Force–displacement plots (conceptual)</b></paragraph>
+<ul>
+<li>Applied force F: 100 N flat line from x = 0 → 10 m; then straight line down to 50 N at x = 20 m (note: at x = 20 m, F = 50 N, <b>not</b> zero).</li>
+<li>Friction force f: constant at <b>−50 N</b> (negative since opposite to motion / chosen + direction).</li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ab3a"><b>Work done by the woman (W<sub>F</sub>) = area under applied-force graph</b></paragraph>
+<ul>
+<li>0 to 10 m: rectangle = 100 × 10 = 1000 J.</li>
+<li>10 to 20 m: linear drop 100 N → 50 N, so area is a trapezium:
+<ul>
+<li>Trapezium area = (1/2)(sum of parallel sides) × (distance)</li>
+<li>= (1/2)(100 + 50) × 10 = 750 J</li>
+</ul>
+</li>
+</ul>
+<paragraph id="6a8930d352e455c61471ab3b">So, W<sub>F</sub> = 1000 + 750 = <b>1750 J</b>.</paragraph>
+
+<paragraph id="6a8930d352e455c61471ab3c"><b>Work done by friction (W<sub>f</sub>) = area under friction graph</b></paragraph>
+<ul>
+<li>Constant −50 N over 20 m: W<sub>f</sub> = (−50) × 20 = <b>−1000 J</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab3d">On force–displacement graphs: <b>work = signed area</b>. Below-axis areas are <b>negative</b> (like friction here).</paragraph>
+</div>
+
+<h2>5.6 Work–Energy Theorem for a variable force (1D proof)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab3e"><b>Work–Energy (WE) theorem (big idea):</b> net work on a particle = change in kinetic energy. Here: proof for a <b>variable force</b> in <b>1D</b>.</paragraph>
+</div>
+
+<h3>Derivation using Newton’s Second Law</h3>
+<paragraph id="6a8930d352e455c61471ab3f">Start with kinetic energy:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab40"><b>Kinetic energy:</b> <b>K = (1/2) m v<sup>2</sup></b></paragraph>
+<paragraph id="6a8930d352e455c61471ab41"><b>K</b> = kinetic energy (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab42"><b>m</b> = mass (kg)</paragraph>
+<paragraph id="6a8930d352e455c61471ab43"><b>v</b> = speed (m s<sup>−1</sup>)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ab44"><b>Time rate of change of kinetic energy</b></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab45">dK/dt = d/dt (1/2 m v<sup>2</sup>) = m v (dv/dt)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab46">Newton’s 2nd law (1D): <b>F = m (dv/dt)</b></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab47">So: dK/dt = vF</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab48">And since v = dx/dt: dK/dt = F (dx/dt)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab49">Multiply by dt: <b>dK = F dx</b></paragraph></li>
+</ul>
+
+<h3>Integral form and final theorem</h3>
+<paragraph id="6a8930d352e455c61471ab4a">Integrate from x<sub>i</sub> to x<sub>f</sub> (energies K<sub>i</sub> to K<sub>f</sub>):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab4b"><b>Work–energy relation (variable force):</b> <b>K<sub>f</sub> − K<sub>i</sub> = ∫<sub>x<sub>i</sub></sub><sup>x<sub>f</sub></sup> F(x) dx</b> (Eq. 5.8a)</paragraph>
+<paragraph id="6a8930d352e455c61471ab4c"><b>K<sub>i</sub>, K<sub>f</sub></b> = initial, final kinetic energies (J)</paragraph>
+<paragraph id="6a8930d352e455c61471ab4d"><b>F(x)</b> = force vs position (N)</paragraph>
+<paragraph id="6a8930d352e455c61471ab4e"><b>x<sub>i</sub>, x<sub>f</sub></b> = initial, final positions (m)</paragraph>
+</div>
+<paragraph id="6a8930d352e455c61471ab4f">But by the definition of work for variable force (Eq. 5.7):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab50"><b>Work–Energy Theorem:</b> <b>K<sub>f</sub> − K<sub>i</sub> = W</b> (Eq. 5.8b)</paragraph>
+<paragraph id="6a8930d352e455c61471ab51"><b>W</b> = total work done by the force from x<sub>i</sub> to x<sub>f</sub> (J)</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab52">WE theorem = <b>integral form</b> of Newton’s 2nd law. Newton’s law is “instant-by-instant” (force ↔ acceleration). WE theorem <b>adds it up over an interval</b>, so the detailed time info is “integrated over”.</paragraph>
+</div>
+
+<h2>Work–Energy Theorem vs Newton’s Second Law (Scalar vs Vector)</h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab53">Newton’s 2nd law (2D/3D) is a vector equation (direction matters). WE theorem is a scalar equation, so it does not show the directional info that Newton’s 2nd law contains.
+</paragraph></div>
+
+
+<h2>Example 5.6: Work done by a Position-Dependent Retarding Force</h2>
+<h3>Given</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab54">Mass: m = 1 kg</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab55">Initial speed: v<sub>i</sub> = 2 m s<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab56">Rough patch: x = 0.10 m to x = 2.01 m</paragraph></li>
+<li>
+<paragraph id="6a8930d352e455c61471ab57">Retarding force (opposes motion) in the patch:
+</paragraph><ul>
+<li><paragraph id="6a8930d352e455c61471ab58"></paragraph><paragraph id="6a8930d352e455c61471ab59">F<sub>r</sub>(x) = − k/x for </paragraph><paragraph id="6a8930d352e455c61471ab5a">0.10 &lt; x &lt; 2.01 m</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab5b"></paragraph><paragraph id="6a8930d352e455c61471ab5c">F<sub>r</sub>(x) = 0 for x &lt; 0.10 m and x &gt; 2.01 m</paragraph></li>
+</ul>
+</li>
+<li><paragraph id="6a8930d352e455c61471ab5d">Constant: k = 0.5 J</paragraph></li>
+</ul>
+
+<h3>To find</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab5e">Final kinetic energy K<sub>f</sub> as it crosses the patch</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab5f">Final speed v<sub>f</sub></paragraph></li>
+
+</ul>
+
+<h3>Method (Work–Energy Theorem with variable force)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab60">Along x with a position-dependent force: W = ∫ F(x) dx. Then WE gives: K<sub>f</sub> = K<sub>i</sub> + ∫ F(x) dx over the interval.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ab61">For integrals like ∫(1/x) dx, the result is ln x (natural log), <b>not</b> log base 10.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab62"></paragraph><paragraph id="6a8930d352e455c61471ab63">ln = natural log (base e): </paragraph><paragraph id="6a8930d352e455c61471ab64">ln X = log<sub>e</sub> X = 2.303 log<sub>10</sub> X.</paragraph>
+</div>
+
+<h2>The Concept of Potential Energy</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab65">Potential energy = “stored energy” due to position or configuration. Remove constraints → it can turn into kinetic energy.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab66">Examples of “stored energy”: stretched bow-string; fault lines in Earth’s crust (like compressed springs) storing energy released in earthquakes.</paragraph></li>
+</ul>
+
+<h3>Gravitational Potential Energy near Earth’s Surface</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab67">Gravitational force on mass m: mg downward.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab68">Choose upward as positive.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab69">Take g ≈ constant near Earth if h ≪ R<sub>E</sub> (ignore change of g with height).</paragraph></li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ab6a">Raise the ball to height h:</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab6b">External work done against gravity = mgh.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab6c">This work is stored as gravitational potential energy:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab6d"></paragraph><paragraph id="6a8930d352e455c61471ab6e">V(h) = mgh
+</paragraph><ul>
+<li><paragraph id="6a8930d352e455c61471ab6f"></paragraph><paragraph id="6a8930d352e455c61471ab70">V(h) = gravitational potential energy at height h</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab71"></paragraph><paragraph id="6a8930d352e455c61471ab72">m = mass</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab73"></paragraph><paragraph id="6a8930d352e455c61471ab74">g = acceleration due to gravity (≈ constant near Earth)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab75"></paragraph><paragraph id="6a8930d352e455c61471ab76">h = height above reference (ground)</paragraph></li>
+
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ab77">Here: gravitational PE at height h = <b>negative</b> of the work done by gravity while raising it (equivalently = external work done against gravity).</paragraph>
+</div>
+
+<h3>Force as Negative Derivative of Potential Energy</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab78"></paragraph><paragraph id="6a8930d352e455c61471ab79">F = − dV(h)/dh</paragraph><paragraph id="6a8930d352e455c61471ab7a"></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab7b"></paragraph><paragraph id="6a8930d352e455c61471ab7c">F = gravitational force component along chosen axis (vertical here)</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab7d"></paragraph><paragraph id="6a8930d352e455c61471ab7e">V(h) = potential energy as a function of height</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab7f"></paragraph><paragraph id="6a8930d352e455c61471ab80">h = vertical coordinate (upward +)</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930d352e455c61471ab81">For gravity near Earth:</paragraph>
+<paragraph id="6a8930d352e455c61471ab82"></paragraph><paragraph id="6a8930d352e455c61471ab83">V(h) = mgh ⇒ dV/dh = mg ⇒ F = −mg</paragraph><paragraph id="6a8930d352e455c61471ab84"></paragraph>
+<paragraph id="6a8930d352e455c61471ab85">Negative sign = force points downward (opposite the + upward axis).</paragraph>
+
+<h3>Conversion of Potential Energy to Kinetic Energy (Falling Body)</h3>
+<paragraph id="6a8930d352e455c61471ab86">Drop from height h; just before hitting ground:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab87"></paragraph><paragraph id="6a8930d352e455c61471ab88">v<sup>2</sup> = 2gh</paragraph><paragraph id="6a8930d352e455c61471ab89"></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab8a"></paragraph><paragraph id="6a8930d352e455c61471ab8b">v = speed just before ground</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab8c"></paragraph><paragraph id="6a8930d352e455c61471ab8d">g = acceleration due to gravity</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab8e"></paragraph><paragraph id="6a8930d352e455c61471ab8f">h = drop height</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930d352e455c61471ab90">Multiply by m/2:
+(1/2)mv<sup>2</sup> = mgh</paragraph><paragraph id="6a8930d352e455c61471ab91"></paragraph>
+<paragraph id="6a8930d352e455c61471ab92">So PE at height h → KE at ground (if no dissipative forces).</paragraph>
+
+<h3>When Potential Energy is Applicable (Conservative Forces)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ab93">Potential energy works only for forces where work done against the force can be stored and later recovered as kinetic energy when constraints are removed. These are conservative forces.
+</paragraph></div>
+
+<h2>Mathematical Definition of Potential Energy in One Dimension</h2>
+<paragraph id="6a8930d352e455c61471ab94">For a 1D force F(x), a potential energy function V(x) can be defined if:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ab95"></paragraph><paragraph id="6a8930d352e455c61471ab96">F(x) = − dV/dx</paragraph><paragraph id="6a8930d352e455c61471ab97"></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ab98"></paragraph><paragraph id="6a8930d352e455c61471ab99">F(x) = force as a function of position x</paragraph><paragraph id="6a8930d352e455c61471ab9a"></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab9b"></paragraph><paragraph id="6a8930d352e455c61471ab9c">V(x) = potential energy function</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ab9d"></paragraph><paragraph id="6a8930d352e455c61471ab9e">x = position coordinate</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930d352e455c61471ab9f">Integrate from x<sub>i</sub> to x<sub>f</sub>:
+</paragraph><paragraph id="6a8930d352e455c61471aba0"></paragraph><paragraph id="6a8930d352e455c61471aba1">∫<sub>x<sub>i</sub></sub><sup>x<sub>f</sub></sup> F(x) dx = − ∫<sub>x<sub>i</sub></sub><sup>x<sub>f</sub></sup> (dV/dx) dx = −[V(x<sub>f</sub>) − V(x<sub>i</sub>)]
+</paragraph><paragraph id="6a8930d352e455c61471aba2"></paragraph><paragraph id="6a8930d352e455c61471aba3">⇒ ∫ F(x) dx = V(x<sub>i</sub>) − V(x<sub>f</sub>)
+
+
+</paragraph><h3>Conservative vs Non-Conservative Forces (Path Dependence)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471aba4">Conservative force: work depends only on start + end points (NOT the path).<br/>Non-conservative: work/KE depends on other factors (e.g. velocity, specific path).</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471aba5">Illustration (inclined plane result from earlier chapter):</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471aba6">Mass m released from rest at height h on a smooth (frictionless) incline reaches bottom with speed √(2gh), independent of the incline angle.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aba7">So KE at bottom = </paragraph><paragraph id="6a8930d352e455c61471aba8">mgh (depends only on height drop).</paragraph></li>
+
+</ul>
+
+<h3>Dimensions and Unit of Potential Energy</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471aba9">Potential energy dimensions: [ML<sup>2</sup>T<sup>−2</sup>]<br/>SI unit: joule (J) (same as work + kinetic energy).</paragraph>
+</div>
+
+<h3>Change in Potential Energy and Work Done by a Conservative Force</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abaa"></paragraph><paragraph id="6a8930d352e455c61471abab">ΔV = − (work done by the force)</paragraph><paragraph id="6a8930d352e455c61471abac"></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471abad"></paragraph><paragraph id="6a8930d352e455c61471abae">ΔV = V(x<sub>f</sub>) − V(x<sub>i</sub>) = change in potential energy</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abaf">Minus sign: if force does +work, potential energy drops by that amount</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abb0"></paragraph><paragraph id="6a8930d352e455c61471abb1">ΔV = − F(x) Δx</paragraph> (Eq. 5.9, 1D, small displacement)<paragraph id="6a8930d352e455c61471abb2"></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471abb3"></paragraph><paragraph id="6a8930d352e455c61471abb4">F(x) = conservative force at position x</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abb5"></paragraph><paragraph id="6a8930d352e455c61471abb6">Δx = small displacement</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abb7"></paragraph><paragraph id="6a8930d352e455c61471abb8">ΔV = corresponding change in potential energy</paragraph></li>
+</ul>
+</div>
+
+<h2>Conservation of Mechanical Energy</h2>
+<h3>Derivation (1D motion under a conservative force)</h3>
+<paragraph id="6a8930d352e455c61471abb9">For a small displacement Δx under </paragraph><paragraph id="6a8930d352e455c61471abba">F(x):
+</paragraph><ul>
+<li><paragraph id="6a8930d352e455c61471abbb">Work–energy theorem: ΔK = F(x) Δx</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abbc">Conservative force (via potential): −ΔV = F(x) Δx</paragraph></li>
+
+</ul>
+
+<paragraph id="6a8930d352e455c61471abbd">So:</paragraph>
+<paragraph id="6a8930d352e455c61471abbe"></paragraph><paragraph id="6a8930d352e455c61471abbf">ΔK + ΔV = 0</paragraph><paragraph id="6a8930d352e455c61471abc0"></paragraph>
+<paragraph id="6a8930d352e455c61471abc1"></paragraph><paragraph id="6a8930d352e455c61471abc2">Δ(K + V) = 0</paragraph> (Eq. 5.10)<paragraph id="6a8930d352e455c61471abc3"></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abc4"></paragraph><paragraph id="6a8930d352e455c61471abc5">K<sub>i</sub> + V(x<sub>i</sub>) = K<sub>f</sub> + V(x<sub>f</sub>)</paragraph> (Eq. 5.11)<paragraph id="6a8930d352e455c61471abc6"></paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471abc7"></paragraph><paragraph id="6a8930d352e455c61471abc8">K = kinetic energy</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abc9"></paragraph><paragraph id="6a8930d352e455c61471abca">V(x) = potential energy at position x</paragraph><paragraph id="6a8930d352e455c61471abcb"></paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abcc"></paragraph><paragraph id="6a8930d352e455c61471abcd">x<sub>i</sub>, x<sub>f</sub> = initial, final positions</paragraph></li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471abce"></paragraph><paragraph id="6a8930d352e455c61471abcf">K + V(x) = total mechanical energy.<br/></paragraph><paragraph id="6a8930d352e455c61471abd0">K and V can change with position, but for conservative forces their sum stays constant.</paragraph>
+</div>
+
+<h3>Definitions of a Conservative Force (All are equivalent here)</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471abd1"></paragraph><paragraph id="6a8930d352e455c61471abd2">Definition 1 (via potential): F(x) is conservative if it comes from a scalar potential V(x) using Eq. (5.9) / F(x) = −dV/dx. (3D generalisation uses a vector derivative; beyond this book.)</paragraph></li>
+<li>
+<paragraph id="6a8930d352e455c61471abd3"></paragraph><paragraph id="6a8930d352e455c61471abd4">Definition 2 (endpoint dependence): work depends only on endpoints. </paragraph><paragraph id="6a8930d352e455c61471abd5">Using energy:
+W = K<sub>f</sub> − K<sub>i</sub> = V(x<sub>i</sub>) − V(x<sub>f</sub>)</paragraph><paragraph id="6a8930d352e455c61471abd6"></paragraph>
+<paragraph id="6a8930d352e455c61471abd7">Depends only on x<sub>i</sub> and x<sub>f</sub>.</paragraph>
+</li>
+<li><paragraph id="6a8930d352e455c61471abd8"></paragraph><paragraph id="6a8930d352e455c61471abd9">Definition 3 (closed path): work over any closed path is zero. From Eq. (5.11), if x<sub>i</sub> = x<sub>f</sub>, then K<sub>i</sub> = K<sub>f</sub></paragraph> ⇒ net work = 0.<paragraph id="6a8930d352e455c61471abda"></paragraph></li>
+</ul>
+
+<h3>Statement of the Principle</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471abdb"></paragraph><paragraph id="6a8930d352e455c61471abdc">Total mechanical energy is conserved if the forces doing work are conservative.</paragraph><paragraph id="6a8930d352e455c61471abdd"></paragraph>
+</div>
+
+<h3>Illustration Mentioned</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471abde">Gravity example: ball of mass m dropped from cliff height H shows PE → KE while total mechanical energy stays constant (if no non-conservative work).</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471abdf">Spring force is taken up in the next section (as noted).</paragraph></li>
+</ul>
+
+<h2>Conservation of Mechanical Energy (Ball at Heights 0, h, H)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471abe0"><b>Total mechanical energy</b> under a <b>conservative force</b>:
+</paragraph><paragraph id="6a8930d352e455c61471abe1"><b>E = K + U</b>, where K = kinetic energy, </paragraph><paragraph id="6a8930d352e455c61471abe2">U = potential energy.</paragraph>
+<paragraph id="6a8930d352e455c61471abe3">If only conservative forces do work (or non-conservative forces do zero net work), then <b>E is conserved</b>: </paragraph><paragraph id="6a8930d352e455c61471abe4">E = constant.</paragraph>
+</div>
+
+<h3>Mechanical energies at the three heights</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abe5"><b>At height H (top):</b></paragraph><paragraph id="6a8930d352e455c61471abe6"> E<sub>H</sub> = mgH (Eq. 5.11a)</paragraph>
+<paragraph id="6a8930d352e455c61471abe7"></paragraph><paragraph id="6a8930d352e455c61471abe8">m = mass of ball</paragraph>
+<paragraph id="6a8930d352e455c61471abe9"></paragraph><paragraph id="6a8930d352e455c61471abea">g = acceleration due to gravity</paragraph>
+<paragraph id="6a8930d352e455c61471abeb"></paragraph><paragraph id="6a8930d352e455c61471abec">H = height above ground level (ground = zero level)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abed"><b>At height h (intermediate):</b> </paragraph><paragraph id="6a8930d352e455c61471abee">E<sub>h</sub> = mgh + (1/2)mv<sub>h</sub><sup>2</sup>  (Eq. 5.11b)</paragraph>
+<paragraph id="6a8930d352e455c61471abef"></paragraph><paragraph id="6a8930d352e455c61471abf0">h = intermediate height above ground</paragraph>
+<paragraph id="6a8930d352e455c61471abf1"></paragraph><paragraph id="6a8930d352e455c61471abf2">v<sub>h</sub> = speed at height h</paragraph><paragraph id="6a8930d352e455c61471abf3"></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abf4"><b>At ground level (height 0):</b> </paragraph><paragraph id="6a8930d352e455c61471abf5">E<sub>0</sub> = (1/2)mv<sub>f</sub><sup>2</sup></paragraph> (Eq. 5.11c)<paragraph id="6a8930d352e455c61471abf6"></paragraph>
+<paragraph id="6a8930d352e455c61471abf7"></paragraph><paragraph id="6a8930d352e455c61471abf8">v<sub>f</sub> = speed just before reaching ground</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471abf9">A <b>constant force</b> is a special case of a position-dependent force F(x).<br/>Near Earth’s surface, gravity is ~constant and conservative ⇒ <b>mechanical energy is conserved</b> in free fall (ignore air resistance).</paragraph>
+</div>
+
+<h3>Applying conservation: results for speeds</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471abfa"><b>From</b> </paragraph><paragraph id="6a8930d352e455c61471abfb">E<sub>H</sub> = E<sub>0</sub>:
+mgH = (1/2)mv<sub>f</sub><sup>2</sup>  </paragraph><paragraph id="6a8930d352e455c61471abfc">⇒  v<sub>f</sub><sup>2</sup> = 2gH</paragraph><paragraph id="6a8930d352e455c61471abfd"></paragraph>
+<paragraph id="6a8930d352e455c61471abfe"></paragraph><paragraph id="6a8930d352e455c61471abff">v<sub>f</sub> = speed at ground level</paragraph>
+<paragraph id="6a8930d352e455c61471ac00"></paragraph><paragraph id="6a8930d352e455c61471ac01">H = release height</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac02">This matches the standard free-fall result.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac03"><b>From</b> </paragraph><paragraph id="6a8930d352e455c61471ac04">E<sub>H</sub> = E<sub>h</sub>:</paragraph>
+<paragraph id="6a8930d352e455c61471ac05"></paragraph><paragraph id="6a8930d352e455c61471ac06">mgH = mgh + (1/2)mv<sub>h</sub><sup>2</sup></paragraph><paragraph id="6a8930d352e455c61471ac07"></paragraph>
+<paragraph id="6a8930d352e455c61471ac08"></paragraph><paragraph id="6a8930d352e455c61471ac09">⇒ v<sub>h</sub><sup>2</sup> = 2g(H − h)  (Eq. 5.11d)</paragraph>
+<paragraph id="6a8930d352e455c61471ac0a"></paragraph><paragraph id="6a8930d352e455c61471ac0b">v<sub>h</sub> = speed at height h</paragraph><paragraph id="6a8930d352e455c61471ac0c"></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac0d">Energy picture as height changes:</paragraph>
+<ul>
+<li>At <b>H</b>: energy is <b>all potential</b>.</li>
+<li>At <b>h</b>: energy is <b>part potential + part kinetic</b>.</li>
+<li>At ground: energy is <b>all kinetic</b> (ideal model).</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ac0e">Common exam slip: writing v = 2gH instead of <b>v<sup>2</sup> = 2gH</b>. Always keep track of the square when using energy.</paragraph>
+</div>
+
+<h2>Example 5.7: Bob on a String Completing a Vertical Semicircle with Slack at the Top</h2>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-19.webp" decoding="async" height="233" loading="lazy" src="img/Untitled-19.webp" width="205"/>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ac0f">Bob (mass m) on a light string (length L) is given horizontal speed v<sub>0</sub> at the lowest point A. It moves in a vertical circle. String goes slack only at the very top point C ⇒ <b>tension at C is zero</b>.</paragraph>
+</div>
+
+<h3>Forces and energy reasoning</h3>
+<ul>
+<li>External forces on bob: <b>weight (mg)</b> + <b>tension T</b> in string.</li>
+<li><b>Tension does no work</b>: motion is tangential, tension is radial (⊥ to displacement).</li>
+<li>So only gravity does work ⇒ <b>mechanical energy conserved</b>.</li>
+<li>Take gravitational PE = 0 at the bottom point <b>A</b>.</li>
+</ul>
+
+<h3>(i) Finding the required initial speed v<sub>0</sub></h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac10"><b>Energy at A:</b> E = (1/2)mv<sub>0</sub><sup>2</sup>   (Eq. 5.12)</paragraph>
+<paragraph id="6a8930d352e455c61471ac11">v<sub>0</sub> = speed at lowest point A</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac12">At the top point C:</paragraph>
+<ul>
+<li>Rise from A to C = <b>2L</b> ⇒ PE at C = <b>mg(2L)</b>.</li>
+<li>Speed at C = v<sub>C</sub>.</li>
+<li>Slack at C ⇒ <b>T<sub>C</sub> = 0</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac13"><b>Energy at C:</b> E = 2mgL + (1/2)mv<sub>C</sub><sup>2</sup>   (Eq. 5.13)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac14"><b>Newton’s 2nd law (radial) at top C, with T<sub>C</sub>=0:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ac15">mg = mv<sub>C</sub><sup>2</sup>/L   (Eq. 5.14)</paragraph>
+<paragraph id="6a8930d352e455c61471ac16">v<sub>C</sub> = speed at top point C</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac17">Sub Eq. (5.14) into Eq. (5.13):</paragraph>
+<ul>
+<li>(1/2)mv<sub>C</sub><sup>2</sup> = (1/2)m(gL) = (1/2)mgL</li>
+<li>So E = 2mgL + (1/2)mgL = (5/2)mgL</li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ac18">Energy conserved ⇒ set energy at A = energy at C:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac19">(1/2)mv<sub>0</sub><sup>2</sup> = (5/2)mgL  ⇒  v<sub>0</sub><sup>2</sup> = 5gL  ⇒  <b>v<sub>0</sub> = √(5gL)</b></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac1a">“Slack only at the top” means: at C set <b>T<sub>C</sub>=0</b>, then use the <b>centripetal condition</b> at the top to get v<sub>C</sub><sup>2</sup> = gL.</paragraph>
+</div>
+
+<h3>(ii) Speeds at points B and C</h3>
+
+<paragraph id="6a8930d352e455c61471ac1b"><b>Speed at C</b> (from Eq. 5.14):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac1c"><b>v<sub>C</sub> = √(gL)</b></paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac1d"><b>Speed at B</b> (B is height L above A, i.e. halfway up the diameter):</paragraph>
+<ul>
+<li>PE at B (relative to A) = mgL</li>
+<li>Total energy at B: E = mgL + (1/2)mv<sub>B</sub><sup>2</sup></li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ac1e">Equate with energy at A and use v<sub>0</sub><sup>2</sup> = 5gL:</paragraph>
+<ul>
+<li>(1/2)mv<sub>0</sub><sup>2</sup> = mgL + (1/2)mv<sub>B</sub><sup>2</sup></li>
+<li>(1/2)m(5gL) = mgL + (1/2)mv<sub>B</sub><sup>2</sup></li>
+<li>(5/2)mgL − mgL = (1/2)mv<sub>B</sub><sup>2</sup> ⇒ (3/2)mgL = (1/2)mv<sub>B</sub><sup>2</sup></li>
+<li>v<sub>B</sub><sup>2</sup> = 3gL ⇒ v<sub>B</sub> = √(3gL)</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac1f"><b>v<sub>B</sub> = √(3gL)</b></paragraph>
+</div>
+
+<h3>(iii) Ratio of kinetic energies at B and C</h3>
+
+<paragraph id="6a8930d352e455c61471ac20">Kinetic energies:</paragraph>
+<ul>
+<li>K<sub>B</sub> = (1/2)mv<sub>B</sub><sup>2</sup> = (1/2)m(3gL)</li>
+<li>K<sub>C</sub> = (1/2)mv<sub>C</sub><sup>2</sup> = (1/2)m(gL)</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac21"><b>K<sub>B</sub>/K<sub>C</sub> = v<sub>B</sub><sup>2</sup>/v<sub>C</sub><sup>2</sup> = (3gL)/(gL) = 3</b></paragraph>
+</div>
+
+<h3>Nature of motion after reaching C</h3>
+<ul>
+<li>At C, string slack; bob’s velocity is <b>horizontal (to the left)</b>.</li>
+<li>If string is cut at C: bob does <b>projectile motion with horizontal projection</b> (like kicked off a cliff).</li>
+<li>If string is not cut: bob can keep following the circle and <b>complete the revolution</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ac22">Exam trap: Don’t set tension = 0 everywhere. Statement says slack <b>only on reaching top point C</b> ⇒ set T = 0 only at C.</paragraph>
+</div>
+
+<h2>5.9 The Potential Energy of a Spring</h2>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-22.webp" decoding="async" height="245" loading="lazy" src="img/Untitled-22.webp" width="249"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-23.webp" decoding="async" height="155" loading="lazy" src="img/Untitled-23.webp" width="249"/>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ac23"><b>Spring force</b> is <b>variable</b>, <b>position-dependent</b>, and (for an ideal spring) <b>conservative</b>.</paragraph>
+<paragraph id="6a8930d352e455c61471ac24">Setup: block on a smooth horizontal surface, attached to a light (massless) spring fixed to a wall.</paragraph>
+</div>
+
+<h3>Hooke’s law (force law for an ideal spring)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac25"><b>Hooke’s law:</b> F<sub>s</sub> = −kx</paragraph>
+<paragraph id="6a8930d352e455c61471ac26">F<sub>s</sub> = spring force on the block</paragraph>
+<paragraph id="6a8930d352e455c61471ac27">k = spring constant (unit: N m<sup>−1</sup>)</paragraph>
+<paragraph id="6a8930d352e455c61471ac28">x = displacement from equilibrium ( + extension, − compression )</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Large k</b> → spring is <b>stiff</b>.</li>
+<li><b>Small k</b> → spring is <b>soft</b>.</li>
+<li>Sign idea: force is always <b>restoring</b> → points back toward equilibrium (opposite to x).</li>
+</ul>
+</div>
+
+<h3>Work done by the spring force (extension from 0 to x<sub>m</sub>)</h3>
+
+<paragraph id="6a8930d352e455c61471ac29">Pull the block outward until extension reaches x<sub>m</sub> (x<sub>m</sub> &gt; 0). Work done by the spring force:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac2a"><b>Work by spring force:</b> W<sub>s</sub> = ∫<sub>0</sub><sup>x<sub>m</sub></sup> F<sub>s</sub> dx = −∫<sub>0</sub><sup>x<sub>m</sub></sup> kx dx = −(1/2)kx<sub>m</sub><sup>2</sup>   (Eq. 5.15)</paragraph>
+<paragraph id="6a8930d352e455c61471ac2b">W<sub>s</sub> = work done by spring force</paragraph>
+<paragraph id="6a8930d352e455c61471ac2c">x<sub>m</sub> = maximum extension from equilibrium</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac2d">Same result = (signed) area under the F<sub>s</sub>–x graph (triangle).</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac2e">The external pulling force does <b>positive</b> work (acts with the displacement while overcoming the spring force):</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac2f"><b>Work by external force (pulling):</b> W = +(1/2)kx<sub>m</sub><sup>2</sup>   (Eq. 5.16)</paragraph>
+</div>
+
+<h3>Compression case and sign consistency</h3>
+<ul>
+<li>Compression: displacement x<sub>c</sub> is negative (x<sub>c</sub> &lt; 0).</li>
+<li>Spring still does <b>negative</b> work if the block is pushed further into compression.</li>
+<li>Magnitude stays (1/2)k x<sub>c</sub><sup>2</sup> since x<sub>c</sub><sup>2</sup> &gt; 0.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac30"><b>Compression (to x<sub>c</sub> &lt; 0):</b> W<sub>s</sub> = −(1/2)k x<sub>c</sub><sup>2</sup>, and external work = +(1/2)k x<sub>c</sub><sup>2</sup></paragraph>
+</div>
+
+<h3>Work done from an initial displacement x<sub>i</sub> to final displacement x<sub>f</sub></h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac31"><b>General work by spring force:</b> W<sub>s</sub> = −∫<sub>x<sub>i</sub></sub><sup>x<sub>f</sub></sup> kx dx = −(1/2)k(x<sub>f</sub><sup>2</sup> − x<sub>i</sub><sup>2</sup>)   (Eq. 5.17)</paragraph>
+<paragraph id="6a8930d352e455c61471ac32">x<sub>i</sub> = initial displacement</paragraph>
+<paragraph id="6a8930d352e455c61471ac33">x<sub>f</sub> = final displacement</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac34">Spring work depends <b>only on endpoints</b> x<sub>i</sub>, x<sub>f</sub> (not the path) ⇒ classic sign of a <b>conservative force</b>.</paragraph>
+</div>
+
+<h3>Work in a cycle (returning to the same displacement)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac35"><b>Cyclic return to same position:</b> if x<sub>f</sub> = x<sub>i</sub>, then W<sub>s</sub> = −(1/2)k(x<sub>i</sub><sup>2</sup> − x<sub>i</sub><sup>2</sup>) = 0   (Eq. 5.18)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac36">So, work by the spring force over a closed cycle is zero.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ac37">We’ve shown the spring force is conservative because:</paragraph>
+<ul>
+<li>Position-dependent: F<sub>s</sub> = −kx.</li>
+<li>Work depends only on start/end positions (Eq. 5.17).</li>
+<li>Work over a closed path is zero (Eq. 5.18).</li>
+</ul>
+</div>
+
+<h3>Spring potential energy function</h3>
+
+<paragraph id="6a8930d352e455c61471ac38">Define spring potential energy V(x) with V = 0 at equilibrium (x = 0).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac39"><b>Spring potential energy:</b> V(x) = (1/2)kx<sup>2</sup>   (Eq. 5.19)</paragraph>
+<paragraph id="6a8930d352e455c61471ac3a">V(x) = potential energy stored in spring at displacement x</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac3b">Consistency check with force:</paragraph>
+<paragraph id="6a8930d352e455c61471ac3c">−dV/dx = −d/dx [(1/2)kx<sup>2</sup>] = −kx = F<sub>s</sub>.</paragraph>
+</div>
+
+<h3>Energy conservation for a released block and maximum speed</h3>
+
+<paragraph id="6a8930d352e455c61471ac3d">Block (mass m) pulled to x<sub>m</sub> and released from rest. For any x between −x<sub>m</sub> and +x<sub>m</sub>, mechanical energy stays constant:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac3e"><b>Energy at general position x:</b> (1/2)mv<sup>2</sup> + (1/2)kx<sup>2</sup> = (1/2)kx<sub>m</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ac3f">v = speed when displacement is x</paragraph>
+<paragraph id="6a8930d352e455c61471ac40">x<sub>m</sub> = maximum amplitude (release extension)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac41">Max kinetic energy (max speed) happens at equilibrium x = 0:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac42"><b>At x = 0:</b> (1/2)mv<sub>m</sub><sup>2</sup> = (1/2)kx<sub>m</sub><sup>2</sup> ⇒ <b>v<sub>m</sub> = x<sub>m</sub>√(k/m)</b></paragraph>
+<paragraph id="6a8930d352e455c61471ac43">v<sub>m</sub> = maximum speed (at equilibrium)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac44">Dimensional check: k/m has units (N m<sup>−1</sup>)/kg = (kg s<sup>−2</sup>)/kg = s<sup>−2</sup> = T<sup>−2</sup>, so √(k/m) has units T<sup>−1</sup>. Multiply by x<sub>m</sub> (length) → speed.</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac45">As it moves: K and V keep swapping back and forth, but total E = K + V stays constant (matching parabolic K and V curves).</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ac46">Don’t mix up x (instantaneous displacement) vs x<sub>m</sub> (max extension/amplitude). In the energy equation, x changes; x<sub>m</sub> is fixed for that motion.</paragraph>
+</div>
+
+<h2>Example 5.8: Car Colliding with a Mounted Spring (Maximum Compression)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ac47">Smooth road (no dissipative work): at maximum compression the car is momentarily at rest, so initial kinetic energy → entirely into spring potential energy.</paragraph>
+</div>
+
+<h3>Given data and speed conversion</h3>
+<ul>
+<li>Mass of car: m = 1000 kg</li>
+<li>Speed: 18.0 km h<sup>−1</sup> = 5 m s<sup>−1</sup></li>
+<li>Spring constant: k = 5.25 × 10<sup>3</sup> N m<sup>−1</sup></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac48">Handy conversion: <b>36 km h<sup>−1</sup> = 10 m s<sup>−1</sup></b> ⇒ 18 km h<sup>−1</sup> = 5 m s<sup>−1</sup>.</paragraph>
+</div>
+
+<h3>Energy method to relate compression to initial kinetic energy</h3>
+
+<paragraph id="6a8930d352e455c61471ac49">Initial kinetic energy of the car:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac4a"><b>K = (1/2)mv<sup>2</sup></b></paragraph>
+<paragraph id="6a8930d352e455c61471ac4b">K = kinetic energy</paragraph>
+<paragraph id="6a8930d352e455c61471ac4c">v = speed of the car before collision</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac4d">Numerically:</paragraph>
+<ul>
+<li>K = (1/2)(1000)(5<sup>2</sup>) = 1.25 × 10<sup>4</sup> J</li>
+</ul>
+
+<paragraph id="6a8930d352e455c61471ac4e">At maximum compression x<sub>m</sub>, spring potential energy equals this kinetic energy:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac4f"><b>V = (1/2)kx<sub>m</sub><sup>2</sup></b></paragraph>
+<paragraph id="6a8930d352e455c61471ac50">V = spring potential energy at maximum compression</paragraph>
+<paragraph id="6a8930d352e455c61471ac51">x<sub>m</sub> = maximum compression</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ac52">Conservation of mechanical energy:</paragraph>
+<ul>
+<li>(1/2)kx<sub>m</sub><sup>2</sup> = (1/2)mv<sup>2</sup> (use this to solve for x<sub>m</sub>)</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ac53">At maximum compression: v = 0 (turning point) → <b>all</b> energy is spring potential; don’t include any kinetic term there.</paragraph>
+</div>
+
+<h2>Remarks on Conservative Forces and Potential Energy</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac54">Idealisation for spring–block / car + spring problems: spring is <b>massless</b>, surface has <b>negligible friction</b> (unless friction is explicitly added).</paragraph>
+</div>
+
+<h3>Key remarks (exam-focused)</h3>
+<ul>
+<li>
+<paragraph id="6a8930d352e455c61471ac55"><b>(i) Energy method gives NO time:</b> Energy can give max compression / max height etc., but <b>not</b> the <b>time</b> taken. For time, solve using <b>Newton’s 2nd law</b>.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d352e455c61471ac56"><b>(ii) Not every force is conservative:</b> Friction is <b>non-conservative</b>. If non-conservative forces act, <b>mechanical energy isn’t conserved</b> → modify the energy equation (see Ex 5.9 + modified formula later).</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d352e455c61471ac57"><b>(iii) Zero of PE is your choice:</b> Reference level for potential energy is <b>arbitrary</b> → choose what’s convenient.</paragraph>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac58">Spring: usually set <b>V(x)=0 at x=0</b> (unstretched spring).</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac59">Constant gravity near Earth: often set <b>V=0 at Earth’s surface</b>.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac5a">Universal gravitation: often take <b>V=0 at infinity</b>.</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ac5b">Once you pick the PE reference (zero), stick to it <b>consistently</b>. Don’t swap reference levels mid-solution (“cannot change horses in midstream”).</paragraph>
+</div>
+
+<h2>Work–Energy Theorem with Friction (Non-Conservative Force): Example 5.9</h2>
+
+<h3>Problem statement</h3>
+<paragraph id="6a8930d352e455c61471ac5c">Same spring-compression setup as Example 5.8, but now include kinetic friction with <b>µ = 0.5</b>. Find the <b>maximum compression</b> of the spring.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-18.webp" decoding="async" height="183" loading="lazy" src="img/Untitled-18.webp" width="301"/>
+
+<h3>Physical reasoning (forces and choice of method)</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac5d">While compressing: both <b>spring force</b> and <b>friction</b> oppose the motion (oppose compression).</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac5e">Friction is non-conservative ⇒ use <b>work–energy theorem</b>, not plain “mechanical energy conserved”.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac5f"><b>Work–Energy Theorem:</b> W<sub>net</sub> = ΔK</paragraph>
+<paragraph id="6a8930d352e455c61471ac60">W<sub>net</sub> = net work by all forces</paragraph>
+<paragraph id="6a8930d352e455c61471ac61">ΔK = K<sub>f</sub> − K<sub>i</sub></paragraph>
+</div>
+
+<h3>Applying the theorem</h3>
+<ul>
+<li>
+<paragraph id="6a8930d352e455c61471ac62"><b>Change in kinetic energy:</b> At max compression, object stops momentarily ⇒ v<sub>f</sub> = 0.</paragraph>
+</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac63"><b>Stopping:</b> ΔK = 0 − (1/2) m v<sup>2</sup> = −(1/2) m v<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ac64">m = mass</paragraph>
+<paragraph id="6a8930d352e455c61471ac65">v = initial speed just before compression (from Ex 5.8)</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac66"><b>Work done during compression distance x:</b></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac67"><b>Spring work:</b> W<sub>spring</sub> = −(1/2) k x<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ac68">k = spring constant</paragraph>
+<paragraph id="6a8930d352e455c61471ac69">x = compression (max compression = x<sub>m</sub>)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac6a"><b>Kinetic friction work:</b> W<sub>friction</sub> = − µ m g x</paragraph>
+<paragraph id="6a8930d352e455c61471ac6b">µ = coefficient of kinetic friction</paragraph>
+<paragraph id="6a8930d352e455c61471ac6c">m = mass</paragraph>
+<paragraph id="6a8930d352e455c61471ac6d">g = gravitational acceleration</paragraph>
+<paragraph id="6a8930d352e455c61471ac6e">x = compression distance (distance friction acts)</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac6f"><b>Net work:</b> W<sub>net</sub> = W<sub>spring</sub> + W<sub>friction</sub> = −(1/2)k x<sup>2</sup> − µ m g x</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac70">Set W<sub>net</sub> = ΔK, then rearrange:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac71">−(1/2)k x<sup>2</sup> − µ m g x = −(1/2) m v<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ac72">k = spring constant</paragraph>
+<paragraph id="6a8930d352e455c61471ac73">x = compression</paragraph>
+<paragraph id="6a8930d352e455c61471ac74">µ = friction coefficient</paragraph>
+<paragraph id="6a8930d352e455c61471ac75">m = mass</paragraph>
+<paragraph id="6a8930d352e455c61471ac76">g = gravitational acceleration</paragraph>
+<paragraph id="6a8930d352e455c61471ac77">v = initial speed</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac78"><b>Standard form (quadratic in x):</b> (1/2)k x<sup>2</sup> + µ m g x − (1/2) m v<sup>2</sup> = 0</paragraph>
+<paragraph id="6a8930d352e455c61471ac79">x = maximum compression x_m (unknown)</paragraph>
+</div>
+
+<h3>Numerical substitution noted in the text</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac7a">Friction term computed: µ m g = 0.5 × 10<sup>3</sup> × 10 = 5 × 10<sup>3</sup> N (taking g = 10.0 m s<sup>−2</sup>).</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac7b">Solve the quadratic; choose the <b>positive root</b> since x<sub>m</sub> is a <b>positive</b> compression.</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac7c">Using the given values (from Ex 5.8 data): <b>x<sub>m</sub> = 1.35 m</b>, which is <b>smaller</b> than the frictionless compression (makes sense: friction dissipates energy).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ac7d">Quadratic gives 2 roots: reject the negative one (compression distance can’t be negative here).</paragraph>
+</div>
+
+<h2>Modified Mechanical Energy Relation with Non-Conservative Forces</h2>
+
+<h3>Derivation from WE theorem</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac7e">Let total force = conservative part F<sub>c</sub> + non-conservative part F<sub>nc</sub>.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac7f">Work–energy: (F<sub>c</sub> + F<sub>nc</sub>) · Δx = ΔK.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac80">For conservative forces: F<sub>c</sub> · Δx = −ΔV.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac81"><b>Including non-conservative work:</b> Δ(K + V) = F<sub>nc</sub> · Δx</paragraph>
+<paragraph id="6a8930d352e455c61471ac82">K = kinetic energy</paragraph>
+<paragraph id="6a8930d352e455c61471ac83">V = potential energy</paragraph>
+<paragraph id="6a8930d352e455c61471ac84">F<sub>nc</sub> = non-conservative force</paragraph>
+<paragraph id="6a8930d352e455c61471ac85">Δx = displacement along the path segment</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac86"><b>Mechanical energy form:</b> ΔE = F<sub>nc</sub> · Δx</paragraph>
+<paragraph id="6a8930d352e455c61471ac87">E = K + V</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac88"><b>Along path i → f:</b> E<sub>f</sub> − E<sub>i</sub> = W<sub>nc</sub></paragraph>
+<paragraph id="6a8930d352e455c61471ac89">E<sub>i</sub>, E<sub>f</sub> = initial/final mechanical energy</paragraph>
+<paragraph id="6a8930d352e455c61471ac8a">W<sub>nc</sub> = total work by non-conservative forces on that path</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac8b">Unlike conservative work, <b>W<sub>nc</sub> is path-dependent</b> (depends on the route from i to f).</paragraph>
+</div>
+
+<h2>Power</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ac8c"><b>Power</b> = <b>rate</b> of doing work / transferring energy.</paragraph>
+</div>
+
+<h3>Average power</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac8d"><b>Average power:</b> P<sub>av</sub> = W / t</paragraph>
+<paragraph id="6a8930d352e455c61471ac8e">P<sub>av</sub> = average power</paragraph>
+<paragraph id="6a8930d352e455c61471ac8f">W = work done (energy transferred) in time t</paragraph>
+<paragraph id="6a8930d352e455c61471ac90">t = time interval</paragraph>
+</div>
+
+<h3>Instantaneous power</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac91"><b>Instantaneous power:</b> P = dW/dt</paragraph>
+<paragraph id="6a8930d352e455c61471ac92">P = instantaneous power</paragraph>
+<paragraph id="6a8930d352e455c61471ac93">dW = work done in time dt</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac94">Since dW = F · dr, then:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac95"><b>Power delivered by a force:</b> P = F · v</paragraph>
+<paragraph id="6a8930d352e455c61471ac96">F = instantaneous force (vector)</paragraph>
+<paragraph id="6a8930d352e455c61471ac97">v = instantaneous velocity (vector)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac98">Power is a <b>scalar</b>.</paragraph>
+<paragraph id="6a8930d352e455c61471ac99">Dimensions: <b>[M L<sup>2</sup> T<sup>−3</sup>]</b></paragraph>
+</div>
+
+<h3>Units of power</h3>
+<ul>
+<li><paragraph id="6a8930d352e455c61471ac9a">SI: <b>watt (W)</b>, with <b>1 W = 1 J s<sup>−1</sup></b>.</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471ac9b">Also used: <b>horsepower (hp)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ac9c"><b>Conversion:</b> 1 hp = 746 W</paragraph>
+<paragraph id="6a8930d352e455c61471ac9d">hp = horsepower</paragraph>
+<paragraph id="6a8930d352e455c61471ac9e">W = watt</paragraph>
+</div>
+
+<h3>Electrical energy consumption and kWh</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ac9f">Electricity bills use <b>kWh</b>. Reminder: <b>kWh is energy</b>, not power.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930d352e455c61471aca0">Example shown: 100 W bulb for 10 hours.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aca1"><b>Energy used:</b> E = P t</paragraph>
+<paragraph id="6a8930d352e455c61471aca2">E = energy</paragraph>
+<paragraph id="6a8930d352e455c61471aca3">P = power</paragraph>
+<paragraph id="6a8930d352e455c61471aca4">t = time</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930d352e455c61471aca5">100 W × 10 h = 1000 Wh = 1 kWh</paragraph></li>
+<li><paragraph id="6a8930d352e455c61471aca6">Also: 1 kWh = 10<sup>3</sup> W × 3600 s = 3.6 × 10<sup>6</sup> J</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471aca7"><b>kWh → J:</b> 1 kWh = 3.6 × 10<sup>6</sup> J</paragraph>
+<paragraph id="6a8930d352e455c61471aca8">kWh = kilowatt-hour (energy)</paragraph>
+<paragraph id="6a8930d352e455c61471aca9">J = joule</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471acaa">Don’t write “kW/h” for energy. <b>kW</b> is power; power × time = energy ⇒ <b>kWh</b>.</paragraph>
+</div>
+
+<h2>Power with Resistive Forces: Example 5.10 (Elevator)</h2>
+
+<h3>Problem statement</h3>
+<paragraph id="6a8930d352e455c61471acab">Elevator (elevator + passengers) max load <b>m = 1800 kg</b> moves up at constant speed <b>v = 2 m s<sup>−1</sup></b>. Friction opposing motion <b>F<sub>f</sub> = 4000 N</b>. Find the <b>minimum power</b> delivered by the motor (W and hp).</paragraph>
+
+<h3>Reasoning</h3>
+<ul>
+  <li><paragraph id="6a8930d352e455c61471acac">Constant speed ⇒ <b>a = 0</b> ⇒ <b>net force = 0</b>.</paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acad">So motor force must balance total downward resistive force: <b>weight + friction</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d352e455c61471acae"><b>Total downward resistive force:</b> F = m g + F<sub>f</sub></paragraph>
+  <paragraph id="6a8930d352e455c61471acaf">F = force motor must balance</paragraph>
+  <paragraph id="6a8930d352e455c61471acb0">m = mass (load)</paragraph>
+  <paragraph id="6a8930d352e455c61471acb1">g = acceleration due to gravity (here taken as 10 m s<sup>−2</sup>)</paragraph>
+  <paragraph id="6a8930d352e455c61471acb2">F<sub>f</sub> = frictional force</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a8930d352e455c61471acb3">Compute: F = (1800 × 10) + 4000 = <b>22000 N</b></paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acb4">Minimum motor power (just balances resistive forces): <b>P = Fv</b></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d352e455c61471acb5"><b>Power at constant speed against a force:</b> P = F v</paragraph>
+  <paragraph id="6a8930d352e455c61471acb6">P = power</paragraph>
+  <paragraph id="6a8930d352e455c61471acb7">F = opposing force magnitude (here total downward resisting force)</paragraph>
+  <paragraph id="6a8930d352e455c61471acb8">v = speed</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a8930d352e455c61471acb9">P = 22000 × 2 = <b>44000 W</b></paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acba">In horsepower: 44000 / 746 ≈ <b>59 hp</b></paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930d352e455c61471acbb">For constant-speed lifting with friction, include <b>both</b> mg and friction in the resisting force; using only mg <b>underestimates</b> power.</paragraph>
+</div>
+
+<h2>Collisions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d352e455c61471acbc">In collisions, use conservation laws to link masses, speeds, and directions after impact. The key conserved quantities (when conditions allow) are <b>momentum</b> and <b>energy</b>.</paragraph>
+</div>
+
+<h3>Set-up of an idealised two-body collision</h3>
+<ul>
+  <li><paragraph id="6a8930d352e455c61471acbd">Two masses: <b>m<sub>1</sub></b> and <b>m<sub>2</sub></b>.</paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acbe"><b>m<sub>1</sub></b> initially moves with speed <b>v<sub>1i</sub></b> (i = initial).</paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acbf">Often take <b>m<sub>2</sub></b> initially at rest; <b>no loss of generality</b> (just a convenient frame/starting condition).</paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acc0">After collision, both masses “fly off” in different directions; there are relationships linking <b>masses</b>, <b>velocities</b>, and <b>angles</b>.</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d352e455c61471acc1">This section sets up using momentum + energy conservation for collisions; the detailed relationships come after this intro set-up.</paragraph>
+</div>
+
+<h2>Elastic and Inelastic Collisions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d352e455c61471acc2"><b>Linear momentum is conserved in all collisions</b>: total initial momentum of an isolated system = total final momentum.</paragraph>
+</div>
+
+<h3>Impulse argument for momentum conservation</h3>
+<paragraph id="6a8930d352e455c61471acc3">During a collision, the objects exert mutual impulsive forces over time <b>Δt</b>, changing momenta:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d352e455c61471acc4">Δp<sub>1</sub> = F<sub>12</sub> Δt</paragraph>
+  <paragraph id="6a8930d352e455c61471acc5">Δp<sub>2</sub> = F<sub>21</sub> Δt</paragraph>
+  <paragraph id="6a8930d352e455c61471acc6">Δp<sub>1</sub>, Δp<sub>2</sub>: momentum change of particle 1 and 2 during collision</paragraph>
+  <paragraph id="6a8930d352e455c61471acc7">F<sub>12</sub>: force on particle 1 due to particle 2</paragraph>
+  <paragraph id="6a8930d352e455c61471acc8">F<sub>21</sub>: force on particle 2 due to particle 1</paragraph>
+  <paragraph id="6a8930d352e455c61471acc9">Δt: collision duration</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d352e455c61471acca">By <b>Newton’s third law</b>, F<sub>12</sub> = −F<sub>21</sub> at every instant (even if the forces vary during the collision).</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471accb">So adding impulses:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d352e455c61471accc">Δp<sub>1</sub> + Δp<sub>2</sub> = 0</paragraph>
+  <paragraph id="6a8930d352e455c61471accd">Meaning: total momentum change of the 2-particle system is zero ⇒ <b>total momentum conserved</b>.</paragraph>
+</div>
+
+<h3>Kinetic energy during collisions: elastic vs inelastic</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d352e455c61471acce"><b>Kinetic energy is not always conserved</b> in collisions: impact/deformation can turn KE into heat + sound (other forms).</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471accf">Useful picture: a <b>“compressed spring”</b> between the bodies (stands for deformation):</paragraph>
+<ul>
+  <li><paragraph id="6a8930d352e455c61471acd0">If the “spring” fully returns to its original shape <b>with no energy loss</b>, then <b>initial KE = final KE</b> (but KE <b>during</b> the collision time Δt is not constant).</paragraph></li>
+  <li><paragraph id="6a8930d352e455c61471acd1">If the deformation isn’t relieved and they move together afterwards, they share a common final velocity.</paragraph></li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d352e455c61471acd2"><b>Elastic collision</b>: total KE conserved (initial = final).</paragraph>
+  <paragraph id="6a8930d352e455c61471acd3"><b>Completely inelastic collision</b>: bodies stick together after collision (maximum KE loss allowed while still conserving momentum).</paragraph>
+  <paragraph id="6a8930d352e455c61471acd4"><b>Inelastic collision</b>: in-between; deformation partly relieved; <b>some</b> KE lost.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d352e455c61471acd5"><b>Exam trap:</b> Momentum is conserved in all collisions (isolated system), but kinetic energy is conserved <b>only</b> in elastic collisions.</paragraph>
+</div>
+
+<h2>Collisions in One Dimension</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471acd6"><b>1D (head-on) collision</b>: initial + final velocities of both bodies lie on the <b>same straight line</b>.</paragraph>
+</div>
+
+<h3>Completely inelastic collision in 1D (head-on)</h3>
+<paragraph id="6a8930d352e455c61471acd7">Given head-on setup ⇒ angles are zero:</paragraph>
+<paragraph id="6a8930d352e455c61471acd8">θ<sub>1</sub> = θ<sub>2</sub> = 0</paragraph>
+
+<paragraph id="6a8930d352e455c61471acd9"><b>Momentum conservation</b>:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acda">m<sub>1</sub>v<sub>1i</sub> = (m<sub>1</sub> + m<sub>2</sub>)v<sub>f</sub></paragraph>
+<paragraph id="6a8930d352e455c61471acdb">m<sub>1</sub>, m<sub>2</sub> = masses</paragraph>
+<paragraph id="6a8930d352e455c61471acdc">v<sub>1i</sub> = initial velocity of body 1 (body 2 initially at rest here)</paragraph>
+<paragraph id="6a8930d352e455c61471acdd">v<sub>f</sub> = common final velocity (they stick)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acde">v<sub>f</sub> = (m<sub>1</sub>/(m<sub>1</sub>+m<sub>2</sub>)) v<sub>1i</sub>   (Eq. 5.22)</paragraph>
+<paragraph id="6a8930d352e455c61471acdf">v<sub>f</sub> = final common velocity</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ace0"><b>Kinetic energy loss</b> in the collision:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ace1">ΔK = (1/2)m<sub>1</sub>v<sub>1i</sub><sup>2</sup> − (1/2)(m<sub>1</sub>+m<sub>2</sub>)v<sub>f</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ace2">ΔK = KE lost (goes into other forms)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ace3">Using Eq. (5.22) for v<sub>f</sub>, simplifies to:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ace4">ΔK = (1/2) (m<sub>1</sub>m<sub>2</sub>/(m<sub>1</sub>+m<sub>2</sub>)) v<sub>1i</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ace5">ΔK &gt; 0 (as expected for completely inelastic collision)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ace6">Completely inelastic (stick together): <b>momentum</b> gives v<sub>f</sub>, and <b>KE loss is always positive</b>.</paragraph>
+</div>
+
+<h3>Elastic collision in 1D (head-on)</h3>
+<paragraph id="6a8930d352e455c61471ace7">For θ<sub>1</sub> = θ<sub>2</sub> = 0, use <b>momentum + KE conservation</b>:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ace8">m<sub>1</sub>v<sub>1i</sub> = m<sub>1</sub>v<sub>1f</sub> + m<sub>2</sub>v<sub>2f</sub>   (Eq. 5.23)</paragraph>
+<paragraph id="6a8930d352e455c61471ace9">v<sub>1f</sub>, v<sub>2f</sub> = final velocities of bodies 1 and 2</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acea">(1/2)m<sub>1</sub>v<sub>1i</sub><sup>2</sup> = (1/2)m<sub>1</sub>v<sub>1f</sub><sup>2</sup> + (1/2)m<sub>2</sub>v<sub>2f</sub><sup>2</sup>   (Eq. 5.24)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471aceb">From Eqs. (5.23) and (5.24):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acec">v<sub>2f</sub> = v<sub>1i</sub> + v<sub>1f</sub>   (Eq. 5.25)</paragraph>
+<paragraph id="6a8930d352e455c61471aced">Meaning: in 1D elastic collision (target initially at rest), v<sub>2f</sub> links directly to v<sub>1i</sub> and v<sub>1f</sub>.</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471acee">Put Eq. (5.25) into Eq. (5.23) ⇒ final velocities:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acef">v<sub>1f</sub> = ((m<sub>1</sub> − m<sub>2</sub>)/(m<sub>1</sub> + m<sub>2</sub>)) v<sub>1i</sub>   (Eq. 5.26)</paragraph>
+<paragraph id="6a8930d352e455c61471acf0">v<sub>1f</sub> = final velocity of incident mass m<sub>1</sub></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acf1">v<sub>2f</sub> = (2m<sub>1</sub>/(m<sub>1</sub> + m<sub>2</sub>)) v<sub>1i</sub>   (Eq. 5.27)</paragraph>
+<paragraph id="6a8930d352e455c61471acf2">v<sub>2f</sub> = final velocity of initially stationary mass m<sub>2</sub></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471acf3">1D <b>elastic</b> collision (target at rest): unknowns {v<sub>1f</sub>, v<sub>2f</sub>} are fixed uniquely only if you use <b>both</b> momentum + KE conservation.</paragraph>
+</div>
+
+<h3>Special cases (exam favourites)</h3>
+<ul>
+<li><b>Case I: m<sub>1</sub> = m<sub>2</sub></b>
+<ul>
+<li>v<sub>1f</sub> = 0</li>
+<li>v<sub>2f</sub> = v<sub>1i</sub></li>
+</ul>
+<paragraph id="6a8930d352e455c61471acf4">Interpretation: mass 1 stops; its speed is passed to mass 2.</paragraph>
+</li>
+
+<li><b>Case II: m<sub>2</sub> &gt;&gt; m<sub>1</sub></b>
+<ul>
+<li>v<sub>1f</sub> ≈ −v<sub>1i</sub></li>
+<li>v<sub>2f</sub> ≈ 0</li>
+</ul>
+<paragraph id="6a8930d352e455c61471acf5">Interpretation: heavy mass barely moves; light mass rebounds (velocity reverses).</paragraph>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471acf6"><b>Common mistake:</b> using elastic formulas (Eqs. 5.26–5.27) for an inelastic collision. If they <b>stick</b>, use Eq. 5.22, then find energy loss separately.</paragraph>
+</div>
+
+<h2>Example 5.11: Slowing down of neutrons (moderator concept)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471acf7">In reactors, fast neutrons (~10<sup>7</sup> m s<sup>−1</sup>) must be slowed to ~10<sup>3</sup> m s<sup>−1</sup> to increase chance of interaction with <sup>235</sup>U (Z = 92) for fission.</paragraph>
+<paragraph id="6a8930d352e455c61471acf8"><b>Moderator</b>: material with light nuclei (e.g. heavy water D<sub>2</sub>O or graphite) that slows neutrons mainly via <b>elastic collisions</b>.</paragraph>
+</div>
+
+<h3>Energy transfer in a 1D elastic collision with a stationary nucleus</h3>
+<paragraph id="6a8930d352e455c61471acf9">Neutron = particle 1 (mass m<sub>1</sub>), nucleus = particle 2 (mass m<sub>2</sub>), initially at rest.</paragraph>
+
+<paragraph id="6a8930d352e455c61471acfa">Initial KE of neutron:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acfb">K<sub>1i</sub> = (1/2)m<sub>1</sub>v<sub>1i</sub><sup>2</sup></paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471acfc">From Eq. (5.26): v<sub>1f</sub> = ((m<sub>1</sub>−m<sub>2</sub>)/(m<sub>1</sub>+m<sub>2</sub>))v<sub>1i</sub>. So neutron final KE:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acfd">K<sub>1f</sub> = (1/2)m<sub>1</sub>v<sub>1f</sub><sup>2</sup> = (1/2)m<sub>1</sub>v<sub>1i</sub><sup>2</sup> ((m<sub>1</sub>−m<sub>2</sub>)/(m<sub>1</sub>+m<sub>2</sub>))<sup>2</sup></paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471acfe"><b>Fraction of neutron KE remaining</b> after collision:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471acff">f<sub>1</sub> = K<sub>1f</sub>/K<sub>1i</sub> = ((m<sub>1</sub>−m<sub>2</sub>)/(m<sub>1</sub>+m<sub>2</sub>))<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ad00">f<sub>1</sub> = fraction of neutron energy retained</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad01">Elastic collision ⇒ energy lost by neutron = energy gained by nucleus:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad02">f<sub>2</sub> = K<sub>2f</sub>/K<sub>1i</sub> = 1 − f<sub>1</sub> = (4m<sub>1</sub>m<sub>2</sub>)/(m<sub>1</sub>+m<sub>2</sub>)<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ad03">f<sub>2</sub> = fraction of neutron’s initial energy transferred to nucleus</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad04">This also checks out by substituting v<sub>2f</sub> from Eq. (5.27) into K<sub>2f</sub> = (1/2)m<sub>2</sub>v<sub>2f</sub><sup>2</sup>.</paragraph>
+
+<h3>Numerical illustrations (given results)</h3>
+<ul>
+<li><b>Deuterium nucleus</b>: m<sub>2</sub> = 2m<sub>1</sub>
+<ul>
+<li>f<sub>1</sub> = 1/9</li>
+<li>f<sub>2</sub> = 8/9</li>
+</ul>
+<paragraph id="6a8930d352e455c61471ad05">Interpretation: ~90% of neutron energy can transfer in one elastic hit.</paragraph>
+</li>
+
+<li><b>Carbon nucleus</b>: (mass a few times neutron mass)
+<ul>
+<li>f<sub>1</sub> = 71.6%</li>
+<li>f<sub>2</sub> = 28.4%</li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad06">Practical note: average energy transfer is smaller since perfectly head-on collisions are rare.</paragraph>
+</div>
+
+<h2>One-dimensional vs Two-dimensional Collisions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad07"><b>1D collision (head-on)</b>: initial + final velocities of both bodies lie along the <b>same straight line</b>.</paragraph>
+<paragraph id="6a8930d352e455c61471ad08">For small spheres: happens when body 1’s line of travel passes through the <b>centre</b> of body 2 (initially at rest).</paragraph>
+<paragraph id="6a8930d352e455c61471ad09"><b>2D collision</b>: initial + final velocities lie in a <b>plane</b> (more general).</paragraph>
+</div>
+
+<h2>Collisions in Two Dimensions</h2>
+
+<h3>Vector momentum conservation and choice of plane</h3>
+<paragraph id="6a8930d352e455c61471ad0a">Linear momentum is conserved. Since <b>p</b> is a vector, conservation gives component equations in the {x, y, z} directions.</paragraph>
+<paragraph id="6a8930d352e455c61471ad0b">Pick the plane set by the <b>final velocity directions</b> of m<sub>1</sub> and m<sub>2</sub> as the x–y plane. Then conservation of p<sub>z</sub> ⇒ the whole collision stays in the x–y plane.</paragraph>
+
+<h3>Component equations (m<sub>2</sub> initially at rest)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad0c">m<sub>1</sub>v<sub>1i</sub> = m<sub>1</sub>v<sub>1f</sub>cosθ<sub>1</sub> + m<sub>2</sub>v<sub>2f</sub>cosθ<sub>2</sub>   (Eq. 5.28)</paragraph>
+<paragraph id="6a8930d352e455c61471ad0d">θ<sub>1</sub>, θ<sub>2</sub> = scattering angles of m<sub>1</sub>, m<sub>2</sub> measured from the initial direction (x-axis)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad0e">0 = m<sub>1</sub>v<sub>1f</sub>sinθ<sub>1</sub> − m<sub>2</sub>v<sub>2f</sub>sinθ<sub>2</sub>   (Eq. 5.29)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad0f">Usually known: {m<sub>1</sub>, m<sub>2</sub>, v<sub>1i</sub>}</paragraph>
+<paragraph id="6a8930d352e455c61471ad10">Unknown: {v<sub>1f</sub>, v<sub>2f</sub>, θ<sub>1</sub>, θ<sub>2</sub>} ⇒ <b>4 unknowns but only 2 momentum equations</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad11">If θ<sub>1</sub> = θ<sub>2</sub> = 0, Eq. (5.28) collapses to the 1D momentum equation (Eq. 5.23).</paragraph>
+
+<h3>Elastic collision condition in 2D</h3>
+<paragraph id="6a8930d352e455c61471ad12">If the collision is elastic, kinetic energy is also conserved → gives one extra equation:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad13">(1/2)m<sub>1</sub>v<sub>1i</sub><sup>2</sup> = (1/2)m<sub>1</sub>v<sub>1f</sub><sup>2</sup> + (1/2)m<sub>2</sub>v<sub>2f</sub><sup>2</sup>   (Eq. 5.30)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad14">Even with Eq. (5.30): <b>3 equations for 4 unknowns</b>. So at least one of {v<sub>1f</sub>, v<sub>2f</sub>, θ<sub>1</sub>, θ<sub>2</sub>} must be known (measured) to finish the problem.</paragraph>
+<paragraph id="6a8930d352e455c61471ad15">Example approach: measure θ<sub>1</sub> experimentally (detector swept from x- to y-axis). With {m<sub>1</sub>, m<sub>2</sub>, v<sub>1i</sub>, θ<sub>1</sub>} known, solve Eqs. (5.28)–(5.30) for {v<sub>1f</sub>, v<sub>2f</sub>, θ<sub>2</sub>}.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ad16"><b>Exam tip:</b> For 2D collisions, always count unknowns vs independent equations. Momentum → 2 component equations in the plane; add energy only if the collision is elastic.</paragraph>
+</div>
+
+<h2>Example 5.12: Elastic collision of equal-mass billiard balls (cue and target)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad17">Two billiard balls: m<sub>1</sub> = m<sub>2</sub>. Ball 1 (cue) hits ball 2 (target, initially at rest). Elastic collision; ignore friction + rotation. Target must go to a corner pocket at θ<sub>2</sub> = 37°. Find θ<sub>1</sub>.</paragraph>
+</div>
+
+<h3>Momentum relation for equal masses</h3>
+<paragraph id="6a8930d352e455c61471ad18">For equal masses, vector momentum conservation becomes:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad19"><b>v</b><sub>1i</sub> = <b>v</b><sub>1f</sub> + <b>v</b><sub>2f</sub></paragraph>
+<paragraph id="6a8930d352e455c61471ad1a"><b>v</b><sub>1i</sub> = initial velocity vector (cue ball)</paragraph>
+<paragraph id="6a8930d352e455c61471ad1b"><b>v</b><sub>1f</sub>, <b>v</b><sub>2f</sub> = final velocity vectors (cue + target)</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad1c">Square it (dot with itself) to connect magnitudes:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad1d">v<sub>1i</sub><sup>2</sup> = (<b>v</b><sub>1f</sub> + <b>v</b><sub>2f</sub>)·(<b>v</b><sub>1f</sub> + <b>v</b><sub>2f</sub>)</paragraph>
+<paragraph id="6a8930d352e455c61471ad1e">So, v<sub>1i</sub><sup>2</sup> = v<sub>1f</sub><sup>2</sup> + v<sub>2f</sub><sup>2</sup> + 2<b>v</b><sub>1f</sub>·<b>v</b><sub>2f</sub></paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad1f">For an <b>elastic</b> collision (equal masses, target initially at rest), energy conservation gives:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad20">v<sub>1i</sub><sup>2</sup> = v<sub>1f</sub><sup>2</sup> + v<sub>2f</sub><sup>2</sup></paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad21">Compare with the squared-momentum result ⇒</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad22"><b>v</b><sub>1f</sub>·<b>v</b><sub>2f</sub> = 0</paragraph>
+<paragraph id="6a8930d352e455c61471ad23">So the two final velocity vectors are perpendicular ⇒ θ<sub>1</sub> + θ<sub>2</sub> = 90°.</paragraph>
+</div>
+
+<paragraph id="6a8930d352e455c61471ad24">Given θ<sub>2</sub> = 37°, then:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad25">θ<sub>1</sub> = 90° − 37° = 53°</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad26"><b>Billiards key result:</b> Elastic collision + equal masses + one initially at rest ⇒ the two outgoing velocity vectors are at <b>right angles</b>.</paragraph>
+</div>
+
+<h2>Glancing Elastic Collision of Equal Masses (One Initially at Rest)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad27"><b>Result proved:</b> In a <b>glancing elastic collision</b> between <b>two equal masses</b> with <b>one initially at rest</b>, they move off at <b>90°</b> to each other.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad28"><b>Vector/component relation used in the worked proof (as given):</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad29">v<sub>i</sub><sup>2</sup> = v<sub>f1</sub><sup>2</sup> + v<sub>f2</sub><sup>2</sup> + 2 v<sub>f1</sub> v<sub>f2</sub> cos(θ<sub>1</sub> + 37°)   (Eq. 5.31)</paragraph>
+<paragraph id="6a8930d352e455c61471ad2a"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad2b">v<sub>i</sub> = initial speed of the incident (moving) mass (other mass starts at rest)</paragraph>
+<paragraph id="6a8930d352e455c61471ad2c">v<sub>f1</sub>, v<sub>f2</sub> = final speeds after collision</paragraph>
+<paragraph id="6a8930d352e455c61471ad2d">θ<sub>1</sub> = one scattering/deflection angle from the collision geometry</paragraph>
+<paragraph id="6a8930d352e455c61471ad2e">37° = given angle from the specific example geometry</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad2f"><b>Kinetic energy conservation (elastic, m<sub>1</sub> = m<sub>2</sub>, one initially at rest):</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad30">v<sub>i</sub><sup>2</sup> = v<sub>f1</sub><sup>2</sup> + v<sub>f2</sub><sup>2</sup>   (Eq. 5.32)</paragraph>
+<paragraph id="6a8930d352e455c61471ad31"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad32">v<sub>i</sub> = initial speed of the moving mass</paragraph>
+<paragraph id="6a8930d352e455c61471ad33">v<sub>f1</sub>, v<sub>f2</sub> = final speeds of the two masses</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad34"><b>Key step:</b> Compare Eq. (5.31) vs Eq. (5.32). First two RHS terms match, so the extra term must be zero:</paragraph>
+<paragraph id="6a8930d352e455c61471ad35">2 v<sub>f1</sub> v<sub>f2</sub> cos(θ<sub>1</sub> + 37°) = 0 ⟹ cos(θ<sub>1</sub> + 37°) = 0</paragraph>
+<paragraph id="6a8930d352e455c61471ad36">So, θ<sub>1</sub> + 37° = 90° ⟹ θ<sub>1</sub> = 53°.</paragraph>
+<paragraph id="6a8930d352e455c61471ad37"><b>Physical meaning:</b> cos(...) = 0 ⇒ angle between the outgoing velocity vectors is 90° ⇒ final velocities are perpendicular.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ad38"><b>Exam tip:</b> Right-angle scattering only holds if: <b>(i) elastic</b>, <b>(ii) equal masses</b>, <b>(iii) one mass initially at rest</b>. Change any condition → 90° result may fail.</paragraph>
+</div>
+
+<h3>Collisions of Smooth Spheres (Contact Collisions) vs Scattering (Action at a Distance)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad39"><b>Contact collision model (smooth spherical masses):</b> Much simpler if we treat bodies as <b>smooth spheres</b> and assume collision only when they <b>touch</b>.</paragraph>
+<paragraph id="6a8930d352e455c61471ad3a"><b>Examples:</b> marbles, carrom, billiards (most real-life collisions are contact).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad3b"><b>Scattering:</b> Interaction via <b>forces at a distance</b> (no physical contact) is called <b>scattering</b>.</paragraph>
+<paragraph id="6a8930d352e455c61471ad3c"><b>Examples:</b> comet deflected by Sun’s gravity; alpha particle approaching a nucleus then leaving in some direction.</paragraph>
+<paragraph id="6a8930d352e455c61471ad3d"><b>What determines outcomes:</b> outgoing speeds/directions depend on:</paragraph>
+<ul>
+<li>initial velocities,</li>
+<li>type of interaction,</li>
+<li>masses,</li>
+<li>shapes and sizes.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ad3e"><b>Common confusion:</b> In everyday mechanics, “collision” usually means contact; in atomic/nuclear physics, “collision” is often really <b>scattering</b> from long-range forces.</paragraph>
+</div>
+
+<h2>summary-work energy and power</h2>
+
+<h3>Work–Energy Theorem</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad3f"><b>Work–Energy (WE) theorem:</b> change in <b>kinetic energy</b> = <b>net work</b> done on the body.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad40">K<sub>f</sub> − K<sub>i</sub> = W<sub>net</sub></paragraph>
+<paragraph id="6a8930d352e455c61471ad41"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad42">K<sub>i</sub> = initial kinetic energy</paragraph>
+<paragraph id="6a8930d352e455c61471ad43">K<sub>f</sub> = final kinetic energy</paragraph>
+<paragraph id="6a8930d352e455c61471ad44">W<sub>net</sub> = work done by the net force over the displacement</paragraph>
+</div>
+
+<h3>Conservative Force: Definition and Tests</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad45">A force is <b>conservative</b> if (equivalently, both):</paragraph>
+<ol>
+<li><b>Path independent:</b> work depends only on the <b>end points</b> {x<sub>i</sub>, x<sub>f</sub>}, not the route taken.</li>
+<li><b>Zero closed-loop work:</b> work over <b>any closed path</b> is <b>0</b> (back to start).</li>
+</ol>
+</div>
+
+<h3>Potential Energy Function for a Conservative Force (1D)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad46">For a <b>1D conservative force</b>, define V(x) so that force is the <b>negative gradient</b> (in 1D: negative derivative).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad47">F(x) = − dV(x)/dx</paragraph>
+<paragraph id="6a8930d352e455c61471ad48"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad49">F(x) = force as a function of position x</paragraph>
+<paragraph id="6a8930d352e455c61471ad4a">V(x) = potential energy as a function of x</paragraph>
+<paragraph id="6a8930d352e455c61471ad4b">dV/dx = derivative of V with respect to x</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad4c">V(x<sub>f</sub>) − V(x<sub>i</sub>) = − ∫<sub>x<sub>i</sub></sub><sup>x<sub>f</sub></sup> F(x) dx</paragraph>
+<paragraph id="6a8930d352e455c61471ad4d"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad4e">x<sub>i</sub>, x<sub>f</sub> = initial and final positions</paragraph>
+<paragraph id="6a8930d352e455c61471ad4f">F(x) = conservative force function</paragraph>
+<paragraph id="6a8930d352e455c61471ad50">V(x<sub>i</sub>), V(x<sub>f</sub>) = potential energies at x<sub>i</sub> and x<sub>f</sub></paragraph>
+</div>
+
+<h3>Conservation of Mechanical Energy</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad51"><b>Conservation of mechanical energy:</b> total mechanical energy stays <b>constant</b> if only <b>conservative</b> forces do work.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad52">Mechanical energy = kinetic + potential. If <b>non-conservative</b> forces (e.g. friction) do work, mechanical energy is <b>not</b> conserved.</paragraph>
+</div>
+
+<h3>Gravitational Potential Energy Near Earth’s Surface</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad53">V(x) = m g x</paragraph>
+<paragraph id="6a8930d352e455c61471ad54"><b>Condition:</b> valid when change of g with height is ignored (near Earth’s surface).</paragraph>
+<paragraph id="6a8930d352e455c61471ad55"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad56">V(x) = gravitational potential energy at height x</paragraph>
+<paragraph id="6a8930d352e455c61471ad57">m = mass of particle</paragraph>
+<paragraph id="6a8930d352e455c61471ad58">g = acceleration due to gravity (taken constant)</paragraph>
+<paragraph id="6a8930d352e455c61471ad59">x = height above chosen reference level</paragraph>
+</div>
+
+<h3>Elastic Potential Energy of a Spring</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad5a">V(x) = (1/2) k x<sup>2</sup></paragraph>
+<paragraph id="6a8930d352e455c61471ad5b"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad5c">V(x) = elastic potential energy</paragraph>
+<paragraph id="6a8930d352e455c61471ad5d">k = spring (force) constant</paragraph>
+<paragraph id="6a8930d352e455c61471ad5e">x = extension (or compression magnitude) from equilibrium</paragraph>
+</div>
+
+<h3>Scalar (Dot) Product of Two Vectors</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad5f"><b>Definition:</b> dot product of vectors <b>A</b> and <b>B</b> is a <b>scalar</b>, written A·B, defined as:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad60">A · B = AB cos θ</paragraph>
+<paragraph id="6a8930d352e455c61471ad61"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad62">A = magnitude of vector A</paragraph>
+<paragraph id="6a8930d352e455c61471ad63">B = magnitude of vector B</paragraph>
+<paragraph id="6a8930d352e455c61471ad64">θ = angle between A and B</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>A·B can be <b>+</b>, <b>−</b>, or <b>0</b> depending on θ.</li>
+<li><b>Meaning:</b> A·B = (magnitude of one) × (component of the other along the first).</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d352e455c61471ad65"><b>Dot products of unit vectors:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad66">î·î = ĵ·ĵ = k̂·k̂ = 1</paragraph>
+<paragraph id="6a8930d352e455c61471ad67">î·ĵ = ĵ·k̂ = k̂·î = 0</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad68"><b>Algebraic laws:</b> scalar products follow:</paragraph>
+<ul>
+<li><b>Commutative:</b> A·B = B·A</li>
+<li><b>Distributive:</b> A·(B + C) = A·B + A·C</li>
+</ul>
+</div>
+
+<h2>Points to Ponder (High-Yield Exam Notes)</h2>
+
+<h3>1) Work Done Must Specify the Force and Displacement</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad69">Saying <b>“calculate the work done”</b> is incomplete unless you state:</paragraph>
+<ul>
+<li><b>which force</b> (one force or a set of forces),</li>
+<li><b>on which body</b>,</li>
+<li><b>over what displacement</b>.</li>
+</ul>
+</div>
+
+<h3>2) Work is a Scalar; Can be Positive or Negative</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Work</b> is a scalar → can be <b>+</b> or <b>−</b>.</li>
+<li><b>Mass</b> and <b>kinetic energy</b> are <b>positive scalars</b>.</li>
+<li>Work by <b>friction/viscous force</b> on a moving body is <b>negative</b> (opposes motion).</li>
+</ul>
+</div>
+
+<h3>3) Newton’s Third Law: Forces Cancel but Works Need Not</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d352e455c61471ad6a"><b>Newton’s third law (mutual forces):</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad6b">F<sub>12</sub> + F<sub>21</sub> = 0</paragraph>
+<paragraph id="6a8930d352e455c61471ad6c"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930d352e455c61471ad6d">F<sub>12</sub> = force on body 1 due to body 2</paragraph>
+<paragraph id="6a8930d352e455c61471ad6e">F<sub>21</sub> = force on body 2 due to body 1</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad6f">Even if F<sub>12</sub> + F<sub>21</sub> = 0, the works may not cancel:</paragraph>
+<paragraph id="6a8930d352e455c61471ad70">W<sub>12</sub> + W<sub>21</sub> ≠ 0 (in general), though sometimes it can be.</paragraph>
+<paragraph id="6a8930d352e455c61471ad71"><b>Reason:</b> work depends on force <b>and</b> displacement of the point of application; the two bodies can move by different amounts while forces act.</paragraph>
+</div>
+
+<h3>4) WE Theorem Can Be Used Without Knowing Detailed Force Law</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad72">Sometimes W (so ΔK) can be found even when the exact force law isn’t known (as in the referenced WE-theorem example).</paragraph>
+</div>
+
+<h3>5) WE Theorem and Newton’s Second Law are Not Independent</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>WE theorem is basically a <b>scalar form</b> of Newton’s 2nd law.</li>
+<li>Mechanical energy conservation is a <b>result</b> of WE theorem when only conservative forces do work.</li>
+</ul>
+</div>
+
+<h3>6) Frames of Reference: Inertial and Non-Inertial</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>WE theorem works in <b>all inertial frames</b>.</li>
+<li>In <b>non-inertial</b> frames, include <b>pseudo forces</b> in the net force for the work calculation.</li>
+</ul>
+</div>
+
+<h3>7) Potential Energy Zero Level is Arbitrary (Up to a Constant)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad73">For a conservative force, potential energy is defined only <b>up to an added constant</b>. Choosing V = 0 is just a <b>convention</b>:</paragraph>
+<ul>
+<li>For gravitational PE mgh, V = 0 often at the <b>ground</b>.</li>
+<li>For spring PE (1/2)kx<sup>2</sup>, V = 0 at the <b>equilibrium position</b>.</li>
+</ul>
+</div>
+
+<h3>8) Not Every Force Has a Potential Energy</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d352e455c61471ad74"><b>Friction</b> is <b>non-conservative</b>: work by friction over a closed loop is <b>not</b> zero, so there’s <b>no single-valued potential energy function</b> for friction.</paragraph>
+</div>
+
+<h3>9) Momentum Conservation vs Kinetic Energy During Collision</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>In a collision, <b>total linear momentum is conserved at each instant</b>.</li>
+<li><b>Kinetic energy conservation</b> (even if collision is elastic) applies <b>after the collision ends</b>; it does <b>not</b> generally hold at every instant during contact.</li>
+<li><b>Physical reason:</b> bodies deform; they can be momentarily at rest relative to each other while in contact.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d352e455c61471ad75"><b>Exam pitfall:</b> “Elastic” does <b>not</b> mean KE is constant throughout the collision. KE is conserved only between initial and final states, not necessarily during the interaction time.</paragraph>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

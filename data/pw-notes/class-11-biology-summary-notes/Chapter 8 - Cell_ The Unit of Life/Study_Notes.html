@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3: Cell—Structure and Functions (Context + Approach)</title>
+  <link href="data:," rel="icon"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="container chapter-wrap" id="main-content"><paragraph class="page-label" id="6a8c16a0c01a40070bd78c7a">Handwritten Notes</paragraph>
+<h1>Ch-08 : Cell: The Unit of Life</h1>
+
+<h2>Unit 3: Cell—Structure and Functions </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c7b"><b>Biology</b> = the study of <b>living organisms</b>.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c7c">Early biology mainly described organisms by <b>form + appearance</b> → showed huge <b>diversity</b>.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c7d"><b>Cell theory</b> revealed the <b>unity</b> beneath this diversity: <b>all life forms have cellular organisation</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c7e"><b>Why cell theory mattered:</b> It explained unity of life added a key requirement for life processes:</paragraph>
+<ul class="check-list">
+<li><b>Integrity (intactness) of cellular organisation</b> is necessary for living phenomena (physiological/behavioural) to be <b>demonstrated/observed</b>.</li>
+</ul>
+</div>
+
+<h3>Physico-chemical (Reductionist) Approach to Studying Life</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c7f"><b>Reductionist Biology</b>: A physico-chemical approach to understand living organisms by applying <b>concepts + techniques of physics and chemistry</b> to biological questions.</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Analyse living tissues for elements/compounds</div><span class="flow-arrow">→</span><div class="flow-box">Identify types of organic compounds present</div><span class="flow-arrow">→</span><div class="flow-box">Ask: what do these compounds do inside cells?</div><span class="flow-arrow">→</span><div class="flow-box">Explain molecular basis of physiological processes + disease</div>
+</div>
+
+<ul class="star-list">
+<li><b>What it enables:</b> Use <b>cell-free systems</b> to investigate processes and describe them in <b>molecular terms</b>.</li>
+<li><b>Key question addressed:</b> “What is the <b>molecular basis</b> of physiological processes (digestion, excretion, memory, defence, recognition, etc.)?”</li>
+<li><b>Medical relevance:</b> Explains <b>abnormal processes</b> during diseased conditions at a <b>molecular level</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c80"><b>Exam tip:</b> Don’t mix these up!</paragraph>
+<ul>
+<li><b>Cell theory</b> → cellular unity of life.</li>
+<li><b>Reductionism</b> → a <i>method</i> (physico-chemical, often cell-free) to explain life processes molecularly.</li>
+</ul>
+</div>
+
+<h3>Note on Unit Chapters</h3>
+
+<div class="tile-grid">
+  <div class="tile">Chapter 8<span class="tile-sub">Cell: The Unit of Life</span></div>
+  <div class="tile">Chapter 9<span class="tile-sub">Biomolecules (brief description provided in this unit)</span></div>
+  <div class="tile">Chapter 10<span class="tile-sub">Cell Cycle and Cell Division</span></div>
+</div>
+
+<h2>Biographical Note: G.N. Ramachandran (1922–2001)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c81"><b>G.N. Ramachandran</b> was a founder of the <b>‘Madras school’</b> of <b>conformational analysis of biopolymers</b> and a major figure in <b>protein structure</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Major contributions:</b>
+<ul>
+<li>Discovered the <b>triple helical structure of collagen</b> (published in <i>Nature</i>, 1954).</li>
+<li>Analysed allowed conformations of proteins using the <b>Ramachandran plot</b> (landmark in structural biology).</li>
+</ul>
+</li>
+</ul>
+
+<ul class="star-list">
+<li><b>Early life and education:</b> Born <b>Oct 8, 1922</b> near Cochin (southwestern coast of India). Father: mathematics professor (influenced his interest in maths).</li>
+<li><b>Academic milestones:</b> Graduated (1942) top of B.Sc. (Honours) Physics, University of Madras; Ph.D. from <b>Cambridge University (1949)</b>.</li>
+<li><b>Scientific influence:</b> At Cambridge met <b>Linus Pauling</b>; Pauling’s models of <b>α-helix</b> and <b>β-sheet</b> directed Ramachandran’s attention to collagen structure.</li>
+<li><b>Death:</b> April 7, 2001 (age 78).</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c82"><b>Exam focus:</b> Remember the named contributions + identity tag.</paragraph>
+<ul class="check-list">
+<li><b>Triple helix of collagen</b></li>
+<li><b>Ramachandran plot</b></li>
+<li>Pioneered <b>conformational analysis of biopolymers</b> (<b>Madras school</b>)</li>
+</ul>
+</div>
+
+<h2>Chapter 8: Cell — The Unit of Life</h2>
+
+<h3>8.1 What is a Cell?</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c83"><b>Cell</b> = the <b>fundamental structural and functional unit</b> of all living organisms.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c84"><b>Unicellular organisms</b> can:</paragraph>
+<ul class="check-list">
+<li>exist <b>independently</b></li>
+<li>perform <b>all essential functions of life</b></li>
+</ul>
+<paragraph id="6a8c16a0c01a40070bd78c85">👉 Therefore, anything less than a <b>complete cell</b> cannot ensure independent living.</paragraph>
+</div>
+
+<h3>Key Discoveries in Cell Biology (Historical)</h3>
+
+<div class="tile-grid">
+<div class="tile">Antonie Von Leeuwenhoek<span class="tile-sub">First saw &amp; described a <b>live cell</b></span></div>
+<div class="tile">Robert Brown<span class="tile-sub">Discovered the <b>nucleus</b></span></div>
+<div class="tile">Microscopy (→ electron microscope)<span class="tile-sub">Revealed detailed cellular structures</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c86"><b>Common exam error:</b> Mixing up who discovered what—Leeuwenhoek (<b>live cell</b>) vs Robert Brown (<b>nucleus</b>).</paragraph>
+</div>
+
+<h3>Living vs Non-living: The Essential Difference</h3>
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78c87">When comparing an organism to an inanimate object, the defining feature is the presence of the <b>cell</b>—the basic unit of life—present in <b>all living organisms</b>.</paragraph>
+</div>
+
+<h3>Unicellular vs Multicellular Organisms</h3>
+<div class="tile-grid">
+<div class="tile">Unicellular<span class="tile-sub">Single cell; that one cell performs <b>all essential life functions</b></span></div>
+<div class="tile">Multicellular<span class="tile-sub">Many cells (e.g., humans)</span></div>
+</div>
+
+<h3>8.2 Cell Theory</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c88"><b>Cell theory</b> was formulated by <b>Schleiden</b> and <b>Schwann</b> and later refined by <b>Virchow</b>.</paragraph>
+</div>
+
+<h3>Contributions Leading to Cell Theory</h3>
+
+<ul class="star-list">
+<li><b>Matthias Schleiden (1838), German botanist:</b> examined many plants; concluded <b>all plants are composed of cells</b> forming plant tissues.</li>
+<li><b>Theodor Schwann (1839), German zoologist:</b>
+<ul>
+<li>Studied animal cells; reported a <b>thin outer layer</b> now called the <b>plasma membrane</b>.</li>
+<li>From plant tissue studies: concluded <b>cell wall is unique to plant cells</b>.</li>
+<li>Proposed that bodies of animals and plants are composed of <b>cells and products of cells</b>.</li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c89"><b>Limitation of early cell theory:</b> did not explain <b>how new cells are formed</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Schleiden + Schwann (formulated)</div><span class="flow-arrow">→</span><div class="flow-box">Gap: origin of new cells</div><span class="flow-arrow">→</span><div class="flow-box">Virchow (final shape)</div>
+</div>
+
+<ul class="star-list">
+<li><b>Rudolf Virchow (1855):</b> stated that new cells arise by division from existing cells: <b>Omnis cellula-e cellula</b> (“every cell from a pre-existing cell”). This gave cell theory its final shape.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8c16a0c01a40070bd78c8a"><b>Virchow’s principle (named statement):</b> <i>Omnis cellula-e cellula</i> — new cells arise from pre-existing cells.</paragraph>
+</div>
+
+<h3>Cell Theory (Modern Form)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ol>
+<li><b>All living organisms</b> are composed of <b>cells and products of cells</b>.</li>
+<li><b>All cells</b> arise from <b>pre-existing cells</b>.</li>
+</ol>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c8b"><b>Exam tip:</b> Write the two modern points exactly; include “<b>products of cells</b>” in point (1) and “<b>pre-existing cells</b>” in point (2).</paragraph>
+</div>
+
+<h3>8.3 An Overview of Cell</h3>
+
+<h3>Typical Observations: Plant vs Animal Cells</h3>
+
+<div class="tile-grid">
+<div class="tile">Onion peel cell (plant)<span class="tile-sub"><b>Cell wall</b> = distinct outer boundary; just inside lies the <b>cell membrane</b></span></div>
+<div class="tile">Human cheek cell (animal)<span class="tile-sub">Outer delimiting structure is the <b>cell (plasma) membrane</b> (<b>no cell wall</b>)</span></div>
+</div>
+
+<h3>Nucleus, Chromosomes, DNA</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c8c">Inside each cell is a dense, membrane-bound structure called the <b>nucleus</b>.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78c8d">The nucleus contains <b>chromosomes</b>, which in turn contain the genetic material <b>DNA</b>.</paragraph>
+</div>
+
+<h3>Prokaryotic vs Eukaryotic Cells</h3>
+
+<div class="tile-grid">
+<div class="tile">Eukaryotic cells<span class="tile-sub">Have a <b>membrane-bound nucleus</b></span></div>
+<div class="tile">Prokaryotic cells<span class="tile-sub">Lack a <b>membrane-bound nucleus</b></span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c8e"><b>Cytoplasm</b>: a semi-fluid matrix occupying the volume of the cell; it is the <b>main arena of cellular activities</b> in both plant and animal cells.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c8f"><b>Living state maintenance:</b> Various chemical reactions occur in the <b>cytoplasm</b> to keep the cell in the “living state.”</paragraph>
+</div>
+
+<h3>Cell Organelles: Membrane-bound vs Non-membrane-bound</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c90"><b>Organelles</b> (in eukaryotes): membrane-bound distinct structures such as:</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Endoplasmic reticulum (ER)<span class="tile-sub">Membrane-bound organelle in eukaryotes</span></div>
+<div class="tile">Golgi complex<span class="tile-sub">Membrane-bound organelle in eukaryotes</span></div>
+<div class="tile">Lysosomes<span class="tile-sub">Membrane-bound organelle in eukaryotes</span></div>
+<div class="tile">Mitochondria<span class="tile-sub">Membrane-bound organelle in eukaryotes</span></div>
+<div class="tile">Microbodies<span class="tile-sub">Membrane-bound organelle in eukaryotes</span></div>
+<div class="tile">Vacuoles<span class="tile-sub">Membrane-bound organelle in eukaryotes</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c91"><b>Prokaryotic cells</b> lack such <b>membrane-bound organelles</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c92"><b>Ribosomes</b> are <b>non-membrane-bound organelles</b> found in <b>all cells</b> (both prokaryotic and eukaryotic).</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Where ribosomes are found:</b>
+<ul>
+<li>in the <b>cytoplasm</b></li>
+<li>within <b>mitochondria</b></li>
+<li>within <b>chloroplasts</b> (plants)</li>
+<li>on <b>rough ER</b></li>
+</ul>
+</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c93"><b>Centrosome</b>: a non-membrane-bound organelle present in <b>animal cells</b> that helps in <b>cell division</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c94"><b>Common mistake:</b> Saying “prokaryotes have no organelles at all.” They lack <b>membrane-bound</b> organelles, but they <b>do have ribosomes</b> (non-membrane-bound).</paragraph>
+</div>
+
+<h3>Cell Size, Shape, and Functional Correlation</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c95">Cells differ greatly in <b>size</b>, <b>shape</b>, and <b>activities</b>. Cell shape often varies with the <b>function</b> performed.</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Smallest cells:</b> <b>Mycoplasmas</b> (~ <b>0.3</b> μm in length as stated in text).</li>
+<li><b>Bacterial size:</b> typically <b>3–5</b> μm.</li>
+<li><b>Largest isolated single cell:</b> <b>egg of an ostrich</b>.</li>
+<li><b>Human RBC diameter:</b> ~ <b>7.0</b> μm.</li>
+<li><b>Longest cells:</b> <b>nerve cells</b> are among the longest.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c96"><b>Common cell shapes</b>: disc-like, polygonal, columnar, cuboid, thread-like, irregular.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78c97"><b>Link shape to function (idea to use in answers):</b> A cell’s geometry is not random; it often supports its job (e.g., long nerve cells for signal transmission; biconcave RBC for efficient exchange).</paragraph>
+</div>
+
+<h3>Figure-based Content: Examples of Cell Shapes (Figure 8.1)</h3>
+
+<div class="tile-grid">
+<div class="tile">Red blood cells<span class="tile-sub">Round and biconcave</span></div>
+<div class="tile">White blood cells<span class="tile-sub">Branched and long (also shown as amoeboid form in figure context)</span></div>
+<div class="tile">Columnar epithelial cells<span class="tile-sub">Long and narrow</span></div>
+<div class="tile">Nerve cell<span class="tile-sub">Elongated with processes; among the longest cells</span></div>
+<div class="tile">Mesophyll cells<span class="tile-sub">Round and oval</span></div>
+<div class="tile">Tracheid<span class="tile-sub">Elongated</span></div>
+</div>
+
+<h2>8.4 Prokaryotic Cells (Start of Section)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c98"><b>Prokaryotic cells</b> are represented by: <b>bacteria</b>, <b>blue-green algae</b>, <b>mycoplasma</b>, and <b>PPLO</b> (<b>Pleuro Pneumonia Like Organisms</b>).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="check-list">
+<li>Prokaryotic cells are generally <b>smaller</b> than eukaryotic cells.</li>
+<li>They <b>multiply more rapidly</b> than eukaryotic cells.</li>
+<li>They vary greatly in <b>shape and size</b>, but their basic organisation is <b>fundamentally similar</b>.</li>
+</ul>
+</div>
+
+<div class="sticky-note">
+Think of prokaryotes like “mini, fast, efficient” cells: lots of variety in appearance, but the same basic setup inside.
+</div>
+
+<h3>Basic Shapes of Bacteria</h3>
+
+<div class="tile-grid">
+  <div class="tile">Bacillus<span class="tile-sub">Rod-like</span></div>
+  <div class="tile">Coccus<span class="tile-sub">Spherical</span></div>
+  <div class="tile">Vibrio<span class="tile-sub">Comma-shaped</span></div>
+  <div class="tile">Spirillum<span class="tile-sub">Spiral</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c99"><b>Exam tip:</b> When asked “basic shapes of bacteria,” list all four with shape descriptors: bacillus (rod), coccus (sphere), vibrio (comma), spirillum (spiral).</paragraph>
+</div>
+
+<h2>Prokaryotic Cells: Basic Organisation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c9a"><b>Prokaryotes</b> are cells lacking a well-defined, membrane-bound nucleus and membrane-bound organelles (except ribosomes).</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">No nuclear membrane</div><span class="flow-arrow">→</span><div class="flow-box">DNA not enclosed in a nucleus</div>
+</div>
+
+<ul class="check-list">
+<li><b>Cell wall</b> surrounds the cell membrane in prokaryotes <b>except</b> in <b>Mycoplasma</b>.</li>
+<li><b>Cytoplasm</b> is the semi-fluid matrix filling the cell.</li>
+<li><b>No well-defined nucleus</b>: genetic material is <b>naked</b> (not enclosed by a nuclear membrane).</li>
+<li><b>Genomic DNA</b>: typically a <b>single chromosome</b> of <b>circular DNA</b>.</li>
+<li><b>No eukaryote-like organelles</b> present; <b>ribosomes</b> are the exception.</li>
+<li><b>Inclusions</b> (inclusion bodies) are unique storage structures (detailed later).</li>
+<li><b>Mesosome</b>: specialised, differentiated infoldings of the cell membrane characteristic of prokaryotes.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c9b"><b>Nuclear membrane</b> is a feature of <b>eukaryotes</b>, not prokaryotes; hence prokaryotic DNA is not packaged inside a nucleus.</paragraph>
+</div>
+
+<h3>Plasmids</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78c9c"><b>Plasmids</b> are <b>small circular DNA</b> molecules present in many bacteria <b>outside</b> the genomic (chromosomal) DNA.</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Function</b>: plasmid DNA confers <b>unique phenotypic characters</b> to bacteria.</li>
+<li><b>Example phenotype</b>: <b>antibiotic resistance</b>.</li>
+<li><b>Application (noted in text)</b>: plasmid DNA is used to <b>monitor bacterial transformation with foreign DNA</b> (you will learn details in higher classes).</li>
+</ul>
+
+<div class="sticky-note">
+Plasmids = “bonus DNA rings” that can give bacteria extra powers (like surviving an antibiotic).
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c9d"><b>Exam trap:</b> plasmids are <b>not</b> the main chromosome; they are <b>extra-chromosomal</b> circular DNA that can carry special traits (e.g., antibiotic resistance).</paragraph>
+</div>
+
+<h3>Relative Sizes (Figure reference)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78c9e">Size comparison highlighted in the figure (orders of magnitude):</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Typical bacteria<span class="tile-sub">~ 1–2 μm</span></div>
+  <div class="tile">PPLO (Mycoplasma)<span class="tile-sub">~ 0.1 μm</span></div>
+  <div class="tile">Viruses<span class="tile-sub">~ 0.02–0.2 μm</span></div>
+  <div class="tile">Typical eukaryotic cell<span class="tile-sub">~ 10–20 μm</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78c9f"><b>PPLO</b> refers to Mycoplasma-like organisms (very small); also recall <b>Mycoplasma lacks a cell wall</b>.</paragraph>
+</div>
+
+<h2>8.4.1 Cell Envelope and its Modifications (Prokaryotes)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78ca0"><b>Cell envelope (bacteria)</b> is a chemically complex, tightly bound, <b>three-layered</b> protective structure.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Glycocalyx<span class="tile-sub">Outermost layer</span></div>
+  <div class="tile">Cell wall<span class="tile-sub">Middle layer</span></div>
+  <div class="tile">Plasma membrane<span class="tile-sub">Innermost layer</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78ca1">Although each layer has a distinct function, <b>they act together as a single protective unit</b>.</paragraph>
+</div>
+
+<h3>Gram Classification (based on cell envelope and Gram stain response)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78ca2">Bacteria are classified (by differences in cell envelope and response to Gram staining developed by <b>Gram</b>) into:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Gram-positive<span class="tile-sub">Take up the Gram stain</span></div>
+  <div class="tile">Gram-negative<span class="tile-sub">Do not take up the Gram stain</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78ca3"><b>Do not overextend:</b> in this portion, only the <b>stain response</b> and basis (<b>cell envelope differences</b>) are required—do not invent wall composition details beyond the given text.</paragraph>
+</div>
+
+<h3>Glycocalyx: Slime layer vs Capsule</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78ca4"><b>Glycocalyx</b> varies among bacteria in <b>composition</b> and <b>thickness</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Slime layer<span class="tile-sub">Loose sheath form of glycocalyx</span></div>
+  <div class="tile">Capsule<span class="tile-sub">Thick and tough form of glycocalyx</span></div>
+</div>
+
+<h3>Cell Wall (bacteria): Role</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78ca5"><b>Cell wall</b>:</paragraph>
+</div>
+
+<ul class="check-list">
+  <li><b>Determines the shape</b> of the cell.</li>
+  <li>Provides <b>strong structural support</b>.</li>
+  <li>Prevents the bacterium from <b>bursting</b> or <b>collapsing</b>.</li>
+</ul>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78ca6"><b>Quick picture in mind:</b> cell wall = the “firm outer frame” that stops the cell from popping or caving in.</paragraph>
+</div>
+
+<h3>Plasma Membrane (bacteria): Nature</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78ca7"><b>Plasma membrane</b> is <b>selectively permeable</b> and interacts with the outside world.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78ca8">The bacterial plasma membrane is <b>structurally similar</b> to the eukaryotic plasma membrane.</paragraph>
+</div>
+
+<h3>Mesosome</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78ca9"><b>Mesosome</b> is a special membranous structure formed by <b>extensions (infoldings) of the plasma membrane into the cell</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78caa"><b>Forms</b> of mesosomal extensions:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Vesicles<span class="tile-sub">Sac-like extensions</span></div>
+  <div class="tile">Tubules<span class="tile-sub">Tube-like extensions</span></div>
+  <div class="tile">Lamellae<span class="tile-sub">Plate/sheet-like extensions</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78cab"><b>Functions</b> of mesosomes (as given):</paragraph>
+</div>
+
+<ul class="check-list">
+  <li><b>Cell wall formation</b></li>
+  <li><b>DNA replication</b> and <b>distribution to daughter cells</b></li>
+  <li><b>Respiration</b></li>
+  <li><b>Secretion processes</b></li>
+  <li><b>Increase surface area</b> of the plasma membrane</li>
+  <li>Increase <b>enzymatic content</b></li>
+</ul>
+
+<h3>Chromatophores (in cyanobacteria)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cac">In some prokaryotes like <b>cyanobacteria</b>, there are membranous extensions into the cytoplasm called <b>chromatophores</b> that <b>contain pigments</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78cad"><b>Exam tip:</b> Do not confuse <b>chromatophores (prokaryotes; pigment-containing extensions)</b> with <b>chloroplasts (eukaryotic organelles)</b>.</paragraph>
+</div>
+
+<h3>Surface Structures: Flagella, Pili, Fimbriae</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cae">Bacterial cells may be <b>motile</b> or <b>non-motile</b>. Motility is mainly via <b>flagella</b>.</paragraph>
+</div>
+
+<h3>Flagella: Arrangement and Parts</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78caf"><b>Flagella</b> are thin filamentous extensions from the cell wall in motile bacteria. Bacteria show variation in <b>number</b> and <b>arrangement</b> of flagella.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cb0"><b>Bacterial flagellum</b> has <b>three parts</b>:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Filament<span class="tile-sub">Longest part; extends from cell surface to outside</span></div>
+  <div class="tile">Hook<span class="tile-sub">Connects filament to basal body</span></div>
+  <div class="tile">Basal body<span class="tile-sub">Anchoring part at cell envelope</span></div>
+</div>
+
+<h3>Pili and Fimbriae (non-motile surface structures)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78cb1"><b>Pili and fimbriae</b> are bacterial surface structures that <b>do not play a role in motility</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+  <li><b>Pili</b>: elongated tubular structures made of a special protein.</li>
+  <li><b>Fimbriae</b>: small bristle-like fibres sprouting out of the cell.</li>
+  <li><b>Function of fimbriae (given examples)</b>: help bacteria <b>attach</b> to rocks in streams and to <b>host tissues</b>.</li>
+</ul>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78cb2"><b>Analogy:</b> Think of <b>fimbriae</b> like tiny “Velcro bristles” for sticking to surfaces (rocks/host tissues), while <b>flagella</b> act like propellers for movement.</paragraph>
+</div>
+
+<hr/>
+
+<h2>8.4.2 Ribosomes and Inclusion Bodies (Prokaryotes)</h2>
+
+<h3>Ribosomes: Structure, Size, Function, Polysomes</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cb3">In prokaryotes, ribosomes are associated with the <b>plasma membrane</b> and are the <b>site of protein synthesis</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78cb4"><b>Size</b>: about <b>15 nm × 20 nm</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cb5">Prokaryotic ribosomes are made of two subunits: <b>50S</b> and <b>30S</b>, together forming <b>70S</b> ribosomes.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78cb6"><b>Exam trap:</b> 70S is the <b>complete</b> prokaryotic ribosome; its subunits are <b>50S + 30S</b> (do not write 35S + 35S or “70S subunits”).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cb7"><b>Polyribosomes/Polysome</b>: several ribosomes attached to a single mRNA forming a chain; they translate the same mRNA into proteins.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Single mRNA</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Many ribosomes attach</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Polysome formed</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Protein synthesis (translation)</div>
+</div>
+
+<h3>Inclusion Bodies: Definition and Types</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cb8"><b>Inclusion bodies</b> are storage sites of <b>reserve material</b> in prokaryotes, present in the cytoplasm as <b>non-membrane-bound</b> structures lying free in cytoplasm.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Examples</b>: phosphate granules, cyanophycean granules, glycogen granules.</li>
+  <li><b>Gas vacuoles</b>: found in <b>blue-green</b> and <b>purple and green photosynthetic bacteria</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78cb9"><b>Key phrase:</b> inclusion bodies are <b>not bound by any membrane system</b> (unlike many eukaryotic storage/organelles).</paragraph>
+</div>
+
+<hr/>
+
+<h2>8.5 Eukaryotic Cells: Overview and Plant vs Animal Differences</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cba"><b>Eukaryotes</b> include <b>protists, plants, animals, and fungi</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+  <li><b>Extensive compartmentalisation</b> of cytoplasm due to <b>membrane-bound organelles</b>.</li>
+  <li><b>Organised nucleus</b> with a <b>nuclear envelope</b>.</li>
+  <li>Complex <b>locomotory</b> and <b>cytoskeletal</b> structures.</li>
+  <li>Genetic material organised into <b>chromosomes</b>.</li>
+</ul>
+
+<h3>Plant Cells vs Animal Cells</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78cbb">All eukaryotic cells are not identical. Key differences between plant and animal cells:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Plant cells<span class="tile-sub">Cell wall, plastids, large central vacuole present</span></div>
+  <div class="tile">Animal cells<span class="tile-sub">Centrioles present; no cell wall/plastids/large central vacuole</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78cbc"><b>Wording to learn:</b> plant cells have <b>cell walls, plastids, and a large central vacuole</b> (absent in animal cells); animal cells have <b>centrioles</b> (absent in almost all plant cells).</paragraph>
+</div>
+
+<hr/>
+
+<h2>8.5.1 Cell Membrane (Plasma Membrane)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cbd">Detailed membrane structure became clear after <b>electron microscope</b> studies in the <b>1950s</b>. Earlier, chemical studies (notably on <b>human RBC membranes</b>) indicated the membrane’s composition and probable structure.</paragraph>
+</div>
+
+<h3>Membrane Composition: Lipids, Proteins, Carbohydrates</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cbe">Cell membrane is mainly composed of <b>lipids</b> and <b>proteins</b>; later studies revealed <b>carbohydrates</b> also occur.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Major lipids<span class="tile-sub"><b>Phospholipids</b></span></div>
+  <div class="tile">Additional lipid<span class="tile-sub"><b>Cholesterol</b></span></div>
+  <div class="tile">Also present<span class="tile-sub">Membrane <b>proteins</b> + <b>carbohydrates</b></span></div>
+</div>
+
+<h3>Phospholipid Bilayer: Orientation and Significance</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cbf"><b>Phospholipids</b> are arranged in a <b>bilayer</b> with:</paragraph>
+  <ul class="check-list">
+    <li><b>Polar heads</b> towards the <b>outer sides</b></li>
+    <li><b>Hydrophobic tails</b> towards the <b>inner part</b></li>
+  </ul>
+  <paragraph id="6a8c16a0c01a40070bd78cc0">This arrangement protects the <b>nonpolar tails of saturated hydrocarbons</b> from the <b>aqueous environment</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Think “water on both sides”: heads face the watery outside + watery cytosol; tails hide inside like an oil layer.
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cc1"><b>Exam trap:</b> heads face water (outside/inside cytosol), tails face away from water (towards bilayer interior).</paragraph>
+</div>
+
+<h3>Protein–Lipid Ratio (RBC example)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cc2">The ratio of protein and lipid <b>varies</b> among cell types. In humans, the erythrocyte (RBC) membrane has approximately:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Protein<span class="tile-sub">~52%</span></div>
+  <div class="tile">Lipids<span class="tile-sub">~40%</span></div>
+</div>
+
+<h3>Membrane Proteins: Integral vs Peripheral</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cc3">Based on <b>ease of extraction</b>, membrane proteins are classified into:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Peripheral proteins<span class="tile-sub">Lie on the surface of the membrane</span></div>
+  <div class="tile">Integral proteins<span class="tile-sub">Partially or totally buried in the membrane</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cc4">The membrane model referenced is the <b>Fluid Mosaic Model</b> (Figure reference): a phospholipid bilayer with proteins and carbohydrates; cholesterol is also present.</paragraph>
+</div>
+
+<h2>Fluid Mosaic Model of Plasma Membrane (Singer &amp; Nicolson, 1972)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cc5"><b>Fluid mosaic model:</b> Cell membrane is a lipid bilayer with proteins embedded in it; the lipid layer is <b>quasi-fluid</b>, allowing <b>lateral movement</b> of membrane proteins within the bilayer.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Lipid bilayer (quasi-fluid)</div><span class="flow-arrow">→</span><div class="flow-box">Proteins embedded</div><span class="flow-arrow">→</span><div class="flow-box">Proteins move laterally</div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cc6"><b>Membrane fluidity:</b> The ability of membrane components (especially proteins) to move laterally within the lipid bilayer; it is a measurable property of the membrane.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cc7"><b>Why membrane fluidity matters (functions):</b> Essential for processes such as <b>cell growth</b>, <b>formation of intercellular junctions</b>, <b>secretion</b>, <b>endocytosis</b>, and <b>cell division</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Cell growth<span class="tile-sub">Membrane expansion + rearrangement</span></div>
+  <div class="tile">Intercellular junctions<span class="tile-sub">Contacts need movable components</span></div>
+  <div class="tile">Secretion<span class="tile-sub">Vesicle fusion requires flexible membrane</span></div>
+  <div class="tile">Endocytosis<span class="tile-sub">Membrane invagination + pinching off</span></div>
+  <div class="tile">Cell division<span class="tile-sub">Membrane reshaping during cytokinesis</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cc8">Do not confuse “fluidity” with the membrane being liquid-like in shape; it mainly refers to <b>lateral mobility</b> within the bilayer, not free mixing with the cytoplasm.</paragraph>
+</div>
+
+<h2>Transport Across Plasma Membrane</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cc9"><b>Selectively permeable membrane:</b> Plasma membrane allows passage of <b>some</b> molecules while restricting others.</paragraph>
+</div>
+
+<h3>Passive Transport (No energy required)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cca"><b>Passive transport:</b> Movement of molecules across the membrane <b>without energy (ATP)</b> requirement.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Simple diffusion<span class="tile-sub">Neutral solutes move down concentration gradient (high → low)</span></div>
+  <div class="tile">Osmosis<span class="tile-sub">Diffusion of water (high → low water concentration)</span></div>
+  <div class="tile">Facilitated transport<span class="tile-sub">Polar molecules require carrier proteins to cross lipid bilayer</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78ccb"><b>Simple diffusion:</b> Neutral solutes pass directly through membrane along <b>concentration gradient</b> (from <b>higher</b> to <b>lower</b> concentration).</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78ccc"><b>Osmosis:</b> Movement of <b>water</b> across a membrane from <b>higher to lower concentration</b> of water; it is specifically <b>diffusion of water</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">High concentration</div><span class="flow-arrow">→</span><div class="flow-box">Low concentration</div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78ccd"><b>Why polar molecules need carriers:</b> Polar molecules cannot pass through the <b>nonpolar lipid bilayer</b>, hence require a <b>carrier protein</b> to facilitate transport.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cce">Exam trap: “Osmosis” is <b>only for water</b>; do not use it for solutes. Also, diffusion is described in terms of the substance’s <b>own concentration gradient</b>.</paragraph>
+</div>
+
+<h3>Active Transport (Energy-dependent)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78ccf"><b>Active transport:</b> Transport of ions/molecules <b>against</b> their concentration gradient (from <b>lower</b> to <b>higher</b> concentration). It is <b>ATP-dependent</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Low concentration</div><span class="flow-arrow">→</span><div class="flow-box">High concentration</div><span class="flow-arrow">→</span><div class="flow-box">ATP used</div>
+</div>
+
+<ul class="star-list">
+  <li><b>Example:</b> <b>Na<sup>+</sup>/K<sup>+</sup> pump</b> (moves ions against their gradients using ATP).</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cd0">Do not label carrier-assisted movement as active unless it is explicitly <b>against gradient</b> and uses <b>ATP</b>.</paragraph>
+</div>
+
+<h2>Cell Wall</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cd1"><b>Cell wall:</b> A <b>non-living</b> rigid outer covering present outside the plasma membrane in <b>plants and fungi</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cd2"><b>Functions of cell wall:</b> Gives <b>shape</b>, provides <b>protection</b> from mechanical damage and infection, enables <b>cell-to-cell interaction</b>, and acts as a <b>barrier</b> to undesirable macromolecules.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Shape<span class="tile-sub">Maintains cell form</span></div>
+  <div class="tile">Protection<span class="tile-sub">Mechanical damage + infection</span></div>
+  <div class="tile">Cell-to-cell interaction<span class="tile-sub">Supports neighbouring connections</span></div>
+  <div class="tile">Barrier<span class="tile-sub">Blocks undesirable macromolecules</span></div>
+</div>
+
+<h3>Composition of Cell Wall</h3>
+
+<div class="tile-grid">
+  <div class="tile">Algae cell wall<span class="tile-sub">Cellulose, galactans, mannans + minerals (e.g., CaCO<sub>3</sub>)</span></div>
+  <div class="tile">Other plants cell wall<span class="tile-sub">Cellulose, hemicellulose, pectins, proteins</span></div>
+</div>
+
+<h3>Primary Wall, Secondary Wall, and Middle Lamella</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cd3"><b>Primary wall:</b> Cell wall of a <b>young</b> plant cell; it is <b>capable of growth</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78cd4"><b>Secondary wall:</b> Formed as the cell matures on the <b>inner side (towards the plasma membrane)</b>; growth capability <b>gradually diminishes</b> as secondary wall forms.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Young cell</div><span class="flow-arrow">→</span><div class="flow-box">Primary wall (growing)</div><span class="flow-arrow">→</span><div class="flow-box">Secondary wall forms (inner side)</div><span class="flow-arrow">→</span><div class="flow-box">Growth diminishes</div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cd5"><b>Middle lamella:</b> A layer mainly of <b>calcium pectate</b> that <b>cements/glues</b> neighbouring plant cells together.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Middle lamella = the “cement” between bricks (plant cells).
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cd6"><b>Plasmodesmata:</b> Channels that traverse the <b>cell wall and middle lamella</b>, connecting the <b>cytoplasm of neighbouring cells</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cd7">Keyword accuracy: middle lamella = <b>calcium pectate</b>; plasmodesmata = <b>cytoplasmic connections</b> across cell walls.</paragraph>
+</div>
+
+<h2>Endomembrane System</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cd8"><b>Endomembrane system:</b> A functional grouping of membranous organelles whose functions are <b>coordinated</b> (even though each organelle is structurally and functionally distinct).</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">ER<span class="tile-sub">Endoplasmic reticulum</span></div>
+  <div class="tile">Golgi complex<span class="tile-sub">Golgi apparatus/bodies</span></div>
+  <div class="tile">Lysosomes<span class="tile-sub">Hydrolytic enzyme vesicles</span></div>
+  <div class="tile">Vacuoles<span class="tile-sub">Storage/transport/osmoregulation spaces</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cd9"><b>Not part of endomembrane system:</b> <b>Mitochondria, chloroplast, peroxisomes</b> (their functions are not coordinated with ER–Golgi–lysosome–vacuole system).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cda">Exam trap: Many students wrongly include mitochondria in endomembrane system because it has membranes; classification here is based on <b>functional coordination</b>, not just “membrane-bound”.</paragraph>
+</div>
+
+<h2>Endoplasmic Reticulum (ER)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cdb"><b>ER (endoplasmic reticulum):</b> A network/reticulum of tiny tubular membranous structures scattered in the cytoplasm (seen by electron microscopy).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cdc"><b>Compartmentalisation by ER:</b> ER divides intracellular space into:</paragraph>
+  <ul class="check-list">
+    <li><b>Luminal compartment</b> = inside ER</li>
+    <li><b>Extra-luminal compartment</b> = cytoplasm (outside ER)</li>
+  </ul>
+</div>
+
+<h3>Rough ER (RER) vs Smooth ER (SER)</h3>
+
+<div class="tile-grid">
+  <div class="tile">RER<span class="tile-sub">Ribosomes attached on outer surface</span></div>
+  <div class="tile">SER<span class="tile-sub">No ribosomes; appears smooth</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cdd"><b>RER:</b> Prominent in cells actively involved in <b>protein synthesis and secretion</b>; <b>extensive</b> and <b>continuous with outer nuclear membrane</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78cde"><b>SER:</b> Major site of <b>lipid synthesis</b>; in animal cells, <b>steroidal hormones</b> (lipid-like) are synthesised in SER.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cdf">High-yield linkage: <b>RER ↔ proteins</b>, <b>SER ↔ lipids/steroids</b>; RER continuity with <b>outer nuclear membrane</b> is commonly asked.</paragraph>
+</div>
+
+
+<h2>Golgi Apparatus</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78ce0"><b>Discovery:</b> <b>Camillo Golgi (1898)</b> observed densely stained reticular structures near nucleus; named <b>Golgi bodies</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78ce1"><b>Structure:</b> Golgi consists of many flat, disc-shaped sacs called <b>cisternae</b>, each about <b>0.5–1.0 µm</b> in diameter, stacked parallel. Number of cisternae varies per Golgi complex.</paragraph>
+</div>
+
+<h3>Cis and Trans Faces</h3>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+  <span class="mnemonic-word">CITR</span>
+  <div class="mnemonic-expand">
+    C — <b>Cis</b> = <b>Convex</b> (forming face) <br/>
+    I — <b>Incoming</b> vesicles (typically from ER) <br/>
+    T — <b>Trans</b> = <b>Transports out</b> <br/>
+    R — <b>Release</b> from concave (maturing face)
+  </div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78ce2"><b>Cis face (forming face):</b> <b>Convex</b> side, oriented to receive vesicles (typically from ER).</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78ce3"><b>Trans face (maturing face):</b> <b>Concave</b> side, from which processed products/vesicles are released.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78ce4"><b>Relationship:</b> Cis and trans faces are <b>entirely different</b> yet <b>interconnected</b>.</paragraph>
+</div>
+
+<h3>Functions of Golgi Apparatus</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78ce5"><b>Core role:</b> <b>Packaging</b> of materials for delivery to <b>intracellular targets</b> or for <b>secretion outside</b> the cell.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Vesicles from ER</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Fuse with cis face</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Move through cisternae</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Released from trans face</div>
+</div>
+
+<div class="sticky-note">
+  Like a “post office”: <b>ER sends parcels</b> → Golgi <b>sorts/labels</b> → trans face <b>dispatches</b> to the right address.
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78ce6"><b>Functional association with ER:</b> Golgi stays close to ER because ER-derived vesicles fuse with Golgi <b>cis</b> face for processing/packaging.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78ce7"><b>Modification:</b> Many proteins synthesised by ribosomes on ER are <b>modified in Golgi cisternae</b> before release from <b>trans</b> face.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78ce8"><b>Important synthetic sites:</b> Golgi is a major site for formation of <b>glycoproteins</b> and <b>glycolipids</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78ce9">Directional recall: <b>Cis receives</b>, <b>Trans releases</b>; also remember the terms <b>forming face</b> (cis) and <b>maturing face</b> (trans).</paragraph>
+</div>
+
+
+<h2>Lysosomes</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cea"><b>Lysosomes:</b> Membrane-bound vesicular structures formed by <b>packaging in the Golgi apparatus</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78ceb"><b>Contents:</b> Rich in <b>hydrolytic enzymes (hydrolases)</b> including:</paragraph>
+  <ul class="star-list">
+    <li><b>Lipases</b> (lipids)</li>
+    <li><b>Proteases</b> (proteins)</li>
+    <li><b>Carbohydrases</b> (carbohydrates)</li>
+  </ul>
+  <paragraph id="6a8c16a0c01a40070bd78cec">These enzymes are optimally active at <b>acidic pH</b> and can digest <b>carbohydrates, proteins, lipids, and nucleic acids</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78ced">Lysosomes are not just “waste bins”; exam answers must include: <b>Golgi origin</b>, <b>hydrolases</b>, and <b>acidic pH optimum</b>.</paragraph>
+</div>
+
+
+<h2>Vacuoles</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cee"><b>Vacuole:</b> A membrane-bound space in cytoplasm containing <b>water, sap, excretory products</b>, and other materials not useful for the cell.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cef"><b>Tonoplast:</b> The <b>single membrane</b> that bounds the vacuole.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cf0"><b>Plant cell vacuole size:</b> Vacuoles can occupy up to <b>90%</b> of the cell volume.</paragraph>
+</div>
+
+<h3>Tonoplast Transport Function (Plants)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cf1"><b>Active transport into vacuole:</b> Tonoplast facilitates transport of ions and other materials <b>against concentration gradients</b> into the vacuole, producing concentrations <b>higher in vacuole</b> than in cytoplasm.</paragraph>
+</div>
+
+<h3>Special Vacuoles in Protists</h3>
+
+<div class="tile-grid">
+  <div class="tile">Contractile vacuole (Amoeba)<span class="tile-sub">Osmoregulation and excretion</span></div>
+  <div class="tile">Food vacuole (many protists)<span class="tile-sub">Formed by engulfing food particles</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cf2">Don’t omit “tonoplast” in definitions; it is a frequent 1-mark term. Also specify <b><i>Amoeba</i></b> for contractile vacuole examples.</paragraph>
+</div>
+
+
+<h2>Mitochondria (Intro: visibility, number, shape, size)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cf3"><b>Visibility:</b> Mitochondria are not easily visible under microscope unless <b>specifically stained</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cf4"><b>Number per cell:</b> Variable; depends on <b>physiological activity</b> of the cell.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cf5"><b>Shape &amp; size variability:</b> Considerable variation; typically <b>sausage-shaped/cylindrical</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78cf6"><b>Typical dimensions:</b> Diameter <b>0.2–1.0 µm</b> (average <b>0.5 µm</b>); length <b>1.0–4.1 µm</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cf7">Exam phrasing: state both (i) variability with activity and (ii) typical size range with average diameter.</paragraph>
+</div>
+
+
+<h2>Mitochondria (structure, contents, functions, division)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cf8"><b>Mitochondrion</b> is a <b>double membrane-bound organelle</b> whose inner membrane divides its lumen into <b>two aqueous compartments</b>:</paragraph>
+  <ul class="check-list">
+    <li><b>Outer compartment</b> (between outer and inner membranes; inter-membrane space)</li>
+    <li><b>Inner compartment</b> (the space enclosed by inner membrane), filled with dense homogeneous <b>matrix</b></li>
+  </ul>
+</div>
+
+<h3>Membranes and cristae</h3>
+
+<ul class="star-list">
+  <li><b>Outer membrane</b>: forms the <b>continuous limiting boundary</b> of the organelle.</li>
+  <li><b>Inner membrane</b>: forms infoldings called <b>cristae</b> (singular: <b>crista</b>) projecting towards the matrix.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cf9"><b>Cristae increase surface area</b> for mitochondrial functions (especially respiration-related reactions).</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78cfa"><b>Both membranes have their own specific enzymes</b> associated with mitochondrial function (membrane-specific enzyme systems).</paragraph>
+</div>
+
+<h3>Function: site of aerobic respiration</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cfb">Mitochondria are the <b>sites of aerobic respiration</b> and produce cellular energy as <b>ATP</b>; hence called the <b>“power houses”</b> of the cell.</paragraph>
+</div>
+
+<h3>Genetic system and protein synthesis machinery in the matrix</h3>
+
+<div class="tile-grid">
+  <div class="tile">Single circular DNA molecule<span class="tile-sub">Own genetic material inside matrix</span></div>
+  <div class="tile">A few RNA molecules<span class="tile-sub">Supports expression of mitochondrial genes</span></div>
+  <div class="tile">Ribosomes (70S)<span class="tile-sub">Organelle translation machinery</span></div>
+  <div class="tile">Components required for protein synthesis<span class="tile-sub">Everything needed for making some proteins</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78cfc">Presence of <b>circular DNA</b> and <b>70S ribosomes</b> in mitochondria is a recurring exam point (organelle has its own genetic system and translational machinery).</paragraph>
+</div>
+
+<h3>Division</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78cfd"><b>Mitochondria divide by fission.</b></paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78cfe">Do not confuse <b>cristae</b> (mitochondria) with <b>grana/thylakoids</b> (chloroplast). Both are membrane folds/stacks but belong to different organelles and processes.</paragraph>
+</div>
+
+<h2>Plastids (types, pigments, chloroplast structure)</h2>
+
+<h3>Occurrence and general features</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78cff"><b>Plastids</b> occur in <b>all plant cells</b> and in <b>euglenoides</b>. They are generally <b>large</b> and hence easily observed under a microscope.</paragraph>
+<paragraph id="6a8c16a0c01a40070bd78d00">They contain <b>specific pigments</b> that impart <b>specific colours</b> to plants.</paragraph>
+</div>
+
+<h3>Classification based on pigments</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78d01"><b>Basis of classification:</b> <b>type of pigments</b> present (or absence of pigments in leucoplasts).</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Chloroplast<span class="tile-sub">Contains chlorophyll + carotenoids; traps light energy for photosynthesis</span></div>
+<div class="tile">Chromoplast<span class="tile-sub">Contains fat-soluble carotenoids (carotene, xanthophylls, etc.); yellow/orange/red colours</span></div>
+<div class="tile">Leucoplast<span class="tile-sub">Colourless; storage of nutrients; varied shapes and sizes</span></div>
+</div>
+
+<h3>Leucoplast subtypes (storage plastids)</h3>
+<div class="tile-grid">
+<div class="tile">Amyloplast<span class="tile-sub">Stores carbohydrates (starch); e.g., potato</span></div>
+<div class="tile">Elaioplast<span class="tile-sub">Stores oils and fats</span></div>
+<div class="tile">Aleuroplast<span class="tile-sub">Stores proteins</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78d02">Exam trap: <b>Amyloplast = starch</b> (carbohydrate storage), <b>Elaioplast = oils/fats</b>, <b>Aleuroplast = proteins</b>. Learn as a fixed triad.</paragraph>
+</div>
+
+<h3>Chloroplast location, shape, size, and number</h3>
+<ul class="star-list">
+<li><b>Majority</b> of chloroplasts in green plants occur in <b>mesophyll cells of leaves</b>.</li>
+<li><b>Shapes</b>: lens-shaped, oval, spherical, discoid, ribbon-like.</li>
+<li><b>Size</b>: length <b>5–10 μm</b>, width <b>2–4 μm</b>.</li>
+<li><b>Number varies</b>: from <b>1 per cell</b> in <i>Chlamydomonas</i> (green alga) to <b>20–40 per cell</b> in mesophyll cells.</li>
+</ul>
+
+<h3>Chloroplast envelope and internal organisation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d03">Like mitochondria, <b>chloroplasts are double membrane-bound</b>. The <b>inner chloroplast membrane is relatively less permeable</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">Outer membrane</div><span class="flow-arrow">→</span><div class="flow-box">Inner membrane (less permeable)</div><span class="flow-arrow">→</span><div class="flow-box">Stroma (inside)</div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d04"><b>Stroma</b>: the space limited by the inner chloroplast membrane.</paragraph>
+</div>
+
+<ul class="check-list">
+<li><b>Thylakoids</b>: organised flattened membranous sacs present in the stroma.</li>
+<li><b>Grana</b> (singular: <b>granum</b>): stacks of thylakoids arranged like piles of coins.</li>
+<li><b>Intergranal thylakoids</b>: thylakoids connecting regions between grana.</li>
+<li><b>Stroma lamellae</b>: flat membranous tubules that connect thylakoids of different grana.</li>
+<li><b>Lumen</b>: space enclosed by the thylakoid membrane.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78d05"><b>Chlorophyll pigments are present in the thylakoids</b> (not free in stroma).</paragraph>
+</div>
+
+<h3>Stroma contents and biosynthetic role</h3>
+<div class="tile-grid">
+<div class="tile">Enzymes<span class="tile-sub">Required for synthesis of <b>carbohydrates</b> and <b>proteins</b></span></div>
+<div class="tile">DNA<span class="tile-sub">Small <b>double-stranded circular DNA molecules</b></span></div>
+<div class="tile">Ribosomes<span class="tile-sub">Present in stroma</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78d06"><b>Chloroplast ribosomes are 70S</b>, smaller than <b>cytoplasmic ribosomes (80S)</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a0c01a40070bd78d07">Analogy: chloroplast is like a “factory campus”: the <b>outer wall</b> is the double envelope, the <b>stroma</b> is the factory ground with enzymes and instructions (DNA), and the <b>grana/thylakoids</b> are the “solar panels” where pigments capture light.</paragraph>
+</div>
+
+
+<h2>Ribosomes (discovery, composition, types, subunits, Svedberg unit)</h2>
+
+<h3>Discovery and basic nature</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d08"><b>Ribosomes</b> are granular structures first observed under the electron microscope as dense particles by <b>George Palade (1953)</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Composed of <b>RNA</b> and <b>proteins</b></li>
+<li><b>Not surrounded by any membrane</b></li>
+</ul>
+
+<h3>Types: 80S vs 70S (and their subunits)</h3>
+<div class="tile-grid">
+<div class="tile">80S ribosome<span class="tile-sub">Eukaryotic; subunits: 60S (large) + 40S (small)</span></div>
+<div class="tile">70S ribosome<span class="tile-sub">Prokaryotic; subunits: 50S (large) + 30S (small)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78d09"><b>Each ribosome has two subunits</b> (large and small). Both <b>70S</b> and <b>80S</b> ribosomes follow this two-subunit organisation.</paragraph>
+</div>
+
+<h3>Meaning of “S”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d0a"><b>S</b> stands for <b>Svedberg’s Unit</b> (= sedimentation coefficient), an <b>indirect measure of density and size</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78d0b">Do not add subunits arithmetically: <b>60S + 40S ≠ 100S</b> because “S” is sedimentation behavior, not simple mass.</paragraph>
+</div>
+
+
+<h2>Cytoskeleton (components and functions)</h2>
+
+<h3>Definition and components</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d0c"><b>Cytoskeleton</b> = elaborate network of <b>filamentous proteinaceous structures</b> in the cytoplasm, consisting of:</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Microtubules<span class="tile-sub">Cytoskeletal filaments (tubulin-based)</span></div>
+<div class="tile">Microfilaments<span class="tile-sub">Cytoskeletal filaments (actin-based)</span></div>
+<div class="tile">Intermediate filaments<span class="tile-sub">Cytoskeletal support filaments</span></div>
+</div>
+
+<h3>Functions</h3>
+<ul class="check-list">
+<li><b>Mechanical support</b></li>
+<li><b>Motility</b></li>
+<li><b>Maintenance of cell shape</b></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78d0d">Remember the triad: <b>support + movement + shape</b> are the core cytoskeleton functions stated here.</paragraph>
+</div>
+
+
+<h2>Cilia and Flagella (structure and 9+2 arrangement)</h2>
+
+<h3>Definitions and basic differences</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d0e"><b>Cilia</b> (singular: <b>cilium</b>) and <b>flagella</b> (singular: <b>flagellum</b>) are <b>hair-like outgrowths of the cell membrane</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Cilia<span class="tile-sub">Small, work like <b>oars</b>; move the <b>cell or surrounding fluid</b></span></div>
+<div class="tile">Flagella<span class="tile-sub">Comparatively <b>longer</b>; responsible for <b>cell movement</b></span></div>
+<div class="tile">Bacterial flagella<span class="tile-sub">May be present in prokaryotes; <b>structurally different</b> from eukaryotic flagella</span></div>
+</div>
+
+<h3>Ultrastructure: plasma membrane covering + axoneme core</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d0f">Electron microscopy shows:</paragraph>
+</div>
+
+<ul class="check-list">
+<li>Cilium/flagellum is covered with <b>plasma membrane</b>.</li>
+<li>Core is the <b>axoneme</b> with microtubules parallel to the long axis.</li>
+</ul>
+
+<h3>9+2 microtubule array (classic axonemal pattern)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a0c01a40070bd78d10"><b>Axoneme arrangement</b>:</paragraph>
+</div>
+
+<div class="flow-row">
+<div class="flow-box">9 peripheral doublets (radial)</div><span class="flow-arrow">+</span><div class="flow-box">1 central pair</div><span class="flow-arrow">→</span><div class="flow-box"><b>9+2 array</b></div>
+</div>
+
+<ul class="check-list">
+<li><b>Central tubules</b>: connected by <b>bridges</b> and enclosed by a <b>central sheath</b>.</li>
+<li><b>Radial spokes</b>: central sheath connected to one tubule of each peripheral doublet by a spoke; total <b>nine radial spokes</b>.</li>
+<li><b>Linkers</b>: peripheral doublets are interconnected by <b>linkers</b>.</li>
+</ul>
+
+<h3>Basal bodies</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a0c01a40070bd78d11">Both cilium and flagellum emerge from a centriole-like structure called the <b>basal body</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a0c01a40070bd78d12">Exam phrasing: write “<b>9 peripheral doublets + 2 central singlets</b>” (i.e., 9+2). Don’t say “9 pairs + 1 pair” vaguely.</paragraph>
+</div>
+
+<h2>Centrosome and Centrioles (structure and roles)</h2>
+
+<h3>Centrosome: definition and arrangement</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d13"><b>Centrosome</b> is an organelle usually containing <b>two cylindrical centrioles</b>, surrounded by <b>amorphous pericentriolar material</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>The two centrioles lie <b>perpendicular</b> to each other.</li>
+  <li>Each centriole shows a <b>cartwheel</b>-like organisation.</li>
+</ul>
+
+<h3>Centriole microtubule pattern (triplets) and internal parts</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d14">Centrioles are made of <b>nine evenly spaced peripheral fibrils</b> of <b>tubulin</b> protein.</paragraph>
+  <ul class="check-list">
+    <li>Each peripheral fibril is a <b>triplet</b>.</li>
+    <li>Adjacent triplets are <b>linked</b>.</li>
+  </ul>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Hub<span class="tile-sub">central proteinaceous part in the proximal region</span></div>
+  <div class="tile">Radial spokes<span class="tile-sub">protein spokes connecting the hub to tubules of peripheral triplets</span></div>
+</div>
+
+<h3>Functions of centrioles</h3>
+<div class="tile-grid">
+  <div class="tile">Basal body role<span class="tile-sub">forms the <b>basal body</b> of cilia or flagella</span></div>
+  <div class="tile">Spindle formation<span class="tile-sub">forms <b>spindle fibres</b> → <b>spindle apparatus</b> during cell division in <b>animal cells</b></span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78d15">Do not mix patterns: <b>centriole = 9 triplets</b> (cartwheel); <b>axoneme = 9+2</b> (doublets + central pair).</paragraph>
+</div>
+
+
+<h2>Nucleus (history, structure, nuclear envelope, nucleolus, chromatin)</h2>
+
+<h3>Historical notes</h3>
+<div class="tile-grid">
+  <div class="tile">Robert Brown (1831)<span class="tile-sub">first described nucleus as a cell organelle</span></div>
+  <div class="tile">Flemming<span class="tile-sub">named the basic dye-stained nuclear material as <b>chromatin</b></span></div>
+</div>
+
+<h3>Interphase nucleus: components</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d16"><b>Interphase nucleus</b> (nucleus when the cell is not dividing) contains:</paragraph>
+  <ul class="check-list">
+    <li><b>Chromatin</b>: highly extended, elaborate <b>nucleoprotein fibres</b></li>
+    <li><b>Nuclear matrix / nucleoplasm</b></li>
+    <li>One or more <b>nucleoli</b> (singular: <b>nucleolus</b>)</li>
+  </ul>
+</div>
+
+<h3>Nuclear envelope (double membrane) and perinuclear space</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d17"><b>Nuclear envelope</b> consists of <b>two parallel membranes</b> with a gap called the <b>perinuclear space</b> of <b>10–50 nm</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d18">It forms a <b>barrier</b> between nuclear contents and cytoplasm.</paragraph>
+</div>
+
+<ul class="check-list">
+  <li><b>Outer nuclear membrane</b> is usually continuous with <b>endoplasmic reticulum (ER)</b>.</li>
+  <li>Outer membrane also <b>bears ribosomes</b>.</li>
+</ul>
+
+<h3>Nuclear pores and transport</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d19">Nuclear envelope is interrupted at places by <b>nuclear pores</b> formed by <b>fusion of the two membranes</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d1a"><b>Nuclear pores</b> permit <b>bidirectional movement</b> of <b>RNA and protein molecules</b> between nucleus and cytoplasm.</paragraph>
+</div>
+
+<h3>Number of nuclei in cells (variation)</h3>
+<ul class="star-list">
+  <li>Typically <b>one nucleus per cell</b>.</li>
+  <li><b>Variations</b> in nuclear number are frequently observed (some organisms have more than one nucleus per cell).</li>
+  <li>Some mature cells <b>lack a nucleus</b>, e.g. <b>erythrocytes of many mammals</b> and <b>sieve tube cells of vascular plants</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78d1b">If asked to justify “enucleate but living”: note these mature cells can lack nuclei yet function (e.g., mammalian RBCs; sieve tube elements), relying on prior synthesis/support from associated cells.</paragraph>
+</div>
+
+<h3>Nucleoplasm (nuclear matrix), nucleolus and chromatin</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d1c"><b>Nucleoplasm</b> (nuclear matrix) contains <b>nucleolus</b> and <b>chromatin</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d1d"><b>Nucleolus</b>:</paragraph>
+  <ul class="check-list">
+    <li><b>Spherical</b> structure in nucleoplasm</li>
+    <li><b>Not membrane-bound</b>; its contents are continuous with nucleoplasm</li>
+    <li><b>Site of active rRNA synthesis</b></li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d1e"><b>Larger and more numerous nucleoli</b> occur in cells actively carrying out <b>protein synthesis</b> (high rRNA demand → more ribosomes).</paragraph>
+</div>
+
+
+<h2>Chromatin and Chromosomes (Interphase vs Dividing Cell)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d1f"><b>Chromatin</b> = loose, indistinct network of <b>nucleoprotein fibres</b> seen in the <b>interphase nucleus</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d20"><b>Chromosomes</b> = structured, condensed form of chromatin seen during <b>stages of cell division</b> (hence <b>visible only in dividing cells</b>).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d21">Key contrast for exams:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Interphase nucleus</div><span class="flow-arrow">→</span><div class="flow-box">Chromatin (loose network)</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-box">Cell division stages</div><span class="flow-arrow">→</span><div class="flow-box">Chromosomes (structured/condensed)</div>
+  </div>
+</div>
+
+<h3>Chemical Composition of Chromatin</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d22"><b>Chromatin contains:</b></paragraph>
+  <ul class="check-list">
+    <li><b>DNA</b></li>
+    <li><b>Basic proteins called histones</b></li>
+    <li><b>Non-histone proteins</b></li>
+    <li><b>RNA</b></li>
+  </ul>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c16a0c01a40070bd78d23">Think of chromatin as a “DNA–protein–RNA complex”: DNA is the information thread; histones/non-histones are the organising/spooling proteins; RNA is also present as part of the nuclear material.</paragraph>
+</div>
+
+<h3>DNA Length and Distribution in Human Cells</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d24"><b>Fact to remember:</b> A single human cell contains about <b>2 metres</b> of DNA thread distributed among <b>46 chromosomes (23 pairs)</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d25">(Details of DNA packaging into chromosomes are studied later.)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78d26">Common slip: writing “46 pairs” instead of “46 chromosomes = 23 pairs”.</paragraph>
+</div>
+
+
+<h2>Chromosome Structure: Centromere and Kinetochore</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d27">Each chromosome has a <b>primary constriction</b> called the <b>centromere</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d28">On the sides of the centromere are disc-shaped structures called <b>kinetochores</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d29"><b>Centromere function (structural):</b> it <b>holds the two chromatids</b> of a chromosome together.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d2a"><b>Kinetochore</b> is a distinct structure associated with the centromere region (disc-shaped; on the sides of the centromere). In diagrams, label: chromatids, centromere (primary constriction), kinetochores.</paragraph>
+</div>
+
+
+<h2>Classification of Chromosomes Based on Centromere Position</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d2b"><b>Basis of classification:</b> <b>position of the centromere</b> determines relative arm lengths.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Metacentric<span class="tile-sub">Centromere in the middle → two equal arms</span></div>
+  <div class="tile">Sub-metacentric<span class="tile-sub">Centromere slightly away from middle → one shorter + one longer arm</span></div>
+  <div class="tile">Acrocentric<span class="tile-sub">Centromere close to an end → one extremely short + one very long arm</span></div>
+  <div class="tile">Telocentric<span class="tile-sub">Centromere at the terminal end (terminal centromere)</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a0c01a40070bd78d2c">Exam diagram tip: show the centromere position clearly and indicate arm-length differences (equal; slightly unequal; extremely unequal; terminal).</paragraph>
+</div>
+
+
+<h2>Secondary Constriction and Satellite</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d2d">Some chromosomes show <b>secondary constrictions</b> that are <b>non-staining</b> and occur at a <b>constant location</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d2e">This can give the appearance of a small fragment called a <b>satellite</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d2f"><b>Satellite</b> is an <b>appearance</b> produced due to a constant, non-staining <b>secondary constriction</b>—don’t confuse it with an actual detached chromosome piece.</paragraph>
+</div>
+
+
+<h2>Microbodies</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d30"><b>Microbodies</b> = <b>membrane-bound</b>, minute vesicles containing <b>various enzymes</b>, present in <b>both plant and animal cells</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Key identifying features: <b>minute vesicles</b> + <b>enzymes</b> + <b>membrane bound</b> + in <b>plants and animals</b>.</li>
+</ul>
+
+<h2>Chapter Summary </h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d31"><b>Cell as the unit of life:</b> All organisms are made of <b>cells</b> or aggregates of cells. Cells vary in <b>shape, size, and functions</b>.</paragraph>
+</div>
+
+<h3>Prokaryotic vs Eukaryotic (Basis)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d32">Classification depends on presence/absence of:</paragraph>
+  <ul class="check-list">
+    <li><b>Membrane-bound nucleus</b></li>
+    <li><b>Other membrane-bound organelles</b></li>
+  </ul>
+  <paragraph id="6a8c16a0c01a40070bd78d33">Accordingly, cells/organisms are <b>eukaryotic</b> or <b>prokaryotic</b>.</paragraph>
+</div>
+
+<h3>Typical Eukaryotic Cell: Main Components</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d34">A typical eukaryotic cell consists of:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Cell (plasma) membrane<span class="tile-sub">Selective barrier; transport</span></div>
+    <div class="tile">Nucleus<span class="tile-sub">Control + heredity role</span></div>
+    <div class="tile">Cytoplasm<span class="tile-sub">Houses organelles</span></div>
+  </div>
+  <paragraph id="6a8c16a0c01a40070bd78d35"><b>Plant cells:</b> have a <b>cell wall</b> outside the cell membrane.</paragraph>
+</div>
+
+<h3>Plasma Membrane (Key Property)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d36"><b>Plasma membrane</b> is <b>selectively permeable</b> and facilitates transport of several molecules.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Think of the plasma membrane like a <b>smart security gate</b>: it lets some molecules in/out while restricting others.
+</div>
+
+<h3>Endomembrane System (Components + Core Role)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d37"><b>Endomembrane system includes:</b></paragraph>
+  <div class="tile-grid">
+    <div class="tile">ER<span class="tile-sub">Synthesis + transport</span></div>
+    <div class="tile">Golgi complex<span class="tile-sub">Packaging + dispatch</span></div>
+    <div class="tile">Lysosomes<span class="tile-sub">Digestion of macromolecules</span></div>
+    <div class="tile">Vacuoles<span class="tile-sub">Endomembrane structure; storage/other roles</span></div>
+  </div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">ER</div><span class="flow-arrow">→</span><div class="flow-box">Golgi</div><span class="flow-arrow">→</span><div class="flow-box">Secretion/Dispatch</div>
+</div>
+
+<h3>Centrosome and Centriole (Functions)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul class="check-list">
+    <li>Centrosome/centriole form the <b>basal body</b> of <b>cilia and flagella</b> (locomotion).</li>
+    <li>In <b>animal cells</b>, centrioles also form the <b>spindle apparatus</b> during cell division.</li>
+  </ul>
+</div>
+
+<h3>Nucleus: Contents and Roles</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d38"><b>Nucleus contains:</b> <b>nucleoli</b> and <b>chromatin network</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d39"><b>Roles:</b></paragraph>
+  <ul class="check-list">
+    <li>Controls activities of organelles</li>
+    <li>Major role in heredity</li>
+  </ul>
+</div>
+
+<h3>Endoplasmic Reticulum (Structure + Types + Functions)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d3a"><b>Structure:</b> ER contains <b>tubules</b> or <b>cisternae</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d3b"><b>Types:</b></paragraph>
+  <div class="tile-grid">
+    <div class="tile">Rough ER<span class="tile-sub">Type of ER (ribosome-associated)</span></div>
+    <div class="tile">Smooth ER<span class="tile-sub">Type of ER (no ribosomes)</span></div>
+  </div>
+  <paragraph id="6a8c16a0c01a40070bd78d3c"><b>Functions:</b></paragraph>
+  <ul class="check-list">
+    <li>Transport of substances</li>
+    <li>Synthesis of proteins</li>
+    <li>Synthesis of lipoproteins</li>
+    <li>Synthesis of glycogen</li>
+  </ul>
+</div>
+
+<h3>Golgi Body (Structure + Function)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d3d"><b>Golgi body</b> = membranous organelle composed of <b>flattened sacs</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d3e"><b>Function:</b> cell secretions are <b>packed</b> in Golgi and <b>transported</b> from the cell.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Golgi = the cell’s <b>packing + shipping center</b>: labels, packs, and sends materials out.
+</div>
+
+<h3>Lysosomes (Key Feature + Function)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d3f"><b>Lysosomes</b> are <b>single membrane</b> structures containing enzymes for digestion of <b>all types of macromolecules</b>.</paragraph>
+</div>
+
+<h3>Ribosomes (Location + Function)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d40"><b>Ribosomes</b> are involved in <b>protein synthesis</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d41"><b>Location:</b></paragraph>
+  <ul class="check-list">
+    <li>Free in cytoplasm, OR</li>
+    <li>Associated with ER</li>
+  </ul>
+</div>
+
+<h3>Mitochondria (Function + Membranes + Cristae)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul class="check-list">
+    <li><b>Function:</b> oxidative phosphorylation and generation of <b>ATP (adenosine triphosphate)</b></li>
+    <li><b>Double membrane bound</b></li>
+    <li><b>Outer membrane:</b> smooth</li>
+    <li><b>Inner membrane:</b> folded into <b>cristae</b></li>
+  </ul>
+</div>
+
+<div class="sticky-note">
+  Mitochondria: <b>powerhouse</b> vibes — more cristae folds = more surface area for ATP-making steps.
+</div>
+
+<h3>Plastids (Plant Cells Only): Types and Chloroplast Details</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d42"><b>Plastids</b> are pigment-containing organelles found in <b>plant cells only</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Chloroplast<span class="tile-sub">Green plastid; contains chlorophyll; traps light energy for photosynthesis</span></div>
+  <div class="tile">Chromoplast<span class="tile-sub">Other coloured plastids; may contain carotene and xanthophyll</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d43"><b>Chloroplast functional regions:</b></paragraph>
+  <ul class="check-list">
+    <li><b>Grana</b> = site of <b>light reactions</b></li>
+    <li><b>Stroma</b> = site of <b>dark reactions</b></li>
+  </ul>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Grana</div><span class="flow-arrow">→</span><div class="flow-box">Light reactions</div><span class="flow-arrow">→</span><div class="flow-box">Energy captured</div>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Stroma</div><span class="flow-arrow">→</span><div class="flow-box">Dark reactions</div><span class="flow-arrow">→</span><div class="flow-box">Sugars formed</div>
+</div>
+
+<h3>Nuclear Envelope and Nuclear Pores</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a0c01a40070bd78d44"><b>Nuclear envelope</b> encloses nucleus; it is a <b>double membrane</b> structure with <b>nuclear pores</b>.</paragraph>
+  <paragraph id="6a8c16a0c01a40070bd78d45">The inner membrane encloses the <b>nucleoplasm</b> and the <b>chromatin material</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a0c01a40070bd78d46">Final take-home: the cell is the <b>structural and functional unit of life</b>.</paragraph>
+</div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

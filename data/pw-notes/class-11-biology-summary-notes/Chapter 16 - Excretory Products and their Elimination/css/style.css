@@ -1,0 +1,312 @@
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size:16px; line-height:1.65; color:#1a1a2e;
+    background:#ffffff;
+    padding:48px 40px;
+}
+.container { max-width:860px; margin:0 auto; padding-bottom:60px; }
+h1 { font-size:2rem; color:#1a1a2e; text-align:center; padding:14px 0; margin:0 0 30px; border-bottom:3px solid #1a1a2e; }
+h2 { font-size:1.4rem; color:#1a5276; border-left:5px solid #1a5276; padding-left:10px; margin:34px 0 14px; }
+h3 { font-size:1.12rem; color:#1e8449; margin:22px 0 8px; }
+p { margin:0 0 12px; text-align:justify; }
+ul,ol { margin:6px 0 12px; padding-left:24px; }
+li { margin-bottom:6px; }
+.highlight-box,.key-box,.mnemonic-box,.formula-box,.remember-box {
+    border-radius:8px; padding:14px 18px; margin:18px 0; font-size:15px; line-height:1.55; position:relative;
+}
+.highlight-box::before,.key-box::before,.mnemonic-box::before,.formula-box::before {
+    content:attr(data-label); position:absolute; top:-11px; left:12px;
+    font-size:.68rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+    padding:2px 8px; border-radius:5px; color:#fff; font-family:Arial,sans-serif;
+}
+.highlight-box { background:#fffbe6; border:1.5px solid #d4ac0d; border-left:5px solid #d4ac0d; }
+.highlight-box::before { background:#d4ac0d; }
+.key-box { background:#eaf4ff; border:1.5px solid #1a5276; border-left:5px solid #1a5276; }
+.key-box::before { background:#1a5276; }
+.mnemonic-box { background:#f5eeff; border:1.5px solid #6c3483; border-left:5px solid #6c3483; }
+.mnemonic-box::before { background:#6c3483; }
+.mnemonic-word { font-weight:700; color:#6c3483; letter-spacing:3px; display:block; margin-bottom:5px; }
+.formula-box {
+    width:100%;
+    margin-top:24px;
+    padding-top:18px;
+    overflow:visible;
+    isolation:isolate;
+    background:#f0f3ff;
+    border:1.5px solid #1b2a8e;
+    border-left:5px solid #1b2a8e;
+}
+.formula-box::before {
+    display:inline-flex;
+    align-items:center;
+    min-height:22px;
+    line-height:1.25;
+    white-space:nowrap;
+    background:#1b2a8e;
+    z-index:1;
+}
+.formula-box > * {
+    max-width:100%;
+}
+.formula-box paragraph,
+.formula-box li {
+    overflow-wrap:anywhere;
+}
+.remember-box { background:#fff0f0; border:1.5px dashed #b03a2e; text-align:center; font-weight:700; color:#b03a2e; }
+@media(max-width:600px){ body{font-size:15px;padding:24px 14px;} h1{font-size:1.6rem;} h2{font-size:1.2rem;} }
+.katex { font-size:1.05em !important; }
+
+
+/* PW responsive reader compatibility v2 */
+:root {
+  --reader-gutter: clamp(12px, 2vw, 28px);
+  --reader-key-term: currentColor;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
+
+/* Remove the fixed notebook-binding gutter that consumed mobile width. */
+body::before,
+body::after {
+  display: none !important;
+}
+
+.container,
+.chapter-wrap,
+#main-content {
+  width: 100%;
+  max-width: none !important;
+  min-width: 0;
+  margin: 0 !important;
+  padding: var(--reader-gutter) !important;
+  padding-bottom: clamp(36px, 6vw, 64px) !important;
+}
+
+paragraph {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 15px;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+body,
+paragraph,
+li,
+h1,
+h2,
+h3,
+h4,
+figcaption,
+td,
+th {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+h1,
+h2,
+h3,
+h4,
+li,
+.tile,
+.flow-box,
+.formula-card,
+.concept-group,
+.highlight-box,
+.key-box,
+.mnemonic-box,
+.formula-box,
+.remember-box,
+.sticky-note,
+.summary-box {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  font-size: clamp(1.55rem, 4.5vw, 2.2rem) !important;
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem) !important;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3vw, 1.25rem) !important;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+figure,
+.diagram-box,
+.media-scroll {
+  width: 100%;
+  max-width: 100%;
+}
+
+.diagram-box,
+.media-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+
+.table-scroll,
+.math-scroll,
+.math-inline-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-x pan-y;
+}
+
+.table-scroll {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.table-scroll table {
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+  border-collapse: collapse;
+}
+
+.table-scroll th,
+.table-scroll td {
+  min-width: 7rem;
+  vertical-align: top;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.math-inline-scroll {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.math-block {
+  display: block;
+  width: 100%;
+  margin: .6rem 0;
+}
+
+math.mr {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+
+math.mr[display="block"] {
+  display: block;
+  width: 100%;
+  margin: .6rem 0;
+}
+
+.math-inline-scroll > math,
+.math-block > math,
+.katex-display > .katex {
+  width: max-content;
+  max-width: none;
+}
+
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display > .katex {
+  max-width: none;
+  overflow: visible;
+}
+
+pre,
+code {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.tile-grid,
+.flow-row {
+  max-width: 100%;
+}
+
+.tile {
+  max-width: none !important;
+}
+
+@media (max-width: 600px) {
+  :root { --reader-gutter: 12px; }
+
+  h1 { padding: 14px 12px !important; }
+  h2 { gap: 8px; }
+  ul, ol { padding-left: 22px; }
+
+  .highlight-box,
+  .key-box,
+  .mnemonic-box,
+  .formula-box,
+  .remember-box,
+  .sticky-note,
+  .summary-box,
+  .concept-group-body,
+  .formula-card {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .flow-row {
+    align-items: stretch;
+  }
+
+  .flow-arrow {
+    align-self: center;
+  }
+}

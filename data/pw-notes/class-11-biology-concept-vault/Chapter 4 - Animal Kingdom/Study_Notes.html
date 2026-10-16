@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>summary</title>
+  <link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap container" id="main-content">
+
+<div class="container"><paragraph class="page-label" id="6a8c169dc01a40070bd7830b">Handwritten Notes</paragraph>
+<h1>ANIMAL KINGDOM</h1>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7830c">Animals show enormous diversity in structure and form (over a million described species). Therefore, <b>classification</b> is essential to:</paragraph>
+</div>
+
+<ul class="check-list">
+  <li>Organise diversity into manageable groups.</li>
+  <li>Provide a <b>systematic position</b> to newly described species by comparing key features.</li>
+</ul>
+
+<h2>4.1 BASIS OF CLASSIFICATION</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7830d">Animal classification is based on <b>fundamental structural and functional features</b> common across groups, especially:</paragraph>
+  <ul class="star-list">
+    <li>Arrangement of cells (levels of organisation)</li>
+    <li>Body symmetry</li>
+    <li>Nature/presence of coelom (body cavity)</li>
+    <li>Patterns of digestive, circulatory, reproductive systems</li>
+  </ul>
+</div>
+
+<h3>4.1.1 Levels of Organisation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7830e">All animals are multicellular, but differ in how cells are organised into higher structures.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Cellular level<span class="tile-sub">Cells form loose aggregates; limited division of labour; seen in sponges</span></div>
+  <div class="tile">Tissue level<span class="tile-sub">Similar-function cells form tissues; seen in coelenterates</span></div>
+  <div class="tile">Organ level<span class="tile-sub">Tissues group to form organs (specialised functions); seen in Platyhelminthes and higher phyla</span></div>
+  <div class="tile">Organ system level<span class="tile-sub">Organs associate into systems for major physiological functions; seen in annelids, arthropods, molluscs, echinoderms, chordates</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7830f"><b>Complexity of organ systems varies among groups.</b> Two exam-favourite examples:</paragraph>
+</div>
+
+<paragraph id="6a8c169dc01a40070bd78310"><b>(A) Digestive system: incomplete vs complete</b></paragraph>
+
+<div class="flow-row">
+  <div class="flow-box">Incomplete digestive system</div><span class="flow-arrow">→</span><div class="flow-box">Single opening = <b>mouth + anus</b> (example: <b>Platyhelminthes</b>)</div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Complete digestive system</div><span class="flow-arrow">→</span><div class="flow-box">Two openings = <b>mouth</b> + <b>anus</b></div>
+</div>
+
+<paragraph id="6a8c169dc01a40070bd78311"><b>(B) Circulatory system: open vs closed</b></paragraph>
+
+<div class="flow-row">
+  <div class="flow-box">Open circulatory system</div><span class="flow-arrow">→</span><div class="flow-box">Blood pumped out of heart; <b>cells/tissues directly bathed</b></div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Closed circulatory system</div><span class="flow-arrow">→</span><div class="flow-box">Blood flows inside vessels: <b>arteries</b>, <b>veins</b>, <b>capillaries</b></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78312">Do not mix up <b>level of organisation</b> with <b>symmetry</b> or <b>germ layers</b>: these are separate bases of classification tested independently.</paragraph>
+</div>
+
+<h3>4.1.2 Symmetry</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78313"><b>Symmetry</b> describes how an animal body can be divided into equal halves by planes passing through the body.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Asymmetry<span class="tile-sub">No plane through the centre divides body into equal halves; mostly in sponges</span></div>
+  <div class="tile">Radial symmetry<span class="tile-sub">Any plane through central axis divides into identical halves; coelenterates, ctenophores, echinoderms</span></div>
+  <div class="tile">Bilateral symmetry<span class="tile-sub">Only one plane divides into identical left and right halves; annelids, arthropods, etc.</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78314">Text note: <b>Echinodermata</b> can show <b>radial or bilateral symmetry depending on stage</b> (commonly tested as a trick point).</paragraph>
+</div>
+
+<h3>4.1.3 Diploblastic and Triploblastic Organisation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78315">Animals are classified by the number of <b>embryonic germ layers</b> formed during development.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Diploblastic<span class="tile-sub">Two germ layers: outer ectoderm + inner endoderm; mesoglea in between; example: coelenterates</span></div>
+  <div class="tile">Triploblastic<span class="tile-sub">Three germ layers: ectoderm + mesoderm + endoderm; group range: Platyhelminthes to Chordates</span></div>
+</div>
+
+<ul class="check-list">
+  <li><b>Mesoglea</b>: undifferentiated layer between ectoderm and endoderm in diploblasts.</li>
+  <li><b>Mesoderm</b>: third germ layer present between ectoderm and endoderm in triploblasts.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78316">Diploblastic ≠ acoelomate automatically. Germ layers and coelom are related concepts but asked separately; answer as per the term asked.</paragraph>
+</div>
+
+<h3>4.1.4 Coelom</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78317"><b>Coelom</b> = body cavity between body wall and gut wall that is <b>lined by mesoderm</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Coelomate<span class="tile-sub">True coelom lined by mesoderm; examples: annelids, molluscs, arthropods, echinoderms, hemichordates, chordates</span></div>
+  <div class="tile">Pseudocoelomate<span class="tile-sub">Body cavity not lined by mesoderm; mesoderm as scattered pouches; example: aschelminthes</span></div>
+  <div class="tile">Acoelomate<span class="tile-sub">No body cavity; example: platyhelminthes</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78318">Key discriminator: <b>lining by mesoderm</b>.</paragraph>
+  <ul class="star-list">
+    <li><b>Coelom</b>: mesoderm-lined cavity</li>
+    <li><b>Pseudocoelom</b>: cavity present but <b>not</b> mesoderm-lined; mesoderm appears as scattered pouches</li>
+    <li><b>Acoelomate</b>: cavity absent</li>
+  </ul>
+</div>
+
+<h3>4.1.5 Segmentation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78319"><b>Segmentation</b> = body externally and internally divided into <b>segments</b> with <b>serial repetition</b> of at least some organs.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Example: <b>earthworm</b> shows <b>metameric segmentation</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169dc01a40070bd7831a"><b>Metamerism</b>: the phenomenon/pattern of <b>metameric segmentation</b> (serially repeated segments).</paragraph>
+</div>
+
+<h3>4.1.6 Notochord</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7831b"><b>Notochord</b> = mesodermally derived, rod-like structure formed on the <b>dorsal side</b> during embryonic development in some animals.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Chordates<span class="tile-sub">Animals that possess a notochord</span></div>
+  <div class="tile">Non-chordates<span class="tile-sub">Animals that do not form notochord; examples: Porifera to Echinoderms</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd7831c">Exam phrasing often asks: “<b>formed during embryonic development</b>” and “<b>mesodermally derived</b>”—include both in definitions.</paragraph>
+</div>
+
+<h2>4.2 CLASSIFICATION OF ANIMALS</h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7831d">Using the bases above, <b>Animalia</b> is broadly classified. The chapter then lists <b>characteristic features</b> of different phyla.</paragraph>
+</div>
+
+<h3>4.2.1 Phylum – Porifera</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7831e"><b>Porifera</b> = <b>sponges</b> → primitive multicellular animals with a characteristic <b>water transport (canal) system</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub">Generally <b>marine</b></span></div>
+  <div class="tile">Symmetry<span class="tile-sub">Mostly <b>asymmetrical</b></span></div>
+  <div class="tile">Organisation<span class="tile-sub"><b>Cellular level</b> (loose cell aggregates; some division of labour)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7831f"><b>Canal system (water transport system)</b> = signature feature → know the <b>pathway + functions</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Water enters via <b>ostia</b> (minute pores)</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box"><b>Spongocoel</b> (central cavity)</div>
+  <span class="flow-arrow">→</span>
+  <div class="flow-box">Exits through <b>osculum</b></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Function of water transport pathway</b>: food gathering, respiratory exchange, waste removal.</li>
+  <li><b>Choanocytes (collar cells)</b>: line the spongocoel and canals (important identifying cell type).</li>
+  <li><b>Digestion</b>: <b>intracellular</b>.</li>
+  <li><b>Skeleton</b>: made of <b>spicules</b> or <b>spongin fibres</b>.</li>
+</ul>
+
+<paragraph id="6a8c169dc01a40070bd78320"><b>Reproduction</b></paragraph>
+<ul class="check-list">
+  <li><b>Sexes not separate</b> = <b>hermaphrodite</b> (same individual produces eggs and sperms).</li>
+  <li><b>Asexual reproduction</b>: by <b>fragmentation</b>.</li>
+  <li><b>Sexual reproduction</b>: by <b>gamete formation</b>.</li>
+  <li><b>Fertilisation</b>: <b>internal</b>.</li>
+  <li><b>Development</b>: <b>indirect</b> with a <b>larval stage</b> morphologically distinct from adult.</li>
+</ul>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169dc01a40070bd78321">Sponges = living filters: many tiny entry pores → internal chamber → one large exit opening. This flow powers feeding, gas exchange, and waste removal.</paragraph>
+</div>
+
+<paragraph id="6a8c169dc01a40070bd78322"><b>Examples (must recall)</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Sycon (Scypha)<span class="tile-sub">Marine sponge</span></div>
+  <div class="tile">Spongilla<span class="tile-sub">Fresh water sponge</span></div>
+  <div class="tile">Euspongia<span class="tile-sub">Bath sponge</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78323">Do not confuse: <b>ostia</b> = many tiny entry pores vs <b>osculum</b> = single large exit opening; <b>spongocoel</b> = central cavity.</paragraph>
+</div>
+
+<h3>4.2.2 Phylum – Coelenterata (Cnidaria)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78324"><b>Cnidaria (Coelenterata)</b> = aquatic animals with <b>cnidoblasts/cnidocytes</b> containing <b>nematocysts</b> (stinging capsules) + a <b>gastro-vascular cavity</b> with a <b>single opening</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub">Aquatic; mostly <b>marine</b></span></div>
+  <div class="tile">Mode of life<span class="tile-sub"><b>Sessile</b> or <b>free-swimming</b></span></div>
+  <div class="tile">Symmetry<span class="tile-sub"><b>Radial</b></span></div>
+  <div class="tile">Organisation<span class="tile-sub"><b>Tissue level</b></span></div>
+  <div class="tile">Germ layers<span class="tile-sub"><b>Diploblastic</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78325"><b>Cnidoblasts/Cnidocytes</b> (with <b>nematocysts</b>) are typically on <b>tentacles and body</b> and are used for:</paragraph>
+  <ul class="star-list">
+    <li>Anchorage</li>
+    <li>Defence</li>
+    <li>Capture of prey</li>
+  </ul>
+</div>
+
+<paragraph id="6a8c169dc01a40070bd78326"><b>Digestive system (gastro-vascular cavity)</b></paragraph>
+<ul class="star-list">
+  <li>Central <b>gastro-vascular cavity</b> with a <b>single opening</b>.</li>
+  <li>The opening is the <b>mouth</b> situated on <b>hypostome</b>.</li>
+  <li><b>Digestion</b>: both <b>extracellular</b> and <b>intracellular</b>.</li>
+</ul>
+
+<paragraph id="6a8c169dc01a40070bd78327"><b>Skeletal feature</b></paragraph>
+<ul class="star-list">
+  <li>Some cnidarians (e.g., <b>corals</b>) have skeleton of <b>calcium carbonate</b>.</li>
+</ul>
+
+<paragraph id="6a8c169dc01a40070bd78328"><b>Two basic body forms</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Polyp<span class="tile-sub">Sessile, cylindrical form (e.g., <b>Hydra</b>, <b>Adamsia</b>)</span></div>
+  <div class="tile">Medusa<span class="tile-sub">Umbrella-shaped, free-swimming form (e.g., <b>Aurelia</b>/jelly fish)</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78329"><b>Metagenesis (alternation of generations)</b>: in cnidarians that exist in both forms—<b>polyp produces medusae asexually</b>, and <b>medusa forms polyps sexually</b> (example: <b>Obelia</b>).</paragraph>
+</div>
+
+<paragraph id="6a8c169dc01a40070bd7832a"><b>Examples (must recall)</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Physalia<span class="tile-sub">Portuguese man-of-war</span></div>
+  <div class="tile">Adamsia<span class="tile-sub">Sea anemone (polyp form example)</span></div>
+  <div class="tile">Pennatula<span class="tile-sub">Sea-pen</span></div>
+  <div class="tile">Gorgonia<span class="tile-sub">Sea-fan</span></div>
+  <div class="tile">Meandrina<span class="tile-sub">Brain coral</span></div>
+  <div class="tile">Aurelia<span class="tile-sub">Jelly fish (medusa form example)</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd7832b">Exam trap: “<b>Coelenterata</b>” and “<b>Cnidaria</b>” refer to the same phylum here; always mention <b>cnidocytes/nematocysts</b> as the defining character.</paragraph>
+</div>
+
+<h2>Phylum – Ctenophora</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7832c"><b>Ctenophores</b> (sea walnuts/comb jellies) are <b>exclusively marine</b>, <b>radially symmetrical</b>, <b>diploblastic</b> animals with <b>tissue level</b> of organisation.</paragraph>
+</div>
+
+<h3>Diagnostic features</h3>
+<ul class="check-list">
+  <li><b>Locomotion:</b> body bears <b>8 external rows</b> of <b>ciliated comb plates</b> (ctenes) for movement.</li>
+  <li><b>Digestion:</b> both <b>extracellular</b> and <b>intracellular</b>.</li>
+  <li><b>Bioluminescence:</b> well-marked.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7832d"><b>Bioluminescence</b> = property of a living organism to <b>emit light</b>.</paragraph>
+</div>
+
+<h3>Reproduction and development</h3>
+<ul class="check-list">
+  <li><b>Sexes not separate</b> (monoecious/hermaphrodite condition).</li>
+  <li><b>Reproduction:</b> only <b>sexual</b>.</li>
+  <li><b>Fertilisation:</b> <b>external</b>.</li>
+  <li><b>Development:</b> <b>indirect</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd7832e">Ctenophores are identified in exams by the combo: <b>marine + radial symmetry + diploblastic + 8 comb rows + bioluminescence</b>.</paragraph>
+</div>
+
+<h3>Examples</h3>
+<ul class="star-list">
+  <li><b>Pleurobrachia</b></li>
+  <li><b>Ctenoplana</b></li>
+</ul>
+
+<h2>Phylum – Platyhelminthes</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd7832f"><b>Platyhelminthes</b> = <b>dorso-ventrally flattened</b> worms (flatworms). Mostly <b>endoparasites</b> in animals, including humans.</paragraph>
+</div>
+
+<h3>Body plan and organisation</h3>
+<div class="tile-grid">
+  <div class="tile">Symmetry<span class="tile-sub"><b>Bilateral</b></span></div>
+  <div class="tile">Germ layers<span class="tile-sub"><b>Triploblastic</b></span></div>
+  <div class="tile">Body cavity<span class="tile-sub"><b>Acoelomate</b></span></div>
+  <div class="tile">Organisation<span class="tile-sub"><b>Organ level</b></span></div>
+</div>
+
+<h3>Parasitic adaptations and nutrition</h3>
+<ul class="check-list">
+  <li><b>Hooks and suckers</b> present in parasitic forms (attachment to host).</li>
+  <li>Some absorb nutrients from host <b>directly through body surface</b>.</li>
+</ul>
+
+<h3>Excretion and osmoregulation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169dc01a40070bd78330"><b>Flame cells</b> = specialised cells that help in <b>osmoregulation</b> and <b>excretion</b> in flatworms.</paragraph>
+</div>
+
+<h3>Reproduction, fertilisation, development</h3>
+<ul class="check-list">
+  <li><b>Sexes not separate</b> (typically monoecious).</li>
+  <li><b>Fertilisation:</b> <b>internal</b>.</li>
+  <li><b>Development:</b> through <b>many larval stages</b> (complex/indirect).</li>
+</ul>
+
+<h3>Special feature</h3>
+<ul class="star-list">
+  <li><b>Planaria</b> shows <b>high regeneration capacity</b> (important named example).</li>
+</ul>
+
+<h3>Examples</h3>
+<ul class="star-list">
+  <li><b>Taenia</b> (tapeworm)</li>
+  <li><b>Fasciola</b> (liver fluke)</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78331">Do not mix up: <b>Platyhelminthes = acoelomate + organ level</b>; many other worm phyla are organ-system level.</paragraph>
+</div>
+
+<h2>Phylum – Aschelminthes</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78332"><b>Aschelminthes</b> are <b>roundworms</b> with a body that is <b>circular in cross-section</b>.</paragraph>
+</div>
+
+<h3>Habit and habitat</h3>
+<div class="sticky-note">Think: “roundworms everywhere” → soil, water, and inside hosts.</div>
+<ul>
+<li>May be <b>free-living</b> (aquatic/terrestrial) or <b>parasitic</b> in plants and animals.</li>
+</ul>
+
+<h3>Body plan and organisation</h3>
+<div class="tile-grid">
+<div class="tile">Organisation<span class="tile-sub"><b>organ-system level</b></span></div>
+<div class="tile">Symmetry<span class="tile-sub"><b>bilateral</b></span></div>
+<div class="tile">Germ layers<span class="tile-sub"><b>triploblastic</b></span></div>
+<div class="tile">Body cavity<span class="tile-sub"><b>pseudocoelomate</b></span></div>
+</div>
+
+<h3>Digestive and excretory systems</h3>
+<ul class="check-list">
+<li><b>Alimentary canal:</b> <b>complete</b> with a well-developed <b>muscular pharynx</b>.</li>
+<li><b>Excretion:</b> <b>excretory tube</b> removes wastes from body cavity through an <b>excretory pore</b>.</li>
+</ul>
+
+<h3>Reproduction and development</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78333"><b>Dioecious</b> = sexes are separate; <b>male and female are distinct individuals</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+<li><b>Sexes:</b> separate (<b>dioecious</b>); often <b>female longer</b> than male.</li>
+<li><b>Fertilisation:</b> <b>internal</b>.</li>
+<li><b>Development:</b> may be <b>direct</b> (young resemble adult) or <b>indirect</b>.</li>
+</ul>
+
+<h3>Examples</h3>
+<div class="tile-grid">
+<div class="tile">Ascaris<span class="tile-sub">roundworm</span></div>
+<div class="tile">Wuchereria<span class="tile-sub">filaria worm</span></div>
+<div class="tile">Ancylostoma<span class="tile-sub">hookworm</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78334">Exam ID clue: <b>pseudocoelomate + complete gut + dioecious</b> strongly points to Aschelminthes.</paragraph>
+</div>
+
+<hr/>
+
+<h2>Phylum – Annelida</h2>
+
+<h3>Habit and habitat</h3>
+<ul>
+<li>May be <b>aquatic</b> (marine/freshwater) or <b>terrestrial</b>; mostly <b>free-living</b>, sometimes <b>parasitic</b>.</li>
+</ul>
+
+<h3>Body plan and organisation</h3>
+<div class="tile-grid">
+<div class="tile">Organisation<span class="tile-sub"><b>organ-system level</b></span></div>
+<div class="tile">Symmetry<span class="tile-sub"><b>bilateral</b></span></div>
+<div class="tile">Germ layers<span class="tile-sub"><b>triploblastic</b></span></div>
+<div class="tile">Coelom<span class="tile-sub"><b>coelomate</b></span></div>
+<div class="tile">Segmentation<span class="tile-sub"><b>metamerically segmented</b> → repeated segments (<b>metameres</b>)</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78335"><b>Annelida</b> (Latin <i>annulus</i> = little ring): body surface distinctly marked into <b>segments</b> (metameres).</paragraph>
+</div>
+
+<h3>Locomotion</h3>
+<ul class="check-list">
+<li><b>Muscles:</b> <b>longitudinal</b> and <b>circular</b> muscles help movement.</li>
+<li><b>Parapodia:</b> aquatic annelids (e.g., <b>Nereis</b>) possess lateral appendages called <b>parapodia</b> for swimming.</li>
+</ul>
+
+<h3>Circulation</h3>
+<ul class="check-list">
+<li><b>Closed circulatory system</b> present.</li>
+</ul>
+
+<h3>Excretion and osmoregulation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78336"><b>Nephridia</b> (sing. <b>nephridium</b>) perform <b>osmoregulation</b> and <b>excretion</b> in annelids.</paragraph>
+</div>
+
+<h3>Nervous system</h3>
+<div class="flow-row">
+<div class="flow-box">Paired ganglia</div><span class="flow-arrow">→</span><div class="flow-box">Lateral nerves</div><span class="flow-arrow">→</span><div class="flow-box">Double ventral nerve cord</div>
+</div>
+<ul class="check-list">
+<li>Neural system: <b>paired ganglia</b> connected by lateral nerves to a <b>double ventral nerve cord</b>.</li>
+</ul>
+
+<h3>Reproduction</h3>
+<ul class="check-list">
+<li><b>Nereis</b> (aquatic) is <b>dioecious</b>.</li>
+<li><b>Earthworms</b> and <b>leeches</b> are <b>monoecious</b>.</li>
+<li>Reproduction is <b>sexual</b>.</li>
+</ul>
+
+<h3>Examples</h3>
+<ul class="star-list">
+<li><b>Nereis</b></li>
+<li><b>Pheretima</b> (earthworm)</li>
+<li><b>Hirudinaria</b> (blood sucking leech)</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78337">Common confusion: <b>Segmentation</b> occurs in Annelida and Arthropoda, but <b>Annelida has a closed circulatory system</b>, while Arthropoda typically has an open one.</paragraph>
+</div>
+
+<hr/>
+
+<h2>Phylum – Arthropoda</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78338"><b>Arthropoda</b> is the <b>largest phylum</b> of Animalia (includes insects). Over <b>two-thirds</b> of all named species on Earth are arthropods.</paragraph>
+</div>
+
+<h3>Body plan and organisation</h3>
+<div class="tile-grid">
+<div class="tile">Organisation<span class="tile-sub"><b>organ-system level</b></span></div>
+<div class="tile">Symmetry<span class="tile-sub"><b>bilateral</b></span></div>
+<div class="tile">Germ layers<span class="tile-sub"><b>triploblastic</b></span></div>
+<div class="tile">Segmentation<span class="tile-sub"><b>segmented</b></span></div>
+<div class="tile">Coelom<span class="tile-sub"><b>coelomate</b></span></div>
+</div>
+
+<h3>External covering and body regions</h3>
+<ul class="check-list">
+<li><b>Chitinous exoskeleton</b> covers the body.</li>
+<li>Body typically consists of <b>head, thorax, abdomen</b>.</li>
+<li><b>Jointed appendages</b> are characteristic (arthros = joint; poda = appendages).</li>
+</ul>
+
+<h3>Respiration</h3>
+<div class="tile-grid">
+<div class="tile">Gills<span class="tile-sub">respiratory organs in many aquatic arthropods</span></div>
+<div class="tile">Book gills<span class="tile-sub">lamellated respiratory structures</span></div>
+<div class="tile">Book lungs<span class="tile-sub">air-breathing lamellated organs</span></div>
+<div class="tile">Tracheal system<span class="tile-sub">network of air tubes (common in insects)</span></div>
+</div>
+
+<h3>Circulation</h3>
+<ul class="check-list">
+<li><b>Open circulatory system</b>.</li>
+</ul>
+
+<h3>Sensory organs</h3>
+<div class="tile-grid">
+<div class="tile">Antennae<span class="tile-sub">sensory feelers</span></div>
+<div class="tile">Eyes<span class="tile-sub">compound and simple</span></div>
+<div class="tile">Statocysts<span class="tile-sub">balancing organs</span></div>
+</div>
+
+<h3>Excretion</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78339"><b>Malpighian tubules</b> are excretory structures in arthropods.</paragraph>
+</div>
+
+<h3>Reproduction and development</h3>
+<ul class="check-list">
+<li><b>Mostly dioecious</b>.</li>
+<li><b>Fertilisation:</b> usually <b>internal</b>.</li>
+<li><b>Mostly oviparous</b> (egg-laying).</li>
+<li><b>Development:</b> may be <b>direct</b> or <b>indirect</b>.</li>
+</ul>
+
+<h3>Examples (with exam-significance labels)</h3>
+<div class="tile-grid">
+<div class="tile">Apis<span class="tile-sub">economically important insect: honey bee</span></div>
+<div class="tile">Bombyx<span class="tile-sub">economically important insect: silkworm</span></div>
+<div class="tile">Laccifer<span class="tile-sub">economically important insect: lac insect</span></div>
+<div class="tile">Anopheles / Culex / Aedes<span class="tile-sub">vectors: mosquitoes</span></div>
+<div class="tile">Locusta<span class="tile-sub">gregarious pest: locust</span></div>
+<div class="tile">Limulus<span class="tile-sub">living fossil: king crab</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7833a">“<b>Living fossil</b>” example in Arthropoda: <b>Limulus</b> (king crab).</paragraph>
+</div>
+
+<hr/>
+
+<h2>Phylum – Mollusca</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7833b"><b>Mollusca</b> is the <b>second largest</b> animal phylum. Molluscs are <b>terrestrial</b> or <b>aquatic</b> (marine/freshwater) with <b>organ-system level</b> of organisation.</paragraph>
+</div>
+
+<h3>Body plan and organisation</h3>
+<div class="tile-grid">
+<div class="tile">Symmetry<span class="tile-sub"><b>bilateral</b></span></div>
+<div class="tile">Germ layers<span class="tile-sub"><b>triploblastic</b></span></div>
+<div class="tile">Coelom<span class="tile-sub"><b>coelomate</b></span></div>
+<div class="tile">Body<span class="tile-sub"><b>unsegmented</b></span></div>
+</div>
+
+<h3>Body parts and coverings</h3>
+<ul class="check-list">
+<li>Body typically has a <b>distinct head</b>, <b>muscular foot</b>, and <b>visceral hump</b>.</li>
+<li>Usually covered by a <b>calcareous shell</b>.</li>
+<li><b>Mantle:</b> soft, spongy skin layer forming a covering over the visceral hump.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7833c"><b>Mantle cavity</b> = space between the visceral hump and mantle; contains <b>feather-like gills</b> and serves <b>respiratory</b> and <b>excretory</b> functions.</paragraph>
+</div>
+
+<h3>Sensory and feeding structures</h3>
+<ul class="check-list">
+<li><b>Sensory tentacles</b> on the anterior head region.</li>
+<li><b>Radula:</b> file-like rasping organ in the mouth used for feeding.</li>
+</ul>
+
+<h3>Reproduction and development</h3>
+<ul class="check-list">
+<li>Usually <b>dioecious</b>.</li>
+<li><b>Oviparous</b>.</li>
+<li><b>Development:</b> <b>indirect</b>.</li>
+</ul>
+
+<h3>Examples</h3>
+<div class="tile-grid">
+<div class="tile">Pila<span class="tile-sub">apple snail</span></div>
+<div class="tile">Pinctada<span class="tile-sub">pearl oyster</span></div>
+<div class="tile">Sepia<span class="tile-sub">cuttlefish</span></div>
+<div class="tile">Loligo<span class="tile-sub">squid</span></div>
+<div class="tile">Octopus<span class="tile-sub">devil fish</span></div>
+<div class="tile">Aplysia<span class="tile-sub">sea-hare</span></div>
+<div class="tile">Dentalium<span class="tile-sub">tusk shell</span></div>
+<div class="tile">Chaetopleura<span class="tile-sub">chiton</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd7833d">Do not forget the <b>functional pairing</b>: <b>mantle cavity + gills</b> are linked with <b>respiration AND excretion</b> in Mollusca.</paragraph>
+</div>
+
+<hr/>
+
+<h2>Phylum – Echinodermata</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7833e"><b>Echinodermata</b> (“spiny bodied”) have an <b>endoskeleton of calcareous ossicles</b>. All echinoderms are <b>marine</b>.</paragraph>
+</div>
+
+<h3>Body plan and organisation</h3>
+<ul class="check-list">
+<li><b>Organisation:</b> <b>organ-system level</b>.</li>
+<li><b>Germ layers:</b> <b>triploblastic</b>.</li>
+<li><b>Coelom:</b> <b>coelomate</b>.</li>
+<li><b>Symmetry:</b> adults <b>radially symmetrical</b>; larvae <b>bilaterally symmetrical</b>.</li>
+</ul>
+
+<h3>Digestive system orientation</h3>
+<div class="sticky-note">
+Think “<b>mouth down, anus up</b>” in most echinoderms: ventral feeding surface + dorsal exit.
+</div>
+<ul class="check-list">
+<li>Digestive system <b>complete</b>.</li>
+<li><b>Mouth:</b> on <b>lower (ventral)</b> side.</li>
+<li><b>Anus:</b> on <b>upper (dorsal)</b> side.</li>
+</ul>
+
+<h3>Water vascular system (most distinctive feature)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7833f"><b>Water vascular system</b> is the most distinctive feature of echinoderms; it helps in <b>locomotion</b>, <b>capture and transport of food</b>, and <b>respiration</b>.</paragraph>
+</div>
+
+<h3>Excretion, reproduction, development</h3>
+<ul class="check-list">
+<li><b>Excretory system:</b> <b>absent</b>.</li>
+<li><b>Sexes:</b> <b>separate</b>.</li>
+<li><b>Reproduction:</b> <b>sexual</b>.</li>
+<li><b>Fertilisation:</b> usually <b>external</b>.</li>
+<li><b>Development:</b> <b>indirect</b> with <b>free-swimming larva</b>.</li>
+</ul>
+
+<h3>Examples</h3>
+<div class="tile-grid">
+<div class="tile"><b>Asterias</b><span class="tile-sub">star fish</span></div>
+<div class="tile"><b>Echinus</b><span class="tile-sub">sea urchin</span></div>
+<div class="tile"><b>Antedon</b><span class="tile-sub">sea lily</span></div>
+<div class="tile"><b>Cucumaria</b><span class="tile-sub">sea cucumber</span></div>
+<div class="tile"><b>Ophiura</b><span class="tile-sub">brittle star</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78340">Echinodermata exam identifiers: <b>marine only + calcareous ossicles endoskeleton + water vascular system + adult radial/larval bilateral symmetry</b>.</paragraph>
+</div>
+
+<hr/>
+
+<h2>Phylum – Hemichordata</h2>
+
+<h3>Taxonomic position (historical note)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78341"><b>Hemichordata</b> was earlier considered a <b>sub-phylum under Chordata</b>, but is now placed as a <b>separate non-chordate phylum</b>.</paragraph>
+</div>
+
+<h3>Key structure: stomochord</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78342"><b>Stomochord</b> = a <b>rudimentary structure</b> in the collar region, <b>similar to a notochord</b> (but not a true notochord).</paragraph>
+</div>
+
+<h3>Body plan and organisation</h3>
+<ul class="check-list">
+<li>Small group of <b>worm-like marine</b> animals.</li>
+<li><b>Organisation:</b> <b>organ-system level</b>.</li>
+<li><b>Symmetry:</b> <b>bilateral</b>.</li>
+<li><b>Germ layers:</b> <b>triploblastic</b>.</li>
+<li><b>Coelom:</b> <b>coelomate</b>.</li>
+</ul>
+
+<div class="flow-row">
+<div class="flow-box"><b>Proboscis</b><br/><span class="tile-sub">anterior</span></div>
+<span class="flow-arrow">→</span>
+<div class="flow-box"><b>Collar</b></div>
+<span class="flow-arrow">→</span>
+<div class="flow-box"><b>Trunk</b><br/><span class="tile-sub">long</span></div>
+</div>
+
+<ul>
+<li>Body cylindrical; composed of <b>proboscis</b> (anterior), <b>collar</b>, and long <b>trunk</b>.</li>
+</ul>
+
+<h3>Physiology</h3>
+<ul class="check-list">
+<li><b>Circulatory system:</b> <b>open type</b>.</li>
+<li><b>Respiration:</b> through <b>gills</b>.</li>
+<li><b>Excretory organ:</b> <b>proboscis gland</b>.</li>
+</ul>
+
+<h3>Reproduction and development</h3>
+<ul class="check-list">
+<li><b>Sexes:</b> separate.</li>
+<li><b>Fertilisation:</b> external.</li>
+<li><b>Development:</b> indirect.</li>
+</ul>
+
+<h3>Examples</h3>
+<ul class="star-list">
+<li><b>Balanoglossus</b></li>
+<li><b>Saccoglossus</b></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78343">Hemichordata is <b>not</b> Chordata: presence of <b>stomochord</b> (not notochord) and placement as a <b>separate non-chordate phylum</b> are common exam traps.</paragraph>
+</div>
+
+<hr/>
+
+<h2>Phylum – Chordata (start)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78344">Animals of phylum <b>Chordata</b> are fundamentally characterised by the presence of a <b>notochord</b> and a <b>dorsal</b> … (continuation on next page/section).</paragraph>
+</div>
+
+<h2>Phylum Chordata: Fundamental Characters &amp; Subphyla</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78345"><b>Chordates</b> are animals that (at least at some stage) show the following key diagnostic features:</paragraph>
+<ul class="check-list">
+<li><b>Notochord</b></li>
+<li><b>Dorsal, hollow nerve cord</b></li>
+<li><b>Pharyngeal gill slits</b> (pharynx perforated)</li>
+<li><b>Post-anal tail</b></li>
+</ul>
+<paragraph id="6a8c169dc01a40070bd78346">General organisation mentioned for chordates here: <b>bilaterally symmetrical</b>, <b>triploblastic</b>, <b>coelomate</b>, with <b>organ-system level</b> of organisation, and typically a <b>closed circulatory system</b>.</paragraph>
+</div>
+
+<h3>Chordates vs Non-chordates (Salient Differences)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78347">These are standard exam comparisons; learn as direct point-wise contrasts.</paragraph>
+</div>
+
+<div class="tile-grid">
+<div class="tile">Notochord<span class="tile-sub">Chordates: present; Non-chordates: absent</span></div>
+<div class="tile">CNS position &amp; nature<span class="tile-sub">Chordates: dorsal, hollow, single; Non-chordates: ventral, solid, double</span></div>
+<div class="tile">Gill slits<span class="tile-sub">Chordates: pharynx perforated by gill slits; Non-chordates: absent</span></div>
+<div class="tile">Heart position<span class="tile-sub">Chordates: ventral; Non-chordates: dorsal (if present)</span></div>
+<div class="tile">Post-anal tail<span class="tile-sub">Chordates: present; Non-chordates: absent</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78348"><b>Common exam trap:</b> “Gill slits” in chordates refers to <b>pharyngeal</b> slits (pharynx perforations), not simply “gills” as an organ in fishes.</paragraph>
+</div>
+
+<h3>Subphyla of Chordata</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78349"><b>Phylum Chordata</b> is divided into <b>three subphyla</b>:</paragraph>
+<div class="tile-grid">
+<div class="tile">Urochordata (Tunicata)<span class="tile-sub">Protochordate; marine</span></div>
+<div class="tile">Cephalochordata<span class="tile-sub">Protochordate; marine</span></div>
+<div class="tile">Vertebrata<span class="tile-sub">Notochord in embryo; vertebral column in adult</span></div>
+</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7834a"><b>Protochordates</b> = <b>Urochordata + Cephalochordata</b>; they are <b>exclusively marine</b>.</paragraph>
+</div>
+
+<h3>Urochordata (Tunicata)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7834b"><b>Defining feature:</b> notochord is present <b>only in the larval tail</b> (not persistent in adult form).</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Examples:</b> <b>Ascidia</b>, <b>Salpa</b>, <b>Doliolum</b></li>
+</ul>
+
+<h3>Cephalochordata</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7834c"><b>Defining feature:</b> notochord extends from <b>head to tail</b> and is <b>persistent throughout life</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+<li><b>Example:</b> <b>Branchiostoma</b> (<b>Amphioxus</b> / <b>Lancelet</b>)</li>
+</ul>
+
+<h3>Vertebrata: Core Features</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7834d"><b>Vertebrates</b> possess a <b>notochord during embryonic period</b>, which is replaced in the adult by a <b>cartilaginous or bony vertebral column</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7834e"><b>Statement to learn:</b> <b>All vertebrates are chordates, but all chordates are not vertebrates.</b></paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7834f">In addition to basic chordate characters, vertebrates have:</paragraph>
+<ul class="check-list">
+<li><b>Ventral muscular heart</b> with <b>2, 3, or 4 chambers</b></li>
+<li><b>Kidneys</b> for <b>excretion</b> and <b>osmoregulation</b></li>
+<li><b>Paired appendages</b> (may be <b>fins</b> or <b>limbs</b>)</li>
+</ul>
+</div>
+
+<h2>Subphylum Vertebrata: Major Divisions &amp; Classes </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78350">The subphylum <b>Vertebrata</b> is divided into:</paragraph>
+
+<div class="flow-row">
+<div class="flow-box"><b>Agnatha</b><br/><span class="tile-sub">lacks jaw</span></div>
+<span class="flow-arrow">→</span>
+<div class="flow-box"><b>Class Cyclostomata</b></div>
+</div>
+
+<div class="flow-row">
+<div class="flow-box"><b>Gnathostomata</b><br/><span class="tile-sub">bears jaw</span></div>
+<span class="flow-arrow">→</span>
+<div class="flow-box"><b>Super Class Pisces</b><br/><span class="tile-sub">bear fins</span><br/>Classes: <b>Chondrichthyes</b>, <b>Osteichthyes</b></div>
+<span class="flow-arrow">→</span>
+<div class="flow-box"><b>Tetrapoda</b><br/><span class="tile-sub">bear limbs</span><br/>Classes: <b>Amphibia</b>, <b>Reptilia</b>, <b>Aves</b>, <b>Mammals</b></div>
+</div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78351">Exam writing tip: use the exact terms <b>Agnatha</b> (jawless) and <b>Gnathostomata</b> (jawed), then show Pisces vs Tetrapoda under Gnathostomata.</paragraph>
+</div>
+
+<h2>Class Cyclostomata (Jawless Vertebrates: Agnatha)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">Jawless vertebrates with a sucker-like circular mouth; modern forms are ectoparasites on fishes.</div>
+
+<div class="tile-grid">
+  <div class="tile">Lifestyle<span class="tile-sub">All living cyclostomes are <b>ectoparasites</b> on some fishes.</span></div>
+  <div class="tile">Body<span class="tile-sub">Elongated; bears <b>6–15 pairs</b> of gill slits for respiration.</span></div>
+  <div class="tile">Mouth<span class="tile-sub"><b>Sucking</b> + <b>circular</b>, <b>without jaws</b>.</span></div>
+  <div class="tile">Covering/appendages<span class="tile-sub">Devoid of <b>scales</b> and <b>paired fins</b>.</span></div>
+  <div class="tile">Endoskeleton<span class="tile-sub"><b>Cranium and vertebral column cartilaginous</b>.</span></div>
+  <div class="tile">Circulation<span class="tile-sub"><b>Closed</b> type.</span></div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Marine habitat</div><span class="flow-arrow">→</span><div class="flow-box">Migrate to fresh water for spawning</div><span class="flow-arrow">→</span><div class="flow-box">Adults die within a few days</div><span class="flow-arrow">→</span><div class="flow-box">Larvae metamorphose</div><span class="flow-arrow">→</span><div class="flow-box">Return to ocean</div>
+</div>
+
+<ul class="star-list">
+  <li><b>Examples:</b> <b>Petromyzon</b> (Lamprey), <b>Myxine</b> (Hagfish)</li>
+</ul>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169dc01a40070bd78352"><b>Link to lifestyle:</b> The “<b>sucking circular mouth without jaws</b>” fits their <b>ectoparasitic</b> habit—attachment to host fish while feeding.</paragraph>
+</div>
+
+
+
+<h2>Class Chondrichthyes (Cartilaginous Fishes: Pisces)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">Cartilaginous fishes: marine, predaceous, with placoid scales and separate gill slits (no operculum).</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub"><b>Marine</b></span></div>
+  <div class="tile">Body<span class="tile-sub"><b>Streamlined</b></span></div>
+  <div class="tile">Endoskeleton<span class="tile-sub"><b>Cartilaginous</b></span></div>
+  <div class="tile">Mouth position<span class="tile-sub"><b>Ventral</b></span></div>
+  <div class="tile">Notochord<span class="tile-sub"><b>Persistent throughout life</b></span></div>
+  <div class="tile">Gills<span class="tile-sub">Gill slits <b>separate</b>; <b>no operculum</b> (no gill cover)</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Skin<span class="tile-sub">Tough; minute <b>placoid scales</b></span></div>
+  <div class="tile">Teeth<span class="tile-sub">Modified placoid scales; <b>backwardly directed</b>; jaws very powerful</span></div>
+  <div class="tile">Feeding<span class="tile-sub">Generally <b>predaceous</b></span></div>
+  <div class="tile">Buoyancy<span class="tile-sub"><b>Air bladder absent</b> → must <b>swim constantly</b> to avoid sinking</span></div>
+  <div class="tile">Heart<span class="tile-sub"><b>Two-chambered</b> (one auricle + one ventricle)</span></div>
+  <div class="tile">Temperature<span class="tile-sub"><b>Cold-blooded</b> (<b>poikilothermous</b>) = lack capacity to regulate body temperature</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Special structures<span class="tile-sub">Electric organs in some (e.g., <b>Torpedo</b>); poison sting in some (e.g., <b>Trygon</b>)</span></div>
+  <div class="tile">Sexes<span class="tile-sub">Separate; in males, <b>pelvic fins bear claspers</b></span></div>
+  <div class="tile">Fertilisation<span class="tile-sub"><b>Internal</b>; many are <b>viviparous</b></span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Examples:</b> <b>Scoliodon</b> (Dog fish), <b>Pristis</b> (Saw fish), <b>Carcharodon</b> (Great white shark), <b>Trygon</b> (Sting ray)</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78353"><b>Don’t mix up:</b> <b>Placoid scales</b> (Chondrichthyes) vs <b>cycloid/ctenoid scales</b> (Osteichthyes); and <b>no operculum</b> (Chondrichthyes) vs <b>operculum present</b> (Osteichthyes).</paragraph>
+</div>
+
+
+
+<h2>Class Osteichthyes (Bony Fishes: Pisces)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">Bony fishes with operculum-covered gills and an air bladder for buoyancy (marine + freshwater).</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub"><b>Marine</b> and <b>fresh water</b></span></div>
+  <div class="tile">Endoskeleton<span class="tile-sub"><b>Bony</b></span></div>
+  <div class="tile">Body<span class="tile-sub"><b>Streamlined</b></span></div>
+  <div class="tile">Mouth<span class="tile-sub">Mostly <b>terminal</b></span></div>
+  <div class="tile">Gills<span class="tile-sub"><b>Four pairs</b>; covered by an <b>operculum</b> on each side</span></div>
+  <div class="tile">Skin<span class="tile-sub"><b>Cycloid/ctenoid scales</b></span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Air bladder<span class="tile-sub">Present; regulates <b>buoyancy</b></span></div>
+  <div class="tile">Heart<span class="tile-sub"><b>Two-chambered</b> (one auricle + one ventricle)</span></div>
+  <div class="tile">Temperature<span class="tile-sub"><b>Cold-blooded</b></span></div>
+  <div class="tile">Sexes<span class="tile-sub">Separate</span></div>
+  <div class="tile">Fertilisation<span class="tile-sub">Usually <b>external</b></span></div>
+  <div class="tile">Reproduction + development<span class="tile-sub">Mostly <b>oviparous</b>; development <b>direct</b></span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78354"><b>High-yield contrasts (with Chondrichthyes):</b> bony endoskeleton, <b>operculum</b>, and <b>air bladder</b> are signature Osteichthyes points.</paragraph>
+</div>
+
+<h3>Examples</h3>
+<div class="tile-grid">
+  <div class="tile">Marine<span class="tile-sub"><b>Exocoetus</b> (Flying fish), <b>Hippocampus</b> (Sea horse)</span></div>
+  <div class="tile">Freshwater<span class="tile-sub"><b>Labeo</b> (Rohu), <b>Catla</b> (Katla), <b>Clarias</b> (Magur)</span></div>
+  <div class="tile">Aquarium<span class="tile-sub"><b>Betta</b> (Fighting fish), <b>Pterophyllum</b> (Angel fish)</span></div>
+</div>
+
+
+
+<h2>Class Amphibia (Tetrapoda)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">Name meaning: (Greek) <b>Amphi</b> = dual, <b>bios</b> = life → live in <b>aquatic</b> as well as <b>terrestrial</b> habitats.</div>
+
+<div class="tile-grid">
+  <div class="tile">Limbs<span class="tile-sub">Most have <b>two pairs</b></span></div>
+  <div class="tile">Body regions<span class="tile-sub"><b>Head</b> + <b>trunk</b>; tail may be present in some</span></div>
+  <div class="tile">Skin<span class="tile-sub"><b>Moist</b>, <b>without scales</b></span></div>
+  <div class="tile">Eyes<span class="tile-sub">Have <b>eyelids</b></span></div>
+  <div class="tile">Ear<span class="tile-sub"><b>Tympanum</b> represents the ear</span></div>
+  <div class="tile">Cloaca<span class="tile-sub">Alimentary canal, urinary &amp; reproductive tracts open into common chamber <b>cloaca</b> opening to exterior</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Respiration<span class="tile-sub">By <b>gills</b>, <b>lungs</b>, and <b>through skin</b></span></div>
+  <div class="tile">Heart<span class="tile-sub"><b>Three-chambered</b> (two auricles + one ventricle)</span></div>
+  <div class="tile">Temperature<span class="tile-sub"><b>Cold-blooded</b></span></div>
+  <div class="tile">Sexes<span class="tile-sub">Separate</span></div>
+  <div class="tile">Fertilisation<span class="tile-sub"><b>External</b></span></div>
+  <div class="tile">Reproduction + development<span class="tile-sub"><b>Oviparous</b>; development <b>indirect</b></span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Examples:</b> <b>Bufo</b> (Toad), <b>Rana</b> (Frog), <b>Hyla</b> (Tree frog), <b>Salamandra</b> (Salamander), <b>Ichthyophis</b> (Limbless amphibia)</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78355"><b>Exam pitfall:</b> Amphibia typically show <b>external fertilisation</b> and <b>indirect development</b> (larval stage), unlike reptiles (internal fertilisation, direct development).</paragraph>
+</div>
+
+
+
+<h2>Class Reptilia (Tetrapoda)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">Name meaning: creeping/crawling locomotion (Latin <b>repere/reptum</b> = to creep/crawl).</div>
+
+<div class="tile-grid">
+  <div class="tile">Habitat<span class="tile-sub">Mostly terrestrial</span></div>
+  <div class="tile">Skin<span class="tile-sub"><b>Dry</b> and <b>cornified</b>, with <b>epidermal scales or scutes</b></span></div>
+  <div class="tile">External ear openings<span class="tile-sub"><b>Absent</b></span></div>
+  <div class="tile">Ear<span class="tile-sub"><b>Tympanum</b> represents ear</span></div>
+  <div class="tile">Limbs<span class="tile-sub">When present, <b>two pairs</b></span></div>
+  <div class="tile">Heart<span class="tile-sub">Usually <b>three-chambered</b>, but <b>four-chambered in crocodiles</b></span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Temperature<span class="tile-sub"><b>Poikilotherms</b></span></div>
+  <div class="tile">Shedding<span class="tile-sub">Snakes and lizards shed scales as <b>skin cast</b></span></div>
+  <div class="tile">Sexes<span class="tile-sub">Separate</span></div>
+  <div class="tile">Fertilisation<span class="tile-sub"><b>Internal</b></span></div>
+  <div class="tile">Reproduction + development<span class="tile-sub"><b>Oviparous</b>; development <b>direct</b></span></div>
+</div>
+
+<h3>Examples</h3>
+<div class="tile-grid">
+  <div class="tile">Reptiles<span class="tile-sub"><b>Chelone</b> (Turtle), <b>Testudo</b> (Tortoise), <b>Chameleon</b> (Tree lizard), <b>Calotes</b> (Garden lizard), <b>Crocodilus</b> (Crocodile), <b>Alligator</b> (Alligator), <b>Hemidactylus</b> (Wall lizard)</span></div>
+  <div class="tile">Poisonous snakes<span class="tile-sub"><b>Naja</b> (Cobra), <b>Bangarus</b> (Krait), <b>Vipera</b> (Viper)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169dc01a40070bd78356"><b>One-line differentiator often asked:</b> Reptiles have <b>dry, cornified, scaly skin</b> and <b>internal fertilisation</b> with <b>direct development</b>.</paragraph>
+</div>
+
+
+
+<h2>Class Aves (Tetrapoda):</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">Birds: feathered, warm-blooded, with wings and a fully ossified (pneumatic) skeleton.</div>
+
+<div class="tile-grid">
+  <div class="tile">Feathers<span class="tile-sub">Characteristic; most can fly, except <b>flightless birds</b> (e.g., <b>Ostrich</b>)</span></div>
+  <div class="tile">Beak<span class="tile-sub">Present</span></div>
+  <div class="tile">Forelimbs<span class="tile-sub">Modified into <b>wings</b></span></div>
+  <div class="tile">Hind limbs<span class="tile-sub">Generally have <b>scales</b>; modified for <b>walking</b>, <b>swimming</b>, or <b>clasping tree branches</b></span></div>
+  <div class="tile">Skin<span class="tile-sub">Dry, <b>without glands</b> except <b>oil gland</b> at base of tail</span></div>
+  <div class="tile">Endoskeleton<span class="tile-sub">Fully <b>ossified (bony)</b>; long bones <b>hollow</b> with air cavities (<b>pneumatic</b>)</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Digestive tract<span class="tile-sub">Additional chambers: <b>crop</b> and <b>gizzard</b></span></div>
+  <div class="tile">Heart<span class="tile-sub">Completely <b>four-chambered</b></span></div>
+  <div class="tile">Temperature<span class="tile-sub"><b>Warm-blooded (homoiothermous)</b> → maintain constant body temperature</span></div>
+  <div class="tile">Respiration<span class="tile-sub">Stated as “Respiration is by …” (continues beyond this page in the next portion)</span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169dc01a40070bd78357">Write exactly: <b>“Skin is dry without glands except the oil gland at the base of the tail.”</b> This phrasing is commonly used for marking schemes.</paragraph>
+</div>
+
+<h2>Class – Aves (Birds): Key Features &amp; Examples </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78358"><b>Respiration:</b> By <b>lungs</b>; <b>air sacs</b> connected to lungs <b>supplement respiration</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd78359"><b>Sexes:</b> Separate (dioecious).</paragraph>
+<paragraph id="6a8c169dc01a40070bd7835a"><b>Fertilisation:</b> <b>Internal</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd7835b"><b>Reproduction:</b> <b>Oviparous</b> (egg-laying).</paragraph>
+<paragraph id="6a8c169dc01a40070bd7835c"><b>Development:</b> <b>Direct</b> (no larval stage/metamorphosis).</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Lungs</div><span class="flow-arrow">→</span><div class="flow-box">Air sacs connected</div><span class="flow-arrow">→</span><div class="flow-box">Respiration supplemented (efficient airflow)</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7835d"><b>Exam linkage:</b> “Air sacs + lungs” is a high-yield phrase for birds—air sacs do not replace lungs; they <b>assist</b> respiration and help maintain efficient airflow.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile"><i>Corvus</i><span class="tile-sub">Crow</span></div>
+  <div class="tile"><i>Columba</i><span class="tile-sub">Pigeon</span></div>
+  <div class="tile"><i>Psittacula</i><span class="tile-sub">Parrot</span></div>
+  <div class="tile"><i>Struthio</i><span class="tile-sub">Ostrich</span></div>
+  <div class="tile"><i>Pavo</i><span class="tile-sub">Peacock</span></div>
+  <div class="tile"><i>Aptenodytes</i><span class="tile-sub">Penguin</span></div>
+  <div class="tile"><i>Neophron</i><span class="tile-sub">Vulture</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd7835e"><b>Common confusion:</b> “Direct development” ≠ “internal development.” Birds are oviparous (external development in egg) yet have <b>direct development</b> (no larva).</paragraph>
+</div>
+
+<h2>Class – Mammalia</h2>
+
+<h3>Habitat &amp; Adaptations</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7835f"><b>Distribution:</b> Mammals occur in a wide variety of habitats—<b>polar ice caps, deserts, mountains, forests, grasslands, dark caves</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd78360"><b>Special adaptations:</b> Some mammals are adapted to <b>fly</b> or <b>live in water</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Polar ice caps<span class="tile-sub">habitat range</span></div>
+  <div class="tile">Deserts<span class="tile-sub">habitat range</span></div>
+  <div class="tile">Mountains<span class="tile-sub">habitat range</span></div>
+  <div class="tile">Forests<span class="tile-sub">habitat range</span></div>
+  <div class="tile">Grasslands<span class="tile-sub">habitat range</span></div>
+  <div class="tile">Dark caves<span class="tile-sub">habitat range</span></div>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c169dc01a40070bd78361"><b>Real-life anchoring:</b> Mammals range from <b>blue whale</b> (fully aquatic) to <b>bat</b> (true flight) to <b>camel</b> (desert), showing how a single class can diversify while retaining core mammalian traits.</paragraph>
+</div>
+
+<h3>Unique Mammalian Characteristics</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78362"><b>Most unique characteristic:</b> Presence of <b>milk-producing glands</b> (<b>mammary glands</b>) that nourish the young.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78363"><b>If asked “most unique/defining feature of mammals”</b> → write <b>mammary glands</b> (not hair, not viviparity—because exceptions exist).</paragraph>
+</div>
+
+<h3>External Morphology &amp; Limbs</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78364"><b>Limbs:</b> Mammals have <b>two pairs of limbs</b> adapted for multiple functions.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Walking<span class="tile-sub">limb adaptation</span></div>
+  <div class="tile">Running<span class="tile-sub">limb adaptation</span></div>
+  <div class="tile">Climbing<span class="tile-sub">limb adaptation</span></div>
+  <div class="tile">Burrowing<span class="tile-sub">limb adaptation</span></div>
+  <div class="tile">Swimming<span class="tile-sub">limb adaptation</span></div>
+  <div class="tile">Flying<span class="tile-sub">limb adaptation</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78365"><b>Skin:</b> Unique in possessing <b>hair</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd78366"><b>External ears:</b> <b>Pinnae</b> present.</paragraph>
+<paragraph id="6a8c169dc01a40070bd78367"><b>Dentition:</b> <b>Different types of teeth</b> present in the jaw (heterodont condition).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78368"><b>Exam tip:</b> If a question asks “unique skin feature of mammals,” write <b>hair</b>. If it asks “unique mammalian feature overall,” write <b>mammary glands</b>.</paragraph>
+</div>
+
+<h3>Internal Features: Circulation, Thermoregulation, Respiration</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78369"><b>Heart:</b> <b>Four-chambered</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd7836a"><b>Thermoregulation:</b> <b>Homoiothermous</b> (warm-blooded; maintains near-constant body temperature).</paragraph>
+<paragraph id="6a8c169dc01a40070bd7836b"><b>Respiration:</b> By <b>lungs</b>.</paragraph>
+</div>
+
+<h3>Reproduction &amp; Development</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd7836c"><b>Sexes:</b> Separate.</paragraph>
+<paragraph id="6a8c169dc01a40070bd7836d"><b>Fertilisation:</b> <b>Internal</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd7836e"><b>Reproduction:</b> <b>Viviparous</b> with <b>few exceptions</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd7836f"><b>Development:</b> <b>Direct</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78370"><b>Exception to “mammals are viviparous” given here:</b> <b><i>Ornithorhynchus</i> (Platypus)</b> is <b>oviparous</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Examples (Oviparous mammal):</b> <i>Ornithorhynchus</i> (Platypus)</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile"><i>Macropus</i><span class="tile-sub">Kangaroo (viviparous)</span></div>
+  <div class="tile"><i>Pteropus</i><span class="tile-sub">Flying fox (viviparous)</span></div>
+  <div class="tile"><i>Camelus</i><span class="tile-sub">Camel (viviparous)</span></div>
+  <div class="tile"><i>Macaca</i><span class="tile-sub">Monkey (viviparous)</span></div>
+  <div class="tile"><i>Rattus</i><span class="tile-sub">Rat (viviparous)</span></div>
+  <div class="tile"><i>Canis</i><span class="tile-sub">Dog (viviparous)</span></div>
+  <div class="tile"><i>Felis</i><span class="tile-sub">Cat (viviparous)</span></div>
+  <div class="tile"><i>Elephas</i><span class="tile-sub">Elephant (viviparous)</span></div>
+  <div class="tile"><i>Equus</i><span class="tile-sub">Horse (viviparous)</span></div>
+  <div class="tile"><i>Delphinus</i><span class="tile-sub">Common dolphin (viviparous)</span></div>
+  <div class="tile"><i>Balaenoptera</i><span class="tile-sub">Blue whale (viviparous)</span></div>
+  <div class="tile"><i>Panthera tigris</i><span class="tile-sub">Tiger (viviparous)</span></div>
+  <div class="tile"><i>Panthera leo</i><span class="tile-sub">Lion (viviparous)</span></div>
+</div>
+
+<h3>Phylum-wise diagnostic features </h3>
+
+<div class="tile-grid">
+  <div class="tile">Porifera<span class="tile-sub">Cellular level • Various symmetry • Acoelomate • No segmentation • No digestive/circulatory/respiratory system • <b>Pores + canals</b></span></div>
+  <div class="tile">Coelenterata (Cnidaria)<span class="tile-sub">Tissue level • Radial symmetry • Acoelomate • No segmentation • <b>Incomplete</b> digestive • No circulatory/respiratory system • <b>Cnidoblasts</b></span></div>
+  <div class="tile">Ctenophora<span class="tile-sub">Tissue level • Radial symmetry • Acoelomate • No segmentation • <b>Incomplete</b> digestive • No circulatory/respiratory system • <b>Comb plates</b></span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Platyhelminthes<span class="tile-sub">Organ level • Bilateral symmetry • <b>Acoelomate</b> • No segmentation • <b>Incomplete</b> digestive • No circulatory/respiratory system • <b>Flat body + suckers</b></span></div>
+  <div class="tile">Aschelminthes<span class="tile-sub">Organ-system level • Bilateral symmetry • <b>Pseudocoelomate</b> • No segmentation • <b>Complete</b> digestive • No circulatory/respiratory system • Often worm-shaped, elongated</span></div>
+  <div class="tile">Annelida<span class="tile-sub">Organ-system level • Bilateral symmetry • <b>Coelomate</b> • <b>Segmentation present</b> • <b>Complete</b> digestive • Circulation present • Respiratory absent (as per table) • <b>Ring-like segments</b></span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Arthropoda<span class="tile-sub">Organ-system level • Bilateral symmetry • Coelomate • Segmentation present • <b>Complete</b> digestive • Circulation present • Respiration present • <b>Cuticle exoskeleton + jointed appendages</b></span></div>
+  <div class="tile">Mollusca<span class="tile-sub">Organ-system level • Bilateral symmetry • Coelomate • No segmentation • <b>Complete</b> digestive • Circulation present • Respiration present • External skeleton of <b>shell</b> usually present</span></div>
+  <div class="tile">Echinodermata<span class="tile-sub">Organ-system level • <b>Radial</b> symmetry • Coelomate • No segmentation • <b>Complete</b> digestive • Circulation present • Respiration present • <b>Water vascular system</b> + radial symmetry</span></div>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Hemichordata<span class="tile-sub">Organ-system level • Bilateral symmetry • Coelomate • No segmentation • <b>Complete</b> digestive • Circulation present • Respiration present • Worm-like: <b>proboscis + collar + trunk</b></span></div>
+  <div class="tile">Chordata<span class="tile-sub">Organ-system level • Bilateral symmetry • Coelomate • <b>Segmentation present</b> • <b>Complete</b> digestive • Circulation present • Respiration present • <b>Notochord + dorsal hollow nerve cord + gill slits</b> with limbs or fins</span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78371"><b>Fast discriminator (spot-the-word rule):</b></paragraph>
+<ul class="star-list">
+<li>“<b>water vascular system</b>” → <b>Echinodermata</b></li>
+<li>“<b>cnidoblasts</b>” → <b>Cnidaria</b></li>
+<li>“<b>comb plates</b>” → <b>Ctenophora</b></li>
+<li>“<b>pores/canals</b>” → <b>Porifera</b></li>
+<li>“<b>jointed appendages</b>” → <b>Arthropoda</b></li>
+<li>“<b>proboscis-collar-trunk</b>” → <b>Hemichordata</b></li>
+</ul>
+</div>
+
+<h2>Chapter Summary </h2>
+
+<h3>Basis of broad classification</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78372">Broad classification of Animal Kingdom is enabled by <b>fundamental features</b> such as:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Level of organisation<span class="tile-sub">cellular / tissue / organ-system level</span></div>
+  <div class="tile">Symmetry<span class="tile-sub">body plan arrangement</span></div>
+  <div class="tile">Cell organisation<span class="tile-sub">cell characteristics used in grouping</span></div>
+  <div class="tile">Coelom<span class="tile-sub">body cavity type</span></div>
+  <div class="tile">Segmentation<span class="tile-sub">metameric repetition</span></div>
+  <div class="tile">Notochord<span class="tile-sub">key chordate marker</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd78373">Additionally, each phylum/class has many <b>distinctive characters</b> specific to it.</paragraph>
+</div>
+
+<h3>Phylum-wise recap </h3>
+
+<div class="flow-row">
+  <div class="flow-box">Porifera</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Cnidaria</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Ctenophora</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Platyhelminthes</div>
+</div>
+
+<ul class="check-list">
+  <li><b>Porifera:</b> Multicellular; <b>cellular level</b> organisation; characteristic <b>flagellated choanocytes</b>.</li>
+  <li><b>Coelenterates (Cnidaria):</b> Tentacles; <b>cnidoblasts</b>; mostly aquatic; <b>sessile</b> or <b>free-floating</b>.</li>
+  <li><b>Ctenophores:</b> Marine animals with <b>comb plates</b>.</li>
+  <li><b>Platyhelminths:</b> <b>Flat body</b>; <b>bilateral symmetry</b>; parasitic forms show distinct <b>suckers and hooks</b>.</li>
+</ul>
+
+<div class="flow-row">
+  <div class="flow-box">Aschelminthes</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Annelida</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Arthropoda</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Mollusca</div>
+</div>
+
+<ul class="check-list">
+  <li><b>Aschelminthes:</b> <b>Pseudocoelomates</b>; include parasitic and non-parasitic <b>roundworms</b>.</li>
+  <li><b>Annelids:</b> <b>Metamerically segmented</b>; <b>true coelom</b>.</li>
+  <li><b>Arthropods:</b> <b>Most abundant</b> group; characterised by <b>jointed appendages</b>.</li>
+  <li><b>Molluscs:</b> <b>Soft body</b> surrounded by an <b>external calcareous shell</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c169dc01a40070bd78374"><b>Do not mix phyla:</b> “External skeleton made of chitin” is associated with arthropods (exoskeleton). Molluscs are highlighted here by a <b>calcareous shell</b> and <b>soft body</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Echinodermata</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Hemichordata</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Chordata</div>
+</div>
+
+<ul class="check-list">
+  <li><b>Echinoderms:</b> <b>Spiny skin</b>; most distinctive feature is <b>water vascular system</b>.</li>
+  <li><b>Hemichordates:</b> Small group; worm-like marine animals; cylindrical body with <b>proboscis, collar and trunk</b>.</li>
+  <li><b>Chordata:</b> Have a <b>notochord</b> throughout life or during early embryonic life; also show <b>dorsal hollow nerve cord</b> and paired <b>pharyngeal gill slits</b>.</li>
+</ul>
+
+<h3>Chordata: Major divisions mentioned</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78375"><b>Agnatha vs Gnathostomata (jawless vs jawed vertebrates):</b></paragraph>
+<ul class="check-list">
+  <li><b>Some vertebrates do not possess jaws</b> → <b>Agnatha</b></li>
+  <li><b>Most possess jaws</b> → <b>Gnathostomata</b></li>
+</ul>
+<paragraph id="6a8c169dc01a40070bd78376"><b>Agnatha</b> is represented by the class <b>Cyclostomata</b> (most primitive chordates; <b>ectoparasites on fishes</b>).</paragraph>
+<paragraph id="6a8c169dc01a40070bd78377"><b>Gnathostomata</b> has two superclasses: <b>Pisces</b> and <b>Tetrapoda</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Cyclostomata<span class="tile-sub">Agnatha; ectoparasites on fishes</span></div>
+  <div class="tile">Pisces<span class="tile-sub">fins for locomotion</span></div>
+  <div class="tile">Tetrapoda<span class="tile-sub">two pairs of limbs</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169dc01a40070bd78378"><b>Pisces:</b> Classes <b>Chondrichthyes</b> and <b>Osteichthyes</b>; both bear <b>fins</b> for locomotion.</paragraph>
+<paragraph id="6a8c169dc01a40070bd78379"><b>Chondrichthyes:</b> Fishes with <b>cartilaginous endoskeleton</b> and are <b>marine</b>.</paragraph>
+<paragraph id="6a8c169dc01a40070bd7837a"><b>Tetrapoda:</b> Classes <b>Amphibia, Reptilia, Aves, Mammalia</b>; have <b>two pairs of limbs</b>.</paragraph>
+</div>
+
+<h3>Key class-wise points </h3>
+
+<div class="sticky-note">
+Quick memory hook: <b>Tetrapoda</b> = “<b>two pairs of limbs</b>” → think “<b>4 limbs</b> blueprint”.
+</div>
+
+<ul class="check-list">
+  <li><b>Amphibians:</b> Adapted to live both on <b>land and water</b>.</li>
+  <li><b>Reptiles:</b> <b>Dry and cornified skin</b>; <b>limbs absent in snakes</b>.</li>
+  <li><b>Thermoregulation:</b> <b>Fishes, amphibians and reptiles</b> are <b>poikilothermous</b> (cold-blooded).</li>
+  <li><b>Aves:</b> <b>Warm-blooded</b>; body covered with <b>feathers</b>; forelimbs modified into <b>wings</b> for flying; hind limbs adapted for <b>walking, swimming, perching or clasping</b>.</li>
+  <li><b>Mammals:</b> Unique features—<b>mammary glands</b> and <b>hairs</b>; commonly show <b>viviparity</b>.</li>
+</ul>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+  <span class="mnemonic-word">FAR</span>
+  <div class="mnemonic-expand">
+    F — Fishes (poikilothermous / cold-blooded)<br/>
+    A — Amphibians (poikilothermous / cold-blooded)<br/>
+    R — Reptiles (poikilothermous / cold-blooded)
+  </div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7837b">Warm vs cold: “<b>FAR</b> are cold” → <b>F</b>ishes, <b>A</b>mphibians, <b>R</b>eptiles = poikilothermous. (Then <b>Aves + Mammalia</b> = warm-blooded.)</paragraph>
+</div>
+
+<h2>Exercise-linked exam cues (from the listed end-of-chapter items; concepts implied in this portion)</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169dc01a40070bd7837c">Although exercises themselves are excluded from revision content, the <b>themes</b> appearing here often become exam questions; ensure you can answer these using the notes above:</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Segmentation first appears</b> at phylum level: from Table 4.2, <b>present in Annelida</b> (and also in Arthropoda and Chordata, but <b>first observed</b> among listed options is <b>Annelida</b>).</li>
+  <li><b>Water vascular system</b> identifies <b>Echinodermata</b>.</li>
+  <li><b>“All vertebrates are chordates but all chordates are not vertebrates”</b> links to the defining chordate features (<b>notochord, dorsal hollow nerve cord, pharyngeal gill slits</b>)—vertebrates are a subset within chordates.</li>
+</ul>
+  </div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

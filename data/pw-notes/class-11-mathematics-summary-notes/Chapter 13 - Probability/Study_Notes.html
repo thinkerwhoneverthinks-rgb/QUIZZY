@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-14 : Probability</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929e8bf9b32e124e93c257/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929e8bf9b32e124e93c257/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-14 : Probability</h1>
+
+<h2>14.1 Event</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="7c6e115f5b3c0995b4cd48dd"><b>Event:</b> any subset <b>E</b> of the sample space <b>S</b>.</paragraph>
+  <paragraph id="d5f1830758cada3afc5a1118">Since <b>S</b> is the universal set, every question in the experiment = pick some outcomes from <b>S</b> ⇒ a subset of <b>S</b>.</paragraph>
+</div>
+
+<paragraph id="854812b9d6b6cdd96b7baaeb"><b>Example (toss a coin twice):</b> sample space</paragraph>
+<paragraph id="128eaeba7ed38223424e52c9">S = {HH, HT, TH, TT}</paragraph>
+<paragraph id="6e90f3ca8fe0e3e6b4cf7eac">“Exactly one head” ⇒ favourable outcomes: HT, TH ⇒</paragraph>
+<paragraph id="3bc1e72fd420dc2acdbe51eb">E = {HT, TH} (subset of S)</paragraph>
+
+<paragraph id="a04cb9adb50a64c31b91343d"><b>More event ↔ subset links (same experiment):</b></paragraph>
+<ul>
+  <li>Number of tails is exactly 2: A = {TT}</li>
+  <li>Number of tails is at least 1: B = {HT, TH, TT}</li>
+  <li>Number of heads is at most 1: C = {HT, TH, TT}</li>
+  <li>Second toss is not head: D = {HT, TT}</li>
+  <li>Number of tails is at most 2: S = {HH, HT, TH, TT} (whole sample space)</li>
+  <li>Number of tails is more than 2: φ (empty set)</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="02438570c971d45fec756f81">An <b>event</b> is <b>not</b> a single outcome unless it has only one sample point. Usually it’s a <b>set of outcomes</b> (subset of S).</paragraph>
+</div>
+
+<h3>14.1.1 Occurrence of an event</h3>
+<paragraph id="840ace3455c5937abac2061c">Throw a die. Let E be: “number less than 4 appears”.</paragraph>
+<paragraph id="44e9b3346e7f094f071c5b6d">If outcome is 1, 2, or 3 ⇒ event E has occurred.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="a22b346635f2dd3ee757154b">Let the outcome be ω.</paragraph>
+  <ul>
+    <li>Event <b>E occurs</b> if <b>ω ∈ E</b>.</li>
+    <li>Event <b>E does not occur</b> if <b>ω ∉ E</b>.</li>
+  </ul>
+</div>
+
+<h3>14.1.2 Types of events</h3>
+
+<h3>1. Impossible and Sure Events</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Impossible event:</b> empty set <b>φ</b>.</li>
+    <li><b>Sure event:</b> whole sample space <b>S</b>.</li>
+  </ul>
+</div>
+
+<paragraph id="106e1ebc241b72b3c082bae4"><b>Example (roll a die):</b> S = {1, 2, 3, 4, 5, 6}</paragraph>
+<ul>
+  <li>E: “number is a multiple of 7” → none fit → E = φ (impossible)</li>
+  <li>F: “number is odd or even” → all fit → F = S (sure)</li>
+</ul>
+
+<h3>2. Simple (Elementary) Event</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="349f4fae02e7a4404ed52f8a"><b>Simple elementary event:</b> event with exactly <b>one</b> sample point.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="a33626fbb4f9d2fde3e2c61a">If a sample space has <b>n</b> distinct elements, then there are exactly <b>n simple events</b> (one per sample point).</paragraph>
+</div>
+
+<paragraph id="01738b57aa687f57cbb29fba"><b>Example (toss two coins):</b> S = {HH, HT, TH, TT}</paragraph>
+<paragraph id="0c48f9d1df14c9deebd21a52">Simple events:</paragraph>
+<ul>
+  <li>E<sub>1</sub> = {HH}</li>
+  <li>E<sub>2</sub> = {HT}</li>
+  <li>E<sub>3</sub> = {TH}</li>
+  <li>E<sub>4</sub> = {TT}</li>
+</ul>
+
+<h3>3. Compound Event</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="a67642ce912b617e71e88d15"><b>Compound event:</b> event with <b>more than one</b> sample point.</paragraph>
+</div>
+
+<paragraph id="c830db5310b18e294d8cc0c4"><b>Example (toss a coin thrice):</b></paragraph>
+<paragraph id="29ece36fba60f674e7838ad2">E: “Exactly one head appeared”</paragraph>
+<paragraph id="8328cf186821bfcbbbe58666">F: “At least one head appeared”</paragraph>
+<paragraph id="dbecf27b45388413ac931cec">G: “At most one head appeared”</paragraph>
+<paragraph id="5c4683333694745674643a67">Associated subsets:</paragraph>
+<ul>
+  <li>E = {HTT, THT, TTH}</li>
+  <li>F = {HTT, THT, TTH, HHT, HTH, THH, HHH}</li>
+  <li>G = {TTT, THT, HTT, TTH}</li>
+</ul>
+<paragraph id="1601e1fa26969ad850e90bd7">Each has &gt; 1 sample point ⇒ each is a compound event.</paragraph>
+
+<h2>14.1.3 Algebra of events</h2>
+<paragraph id="e1b59581a915f56af1972263">Events are subsets of S ⇒ combine them using set operations.</paragraph>
+<paragraph id="630104372c45080f88366f14">Let A, B, C be events for an experiment with sample space S.</paragraph>
+
+<h3>1. Complementary event (Not A)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="fdd68d1468d8053aa5b9f6f3">For any event <b>A</b>, its complement (“<b>not A</b>”) is <b>A′</b> = all outcomes in <b>S</b> that are <b>not</b> in <b>A</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="2b3081ddd3c66baecdafb057"><b>A′ = {ω : ω ∈ S and ω ∉ A} = S − A</b></paragraph>
+  <paragraph id="36385c82f3dcdea0de6aab54">ω: outcome (sample point)</paragraph>
+  <paragraph id="b1682d47129772a0b0c39bf2">S: sample space</paragraph>
+  <paragraph id="aa7cd824df285b8b53accd3b">A: event</paragraph>
+  <paragraph id="18367ff137a3a63bb9a17a76">A′: complement of A</paragraph>
+</div>
+
+<paragraph id="1024ddfd917be2defde48390"><b>Example (toss three coins):</b></paragraph>
+<paragraph id="8ba72ee8d3bc4bd0b21046c9">S = {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT}</paragraph>
+<paragraph id="82f277fdf9b4e05e6df3589f">Let A = {HTH, HHT, THH} be “only one tail appears”.</paragraph>
+<paragraph id="974ab3aaa51c47e6235cfc1b">Then “not A” = outcomes not in A:</paragraph>
+<paragraph id="de9a45b62ad5a6eb6cf3baab">A′ = {HHH, HTT, THT, TTH, TTT}</paragraph>
+
+<h3>2. The event “A or B”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="08d772c185ceaa2991466c6f">“A or B” means: outcome is in A, or in B, or in both.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="ee169bfff4161967a9973bdf"><b>Event ‘A or B’ = A ∪ B = {ω : ω ∈ A or ω ∈ B}</b></paragraph>
+  <paragraph id="1d4a4e172541e31ee903dfed">∪: union (take outcomes from either event)</paragraph>
+</div>
+
+<h3>3. The event “A and B”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="7fcb63d4ccd4cb63169dba44">“A and B” means: outcome lies in both A and B at the same time.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="0548663eb7977d916859964a"><b>A ∩ B = {ω : ω ∈ A and ω ∈ B}</b></paragraph>
+  <paragraph id="843f6d5a7fa87f5fe1bb4832">∩: intersection (common outcomes)</paragraph>
+</div>
+
+<paragraph id="b474c7f642304413135dd65c"><b>Worked example (throw a die twice):</b></paragraph>
+<ul>
+  <li>A: “first throw is six”<br/>A = {(6,1), (6,2), (6,3), (6,4), (6,5), (6,6)}</li>
+  <li>B: “sum of two scores is at least 11”<br/>B = {(5,6), (6,5), (6,6)}</li>
+</ul>
+<paragraph id="6e1204fbafb92bde7e37e2e0">Common outcomes:</paragraph>
+<paragraph id="b05bd98100488a43e7c92c9a">A ∩ B = {(6,5), (6,6)}</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="925f2a2980cd9ebaed23b330">Meaning: A ∩ B = “first throw is 6 <b>and</b> total ≥ 11”. Must satisfy <b>both</b>.</paragraph>
+</div>
+
+<h3>4. The event “A but not B”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="dc422410d28ec6c1e22cb8aa">“A but not B” = outcomes in A and not in B ⇒ set difference <b>A − B</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="68b7bf0535de622a1633d9b0"><b>A − B = A ∩ B′</b></paragraph>
+  <paragraph id="f1b52c82feb5d63075261960">A − B: outcomes in A excluding those in B</paragraph>
+  <paragraph id="55da914d4256666a7cdf7cc2">B′: complement of B</paragraph>
+</div>
+
+<h3>Example 1 (die): combining events</h3>
+<paragraph id="3a9f94ca17e6f46875d16ea3"><b>Experiment:</b> roll a die</paragraph>
+<paragraph id="c854d2297f4ef50943079b5c">S = {1, 2, 3, 4, 5, 6}</paragraph>
+<paragraph id="09fa1596bf1fd205b0be6e0c">A: “prime number” → A = {2, 3, 5}</paragraph>
+<paragraph id="aa22aaba150134bb84a5e319">B: “odd number” → B = {1, 3, 5}</paragraph>
+<paragraph id="68472254af69fb9c64e322fd">Required event-sets:</paragraph>
+<ul>
+  <li>(i) “A or B” = A ∪ B = {1, 2, 3, 5}</li>
+  <li>(ii) “A and B” = A ∩ B = {3, 5}</li>
+  <li>(iii) “A but not B” = A − B = {2}</li>
+  <li>(iv) “not A” = A′ = {1, 4, 6}</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="3ba0aeb0600a234c5c8159bb">Common exam error: mixing up <b>A − B</b> and <b>B − A</b>. Read it literally: “A but not B”. Here A − B = {2}, but B − A = {1}.</paragraph>
+</div>
+
+<h2>14.1.4 Mutually exclusive events</h2>
+<paragraph id="0337c3f5042f2c61e7a87622"><b>Example (roll a die):</b> S = {1, 2, 3, 4, 5, 6}</paragraph>
+<paragraph id="390602218b131d71b5442e35">A: “odd number” → A = {1, 3, 5}</paragraph>
+<paragraph id="88276b71ea8674c4dffa036b">B: “even number” → B = {2, 4, 6}</paragraph>
+<paragraph id="9335e8cdf0e3893de0a3b1b4">No outcome can be both odd and even ⇒</paragraph>
+<paragraph id="448e8397a76d15e64e0d0415">A ∩ B = φ</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="7be7a6c11b0da1a8743e45ab"><b>Mutually exclusive events:</b> events A and B where one happening excludes the other (can’t occur together).</paragraph>
+  <paragraph id="58d91e6ccc3503e126ac9387">Equivalently (disjoint sets): <b>A ∩ B = φ</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="aaa0839760becf0710503764">Mutually exclusive ≠ independent. If events are mutually exclusive (with nonzero probabilities), when one happens the other cannot.</paragraph>
+</div>
+
+<h2>Mutually Exclusive Events (Non-overlapping events)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="82a25762dcea8b18e01c5538"><b>Mutually exclusive events</b> = events that cannot occur together in the same trial.</paragraph>
+  <paragraph id="642fd778d3cc481671175adb">Equivalently: A and B are mutually exclusive if <b>A ∩ B = φ</b>.</paragraph>
+</div>
+
+<paragraph id="8fb1ba01f10c564bdac66c2f"><b>Die example:</b> roll a die.</paragraph>
+<ul>
+  <li>A: “odd number appears” ⇒ A = {1, 3, 5}</li>
+  <li>B: “number less than 4 appears” ⇒ B = {1, 2, 3}</li>
+  <li>Since 3 ∈ A and 3 ∈ B ⇒ A ∩ B ≠ φ ⇒ <b>A and B are not mutually exclusive</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="d96c88bf88dbbd36c94ddb77"><b>Remark:</b> Simple (elementary) events in a sample space are always mutually exclusive (one outcome can’t be two different simple outcomes at once).</paragraph>
+</div>
+
+<h2>Exhaustive Events</h2>
+
+<h3>Definition and conditions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8b36a305bf105004d326dd">Events E<sub>1</sub>, E<sub>2</sub>, …, E<sub>n</sub> in sample space S are <b>exhaustive</b> if they cover the whole sample space:</paragraph>
+  <paragraph id="b4af6416414ea3fb53b2eecf"><b>E<sub>1</sub> ∪ E<sub>2</sub> ∪ … ∪ E<sub>n</sub> = S</b></paragraph>
+  <paragraph id="dc4862a50bee7eb8152d43bc">Meaning: when the experiment happens, <b>at least one</b> of these events must happen.</paragraph>
+</div>
+
+<paragraph id="938616fa408dfe868e9429ea"><b>Die example:</b> Throw a die, S = {1, 2, 3, 4, 5, 6}.</paragraph>
+<ul>
+  <li>A: “number &lt; 4” ⇒ A = {1, 2, 3}</li>
+  <li>B: “number &gt; 2 but &lt; 5” ⇒ B = {3, 4}</li>
+  <li>C: “number &gt; 4” ⇒ C = {5, 6}</li>
+  <li>A ∪ B ∪ C = {1,2,3} ∪ {3,4} ∪ {5,6} = {1,2,3,4,5,6} = S</li>
+  <li>So A, B, C are <b>exhaustive</b>.</li>
+</ul>
+
+<h3>Mutually Exclusive and Exhaustive Events (Partition-type)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="0aa87b8b29a23f0f6ac8d3b8">If events E<sub>1</sub>, E<sub>2</sub>, …, E<sub>n</sub> satisfy:</paragraph>
+  <ul>
+    <li><b>E<sub>i</sub> ∩ E<sub>j</sub> = φ</b> for i ≠ j (pairwise disjoint ⇒ mutually exclusive), and</li>
+    <li><b>⋃<sub>i=1</sub><sup>n</sup> E<sub>i</sub> = S</b> (exhaustive),</li>
+  </ul>
+  <paragraph id="cb7f27121fabcc54d0288418">then they are called <b>mutually exclusive and exhaustive events</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="e16a8449808364aba6845cb7">Do not mix these up:</paragraph>
+  <ul>
+    <li><b>Mutually exclusive</b> ⇒ cannot happen together (intersection = empty).</li>
+    <li><b>Exhaustive</b> ⇒ together cover all outcomes (union = S).</li>
+    <li>Can be exhaustive but <b>not</b> mutually exclusive (overlap allowed) — in the die example, A and B overlap at 3.</li>
+  </ul>
+</div>
+
+<h2>Worked Examples on Mutually Exclusive / Exhaustive Events</h2>
+
+<h3>Example 2: Two dice; identify mutually exclusive pairs</h3>
+<paragraph id="682257ca92af7e812a1afdb1"><b>Experiment:</b> Throw two dice; outcome is ordered pair (x, y), x, y ∈ {1,2,3,4,5,6}. So |S| = 36,</paragraph>
+<paragraph id="f609b04e3220fed52084b8a8">S = {(x, y): x, y = 1, 2, 3, 4, 5, 6}.</paragraph>
+
+<paragraph id="b6c7bd795d6787ecf7b4da75">Events:</paragraph>
+<ul>
+  <li>A: “sum is even”</li>
+  <li>B: “sum is a multiple of 3”</li>
+  <li>C: “sum is less than 4”</li>
+  <li>D: “sum is greater than 11”</li>
+</ul>
+
+<paragraph id="c2655da1034b38009d8b5c23"><b>Write events as sets of outcomes:</b></paragraph>
+<ul>
+  <li>
+    <paragraph id="8b7060ccfe2b4a67a369ebcb"><b>A</b> (even sum):</paragraph>
+    <paragraph id="519f380b8b99a1e85ccd984c">{(1,1), (1,3), (1,5), (2,2), (2,4), (2,6), (3,1), (3,3), (3,5), (4,2), (4,4), (4,6), (5,1), (5,3), (5,5), (6,2), (6,4), (6,6)}</paragraph>
+  </li>
+  <li>
+    <paragraph id="d88294b35cd023b5e39d6876"><b>B</b> (sum multiple of 3):</paragraph>
+    <paragraph id="c8232bc76c72a75a1953f710">{(1,2), (2,1), (1,5), (5,1), (3,3), (2,4), (4,2), (3,6), (6,3), (4,5), (5,4), (6,6)}</paragraph>
+  </li>
+  <li>
+    <paragraph id="af6ad6821f3f1489733a120a"><b>C</b> (sum &lt; 4 i.e., 2 or 3):</paragraph>
+    <paragraph id="78ab13292bbe085c95ad40d6">{(1,1), (2,1), (1,2)}</paragraph>
+  </li>
+  <li>
+    <paragraph id="2d1a69a6cb42d333852e778c"><b>D</b> (sum &gt; 11 i.e., 12):</paragraph>
+    <paragraph id="a4e2f7352cb2174c95126c21">{(6,6)}</paragraph>
+  </li>
+</ul>
+
+<paragraph id="10072e805928b5ad320a0bd7"><b>Check intersections (mutual exclusivity test):</b></paragraph>
+<ul>
+  <li>
+    <paragraph id="c6a91d623b7df6d7c590c569">A ∩ B = {(1,5), (2,4), (3,3), (4,2), (5,1), (6,6)} ≠ φ</paragraph>
+    <paragraph id="264edcc071f7e44fc4699efb">So <b>A and B are not mutually exclusive</b>.</paragraph>
+  </li>
+  <li>
+    <paragraph id="81d56c1d9d6ba935f1d8644f">Similarly, A ∩ C ≠ φ, A ∩ D ≠ φ, B ∩ C ≠ φ, and B ∩ D ≠ φ, so pairs (A,C), (A,D), (B,C), (B,D) are <b>not</b> mutually exclusive.</paragraph>
+  </li>
+  <li>
+    <paragraph id="667bf06ab5181a1c2bf2c898">C ∩ D = φ, so <b>C and D are mutually exclusive</b>.</paragraph>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="c9bc5c61fd6f066f4221d516">Exam method: events are mutually exclusive <b>only if you show the intersection is empty</b>. One shared outcome ⇒ not mutually exclusive.</paragraph>
+</div>
+
+<h3>Example 3: Three coin tosses; mutually exclusive and exhaustive?</h3>
+<paragraph id="6a669f1a204b80d13c079da7"><b>Experiment:</b> Toss a coin three times.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="5eb4ff2f7274c00eaf24a8c4">Sample space (all 3-length H/T strings):</paragraph>
+  <paragraph id="33e62ee0b53dc460f38fdae3">S = {HHH, HHT, HTH, THH, HTT, THT, TTH, TTT}</paragraph>
+</div>
+
+<paragraph id="5f6afd864897be00b1e2db30">Events:</paragraph>
+<ul>
+  <li>A: “No head appears” ⇒ A = {TTT}</li>
+  <li>B: “Exactly one head appears” ⇒ B = {HTT, THT, TTH}</li>
+  <li>C: “At least two heads appear” ⇒ C = {HHT, HTH, THH, HHH}</li>
+</ul>
+
+<paragraph id="64ca2fb09b249ea3e9aa0419"><b>Exhaustive?</b></paragraph>
+<ul>
+  <li>A ∪ B ∪ C = {TTT, HTT, THT, TTH, HHT, HTH, THH, HHH} = S</li>
+  <li>So A, B, C are <b>exhaustive</b>.</li>
+</ul>
+
+<paragraph id="ca135b8bc38cf2b95d9b6aee"><b>Mutually exclusive?</b></paragraph>
+<ul>
+  <li>A ∩ B = φ, A ∩ C = φ, B ∩ C = φ</li>
+  <li>So pairwise disjoint ⇒ <b>mutually exclusive</b>.</li>
+</ul>
+
+<paragraph id="7956712994ea06b3d8bc5378"><b>Conclusion:</b> A, B, C are <b>mutually exclusive and exhaustive events</b>.</paragraph>
+
+<h2>Axiomatic Approach to Probability</h2>
+
+<h3>Motivation</h3>
+<paragraph id="60d73d31d9ecadde5aad1506">Probability measures the “chance” an event happens/doesn’t happen. In the <b>axiomatic approach</b>, we assign probabilities using basic rules (axioms), not only by counting outcomes.</paragraph>
+
+<h3>Axioms of Probability (Kolmogorov axioms as stated)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="b8de6208f3ed6a9785950dd9">Let S be the sample space. A probability function P is real-valued with:</paragraph>
+  <ul>
+    <li><b>Domain:</b> power set of S (all events)</li>
+    <li><b>Range:</b> [0, 1]</li>
+  </ul>
+  <paragraph id="2f35146e2bf97f67ea239bb6">Axioms:</paragraph>
+  <ol>
+    <li>For any event E, <b>P(E) ≥ 0</b></li>
+    <li><b>P(S) = 1</b></li>
+    <li>If E and F are mutually exclusive, then <b>P(E ∪ F) = P(E) + P(F)</b></li>
+  </ol>
+</div>
+
+<h3>Result: Probability of the impossible event</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="3ad65b1560828f6d935039b4"><b>Derived result:</b> P(φ) = 0.</paragraph>
+</div>
+<paragraph id="213f68ad4607b995fc096af3"><b>Proof using axiom (iii):</b> Let F = φ. Since E and φ are disjoint,</paragraph>
+<paragraph id="c189409170f7ac0a0a28271b">P(E ∪ φ) = P(E) + P(φ)</paragraph>
+<paragraph id="395e69b1b0a477054c95d82c">But E ∪ φ = E, so P(E) = P(E) + P(φ) ⇒ <b>P(φ) = 0</b>.</paragraph>
+
+<h3>Finite sample space: probabilities of outcomes and events</h3>
+<paragraph id="1e76149cd14d188a0f97d528">Let S = {ω<sub>1</sub>, ω<sub>2</sub>, …, ω<sub>n</sub>}.</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="995eeac65b9706fb5fd177db">From the axioms:</paragraph>
+  <ol>
+    <li>For each ω<sub>i</sub> ∈ S: <b>0 ≤ P(ω<sub>i</sub>) ≤ 1</b></li>
+    <li><b>P(ω<sub>1</sub>) + P(ω<sub>2</sub>) + … + P(ω<sub>n</sub>) = 1</b></li>
+    <li>For any event A ⊆ S: <b>P(A) = ∑ P(ω<sub>i</sub>)</b> over all ω<sub>i</sub> ∈ A</li>
+  </ol>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="b49acc343621989251458b1d"><b>Note:</b> {ω<sub>i</sub>} is an <b>elementary event</b>. We usually write P(ω<sub>i</sub>) instead of P({ω<sub>i</sub>}).</paragraph>
+</div>
+
+<h3>Coin tossing: multiple valid assignments</h3>
+<paragraph id="d7e994b89159e90dc58b0bf3">For one coin toss: outcomes are H and T.</paragraph>
+<ul>
+  <li>Valid: \(P(H) = \dfrac{1}{2}\), \(P(T) = \dfrac{1}{2}\) (0 ≤ probs ≤ 1 and P(H)+P(T)=1).</li>
+  <li>Also valid: \(P(H) = \dfrac{1}{4}\), \(P(T) = \dfrac{3}{4}\) (still satisfies axioms).</li>
+  <li>In general: P(H) = p and P(T) = (1 − p), where 0 ≤ p ≤ 1 ⇒ p + (1 − p) = 1.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="963b67a783c498a7896f1d75">Axiomatic approach does <b>not</b> force equal probabilities unless the situation says so (e.g., “fair coin”). Many different assignments can still satisfy the axioms.</paragraph>
+</div>
+
+<h2>Example 4: Validity of probability assignments (finite sample space)</h2>
+<paragraph id="0d2772b29a37f8af57c50bb3">Sample space S = {ω<sub>1</sub>, ω<sub>2</sub>, …, ω<sub>6</sub>}. Decide if assignments are valid using:</paragraph>
+<ul>
+  <li><b>Condition (i):</b> each P(ω<sub>i</sub>) must satisfy 0 ≤ P(ω<sub>i</sub>) ≤ 1</li>
+  <li><b>Condition (ii):</b> Σ P(ω<sub>i</sub>) = 1</li>
+</ul>
+
+<h3>(a) Assignment: \(\dfrac{1}{6}, \dfrac{1}{6}, \dfrac{1}{6}, \dfrac{1}{6}, \dfrac{1}{6}, \dfrac{1}{6}\)</h3>
+<ul>
+  <li>Each is &gt; 0 and &lt; 1 ⇒ condition (i) OK.</li>
+  <li>Sum \(= \dfrac{1}{6} + \dfrac{1}{6} + \dfrac{1}{6} + \dfrac{1}{6} + \dfrac{1}{6} + \dfrac{1}{6} = 1\) ⇒ condition (ii) OK.</li>
+  <li><b>Valid assignment.</b></li>
+</ul>
+
+<h3>(b) Assignment: 1, 0, 0, 0, 0, 0</h3>
+<ul>
+  <li>All are 0 or 1 ⇒ still within [0,1] ⇒ condition (i) OK.</li>
+  <li>Sum = 1 + 0 + 0 + 0 + 0 + 0 = 1 ⇒ condition (ii) OK.</li>
+  <li><b>Valid assignment.</b></li>
+</ul>
+
+<h3>(c) Assignment: \(\dfrac{1}{8}, \dfrac{2}{3}, \dfrac{1}{3}, \dfrac{1}{3}, -\dfrac{1}{3}, -\dfrac{1}{3}\)</h3>
+<ul>
+  <li>Two probabilities are negative (P(ω<sub>5</sub>), P(ω<sub>6</sub>)) ⇒ breaks condition (i).</li>
+  <li><b>Not valid.</b></li>
+</ul>
+
+<h3>(d) Assignment: \(\dfrac{1}{12}, \dfrac{1}{12}, \dfrac{1}{6}, \dfrac{1}{6}, \dfrac{1}{6}, \dfrac{3}{2}\)</h3>
+<ul>
+  <li>\(P(\omega_6) = \dfrac{3}{2} &gt; 1\) ⇒ breaks condition (i).</li>
+  <li><b>Not valid.</b></li>
+</ul>
+
+<h3>(e) Assignment: 0.1, 0.2, 0.3, 0.4, 0.5, 0.6</h3>
+<div class="remember-box">
+  <paragraph id="e2f1664d1f485d20553e8d66">The text lists this assignment but the worked solution continues beyond this portion. For exam use, apply the axioms: each value is in [0,1], but the sum is 0.1+0.2+0.3+0.4+0.5+0.6 = 2.1 ≠ 1, so it would be <b>not valid</b>.</paragraph>
+</div>
+
+<h2>14.2.1 Probability of an event</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="836139c2c500f0804a708453"><b>Probability of an event (axiomatic setting):</b> Sample space <b>S</b> has outcomes (sample points) <b>ω</b>, each with a probability <b>P(ω)</b> (satisfying the axioms). For any event <b>E ⊆ S</b>,</paragraph>
+  <paragraph id="705037adc70a957afff32c1f"><b>P(E)</b> = <b>sum of the probabilities of all outcomes inside E</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="2e36869e5051b43ed7983584"><b>Probability of an event by summation</b></paragraph>
+  <paragraph id="5a80095185ca18c387550613">P(E) = ∑ P(ωi), for all ωi ∈ E</paragraph>
+  <paragraph id="75c3ddf76da2611dd85aef95">Where:</paragraph>
+  <paragraph id="45d4a8cbdf03f7045b831d6a">E = event (subset of S)</paragraph>
+  <paragraph id="156ebe70c21051da33c3f6cd">ωi = outcomes (sample points) contained in E</paragraph>
+  <paragraph id="5a820cd951be3b30a19c6e59">P(ωi) = probability assigned to outcome ωi</paragraph>
+</div>
+
+<h3>Worked illustration: 3 pens (Good/Bad) with assigned probabilities</h3>
+<paragraph id="3af59b62d4489fe9f7e38ba4">Experiment: check <b>three consecutive pens</b> from a machine; label each as:</paragraph>
+<ul>
+  <li><b>B</b> = bad/defective pen</li>
+  <li><b>G</b> = good/non-defective pen</li>
+</ul>
+
+<paragraph id="52a2ee67bedc4f9502decc41">Sample space:</paragraph>
+<paragraph id="76adf7eb295c90c10c3792d4">S = {BBB, BBG, BGB, GBB, BGG, GBG, GGB, GGG}</paragraph>
+<paragraph id="3a9ee14e1d080f7713522bb2">Given probabilities: each sample point has probability <b>\(\dfrac{1}{8}\)</b>.</paragraph>
+
+<paragraph id="1fd6b5d54390bd19264300b9">Define events:</paragraph>
+<ul>
+  <li><b>A</b>: “exactly one defective pen” = {BGG, GBG, GGB}</li>
+  <li><b>B</b>: “at least two defective pens” = {BBG, BGB, GBB, BBB}</li>
+</ul>
+
+<paragraph id="34ec032d6777a7b02217cbb0">Compute:</paragraph>
+<ul>
+  <li>
+    <paragraph id="19cba52d0d492b57a4357cc7">\(P(A) = P(BGG) + P(GBG) + P(GGB) = \dfrac{1}{8} + \dfrac{1}{8} + \dfrac{1}{8} = \dfrac{3}{8}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="e4d7979a13d27d0d195729a6">\(P(B) = P(BBG) + P(BGB) + P(GBB) + P(BBB) = \dfrac{1}{8} + \dfrac{1}{8} + \dfrac{1}{8} + \dfrac{1}{8} = \dfrac{4}{8} = \dfrac{1}{2}\)</paragraph>
+  </li>
+</ul>
+
+<h3>Worked illustration: coin tossed twice with non-uniform probabilities</h3>
+<paragraph id="09a855271db71cb7157ebf98">Experiment: toss a coin twice.</paragraph>
+<paragraph id="5259dd15eea8eb935ef11c85">Sample space: S = {HH, HT, TH, TT}</paragraph>
+
+<paragraph id="73ea5eba6efcc68899ac79e5">Assigned probabilities (given):</paragraph>
+<ul>
+  <li>\(P(HH) = \dfrac{1}{4}\)</li>
+  <li>\(P(HT) = \dfrac{1}{7}\)</li>
+  <li>\(P(TH) = \dfrac{2}{7}\)</li>
+  <li>\(P(TT) = \dfrac{9}{28}\)</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="f12b00cb7d2ea4f367406290">This assignment is valid because it follows the axioms (each probability is in [0,1], and they sum to 1).</paragraph>
+</div>
+
+<paragraph id="812259d09e9a53ba296b7c4d">Event E: “Both tosses yield the same result”</paragraph>
+<ul>
+  <li>E = {HH, TT}</li>
+  <li>\(P(E) = P(HH) + P(TT) = \dfrac{1}{4} + \dfrac{9}{28} = \dfrac{7}{28} + \dfrac{9}{28} = \dfrac{16}{28} = \dfrac{4}{7}\)</li>
+</ul>
+
+<paragraph id="ae2b299e7118cf9c4ab3456c">Event F: “exactly two heads”</paragraph>
+<ul>
+  <li>F = {HH}</li>
+  <li>\(P(F) = P(HH) = \dfrac{1}{4}\)</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="e1b374851e466112c6dd5842"><b>Exam tip:</b> “Exactly two heads” in two tosses means <b>HH only</b> (NOT “at least two heads”).</paragraph>
+</div>
+
+<h2>14.2.2 Probabilities of equally likely outcomes</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="3bee696a27f06df6cd168692"><b>Equally likely outcomes:</b> If S = {ω1, ω2, …, ωn} and all outcomes are equally likely, then each <b>P(ωi)</b> is the same constant.</paragraph>
+</div>
+
+<h3>Deriving probability of each outcome</h3>
+<paragraph id="21f84ddb245445015b432bba">If all outcomes are equally likely, let:</paragraph>
+<paragraph id="a2b83daa0f332d15b6ea6e1a">P(ωi) = p for all ωi ∈ S, with 0 ≤ p ≤ 1.</paragraph>
+
+<paragraph id="eaccb6198e38fca24a532f03">Use total probability of the sample space:</paragraph>
+<paragraph id="db819b6d33581671c13448e9">P(ω<sub>1</sub>)+P(ω<sub>2</sub>)+…+P(ω<sub>n</sub>) = 1</paragraph>
+
+<paragraph id="37be90ddc7f0cd22d2ea6e08">So:</paragraph>
+<paragraph id="f6921ec5f28506309bc5b1ea">p + p + … + p (n times) = 1 ⇒ np = 1 ⇒ \(p = \dfrac{1}{n}\)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="c94b6eb89a8ad802c3fa9735"><b>Equally likely outcome probability</b></paragraph>
+  <paragraph id="fa2b4eb85c3a1cd72c27b526">P(ωi) = 1/n</paragraph>
+  <paragraph id="60d554587c713e4f09cd582b">Where:</paragraph>
+  <paragraph id="e3d44341e01f3d52206cd32e">n = total number of outcomes in sample space S</paragraph>
+  <paragraph id="ea93c95eab30eb0fe28b6147">ωi = any single outcome in S</paragraph>
+</div>
+
+<h3>Classical probability formula for an event</h3>
+<paragraph id="c32c397fcf147d2efb216439">If n(S) = n and n(E) = m and outcomes are equally likely, then:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="001b9ff16ff2c291142dca7a"><b>Probability with equally likely outcomes</b></paragraph>
+  <paragraph id="e04966ff6bd3dc27688ba614">\(P(E) = \dfrac{m}{n} = \dfrac{\text{Number of outcomes favourable to E}}{\text{Total possible outcomes}}\)</paragraph>
+  <paragraph id="42d816335656bf3cfbbf3ec8">Where:</paragraph>
+  <paragraph id="d649bc4dd2c123b89b4914c5">n(S) = total number of outcomes</paragraph>
+  <paragraph id="35cd1fab8f916d97d4cef7da">n(E) = number of outcomes in event E</paragraph>
+  <paragraph id="c6cc1dcea5836301f7d77296">m = n(E), n = n(S)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="b3569fd1ca4b4e2ae8907a36"><b>Common mistake:</b> Using \(\dfrac{m}{n}\) when outcomes are <b>not</b> equally likely. If probabilities differ, you must add \(P(\omega)\) over \(\omega \in E\).</paragraph>
+</div>
+
+<h2>14.2.3 Probability of the event ‘A or B’</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="f763fb58fd9637104200aea3"><b>“A or B”</b> means <b>A ∪ B</b> = at least one of A, B happens (maybe both).</paragraph>
+</div>
+
+<h3>Example (coin tossed thrice) showing why addition can overcount</h3>
+<paragraph id="2946e0d9d116b28bcb60666a">Experiment: toss a coin thrice (8 equally likely outcomes).</paragraph>
+
+<paragraph id="11367e0eb2b493bacf33ff63">Given events:</paragraph>
+<ul>
+  <li>A = {HHT, HTH, THH}</li>
+  <li>B = {HTH, THH, HHH}</li>
+</ul>
+
+<paragraph id="acf09d36e18afa123c5cbd01">Union:</paragraph>
+<paragraph id="c94043d4f12c9b332bebfb7b">A ∪ B = {HHT, HTH, THH, HHH}</paragraph>
+
+<paragraph id="ce0c10216e4c77d75cb6b996">If outcomes are equally likely, each outcome has probability \(\dfrac{1}{8}\). So:</paragraph>
+<ul>
+  <li>\(P(A \cup B) = 4 \times \dfrac{1}{8} = \dfrac{4}{8} = \dfrac{1}{2}\)</li>
+  <li>\(P(A) = 3 \times \dfrac{1}{8} = \dfrac{3}{8}\)</li>
+  <li>\(P(B) = 3 \times \dfrac{1}{8} = \dfrac{3}{8}\)</li>
+  <li>\(P(A) + P(B) = \dfrac{6}{8} = \dfrac{3}{4}\)</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="dbfce4ffc7ad5f87709a5b0b">P(A ∪ B) ≠ P(A) + P(B) here, because shared outcomes get counted twice in P(A)+P(B).</paragraph>
+</div>
+
+<paragraph id="f88c7609bcb626488146707a">Common outcomes:</paragraph>
+<ul>
+  <li>A ∩ B = {HTH, THH}</li>
+</ul>
+<paragraph id="3998208c2f438c8280d9251b">Fix the double count by subtracting P(A ∩ B).</paragraph>
+
+<h3>Addition law of probability (general result)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="55d30a895c229f0ea3ce1ba8"><b>Addition law (two events)</b></paragraph>
+  <paragraph id="58bf338b73f084d5ecf934b1">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</paragraph>
+  <paragraph id="04f5e097e994f79dadcdaa2a">Where:</paragraph>
+  <paragraph id="fe004d9641ea449f9aa05194">A, B = events</paragraph>
+  <paragraph id="020e812b7e80870df4cee556">A ∪ B = event that A occurs or B occurs (or both)</paragraph>
+  <paragraph id="841a58b7d08bb95ee7f4ee61">A ∩ B = event that both A and B occur</paragraph>
+</div>
+
+<h3>Reasoning via partition into mutually exclusive parts</h3>
+<paragraph id="6ca83d44e76033706ab5d72e">Split the union into disjoint parts:</paragraph>
+<paragraph id="4e64f313f4598df54bb14273">A ∪ B = (A − B) ∪ (A ∩ B) ∪ (B − A)</paragraph>
+
+<paragraph id="ec5c43cf9401b5fdb2ed898e">These three sets are mutually exclusive, so probabilities add.</paragraph>
+
+<paragraph id="abb35114ef885825a0476ad2">Also:</paragraph>
+<ul>
+  <li>P(A ∪ B) = P(A − B) + P(A ∩ B) + P(B − A) … (1)</li>
+  <li>P(A) + P(B) = [P(A − B) + P(A ∩ B)] + [P(B − A) + P(A ∩ B)] = P(A ∪ B) + P(A ∩ B)</li>
+</ul>
+
+<paragraph id="669fa9e49f0bc8470a6d140d">Hence:</paragraph>
+<paragraph id="578a6e4c63ab31f549f3a841">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</paragraph>
+
+<h3>Alternative proof using Axiom (iii)</h3>
+<paragraph id="279f4cdfef8beda55537ed0c">Use these mutually exclusive unions:</paragraph>
+<ul>
+  <li>A ∪ B = A ∪ (B − A), where A and (B − A) are mutually exclusive</li>
+  <li>B = (A ∩ B) ∪ (B − A), where (A ∩ B) and (B − A) are mutually exclusive</li>
+</ul>
+
+<paragraph id="cadcbb89587db5b9fc911200">Then by Axiom (iii):</paragraph>
+<ul>
+  <li>P(A ∪ B) = P(A) + P(B − A) … (2)</li>
+  <li>P(B) = P(A ∩ B) + P(B − A) … (3)</li>
+</ul>
+
+<paragraph id="d04142292f3597ebc6639f50">Subtract (3) from (2):</paragraph>
+<paragraph id="a31983431e1ac36ab56feac1">P(A ∪ B) − P(B) = P(A) − P(A ∩ B)</paragraph>
+
+<paragraph id="85fe7c8895f68ad108cbc36c">So:</paragraph>
+<paragraph id="7f3cd608b86106d6dc6f8e86">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</paragraph>
+
+<h3>Special case: mutually exclusive (disjoint) events</h3>
+<paragraph id="f3e056a1a3dffa61ec2eb178">If A and B are disjoint, then A ∩ B = φ, so P(A ∩ B) = P(φ) = 0.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="78718dafea46c3051c388d5e"><b>Addition law for mutually exclusive events</b></paragraph>
+  <paragraph id="074c805a2c7cd39934a01744">If A ∩ B = φ, then P(A ∪ B) = P(A) + P(B)</paragraph>
+  <paragraph id="5307960e77c05062464b1688">Where:</paragraph>
+  <paragraph id="355fcd4f423257a72a3265ab">φ = empty set (impossible event)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="71bda1d522d3ddab94c8d73e">This is exactly Axiom (iii): probabilities add for mutually exclusive events.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="4504c74aa1b6b7badafcff3d"><b>Common mistake:</b> Writing P(A ∪ B) = P(A) + P(B) without checking overlap. If A and B overlap, subtract P(A ∩ B).</paragraph>
+</div>
+
+<h2>14.2.4 Probability of event ‘not A’ (complement)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="4d0002933dfc42b99fcb9033"><b>Complement of an event:</b> “not A” is <b>A′</b> = all outcomes in S that are not in A.</paragraph>
+</div>
+
+<h3>Illustration with cards numbered 1 to 10</h3>
+<paragraph id="5bec523c92e06205beb51ec8">Experiment: draw 1 card from cards numbered 1 to 10.</paragraph>
+<paragraph id="93d1b0f2a06048f628679e6b">Sample space: S = {1, 2, 3, …, 10} (10 equally likely outcomes) ⇒ each outcome has probability \(\dfrac{1}{10}\).</paragraph>
+
+<paragraph id="00713db8b6e3b92993691553">Let A = {2, 4, 6, 8}.</paragraph>
+<ul>
+  <li>\(P(A) = P(2)+P(4)+P(6)+P(8) = \dfrac{1}{10} + \dfrac{1}{10} + \dfrac{1}{10} + \dfrac{1}{10} = \dfrac{4}{10} = \dfrac{2}{5}\)</li>
+</ul>
+
+<paragraph id="36bf8d51689625fbd2ad225a">Complement event:</paragraph>
+<ul>
+  <li>A′ = {1, 3, 5, 7, 9, 10}</li>
+  <li>\(P(A') = \dfrac{6}{10} = \dfrac{3}{5}\)</li>
+</ul>
+
+<paragraph id="666684e6fbdd344686978f45">Also, A and A′ are:</paragraph>
+<ul>
+  <li><b>Mutually exclusive:</b> A ∩ A′ = φ</li>
+  <li><b>Exhaustive:</b> A ∪ A′ = S</li>
+</ul>
+
+<paragraph id="fc9f7182334fa895a29cc703">Therefore P(A) + P(A′) = 1.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3df9f4d677fd86e18cfeece1"><b>Complement rule</b></paragraph>
+  <paragraph id="d846dc7d39008f9f445ea6ea">P(A′) = P(not A) = 1 − P(A)</paragraph>
+  <paragraph id="e51dc33ed0822f85e5b22140">Where:</paragraph>
+  <paragraph id="41289bf96d48434b435dec00">A′ = complement of event A</paragraph>
+  <paragraph id="4bff0088d5e792e01104dcd0">P(A) = probability that A occurs</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="a10ff5b852d12288e6a394a5"><b>Exam tip:</b> “Not A” is the complement relative to the same sample space S. <b>Find S first</b>.</paragraph>
+</div>
+
+<h2>Examples (equally likely outcomes unless stated otherwise)</h2>
+
+<h3>Example 5: One card from a standard 52-card deck</h3>
+<paragraph id="e15321172e7fb8c65fa8b23e"><b>Experiment:</b> draw 1 card from a well-shuffled 52-card deck (all outcomes equally likely).</paragraph>
+<paragraph id="5371b501c9888af9e99280ea"><b>Total outcomes:</b> 52</paragraph>
+
+<ol>
+  <li>
+    <paragraph id="6d3339ab86dd03847e19ea3f"><b>(i) P(diamond)</b></paragraph>
+    <paragraph id="2784982a1f38d11846860e72">Let A = “card is a diamond”. Number of diamonds = 13.</paragraph>
+    <paragraph id="7271d3966bbe45de11e978aa">\(P(A) = \dfrac{13}{52} = \dfrac{1}{4}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="6105dce00f158d3803b3516a"><b>(ii) P(not an ace)</b></paragraph>
+    <paragraph id="f2af164784c9bf920d6fc6c7">Let B = “card is an ace”. Number of aces = 4 ⇒ \(P(B) = \dfrac{4}{52} = \dfrac{1}{13}\).</paragraph>
+    <paragraph id="cc0d0143472b841fa4b4d3c0">“Not an ace” = B′. Use complement:</paragraph>
+    <paragraph id="b34eb69cb238386b243d5e54">\(P(B') = 1 - P(B) = 1 - \dfrac{1}{13} = \dfrac{12}{13}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="63c103ace6ef5e6ddcf7e2c1"><b>(iii) P(black card: club or spade)</b></paragraph>
+    <paragraph id="688915e71699d240c2874d55">Let C = “card is black”. Number of black cards = 26.</paragraph>
+    <paragraph id="3e911f52af71542a54d9cc1b">\(P(C) = \dfrac{26}{52} = \dfrac{1}{2}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="2158a3e2acc8854349682f45"><b>(iv) P(not a diamond)</b></paragraph>
+    <paragraph id="b5512da5627e6330853ca1dd">From (i), “not a diamond” = not A = A′.</paragraph>
+    <paragraph id="aaa2998f98eff2824ef89dda">\(P(\text{not } A) = 1 - P(A) = 1 - \dfrac{1}{4} = \dfrac{3}{4}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="4fb02ef376c785544ea1122f"><b>(v) P(not a black card)</b></paragraph>
+    <paragraph id="181891cf0f11d21d4be880ca">“Not a black card” = not C = C′.</paragraph>
+    <paragraph id="dfd16fb60772d11eb22231de">\(P(\text{not } C) = 1 - P(C) = 1 - \dfrac{1}{2} = \dfrac{1}{2}\)</paragraph>
+  </li>
+</ol>
+
+<h3>Example 6: Drawing one disc from a bag (red/blue/yellow)</h3>
+<paragraph id="22e7849772d02841f0395175">Bag has 9 discs: 4 red, 3 blue, 2 yellow. All discs similar; draw 1 at random.</paragraph>
+<paragraph id="b5871769aff2f150a4cd779b"><b>Total outcomes:</b> 9 (equally likely)</paragraph>
+
+<paragraph id="08bca9637c033e7263b52210"><b>Events:</b></paragraph>
+<ul>
+  <li>A: “disc is red”</li>
+  <li>B: “disc is yellow”</li>
+  <li>C: “disc is blue”</li>
+</ul>
+
+<ol>
+  <li>
+    <paragraph id="3fd44caf0d82f9cf48b923b3"><b>(i) P(red)</b></paragraph>
+    <paragraph id="a2787c5b16a91b9aaba5c0ed">n(A) = 4 ⇒ \(P(A) = \dfrac{4}{9}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="ad692cd82e06d1a78a3cc32d"><b>(ii) P(yellow)</b></paragraph>
+    <paragraph id="9dd0b534a9518b40381aaef6">n(B) = 2 ⇒ \(P(B) = \dfrac{2}{9}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="a06c33c97bb4cfab997ae516"><b>(iii) P(blue)</b></paragraph>
+    <paragraph id="b0b16bc02be09c7a31cf2a92">n(C) = 3 ⇒ \(P(C) = \dfrac{3}{9} = \dfrac{1}{3}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="620482df0875e5c195b4d766"><b>(iv) P(not blue)</b></paragraph>
+    <paragraph id="264ddd70cd1f16051e189982">“Not blue” = not C = C′. Use complement:</paragraph>
+    <paragraph id="3dffaec7b689b9b395f254e8">\(P(\text{not } C) = 1 - P(C) = 1 - \dfrac{1}{3} = \dfrac{2}{3}\)</paragraph>
+  </li>
+  <li>
+    <paragraph id="e98cb93a797f62d71b78500c"><b>(v) P(either red or blue)</b></paragraph>
+    <paragraph id="4190718903dfa2492f22e0c6">“Either red or blue” = A ∪ C.</paragraph>
+    <paragraph id="15c0537856b55298c901454f">A and C are <b>mutually exclusive</b> (cannot be both), so:</paragraph>
+    <paragraph id="100e5d58bfb788c1007c7513">\(P(A \cup C) = P(A) + P(C) = \dfrac{4}{9} + \dfrac{1}{3} = \dfrac{4}{9} + \dfrac{3}{9} = \dfrac{7}{9}\)</paragraph>
+  </li>
+</ol>
+
+<h2>Complement, Union and Mutually Exclusive Events (continuation)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="a6545b739984b172bc45d553"><b>Complement of an event:</b> If C is an event, then <b>not C</b> (written C′) is the event that C does not happen.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="79eb034204eca5de4c137642"><b>Complement rule:</b> P(C′) = 1 − P(C)</paragraph>
+  <paragraph id="65a2c02185bb4ae1083a6feb">C′ = complement of event C</paragraph>
+  <paragraph id="062b5bd60ae04c8552033a2f">P(C) = probability that event C occurs</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="262e24d059eb49c607439100"><b>Mutually exclusive events:</b> A and C are mutually exclusive if they cannot occur together:</paragraph>
+  <paragraph id="40443ff573a3c1cf225fec71">A ∩ C = ϕ (empty set)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="db832350a7a7ced243c0dfb5"><b>Addition rule (mutually exclusive events):</b></paragraph>
+  <paragraph id="b6e00b90634a6de45d8912c8">P(A or C) = P(A ∪ C) = P(A) + P(C) (when A and C are mutually exclusive)</paragraph>
+  <paragraph id="2db9b0350cafa7a9f1d6d1ad">A ∪ C = “A happens or C happens (or both)” → for mutually exclusive, “both” is impossible</paragraph>
+  <paragraph id="f9c6787ba0e41afafeb97fd0">P(A), P(C) = probabilities of A and C</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="5b2febe9fb1db6d53b1f5df5">Use P(A ∪ B) = P(A) + P(B) <b>only</b> if A and B are mutually exclusive. Otherwise use the <b>general addition rule</b> (next topic).</paragraph>
+</div>
+
+<h2>Example 7: Two students qualifying (using union, complement, De Morgan, mutually exclusive decomposition)</h2>
+
+<h3>Given</h3>
+<paragraph id="a0439e5be99605dae55c338a">Let E = “Anil qualifies”, F = “Ashima qualifies”.</paragraph>
+<paragraph id="f48fd9c36b78e1ac0c181807">P(E) = 0.05, P(F) = 0.10, P(E ∩ F) = 0.02.</paragraph>
+
+<h3>(a) Probability that both will NOT qualify</h3>
+<paragraph id="7801f87df60d7ac9151aae49">Required event: E′ ∩ F′ (“not E and not F”).</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="39bc7e69301c7b30d831b816"><b>De Morgan’s Law (events):</b></paragraph>
+  <paragraph id="d2055b022dd8a1eecceb6310">(E ∪ F)′ = E′ ∩ F′</paragraph>
+  <paragraph id="eec192b7eb0b008bdc994766">(E ∩ F)′ = E′ ∪ F′</paragraph>
+</div>
+
+<paragraph id="982c766b27542bc8ee20d9da">So, E′ ∩ F′ = (E ∪ F)′.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8f27bcb6734652c98604e0c1"><b>General addition rule (two events):</b></paragraph>
+  <paragraph id="a5989a7b9dc382b69fd5df0c">P(E ∪ F) = P(E) + P(F) − P(E ∩ F)</paragraph>
+  <paragraph id="db45b20c44f40a9cb8f357ab">E ∪ F = “E or F (or both)”</paragraph>
+  <paragraph id="4e6c3b445b2b59b957b39c74">E ∩ F = “E and F (both)”</paragraph>
+</div>
+
+<paragraph id="8feac9ecd6f74fac7fc06173"><b>Compute:</b></paragraph>
+<paragraph id="a0dc0591fef18b9498c4af1e">P(E ∪ F) = 0.05 + 0.10 − 0.02 = 0.13</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="9e826f84a6191b59bcb4090d"><b>Complement rule applied:</b> P((E ∪ F)′) = 1 − P(E ∪ F)</paragraph>
+  <paragraph id="80e651acb0115c36f8c245d6">(E ∪ F)′ = “neither E nor F occurs”</paragraph>
+</div>
+
+<paragraph id="bc5343c270cc81a7790f16d4">Therefore, P(E′ ∩ F′) = 1 − 0.13 = 0.87.</paragraph>
+
+<h3>(b) Probability that at least one will NOT qualify</h3>
+<paragraph id="0a4e805229e5492e9f474ee1">“At least one does not qualify” = complement of “both qualify” = (E ∩ F)′.</paragraph>
+<paragraph id="344b7ef4621621d02d6dbc72">P(at least one not qualify) = 1 − P(E ∩ F) = 1 − 0.02 = 0.98.</paragraph>
+
+<h3>(c) Probability that ONLY ONE will qualify</h3>
+<paragraph id="a091320a9f7baf6bb1838a24">“Only one qualifies” happens in two <b>mutually exclusive</b> ways:</paragraph>
+<ul>
+  <li>Anil qualifies, Ashima doesn’t: E ∩ F′</li>
+  <li>Anil doesn’t, Ashima qualifies: E′ ∩ F</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="bc72a10497ca8fc01500de9c">E ∩ F′ and E′ ∩ F are <b>mutually exclusive</b> ⇒ add their probabilities.</paragraph>
+</div>
+
+<paragraph id="aef898801662b0cec0407463">So,</paragraph>
+<paragraph id="eedc3e53321d659142402d01">P(only one qualifies) = P(E ∩ F′) + P(E′ ∩ F)</paragraph>
+
+<paragraph id="dea3fc84a54e733e0af70d2c"><b>Subtract from the “qualifies” events:</b></paragraph>
+<ul>
+  <li>E = (E ∩ F) ∪ (E ∩ F′) with disjoint parts ⇒ P(E ∩ F′) = P(E) − P(E ∩ F)</li>
+  <li>F = (E ∩ F) ∪ (E′ ∩ F) with disjoint parts ⇒ P(E′ ∩ F) = P(F) − P(E ∩ F)</li>
+</ul>
+
+<paragraph id="5c4e3e060d31264584f26448">Hence,</paragraph>
+<paragraph id="44b9343208d4cd99e1046591">P(only one qualifies) = [P(E) − P(E ∩ F)] + [P(F) − P(E ∩ F)]</paragraph>
+<paragraph id="b64ebacd65cc74572a8ca417">= (0.05 − 0.02) + (0.10 − 0.02) = 0.11</paragraph>
+
+<div class="remember-box">
+  <paragraph id="b1b99986c3e0d6280e311270"><b>Exam tip:</b> “Only one of E and F” = (E ∩ F′) ∪ (E′ ∩ F). Do <b>not</b> mix it up with “at least one”, which is E ∪ F.</paragraph>
+</div>
+
+<h2>Example 8: Selecting a committee (basic counting + probability)</h2>
+
+<h3>Statement</h3>
+<paragraph id="ff011be28b3d7d7321a131b6">A committee of 2 persons is selected from 2 men and 2 women. Find P(committee has): (a) no man (b) one man (c) two men.</paragraph>
+
+<h3>Total outcomes</h3>
+<paragraph id="18eb5fe9c44a788f8b4540f0">Total persons = 2 + 2 = 4</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="64938cedd628eff674f2e65e">If all selections are equally likely:</paragraph>
+  <paragraph id="1ee8a3471e3487d64896af35">\(P(\text{event}) = \dfrac{\text{number of favourable selections}}{\text{total number of selections}}\)</paragraph>
+</div>
+
+<paragraph id="c3effdea0b51961c51e14aff">Total ways to choose 2 out of 4 = <b>\(^{4}C_2\)</b></paragraph>
+
+<h3>(a) No man</h3>
+<paragraph id="e9e923bacbb0cd4ffaf0f09f">No man ⇒ choose 2 women out of 2 ⇒ favourable = <b>\(^{2}C_2 = 1\)</b></paragraph>
+<paragraph id="da51121143b8fa34d80a52a4">Total = <b>\(^{4}C_2 = 6\)</b></paragraph>
+<paragraph id="6079fed418b4a2dbc9a75263">\(P(\text{no man}) = \dfrac{^{2}C_2}{^{4}C_2} = \dfrac{1}{6}\)</paragraph>
+
+<h3>(b) One man</h3>
+<paragraph id="c81caf1a1e8e4f0d607127a3">One man ⇒ choose 1 man out of 2 AND 1 woman out of 2</paragraph>
+<paragraph id="6a8cf6a4ab9367ff4c677c50">Favourable = <b>\(^{2}C_1 \times {}^{2}C_1 = 2 \times 2 = 4\)</b></paragraph>
+<paragraph id="16afb2fbe760d16a39ad9f78">\(P(\text{one man}) = \dfrac{^{2}C_1 \times {}^{2}C_1}{^{4}C_2} = \dfrac{4}{6} = \dfrac{2}{3}\)</paragraph>
+
+<h3>(c) Two men</h3>
+<paragraph id="43ba368d5b34c76e8d285b7a">Choose 2 men out of 2 ⇒ favourable = <b>\(^{2}C_2 = 1\)</b></paragraph>
+<paragraph id="f6b09a6a79abfabc7abba699">\(P(\text{two men}) = \dfrac{^{2}C_2}{^{4}C_2} = \dfrac{1}{6}\)</paragraph>
+
+<div class="remember-box">
+  <paragraph id="70164abd3430fff7b5aa4ad2"><b>Common mistake:</b> Don’t do “one man” as \(\dfrac{2}{4} = \dfrac{1}{2}\). We are choosing <b>2-person committees</b> → count combinations of committees, not single-person chances.</paragraph>
+</div>
+
+<h2>Exercise 14.2 (for practice — not included in revision notes as per instructions)</h2>
+
+<h2>Miscellaneous Examples</h2>
+
+<h2>Example 9: Random order of visiting four cities (permutations as equally likely outcomes)</h2>
+
+<h3>Sample space setup</h3>
+<paragraph id="995870772f13fc9714386ea5">Veena visits four cities A, B, C, D in a random order.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6758b46fcfea8fa1bab98103"><b>Equally likely outcomes via permutations</b>: if every visiting order is equally likely, then each permutation has probability \(\dfrac{1}{4!}\).</paragraph>
+</div>
+
+<paragraph id="cefaa1490b71c5bb80a4736a">Total possible orders \(=4!=24\) so \(n(S)=24\).</paragraph>
+
+<paragraph id="9ae323facc147864c2d6ce29">Sample space:</paragraph>
+<paragraph id="576776218cfd9d7e0366ffa6">\(S=\{ABCD, ABDC, ACBD, ACDB, ADBC, ADCB, BACD, BADC, BDAC, BDCA, BCAD, BCDA, CABD, CADB, CBDA, CBAD, CDAB, CDBA, DABC, DACB, DBCA, DBAC, DCAB, DCBA\}\)</paragraph>
+
+<h3>(i) Probability that A is visited before B</h3>
+<paragraph id="fc8f616a4fa5c9c762aa9501">Let \(E=\) event “A before B”. Favourable outcomes:</paragraph>
+<paragraph id="fa328d8cb4b102f602bf4861">\(E=\{ABCD, CABD, DABC, ABDC, CADB, DACB, ACBD, ACDB, ADBC, CDAB, DCAB, ADCB\}\)</paragraph>
+<paragraph id="a4bb9357a2ef44aee1cd133d">So \(n(E)=12\).</paragraph>
+<paragraph id="631b390acdac1861df665ac1">\(P(E)=\dfrac{n(E)}{n(S)}=\dfrac{12}{24}=\dfrac{1}{2}\).</paragraph>
+
+<h3>(ii) Probability that A is before B and B is before C</h3>
+<paragraph id="56c1d2b1cef70297d5490ef0">Let \(F=\) event “A before B and B before C”. Favourable outcomes:</paragraph>
+<paragraph id="b5ede2fa552c5f8154ef88f3">\(F=\{ABCD, DABC, ABDC, ADBC\}\)</paragraph>
+<paragraph id="5ef0327d2efaf49d0bd9e496">So \(n(F)=4\).</paragraph>
+<paragraph id="9d35407ee0d2021a67028e30">\(P(F)=\dfrac{n(F)}{n(S)}=\dfrac{4}{24}=\dfrac{1}{6}\).</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f206df0ca35cf37416a10c91">Ordering questions checklist:</paragraph>
+<ul>
+<li>Find total permutations (here \(4!\)).</li>
+<li>Count favourable permutations (list or logical counting).</li>
+<li>Probability \(=\) favourable / total.</li>
+</ul>
+</div>
+
+<h3>(iii) A first and B last</h3>
+<paragraph id="e53344b38a3f50ff5579468d">Set as practice in the text — exam-ready method:</paragraph>
+<ul>
+<li>Fix A in 1st position and B in 4th position.</li>
+<li>Arrange C and D in the middle: \(2!\) ways.</li>
+<li>Probability \(=\dfrac{2!}{4!}=\dfrac{2}{24}=\dfrac{1}{12}\).</li>
+</ul>
+
+<h3>(iv) A either first or second</h3>
+<paragraph id="6f3f3443df847baaf9633095">Approach:</paragraph>
+<ul>
+<li>A first: fix A first, arrange B,C,D: \(3!\) ways.</li>
+<li>A second: fix A second, arrange the other three cities: \(3!\) ways.</li>
+<li>Disjoint cases \(\Rightarrow\) favourable \(=3!+3!=12\).</li>
+<li>Probability \(=\dfrac{12}{24}=\dfrac{1}{2}\).</li>
+</ul>
+
+<h3>(v) A just before B</h3>
+<paragraph id="d9acd174b63855a0c7907b5d">Approach (block method):</paragraph>
+<ul>
+<li>Treat “AB” as one block (A immediately followed by B).</li>
+<li>Now 3 objects: (AB), C, D \(\Rightarrow 3!\) arrangements.</li>
+<li>Favourable \(=3!=6\).</li>
+<li>Probability \(=\dfrac{6}{24}=\dfrac{1}{4}\).</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="739a4f93d23388f586ec44a8"><b>Ordering pitfall:</b> “A before B” (not necessarily consecutive) \(\neq\) “A just before B” (consecutive). Use block method only for consecutive conditions.</paragraph>
+</div>
+
+<h2>Example 10: Probability in a 7-card hand (Kings)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="73c8d8567c1351a0862e3432">Drawing a 7-card hand from a standard 52-card deck:</paragraph>
+<ul>
+<li>Total hands (sample points) \(=\binom{52}{7}\).</li>
+<li>To count favourable hands: choose needed cards from each group using combinations, then multiply (independent choices from disjoint groups).</li>
+</ul>
+</div>
+
+<h3>(i) Probability the hand contains all Kings</h3>
+<paragraph id="8b77d5f886029d155a64d4f7">A standard deck has 4 Kings.</paragraph>
+<ul>
+<li>Hands with all 4 Kings: \(\binom{4}{4}\).</li>
+<li>Remaining cards needed \(=7-4=3\), chosen from \(52-4=48\) non-Kings: \(\binom{48}{3}\).</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0160f69d633588a5bb172da7">\[
+P(\text{4 Kings})=\frac{\binom{4}{4}\binom{48}{3}}{\binom{52}{7}}=\frac{1}{7735}
+\]</paragraph>
+<ul>
+<li>\(\binom{n}{r}\): choose \(r\) from \(n\) (order ignored)</li>
+<li>\(\binom{52}{7}\): all 7-card hands</li>
+<li>\(\binom{4}{4}\binom{48}{3}\): 4 Kings + 3 non-Kings</li>
+</ul>
+</div>
+
+<h3>(ii) Probability the hand contains exactly 3 Kings</h3>
+<ul>
+<li>Choose 3 Kings from 4: \(\binom{4}{3}\).</li>
+<li>Choose remaining \(7-3=4\) cards from 48 non-Kings: \(\binom{48}{4}\).</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3e14fdd30d005e2a441ce43e">\[
+P(\text{3 Kings})=\frac{\binom{4}{3}\binom{48}{4}}{\binom{52}{7}}=\frac{9}{1547}
+\]</paragraph>
+<ul>
+<li>\(\binom{4}{3}\): which 3 Kings appear</li>
+<li>\(\binom{48}{4}\): choose 4 non-Kings</li>
+</ul>
+</div>
+
+<h3>(iii) Probability the hand contains at least 3 Kings</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5769276798f0d9d1597275e5">“At least 3 Kings” \(=\) either exactly 3 Kings or exactly 4 Kings.</paragraph>
+<paragraph id="6ff90dc8c9801d4389d82c84">These are mutually exclusive (can’t be both 3 and 4 at once).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="9c9821d7c9bd031f830f6aed">\[
+P(\text{at least 3 Kings})=P(\text{3 Kings or 4 Kings})=P(\text{3 Kings})+P(\text{4 Kings})
+\]</paragraph>
+<ul>
+<li>Addition rule for mutually exclusive events</li>
+</ul>
+</div>
+
+<paragraph id="d651e2228eb9ec003ab2be4c">Hence,</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="50ed2249dce897f6450b0a82">\[
+P(\text{at least 3 Kings})=\frac{9}{1547}+\frac{1}{7735}=\frac{46}{7735}
+\]</paragraph>
+<ul>
+<li>\(\frac{9}{1547}=\frac{45}{7735}\) (common denominator)</li>
+<li>\(\frac{45}{7735}+\frac{1}{7735}=\frac{46}{7735}\)</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="5b7c9cb8122709e8b1ab8bad">Don’t use permutations for card hands: a “hand” ignores order \(\Rightarrow\) use combinations \(\binom{n}{r}\).</paragraph>
+<paragraph id="c9d651544c7ba83be5000ec9">“At least 3” includes both 3 and 4 (not only 3).</paragraph>
+</div>
+
+<h2>Example 11: Addition rule for three events (Inclusion–Exclusion)</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="491d132237c92e2c54dc0b29">This is the probability version of inclusion–exclusion for 3 events.</paragraph>
+</div>
+
+<h3>Statement to prove</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="41b95a98ff3858fde344911a">\[
+P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(A\cap B)-P(A\cap C)-P(B\cap C)+P(A\cap B\cap C)
+\]</paragraph>
+<ul>
+<li>\(A,B,C\): events</li>
+<li>\(\cup\): union (“or”)</li>
+<li>\(\cap\): intersection (“and”)</li>
+</ul>
+</div>
+
+<h3>Proof structure used in the text</h3>
+<paragraph id="33e19e33ced7adaa37d32848">Let \(E=B\cup C\). Then:</paragraph>
+
+<h3>Step 1: Reduce to two-event union</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="dbfe8743a378bafb5fb35e2a">\[
+P(A\cup B\cup C)=P(A\cup E)=P(A)+P(E)-P(A\cap E)\quad ...(1)
+\]</paragraph>
+<ul>
+<li>Uses \(P(X\cup Y)=P(X)+P(Y)-P(X\cap Y)\)</li>
+</ul>
+</div>
+
+<h3>Step 2: Expand \(P(E)\) where \(E=B\cup C\)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0732a072197714880a382f53">\[
+P(E)=P(B\cup C)=P(B)+P(C)-P(B\cap C)\quad ...(2)
+\]</paragraph>
+<ul>
+<li>Again: two-event union formula</li>
+</ul>
+</div>
+
+<h3>Step 3: Expand \(P(A\cap E)\) using distributive law</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d3270260053522f1c5be2b1e">Distributive law (intersection over union):</paragraph>
+<paragraph id="bf64418bd0ccee141ec46dd0">\[
+A\cap (B\cup C)=(A\cap B)\cup (A\cap C)
+\]</paragraph>
+</div>
+
+<paragraph id="50707f129ca8f45393fb2d46">So,</paragraph>
+<paragraph id="c1426cb012e070fe73ce2abd">\[
+A\cap E=A\cap(B\cup C)=(A\cap B)\cup(A\cap C)
+\]</paragraph>
+<paragraph id="44da4dd074ac7385ea4a77fe">Now use the two-event union formula on \((A\cap B)\) and \((A\cap C)\):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="22b6904c3fb9f41efbe07496">\[
+P(A\cap E)=P((A\cap B)\cup(A\cap C))=P(A\cap B)+P(A\cap C)-P(A\cap B\cap C)\quad ...(3)
+\]</paragraph>
+<ul>
+<li>\((A\cap B)\cap(A\cap C)=A\cap B\cap C\)</li>
+</ul>
+</div>
+
+<h3>Step 4: Substitute (2) and (3) into (1)</h3>
+<paragraph id="7bd3d7c66eb1d02dab386e45">From (1): \(P(A\cup B\cup C)=P(A)+P(E)-P(A\cap E)\).</paragraph>
+<paragraph id="ea9ed6f9770e71b7ff8bb972">Sub in (2) for \(P(E)\) and (3) for \(P(A\cap E)\):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="003c16e600fe354fb3c7304a">\[
+P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(B\cap C)-P(A\cap B)-P(A\cap C)+P(A\cap B\cap C)
+\]</paragraph>
+<ul>
+<li>Matches the required result (just regrouping terms).</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="ed30bd897a134c47c5ea298a">Common sign mistake: the triple intersection \(P(A\cap B\cap C)\) is <b>added back</b> (positive) after subtracting the pairwise intersections.</paragraph>
+</div>
+
+<h2>Example 12: Finishing orders in a relay race (permutations)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="06a34bb3af484e582c47de66">Order matters (finishing positions) ⟶ use <b>permutations</b>.</paragraph>
+</div>
+
+<h3>Given</h3>
+<ul>
+<li>5 teams: \(A,B,C,D,E\)</li>
+<li>Assume all finishing orders are equally likely.</li>
+</ul>
+
+<h3>Sample space for “first three places”</h3>
+<paragraph id="5d0ce52a19058bd589af24c9">We’re counting <b>ordered</b> selections of 3 teams from 5.</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3ac303b10c58647b6d92204f">\[
+{}^{5}P_{3}=\frac{5!}{(5-3)!}=5\times 4\times 3=60
+\]</paragraph>
+<ul>
+<li>\({}^{n}P_{r}\) = number of permutations (ordered arrangements) of \(r\) chosen from \(n\)</li>
+<li>Each sample point has probability \(\dfrac{1}{60}\).</li>
+</ul>
+</div>
+
+<h3>(a) Probability that A, B, C finish 1st, 2nd, 3rd respectively</h3>
+<ul>
+<li>Only <b>one</b> order works: \(ABC\).</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7db88e7acaf1c687ad2cffbf">\[
+P(\text{ABC in order})=\frac{1}{60}
+\]</paragraph>
+<ul>
+<li>Favourable outcomes = 1, total outcomes = 60</li>
+</ul>
+</div>
+
+<h3>(b) Probability that A, B, C are the first three finishers (any order)</h3>
+<ul>
+<li>Top 3 are exactly \(A,B,C\), but order can vary.</li>
+<li>Number of orders of \(A,B,C\) in the first three spots = \(3!=6\).</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="64d735e8f38ba627bb1369f4">\[
+P(\text{A,B,C are top 3 in any order})=\frac{3!}{60}=\frac{6}{60}=\frac{1}{10}
+\]</paragraph>
+<ul>
+<li>Favourable outcomes = \(3!\), total outcomes = \( {}^{5}P_{3}=60\)</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="1dc9c11014c2ec30ce076356">Don’t use combinations here: <b>finishing order matters</b>, so use permutations (or factorial counting).</paragraph>
+</div>
+
+<h2>Chapter Summary (Axiomatic approach to probability)</h2>
+<h3>Events and basic set interpretations</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="c75a15d9a6d5c4dd72bce0db"><b>Event</b> = subset of sample space \(S\).</paragraph></li>
+<li><paragraph id="290f1f9bcf0da7030207ffa0"><b>Impossible event</b> = empty set \(\varnothing\).</paragraph></li>
+<li><paragraph id="0aea5d0530695616d0428ef5"><b>Sure event</b> = whole sample space \(S\).</paragraph></li>
+<li><paragraph id="3206a3070bdda52741986f04"><b>Complement / “not event”</b> = \(A'\) or \(S-A\).</paragraph></li>
+<li><paragraph id="fa289f2956e86d93ba87fa5a"><b>“A or B”</b> = \(A\cup B\).</paragraph></li>
+<li><paragraph id="8ae6b591c95b2356374c5bd8"><b>“A and B”</b> = \(A\cap B\).</paragraph></li>
+<li><paragraph id="a0c7124c82d3b65bc2c41396"><b>“A and not B”</b> = \(A-B\).</paragraph></li>
+</ul>
+</div>
+
+<h3>Mutually exclusive and exhaustive events</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="0b7d2a27e3b8640fc677c64f"><b>Mutually exclusive</b>: \(A\) and \(B\) are mutually exclusive if \(A\cap B=\varnothing\).</paragraph></li>
+<li>
+<paragraph id="9b4854a1df542ecc28e0475a"><b>Mutually exclusive + exhaustive</b>: \(E_1,E_2,\dots,E_n\) are mutually exclusive and exhaustive if</paragraph>
+<ul>
+<li>\(E_1\cup E_2\cup \dots \cup E_n=S\)</li>
+<li>\(E_i\cap E_j=\varnothing \ \forall i\neq j\)</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h3>Probability on a finite sample space (axiomatic description here)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="373c81ba4dd6731662f43987">Assign each sample point \(\omega_i\in S\) a number \(P(\omega_i)\) such that:</paragraph>
+<ol>
+<li><paragraph id="11db33c5bde4c611c0f2f0dc">\(0\le P(\omega_i)\le 1\)</paragraph></li>
+<li><paragraph id="35ea20728997cee80ebfdf3e">\(\sum_{\omega_i\in S} P(\omega_i)=1\)</paragraph></li>
+<li>
+<paragraph id="3362e088fe4952c87c382e72">For any event \(A\subseteq S\),</paragraph>
+<paragraph id="39c8d8126dea6a44779d0ba1">\[
+P(A)=\sum_{\omega_i\in A} P(\omega_i)
+\]</paragraph>
+<paragraph id="fd1fb8221030935c5ea02102">\(P(\omega_i)\) is the probability of outcome \(\omega_i\).</paragraph>
+</li>
+</ol>
+</div>
+
+<h3>Equally likely outcomes and classical probability</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="fb964eac0a645d4d50ddc91d"><b>Equally likely outcomes</b>: every outcome has the same probability.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1e11e59b57bea66ca472a3c0">Finite sample space + equally likely outcomes:</paragraph>
+<paragraph id="ef761073aa9be2791046931d">\[
+P(A)=\frac{n(A)}{n(S)}
+\]</paragraph>
+<ul>
+<li>\(n(A)\) = number of outcomes in event \(A\)</li>
+<li>\(n(S)\) = number of outcomes in sample space \(S\)</li>
+</ul>
+</div>
+
+<h3>Standard probability rules (two events and complement)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1d9d1869bb3000f76f51b593">\[
+P(A\text{ or }B)=P(A)+P(B)-P(A\text{ and }B)
+\]</paragraph>
+<paragraph id="3ecee20af94e270e7c51c914">Same thing written in set notation:</paragraph>
+<paragraph id="968eb4909ad30c25de626f4c">\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B)
+\]</paragraph>
+<ul>
+<li>We subtract \(P(A\cap B)\) to fix <b>double-counting</b> in \(P(A)+P(B)\).</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7ed4c20f8213407d35723ac3">If \(A\) and \(B\) are mutually exclusive (\(A\cap B=\varnothing\)):</paragraph>
+<paragraph id="efa32cf02a1df924839de7fc">\[
+P(A\cup B)=P(A)+P(B)
+\]</paragraph>
+<ul>
+<li>Because \(P(A\cap B)=0\).</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="207a66da2f60f295d04dffd1">Complement rule:</paragraph>
+<paragraph id="7f581e881f414aad4122ef9f">\[
+P(\text{not }A)=1-P(A)
+\]</paragraph>
+<ul>
+<li>\(\text{not }A = A' = S-A\)</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="bf10c639cb9300624f9a19c4">Always check if events overlap before using \(P(A\cup B)=P(A)+P(B)\). Only true when events are mutually exclusive.</paragraph>
+<paragraph id="bba346a90068e4de76d6e649">For equally likely models, count \(n(S)\) and \(n(A)\) carefully: “hand” questions usually use combinations; “rank/order” questions usually use permutations.</paragraph>
+</div>
+
+<h2>Historical Note: Development of Probability Theory</h2>
+<h3>Origins and early contributors</h3>
+<ul>
+<li><paragraph id="d7a2b192cdf68a861b75c8ba"><b>Jerome Cardan (1501–1576)</b>: wrote the first probability book, “Book on Games of Chance” (<i>Biber de Ludo Aleae</i>), published in 1663 after his death.</paragraph></li>
+<li><paragraph id="0a06b0dafcf62278f36cb4d6"><b>1654</b>: gambler <b>Chevalier de Metre</b> asked <b>Blaise Pascal (1623–1662)</b> about dice problems; Pascal discussed with <b>Pierre de Fermat (1601–1665)</b>. They both solved it independently.</paragraph></li>
+</ul>
+
+<h3>Further major contributors</h3>
+<ul>
+<li><paragraph id="54923e1f03e374ccf441d063"><b>Christian Huygenes (1629–1665)</b></paragraph></li>
+<li><paragraph id="7f27a443354eec6fd8ada096"><b>J. Bernoulli (1654–1705)</b></paragraph></li>
+<li><paragraph id="920919d3f2145e8705083990"><b>De Moivre (1667–1754)</b></paragraph></li>
+<li><paragraph id="45279eaa604c6976a579b53d"><b>Pierre Laplace (1749–1827)</b></paragraph></li>
+<li><paragraph id="27f5ee9d39dddbe0919153e3"><b>P. L. Chebyshev (1821–1897)</b></paragraph></li>
+<li><paragraph id="fd13056385303feb795ee9d9"><b>A. A. Markov (1856–1922)</b></paragraph></li>
+<li><paragraph id="2485e14933817901d95b8d04"><b>A. N. Kolmogorove (1903–1987)</b></paragraph></li>
+</ul>
+
+<h3>Kolmogorov and the axiomatic foundation</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="1a3977f4813a513e3f5790e8"><b>Kolmogorov</b> is credited with the axiomatic theory of probability.</paragraph>
+<paragraph id="dcc3d3ed94ef97dd164887c2">His book <b>“Foundations of Probability” (1933)</b> treats probability as a set function and is a classic.</paragraph>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

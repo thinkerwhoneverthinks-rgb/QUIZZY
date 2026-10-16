@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Chapter 3 : Motion in a Plane</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8bec6cef450d1d9389578a/styles/style.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8bec6cef450d1d9389578a/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Chapter 3 : Motion in a Plane</h1>
+
+
+<h3>3.1 Introduction</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930cfd2a5ff832b6a6983"><b>Why we need vectors:</b> In 1D, direction is handled with + / − (only two directions). In 2D (plane) or 3D (space), quantities like displacement, velocity, acceleration need <b>vectors</b> = magnitude + direction.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930cfd2a5ff832b6a6984">This chapter builds the “language of vectors” for motion in a plane.</paragraph></li>
+  <li><paragraph id="6a8930cfd2a5ff832b6a6985">Core skills: what a vector is; how to <b>add</b>, <b>subtract</b>, <b>multiply</b> vectors; effect of multiplying a vector by a real number.</paragraph></li>
+  <li><paragraph id="6a8930cfd2a5ff832b6a6986">Motion applications: velocity &amp; acceleration in a plane; plane motion (incl. constant acceleration); <b>projectile motion</b>; <b>uniform circular motion</b>.</paragraph></li>
+  <li><paragraph id="6a8930cfd2a5ff832b6a6987">2D methods extend naturally to 3D.</paragraph></li>
+</ul>
+
+<h3>3.2 Scalars and Vectors</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930cfd2a5ff832b6a6988"><b>Scalar:</b> magnitude only; fully described by one number + unit.</paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a6989"><b>Vector:</b> magnitude + direction; follows <b>triangle law</b> of addition (≡ <b>parallelogram law</b>).</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a698a"><b>Scalars</b> behave like ordinary numbers under +, −, ×, ÷.</paragraph>
+    <div class="highlight-box" data-label="💡 IMPORTANT">
+      <paragraph id="6a8930cfd2a5ff832b6a698b"><b>Unit condition:</b> scalar + / − works only if units are the <b>same</b>. Scalar × / ÷ can mix different units.</paragraph>
+    </div>
+  </li>
+
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a698c"><b>Examples of scalars:</b> distance between two points, mass, temperature, time of an event.</paragraph>
+    <paragraph id="6a8930cfd2a5ff832b6a698d"><b>Illustrations:</b></paragraph>
+    <ol>
+      <li>
+        <paragraph id="6a8930cfd2a5ff832b6a698e"><b>Perimeter of rectangle:</b> length = 1.0 m, breadth = 0.5 m.</paragraph>
+        <paragraph id="6a8930cfd2a5ff832b6a698f">Perimeter = 1.0 + 0.5 + 1.0 + 0.5 = <b>3.0 m</b> (scalar + scalar → scalar).</paragraph>
+      </li>
+      <li>
+        <paragraph id="6a8930cfd2a5ff832b6a6990"><b>Temperature difference:</b> max = 35.6 °C, min = 24.2 °C.</paragraph>
+        <paragraph id="6a8930cfd2a5ff832b6a6991">Difference = 35.6 − 24.2 = <b>11.4 °C</b> (scalar subtraction).</paragraph>
+      </li>
+      <li>
+        <paragraph id="6a8930cfd2a5ff832b6a6992"><b>Density of cube:</b> aluminium cube side = 10 cm = 0.10 m; mass = 2.7 kg.</paragraph>
+        <paragraph id="6a8930cfd2a5ff832b6a6993">Volume = (0.10 m)<sup>3</sup> = <b>10<sup>−3</sup> m<sup>3</sup></b> (scalar).</paragraph>
+        <paragraph id="6a8930cfd2a5ff832b6a6994">Density = mass/volume = 2.7 / 10<sup>−3</sup> = <b>2.7×10<sup>3</sup> kg m<sup>−3</sup></b> (scalar).</paragraph>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a6995"><b>Examples of vectors:</b> displacement, velocity, acceleration, force.</paragraph>
+  </li>
+
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a6996"><b>Vector notation:</b> In print: vectors in <b></b> (e.g. <b>v</b>). In handwriting: usually an <b>arrow on top</b> (e.g. <b><math xmlns="http://www.w3.org/1998/Math/MathML"><mover accent="true"><mi>V</mi><mo>→</mo></mover></math></b>).</paragraph>
+    <paragraph id="6a8930cfd2a5ff832b6a6997"><b>Magnitude notation:</b> magnitude of <b>v</b> is |<b>v</b>|; also written using light-face v.</paragraph>
+    <div class="highlight-box" data-label="💡 IMPORTANT">
+      <paragraph id="6a8930cfd2a5ff832b6a6998"><b>Convention used:</b> <b>(A, a, p, q, r, …)</b> = vectors; light-face (A, a, p, q, r, …) = magnitudes.</paragraph>
+    </div>
+  </li>
+</ul>
+
+<h3>3.2.1 Position and Displacement Vectors</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930cfd2a5ff832b6a6999"><b>Position vector:</b> Fix origin O. If object is at P at time t, directed segment OP is position vector <b>r</b>: OP = <b>r</b>.</paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a699a"><b>Displacement vector:</b> If it moves from P (time t) to P′ (time t′), directed straight segment PP′ is the <b>displacement</b> vector PP′.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-1.webp" decoding="async" fetchpriority="high" height="229" loading="eager" src="img/Untitled-1.webp" width="206"/>
+</div>
+<ul>
+  <li><paragraph id="6a8930cfd2a5ff832b6a699b">If object is at P′ at time t′, its position vector is OP′ = <b>r′</b>.</paragraph></li>
+  <li><paragraph id="6a8930cfd2a5ff832b6a699c"><b>Magnitude &amp; direction of position vector:</b> |<b>r</b>| = length OP; direction is from O to P.</paragraph></li>
+  <li>
+    <div class="highlight-box" data-label="💡 IMPORTANT">
+      <paragraph id="6a8930cfd2a5ff832b6a699d"><b>Path-independence of displacement:</b> depends only on start &amp; end points, not the route.</paragraph>
+      <paragraph id="6a8930cfd2a5ff832b6a699e">So same start P and end Q ⇒ same displacement PQ even if path is PABCQ, PDQ, or PBEFQ.</paragraph>
+      <img alt="Physics diagram" class="zoomable" data-full="img/UUntitled-2.webp" decoding="async" height="227" loading="lazy" src="img/UUntitled-2.webp" width="234"/>
+    </div>
+  </li>
+  <li>
+    <div class="highlight-box" data-label="💡 IMPORTANT">
+      <paragraph id="6a8930cfd2a5ff832b6a699f"><b>Key inequality:</b> |displacement| ≤ distance travelled (path length) between the same two points.</paragraph>
+    </div>
+  </li>
+</ul>
+
+<h3>3.2.2 Equality of Vectors</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930cfd2a5ff832b6a69a0">Equality of vectors: <b>A</b> = <b>B</b> if same <b>magnitude</b> and same <b>direction</b>.</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a69a1"><b>Graphical check:</b> slide <b>B</b> <b>parallel to itself</b> until its tail matches tail of <b>A</b>. If heads also match ⇒ <b>A = B</b>.</paragraph>
+    <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-3.webp" decoding="async" height="231" loading="lazy" src="img/Untitled-3.webp" width="214"/>
+  </li>
+  <li>
+    <div class="remember-box">
+      <paragraph id="6a8930cfd2a5ff832b6a69a2"><b>Common exam trap:</b> same magnitude alone ≠ equal vectors. Same length but different directions ⇒ not equal.</paragraph>
+    </div>
+  </li>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a69a3"><b>Free vectors vs localised vectors:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930cfd2a5ff832b6a69a4">Here we use <b>free vectors</b>: position doesn’t matter; parallel shifting doesn’t change the vector.</paragraph></li>
+      <li><paragraph id="6a8930cfd2a5ff832b6a69a5">In some cases, line/point of application matters → <b>localised vectors</b>.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>3.3 Multiplication of Vectors by Real Numbers</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930cfd2a5ff832b6a69a6"><b>Scaling by a positive real number:</b></paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a69a7">|λ<b>A</b>| = λ|<b>A</b>|, for λ &gt; 0</paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a69a8"><b>λ</b>: real number (scalar multiplier)</paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a69a9"><b>A</b>: given vector</paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a69aa">|<b>A</b>|: magnitude of <b>A</b></paragraph>
+  <paragraph id="6a8930cfd2a5ff832b6a69ab">|λ<b>A</b>|: magnitude after scaling</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a69ac"><b>If λ &gt; 0:</b> magnitude becomes λ|<b>A</b>| and direction stays <b>same</b> as <b>A</b>.</paragraph>
+    <paragraph id="6a8930cfd2a5ff832b6a69ad"><b>Example:</b> 2<b>A</b> has same direction as <b>A</b> and magnitude 2|<b>A</b>|.</paragraph>
+    <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-6.webp" decoding="async" height="142" loading="lazy" src="img/Untitled-6.webp" width="216"/>
+  </li>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a69ae"><b>If λ &lt; 0:</b> (i.e. multiply by −λ where λ &gt; 0) magnitude is λ|<b>A</b>| but direction is <b>opposite</b> to <b>A</b>.</paragraph>
+    <paragraph id="6a8930cfd2a5ff832b6a69af"><b>Examples noted:</b> −1<b>A</b> and −1.5<b>A</b> are opposite to <b>A</b>, with magnitudes 1|<b>A</b>| and 1.5|<b>A</b>|.</paragraph>
+  </li>
+  <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-7.webp" decoding="async" height="176" loading="lazy" src="img/Untitled-7.webp" width="230"/>
+  <li>
+    <div class="highlight-box" data-label="💡 IMPORTANT">
+      <paragraph id="6a8930cfd2a5ff832b6a69b0"><b>Dimensional (unit) effect:</b> λ may have units. Then dim(λ<b>A</b>) = dim(λ) × dim(<b>A</b>).</paragraph>
+      <paragraph id="6a8930cfd2a5ff832b6a69b1"><b>Example:</b> (constant) velocity vector × time interval = displacement vector.</paragraph>
+    </div>
+  </li>
+</ul>
+
+<h3>3.4 Addition and Subtraction of Vectors — Graphical Method</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930cfd2a5ff832b6a69b2"><b>Vector addition law:</b> vectors obey <b>triangle law</b> of addition (≡ <b>parallelogram law</b>).</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a69b3"><b>Graphical picture:</b> vectors = directed line segments; length ∝ magnitude; drawn in a plane.</paragraph>
+  </li>
+  <li>
+    <paragraph id="6a8930cfd2a5ff832b6a69b4"><b>Triangle method for</b> <b>A + B</b>:</paragraph>
+    <ol>
+      <li><paragraph id="6a8930cfd2a5ff832b6a69b5">Place <b>B</b> so its <b>tail</b> touches the <b>head</b> of <b>A</b> (head-to-tail).</paragraph></li>
+      <li><paragraph id="6a8930cfd2a5ff832b6a69b6">Draw a vector from <b>tail of A</b> to <b>head of B</b>; call it <b>R</b>.</paragraph></li>
+      <li><paragraph id="6a8930cfd2a5ff832b6a69b7">Then <b>R = A + B</b>.</paragraph></li>
+  <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-8.webp" decoding="async" height="235" loading="lazy" src="img/Untitled-8.webp" width="256"/>
+  <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-9.webp" decoding="async" height="271" loading="lazy" src="img/Untitled-9.webp" width="218"/>
+  <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-10.webp" decoding="async" height="267" loading="lazy" src="img/Untitled-10.webp" width="204"/>
+  <img alt="Physics diagram" class="zoomable" data-full="img/Untitled-11.webp" decoding="async" height="261" loading="lazy" src="img/Untitled-11.webp" width="195"/>
+
+    </ol>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930cfd2a5ff832b6a69b8"><b>Exam tip:</b> In graphical addition, you may shift vectors parallel to themselves (free vectors) before adding, but <b>length and direction must not change</b>.</paragraph>
+</div>
+
+<h2>Vector Addition: Triangle (Head-to-Tail) Method</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69b9"><b>Head-to-tail (triangle) addition:</b> Put the <b>tail</b> of the 2nd vector at the <b>head</b> of the 1st. Draw the vector from the <b>tail of the first</b> to the <b>head of the last</b> → that’s the <b>resultant</b>. These three vectors make a <b>triangle</b> ⇒ also called <b>triangle method</b>.</paragraph>
+</div>
+
+<h3>Commutative Law of Vector Addition</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69ba"><b>Commutative law: A + B = B + A</b></paragraph><b>
+</b><paragraph id="6a8930cfd2a5ff832b6a69bb"><b>A, B </b>= vectors being added</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69bc">Swapping the order <b>does not</b> change the resultant vector.</paragraph>
+</div>
+
+<h3>Associative Law of Vector Addition</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69bd"><b>Associative law: (A + B) + C = A + (B + C)</b></paragraph><b>
+</b><paragraph id="6a8930cfd2a5ff832b6a69be"><b>A, B, C </b>= vectors being added</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69bf">For three vectors, changing the <b>grouping</b> doesn’t change the final resultant (as long as you follow the correct geometric addition rule).</paragraph>
+</div>
+
+<h3>Equal and Opposite Vectors: Null (Zero) Vector</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69c0">If two vectors have <b>same magnitude</b> but <b>opposite direction</b>, their sum is zero magnitude → a <b>null/zero vector</b>, written as <b>0</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69c1"><b>Vector + its negative: A − A = 0, and |0|</b> = 0</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69c2">A = any vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69c3">0 = null (zero) vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69c4">|0| = magnitude of null vector</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69c5"><b>Null vector has no defined direction</b> (because its magnitude is zero).</paragraph>
+</div>
+
+<h3>Properties of the Null (Zero) Vector</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69c6"><b>Key properties:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69c7">A + 0 = A</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69c8">λ 0 = 0</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69c9">0 A = 0</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69ca">A = vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69cb">0 = null vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69cc">λ = any scalar (real number)</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a69cd">Don’t give 0 a fixed direction. Also: multiplying by zero always gives the zero vector, no matter what direction the vector had.</paragraph>
+</div>
+
+<h3>Physical Meaning of a Zero Vector (Displacement Example)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69ce"><b>Zero displacement:</b> Start at P, go to P′, return to P → initial = final position ⇒ <b>displacement = null (zero) vector</b>.</paragraph>
+</div>
+
+<h2>Subtraction of Vectors</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69cf"><b>Vector subtraction = addition idea:</b> “A minus B” means “A plus (negative of B)”.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69d0"><b>Definition: A − B = A + (−B)</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69d1">A, B = vectors</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69d2">−B = same magnitude as B, opposite direction</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69d3">To get A − B geometrically: flip B to make <b>−B</b>, then add using the usual vector-addition rule.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-12.webp" decoding="async" height="189" loading="lazy" src="img/Untitled-12.webp" width="300"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-13.webp" decoding="async" height="269" loading="lazy" src="img/Untitled-13.webp" width="259"/>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a69d4">A − B is <b>not</b> “subtract magnitudes” (except special colinear cases with known directions). Always treat it as A + (−B).</paragraph>
+</div>
+
+<h2>Parallelogram Method of Vector Addition</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69d5"><b>Parallelogram method:</b> Place tails of A and B at the same point O. Through head of A draw a line ∥ B; through head of B draw a line ∥ A → a parallelogram forms. The diagonal from O to the opposite corner is the resultant <b>R</b>.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-14.webp" decoding="async" height="170" loading="lazy" src="img/Untitled-14.webp" width="180"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-15.webp" decoding="async" height="168" loading="lazy" src="img/Untitled-15.webp" width="262"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-16.webp" decoding="async" height="168" loading="lazy" src="img/Untitled-16.webp" width="258"/>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69d6"><b>Equivalence:</b> Parallelogram method and triangle (head-to-tail) method give the <b>same resultant</b> for A + B.</paragraph>
+</div>
+
+<h2>Worked Example: Rain and Wind (Resultant Velocity)</h2>
+<h3>Example 3.1: Direction to Hold the Umbrella</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69d7">Apparent rain direction (relative to the boy) comes from the <b>resultant velocity</b> of:</paragraph>
+<ul>
+<li>rain velocity (vertical downward), and</li>
+<li>wind velocity (horizontal, east → west).</li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a69d8">Umbrella should point <b>opposite</b> to this resultant (tilt into the oncoming rain).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69d9"><b>Given:</b> Rain falls vertically at 35 m s<sup>−1</sup>. Wind blows at 12 m s<sup>−1</sup> from east to west.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-17.webp" decoding="async" height="276" loading="lazy" src="img/Untitled-17.webp" width="165"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/UUntitled-17.webp" decoding="async" height="218" loading="lazy" src="img/UUntitled-17.webp" width="216"/>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69da"><b>Resultant speed (perpendicular components):</b> R = √(v<sub>r</sub><sup>2</sup> + v<sub>w</sub><sup>2</sup>)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69db">R = magnitude of resultant velocity</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69dc">v<sub>r</sub> = rain speed (vertical)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69dd">v<sub>w</sub> = wind speed (horizontal)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69de"><b>Angle w.r.t. vertical:</b> tan θ = v<sub>w</sub> / v<sub>r</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69df">θ = angle resultant makes with the vertical</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69e0">v<sub>w</sub>, v<sub>r</sub> as above</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a69e1"><b>Calculation:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a69e2">R = √(35<sup>2</sup> + 12<sup>2</sup>) m s<sup>−1</sup> = √(1225 + 144) = √1369 = 37 m s<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a69e3">tan θ = 12/35 = 0.343 ⇒ θ = tan<sup>−1</sup>(0.343) ≈ 19°</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69e4"><b>Conclusion:</b> Hold the umbrella in the vertical plane, about <b>19° to the vertical towards the east</b> (tilted into the side the wind pushes rain from).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a69e5">Angle is measured <b>from the vertical</b> (not from the horizontal). Use tan θ = horizontal/vertical = v<sub>w</sub>/v<sub>r</sub>.</paragraph>
+</div>
+
+<h2>Resolution of Vectors</h2>
+<h3>Resolving a Vector Along Two Non-Colinear Vectors</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69e6"><b>Resolution of a vector:</b> Write vector A as the sum of two components along two given <b>non-zero</b>, <b>non-parallel (non-colinear)</b> vectors a and b in the same plane.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a69e7"><b>Geometric idea:</b> Let OP represent A (O = tail, P = head). Through O draw a line ∥ a; through P draw a line ∥ b; they meet at Q. Then <b>OP = OQ + QP.</b></paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-18.webp" decoding="async" height="258" loading="lazy" src="img/Untitled-18.webp" width="348"/>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69e8"><b>Vector splitting:</b> A = OP = OQ + QP</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69e9">A = vector to be resolved</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69ea">OP = directed segment representing A</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69eb">OQ, QP = components along directions ∥ a and ∥ b</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69ec"><b>Components along a and b:</b> OQ = l a, and QP = µ b</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69ed">l, µ = real numbers (scalars)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69ee">a, b = given non-zero vectors in different directions</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69ef"><b>Resolution result:</b> A = l a + µ b</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69f0">A = resolved vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69f1">l a = component along a</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69f2">µ b = component along b</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69f3">This works for components along <b>any two non-colinear vectors</b> in the same plane. Most often, we resolve along <b>rectangular axes</b> using <b>unit vectors</b>.</paragraph>
+</div>
+
+<h2>Unit Vectors and Rectangular Components</h2>
+
+<h3>Unit Vectors (Definition and Properties)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69f4"><b>Unit vector:</b> vector of <b>magnitude 1</b> in a fixed direction. <b>Dimensionless</b> (no units) → used to show <b>direction only</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a69f5"><b>Standard unit vectors:</b> along x, y, z axes are <b>î</b>, <b>ĵ</b>, <b>k̂</b>. All are <b>mutually perpendicular</b>.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-19.webp" decoding="async" height="203" loading="lazy" src="img/Untitled-19.webp" width="192"/>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69f6"><b>Magnitudes:</b> |î| = |ĵ| = |k̂| = 1</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69f7">î, ĵ, k̂ = unit vectors along x, y, z axes</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a69f8">In 2D motion (x–y plane), only <b>î</b> and <b>ĵ</b> are needed.</paragraph>
+</div>
+
+<h3>Writing a Vector Using a Unit Vector Along Its Direction</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69f9"><b>Vector = magnitude × direction: A </b>= |A| n̂</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69fa"><b>A </b>= vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69fb">|A| = magnitude of A</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a69fc">n̂ = unit vector along direction of A</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a69fd">A unit vector gives <b>direction only</b>; multiply by a scalar → vector of that <b>magnitude</b> in the <b>same direction</b>.</paragraph>
+</div>
+
+<h3>Rectangular Components in the x–y Plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a69fe">Any vector <b>A</b> in the x–y plane can be split into two perpendicular parts: along x (î) and along y (ĵ).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a69ff"><b>Component vectors:</b> A<sub>1</sub> = A<sub>x</sub> î,   A<sub>2</sub> = A<sub>y</sub> ĵ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a00">A<sub>1</sub>, A<sub>2</sub> = component vectors along x and y</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a01">A<sub>x</sub>, A<sub>y</sub> = scalar components (real numbers)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a02">î, ĵ = unit vectors along x and y</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a03"><b>Vector in component form:</b> A = A<sub>x</sub> î + A<sub>y</sub> ĵ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a04">A = vector in the x–y plane</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a05">A<sub>x</sub>, A<sub>y</sub> = x- and y- scalar components</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a06"><b>Scalar vs vector:</b> A<sub>x</sub> is <b>not</b> a vector; A<sub>x</sub>î <b>is</b> a vector. Similarly A<sub>y</sub>ĵ is a vector.</paragraph>
+</div>
+
+<h3>Relating Components to Magnitude and Direction</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a07"><b>From magnitude + angle:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a08">A<sub>x</sub> = A cos θ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a09">A<sub>y</sub> = A sin θ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a0a">A = |A| (magnitude of vector A)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a0b">θ = angle made by A with the +x-axis</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a0c">A component may be <b>+ / − / 0</b> depending on θ (quadrant or along an axis).</paragraph>
+</div>
+
+<h3>Two Equivalent Ways to Specify a Vector in a Plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a0d">A vector <b>A</b> in a plane can be given by:</paragraph>
+<ol>
+<li><paragraph id="6a8930cfd2a5ff832b6a6a0e"><b>Magnitude + direction:</b> (A, θ) where θ is w.r.t. x-axis, or</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6a0f"><b>Rectangular components:</b> (A<sub>x</sub>, A<sub>y</sub>)</paragraph></li>
+</ol>
+</div>
+
+<h3>Finding Magnitude and Direction from Components</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a10"><b>Magnitude from components:</b> A = √(A<sub>x</sub><sup>2</sup> + A<sub>y</sub><sup>2</sup>)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a11">A = magnitude of vector A</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a12">A<sub>x</sub>, A<sub>y</sub> = x- and y- scalar components</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a13"><b>Direction from components:</b> tan θ = A<sub>y</sub> / A<sub>x</sub>, so θ = tan<sup>−1</sup>(A<sub>y</sub>/A<sub>x</sub>)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a14">θ = angle of A with the +x-axis</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a15">A<sub>x</sub>, A<sub>y</sub> = x- and y- scalar components</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6a16">Using θ = tan<sup>−1</sup>(A<sub>y</sub>/A<sub>x</sub>): pick the <b>correct quadrant</b> using signs of A<sub>x</sub>, A<sub>y</sub> (ratio alone may not fix θ).
+</paragraph></div>
+
+<h2>Vector Addition – Analytical Method</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a17"><b>Component (analytical) method:</b> write each vector in rectangular components (along perpendicular unit vectors), then add/subtract <b>component-wise</b>. Usually <b>easier + more accurate</b> than graphical addition.</paragraph>
+</div>
+
+<h3>Vectors in an x–y plane (2D): component form and resultant components</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a18"><b>Component form (2D):</b> <b>A</b> = A<sub>x</sub> î + A<sub>y</sub> ĵ,   <b>B</b> = B<sub>x</sub> î + B<sub>y</sub> ĵ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a19">A<sub>x</sub>, A<sub>y</sub> = components of <b>A</b> along x- and y-axes</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a1a">B<sub>x</sub>, B<sub>y</sub> = components of <b>B</b> along x- and y-axes</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a1b">î, ĵ = unit vectors along x- and y-axes</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a1c"><b>Vector laws used:</b> vectors follow <b>commutative</b> + <b>associative</b> laws → regroup components easily during addition.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a1d"><b>Resultant of two vectors:</b> <b>R</b> = <b>A</b> + <b>B</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a1e"><b>R</b> = resultant vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a1f"><b>A, B</b> = vectors being added</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a20">Write in components, then collect like terms:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a21"><b>R</b> = (A<sub>x</sub>î + A<sub>y</sub>ĵ) + (B<sub>x</sub>î + B<sub>y</sub>ĵ) = (A<sub>x</sub> + B<sub>x</sub>)î + (A<sub>y</sub> + B<sub>y</sub>)ĵ</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a22"><b>Resultant components (2D):</b> R<sub>x</sub> = A<sub>x</sub> + B<sub>x</sub>,   R<sub>y</sub> = A<sub>y</sub> + B<sub>y</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a23">R<sub>x</sub>, R<sub>y</sub> = x- and y-components of resultant <b>R</b></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a24"><b>Key exam line:</b> <i>Each component of the resultant equals the sum of the corresponding components.</i></paragraph>
+</div>
+
+<h3>Vectors in three dimensions (3D): component form and resultant components</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a25"><b>Component form (3D):</b> <b>A</b> = A<sub>x</sub>î + A<sub>y</sub>ĵ + A<sub>z</sub>k̂,   <b>B</b> = B<sub>x</sub>î + B<sub>y</sub>ĵ + B<sub>z</sub>k̂</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a26">î, ĵ, k̂ = unit vectors along x-, y-, z-axes</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a27">A<sub>x</sub>, A<sub>y</sub>, A<sub>z</sub> = components of <b>A</b> along x-, y-, z-axes</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a28">B<sub>x</sub>, B<sub>y</sub>, B<sub>z</sub> = components of <b>B</b> along x-, y-, z-axes</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a29"><b>Resultant components (3D):</b> If <b>R</b> = <b>A</b> + <b>B</b>, then</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a2a">R<sub>x</sub> = A<sub>x</sub> + B<sub>x</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a2b">R<sub>y</sub> = A<sub>y</sub> + B<sub>y</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a2c">R<sub>z</sub> = A<sub>z</sub> + B<sub>z</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a2d">R<sub>x</sub>, R<sub>y</sub>, R<sub>z</sub> = x-, y-, z-components of <b>R</b></paragraph>
+</div>
+
+<h3>Addition/subtraction of multiple vectors using components</h3>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a2e">This extends straight to any number of vectors: operate <b>component-wise</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a2f"><b>Example form:</b> if <b>a</b> = a<sub>x</sub>î + a<sub>y</sub>ĵ + a<sub>z</sub>k̂, <b>b</b> = b<sub>x</sub>î + b<sub>y</sub>ĵ + b<sub>z</sub>k̂, <b>c</b> = c<sub>x</sub>î + c<sub>y</sub>ĵ + c<sub>z</sub>k̂</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a30">Then for <b>T</b> = <b>a</b> + <b>b</b> − <b>c</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a31">T<sub>x</sub> = a<sub>x</sub> + b<sub>x</sub> − c<sub>x</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a32">T<sub>y</sub> = a<sub>y</sub> + b<sub>y</sub> − c<sub>y</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a33">T<sub>z</sub> = a<sub>z</sub> + b<sub>z</sub> − c<sub>z</sub></paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6a34"><b>Exam tip:</b> watch signs in subtraction: subtracting a vector = subtract <i>every</i> component.</paragraph>
+</div>
+
+<h2>Resolving a Vector in Three Dimensions (Direction Angles)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a35">Any space vector can be split into x-, y-, z- components using the angles it makes with each axis.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a36"><b>Direction angles:</b> α, β, γ are the angles between vector <b>A</b> and the x-, y-, z-axes respectively.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a37">These are <b>angles in space</b> (between lines not necessarily in the same plane).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a38"><b>Components via direction angles:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a39">A<sub>x</sub> = A cosα    A<sub>y</sub> = A cosβ    A<sub>z</sub> = A cosγ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a3a">A = magnitude of vector <b>A</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a3b">α, β, γ = angles made by <b>A</b> with x-, y-, z-axes</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a3c"><b>Unit-vector form (3D):</b> <b>A</b> = A<sub>x</sub>î + A<sub>y</sub>ĵ + A<sub>z</sub>k̂</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a3d">A<sub>x</sub>, A<sub>y</sub>, A<sub>z</sub> = rectangular components of <b>A</b></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a3e"><b>Magnitude from components:</b> A = √(A<sub>x</sub><sup>2</sup> + A<sub>y</sub><sup>2</sup> + A<sub>z</sub><sup>2</sup>)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a3f">A = magnitude of vector <b>A</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a40">A<sub>x</sub>, A<sub>y</sub>, A<sub>z</sub> = components of <b>A</b></paragraph>
+</div>
+
+<h3>Position vector in three dimensions</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a41"><b>Position vector:</b> <b>r</b> = xî + yĵ + zk̂</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a42">x, y, z = coordinates/components along x-, y-, z-axes</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a43"><b>r</b> = position vector of a point w.r.t. the origin</paragraph>
+</div>
+
+<h2>Resultant of Two Vectors in Terms of Magnitudes and Included Angle (Example 3.2)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a44">If vectors <b>A</b> and <b>B</b> have included angle θ, then the resultant <b>R</b> = <b>A</b> + <b>B</b> (magnitude + direction) comes from parallelogram/triangle geometry.</paragraph>
+</div>
+
+<h3>Magnitude of resultant: Law of Cosines</h3>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-20.webp" decoding="async" height="152" loading="lazy" src="img/Untitled-20.webp" width="248"/>
+<paragraph id="6a8930cfd2a5ff832b6a6a45">Using the parallelogram idea, split <b>B</b> into parts parallel/perpendicular to <b>A</b>:</paragraph>
+<ul>
+<li>Along <b>A</b>: B cosθ</li>
+<li>Perpendicular to <b>A</b>: B sinθ</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a46"><b>Law of cosines (|R|):</b> R<sup>2</sup> = A<sup>2</sup> + B<sup>2</sup> + 2AB cosθ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a47">R = magnitude of resultant <b>R</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a48">A, B = magnitudes of vectors <b>A</b>, <b>B</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a49">θ = angle between <b>A</b> and <b>B</b></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a4a">R<sup>2</sup> = A<sup>2</sup> + B<sup>2</sup> + 2AB cosθ is the <b>Law of Cosines</b> for vector addition.</paragraph>
+</div>
+
+<h3>Direction of resultant: Law of Sines and tangent form</h3>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a4b">Let α be the angle between resultant <b>R</b> and vector <b>A</b>. Match perpendicular components:</paragraph>
+<ul>
+<li>Perpendicular part of <b>R</b> (w.r.t. <b>A</b>): R sinα</li>
+<li>Perpendicular part of <b>B</b> (w.r.t. <b>A</b>): B sinθ</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a4c"><b>Direction relation (perpendicular components):</b> R sinα = B sinθ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a4d">R = magnitude of resultant</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a4e">α = angle between <b>R</b> and <b>A</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a4f">B = magnitude of vector <b>B</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a50">θ = angle between <b>A</b> and <b>B</b></paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a51">From the vector-addition triangle (angles α, β, θ):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a52"><b>Law of sines (vector triangle):</b> R/sinθ = A/sinβ = B/sinα</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a53">R, A, B = magnitudes of resultant and vectors</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a54">θ = angle between <b>A</b> and <b>B</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a55">α = angle between <b>R</b> and <b>A</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a56">β = angle between <b>R</b> and <b>B</b> (as used in the triangle)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a57">R/sinθ = A/sinβ = B/sinα is the <b>Law of Sines</b> here.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a58">Solving for α:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a59"><b>Angle of resultant with A:</b> sinα = (B/R) sinθ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a5a">α = angle between <b>R</b> and <b>A</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a5b">B = magnitude of <b>B</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a5c">R = magnitude of resultant (from law of cosines)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a5d">θ = included angle between <b>A</b> and <b>B</b></paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a5e">Also (using parallel + perpendicular parts):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a5f"><b>Tangent form (direction):</b> tanα = (B sinθ)/(A + B cosθ)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a60">α = angle between <b>R</b> and <b>A</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a61">A, B = magnitudes of vectors <b>A</b>, <b>B</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a62">θ = angle between <b>A</b> and <b>B</b></paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6a63"><b>Common exam mistake:</b> Using sinα = (B/R)sinθ before finding R correctly from R<sup>2</sup> = A<sup>2</sup> + B<sup>2</sup> + 2ABcosθ, or mixing up α (angle with A) vs θ (angle between A and B).</paragraph>
+</div>
+
+<h2>Worked Application: Relative Velocity of Boat and Current (Example 3.3)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a64">When two velocities act together, add vectors: <b>R</b> = <b>v</b><sub>b</sub> + <b>v</b><sub>c</sub>.</paragraph>
+</div>
+
+<h3>Given and vector geometry</h3>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-21.webp" decoding="async" height="311" loading="lazy" src="img/Untitled-21.webp" width="311"/>
+<ul>
+<li>Motorboat: v<sub>b</sub> = 25 km/h due north.</li>
+<li>Current: v<sub>c</sub> = 10 km/h at 60° east of south.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a65">In the addition triangle/parallelogram, the included angle for cosine rule is <b>120°</b> (from the given directions in the construction).</paragraph>
+</div>
+
+<h3>Magnitude using Law of Cosines</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a66"><b>Resultant speed:</b> R<sup>2</sup> = v<sub>b</sub><sup>2</sup> + v<sub>c</sub><sup>2</sup> + 2 v<sub>b</sub> v<sub>c</sub> cos120°</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a67">R = magnitude of resultant velocity</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a68">v<sub>b</sub> = boat speed (25 km/h)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a69">v<sub>c</sub> = current speed (10 km/h)</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a6a">Substitute cos120° = −1/2:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a6b">R<sup>2</sup> = 25<sup>2</sup> + 10<sup>2</sup> + 2(25)(10)(−1/2) = 625 + 100 − 250 = 475</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a6c">R = √475 ≈ 21.8 km/h ≈ 22 km/h</paragraph>
+
+<h3>Direction using Law of Sines</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a6d"><b>Law of sines for direction angle φ:</b> R/v<sub>c</sub> = sinθ/sinφ  ⇒  sinφ = (v<sub>c</sub>/R) sinθ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a6e">φ = angle of resultant as marked in the construction</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a6f">θ = included angle in the triangle (here 120°)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a70">v<sub>c</sub> = 10 km/h</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a71">R ≈ 21.8 km/h</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a72">Compute:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a73">sinφ = (10/21.8) sin120° = (10/21.8)(√3/2) ≈ (10×0.866)/21.8 ≈ 0.397</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a74">φ ≈ 23.4°</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6a75"><b>Exam tip:</b> Keep θ consistent in cosine/sine laws: use the included angle between the two velocity vectors in your triangle (here 120°, not 60°).</paragraph>
+</div>
+
+<h2>Motion in a Plane</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a76">2D motion is easiest in an x–y frame using vectors: position, displacement, velocity.</paragraph>
+</div>
+
+<h3>Position vector and displacement (Section 3.7.1)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a77"><b>Position vector (2D):</b> <b>r</b> = xî + yĵ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a78">x, y = components along x- and y-axes</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a79"><b>r</b> gives particle position w.r.t. origin</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-22.webp" decoding="async" height="238" loading="lazy" src="img/Untitled-22.webp" width="222"/>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6a7a">If at time t the particle is at P with position <b>r</b>, and at time t′ it is at P′ with position <b>r′</b>, then displacement points from P → P′:</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-23.webp" decoding="async" height="243" loading="lazy" src="img/Untitled-23.webp" width="263"/>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a7b"><b>Displacement:</b> Δ<b>r</b> = <b>r′</b> − <b>r</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a7c">Δ<b>r</b> = displacement vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a7d"><b>r</b>, <b>r′</b> = initial, final position vectors</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a7e"><b>Component form:</b> Δ<b>r</b> = Δx î + Δy ĵ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a7f">Δx = x′ − x</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a80">Δy = y′ − y</paragraph>
+</div>
+
+<h3>Average velocity and instantaneous velocity</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a81"><b>Average velocity:</b> <b>v</b><sub>avg</sub> = Δ<b>r</b>/Δt = (Δx/Δt)î + (Δy/Δt)ĵ</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a82">Δ<b>r</b> = displacement in time interval Δt</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a83">Δt = t′ − t</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a84">Δx, Δy = coordinate changes during Δt</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a85"><b>Direction of <b>v</b><sub>avg</sub>:</b> since <b>v</b><sub>avg</sub> ∥ Δ<b>r</b>, it points in the same direction as the displacement (for that interval).</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-24.webp" decoding="async" height="186" loading="lazy" src="img/Untitled-24.webp" width="150"/>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a86"><b>Instantaneous velocity:</b> <b>v</b> = lim<sub>Δt→0</sub> (Δ<b>r</b>/Δt) = d<b>r</b>/dt</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a87"><b>v</b> = velocity at an instant</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a88"><b>r</b> = position vector as a function of time</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a89">t = time</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a8a"><b>Geometric meaning (Δt → 0):</b> instantaneous velocity <b>v</b> is along the <b>tangent to the path</b> at that point.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-25.webp" decoding="async" height="191" loading="lazy" src="img/Untitled-25.webp" width="155"/>
+</div>
+
+<h2>Instantaneous Velocity in a Plane: Direction and Components</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6a8b"><b>Direction of velocity at a point:</b> as ∆t gets smaller (∆t1 &gt; ∆t2 &gt; ∆t3) and → 0, ∆r also → 0 and becomes <b>along the tangent</b> to the path. So <b>instantaneous velocity</b> is <b>tangential</b> to the trajectory, in the <b>direction of motion</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a8c"><b>Velocity vector (component form)</b> (Eq. 3.29):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a8d"><b>v = d r / dt = lim(∆t→0) (∆r /∆t) = (dx/dt) î + (dy/dt) ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a8e">v = instantaneous velocity vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a8f">r = position vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a90">x, y = coordinates as functions of time t</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a91">î, ĵ = unit vectors along x- and y-axes</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a92"><b>Velocity components</b> (Eq. 3.30a):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a93"><b>v = v<sub>x</sub> î + v<sub>y</sub> ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a94"><b>v<sub>x</sub> = dx/dt</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a95"><b><sub>v<sub>y</sub></sub> = dy/dt</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a96">v<sub>x</sub>, v<sub>y</sub> = x- and y-components of velocity respectively</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6a97">If x(t) and y(t) are known: just <b>differentiate each coordinate w.r.t. time</b> to get <b>vx</b> and <b>vy</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a98"><b>Magnitude of velocity</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a99"><b>v = √(v<sub>x</sub> + v<sub>y</sub>)</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a9a">v = speed (magnitude of velocity)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a9b">v<sub>x</sub>, v<sub>y</sub> = velocity components</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6a9c"><b>Direction of velocity</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a9d"><b>tan θ = v<sub>y</sub> / v<sub>x</sub></b> and <b>θ = tan⁻¹(v<sub>y</sub>/v<sub>x</sub>)</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a9e">θ = angle made by v with the +x-axis</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6a9f">v<sub>x</sub>, v<sub>y</sub> = velocity components</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6aa0"><b>v<sub>x</sub> = v cos θ</b>, <b>v<sub>y</sub> = v sin θ</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6aa1"><b>Exam tip:</b> θ = tan⁻¹(v<sub>y</sub>/v<sub>x</sub>) needs <b>quadrant check</b>: signs of vx and vy decide the true direction of v (0° to 360°).</paragraph>
+</div>
+
+<h2>Acceleration in a Plane: Average and Instantaneous</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6aa2"><b>Average acceleration</b> in the x–y plane over ∆t = <b>change in velocity / time</b>. Direction = direction of <b>∆v</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6aa3"><b>Average acceleration</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aa4"><b>aavg = ∆v / ∆t = (∆v<sub>x</sub>/∆t) î + (∆v<sub>y</sub>/∆t) ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aa5">aavg = average acceleration vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aa6">∆v = change in velocity vector in time ∆t</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aa7">∆v<sub>x</sub>, ∆v<sub>y</sub> = changes in velocity components</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6aa8"><b>Component form</b> :</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aa9"><b>a = a<sub>x</sub> î + a<sub>y</sub> ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aaa">a<sub>x</sub>, a<sub>y</sub> = x- and y-components of acceleration respectively</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-26.webp" decoding="async" height="158" loading="lazy" src="img/Untitled-26.webp" width="160"/>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6aab"><b>Instantaneous acceleration</b> = limiting value of average acceleration as ∆t → 0. From the diagrams below as ∆t decreases, direction of ∆v changes; in the limit, acceleration at the point has a definite direction.</paragraph>
+</div>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-27.webp" decoding="async" height="85" loading="lazy" src="img/Untitled-27.webp" width="65"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-28.webp" decoding="async" height="89" loading="lazy" src="img/Untitled-28.webp" width="61"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-30.webp" decoding="async" height="95" loading="lazy" src="img/Untitled-30.webp" width="60"/>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-29.webp" decoding="async" height="88" loading="lazy" src="img/Untitled-29.webp" width="74"/>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6aac"><b>Instantaneous acceleration</b> :</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aad"><b>a = lim(∆t→0) (∆v/∆t) = dv/dt</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aae">a = instantaneous acceleration vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aaf">v = instantaneous velocity vector</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ab0"><b>Acceleration components from velocity components</b> (Eq. 3.32b, 3.32c):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ab1"><b>a = ax î + ay ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ab2"><b>ax = dvx/dt</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ab3"><b>ay = dvy/dt</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ab4">ax, ay = acceleration components</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ab5">vx, vy = velocity components</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6ab6"><b>1D vs 2D/3D:</b> in 1D, velocity and acceleration lie on the same line (same/opposite). In 2D/3D, they can make <b>any angle 0° to 180°</b>.</paragraph>
+</div>
+
+<h2>Example 3.4: Differentiating Position Vector to Get Velocity and Acceleration</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6ab7">If position is given as r(t), then:</paragraph>
+<ul>
+<li><b>v(t) = dr/dt</b></li>
+<li><b>a(t) = dv/dt = d²r/dt²</b></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6ab8"><b>Given: r</b> = (3.0t) î + (2.0t²) ĵ + (5.0) k̂ (metres), t in seconds.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6ab9"><b>(a) Find v(t) and a(t)</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aba">Differentiate r(t) component-by-component:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6abb"><b>v(t) = dr/dt = (d/dt)(3.0t) î + (d/dt)(2.0t²) ĵ + (d/dt)(5.0) k̂</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6abc"><b>v(t) = 3.0 î + 4.0t ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6abd">Constant 5.0 ⇒ derivative = 0, so k̂-component of velocity is 0.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6abe">Differentiate v(t):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6abf"><b>a(t) = dv/dt = d(3.0)/dt î + d(4.0t)/dt ĵ = 0 î + 4.0 ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ac0"><b>a = 4.0 ĵ m s⁻²</b> (i.e., 4.0 m s⁻² along +y)</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6ac1"><b>(b) Magnitude and direction of v at t = 1.0 s</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ac2">Put t = 1.0 s into v(t):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ac3"><b>v = 3.0 î + 4.0 ĵ</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ac4"><b>|v| = √(3.0² + 4.0²) = 5.0 m s⁻¹</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ac5">|v| = speed</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ac6"><b>θ = tan⁻¹(v<sub>y</sub>/v<sub>x</sub>) = tan⁻¹(4.0/3.0) ≈ 53°</b> with the x-axis</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ac7">θ = direction of velocity with +x-axis</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6ac8"><b>Common mistake:</b> forgetting d(constant)/dt = 0 (here 5.0 k̂). It affects position, but not velocity/acceleration.</paragraph>
+</div>
+
+<h2>Motion in a Plane with Constant Acceleration</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6ac9"><b>Constant acceleration a</b> in the x–y plane  <b>average a = instantaneous a</b> at all times.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aca">So we can use the usual 1D kinematics ideas, just apply them <b>separately to x- and y-components</b>.</paragraph>
+</div>
+
+<h3>Velocity–Time Relation (Vector and Components)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6acb"><b>Definition (constant a)</b> (take t<sub>0</sub> = 0):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6acc"><b>a = (v − v<sub>0</sub>)/t</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6acd">a = constant acceleration vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ace">v<sub>0</sub> = velocity at t = 0</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6acf">v = velocity at time t</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ad0"><b>Velocity vs time</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ad1"><b>v = v<sub>0</sub> + a t</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ad2">v = velocity at time t</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ad3">v<sub>0</sub> = initial velocity</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ad4">a = constant acceleration</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ad5">t = time elapsed</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ad6"><b>Component form</b>:</paragraph>
+<b>$v_x=v_{o x}+a_x t$<paragraph id="6a8930cfd2a5ff832b6a6ad7"></paragraph>
+$v_y=v_{o y}+a_y t$<paragraph id="6a8930cfd2a5ff832b6a6ad8"></paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6ad9">v<sub>x</sub>, v<sub>y</sub> = initial velocity components</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ada">a<sub>x</sub>, a<sub>y</sub> = constant acceleration components</paragraph>
+</b></div><b>
+
+<h3>Position–Time Relation (Using Average Velocity)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6adb">For constant acceleration over time t:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6adc">Average velocity = <b>(v + v<sub>0</sub>)/2</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6add">Displacement = (average velocity) × time.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ade"><b>Vector kinematic equation</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6adf"><b>$x=x_0+v_{o x} t+\frac{1}{2} a_x t^2$</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae0">r<sub>0</sub> = position at t = 0</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae1">r = position at time t</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae2">v<sub>0</sub> = initial velocity</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae3">a = constant acceleration</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae4">t = time elapsed</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6ae5">Text checks:</paragraph>
+<ul>
+<li>Differentiate Eq.: <b>dr/dt = v</b></li><b>
+<li>Initial condition works: at t = 0, <b>r = r0</b>.</li>
+</b></ul><b>
+</b></div><b>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ae6"><b>Component position</b> (Eq. 3.34b):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae7"><b>x = x0 + vox t + (1/2) ax t²</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae8"><b>y = y0 + voy t + (1/2) ay t²</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ae9">x0, y0 = initial coordinates</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aea">vox, voy = initial velocity components</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aeb">ax, ay = constant acceleration components</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6aec"><b>That is, motion in a plane (two-dimensions) can be treated as two separate simultaneous onedimensional motions with constant acceleration along two perpendicular directions.</b></paragraph><b>
+<paragraph id="6a8930cfd2a5ff832b6a6aed">(Same idea in 3D.) This is the key idea behind projectile motion.</paragraph>
+</b></div><b>
+
+<h2>Example 3.5: Using r = r<sub>0</sub> + v<sub>0</sub> t + (1/2) a t² in 2D</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6aee"><b>Given:</b> Start at origin (r<sub>0</sub> = 0) at t = 0 with v<sub>0</sub> = 5.0 î m s⁻¹, and constant a = (3.0 î + 2.0 ĵ) m s⁻².</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aef">Find: (a) y when x = 84 m, (b) speed then.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6af0"><b>Step 1: Write r(t)</b> using Eq. (3.34a):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6af1"><b>r(t) = v<sub>0</sub> t + (1/2) a t²</b> (since r<sub>0</sub> = 0)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6af2"><b>r(t) = (5.0t + 1.5t²) î + (1.0t²) ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6af3">1.5 = (1/2)×3.0 and 1.0 = (1/2)×2.0</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6af4">So:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6af5"><b>x(t) = 5.0t + 1.5t²</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6af6"><b>y(t) = 1.0t²</b></paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6af7"><b>(a) When x = 84 m → find t → then y</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6af8">Solve: 5.0t + 1.5t² = 84 ⇒ t = 6 s (as in text).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6af9">Then y = 1.0(6)² = 36.0 m.</paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6afa"><b>(b) Speed at this time</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6afb">Differentiate r(t) to get v(t):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6afc"><b>v(t) = dr/dt = (5.0 + 3.0t) î + (2.0t) ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6afd">d/dt(5.0t + 1.5t²) = (5.0 + 3.0t); d/dt(1.0t²) = (2.0t).</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6afe">At t = 6 s:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6aff"><b>v = 23.0 î + 12.0 ĵ</b> (m s⁻¹)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b00">Speed:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b01"><b>v = √(23² + 12²) ≈ 26 m s⁻¹</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b02">v = magnitude of velocity</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6b03"><b>Common mistake:</b> Once you know x = 84 m, don’t plug straight into y(x) unless you’ve eliminated time properly.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b04">Intended route here: <b>x(t) → find t → then y(t) and v(t)</b>.</paragraph>
+</div>
+
+<h2>Projectile Motion: Concept and Basic Equations </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b05"><b>Projectile:</b> object moving through air after being thrown/projected (e.g. football, cricket ball, baseball).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b06"><b>Core model (ignore air resistance):</b> projectile motion =</paragraph>
+<ul>
+<li><b>Horizontal motion</b> with <b>no acceleration</b></li>
+<li><b>Vertical motion</b> with <b>constant acceleration due to gravity</b></li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a6b07"><b>Galileo’s independence principle:</b> horizontal + vertical parts are independent (in <i>Dialogue on the great world systems</i>, 1632).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b08">Main assumption throughout: <b>air resistance is negligible</b>.</paragraph>
+</div>
+
+<h3>Acceleration Components in Projectile Motion</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b09"><b>Gravity acceleration</b> (Eq. 3.35):</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b0a"><b>a = −g ĵ</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b0b"><b>a<sub>x</sub> = 0</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b0c"><b>a<sub>y</sub> = −g</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b0d">g = magnitude of gravitational acceleration (vertically downward)</paragraph>
+</div>
+
+<h3>Initial Velocity Components</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b0e"><b>Initial velocity components</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b0f"><b>v<sub>ox</sub> = v<sub>o</sub> cos θo</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b10"><b>v<sub>oy</sub> = v<sub>o</sub> sin θo</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b11">v<sub>o</sub> = initial speed</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b12">θo = launch angle with the x-axis</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b13">v<sub>ox</sub>, v<sub>oy</sub> = initial velocity components</paragraph>
+</div>
+
+<h2>Projectile Motion in a Plane </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b14">Projectile motion → split into 2 perpendicular directions:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b15"><b>x-direction (horizontal):</b> uniform motion (a = 0).</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b16"><b>y-direction (vertical):</b> uniformly accelerated with <b>−g</b> (free fall).</paragraph></li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a6b17">Take launch point as origin : <b>x<sub>0</sub>=0, y<sub>0</sub>=0</b>.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-31.webp" decoding="async" height="236" loading="lazy" src="img/Untitled-31.webp" width="238"/>
+</div>
+
+<h3>Position coordinates as functions of time</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b18"><b>Position (origin = initial point):</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b19"><b>x = v<sub>0x</sub>t = (v<sub>0</sub>cosθ<sub>0</sub>)t</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b1a"><b>y = (v<sub>0</sub>sinθ<sub>0</sub>)t − (1/2)gt²</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b1b"><b>x, y</b> = coordinates at time <b>t</b></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b1c"><b>v<sub>0</sub></b> = initial speed</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b1d"><b>θ<sub>0</sub></b> = launch angle above horizontal</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b1e"><b>v<sub>0x</sub>=v<sub>0</sub>cosθ<sub>0</sub></b> = initial horizontal component</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b1f"><b>v<sub>0y</sub>=v<sub>0</sub>sinθ<sub>0</sub></b> = initial vertical component</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b20"><b>g</b> = magnitude of gravity (acts downward)</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b21">Above equation gives position at time <b>t</b> using just <b>v<sub>0</sub></b> and <b>θ<sub>0</sub></b>. Choosing perpendicular x–y axes makes life easy because:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b22"><b>v<sub>x</sub> stays constant</b> for the whole flight.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b23"><b>Only v<sub>y</sub> changes</b>, exactly like vertical free fall.</paragraph></li>
+</ul>
+</div>
+
+<h3>Velocity components as functions of time</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b24"><b>Velocity components:</b>    (Eq. 3.38)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b25"><b>v<sub>x</sub> = v<sub>0x</sub> = v<sub>0</sub>cosθ<sub>0</sub></b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b26"><b>v<sub>y</sub> = v<sub>0</sub>sinθ<sub>0</sub> − gt</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b27"><b>v<sub>x</sub>, v<sub>y</sub></b> = components of velocity at time <b>t</b></paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b28">At maximum height:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b29"><b>v<sub>y</sub> = 0</b></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b2a">Velocity is purely horizontal, and direction comes from component ratio:</paragraph></li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a6b2b"><b>tanθ = v<sub>y</sub>/v<sub>x</sub></b> ⇒ at the top <b>θ=0</b> since <b>v<sub>y</sub>=0</b>.</paragraph>
+</div>
+
+<h3>Equation of the path (trajectory)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b2c">To get the path shape, <b>eliminate time t</b> between x(t) and y(t).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b2d"><b>Trajectory equation:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b2e"><b>y = x tanθ<sub>0</sub> − (g x²)/(2v<sub>0</sub>²cos²θ<sub>0</sub>)</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b2f"><b>θ<sub>0</sub>, v<sub>0</sub>, g</b> = constants for a given launch</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b30">Above equation has form <b>y = ax + bx²</b> (a, b constants) ⇒ it’s a <b>parabola</b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b31">So, <b>projectile path is parabolic</b>.</paragraph>
+<img alt="Physics diagram" class="zoomable" data-full="img/Untitled-32.webp" decoding="async" height="317" loading="lazy" src="img/Untitled-32.webp" width="355"/>
+</div>
+
+<h3>Time to reach maximum height</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b32"><b>Time to max height (t<sub>m</sub>):</b> </paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b33"><b>t<sub>m</sub> = (v<sub>0</sub>sinθ<sub>0</sub>)/g</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b34">Use the top condition <b>v<sub>y</sub>=0</b> in <b>v<sub>y</sub>=v<sub>0</sub>sinθ<sub>0</sub>−gt</b>.</paragraph></li>
+</ul>
+</div>
+
+<h3>Time of flight (returning to initial level)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b35"><b>Time of flight (T<sub>f</sub>) when landing back at y=0:</b> </paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b36"><b>T<sub>f</sub> = 2(v<sub>0</sub>sinθ<sub>0</sub>)/g</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b37">Put <b>y=0</b> in <b>y=(v<sub>0</sub>sinθ<sub>0</sub>)t − (1/2)gt²</b>, take the non-zero root.</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b38"><b>Symmetry:</b> <b>T<sub>f</sub> = 2t<sub>m</sub></b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b39">Reason: for same launch/landing level, time up = time down to the same height (parabolic symmetry).</paragraph>
+</div>
+
+<h3>Maximum height of a projectile</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b3a"><b>Maximum height (h<sub>m</sub>):</b> </paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b3b"><b>h<sub>m</sub> = (v<sub>0</sub>²sin²θ<sub>0</sub>)/(2g)</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b3c">Substitute <b>t=t<sub>m</sub></b> into <b>y(t)</b> .</paragraph></li>
+</ul>
+</div>
+
+<h3>Horizontal range</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b3d"><b>Horizontal range (R):</b> horizontal distance from start (<b>x=y=0</b>) to where it hits <b>y=0</b> again on the way down (same-level landing).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b3e"><b>Range:</b> </paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b3f"><b>R = (v<sub>0</sub>cosθ<sub>0</sub>)T<sub>f</sub> =$\left(v_0^2 \sin 2 \theta_0\right) / g$</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b40"><b>R</b> = horizontal range</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b41"><b>T<sub>f</sub></b> = time of flight</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b42">For fixed <b>v<sub>0</sub></b>, range is max when <b>sin2θ<sub>0</sub></b> is max.</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b43">Since max(sin) = 1: <b>sin2θ<sub>0</sub>=1 ⇒ 2θ<sub>0</sub>=90° ⇒ θ<sub>0</sub>=45°</b>.</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b44"><b>Maximum range (θ<sub>0</sub>=45°):</b> </paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b45"><b>R<sub>m</sub> = v<sub>0</sub>²/g</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b46"><b>R<sub>m</sub></b> = max possible range for given <b>v<sub>0</sub></b></paragraph></li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6b47"><b>Exam trap:</b> The formulas for <b>T<sub>f</sub>, R, h<sub>m</sub></b> above assume landing is at the <b>same vertical level</b> as launch (final y = initial y).</paragraph>
+</div>
+
+<h3>Example 3.6 (Galileo’s statement about equal ranges)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b48"><b>Statement:</b> “For elevations that exceed or fall short of 45° by equal amounts, the ranges are equal.”</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b49"><b>Given:</b> for speed v<sub>0</sub> at angle θ<sub>0</sub>, range is:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b4a"><b>R = (v<sub>0</sub>²/g)sin2θ<sub>0</sub></b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b4b"><b>v<sub>0</sub></b> fixed, <b>g</b> fixed ⇒ R depends only on <b>sin2θ<sub>0</sub></b></paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b4c"><b>Angles:</b> (45° + α) and (45° − α)</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b4d">If θ<sub>0</sub> = 45° + α ⇒ <b>2θ<sub>0</sub> = 90° + 2α</b></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b4e">If θ<sub>0</sub> = 45° − α ⇒ <b>2θ<sub>0</sub> = 90° − 2α</b></paragraph></li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a6b4f"><b>Key trig step:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b50"><b>sin(90° + 2α) = sin(90° − 2α) = cos2α</b></paragraph></li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a6b51">So <b>sin2θ<sub>0</sub></b> is the same for both angles ⇒ by the range formula, the <b>ranges are equal</b>.</paragraph>
+
+<h3>Example 3.7 (Horizontal projection from a cliff)</h3>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b52"><b>Problem:</b> Cliff height = 490 m. Stone thrown <b>horizontally</b> with speed 15 m s<sup>−1</sup>. Find:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b53">(i) time to reach ground</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b54">(ii) impact speed</paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b55"><b>Set-up (as in solution):</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b56">Origin at cliff edge; t=0 at throw.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b57">+x along throw; +y vertically upward.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b58">Handle x and y independently.</paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b59"><b>Equations used:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b5a">x(t) = x<sub>0</sub> + v<sub>0x</sub>t</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b5b">y(t) = y<sub>0</sub> + v<sub>0y</sub>t + (1/2)a<sub>y</sub>t²</paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b5c"><b>Given components/values:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b5d">x<sub>0</sub>=0, y<sub>0</sub>=0</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b5e">v<sub>0y</sub>=0 (horizontal throw)</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b5f">a<sub>y</sub>=−g=−9.8 m s<sup>−2</sup></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b60">v<sub>0x</sub>=15 m s<sup>−1</sup></paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b61"><b>Time to hit ground:</b> ground is 490 m below origin ⇒ y(t)=−490 m.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b62">−490 = (1/2)(−9.8)t² = −4.9t²</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b63">t² = 100 ⇒ <b>t = 10 s</b></paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b64"><b>Velocity components at impact:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b65">v<sub>x</sub>=v<sub>0x</sub>= <b>15 m s<sup>−1</sup></b></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b66">v<sub>y</sub>=v<sub>0y</sub>−gt = 0 − 9.8×10 = <b>−98 m s<sup>−1</sup></b></paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b67"><b>Impact speed:</b> v = √(v<sub>x</sub>² + v<sub>y</sub>²) = √(15² + 98²) ≈ √(9829) ≈ <b>99 m s<sup>−1</sup></b></paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6b68"><b>Common mistake:</b> using +g instead of −g after choosing +y upward. Keep signs consistent with your axis choice.</paragraph>
+</div>
+
+<h3>Example 3.8 (Oblique projection: height, time of flight, range)</h3>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b69"><b>Problem:</b> Cricket ball thrown with v<sub>0</sub>=28 m s<sup>−1</sup> at θ<sub>0</sub>=30° above horizontal. Find:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b6a">(a) maximum height</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b6b">(b) time to return to same level</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b6c">(c) horizontal distance to return point (range)</paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b6d"><b>(a) Maximum height:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b6e">Use h<sub>m</sub> = (v<sub>0</sub>²sin²θ<sub>0</sub>)/(2g)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b6f">sin30° = 1/2 ⇒ v<sub>0</sub>sin30° = 14 m s<sup>−1</sup></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b70">h<sub>m</sub> = 14²/(2×9.8) = 196/19.6 = <b>10.0 m</b></paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b71"><b>(b) Time to return to same level:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b72">T<sub>f</sub> = (2v<sub>0</sub>sinθ<sub>0</sub>)/g = (2×28×sin30°)/9.8 = 28/9.8 = <b>2.9 s</b></paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b73"><b>(c) Range:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b74">R = (v<sub>0</sub>²/g)sin2θ<sub>0</sub> = (28²/9.8)sin60°</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b75">⇒ <b>R = 69 m</b> (as in the text)</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6b76"><b>Exam tip:</b> In (c) don’t use sinθ; range uses <b>sin2θ</b>. Also check it really “returns to same level” before using these standard results.</paragraph>
+</div>
+
+<h2>Uniform Circular Motion</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b77"><b>Uniform circular motion:</b> object moves on a circle at <b>constant speed</b> (uniform = speed stays same).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b78">But <b>velocity keeps changing direction</b> ⇒ there is a <b>non‑zero acceleration</b>.</paragraph>
+</div>
+
+<h3>Direction of acceleration (centripetal nature)</h3>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b79">Circle of radius <b>R</b>, speed <b>v</b>. At two nearby points P and P′, let:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b7a"><b>r</b>, <b>r′</b> = position vectors at P, P′</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b7b"><b>v</b>, <b>v′</b> = velocity vectors at P, P′</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b7c"><b>Velocity at any point</b> is along the <b>tangent</b> to the circle (direction of motion). So:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b7d"><b>v ⟂ r</b> and <b>v′ ⟂ r′</b> (for circular motion)</paragraph></li>
+</ul>
+<paragraph id="6a8930cfd2a5ff832b6a6b7e">Using triangle law of vectors, build <b>Δv</b> from <b>v</b> and <b>v′</b>. From the geometry of the circle, <b>Δv ⟂ Δr</b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b7f">Average acceleration <b>ā = Δv/Δt</b> points along <b>Δv</b> ⇒ <b>ā ⟂ Δr</b>. Putting Δv along the bisector between <b>r</b> and <b>r′</b> shows Δv (so acceleration) points <b>towards the centre</b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b80">As <b>Δt → 0</b>, the instantaneous acceleration still points <b>towards the centre</b> at every point.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6b81"><b>Key point:</b> speed constant ≠ acceleration zero. Acceleration depends on change in <b>velocity</b>, and direction is changing.</paragraph>
+</div>
+
+<h3>Magnitude of centripetal acceleration (derivation idea)</h3>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b82">Let angle between <b>r</b> and <b>r′</b> be <b>Δθ</b>. Since <b>v ⟂ r</b> and <b>v′ ⟂ r′</b>, the angle between <b>v</b> and <b>v′</b> is also <b>Δθ</b>.</paragraph>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b83">Triangles made by (<b>r</b>, <b>r′</b>, <b>Δr</b>) and by (<b>v</b>, <b>v′</b>, <b>Δv</b>) are similar. So:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b84"><b>Similarity relation:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b85"><b>Δv / v = Δr / R</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b86"><b>Δv</b> = magnitude of change in velocity</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b87"><b>v</b> = speed (constant)</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b88"><b>Δr</b> = magnitude of change in position vector</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b89"><b>R</b> = radius of the circle</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b8a">Hence:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b8b"><b>Δv/Δt = (v/R)(Δr/Δt)</b></paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b8c">For very small <b>Δt</b>, arc PP′ ≈ |Δr|, and distance along arc = <b>vΔt</b>, so:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b8d"><b>Small-interval arc approximation:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b8e"><b>Δr ≈ v Δt</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b8f">Works when <b>Δt</b> is small (so <b>Δθ</b> is small) ⇒ arc ≈ chord</paragraph></li>
+</ul>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6b90">Therefore, as <b>Δt → 0</b>:</paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b91"><b>Δr/Δt → v</b></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b92"><b>a = lim(Δv/Δt) = (v/R)·v = v²/R</b></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b93"><b>Centripetal acceleration magnitude:</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b94"><b>a<sub>c</sub> = v² / R</b></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b95"><b>a<sub>c</sub></b> = centripetal (radial) acceleration</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b96"><b>v</b> = speed</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6b97"><b>R</b> = radius of circular path</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6b98"><b>Direction:</b> centripetal acceleration is <b>always towards the centre</b> at every point on the path.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6b99"><b>Conceptual pitfall:</b> “centripetal” = <b>direction</b> (centre-seeking), not a separate mystery force. Some real force(s) must provide this inward acceleration.</paragraph>
+</div>
+
+<h2>Uniform Circular Motion: Centripetal Acceleration and Angular Speed</h2>
+
+<h3>Centripetal acceleration (magnitude and direction)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6b9a">Object moving at constant speed v in a circle (radius R) has an acceleration called centripetal acceleration, always pointing to the centre (centre-seeking).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6b9b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6b9c">a<sub>c</sub> = v<sup>2</sup>/R</paragraph><paragraph id="6a8930cfd2a5ff832b6a6b9d"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6b9e"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6b9f">a<sub>c</sub>: centripetal acceleration (magnitude)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ba0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ba1">v: speed (constant in UCM)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6ba2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ba3">R: radius of circular path</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6ba4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ba5">|a<sub>c</sub>| stays constant if v and R are constant, BUT the direction of a<sub>c</sub></paragraph> keeps changing (always inward).<paragraph id="6a8930cfd2a5ff832b6a6ba6"></paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6ba7">So centripetal acceleration is NOT a constant vector (even if its magnitude is constant).</paragraph></li>
+<li>a<sub>c</sub> points along the radius to the centre; velocity at any point is tangential.<paragraph id="6a8930cfd2a5ff832b6a6ba8"></paragraph></li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6ba9">Don’t write “acceleration is constant” in uniform circular motion. Only the </paragraph><paragraph id="6a8930cfd2a5ff832b6a6baa">magnitude  can be constant; the vector changes direction every instant.</paragraph>
+</div>
+
+<h3>Angular displacement, angular speed, and relation to linear speed</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6bab">Moving from P to P′ in time Δt, the radius line turns through Δθ. This Δθ is the angular distance (angular displacement).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6bac"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bad">ω = Δθ/Δt
+ω: angular speed (rate of change of angular displacement)</paragraph>
+Δθ: angular displacement in time Δt
+<paragraph id="6a8930cfd2a5ff832b6a6bae"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6baf">Δt: time interval</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6bb0">Arc length traveled in time Δt is Δs. For a circle: </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb1">Δs = RΔθ.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6bb2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb3">v = Δs/Δt
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb5">v: linear (tangential) speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb7">Δs: arc distance traveled in time Δt</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bb8"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bb9">Δt: time interval</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6bba"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bbb">v = Rω
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6bbc"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bbd">v: linear (tangential) speed</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bbe"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bbf">R: radius</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bc0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bc1">ω: angular speed</paragraph>
+</div>
+
+<h3>Centripetal acceleration in terms of angular speed</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6bc2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bc3">a<sub>c</sub> = ω<sup>2</sup>R</paragraph><paragraph id="6a8930cfd2a5ff832b6a6bc4"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bc5"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bc6">a<sub>c</sub>: centripetal acceleration (magnitude)</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bc7"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bc8">ω: angular speed</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bc9"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bca">R: radius</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6bcb">Substitute </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bcc">v = ωR into </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bcd">a<sub>c</sub> = v<sup>2</sup>/R to get </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bce">a<sub>c</sub> = ω<sup>2</sup>R. This conversion is tested a lot.</paragraph>
+</div>
+
+<h3>Time period, frequency, and their relations with ω, v, and a<sub>c</sub></h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bcf"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bd0">Time period (T): time for 1 full revolution.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bd1"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bd2">Frequency (ν): revolutions per second; </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bd3">ν = 1/T.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bd4">In 1 revolution, distance along the circle: s = 2πR.</paragraph></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6bd5"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bd6">v = 2πR/T = 2πRν</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bd7"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bd8">v: linear speed</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bd9"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bda">R: radius</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bdb"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bdc">T: time period</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bdd"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bde">ν: frequency (ν = 1/T)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6bdf"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6be0">ω = 2πν</paragraph><paragraph id="6a8930cfd2a5ff832b6a6be1"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6be2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6be3">ω: angular speed</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6be4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6be5">ν: frequency</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6be6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6be7">a<sub>c</sub> = 4π<sup>2</sup>ν<sup>2</sup>R</paragraph><paragraph id="6a8930cfd2a5ff832b6a6be8"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6be9"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bea">a<sub>c</sub>: centripetal acceleration</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6beb"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bec">ν: frequency</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6bed"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bee">R: radius</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6bef">Common mix-up: </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bf0">ω = 2π/T and </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bf1">ν = 1/T ⇒ ω = 2πν (NOT πν, NOT 2π/T<sup>2</sup>).</paragraph>
+</div>
+
+<h3>Worked Example: insect in a circular groove (Example 3.9)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6bf2">Given: R = 12 cm; revolutions n = 7 in time t = 100 s. This is uniform circular motion (constant speed, circular path).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6bf3">“Revolutions in time” → find frequency or period → then ω → then v → then a.</paragraph>
+</div>
+
+<paragraph id="6a8930cfd2a5ff832b6a6bf4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bf5">(a) Angular speed and linear speed</paragraph><paragraph id="6a8930cfd2a5ff832b6a6bf6"></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bf7">Time period (1 rev): T = 100/7 s.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bf8">Angular speed: ω = 2π/T = 2π × (7/100) = 0.44 rad s<sup>−1</sup>.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bf9">Linear speed: v = ωR = (0.44 s<sup>−1</sup>)(12 cm) = 5.3 cm s<sup>−1</sup>.</paragraph></li>
+</ul>
+
+<paragraph id="6a8930cfd2a5ff832b6a6bfa"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6bfb">(b) Is acceleration a constant vector? Magnitude of acceleration</paragraph><paragraph id="6a8930cfd2a5ff832b6a6bfc"></paragraph>
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bfd">Velocity is tangential everywhere; acceleration points to the centre.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6bfe">Because the inward direction keeps changing as it moves, </paragraph><paragraph id="6a8930cfd2a5ff832b6a6bff">acceleration is not a constant vector.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6c00">Magnitude is constant (since ω and R are constant): a = ω<sup>2</sup>R = (0.44 s<sup>−1</sup>)<sup>2</sup>(12 cm) = 2.3 cm s<sup>−2</sup>.</paragraph></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6c01">Keep units consistent (all SI or all cm-based). Here it stays in cm, so acceleration is in </paragraph><paragraph id="6a8930cfd2a5ff832b6a6c02">cm s<sup>−2</sup>.</paragraph>
+</div>
+
+<h2>Chapter Summary (Exam-usable facts from this portion)</h2>
+
+<h3>Scalars and vectors</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6c03"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c04">Scalar: magnitude only (e.g. distance, speed, mass, temperature).</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6c05"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c06">Vector: magnitude + direction; follows vector algebra (e.g. displacement, velocity, acceleration).</paragraph></li>
+</ul>
+</div>
+
+<h3>Multiplication of a vector by a real number</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c07">If vector A is multiplied by real number λ → new vector has magnitude |λ||A|. Direction: same as A if λ &gt; 0, opposite if λ &lt; 0.</paragraph>
+</div>
+
+<h3>Vector addition laws and methods</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<paragraph id="6a8930cfd2a5ff832b6a6c08"></paragraph><li>Graphical methods: head-to-tail and parallelogram.</li>
+<li>Commutative: A + B = B + A.</li>
+<li>Associative: (A + B) + C = A + (B + C).</li><paragraph id="6a8930cfd2a5ff832b6a6c09"></paragraph>
+
+</ul>
+</div>
+
+<h3>Zero (null) vector and its properties</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c0a"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c0b">Zero (null) vector: magnitude = 0; direction not required.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c0c"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c0d">A + 0 = A</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c0e"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c0f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c10">A: any vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c11"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c12">0: zero vector</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c13"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c14">λ0 = 0</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c15"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c16"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c17">λ: real number</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c18"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c19">0: zero vector</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c1a"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c1b">0A = 0</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c1c"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c1d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c1e">A: any vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c1f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c20">0: scalar zero</paragraph>
+</div>
+
+<h3>Vector subtraction</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c21">Define subtraction via adding the negative: </paragraph><paragraph id="6a8930cfd2a5ff832b6a6c22">A − B = A + (−B).</paragraph>
+</div>
+
+<h3>Resolution of a vector along two given vectors in a plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c23">Any vector A in a plane can be resolved along two non-parallel coplanar vectors a and b:</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c24"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c25">A = λa + μb</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c26"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c27"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c28">A: vector to be resolved</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c29"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c2a">a, b: given (coplanar) vectors</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c2b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c2c">λ, μ: real numbers (scalars)</paragraph>
+</div>
+
+<h3>Unit vector and standard unit vectors i, j, k</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c2d">Unit vector along A: magnitude 1, direction same as A.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c2e"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c2f">n̂ = A/|A|</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c30"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c31">n̂: unit vector along A</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c32"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c33"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c34">A: given vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c35"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c36">|A|: magnitude of A</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c37"></paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c38">Standard unit vectors î, ĵ, k̂ point along the x-, y-, and z-axes (right-handed system).</paragraph>
+</div>
+
+<h3>Component form of a vector in x–y plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c39">In x–y plane, write a vector using components:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c3a">A = A<sub>x</sub> î + A<sub>y</sub> ĵ
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c3b">A: vector
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c3c">A<sub>x</sub>, A<sub>y</sub>: x- and y-components
+</paragraph>î, ĵ: unit vectors along x- and y-axes
+</div><paragraph id="6a8930cfd2a5ff832b6a6c3d">
+
+
+</paragraph><div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c3e"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c3f">A<sub>x</sub> = A cosθ,  A<sub>y</sub> = A sinθ</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c40"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c41"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c42">A: magnitude of vector A</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c43"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c44"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c45">θ: angle made by A with x-axis</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c46"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c47">A<sub>x</sub>, A<sub>y</sub>: x and y components</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c48"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c49">A = √(A<sub>x</sub><sup>2</sup> + A<sub>y</sub><sup>2</sup>)</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c4a"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c4b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c4c">A: magnitude of vector A</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c4d"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c4e"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c4f">A<sub>x</sub>, A<sub>y</sub>: components</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c50"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c51">tanθ = A<sub>y</sub>/A<sub>x</sub></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c52"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c53"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c54">θ: angle with x-axis</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c55"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c56">A<sub>x</sub>, A<sub>y</sub>: x and y components</paragraph>
+</div>
+
+<h3>Analytical method of vector addition (component-wise)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c57">If R = A + B (vectors in x–y plane), add x-parts and y-parts separately.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c58"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c59">R = R<sub>x</sub> î + R<sub>y</sub> ĵ</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c5a"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c5b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c5c">R: resultant vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c5d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c5e">R<sub>x</sub>, R<sub>y</sub>: components of resultant</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c5f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c60">R<sub>x</sub> = A<sub>x</sub> + B<sub>x</sub>,   R<sub>y</sub> = A<sub>y</sub> + B<sub>y</sub></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c61"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c62"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c63">A<sub>x</sub>, A<sub>y</sub>: components of A</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c64"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c65"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c66">B<sub>x</sub>, B<sub>y</sub>: components of B</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c67"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c68"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c69">R<sub>x</sub>, R<sub>y</sub>: components of R</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c6a"></paragraph>
+</div>
+
+<h3>Position vector and displacement in x–y plane</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c6b">Position vector of point (x, y) in x–y plane:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c6c"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c6d">r = x î + y ĵ</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c6e"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c6f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c70">r: position vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c71"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c72">x, y: coordinates</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c73"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c74">î, ĵ: unit vectors</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c75">Displacement from r to r′:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c76"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c77">Δr = r′ − r = (x′ − x) î + (y′ − y) ĵ = Δx î + Δy ĵ</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c78"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c79"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c7a">Δr: displacement vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c7b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c7c">r, r′: initial and final position vectors</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c7d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c7e">Δx = x′ − x: change in x-coordinate</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c7f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c80">Δy = y′ − y: change in y-coordinate</paragraph>
+</div>
+
+<h3>Average velocity and instantaneous velocity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6c81">Average velocity = displacement/time. Instantaneous velocity = limit as time interval → 0.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c82"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c83">v̄ = Δr/Δt</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c84"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c85"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c86">v̄: average velocity</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c87"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c88">Δr: displacement in time interval Δt</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c89"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c8a"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c8b">Δt: time interval</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c8c"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c8d">v = lim<sub>Δt→0</sub>(Δr/Δt) = dr/dt</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c8e"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c8f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c90">v: instantaneous velocity</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c91"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c92">r: position vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c93"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c94">t: time</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c95"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c96">v = v<sub>x</sub> î + v<sub>y</sub> ĵ + v<sub>z</sub> k̂</paragraph><paragraph id="6a8930cfd2a5ff832b6a6c97"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c98"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c99">v: velocity vector</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c9a"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c9b">v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>: velocity components</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6c9c"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c9d">î, ĵ, k̂: unit vectors along axes</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6c9e"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6c9f">v<sub>x</sub> = dx/dt,  v<sub>y</sub> = dy/dt,  v<sub>z</sub> = dz/dt
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca1">x, y, z: coordinates
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca3">t: time
+</paragraph></div>
+
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6ca4">On a trajectory, instantaneous velocity is always tangent to the curve at that point.</paragraph>
+</div>
+
+<h3>Average acceleration and instantaneous acceleration</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6ca5">Average acceleration = change in velocity/time. Instantaneous acceleration = limit as time interval → 0.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ca6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca7">ā = (v′ − v)/Δt = Δv/Δt
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca8"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ca9">ā: average acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6caa"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cab">v: initial velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cac"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cad">v′: final velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cae"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6caf">Δt: time interval
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb1">Δv = v′ − v: change in velocity
+</paragraph></div>
+
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cb2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb3">a = lim<sub>Δt→0</sub>(Δv/Δt) = dv/dt
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb5">a: instantaneous acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb7">v: velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb8"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cb9">t: time
+</paragraph></div>
+
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cba"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cbb">a = a<sub>x</sub> î + a<sub>y</sub> ĵ + a<sub>z</sub> k̂
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cbc"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cbd">a: acceleration vector
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cbe"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cbf">a<sub>x</sub>, a<sub>y</sub>, a<sub>z</sub>: acceleration components
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc1">î, ĵ, k̂: unit vectors
+
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cc2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc3">a<sub>x</sub> = dv<sub>x</sub>/dt,  a<sub>y</sub> = dv<sub>y</sub>/dt,  a<sub>z</sub> = dv<sub>z</sub>/dt
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc5">v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>: velocity components
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc7">t: time
+
+
+</paragraph></div>
+
+<h3>Motion in a plane with constant acceleration (vector and component equations)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6cc8">Plane motion with constant acceleration vector a (components </paragraph><paragraph id="6a8930cfd2a5ff832b6a6cc9">a<sub>x</sub>, a<sub>y</sub> and initial position r<sub>0</sub> at t = 0:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cca"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ccb">r = r<sub>0</sub> + v<sub>0</sub> t + (1/2) a t<sup>2</sup>
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ccc"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ccd">r: position vector at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cce"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ccf">r<sub>0</sub>: initial position vector at t = 0
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd1">v<sub>0</sub>: initial velocity at t = 0
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd3">a: constant acceleration vector
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd5">t: time
+
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cd6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd7">v = v<sub>0</sub> + a t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd8"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cd9">v: velocity at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cda"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cdb">v<sub>0</sub>: initial velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cdc"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cdd">a: constant acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cde"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cdf">t: time
+
+
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6ce0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce1">x = x<sub>0</sub> + v<sub>0x</sub> t + (1/2) a<sub>x</sub> t<sup>2</sup>
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce3">x: x-coordinate at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce5">x<sub>0</sub>: initial x-coordinate
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce7">v<sub>0x</sub>: initial x-component of velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce8"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ce9">a<sub>x</sub>: x-component of acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cea"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ceb">t: time
+
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cec"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6ced">y = y<sub>0</sub> + v<sub>0y</sub> t + (1/2) a<sub>y</sub> t<sup>2</sup>
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cee"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cef">y: y-coordinate at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf0"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf1">y<sub>0</sub>: initial y-coordinate
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf2"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf3">v<sub>0y</sub>: initial y-component of velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf4"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf5">a<sub>y</sub>: y-component of acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf6"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf7">t: time
+
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6cf8"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cf9">v<sub>x</sub> = v<sub>0x</sub> + a<sub>x</sub> t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cfa"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cfb">v<sub>x</sub>: x-component of velocity at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cfc"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cfd">v<sub>0x</sub>: initial x-component of velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6cfe"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6cff">a<sub>x</sub>: constant x-acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d00"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d01">t: time
+
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d02"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d03">v<sub>y</sub> = v<sub>0y</sub> + a<sub>y</sub> t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d04"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d05">v<sub>y</sub>: y-component of velocity at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d06"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d07">v<sub>0y</sub>: initial y-component of velocity
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d08"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d09">a<sub>y</sub>: constant y-acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d0a"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d0b">t: time
+
+
+</paragraph></div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d0c">Constant-acceleration plane motion = </paragraph><paragraph id="6a8930cfd2a5ff832b6a6d0d">superposition of two independent 1D motions</paragraph> along perpendicular directions (usually x and y).<paragraph id="6a8930cfd2a5ff832b6a6d0e"></paragraph>
+</div>
+
+<h3>Projectile motion (definition, equations, trajectory, maximum height, time to rise, range)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="6a8930cfd2a5ff832b6a6d0f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d10">Projectile: object in flight after projection.</paragraph></li>
+<li><paragraph id="6a8930cfd2a5ff832b6a6d11">Standard setup: start at origin; initial speed v<sub>0</sub> at angle </paragraph></li><li><paragraph id="6a8930cfd2a5ff832b6a6d12">θ<sub>0</sub> to x-axis; acceleration = gravity downward (magnitude g).</paragraph></li>
+
+
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d13"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d14">x = (v<sub>0</sub> cosθ<sub>0</sub>) t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d15"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d16">x: horizontal position at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d17"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d18">v<sub>0</sub>: initial speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d19"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d1a">θ<sub>0</sub>: angle of projection with x-axis
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d1b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d1c">t: time
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d1d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d1e">y = (v<sub>0</sub> sinθ<sub>0</sub>) t − (1/2) g t<sup>2</sup>
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d1f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d20">y: vertical position at time t
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d21"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d22">g: acceleration due to gravity (magnitude)
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d23"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d24">v<sub>x</sub> = v<sub>0x</sub> = v<sub>0</sub> cosθ<sub>0</sub>
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d25"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d26">v<sub>x</sub>: horizontal component of velocity (constant)
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d27"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d28">v<sub>0x</sub>: initial horizontal component
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d29"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d2a">v<sub>y</sub> = v<sub>0</sub> sinθ<sub>0</sub> − g t</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d2b"></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d2c"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d2d">v<sub>y</sub>: vertical component of velocity</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d2e">Projectile trajectory is a parabola.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d2f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d30">y = x tanθ<sub>0</sub> − (g x<sup>2</sup>)/(2 v<sub>0</sub><sup>2</sup> cos<sup>2</sup>θ<sub>0</sub>)
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d31"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d32">y: vertical coordinate at horizontal position x
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d33"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d34">x: horizontal coordinate
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d35"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d36">v<sub>0</sub>: initial speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d37"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d38">θ<sub>0</sub>: projection angle
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d39"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d3a">g: acceleration due to gravity (magnitude)
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d3b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d3c">h<sub>m</sub> = (v<sub>0</sub><sup>2</sup> sin<sup>2</sup>θ<sub>0</sub>)/(2g)
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d3d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d3e">h<sub>m</sub>: maximum height
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d3f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d40">v<sub>0</sub>: initial speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d41"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d42">θ<sub>0</sub>: projection angle
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d43"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d44">g: acceleration due to gravity (magnitude)
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d45"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d46">t<sub>m</sub> = (v<sub>0</sub> sinθ<sub>0</sub>)/g
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d47"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d48">t<sub>m</sub>: time to reach maximum height
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d49"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d4a">v<sub>0</sub>: initial speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d4b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d4c">θ<sub>0</sub>: projection angle
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d4d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d4e">g: acceleration due to gravity (magnitude)
+
+</paragraph></div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d4f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d50">Range (R): horizontal distance from launch point to where it again crosses y = 0 on the way down.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d51"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d52">R = (v<sub>0</sub><sup>2</sup> sin2θ<sub>0</sub>)/g
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d53"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d54">R: range
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d55"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d56">v<sub>0</sub>: initial speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d57"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d58">θ<sub>0</sub>: projection angle
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d59"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d5a">g: acceleration due to gravity (magnitude)
+
+</paragraph></div>
+
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6d5b">Projectile tip: v<sub>x</sub> stays constant, but v<sub>y</sub> changes linearly with time due to −g. Range formula here assumes it lands back at y = 0.
+</paragraph></div>
+
+<h3>Uniform circular motion (collected results)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d5c">Moving in a circle at constant speed ⇒ uniform circular motion.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d5d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d5e">a<sub>c</sub> = v<sup>2</sup>/R
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d5f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d60">a<sub>c</sub>: centripetal acceleration (towards centre)
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d61"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d62">v: constant speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d63"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d64">R: radius
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d65"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d66">v = ωR
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d67"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d68">v: linear speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d69"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d6a">ω: angular speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d6b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d6c">R: radius
+
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d6d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d6e">a<sub>c</sub> = ω<sup>2</sup>R
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d6f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d70">a<sub>c</sub>: centripetal acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d71"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d72">ω: angular speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d73"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d74">R: radius
+</paragraph></div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d75"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d76">ω = 2πν,  v = 2πνR,  a<sub>c</sub> = 4π<sup>2</sup>ν<sup>2</sup>R
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d77"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d78">ω: angular speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d79"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d7a">ν: frequency (1/T)
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d7b"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d7c">v: linear speed
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d7d"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d7e">a<sub>c</sub>: centripetal acceleration
+</paragraph><paragraph id="6a8930cfd2a5ff832b6a6d7f"></paragraph><paragraph id="6a8930cfd2a5ff832b6a6d80">R: radius
+
+</paragraph></div>
+
+<h2>Points to Ponder (Exam Essentials from Motion in a Plane)</h2>
+
+<h3>1) Path length vs displacement (magnitude)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d81"><b>Path length (distance travelled)</b> = actual length of the route/trajectory between two points (depends on the path taken).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d82"><b>Displacement</b> = change in position vector from start to end; depends only on initial &amp; final points.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d83">In general: <b>path length ≠ |displacement|</b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d84">They are equal <b>only if direction never changes</b> (straight-line motion, no turns/reversals).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d85">Otherwise: <b>path length &gt; |displacement|</b>.</paragraph>
+</div>
+
+<h3>2) Average speed vs magnitude of average velocity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d86"><b>Average speed</b> = (total path length)/(total time).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d87"><b>Average velocity</b> = displacement/time; so <b>|average velocity| = |displacement|/time</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d88">Since path length ≥ |displacement|:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d89"><b>average speed ≥ |average velocity|</b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d8a">Equality only when <b>path length = |displacement|</b> (no change in direction).</paragraph>
+</div>
+
+<h3>3) Axis-independence of vector equations</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d8b">Equations of motion written in <b>vector form</b> (for r, v, a) are <b>axis-free</b> → no need to choose axes first.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d8c">You can always resolve the same vector equation along <b>any two independent axes</b> (like x, y) to solve component-wise.</paragraph>
+</div>
+
+<h3>4) Uniform acceleration equations vs uniform circular motion</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d8d"><b>Uniform-acceleration kinematics</b> assume acceleration is constant as a vector: constant <b>magnitude + direction</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d8e">So these kinematic equations <b>cannot be used</b> for <b>uniform circular motion</b> because even if |a| is constant, the <b>direction of a keeps changing</b>.</paragraph>
+</div>
+
+<h3>5) Resultant velocity vs relative velocity (do not confuse)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d8f"><b>Resultant (combined) velocity</b> when two velocities act together:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d90"><b>v = v<sub>1</sub> + v<sub>2</sub></b> (vector addition).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d91"><b>Relative velocity</b> of 1 w.r.t. 2:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d92"><b>v<sub>12</sub> = v<sub>1</sub> − v<sub>2</sub></b>, where v<sub>1</sub>, v<sub>2</sub> are measured in the <b>same reference frame</b>.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6d93">Exam trap: “v = v<sub>1</sub> + v<sub>2</sub>” is a different setup from “velocity of 1 relative to 2”. Relative velocity is always a <b>difference</b> (same frame first!).</paragraph>
+</div>
+
+<h3>6) Acceleration in circular motion: when is it purely centripetal?</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d94">In circular motion, acceleration points <b>only towards the centre</b> <b>iff speed is constant</b> (UCM).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d95">If speed changes → extra <b>tangential</b> acceleration appears → net acceleration is not purely radial.</paragraph>
+</div>
+
+<h3>7) Trajectory depends on acceleration and initial conditions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6d96"><b>Trajectory (path shape)</b> depends on:</paragraph>
+<ul>
+<li>the acceleration, and</li>
+<li>the <b>initial conditions</b>: initial position + initial velocity.</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d97">Same acceleration (like gravity) can still give different paths:</paragraph>
+<ul>
+<li><b>straight line</b> (e.g., purely vertical throw), or</li>
+<li><b>parabola</b> (projectile with a horizontal component).</li>
+</ul>
+</div>
+
+<h2>Vector Inequalities (Triangle Inequality and Related Results)</h2>
+
+<h3>Triangle inequality for vectors</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d98"><b>|a + b| ≤ |a| + |b|</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d99">|a + b| = magnitude of resultant of vectors a and b</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d9a">|a|, |b| = magnitudes of vectors a and b</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d9b">Strict form used in many questions:</paragraph>
+<ul>
+<li><b>|a + b| &lt; |a| + |b|</b> (generally)</li>
+<li>Equality when <b>a and b are parallel + same direction</b> (collinear, angle 0°).</li>
+</ul>
+</div>
+
+<h3>Reverse triangle inequality</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d9c"><b>|a + b| ≥ ||a| − |b||</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6d9d">||a| − |b|| = absolute value of the difference of magnitudes</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6d9e">Strict form used in many questions:</paragraph>
+<ul>
+<li><b>|a + b| &gt; ||a| − |b||</b> (generally)</li>
+<li>Equality when <b>a and b are antiparallel</b> (collinear, opposite directions, angle 180°).</li>
+</ul>
+</div>
+
+<h3>Inequalities for difference of vectors</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6d9f"><b>|a − b| ≤ |a| + |b|</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6da0"><b>|a − b| ≥ ||a| − |b||</b></paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6da1">Equality conditions:</paragraph>
+<ul>
+<li>For <b>|a − b| = |a| + |b|</b>: a and b must be <b>antiparallel</b> (since a − b = a + (−b), and a ∥ (−b) ⇒ a opposite to b).</li>
+<li>For <b>|a − b| = ||a| − |b||</b>: a and b must be <b>parallel in the same direction</b>.</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6da2">Fast method: rewrite subtraction as addition with a negative vector: <b>a − b = a + (−b)</b>, then apply triangle-inequality conditions to a and (−b).</paragraph>
+</div>
+
+<h2>Consequences of a + b + c + d = 0 (Vector Closure)</h2>
+
+<h3>Interpreting a + b + c + d = 0</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6da3">If <b>a + b + c + d = 0</b>, then you can rearrange like <b>a + b + c = −d</b>, etc.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6da4">Geometrically: placing vectors head-to-tail makes a <b>closed polygon</b> → net displacement = 0.</paragraph>
+</div>
+
+<h3>Must each vector be zero?</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6da5">From <b>a + b + c + d = 0</b>, it does <b>not</b> mean a, b, c, d are each zero.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6da6">Non-zero vectors can add to zero if they form a closed shape.</paragraph>
+</div>
+
+<h3>Relation between (a + c) and (b + d)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6da7">Given <b>a + b + c + d = 0</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6da8">a + c = −(b + d) ⇒ <b>|a + c| = |b + d|</b> (equal magnitudes since vectors are negatives).</paragraph>
+</div>
+
+<h3>Magnitude of a compared to magnitudes of b, c, d</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6da9">From <b>a = −(b + c + d)</b>:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6daa">|a| = |b + c + d| ≤ |b| + |c| + |d| (extended triangle inequality).</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6dab">So <b>|a| can never exceed |b| + |c| + |d|</b>.</paragraph>
+</div>
+
+<h3>Planarity of b + c relative to a and d</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6dac">b + c = −(a + d).</paragraph>
+<ul>
+<li>If a and d are not collinear → they define a plane; (a + d) lies in it ⇒ <b>b + c lies in the plane of a and d</b>.</li>
+<li>If a and d are collinear → (a + d) lies on that line ⇒ <b>b + c lies on the same line</b>.</li>
+</ul>
+</div>
+
+<h2>Circular Motion: Speed, Direction, and Acceleration (Exam Reminders)</h2>
+
+<h3>Direction of velocity in circular/curved motion</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6dad"><b>Instantaneous velocity</b> at any point is along the <b>tangent</b> to the path at that point.</paragraph>
+</div>
+
+<h3>Radial (centripetal) and tangential acceleration</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6dae">In circular motion, acceleration may have:</paragraph>
+<ul>
+<li><b>Radial (centripetal)</b>: towards centre (changes direction of v).</li>
+<li><b>Tangential</b>: along tangent (changes speed).</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6daf">Net acceleration is purely radial <b>only if speed is constant</b>.</paragraph>
+</div>
+
+<h3>Average acceleration over one full cycle in uniform circular motion</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6db0">In UCM, after one full cycle velocity becomes the same as initial:</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6db1">Δv over one cycle = 0 ⇒ <b>average acceleration over one cycle = null vector</b>.</paragraph>
+</div>
+
+<h2>Scalars and Vectors (Concept Checks Embedded in Exercises)</h2>
+
+<h3>Scalar vs vector: what examiners test</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930cfd2a5ff832b6a6db2"><b>Scalar</b> = fully described by <b>magnitude only</b>.</paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6db3"><b>Vector</b> = needs <b>magnitude + direction</b>; must obey <b>vector addition</b> rules.</paragraph>
+</div>
+
+<h3>Meaningful algebraic operations with scalars/vectors</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>Scalar + scalar → <b>meaningful</b>.</li>
+<li>Scalar + vector (even “same units”) → <b>not meaningful</b> (different mathematical types).</li>
+<li>Scalar × vector → <b>meaningful</b> (scales magnitude; negative scalar flips direction).</li>
+<li>Scalar × scalar → <b>meaningful</b>.</li>
+<li>Vector + vector → <b>meaningful</b> (gives a vector), but only if they’re <b>compatible physical quantities</b>.</li>
+<li>“Add a component to the vector” (e.g., A + A<sub>x</sub>) → <b>not meaningful</b> as written (component is a scalar). If you mean the <b>component vector</b>, then OK: A + A<sub>x</sub> î.</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6db4">Common slip: treating “x-component” (scalar) as if it’s a vector. Write component vectors clearly: A<sub>x</sub> î, A<sub>y</sub> ĵ.</paragraph>
+</div>
+
+<h3>True/false style conceptual facts</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Magnitude of a vector is a scalar</b> → true.</li>
+<li><b>Each component of a vector is a scalar</b> → true (signed number in a chosen coordinate system).</li>
+<li><b>Total path length always equals |displacement|</b> → false (only if direction never changes).</li>
+<li><b>Average speed ≥ |average velocity|</b> → true (equality only when path length = |displacement|).</li>
+<li><b>Three vectors not lying in a plane can never add to zero</b> → tricky: if a + b + c = 0, then they <b>must</b> be coplanar (can form a closed triangle). So truly <b>non-coplanar</b> vectors cannot sum to zero. Many errors come from misreading “not lying in a plane”.</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6db5">Be exact: if a + b + c = 0 ⇒ c = −(a + b). So c lies in the plane of a and b ⇒ all three are coplanar.</paragraph>
+</div>
+
+<h2>Average Quantities and Validity of Common Relations (Arbitrary Motion in Space)</h2>
+
+<h3>Correct expression for average velocity</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6db6"><b>v̄ = [r(t<sub>2</sub>) − r(t<sub>1</sub>)] / (t<sub>2</sub> − t<sub>1</sub>)</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6db7">v̄ = average velocity vector over t<sub>1</sub> → t<sub>2</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6db8">r(t) = position vector vs time</paragraph>
+</div>
+
+<h3>Correct expression for average acceleration</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930cfd2a5ff832b6a6db9"><b>ā = [v(t<sub>2</sub>) − v(t<sub>1</sub>)] / (t<sub>2</sub> − t<sub>1</sub>)</b></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6dba">ā = average acceleration vector over t<sub>1</sub> → t<sub>2</sub></paragraph>
+<paragraph id="6a8930cfd2a5ff832b6a6dbb">v(t) = velocity vector vs time</paragraph>
+</div>
+
+<h3>Relations that are NOT generally valid for arbitrary motion</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>v̄ = (1/2)[v(t<sub>1</sub>) + v(t<sub>2</sub>)] → <b>not always true</b>; only special cases (e.g., constant acceleration in 1D, or constant acceleration with fixed direction in an appropriate sense).</li>
+<li>v(t) = v(0) + a t → <b>not generally true</b> unless acceleration a is <b>constant as a vector</b>.</li>
+<li>r(t) = r(0) + v(0)t + (1/2)a t<sup>2</sup> → <b>not generally true</b> unless acceleration is <b>constant as a vector</b>.</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930cfd2a5ff832b6a6dbc">Circular motion at constant speed: |a| is constant but direction changes ⇒ constant-acceleration kinematics don’t apply.</paragraph>
+</div>
+
+<h2>Scalar Quantity: What It Does and Does Not Mean</h2>
+
+<h3>Misconceptions about scalars (true/false type)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930cfd2a5ff832b6a6dbd">A scalar quantity is one that:</paragraph>
+<ul>
+<li>(a) <b>is conserved in a process</b> → false (conservation is separate; speed is scalar but not conserved).</li>
+<li>(b) <b>can never take negative values</b> → false (electric potential, Celsius temperature can be negative).</li>
+<li>(c) <b>must be dimensionless</b> → false (mass, time, energy are scalars with dimensions).</li>
+<li>(d) <b>does not vary from one point to another in space</b> → false (scalar fields like temperature can vary with position).</li>
+<li>(e) <b>has the same value for observers with different orientations of axes</b> → true (scalar value doesn’t depend on axis orientation; vector components do, though the vector itself is invariant).</li>
+</ul>
+</div></b></b></b>
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

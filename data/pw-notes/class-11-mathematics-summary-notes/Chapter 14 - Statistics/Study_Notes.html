@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-13 : Statistics</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  
+  
+  
+<style>math, math * {font-family:'Kalam',cursive !important;} math{font-size:1.08em;vertical-align:middle;} b math,b math *{font-weight:700!important;}</style>  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-13 : Statistics</h1>
+
+<h2>13.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d1843a6bc469b27d4d1ff09f"><b>Statistics</b> = study of <b>data collected for a purpose</b>. Decisions are made by <b>analysing</b> + <b>interpreting</b> the data.</paragraph>
+</div>
+
+<paragraph id="ae479e75ed3a5cec96d02da2">Earlier: we represented data using <b>graphs</b> and <b>tables</b> to spot key features. Also learnt a <b>representative value</b> = <b>measure of central tendency</b>:</paragraph>
+<ul>
+<li><b>Mean</b> (arithmetic mean)</li>
+<li><b>Median</b></li>
+<li><b>Mode</b></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ba0ed8aff6dc023c58e55c86">Central tendency tells <b>where the data is centred</b>, but not <b>how spread out</b> the values are. For interpretation we also need <b>variability / dispersion</b>.</paragraph>
+</div>
+
+<h3>Illustration: Same mean/median, different spread</h3>
+<paragraph id="27c612a62d544de24289e090">Runs scored in last 10 matches:</paragraph>
+<ul>
+<li><b>Batsman A</b>: 30, 91, 0, 64, 42, 80, 30, 5, 117, 71</li>
+<li><b>Batsman B</b>: 53, 46, 48, 50, 53, 53, 58, 60, 57, 52</li>
+</ul>
+
+<paragraph id="33f3eec4d5147e22b6e56269">Given: both have <b>Mean = 53</b> and <b>Median = 53</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="9ad23950867859dfb6af4e02">Even if mean &amp; median match, datasets can differ a lot in <b>variability</b>. Here: A ranges <b>0 to 117</b> (very spread), B ranges <b>46 to 60</b> (clustered).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="06d22b91278d5f07677c056c"><b>Arithmetic Mean (ungrouped data)</b></paragraph>
+<paragraph id="e8c5e23ac43a426e127d5c8a"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>M</mi><mi>e</mi><mi>a</mi><mi>n</mi><mo>:</mo><mi>x</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><msub><mi>x</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>i</mi><mo>=</mo><mn>1</mn><mi>t</mi><mi>o</mi><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></b></paragraph><paragraph id="b6857b6e32f378f75415a8a8"><b>x̄</b> = arithmetic mean</paragraph>
+<paragraph id="3bc41b1d8bb496605ceffd60"><b>n</b> = number of observations</paragraph>
+<paragraph id="da81ebb94dca29ad8261d479"><b>x<sub>i</sub></b> = i-th observation</paragraph>
+<paragraph id="45a87704a8e988f87f4d1bd9"><b>Σ</b> = sum of all observations</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f7e25a7d39a3840733253782"><b>Median Rule (after arranging data in ascending/descending order)</b></paragraph>
+<paragraph id="70cfaaa7ec0f5e0da4d1f2d5"><b></b></paragraph><paragraph id="d3d55489cf4247a4e423201d"><b>
+  <b>If <i>n</i> is odd:</b>
+  <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <mtext>Median</mtext>
+      <mo>=</mo>
+      <mtext> </mtext>
+      <mo>(</mo>
+      <mfrac>
+        <mrow><mi>(n</mi><mo>+</mo><mn>1)</mn></mrow>
+        <mn>2</mn>
+      </mfrac>
+      <mo>)</mo>
+      <mtext>th observation</mtext>
+    </mrow>
+  </math>
+</b></paragraph><b>
+
+<paragraph id="279dce2601f007247c3e4049">
+  <b>If <i>n</i> is even:</b>
+  <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <mtext>Median</mtext>
+      <mo>=</mo>
+      <mfrac>
+        <mrow>
+          <mtext>mean of  </mtext>
+          <mo>(</mo><mfrac><mi>n</mi><mn>2</mn></mfrac><mo>)</mo>
+          <mtext></mtext>
+          <mo>+</mo>
+          <mtext>th and</mtext>
+          <mo>(</mo>
+          <mfrac><mi>n</mi><mn>2</mn></mfrac>
+          <mo>+</mo><mn>1</mn>
+          <mo>)</mo>
+          <mtext>th observation</mtext>
+        </mrow>
+        
+      </mfrac>
+    </mrow>
+  </math>
+</paragraph><paragraph id="539a1bf66ea626fbc0e7c106"><b>n</b> = number of observations (after ordering)</paragraph>
+</b></div><b>
+
+<div class="remember-box">
+<paragraph id="f8c0a790f41dd30edcd8e3c9"><b>Exam tip:</b> Median rule works only <b>after sorting</b>. For even n, median is an <b>average of the two middle values</b> (may not be an actual data value).</paragraph>
+</div>
+
+<paragraph id="5741b5e0318dbe700f715a8f">Dot plots (as described) show:</paragraph>
+<ul>
+<li>Batsman B’s points are <b>close</b> and <b>cluster around</b> the central value.</li>
+<li>Batsman A’s points are <b>spread out</b>.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="29c93bd65b86d71afaca29eb"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>a</mi><mi>s</mi><mi>u</mi><mi>r</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>d</mi><mi>i</mi><mi>s</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mi>a</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>d</mi><mi>e</mi><mi>s</mi><mi>c</mi><mi>r</mi><mi>i</mi><mi>b</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>t</mi><mi>h</mi><mi>e</mi><mfrac><mrow><mi>s</mi><mi>c</mi><mi>a</mi><mi>t</mi><mi>t</mi><mi>e</mi><mi>r</mi></mrow><mrow><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>b</mi><mi>i</mi><mi>l</mi><mi>i</mi><mi>t</mi><mi>y</mi></mrow></mfrac><mi>i</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mi>.</mi></mrow></math></b></paragraph></div>
+
+<paragraph id="701833677507f83bdea94c11">This part starts measures of dispersion for <b>ungrouped</b> and <b>grouped</b> data.</paragraph>
+
+<h2>13.2 Measures of Dispersion</h2>
+<paragraph id="61361aea4ff67eaf1465dddd">Dispersion/scatter depends on the <b>observations</b> and also on which <b>central tendency</b> is taken as reference.</paragraph>
+<paragraph id="ebcdd2f2c0557f8f8eb181c5">Measures listed:</paragraph>
+<ul>
+<li><b>Range</b></li>
+<li><b>Quartile deviation</b></li>
+<li><b>Mean deviation</b></li>
+<li><b>Standard deviation</b></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f7b12b9e396a5a135a172918">In this chapter we study all these <b>except quartile deviation</b>.</paragraph>
+</div>
+
+<h2>13.3 Range</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d1b88bd7b5584d212d2bb572"><b>Range</b> = (<b>maximum</b> value) − (<b>minimum</b> value) in the dataset.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="8f588a1c5cb65a9965c2ac29"><b>Range</b> = <b>Maximum value − Minimum value</b></paragraph>
+<paragraph id="88e62c2a3149ae02780be38b"><b>Maximum value</b> = largest observation</paragraph>
+<paragraph id="5e9d7f0f61c1c49edda207ef"><b>Minimum value</b> = smallest observation</paragraph>
+</div>
+
+<h3>Range in the batsmen example</h3>
+<ul>
+<li>For batsman A: Range = 117 − 0 = <b>117</b></li>
+<li>For batsman B: Range = 60 − 46 = <b>14</b></li>
+</ul>
+
+<paragraph id="0ad15e292f1868e636449c8f">Since Range(A) &gt; Range(B): A is more <b>dispersed</b>, B is more <b>concentrated</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3a49d268f68ade23af5f14fb"><b>Limitation of range:</b> only a <b>rough</b> idea of variability; it does <b>not</b> show how values spread <b>around a central value</b>.</paragraph>
+</div>
+
+<paragraph id="eaaa342a5bf7be3c3910a734">So we need measures based on <b>deviations from a central tendency</b>, mainly:</paragraph>
+<ul>
+<li><b>Mean deviation</b></li>
+<li><b>Standard deviation</b></li>
+</ul>
+
+<h2>13.4 Mean Deviation</h2>
+<paragraph id="bfb5e64768a826ca2e5da66b">Deviation of a value <b>x</b> from a fixed value <b>a</b> = <b>x − a</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="1ac3d5613c9f3625a83cfeb1">If we average (x − a) directly, + and − deviations cancel out. In particular, <b>sum of deviations from the mean is 0</b>, so mean deviation about mean becomes <b>0</b> and is <b>not useful</b>.</paragraph>
+</div>
+
+<paragraph id="fd3210fd8415453ed20aecba">For deviations from the mean x̄:</paragraph>
+<ul>
+<li>Sum of deviations = 0</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>a</mi><mi>n</mi><mi>o</mi><mi>f</mi><mi>d</mi><mi>e</mi><mi>v</mi><mi>i</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>0</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>0</mn></mrow></math></li></ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6e9944cd876e489f2f547769"><b>Mean deviation about a</b> = the <b>mean of absolute deviations</b> from a fixed central value <b>a</b>.</paragraph>
+<paragraph id="eb40e2c1810528ad701c5cae">Absolute value = <b>distance on number line</b> → no cancellation.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3a54e1aa7fa0a23bdeee14ff"><b>Mean Deviation about a</b></paragraph>
+<paragraph id="7f19697776c3c73652bf1c04"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>S</mi><mi>u</mi><mi>m</mi><mi>o</mi><mi>f</mi><mrow><mo form="prefix" stretchy="true">|</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>o</mi><mi>b</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></b></paragraph><paragraph id="eb06f15fb4677acfdbaa76e4"><b>M.D.(a)</b> = mean deviation about a</paragraph>
+<paragraph id="123253bb759c7eb8c274829d"><b>x</b> = observation</paragraph>
+<paragraph id="1dd00a148f28786623c315d5"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mo>=</mo><mi>c</mi><mi>h</mi><mi>o</mi><mi>s</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>l</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi></mrow><mrow><mi>m</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi></mrow></mfrac><mo>,</mo><mi>e</mi><mi>t</mi><mi>c</mi><mi>.</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></b></paragraph><paragraph id="3d697ad3ac8434a7886311ab"><b>|x − a|</b> = absolute deviation</paragraph>
+</div>
+
+<paragraph id="d63962bead88498e50dfba07"><b>Remark (from text):</b> Mean deviation can be taken about <b>any</b> measure of central tendency, but commonly:</paragraph>
+<ul>
+<li>Mean deviation about <b>mean</b></li>
+<li>Mean deviation about <b>median</b></li>
+</ul>
+
+<h3>13.4.1 Mean deviation for ungrouped data</h3>
+<paragraph id="8a9fd1115d3752c823ae01aa">Let n observations be: x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, …, x<sub>n</sub>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="ae158a4a022979452f7529f9"><b>Algorithm: mean deviation about a (mean/median), ungrouped</b></paragraph>
+<ol>
+<li>Find the central value <b>a</b> (mean/median) required.</li>
+<li>Find deviations x<sub>i</sub> − a for each i.</li>
+<li>Convert to absolute deviations |x<sub>i</sub> − a| (ignore − sign).</li>
+<li>Average them: (1/n) Σ |x<sub>i</sub> − a|.</li>
+</ol>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f3fafbe5af7402522f0a5f1c"><b>Mean deviation about a (ungrouped)</b></paragraph>
+<paragraph id="0cccd99fe5c9ec928204fc9f"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="0b2db6224b13feb4ac9dd30f"><b>x<sub>i</sub></b> = i-th observation</paragraph>
+<paragraph id="a743098cb826900e0d4f2ac0"><b>a</b> = chosen central value</paragraph>
+<paragraph id="c204f4506f3f71c0a4682a17"><b>n</b> = number of observations</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="115a179bbcb94f581d32b46d"><b>Mean deviation about mean</b></paragraph>
+<paragraph id="93f97b14ba4eeb2288f84e54"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="d23410e68e312dc634fd752a"><b>x̄</b> = mean</paragraph>
+<paragraph id="dbda4f53945d2beeb983e64d"><b>x<sub>i</sub></b> = i-th observation</paragraph>
+<paragraph id="591f453a6d5da883c9717b0a"><b>n</b> = number of observations</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="796193605c9dfa66d39aa3d7"><b>Mean deviation about median</b></paragraph>
+<paragraph id="20d59768c0a68d532c44d0c7"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="b7df1a9682a9938576de03d4"><b>M</b> = median</paragraph>
+<paragraph id="3506fe5341685d7bb51caf77"><b>x<sub>i</sub></b> = i-th observation</paragraph>
+<paragraph id="49a417c0aebaea407acc022c"><b>n</b> = number of observations</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="561048d6a9a7490b82606cb2"><b>Note (chapter notation):</b> <b>M</b> means <b>median</b> unless stated otherwise.</paragraph>
+</div>
+
+<h3>Worked Example 1: Mean deviation about the mean (ungrouped data)</h3>
+<paragraph id="4445e8b3d409ced9b80a1c04"><b>Data:</b> 6, 7, 10, 12, 13, 4, 8, 12</paragraph>
+
+<paragraph id="c1fd821d5b5bf3490baca509"><b>Step 1: Mean</b></paragraph>
+<paragraph id="557742a9b7c3fadae9287d5b">Sum = 6 + 7 + 10 + 12 + 13 + 4 + 8 + 12 = 72, n = 8</paragraph>
+<paragraph id="f6c5ff9d4ba50073fee897fc"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mfrac><mn>72</mn><mn>8</mn></mfrac><mo>=</mo><mn>9</mn></mrow></math></b></paragraph><paragraph id="cce9ff25b111eab96f93bfb8"><b>Step 2: Deviations x<sub>i</sub> − x̄</b></paragraph>
+<ul>
+<li>6 − 9 = −3</li>
+<li>7 − 9 = −2</li>
+<li>10 − 9 = 1</li>
+<li>12 − 9 = 3</li>
+<li>13 − 9 = 4</li>
+<li>4 − 9 = −5</li>
+<li>8 − 9 = −1</li>
+<li>12 − 9 = 3</li>
+</ul>
+
+<paragraph id="ec645cf2aea1b4e745d92ea8"><b>Step 3: Absolute deviations |x<sub>i</sub> − x̄|</b></paragraph>
+<paragraph id="06d6b2530fed12f2cd65eea4">3, 2, 1, 3, 4, 5, 1, 3</paragraph>
+
+<paragraph id="32fe38fabcb62af2411fc61b"><b>Step 4: Mean of absolute deviations</b></paragraph>
+<paragraph id="96b988897449ac69c0456e5f">Sum of absolute deviations = 3 + 2 + 1 + 3 + 4 + 5 + 1 + 3 = 22</paragraph>
+<paragraph id="70cec96e7164edeedbf6d5b7"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mn>22</mn><mo>=</mo><mfrac><mn>22</mn><mn>8</mn></mfrac><mo>=</mo><mn>2.75</mn></mrow></math></b></paragraph><div class="remember-box">
+<paragraph id="32b6f3b9db75137cf57d8fe1"><b>Exam tip (from text):</b> Don’t rewrite formal steps every time; do it directly (mean → absolute deviations → average).</paragraph>
+</div>
+
+<h3>Worked Example 2 (beginning): Mean deviation about the mean (ungrouped data)</h3>
+<paragraph id="aa09ed7b5d9ff42a4f72745e"><b>Data (20 observations):</b> 12, 3, 18, 17, 4, 9, 17, 19, 20, 15, 8, 17, 2, 3, 16, 11, 3, 1, 0, 5</paragraph>
+<paragraph id="797e6c7abc415193a57c598d">First find mean x̄:</paragraph>
+<paragraph id="8d5d35efd83c16b8bf6b1ed0">n = 20</paragraph>
+<paragraph id="2b3264304af98ed772d26d97"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Σ</mi><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mn>200</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>s</mi><mfrac><mrow><mi>g</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi>n</mi></mrow><mrow><mi>o</mi><mi>b</mi><mi>t</mi><mi>a</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>d</mi></mrow></mfrac><mi>i</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>t</mi><mi>e</mi><mi>x</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="495d9bdbe1ab3be840d951b1"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>Σ</mi><mfrac><msub><mi>x</mi><mi>i</mi></msub><mi>n</mi></mfrac><mo>=</mo><mfrac><mn>200</mn><mn>20</mn></mfrac><mo>=</mo><mn>10</mn></mrow></math></b></paragraph><h2>Mean Deviation (M.D.) for Ungrouped Data: Worked Computations</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="e9efe637e909dcd57ec44655"><b>Mean deviation (about a central value A)</b> = average of the <b>absolute</b> deviations of observations from A.</paragraph>
+  <paragraph id="71c62d7a8ce8b3413ca4cc2c">Ungrouped data: observations x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="cf54b0d8799c74807f1b202d"><b>Mean Deviation about A (ungrouped)</b></paragraph>
+  <paragraph id="67e980bcb9a6011580748536"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>A</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>A</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="d7208a76c489241b2ee2cea3">x<sub>i</sub> = i-th observation</paragraph>
+  <paragraph id="05a32b4295b3181679c55ba0">A = central value (mean x̄ or median M — as asked)</paragraph>
+  <paragraph id="cf2695bd86bb250e2123f922">n = number of observations</paragraph>
+  <paragraph id="ba49a2e547d55c6f536cb1d1">∑|x<sub>i</sub> − A| = total absolute deviation from A</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="16e5a1906c89c4e253a4aa9d"><b>Absolute value is compulsory</b>: use |x<sub>i</sub> − A|, not (x<sub>i</sub> − A).</paragraph>
+</div>
+
+<h3>Example (completion of earlier computation): Mean Deviation about Mean</h3>
+<paragraph id="77d1e1351dafb02590f5a244">Given absolute deviations |x<sub>i</sub> − x̄|:</paragraph>
+<paragraph id="88d4ef52a118a5da7edf1650">2, 7, 8, 7, 6, 1, 7, 9, 10, 5, 2, 7, 8, 7, 6, 1, 7, 9, 10, 5</paragraph>
+<paragraph id="4dbfec134a6b7523f4fc98e5">Sum of absolute deviations:</paragraph>
+<paragraph id="5ef836e226601de7fc1f4e0a">∑|x<sub>i</sub> − x̄| = 124, and n = 20</paragraph>
+<paragraph id="9daa39ebbab8fee5ccc3e0c0">Therefore,</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="2f69f0d563d6df3e17b56c58"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mn>124</mn><mo>=</mo><mn>6.2</mn></mrow></math></paragraph><paragraph id="a2987b6c14a689f2246921a4">x̄ = mean of the data</paragraph>
+  <paragraph id="b981b724c4ac2024b6318762">n = 20 observations</paragraph>
+</div>
+
+<h3>Example 3: Mean Deviation about the Median (Ungrouped)</h3>
+<paragraph id="d75945dcc2d5072074c75bc0"><b>Data:</b> 3, 9, 5, 3, 12, 10, 18, 4, 7, 19, 21</paragraph>
+<paragraph id="fb46442e28a406e5ee55ab48"><b>Step 1 (order the data):</b> 3, 3, 4, 5, 7, 9, 10, 12, 18, 19, 21</paragraph>
+<paragraph id="aea6f21512ac4abfe0d07786">Here n = 11 (odd).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="39674756bb26b57e872c0e2b"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>o</mi><mi>d</mi><mi>d</mi><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac></mrow></math></b></paragraph><paragraph id="d33f3288817424c180154fce">n = number of observations</paragraph>
+</div>
+
+<paragraph id="1895534b993d5f7eee6cea94"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>11</mn><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mn>6</mn><mi>t</mi><mi>h</mi><mi>o</mi><mi>b</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>⇒</mo><mi>M</mi><mo>=</mo><mn>9</mn><mi>.</mi></mrow></math></b></paragraph><paragraph id="7089f37350845235aaa692c7"><b>Step 2 (absolute deviations from median):</b> |x<sub>i</sub> − 9| =</paragraph>
+<paragraph id="b18c69836893746b8cd7abe5">6, 6, 5, 4, 2, 0, 1, 3, 9, 10, 12</paragraph>
+<paragraph id="364eefbfe93dec275c17fb40">Sum: ∑|x<sub>i</sub> − M| = 58</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="11a912021e1e3d57244f5f8d"><b>Mean deviation about median (ungrouped)</b></paragraph>
+  <paragraph id="d2ef1ef43cf7fe5548dce5aa"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="bb285ff349ee1f8e103ce536">M = median</paragraph>
+  <paragraph id="90b044eea6ca32f8375baf47">n = number of observations</paragraph>
+</div>
+
+<paragraph id="2e9f3b1e418270570b25c1c8"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>o</mi><mo>,</mo><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>58</mn><mn>11</mn></mfrac><mo>=</mo><mn>5.27</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>p</mi><mi>p</mi><mi>r</mi><mi>o</mi><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow></math></b></paragraph><div class="remember-box">
+  <paragraph id="30923920654c48114d732b97"><b>Exam tip:</b> For median-based M.D., <b>sort first</b> → wrong order ⇒ wrong median ⇒ wrong M.D.</paragraph>
+</div>
+
+<h2>Mean Deviation for Grouped Data</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="08df3fb707b8c3557f8d6a40">Grouped data usually comes as:</paragraph>
+  <ul>
+    <li><b>Discrete frequency distribution</b>: values x<sub>i</sub> with frequencies f<sub>i</sub></li>
+    <li><b>Continuous frequency distribution</b>: class-intervals with frequencies (use class mid-points for calculations)</li>
+  </ul>
+</div>
+
+<h3>(a) Discrete Frequency Distribution</h3>
+<paragraph id="3d1132283e326d3a4cf678e9">Let x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub> occur with frequencies f<sub>1</sub>, f<sub>2</sub>, …, f<sub>n</sub>.</paragraph>
+
+<h3>(i) Mean Deviation about Mean (Discrete)</h3>
+<paragraph id="f99e429be32976e0cb2f14cd"><b>Step 1:</b> Find mean x̄ using frequencies.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="81cf9aaea22a3246928eb123"><b>Mean (discrete frequency distribution)</b></paragraph>
+  <paragraph id="996989072fe1e86c6298d11d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="40879a370141ec7add505576">x<sub>i</sub> = i-th value</paragraph>
+  <paragraph id="6c69db322d0c3a2a4d389c7c">f<sub>i</sub> = frequency of x<sub>i</sub></paragraph>
+  <paragraph id="ceace24abdf27ac1573ae8e2">N = ∑ f<sub>i</sub> = total frequency</paragraph>
+</div>
+
+<paragraph id="50fcb952f208571d1e96e4be"><b>Step 2:</b> Compute |x<sub>i</sub> − x̄| and then multiply by frequency f<sub>i</sub>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d7ef60b10449be2a59267dc2"><b>Mean deviation about mean (discrete)</b></paragraph>
+  <paragraph id="4da820de4646184479bfcad3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="a2eabb981b0ee44e2325cbe0">N = ∑ f<sub>i</sub></paragraph>
+</div>
+
+<h3>(ii) Mean Deviation about Median (Discrete)</h3>
+<paragraph id="cd8cbcd6f8e66770bc6e325b"><b>Step 1 (Median):</b> Arrange in ascending order + make cumulative frequencies (c.f.).</paragraph>
+<paragraph id="4ee299f7b1f1e1e0c9b22210"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mo>=</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>o</mi><mi>b</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>w</mi><mi>h</mi><mi>o</mi><mi>s</mi><mi>e</mi><mi>c</mi><mi>.</mi><mi>f</mi><mi>.</mi><mi>i</mi><mi>s</mi><mo>=</mo><mi>o</mi><mi>r</mi><mi>j</mi><mi>u</mi><mi>s</mi><mi>t</mi><mo>&gt;</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mi>.</mi></mrow></math></b></paragraph><div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="06aafa99d6213e962ab2ebf8"><b>Mean deviation about median (discrete)</b></paragraph>
+  <paragraph id="8763dc07f90957c4570e8535"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="de70b465ae246789a06e06cf">M = median</paragraph>
+  <paragraph id="08f73440465ec3b798388636">N = ∑ f<sub>i</sub></paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="67b52fd1cfefcec708679a6e"><b>Common mistake:</b> Finding N/2 but then checking <b>frequency</b> instead of <b>cumulative frequency</b> to locate the median.</paragraph>
+</div>
+
+<h3>Example 4: Mean Deviation about Mean (Discrete Frequency)</h3>
+<paragraph id="9db0643140a085fda9a54c84"><b>Given:</b></paragraph>
+<paragraph id="e7d8918648ba9a603f07aa1e">x<sub>i</sub>: 2, 5, 6, 8, 10, 12</paragraph>
+<paragraph id="1ee0d885356b60659dfaa382">f<sub>i</sub>: 2, 8, 10, 7, 8, 5</paragraph>
+
+<paragraph id="a76bd8e70e580e2abd8bab12"><b>Compute N and ∑f<sub>i</sub>x<sub>i</sub>:</b></paragraph>
+<paragraph id="a2fea35b6e9fbe49313f1dc9">N = ∑f<sub>i</sub> = 40</paragraph>
+<paragraph id="7732e07ec4ed03109d4dece5">∑f<sub>i</sub>x<sub>i</sub> = 300</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="29459d74607be11211aa63e8"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mi>N</mi></mfrac><mo>=</mo><mfrac><mn>300</mn><mn>40</mn></mfrac><mo>=</mo><mn>7.5</mn></mrow></math></paragraph><paragraph id="7c869469cc9e8342d76fd2e1">x̄ = mean</paragraph>
+  <paragraph id="8b80885ec58365e620d4f60b">N = total frequency</paragraph>
+</div>
+
+<paragraph id="a0de8fa404854949d89ba48b">Now |x<sub>i</sub> − x̄| and f<sub>i</sub>|x<sub>i</sub> − x̄|:</paragraph>
+<ul>
+  <li>x<sub>i</sub>=2: |2−7.5|=5.5, f|…|=2×5.5=11</li>
+  <li>x<sub>i</sub>=5: |5−7.5|=2.5, f|…|=8×2.5=20</li>
+  <li>x<sub>i</sub>=6: |6−7.5|=1.5, f|…|=10×1.5=15</li>
+  <li>x<sub>i</sub>=8: |8−7.5|=0.5, f|…|=7×0.5=3.5</li>
+  <li>x<sub>i</sub>=10: |10−7.5|=2.5, f|…|=8×2.5=20</li>
+  <li>x<sub>i</sub>=12: |12−7.5|=4.5, f|…|=5×4.5=22.5</li>
+</ul>
+<paragraph id="31d73e544fcc37a921a6258d">So, ∑ f<sub>i</sub>|x<sub>i</sub> − x̄| = 92</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="c30b04201b74186f732b3de4"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mfrac><mn>92</mn><mn>40</mn></mfrac><mo>=</mo><mn>2.3</mn></mrow></math></paragraph><paragraph id="1677d321c7fa754d3276f97f">N = 40</paragraph>
+</div>
+
+<h3>Example 5: Mean Deviation about Median (Discrete Frequency)</h3>
+<paragraph id="93f9a60fd5917a0f641cb745"><b>Given:</b></paragraph>
+<paragraph id="c7282841ba437121e0150e26">x<sub>i</sub>: 3, 6, 9, 12, 13, 15, 21, 22</paragraph>
+<paragraph id="1d4512117bc12dcba7fe5ff5">f<sub>i</sub>: 3, 4, 5, 2, 4, 5, 4, 3</paragraph>
+
+<paragraph id="31089ccd2948ebd13e78d180"><b>Step 1: Cumulative frequencies (c.f.)</b></paragraph>
+<paragraph id="c01cfa79623a88dc48ac4999">c.f.: 3, 7, 12, 14, 18, 23, 27, 30</paragraph>
+<paragraph id="9b09f6e66af5efd22dca1d35">Total frequency N = 30 (even).</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8606bfd67aa51e314d43fc89"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>f</mi><mi>N</mi><mi>i</mi><mi>s</mi><mi>e</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>:</mo><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mo>=</mo><mi>a</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>h</mi><mi>e</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>t</mi><mi>h</mi><mi>a</mi><mi>n</mi><mi>d</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>t</mi><mi>h</mi><mi>o</mi><mi>b</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>.</mi></mrow></math></paragraph></div>
+
+<paragraph id="ae46478a2e1661770248c737">15th and 16th observations fall under c.f. = 18 → corresponding x = 13.</paragraph>
+<paragraph id="b326d36a4d287651f7604585"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>o</mi><mn>15</mn><mi>t</mi><mi>h</mi><mo>=</mo><mn>13</mn><mi>a</mi><mi>n</mi><mi>d</mi><mn>16</mn><mi>t</mi><mi>h</mi><mo>=</mo><mn>13</mn><mo>⇒</mo><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>M</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>13</mn><mo>+</mo><mn>13</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mn>13</mn><mi>.</mi></mrow></math></paragraph><paragraph id="ae7defad003c16d6eb7c2151"><b>Step 2:</b> Compute |x<sub>i</sub> − M| and multiply by f<sub>i</sub>:</paragraph>
+<ul>
+  <li>|3−13|=10, f|…|=3×10=30</li>
+  <li>|6−13|=7, f|…|=4×7=28</li>
+  <li>|9−13|=4, f|…|=5×4=20</li>
+  <li>|12−13|=1, f|…|=2×1=2</li>
+  <li>|13−13|=0, f|…|=4×0=0</li>
+  <li>|15−13|=2, f|…|=5×2=10</li>
+  <li>|21−13|=8, f|…|=4×8=32</li>
+  <li>|22−13|=9, f|…|=3×9=27</li>
+</ul>
+<paragraph id="95b117e3a24ce86f7cffe0f2">∑ f<sub>i</sub>|x<sub>i</sub> − M| = 149</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="0c3d12979dc3f37d944cc49f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mfrac><mn>149</mn><mn>30</mn></mfrac><mo>=</mo><mn>4.97</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>p</mi><mi>p</mi><mi>r</mi><mi>o</mi><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="cbd13aa2b09ed75a17f1e661">M = 13, N = 30</paragraph>
+</div>
+
+<h2>(b) Continuous Frequency Distribution</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="03f6dfd80fa69d2423fa9cd2"><b>Continuous frequency distribution</b> = data grouped into <b>class-intervals (no gaps)</b>, each with a frequency.</paragraph>
+<paragraph id="ca4785d4aa24d950b1e5aab6">For calculations (mean, mean deviation), represent each class by its <b>mid-point</b> <b>x<sub>i</sub></b>.</paragraph>
+</div>
+
+<h3>(i) Mean Deviation about Mean (Continuous)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="446348305eda02b02d813e96"><b>Assumption:</b> each class frequency is treated as <b>concentrated at the mid-point</b> of that class.</paragraph>
+</div>
+
+<h3>Example 6: Mean Deviation about Mean (Continuous Frequency)</h3>
+<paragraph id="8ca4780285f447c99aa2f0ad"><b>Classes (marks):</b> 10–20, 20–30, 30–40, 40–50, 50–60, 60–70, 70–80</paragraph>
+<paragraph id="f12f0921e950826f8da952bc"><b>Frequencies (no. of students):</b> 2, 3, 8, 14, 8, 3, 2</paragraph>
+
+<paragraph id="f5246132753fc7f544794125"><b>Step 1: Mid-points</b> <b>x<sub>i</sub></b>: 15, 25, 35, 45, 55, 65, 75</paragraph>
+<paragraph id="c1698ade367597cac38c0ef9">Find <b>N</b> and <b>∑f<sub>i</sub>x<sub>i</sub></b>:</paragraph>
+<paragraph id="7a14778d6503ddc8e9c38930"><b>N = 40</b>, <b>∑f<sub>i</sub>x<sub>i</sub> = 1800</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4a2958539b258e806851c720"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mi>N</mi></mfrac><mo>=</mo><mfrac><mn>1800</mn><mn>40</mn></mfrac><mo>=</mo><mn>45</mn></mrow></math></b></paragraph><paragraph id="e670159ff8439d2dd3df7dc9"><b>x̄</b> = mean (computed using mid-points)</paragraph>
+</div>
+
+<paragraph id="a7256f6eda2ff060ec474116"><b>Step 2: Compute</b> <b>f<sub>i</sub>|x<sub>i</sub> − x̄|</b></paragraph>
+<ul>
+<li>15: |15−45|=30, f|…|=2×30=60</li>
+<li>25: |25−45|=20, f|…|=3×20=60</li>
+<li>35: |35−45|=10, f|…|=8×10=80</li>
+<li>45: |45−45|=0, f|…|=14×0=0</li>
+<li>55: |55−45|=10, f|…|=8×10=80</li>
+<li>65: |65−45|=20, f|…|=3×20=60</li>
+<li>75: |75−45|=30, f|…|=2×30=60</li>
+</ul>
+<paragraph id="2fb1732daa0fa5943f579f8d">So, <b>∑ f<sub>i</sub>|x<sub>i</sub> − x̄| = 400</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7be485a1b7096ef82b346615"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mfrac><mn>400</mn><mn>40</mn></mfrac><mo>=</mo><mn>10</mn></mrow></math></b></paragraph><paragraph id="d1da8d622a1a19de39090005"><b>N = 40</b></paragraph>
+</div>
+
+<h3>Shortcut: Step-Deviation Method for Computing the Mean (x̄)</h3>
+<paragraph id="9355db7a3d711c37e8bb8436">To avoid lengthy arithmetic while finding <b>x̄</b>, use <b>step-deviation</b>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Assumed mean (a)</b>: pick a value near the middle.</li>
+<li><b>Common factor (h)</b>: if deviations have a common factor (usually class width), divide by it.</li>
+<li><b>Why it helps:</b> step-deviation = <b>shift origin</b> to <b>a</b> + <b>change scale</b> by <b>h</b> → smaller numbers.</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="bf865f6be802b99de388f91d"><b>Step-deviation variable</b>:</paragraph>
+<paragraph id="c7faf9d4ecec43f92e3dd4a6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>h</mi></mfrac></mrow></math></paragraph><paragraph id="e1c52daa4992ae4955754dd7"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mi>o</mi><mi>b</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow><mrow><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi></mrow></mfrac><mi>m</mi><mi>i</mi><mi>d</mi><mo>−</mo><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi></mrow></math></paragraph><paragraph id="d7f25510e579ac7ae6b427a9">a = assumed mean</paragraph>
+<paragraph id="2e11e0eca4492fcf93dd2e1f">h = common factor (step size)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b314082b6c69b5ceabe18c61"><b>Mean (step-deviation)</b>:</paragraph>
+<paragraph id="d3722a799daf48f9c222cebf"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>×</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>d</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mi>N</mi></mfrac></mrow></math></paragraph><paragraph id="ef1ffc356d35a7a8b9360f71">N = ∑ f<sub>i</sub></paragraph>
+</div>
+
+<h3>Applying Step-Deviation to Example 6</h3>
+<paragraph id="3ecf9661d559588b5715aa7d">Take <b>a = 45</b> and <b>h = 10</b>.</paragraph>
+<paragraph id="d4851d3240eb3e2762ebd37f">Mid-points <b>x<sub>i</sub></b>: 15, 25, 35, 45, 55, 65, 75</paragraph>
+<paragraph id="0ffd194dfdcbc446167439a3"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mi>o</mi><mi>m</mi><mi>p</mi><mi>u</mi><mi>t</mi><mi>e</mi><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mn>45</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>10</mn></mfrac><mo>:</mo><mo>−</mo><mn>3</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow></math></b></paragraph><paragraph id="f2f0d2ea26dcb01276245571">Compute <b>f<sub>i</sub>d<sub>i</sub></b>:</paragraph>
+<ul>
+<li>2(−3)=−6</li>
+<li>3(−2)=−6</li>
+<li>8(−1)=−8</li>
+<li>14(0)=0</li>
+<li>8(1)=8</li>
+<li>3(2)=6</li>
+<li>2(3)=6</li>
+</ul>
+<paragraph id="c80276f245e2067dd8e652e6">Thus, <b>∑f<sub>i</sub>d<sub>i</sub> = 0</b>, <b>N = 40</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="373aa003070ce9f3fed52cab"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>×</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>d</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mi>N</mi></mfrac><mo>=</mo><mn>45</mn><mo>+</mo><mn>10</mn><mo>×</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>0</mn><mn>40</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>45</mn></mrow></math></b></paragraph><paragraph id="046991f9f2a156e542c836af">a = 45, h = 10, N = 40</paragraph>
+</div>
+
+<paragraph id="509a4fa9c6b2e5bda0ac6bf0">Now compute mean deviation the usual way (using mid-points):</paragraph>
+<paragraph id="fed19122c5066ae459d75ab3"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mn>400</mn><mo>⇒</mo><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>400</mn><mn>40</mn></mfrac><mo>=</mo><mn>10</mn></mrow></math></b></paragraph><div class="remember-box">
+<paragraph id="92a34629261f2aa6873d7a2f"><b>Note:</b> Step-deviation is only for finding the <b>mean x̄</b>. The <b>rest stays the same</b>: find |x<sub>i</sub>−x̄|, multiply by f<sub>i</sub>, then divide by N.</paragraph>
+</div>
+
+<h3>(ii) Mean Deviation about Median (Continuous)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="7cba254aabc254962ab93380">Same steps as mean deviation about mean, but take deviations from the <b>median M</b> (not from x̄).</paragraph>
+</div>
+
+<paragraph id="b3dc6c5e3f858166347041f6"><b>Key step:</b> first find the <b>median</b> of the continuous frequency distribution:</paragraph>
+<ul>
+<li>Arrange classes in ascending order (if needed).</li>
+<li>Compute cumulative frequencies.</li>
+<li>Locate the <b>median class</b> (contains the <b>N/2-th</b> observation).</li>
+<li>Then use the median formula (introduced right after this part).</li>
+</ul>
+
+<h2>Mean Deviation about Median (Grouped Data)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="89c904d88ad14ea6e2868450"><b>Mean Deviation about Median</b> = average of absolute deviations from the <b>median</b>.</paragraph>
+<paragraph id="50285acfbb6a0117f2d3831a">For grouped data: use class mid-points <b>x<sub>i</sub></b> with frequencies <b>f<sub>i</sub></b>, and take deviations from <b>M</b>.</paragraph>
+</div>
+
+<h3>Median Formula for Grouped (Continuous) Frequency Distribution</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="655d5cdb693a264f80efa64b"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mo>:</mo><mi>M</mi><mo>=</mo><mi>l</mi><mo>+</mo><mrow><mo form="prefix" stretchy="true">[</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mo>−</mo><mi>C</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>f</mi></mfrac><mo form="postfix" stretchy="true">]</mo></mrow><mo>×</mo><mi>h</mi></mrow></math></b></paragraph><paragraph id="efdbebdb6f02934848566ba0"><b>N</b> = Σf (total frequency)</paragraph>
+<paragraph id="04e0ebedd63798ed34caff7f"><b>l</b> = lower limit of the median class</paragraph>
+<paragraph id="66560ce448c42443a3610fa7"><b>C</b> = cumulative frequency just before the median class</paragraph>
+<paragraph id="94ce5118ae0879c002f39377"><b>f</b> = frequency of the median class</paragraph>
+<paragraph id="7931c902d656f93cba9c0944"><b>h</b> = width (class size) of the median class</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="7d001fa7c7faf33484b7c319"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mo>=</mo><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>w</mi><mi>h</mi><mi>o</mi><mi>s</mi><mi>e</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>u</mi><mi>l</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi>f</mi><mi>r</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>y</mi><mi>i</mi><mi>s</mi><mi>j</mi><mi>u</mi><mi>s</mi><mi>t</mi><mo>≥</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mi>.</mi></mrow></math></b></paragraph></div>
+
+<h3>Mean Deviation about Median Formula (Grouped Data)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6e8176a5d704d9063ea50a55"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="d5df2ebbdbbd1c6c5d1ba63a"><b>x<sub>i</sub></b> = mid-point of i-th class</paragraph>
+<paragraph id="143a76191d0b2c41a063bc36"><b>f<sub>i</sub></b> = frequency of i-th class</paragraph>
+<paragraph id="071f1bc54420c8f4cf4c6ab7"><b>M</b> = median of the distribution</paragraph>
+<paragraph id="a7fd52cecb0ef438e5919d41"><b>N</b> = Σf<sub>i</sub></paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="e522dd06d0bb50e43a074c83">Use <b>absolute value</b> |x<sub>i</sub> − M| (no +/− signs). Otherwise deviations cancel and dispersion becomes meaningless.</paragraph>
+</div>
+
+<h3>Worked Example 7: Mean Deviation about Median (Grouped Data)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="90ec633beb4a3bbfefe7cf28"><b>Data</b></paragraph>
+<paragraph id="40d226ae0ca42add3692433f">Class intervals: 0–10, 10–20, 20–30, 30–40, 40–50, 50–60</paragraph>
+<paragraph id="c6875f7f567d2b7d20fd726a">Frequencies: 6, 7, 15, 16, 4, 2</paragraph>
+</div>
+
+<paragraph id="07cacfbd976de69a2e9637f3"><b>Step 1: Find N and cumulative frequencies (c.f.)</b></paragraph>
+<ul>
+<li>N = 6 + 7 + 15 + 16 + 4 + 2 = <b>50</b></li>
+<li>c.f.: <b>6, 13, 28, 44, 48, 50</b></li>
+</ul>
+
+<paragraph id="7f63b4bd24e2dfa8542eda7e"><b>Step 2: Find the median class</b></paragraph>
+<ul>
+<li><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mi>N</mi><mn>2</mn></mfrac><mo>=</mo><mn>25</mn><mi>t</mi><mi>h</mi><mi>i</mi><mi>t</mi><mi>e</mi><mi>m</mi></mrow></math></b></li><li>First c.f. just ≥ 25 is <b>28</b> → class <b>20–30</b> (since c.f. goes 13 then 28)</li>
+<li>So, <b>median class = 20–30</b></li>
+</ul>
+
+<paragraph id="4c5291c5e4de43e50fd7ca8e"><b>Step 3: Use grouped median formula</b></paragraph>
+<ul>
+<li>l = 20</li>
+<li>C = 13 (c.f. before 20–30 i.e., for 10–20)</li>
+<li>f = 15</li>
+<li>h = 10</li>
+<li>N = 50</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d02e0b7dbead29a3c7693d92"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mo>=</mo><mi>l</mi><mo>+</mo><mrow><mo form="prefix" stretchy="true">[</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>N</mi><mn>2</mn></mfrac><mo>−</mo><mi>C</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>f</mi></mfrac><mo form="postfix" stretchy="true">]</mo></mrow><mo>×</mo><mi>h</mi></mrow></math></paragraph><paragraph id="8c6f4042919403478ed5d15f"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mo>=</mo><mn>20</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">[</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>25</mn><mo>−</mo><mn>13</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>15</mn></mfrac><mo form="postfix" stretchy="true">]</mo></mrow><mo>×</mo><mn>10</mn><mo>=</mo><mn>20</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>12</mn><mn>15</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mn>10</mn><mo>=</mo><mn>20</mn><mo>+</mo><mn>8</mn><mo>=</mo><mn>28</mn></mrow></math></b></paragraph></div>
+
+<paragraph id="4a535499514e7ea7858809f2"><b>Step 4: Mid-points x<sub>i</sub></b></paragraph>
+<ul>
+<li>0–10 → 5</li>
+<li>10–20 → 15</li>
+<li>20–30 → 25</li>
+<li>30–40 → 35</li>
+<li>40–50 → 45</li>
+<li>50–60 → 55</li>
+</ul>
+
+<paragraph id="81b7628b6b9927153cfb9ff2"><b>Step 5: Compute</b> <b>|x<sub>i</sub> − M|</b> and <b>f<sub>i</sub>|x<sub>i</sub> − M|</b> (M = 28)</paragraph>
+<ul>
+<li>Class 0–10: |5−28| = 23; f|.| = 6×23 = 138</li>
+<li>Class 10–20: |15−28| = 13; f|.| = 7×13 = 91</li>
+<li>Class 20–30: |25−28| = 3; f|.| = 15×3 = 45</li>
+<li>Class 30–40: |35−28| = 7; f|.| = 16×7 = 112</li>
+<li>Class 40–50: |45−28| = 17; f|.| = 4×17 = 68</li>
+<li>Class 50–60: |55−28| = 27; f|.| = 2×27 = 54</li>
+<li>Σ f|x<sub>i</sub>−M| = 138+91+45+112+68+54 = <b>508</b></li>
+</ul>
+
+<paragraph id="93cab4f95bd7dc0b45a882eb"><b>Step 6: Mean deviation about median</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4dfd21e25ac60cebd9417e34"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="02cb9cfd275a0acef7762584"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>508</mn><mn>50</mn></mfrac><mo>=</mo><mn>10.16</mn></mrow></math></b></paragraph></div>
+
+<div class="remember-box">
+<paragraph id="e51df89ed651802de2bd6842">For grouped data, take deviations from <b>mid-points x<sub>i</sub></b>, not from class limits.</paragraph>
+</div>
+
+<h2>Limitations of Mean Deviation</h2>
+
+<h3>Why Mean Deviation may be Unsatisfactory</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li>If variability is very high, the <b>median may not represent</b> the data well → <b>M.D. about median</b> may be less reliable.</li>
+<li>Sum of deviations from the <b>mean</b> (ignoring minus signs) is <b>greater</b> than sum of deviations from the <b>median</b> → so <b>M.D. about mean isn’t very scientific</b>.</li>
+<li>Uses <b>absolute values</b> → <b>not suitable for further algebraic treatment</b> (hard to use in advanced formulas).</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="592f467a7a2df15e3eb5f636">So we need a better dispersion measure: <b>standard deviation</b>.</paragraph>
+</div>
+
+<h2>Variance and Standard Deviation</h2>
+
+<h3>Motivation: Squaring Deviations Instead of Using Absolute Values</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="7058cfcf9e69fdfc120a541b">To stop + and − deviations from cancelling out (like in mean deviation), use <b>squared deviations</b>. Squares are always ≥ 0.</paragraph>
+</div>
+
+<paragraph id="9956b9a79cbb577f3a7f8b68">Let x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub> be observations and x̄ be the mean. Look at:</paragraph>
+<ul>
+<li>(x<sub>1</sub>−x̄)<sup>2</sup> + (x<sub>2</sub>−x̄)<sup>2</sup> + … + (x<sub>n</sub>−x̄)<sup>2</sup> = Σ (x<sub>i</sub>−x̄)<sup>2</sup></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>If Σ (x<sub>i</sub>−x̄)<sup>2</sup> = 0 ⇒ each (x<sub>i</sub>−x̄)=0 ⇒ <b>all observations equal</b> ⇒ <b>no dispersion</b>.</li>
+<li>If Σ (x<sub>i</sub>−x̄)<sup>2</sup> is <b>small</b> ⇒ values close to mean ⇒ <b>low dispersion</b>.</li>
+<li>If Σ (x<sub>i</sub>−x̄)<sup>2</sup> is <b>large</b> ⇒ values far from mean ⇒ <b>high dispersion</b>.</li>
+</ul>
+</div>
+
+<h3>Why “Sum of Squares” Alone is Not a Proper Dispersion Measure</h3>
+
+<paragraph id="bb469815bdd3a2d883ba8b29"><b>Set A</b>: 6 observations: 5, 15, 25, 35, 45, 55</paragraph>
+<ul>
+<li>Mean x̄ = 30</li>
+<li>Σ (x<sub>i</sub>−x̄)<sup>2</sup> = (5−30)<sup>2</sup> + (15−30)<sup>2</sup> + (25−30)<sup>2</sup> + (35−30)<sup>2</sup> + (45−30)<sup>2</sup> + (55−30)<sup>2</sup></li>
+<li>= 625 + 225 + 25 + 25 + 225 + 625 = <b>1750</b></li>
+</ul>
+
+<paragraph id="ada0fcf2f0b5bc6e895388bc"><b>Set B</b>: 31 observations: 15, 16, 17, …, 45</paragraph>
+<ul>
+<li>Mean ȳ = 30 (same mean as set A)</li>
+<li>Σ (y<sub>i</sub>−ȳ)<sup>2</sup> = (15−30)<sup>2</sup> + (16−30)<sup>2</sup> + … + (45−30)<sup>2</sup></li>
+<li>= (−15)<sup>2</sup> + (−14)<sup>2</sup> + … + (−1)<sup>2</sup> + 0<sup>2</sup> + 1<sup>2</sup> + … + 14<sup>2</sup> + 15<sup>2</sup></li>
+<li>= 2[15<sup>2</sup> + 14<sup>2</sup> + … + 1<sup>2</sup>]</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="45ed97ca3d3115dca1b9774e"><b>Sum of squares of first n natural numbers</b>:</paragraph>
+<paragraph id="a225abeb91126d6bede5d287"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><msup><mn>2</mn><mn>2</mn></msup><mo>+</mo><mi>…</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mi>n</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>6</mn></mfrac></mrow></math></paragraph><paragraph id="ef57dace26a5fee996131cc4"><b>n</b> = how many first natural numbers are being squared + added</paragraph>
+</div>
+
+<paragraph id="07860a32e1c67f496c5e6b11">Here n = 15, so:</paragraph>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mn>15</mn><mn>2</mn></msup><mo>+</mo><msup><mn>14</mn><mn>2</mn></msup><mo>+</mo><mi>…</mi><mo>+</mo><msup><mn>1</mn><mn>2</mn></msup><mo>=</mo><mn>15</mn><mo>×</mo><mn>16</mn><mo>×</mo><mfrac><mn>31</mn><mn>6</mn></mfrac></mrow></math></li><li><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mi>h</mi><mi>u</mi><mi>s</mi><mi>Σ</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><mi>y</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>2</mn><mo>×</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>15</mn><mo>×</mo><mn>16</mn><mo>×</mo><mfrac><mn>31</mn><mn>6</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>5</mn><mo>×</mo><mn>16</mn><mo>×</mo><mn>31</mn><mo>=</mo><mn>2480</mn></mrow></math></b></li></ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3b11de99a906ba8ab001a02f">If we only use Σ(deviation)<sup>2</sup>, we’d say A has less dispersion than B (1750 &lt; 2480) — but that’s wrong: set A is more spread (deviations −25 to 25) than set B (−15 to 15).</paragraph>
+</div>
+
+<h3>Fix: Use the Mean of Squares of Deviations ⇒ Variance</h3>
+
+<paragraph id="deb6c2470623e257c274540d">To remove the effect of “how many observations”, take the <b>average</b> of squared deviations:</paragraph>
+<ul>
+<li><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>F</mi><mi>o</mi><mi>r</mi><mi>s</mi><mi>e</mi><mi>t</mi><mi>A</mi><mo>:</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>6</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mn>1750</mn><mo>=</mo><mn>291.67</mn></mrow></math></b></li><li><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>F</mi><mi>o</mi><mi>r</mi><mi>s</mi><mi>e</mi><mi>t</mi><mi>B</mi><mo>:</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>31</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mn>2480</mn><mo>=</mo><mn>80</mn></mrow></math></b></li></ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="c0728a4bd7d6e9e5378acc88">Now it correctly shows set A has more dispersion than set B (matches the scatter/range idea).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="eee209517f7037b57c7bd1b9"><b>Variance</b> = <b>mean of squared deviations from the mean</b>. Symbol: σ<sup>2</sup> (“sigma square”).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="9ea4e2f988b3f53ee1171d21"><b>Variance (ungrouped, n observations)</b>:</paragraph>
+<paragraph id="18815ab00462041fb5648d8c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="0794c55578197baaf3687844"><b>σ<sup>2</sup></b> = variance</paragraph>
+<paragraph id="e8eeb75158b5616ea9029182"><b>n</b> = number of observations</paragraph>
+<paragraph id="1d3e66e50bdf4c5b921c6118"><b>x<sub>i</sub></b> = i-th observation</paragraph>
+<paragraph id="aa9bf9ef0aa423a4b9ec0bae"><b>x̄</b> = mean</paragraph>
+</div>
+
+<h2>Standard Deviation</h2>
+
+<h3>Definition and Need</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b7a3087abc8fdeb1e6eeefe3">Variance is in <b>squared units</b>. To get a spread measure in the <b>same unit as the data</b>, take the <b>positive square root</b> of variance = <b>standard deviation</b> (σ).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2c5c77953b6f3feccab879ee"><b>Standard Deviation</b>:</paragraph>
+<paragraph id="fa4f57195005d8c824a8c1a2"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>Σ</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph><paragraph id="1aeb8b9a2c7c8a3f51909ffa"><b>σ</b> = standard deviation</paragraph>
+<paragraph id="55623ac5becd32e4a5595029"><b>n</b> = number of observations</paragraph>
+<paragraph id="e704ca6b2338a987e328f88d"><b>x<sub>i</sub></b> = i-th observation</paragraph>
+<paragraph id="775934905062589daa717561"><b>x̄</b> = mean</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="76004af9eea7c7aefbd9973a">SD is always the <b>positive</b> square root of variance.</paragraph>
+</div>
+
+<h2>Worked Example 8: Variance of Ungrouped Data</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="eade69057086f9c334398cf0"><b>Data</b>: 6, 8, 10, 12, 14, 16, 18, 20, 22, 24</paragraph>
+</div>
+
+<paragraph id="4e94a4db573edc46827f4f15"><b>Step 1: Number of observations</b></paragraph>
+<ul>
+<li>n = 10</li>
+</ul>
+
+<paragraph id="6d737b65a5ec5c9ca7ec593a"><b>Step 2: Mean by step-deviation (assumed mean A = 14)</b></paragraph>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mi>a</mi><mi>k</mi><mi>e</mi><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>A</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>w</mi><mi>o</mi><mi>r</mi><mi>k</mi><mi>e</mi><mi>d</mi><mi>t</mi><mi>a</mi><mi>b</mi><mi>l</mi><mi>e</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></li><li>For x<sub>i</sub> = 6, 8, 10, 12, 14, 16, 18, 20, 22, 24 ⇒ d<sub>i</sub> = −4, −3, −2, −1, 0, 1, 2, 3, 4, 5</li>
+<li>Σ d<sub>i</sub> = 5</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2c1656a97d0aedd8d720f2d4"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>t</mi><mi>e</mi><mi>p</mi><mo>−</mo><mi>d</mi><mi>e</mi><mi>v</mi><mi>i</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>A</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>c</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>:</mo></mrow></math></b></paragraph><paragraph id="f99e2ca172998b44f76d3b09"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>A</mi><mo>+</mo><mi>c</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>Σ</mi><mfrac><mi>d</mi><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="8603ed49df78788f887bdd8a"><b>A</b> = assumed mean</paragraph>
+<paragraph id="904136e742b8b20bdc78a0d0"><b>c</b> = common factor in d (here c = 2)</paragraph>
+<paragraph id="4568ebaa04ddbd7a858d4259"><b>Σd</b> = sum of step-deviations</paragraph>
+<paragraph id="da5e31d3b1e922fd9e395b8a"><b>n</b> = number of observations</paragraph>
+</div>
+
+<paragraph id="9b26dd9695d264498aa1fac3">Using A = 14, c = 2, Σd = 5, n = 10:</paragraph>
+<ul>
+<li><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mn>14</mn><mo>+</mo><mn>2</mn><mo>×</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>5</mn><mn>10</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>14</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>15</mn></mrow></math></b></li></ul>
+
+<paragraph id="9408d1d80428496cd4af1324"><b>Step 3: Deviations from mean + squares</b></paragraph>
+<ul>
+<li>(x<sub>i</sub>−x̄) (from table): −9, −7, −5, −3, −1, 1, 3, 5, 7, 9</li>
+<li>(x<sub>i</sub>−x̄)<sup>2</sup>: 81, 49, 25, 9, 1, 1, 9, 25, 49, 81</li>
+<li>Σ (x<sub>i</sub>−x̄)<sup>2</sup> = <b>330</b></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="02ea239e9bd6aa18e1b3d140">Don’t square step-deviations d<sub>i</sub> and call them (x<sub>i</sub>−x̄)<sup>2</sup>. Variance needs squares of <b>actual deviations from the mean</b>: (x<sub>i</sub>−x̄)<sup>2</sup>.</paragraph>
+</div>
+
+<h2>Standard Deviation: Recap of Mean–Variance–SD Relationship (from previous example)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="21f89cf6c9405d691c6aa986">SD = positive √(variance). Variance = average of squared deviations from mean.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="8a317b3908945a0f727f8a59"><b>Mean using assumed mean method</b>:</paragraph>
+<paragraph id="42fddef72aa4fb01563ce9cb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>A</mi><mo>+</mo><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><mfrac><msub><mi>d</mi><mi>i</mi></msub><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="e2d63227e08195aa893417f2">A = assumed mean (a handy central value)</paragraph>
+<paragraph id="44661d3bedfa299c15ff2c45"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>h</mi><mo>=</mo><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>o</mi><mi>n</mi><mfrac><mrow><mi>f</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi></mrow><mrow><mi>s</mi><mi>t</mi><mi>e</mi><mi>p</mi></mrow></mfrac><mi>u</mi><mi>s</mi><mi>e</mi><mi>d</mi><mi>t</mi><mi>o</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>d</mi><mi>e</mi><mi>v</mi><mi>i</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>o</mi><mi>f</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>w</mi><mi>i</mi><mi>d</mi><mi>t</mi><mi>h</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>p</mi><mi>e</mi><mi>d</mi><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="3b8b20c58fde029e046cbb28"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>d</mi><mi>i</mi></msub><mo>=</mo><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>d</mi><mi>d</mi><mi>e</mi><mi>v</mi><mi>i</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>f</mi><mi>r</mi><mi>o</mi><mi>m</mi><mi>A</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>s</mi><mi>d</mi><mi>e</mi><mi>f</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>n</mi><mfrac><mrow><mi>a</mi><mi>s</mi><mi>s</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>d</mi></mrow><mrow><mi>s</mi><mi>t</mi><mi>e</mi><mi>p</mi></mrow></mfrac><mo>−</mo><mi>d</mi><mi>e</mi><mi>v</mi><mi>i</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="b459dd396dac7bd9685f9692">n = number of observations (or total frequency N in frequency data)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c94e51be3b532bb1f8a77121"><b>Variance for ungrouped data</b>:</paragraph>
+<paragraph id="7cfc4922c7d3518c710b97cb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="a5de31f8d99699a068cfd18d">σ² = variance</paragraph>
+<paragraph id="52d632c10c40c9ab807ed1b7">σ = standard deviation = √σ²</paragraph>
+<paragraph id="1164c0e52c21b41b28c5f361">x<sub>i</sub> = i-th observation</paragraph>
+<paragraph id="d2be6bfc1344b4ee93a93e27">x̄ = mean</paragraph>
+<paragraph id="f4a2310e08cc82af3e4d4519">n = number of observations</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="71a4d8ac61f865900e4035f4">In the worked computation shown: σ² = 33, so σ = √33 ≈ 5.74.</paragraph>
+</div>
+
+<h2>13.5.2 Standard deviation of a discrete frequency distribution</h2>
+
+<h3>Formula and notation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d52a65d7d216fad37f856175">A <b>discrete frequency distribution</b> gives values x<sub>i</sub> with frequencies f<sub>i</sub> (meaning: x<sub>i</sub> occurs f<sub>i</sub> times).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="62642b08f4cb57a24c7882ea"><b>Standard deviation (discrete frequency distribution)</b>:</paragraph>
+<paragraph id="7a7cd8d974edf46ce5fa6508"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mi>.</mi><mi>.</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="c8324d2eddab85b0164f085a">N = ∑ f<sub>i</sub> (total frequency)</paragraph>
+<paragraph id="e3bff0ce3391bb39e3307c8a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="f825d2b25fd8aad8d08d0441">x<sub>i</sub> = values of the variable</paragraph>
+<paragraph id="dfa0b46e7a3ae548140a7412">f<sub>i</sub> = corresponding frequencies</paragraph>
+<paragraph id="79804175173d4080941813f5">σ = √σ²</paragraph>
+</div>
+
+<h3>Example 9: Variance and standard deviation (discrete frequency data)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ce8d2472b27db962cdf491b6"><b>Data</b>:</paragraph>
+<ul>
+<li>x<sub>i</sub>: 4, 8, 11, 17, 20, 24, 32</li>
+<li>f<sub>i</sub>: 3, 5, 9, 5, 4, 3, 1</li>
+</ul>
+</div>
+
+<paragraph id="bf21a87f99807759cbe61630"><b>Step 1: Find N and mean x̄</b></paragraph>
+<ul>
+<li>N = ∑f<sub>i</sub> = 30</li>
+<li>∑f<sub>i</sub>x<sub>i</sub> = 420</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mfrac><mn>420</mn><mn>30</mn></mfrac><mo>=</mo><mn>14</mn></mrow></math></li></ul>
+
+<paragraph id="8aa3852ad86dac6ecc6934ea"><b>Step 2: Find ∑f<sub>i</sub>(x<sub>i</sub> − x̄)²</b></paragraph>
+<paragraph id="a976826344f337602cab7731">From the table in the text: ∑f<sub>i</sub>(x<sub>i</sub> − x̄)² = 1374.</paragraph>
+
+<paragraph id="d72e2a1fa93fc8de0cb7303e"><b>Step 3: Variance and SD</b></paragraph>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mfrac><mn>1374</mn><mn>30</mn></mfrac><mo>=</mo><mn>45.8</mn></mrow></math></li><li>σ = √45.8 ≈ 6.77</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="501c6822e18a0cbe585b4799">Common mistake: dividing by n (number of distinct x<sub>i</sub>) instead of N (total frequency). For frequency distributions, always divide by N = ∑f<sub>i</sub>.</paragraph>
+</div>
+
+<h2>13.5.3 Standard deviation of a continuous frequency distribution</h2>
+
+<h3>Reducing continuous classes to discrete mid-points</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="5c8f698f0a307a3e7afa427d">For a <b>continuous (grouped) frequency distribution</b>, swap each class interval for its <b>mid-point</b> x<sub>i</sub>. Then treat the data as a discrete frequency distribution with frequencies f<sub>i</sub>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="ba8be8f8a223ca5f1d86b3fa"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>i</mi><mi>d</mi><mo>−</mo><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>f</mi><mi>a</mi><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>l</mi><mi>o</mi><mi>w</mi><mi>e</mi><mi>r</mi><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mi>L</mi><mo>,</mo><mi>u</mi><mi>p</mi><mi>p</mi><mi>e</mi><mi>r</mi><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mi>U</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>:</mo><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>L</mi><mo>+</mo><mi>U</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac></mrow></math></paragraph></div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="994e20f7387378777f282599"><b>Standard deviation (continuous grouped data via mid-points)</b>:</paragraph>
+  <paragraph id="f125e5f47fe97c268113bb07"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="cb79928b831eab09db047e7b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>N</mi><mo>=</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mo>,</mo><mi>x</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mrow></math></paragraph></div>
+
+<h3>Another formula for standard deviation (computational form)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="4a1c75cef2f4c9b8b6971b13">We can expand the variance to avoid finding (x<sub>i</sub> − x̄) for every class/value → quicker calculations (computational form).</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="bf4a67a3cb984e8cd7ec75b7"><b>Computational formula for variance (frequency distribution)</b>:</paragraph>
+  <paragraph id="4b73242a02a3a3d4b82dd555"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="49b99a14b1a53d13d53ee9d0">N = ∑f<sub>i</sub></paragraph>
+  <paragraph id="fafc180e78b23226e0bc9be0"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mrow></math></paragraph></div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="32d2e94b3b8c968923eed1d5"><b>Standard deviation using computational formula</b>  ... (3):</paragraph>
+  <paragraph id="7a02713eba120d6f5236944c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph><paragraph id="f204639b6612d591c33c648c">All symbols as defined above.</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="a0f25773f30237fd376596c1">When using the computational formula: keep brackets tight. Do (1/N)∑f<sub>i</sub>x<sub>i</sub> <b>first</b>, then square it. Don’t square terms before summing (unless it’s explicitly x<sub>i</sub>²).</paragraph>
+</div>
+
+<h3>Example 10: Mean, variance and standard deviation (grouped data)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="cf315cbc3a9fa7acceead504"><b>Distribution</b>:</paragraph>
+  <ul>
+    <li>Classes: 30–40, 40–50, 50–60, 60–70, 70–80, 80–90, 90–100</li>
+    <li>Frequencies: 3, 7, 12, 15, 8, 3, 2</li>
+  </ul>
+  <paragraph id="7f1224056e41999b9ddee5c1">Mid-points x<sub>i</sub>: 35, 45, 55, 65, 75, 85, 95</paragraph>
+</div>
+<paragraph id="8001b741905f35a7d9ecb0ba"><b>From the constructed table (as in text):</b></paragraph>
+<ul>
+  <li>N = ∑f<sub>i</sub> = 50</li>
+  <li>∑f<sub>i</sub>x<sub>i</sub> = 3100</li>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>e</mi><mi>a</mi><mi>n</mi><mo>:</mo><mi>x</mi><mo>̄</mo><mo>=</mo><mfrac><mn>3100</mn><mn>50</mn></mfrac><mo>=</mo><mn>62</mn></mrow></math></li><li>∑f<sub>i</sub>(x<sub>i</sub> − x̄)² = 10050</li>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo>:</mo><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mfrac><mn>10050</mn><mn>50</mn></mfrac><mo>=</mo><mn>201</mn></mrow></math></li><li>Standard deviation: σ = √201 ≈ 14.18</li>
+</ul>
+
+<h3>Example 11: Standard deviation using formula (3)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="956e649ec21208b4dae5b7a1"><b>Data</b>:</paragraph>
+  <ul>
+    <li>x<sub>i</sub>: 3, 8, 13, 18, 23</li>
+    <li>f<sub>i</sub>: 7, 10, 15, 10, 6</li>
+  </ul>
+</div>
+<paragraph id="6fb8bb39a557351c6107cc14"><b>Compute required sums (from the table in text):</b></paragraph>
+<ul>
+  <li>N = ∑f<sub>i</sub> = 48</li>
+  <li>∑f<sub>i</sub>x<sub>i</sub> = 614</li>
+  <li>∑f<sub>i</sub>x<sub>i</sub>² = 9652</li>
+</ul>
+<paragraph id="f45ec05f6d4cff52d6965a51"><b>Apply formula (3):</b></paragraph>
+<ul>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></li><li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>9652</mn><mn>48</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>614</mn><mn>48</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></li><li>Following the text’s arithmetic: σ ≈ 6.12</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="62e584e1e56c1c79a2ee6f66">Therefore, standard deviation (σ) = 6.12.</paragraph>
+</div>
+
+<h2>13.5.4 Shortcut method to find variance and standard deviation (Step-deviation method)</h2>
+
+<h3>Why the shortcut is used</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="5322badce118771798a79feb">If x<sub>i</sub> values (or class mid-points) are big, direct mean/variance gets long. The <b>step-deviation method</b> makes arithmetic easier by using an assumed mean + scaling by class width (or another handy factor).</paragraph>
+</div>
+
+<h3>Definitions: assumed mean, scale, step-deviations</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="42e911486562387f339af66c"><b>Step-deviation transformation</b>  ... (1):</paragraph>
+  <paragraph id="2c3ae4c9ac0c1e927eb6df19"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>A</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>h</mi></mfrac><mi>o</mi><mi>r</mi><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mi>A</mi><mo>+</mo><mi>h</mi><msub><mi>y</mi><mi>i</mi></msub></mrow></math></paragraph><paragraph id="aae7d9167d909e8a0a360d21">A = assumed mean (pick near centre)</paragraph>
+  <paragraph id="e19c388fa1c536ca6be83bf6">h = scaling factor (usually class width for grouped data)</paragraph>
+  <paragraph id="fa027ae18eebedf7bab75b88">y<sub>i</sub> = step-deviation (no units)</paragraph>
+</div>
+
+<h3>Mean in step-deviation form</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="23dd058dc771d7d8e540aab5"><b>Mean (step-deviation method)</b>  ... (3):</paragraph>
+  <paragraph id="240f2ed59d01a05b17085948"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>A</mi><mo>+</mo><mi>h</mi><mi>ȳ</mi><mo>,</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>ȳ</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub></mrow></math></paragraph><paragraph id="34b6cdb3583e8ee667ce5700">x̄ = mean of x</paragraph>
+  <paragraph id="2f8d782a9476f84d2ec538a0">ȳ = mean of y values (with frequencies)</paragraph>
+  <paragraph id="34c4cb98e192978bfcadb6bb">N = ∑f<sub>i</sub></paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="b45d15737902a63300c5b575"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi>s</mi><mi>f</mi><mi>r</mi><mi>o</mi><mi>m</mi><mi>s</mi><mi>u</mi><mi>b</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>t</mi><mi>u</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>g</mi><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mi>A</mi><mo>+</mo><mi>h</mi><msub><mi>y</mi><mi>i</mi></msub><mi>i</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>x</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>i</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>i</mi><mi>f</mi><mi>y</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>u</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>N</mi><mo>=</mo><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mi>.</mi></mrow></math></paragraph></div>
+
+<h3>Variance and standard deviation under scaling</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="4022445679b11898c3f1fa6c">If a variable is scaled by h: variance scales by h², and standard deviation scales by |h|.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="def0dd70da5507325f5d4ed6"><b>Relationship between variances</b>  ... (4):</paragraph>
+  <paragraph id="3799645bedb187fb1a8d4731">σ<sub>x</sub>² = h² σ<sub>y</sub>²</paragraph>
+  <paragraph id="9b7f1b23b3f10bc3f370d3f1">σ<sub>x</sub> = h σ<sub>y</sub> (h taken positive as class width)</paragraph>
+  <paragraph id="b29f57991cbcdae2bb7e51e7">σ<sub>x</sub>, σ<sub>y</sub> = standard deviations of x and y</paragraph>
+</div>
+
+<h3>Shortcut formula for standard deviation (step-deviation)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="cc86d8662330d8d05741abb1"><b>Standard deviation using step-deviations</b>  ... (5):</paragraph>
+  <paragraph id="5d48ad646fe497bea9f66a59"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><mi>h</mi><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph><paragraph id="bdb8ffc50ee5405aac9d9881"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>h</mi><mo>=</mo><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mfrac><mrow><mi>w</mi><mi>i</mi><mi>d</mi><mi>t</mi><mi>h</mi></mrow><mrow><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow></mfrac><mi>f</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi></mrow></math></paragraph><paragraph id="a3718be1ec3abef8010b5fda">N = ∑f<sub>i</sub></paragraph>
+  <paragraph id="59f10a8e6a0488d3d744f375"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>A</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>h</mi></mfrac></mrow></math></paragraph></div>
+<div class="remember-box">
+  <paragraph id="ac76a97a4fd3c09fb5a33d58">Choose A and h so y<sub>i</sub> becomes small integers (like −3, −2, −1, 0, 1, 2, 3). That’s the whole point.</paragraph>
+</div>
+
+<h3>Example 12: Solve Example 10 again using shortcut method</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="c24dd9183d33517d1b750373"><b>Given</b> (same as Example 10):</paragraph>
+  <ul>
+    <li>Classes: 30–40, 40–50, 50–60, 60–70, 70–80, 80–90, 90–100</li>
+    <li>Frequencies: 3, 7, 12, 15, 8, 3, 2</li>
+  </ul>
+  <paragraph id="4cdbe80832d24ef31137c416">Choose assumed mean A = 65, class width h = 10.</paragraph>
+</div>
+<paragraph id="91433616a35aa1445f942687"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mi>o</mi><mi>m</mi><mi>p</mi><mi>u</mi><mi>t</mi><mi>e</mi><msub><mi>y</mi><mi>i</mi></msub><mi>f</mi><mi>o</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>m</mi><mi>i</mi><mi>d</mi><mo>−</mo><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><msub><mi>x</mi><mi>i</mi></msub><mo>:</mo><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mn>65</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>10</mn></mfrac><mi>g</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi>s</mi><mo>−</mo><mn>3</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mi>.</mi></mrow></math></b></paragraph><paragraph id="253a67db8581b9f7e7f2e723"><b>From the table in the text:</b></paragraph>
+<ul>
+  <li>N = 50</li>
+  <li>∑f<sub>i</sub>y<sub>i</sub> = −15</li>
+  <li>∑f<sub>i</sub>y<sub>i</sub>² = 105</li>
+</ul>
+<paragraph id="bfccb49758338a97d5b81e0b"><b>Mean using step-deviation</b>:</paragraph>
+<ul>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mi>A</mi><mo>+</mo><mi>h</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><mfrac><mrow><msub><mi>f</mi><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub></mrow><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>65</mn><mo>+</mo><mn>10</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>15</mn><mn>50</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>62</mn></mrow></math></li></ul>
+<paragraph id="f94e7a0291b8bc19e07da50e"><b>Variance using step-deviation</b>:</paragraph>
+<ul>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><msup><mi>h</mi><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">[</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo form="postfix" stretchy="true">]</mo></mrow></mrow></math></li><li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><msup><mn>10</mn><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">[</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>105</mn><mn>50</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>15</mn><mn>50</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo form="postfix" stretchy="true">]</mo></mrow></mrow></math></li><li>As evaluated in the text: σ² = 201</li>
+  <li>σ = √201 ≈ 14.18</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="e794e294b158f2f1d968533d">The shortcut method gives the same mean + standard deviation as the direct method, but with simpler arithmetic.</paragraph>
+</div>
+
+<h2>Miscellaneous Examples</h2>
+
+<h3>Example 13: Effect on variance when each observation is multiplied by 2</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="b2d105de37e87084eb15d471">Scaling rule: if every observation is multiplied by k, then:</paragraph>
+  <ul>
+    <li>New mean = k × old mean</li>
+    <li>New variance = k² × old variance</li>
+    <li>New standard deviation = |k| × old standard deviation</li>
+  </ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="9123bfcc792a3015af7b8d18"><b>Given</b>: n = 20 observations, variance σ² = 5.</paragraph>
+</div>
+<paragraph id="62d43cb0c0708d537bde10e8">Let observations be x<sub>1</sub>, x<sub>2</sub>, …, x<sub>20</sub> with mean x̄. Then:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="02bb4f490e51f1fa7d0b9598"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>5</mn></mrow></math></paragraph><paragraph id="be9fa949eb1ff50f9ddbf6b8">So ∑(x<sub>i</sub> − x̄)² = 20 × 5 = 100   ... (1)</paragraph>
+</div>
+<paragraph id="d8b31e6b4be25c997c056360">If each observation is multiplied by 2, new observations are y<sub>i</sub> = 2x<sub>i</sub>. Then new mean is ȳ = 2x̄ and:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="4aebb7c1eee3a52feab4e650"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mi>e</mi><mi>w</mi><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><msubsup><mi>σ</mi><mi>y</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><mi>ȳ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="ce5ed696fb713b99367704fe">But y<sub>i</sub> − ȳ = 2x<sub>i</sub> − 2x̄ = 2(x<sub>i</sub> − x̄)</paragraph>
+  <paragraph id="5719ca5ca27efd00e49520cf">So (y<sub>i</sub> − ȳ)² = 4(x<sub>i</sub> − x̄)²</paragraph>
+  <paragraph id="feb73c62387b6738d6a911b0"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>H</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><msubsup><mi>σ</mi><mi>y</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><mn>4</mn><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>20</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mn>4</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></math></paragraph></div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="b1f4d260ead23290d174c47e">Therefore, new variance = 4 × 5 = 20.</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="9272436bf942db629424f368">Don’t multiply variance by 2 when data are multiplied by 2. Variance scales with the <b>square</b> of the multiplier.</paragraph>
+</div>
+
+<h2>Effect of Linear Transformation on Variance (Multiplication by a Constant)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="cde8f0ece39f8aa7b3a24200">Multiply every data value by a constant <b>k</b> ⟹ variance gets multiplied by <b>k²</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="a525c796b578364ad0e463e0">Original: <b>x<sub>i</sub></b>, mean <b>x̄</b>, variance <b>σ²</b></paragraph>
+  <paragraph id="027e8a7b2ff8e017406cac89">New: <b>y<sub>i</sub> = kx<sub>i</sub></b></paragraph>
+  <paragraph id="cf4e9acbc4b09da6b1ec5b18"><b>ȳ = kx̄</b></paragraph>
+  <paragraph id="300c324a7e31374fa158f09d"><b>σ<sub>y</sub>² = k²σ²</b></paragraph>
+  <paragraph id="edf6a3684143978c8d4fdfe4"><b>k</b> = constant multiplier</paragraph>
+  <paragraph id="4d00736cbe18a219c3cdf0df"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>,</mo><mi>y</mi><mo>̄</mo><mo>=</mo><mfrac><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow></mfrac><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow></math></b></paragraph><paragraph id="533385ef91098f6cccdbeaad"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>,</mo><msubsup><mi>σ</mi><mi>y</mi><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mi>o</mi><mi>l</mi><mi>d</mi></mrow><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow></mfrac><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mi>s</mi></mrow></math></b></paragraph></div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8024cf2e449566a0425f1f9a">Scaling changes spread <b>quadratically</b>: double all values ⟹ variance becomes <b>4×</b>.</paragraph>
+</div>
+
+<h2>Example 14: Finding Missing Observations Using Mean and Variance</h2>
+
+<h3>Given</h3>
+<ul>
+  <li>Number of observations <b>n = 5</b></li>
+  <li>Mean <b>x̄ = 4.4</b></li>
+  <li>Variance <b>σ² = 8.24</b></li>
+  <li>Known observations: <b>1, 2, 6</b></li>
+  <li>Unknown observations: <b>x, y</b></li>
+</ul>
+
+<h3>Step 1: Use the Mean</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="ebfaa14e60d04e56c8a19893"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>̄</mo><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>x</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mi>n</mi></mfrac></mrow></math></b></paragraph><paragraph id="1dc8109cc1e09ef38254f10e"><b>∑x<sub>i</sub></b> = sum of all observations</paragraph>
+  <paragraph id="fb2a6838cdea066b6556f59b"><b>n</b> = number of observations</paragraph>
+</div>
+<paragraph id="4dc7815c7668bbe73d8e150e">Data: <b>1, 2, 6, x, y</b></paragraph>
+<paragraph id="67964d3c52044078b0da29bc">Mean condition:</paragraph>
+<paragraph id="176824b41f6e1834e2cf35bf"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>4.4</mn><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>6</mn><mo>+</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>5</mn></mfrac></mrow></math></paragraph><paragraph id="d62c6e7f3de22ca64488f0be">So, 22 = 9 + x + y ⇒ <b>x + y = 13</b> … (1)</paragraph>
+
+<h3>Step 2: Use the Variance</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="47e95599cff74fd31beb5b30"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></b></paragraph><paragraph id="e5d5c10a8c721c8c70c27da3"><b>σ²</b> = variance</paragraph>
+  <paragraph id="eadc7261a6f8df521a3b1a70"><b>x<sub>i</sub></b> = observations</paragraph>
+  <paragraph id="bd579ed8f7523873f23c2053"><b>x̄</b> = mean</paragraph>
+  <paragraph id="ee55b0224151c1db9e42aa89"><b>n</b> = number of observations</paragraph>
+</div>
+<paragraph id="796d0f377ae7505807fa6ab7">Given σ² = 8.24 and x̄ = 4.4:</paragraph>
+<paragraph id="ed79ec918aacb89d64b901fe"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>8.24</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>5</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">[</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mn>4.4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mn>4.4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>6</mn><mo>−</mo><mn>4.4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>4.4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mn>4.4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo form="postfix" stretchy="true">]</mo></mrow></mrow></math></paragraph><paragraph id="41ded925af6e72d55dc52fcb">Multiply by 5:</paragraph>
+<paragraph id="8deda40f84f036b1230d1b5e">41.20 = (−3.4)² + (−2.4)² + (1.6)² + (x−4.4)² + (y−4.4)²</paragraph>
+<paragraph id="bf030ec55af1003e0ece3962">Known squares:</paragraph>
+<ul>
+  <li>(−3.4)² = 11.56</li>
+  <li>(−2.4)² = 5.76</li>
+  <li>(1.6)² = 2.56</li>
+</ul>
+<paragraph id="1f9bedf3293ffa4a20e0551b">So:</paragraph>
+<paragraph id="3b063c3431e09b47d78afa74">41.20 = 11.56 + 5.76 + 2.56 + (x−4.4)² + (y−4.4)²</paragraph>
+
+<h3>Step 3: Expand and Simplify</h3>
+<paragraph id="91398195c11f904ed0fdf1b3">(x−4.4)² = x² − 8.8x + 19.36</paragraph>
+<paragraph id="e2d4599bd5ee14997266c4a0">(y−4.4)² = y² − 8.8y + 19.36</paragraph>
+<paragraph id="a9b2cdef510230161e188b3b">Add:</paragraph>
+<paragraph id="55bc145a9459bd18bce8e807">(x−4.4)² + (y−4.4)² = x² + y² − 8.8(x+y) + 38.72</paragraph>
+<paragraph id="64c5d17d9f07b865846d2f0e">Sub into variance equation:</paragraph>
+<paragraph id="53968a3e4686932ee5309540">41.20 = 11.56 + 5.76 + 2.56 + x² + y² − 8.8(x+y) + 38.72</paragraph>
+<paragraph id="ae647287d2fa6ca24a8b2ffd">Use (1): x + y = 13:</paragraph>
+<paragraph id="8cf86b11b0d8429cba794eee">41.20 = (11.56+5.76+2.56) + x² + y² − 8.8×13 + 38.72</paragraph>
+<paragraph id="3e5cb0cb6ef725ace1d2e76c">41.20 = 19.88 + x² + y² − 114.4 + 38.72</paragraph>
+<paragraph id="10e965a35113adb3ed986706">41.20 = x² + y² − 55.8</paragraph>
+<paragraph id="dc011c4cbaabbabe079e18bc">Therefore <b>x² + y² = 97</b> … (2)</paragraph>
+
+<h3>Step 4: Use Identity to Find xy</h3>
+<paragraph id="ab47cdca39a63269fb7cf4cb">From (1): (x+y)² = x² + y² + 2xy</paragraph>
+<paragraph id="2d2ab638b07855172635ae56">(13)² = x² + y² + 2xy ⇒ 169 = 97 + 2xy</paragraph>
+<paragraph id="ed89e0b179dcecb084b6a39c">So <b>2xy = 72</b> … (3)</paragraph>
+
+<h3>Step 5: Find (x−y)² and Solve</h3>
+<paragraph id="013b70e0ed8493f2c2e89a87">(x−y)² = x² + y² − 2xy</paragraph>
+<paragraph id="7aa3e35269b2ded20d8f2352">= 97 − 72 = 25 ⇒ x − y = ±5</paragraph>
+<paragraph id="f29231b39ea1d2a3ab9f8e89">Combine with x + y = 13:</paragraph>
+<ul>
+  <li>If x − y = 5, then x = 9, y = 4</li>
+  <li>If x − y = −5, then x = 4, y = 9</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="fe0c122e8b028c6eb189ce64">Missing observations are <b>4 and 9</b> (order doesn’t matter).</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="dc3a0813139e78c3ed0e99fc">Mean + variance with missing values: make equations for <b>x+y</b> (from mean) and <b>x²+y²</b> (from variance), then use identities to get <b>(x−y)²</b>.</paragraph>
+</div>
+
+<h2>Example 15: Effect on Variance When Adding a Constant</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="54d5cab709dfc6b57f55ad7a">Add/subtract the same constant <b>a</b> to every value ⟹ <b>variance stays the same</b>.</paragraph>
+</div>
+
+<h3>Proof (as required)</h3>
+<ul>
+  <li>Original observations: <b>x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub></b></li>
+  <li>Mean of original observations = <b>x̄</b></li>
+  <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>l</mi><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo>:</mo><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></li></ul>
+
+<paragraph id="197dd2ef59e274b92b16bf58">Add ‘a’ to each observation, define:</paragraph>
+<paragraph id="8fbcf37919cf57fd1217d496"><b>y<sub>i</sub> = x<sub>i</sub> + a</b> … (1)</paragraph>
+
+<paragraph id="f51b95d11975b3e13616d458">Mean of new observations:</paragraph>
+<paragraph id="4f334516cf42584b2be61218"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>̄</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="aed6fdeed10be818bf783fe6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>∑</mo><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>n</mi><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>a</mi><mo>=</mo><mi>x</mi><mo>̄</mo><mo>+</mo><mi>a</mi></mrow></math></paragraph><paragraph id="e94b14eac5af5b2545e89b0b"><b>Therefore ȳ = x̄ + a</b> … (2)</paragraph>
+
+<paragraph id="43d038cfa0cd4619ffb63f7d">Variance of new observations:</paragraph>
+<paragraph id="172b7522ce07a1fe7bcb8f0b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>σ</mi><mi>y</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><mi>y</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="8db264204d89220da7c0aa11"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">[</mo><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo>+</mo><mi>a</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">]</mo></mrow><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>u</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>g</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>a</mi><mi>n</mi><mi>d</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="768056ddb8a05665a3d11308"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mi>σ</mi><mn>2</mn></msup></mrow></math></paragraph><div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="48e1169fdca91ff0c6b07cfc">Adding/subtracting shifts everything equally: mean changes, but spread doesn’t ⟹ variance unchanged.</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="7aabccebff372a5480ddad09">Don’t mix up: add constant → variance same; multiply by <b>k</b> → variance becomes <b>k²</b> times.</paragraph>
+</div>
+
+<h2>Example 16: Correcting Mean and Standard Deviation When One Value Was Recorded Wrong</h2>
+
+<h3>Given (incorrectly computed using wrong data)</h3>
+<ul>
+  <li>n = 100</li>
+  <li>Incorrect mean x̄ = 40</li>
+  <li>Incorrect standard deviation σ = 5.1</li>
+  <li>One observation was taken as 50 instead of the correct value 40</li>
+</ul>
+
+<h3>Step 1: Correct the Mean</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d22852d3be818f3e6047a81d"><b>∑x<sub>i</sub> = n x̄</b></paragraph>
+  <paragraph id="3f8e2ed9833592122510a49c"><b>∑x<sub>i</sub></b> = sum of observations</paragraph>
+  <paragraph id="e70cd409210ef57873f334d7"><b>n</b> = number of observations</paragraph>
+  <paragraph id="db052a1fff5a5c3a2934ffb0"><b>x̄</b> = mean</paragraph>
+</div>
+<paragraph id="fda9b8b7fa5bbd769f6452a8">Incorrect sum = 100 × 40 = <b>4000</b></paragraph>
+<paragraph id="20bc41a3e23b655f7d20c223">Correct sum = 4000 − 50 + 40 = <b>3990</b></paragraph>
+<paragraph id="4c741696b858f124b098410b"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>m</mi><mi>e</mi><mi>a</mi><mi>n</mi><mo>=</mo><mfrac><mn>3990</mn><mn>100</mn></mfrac><mo>=</mo><mn>39.9</mn></mrow></math></b></paragraph><h3>Step 2: Use Standard Deviation Relation to Find Incorrect ∑x<sub>i</sub>²</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="48136ebefa35594cc54ac5b8"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></b></paragraph><paragraph id="f58df673dbe88dc84e85a35b"><b>σ</b> = standard deviation</paragraph>
+  <paragraph id="02d8dcfe7f8b2b2094855f5d"><b>σ²</b> = variance</paragraph>
+  <paragraph id="ede1517a5c4808009a8d244a"><b>∑x<sub>i</sub>²</b> = sum of squares of observations</paragraph>
+  <paragraph id="7f3e8f7e9f6a104827f53844"><b>n</b> = number of observations</paragraph>
+  <paragraph id="40082572099313ce6be5fd74"><b>x̄</b> = mean</paragraph>
+</div>
+<paragraph id="252c108ed53220c8b63e4cc0">Incorrect σ = 5.1 ⇒ σ² = 26.01, incorrect x̄ = 40:</paragraph>
+<paragraph id="e8bcd116c6098b65bc051c35"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>26.01</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>100</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mn>40</mn><mn>2</mn></msup></mrow></math></paragraph><paragraph id="ec052976a00ec99859639b01"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>26.01</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>100</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mn>1600</mn></mrow></math></paragraph><paragraph id="f5e9332ba136cd8b4f83d8cd"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>100</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><mn>26.01</mn><mo>+</mo><mn>1600</mn><mo>=</mo><mn>1626.01</mn></mrow></math></paragraph><paragraph id="15eea13f547c28deabef6738">So incorrect ∑x<sub>i</sub>² = 100 × 1626.01 = <b>162601</b></paragraph>
+
+<h3>Step 3: Correct ∑x<sub>i</sub>²</h3>
+<paragraph id="678447e33e2e902870f3732c">One value 50 should be 40, so:</paragraph>
+<paragraph id="ebc36dad72ff03aa6095e631">Correct ∑x<sub>i</sub>² = 162601 − 50² + 40²</paragraph>
+<paragraph id="97abf9f92917e0cebfdd0785">= 162601 − 2500 + 1600 = <b>161701</b></paragraph>
+
+<h3>Step 4: Compute Correct Standard Deviation</h3>
+<paragraph id="ad4af2ccd56181cac360bd27">Correct variance:</paragraph>
+<paragraph id="ddeed64ed0ca018b989d3bf2"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>σ</mi><mrow><mi>c</mi><mi>o</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>t</mi></mrow><mn>2</mn></msubsup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>100</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>161701</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>39.9</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></paragraph><paragraph id="0e56af1d76cd0330a8103706">= 1617.01 − 1592.01 = <b>25</b></paragraph>
+<paragraph id="458ffefa3aa614397c077687">Correct standard deviation = √25 = <b>5</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="c1b2c7335093d38b868c788d">Final: <b>Correct mean = 39.9</b>, <b>Correct standard deviation = 5</b>.</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="f3a4f0713bb0b1955e23bec2">Correction questions: fix both <b>∑x</b> and <b>∑x²</b>. SD needs <b>∑x²</b>, not just the mean.</paragraph>
+</div>
+
+<h2>Summary (Measures of Dispersion and Key Formulae)</h2>
+
+<h3>Measures of Dispersion Mentioned</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="eb47cbe9500fd79511bf2215"><b>Measures of dispersion</b> = how “spread out” the data are.</paragraph>
+  <paragraph id="d62af14d1337501166b8b52c">Listed in this chapter: <b>Range, Quartile Deviation, Mean Deviation, Variance, Standard Deviation</b>.</paragraph>
+</div>
+
+<h3>Range</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="0399a9c744c14a3e9030f816"><b>Range = Maximum value − Minimum value</b></paragraph>
+  <paragraph id="f69b8816506bc5fdfec4e66b"><b>Maximum value</b> = largest observation</paragraph>
+  <paragraph id="c819ad7816be996baf8e60f0"><b>Minimum value</b> = smallest observation</paragraph>
+</div>
+
+<h3>Mean Deviation (Ungrouped Data)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="98173bbc15fb631f6b134a8a"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="032f7013c7f9e67df2b39018"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="b0a28d7ebc267205135e4c31"><b>x<sub>i</sub></b> = observations</paragraph>
+  <paragraph id="ed0619a86171595edbd14517"><b>x̄</b> = mean</paragraph>
+  <paragraph id="39829f1727028fd950e527cd"><b>M</b> = median</paragraph>
+  <paragraph id="70a7a5387a406264569379a9"><b>n</b> = number of observations</paragraph>
+</div>
+
+<h3>Mean Deviation (Grouped Data)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="64f2ea1e2a2ecebdda9ab3a9"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="4f807352ddd0d03fd0510b21"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>.</mi><mi>D</mi><mi>.</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>M</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>M</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></b></paragraph><paragraph id="e55bacd3b257144eb0930d8c"><b>x<sub>i</sub></b> = class mark (mid-point) of the i-th class</paragraph>
+  <paragraph id="01853d10197fb13878014a87"><b>f<sub>i</sub></b> = frequency of i-th class</paragraph>
+  <paragraph id="046fd82937772642541bab95"><b>N = ∑f<sub>i</sub></b> = total frequency</paragraph>
+  <paragraph id="112f980c5c796ccfdb5fd504"><b>x̄</b> = mean of grouped data</paragraph>
+  <paragraph id="d021e7711797dc1eeb5b1067"><b>M</b> = median of grouped data</paragraph>
+</div>
+
+<h3>Variance and Standard Deviation (Ungrouped Data)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="64b755a3fa2fba22a84ea92d"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></b></paragraph><paragraph id="b0dadd4c078efa89e679cbdc"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></b></paragraph><paragraph id="5357243c3152e31d77c1d87a"><b>x<sub>i</sub></b> = observations</paragraph>
+  <paragraph id="b4085622b6f85bdb0f4ab3e2"><b>x̄</b> = mean</paragraph>
+  <paragraph id="4d9339d2c823bc0c531c0e67"><b>n</b> = number of observations</paragraph>
+  <paragraph id="73fba83cbb07ff0ee60efa93"><b>σ²</b> = variance</paragraph>
+  <paragraph id="11952008b2f835397726c390"><b>σ</b> = standard deviation</paragraph>
+</div>
+
+<h3>Variance and Standard Deviation (Discrete Frequency Distribution)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="ca0925292bd4edcad18e2766"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></b></paragraph><paragraph id="2b258e5ea2839a983b6e709a"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></b></paragraph><paragraph id="cc11bee898740387611e63ca"><b>x<sub>i</sub></b> = value of the variable</paragraph>
+  <paragraph id="c6404276dd56391608b0542e"><b>f<sub>i</sub></b> = frequency corresponding to x<sub>i</sub></paragraph>
+  <paragraph id="258503a436446d8dd17a3365"><b>N = ∑f<sub>i</sub></b> = total frequency</paragraph>
+  <paragraph id="68b4c35257a1fabd2c8a904a"><b>x̄</b> = mean</paragraph>
+</div>
+
+<h3>Variance and Standard Deviation (Continuous Frequency Distribution)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="b68b8bdd24768f6247f97eb8"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></b></paragraph><paragraph id="0e5490873699bd88e9290f98"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>x</mi><mo>̄</mo><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></b></paragraph><paragraph id="2c2ffb153c33fdd788219e25"><b>x<sub>i</sub></b> = class mark (mid-point) of the i-th class interval</paragraph>
+  <paragraph id="94924b77a6315218b5f14dc9"><b>f<sub>i</sub></b> = frequency of the i-th class</paragraph>
+  <paragraph id="ceb43020ed4b471d0e8a2c65"><b>N = ∑f<sub>i</sub></b> = total frequency</paragraph>
+  <paragraph id="dcc3d1bd04405574a7a55657"><b>x̄</b> = mean</paragraph>
+</div>
+
+<h3>Shortcut Method (Step-Deviation Method) for Variance and Standard Deviation</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="88e0a79c2921cde57eb7ec7a"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mi>σ</mi><mn>2</mn></msup><mo>=</mo><msup><mi>h</mi><mn>2</mn></msup><mrow><mo form="prefix" stretchy="true">[</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo form="postfix" stretchy="true">]</mo></mrow></mrow></math></b></paragraph><paragraph id="7cbb579d0729ec252491afad"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>σ</mi><mo>=</mo><mi>h</mi><msqrt><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msubsup><mi>y</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>∑</mo><msub><mi>f</mi><mi>i</mi></msub><msub><mi>y</mi><mi>i</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></b></paragraph><paragraph id="a81c9eaebcdebd6ea95d8a43"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>A</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>h</mi></mfrac></mrow></math></b></paragraph><paragraph id="fb66fc8f00a686b7ad81e460"><b>A</b> = assumed mean</paragraph>
+  <paragraph id="9ec2b90376708e5d0582a5c6"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>h</mi><mo>=</mo><mi>c</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>o</mi><mi>n</mi><mi>w</mi><mi>i</mi><mi>d</mi><mi>t</mi><mi>h</mi><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow></mfrac><mi>f</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>u</mi><mi>s</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>n</mi><mi>c</mi><mi>o</mi><mi>d</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow></math></b></paragraph><paragraph id="51e9c32cb534ea5f6da6bcd0"><b>x<sub>i</sub></b> = class mark (or value) corresponding to frequency f<sub>i</sub></paragraph>
+  <paragraph id="ec243b3de8b3c9b2fad96d8e"><b>f<sub>i</sub></b> = frequency</paragraph>
+  <paragraph id="6699c9fb03a20273c0723f52"><b>N = ∑f<sub>i</sub></b> = total frequency</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="e8677437c1adcfb964a604fe">In shortcut method: don’t miss the final × <b>h²</b> (for variance) and × <b>h</b> (for standard deviation).</paragraph>
+</div>
+
+<h2>Historical Note (Development of Statistics)</h2>
+
+<h3>Origin of the Term</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="a1540d8f14915906d91c2baa"><b>Statistics</b> comes from Latin <b>status</b> = a <b>political state</b>.</paragraph>
+  <paragraph id="19f003d6a85dcfdbff255515">So, early statistics was mainly for <b>state administration + record-keeping</b>.</paragraph>
+</div>
+
+<h3>Early Data Collection</h3>
+<ul>
+  <li><b>3050 B.C. (Egypt)</b>: possibly the first census was held.</li>
+  <li><b>India (~2000 years ago)</b>: efficient administrative statistics, esp. during <b>Chandra Gupta Maurya (324–300 B.C.)</b>.</li>
+  <li><b>Kautilya’s Arthshastra (~300 B.C.)</b>: mentions systems for collecting data on <b>births and deaths</b>.</li>
+  <li><b>Akbar’s regime</b>: administrative surveys recorded in <b>Ain-I-Akbari</b> by <b>Abul Fazl</b>.</li>
+</ul>
+
+<h3>Key Contributors and Milestones</h3>
+<ul>
+  <li><b>Captain John Graunt (1620–1674)</b>: <b>father of vital statistics</b>; studies on births and deaths.</li>
+  <li><b>Jacob Bernoulli (1654–1705)</b>: stated the <b>Law of Large Numbers</b> in <b>“Ars Conjectandi”</b> (published 1713).</li>
+  <li><b>Mid-17th century onwards</b>: big theoretical growth, boosted by <b>theory of games and chance (probability)</b>.</li>
+  <li><b>Francis Galton (1822–1921)</b>: pioneered statistical methods in <b>Biometry</b>.</li>
+  <li><b>Karl Pearson (1857–1936)</b>: major work; discovered the <b>Chi-square test</b> and founded a <b>statistical laboratory in England (1911)</b>.</li>
+  <li><b>Sir Ronald A. Fisher (1890–1962)</b>: <b>Father of modern statistics</b>; applied stats in <b>Genetics, Biometry, Education, Agriculture</b>, etc.</li>
+</ul></b></main><b>
+
+</b>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

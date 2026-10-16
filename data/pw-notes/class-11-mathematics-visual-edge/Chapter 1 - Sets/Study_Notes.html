@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>SETS — Mathematics</title>
+  <meta name="description" content="SETS — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Mathematics</div>
+        <h1>SETS</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SET CONCEPT BASICS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Set</b> = a <b>well-defined collection</b> of objects where membership can be decided clearly.</li><li>Objects in a set are called <b>elements</b> or <b>members</b> (synonyms).</li><li>Sets are usually named by <b>capital letters</b> A, B, C, X, Y, Z; elements by <b>small letters</b> a, b, c, x, y.</li><li>Membership: <b>a ∈ A</b> means “a belongs to A”; <b>a ∉ A</b> means “a does not belong to A”.</li><li>Not well-defined: collections based on opinion (e.g., “most renowned mathematicians”).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='40' font-size='14' fill='#1f2a44'>Universal collection (context)</text><ellipse cx='140' cy='110' rx='95' ry='60' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='118' y='118' font-size='14' fill='#1f2a44'>Set A</text><circle cx='110' cy='95' r='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='95' y='82' font-size='12' fill='#1f2a44'>a</text><text x='78' y='148' font-size='13' fill='#1f2a44'>a ∈ A</text><circle cx='275' cy='110' r='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='262' y='98' font-size='12' fill='#1f2a44'>b</text><line x1='267' y1='126' x2='220' y2='146' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='238' y='162' font-size='13' fill='#1f2a44'>b ∉ A</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span>Well-defined means: for any object, membership is decidable (YES/NO).</span></li><li><span class="ic">🔤</span><span>Naming rule: capital letters for sets; small letters for elements.</span></li><li><span class="ic">∈</span><span>Membership symbols: <b>∈</b> (belongs to), <b>∉</b> (does not belong to).</span></li><li><span class="ic">🔢</span><span>Standard sets: <b>N, Z, Q, R</b> and their positive parts <b>Z+</b>, <b>Q+</b>, <b>R+</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD NUMBER SETS (YOU MUST KNOW)</span></h2><ul class="b"><li><b>N</b>: natural numbers {1, 2, 3, …}.</li><li><b>Z</b>: integers {…, −2, −1, 0, 1, 2, …}.</li><li><b>Q</b>: rational numbers <i>x</i> = <span class='frac'><span><i>p</i></span><span><i>q</i></span></span>, where <i>p</i>, <i>q</i> ∈ Z and <i>q</i> ≠ 0.</li><li><b>R</b>: real numbers (all rational and irrational numbers).</li><li><b>Z+</b>, <b>Q+</b>, <b>R+</b>: positive integers, positive rationals, positive reals.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WELL-DEFINED vs NOT WELL-DEFINED (EXAM TRAP)</span></h2><ul class="b"><li>Well-defined: “odd natural numbers less than 10” → membership is decidable.</li><li>Well-defined: “prime factors of 210” → {2, 3, 5, 7}.</li><li>Not well-defined: “ten most talented writers” → criteria differs across people.</li><li>Not well-defined: “best cricket batsmen” → depends on opinion/era.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Quick Contrast: Standard Number Sets</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Set</th><th>What it contains</th><th>Example member</th></tr></thead><tbody><tr><td>N</td><td>1, 2, 3, …</td><td>7</td></tr><tr><td>Z</td><td>…, −2, −1, 0, 1, …</td><td>0</td></tr><tr><td>Q</td><td>Numbers of the form <i>p</i>/<i>q</i>, <i>p</i>, <i>q</i> ∈ Z, <i>q</i> ≠ 0</td><td><span class='frac'><span>−5</span><span>2</span></span></td></tr><tr><td>R</td><td>All real numbers (rational + irrational)</td><td>√2</td></tr><tr><td>Z+ / Q+ / R+</td><td>Only positive elements</td><td>3</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let V be the set of vowels in English alphabet. Fill ∈ or ∉ : (i) a __ V (ii) b __ V</div><div class="sol"><span class="lbl">Answer:</span><br>V = {a, e, i, o, u}.<br>Check membership by direct listing (well-defined).<br>(i) a is in the list → a ∈ V.<br>(ii) b is not in the list → b ∉ V.</div><div class="ans">✓&nbsp; (i) a ∈ V, (ii) b ∉ V</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">State whether the collection is a set: “the five most renowned mathematicians of the world”. Give reason.</div><div class="sol"><span class="lbl">Answer:</span><br>A set must be <b>well-defined</b>: for any object, we must decide membership uniquely.<br>“Most renowned” is subjective; different people may choose different mathematicians.<br>So membership cannot be decided uniquely for all objects.</div><div class="ans">✓&nbsp; Not a set (not well-defined).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>A set is defined by <b>clarity of membership</b>, not by size or ordering.</li><li>Use <b>∈</b> and <b>∉</b> only between an <b>element</b> and a <b>set</b>.</li><li>Remember standard symbols: <b>N, Z, Q, R</b> and positive parts <b>Z+, Q+, R+</b>.</li><li>In Q, denominator must satisfy <b><i>q</i> ≠ 0</b>.</li><li>Capital letters denote sets; small letters denote elements (typical exam convention).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing 3 ∈ Z+ but forgetting Z+ excludes 0 and negatives.</li><li>Confusing subset symbol with membership: writing A ∈ B instead of A ⊂ B.</li><li>Thinking a collection with opinions (best, most beautiful) is a set.</li><li>Forgetting that in Q, <i>q</i> cannot be 0.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: N-Z-Q-R ("New Zoo, Quick Run")”</div><paragraph id="6a9fdc9f31ab5d6c6a00031c"><b>N</b> → counting numbers; then add negatives &amp; zero to get <b>Z</b>.</paragraph><paragraph id="6a9fdc9f6e3417530e00031d">Turn integers into fractions to get <b>Q</b> (quotients).</paragraph><paragraph id="6a9fdc9f9066e7a52600031e">Add irrationals to reach the full number line: <b>R</b>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SET REPRESENTATIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Representation of a set</b> means writing its elements either by listing or by a property.</li><li><b>Roster/tabular form</b>: list elements inside braces { } separated by commas.</li><li>In roster form, <b>order is immaterial</b>: {1,3,5} = {5,3,1}.</li><li>In a set, <b>no repetition</b>: {2,2,3,3} represents the same set as {2,3}.</li><li><b>Set-builder form</b>: {x : property of x}; ":" is read as <b>such that</b>.</li><li>Dots <b>...</b> in roster form indicate a continuing pattern, often infinite.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 9 3, 0 6' fill='#2563EB'/></marker></defs><rect x='14' y='18' width='150' height='70' rx='6' fill='#EEF4FF' stroke='#123B7A'/><text x='26' y='40' font-size='14' fill='#1f2a44'>Roster form</text><text x='26' y='60' font-size='12' fill='#1f2a44'>{ 2, 4, 6 }</text><text x='26' y='78' font-size='12' fill='#1f2a44'>order, repeat: no</text><rect x='196' y='18' width='150' height='70' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='208' y='40' font-size='14' fill='#1f2a44'>Set-builder</text><text x='208' y='60' font-size='12' fill='#1f2a44'>{ x : x even, x&lt;7 }</text><text x='208' y='78' font-size='12' fill='#1f2a44'>property-based</text><line x1='164' y1='53' x2='196' y2='53' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='196' y1='73' x2='164' y2='73' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='14' y='112' width='332' height='72' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='26' y='134' font-size='14' fill='#1f2a44'>Reading symbols</text><text x='26' y='154' font-size='12' fill='#1f2a44'>{ } = set of all</text><text x='150' y='154' font-size='12' fill='#1f2a44'>: = such that</text><text x='252' y='154' font-size='12' fill='#1f2a44'>... = continues</text><text x='26' y='172' font-size='12' fill='#1f2a44'>x is a dummy variable; any letter may be used</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧾</span><span>Roster form uses { } and commas: write all distinct elements (or a clear pattern with ...).</span></li><li><span class="ic">🧬</span><span>Set-builder form states a <b>characteristic property</b> satisfied by exactly the members.</span></li><li><span class="ic">🔤</span><span>Read {x : condition} as "set of all x such that condition holds".</span></li><li><span class="ic">🔁</span><span>Equality check: same elements only; order and repetition do not matter.</span></li><li><span class="ic">🎯</span><span>While converting builder→roster, list only values that satisfy <b>all</b> given conditions.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">ROSTER (TABULAR) FORM: RULES</span></h2><ul class="b"><li>Write as {a, b, c, ...}; elements separated by commas and enclosed in { }.</li><li>Order irrelevant: {1,2,3} = {3,2,1}.</li><li>Repetition ignored: {A,L,L,O,Y} represents {A,L,O,Y}.</li><li>Use ... only when the pattern is unambiguous: {1,3,5,...}.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">SET-BUILDER FORM: HOW TO WRITE + CONVERT</span></h2><ul class="b"><li>General form: {x : condition on x}; choose a suitable universe (e.g., x ∈ N or Z).</li><li>Write a <b>characteristic property</b>: true for members, false for non-members.</li><li>Convert builder→roster by listing all distinct elements that satisfy the stated domain and condition.</li><li>Convert roster→builder by spotting a rule (e.g., squares, divisors, interval, equation solutions).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Roster form vs Set-builder form</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Roster (tabular)</th><th>Set-builder</th></tr></thead><tbody><tr><td>What you write</td><td>Actual elements (or a clear pattern with ...)</td><td>A variable and a property</td></tr><tr><td>Main symbols</td><td>{ }, commas, ...</td><td>{ }, ":" meaning such that</td></tr><tr><td>Best used when</td><td>Elements are few or pattern is simple</td><td>Property is simpler than listing</td></tr><tr><td>Risk</td><td>Missing/duplicating elements</td><td>Vague property or missing domain (N/Z/R)</td></tr><tr><td>Example</td><td>{1, −2}</td><td>{x : x is an integer and x<sup>2</sup> + x − 2 = 0}</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Convert to roster form: S = {x : x is an integer and x<sup>2</sup> + x − 2 = 0}.</div><div class="sol"><span class="lbl">Answer:</span><br>Understand the statement: S contains exactly those integers x which satisfy the given equation.<br>Find which integer values make the equation true (i.e., the integer solutions).<br>Write only the distinct solutions inside { }.</div><div class="ans">✓&nbsp; S = {1, −2}</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Convert to roster form: A = {x : x is a positive integer and x<sup>2</sup> &lt; 40}.</div><div class="sol"><span class="lbl">Answer:</span><br>Domain is positive integers; start checking from 1 upward.<br>Include each x that satisfies x<sup>2</sup> &lt; 40; stop once x<sup>2</sup> is no longer &lt; 40.<br>List all satisfying x in roster form without repetition.</div><div class="ans">✓&nbsp; A = {1, 2, 3, 4, 5, 6}</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always use braces { } for a set; ( ) usually denotes an ordered pair/interval, not a set.</li><li>In roster form, do not repeat elements; repetition does not create a new set.</li><li>Order does not matter for sets; equality is based only on membership.</li><li>In set-builder form, state the domain when needed (e.g., x ∈ N, Z, R).</li><li>":" is read as <b>such that</b>; braces mean <b>set of all</b>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Treating {1,2,3} and {3,2,1} as different sets due to order change.</li><li>Repeating elements in roster form and thinking it changes the set.</li><li>Writing a vague set-builder property (not well-defined), or missing the domain.</li><li>Misreading ":" as division or ratio instead of "such that".</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: BROC”</div><paragraph id="6a9fdc9fc4c240654e00031f"><b>B</b>races: { } mean "set of all".</paragraph><paragraph id="6a9fdc9f501c1be73d000320"><b>R</b>oster: list elements; order and repetition don’t count.</paragraph><paragraph id="6a9fdc9fa2fcbfa5de000321"><b>O</b>perator ":" means "such that".</paragraph><paragraph id="6a9fdc9f0efe7c85ce000322"><b>C</b>haracteristic property defines set-builder form.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>EMPTY SET</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Empty (null/void) set</b>: a set that contains <b>no elements</b>.</li><li>Notation: ∅ or { }.</li><li>Meaning: for every object <i>x</i>, <i>x</i> ∉ ∅.</li><li>Occurs when the condition in set-builder form is <b>impossible</b> to satisfy (in the stated domain).</li><li>Empty set is a set, not “nothing”; it is a specific object in set theory.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L9,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='324' height='160' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='42' font-size='14' fill='#1f2a44'>Universal set U</text><circle cx='120' cy='110' r='55' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='96' y='86' font-size='14' fill='#1f2a44'>Set A</text><text x='88' y='110' font-size='13' fill='#1f2a44'>2, 4, 6</text><circle cx='260' cy='110' r='55' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='234' y='86' font-size='14' fill='#1f2a44'>Set B</text><text x='252' y='112' font-size='16' fill='#1f2a44'>∅</text><line x1='260' y1='120' x2='292' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='296' y='154' font-size='12' fill='#1f2a44'>no element</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">Idea</span><span>In set-builder form {<i>x</i> : condition}, if no <i>x</i> satisfies the condition → empty set.</span></li><li><span class="ic">Rost</span><span>Roster form of empty set has <b>no listed elements</b>: { }.</span></li><li><span class="ic">Test</span><span>To test emptiness, try to find at least one element; if none exists (in the given domain), set = ∅.</span></li><li><span class="ic">Warn</span><span>Do not confuse ∅ with {∅}; {∅} has one element (the empty set) and is not empty.</span></li><li><span class="ic">Sour</span><span>Typical sources: contradictory conditions, impossible inequalities, or solutions excluded by domain restrictions (like <i>Q</i> or <i>N</i>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WHEN DOES A SET BECOME EMPTY?</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L9,3 L0,6 Z' fill='#2563EB'/></marker></defs><line x1='30' y1='120' x2='330' y2='120' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='70' y1='116' x2='70' y2='124' stroke='#123B7A' stroke-width='2'/><text x='64' y='144' font-size='12' fill='#1f2a44'>1</text><line x1='150' y1='116' x2='150' y2='124' stroke='#123B7A' stroke-width='2'/><text x='144' y='144' font-size='12' fill='#1f2a44'>2</text><rect x='80' y='60' width='140' height='28' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='92' y='79' font-size='12' fill='#1f2a44'>1 &lt; x &lt; 2 in N</text><text x='240' y='79' font-size='12' fill='#1f2a44'>→ none</text></svg></div><ul class="b"><li>When the defining condition is <b>contradictory</b> (cannot be true together).</li><li>When an inequality leaves <b>no allowed values</b> in the given domain.</li><li>When an equation has solutions, but <b>none in the required set</b> (like <i>Q</i> or <i>N</i>).</li><li>When a property is impossible (e.g., <b>even prime greater than 2</b>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">CLASSIC EXAM EXAMPLES (FROM SET-BUILDER FORM)</span></h2><ul class="b"><li>A = {<i>x</i> : 1 &lt; <i>x</i> &lt; 2, <i>x</i> ∈ <i>N</i>} ⇒ A = ∅ (no natural number between 1 and 2).</li><li>B = {<i>x</i> : <i>x</i><sup>2</sup> − 2 = 0, <i>x</i> ∈ <i>Q</i>} ⇒ B = ∅ (±√2 are irrational).</li><li>C = {<i>x</i> : <i>x</i> is an even prime &gt; 2} ⇒ C = ∅ (2 is the only even prime).</li><li>D = {<i>x</i> : <i>x</i><sup>2</sup> = 4, <i>x</i> is odd} ⇒ D = ∅ (solutions ±2 are even).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">EMPTY SET vs {0} vs {∅}</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>∅ or { }</th><th>{0}</th><th>{∅}</th></tr></thead><tbody><tr><td>Number of elements</td><td>0</td><td>1</td><td>1</td></tr><tr><td>Contains 0?</td><td>No</td><td>Yes</td><td>No</td></tr><tr><td>Contains ∅?</td><td>No (∅ ∉ ∅ because ∅ has no elements)</td><td>No</td><td>Yes (its only element is ∅)</td></tr><tr><td>Example description</td><td>{<i>x</i> : 1 &lt; <i>x</i> &lt; 2, <i>x</i> ∈ <i>N</i>}</td><td>{<i>x</i> : <i>x</i> = 0}</td><td>Set whose only member is the empty set</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Decide whether the set S = {<i>x</i> : <i>x</i> is a natural number and 1 &lt; <i>x</i> &lt; 2} is empty.</div><div class="sol"><span class="lbl">Answer:</span><br>Natural numbers are 1, 2, 3, ...<br>There is <b>no natural number</b> strictly between 1 and 2.<br>So, no element satisfies the condition.</div><div class="ans">✓&nbsp; S = ∅ (empty set).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">True/False with reason: (i) ∅ ∈ {∅}  (ii) ∅ ⊆ {∅}</div><div class="sol"><span class="lbl">Answer:</span><br>(i) {∅} has exactly one element, namely ∅; hence <b>∅ ∈ {∅}</b> is true.<br>(ii) A set A is a subset of B if every element of A is an element of B.<br>Since ∅ has <b>no elements</b>, the statement “every element of ∅ is in {∅}” is vacuously true.<br>Hence <b>∅ ⊆ {∅}</b> is true.</div><div class="ans">✓&nbsp; (i) True  (ii) True.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Empty set means <b>zero elements</b>, not an unknown element.</li><li>Notation ∅ and { } represent the <b>same</b> set.</li><li>Many “solution sets” become empty after applying domain restrictions like <i>N</i> or <i>Q</i>.</li><li>If a condition is impossible, the set in set-builder form equals ∅.</li><li>∅ is a subset of every set (because it has no elements).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing ∅ = {0} or thinking the empty set contains 0.</li><li>Confusing <b>∈</b> (element) with <b>⊆</b> (subset), especially with ∅ and {∅}.</li><li>Assuming <i>x</i><sup>2</sup> − 2 = 0 has no solution; it has solutions in <i>R</i> but not in <i>Q</i>.</li><li>Calling a collection empty without checking the given domain (natural/integer/rational/real).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">““No candidate, so ∅” check”</div><paragraph id="6a9fdc9fe78a989468000323">Try to produce <b>one</b> element satisfying the condition.</paragraph><paragraph id="6a9fdc9fcd497118e5000324">If you cannot find even one valid value in the stated domain, the set is ∅.</paragraph><paragraph id="6a9fdc9f59967a5548000325">Remember: <b>braces with nothing</b> { } means nothing inside → empty.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>FINITE AND INFINITE SETS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Finite set:</b> a set that is empty (φ) or has a definite number of distinct elements; then <b>n(S)</b> is a whole number (0,1,2,...).</li><li><b>Infinite set:</b> a set that is not finite; it has infinitely many distinct elements, so <b>n(S)</b> is not finite.</li><li>In counting elements of a set, repeated entries do not change the set; only <b>distinct</b> elements matter.</li><li>Some infinite sets can be partially written in roster form using dots <b>…</b> to show continuation of a clear pattern.</li><li>Some infinite sets (e.g., <b>R</b>, real numbers) cannot be meaningfully written in roster form because there is no single listing pattern that captures all elements.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='16' y='18' width='150' height='72' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='28' y='40' font-size='14' fill='#1f2a44'>Finite set</text><text x='28' y='60' font-size='12' fill='#1f2a44'>Definite number of elements</text><text x='28' y='78' font-size='12' fill='#1f2a44'>e.g. {1,2,3,4,5}</text><rect x='194' y='18' width='150' height='72' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='206' y='40' font-size='14' fill='#1f2a44'>Infinite set</text><text x='206' y='60' font-size='12' fill='#1f2a44'>Not finite (endless)</text><text x='206' y='78' font-size='12' fill='#1f2a44'>e.g. N = {1,2,3,...}</text><line x1='180' y1='54' x2='194' y2='54' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='16' y='112' width='328' height='72' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='28' y='134' font-size='14' fill='#1f2a44'>Roster clue</text><text x='28' y='154' font-size='12' fill='#1f2a44'>{1,3,5,7,...} indicates a continuing rule</text><text x='28' y='172' font-size='12' fill='#1f2a44'>R cannot be fully roster-listed</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">KC1</span><span><b>n(S)</b> denotes the number of <b>distinct</b> elements in a set <i>S</i> (this count is defined as a whole number for finite sets).</span></li><li><span class="ic">KC2</span><span>Roster form reminders: order does not matter, and elements are not repeated; e.g., letters in "SCHOOL" form {S, C, H, O, L}.</span></li><li><span class="ic">KC3</span><span>Roster form for patterned infinite sets uses a visible rule + dots: {1,2,3,…}, {1,3,5,…}, {…,-2,-1,0,1,2,…}.</span></li><li><span class="ic">KC4</span><span>Solution sets of equations can be finite or empty; the empty set φ is finite by definition.</span></li><li><span class="ic">KC5</span><span>Geometric example: the set of points on a line or line segment is infinite.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO DECIDE: FINITE vs INFINITE (EXAM CHECKLIST)</span></h2><ul class="b"><li>If elements can be completely counted (or the set is empty), the set is finite.</li><li>If the description generates endlessly many distinct values (like primes or odd numbers), the set is infinite.</li><li>If it is “points on a line/segment/interval”, it is infinite.</li><li>For many standard school equations, the solution set may be finite or empty; both cases are finite sets.</li><li>Roster hint: dots <b>…</b> often suggest infinity, but only if the pattern is clear.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">LISTING IN ROSTER FORM: WHEN IT WORKS AND WHEN IT FAILS</span></h2><ul class="b"><li>Works for patterned infinite sets: <b>N</b> = {1,2,3,…}, odd naturals = {1,3,5,…}, <b>Z</b> = {…,-2,-1,0,1,2,…}.</li><li>Fails for sets without a single roster pattern: <b>R</b> (all real numbers) cannot be expressed as a complete roster list.</li><li>Even (0,1) contains infinitely many real numbers; writing a few decimals does not represent the entire set.</li><li>Use set-builder form for such sets: (0,1) = {x : 0 &lt; x &lt; 1, x ∈ <b>R</b>}.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Finite Set vs Infinite Set</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Finite set</th><th>Infinite set</th></tr></thead><tbody><tr><td>Meaning</td><td>Empty or a definite number of distinct elements</td><td>Not finite; infinitely many distinct elements</td></tr><tr><td>n(S)</td><td>n(S) is a whole number (0,1,2,...) for finite sets</td><td>n(S) is not finite (not a natural/whole number); often denoted by ∞ informally</td></tr><tr><td>Roster representation</td><td>All distinct elements can be listed fully</td><td>May be shown with dots … only when a clear pattern is indicated; cannot be fully listed</td></tr><tr><td>Examples</td><td>Days of week; solutions of x²−16=0; letters in "SCHOOL"</td><td>N, Z, primes; points on a line; real numbers in (0,1)</td></tr><tr><td>Typical trap</td><td>Repeating elements does not increase n(S)</td><td>Dots … must represent a clear continuing pattern; otherwise roster is invalid/incomplete</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Classify <i>S</i> = {x ∈ <b>N</b> : (x−1)(x−2)=0} as finite or infinite. Also write <i>S</i> in roster form.</div><div class="sol"><span class="lbl">Answer:</span><br>This set contains natural numbers x that satisfy (x−1)(x−2)=0.<br>The condition is true exactly when x=1 or x=2.<br>So the set is <i>S</i> = {1,2}, which has a definite (countable) number of distinct elements.</div><div class="ans">✓&nbsp; <i>S</i> is <b>finite</b>; in roster form, <i>S</i> = {1,2}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Let <i>T</i> be the set of solutions in <b>N</b> of 2x−1=0. Decide whether <i>T</i> is finite or infinite and write it.</div><div class="sol"><span class="lbl">Answer:</span><br>The equation 2x−1=0 gives x = 1/2.<br>But 1/2 is not a natural number, so there is no solution in <b>N</b>.<br>Hence the solution set has no elements.</div><div class="ans">✓&nbsp; <i>T</i> = φ, so <i>T</i> is <b>finite</b> (empty set).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Finite includes the empty set φ; by definition, φ is finite.</li><li>n(S) counts <b>distinct</b> elements only; repetition does not change a set.</li><li>Infinite sets cannot be completely listed in roster form.</li><li>Dots … in roster form are valid only when they indicate a clear, continuing rule.</li><li>Sets like primes/odd naturals are infinite because the pattern never ends.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Thinking φ is neither finite nor infinite; by definition it is finite.</li><li>Counting repeated elements as extra elements (e.g., treating {A,L,L,O,Y} as 5 distinct elements).</li><li>Assuming any set written with dots … is automatically correct without stating/seeing the pattern.</li><li>Trying to roster-list <b>R</b> or (0,1) by writing a few numbers; that never captures all elements.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "Finite = Fixed number; Infinite = Incomplete forever"”</div><paragraph id="6a9fdc9f5918cfa85d000326">If you can finish counting distinct elements, it is <b>finite</b>.</paragraph><paragraph id="6a9fdc9fe30e965c38000327">If you can always keep generating new distinct elements, it is <b>infinite</b>.</paragraph><paragraph id="6a9fdc9fb00443fb9e000328">If it involves <b>R</b> or points on a line/interval, treat it as infinite (not roster-listable).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>EQUAL SETS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Two sets</b> <i>A</i> and <i>B</i> are <b>equal</b> iff they have <b>exactly the same elements</b>.</li><li>Formally: every element of <i>A</i> is in <i>B</i> <b>and</b> every element of <i>B</i> is in <i>A</i>.</li><li>Write <b><i>A</i> = <i>B</i></b> for equal sets; write <b><i>A</i> ≠ <i>B</i></b> for unequal sets.</li><li><b>Order is irrelevant</b>: {1,2,3,4} = {3,1,4,2}.</li><li><b>Repetition does not matter</b>: {1,2,3} = {2,2,1,3,3}.</li><li>Equality depends only on <b>membership</b> (which elements belong), not on how the set is written.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 9 3, 0 6' fill='#123B7A'/></marker></defs><rect x='16' y='18' width='150' height='140' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><rect x='194' y='18' width='150' height='140' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='42' font-size='14' fill='#1f2a44'>Set A</text><text x='208' y='42' font-size='14' fill='#1f2a44'>Set B</text><circle cx='60' cy='70' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='55' y='74' font-size='12' fill='#1f2a44'>2</text><circle cx='60' cy='105' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='55' y='109' font-size='12' fill='#1f2a44'>3</text><circle cx='60' cy='140' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='55' y='144' font-size='12' fill='#1f2a44'>5</text><circle cx='238' cy='70' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='233' y='74' font-size='12' fill='#1f2a44'>2</text><circle cx='238' cy='105' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='233' y='109' font-size='12' fill='#1f2a44'>3</text><circle cx='238' cy='140' r='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='233' y='144' font-size='12' fill='#1f2a44'>5</text><text x='86' y='70' font-size='12' fill='#1f2a44'>prime &lt; 6</text><text x='264' y='70' font-size='12' fill='#1f2a44'>prime factors</text><text x='264' y='88' font-size='12' fill='#1f2a44'>of 30</text><line x1='166' y1='88' x2='194' y2='88' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='148' y='180' font-size='14' fill='#1f2a44'><tspan font-weight='bold'>A = B</tspan></text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>Order of listing never affects a set in roster form.</span></li><li><span class="ic">♻️</span><span>Repeated elements are ignored: sets contain distinct elements.</span></li><li><span class="ic">🔍</span><span>Test for equality: check mutual inclusion (A ⊆ B and B ⊆ A).</span></li><li><span class="ic">✍️</span><span>Same set can be written in roster or set-builder form; equality compares the resulting elements.</span></li><li><span class="ic">🚫</span><span>One extra/missing element makes sets unequal, even if most elements match.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">TEST FOR EQUALITY (EXAM-FRIENDLY)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 9 3, 0 6' fill='#123B7A'/></marker></defs><rect x='22' y='28' width='130' height='44' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='40' y='56' font-size='13' fill='#1f2a44'>Check A ⊆ B</text><rect x='208' y='28' width='130' height='44' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='226' y='56' font-size='13' fill='#1f2a44'>Check B ⊆ A</text><line x1='152' y1='50' x2='208' y2='50' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='115' y='110' width='130' height='48' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='142' y='137' font-size='14' fill='#1f2a44'>Then A = B</text><line x1='87' y1='72' x2='145' y2='110' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='273' y1='72' x2='215' y2='110' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/></svg></div><ul class="b"><li>Step 1: List elements (or describe clearly) for both sets.</li><li>Step 2: Check <b>every</b> element of <i>A</i> is in <i>B</i> (i.e., <i>A</i> ⊆ <i>B</i>).</li><li>Step 3: Check <b>every</b> element of <i>B</i> is in <i>A</i> (i.e., <i>B</i> ⊆ <i>A</i>).</li><li>Conclusion: <i>A</i> = <i>B</i> iff <i>A</i> ⊆ <i>B</i> and <i>B</i> ⊆ <i>A</i>.</li><li>Fast disproof: find just <b>one</b> element in one set not in the other.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">SET-BUILDER TO ROSTER: QUICK CHECKS</span></h2><ul class="b"><li>When a set is given by a condition, list all values that satisfy it (within stated domain).</li><li>Example: <b><i>x</i><sup>2</sup> ≤ 4</b> over integers gives <b>{−2,−1,0,1,2}</b>.</li><li>If two descriptions generate the <b>same roster</b>, the sets are equal.</li><li>Empty set: impossible conditions give <b>φ</b> (also written as <b>{ }</b>).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">EQUAL vs UNEQUAL SETS (WHAT CHANGES THE ANSWER?)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Equal sets (A = B)</th><th>Unequal sets (A ≠ B)</th></tr></thead><tbody><tr><td>Elements present</td><td>Exactly same elements in both</td><td>At least one element differs</td></tr><tr><td>Order</td><td>Irrelevant</td><td>Still irrelevant</td></tr><tr><td>Repetition</td><td>No effect on the set</td><td>No effect, but missing/extra element matters</td></tr><tr><td>Quick test</td><td>A ⊆ B and B ⊆ A</td><td>Find one counterexample element</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let <i>A</i> be the set of prime numbers less than 6 and <i>P</i> be the set of prime factors of 30. Decide whether <i>A</i> = <i>P</i>.</div><div class="sol"><span class="lbl">Answer:</span><br>Prime numbers less than 6 are <b>2, 3, 5</b>; so <i>A</i> = {2,3,5}.<br>Prime factorisation: 30 = 2 × 3 × 5, so prime factors are <b>2, 3, 5</b>; hence <i>P</i> = {2,3,5}.<br>Both sets have exactly the same elements ⇒ <b><i>A</i> = <i>P</i></b>.</div><div class="ans">✓&nbsp; <b><i>A</i> = <i>P</i> = {2,3,5}</b></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Given <i>C</i> = {<i>x</i> : <i>x</i> − 5 = 0} and <i>E</i> = {<i>x</i> : <i>x</i> is an integral positive root of <i>x</i><sup>2</sup> − 2<i>x</i> − 15 = 0}. Check if <i>C</i> = <i>E</i>.</div><div class="sol"><span class="lbl">Answer:</span><br>Solve <i>x</i> − 5 = 0 ⇒ <i>x</i> = 5, so <i>C</i> = {5}.<br>Factor: <i>x</i><sup>2</sup> − 2<i>x</i> − 15 = (<i>x</i> − 5)(<i>x</i> + 3) = 0 ⇒ <i>x</i> = 5 or −3.<br>Integral positive root is only 5, so <i>E</i> = {5}.<br>Same single element ⇒ <b><i>C</i> = <i>E</i></b>.</div><div class="ans">✓&nbsp; <b><i>C</i> = <i>E</i> = {5}</b></div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>To prove <i>A</i> = <i>B</i>, show <i>A</i> ⊆ <i>B</i> and <i>B</i> ⊆ <i>A</i>.</li><li>Order of elements never affects equality: {a,b,c} = {c,b,a}.</li><li>Repeating an element does not create a new set.</li><li>If even one element differs, sets are unequal: 0 ∈ <i>A</i> but 0 ∉ <i>B</i> ⇒ <i>A</i> ≠ <i>B</i>.</li><li>Convert set-builder forms to roster (when finite) to compare quickly.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Treating {1,2,3} and {1,2,3,3} as different sets.</li><li>Assuming same number of elements implies equality (it does not).</li><li>Missing domain restrictions in set-builder form (integers vs reals).</li><li>Comparing order as if it matters in roster form.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: EQUAL = SAME ELEMENTS”</div><paragraph id="6a9fdc9f35e7950853000329"><b>SAME</b>: <b>S</b>how <b>A</b> ⊆ <b>M</b>utual inclusion and <b>E</b>lements match.</paragraph><paragraph id="6a9fdc9f942e96c30d00032a">Always do 2 checks: A inside B, and B inside A.</paragraph><paragraph id="6a9fdc9f4328e6ce3e00032b">Ignore listing order and repeated entries while comparing.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SUBSETS AND PROPER SUBSETS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Subset:</b> <i>A</i> is a subset of <i>B</i> if every element of <i>A</i> is in <i>B</i>.</li><li>Symbolically: <i>A</i> ⊂ <i>B</i> means <b>for all</b> <i>a</i>, <i>a</i> ∈ <i>A</i> ⇒ <i>a</i> ∈ <i>B</i>.</li><li><i>A</i> ⊄ <i>B</i> means <b>there exists</b> an element <i>a</i> with <i>a</i> ∈ <i>A</i> and <i>a</i> ∉ <i>B</i>.</li><li>Every set is a subset of itself: <i>A</i> ⊂ <i>A</i> (reflexive property).</li><li>Empty set has special status: φ ⊂ <i>A</i> for every set <i>A</i> (vacuous truth).</li><li><b>Proper subset:</b> <i>A</i> is a proper subset of <i>B</i> if <i>A</i> ⊂ <i>B</i> and <i>A</i> ≠ <i>B</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#2563EB'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='38' font-size='13' fill='#1f2a44'>Universal set U</text><ellipse cx='140' cy='110' rx='95' ry='62' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='95' y='78' font-size='13' fill='#1f2a44'>Set B</text><ellipse cx='140' cy='115' rx='55' ry='34' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='117' y='120' font-size='13' fill='#1f2a44'>Set A</text><text x='78' y='150' font-size='12' fill='#1f2a44'>A ⊂ B</text><line x1='205' y1='132' x2='300' y2='132' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><text x='212' y='118' font-size='12' fill='#1f2a44'>superset</text><text x='302' y='137' font-size='12' fill='#1f2a44'>B ⊃ A</text><text x='268' y='78' font-size='12' fill='#1f2a44'>φ inside all</text><circle cx='262' cy='86' r='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='258' y='90' font-size='12' fill='#1f2a44'>φ</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">✅</span><span><b>Test for ⊂:</b> try to find any element of <i>A</i> missing from <i>B</i>; one counterexample proves ⊄.</span></li><li><span class="ic">🔁</span><span><b>Mutual containment:</b> <i>A</i> ⊂ <i>B</i> and <i>B</i> ⊂ <i>A</i> <b>iff</b> <i>A</i> = <i>B</i>.</span></li><li><span class="ic">🕳️</span><span>φ has no elements, so the implication <i>a</i> ∈ φ ⇒ <i>a</i> ∈ <i>A</i> is always true.</span></li><li><span class="ic">⬆️</span><span><b>Superset:</b> if <i>A</i> ⊂ <i>B</i>, then <i>B</i> is a superset of <i>A</i> (written <i>B</i> ⊃ <i>A</i>).</span></li><li><span class="ic">1️⃣</span><span><b>Singleton set:</b> a set with exactly one element, e.g. {<i>a</i>}.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">LOGIC BEHIND ⊂ AND ⊄ (WHAT TO CHECK)</span></h2><ul class="b"><li><b>To prove</b> <i>A</i> ⊂ <i>B</i>: pick an arbitrary <i>a</i> ∈ <i>A</i> and show <i>a</i> ∈ <i>B</i>.</li><li><b>To prove</b> <i>A</i> ⊄ <i>B</i>: find one element <i>a</i> with <i>a</i> ∈ <i>A</i> but <i>a</i> ∉ <i>B</i>.</li><li>Key statement: <i>A</i> ⊂ <i>B</i> ⇔ <b>for all</b> <i>a</i>, (<i>a</i> ∈ <i>A</i> ⇒ <i>a</i> ∈ <i>B</i>).</li><li><i>A</i> ⊄ <i>B</i> ⇔ <b>there exists</b> <i>a</i> with (<i>a</i> ∈ <i>A</i> and <i>a</i> ∉ <i>B</i>).</li><li><b>Equality via subsets:</b> if <i>A</i> ⊂ <i>B</i> and <i>B</i> ⊂ <i>A</i>, then <i>A</i> = <i>B</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">PROPER SUBSET, SUPERSET, SINGLETON, AND φ</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#16A34A'/></marker></defs><rect x='20' y='22' width='150' height='62' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='32' y='44' font-size='13' fill='#1f2a44'>singleton</text><text x='32' y='66' font-size='13' fill='#1f2a44'>{a}</text><rect x='190' y='22' width='150' height='62' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='202' y='44' font-size='13' fill='#1f2a44'>element</text><text x='202' y='66' font-size='13' fill='#1f2a44'>a</text><line x1='170' y1='53' x2='190' y2='53' stroke='#16A34A' stroke-width='2' marker-end='url(#arrow2)'/><text x='152' y='98' font-size='12' fill='#1f2a44'>different</text><rect x='20' y='120' width='320' height='58' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='142' font-size='13' fill='#1f2a44'>φ ⊂ A always</text><text x='32' y='164' font-size='13' fill='#1f2a44'>but φ ∈ A only if A contains φ as an element</text></svg></div><ul class="b"><li><b>Proper subset:</b> <i>A</i> ⊂ <i>B</i> and <i>A</i> ≠ <i>B</i> (written often as <i>A</i> ⊊ <i>B</i> if allowed).</li><li><b>Superset:</b> <i>B</i> ⊃ <i>A</i> means every element of <i>A</i> lies in <i>B</i>.</li><li><b>Singleton set:</b> {<i>a</i>} has one element; do not confuse with element <i>a</i>.</li><li>Always true: φ ⊂ <i>A</i> and <i>A</i> ⊂ <i>A</i>.</li><li>Not always: φ ∈ <i>A</i> (true only if empty set is an element of <i>A</i>).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Subset vs Proper Subset vs Superset</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Subset (⊂)</th><th>Proper subset (⊂ and ≠)</th><th>Superset (⊃)</th></tr></thead><tbody><tr><td>Meaning</td><td><i>A</i> ⊂ <i>B</i>: every element of <i>A</i> is in <i>B</i></td><td><i>A</i> ⊂ <i>B</i> and <i>A</i> ≠ <i>B</i></td><td><i>B</i> ⊃ <i>A</i>: <i>B</i> contains <i>A</i></td></tr><tr><td>Can be equal?</td><td>Yes, since <i>A</i> ⊂ <i>A</i></td><td>No, equality forbidden</td><td>Yes, <i>A</i> ⊃ <i>A</i></td></tr><tr><td>Example</td><td>{1,2} ⊂ {1,2}</td><td>{1,2} ⊂ {1,2,3}</td><td>{1,2,3} ⊃ {1,2}</td></tr><tr><td>How to disprove</td><td>Find <i>a</i> ∈ <i>A</i> with <i>a</i> ∉ <i>B</i></td><td>Either disprove ⊂, or show <i>A</i> = <i>B</i></td><td>Find <i>a</i> ∈ <i>A</i> with <i>a</i> ∉ <i>B</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let <i>A</i> = {1, 3}, <i>B</i> = {1, 5, 9}, <i>C</i> = {1, 3, 5, 7, 9}. Decide: (i) φ ⊂ <i>B</i> or φ ⊄ <i>B</i> (ii) <i>A</i> ⊂ <i>B</i> or <i>A</i> ⊄ <i>B</i> (iii) <i>A</i> ⊂ <i>C</i> or <i>A</i> ⊄ <i>C</i> (iv) <i>B</i> ⊂ <i>C</i> or <i>B</i> ⊄ <i>C</i>.</div><div class="sol"><span class="lbl">Answer:</span><br>(i) φ has no elements, so φ ⊂ <i>B</i>.<br>(ii) Check element 3: 3 ∈ <i>A</i> but 3 ∉ <i>B</i> ⇒ <i>A</i> ⊄ <i>B</i>.<br>(iii) 1 and 3 are both in <i>C</i> ⇒ <i>A</i> ⊂ <i>C</i>.<br>(iv) Elements of <i>B</i> are 1,5,9 and all lie in <i>C</i> ⇒ <i>B</i> ⊂ <i>C</i>.</div><div class="ans">✓&nbsp; (i) φ ⊂ <i>B</i> (ii) <i>A</i> ⊄ <i>B</i> (iii) <i>A</i> ⊂ <i>C</i> (iv) <i>B</i> ⊂ <i>C</i></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">If <i>A</i> ∈ <i>B</i> and <i>B</i> ⊂ <i>C</i>, is it always true that <i>A</i> ⊂ <i>C</i>? Give a counterexample if false.</div><div class="sol"><span class="lbl">Answer:</span><br>Take <i>A</i> = {1}.<br>Let <i>B</i> = {{1}, 2} so that <i>A</i> ∈ <i>B</i> (since {1} is an element of <i>B</i>).<br>Let <i>C</i> = {{1}, 2, 3}. Then <i>B</i> ⊂ <i>C</i> is true.<br>But <i>A</i> ⊄ <i>C</i> because 1 ∈ <i>A</i>, yet 1 ∉ <i>C</i> (only {1} is in <i>C</i>, not 1).</div><div class="ans">✓&nbsp; No. Example: <i>A</i>={1}, <i>B</i>={{1},2}, <i>C</i>={{1},2,3}; then <i>A</i> ∈ <i>B</i>, <i>B</i> ⊂ <i>C</i>, but <i>A</i> ⊄ <i>C</i>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>To test <i>A</i> ⊂ <i>B</i>, verify every element of <i>A</i> appears in <i>B</i>.</li><li>To show <i>A</i> ⊄ <i>B</i>, one missing element of <i>A</i> is enough (counterexample).</li><li>Always true: <i>A</i> ⊂ <i>A</i> and φ ⊂ <i>A</i> for any set <i>A</i>.</li><li>If <i>A</i> ⊂ <i>B</i> and <i>B</i> ⊂ <i>A</i>, then and only then <i>A</i> = <i>B</i>.</li><li>Proper subset requires inequality: <i>A</i> ⊂ <i>B</i> plus <i>A</i> ≠ <i>B</i>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Confusing symbols: writing <i>a</i> ⊂ <i>A</i> instead of <i>a</i> ∈ <i>A</i>.</li><li>Assuming <i>A</i> ⊂ <i>B</i> implies <i>A</i> ≠ <i>B</i>; but <i>A</i> ⊂ <i>A</i> is true.</li><li>Thinking φ ∈ <i>A</i> is always true; actually only φ ⊂ <i>A</i> is always true.</li><li>Mixing up {<i>a</i>} and <i>a</i>; singleton set is not the element itself.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“SUBSET = "ALL IN"”</div><paragraph id="6a9fdc9f73369b7e3900032c">Read ⊂ as: <b>ALL</b> elements of left set are <b>IN</b> the right set.</paragraph><paragraph id="6a9fdc9ff4991d457c00032d">Read ⊄ as: find <b>ONE OUT</b> element from left set missing on right.</paragraph><paragraph id="6a9fdc9f512fc016b800032e">φ is the "empty guest list": it fits inside every party (every set).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>NUMBER SET SUBSETS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Real numbers</b> <b>R</b> contain <b>all</b> rational and irrational numbers.</li><li><b>Natural numbers</b> <b>N</b> = {1,2,3,...}; counting numbers (as used in this chapter).</li><li><b>Integers</b> <b>Z</b> = {...,−2,−1,0,1,2,...}; includes negatives and 0.</li><li><b>Rational numbers</b> <b>Q</b> = {x : x = <span class='frac'><span><i>p</i></span><span><i>q</i></span></span>, <i>p</i>,<i>q</i> ∈ Z, <i>q</i> ≠ 0}; terminating or repeating decimals.</li><li><b>Irrational numbers</b> are real numbers that are <b>not</b> rational; they form <b>R − Q</b>.</li><li>Inclusion chain: <b>N ⊂ Z ⊂ Q ⊂ R</b>, and <b>R − Q ⊂ R</b> with <b>Q ∩ (R − Q) = ϕ</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><path d='M0,0 L8,4 L0,8 Z' fill='#123B7A'/></marker></defs><rect x='20' y='20' width='320' height='160' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='38' font-size='13' fill='#1f2a44'>R (Real)</text><rect x='55' y='55' width='250' height='110' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='65' y='73' font-size='13' fill='#1f2a44'>Q (Rational)</text><rect x='85' y='85' width='190' height='70' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='95' y='103' font-size='13' fill='#1f2a44'>Z (Integers)</text><rect x='115' y='110' width='130' height='35' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='125' y='132' font-size='13' fill='#1f2a44'>N (Naturals)</text><path d='M305 70 C330 85,330 115,305 130' fill='none' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><text x='295' y='110' font-size='12' fill='#1f2a44'>R − Q</text><text x='305' y='126' font-size='12' fill='#1f2a44'>(irr.)</text><text x='185' y='186' font-size='12' fill='#1f2a44'>N ⊂ Z ⊂ Q ⊂ R, and (R − Q) ⊂ R</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Every natural number is an integer; every integer is a rational; every rational is real.</span></li><li><span class="ic">➗</span><span>Rational form: x = <span class='frac'><span><i>p</i></span><span><i>q</i></span></span> with <i>p</i>,<i>q</i> ∈ Z and <i>q</i> ≠ 0; integers fit by taking <i>q</i>=1.</span></li><li><span class="ic">🚫</span><span>Irrationals cannot be written as <span class='frac'><span><i>p</i></span><span><i>q</i></span></span>; their decimals are non-terminating and non-repeating (e.g., √2, π).</span></li><li><span class="ic">🔁</span><span>Rationals have terminating or repeating decimals (e.g., 0.125, 0.3̅).</span></li><li><span class="ic">🧠</span><span>Set difference: <b>R − Q</b> means “all real numbers except rationals” (the irrational numbers).</span></li><li><span class="ic">🔍</span><span>Disjoint inside R: <b>Q ∩ (R − Q) = ϕ</b> and <b>Q ∪ (R − Q) = R</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">INCLUSION &amp; EXCLUSION FACTS (EXAM FAVOURITES)</span></h2><ul class="b"><li><b>N ⊂ Z ⊂ Q ⊂ R</b> and each inclusion is proper (strict).</li><li><b>R − Q</b> is the set of irrationals; so every irrational is real but not rational.</li><li><b>Q ∩ (R − Q) = ϕ</b> (no number is both rational and irrational).</li><li><b>Q ∪ (R − Q) = R</b> (every real is either rational or irrational).</li><li><b>N ⊄ (R − Q)</b> since 1 ∈ N but 1 ∉ (R − Q).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STANDARD MEMBERS &amp; NON-MEMBERS</span></h2><ul class="b"><li>Integers as rationals: −5 = <span class='frac'><span>−5</span><span>1</span></span>, 3 = <span class='frac'><span>3</span><span>1</span></span> so Z ⊂ Q.</li><li>Fractions: <span class='frac'><span>7</span><span>2</span></span> ∈ Q; decimals like 2.75 ∈ Q (terminating).</li><li>Repeating decimals are rational: 0.6̅ = <span class='frac'><span>2</span><span>3</span></span>.</li><li>Typical irrationals: √2, √5, π ∈ (R − Q); also √(perfect square) is rational (e.g., √9 = 3).</li><li>If <i>q</i> = 0, <span class='frac'><span><i>p</i></span><span><i>q</i></span></span> is undefined; so it is excluded in the definition of Q.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">RATIONAL (Q) vs IRRATIONAL (R − Q)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Rational numbers (Q)</th><th>Irrational numbers (R − Q)</th></tr></thead><tbody><tr><td>Definition</td><td>x = <span class='frac'><span><i>p</i></span><span><i>q</i></span></span>, <i>p</i>,<i>q</i> ∈ Z, <i>q</i> ≠ 0</td><td>Real but not rational; <b>R − Q</b></td></tr><tr><td>Decimal form</td><td>Terminating or repeating</td><td>Non-terminating and non-repeating</td></tr><tr><td>Examples</td><td>−5, 0, <span class='frac'><span>11</span><span>3</span></span>, 0.125, 0.3̅</td><td>√2, √5, π</td></tr><tr><td>Relation in R</td><td>Subset of R; disjoint from irrationals</td><td>Subset of R; disjoint from Q</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Classify each number into the <b>smallest</b> relevant set among N, Z, Q, (R − Q), R: (i) −12 (ii) <span class='frac'><span>15</span><span>6</span></span> (iii) √5 (iv) 3.2̅</div><div class="sol"><span class="lbl">Answer:</span><br>(i) −12 is an integer, not natural → smallest set: <b>Z</b>.<br>(ii) <span class='frac'><span>15</span><span>6</span></span> = <span class='frac'><span>5</span><span>2</span></span> is of the form <span class='frac'><span><i>p</i></span><span><i>q</i></span></span> → smallest set: <b>Q</b>.<br>(iii) √5 is not rational, so it lies in <b>R − Q</b> → smallest set: <b>R − Q</b>.<br>(iv) 3.2̅ = 3.222... is repeating → rational → smallest set: <b>Q</b>.</div><div class="ans">✓&nbsp; (i) Z, (ii) Q, (iii) R − Q, (iv) Q</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Decide True/False with reason: (a) Every integer is irrational. (b) If x ∈ (R − Q) then x ∈ R. (c) N ⊂ (R − Q). (d) Q ∪ (R − Q) = R.</div><div class="sol"><span class="lbl">Answer:</span><br>(a) False: integers are rational since n = <span class='frac'><span>n</span><span>1</span></span> ∈ Q, so cannot be irrational.<br>(b) True: (R − Q) is defined as the set of irrational <i>real</i> numbers.<br>(c) False: 1 ∈ N but 1 ∈ Q, hence 1 ∉ (R − Q); so N is not a subset of (R − Q).<br>(d) True: every real number is either rational or irrational.</div><div class="ans">✓&nbsp; (a) False, (b) True, (c) False, (d) True</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Use the correct nesting: <b>N ⊂ Z ⊂ Q ⊂ R</b> and irrationals = <b>R − Q</b>.</li><li>To show a number is in Q, write it as <span class='frac'><span><i>p</i></span><span><i>q</i></span></span> with integers and <i>q</i> ≠ 0.</li><li>Integers are always rational; choose <i>q</i> = 1.</li><li>Terminating/repeating decimals are rational; non-terminating non-repeating are irrational.</li><li><b>Q ∩ (R − Q) = ϕ</b> and <b>Q ∪ (R − Q) = R</b> are standard identities.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing <i>q</i> = 0 in x = <span class='frac'><span><i>p</i></span><span><i>q</i></span></span> and still calling it rational.</li><li>Assuming every non-terminating decimal is irrational (repeating non-terminating is rational).</li><li>Mixing symbols: using ⊂ when a single element relation ∈ is intended.</li><li>Forgetting that Z contains 0 and negative numbers; N here starts from 1.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Ladder mnemonic: "N → Z → Q → R"”</div><paragraph id="6a9fdca0918683e02800032f">Climb outward: add <b>negatives+0</b> to get Z, add <b>fractions</b> to get Q, add <b>irrationals</b> to get R.</paragraph><paragraph id="6a9fdca0367072fab9000330">Inside R, split as: <b>R = Q ∪ (R − Q)</b> and they do not overlap: <b>Q ∩ (R − Q) = ϕ</b>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>INTERVALS IN REAL NUMBERS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Interval</b> is a subset of <b>R</b> containing all real numbers between two endpoints.</li><li>Let <i>a</i>, <i>b</i> ∈ R with <i>a</i> &lt; <i>b</i>; endpoints may be included or excluded.</li><li><b>Open</b> uses parentheses: ( <i>a</i>, <i>b</i> ) excludes <i>a</i> and <i>b</i>.</li><li><b>Closed</b> uses brackets: [ <i>a</i>, <i>b</i> ] includes both endpoints.</li><li><b>Half-open</b>: [<i>a</i>,<i>b</i>) includes <i>a</i> only; (<i>a</i>,<i>b</i>] includes <i>b</i> only.</li><li>For finite endpoints, all of ( <i>a</i>, <i>b</i> ), [ <i>a</i>, <i>b</i> ], [ <i>a</i>, <i>b</i> ), ( <i>a</i>, <i>b</i> ] have the same geometric length because endpoints are the same.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='7' refY='3' orient='auto'><polygon points='0 0, 8 3, 0 6' fill='#123B7A'/></marker></defs><g><line x1='30' y1='100' x2='330' y2='100' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='332' y='104' font-size='12' fill='#1f2a44'>R</text><line x1='90' y1='94' x2='90' y2='106' stroke='#123B7A' stroke-width='2'/><line x1='270' y1='94' x2='270' y2='106' stroke='#123B7A' stroke-width='2'/><text x='84' y='124' font-size='12' fill='#1f2a44'>a</text><text x='264' y='124' font-size='12' fill='#1f2a44'>b</text><line x1='90' y1='60' x2='270' y2='60' stroke='#2563EB' stroke-width='6' stroke-linecap='round'/><circle cx='90' cy='60' r='7' fill='#EEF4FF' stroke='#2563EB' stroke-width='3'/><circle cx='270' cy='60' r='7' fill='#EEF4FF' stroke='#2563EB' stroke-width='3'/><text x='140' y='52' font-size='12' fill='#1f2a44'>(a,b)</text><line x1='90' y1='105' x2='270' y2='105' stroke='#16A34A' stroke-width='6' stroke-linecap='round'/><circle cx='90' cy='105' r='6' fill='#16A34A' stroke='#16A34A'/><circle cx='270' cy='105' r='6' fill='#16A34A' stroke='#16A34A'/><text x='140' y='96' font-size='12' fill='#1f2a44'>[a,b]</text><line x1='90' y1='150' x2='270' y2='150' stroke='#7C3AED' stroke-width='6' stroke-linecap='round'/><circle cx='90' cy='150' r='6' fill='#7C3AED' stroke='#7C3AED'/><circle cx='270' cy='150' r='7' fill='#F4EFFE' stroke='#7C3AED' stroke-width='3'/><text x='135' y='142' font-size='12' fill='#1f2a44'>[a,b)</text></g></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>Conversion key: &lt; means open end, ≤ means closed end.</span></li><li><span class="ic">♾️</span><span>Infinity is never included: always (−∞, …) or (…, ∞).</span></li><li><span class="ic">🧭</span><span>Number line view: filled dot = included, hollow dot = excluded.</span></li><li><span class="ic">📦</span><span>Intervals contain infinitely many real numbers, so avoid roster listing.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">TYPES OF INTERVALS (ENDPOINT RULES)</span></h2><ul class="b"><li><b>(a,b)</b> = {<i>x</i> ∈ R : <i>a</i> &lt; <i>x</i> &lt; <i>b</i>} (both excluded).</li><li><b>[a,b]</b> = {<i>x</i> ∈ R : <i>a</i> ≤ <i>x</i> ≤ <i>b</i>} (both included).</li><li><b>[a,b)</b> = {<i>x</i> ∈ R : <i>a</i> ≤ <i>x</i> &lt; <i>b</i>} (left included).</li><li><b>(a,b]</b> = {<i>x</i> ∈ R : <i>a</i> &lt; <i>x</i> ≤ <i>b</i>} (right included).</li><li><b>[0,∞)</b> = non-negative reals; <b>(−∞,0)</b> = negative reals; <b>(−∞,∞)</b> = R.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">CONVERSION + LENGTH (CONCEPT)</span></h2><ul class="b"><li>From set-builder to interval: strict inequality gives ( ), equality allowed gives [ ].</li><li>Keep endpoints the same; only brackets/parentheses change.</li><li>Pattern: {<i>x</i> ∈ R : −5 &lt; <i>x</i> ≤ 7} corresponds to (−5, 7].</li><li>For finite endpoints, length depends only on endpoints, not on inclusion/exclusion.</li><li>Intervals with ±∞ are unbounded, so they do not have a finite length.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">INTERVAL NOTATION QUICK COMPARISON</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Interval</th><th>Membership condition</th><th>Endpoint inclusion</th></tr></thead><tbody><tr><td><b>(a,b)</b></td><td><i>a</i> &lt; <i>x</i> &lt; <i>b</i></td><td><i>a</i> excluded, <i>b</i> excluded</td></tr><tr><td><b>[a,b]</b></td><td><i>a</i> ≤ <i>x</i> ≤ <i>b</i></td><td><i>a</i> included, <i>b</i> included</td></tr><tr><td><b>[a,b)</b></td><td><i>a</i> ≤ <i>x</i> &lt; <i>b</i></td><td><i>a</i> included, <i>b</i> excluded</td></tr><tr><td><b>(a,b]</b></td><td><i>a</i> &lt; <i>x</i> ≤ <i>b</i></td><td><i>a</i> excluded, <i>b</i> included</td></tr><tr><td><b>(−∞,c]</b></td><td><i>x</i> ≤ <i>c</i></td><td>∞ always excluded</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Convert {<i>x</i> ∈ R : −4 &lt; <i>x</i> ≤ 6} to interval notation.</div><div class="sol"><span class="lbl">Answer:</span><br>Left condition −4 &lt; <i>x</i> means −4 is excluded, so use <b>(</b> at −4.<br>Right condition <i>x</i> ≤ 6 means 6 is included, so use <b>]</b> at 6.<br>Therefore the interval is <b>(−4, 6]</b>.</div><div class="ans">✓&nbsp; Interval notation: <b>(−4, 6]</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Write the interval [−3, 5) in set-builder form.</div><div class="sol"><span class="lbl">Answer:</span><br>Left bracket [ means include −3, so −3 ≤ <i>x</i>.<br>Right parenthesis ) means exclude 5, so <i>x</i> &lt; 5.<br>Combine the conditions with <i>x</i> ∈ R.</div><div class="ans">✓&nbsp; Set-builder form: {<i>x</i> ∈ R : −3 ≤ <i>x</i> &lt; 5}.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>In set-builder form for real intervals, write <i>x</i> ∈ R unless another domain is intended.</li><li>At each endpoint: ≤ or ≥ corresponds to a square bracket; &lt; or &gt; corresponds to a round bracket.</li><li>Write endpoints in increasing order: left endpoint first, right endpoint second.</li><li>Including or excluding endpoints changes membership but not the endpoint locations on the number line.</li><li>∞ and −∞ are not real numbers; never use a square bracket with infinity.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Including ∞ with a bracket, e.g. [0,∞] (wrong); must be [0,∞).</li><li>Reversing an inequality when rewriting: writing <i>x</i> ≤ −3 instead of −3 ≤ <i>x</i>.</li><li>Using [ or ] with a strict inequality sign (&lt; or &gt;).</li><li>Confusing integer counting in an interval with the interval itself (real-number membership).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: “<b>Strict is Round</b>, <b>Equal is Square</b>””</div><paragraph id="6a9fdca05967d90ec8000331">&lt; or &gt; (strict) ⇒ use round brackets ( ).</paragraph><paragraph id="6a9fdca09c99f9d1b4000332">≤ or ≥ (allows equality) ⇒ use square brackets [ ].</paragraph><paragraph id="6a9fdca033f2e87bff000333">Infinity is always round because it cannot be included.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>UNIVERSAL SET AND VENN DIAGRAMS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Universal set</b> <i>U</i> is the basic set of all objects allowed in a given context.</li><li>All sets discussed in that context (A, B, C, …) are taken as <b>subsets of</b> <i>U</i>.</li><li>In Venn diagrams, <i>U</i> is drawn as a <b>rectangle</b>; subsets are drawn as <b>closed curves</b> (usually circles).</li><li>An element is shown by writing it <b>inside the region</b> of the set it belongs to.</li><li>If <i>B</i> is inside <i>A</i> (both inside <i>U</i>), it represents <b><i>B</i> ⊂ <i>A</i></b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='20' y='20' width='320' height='160' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='40' font-size='13' fill='#1f2a44'>U (universal set)</text><circle cx='160' cy='110' r='60' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='148' y='55' font-size='13' fill='#1f2a44'>A</text><circle cx='185' cy='120' r='30' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='180' y='95' font-size='13' fill='#1f2a44'>B</text><line x1='245' y1='120' x2='218' y2='120' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='252' y='124' font-size='12' fill='#1f2a44'>B ⊂ A</text><text x='70' y='120' font-size='13' fill='#1f2a44'>2</text><text x='130' y='140' font-size='13' fill='#1f2a44'>8</text><text x='178' y='124' font-size='13' fill='#1f2a44'>4</text><text x='192' y='140' font-size='13' fill='#1f2a44'>6</text><text x='295' y='160' font-size='13' fill='#1f2a44'>1</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🌍</span><span><i>U</i> depends on context: numbers context vs students context changes <i>U</i>.</span></li><li><span class="ic">⭕</span><span>Closed curve shows a set; points/elements are placed in the correct region.</span></li><li><span class="ic">📦</span><span>Rectangle boundary matters: nothing outside rectangle belongs to <i>U</i>.</span></li><li><span class="ic">🧠</span><span>Diagram test: <i>B</i> ⊂ <i>A</i> means every element of <i>B</i> must lie in <i>A</i>.</span></li><li><span class="ic">✍️</span><span>Do not confuse <b>∈</b> (element of) with <b>⊂</b> (subset of).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO CHOOSE THE UNIVERSAL SET (U)</span></h2><ul class="b"><li>Step 1: Identify the <b>context</b> (numbers, people, triangles, etc.).</li><li>Step 2: Pick a basic set that <b>contains all sets under discussion</b>.</li><li>A proposed <i>U</i> is valid only if <i>A</i> ⊂ <i>U</i>, <i>B</i> ⊂ <i>U</i>, <i>C</i> ⊂ <i>U</i>, …</li><li>Same set can have multiple possible universes: integers can sit inside <i>Q</i> or <i>R</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">READING A VENN DIAGRAM (SUBSET FOCUS)</span></h2><ul class="b"><li>If a circle lies completely inside another, the inner set is a subset of the outer set.</li><li>To verify <i>B</i> ⊂ <i>A</i>, check every written element of <i>B</i> lies in region of <i>A</i>.</li><li>Elements written in the rectangle but outside all circles belong to <i>U</i> but to none of those subsets.</li><li>If a point is outside <i>U</i> (outside rectangle), it is not allowed in the context.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">SYMBOLS IN SETS: WHAT THEY MEAN</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Symbol</th><th>Meaning</th><th>Example</th></tr></thead><tbody><tr><td>∈</td><td>is an element of</td><td>4 ∈ A</td></tr><tr><td>∉</td><td>is not an element of</td><td>7 ∉ B</td></tr><tr><td>⊂</td><td>is a subset of</td><td>B ⊂ A</td></tr><tr><td>⊄</td><td>is not a subset of</td><td>A ⊄ B</td></tr><tr><td>U</td><td>universal set (context set)</td><td>A ⊂ U</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let <i>U</i> = {1,2,3,4,5,6,7,8,9,10}, <i>A</i> = {2,4,6,8,10}, <i>B</i> = {4,6}. Using the meaning of subset, decide whether <i>B</i> ⊂ <i>A</i> and whether <i>A</i> ⊂ <i>U</i>.</div><div class="sol"><span class="lbl">Answer:</span><br>A subset relation <i>B</i> ⊂ <i>A</i> means: every element of <i>B</i> must be an element of <i>A</i>.<br>In <i>B</i>, the elements are 4 and 6. Both 4 and 6 are present in <i>A</i>.<br>So every element of <i>B</i> lies in <i>A</i>, hence <i>B</i> ⊂ <i>A</i>.<br>All elements of <i>A</i> are among 1 to 10, so <i>A</i> ⊂ <i>U</i>.<br>Venn idea: draw rectangle <i>U</i>, circle <i>A</i>, and circle <i>B</i> completely inside <i>A</i>.</div><div class="ans">✓&nbsp; <i>B</i> ⊂ <i>A</i> and <i>A</i> ⊂ <i>U</i>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Choose a suitable universal set <i>U</i> for the sets <i>A</i> = {1,3,5}, <i>B</i> = {2,4,6}, <i>C</i> = {0,2,4,6,8}. From these options decide which can be <i>U</i>: (i) {0,1,2,3,4,5,6} (ii) φ (iii) {0,1,2,3,4,5,6,7,8,9,10} (iv) {1,2,3,4,5,6,7,8}.</div><div class="sol"><span class="lbl">Answer:</span><br>A universal set for this context must contain every element that appears in <i>A</i>, <i>B</i>, and <i>C</i>.<br>The combined elements are {0,1,2,3,4,5,6,8}.<br>Option (i) does not contain 8, so it cannot be <i>U</i>.<br>Option (ii) is empty, so it cannot contain non-empty sets <i>A</i>, <i>B</i>, <i>C</i>.<br>Option (iii) contains all required elements, so it can be <i>U</i>.<br>Option (iv) does not contain 0, so it cannot be <i>U</i>.</div><div class="ans">✓&nbsp; Only option (iii) can be the universal set.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><i>U</i> is not unique: it depends on what objects are being discussed.</li><li>In Venn diagrams: rectangle = <i>U</i>; circles/closed curves = subsets.</li><li>To show <i>B</i> ⊂ <i>A</i>, draw <i>B</i> completely inside <i>A</i>.</li><li>In roster form, repeated entries do not create new elements; elements are taken as distinct.</li><li>Outside-the-rectangle objects are <b>not in the universe</b>; they are not part of the chosen context.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Taking <i>U</i> as fixed (like always <i>R</i>), even when context is letters/people.</li><li>Confusing <b><i>a</i> ∈ <i>A</i></b> with <b>{<i>a</i>} ⊂ <i>A</i></b>.</li><li>Drawing <i>B</i> overlapping <i>A</i> when the question says <i>B</i> ⊂ <i>A</i>.</li><li>Placing an element in the wrong region, then concluding wrong subset relations.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“RECT–CIRC–IN (Venn quick hook)”</div><paragraph id="6a9fdca0c9235348d2000334"><b>RECT</b>angle = <i>U</i> (the universe).</paragraph><paragraph id="6a9fdca03d27accd1f000335"><b>CIRC</b>les = sets inside the universe.</paragraph><paragraph id="6a9fdca0d928d6cbd6000336"><b>IN</b>side test: if B is entirely in A, then <i>B</i> ⊂ <i>A</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Universal set <i>U</i>: the set of all objects allowed in the current context.</span><span class="eq">All sets in that context are treated as subsets of <i>U</i>.</span><span class="eq">Symbol recap: <i>a</i> ∈ <i>A</i> (element), <i>a</i> ∉ <i>A</i> (not an element), <i>A</i> ⊂ <i>B</i> (subset).</span><span class="eq">Subset meaning: <i>A</i> ⊂ <i>B</i> means every element of <i>A</i> is also an element of <i>B</i>.</span><span class="eq">Venn diagram code: rectangle → <i>U</i>, closed curve → a set, written items → elements.</span><span class="eq">Visual subset rule: if the region for <i>B</i> lies entirely inside the region for <i>A</i>, then <i>B</i> ⊂ <i>A</i>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>UNION, INTERSECTION &amp; DIFFERENCE OF SETS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Union:</b> <i>A</i> ∪ <i>B</i> = {x : x ∈ <i>A</i> <b>or</b> x ∈ <i>B</i>} (in <i>A</i> or <i>B</i> or both).</li><li><b>Intersection:</b> <i>A</i> ∩ <i>B</i> = {x : x ∈ <i>A</i> <b>and</b> x ∈ <i>B</i>} (common elements only).</li><li><b>Difference:</b> <i>A</i> − <i>B</i> = {x : x ∈ <i>A</i> <b>and</b> x ∉ <i>B</i>} (in <i>A</i>, not in <i>B</i>).</li><li><b>Venn idea:</b> ∪ covers both circles, ∩ covers overlap, <i>A</i> − <i>B</i> covers left-only.</li><li><b>Disjoint sets:</b> <i>A</i> and <i>B</i> disjoint ⇔ <i>A</i> ∩ <i>B</i> = φ.</li><li><b>Non-commutativity:</b> generally <i>A</i> − <i>B</i> ≠ <i>B</i> − <i>A</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='38' font-size='13' fill='#1f2a44'>U</text><circle cx='145' cy='110' r='60' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><circle cx='215' cy='110' r='60' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><ellipse cx='180' cy='110' rx='22' ry='48' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='120' y='60' font-size='13' fill='#1f2a44'>A</text><text x='233' y='60' font-size='13' fill='#1f2a44'>B</text><text x='169' y='116' font-size='13' fill='#1f2a44'>A∩B</text><text x='86' y='116' font-size='13' fill='#1f2a44'>A−B</text><text x='246' y='116' font-size='13' fill='#1f2a44'>B−A</text><text x='145' y='174' font-size='12' fill='#1f2a44'></text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">1</span><span><i>A</i> ∪ <i>B</i> contains every element that is in <i>A</i> or in <i>B</i>.</span></li><li><span class="ic">2</span><span><i>A</i> ∩ <i>B</i> contains only elements common to both sets.</span></li><li><span class="ic">3</span><span><i>A</i> − <i>B</i> means “start with <i>A</i>, remove elements that are in <i>B</i>”.</span></li><li><span class="ic">4</span><span>If <i>A</i> ∩ <i>B</i> = φ, the sets are disjoint; they share no elements.</span></li><li><span class="ic">5</span><span>∪ and ∩ are commutative and associative; difference is neither.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">KEY PROPERTIES (EXAM-FAVOURITES)</span></h2><ul class="b"><li><b>Commutative:</b> <i>A</i> ∪ <i>B</i> = <i>B</i> ∪ <i>A</i>; <i>A</i> ∩ <i>B</i> = <i>B</i> ∩ <i>A</i>.</li><li><b>Associative:</b> (<i>A</i> ∪ <i>B</i>) ∪ <i>C</i> = <i>A</i> ∪ (<i>B</i> ∪ <i>C</i>); similarly for ∩.</li><li><b>Distributive:</b> <i>A</i> ∩ (<i>B</i> ∪ <i>C</i>) = (<i>A</i> ∩ <i>B</i>) ∪ (<i>A</i> ∩ <i>C</i>).</li><li><b>Distributive:</b> <i>A</i> ∪ (<i>B</i> ∩ <i>C</i>) = (<i>A</i> ∪ <i>B</i>) ∩ (<i>A</i> ∪ <i>C</i>).</li><li><b>Identity &amp; idempotent:</b> <i>A</i> ∪ φ = <i>A</i>, <i>A</i> ∩ φ = φ; also <i>A</i> ∪ <i>A</i> = <i>A</i>, <i>A</i> ∩ <i>A</i> = <i>A</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">DIFFERENCE: QUICK TRANSFORMS</span></h2><ul class="b"><li><b>Using complement:</b> <i>A</i> − <i>B</i> = <i>A</i> ∩ <i>B</i><sup>c</sup> (complement in <i>U</i>).</li><li><b>Partition of A:</b> <i>A</i> = (<i>A</i> − <i>B</i>) ∪ (<i>A</i> ∩ <i>B</i>), and the parts are disjoint.</li><li><b>Subset test:</b> <i>A</i> ⊆ <i>B</i> ⇔ <i>A</i> − <i>B</i> = φ.</li><li><b>Not commutative:</b> <i>A</i> − <i>B</i> and <i>B</i> − <i>A</i> usually differ.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Union vs Intersection vs Difference (A − B)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Union (∪)</th><th>Intersection (∩)</th><th>Difference (−)</th></tr></thead><tbody><tr><td>Meaning</td><td>In <i>A</i> or <i>B</i> (or both)</td><td>In both <i>A</i> and <i>B</i></td><td>In <i>A</i> but not in <i>B</i></td></tr><tr><td>Set-builder form</td><td>{x : x ∈ <i>A</i> <b>or</b> x ∈ <i>B</i>}</td><td>{x : x ∈ <i>A</i> <b>and</b> x ∈ <i>B</i>}</td><td>{x : x ∈ <i>A</i> <b>and</b> x ∉ <i>B</i>}</td></tr><tr><td>Venn region</td><td>Both circles together</td><td>Only overlap</td><td>Only A-side (excluding overlap)</td></tr><tr><td>Commutative?</td><td>Yes</td><td>Yes</td><td>No: <i>A</i>−<i>B</i> ≠ <i>B</i>−<i>A</i></td></tr><tr><td>When empty?</td><td>Empty only if <i>A</i>=φ and <i>B</i>=φ</td><td>Empty when disjoint (<i>A</i> ∩ <i>B</i> = φ)</td><td>Empty when <i>A</i> ⊆ <i>B</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let <i>A</i> = {2, 4, 6, 8} and <i>B</i> = {6, 8, 10, 12}. Find <i>A</i> ∪ <i>B</i>, <i>A</i> ∩ <i>B</i>, <i>A</i> − <i>B</i>, <i>B</i> − <i>A</i>.</div><div class="sol"><span class="lbl">Answer:</span><br><b>Union (all distinct elements):</b> <i>A</i> ∪ <i>B</i> = {2, 4, 6, 8, 10, 12}.<br><b>Intersection (common elements):</b> <i>A</i> ∩ <i>B</i> = {6, 8}.<br><b>Difference <i>A</i> − <i>B</i> (in <i>A</i>, not in <i>B</i>):</b> {2, 4}.<br><b>Difference <i>B</i> − <i>A</i> (in <i>B</i>, not in <i>A</i>):</b> {10, 12}.</div><div class="ans">✓&nbsp; <i>A</i> ∪ <i>B</i> = {2,4,6,8,10,12}, <i>A</i> ∩ <i>B</i> = {6,8}, <i>A</i>−<i>B</i> = {2,4}, <i>B</i>−<i>A</i> = {10,12}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In <i>U</i> = {1,2,3,4,5,6,7,8,9,10}, let <i>A</i> = {2,4,6,8,10} and <i>B</i> = {4,6}. Find <i>A</i> ∪ <i>B</i>, <i>A</i> ∩ <i>B</i>, and state whether <i>A</i> and <i>B</i> are disjoint.</div><div class="sol"><span class="lbl">Answer:</span><br>Every element of <i>B</i> is in <i>A</i>, so <i>B</i> ⊆ <i>A</i>.<br>If <i>B</i> ⊆ <i>A</i>, then <i>A</i> ∪ <i>B</i> = <i>A</i> = {2,4,6,8,10}.<br>If <i>B</i> ⊆ <i>A</i>, then <i>A</i> ∩ <i>B</i> = <i>B</i> = {4,6}.<br>Disjoint ⇔ <i>A</i> ∩ <i>B</i> = φ. Here {4,6} ≠ φ, so not disjoint.</div><div class="ans">✓&nbsp; <i>A</i> ∪ <i>B</i> = {2,4,6,8,10}, <i>A</i> ∩ <i>B</i> = {4,6}; sets are <b>not</b> disjoint.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>While writing <i>A</i> ∪ <i>B</i> in roster form, do not repeat common elements.</li><li>Always: <i>A</i> ∩ <i>B</i> ⊆ <i>A</i> and <i>A</i> ∩ <i>B</i> ⊆ <i>B</i>.</li><li>If <i>B</i> ⊆ <i>A</i>, then <i>A</i> ∪ <i>B</i> = <i>A</i> and <i>A</i> ∩ <i>B</i> = <i>B</i>.</li><li>Disjoint sets have no common element: <i>A</i> ∩ <i>B</i> = φ.</li><li>Use distributive laws to simplify expressions with both ∪ and ∩.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Mixing up ∩ with ∪ (writing “or” for intersection).</li><li>Including overlap elements in <i>A</i> − <i>B</i>; overlap must be excluded.</li><li>Assuming <i>A</i> − <i>B</i> = <i>B</i> − <i>A</i>.</li><li>Repeating elements while listing a set in roster form.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“OR–AND–ONLY (Union–Intersection–Difference)”</div><paragraph id="6a9fdca043f0a04d8c000337"><b>∪</b>: think <b>OR</b> (take from <i>A</i> or <i>B</i> or both).</paragraph><paragraph id="6a9fdca0b172a7ba28000338"><b>∩</b>: think <b>AND</b> (must be in both <i>A</i> and <i>B</i>).</paragraph><paragraph id="6a9fdca0b9e17e67e8000339"><i>A</i>−<i>B</i>: think <b>ONLY A</b> (in <i>A</i> but not in <i>B</i>).</paragraph><paragraph id="6a9fdca0f3285f590a00033a">Quick check by Venn diagram: union = total area, intersection = overlap, difference = one-side.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>COMPLEMENT AND DE MORGAN LAWS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Complement of</b> <i>A</i> (w.r.t. <i>U</i>) is <i>A</i><sup>′</sup> = {x : x ∈ <i>U</i> and x ∉ <i>A</i>}.</li><li>Equivalently, <i>A</i><sup>′</sup> = <i>U</i> − <i>A</i> (elements in <i>U</i> but not in <i>A</i>).</li><li>Complement depends on the chosen universal set <i>U</i>; changing <i>U</i> can change <i>A</i><sup>′</sup>.</li><li>Two basic complement laws: <i>A</i> ∪ <i>A</i><sup>′</sup> = <i>U</i> and <i>A</i> ∩ <i>A</i><sup>′</sup> = φ.</li><li>Double complement: (<i>A</i><sup>′</sup>)<sup>′</sup> = <i>A</i> (w.r.t. the same <i>U</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 8 3, 0 6' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='40' font-size='14' fill='#1f2a44'>U</text><circle cx='150' cy='110' r='58' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='142' y='114' font-size='14' fill='#1f2a44'>A</text><path d='M30 60 L110 100' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)' fill='none'/><text x='30' y='58' font-size='12' fill='#1f2a44'>inside A</text><path d='M330 60 L238 98' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)' fill='none'/><text x='246' y='58' font-size='12' fill='#1f2a44'>A′ region</text><text x='232' y='114' font-size='14' fill='#1f2a44'>U − A</text></svg><div class="figcap">Venn idea: <i>A</i><sup>′</sup> is the part of <i>U</i> outside <i>A</i> (i.e., <i>U</i> − <i>A</i>).</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span>Always state <i>U</i> first: complement is meaningless without a universal set.</span></li><li><span class="ic">🧠</span><span><i>A</i><sup>′</sup> flips membership: in <i>A</i> becomes out of <i>A</i>, but still inside <i>U</i>.</span></li><li><span class="ic">🔁</span><span>De Morgan: complement of union becomes intersection of complements; and vice-versa.</span></li><li><span class="ic">🧩</span><span>Use De Morgan to simplify complements of brackets: push <sup>′</sup> inside and swap ∪, ∩.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">CORE LAWS (EXAM FAVOURITES)</span></h2><ul class="b"><li><b>Complement laws:</b> <i>A</i> ∪ <i>A</i><sup>′</sup> = <i>U</i> and <i>A</i> ∩ <i>A</i><sup>′</sup> = φ.</li><li><b>Double complement:</b> (<i>A</i><sup>′</sup>)<sup>′</sup> = <i>A</i> (must be w.r.t. same <i>U</i>).</li><li><b>Boundary cases:</b> φ<sup>′</sup> = <i>U</i> and <i>U</i><sup>′</sup> = φ.</li><li>If <i>A</i> ⊂ <i>B</i>, then <i>B</i><sup>′</sup> ⊂ <i>A</i><sup>′</sup> (inclusion reverses under complement).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">DE MORGAN’S LAWS (HOW TO APPLY FAST)</span></h2><ul class="b"><li>(<i>A</i> ∪ <i>B</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∩ <i>B</i><sup>′</sup> (swap ∪ to ∩, complement each).</li><li>(<i>A</i> ∩ <i>B</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∪ <i>B</i><sup>′</sup> (swap ∩ to ∪, complement each).</li><li>For 3 sets: (<i>A</i> ∪ <i>B</i> ∪ <i>C</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∩ <i>B</i><sup>′</sup> ∩ <i>C</i><sup>′</sup>.</li><li>For nested brackets, apply from outermost <sup>′</sup> inward, swapping operations each time.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">UNION/INTERSECTION VS THEIR COMPLEMENTS (DE MORGAN VIEW)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Expression</th><th>Meaning in words</th><th>After taking complement</th></tr></thead><tbody><tr><td><i>A</i> ∪ <i>B</i></td><td>in <i>A</i> or <i>B</i></td><td>(<i>A</i> ∪ <i>B</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∩ <i>B</i><sup>′</sup></td></tr><tr><td><i>A</i> ∩ <i>B</i></td><td>in both <i>A</i> and <i>B</i></td><td>(<i>A</i> ∩ <i>B</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∪ <i>B</i><sup>′</sup></td></tr><tr><td><i>U</i> − <i>A</i></td><td>in <i>U</i> but not in <i>A</i></td><td><i>U</i> − <i>A</i> = <i>A</i><sup>′</sup></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is it necessary to specify the universal set <i>U</i> before writing a complement <i>A</i><sup>′</sup>?</div><div class="sol"><span class="lbl">Answer:</span><br><i>A</i><sup>′</sup> means “elements not in <i>A</i> but still inside <i>U</i>”.<br>If <i>U</i> changes, the pool of allowed elements changes, so the complement set can change even if <i>A</i> stays the same.<br>Hence, without <i>U</i>, <i>A</i><sup>′</sup> is not uniquely defined.</div><div class="ans">✓&nbsp; Because complement is defined relative to <i>U</i>; different choices of <i>U</i> generally give different complements.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain (without listing elements) why (<i>A</i> ∪ <i>B</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∩ <i>B</i><sup>′</sup>.</div><div class="sol"><span class="lbl">Answer:</span><br>Take any element x in <i>U</i>.<br>x ∈ (<i>A</i> ∪ <i>B</i>)<sup>′</sup> means x is not in (<i>A</i> ∪ <i>B</i>).<br>Not being in the union means x is in neither <i>A</i> nor <i>B</i>.<br>So x ∈ <i>A</i><sup>′</sup> and x ∈ <i>B</i><sup>′</sup>, i.e. x ∈ <i>A</i><sup>′</sup> ∩ <i>B</i><sup>′</sup>.<br>The reverse direction follows by the same logic, so the sets are equal.</div><div class="ans">✓&nbsp; An element lies outside the union exactly when it lies outside <i>A</i> and outside <i>B</i>, i.e. it lies in both complements.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Complement is always taken <b>relative to</b> <i>U</i>; mention <i>U</i> in questions.</li><li><i>A</i><sup>′</sup> = <i>U</i> − <i>A</i> is the fastest form in roster/set-difference questions.</li><li><i>A</i> and <i>A</i><sup>′</sup> are disjoint: <i>A</i> ∩ <i>A</i><sup>′</sup> = φ; together they cover <i>U</i>.</li><li>Double complement holds only for the same <i>U</i>: (<i>A</i><sup>′</sup>)<sup>′</sup> = <i>A</i>.</li><li>De Morgan swaps ∪ and ∩ while complementing each set inside brackets.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to specify <i>U</i> and writing a wrong complement set.</li><li>Treating <i>A</i><sup>′</sup> as “not in <i>A</i> anywhere” instead of “not in <i>A</i> but in <i>U</i>”.</li><li>Using De Morgan without swapping the operator (keeping ∪ as ∪, or ∩ as ∩).</li><li>Writing (<i>A</i> ∪ <i>B</i>)<sup>′</sup> = <i>A</i><sup>′</sup> ∪ <i>B</i><sup>′</sup> (incorrect).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: “BAR FLIPS” for De Morgan”</div><paragraph id="6a9fdca0a2d51bf74500033b">A bar (complement) over a bracket <b>flips</b> the operation: ∪ ↔ ∩.</paragraph><paragraph id="6a9fdca0e5a70b972d00033c">Then it <b>splits</b> to each set: complement each term inside.</paragraph><paragraph id="6a9fdca058490511e600033d">Say it aloud: “bar goes in, sign flips, each gets a bar”.</paragraph></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

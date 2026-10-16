@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>CHAPTER TWELVE</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/><link href="css/katex.min.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c0125c2adbdf1ced93abf/vendor/katex/katex.min.js"></script><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c0125c2adbdf1ced93abf/vendor/katex/contrib/auto-render.min.js"></script><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c0125c2adbdf1ced93abf/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Ch12: Kinetic Theory of Gases</h1>
+
+<h2>12.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c78c07765018af4845"><b>Kinetic theory (of gases):</b> explains gas behaviour by modelling a gas as lots of <b>rapidly moving atoms/molecules</b>.</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930c78c07765018af4846"><b>Historical development and motivation</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930c78c07765018af4847"><b>1661 (Boyle):</b> discovered <b>Boyle’s law</b> (later named after him).</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af4848"><b>Early attempts:</b> Boyle, Newton + others tried explaining gases by assuming they’re made of tiny particles.</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af4849"><b>Atomic theory acceptance:</b> the “actual atomic theory” only became established <b>150+ years later</b>.</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af484a"><b>19th century development:</b> kinetic theory developed by <b>Maxwell, Boltzmann</b> + others.</paragraph></li>
+    </ul>
+  </li>
+
+  <li>
+    <paragraph id="6a8930c78c07765018af484b"><b>Why gases can be treated as moving particles</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930c78c07765018af484c">In gases, <b>inter-atomic forces</b> (short-range forces important in solids/liquids) can be <b>neglected</b> since molecules are far apart vs solids/liquids.</paragraph></li>
+    </ul>
+  </li>
+
+  <li>
+    <paragraph id="6a8930c78c07765018af484d"><b>What kinetic theory successfully explains / connects</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930c78c07765018af484e">Gives a <b>molecular interpretation</b> of <b>pressure</b> and <b>temperature</b>.</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af484f">Matches the <b>gas laws</b> + <b>Avogadro’s hypothesis</b>.</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af4850">Correctly explains <b>specific heat capacities</b> of many gases.</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af4851">Links measurable properties (e.g. <b>viscosity, conduction, diffusion</b>) to molecular parameters → estimate <b>molecular sizes and masses</b>.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h2>12.2 Molecular Nature of Matter</h2>
+
+<h3>Atomic hypothesis (Feynman’s statement)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4852"><b>Atomic Hypothesis (Feynman):</b> “All things are made of atoms — tiny particles in perpetual motion, attracting each other when a little distance apart, but repelling when squeezed into one another.”</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4853">This one line packs <b>3 core ideas</b> used later in kinetic theory/molecular physics:</paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af4854"><b>Discrete matter</b> → made of atoms.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4855"><b>Perpetual motion</b> → thermal motion of particles.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4856"><b>Interatomic interaction</b> → attraction at moderate separation, strong repulsion at very short separation.</paragraph></li>
+</ul>
+</div>
+
+<ul>
+<li><paragraph id="6a8930c78c07765018af4857"><b>Continuity vs discreteness:</b> many cultures questioned whether matter is truly continuous.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4858"><b>Early proponents:</b> <b>Kanada</b> (India) + <b>Democritus</b> (Greece) argued matter is made of indivisible constituents.</paragraph></li>
+</ul>
+
+<h3>Dalton’s atomic theory and laws of chemical combination</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4859"><b>John Dalton:</b> modern scientific atomic theory is usually credited to Dalton; he used atoms to explain laws of chemical combination.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af485a"><b>Law of definite proportions:</b> a given compound has a <b>fixed mass ratio</b> of its constituents.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af485b"><b>Law of multiple proportions:</b> if two elements form more than one compound, then for a <b>fixed mass</b> of one element, the masses of the other that combine are in ratios of <b>small integers</b>.</paragraph>
+</div>
+
+<ul>
+<li>
+<paragraph id="6a8930c78c07765018af485c"><b>Dalton’s explanation (core postulates here):</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af485d">Smallest constituents of an element are <b>atoms</b>.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af485e">Atoms of the same element are <b>identical</b>; atoms of different elements differ.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af485f">A <b>small number</b> of atoms combine to form a <b>molecule</b> of a compound.</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<h3>Gay-Lussac’s law and Avogadro’s law (hypothesis)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4860"><b>Gay-Lussac’s law (combining volumes):</b> when gases react to form another gas, their <b>volumes</b> are in ratios of <b>small integers</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4861"><b>Avogadro’s law (hypothesis):</b> equal volumes of all gases at equal <b>temperature</b> and <b>pressure</b> contain the <b>same number of molecules</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4862"><b>Key logical link:</b> <b>Avogadro’s law + Dalton’s theory</b> ⇒ explains <b>Gay-Lussac’s law</b>.</paragraph>
+<paragraph id="6a8930c78c07765018af4863">Reason: at same T,P, equal volumes ⇒ equal number of molecules, so volume ratios = ratios of reacting molecules, which often come as <b>small integers</b> in balanced equations.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4864"><b>Terminology note:</b> since elements often exist as <b>molecules</b> (not single atoms), Dalton’s “atomic theory” is also called the <b>molecular theory of matter</b>.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930c78c07765018af4865"><b>Acceptance:</b> widely accepted now, but even by late 19th century some famous scientists still doubted it.</paragraph></li>
+</ul>
+
+<h3>Direct evidence and typical molecular/atomic sizes and separations</h3>
+<ul>
+<li><paragraph id="6a8930c78c07765018af4866"><b>Constituents of matter:</b> matter is made of <b>molecules</b> (each has one or more atoms).</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4867"><b>Seeing atoms/molecules:</b> possible using <b>electron microscopes</b> and <b>scanning tunnelling microscopes</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4868"><b>1 angstrom:</b> 1 Å = 10<sup>−10</sup> m</paragraph>
+<paragraph id="6a8930c78c07765018af4869"><b>Å (angstrom):</b> unit used for atomic-scale lengths</paragraph>
+<paragraph id="6a8930c78c07765018af486a"><b>m:</b> metre (SI unit)</paragraph>
+</div>
+
+<ul>
+<li>
+<paragraph id="6a8930c78c07765018af486b"><b>Typical sizes/distances:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af486c"><b>Atom size:</b> ~ <b>1 Å</b> (≈ 10<sup>−10</sup> m).</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af486d"><b>Solids:</b> atoms closely packed; spacing ~ few Å, roughly <b>2 Å</b>.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af486e"><b>Liquids:</b> separation ~ same as solids; atoms <b>not rigidly fixed</b> → can move → liquid <b>flows</b>.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af486f"><b>Gases:</b> interatomic distances ~ <b>tens of Å</b>.</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<h3>Mean free path and freedom of motion in gases</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4870"><b>Mean free path:</b> <b>average distance</b> travelled by a molecule <b>between collisions</b>.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930c78c07765018af4871"><b>Order of magnitude (gases):</b> mean free path ~ <b>thousands of Å</b>.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4872"><b>Consequence:</b> molecules in gases are much freer; can go long distances without colliding.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4873"><b>Diffusion/dispersion:</b> if not enclosed, gases <b>spread out</b> (disperse away).</paragraph></li>
+</ul>
+
+<h3>Interatomic forces in solids, liquids, and gases</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4874"><b>Why forces matter more in solids/liquids:</b> particles are close → interatomic forces significant; in gases, often negligible as a first approximation.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4875"><b>Interatomic force nature:</b> <b>long-range attraction</b> + <b>short-range repulsion</b>.</paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af4876"><b>Attraction:</b> when atoms are a few Å apart.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4877"><b>Repulsion:</b> very strong when pushed too close (“squeezed into one another”).</paragraph></li>
+</ul>
+</div>
+
+<h3>Atomic hypothesis in Ancient India and Greece (context and key claims)</h3>
+<ul>
+<li>
+<paragraph id="6a8930c78c07765018af4878"><b>Ancient India — Vaiseshika school (Kanada, 6th century B.C.)</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af4879">Atomic model developed in considerable detail.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af487a">Atoms taken as <b>eternal, indivisible, infinitesimal</b> — the <b>ultimate parts</b> of matter.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af487b"><b>Discreteness argument:</b> if subdivision never ended, no difference between a mustard seed and the Meru mountain.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af487c"><b>Four atom types (Paramanu):</b> Bhoomi (earth), Ap (water), Tejas (fire), Vayu (air) — each with its own mass/attributes.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af487d"><b>Akasa (space):</b> no atomic structure; continuous + inert.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af487e"><b>Molecules:</b> atoms combine to form different molecules; properties depend on nature + ratio of atoms.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af487f"><b>Combination examples:</b> 2 atoms → <b>dvyanuka</b> (diatomic); 3 atoms → <b>tryanuka</b> (triatomic).</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4880"><b>Atomic size estimate:</b> <i>Lalitavistara</i> (2nd century B.C.) gives ~modern order, ~ <b>10<sup>−10</sup> m</b>.</paragraph></li>
+</ul>
+</li>
+
+<li>
+<paragraph id="6a8930c78c07765018af4881"><b>Ancient Greece — Democritus (4th century B.C.)</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af4882">Linked to atomic hypothesis; Greek “atom” = <b>indivisible</b>.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4883">Atoms differ in <b>shape, size</b> etc.; different combinations → different substances.</paragraph></li>
+<li>
+<paragraph id="6a8930c78c07765018af4884"><b>Illustrative explanations:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af4885"><b>Water:</b> atoms smooth/round; can’t “hook” → flows easily.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4886"><b>Earth:</b> atoms rough/jagged → stick → hard substances.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af4887"><b>Fire:</b> atoms thorny → painful burns.</paragraph></li>
+</ul>
+</li>
+<li><paragraph id="6a8930c78c07765018af4888"><b>Limitation:</b> clever but mostly intuitive; not tested/updated by quantitative experiments (key feature of modern science).</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af4889"><b>Exam traps to avoid:</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af488a">Don’t mix up <b>atomic size (~1 Å)</b> with <b>interatomic spacing</b>: solids/liquids ~ few Å (≈2 Å), gases ~ tens of Å.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af488b"><b>Mean free path</b> in gases is much larger than spacing: ~ <b>thousands of Å</b>, not just “tens of Å”.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af488c">Avogadro’s law must say: equal volumes at same <b>T</b> and <b>P</b> have equal number of <b>molecules</b> (not “atoms”).</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af488d">Interatomic force = <b>attraction + repulsion</b>; stating only one part is incomplete.</paragraph></li>
+</ul>
+</div>
+
+<h2>12.3 Behaviour of Gases</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af488e"><b>Dynamic equilibrium in a gas:</b> Macroscopic properties can stay constant, but molecules are always moving, colliding, and changing speeds → only <b>average</b> values stay constant.</paragraph>
+</div>
+
+<h3>Why gases are simpler to model than solids/liquids</h3>
+<ul>
+<li>Gas molecules are usually <b>far apart</b>.</li>
+<li><b>Intermolecular forces</b> are mostly negligible except during <b>collisions</b>.</li>
+<li>So at <b>low P</b> and <b>high T</b> (well above liquefaction/solidification), gases approximately follow simple <b>P–V–T</b> relations.</li>
+</ul>
+
+<h3>Empirical P–V–T relation for a fixed sample</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af488f"><b>PV = KT</b> (fixed gas sample; approx. valid at low P, high T)</paragraph>
+<paragraph id="6a8930c78c07765018af4890"><b>P</b> = pressure</paragraph>
+<paragraph id="6a8930c78c07765018af4891"><b>V</b> = volume</paragraph>
+<paragraph id="6a8930c78c07765018af4892"><b>T</b> = absolute temperature (K)</paragraph>
+<paragraph id="6a8930c78c07765018af4893"><b>K</b> = constant for that sample (depends on amount of gas; changes if molecule number changes)</paragraph>
+</div>
+
+<ul>
+<li>Molecular view: <b>K ∝ N</b>, where <b>N</b> = number of molecules.</li>
+<li>So write <b>K = Nk</b>.</li>
+<li>Experiments show <b>k</b> is the same for all gases → the <b>Boltzmann constant</b> <b>k<sub>B</sub></b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4894"><b> PV = Nk<sub>B</sub>T</b>  ⇒  <b>PV/(NT) = constant = k<sub>B</sub></b></paragraph>
+<paragraph id="6a8930c78c07765018af4895"><b>N</b> = number of molecules</paragraph>
+<paragraph id="6a8930c78c07765018af4896"><b>k<sub>B</sub></b> = Boltzmann constant (universal)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4897"><b>:</b> If two gases have the same <b>P, V, T</b>, then they must have the same <b>N</b> → leads to <b>Avogadro’s hypothesis</b>.</paragraph>
+</div>
+
+<h3>Avogadro’s hypothesis, Avogadro number, and the mole</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4898"><b>Avogadro’s hypothesis:</b> At fixed <b>T</b> and <b>P</b>, the <b>number of molecules per unit volume</b> is the same for all gases (equal volumes at same P,T contain equal numbers of molecules).</paragraph>
+</div>
+
+<ul>
+<li>Number of molecules in <b>22.4 L</b> of any gas at STP = <b>6.02 × 10<sup>23</sup></b>.</li>
+<li>This is the <b>Avogadro number</b> <b>N<sub>A</sub></b>.</li>
+<li><b>STP (here):</b> <b>273 K</b> and <b>1 atm</b>.</li>
+<li><b>Mass of 22.4 L</b> of any gas at STP = its <b>molecular weight in grams</b>.</li>
+<li>This amount is <b>one mole</b>.</li>
+<li>Historically: Avogadro used reaction data; <b>kinetic theory explains</b> why it works.</li>
+</ul>
+
+<h3>Ideal (perfect) gas equation and the universal gas constant</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4899"><b> PV = μRT</b></paragraph>
+<paragraph id="6a8930c78c07765018af489a"><b>μ</b> = number of moles</paragraph>
+<paragraph id="6a8930c78c07765018af489b"><b>R</b> = universal gas constant = <b>N<sub>A</sub>k<sub>B</sub></b></paragraph>
+<paragraph id="6a8930c78c07765018af489c"><b>T</b> = absolute temperature (K)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af489d">Using kelvin (absolute T): <b>R = 8.314 J mol<sup>−1</sup> K<sup>−1</sup></b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af489e"><b> μ = M/M<sub>0</sub> = N/N<sub>A</sub></b></paragraph>
+<paragraph id="6a8930c78c07765018af489f"><b>M</b> = mass of sample containing <b>N</b> molecules</paragraph>
+<paragraph id="6a8930c78c07765018af48a0"><b>M<sub>0</sub></b> = molar mass (mass of 1 mole)</paragraph>
+<paragraph id="6a8930c78c07765018af48a1"><b>N<sub>A</sub></b> = Avogadro number</paragraph>
+</div>
+
+<ul>
+<li>From (12.4) + (12.3), ideal gas law in molecular form:</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48a2"><b>PV = k<sub>B</sub>NT</b></paragraph>
+<paragraph id="6a8930c78c07765018af48a3"><b>k<sub>B</sub></b> = Boltzmann constant</paragraph>
+<paragraph id="6a8930c78c07765018af48a4"><b>N</b> = number of molecules</paragraph>
+</div>
+
+<ul>
+<li>Divide by <b>V</b> to get pressure form using number density <b>n</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48a5"><b>P = k<sub>B</sub> n T</b></paragraph>
+<paragraph id="6a8930c78c07765018af48a6"><b>n</b> = number density = molecules per unit volume (= N/V)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48a7"><b>Boltzmann constant (SI):</b> <b>k<sub>B</sub> = 1.38 × 10<sup>−23</sup> J K<sup>−1</sup></b>.</paragraph>
+</div>
+
+<h3>Density form of the ideal gas equation</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48a8"><b> ρ = (P M<sub>0</sub>)/(R T)</b>  (equivalently <b>R T ρ / P = M<sub>0</sub></b>)</paragraph>
+<paragraph id="6a8930c78c07765018af48a9"><b>ρ</b> = mass density</paragraph>
+<paragraph id="6a8930c78c07765018af48aa"><b>P</b> = pressure</paragraph>
+<paragraph id="6a8930c78c07765018af48ab"><b>M<sub>0</sub></b> = molar mass</paragraph>
+<paragraph id="6a8930c78c07765018af48ac"><b>R</b> = gas constant</paragraph>
+<paragraph id="6a8930c78c07765018af48ad"><b>T</b> = absolute temperature</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af48ae"><b>Exam tip:</b> Always use <b>kelvin</b> in ideal-gas questions. From °C: <b>T(K) = t(°C) + 273</b> (approx.).</paragraph>
+</div>
+
+<h3>Ideal gas vs real gas; when real gases approximate ideal behaviour</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48af"><b>Ideal gas:</b> obeys <b>PV = μRT</b> <b>exactly</b> at all P and T. It’s a <b>model</b> (no real gas is perfectly ideal).</paragraph>
+</div>
+
+<ul>
+<li><b>Real gases</b> deviate from ideal behaviour, but deviations are small at:</li>
+<ul>
+<li><b>low pressures</b></li>
+<li><b>high temperatures</b></li>
+</ul>
+<li>Why: molecules far apart → <b>intermolecular forces negligible</b> → near-ideal behaviour.</li>
+<li>Graph idea (Fig. 12.1): real-gas curves tend towards the ideal-gas line as P ↓ and T ↑.</li>
+</ul>
+
+<h3>Boyle’s law (isothermal process)</h3>
+<ul>
+<li>Hold <b>μ</b> and <b>T</b> constant in <b>PV = μRT</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48b0"><b> PV = constant</b> (fixed amount of gas, constant T)</paragraph>
+<paragraph id="6a8930c78c07765018af48b1"><b>Meaning:</b> for fixed mass at constant T, <b>P ∝ 1/V</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48b2"><b>Boyle’s law works best</b> at <b>high T</b> and <b>low P</b>. Experimental P–V curves approach the ideal hyperbola in these conditions (Fig. 12.2).</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-12.webp" decoding="async" fetchpriority="high" height="304" loading="eager" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-12.webp" srcset="img/Untitled-12.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="312"/>
+    </button>
+  </div>
+</figure>
+
+</div>
+
+<h3>Charles’ law (isobaric process)</h3>
+<ul>
+<li>Hold <b>P</b> constant. From the P–V–T relation, <b>V</b> is proportional to absolute <b>T</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48b3"><b>Charles’ law: V ∝ T</b> (constant pressure, fixed amount of gas)</paragraph>
+<paragraph id="6a8930c78c07765018af48b4"><b>Meaning:</b> for fixed P, <b>V/T = constant</b>.</paragraph>
+</div>
+
+<ul>
+<li>Graph idea: measured T–V curves get close to the straight line predicted by Charles’ law under suitable conditions.</li>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-13.webp" decoding="async" height="280" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-13.webp" srcset="img/Untitled-13.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="307"/>
+    </button>
+  </div>
+</figure>
+
+</ul>
+
+<h3>Mixture of ideal gases and Dalton’s law of partial pressures</h3>
+<ul>
+<li>Take a mixture of <b>non-interacting ideal gases</b> in volume <b>V</b> at temperature <b>T</b>.</li>
+<li>Mixture has <b>μ<sub>1</sub></b> moles of gas 1, <b>μ<sub>2</sub></b> moles of gas 2, … and total pressure <b>P</b>.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48b5"><b>PV = (μ<sub>1</sub> + μ<sub>2</sub> + …) RT</b></paragraph>
+<paragraph id="6a8930c78c07765018af48b6"><b>P</b> = total pressure</paragraph>
+<paragraph id="6a8930c78c07765018af48b7"><b>μ<sub>i</sub></b> = moles of i-th gas</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48b8"><b> P = (μ<sub>1</sub>RT)/V + (μ<sub>2</sub>RT)/V + …</b></paragraph>
+<paragraph id="6a8930c78c07765018af48b9"><b> P = P<sub>1</sub> + P<sub>2</sub> + …</b></paragraph>
+<paragraph id="6a8930c78c07765018af48ba"><b>P<sub>i</sub></b> = partial pressure of i-th gas</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48bb"><b>Partial pressure P<sub>1</sub>:</b> <b>P<sub>1</sub> = μ<sub>1</sub>RT / V</b> = pressure gas 1 would exert if it alone filled volume <b>V</b> at the same <b>T</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48bc"><b>Dalton’s law:</b> For ideal gas mixtures, <b>P = ΣP<sub>i</sub></b> (total pressure = sum of partial pressures).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af48bd"><b>Common mistake:</b> Dalton’s law assumes <b>ideal / non-interacting</b> gases. At high P or low T, interactions matter → deviations.</paragraph>
+</div>
+
+<h3>Example </h3>
+<paragraph id="6a8930c78c07765018af48be">The density of water is 1000
+kg m<sup>–3</sup>. The density of water vapour at 100 °C
+and 1 atm pressure is 0.6 kg m<sup>–3</sup>. The
+volume of a molecule multiplied by the total
+number gives ,what is called, molecular
+volume. Estimate the ratio (or fraction) of
+the molecular volume to the total volume
+occupied by the water vapour under the
+above conditions of temperature and
+pressure.</paragraph>
+<ul>
+<li><b>Given:</b></li>
+<ul>
+<li>Liquid water density: <b>ρ<sub>water</sub> = 1000 kg m<sup>−3</sup></b></li>
+<li>Water vapour density at <b>100 °C</b>, <b>1 atm</b>: <b>ρ<sub>vap</sub> = 0.6 kg m<sup>−3</sup></b></li>
+</ul>
+<li><b>Molecular volume</b> (as stated): “(volume of one molecule) × (total molecules)” → i.e. volume actually occupied by the molecules, ignoring empty space.</li>
+<li><b>Task:</b> estimate the <b>fraction</b> = (molecular volume)/(total vapour volume) under these conditions.</li>
+<li><b>Reasoning framework:</b> take the same mass: in liquid it’s nearly close-packed (small volume), in gas it occupies a much larger volume; ratio ≈ <b>ρ<sub>vap</sub>/ρ<sub>water</sub></b> for the same mass.</li>
+</ul>
+
+<h2>Estimating molecular volume and size (water)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48bf"><b>Density ↔ volume (fixed mass):</b> For the same mass, if <b>density ↓</b> then <b>volume ↑</b>. So when liquid → vapour, the <b>volume increases by the inverse of the density drop</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48c0"><b>How much of the phase volume is “actual molecule volume”?</b></paragraph>
+<ul>
+<li>Assume (roughly) in <b>liquid</b> the molecules are closely packed ⇒ density of a molecule ≈ density of bulk water.</li>
+<li>So in <b>liquid</b>: fraction (molecular volume / total volume) ≈ <b>1</b>.</li>
+<li>If on vaporisation the total volume for the same mass increases by factor <i>k</i>, then in <b>vapour</b> the fraction becomes <b>1/k</b>.</li>
+</ul>
+<paragraph id="6a8930c78c07765018af48c1">Given data: vapour volume = (1000/0.6) × liquid volume = 1/(6 × 10<sup>−4</sup>) times larger ⇒ fraction occupied by molecules in vapour ≈ <b>6 × 10<sup>−4</sup></b>.</paragraph>
+</div>
+
+<h3>Example </h3>
+Estimate the volume of a
+water molecule using the data in Example
+12.1.
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48c2"><b>Close-packing idea (liquid/solid):</b> In liquid (or solid) water, molecules are closely packed ⇒ take density of a molecule ≈ density of bulk water.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48c3"><b>Molar mass:</b> M(H<sub>2</sub>O) = (2 + 16) g = 18 g = 0.018 kg</paragraph>
+<paragraph id="6a8930c78c07765018af48c4"><b>Mass of one molecule:</b> m = (mass of 1 mole)/(N<sub>A</sub>) = (0.018)/(6 × 10<sup>23</sup>) kg = 3 × 10<sup>−26</sup> kg</paragraph>
+<paragraph id="6a8930c78c07765018af48c5"><b>From density:</b> V = m/ρ</paragraph>
+<paragraph id="6a8930c78c07765018af48c6"><b>Sphere model:</b> V = (4/3)πr<sup>3</sup></paragraph>
+<paragraph id="6a8930c78c07765018af48c7"><b>Symbols:</b> m = mass of one molecule; ρ = density; V = volume of one molecule; r = effective radius; π = 3.1416…; N<sub>A</sub> ≈ 6 × 10<sup>23</sup> mol<sup>−1</sup>.</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af48c8"><b>Given/assumed:</b> ρ (bulk water) ≈ 1000 kg m<sup>−3</sup>.</paragraph>
+
+<paragraph id="6a8930c78c07765018af48c9"><b>Step 1: mass of one molecule</b></paragraph>
+<paragraph id="6a8930c78c07765018af48ca">1 mole has mass 0.018 kg and contains ~6 × 10<sup>23</sup> molecules ⇒</paragraph>
+<paragraph id="6a8930c78c07765018af48cb">m = (0.018)/(6 × 10<sup>23</sup>) = 3 × 10<sup>−26</sup> kg.</paragraph>
+
+<paragraph id="6a8930c78c07765018af48cc"><b>Step 2: volume of one molecule</b></paragraph>
+<paragraph id="6a8930c78c07765018af48cd">V = m/ρ = (3 × 10<sup>−26</sup>)/(1000) = 3 × 10<sup>−29</sup> m<sup>3</sup>.</paragraph>
+
+<paragraph id="6a8930c78c07765018af48ce"><b>Step 3: effective radius</b></paragraph>
+<paragraph id="6a8930c78c07765018af48cf">Using V = (4/3)πr<sup>3</sup> ⇒</paragraph>
+<paragraph id="6a8930c78c07765018af48d0">r ≈ 2 × 10<sup>−10</sup> m = 2 Å.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af48d1">These are <b>order-of-magnitude</b> estimates: molecule ≈ sphere + liquid ≈ closely packed.</paragraph>
+<paragraph id="6a8930c78c07765018af48d2">1 Å = 10<sup>−10</sup> m; many exam answers expect Å-scale molecular sizes.</paragraph>
+</div>
+
+<h2>Estimating interatomic/intermolecular distance in water</h2>
+
+<h3>Example </h3>
+<paragraph id="6a8930c78c07765018af48d3">What is the average
+distance between atoms (interatomic
+distance) in water? Use the data given in
+Examples 12.1 and 12.2.</paragraph>
+
+<paragraph id="6a8930c78c07765018af48d4"><b>Given (from earlier):</b> Same mass of water as vapour has <b>1.67 × 10<sup>3</sup></b> times the volume of the same mass as liquid.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48d5"><b>Scaling rule:</b> If volume available per molecule increases by factor <i>K</i>, then a typical linear length (separation) scales as <b>K<sup>1/3</sup></b>.</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af48d6"><b>Reasoning:</b> Volume per molecule in vapour increases by 1.67 × 10<sup>3</sup> ≈ 10<sup>3</sup> ⇒ linear scale increases by (10<sup>3</sup>)<sup>1/3</sup> = 10.</paragraph>
+<paragraph id="6a8930c78c07765018af48d7">From Example 12.2: r ≈ 2 Å.</paragraph>
+<paragraph id="6a8930c78c07765018af48d8">New “radius scale” in vapour ≈ 10 × 2 Å = 20 Å.</paragraph>
+<paragraph id="6a8930c78c07765018af48d9">Average distance (≈ twice this scale) ≈ 2 × 20 Å = <b>40 Å</b>.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af48da">Don’t scale <b>distance</b> with the volume factor directly. Use <b>cube-root</b> scaling: distance ∝ V<sup>1/3</sup>.</paragraph>
+</div>
+
+<h2>Partial pressures in gas mixtures: linking pressure, mole number, molecule number, and density</h2>
+
+<h3>Example </h3>
+<paragraph id="6a8930c78c07765018af48db">vessel contains two nonreactive
+gases : neon (monatomic) and
+oxygen (diatomic). The ratio of their partial
+pressures is 3:2. Estimate the ratio of (i) number of molecules and (ii) mass density
+of neon and oxygen in the vessel. Atomic
+mass of Ne = 20.2 u, molecular mass of O<sub>2</sub>
+= 32.0 u.</paragraph>
+<div>
+<paragraph id="6a8930c78c07765018af48dc"><b>Given:</b> Two non-reactive gases in a vessel: neon (Ne) + oxygen (O<sub>2</sub>). Partial pressure ratio: P<sub>Ne</sub> : P<sub>O2</sub> = 3 : 2.</paragraph>
+<paragraph id="6a8930c78c07765018af48dd"><b>Atomic/molecular masses:</b> Ne = 20.2 u, O<sub>2</sub> = 32.0 u.</paragraph></div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48de"><b>Partial pressure:</b> Pressure a gas would exert if it <b>alone</b> occupied the vessel at the same V and T.</paragraph>
+<paragraph id="6a8930c78c07765018af48df"><b>Dalton’s law:</b> For non-reactive gases, <b>P<sub>total</sub> = ΣP<sub>i</sub></b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af48e0"><b>Ideal gas:</b> PV = μRT</paragraph>
+<paragraph id="6a8930c78c07765018af48e1"><b>Amount of substance:</b> μ = N/N<sub>A</sub> = m/M</paragraph>
+<paragraph id="6a8930c78c07765018af48e2"><b>Symbols:</b> P = pressure; V = volume; μ = moles; R = gas constant; T = absolute temperature; N = number of molecules; N<sub>A</sub> = Avogadro’s number; m = mass; M = molar mass; ρ = mass density (= m/V).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48e3">For two ideal gases in the <b>same vessel</b>, V and T are common ⇒ from PV = μRT, <b>P ∝ μ</b> (at fixed V, T).</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af48e4"><b>Let 1 = neon, 2 = oxygen.</b> With common V, T:</paragraph>
+<paragraph id="6a8930c78c07765018af48e5">P<sub>1</sub>V = μ<sub>1</sub>RT and P<sub>2</sub>V = μ<sub>2</sub>RT ⇒ (P<sub>1</sub>/P<sub>2</sub>) = (μ<sub>1</sub>/μ<sub>2</sub>).</paragraph>
+<paragraph id="6a8930c78c07765018af48e6">Given (P<sub>1</sub>/P<sub>2</sub>) = 3/2 ⇒ (μ<sub>1</sub>/μ<sub>2</sub>) = 3/2.</paragraph>
+
+<paragraph id="6a8930c78c07765018af48e7"><b>(i) Ratio of number of molecules</b></paragraph>
+<paragraph id="6a8930c78c07765018af48e8">μ = N/N<sub>A</sub> ⇒ μ<sub>1</sub>/μ<sub>2</sub> = N<sub>1</sub>/N<sub>2</sub>.</paragraph>
+<paragraph id="6a8930c78c07765018af48e9">So, <b>N<sub>Ne</sub>/N<sub>O2</sub> = 3/2</b>.</paragraph>
+
+<paragraph id="6a8930c78c07765018af48ea"><b>(ii) Ratio of mass densities</b></paragraph>
+<paragraph id="6a8930c78c07765018af48eb">μ = m/M ⇒ μ<sub>1</sub>/μ<sub>2</sub> = (m<sub>1</sub>/M<sub>1</sub>)/(m<sub>2</sub>/M<sub>2</sub>) = (m<sub>1</sub>/m<sub>2</sub>)(M<sub>2</sub>/M<sub>1</sub>).</paragraph>
+<paragraph id="6a8930c78c07765018af48ec">Also ρ = m/V, and both gases share the same vessel volume V, so</paragraph>
+<paragraph id="6a8930c78c07765018af48ed">ρ<sub>1</sub>/ρ<sub>2</sub> = (m<sub>1</sub>/V)/(m<sub>2</sub>/V) = m<sub>1</sub>/m<sub>2</sub>.</paragraph>
+<paragraph id="6a8930c78c07765018af48ee">Hence,</paragraph>
+<paragraph id="6a8930c78c07765018af48ef">ρ<sub>1</sub>/ρ<sub>2</sub> = (μ<sub>1</sub>/μ<sub>2</sub>)(M<sub>1</sub>/M<sub>2</sub>).</paragraph>
+<paragraph id="6a8930c78c07765018af48f0">Substitute μ<sub>1</sub>/μ<sub>2</sub> = 3/2, M<sub>1</sub> = 20.2, M<sub>2</sub> = 32.0:</paragraph>
+<paragraph id="6a8930c78c07765018af48f1">ρ<sub>Ne</sub>/ρ<sub>O2</sub> = (3/2) × (20.2/32.0) = <b>0.947</b> (approx).</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af48f2">Using μ = m/M: keep <b>m and M in the same units</b> (both kg or both g).</paragraph>
+<paragraph id="6a8930c78c07765018af48f3">Same vessel: don’t mix up <b>number density</b> (molecules/volume) vs <b>mass density</b> (mass/volume).</paragraph>
+</div>
+
+<h2>12.4 Kinetic theory of an ideal gas: assumptions and molecular picture</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48f4"><b>Kinetic theory idea:</b> A gas has a huge number of molecules (≈ Avogadro scale) in <b>continuous random motion</b>.</paragraph>
+</div>
+
+<ul>
+<li>At ordinary P and T, average intermolecular separation is about <b>10× (or more)</b> the molecular size (~<b>2 Å</b>).</li>
+<li>So intermolecular forces are usually <b>negligible</b>; molecules travel in straight lines (Newton’s 1st law) between collisions.</li>
+<li>Sometimes molecules come close; forces act and velocities change → these interactions are <b>collisions</b>.</li>
+<li>Molecules collide with each other + container walls; kinetic theory treats collisions as <b>elastic</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48f5"><b>Elastic collision ⇒</b> total kinetic energy is conserved (and total momentum is conserved as usual).</paragraph>
+</div>
+
+<h2>12.4.1 Pressure of an ideal gas from kinetic theory</h2>
+
+<h3>12.4.1 Derivation setup (cube model and momentum transfer)</h3>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-14.webp" decoding="async" height="206" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-14.webp" srcset="img/Untitled-14.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="268"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="6a8930c78c07765018af48f6">Take gas in a cube of side <b>l</b>. Choose axes along the sides. Pick the wall parallel to the yz-plane, area <b>A = l<sup>2</sup></b>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af48f7"><b>One molecule hitting the wall:</b> Molecule of mass <b>m</b>, velocity components (v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>) strikes the wall (normal along x). Elastic collision with a smooth wall ⇒</paragraph>
+<ul>
+<li>v<sub>y</sub>, v<sub>z</sub> unchanged</li>
+<li>v<sub>x</sub> reverses: (v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>) → (−v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>)</li>
+</ul>
+</div>
+
+<paragraph id="6a8930c78c07765018af48f8"><b>Change in molecule momentum (x-dir):</b></paragraph>
+<paragraph id="6a8930c78c07765018af48f9">Δp<sub>x</sub> = (−mv<sub>x</sub>) − (mv<sub>x</sub>) = −2mv<sub>x</sub>.</paragraph>
+<paragraph id="6a8930c78c07765018af48fa">So momentum given to the wall per collision = <b>+2mv<sub>x</sub></b> (momentum conservation).</paragraph>
+
+<h3>Molecules hitting the wall in time Δt</h3>
+
+<paragraph id="6a8930c78c07765018af48fb">In time Δt, a molecule with x-component v<sub>x</sub> reaches the wall only if it is within distance v<sub>x</sub>Δt from it. So only molecules in volume <b>A v<sub>x</sub> Δt</b> are “eligible” to hit in that time.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af48fc">Random motion ⇒ on average <b>half</b> move towards the wall, half away.</paragraph>
+<paragraph id="6a8930c78c07765018af48fd">So number striking the wall in time Δt:</paragraph>
+<paragraph id="6a8930c78c07765018af48fe"><b>(1/2) n A v<sub>x</sub> Δt</b></paragraph>
+<paragraph id="6a8930c78c07765018af48ff">Here <b>n</b> = number density (molecules per unit volume) for that velocity group.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4900"><b>Total momentum transferred to wall in time Δt (Eq. 12.10):</b></paragraph>
+<paragraph id="6a8930c78c07765018af4901">Q = (2 m v<sub>x</sub>) ( (1/2) n A v<sub>x</sub> Δt )</paragraph>
+<paragraph id="6a8930c78c07765018af4902"><b>Symbols:</b> Q = total momentum transferred; m = molecular mass; v<sub>x</sub> = x-component of velocity; n = number density; A = wall area; Δt = time interval.</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af4903"><b>Force + pressure link:</b> Force on wall = (rate of momentum transfer) = Q/Δt. Pressure <b>P</b> = force/area = (Q/Δt)/A.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4904"><b>Pressure due to molecules with x-speed v<sub>x</sub> (Eq. 12.11):</b></paragraph>
+<paragraph id="6a8930c78c07765018af4905">P = Q/(AΔt) = n m v<sub>x</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930c78c07765018af4906"><b>Symbols:</b> P = pressure; n = number density (for that velocity group); m = molecular mass; v<sub>x</sub><sup>2</sup> = square of x-component.</paragraph>
+</div>
+
+<h3>Velocity distribution and averaging</h3>
+
+<paragraph id="6a8930c78c07765018af4907">Real gas: molecules don’t all have the same velocity ⇒ there’s a distribution. So we add up (average) over all velocity groups.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4908"><b>Total pressure using mean of v<sub>x</sub><sup>2</sup> (Eq. 12.12):</b></paragraph>
+<paragraph id="6a8930c78c07765018af4909">P = n m ⟨v<sub>x</sub><sup>2</sup>⟩</paragraph>
+<paragraph id="6a8930c78c07765018af490a"><b>Symbols:</b> ⟨v<sub>x</sub><sup>2</sup>⟩ = average of v<sub>x</sub><sup>2</sup> over molecules; n = overall number density.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af490b"><b>Isotropy (no preferred direction):</b> In equilibrium, averages are the same in x, y, z:</paragraph>
+<paragraph id="6a8930c78c07765018af490c">⟨v<sub>x</sub><sup>2</sup>⟩ = ⟨v<sub>y</sub><sup>2</sup>⟩ = ⟨v<sub>z</sub><sup>2</sup>⟩.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af490d"><b>Component mean-squares vs mean-square speed (Eq. 12.13):</b></paragraph>
+<paragraph id="6a8930c78c07765018af490e">⟨v<sub>x</sub><sup>2</sup>⟩ = (1/3)[⟨v<sub>x</sub><sup>2</sup>⟩ + ⟨v<sub>y</sub><sup>2</sup>⟩ + ⟨v<sub>z</sub><sup>2</sup>⟩] = (1/3)⟨v<sup>2</sup>⟩</paragraph>
+<paragraph id="6a8930c78c07765018af490f"><b>Symbols:</b> v = speed; ⟨v<sup>2</sup>⟩ = mean of (speed)<sup>2</sup>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4910"><b>Kinetic theory pressure equation (Eq. 12.14):</b></paragraph>
+<paragraph id="6a8930c78c07765018af4911">P = (1/3) n m ⟨v<sup>2</sup>⟩</paragraph>
+<paragraph id="6a8930c78c07765018af4912"><b>Symbols:</b> P = pressure; n = number density (molecules per unit volume); m = mass of one molecule; ⟨v<sup>2</sup>⟩ = mean square speed.</paragraph>
+</div>
+
+<h3>Remarks on the derivation (what to remember)</h3>
+
+<ul>
+<li><b>Container shape doesn’t matter:</b> Cube is just for convenience. For any vessel, take a tiny planar area element and run the same logic. Final result has no A or Δt.</li>
+<li><b>Pascal’s law (Ch. 9):</b> Equilibrium gas ⇒ pressure same everywhere, so the result applies throughout the gas.</li>
+<li><b>We “ignore” intermolecular collisions:</b> Not fully justified here, but in steady state, random collisions don’t change the <i>average</i> hit-rate on the wall for given velocity components: statistically, molecules replaced by others with similar components.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af4913">Exam trap: don’t write P = nmv<sup>2</sup>. Correct is <b>P = (1/3)nm⟨v<sup>2</sup>⟩</b>. The <b>1/3</b> is from isotropy (3 equal directional components).</paragraph>
+<paragraph id="6a8930c78c07765018af4914">Be clear: v = <b>speed</b>; v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub> = <b>components</b>. Use squares + averages (mean-square), not plain means.</paragraph>
+</div>
+
+<h2>Molecular Collisions and Steady Velocity Distribution</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4915">For a steady velocity distribution, collisions must reshuffle velocities so that after collision molecules can end up with many possible velocities (e.g. components (v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>)) while the overall statistical distribution stays unchanged.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4916">While finding averages like ⟨v<sub>x</sub><sup>2</sup>⟩ (⇒ pressure), collisions don’t change the result if:</paragraph>
+<ul>
+<li>collisions are not “too frequent” (in the sense needed for this derivation), and</li>
+<li>collision time is negligible compared to time between collisions.</li>
+</ul>
+<paragraph id="6a8930c78c07765018af4917">Then collisions don’t affect the mean-squared velocity components used in kinetic theory.</paragraph>
+</div>
+
+<h2>12.4.2 Kinetic Interpretation of Temperature</h2>
+
+<h3>Pressure–Kinetic Energy Relations</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4918">$P V=(1 / 3) n V m \overline{v^2}$</paragraph>
+<paragraph id="6a8930c78c07765018af4919">$P V=(2 / 3) N x^{1 / 2} m \overline{v^2}$</paragraph>
+<paragraph id="6a8930c78c07765018af491a">P = pressure</paragraph>
+<paragraph id="6a8930c78c07765018af491b">V = volume of gas</paragraph>
+<paragraph id="6a8930c78c07765018af491c">n = number density (molecules per unit volume)</paragraph>
+<paragraph id="6a8930c78c07765018af491d">N = number of molecules in sample = nV</paragraph>
+<paragraph id="6a8930c78c07765018af491e">m = mass of one molecule</paragraph>
+<paragraph id="6a8930c78c07765018af491f">⟨v<sup>2</sup>⟩ = mean square speed (also written as &lt;v<sup>2</sup>&gt;)</paragraph>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4920">The bracketed term (½ m ⟨v<sup>2</sup>⟩) = <b>average translational KE per molecule</b>.</paragraph>
+</div>
+
+<h3>Internal Energy of an Ideal Gas (Purely Kinetic)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4921">$E=N \quad(1 / 2) m \overline{v^2}$</paragraph>
+<paragraph id="6a8930c78c07765018af4922">E = internal energy of an ideal gas (here: translational part)</paragraph>
+<paragraph id="6a8930c78c07765018af4923">N = number of molecules</paragraph>
+<paragraph id="6a8930c78c07765018af4924">m = mass of one molecule</paragraph>
+<paragraph id="6a8930c78c07765018af4925">⟨v<sup>2</sup>⟩ = mean square speed</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4926">In this section, E means <b>translational</b> internal energy only. Total internal energy U can also include other degrees of freedom (later in chapter).</paragraph>
+</div>
+
+<h3>Link Between Pressure and Internal Energy</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4927">PV = (2/3) E    </paragraph>
+<paragraph id="6a8930c78c07765018af4928">P = pressure</paragraph>
+<paragraph id="6a8930c78c07765018af4929">V = volume</paragraph>
+<paragraph id="6a8930c78c07765018af492a">E = internal energy (translational here)</paragraph>
+</div>
+
+<h3>Temperature as Average Molecular Kinetic Energy</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af492b">E = (3/2) k<sub>B</sub> N T    (12.18)</paragraph>
+<paragraph id="6a8930c78c07765018af492c">or $E / N=1 / 2 m \overline{v^2}=(3 / 2) k_B T$</paragraph>
+<paragraph id="6a8930c78c07765018af492d">E = internal energy (translational)</paragraph>
+<paragraph id="6a8930c78c07765018af492e">N = number of molecules</paragraph>
+<paragraph id="6a8930c78c07765018af492f">k<sub>B</sub> = Boltzmann constant</paragraph>
+<paragraph id="6a8930c78c07765018af4930">T = absolute temperature (kelvin)</paragraph>
+<paragraph id="6a8930c78c07765018af4931">m = mass of one molecule</paragraph>
+<paragraph id="6a8930c78c07765018af4932">⟨v<sup>2</sup>⟩ = mean square speed</paragraph>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4933"><b>Kinetic meaning of temperature:</b> average translational KE per molecule ∝ absolute temperature</paragraph>
+<paragraph id="6a8930c78c07765018af4934">$1 / 2 m \overline{\left\langle v^2\right\rangle}=(3 / 2) k_B T$.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>Average KE per molecule depends <b>only</b> on T.</li>
+<li>It’s <b>independent</b> of pressure, volume, and the type of ideal gas.</li>
+<li>k<sub>B</sub> links macroscopic T (thermo variable) to microscopic molecular KE.</li>
+<li>From : ideal-gas internal energy depends only on <b>temperature</b>, not on P or V.</li>
+<li>So kinetic theory lines up with the ideal gas equation + gas laws from it.</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af4935">Don’t mix up ⟨v⟩ (average speed) with √⟨v<sup>2</sup>⟩ (rms speed). The temperature link uses ⟨v<sup>2</sup>⟩.</paragraph>
+</div>
+
+<h3>Mixture of Non-reactive Ideal Gases and Dalton’s Law</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4936">$P=(1 / 3)\left[n_1 m_1 \overline{v_1^2}+n_2 m_2 \overline{v_2^2}+\ldots\right]$</paragraph>
+<paragraph id="6a8930c78c07765018af4937">P = total pressure of mixture</paragraph>
+<paragraph id="6a8930c78c07765018af4938">n<sub>i</sub> = number density of gas i</paragraph>
+<paragraph id="6a8930c78c07765018af4939">m<sub>i</sub> = molecular mass of gas i</paragraph>
+<paragraph id="6a8930c78c07765018af493a">$\left\langle v_i^2\right\rangle$ = mean square speed of molecules of gas i</paragraph>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af493b">At equilibrium (same T), different gases have the <b>same average KE per molecule</b>:</paragraph>
+<paragraph id="6a8930c78c07765018af493c">$1 / 2 m_1 \overline{v_1^2}=1 / 2 m_2 \overline{v_2^2}=(3 / 2) k_B T$</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af493d">P = (n<sub>1</sub> + n<sub>2</sub> + …) k<sub>B</sub> T </paragraph>
+<paragraph id="6a8930c78c07765018af493e">P = total pressure</paragraph>
+<paragraph id="6a8930c78c07765018af493f">n<sub>1</sub>, n<sub>2</sub>, … = number densities of components</paragraph>
+<paragraph id="6a8930c78c07765018af4940">k<sub>B</sub> = Boltzmann constant</paragraph>
+<paragraph id="6a8930c78c07765018af4941">T = absolute temperature</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4942"> = <b>Dalton’s law of partial pressures</b>: total pressure = sum of the pressures each gas would exert alone at the same T and V (i.e. depends on total number density).</paragraph>
+</div>
+
+<h3>Root Mean Square Speed (rms) and Typical Molecular Speeds</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4943">$\overline{\left\langle v^2\right\rangle}$ = 3 k<sub>B</sub> T / m</paragraph>
+<paragraph id="6a8930c78c07765018af4944">$\overline{\left\langle v^2\right\rangle}$ = mean square speed</paragraph>
+<paragraph id="6a8930c78c07765018af4945">k<sub>B</sub> = Boltzmann constant</paragraph>
+<paragraph id="6a8930c78c07765018af4946">T = absolute temperature</paragraph>
+<paragraph id="6a8930c78c07765018af4947">m = mass of one molecule</paragraph>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4948"><b>Root mean square (rms) speed:</b></paragraph>
+<paragraph id="6a8930c78c07765018af4949">$\mathrm{V}_{\mathrm{rms}}=\overline{\mathrm{V}}^2$</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>At T = 300 K, for nitrogen: √⟨v<sup>2</sup>⟩ ≈ 516 m s<sup>−1</sup> (about the speed of sound in air).</li>
+<li>From ½ m ⟨v<sup>2</sup>⟩ = (3/2) k<sub>B</sub>T: at the same T, <b>lighter molecules → bigger v<sub>rms</sub></b>.</li>
+</ul>
+</div>
+
+<h2>Worked Examples </h2>
+
+<h3>Example </h3>
+A flask contains argon and
+chlorine in the ratio of 2:1 by mass. The
+temperature of the mixture is 27 °C. Obtain
+the ratio of (i) average kinetic energy per
+molecule, and (ii) root mean square speed
+v<sub>rms</sub> of the molecules of the two gases.
+Atomic mass of argon = 39.9 u; Molecular
+mass of chlorine = 70.9 u.
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af494a"><b>Crucial fact:</b> For any ideal gas (mono/di/poly), <b>average KE per molecule</b> = (3/2)k<sub>B</sub>T → depends only on <b>T</b>, not on gas type.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af494b">Given: same T = 27 °C, atomic mass Ar = 39.9 u, molecular mass Cl<sub>2</sub> = 70.9 u.</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af494c"><b>(i) Ratio of average kinetic energy per molecule (Ar : Cl<sub>2</sub>)</b></paragraph>
+<ul>
+<li>Same flask ⇒ same temperature T.</li>
+<li>Average KE/molecule = (3/2)k<sub>B</sub>T for both.</li>
+<li>So KE ratio (Ar : Cl<sub>2</sub>) = <b>1 : 1</b>.</li>
+</ul>
+
+<paragraph id="6a8930c78c07765018af494d"><b>(ii) Ratio of rms speeds</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af494e">½ m v<sub>rms</sub><sup>2</sup> = (3/2) k<sub>B</sub> T</paragraph>
+<paragraph id="6a8930c78c07765018af494f">m = mass of one molecule</paragraph>
+<paragraph id="6a8930c78c07765018af4950">v<sub>rms</sub> = root mean square speed</paragraph>
+<paragraph id="6a8930c78c07765018af4951">T = absolute temperature</paragraph>
+</div>
+
+<ul>
+<li>Fixed T ⇒ v<sub>rms</sub><sup>2</sup> ∝ 1/m ⇒ v<sub>rms</sub> ∝ 1/√m.</li>
+<li>So (v<sub>rms,Cl</sub>/v<sub>rms,Ar</sub>)<sup>2</sup> = m<sub>Ar</sub>/m<sub>Cl</sub> = M<sub>Ar</sub>/M<sub>Cl</sub>.</li>
+<li>(v<sub>rms,Cl</sub>/v<sub>rms,Ar</sub>)<sup>2</sup> = 70.9/39.9 = 1.77.</li>
+<li>√ gives: v<sub>rms,Ar</sub>/v<sub>rms,Cl</sub> = <b>1.33</b>.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af4952">The mixture ratio by <b>mass</b> (2:1) is useless here. For (i) &amp; (ii), only common T and molecular masses matter.</paragraph>
+</div>
+
+<h3>Example </h3>
+Uranium has two isotopes
+of masses 235 and 238 units. If both are
+present in Uranium hexafluoride gas which
+would have the larger average speed ? If
+atomic mass of fluorine is 19 units,
+estimate the percentage difference in
+speeds at any temperature.
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4953">UF<sub>6</sub> = U + 6F. Given fluorine atomic mass = 19 u.</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af4954"><b>Step 1: Compare molecular masses</b></paragraph>
+<ul>
+<li><sup>235</sup>U: mass = 235 + 6×19 = 235 + 114 = <b>349 u</b>.</li>
+<li><sup>238</sup>U: mass = 238 + 114 = <b>352 u</b>.</li>
+</ul>
+
+<paragraph id="6a8930c78c07765018af4955"><b>Step 2: Use fixed-temperature kinetic theory</b></paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4956">At fixed T, average energy per molecule ½ m⟨v<sup>2</sup>⟩ is constant ⇒ <b>smaller mass ⇒ higher speed</b>.</paragraph>
+</div>
+
+<ul>
+<li>Speed ratio ∝ 1/√(mass):</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4957">v<sub>349</sub> / v<sub>352</sub> = √(352/349) = 1.0044</paragraph>
+<paragraph id="6a8930c78c07765018af4958">v<sub>349</sub> = average (or rms-type) speed scale for 349 u molecule</paragraph>
+<paragraph id="6a8930c78c07765018af4959">v<sub>352</sub> = speed scale for 352 u molecule</paragraph>
+</div>
+
+<ul>
+<li>% difference: Δv/v = (1.0044 − 1)×100% = <b>0.44%</b>.</li>
+<li>Hence <sup>235</sup>UF<sub>6</sub> (349 u) has <b>larger average speed</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af495a">Application: enrichment by diffusion through porous barrier—lighter (faster) molecules escape slightly more; inefficient → repeat many times.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af495b">Diffusion link: diffusion rate ∝ 1/√(molecular mass), since v ∝ 1/√m at fixed T.</paragraph>
+</div>
+
+<h3>Example </h3>
+<paragraph id="6a8930c78c07765018af495c">(a) When a molecule (or an
+elastic ball) hits a ( massive) wall, it
+rebounds with the same speed. When a ball
+hits a massive bat held firmly, the same
+thing happens. However, when the bat is
+moving towards the ball, the ball rebounds
+with a different speed. Does the ball move
+faster or slower? (Ch.5 will refresh your
+memory on elastic collisions.)</paragraph>
+<paragraph id="6a8930c78c07765018af495d">(b) When gas in a cylinder is compressed
+by pushing in a piston, its temperature
+rises. Guess at an explanation of this in
+terms of kinetic theory using (a) above.
+</paragraph><paragraph id="6a8930c78c07765018af495e">(c) What happens when a compressed gas
+pushes a piston out and expands. What
+would you observe ?</paragraph>
+<paragraph id="6a8930c78c07765018af495f">(d) Sachin Tendulkar used a heavy cricket
+bat while playing. Did it help him in
+anyway ?</paragraph>
+
+<paragraph id="6a8930c78c07765018af4960"><b>(a) Ball hits a massive moving bat: faster or slower rebound?</b></paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4961">Elastic hit off a <b>massive</b> wall/bat: speed <b>relative to bat</b> reverses direction, same magnitude.</paragraph>
+</div>
+
+<ul>
+<li>Ball speed in ground (wicket) frame = u (towards bat).</li>
+<li>Bat moves towards ball with speed V (towards ball) in ground frame.</li>
+<li>Ball speed relative to bat before = V + u (towards bat).</li>
+<li>After elastic rebound (massive bat): relative speed = V + u (away from bat).</li>
+<li>Back to ground frame: rebound speed = V + (V + u) = <b>2V + u</b> (away from wicket).</li>
+<li>So ball <b>speeds up</b> if bat is approaching and massive.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af4962">If bat isn’t massive, rebound speed may be &lt; u. The “massive bat” assumption makes the relative-speed reversal exact.</paragraph>
+</div>
+
+<paragraph id="6a8930c78c07765018af4963"><b>(b) Why does temperature rise on compressing gas with a piston?</b></paragraph>
+<ul>
+<li>Compression: piston moves inward towards molecules.</li>
+<li>Elastic hits with an inward-moving piston → molecules rebound faster (same idea as (a)).</li>
+<li>Average molecular KE increases ⇒ <b>T increases</b>.</li>
+</ul>
+
+<paragraph id="6a8930c78c07765018af4964"><b>(c) What happens when compressed gas expands pushing piston out?</b></paragraph>
+<ul>
+<li>Expansion: piston moves outward, away from molecules.</li>
+<li>Molecules hit a receding piston → rebound slower.</li>
+<li>Average KE decreases ⇒ <b>T decreases</b>.</li>
+<li>Observed: gas cools (cooling effects depend on conditions).</li>
+</ul>
+
+<paragraph id="6a8930c78c07765018af4965"><b>(d) Heavy cricket bat and hitting advantage (Sachin Tendulkar case)</b></paragraph>
+<ul>
+<li>Heavier bat behaves closer to a “massive” object in collision.</li>
+<li>So rebound speed of ball is larger (near massive-bat ideal) → better hitting.</li>
+</ul>
+
+<h2>12.5 Law of Equipartition of Energy</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4966"><b>Translational KE of one molecule (3D)</b> = sum of KE along 3 mutually perpendicular directions (x, y, z).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4967"><b>Kinetic energy of a single molecule</b></paragraph>
+<paragraph id="6a8930c78c07765018af4968">ε<sub>t</sub> = (1/2)m v<sub>x</sub><sup>2</sup> + (1/2)m v<sub>y</sub><sup>2</sup> + (1/2)m v<sub>z</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930c78c07765018af4969">ε<sub>t</sub>: translational kinetic energy (one molecule)</paragraph>
+<paragraph id="6a8930c78c07765018af496a">m: mass of one molecule</paragraph>
+<paragraph id="6a8930c78c07765018af496b">v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>: velocity components along x, y, z</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af496c"><b>Thermal equilibrium average</b>: at absolute temperature T, molecular energies (and hence KE) have a definite <b>average</b> over many molecules (equipartition idea).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af496d"><b>Average translational kinetic energy per molecule</b></paragraph>
+<paragraph id="6a8930c78c07765018af496e">&lt;ε<sub>t</sub>&gt; = (1/2)m&lt;v<sub>x</sub><sup>2</sup>&gt; + (1/2)m&lt;v<sub>y</sub><sup>2</sup>&gt; + (1/2)m&lt;v<sub>z</sub><sup>2</sup>&gt; = (3/2)k<sub>B</sub>T</paragraph>
+<paragraph id="6a8930c78c07765018af496f">&lt;ε<sub>t</sub>&gt;: average over molecules (or over time) in equilibrium</paragraph>
+<paragraph id="6a8930c78c07765018af4970">k<sub>B</sub>: Boltzmann constant</paragraph>
+<paragraph id="6a8930c78c07765018af4971">T: absolute temperature (K)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4972"><b>No preferred direction</b> in equilibrium ⇒ x, y, z are symmetric ⇒ average energy splits equally into the 3 translational parts.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4973"><b>Equal sharing among translational components</b></paragraph>
+<paragraph id="6a8930c78c07765018af4974">(1/2)m&lt;v<sub>x</sub><sup>2</sup>&gt; = (1/2)k<sub>B</sub>T</paragraph>
+<paragraph id="6a8930c78c07765018af4975">(1/2)m&lt;v<sub>y</sub><sup>2</sup>&gt; = (1/2)k<sub>B</sub>T</paragraph>
+<paragraph id="6a8930c78c07765018af4976">(1/2)m&lt;v<sub>z</sub><sup>2</sup>&gt; = (1/2)k<sub>B</sub>T</paragraph>
+<paragraph id="6a8930c78c07765018af4977">v<sub>x</sub>, v<sub>y</sub>, v<sub>z</sub>: velocity components</paragraph>
+<paragraph id="6a8930c78c07765018af4978">k<sub>B</sub>T/2: average energy per translational quadratic term</paragraph>
+</div>
+
+<h3>Degrees of freedom (translational) and “quadratic terms”</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4979"><b>Degree of freedom (DOF)</b>: number of independent coordinates needed to specify position (or configuration).</paragraph>
+<ul>
+<li>Constrained to a <b>line</b> → 1 coordinate → <b>1 DOF</b></li>
+<li>Motion in a <b>plane</b> → 2 coordinates → <b>2 DOF</b></li>
+<li>Motion in <b>space</b> → 3 coordinates → <b>3 DOF</b></li>
+</ul>
+<paragraph id="6a8930c78c07765018af497a"><b>Translation</b>: whole-body motion from one point to another. A molecule free in space has <b>3 translational DOF</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af497b">Each translational DOF gives an energy term with a <b>square</b> (a <b>quadratic term</b>), e.g. (1/2)mv<sub>x</sub><sup>2</sup>. In equilibrium, the average of <b>each quadratic term</b> is <b>(1/2)k<sub>B</sub>T</b>.</paragraph>
+</div>
+
+<h3>Rotational and vibrational degrees of freedom</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af497c"><b>Monatomic gases</b> (e.g. argon): only <b>translational DOF</b>.</paragraph>
+<paragraph id="6a8930c78c07765018af497d"><b>Diatomic gases</b> (e.g. O<sub>2</sub>, N<sub>2</sub>): translation + rotation about axes through centre of mass ⇒ <b>rotational DOF</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af497e"><b>Diatomic rigid-rotator model</b>: diatomic molecule has <b>two</b> independent rotation axes (⊥ to the bond). Rotation about the bond axis is ignored here: moment of inertia is tiny and (quantum reasons) it becomes “inactive” under ordinary conditions.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af497f"><b>Total energy of a rigid diatomic molecule (translation + rotation)</b></paragraph>
+<paragraph id="6a8930c78c07765018af4980">ε = ε<sub>t</sub> + ε<sub>r</sub> = (1/2)m v<sub>x</sub><sup>2</sup> + (1/2)m v<sub>y</sub><sup>2</sup> + (1/2)m v<sub>z</sub><sup>2</sup> + (1/2)I<sub>1</sub>ω<sub>1</sub><sup>2</sup> + (1/2)I<sub>2</sub>ω<sub>2</sub><sup>2</sup></paragraph>
+<paragraph id="6a8930c78c07765018af4981">ε: total energy (one molecule)</paragraph>
+<paragraph id="6a8930c78c07765018af4982">ε<sub>t</sub>: translational part</paragraph>
+<paragraph id="6a8930c78c07765018af4983">ε<sub>r</sub>: rotational part</paragraph>
+<paragraph id="6a8930c78c07765018af4984">I<sub>1</sub>, I<sub>2</sub>: moments of inertia about the two independent axes</paragraph>
+<paragraph id="6a8930c78c07765018af4985">ω<sub>1</sub>, ω<sub>2</sub>: angular speeds about those axes</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4986">Each rotational DOF contributes <b>one quadratic term</b> of the form (1/2)Iω<sup>2</sup>, just like translation has (1/2)mv<sup>2</sup>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4987"><b>Vibrational mode</b>: atoms oscillate along the interatomic axis (treat as a 1D oscillator). Different from translation/rotation: <b>one vibrational mode contributes two quadratic terms</b>:</paragraph>
+<ul>
+<li>KE term (depends on (dy/dt)<sup>2</sup>)</li>
+<li>PE term (depends on y<sup>2</sup>)</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4988"><b>Energy including vibration (example: CO at moderate T)</b></paragraph>
+<paragraph id="6a8930c78c07765018af4989">ε = ε<sub>t</sub> + ε<sub>r</sub> + ε<sub>v</sub></paragraph>
+<paragraph id="6a8930c78c07765018af498a">with ε<sub>v</sub> = (1/2)m(dy/dt)<sup>2</sup> + (1/2)k y<sup>2</sup></paragraph>
+<paragraph id="6a8930c78c07765018af498b">ε<sub>v</sub>: vibrational energy</paragraph>
+<paragraph id="6a8930c78c07765018af498c">y: vibrational coordinate (displacement along interatomic axis)</paragraph>
+<paragraph id="6a8930c78c07765018af498d">dy/dt: vibrational speed</paragraph>
+<paragraph id="6a8930c78c07765018af498e">k: force constant of the oscillator</paragraph>
+<paragraph id="6a8930c78c07765018af498f">m: (effective) mass for the vibration in this model</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af4990"><b>Vibration key point</b>: one vibrational frequency ⇒ <b>two quadratic terms</b> (KE + PE). But each translational/rotational DOF ⇒ only <b>one</b> quadratic term.</paragraph>
+</div>
+
+<h3>Statement of the law of equipartition of energy</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4991"><b>Mode of absorption of energy</b>: each <b>quadratic term</b> in the energy expression is one independent way (“mode”) to store energy.</paragraph>
+<paragraph id="6a8930c78c07765018af4992"><b>Law of equipartition of energy (Maxwell)</b>: in thermal equilibrium at absolute temperature T, energy is equally shared among all quadratic modes; <b>each quadratic mode has average energy (1/2)k<sub>B</sub>T</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>Each <b>translational</b> quadratic term ⇒ average energy <b>(1/2)k<sub>B</sub>T</b>.</li>
+<li>Each <b>rotational</b> quadratic term ⇒ average energy <b>(1/2)k<sub>B</sub>T</b>.</li>
+<li>Each <b>vibrational mode</b> ⇒ total average energy <b>k<sub>B</sub>T</b>, since it has two terms: 2 × (1/2)k<sub>B</sub>T.</li>
+</ul>
+<paragraph id="6a8930c78c07765018af4993">Proof not needed here; in exams you mainly <b>apply</b> it to find internal energy and specific heats.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af4994"><b>Exam trap</b>: Don’t mix up <b>DOF</b> and <b>mode</b> for vibration. One vibrational <b>mode</b> gives <b>two</b> quadratic terms (average energy = k<sub>B</sub>T), but one translational/rotational DOF gives <b>one</b> quadratic term (average = (1/2)k<sub>B</sub>T).</paragraph>
+</div>
+
+<h2>12.6 Specific Heat Capacity (from equipartition)</h2>
+
+<h3>12.6.1 Monatomic gases</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af4995"><b>Monatomic</b> ideal gas molecule → only <b>3 translational DOF</b>.</paragraph>
+<paragraph id="6a8930c78c07765018af4996">Average energy per molecule at temperature T:</paragraph>
+<ul>
+<li>3 quadratic translational terms → ⟨E⟩ = 3 × (1/2)k<sub>B</sub>T = <b>(3/2)k<sub>B</sub>T</b></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af4997"><b> Internal energy of 1 mole of monatomic ideal gas</b></paragraph>
+<paragraph id="6a8930c78c07765018af4998">U = (3/2)k<sub>B</sub>T × N<sub>A</sub> = (3/2)RT</paragraph>
+<paragraph id="6a8930c78c07765018af4999">U: internal energy of 1 mole of the gas</paragraph>
+<paragraph id="6a8930c78c07765018af499a">N<sub>A</sub>: Avogadro number</paragraph>
+<paragraph id="6a8930c78c07765018af499b">R: gas constant (= N<sub>A</sub>k<sub>B</sub>)</paragraph>
+<paragraph id="6a8930c78c07765018af499c">T: absolute temperature</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af499d"><b> Molar specific heat at constant volume (monatomic)</b></paragraph>
+<paragraph id="6a8930c78c07765018af499e">C<sub>v</sub> = dU/dT = (3/2)R</paragraph>
+<paragraph id="6a8930c78c07765018af499f">C<sub>v</sub>: molar heat capacity at constant volume</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49a0"><b> Ideal-gas relation between molar heat capacities</b></paragraph>
+<paragraph id="6a8930c78c07765018af49a1">C<sub>p</sub> − C<sub>v</sub> = R</paragraph>
+<paragraph id="6a8930c78c07765018af49a2">C<sub>p</sub>: molar heat capacity at constant pressure</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49a3"><b> Molar specific heat at constant pressure (monatomic)</b></paragraph>
+<paragraph id="6a8930c78c07765018af49a4">C<sub>p</sub> = (5/2)R</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49a5"><b> Ratio of specific heats (monatomic)</b></paragraph>
+<paragraph id="6a8930c78c07765018af49a6">γ = C<sub>p</sub>/C<sub>v</sub> = 5/3</paragraph>
+<paragraph id="6a8930c78c07765018af49a7">γ: adiabatic index (ratio of molar heat capacities)</paragraph>
+</div>
+
+<h3>12.6.2 Diatomic gases</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af49a8"><b>Rigid diatomic molecule (dumbbell model)</b> DOF:</paragraph>
+<ul>
+<li>3 translational</li>
+<li>2 rotational (about axes ⟂ to bond axis)</li>
+</ul>
+<paragraph id="6a8930c78c07765018af49a9">Total = <b>5</b> DOF → 5 quadratic terms → ⟨E⟩ per molecule = <b>(5/2)k<sub>B</sub>T</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49aa"><b> Internal energy of 1 mole of rigid diatomic ideal gas</b></paragraph>
+<paragraph id="6a8930c78c07765018af49ab">U = (5/2)k<sub>B</sub>T × N<sub>A</sub> = (5/2)RT</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49ac"><b> Heat capacities (rigid diatomic)</b></paragraph>
+<paragraph id="6a8930c78c07765018af49ad">C<sub>v</sub> = (5/2)R</paragraph>
+<paragraph id="6a8930c78c07765018af49ae">C<sub>p</sub> = (7/2)R</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49af"><b> Ratio of specific heats (rigid diatomic)</b></paragraph>
+<paragraph id="6a8930c78c07765018af49b0">γ = 7/5</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af49b1">If the diatomic molecule is <b>not rigid</b> and has <b>one vibrational mode</b>:</paragraph>
+<ul>
+<li>vibration adds <b>k<sub>B</sub>T per molecule</b> (2 quadratic terms)</li>
+<li>total per molecule: (5/2 + 1)k<sub>B</sub>T = <b>(7/2)k<sub>B</sub>T</b></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49b2"><b> Diatomic gas with one vibrational mode</b></paragraph>
+<paragraph id="6a8930c78c07765018af49b3">U = (7/2)RT</paragraph>
+<paragraph id="6a8930c78c07765018af49b4">C<sub>v</sub> = (7/2)R</paragraph>
+<paragraph id="6a8930c78c07765018af49b5">C<sub>p</sub> = (9/2)R</paragraph>
+<paragraph id="6a8930c78c07765018af49b6">γ = 9/7</paragraph>
+</div>
+
+<div class="remember-box">
+ Exam Tip:
+  <paragraph id="6a8930c78c07765018af49b7"></paragraph>
+  <paragraph id="6a8930c78c07765018af49b8" style="margin: 0 0 8px 0 !important;">
+    For diatomic gases, explicitly specify the molecular model being used:
+  </paragraph>
+  <ul style="list-style-type: disc !important; padding-left: 20px !important; margin: 0 !important; display: flex !important; flex-direction: column !important; gap: 8px !important;">
+    <li style="text-align: justify !important;">
+      <strong>Rigid Rotator (Vibrational modes inactive):</strong> <span class="math-tex">5 DOF → C<sub>v</sub> = 5R/2, γ = 7/5</span>
+    </li>
+    <li style="text-align: justify !important;">
+      <strong>Non-Rigid / Vibrating (One vibrational mode active):</strong> Contributes additional <span class="math-tex">: + k<sub>B</sub> T</span> per molecule (or <span class="math-tex"></span> per mole) <span class="math-tex">→ C<sub>v</sub> = 7R/2, γ = 9/7</span>
+    </li>
+  </ul>
+</div>
+
+
+<h3>12.6.3 Polyatomic gases</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af49b9">General <b>polyatomic</b> molecule has:</paragraph>
+<ul>
+<li><b>3 translational</b> DOF</li>
+<li><b>3 rotational</b> DOF</li>
+<li>some number <b>f</b> of <b>vibrational modes</b></li>
+</ul>
+<paragraph id="6a8930c78c07765018af49ba">Equipartition contributions (per molecule):</paragraph>
+<ul>
+<li>translation: (3/2)k<sub>B</sub>T</li>
+<li>rotation: (3/2)k<sub>B</sub>T</li>
+<li>vibration: f·k<sub>B</sub>T (each vibrational mode gives k<sub>B</sub>T)</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c78c07765018af49bb"><b>Polyatomic ideal gas (with f vibrational modes active)</b></paragraph>
+<paragraph id="6a8930c78c07765018af49bc">U = N<sub>A</sub>[(3/2)k<sub>B</sub>T + (3/2)k<sub>B</sub>T + f k<sub>B</sub>T]</paragraph>
+<paragraph id="6a8930c78c07765018af49bd">C<sub>v</sub> = (3 + f)R</paragraph>
+<paragraph id="6a8930c78c07765018af49be">C<sub>p</sub> = (4 + f)R</paragraph>
+<paragraph id="6a8930c78c07765018af49bf">γ = (4 + f)/(3 + f)</paragraph>
+<paragraph id="6a8930c78c07765018af49c0">f: number of vibrational modes contributing at the given temperature</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af49c1"><b>Universality (ideal gases)</b>: C<sub>p</sub> − C<sub>v</sub> = R for <b>any ideal gas</b> (mono/di/poly), regardless of vibrational modes.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af49c2"><b>Exam trap</b>: Real gases can have vibrational modes “frozen out” (quantum effect) at ordinary T. In this <b>classical</b> treatment, if a vibrational mode is said to be active, count <b>k<sub>B</sub>T per molecule</b> (not (1/2)k<sub>B</sub>T).</paragraph>
+</div>
+
+<h2>Law of Equipartition of Energy: Experimental Verification and Limits</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c78c07765018af49c3">The law of equipartition of energy is experimentally well verified for many gases at ordinary temperatures when only translational and (where applicable) rotational modes are counted.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930c78c07765018af49c4">Tables of predicted specific heats (ignoring vibrational modes) match measured values well for several gases.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49c5">For some gases (e.g. Cl<sub>2</sub>, C<sub>2</sub>H<sub>6</sub>, and many other polyatomic gases), experimental specific heats are greater than predictions if vibration is ignored.</paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49c6">This mismatch suggests: include vibrational modes for better agreement (esp. polyatomic molecules, and depends on temperature).</paragraph></li>
+</ul>
+
+<h3>Predicted molar specific heats of gases (ignoring vibrational modes)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c78c07765018af49c7">Ideal gas rule (per mole): C<sub>p</sub> − C<sub>v</sub> = R, independent of gas type.</paragraph>
+</div>
+
+<ul>
+<li>
+<paragraph id="6a8930c78c07765018af49c8"></paragraph><paragraph id="6a8930c78c07765018af49c9">Monatomic gas</paragraph> (translation only):<paragraph id="6a8930c78c07765018af49ca"></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af49cb">C<sub>v</sub> = 12.5 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49cc">C<sub>p</sub> = 20.8 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49cd">C<sub>p</sub> − C<sub>v</sub> = 8.31 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49ce">γ = C<sub>p</sub>/C<sub>v</sub> = 1.67</paragraph></li>
+</ul>
+</li>
+
+<li>
+<paragraph id="6a8930c78c07765018af49cf"></paragraph><paragraph id="6a8930c78c07765018af49d0">Diatomic gas</paragraph> (translation + rotation; vibration ignored):<paragraph id="6a8930c78c07765018af49d1"></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af49d2">C<sub>v</sub> = 20.8 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49d3">C<sub>p</sub> = 29.1 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49d4">C<sub>p</sub> − C<sub>v</sub> = 8.31 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49d5">γ = 1.40</paragraph></li>
+</ul>
+</li>
+
+<li>
+<paragraph id="6a8930c78c07765018af49d6"></paragraph><paragraph id="6a8930c78c07765018af49d7">Triatomic gas</paragraph> (translation + rotation; vibration ignored):<paragraph id="6a8930c78c07765018af49d8"></paragraph>
+<ul>
+<li><paragraph id="6a8930c78c07765018af49d9">C<sub>v</sub> = 24.93 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49da">C<sub>p</sub> = 33.24 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49db">C<sub>p</sub> − C<sub>v</sub> = 8.31 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+<li><paragraph id="6a8930c78c07765018af49dc">γ = 1.33</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c78c07765018af49dd">Ignoring vibrational modes often makes predicted values <b>too low</b>, especially for polyatomic gases → usually means vibration is contributing at that temperature.</paragraph>
+</div>
+
+<h2>Example</h2>
+A cylinder of fixed capacity
+44.8 litres contains helium gas at standard
+temperature and pressure. What is the
+amount of heat needed to raise the
+temperature of the gas in the cylinder by
+15.0 °C ? (R = 8.31 J mo1<sup>–1</sup> K<sup>–1</sup>).
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c78c07765018af49de">At constant volume, heat needed:
+  Q = μ C<sub>v</sub> ΔT (molar form)
+  No boundary work (no volume change), so no extra work term.
+</paragraph>
+</div>
+
+<h3>Given</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af49df">Volume of cylinder = 44.8 L</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af49e0">Gas = helium (monatomic)</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af49e1">Initially at STP: T = 273 K, P = 1 atm = 1.01 × 10<sup>5</sup> Pa</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af49e2">Temperature rise ΔT = 15.0 °C = 15.0 K</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af49e3">R = 8.31 J mol<sup>−1</sup> K<sup>−1</sup></paragraph></li>
+</ul>
+
+<h3>Step 1: Use molar volume at STP to find moles</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c78c07765018af49e4">From PV = μRT</paragraph> ⇒ at STP, 1 mol of ideal gas occupies 22.4 L (molar volume).<paragraph id="6a8930c78c07765018af49e5"></paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af49e6">Moles in 44.8 L: μ = 44.8 / 22.4 = 2 mol</paragraph></li>
+</ul>
+
+<h3>Step 2: Choose the correct specific heat (fixed volume)</h3>
+<ul>
+  <li>
+    <paragraph id="6a8930c78c07765018af49e7">Helium is monatomic:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c78c07765018af49e8">C<sub>v</sub> = (3/2)R</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af49e9">C<sub>p</sub> = C<sub>v</sub> + R = (3/2)R + R = (5/2)R</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930c78c07765018af49ea">Volume fixed ⇒ use </paragraph><paragraph id="6a8930c78c07765018af49eb">C<sub>v</sub></paragraph>.<paragraph id="6a8930c78c07765018af49ec"></paragraph></li>
+</ul>
+
+<h3>Step 3: Compute heat required</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af49ed">Q = μ C<sub>v</sub> ΔT</paragraph>
+  <paragraph id="6a8930c78c07765018af49ee">Q = heat supplied (J)</paragraph>
+  <paragraph id="6a8930c78c07765018af49ef">μ = number of moles (mol)</paragraph>
+  <paragraph id="6a8930c78c07765018af49f0">C<sub>v</sub> = molar specific heat at constant volume (J mol<sup>−1</sup> K<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af49f1">ΔT = temperature rise (K)</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af49f2">Q = 2 × (3/2)R × 15.0 = 45R</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af49f3">Q = 45 × 8.31 = 374 J</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930c78c07765018af49f4">⚠ Do not use C<sub>p</sub> when volume is fixed. Constant pressure heating → C<sub>p</sub>; constant volume heating → C<sub>v</sub>.</paragraph>
+</div>
+
+<h2>12.6.4 Specific Heat Capacity of Solids (Equipartition Approach)</h2>
+
+<h3>Model: atoms as 3D oscillators</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c78c07765018af49f5">In a solid, each atom vibrates about its mean position.</paragraph>
+  <paragraph id="6a8930c78c07765018af49f6">For </paragraph><paragraph id="6a8930c78c07765018af49f7">harmonic oscillation</paragraph> (1D), equipartition gives:<paragraph id="6a8930c78c07765018af49f8"></paragraph>
+  <ul>
+    <li><paragraph id="6a8930c78c07765018af49f9">Avg KE = (1/2)k<sub>B</sub>T</paragraph></li>
+    <li><paragraph id="6a8930c78c07765018af49fa">Avg PE = (1/2)k<sub>B</sub>T</paragraph></li>
+    <li><paragraph id="6a8930c78c07765018af49fb">Total per 1D oscillator = k<sub>B</sub>T</paragraph></li>
+  </ul>
+  <paragraph id="6a8930c78c07765018af49fc">In 3D: average energy per atom = 3k<sub>B</sub>T.</paragraph>
+</div>
+
+<h3>Internal energy of 1 mole of solid</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af49fd">For 1 mole, number of atoms N = N<sub>A</sub>.</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af49fe">Total energy:</paragraph></li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af49ff">U = 3 k<sub>B</sub> T × N<sub>A</sub> = 3RT</paragraph>
+  <paragraph id="6a8930c78c07765018af4a00">U = internal energy per mole (J mol<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a01">k<sub>B</sub> = Boltzmann constant</paragraph>
+  <paragraph id="6a8930c78c07765018af4a02">T = absolute temperature (K)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a03">N<sub>A</sub> = Avogadro constant</paragraph>
+  <paragraph id="6a8930c78c07765018af4a04">R = gas constant (= k<sub>B</sub>N<sub>A</sub>)</paragraph>
+</div>
+
+<h3>Specific heat of solid at constant pressure (≈ constant volume)</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a05">At constant pressure: ΔQ = ΔU + PΔV.</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a06">For solids, ΔV is negligible</paragraph> ⇒ <paragraph id="6a8930c78c07765018af4a07">ΔQ ≈ ΔU</paragraph>.<paragraph id="6a8930c78c07765018af4a08"></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af4a09">C = (ΔQ/ΔT) = (ΔU/ΔT) = 3R</paragraph>
+  <paragraph id="6a8930c78c07765018af4a0a">C = molar specific heat capacity of the solid (J mol<sup>−1</sup> K<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a0b">Q = heat supplied (J)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a0c">U = internal energy (J)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a0d">T = temperature (K)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a0e">R = gas constant</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c78c07765018af4a0f">Predicts for many solids near ordinary temps:</paragraph>
+  <paragraph id="6a8930c78c07765018af4a10">C ≈ 3R</paragraph>
+  <paragraph id="6a8930c78c07765018af4a11">Experiments mostly match at room temp; </paragraph><paragraph id="6a8930c78c07765018af4a12">carbon is an exception</paragraph>.<paragraph id="6a8930c78c07765018af4a13"></paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c78c07765018af4a14">⚠ ΔQ = ΔU only because ΔV ≈ 0 for solids. Don’t use this for gases.</paragraph>
+</div>
+
+<h2>Mean Free Path</h2>
+
+<h3>Why diffusion is slow despite high molecular speeds</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a15">Gas molecules move very fast (≈ speed of sound), yet diffusion across a room is slow; smoke clouds hang around.</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a16">Reason: molecules have </paragraph><paragraph id="6a8930c78c07765018af4a17">finite size</paragraph> and collide often → they don’t go straight for long; paths keep getting deflected.<paragraph id="6a8930c78c07765018af4a18"></paragraph></li>
+</ul>
+
+<h3>Collision model: hard spheres of diameter d</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c78c07765018af4a19">Model molecules as spheres of diameter d.</paragraph>
+  <paragraph id="6a8930c78c07765018af4a1a">A chosen molecule with average speed &lt;v&gt; collides if another molecule’s centre comes within distance d.</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930c78c07765018af4a1b">In time Δt, collision volume swept:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c78c07765018af4a1c">Volume swept = πd<sup>2</sup> &lt;v&gt; Δt</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a8930c78c07765018af4a1d">If n = number density (molecules per unit volume), expected collisions in time Δt:</paragraph>
+    <ul>
+      <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-15.webp" decoding="async" height="435" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-15.webp" srcset="img/Untitled-15.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="490"/>
+    </button>
+  </div>
+</figure>
+
+      <li><paragraph id="6a8930c78c07765018af4a1e">Collisions = n π d<sup>2</sup> &lt;v&gt; Δt</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930c78c07765018af4a1f">Collision rate = n π d<sup>2</sup> &lt;v&gt;</paragraph></li>
+</ul>
+
+<h3>Mean time between collisions (τ)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af4a20">τ = 1 / (n π &lt;v&gt; d<sup>2</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a21">τ = mean time between successive collisions (s)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a22">n = number density (m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a23">&lt;v&gt; = average speed of molecules (m s<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a24">d = molecular diameter (m)</paragraph>
+</div>
+
+<h3>Mean free path (l): basic derivation</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af4a25">$$
+\tau=\frac{1}{\left(\mathrm{n} \pi&lt;\mathrm{v}&gt;\mathrm{d}^2\right)}
+$$</paragraph>
+  <paragraph id="6a8930c78c07765018af4a26">l = mean free path (m)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a27">&lt;v&gt; = average speed (m s<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a28">τ = mean collision time (s)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a29">n = number density (m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a2a">d = molecular diameter (m)</paragraph>
+</div>
+
+<h3>Correction for motion of all molecules (relative speed)</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a2b">The above assumes other molecules are at rest.</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a2c">Actually, all molecules move → collision rate depends on </paragraph><paragraph id="6a8930c78c07765018af4a2d">average relative speed</paragraph> &lt;v<sub>r</sub>&gt;.<paragraph id="6a8930c78c07765018af4a2e"></paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a2f">So replace &lt;v&gt; in τ with &lt;v<sub>r</sub>&gt;.</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a30">More exact result (standard mean free path):</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af4a31">l = 1 / ( √2 π n d<sup>2</sup> )</paragraph>
+  <paragraph id="6a8930c78c07765018af4a32">l = mean free path (m)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a33">n = number density (m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a34">d = molecular diameter (m)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c78c07765018af4a35"></paragraph><paragraph id="6a8930c78c07765018af4a36">l ∝ 1/n</paragraph> and <paragraph id="6a8930c78c07765018af4a37">l ∝ 1/d<sup>2</sup></paragraph><paragraph id="6a8930c78c07765018af4a38"></paragraph>
+  <paragraph id="6a8930c78c07765018af4a39">So: denser gas or bigger molecules ⇒ smaller mean free path.</paragraph>
+</div>
+
+<h3>Numerical estimate at STP (air)</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a3a">Given average speed &lt;v&gt; = 485 m s<sup>−1</sup></paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a3b">At STP, number density:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af4a3c">n = (0.02 × 10<sup>23</sup>) / (22.4 × 10<sup>−3</sup>) = 2.7 × 10<sup>25</sup> m<sup>−3</sup></paragraph>
+  <paragraph id="6a8930c78c07765018af4a3d">n = number density (m<sup>−3</sup>)</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a3e">Take molecular diameter d = 2 × 10<sup>−10</sup> m</paragraph></li>
+  <li>
+    <paragraph id="6a8930c78c07765018af4a3f">Results:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c78c07765018af4a40">τ = 6.1 × 10<sup>−10</sup> s</paragraph></li>
+      <li><paragraph id="6a8930c78c07765018af4a41">l = 2.9 × 10<sup>−7</sup> m ≈ 1500 d</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930c78c07765018af4a42">In a highly evacuated tube, n is tiny ⇒ l can be comparable to tube length.</paragraph></li>
+</ul>
+
+<h2>Example </h2>
+Estimate the mean free path
+for a water molecule in water vapour at 373 K.
+Use information from Exercises 12.1 and Eq.
+(12.41) above.
+<h3>Key ideas used</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a43">Take water vapour molecular diameter same as air: d same as in the STP estimate.</paragraph></li>
+  <li><paragraph id="6a8930c78c07765018af4a44">For fixed pressure: number density n is inversely proportional to T ⇒ n ∝ 1/T.</paragraph></li>
+</ul>
+
+<h3>Number density at 373 K</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a45">Use n(273 K) = 2.7 × 10<sup>25</sup> m<sup>−3</sup>:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c78c07765018af4a46">n(373 K) = (273/373) × 2.7 × 10<sup>25</sup> ≈ 2 × 10<sup>25</sup> m<sup>−3</sup></paragraph>
+  <paragraph id="6a8930c78c07765018af4a47">n = number density (m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930c78c07765018af4a48">T = absolute temperature (K)</paragraph>
+</div>
+
+<h3>Mean free path</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a49">Using the earlier STP-based estimate relationship (Eq. 12.41 context), mean free path:</paragraph></li>
+</ul>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a4a">l ≈ 4 × 10<sup>−7</sup> m</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c78c07765018af4a4b">Mean free path ≈ </paragraph><paragraph id="6a8930c78c07765018af4a4c">100×</paragraph> the interatomic distance (~ 40 Å = 4 × 10<sup>−9</sup> m) found earlier.<paragraph id="6a8930c78c07765018af4a4d"></paragraph>
+  <paragraph id="6a8930c78c07765018af4a4e">This big l is typical of gases → gases can’t be confined without a container.</paragraph>
+</div>
+
+<h3>Why mean free path matters</h3>
+<ul>
+  <li><paragraph id="6a8930c78c07765018af4a4f">Kinetic theory links macroscopic transport (viscosity, heat conductivity, diffusion) to microscopic stuff like molecular size.</paragraph></li>
+  <li>Historically, these links were used to estimate molecular sizes.
+<paragraph id="6a8930c78c07765018af4a50"></paragraph></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

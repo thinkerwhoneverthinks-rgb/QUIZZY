@@ -1,0 +1,589 @@
+:root {
+  color-scheme: light;
+  --ink: #231f20;
+  --grid: #2b2929;
+  --header-grey: #999797;
+  --row-grey: #ececec;
+  --chapter-grey: #d2d2d2;
+  --cover-cyan: #a9def3;
+  --cover-blue: #196eaa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 0;
+  margin: 0;
+  background: #fff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.site-shell {
+  width: min(100%, 1480px);
+  min-width: 0;
+  margin: 0 auto;
+  padding: 28px 28px 72px;
+}
+
+.site-shell article,
+.chapter,
+.chapter-content,
+.table-shell,
+table,
+tbody,
+tr,
+td,
+.cell-flow {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cover {
+  position: relative;
+  width: min(100%, 900px);
+  aspect-ratio: 624 / 816;
+  margin: 0 auto 64px;
+  background: var(--cover-cyan);
+  color: var(--ink);
+}
+
+.cover::before {
+  position: absolute;
+  inset: 7% 7.2% 9.5%;
+  border-radius: 3.7% / 2.8%;
+  background: #fff;
+  box-shadow: 0 12px 18px rgba(35, 31, 32, .36);
+  content: "";
+}
+
+.cover-logo {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 75.2%;
+  width: 8.85%;
+}
+
+.cover-title {
+  position: absolute;
+  z-index: 1;
+  top: 20.2%;
+  left: 13.5%;
+  width: 73%;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 6.2vw, 4.75rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cover-kicker {
+  position: absolute;
+  z-index: 1;
+  top: 39.2%;
+  left: 18%;
+  width: 64%;
+  margin: 0;
+  color: var(--ink);
+  font-size: 0;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.55;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cover-kicker span {
+  display: block;
+  font-size: clamp(.86rem, 3.2vw, 2.2rem);
+}
+
+.cover h1 {
+  position: absolute;
+  z-index: 1;
+  top: 56.6%;
+  left: 7.2%;
+  width: 85.6%;
+  margin: 0;
+  padding: 5.1% 3%;
+  background: var(--cover-blue);
+  color: #fff;
+  font-size: clamp(2.2rem, 7.6vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.02em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.chapter {
+  margin: 0 0 72px;
+  background: #fff;
+}
+
+.chapter-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 154px minmax(0, 1fr);
+  align-items: center;
+  min-height: 168px;
+  margin: 0 0 34px;
+  padding: 0 42px;
+  background: var(--chapter-grey);
+  color: var(--ink);
+}
+
+.chapter-number {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 144px;
+  height: 148px;
+  padding: 20px 8px 4px;
+  border-radius: 10px 10px 7px 7px;
+  background: #282425;
+  box-shadow: 0 7px 0 #9b9b9b;
+  color: #fff;
+  font-size: 5.25rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.chapter-number::before {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 100%;
+  content: "CHAPTER";
+  font-size: .98rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+.chapter-head > div:last-child {
+  position: relative;
+  min-height: 118px;
+  margin-left: 38px;
+  padding: 34px 34px 22px;
+  border-radius: 0 42px 0 0;
+  background: #fff;
+}
+
+.chapter-head > div:last-child::after {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  left: 34px;
+  height: 4px;
+  background: #d1d1d1;
+  content: "";
+}
+
+.chapter-label {
+  display: none;
+}
+
+.chapter h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+}
+
+.chapter-content {
+  padding: 0 42px;
+}
+
+.table-shell {
+  width: 100%;
+  background: #fff;
+  overflow: visible;
+}
+
+table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(.73rem, 1vw, .95rem);
+  line-height: 1.28;
+}
+
+caption,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip-path: inset(50%) !important;
+  white-space: normal !important;
+}
+
+thead th {
+  padding: 6px 7px;
+  border: 1px solid var(--grid);
+  background: var(--header-grey);
+  color: var(--ink);
+  font-weight: 700;
+  text-align: center;
+}
+
+.table-shell:not(.particle-table) thead th:nth-child(1) { width: 7%; }
+.table-shell:not(.particle-table) thead th:nth-child(2) { width: 19%; }
+.table-shell:not(.particle-table) thead th:nth-child(3) { width: 39%; }
+.table-shell:not(.particle-table) thead th:nth-child(4) { width: 35%; }
+
+.particle-table table {
+  table-layout: auto;
+  font-size: .72rem;
+}
+
+td {
+  padding: 7px 8px;
+  border: 1px solid var(--grid);
+  background: #fff;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+tbody tr:nth-child(odd):not(.section-row) > td {
+  background: var(--row-grey);
+}
+
+.serial-cell {
+  font-weight: 700;
+  text-align: center;
+}
+
+.section-row td,
+td[colspan] {
+  background: #fff;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cell-flow {
+  display: block;
+  width: 100%;
+  line-height: 1.4;
+}
+
+.source-line {
+  display: inline;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.formula {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  overflow: visible;
+}
+
+.formula-inline {
+  display: inline;
+  vertical-align: baseline;
+}
+
+.cell-flow > .flow-break {
+  display: block;
+  width: 100%;
+  margin-top: .12em;
+}
+
+.formula-display {
+  display: block;
+  width: 100%;
+  margin: .08em 0 .14em;
+}
+
+.formula .katex,
+.formula .katex-html {
+  max-width: 100%;
+  font-size: 1em;
+  white-space: normal;
+}
+
+.formula .katex-mathml {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  contain: strict;
+}
+
+.formula .katex-display {
+  margin: 0;
+  overflow: visible;
+  text-align: left;
+}
+
+@media screen and (max-width: 900px) {
+  .site-shell {
+    padding: 12px 10px 48px;
+  }
+
+  .cover {
+    margin-bottom: 34px;
+  }
+
+  .chapter {
+    margin-bottom: 46px;
+  }
+
+  .chapter-head {
+    grid-template-columns: 84px minmax(0, 1fr);
+    min-height: 108px;
+    margin-bottom: 18px;
+    padding: 0 10px 0 14px;
+  }
+
+  .chapter-number {
+    width: 78px;
+    height: 88px;
+    padding: 19px 4px 3px;
+    border-radius: 7px 7px 5px 5px;
+    box-shadow: 0 5px 0 #9b9b9b;
+    font-size: 3rem;
+  }
+
+  .chapter-number::before {
+    top: 9px;
+    font-size: .57rem;
+  }
+
+  .chapter-head > div:last-child {
+    min-height: 76px;
+    margin-left: 12px;
+    padding: 19px 16px 16px;
+    border-radius: 0 24px 0 0;
+  }
+
+  .chapter-head > div:last-child::after {
+    right: 0;
+    bottom: 9px;
+    left: 16px;
+    height: 3px;
+  }
+
+  .chapter h2 {
+    margin-bottom: 8px;
+    font-size: clamp(1.05rem, 4.6vw, 1.7rem);
+  }
+
+  .chapter-content {
+    padding: 0 4px;
+  }
+
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: grid;
+    grid-template-columns: 50px minmax(0, 1fr);
+    margin: 0 0 12px;
+    border: 1px solid var(--grid);
+    background: #fff;
+  }
+
+  tbody tr > td {
+    border: 0;
+    background: #fff;
+  }
+
+  tbody tr:nth-child(odd):not(.section-row) > td {
+    background: var(--row-grey);
+  }
+
+  .serial-cell {
+    grid-column: 1;
+    grid-row: 1;
+    border-right: 1px solid var(--grid);
+  }
+
+  .concept-cell {
+    grid-column: 2;
+    grid-row: 1;
+    font-weight: 700;
+  }
+
+  .formula-cell,
+  .info-cell {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--grid);
+  }
+
+  .formula-cell::before,
+  .info-cell::before {
+    display: block;
+    margin: 0 0 4px;
+    color: #4b4848;
+    content: attr(data-label);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .section-row,
+  tbody tr:has(td[colspan]) {
+    display: block;
+  }
+
+  .section-row td,
+  td[colspan] {
+    width: 100%;
+  }
+
+  .particle-table tbody tr {
+    display: block;
+  }
+
+  .particle-table tbody tr > td {
+    width: 100%;
+    border-top: 1px solid var(--grid);
+  }
+
+  .particle-table tbody tr > td:first-child {
+    border-top: 0;
+  }
+
+  .particle-table tbody tr > td::before {
+    display: block;
+    margin: 0 0 4px;
+    color: #4b4848;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .68rem;
+    font-weight: 800;
+  }
+
+  .particle-table tbody tr > td:nth-child(1)::before { content: "Name"; }
+  .particle-table tbody tr > td:nth-child(2)::before { content: "Symbol"; }
+  .particle-table tbody tr > td:nth-child(3)::before { content: "Absolute charge (C)"; }
+  .particle-table tbody tr > td:nth-child(4)::before { content: "Relative charge"; }
+  .particle-table tbody tr > td:nth-child(5)::before { content: "Mass (kg)"; }
+  .particle-table tbody tr > td:nth-child(6)::before { content: "Mass (u)"; }
+  .particle-table tbody tr > td:nth-child(7)::before { content: "Approximate mass (u)"; }
+
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 11mm;
+  }
+
+  html,
+  body {
+    background: #fff;
+  }
+
+  .site-shell {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  .cover {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    break-after: page;
+    page-break-after: always;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .chapter {
+    margin: 0 0 9mm;
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .chapter-head {
+    min-height: 31mm;
+    margin-bottom: 6mm;
+    padding: 0 8mm;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .chapter-number {
+    height: 28mm;
+    box-shadow: 0 1.5mm 0 #9b9b9b;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .chapter-content {
+    padding: 0;
+  }
+
+  table {
+    font-size: 7.2pt;
+    line-height: 1.2;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  td,
+  th {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+}
+paragraph{display:block;margin:1em 0;}
+/* .formula-display/.formula-inline had no max-width/overflow handling, so a
+   wide KaTeX formula (nowrap by design) could bleed past the phone screen
+   edge with no way to reach the rest of it. Contain it in its own
+   horizontally-scrollable box instead -- same mechanism as tables. */
+.formula-display,.formula-inline{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}

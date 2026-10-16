@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>CHAPTER NINE</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c00bddc9a44be90daeb04/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>CHAPTER NINE</h1>
+
+<h2>9.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114914"><b>Fluids:</b> Liquids + gases can <b>flow</b> → called <b>fluids</b>. Flowing ability is the basic feature that separates them from solids.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114915"><b>Why study fluids?</b> Fluids are everywhere: Earth is surrounded by air + ~2/3 surface is water. Water is essential for life; mammals are mostly water, and biological processes (incl. plants) happen via fluids. So knowing fluid behaviour/properties matters.</paragraph>
+
+<h3>How fluids differ from solids; what is common to liquids and gases</h3>
+<ul>
+<li><b>Shape:</b> A fluid has <b>no definite shape</b> of its own (unlike a solid).</li>
+<li><b>Volume:</b>
+<ul>
+<li><b>Solids and liquids:</b> have a <b>fixed volume</b> (i.e., volume under <b>atmospheric pressure</b>).</li>
+<li><b>Gases:</b> occupy the <b>entire volume</b> of the container.</li>
+</ul>
+</li>
+<li><b>Effect of stress/pressure on volume:</b> Volume of <b>solid/liquid/gas</b> depends on the <b>stress/pressure</b> on it. (Even solids can have volume changed by stress.)</li>
+<li><b>Compressibility comparison:</b> Solids + liquids: volume change with external pressure is <b>small</b> → <b>much lower compressibility</b> than gases. Gases: large volume change with pressure.</li>
+</ul>
+
+<h3>Shear stress: key mechanical distinction</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114916"><b>Key fluid property:</b> Fluids offer <b>very little resistance to shear stress</b> → even <b>tiny shear stress</b> changes their shape.</paragraph>
+</div>
+<ul>
+<li><b>Solids under shear stress:</b> shear can change <b>shape</b> while keeping <b>volume fixed</b>.</li>
+<li><b>Fluids under shear stress:</b> resistance is extremely small → fluid changes shape easily (i.e., <b>flows</b>).</li>
+<li><b>Magnitude comparison:</b> shearing stress in fluids is about <b>10<sup>6</sup> times smaller</b> than in solids.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114917"><b>Exam tip:</b> “Fixed volume” (solids/liquids) isn’t absolute—means <b>approximately constant at atmospheric pressure</b>. Actually, volume depends on external pressure for <b>all</b> states.</paragraph>
+</div>
+
+<h2>9.2 Pressure</h2>
+
+<h3>Everyday motivation: force + area</h3>
+<ul>
+<li>Sharp needle pierces skin easily; blunt object with bigger contact area (e.g., spoon back) doesn’t, even with same force.</li>
+<li>Elephant on a man’s chest can crack ribs; but a large, light, strong wooden plank spreading the area (circus trick) can save him.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114918"><b>Pressure:</b> “impact” when force acts over an area; same force → <b>smaller area ⇒ larger pressure</b>.</paragraph>
+</div>
+
+<h3>Force exerted by a fluid at rest is normal to surfaces</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114919"><b>A fluid at rest exerts force always perpendicular (normal) to any surface touching it.</b></paragraph>
+</div>
+<paragraph id="6a8930db1919917a0011491a"><b>Reasoning (must know):</b> If there were any parallel component, then (Newton’s 3rd law) the surface would exert an equal/opposite parallel force on the fluid → fluid would start flowing along the surface. But fluid is at rest, so no such flow → force must be purely normal. </paragraph>
+
+<h3>Measuring pressure: idealised piston-spring device</h3>
+<ul>
+<li>Ideal pressure device: an <b>evacuated chamber</b> with a <b>spring</b> calibrated to measure force on a <b>piston</b>.</li>
+<li>Put it at a point in the fluid: fluid pushes piston <b>inward</b>, spring pushes <b>outward</b> until balance; spring reading gives the force due to fluid </li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a0011491b"><b>Average pressure</b> </paragraph>
+<paragraph id="6a8930db1919917a0011491c"><b>P<sub>av</sub> = F / A</b></paragraph>
+<ul>
+<li><b>P<sub>av</sub></b>: average pressure over the area</li>
+<li><b>F</b>: magnitude of <b>normal</b> force by fluid on piston/surface</li>
+<li><b>A</b>: area over which the force acts</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a0011491d"><b>Pressure at a point</b> </paragraph>
+<paragraph id="6a8930db1919917a0011491e"><b>P = lim<sub>ΔA→0</sub> (ΔF / ΔA)</b></paragraph>
+<ul>
+<li><b>P</b>: pressure at a point</li>
+<li><b>ΔF</b>: normal force on a tiny area element</li>
+<li><b>ΔA</b>: tiny area element (shrinks to zero in the limit)</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a0011491f"><b>Pressure is a scalar.</b> Use only the <b>normal component</b> of force, not the full force vector.</paragraph>
+</div>
+
+<h3>Dimensions and units of pressure</h3>
+<ul>
+<li><b>Dimensions:</b> [M L<sup>−1</sup> T<sup>−2</sup>]</li>
+<li><b>SI unit:</b> N m<sup>−2</sup> = <b>pascal (Pa)</b>, named after <b>Blaise Pascal (1623–1662)</b> (fluid pressure studies).</li>
+<li><b>Common unit:</b> atmosphere (<b>atm</b>) = atmospheric pressure at sea level:
+<ul>
+<li><b>1 atm = 1.013 × 10<sup>5</sup> Pa</b></li>
+</ul>
+</li>
+</ul>
+
+<h3>Density: definition, properties, and variation with pressure</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114920"><b>Density</b></paragraph>
+<paragraph id="6a8930db1919917a00114921"><b>ρ = m / V</b></paragraph>
+<ul>
+<li><b>ρ</b>: density of the fluid</li>
+<li><b>m</b>: mass of fluid</li>
+<li><b>V</b>: volume occupied</li>
+</ul>
+</div>
+<ul>
+<li><b>Dimensions of density:</b> [M L<sup>−3</sup>]</li>
+<li><b>SI unit:</b> kg m<sup>−3</sup></li>
+<li><b>Nature:</b> positive scalar quantity.</li>
+<li><b>Liquids:</b> almost incompressible → density ~constant at all pressures.</li>
+<li><b>Gases:</b> density changes a lot with pressure (large variation).</li>
+</ul>
+
+<h3>Density of water at 4°C and relative density</h3>
+<ul>
+<li><b>Density of water at 4°C (277 K):</b> <b>1.0 × 10<sup>3</sup> kg m<sup>−3</sup></b></li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114922"><b>Relative density:</b> (density of substance) ÷ (density of water at <b>4°C</b>). <b>Dimensionless</b> + positive scalar.</paragraph>
+</div>
+
+<ul>
+<li><b>Example:</b> Relative density of aluminium = <b>2.7</b> ⇒ density of aluminium = <b>2.7 × 10<sup>3</sup> kg m<sup>−3</sup></b>.</li>
+
+</ul>
+
+<h3>STP (standard conditions)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114923"><b>STP:</b> standard temperature <b>0°C</b> and standard pressure <b>1 atm</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114924"><b>Common exam mistakes:</b></paragraph>
+<ul>
+<li style="text-align: justify !important;">
+      Using total force instead of the <strong>normal component</strong> in pressure calculations.
+    </li>
+<li style="text-align: justify !important;"> Mixing up <b>Pa</b> (N m<sup>−2</sup>) with N m<sup>−1</sup> or other units.</li>
+<li style="text-align: justify !important;">Forgetting <b>relative density has no units</b> and is w.r.t. <b>water at 4°C</b> (not room temp).</li>
+</ul>
+</div>
+
+<h2>Example  </h2>
+The two thigh bones (femurs),
+each of cross-sectional area 10 cm<sup>2</sup> support
+the upper part of a human body of mass 40
+kg. Estimate the average pressure
+sustained by the femurs.
+
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114925"><b>Average pressure</b> on a support surface:</paragraph>
+<paragraph id="6a8930db1919917a00114926"><b>Pressure</b> = normal force per unit area (force must be <b>normal</b> to the area).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114927"><b>Average pressure:</b> P<sub>av</sub> = F/A</paragraph>
+<paragraph id="6a8930db1919917a00114928">P<sub>av</sub> = average pressure (Pa = N m<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930db1919917a00114929">F = normal force on the surface (N)</paragraph>
+<paragraph id="6a8930db1919917a0011492a">A = area over which the force acts (m<sup>2</sup>)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a0011492b"><b>Given:</b> Two femurs, each cross-sectional area = 10 cm<sup>2</sup>; mass supported = 40 kg.</paragraph>
+
+<ol>
+<li>
+<paragraph id="6a8930db1919917a0011492c"><b>Total area</b> supporting the body:</paragraph>
+<paragraph id="6a8930db1919917a0011492d">A = 2 × 10 cm<sup>2</sup> = 20 cm<sup>2</sup> = 20 × 10<sup>−4</sup> m<sup>2</sup></paragraph>
+</li>
+<li>
+<paragraph id="6a8930db1919917a0011492e"><b>Force</b> due to weight (take g = 10 m s<sup>−2</sup>):</paragraph>
+<paragraph id="6a8930db1919917a0011492f">F = mg = 40 × 10 = 400 N</paragraph>
+<paragraph id="6a8930db1919917a00114930">Acts vertically downward → <b>normal</b> to the horizontal femur cross-sections.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930db1919917a00114931"><b>Average pressure:</b></paragraph>
+<paragraph id="6a8930db1919917a00114932">P<sub>av</sub> = F/A = 400/(20 × 10<sup>−4</sup>) = 2 × 10<sup>5</sup> N m<sup>−2</sup> = 2 × 10<sup>5</sup> Pa</paragraph>
+</li>
+</ol>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114933"><b>Exam tip:</b> Convert cm<sup>2</sup> → m<sup>2</sup>: 1 cm<sup>2</sup> = 10<sup>−4</sup> m<sup>2</sup>. Also use only the <b>normal</b> force component for pressure (not tangential).</paragraph>
+</div>
+
+<h2>9.2.1 Pascal’s Law</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114934"><b>Pascal’s law (fluid at rest):</b> Pressure at a point in a static fluid is <b>same in all directions</b>. Also, pressure is same at all points on the <b>same height</b> (same horizontal level).</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114935"><b>Pascal’s observation:</b> In a fluid at rest, pressure is same at all points if they’re at the same height.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-1.webp" decoding="async" fetchpriority="high" height="196" loading="eager" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-1.webp" srcset="img/Untitled-1.webp 505w" style="border: 1.5px solid #38bff802 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="264"/>
+    </button>
+  </div>
+</figure>
+
+
+<paragraph id="6a8930db1919917a00114936"><b>Demonstration idea (right-angled prism element ABC-DEF):</b></paragraph>
+<ul>
+  <li><paragraph id="6a8930db1919917a00114937">Pick a <b>tiny</b> prismatic fluid element inside a static fluid so it’s effectively at the same depth everywhere (ignore gravity variation across it).</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114938">In a static fluid, forces from surrounding fluid on each face are <b>normal</b> to that face (no shear stress).</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114939">Let pressures on three faces be P<sub>a</sub>, P<sub>b</sub>, P<sub>c</sub> giving normal forces F<sub>a</sub>, F<sub>b</sub>, F<sub>c</sub> on areas A<sub>a</sub>, A<sub>b</sub>, A<sub>c</sub>.</paragraph></li>
+</ul>
+
+<paragraph id="6a8930db1919917a0011493a"><b>Equilibrium of forces</b> on the prism (inclined face at angle θ):</paragraph>
+<ul>
+  <li><paragraph id="6a8930db1919917a0011493b">F<sub>b</sub> sinθ = F<sub>c</sub></paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011493c">F<sub>b</sub> cosθ = F<sub>a</sub></paragraph></li>
+</ul>
+
+<paragraph id="6a8930db1919917a0011493d"><b>Geometrical relations</b> between face areas:</paragraph>
+<ul>
+  <li><paragraph id="6a8930db1919917a0011493e">A<sub>b</sub> sinθ = A<sub>c</sub></paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011493f">A<sub>b</sub> cosθ = A<sub>a</sub></paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114940"><b>Equality of pressure in all directions:</b></paragraph>
+  <paragraph id="6a8930db1919917a00114941">F<sub>a</sub>/A<sub>a</sub> = F<sub>b</sub>/A<sub>b</sub> = F<sub>c</sub>/A<sub>c</sub></paragraph>
+  <paragraph id="6a8930db1919917a00114942">P<sub>a</sub> = P<sub>b</sub> = P<sub>c</sub></paragraph>
+  <paragraph id="6a8930db1919917a00114943">F<sub>a</sub>, F<sub>b</sub>, F<sub>c</sub> = normal forces on faces a, b, c</paragraph>
+  <paragraph id="6a8930db1919917a00114944">A<sub>a</sub>, A<sub>b</sub>, A<sub>c</sub> = areas of faces a, b, c</paragraph>
+  <paragraph id="6a8930db1919917a00114945">P<sub>a</sub>, P<sub>b</sub>, P<sub>c</sub> = pressures on faces a, b, c</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114946"><b>Key consequences:</b></paragraph>
+  <ul>
+    <li><paragraph id="6a8930db1919917a00114947"><b>Pressure is not a vector.</b> Pressure causes force, but pressure itself has <b>no direction</b>; at a point it has the same value in all directions (static fluid).</paragraph></li>
+    <li><paragraph id="6a8930db1919917a00114948"><b>Force due to pressure is always normal</b> to any area in/around a static fluid, مهما كانت orientation.</paragraph></li>
+  </ul>
+</div>
+
+<paragraph id="6a8930db1919917a00114949"><b>Pressure same in a horizontal plane (static fluid):</b></paragraph>
+<ul>
+  <li><paragraph id="6a8930db1919917a0011494a">Imagine a fluid element like a <b>horizontal bar</b> with uniform cross-section, in equilibrium.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011494b">Horizontal forces on the two ends must balance ⇒ pressures at both ends are equal.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011494c">If pressure differed along the same horizontal level, there’d be a net force → flow starts.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011494d">So, <b>no flow ⇒ same pressure</b> everywhere in a horizontal plane.</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a0011494e"><b>Common mistake:</b> Saying “pressure acts downward.” In a static fluid, <b>pressure at a point is same in every direction</b>; only the <b>force on a surface</b> has a direction (normal to that surface).</paragraph>
+</div>
+
+
+<h2>9.2.2 Variation of Pressure with Depth</h2>
+
+<paragraph id="6a8930db1919917a0011494f"><b>Setup:</b> Fluid at rest in a container. Two points: point 1 is height h above point 2. Pressures are P<sub>1</sub> (upper) and P<sub>2</sub> (lower).</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-2.webp" decoding="async" height="367" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-2.webp" srcset="img/Untitled-2.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff02 !important;" width="304"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="6a8930db1919917a00114950"><b>Take a cylindrical fluid element</b> (base area A, height h) between the two points.</paragraph>
+<ul>
+  <li><paragraph id="6a8930db1919917a00114951">Horizontal forces cancel (static).</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114952">Vertical forces balance the weight of the cylinder.</paragraph></li>
+</ul>
+
+<paragraph id="6a8930db1919917a00114953"><b>Vertical forces:</b></paragraph>
+<ul>
+  <li><paragraph id="6a8930db1919917a00114954">Top downward force due to pressure: P<sub>1</sub>A</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114955">Bottom upward force due to pressure: P<sub>2</sub>A</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114956">Weight of fluid element: mg</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114957"><b>Pressure difference balances weight :</b> (P<sub>2</sub> − P<sub>1</sub>)A = mg</paragraph>
+  <paragraph id="6a8930db1919917a00114958">P<sub>1</sub>, P<sub>2</sub> = pressures at upper/lower points (Pa)</paragraph>
+  <paragraph id="6a8930db1919917a00114959">A = cross-sectional area (m<sup>2</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a0011495a">m = mass of fluid element (kg)</paragraph>
+  <paragraph id="6a8930db1919917a0011495b">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a0011495c"><b>Using density:</b> If ρ is density, then m = ρV = ρ(hA).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a0011495d"><b>Hydrostatic pressure difference :</b> P<sub>2</sub> − P<sub>1</sub> = ρgh</paragraph>
+  <paragraph id="6a8930db1919917a0011495e">ρ = fluid density (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a0011495f">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114960">h = vertical separation / depth difference (m)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114961"><b>Fluid open to atmosphere:</b> If upper point is the free surface open to air, then P<sub>1</sub> = P<sub>a</sub> and P<sub>2</sub> = P (pressure at depth h).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114962"><b>Absolute pressure at depth h :</b> P = P<sub>a</sub> + ρgh</paragraph>
+  <paragraph id="6a8930db1919917a00114963">P = absolute pressure at depth h (Pa)</paragraph>
+  <paragraph id="6a8930db1919917a00114964">P<sub>a</sub> = atmospheric pressure at surface (Pa)</paragraph>
+  <paragraph id="6a8930db1919917a00114965">ρ = fluid density (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114966">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114967">h = depth below free surface (m)</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114968"><b>Gauge pressure:</b> Extra pressure above atmospheric pressure.</paragraph>
+  <paragraph id="6a8930db1919917a00114969">Gauge pressure = P − P<sub>a</sub> = ρgh</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a0011496a"><b>What pressure depends on (hydrostatics):</b></paragraph>
+  <ul>
+    <li><paragraph id="6a8930db1919917a0011496b">Depends on: <b>depth h</b>, <b>density ρ</b>, <b>g</b>.</paragraph></li>
+    <li><paragraph id="6a8930db1919917a0011496c">Does <b>not</b> depend on: cross-sectional area, base area, or container shape (A cancels).</paragraph></li>
+    <li><paragraph id="6a8930db1919917a0011496d">So pressure is same at all points on the same horizontal level (same depth).</paragraph></li>
+  </ul>
+</div>
+
+<paragraph id="6a8930db1919917a0011496e"><b>Hydrostatic paradox:</b> Three connected vessels A, B, C (different shapes) filled with water to the same height. pressure at the bottom is the same under each section as pressure depends only on depth (ρgh), not shape.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-4.webp" decoding="async" height="230" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-4.webp" srcset="img/Untitled-4.webp 505w" style="border: 1.5px solid #38bff809 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff05 !important;" width="167"/>
+    </button>
+  </div>
+</figure>
+
+
+
+<h2>Example 9.2: What is the pressure on a
+swimmer 10 m below the surface of a lake?</h2>
+
+<paragraph id="6a8930db1919917a0011496f"><b>Given:</b> h = 10 m, ρ = 1000 kg m<sup>−3</sup>, g = 10 m s<sup>−2</sup>, P<sub>a</sub> = 1.01 × 10<sup>5</sup> Pa.</paragraph>
+
+<paragraph id="6a8930db1919917a00114970">Using Eq. (9.7):</paragraph>
+<paragraph id="6a8930db1919917a00114971">P = P<sub>a</sub> + ρgh</paragraph>
+<paragraph id="6a8930db1919917a00114972">= 1.01 × 10<sup>5</sup> + (1000)(10)(10)</paragraph>
+<paragraph id="6a8930db1919917a00114973">= 2.01 × 10<sup>5</sup> Pa ≈ 2 atm</paragraph>
+
+
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114974"><b>Exam tip:</b> Unless they explicitly ask for <i>gauge pressure</i>, give <b>absolute pressure</b>: P = P<sub>a</sub> + ρgh.</paragraph>
+</div>
+
+
+<h2>9.2.3 Atmospheric Pressure and Gauge Pressure</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114975"><b>Atmospheric pressure at a point:</b> Equals the <b>weight of an air column</b> of unit cross-sectional area from that point up to the top of atmosphere.</paragraph>
+  <paragraph id="6a8930db1919917a00114976">At sea level: <b>1.013 × 10<sup>5</sup> Pa</b> (= 1 atm).</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114977"><b>Torricelli’s method (Evangelista Torricelli, 1608–1647): Mercury barometer</b></paragraph>
+
+
+<ul>
+  <li><paragraph id="6a8930db1919917a00114978">Long glass tube (closed at one end) is filled completely with mercury.</paragraph></li>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-5.webp" decoding="async" height="414" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-5.webp" srcset="img/Untitled-5.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="293"/>
+    </button>
+  </div>
+</figure>
+  <li><paragraph id="6a8930db1919917a00114979">Tube is inverted into a trough of mercury.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011497a">Space above mercury column has only mercury vapour; its pressure P is very small → neglected.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011497b">So pressure at the top (Point A) ≈ <b>0</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a0011497c">Pressure inside mercury at point B (same level as point C in trough) must equal outside pressure there = atmospheric pressure P<sub>a</sub>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a0011497d"><b>Barometer relation :</b> P<sub>a</sub> = ρgh</paragraph>
+  <paragraph id="6a8930db1919917a0011497e">P<sub>a</sub> = atmospheric pressure (Pa)</paragraph>
+  <paragraph id="6a8930db1919917a0011497f">ρ = density of mercury (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114980">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114981">h = height of mercury column (m)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114982"><b>Common mistake:</b> Confusing absolute vs gauge. For open fluids: <b>absolute</b> P = P<sub>a</sub> + ρgh, while <b>gauge</b> = ρgh.</paragraph>
+</div>
+
+<h2>Pressure Units, Barometer and Manometer</h2>
+
+<h3>Atmospheric pressure from mercury barometer</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114983">At sea level, the mercury column height in a barometer is about <b>76 cm</b> ⇒ this is <b>1 atmosphere</b> (1 atm).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114984">Pressure is often quoted as a mercury-column height: <b>cm of Hg</b> or <b>mm of Hg</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114985"><b>Torr:</b> Pressure equal to <b>1 mm of Hg</b> is called <b>1 torr</b> (Torricelli).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114986"><b>1 torr = 133 Pa</b></paragraph>
+<paragraph id="6a8930db1919917a00114987"><b>torr</b>: millimetre of mercury pressure unit</paragraph>
+<paragraph id="6a8930db1919917a00114988"><b>Pa</b>: pascal (SI), <b>N m<sup>−2</sup></b></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114989"><b>Uses:</b> mm of Hg and torr are widely used in <b>medicine &amp; physiology</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a0011498a"><b>Bar &amp; millibar:</b> common pressure units in <b>meteorology</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a0011498b"><b>1 bar = 10<sup>5</sup> Pa</b></paragraph>
+<paragraph id="6a8930db1919917a0011498c"><b>bar</b>: practical pressure unit</paragraph>
+<paragraph id="6a8930db1919917a0011498d"><b>Pa</b>: SI unit of pressure</paragraph>
+</div>
+
+<h3>Open tube manometer (pressure difference)</h3>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-4.webp" decoding="async" height="230" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-4.webp" srcset="img/Untitled-4.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="167"/>
+    </button>
+  </div>
+</figure>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a0011498e"><b>Open tube manometer:</b> U-tube with a suitable liquid to measure <b>pressure difference</b>. One end <b>open to atmosphere</b>; other end connected to the system.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a0011498f"><b>Choosing the manometer liquid:</b></paragraph>
+<ul>
+<li><b>Low density</b> (e.g. oil) → for <b>small</b> pressure differences (bigger height difference).</li>
+<li><b>High density</b> (e.g. mercury) → for <b>large</b> pressure differences (height stays manageable).</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114990"><b>Same level rule (U-tube):</b> Pressure is <b>same at the same horizontal level</b> in the same continuous fluid (both arms).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114991">In an open-tube manometer: pressure <b>P</b> at point <b>A</b> = pressure at point <b>B</b> (same level in manometric fluid). The height difference <b>h</b> gives the <b>gauge pressure</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114992"><b>Gauge pressure:</b> <b>P<sub>g</sub> = P − P<sub>a</sub> = ρgh</b></paragraph>
+<paragraph id="6a8930db1919917a00114993"><b>P<sub>g</sub></b>: gauge pressure (above atmospheric)</paragraph>
+<paragraph id="6a8930db1919917a00114994"><b>P</b>: absolute pressure (system)</paragraph>
+<paragraph id="6a8930db1919917a00114995"><b>P<sub>a</sub></b>: atmospheric pressure</paragraph>
+<paragraph id="6a8930db1919917a00114996"><b>ρ</b>: density of manometer liquid</paragraph>
+<paragraph id="6a8930db1919917a00114997"><b>g</b>: acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a00114998"><b>h</b>: level difference of the liquid columns</paragraph>
+</div>
+
+<h3>Compressibility: liquids vs gases</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114999"><b>Liquids:</b> density changes very little over big pressure/temperature ranges ⇒ treat <b>ρ ≈ constant</b> ⇒ liquids ~ <b>incompressible</b> (for these problems).</paragraph>
+<paragraph id="6a8930db1919917a0011499a"><b>Gases:</b> density changes a lot with pressure/temperature ⇒ generally <b>not incompressible</b>.</paragraph>
+</div>
+
+<h3>Example 9.3: The density of the
+atmosphere at sea level is 1.29 kg/m3.
+Assume that it does not change with
+altitude. Then how high would the
+atmosphere extend?</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a0011499b"><b>Given:</b> air density at sea level <b>ρ = 1.29 kg m<sup>−3</sup></b>, assume it stays constant with altitude. Find height <b>h</b> such that pressure = sea-level atmospheric pressure.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a0011499c"><b>Hydrostatic relation:</b> <b>ρgh = P</b> (here <b>P</b> = atmospheric pressure)</paragraph>
+<paragraph id="6a8930db1919917a0011499d"><b>ρ</b>: density of air (assumed constant)</paragraph>
+<paragraph id="6a8930db1919917a0011499e"><b>g</b>: acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a0011499f"><b>h</b>: height of air column</paragraph>
+<paragraph id="6a8930db1919917a001149a0"><b>P</b>: pressure due to column (≈ <b>1.01 × 10<sup>5</sup> Pa</b>)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149a1">Use <b>ρgh = 1.01 × 10<sup>5</sup> Pa</b>:</paragraph>
+<paragraph id="6a8930db1919917a001149a2">1.29 × 9.8 × h = 1.01 × 10<sup>5</sup></paragraph>
+<paragraph id="6a8930db1919917a001149a3">h = 7989 m ≈ 8 km</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149a4"><b>Reality check:</b> Actually, air density decreases with height, and <b>g</b> also decreases. So the atmosphere extends (with falling pressure) to <b>&gt; 100 km</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a001149a5"><b>Exam pitfall:</b> The “<b>8 km</b> atmosphere height” is from the <b>false constant-density</b> assumption—don’t quote it as the real thickness.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149a6">Sea-level atmospheric pressure is <b>not always</b> exactly <b>760 mm Hg</b>. A <b>drop by 10 mm Hg or more</b> suggests an approaching <b>storm</b>.</paragraph>
+</div>
+
+<h3>Example <paragraph id="6a8930db1919917a001149a7"> At a depth of 1000 m in an
+ocean (a) what is the absolute pressure?
+(b) What is the gauge pressure? (c) Find
+the force acting on the window of area
+20 cm × 20 cm of a submarine at this depth,
+the interior of which is maintained at sealevel
+atmospheric pressure. (The density of
+sea water is 1.03 × 10<sup>3</sup> kg m<sup>-3</sup>,
+g = 10 m s<sup>–2</sup>.)</paragraph></h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a001149a8"><b>Given:</b> depth <b>h = 1000 m</b>, sea water density <b>ρ = 1.03 × 10<sup>3</sup> kg m<sup>−3</sup></b>, <b>g = 10 m s<sup>−2</sup></b>, atmospheric pressure <b>P<sub>a</sub> = 1.01 × 10<sup>5</sup> Pa</b>.</paragraph>
+<paragraph id="6a8930db1919917a001149a9">Find: (a) <b>absolute pressure</b>, (b) <b>gauge pressure</b>, (c) <b>force</b> on a <b>20 cm × 20 cm</b> submarine window when inside is kept at sea-level atmospheric pressure.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149aa"><b>Absolute pressure at depth:</b> <b>P = P<sub>a</sub> + ρgh</b></paragraph>
+<paragraph id="6a8930db1919917a001149ab"><b>P</b>: absolute pressure at depth</paragraph>
+<paragraph id="6a8930db1919917a001149ac"><b>P<sub>a</sub></b>: atmospheric pressure at surface</paragraph>
+<paragraph id="6a8930db1919917a001149ad"><b>ρ</b>: density of water</paragraph>
+<paragraph id="6a8930db1919917a001149ae"><b>g</b>: acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a001149af"><b>h</b>: depth below surface</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149b0"><b>(a) Absolute pressure</b></paragraph>
+<paragraph id="6a8930db1919917a001149b1">P = 1.01 × 10<sup>5</sup> + (1.03 × 10<sup>3</sup>) × 10 × 1000</paragraph>
+<paragraph id="6a8930db1919917a001149b2">= 1.01 × 10<sup>5</sup> + 1.03 × 10<sup>7</sup></paragraph>
+<paragraph id="6a8930db1919917a001149b3">= 104.01 × 10<sup>5</sup> Pa ≈ 104 atm</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149b4"><b>Gauge pressure:</b> <b>P<sub>g</sub> = P − P<sub>a</sub> = ρgh</b></paragraph>
+<paragraph id="6a8930db1919917a001149b5"><b>P<sub>g</sub></b>: gauge pressure</paragraph>
+<paragraph id="6a8930db1919917a001149b6"><b>P</b>: absolute pressure</paragraph>
+<paragraph id="6a8930db1919917a001149b7"><b>P<sub>a</sub></b>: atmospheric pressure</paragraph>
+<paragraph id="6a8930db1919917a001149b8"><b>ρ</b>, <b>g</b>, <b>h</b>: as above</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149b9"><b>(b) Gauge pressure</b></paragraph>
+<paragraph id="6a8930db1919917a001149ba">P<sub>g</sub> = ρgh = (1.03 × 10<sup>3</sup>) × 10 × 1000 = 103 × 10<sup>5</sup> Pa ≈ 103 atm</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149bb"><b>Force from pressure difference:</b> <b>F = P<sub>net</sub> A</b></paragraph>
+<paragraph id="6a8930db1919917a001149bc"><b>F</b>: net force on the surface</paragraph>
+<paragraph id="6a8930db1919917a001149bd"><b>P<sub>net</sub></b>: net pressure difference across the surface</paragraph>
+<paragraph id="6a8930db1919917a001149be"><b>A</b>: area of the surface</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149bf"><b>(c) Force on the window</b></paragraph>
+<ul>
+<li><paragraph id="6a8930db1919917a001149c0">Outside pressure: <b>P<sub>out</sub> = P<sub>a</sub> + ρgh</b></paragraph></li>
+<li><paragraph id="6a8930db1919917a001149c1">Inside pressure kept at: <b>P<sub>in</sub> = P<sub>a</sub></b></paragraph></li>
+<li><paragraph id="6a8930db1919917a001149c2">Net pressure: <b>P<sub>net</sub> = P<sub>out</sub> − P<sub>in</sub> = ρgh = P<sub>g</sub></b></paragraph></li>
+</ul>
+<paragraph id="6a8930db1919917a001149c3">Area: A = (20 cm × 20 cm) = (0.2 m × 0.2 m) = 0.04 m<sup>2</sup></paragraph>
+<paragraph id="6a8930db1919917a001149c4">F = P<sub>g</sub>A = (103 × 10<sup>5</sup>) × 0.04 = 4.12 × 10<sup>5</sup> N</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a001149c5"><b>Exam pitfall:</b> For forces on submarine walls/windows use the <b>pressure difference</b> (usually the <b>gauge pressure</b> if inside ≈ atmospheric), not the absolute pressure.</paragraph>
+</div>
+
+<h2>9.2.4 Hydraulic Machines (Pascal’s Law Applications)</h2>
+
+<h3>Pressure transmission in a confined fluid (Pascal’s law form)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a001149c6">If you apply external pressure anywhere on a fluid inside a closed vessel, that pressure is transmitted <b>undiminished</b> and <b>equally in all directions</b> through the fluid.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149c7">Demo idea: horizontal cylinder + several vertical tubes → liquid levels equal. Push piston → pressure increases → liquid rises to the <b>same level in all tubes</b> ⇒ pressure spreads uniformly.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-6.webp" decoding="async" height="140" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-6.webp" srcset="img/Untitled-6.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="432"/>
+    </button>
+  </div>
+</figure>
+</div>
+
+<h3>Hydraulic lift: principle, force multiplication, mechanical advantage</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a001149c8"><b>Hydraulic lift:</b> Two pistons with an incompressible liquid between them. Force on the small piston makes pressure in the fluid, which acts on the big piston → bigger output force.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-7.webp" decoding="async" height="262" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-7.webp" srcset="img/Untitled-7.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="341"/>
+    </button>
+  </div>
+</figure>
+
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149c9"><b>Input pressure:</b> <b>P = F<sub>1</sub>/A<sub>1</sub></b></paragraph>
+<paragraph id="6a8930db1919917a001149ca"><b>P</b> = fluid pressure</paragraph>
+<paragraph id="6a8930db1919917a001149cb"><b>F<sub>1</sub></b> = force on small piston</paragraph>
+<paragraph id="6a8930db1919917a001149cc"><b>A<sub>1</sub></b> = area of small piston</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149cd"><b>Output force (large piston):</b> <b>F<sub>2</sub> = PA<sub>2</sub> = (F<sub>1</sub>/A<sub>1</sub>)A<sub>2</sub> = F<sub>1</sub>(A<sub>2</sub>/A<sub>1</sub>)</b></paragraph>
+<paragraph id="6a8930db1919917a001149ce"><b>F<sub>2</sub></b> = upward force on large piston</paragraph>
+<paragraph id="6a8930db1919917a001149cf"><b>A<sub>2</sub></b> = area of large piston</paragraph>
+<paragraph id="6a8930db1919917a001149d0"><b>F<sub>1</sub>, A<sub>1</sub>, P</b> = as above</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149d1"><b>Mechanical advantage (hydraulic lift):</b> <b>MA = A<sub>2</sub>/A<sub>1</sub></b></paragraph>
+<paragraph id="6a8930db1919917a001149d2"><b>MA</b> = force multiplication factor</paragraph>
+<paragraph id="6a8930db1919917a001149d3"><b>A<sub>2</sub></b> = large piston area</paragraph>
+<paragraph id="6a8930db1919917a001149d4"><b>A<sub>1</sub></b> = small piston area</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149d5">Change the force on the small piston → platform on big piston moves up/down; force gets multiplied by <b>A<sub>2</sub>/A<sub>1</sub></b>.</paragraph>
+</div>
+
+<h3>Example Two syringes of different
+cross-sections (without needles) filled with
+water are connected with a tightly fitted
+rubber tube filled with water. Diameters of
+the smaller piston and larger piston are
+1.0 cm and 3.0 cm respectively. (a) Find
+the force exerted on the larger piston when
+a force of 10 N is applied to the smaller
+piston. (b) If the smaller piston is pushed
+in through 6.0 cm, how much does the
+larger piston move out?</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a001149d6"><b>Setup:</b> Two syringes (no needles), different cross-sections, filled with water + connected by a tight tube also filled with water.</paragraph>
+<ul>
+<li><paragraph id="6a8930db1919917a001149d7">Small piston diameter: d<sub>1</sub> = 1.0 cm</paragraph></li>
+<li><paragraph id="6a8930db1919917a001149d8">Large piston diameter: d<sub>2</sub> = 3.0 cm</paragraph></li>
+<li><paragraph id="6a8930db1919917a001149d9">Applied force (small piston): F<sub>1</sub> = 10 N</paragraph></li>
+</ul>
+<paragraph id="6a8930db1919917a001149da">Find: (a) force on large piston, (b) displacement of large piston if small piston is pushed in by 6.0 cm.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149db">(a) Pascal’s law ⇒ same pressure in connected fluid ⇒ <b>F<sub>1</sub>/A<sub>1</sub> = F<sub>2</sub>/A<sub>2</sub></b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149dc"><b>Area from diameter:</b> <b>A = π(d/2)<sup>2</sup></b></paragraph>
+<paragraph id="6a8930db1919917a001149dd"><b>A</b> = cross-sectional area</paragraph>
+<paragraph id="6a8930db1919917a001149de"><b>d</b> = piston diameter</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149df"><b>(a) Force on larger piston</b></paragraph>
+<ul>
+<li><paragraph id="6a8930db1919917a001149e0">A<sub>1</sub> = π(0.5 cm)<sup>2</sup></paragraph></li>
+<li><paragraph id="6a8930db1919917a001149e1">A<sub>2</sub> = π(1.5 cm)<sup>2</sup></paragraph></li>
+<li><paragraph id="6a8930db1919917a001149e2">So, A<sub>2</sub>/A<sub>1</sub> = (1.5/0.5)<sup>2</sup> = 3<sup>2</sup> = 9</paragraph></li>
+</ul>
+<paragraph id="6a8930db1919917a001149e3">F<sub>2</sub> = F<sub>1</sub>(A<sub>2</sub>/A<sub>1</sub>) = 10 × 9 = 90 N</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149e4">(b) Treat water as <b>perfectly incompressible</b> ⇒ volume in = volume out.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149e5"><b>Volume continuity (incompressible fluid):</b> <b>A<sub>1</sub>L<sub>1</sub> = A<sub>2</sub>L<sub>2</sub></b></paragraph>
+<paragraph id="6a8930db1919917a001149e6"><b>L<sub>1</sub></b> = inward displacement of small piston</paragraph>
+<paragraph id="6a8930db1919917a001149e7"><b>L<sub>2</sub></b> = outward displacement of large piston</paragraph>
+<paragraph id="6a8930db1919917a001149e8"><b>A<sub>1</sub>, A<sub>2</sub></b> = piston areas</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149e9"><b>(b) Displacement of larger piston</b></paragraph>
+<paragraph id="6a8930db1919917a001149ea">L<sub>2</sub> = (A<sub>1</sub>/A<sub>2</sub>)L<sub>1</sub> = (1/9) × 6.0 cm = 0.67 cm</paragraph>
+<paragraph id="6a8930db1919917a001149eb">(= 0.67 × 10<sup>−2</sup> m)</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a001149ec"><b>Exam tip:</b> In syringe / hydraulic lift Qs: <b>force multiplies</b> by A<sub>2</sub>/A<sub>1</sub>, but <b>displacement reduces</b> by A<sub>1</sub>/A<sub>2</sub> (volume conservation).</paragraph>
+<paragraph id="6a8930db1919917a001149ed"><b>Note:</b> Atmospheric pressure acts on both pistons → cancels out, so ignore it in pressure comparison.</paragraph>
+</div>
+
+<h3>Example In a car lift compressed air
+exerts a force F<sup>1</sup> on a small piston having
+a radius of 5.0 cm. This pressure is
+transmitted to a second piston of radius
+15 cm (Fig 9.7). If the mass of the car to be
+lifted is 1350 kg, calculate F<sup>1</sup>. What is the
+pressure necessary to accomplish this
+task? (g = 9.8 ms<sup>–2</sup>).</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a001149ee"><b>Given:</b> r<sub>1</sub> = 5.0 cm (small piston), r<sub>2</sub> = 15 cm (large piston), m = 1350 kg, g = 9.8 m s<sup>−2</sup>.</paragraph>
+<paragraph id="6a8930db1919917a001149ef">Find: input force F<sub>1</sub> on small piston + required pressure.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149f0"><b>Pascal relation (lift):</b> <b>F<sub>1</sub>/A<sub>1</sub> = F<sub>2</sub>/A<sub>2</sub></b></paragraph>
+<paragraph id="6a8930db1919917a001149f1"><b>F<sub>2</sub></b> = load on large piston (= car weight = mg)</paragraph>
+<paragraph id="6a8930db1919917a001149f2"><b>A<sub>1</sub>, A<sub>2</sub></b> = piston areas (= πr<sup>2</sup>)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149f3"><b>Weight lifted:</b> <b>F<sub>2</sub> = mg</b></paragraph>
+<paragraph id="6a8930db1919917a001149f4"><b>m</b> = car mass</paragraph>
+<paragraph id="6a8930db1919917a001149f5"><b>g</b> = gravitational acceleration</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149f6">F<sub>2</sub> = 1350 × 9.8 = 13230 N</paragraph>
+<paragraph id="6a8930db1919917a001149f7">Area ratio: A<sub>1</sub>/A<sub>2</sub> = (r<sub>1</sub>/r<sub>2</sub>)<sup>2</sup> = (5/15)<sup>2</sup> = (1/3)<sup>2</sup> = 1/9</paragraph>
+<paragraph id="6a8930db1919917a001149f8">So F<sub>1</sub> = F<sub>2</sub>(A<sub>1</sub>/A<sub>2</sub>) = 13230/9 = 1470 N ≈ 1.5 × 10<sup>3</sup> N</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a001149f9"><b>Pressure needed:</b> <b>P = F<sub>1</sub>/A<sub>1</sub></b></paragraph>
+<paragraph id="6a8930db1919917a001149fa"><b>P</b> = pressure of compressed air (passed through the fluid system)</paragraph>
+<paragraph id="6a8930db1919917a001149fb"><b>F<sub>1</sub></b> = force on small piston</paragraph>
+<paragraph id="6a8930db1919917a001149fc"><b>A<sub>1</sub></b> = small piston area (= πr<sub>1</sub><sup>2</sup>)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a001149fd">A<sub>1</sub> = π(0.05 m)<sup>2</sup> = π × 2.5 × 10<sup>−3</sup> ≈ 7.85 × 10<sup>−3</sup> m<sup>2</sup></paragraph>
+<paragraph id="6a8930db1919917a001149fe">P = 1470 / (7.85 × 10<sup>−3</sup>) ≈ 1.87 × 10<sup>5</sup> Pa</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a001149ff">Required pressure is almost <b>2× atmospheric pressure</b> (since atm ≈ 1.01 × 10<sup>5</sup> Pa).</paragraph>
+</div>
+
+<h3>Hydraulic brakes (application of Pascal’s law)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a00"><b>Hydraulic brakes:</b> Small pedal force pushes a master piston (master cylinder) → creates pressure in brake oil. This pressure acts on wheel pistons of <b>larger area</b> → gives a <b>large retarding force</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a01"><b>Key advantage:</b> Pedal pressure is transmitted <b>equally to all wheel cylinders</b> → <b>equal braking effort</b> on all wheels.</paragraph>
+</div>
+
+<h2>9.3 Streamline Flow</h2>
+
+<h3>Fluid dynamics and types of flow (steady vs non-smooth)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a02"><b>Fluid dynamics:</b> study of fluids in motion.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a03">Observation: turn on a tap slowly → flow starts smooth; increase speed → flow can become non-smooth.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a04"><b>Steady flow:</b> at any fixed point, the velocity of fluid particles passing that point stays <b>constant with time</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a05">Steady flow ≠ same velocity everywhere. Velocity can change from place to place, but at one fixed point, successive particles have the <b>same velocity</b> over time.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a06">In steady (streamline) flow: each particle follows a <b>smooth path</b>, and paths <b>do not cross</b>.</paragraph>
+</div>
+
+<h3>Streamline: definition and meaning</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a07"><b>Streamline:</b> the path followed by a fluid particle in steady flow.</paragraph>
+<paragraph id="6a8930db1919917a00114a08"><b>Geometrical meaning:</b> a streamline is a curve whose <b>tangent at any point</b> points along the <b>fluid velocity</b> at that point.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a09">If a particle moves along a path (e.g. curve PQ), that curve shows its motion with time; in steady flow, such paths are streamlines.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-8.webp" decoding="async" height="219" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-8.webp" srcset="img/Untitled-8.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="365"/>
+    </button>
+  </div>
+</figure>
+
+<h2>Streamlines, Steady Flow and the Equation of Continuity</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114a0a"><b>Streamline</b>: curve in a flowing fluid where the <b>tangent at any point</b> gives the <b>direction of velocity</b> there (a “flow map”).</paragraph>
+  <paragraph id="6a8930db1919917a00114a0b"><b>Steady (streamline) flow</b>: the <b>streamline pattern stays fixed in time</b> (flow map doesn’t change).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114a0c"><b>No two streamlines can cross.</b> If they crossed, a particle at the intersection would have <b>two possible directions</b> → flow can’t be steady.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a0d"><b>Why streamlines look closer in narrow regions:</b> If we drew one streamline per particle, we’d get infinitely many. Instead, take cross-sections (planes ⟂ to flow) at P, R, Q, chosen so their boundaries are the <b>same set of streamlines</b>. Then the <b>same set of fluid particles</b> passes each section in the same time.</paragraph>
+
+<paragraph id="6a8930db1919917a00114a0e">Let areas be A<sub>P</sub>, A<sub>R</sub>, A<sub>Q</sub>; speeds v<sub>P</sub>, v<sub>R</sub>, v<sub>Q</sub>; densities ρ<sub>P</sub>, ρ<sub>R</sub>, ρ<sub>Q</sub>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114a0f"><b>Mass crossing a section in time</b> Δt:</paragraph>
+  <paragraph id="6a8930db1919917a00114a10">Δm = ρ A v Δt</paragraph>
+  <paragraph id="6a8930db1919917a00114a11">ρ = density at that section</paragraph>
+  <paragraph id="6a8930db1919917a00114a12">A = cross-sectional area normal to flow</paragraph>
+  <paragraph id="6a8930db1919917a00114a13">v = speed at that section</paragraph>
+  <paragraph id="6a8930db1919917a00114a14">Δt = small time interval</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a15">So, in the same time Δt:</paragraph>
+<ul>
+  <li>Δm<sub>P</sub> = ρ<sub>P</sub>A<sub>P</sub>v<sub>P</sub>Δt</li>
+  <li>Δm<sub>R</sub> = ρ<sub>R</sub>A<sub>R</sub>v<sub>R</sub>Δt</li>
+  <li>Δm<sub>Q</sub> = ρ<sub>Q</sub>A<sub>Q</sub>v<sub>Q</sub>Δt</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114a16"><b>Conservation of mass in flow:</b> mass flowing out = mass flowing in (for the same <b>streamtube</b> bounded by streamlines).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114a17"><b>General continuity (mass conservation) along a streamtube</b>:</paragraph>
+  <paragraph id="6a8930db1919917a00114a18">ρ<sub>P</sub>A<sub>P</sub>v<sub>P</sub>Δt = ρ<sub>R</sub>A<sub>R</sub>v<sub>R</sub>Δt = ρ<sub>Q</sub>A<sub>Q</sub>v<sub>Q</sub>Δt</paragraph>
+  <paragraph id="6a8930db1919917a00114a19">ρ = density at the section</paragraph>
+  <paragraph id="6a8930db1919917a00114a1a">A = cross-sectional area at the section</paragraph>
+  <paragraph id="6a8930db1919917a00114a1b">v = speed at the section</paragraph>
+  <paragraph id="6a8930db1919917a00114a1c">Δt = same small time interval for each section</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a1d"><b>Incompressible fluid:</b> density is constant along the flow → ρ<sub>P</sub> = ρ<sub>R</sub> = ρ<sub>Q</sub>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114a1e"><b>Equation of continuity (incompressible fluid)</b>:</paragraph>
+  <paragraph id="6a8930db1919917a00114a1f">A<sub>P</sub>v<sub>P</sub> = A<sub>R</sub>v<sub>R</sub> = A<sub>Q</sub>v<sub>Q</sub></paragraph>
+  <paragraph id="6a8930db1919917a00114a20">A = cross-sectional area</paragraph>
+  <paragraph id="6a8930db1919917a00114a21">v = speed of fluid</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114a22"><b>General form (incompressible)</b>:</paragraph>
+  <paragraph id="6a8930db1919917a00114a23">Av = constant</paragraph>
+  <paragraph id="6a8930db1919917a00114a24">A = cross-sectional area of the flow tube/pipe</paragraph>
+  <paragraph id="6a8930db1919917a00114a25">v = flow speed at that section</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114a26"><b>Volume flux / flow rate</b>: Av. For incompressible steady flow, <b>Av is constant</b> throughout the pipe.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114a27"><b>Consequence:</b> narrower pipe (smaller A) → streamlines closer + <b>speed increases</b>; wider pipe → <b>speed decreases</b>.</paragraph>
+  <paragraph id="6a8930db1919917a00114a28">Figure-style reasoning: if A<sub>R</sub> &gt; A<sub>Q</sub>, then v<sub>R</sub> &lt; v<sub>Q</sub> → fluid is <b>accelerated</b> from R to Q.</paragraph>
+  <paragraph id="6a8930db1919917a00114a29">This acceleration in a horizontal pipe comes with a <b>pressure change</b> (quantified by <b>Bernoulli’s principle</b>).</paragraph>
+</div>
+
+<h3>Laminar and Turbulent Flow; Critical Speed</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114a2a"><b>Laminar flow</b>: smooth; speeds may differ point-to-point, but directions are <b>parallel</b> (streamlines neat + orderly).</paragraph>
+  <paragraph id="6a8930db1919917a00114a2b"><b>Turbulent flow</b>: irregular with eddies; velocity + pressure <b>fluctuate with time</b>; streamlines become messy/disorderly.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114a2c"><b>Critical speed</b>: the limiting speed beyond which steady (laminar) flow <b>breaks down</b> and becomes turbulent.</paragraph>
+  <paragraph id="6a8930db1919917a00114a2d">Observation: fast streams over rocks make foamy whirlpool-like regions (“<b>white water rapids</b>”) → turbulence.</paragraph>
+  <paragraph id="6a8930db1919917a00114a2e">Example mentioned: a <b>jet of air</b> hitting a flat plate perpendicular to it is <b>turbulent flow</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114a2f">Don’t say “continuity ⇒ pressure change” directly. Continuity gives the <b>area–speed link</b>. Pressure change comes from <b>energy conservation (Bernoulli)</b> and needs flow to be steady and (ideally) non-viscous + incompressible.</paragraph>
+</div>
+
+<h2>Bernoulli’s Principle</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a30"><b>Bernoulli’s equation / principle:</b> for <b>steady</b> flow of an <b>incompressible</b>, <b>non-viscous</b> fluid <b>along a streamline</b>, the <b>total mechanical energy per unit volume</b> stays constant → links <b>pressure</b>, <b>speed</b>, <b>height</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a31"><b>Physical idea:</b> In a pipe with changing cross-sectional area (and maybe changing height), <b>speed changes</b> (from continuity). Speed change ⇒ <b>acceleration</b> ⇒ needs a <b>net force</b> → supplied by <b>pressure differences</b> between regions.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a32">Bernoulli links the <b>pressure difference</b> between two points to:</paragraph>
+<ul>
+<li><b>kinetic energy change</b> (speed change), and</li>
+<li><b>potential energy change</b> (height/elevation change).</li>
+</ul>
+<paragraph id="6a8930db1919917a00114a33">Developed by <b>Daniel Bernoulli (1738)</b>.</paragraph>
+</div>
+
+<h3>Derivation (work–energy approach for a moving fluid element)</h3>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-9.webp" decoding="async" height="291" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-9.webp" srcset="img/Untitled-9.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="423"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="6a8930db1919917a00114a34">Take two regions in a pipe: region 1 (near BC) + region 2 (near DE). Consider the fluid initially between B and D.</paragraph>
+<ul>
+<li>In time Δt, fluid at B moves to C by distance <b>v<sub>1</sub>Δt</b>.</li>
+<li>In the same time, fluid at D moves to E by distance <b>v<sub>2</sub>Δt</b>.</li>
+<li>Pressures <b>P<sub>1</sub></b>, <b>P<sub>2</sub></b> act on areas <b>A<sub>1</sub></b>, <b>A<sub>2</sub></b>.</li>
+</ul>
+
+<paragraph id="6a8930db1919917a00114a35"><b>Work done by pressure forces:</b></paragraph>
+<ul>
+<li>Work done <b>on</b> fluid at left end: <b>W<sub>1</sub> = P<sub>1</sub>A<sub>1</sub>(v<sub>1</sub>Δt) = P<sub>1</sub>ΔV</b></li>
+<li>At right end, fluid does work on surroundings ⇒ work done <b>on</b> the fluid is negative: <b>−P<sub>2</sub>ΔV</b></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a36"><b>Net work on the fluid (by pressure forces):</b></paragraph>
+<paragraph id="6a8930db1919917a00114a37">W<sub>1</sub> − W<sub>2</sub> = (P<sub>1</sub> − P<sub>2</sub>)ΔV</paragraph>
+<paragraph id="6a8930db1919917a00114a38">P<sub>1</sub>, P<sub>2</sub> = pressures at regions 1 and 2</paragraph>
+<paragraph id="6a8930db1919917a00114a39">ΔV = volume that passes in time Δt (same at both ends by continuity)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a3a">For incompressible flow, the same ΔV passes through both regions in time Δt (continuity). Mass of this volume:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a3b"><b>Mass passing in time</b> Δt:</paragraph>
+<paragraph id="6a8930db1919917a00114a3c">Δm = ρA<sub>1</sub>v<sub>1</sub>Δt = ρΔV</paragraph>
+<paragraph id="6a8930db1919917a00114a3d">Δm = mass transported</paragraph>
+<paragraph id="6a8930db1919917a00114a3e">ρ = density (constant for incompressible flow)</paragraph>
+<paragraph id="6a8930db1919917a00114a3f">A<sub>1</sub> = area at region 1</paragraph>
+<paragraph id="6a8930db1919917a00114a40">v<sub>1</sub> = speed at region 1</paragraph>
+<paragraph id="6a8930db1919917a00114a41">ΔV = transported volume in time Δt</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a42"><b>Energy changes for this transported volume:</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a43"><b>Change in gravitational potential energy:</b></paragraph>
+<paragraph id="6a8930db1919917a00114a44">ΔU = ρgΔV(h<sub>2</sub> − h<sub>1</sub>)</paragraph>
+<paragraph id="6a8930db1919917a00114a45">g = acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a00114a46">h<sub>1</sub>, h<sub>2</sub> = heights (elevations) of regions 1 and 2</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a47"><b>Change in kinetic energy:</b></paragraph>
+<paragraph id="6a8930db1919917a00114a48">ΔK = (1/2) ρΔV (v<sub>2</sub><sup>2</sup> − v<sub>1</sub><sup>2</sup>)</paragraph>
+<paragraph id="6a8930db1919917a00114a49">v<sub>1</sub>, v<sub>2</sub> = speeds at regions 1 and 2</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a4a">Apply work–energy to the fluid element:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a4b"><b>Work–energy equation (fluid element):</b></paragraph>
+<paragraph id="6a8930db1919917a00114a4c">(P<sub>1</sub> − P<sub>2</sub>)ΔV = (1/2)ρΔV(v<sub>2</sub><sup>2</sup> − v<sub>1</sub><sup>2</sup>) + ρgΔV(h<sub>2</sub> − h<sub>1</sub>)</paragraph>
+<paragraph id="6a8930db1919917a00114a4d">P<sub>1</sub>, P<sub>2</sub> = pressures; ρ = density; v<sub>1</sub>, v<sub>2</sub> = speeds; h<sub>1</sub>, h<sub>2</sub> = heights</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a4e">Divide by ΔV and rearrange:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a4f"><b>Bernoulli between two points:</b></paragraph>
+<paragraph id="6a8930db1919917a00114a50">P<sub>1</sub> + (1/2)ρv<sub>1</sub><sup>2</sup> + ρgh<sub>1</sub> = P<sub>2</sub> + (1/2)ρv<sub>2</sub><sup>2</sup> + ρgh<sub>2</sub></paragraph>
+<paragraph id="6a8930db1919917a00114a51">P = pressure at a point</paragraph>
+<paragraph id="6a8930db1919917a00114a52">ρ = density of incompressible fluid</paragraph>
+<paragraph id="6a8930db1919917a00114a53">v = speed of fluid at that point</paragraph>
+<paragraph id="6a8930db1919917a00114a54">g = acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a00114a55">h = height (elevation) of the point</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a56"><b>General Bernoulli form (along a streamline):</b></paragraph>
+<paragraph id="6a8930db1919917a00114a57">P + (1/2)ρv<sup>2</sup> + ρgh = constant</paragraph>
+<paragraph id="6a8930db1919917a00114a58">P = pressure</paragraph>
+<paragraph id="6a8930db1919917a00114a59">(1/2)ρv<sup>2</sup> = kinetic energy per unit volume</paragraph>
+<paragraph id="6a8930db1919917a00114a5a">ρgh = potential energy per unit volume</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a5b"><b>Verbal statement:</b> Along a streamline, the sum of:</paragraph>
+<ul>
+<li>pressure energy per unit volume (<b>P</b>),</li>
+<li>kinetic energy per unit volume (<b>(1/2)ρv<sup>2</sup></b>), and</li>
+<li>potential energy per unit volume (<b>ρgh</b>)</li>
+</ul>
+<paragraph id="6a8930db1919917a00114a5c">stays <b>constant</b>.</paragraph>
+</div>
+
+<h3>Conditions/limitations for Bernoulli’s equation</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>No friction/energy loss:</b> derivation assumes no dissipation. Real fluids have <b>internal friction</b> between layers at different speeds → energy lost as heat.</li>
+<li>This internal friction is <b>viscosity</b>. Bernoulli ideally needs <b>zero viscosity (non-viscous)</b>.</li>
+<li><b>Incompressible fluid:</b> otherwise compression (elastic) energy changes matter and aren’t included.</li>
+<li><b>Steady (non-turbulent) flow:</b>
+</li></ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114a5d">Exam habit: always state assumptions with Bernoulli → <b>steady + incompressible + non-viscous</b>, and applied <b>along a streamline</b>.</paragraph>
+</div>
+
+<h3>Special case: Fluid at rest (hydrostatics from Bernoulli)</h3>
+
+<paragraph id="6a8930db1919917a00114a5e">If fluid is at rest, <b>v = 0</b> everywhere ⇒ Bernoulli becomes:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a5f"><b>Hydrostatic relation from Bernoulli:</b></paragraph>
+<paragraph id="6a8930db1919917a00114a60">P<sub>1</sub> + ρgh<sub>1</sub> = P<sub>2</sub> + ρgh<sub>2</sub></paragraph>
+<paragraph id="6a8930db1919917a00114a61">Equivalently: (P<sub>1</sub> − P<sub>2</sub>) = ρg(h<sub>2</sub> − h<sub>1</sub>)</paragraph>
+<paragraph id="6a8930db1919917a00114a62">P<sub>1</sub>, P<sub>2</sub> = pressures at heights h<sub>1</sub>, h<sub>2</sub></paragraph>
+<paragraph id="6a8930db1919917a00114a63">ρ = density of liquid; g = acceleration due to gravity</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a64">Same as the hydrostatic pressure relation (earlier Eq. 9.6): in a static fluid, pressure difference depends <b>only</b> on height difference.</paragraph>
+</div>
+
+<h2>Speed of Efflux: Torricelli’s Law (start of section)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a65"><b>Efflux:</b> fluid flowing out through an opening.</paragraph>
+<paragraph id="6a8930db1919917a00114a66"><b>Torricelli’s result (idea stated here):</b> efflux speed from an open tank follows the <b>same-form formula</b> as a freely falling body.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a67"><b>Physical setup described:</b> Tank has liquid of density <b>ρ</b>. Small hole on the side at height <b>y<sub>1</sub></b> from bottom. Free surface at height <b>y<sub>2</sub></b>. Air above liquid at pressure <b>P</b>.</paragraph>
+
+<paragraph id="6a8930db1919917a00114a68">Use continuity (incompressible flow) between free surface (area <b>A<sub>1</sub></b>, speed <b>v<sub>1</sub></b>) and the hole (area <b>A<sub>2</sub></b>, speed <b>v<sub>2</sub></b>):</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-10.webp" decoding="async" height="288" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-10.webp" srcset="img/Untitled-10.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="294"/>
+    </button>
+  </div>
+</figure>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a69"><b>Continuity for tank efflux:</b></paragraph>
+<paragraph id="6a8930db1919917a00114a6a">v<sub>1</sub>A<sub>1</sub> = v<sub>2</sub>A<sub>2</sub></paragraph>
+<paragraph id="6a8930db1919917a00114a6b">Equivalently: v<sub>2</sub>/v<sub>1</sub> = A<sub>1</sub>/A<sub>2</sub></paragraph>
+<paragraph id="6a8930db1919917a00114a6c">A<sub>1</sub> = area of free surface in tank</paragraph>
+<paragraph id="6a8930db1919917a00114a6d">A<sub>2</sub> = area of hole (or jet cross-section at exit, idealised)</paragraph>
+<paragraph id="6a8930db1919917a00114a6e">v<sub>1</sub> = speed of lowering of free surface</paragraph>
+<paragraph id="6a8930db1919917a00114a6f">v<sub>2</sub> = efflux speed at the hole</paragraph>
+</div>
+
+<h2>Torricelli’s Law (Speed of Efflux from a Tank)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a70"><b>Efflux</b> = liquid flowing out through a small hole in a container.</paragraph>
+<paragraph id="6a8930db1919917a00114a71">Set up Bernoulli between 2 points:</paragraph>
+<ul>
+<li><b>Point 1</b> (at the hole/exit): speed <b>v<sub>1</sub></b>, pressure <b>P<sub>1</sub></b></li>
+<li><b>Point 2</b> (free surface/top): speed <b>v<sub>2</sub></b>, pressure <b>P</b> (pressure above liquid), height <b>y<sub>2</sub></b></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a72">If tank cross-section is huge compared to hole (<b>A<sub>2</sub> &gt;&gt; A<sub>1</sub></b>):</paragraph>
+<paragraph id="6a8930db1919917a00114a73"><b>v<sub>2</sub> ≈ 0</b> (free surface ~ at rest).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a74"><b>Bernoulli between points 1 and 2</b> (used here):</paragraph>
+<paragraph id="6a8930db1919917a00114a75">P<sub>1</sub> + ½ρv<sub>1</sub><sup>2</sup> + ρgy<sub>1</sub> = P + ½ρv<sub>2</sub><sup>2</sup> + ρgy<sub>2</sub></paragraph>
+<paragraph id="6a8930db1919917a00114a76"><b>P<sub>1</sub></b> = pressure at hole (often atmospheric), i.e. Pa if hole opens to air</paragraph>
+<paragraph id="6a8930db1919917a00114a77"><b>P</b> = pressure on free surface (Pa for open tank; can be much larger if pressurised)</paragraph>
+<paragraph id="6a8930db1919917a00114a78"><b>ρ</b> = fluid density</paragraph>
+<paragraph id="6a8930db1919917a00114a79"><b>v<sub>1</sub></b> = efflux speed at hole</paragraph>
+<paragraph id="6a8930db1919917a00114a7a"><b>v<sub>2</sub></b> = free-surface speed (≈ 0 if A<sub>2</sub> &gt;&gt; A<sub>1</sub>)</paragraph>
+<paragraph id="6a8930db1919917a00114a7b"><b>g</b> = acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a00114a7c"><b>y<sub>1</sub>, y<sub>2</sub></b> = heights (vertical coordinates) of points 1 and 2</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a7d">For a jet into air at the hole: <b>P<sub>1</sub> = P<sub>a</sub></b> (atmospheric). Take <b>v<sub>2</sub> = 0</b> and define <b>h = y<sub>2</sub> − y<sub>1</sub></b> (height drop from surface to hole). Then:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a7e"><b>Efflux relation </b>:</paragraph>
+<paragraph id="6a8930db1919917a00114a7f">(P − P<sub>a</sub>)/ρ = ½v<sub>1</sub><sup>2</sup> + gh</paragraph>
+<paragraph id="6a8930db1919917a00114a80"><b>P</b> = pressure at liquid surface inside tank</paragraph>
+<paragraph id="6a8930db1919917a00114a81"><b>P<sub>a</sub></b> = atmospheric pressure</paragraph>
+<paragraph id="6a8930db1919917a00114a82"><b>h</b> = depth of hole below free surface (vertical separation)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a83"><b>Pressurised tank:</b> if <b>P &gt;&gt; P<sub>a</sub></b> and <b>2gh</b> is negligible, efflux speed mainly comes from tank pressure (relevant to <b>rocket propulsion</b>).</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a84"><b>Open tank (most common):</b> tank open to air ⇒ <b>P = P<sub>a</sub></b>. Put into Eq. (9.14):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a85"><b>Torricelli’s law </b>:</paragraph>
+<paragraph id="6a8930db1919917a00114a86">v<sub>1</sub> = √(2gh)</paragraph>
+<paragraph id="6a8930db1919917a00114a87"><b>v<sub>1</sub></b> = efflux speed from hole</paragraph>
+<paragraph id="6a8930db1919917a00114a88"><b>g</b> = acceleration due to gravity</paragraph>
+<paragraph id="6a8930db1919917a00114a89"><b>h</b> = vertical depth of hole below free surface</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a8a"><b>Meaning:</b> v<sub>1</sub> = √(2gh) is exactly the free-fall speed after dropping height <b>h</b>. So efflux speed = free-fall speed from surface level down to the hole level.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114a8b"><b>Exam tip:</b> <b>v<sub>2</sub> ≈ 0</b> only if <b>A<sub>2</sub> &gt;&gt; A<sub>1</sub></b>. If areas are similar, the surface moves ⇒ you <b>cannot</b> set v<sub>2</sub> = 0.</paragraph>
+</div>
+
+<h2>Dynamic Lift (Bernoulli Explanation)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a8c"><b>Dynamic lift</b> = force on a moving body (wing / hydrofoil / spinning ball) due to motion through a fluid, caused by pressure differences linked to different fluid speeds (Bernoulli).</paragraph>
+</div>
+
+<h3>Spinning and Non-spinning Ball (Magnus Effect)</h3>
+
+<paragraph id="6a8930db1919917a00114a8d"><b>(i) Ball moving without spin:</b></paragraph>
+<ul>
+<li>Streamlines are symmetric (same above and below).</li>
+<li>So speed at matching points above/below is the same.</li>
+<li>Hence pressure above = pressure below ⇒ <b>no net up/down force</b> from pressure difference.</li>
+</ul>
+
+<paragraph id="6a8930db1919917a00114a8e"><b>(ii) Ball moving with spin:</b></paragraph>
+<ul>
+<li>Spin makes the ball <b>drag air</b> with it (more if the surface is rough).</li>
+<li>In the ball’s frame, air flows backward; because of spin:</li>
+<ul>
+<li>air speed <b>above</b> the ball (relative to ball) becomes <b>larger</b></li>
+<li>air speed <b>below</b> the ball becomes <b>smaller</b></li>
+</ul>
+<li>Streamlines get <b>crowded above</b> (high speed) and <b>rarified below</b> (low speed).</li>
+<li>High speed ⇒ low pressure above; low speed ⇒ high pressure below ⇒ <b>net upward force</b>.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a8f"><b>Magnus effect</b> = dynamic lift on a <b>spinning</b> body moving through a fluid, due to pressure difference from unequal speeds on opposite sides.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a90">In sports (cricket/tennis/baseball/golf), the curve/deviation from a simple parabola is <b>partly</b> explained by Bernoulli lift (Magnus effect).</paragraph>
+</div>
+
+<h3>Aerofoil and Lift on an Aircraft Wing</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114a91"><b>Aerofoil</b> = shaped solid that produces <b>upward dynamic lift</b> when moving horizontally through air.</paragraph>
+</div>
+
+<ul>
+<li>Wing is set so streamlines crowd more above than below.</li>
+<li>Crowding above ⇒ <b>higher air speed</b> over the top surface.</li>
+<li>Higher speed on top ⇒ <b>lower pressure</b> above than below.</li>
+<li>Net upward lift balances weight in level flight.</li>
+</ul>
+
+<h3>Worked Example A fully loaded Boeing aircraft
+has a mass of 3.3 × 10<sup>5</sup> kg. Its total wing
+area is 500 m<sup>2</sup>. It is in level flight with a
+speed of 960 km/h. (a) Estimate the
+pressure difference between the lower and
+upper surfaces of the wings (b) Estimate
+the fractional increase in the speed of the
+air on the upper surface of the wing relative
+to the lower surface. [The density of air is ρ
+= 1.2 kg m<sup>–3</sup>]</h3>
+
+<paragraph id="6a8930db1919917a00114a92"><b>Given:</b></paragraph>
+<ul>
+<li>Mass, m = 3.3 × 10<sup>5</sup> kg</li>
+<li>Total wing area, A = 500 m<sup>2</sup></li>
+<li>Speed of aircraft (take as average air speed), v<sub>av</sub> = 960 km/h = 267 m s<sup>−1</sup></li>
+<li>Density of air, ρ = 1.2 kg m<sup>−3</sup></li>
+<li>Level flight ⇒ lift = weight</li>
+</ul>
+
+<paragraph id="6a8930db1919917a00114a93"><b>(a) Pressure difference between lower and upper wing surfaces</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a94"><b>Lift balance</b>:</paragraph>
+<paragraph id="6a8930db1919917a00114a95">ΔP · A = mg</paragraph>
+<paragraph id="6a8930db1919917a00114a96"><b>ΔP</b> = P<sub>lower</sub> − P<sub>upper</sub> (pressure difference giving lift)</paragraph>
+<paragraph id="6a8930db1919917a00114a97"><b>A</b> = total wing area</paragraph>
+<paragraph id="6a8930db1919917a00114a98"><b>m</b> = aircraft mass</paragraph>
+<paragraph id="6a8930db1919917a00114a99"><b>g</b> = acceleration due to gravity</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a9a">Compute:</paragraph>
+<paragraph id="6a8930db1919917a00114a9b">ΔP = (3.3 × 10<sup>5</sup> × 9.8) / 500 = 6.5 × 10<sup>3</sup> N m<sup>−2</sup></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a9c">So only about <b>6.5 kPa</b> pressure difference is needed for level flight support.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114a9d"><b>(b) Fractional increase in air speed over upper surface relative to lower surface</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114a9e">Assume <b>small height difference</b> between top/bottom wing surfaces is negligible in Bernoulli ⇒ gravity term cancels.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114a9f"><b>Bernoulli pressure–speed across wing (same height)</b>:</paragraph>
+<paragraph id="6a8930db1919917a00114aa0">ΔP = ½ρ (v<sub>2</sub><sup>2</sup> − v<sub>1</sub><sup>2</sup>)</paragraph>
+<paragraph id="6a8930db1919917a00114aa1"><b>v<sub>2</sub></b> = air speed over upper surface</paragraph>
+<paragraph id="6a8930db1919917a00114aa2"><b>v<sub>1</sub></b> = air speed under lower surface</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114aa3">Use difference of squares:</paragraph>
+<paragraph id="6a8930db1919917a00114aa4">v<sub>2</sub><sup>2</sup> − v<sub>1</sub><sup>2</sup> = (v<sub>2</sub> − v<sub>1</sub>)(v<sub>2</sub> + v<sub>1</sub>)</paragraph>
+<paragraph id="6a8930db1919917a00114aa5">Define average speed:</paragraph>
+<paragraph id="6a8930db1919917a00114aa6">v<sub>av</sub> = (v<sub>2</sub> + v<sub>1</sub>)/2</paragraph>
+<paragraph id="6a8930db1919917a00114aa7">So (v<sub>2</sub> + v<sub>1</sub>) = 2v<sub>av</sub>, hence:</paragraph>
+<paragraph id="6a8930db1919917a00114aa8">ΔP = ½ρ (v<sub>2</sub> − v<sub>1</sub>)(2v<sub>av</sub>) = ρ v<sub>av</sub> (v<sub>2</sub> − v<sub>1</sub>)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114aa9"><b>Fractional speed difference (used here)</b>:</paragraph>
+<paragraph id="6a8930db1919917a00114aaa">(v<sub>2</sub> − v<sub>1</sub>)/v<sub>av</sub> = ΔP/(ρ v<sub>av</sub><sup>2</sup>)</paragraph>
+<paragraph id="6a8930db1919917a00114aab"><b>v<sub>av</sub></b> = (v<sub>2</sub> + v<sub>1</sub>)/2</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114aac">Substitute:</paragraph>
+<paragraph id="6a8930db1919917a00114aad">(v<sub>2</sub> − v<sub>1</sub>)/v<sub>av</sub> = 6.5×10<sup>3</sup> / (1.2 × 267<sup>2</sup>) ≈ 0.08</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114aae"><b>Conclusion:</b> air speed above the wing needs to be only about <b>8% higher</b> than below to produce the lift.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114aaf"><b>Common mistake:</b> mixing up v<sub>av</sub> with aircraft speed without stating the assumption. Here they explicitly take v<sub>av</sub> = 960 km/h (267 m/s) as the average air speed around the wing.</paragraph>
+</div>
+
+<h2>Viscosity</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114ab0"><b>Viscosity</b> = internal friction of a fluid → resists relative motion of its layers (real / non-ideal fluid effect).</paragraph>
+</div>
+
+<h3>Physical Picture: Shearing Between Layers (Parallel Plates)</h3>
+<ul>
+<li>Fluid (e.g. oil) trapped between two glass plates:</li>
+<ul>
+<li>Bottom plate fixed.</li>
+<li>Top plate pulled at constant speed <b>v</b>.</li>
+</ul>
+<li><b>No-slip (as used here)</b>: fluid touching a surface moves with the <b>same speed as the surface</b>.</li>
+<ul>
+<li>Top layer moves with speed <b>v</b>.</li>
+<li>Bottom layer is at rest.</li>
+</ul>
+<li>Middle layers: speed increases <b>uniformly</b> from 0 → v.</li>
+<li>Each layer is dragged forward by layer above + pulled back by layer below → net <b>shearing force</b> between layers.</li>
+<li>Replace oil with honey → need more force for same <b>v</b> → honey is <b>more viscous</b>.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114ab1"><b>Laminar flow</b> = smooth layered flow; layers slide like pages of a book.</paragraph>
+</div>
+
+<h3>Viscous Flow in a Pipe (Velocity Distribution)</h3>
+<ul>
+<li>In a tube/pipe with viscous (laminar) flow:</li>
+<ul>
+<li>Speed is <b>maximum on the axis</b>.</li>
+<li>Speed decreases gradually towards the wall.</li>
+<li>Speed becomes <b>zero at the wall</b>.</li>
+<li>On any coaxial cylindrical surface, speed is the <b>same (constant)</b>.</li>
+</ul>
+</ul>
+
+<h3>Shear Strain and Strain Rate in Fluids</h3>
+<ul>
+<li>A fluid element initially ABCD becomes AEFD after time <b>Δt</b> due to shear.</li>
+<li><b>Shear strain</b> = <b>Δx/l</b> (dimensionless), where:</li>
+<ul>
+<li><b>Δx</b> = relative sideways shift between layers in time Δt</li>
+<li><b>l</b> = separation between layers (film thickness)</li>
+</ul>
+<li>In flowing fluids, strain keeps increasing with time → stress depends on <b>rate of strain</b> (strain rate), not strain itself.</li>
+<li><b>Strain rate</b> = (Δx/l)/Δt = Δx/(lΔt) = <b>v/l</b></li>
+</ul>
+
+<h3>Coefficient of Viscosity (η): Definition, Unit, Dimensions</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114ab2"><b>Coefficient of viscosity </b>:</paragraph>
+<paragraph id="6a8930db1919917a00114ab3"><b>η</b> = (shearing stress)/(strain rate)</paragraph>
+<paragraph id="6a8930db1919917a00114ab4"><b>η</b> (“eta”) = coefficient of viscosity</paragraph>
+<paragraph id="6a8930db1919917a00114ab5"><b>Shearing stress</b> = tangential force per unit area between layers</paragraph>
+<paragraph id="6a8930db1919917a00114ab6"><b>Strain rate</b> = <b>v/l</b> (simple parallel-layer velocity gradient)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114ab7"><b>SI unit</b>: <b>poiseuille (Pl)</b></paragraph>
+<paragraph id="6a8930db1919917a00114ab8">Also written as: <b>N s m<sup>−2</sup></b> or <b>Pa s</b></paragraph>
+<paragraph id="6a8930db1919917a00114ab9"><b>Dimensions</b>: <b>[M L<sup>−1</sup> T<sup>−1</sup>]</b></paragraph>
+</div>
+
+<ul>
+<li>Thin liquids (water, alcohol) → <b>low</b> viscosity.</li>
+<li>Thick liquids (coal tar, blood, glycerine) → <b>high</b> viscosity.</li>
+<li>From the referenced data (Table 9.2 mentioned in text):</li>
+<ul>
+<li>Blood is more viscous (“thicker”) than water.</li>
+<li><b>Relative viscosity of blood</b>, η/η<sub>water</sub>, stays constant from <b>0°C to 37°C</b>.</li>
+</ul>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114aba"><b>Temperature dependence</b>:</paragraph>
+<ul>
+<li>Viscosity of <b>liquids decreases</b> as temperature increases.</li>
+<li>Viscosity of <b>gases increases</b> as temperature increases.</li>
+</ul>
+</div>
+
+<h3>Worked Example A metal block of area 0.10 m<sup>2</sup> is
+connected to a 0.010 kg mass via a string
+that passes over an ideal pulley (considered
+massless and frictionless), as in Fig. 9.13.
+A liquid with a film thickness of 0.30 mm
+is placed between the block and the table.
+When released the block moves to the right
+with a constant speed of 0.085 m s<sup>-1</sup>. Find
+the coefficient of viscosity of the liquid.</h3>
+<paragraph id="6a8930db1919917a00114abb"><b>Setup:</b> Metal block pulled over a table with a thin liquid film between them (film thickness given). Block is tied over an ideal pulley to a hanging mass. When released, block moves at constant speed ⇒ net force = 0 ⇒ pull = viscous resistive force.</paragraph>
+
+<paragraph id="6a8930db1919917a00114abc"><b>Given:</b></paragraph>
+<ul>
+<li>Area, <b>A = 0.10 m<sup>2</sup></b></li>
+<li>Hanging mass, <b>m = 0.010 kg</b></li>
+<li>Film thickness, <b>l = 0.30 mm = 3.0 × 10<sup>−4</sup> m</b></li>
+<li>Constant speed, <b>v = 0.085 m s<sup>−1</sup></b></li>
+<li>Ideal pulley (massless, frictionless) ⇒ at constant speed: <b>T = mg</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114abd"><b>Key idea (constant speed)</b>: acceleration = 0 ⇒ forces balance.</paragraph>
+<ul>
+<li>Tension <b>T = mg</b> (hanging mass also steady-speed).</li>
+<li>Viscous drag on block = <b>T</b>.</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114abe"><b>Shearing stress</b> = <b>F/A</b></paragraph>
+<paragraph id="6a8930db1919917a00114abf"><b>Strain rate</b> = <b>v/l</b></paragraph>
+<paragraph id="6a8930db1919917a00114ac0">η = (shearing stress)/(strain rate):</paragraph>
+<paragraph id="6a8930db1919917a00114ac1"><b>η = (F/A) / (v/l) = (F l)/(A v)</b></paragraph>
+<paragraph id="6a8930db1919917a00114ac2"><b>F</b> = tangential viscous force = <b>T = mg</b> (here)</paragraph>
+<paragraph id="6a8930db1919917a00114ac3"><b>l</b> = film thickness</paragraph>
+<paragraph id="6a8930db1919917a00114ac4"><b>A</b> = contact area</paragraph>
+<paragraph id="6a8930db1919917a00114ac5"><b>v</b> = relative sliding speed</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114ac6">Substitute:</paragraph>
+<ul>
+<li><b>F = mg = 0.010 × 9.8 = 0.098 N</b></li>
+<li><b>η = (0.098 × 3.0×10<sup>−4</sup>) / (0.10 × 0.085)</b></li>
+</ul>
+<paragraph id="6a8930db1919917a00114ac7"><b>η ≈ 3.46 × 10<sup>−3</sup> Pa s</b> ( = N s m<sup>−2</sup>)</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114ac8"><b>Common mistakes:</b></paragraph>
+<ul>
+<li>Not converting <b>mm → m</b> for film thickness.</li>
+<li>Using η = (F/A)/v instead of dividing by <b>strain rate v/l</b>.</li>
+<li>Forgetting “<b>constant speed</b>” ⇒ viscous force = <b>mg</b>.</li>
+</ul>
+</div>
+
+<h2>Viscosity: Worked Example (Shear in a Fluid)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114ac9">Shearing a fluid → apply tangential force → creates a <b>velocity gradient</b> between layers. <b>Viscosity</b> tells how strongly the fluid resists that relative sliding.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930db1919917a00114aca"><b>Physical reasoning in this setup:</b> Block moves right due to string tension. In steady motion, tension equals the <b>weight of the hanging mass</b> ⇒ <b>T = mg</b>.</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114acb"><b>Shearing force on the fluid:</b> Same tangential force is transmitted through the block/fluid contact ⇒ <b>F = T = mg</b>.</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114acc"><b>Numerical evaluation:</b> with <b>m = 0.010 kg</b>,</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114acd"><b>Shear force from hanging mass</b>: <b>F = T = mg</b></paragraph>
+<paragraph id="6a8930db1919917a00114ace"><b>F</b> = shear (tangential) force on fluid (N)</paragraph>
+<paragraph id="6a8930db1919917a00114acf"><b>T</b> = tension (N)</paragraph>
+<paragraph id="6a8930db1919917a00114ad0"><b>m</b> = suspended mass (kg)</paragraph>
+<paragraph id="6a8930db1919917a00114ad1"><b>g</b> = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930db1919917a00114ad2">So <b>F = 0.010 × 9.8 = 9.8 × 10<sup>−2</sup> N</b>.</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114ad3"><b>Shear stress on the fluid:</b> shear stress = <b>F/A</b> (unit: N m<sup>−2</sup> = Pa), where <b>A</b> is the contact area.</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114ad4"><b>Strain rate:</b> velocity gradient between layers (rate of shear deformation).</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114ad5"><b>Newton’s law of viscosity:</b> <b>η = (shear stress)/(strain rate)</b>. Final value in the worked solution: <b>η = 3.46 × 10<sup>−3</sup> Pa s</b>.</paragraph></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114ad6"><b>Exam tip:</b> Keep the chain neat: find <b>F</b> first (often <b>mg</b> via tension) → then <b>shear stress = F/A</b> → then <b>strain rate</b> (a velocity gradient) → then <b>η</b> = stress/strain-rate. Units must end as <b>Pa s</b> (= N s m<sup>−2</sup> = kg m<sup>−1</sup> s<sup>−1</sup>).</paragraph>
+</div>
+
+<h2>Viscosities of Some Fluids </h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114ad7">Viscosity depends strongly on the <b>type of fluid</b> and on <b>temperature</b>. For many liquids, viscosity falls as temperature rises.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="6a8930db1919917a00114ad8"><b>Water:</b> 20°C → 1.0 mPl; 100°C → 0.3 mPl</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114ad9"><b>Blood:</b> 37°C → 2.7 mPl</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114ada"><b>Machine oil:</b> 16°C → 113 mPl; 38°C → 34 mPl</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114adb"><b>Glycerine:</b> 20°C → 830 mPl</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114adc"><b>Honey:</b> (temperature not stated) → 200 mPl</paragraph></li>
+<li><paragraph id="6a8930db1919917a00114add"><b>Air:</b> 0°C → 0.017 mPl; 40°C → 0.019 mPl</paragraph></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114ade"><b>Common mistake:</b> Don’t assume viscosity always decreases with temperature for every fluid; <b>gases</b> (e.g. air here) show a slight <b>increase</b> with temperature in the data.</paragraph>
+</div>
+
+<h2>(9.5.1) Stokes’ Law </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114adf">When a body moves through a fluid, it <b>drags nearby layers</b> → layers slip past each other → viscosity gives a <b>retarding (drag) force</b> on the body.</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a8930db1919917a00114ae0"><b>Examples:</b> raindrop falling; pendulum bob swinging (air drag due to viscosity).</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114ae1"><b>Key observation:</b> viscous drag <b>∝ velocity</b> and acts <b>opposite</b> to motion.</paragraph></li>
+  <li>
+    <paragraph id="6a8930db1919917a00114ae2">Drag depends on:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930db1919917a00114ae3"><b>η</b> = viscosity of fluid</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114ae4"><b>a</b> = radius of (spherical) body</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114ae5"><b>v</b> = speed of body through fluid</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930db1919917a00114ae6">Sir George G. Stokes (1819–1903): viscous drag on a sphere (derivation not needed here).</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114ae7"><b>Stokes’ law (sphere)</b>:   F = 6πηav   </paragraph>
+  <paragraph id="6a8930db1919917a00114ae8">F = viscous drag (N), opposite to motion</paragraph>
+  <paragraph id="6a8930db1919917a00114ae9">η = coefficient of viscosity (Pa s)</paragraph>
+  <paragraph id="6a8930db1919917a00114aea">a = radius (m)</paragraph>
+  <paragraph id="6a8930db1919917a00114aeb">v = speed relative to fluid (m s<sup>−1</sup>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114aec">Here the retarding force is <b>directly proportional to v</b> (not v<sup>2</sup>).</paragraph>
+</div>
+
+<h3>Terminal Velocity of a Sphere in a Viscous Medium</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114aed">A sphere falling in a viscous medium: starts accelerating due to gravity → speed rises → drag rises → eventually <b>net force = 0</b> → acceleration becomes 0 → constant speed = <b>terminal velocity</b> (<b>v<sub>t</sub></b>).</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930db1919917a00114aee">For a sphere (e.g., raindrop) falling in a fluid:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930db1919917a00114aef">Downward: weight = (4π/3)a<sup>3</sup>ρg</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114af0">Upward: buoyant force = (4π/3)a<sup>3</sup>σg, and viscous drag = 6πηav</paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930db1919917a00114af1"><b>At terminal velocity:</b> viscous drag + buoyant force = weight.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114af2"><b>Terminal condition</b>:   6πηa v<sub>t</sub> = (4π/3)a<sup>3</sup>(ρ − σ)g</paragraph>
+  <paragraph id="6a8930db1919917a00114af3">v<sub>t</sub> = terminal velocity (m s<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114af4">ρ = density of sphere (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114af5">σ = density of fluid (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114af6">Other symbols as earlier</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114af7"><b>Terminal velocity</b>:   v<sub>t</sub> = 2a<sup>2</sup>(ρ − σ)g / (9η)   (Eq. 9.18)</paragraph>
+  <paragraph id="6a8930db1919917a00114af8">v<sub>t</sub> = terminal velocity (m s<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114af9">a = radius (m)</paragraph>
+  <paragraph id="6a8930db1919917a00114afa">ρ = density of sphere (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114afb">σ = density of fluid (kg m<sup>−3</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114afc">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114afd">η = viscosity (Pa s)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><paragraph id="6a8930db1919917a00114afe">v<sub>t</sub> ∝ a<sup>2</sup> (depends on <b>square of radius</b>)</paragraph></li>
+    <li><paragraph id="6a8930db1919917a00114aff">v<sub>t</sub> ∝ (ρ − σ) (depends on <b>density difference</b>)</paragraph></li>
+    <li><paragraph id="6a8930db1919917a00114b00">v<sub>t</sub> ∝ 1/η (inversely proportional to <b>viscosity</b>)</paragraph></li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b01"><b>Common mistake:</b> writing (ρ + σ) instead of (ρ − σ). Buoyancy reduces effective weight → must use <b>sphere density − fluid density</b>.</paragraph>
+</div>
+
+<h3>Example The terminal velocity of a
+copper ball of radius 2.0 mm falling through
+a tank of oil at 20°C is 6.5 cm s<sup>-1</sup>. Compute
+the viscosity of the oil at 20°C. Density of
+oil is 1.5 ×10<sup>3</sup> kg m<sup>-3</sup>, density of copper is
+8.9 × 10<sup>3</sup> kg m<sup>-3</sup>.</h3>
+
+<ul>
+  <li>
+    <paragraph id="6a8930db1919917a00114b02"><b>Given:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930db1919917a00114b03">v<sub>t</sub> = 6.5 cm s<sup>−1</sup> = 6.5 × 10<sup>−2</sup> m s<sup>−1</sup></paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b04">a = 2.0 mm = 2 × 10<sup>−3</sup> m</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b05">g = 9.8 m s<sup>−2</sup></paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b06">ρ (copper) = 8.9 × 10<sup>3</sup> kg m<sup>−3</sup></paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b07">σ (oil) = 1.5 × 10<sup>3</sup> kg m<sup>−3</sup></paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930db1919917a00114b08"><b>Method:</b> rearrange Eq. (9.18) to find η.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b09"><b>Viscosity from terminal velocity</b>:   η = 2a<sup>2</sup>(ρ − σ)g / (9v<sub>t</sub>)</paragraph>
+  <paragraph id="6a8930db1919917a00114b0a">η, a, ρ, σ, g, v<sub>t</sub> as defined earlier</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a8930db1919917a00114b0b"><b>Substitute values</b> (as in text) →</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b0c"><b>η = 9.9 × 10<sup>−1</sup> kg m<sup>−1</sup> s<sup>−1</sup></b> = <b>0.99 Pa s</b>.</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b0d"><b>Unit check:</b> kg m<sup>−1</sup> s<sup>−1</sup> = Pa s, since 1 Pa = 1 N m<sup>−2</sup> = 1 kg m<sup>−1</sup> s<sup>−2</sup>.</paragraph>
+</div>
+
+<h2>(9.6) Surface Tension : Introduction and Everyday Phenomena</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b0e">Surface tension is linked to the <b>free surface</b> (liquid interface). Liquids: definite volume, no definite shape → when poured, they form a free surface, and this surface has <b>extra energy</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114b0f">Surface tension is about <b>liquids only</b> (gases don’t have free surfaces).</paragraph>
+</div>
+
+<ul>
+  <li>
+    <paragraph id="6a8930db1919917a00114b10"><b>Phenomena explained by surface tension:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930db1919917a00114b11">Oil and water don’t mix.</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b12">Water wets humans but not ducks (wetting).</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b13">Mercury doesn’t wet glass, but water sticks to it.</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b14">Oil rises up a cotton wick against gravity.</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b15">Sap and water rise to the top of leaves of a tree.</paragraph></li>
+      <li><paragraph id="6a8930db1919917a00114b16">Paint brush hairs: don’t cling when dry; dip in water + take out → form a fine tip.</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h2>(9.6.1) Surface Energy </h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b17">Surface energy: surface molecules have <b>higher potential energy</b> than bulk molecules because they have <b>fewer neighbours</b> pulling them in.</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a8930db1919917a00114b18"><b>Molecular attraction holds the liquid together.</b> A molecule deep inside is attracted by neighbours → has <b>negative potential energy</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b19"><b>Bulk uniformity:</b> average PE of interior molecules is same (on average) because surroundings are similar.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b1a"><b>Evidence:</b> to separate molecules far apart (evaporate/vaporise) needs large heat of evaporation; for water ≈ <b>40 kJ/mol</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b1b"><b>Molecule near surface:</b> only lower half-space has liquid neighbours → negative PE is smaller than bulk, roughly <b>half</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b1c"><b>Consequence:</b> surface molecules have <b>extra energy</b> → liquid tries to have <b>minimum surface area</b> allowed by conditions.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b1d"><b>Increasing surface area costs energy:</b> energy must be supplied; many surface effects come from this.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b1e"><b>Energy of a surface molecule:</b> ~ half the energy needed to remove it completely → about <b>half the heat of evaporation</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b1f"><b>Nature of the surface:</b> perfectly sharp surface can’t exist (molecules are moving). Density falls quickly to zero across thickness ~ <b>a few molecular sizes</b> (around z = 0 in schematic).</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b20"><b>Exam phrasing:</b> “Liquid minimises surface area” → justify: “surface molecules have higher energy; reducing surface area reduces number of surface molecules, so energy decreases.”</paragraph>
+</div>
+
+<h2>(9.6.2) Surface Energy and Surface Tension </h2>
+
+<h3>Film Experiment: Relation Between Surface Energy and Surface Tension</h3>
+<ul>
+  <li><paragraph id="6a8930db1919917a00114b21">Take a <b>horizontal liquid film</b> ending in a light bar that can slide on parallel guides (film has <b>two surfaces</b>).</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b22">Shift the bar by a small distance <b>d</b> → surface area increases → surface energy increases → need to do work against an internal force <b>F</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b23">Work done by applied force: <b>W = Fd</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b24">If surface energy per unit area = <b>S</b>, extra area made = <b>2dl</b> (two surfaces; each gains area <b>dl</b>; bar length = <b>l</b>) → extra energy stored = <b>S(2dl)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b25"><b>Work ↔ surface energy (film)</b>: <b>S(2dl) = Fd</b>   (Eq. 9.19)</paragraph>
+  <paragraph id="6a8930db1919917a00114b26"><b>S</b> = surface energy per unit area (J m<sup>−2</sup>) = surface tension (N m<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114b27"><b>F</b> = force needed to move the bar (N)</paragraph>
+  <paragraph id="6a8930db1919917a00114b28"><b>d</b> = small displacement of the bar (m)</paragraph>
+  <paragraph id="6a8930db1919917a00114b29"><b>l</b> = length of movable bar in contact with film (m)</paragraph>
+  <paragraph id="6a8930db1919917a00114b2a"><b>2dl</b> = increase in total surface area (m<sup>2</sup>) since film has two surfaces</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b2b"><b>Surface tension from force on a film</b>: <b>S = F/(2l)</b>   (Eq. 9.20)</paragraph>
+  <paragraph id="6a8930db1919917a00114b2c"><b>S</b> = surface tension (N m<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930db1919917a00114b2d"><b>F</b> = force on the movable bar (N)</paragraph>
+  <paragraph id="6a8930db1919917a00114b2e"><b>l</b> = length of bar (m)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114b2f"><b>Meaning of S:</b> Surface tension <b>S</b> = (i) <b>surface energy per unit area</b> of the interface, and also = (ii) <b>force per unit length</b> exerted by the fluid on the movable boundary.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b30"><b>Common mistake:</b> missing the factor <b>2</b> for a film (because there are <b>two surfaces</b>). For a single interface, the relation won’t have the 2.</paragraph>
+</div>
+
+<h3>Surface Energy of an Interface (Two Materials)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b31">Surface energy is, in general, the energy of the <b>interface between two materials</b> (liquid–gas, liquid–liquid, liquid–solid) → depends on <b>both</b> materials.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930db1919917a00114b32">If molecules of the two materials <b>attract</b> → surface energy <b>decreases</b>.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b33">If they <b>repel</b> → surface energy <b>increases</b>.</paragraph></li>
+</ul>
+
+<h3>Key Observations About Surface Tension</h3>
+<ol>
+  <li><paragraph id="6a8930db1919917a00114b34"><b>Definition + dual meaning:</b> Surface tension is <b>force per unit length</b> (≡ <b>surface energy per unit area</b>) acting in the plane of the interface between a liquid and any other substance. Also: it’s the <b>extra energy</b> molecules at the interface have vs molecules inside the liquid.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b35"><b>Forces on an imagined line (inside the surface):</b> Pick a point on the interface (away from edges) and draw an imaginary line. Equal &amp; opposite surface tension forces, magnitude <b>S per unit length</b>, act <b>perpendicular to the line</b> but <b>in the plane of the interface</b> → line stays in equilibrium. Microscopic view: molecules on both sides pull the line towards themselves → “tension”.</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b36"><b>At a boundary/edge of the interface:</b> If the line is at the <b>end</b> of the interface, only one side pulls → unbalanced force <b>S per unit length</b> acting <b>inwards</b> → tries to reduce surface area.</paragraph></li>
+</ol>
+
+<h3>Surface Tension Values and Temperature Dependence </h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114b37">Surface tension depends on temperature. Like viscosity, surface tension of a liquid <b>generally decreases as temperature increases</b>.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930db1919917a00114b38"><b>Helium:</b> −270°C → surface tension = 0.000239 N/m; heat of vaporisation = 0.115 kJ/mol</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b39"><b>Oxygen:</b> −183°C → surface tension = 0.0132 N/m; heat of vaporisation = 7.1 kJ/mol</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b3a"><b>Ethanol:</b> 20°C → surface tension = 0.0227 N/m; heat of vaporisation = 40.6 kJ/mol</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b3b"><b>Water:</b> 20°C → surface tension = 0.0727 N/m; heat of vaporisation = 44.16 kJ/mol</paragraph></li>
+  <li><paragraph id="6a8930db1919917a00114b3c"><b>Mercury:</b> 20°C → surface tension = 0.4355 N/m; heat of vaporisation = 63.2 kJ/mol</paragraph></li>
+</ul>
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b3d"><b>Exam linkage:</b> Higher surface tension usually means stronger intermolecular cohesion; heats of vaporisation help link surface effects to energy needed to separate molecules.</paragraph>
+</div>
+
+<h2>Measurement of Surface Tension (Glass Plate Method)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b3e"><b>When does a fluid “stick” to a solid?</b> Adhesion happens when surface energy between <b>fluid–solid</b> is <b>less</b> than the <b>sum</b> of surface energies for <b>solid–air</b> and <b>fluid–air</b>. Then net attraction exists between the solid and the liquid.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114b3f"><b>Experimental idea (schematic):</b> Suspend a flat vertical glass plate as one arm of a balance. Raise a vessel of liquid until it just touches the plate’s lower horizontal edge. Surface tension pulls the plate slightly downward. Add extra weights to the other side until the plate just clears the liquid surface again.</paragraph>
+
+<paragraph id="6a8930db1919917a00114b40">Let the <b>additional weight needed</b> be <b>W</b>. This extra downward pull is from surface tension along the contact line.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-11.webp" decoding="async" height="248" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-11.webp" srcset="img/Untitled-11.webp 505w" style="border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="367"/>
+    </button>
+  </div>
+</figure>
+
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b41"><b>Surface tension (liquid–air) by plate method</b>:</paragraph>
+  <paragraph id="6a8930db1919917a00114b42"><b>S<sub>la</sub> = W/(2l) = mg/(2l)</b>    </paragraph>
+  <paragraph id="6a8930db1919917a00114b43"><b>S<sub>la</sub></b> = surface tension of liquid–air interface</paragraph>
+  <paragraph id="6a8930db1919917a00114b44"><b>W</b> = extra weight needed to rebalance (force)</paragraph>
+  <paragraph id="6a8930db1919917a00114b45"><b>m</b> = extra mass added (so W = mg)</paragraph>
+  <paragraph id="6a8930db1919917a00114b46"><b>g</b> = acceleration due to gravity</paragraph>
+  <paragraph id="6a8930db1919917a00114b47"><b>l</b> = length of the horizontal edge of plate in contact with liquid</paragraph>
+  <paragraph id="6a8930db1919917a00114b48"><b>2l</b> because surface tension acts along <b>both sides</b> of the plate edge (two liquid–air contact lines)</paragraph>
+</div>
+
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b49"><b>Common error:</b> writing <b>W/l</b> instead of <b>W/(2l)</b>. Factor 2 is needed because there are <b>two</b> contact lines (front + back).</paragraph>
+</div>
+
+<h2>9.6.3 Angle of Contact</h2>
+
+<h3>Definition and Physical Meaning</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114b4a"><b>Angle of contact (θ):</b> angle between the <b>tangent to the liquid surface</b> at the contact point and the <b>solid surface</b>, measured <b>inside the liquid</b>.</paragraph>
+</div>
+<paragraph id="6a8930db1919917a00114b4b"><b>Key point:</b> Near the line where a liquid meets another medium (solid/air etc.), the surface is usually <b>curved</b>. θ depends on the specific <b>liquid–solid pair</b>.</paragraph>
+
+<h3>Wetting vs Droplet Formation</h3>
+<paragraph id="6a8930db1919917a00114b4c">Value of <b>θ</b> decides if a liquid:</paragraph>
+<ul>
+<li><b>Wets/spreads</b> on the solid (small θ), or</li>
+<li><b>Forms droplets</b> (large θ).</li>
+</ul>
+<paragraph id="6a8930db1919917a00114b4d"><b>Examples:</b></paragraph>
+<ul>
+<li>Water on a <b>lotus leaf</b> → droplets (poor wetting).</li>
+<li>Water on a <b>clean plastic plate</b> → spreads more (better wetting).</li>
+</ul>
+
+<h3>Interfacial Tensions and Equilibrium at the Contact Line</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114b4e">At the contact line, <b>three interfaces</b> meet → three interfacial tensions:</paragraph>
+<ul>
+<li>S<sub>la</sub>: liquid–air</li>
+<li>S<sub>sa</sub>: solid–air</li>
+<li>S<sub>sl</sub>: solid–liquid</li>
+</ul>
+<paragraph id="6a8930db1919917a00114b4f">These surface forces must be in <b>equilibrium</b> at the contact line.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114b50"><b>Interfacial tension balance (equilibrium):</b></paragraph>
+<paragraph id="6a8930db1919917a00114b51">S<sub>la</sub> cosθ + S<sub>sl</sub> = S<sub>sa</sub>    (Eq. 9.22)</paragraph>
+<paragraph id="6a8930db1919917a00114b52"><b>S<sub>la</sub></b> = liquid–air surface tension</paragraph>
+<paragraph id="6a8930db1919917a00114b53"><b>S<sub>sl</sub></b> = solid–liquid interfacial tension</paragraph>
+<paragraph id="6a8930db1919917a00114b54"><b>S<sub>sa</sub></b> = solid–air interfacial tension</paragraph>
+<paragraph id="6a8930db1919917a00114b55"><b>θ</b> = angle of contact (measured inside the liquid)</paragraph>
+</div>
+
+<h3>Acute vs Obtuse Contact Angle: Conditions and Interpretation</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114b56"><b>Obtuse (θ &gt; 90°):</b> if S<sub>sl</sub> &gt; S<sub>la</sub> (e.g., water–leaf). Liquid molecules attract each other strongly, weak attraction to solid → making solid–liquid surface costs more energy → liquid <b>doesn’t wet</b> (droplets).</paragraph>
+<paragraph id="6a8930db1919917a00114b57"><b>Acute (θ &lt; 90°):</b> if S<sub>sl</sub> &lt; S<sub>la</sub> (e.g., water–plastic). Strong liquid–solid attraction lowers S<sub>sl</sub> → cosθ increases → θ decreases → better wetting/spreading.</paragraph>
+</div>
+<paragraph id="6a8930db1919917a00114b58"><b>Non-wetting examples:</b> water on waxy/oily surfaces; <b>mercury</b> on almost any surface.</paragraph>
+<paragraph id="6a8930db1919917a00114b59"><b>Strong wetting examples:</b> water on glass or plastic; <b>kerosene oil</b> on virtually anything (spreads easily).</paragraph>
+
+<h3>Applications: Wetting and Water Proofing Agents</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Wetting agents</b> (soaps, detergents, dyeing substances): make θ smaller (decrease θ) → liquid penetrates/acts better.</li>
+<li><b>Waterproofing agents:</b> make θ larger between water and fibres (increase θ) → less wetting.</li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114b5a">Exam tip: Always mention θ is measured <b>inside the liquid</b>—many sign/confusion errors come from taking the wrong side.</paragraph>
+</div>
+
+<h2>9.6.4 Drops and Bubbles</h2>
+
+<h3>Why Drops/Bubbles Are Spherical</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114b5b">A liquid–air interface has <b>surface energy</b>. For fixed volume, the shape with <b>minimum surface energy</b> has the <b>least surface area</b>. A <b>sphere</b> has minimum area for a given volume → so (when gravity is negligible) free drops/bubbles are spherical.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114b5c">Sphericity is clearest for <b>small drops</b> (spray/jet) and <b>soap bubbles</b>, where gravity is weak compared to surface tension.</paragraph>
+</div>
+
+<h3>Excess Pressure Inside a Spherical Drop</h3>
+<paragraph id="6a8930db1919917a00114b5d">Take a spherical drop (radius <b>r</b>) in equilibrium. Let radius increase by a small <b>Δr</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114b5e"><b>Increase in surface energy (drop):</b></paragraph>
+<paragraph id="6a8930db1919917a00114b5f">[4π(r + Δr)<sup>2</sup> − 4πr<sup>2</sup>] S<sub>la</sub> = 8πrΔr S<sub>la</sub>    (Eq. 9.23)</paragraph>
+<paragraph id="6a8930db1919917a00114b60"><b>r</b> = initial radius</paragraph>
+<paragraph id="6a8930db1919917a00114b61"><b>Δr</b> = small increase in radius</paragraph>
+<paragraph id="6a8930db1919917a00114b62"><b>S<sub>la</sub></b> = liquid–air surface tension</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114b63">This surface-energy increase is balanced by work gained in expansion against the pressure difference (inside vs outside).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114b64"><b>Work done by pressure difference:</b></paragraph>
+<paragraph id="6a8930db1919917a00114b65">W = (P<sub>i</sub> − P<sub>o</sub>) 4πr<sup>2</sup>Δr    (Eq. 9.24)</paragraph>
+<paragraph id="6a8930db1919917a00114b66"><b>P<sub>i</sub></b> = pressure inside the drop</paragraph>
+<paragraph id="6a8930db1919917a00114b67"><b>P<sub>o</sub></b> = pressure outside the drop</paragraph>
+<paragraph id="6a8930db1919917a00114b68"><b>4πr<sup>2</sup>Δr</b> = approx. volume increase (small Δr)</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114b69">Equilibrium: (surface-energy increase) = (work by pressure difference) ⇒</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114b6a"><b>Excess pressure inside a liquid drop:</b></paragraph>
+<paragraph id="6a8930db1919917a00114b6b">P<sub>i</sub> − P<sub>o</sub> = 2S<sub>la</sub>/r    (Eq. 9.25)</paragraph>
+<paragraph id="6a8930db1919917a00114b6c"><b>S<sub>la</sub></b> = liquid–air surface tension</paragraph>
+<paragraph id="6a8930db1919917a00114b6d"><b>r</b> = radius of drop</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930db1919917a00114b6e"><b>General rule (liquid–gas curved interface):</b> pressure is higher on the <b>concave side</b> than on the convex side. Example: an <b>air bubble in a liquid</b> has higher pressure inside.</paragraph>
+</div>
+
+<h3>Excess Pressure Inside a Soap Bubble (Two Interfaces)</h3>
+<paragraph id="6a8930db1919917a00114b6f">A bubble has <b>two interfaces</b> (inner + outer surfaces), so the pressure difference is <b>double</b> compared to a single interface.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930db1919917a00114b70"><b>Excess pressure inside a soap bubble:</b></paragraph>
+<paragraph id="6a8930db1919917a00114b71">P<sub>i</sub> − P<sub>o</sub> = 4S<sub>la</sub>/r    (Eq. 9.26)</paragraph>
+<paragraph id="6a8930db1919917a00114b72"><b>P<sub>i</sub></b> = pressure inside the bubble</paragraph>
+<paragraph id="6a8930db1919917a00114b73"><b>P<sub>o</sub></b> = pressure outside the bubble</paragraph>
+<paragraph id="6a8930db1919917a00114b74"><b>S<sub>la</sub></b> = surface tension of the liquid film (liquid–air interface)</paragraph>
+<paragraph id="6a8930db1919917a00114b75"><b>r</b> = radius of the bubble</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930db1919917a00114b76">Exam trap: <b>2S/r</b> for a <b>drop</b> (one surface) vs <b>4S/r</b> for a <b>soap bubble</b> (two surfaces). Mixing these is very common.</paragraph>
+</div>
+<paragraph id="6a8930db1919917a00114b77"><b>Practical implication:</b> Need extra air pressure inside → that’s why you must blow hard (but not too hard) to form a soap bubble.</paragraph>
+
+<h2>9.6.5 Capillary Rise</h2>
+
+<h3>Origin of Capillary Rise</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930db1919917a00114b78">Capillary rise happens due to <b>pressure difference across a curved liquid–air interface</b>. In narrow tubes, surface tension can lift water against gravity.</paragraph>
+</div>
+<paragraph id="6a8930db1919917a00114b79"><b>Meaning of “capillary”:</b> from Latin <i>capilla</i> = <b>hair</b>; hair-thin tubes give very large rise.</paragraph>
+
+<h3>Capillary Tube Setup (Beginning of Derivation)</h3>
+<paragraph id="6a8930db1919917a00114b7a">Consider a <b>vertical capillary tube</b> of <b>circular cross-section</b>, radius <b>a</b>, dipped into an <b>open vessel of water</b>. Inside the tube the surface forms a meniscus, and the <b>contact angle between water and the tube</b> matters (derivation continues beyond this portion).</paragraph>
+
+<h2>Capillarity: Pressure Difference at a Curved Meniscus and Capillary Rise/Fall</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b7b">Curved liquid surface (meniscus) at a liquid–gas interface ⇒ <b>pressure difference</b> across it due to <b>surface tension</b>. For water in a glass capillary, meniscus is usually <b>concave</b> (acute contact angle), so liquid pressure just under the meniscus is <b>less</b> than atmospheric.</paragraph>
+</div>
+
+<h3>Pressure jump across the meniscus (capillary tube)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b7c"><b>Pressure difference across top meniscus</b> (water–air in a capillary):</paragraph>
+  <paragraph id="6a8930db1919917a00114b7d">(P<sub>i</sub> − P<sub>0</sub>) = (2S/r) = 2S/(a secθ) = (2S/a)cosθ    (Eq. 9.27)</paragraph>
+  <paragraph id="6a8930db1919917a00114b7e">P<sub>i</sub> = pressure of liquid just inside the tube at the meniscus (air–water interface)</paragraph>
+  <paragraph id="6a8930db1919917a00114b7f">P<sub>0</sub> = atmospheric pressure (outside, above the meniscus)</paragraph>
+  <paragraph id="6a8930db1919917a00114b80">S = surface tension of the liquid–gas interface</paragraph>
+  <paragraph id="6a8930db1919917a00114b81">r = radius of curvature of the meniscus</paragraph>
+  <paragraph id="6a8930db1919917a00114b82">a = radius of the capillary tube</paragraph>
+  <paragraph id="6a8930db1919917a00114b83">θ = angle of contact (measured inside the liquid at the solid boundary)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114b84">For a <b>concave</b> meniscus (water in glass): θ acute ⇒ cosθ &gt; 0 ⇒ (P<sub>i</sub> − P<sub>0</sub>) &gt; 0 (per Eq. 9.27 sign convention). So the <b>pressure just under the meniscus differs from atmospheric</b> by an amount set by surface tension + curvature.</paragraph>
+  <paragraph id="6a8930db1919917a00114b85">Text point to remember (water in glass): pressure inside the tube at the meniscus is <b>less than atmospheric</b>; hydrostatic balance then explains the <b>rise</b> of the column.</paragraph>
+</div>
+
+<h3>Hydrostatic balance giving capillary rise</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b86"><b>Same-level points in connected liquid have equal pressure</b> (A and B at same horizontal level):</paragraph>
+  <paragraph id="6a8930db1919917a00114b87">P<sub>0</sub> + hρg = P<sub>i</sub> = P<sub>A</sub>    (Eq. 9.28)</paragraph>
+  <paragraph id="6a8930db1919917a00114b88">h = capillary rise (height of liquid column above outside free surface)</paragraph>
+  <paragraph id="6a8930db1919917a00114b89">ρ = density of the liquid</paragraph>
+  <paragraph id="6a8930db1919917a00114b8a">g = acceleration due to gravity</paragraph>
+  <paragraph id="6a8930db1919917a00114b8b">P<sub>A</sub> = pressure at point A (same level as B)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b8c"><b>Capillary rise from surface tension</b> (combine Eqs. 9.27 &amp; 9.28):</paragraph>
+  <paragraph id="6a8930db1919917a00114b8d">hρg = (P<sub>i</sub> − P<sub>0</sub>) = (2S cosθ)/a    (Eq. 9.29)</paragraph>
+  <paragraph id="6a8930db1919917a00114b8e">h = capillary rise (positive for rise, negative for depression)</paragraph>
+  <paragraph id="6a8930db1919917a00114b8f">S = surface tension</paragraph>
+  <paragraph id="6a8930db1919917a00114b90">θ = angle of contact</paragraph>
+  <paragraph id="6a8930db1919917a00114b91">a = capillary radius</paragraph>
+  <paragraph id="6a8930db1919917a00114b92">ρ = liquid density</paragraph>
+  <paragraph id="6a8930db1919917a00114b93">g = gravitational acceleration</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Capillary rise is due to surface tension</b> (explicitly stated).</li>
+    <li>From Eq. 9.29: h ∝ 1/a ⇒ <b>smaller capillary radius → bigger rise</b>.</li>
+    <li>Typical rise ≈ <b>a few cm</b> for fine capillaries.</li>
+  </ul>
+</div>
+
+<h3>Numerical illustration: water in a fine capillary</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b94">Water on clean glass: θ small (acute) ⇒ often take cosθ ≈ 1 for estimates ⇒ h ≈ 2S/(ρga).</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114b95">Given a = 0.05 cm = 5×10<sup>−4</sup> m, S = 0.073 N m<sup>−1</sup>, ρ = 10<sup>3</sup> kg m<sup>−3</sup>, g = 9.8 m s<sup>−2</sup>:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114b96">h = 2S/(ρga)</paragraph>
+  <paragraph id="6a8930db1919917a00114b97">h = 2×(0.073) / [(10<sup>3</sup>)(9.8)(5×10<sup>−4</sup>)]</paragraph>
+  <paragraph id="6a8930db1919917a00114b98">h = 2.98×10<sup>−2</sup> m = 2.98 cm</paragraph>
+</div>
+
+<h3>Capillary depression (mercury case)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114b99">Convex meniscus (e.g. mercury in glass): θ obtuse ⇒ cosθ &lt; 0. From Eq. 9.29, h becomes <b>negative</b> ⇒ level in capillary is <b>lower than outside</b> (capillary depression).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114b9a">Exam pitfall: always check sign of cosθ. Acute θ (wetting) → rise; obtuse θ (non-wetting) → depression.</paragraph>
+</div>
+
+<h2>Example </h2><paragraph id="6a8930db1919917a00114b9b"></paragraph><div>The lower end of a capillary
+tube of diameter 2.00 mm is dipped 8.00
+cm below the surface of water in a beaker.
+What is the pressure required in the tube
+in order to blow a hemispherical bubble at
+its end in water? The surface tension of
+water at temperature of the experiments is
+7.30 × 10<sup>-2</sup> Nm-1. 1 atmospheric pressure =
+1.01 × 10<sup>5</sup> Pa, density of water = 1000 kg/m<sup>3</sup>,
+g = 9.80 m s<sup>-2</sup>. Also calculate the excess
+pressure.<paragraph id="6a8930db1919917a00114b9c"></paragraph></div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930db1919917a00114b9d"><b>Excess pressure</b> across a curved interface comes from surface tension.</paragraph>
+  <paragraph id="6a8930db1919917a00114b9e">Gas bubble in a liquid: <b>one</b> liquid–gas surface ⇒ excess pressure = 2S/r.</paragraph>
+  <paragraph id="6a8930db1919917a00114b9f">Liquid drop/bubble in a gas: <b>two</b> liquid surfaces ⇒ excess pressure = 4S/r.</paragraph>
+</div>
+
+<paragraph id="6a8930db1919917a00114ba0"><b>Given:</b> capillary diameter = 2.00 mm ⇒ radius a = 1.00 mm = 10<sup>−3</sup> m. Depth below water surface = 8.00 cm = 0.08 m. Surface tension S = 7.30×10<sup>−2</sup> N m<sup>−1</sup>. Atmospheric pressure = 1.01×10<sup>5</sup> Pa. ρ = 1000 kg m<sup>−3</sup>. g = 9.80 m s<sup>−2</sup>.</paragraph>
+
+<h3>Step 1: Pressure outside the bubble at the capillary tip</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114ba1">P<sub>o</sub> = P<sub>atm</sub> + ρgh</paragraph>
+  <paragraph id="6a8930db1919917a00114ba2">P<sub>o</sub> = 1.01×10<sup>5</sup> + (0.08)(1000)(9.80) = 1.01784×10<sup>5</sup> Pa</paragraph>
+  <paragraph id="6a8930db1919917a00114ba3">P<sub>o</sub> = pressure in water just outside the bubble at the given depth</paragraph>
+  <paragraph id="6a8930db1919917a00114ba4">P<sub>atm</sub> = atmospheric pressure</paragraph>
+  <paragraph id="6a8930db1919917a00114ba5">ρgh = hydrostatic pressure due to depth h in the liquid</paragraph>
+</div>
+
+<h3>Step 2: Excess pressure due to surface tension</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114ba6">Excess pressure for a gas bubble in a liquid: ΔP = 2S/r</paragraph>
+  <paragraph id="6a8930db1919917a00114ba7">ΔP = 2×(7.30×10<sup>−2</sup>) / (10<sup>−3</sup>) = 146 Pa</paragraph>
+  <paragraph id="6a8930db1919917a00114ba8">ΔP = P<sub>i</sub> − P<sub>o</sub></paragraph>
+  <paragraph id="6a8930db1919917a00114ba9">r = radius of the bubble</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930db1919917a00114baa">Bubble is <b>hemispherical</b> at the capillary end ⇒ take bubble radius = capillary radius: r = 1.00 mm.</paragraph>
+</div>
+
+<h3>Step 3: Pressure required inside the tube (inside the bubble)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930db1919917a00114bab">P<sub>i</sub> = P<sub>o</sub> + 2S/r</paragraph>
+  <paragraph id="6a8930db1919917a00114bac">P<sub>i</sub> = 1.01784×10<sup>5</sup> + 146 = (1.01784 + 0.00146)×10<sup>5</sup> Pa</paragraph>
+  <paragraph id="6a8930db1919917a00114bad">P<sub>i</sub> ≈ 1.02×10<sup>5</sup> Pa (rounded to three significant figures)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930db1919917a00114bae">Common mistake: using 4S/r here. That’s for a liquid drop/bubble in air (two surfaces), not a gas bubble in a liquid (one surface).</paragraph>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

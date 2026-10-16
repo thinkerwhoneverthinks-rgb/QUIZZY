@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Growth and Development (Chapter 13): Introduction</title>
+  <link href="data:," rel="icon"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="container chapter-wrap" id="main-content"><paragraph class="page-label" id="6a8c16a1c01a40070bd78f9b">Handwritten Notes</paragraph>
+<h1>Ch-13 : Plant Growth and Development</h1>
+
+<h2>Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78f9c"><b>Development</b> in plants = the <b>sum of two processes</b>:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Growth</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Differentiation</div>
+  </div>
+  <paragraph id="6a8c16a1c01a40070bd78f9d">Development of a mature plant from a <b>zygote (fertilised egg)</b> occurs through a <b>precise, highly ordered succession of events</b>, producing a complex body organisation (<b>roots, leaves, branches, flowers, fruits, seeds</b>) and ultimately <b>death</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78f9e"><b>Seed germination</b> is the <b>first step</b> in plant growth.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78f9f">A seed germinates only when <b>favourable environmental conditions</b> exist.</paragraph>
+
+  <ul class="check-list">
+    <li>If conditions are <b>unfavourable</b>, seeds <b>do not germinate</b> and enter a period of <b>suspended growth/rest</b>.</li>
+    <li>When favourable conditions return, seeds <b>resume metabolic activities</b> and <b>growth</b> occurs.</li>
+  </ul>
+
+  <paragraph id="6a8c16a1c01a40070bd78fa0">Developmental processes are controlled by factors of two broad kinds:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Intrinsic<span class="tile-sub">internal factors</span></div>
+    <div class="tile">Extrinsic<span class="tile-sub">external factors</span></div>
+  </div>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c16a1c01a40070bd78fa1"><b>Bean seedling sequence:</b></paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78fa2">During germination and seedling development, structures appear in an orderly pattern relative to the <b>soil line</b>:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Seed coat<span class="tile-sub">protective covering</span></div>
+    <div class="tile">Cotyledons<span class="tile-sub">seed leaves</span></div>
+    <div class="tile">Hypocotyl<span class="tile-sub">below cotyledons</span></div>
+    <div class="tile">Epicotyl<span class="tile-sub">often shows an epicotyl hook</span></div>
+  </div>
+</div>
+
+<div class="remember-box">
+  ⚠ <b>Exam trap:</b> Do not confuse <b>development</b> with <b>growth alone</b>. <b>Development = growth + differentiation.</b>
+</div>
+
+<h2>13.1 Growth</h2>
+
+<h3>Definition and essential features of growth</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fa3"><b>Growth</b> = an <b>irreversible</b> and <b>permanent</b> increase in <b>size</b> of:</paragraph>
+  <ul class="star-list">
+    <li>an <b>organ</b>, or its <b>parts</b>, or</li>
+    <li>even an <b>individual cell</b>.</li>
+  </ul>
+  <paragraph id="6a8c16a1c01a40070bd78fa4">Growth is generally accompanied by <b>metabolic processes</b> (both <b>anabolic</b> and <b>catabolic</b>) and occurs at the <b>expense of energy</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul class="star-list">
+    <li><b>Leaf expansion</b> is an example of true growth because it is <b>irreversible and permanent</b> and is linked with metabolism.</li>
+  </ul>
+  <paragraph id="6a8c16a1c01a40070bd78fa5"><b>Swelling of a piece of wood in water</b>—this is a size increase but is classically considered <b>not true growth</b> because it is mainly due to <b>water absorption (imbibition)</b> rather than metabolic, protoplasmic increase.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fa6"><b>Common mistake:</b> Writing “any increase in size is growth.” In exams, emphasise: <b>irreversible + permanent + metabolic/energy-linked</b>. Mention why swelling of wood differs (primarily physical imbibition).</paragraph>
+</div>
+
+<h3>13.1.1 Plant growth generally is indeterminate (open form of growth)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fa7"><b>Plant growth is unique</b> because plants retain the capacity for <b>unlimited growth throughout life</b>.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78fa8">This is due to the presence of <b>meristems</b> at specific locations.</paragraph>
+  <ul class="check-list">
+    <li>Meristematic cells have the capacity to <b>divide</b> and <b>self-perpetuate</b>.</li>
+    <li>Their products <b>soon lose</b> the capacity to divide and form the <b>plant body</b>.</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fa9"><b>Open form of growth</b> = growth in which <b>new cells are always added</b> to the plant body due to continuous <b>meristem activity</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78faa"><b>Exam angle:</b> If asked “What if the meristem ceases to divide?”, the logical consequence is that <b>addition of new cells stops</b>, so further growth of that region/axis would <b>halt</b>.</paragraph>
+</div>
+
+<h3>Meristems and types of growth: primary vs secondary</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fab">Key meristems previously studied:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Root apical meristem<span class="tile-sub">Responsible for primary growth; elongation along the axis</span></div>
+  <div class="tile">Shoot apical meristem<span class="tile-sub">Responsible for primary growth; elongation along the axis</span></div>
+  <div class="tile">Vascular cambium<span class="tile-sub">Lateral meristem; increases girth (secondary growth)</span></div>
+  <div class="tile">Cork cambium<span class="tile-sub">Lateral meristem; increases girth (secondary growth)</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul class="check-list">
+    <li><b>Primary growth</b>: mainly due to <b>root apical</b> and <b>shoot apical</b> meristems; contributes to <b>elongation</b> along the plant axis.</li>
+    <li><b>Secondary growth</b>: occurs in <b>dicotyledonous plants and gymnosperms</b> due to <b>lateral meristems</b> (vascular cambium and cork cambium) that appear <b>later in life</b>; increases the <b>girth</b> of the organs where active.</li>
+  </ul>
+</div>
+
+<h3>13.1.2 Growth is measurable</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fac">At the cellular level, growth is mainly due to an increase in the amount of <b>protoplasm</b>.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78fad">Because protoplasm increase is difficult to measure directly, growth is measured using parameters <b>approximately proportional</b> to it.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fae"><b>Common growth measurement parameters:</b></paragraph>
+  <div class="tile-grid">
+    <div class="tile">Fresh weight<span class="tile-sub">Increase in fresh weight</span></div>
+    <div class="tile">Dry weight<span class="tile-sub">Increase in dry weight</span></div>
+    <div class="tile">Length<span class="tile-sub">Increase in length</span></div>
+    <div class="tile">Area<span class="tile-sub">Increase in area</span></div>
+    <div class="tile">Volume<span class="tile-sub">Increase in volume</span></div>
+    <div class="tile">Cell number<span class="tile-sub">Increase in cell number</span></div>
+  </div>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c16a1c01a40070bd78faf"><b>Illustrative extremes (must remember):</b></paragraph>
+  <ul class="star-list">
+    <li>A single <b>maize root apical meristem</b> can produce <b>&gt; 17,500 new cells per hour</b> → growth expressed as <b>increase in cell number</b>.</li>
+    <li>Cells in a <b>watermelon</b> may increase in size up to <b>3,50,000 times</b> → growth expressed as <b>increase in cell size</b>.</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fb0"><b>Choose the measurement based on the structure:</b></paragraph>
+  <ul class="check-list">
+    <li><b>Pollen tube</b>: growth measured in terms of <b>length</b>.</li>
+    <li><b>Dorsiventral leaf</b>: growth reflected as increase in <b>surface area</b>.</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fb1"><b>Exam tip:</b> When asked “How is growth measured?”, list multiple parameters and add one context example (e.g., pollen tube length; leaf area; meristem cell number).</paragraph>
+</div>
+
+<h3>13.1.3 Phases of growth (root tip as model)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fb2">The period of growth is divided into <b>three phases</b>:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Meristematic phase</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Elongation phase</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Maturation phase</div>
+  </div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fb3"><b>Meristematic phase (at root/shoot apex):</b></paragraph>
+  <ul class="check-list">
+    <li>Cells are <b>constantly dividing</b>.</li>
+    <li>Rich in <b>protoplasm</b>.</li>
+    <li>Have <b>large conspicuous nuclei</b>.</li>
+    <li>Cell walls are <b>primary</b>, <b>thin</b>, and <b>cellulosic</b>.</li>
+    <li><b>Abundant plasmodesmatal connections</b>.</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fb4"><b>Elongation phase (just proximal to meristematic zone; away from tip):</b></paragraph>
+  <ul class="check-list">
+    <li><b>Increased vacuolation</b></li>
+    <li><b>Cell enlargement</b></li>
+    <li><b>New cell wall deposition</b></li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fb5"><b>Maturation phase (further away from apex; proximal to elongation zone):</b></paragraph>
+  <ul class="check-list">
+    <li>Cells attain <b>maximal size</b>.</li>
+    <li><b>Wall thickening</b> occurs.</li>
+    <li><b>Protoplasmic modifications</b> occur.</li>
+    <li>Most differentiated tissues/cell types studied earlier belong to this phase.</li>
+  </ul>
+</div>
+
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fb6"><b>Common confusion:</b> “Proximal” here means <b>just next, away from the tip</b> when moving from the apex toward older regions.</paragraph>
+</div>
+
+<h3>13.1.4 Growth rates</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fb7"><b>Growth rate</b> = <b>increased growth per unit time</b>.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78fb8">Therefore, rate of growth can be expressed <b>mathematically</b> (details to follow in later text), and an organism/organ can produce more cells in a <b>variety of ways</b>.</paragraph>
+</div>
+
+
+<h2>Plant Growth: Growth Rate Patterns (Arithmetic vs Geometrical)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd78fb9"><b>Growth rate</b> may increase in two main patterns:</paragraph>
+<div class="tile-grid">
+  <div class="tile">Arithmetic growth<span class="tile-sub">constant increase per unit time; linear curve</span></div>
+  <div class="tile">Geometrical growth<span class="tile-sub">increase proportional to current size; exponential then sigmoid (S-curve) in nature</span></div>
+</div>
+</div>
+
+<h3>Arithmetic Growth</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd78fba"><b>Definition:</b> After mitotic division, <b>only one daughter cell</b> continues to divide; the other <b>differentiates and matures</b>.</paragraph>
+</div>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a1c01a40070bd78fbb"><b>Example idea:</b> A root elongating at a constant rate shows arithmetic growth; length increases by the same amount each unit time.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fbc"><b>Graph:</b> Plot of organ length vs time gives a <b>linear (straight-line) curve</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8c16a1c01a40070bd78fbd"><b>Arithmetic growth equation:</b> <b>L<sub>t</sub> = L<sub>0</sub> + rt</b></paragraph>
+<ul class="check-list">
+  <li><b>L<sub>t</sub></b> = length at time <b>t</b></li>
+  <li><b>L<sub>0</sub></b> = length at time <b>0</b></li>
+  <li><b>r</b> = growth rate / elongation per unit time</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd78fbe"><b>Exam trap:</b> Arithmetic growth is not “slow”; it is defined by <b>constant addition</b> per unit time and a <b>linear</b> graph, not by how big the organ is.</paragraph>
+</div>
+
+<h3>Geometrical Growth</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd78fbf"><b>Definition:</b> After mitotic division, <b>both progeny cells</b> retain the ability to divide, so the number/size increases <b>proportionally</b>—initially slow, then rapid.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fc0"><b>Typical phases when plotted against time:</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Lag phase<span class="tile-sub">initial growth slow</span></div>
+  <div class="tile">Log/Exponential phase<span class="tile-sub">growth increases rapidly at an exponential rate</span></div>
+  <div class="tile">Stationary phase<span class="tile-sub">with limited nutrients, growth slows and plateaus</span></div>
+</div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Lag (slow start)</div><span class="flow-arrow">→</span><div class="flow-box">Log/Exponential (rapid)</div><span class="flow-arrow">→</span><div class="flow-box">Stationary (plateau)</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fc1"><b>Graph in natural conditions:</b> Plotting growth parameter vs time typically gives a <b>sigmoid (S-shaped) curve</b>.</paragraph>
+<paragraph id="6a8c16a1c01a40070bd78fc2"><b>Significance:</b> A sigmoid curve is <b>characteristic of living organisms</b> growing in a <b>natural environment</b> and is typical for <b>cells, tissues, and plant organs</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8c16a1c01a40070bd78fc3"><b>Exponential (geometrical) growth equation:</b> <b>W<sub>1</sub> = W<sub>0</sub> e<sup>rt</sup></b></paragraph>
+<ul class="check-list">
+  <li><b>W<sub>1</sub></b> = final size (weight/height/number, etc.)</li>
+  <li><b>W<sub>0</sub></b> = initial size at the beginning of the period</li>
+  <li><b>r</b> = growth rate (<b>relative growth rate</b>)</li>
+  <li><b>t</b> = time of growth</li>
+  <li><b>e</b> = base of natural logarithms</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd78fc4"><b>Relative growth rate (r) as an efficiency index:</b> In exponential growth, <b>r</b> measures the ability of the plant to produce new plant material and is referred to as the <b>efficiency index</b>.</paragraph>
+<paragraph id="6a8c16a1c01a40070bd78fc5"><b>Implication:</b> Final size <b>W<sub>1</sub></b> depends on initial size <b>W<sub>0</sub></b>; larger starting size can yield larger final size even with the same r and t.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd78fc6"><b>Exam trap:</b> “Geometrical growth” is not automatically an S-curve; the <b>pure mathematical form is exponential</b>, but in real systems nutrient limitation makes the overall curve <b>sigmoid</b> due to a stationary phase.</paragraph>
+</div>
+
+<h2>Absolute Growth Rate vs Relative Growth Rate</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd78fc7">Quantitative comparisons between growth of living systems can be made in two ways:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Absolute growth rate (AGR)<span class="tile-sub">total growth per unit time</span></div>
+  <div class="tile">Relative growth rate (RGR)<span class="tile-sub">growth per unit time on a common basis (e.g., per unit initial size)</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fc8"><b>How to interpret the leaf example (A vs B):</b></paragraph>
+<ul class="star-list">
+  <li>Leaves <b>A and B</b> start at different sizes but each increases area by <b>5 cm²</b> in the same time (to form <b>A<sub>1</sub></b> and <b>B<sub>1</sub></b>).</li>
+  <li><b>Absolute growth rate:</b> same for both, because the <b>absolute increase</b> (5 cm²) per time is the same.</li>
+  <li><b>Relative growth rate:</b> higher in the leaf that was <b>smaller initially</b>, because the same 5 cm² represents a <b>larger fraction of its initial area</b>.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd78fc9"><b>Quick exam check:</b> If two systems gain the same amount, the one that started smaller has the <b>higher RGR</b>.</paragraph>
+</div>
+
+<h2>Conditions for Growth (Plant Growth Requirements)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd78fca">Growth requires both <b>resources</b> and appropriate <b>environmental conditions</b>.</paragraph>
+</div>
+
+<h3>Essential Resources: Water, Oxygen, Nutrients</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fcb"><b>Water</b></paragraph>
+<ul class="check-list">
+  <li>Plant cells grow in size mainly by <b>cell enlargement</b>, which requires <b>water</b>.</li>
+  <li><b>Turgidity</b> provides the force for <b>extension growth</b>.</li>
+  <li>Plant growth and development are closely linked to the <b>water status</b> of the plant.</li>
+  <li>Water acts as a <b>medium for enzymatic activities</b> needed for growth.</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fcc"><b>Oxygen</b></paragraph>
+<ul class="check-list">
+  <li>Required for releasing <b>metabolic energy</b> essential for growth activities.</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd78fcd"><b>Nutrients</b> (macro- and micro-essential elements)</paragraph>
+<ul class="check-list">
+  <li>Needed for <b>synthesis of protoplasm</b>.</li>
+  <li>Also act as a <b>source of energy</b>.</li>
+</ul>
+</div>
+
+<h3>Environmental Conditions: Temperature, Light, Gravity</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+  <li>Each plant has an <b>optimum temperature range</b> best suited for growth.</li>
+  <li><b>Deviation</b> from this optimum range may be <b>detrimental to survival</b>.</li>
+  <li><b>Environmental signals</b> like <b>light</b> and <b>gravity</b> affect specific phases/stages of growth.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd78fce"><b>Exam tip:</b> When asked “conditions for growth,” include both (1) <b>resources</b> (water/oxygen/nutrients) and (2) <b>signals/conditions</b> (temperature, light, gravity).</paragraph>
+</div>
+
+<h2>Differentiation, Dedifferentiation and Redifferentiation</h2>
+
+<h3>Differentiation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fcf"><b>Differentiation:</b> Cells derived from <b>root apical meristem</b>, <b>shoot apical meristem</b>, and <b>cambium</b> <b>mature</b> and become structurally specialised to perform specific functions.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fd0"><b>What changes during differentiation?</b> Cells undergo <b>few to major structural changes</b> in:</paragraph>
+  <ul class="check-list">
+    <li><b>Cell wall</b></li>
+    <li><b>Protoplasm</b></li>
+  </ul>
+</div>
+
+<ul class="star-list">
+  <li><b>Example: Tracheary element differentiation</b>
+    <ul>
+      <li>Cell <b>loses protoplasm</b>.</li>
+      <li>Develops <b>strong, elastic, lignocellulosic secondary cell wall</b>.</li>
+      <li>Functional outcome: can conduct water over long distances even under <b>extreme tension</b>.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fd1"><b>Link structure to function:</b> In answers, explicitly connect anatomical features (e.g., lignified secondary wall, loss of protoplasm) to their function (water conduction, strength under tension).</paragraph>
+</div>
+
+<h3>Dedifferentiation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fd2"><b>Dedifferentiation:</b> Living <b>differentiated cells</b> that have lost the capacity to divide may <b>regain the capacity for division</b> under certain conditions.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fd3"><b>Examples:</b> Formation of meristems from fully differentiated <b>parenchyma</b> cells:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Interfascicular cambium<span class="tile-sub">formed from differentiated parenchyma between vascular bundles</span></div>
+    <div class="tile">Cork cambium<span class="tile-sub">formed from differentiated parenchyma to produce protective tissues</span></div>
+  </div>
+</div>
+
+<h3>Redifferentiation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fd4"><b>Redifferentiation:</b> Cells produced by dedifferentiated meristems/tissues may again <b>lose the capacity to divide</b> and <b>mature</b> to perform specific functions.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Differentiated cell (non-dividing)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Dedifferentiation (regains division; meristem formed)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Redifferentiation (specialises again)</div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fd5"><b>Wording to use in exams:</b> Dedifferentiation = <b>regain division</b>; Redifferentiation = <b>specialise again after division</b>.</paragraph>
+</div>
+
+<h3>Open (Indeterminate) Nature of Differentiation in Plants</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fd6">Like growth, plant differentiation is described as <b>open</b> because cells/tissues arising from the <b>same meristem</b> can attain <b>different mature structures</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fd7"><b>Position-dependent differentiation:</b> Final structure at maturity is influenced by the <b>location of the cell</b> within the organ.</paragraph>
+  <ul class="star-list">
+    <li><b>Root example:</b>
+      <ul>
+        <li>Cells positioned away from the <b>root apical meristem</b> differentiate into <b>root-cap cells</b>.</li>
+        <li>Cells pushed to the <b>periphery</b> mature into <b>epidermis</b>.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<h2>Development (in Plants)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fd8"><b>Development:</b> The sum of <b>all changes</b> an organism undergoes during its life cycle, from <b>seed germination</b> to <b>senescence</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fd9"><b>Developmental sequence in a plant cell</b> (also applicable to tissues/organs):</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Meristematic cell</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Cell division</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Plasmatic growth</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Expansion (elongation)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Differentiation</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Maturation</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Mature cell</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Senescence</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Death</div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fda"><b>Exam tip:</b> “Development” is broader than “growth”—it includes growth plus differentiation, maturation, senescence and death.</paragraph>
+</div>
+
+<h2>Plasticity and Heterophylly</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fdb"><b>Plasticity:</b> Ability of plants to follow different developmental pathways in response to:</paragraph>
+  <ul class="check-list">
+    <li><b>Environment</b></li>
+    <li><b>Life stages/phases</b></li>
+  </ul>
+  <paragraph id="6a8c16a1c01a40070bd78fdc">This results in formation of different kinds of structures.</paragraph>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c16a1c01a40070bd78fdd">Think of plants as “adjustable blueprints”: same plant, different leaf shapes or structures depending on <b>where/when/how</b> it grows.</paragraph>
+</div>
+
+<h3>Heterophylly as an Example of Plasticity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fde"><b>Heterophylly:</b> Presence of <b>different leaf forms</b> on the same plant due to developmental stage or environment; it is a classic example of <b>plasticity</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fdf"><b>Types/examples mentioned:</b></paragraph>
+  <div class="tile-grid">
+    <div class="tile">Juvenile vs mature leaf forms<span class="tile-sub">cotton, coriander, larkspur: juvenile leaves differ in shape from mature leaves</span></div>
+    <div class="tile">Environmental heterophylly<span class="tile-sub">buttercup: leaves formed in air differ from leaves formed in water</span></div>
+  </div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fe0"><b>How to frame answers:</b> State “heterophylly” then explicitly connect it to “plasticity” and specify whether it is due to <b>phase of life</b> (juvenile vs mature) or <b>environment</b> (air vs water).</paragraph>
+</div>
+
+<h2>Development, Growth and Differentiation (Linkage &amp; Control)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fe1"><b>Development</b> in plants is <b>the sum of growth + differentiation</b>. Therefore, <b>growth, differentiation and development</b> are closely related life events.</paragraph>
+</div>
+
+<h3>Factors Controlling Development</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fe2">Plant development (both growth and differentiation) is controlled by:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Intrinsic factors<span class="tile-sub">Internal control: genetic + chemical regulators</span></div>
+  <div class="tile">Extrinsic factors<span class="tile-sub">Environmental control: external conditions</span></div>
+</div>
+
+<ul class="check-list">
+  <li><b>Intrinsic factors</b> include:
+    <ul>
+      <li><b>Intracellular (genetic)</b> factors</li>
+      <li><b>Intercellular</b> chemical factors (e.g., <b>plant growth regulators</b>)</li>
+    </ul>
+  </li>
+  <li><b>Extrinsic factors</b> include: <b>light, temperature, water, oxygen, nutrition</b> etc.</li>
+</ul>
+
+<h2>Plant Growth Regulators (PGRs)</h2>
+
+<h3>13.4.1 Characteristics of PGRs</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fe3"><b>Plant Growth Regulators (PGRs)</b> are <b>small, simple molecules</b> with <b>diverse chemical composition</b> that regulate plant growth and development.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78fe4">They are also called <b>plant growth substances</b>, <b>plant hormones</b>, or <b>phytohormones</b> in literature.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fe5"><b>Chemical diversity of PGRs (must know examples):</b></paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Indole compounds<span class="tile-sub">IAA (indole-3-acetic acid)</span></div>
+  <div class="tile">Adenine derivatives<span class="tile-sub">Kinetin (N6-furfurylamino purine)</span></div>
+  <div class="tile">Carotenoid derivatives<span class="tile-sub">ABA (abscisic acid)</span></div>
+  <div class="tile">Terpenes<span class="tile-sub">GA3 (gibberellic acid)</span></div>
+  <div class="tile">Gases<span class="tile-sub">Ethylene (C2H4)</span></div>
+</div>
+
+<h3>Functional Classification of PGRs</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fe6">PGRs are <b>broadly divided into two groups based on function</b> in the living plant body.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Growth promoters<span class="tile-sub">Promote division, enlargement, pattern formation, tropic growth, flowering, fruiting, seed formation</span></div>
+  <div class="tile">Growth inhibitors / stress-response PGRs<span class="tile-sub">Wound/stress responses; dormancy, abscission, growth inhibition</span></div>
+</div>
+
+<ul class="star-list">
+  <li><b>Plant growth promoters:</b> <b>Auxins, Gibberellins, Cytokinins</b></li>
+  <li><b>Growth inhibitor/stress-related group:</b> <b>Abscisic acid (ABA)</b></li>
+  <li><b>Ethylene:</b> can fit <b>either</b> group, but is <b>largely an inhibitor</b> of growth activities.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fe7"><b>Exam trap:</b> Do not force ethylene strictly into “promoter” or “inhibitor” only. Text point: it <b>could fit either group</b> but is <b>largely inhibitory</b>.</paragraph>
+</div>
+
+<h3>13.4.2 Discovery of Plant Growth Regulators (Accidental Discoveries)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fe8"><b>Key theme:</b> The discovery of <b>each of the five major PGR groups</b> was <b>accidental</b>.</paragraph>
+</div>
+
+<h3>Discovery of Auxin (Phototropism Experiments)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fe9"><b>Darwin and Francis Darwin</b> observed that <b>coleoptiles of canary grass</b> bend <b>towards unilateral light</b> (<b>phototropism</b>).</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78fea">Conclusion from experiments: the <b>tip of the coleoptile</b> is the site of a <b>transmittable influence</b> that causes bending of the whole coleoptile.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Unilateral light</div><span class="flow-arrow">→</span><div class="flow-box">Tip perceives stimulus</div><span class="flow-arrow">→</span><div class="flow-box">Signal transmitted</div><span class="flow-arrow">→</span><div class="flow-box">Coleoptile bends to light</div>
+</div>
+
+<ul class="star-list">
+  <li><b>F.W. Went</b> isolated <b>auxin</b> from <b>tips of coleoptiles of oat seedlings</b>.</li>
+</ul>
+
+<div class="sticky-note">
+  <paragraph id="6a8c16a1c01a40070bd78feb">Think of the coleoptile tip as a “sensor + signal sender”: the bending happens elsewhere, but the command originates at the tip.</paragraph>
+</div>
+
+<h3>Discovery of Gibberellins (Bakanae Disease)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fec"><b>Bakanae (“foolish seedling”) disease</b> of rice seedlings is caused by the fungus <b>Gibberella fujikuroi</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>E. Kurosawa (1926)</b>: rice seedlings showed disease symptoms when treated with <b>sterile filtrates</b> of the fungus.</li>
+  <li>The active substances were later identified as <b>gibberellic acid</b> (a gibberellin).</li>
+</ul>
+
+<h3>Discovery of Cytokinins (Callus Proliferation Requirement)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fed"><b>F. Skoog and co-workers</b>: Callus (mass of undifferentiated cells) from <b>internodal segments of tobacco stems</b> proliferated only when, <b>besides auxins</b>, the nutrient medium contained certain supplements.</paragraph>
+</div>
+
+<ul class="check-list">
+  <li>Required supplements (in addition to auxins): <b>vascular tissue extracts</b>, <b>yeast extract</b>, <b>coconut milk</b>, or <b>DNA</b></li>
+</ul>
+
+<ul class="star-list">
+  <li><b>Miller et al. (1955)</b> identified and crystallised the cytokinesis-promoting substance, named <b>kinetin</b>.</li>
+</ul>
+
+<h3>Discovery of Abscisic Acid (ABA)</h3>
+
+<ul class="star-list">
+  <li><b>Mid-1960s:</b> three independent studies purified/characterised inhibitors named <b>inhibitor-B</b>, <b>abscission II</b>, and <b>dormin</b>.</li>
+  <li>Later, all three were proven <b>chemically identical</b> and named <b>abscisic acid (ABA)</b>.</li>
+</ul>
+
+<h3>Discovery of Ethylene (Volatile Ripening Factor)</h3>
+
+<ul class="star-list">
+  <li><b>H.H. Cousins (1910)</b> confirmed release of a <b>volatile substance</b> from <b>ripened oranges</b> that hastened ripening of stored <b>unripened bananas</b>.</li>
+  <li>This volatile substance was identified as <b>ethylene</b>, a <b>gaseous PGR</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78fee"><b>Exam focus:</b> Link each PGR to its discovery cue: phototropism (auxin), bakanae (GA), tobacco callus + DNA/coconut milk (cytokinin), inhibitor-B/abscission II/dormin (ABA), volatile ripening gas (ethylene).</paragraph>
+</div>
+
+<h2>13.4.3 Physiological Effects of Plant Growth Regulators</h2>
+
+<h3>13.4.3.1 Auxins</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78fef"><b>Auxins</b> (Greek <b>auxein</b> = “to grow”) were <b>first isolated from human urine</b>.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78ff0">The term <b>auxin</b> applies to <b>IAA (indole-3-acetic acid)</b> and other <b>natural/synthetic compounds</b> with similar growth-regulating properties.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78ff1">Auxins are generally produced at <b>growing apices</b> of <b>stems and roots</b>, from where they <b>migrate</b> to regions of action.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78ff2"><b>Examples of auxins (must distinguish natural vs synthetic):</b></paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Natural auxins<span class="tile-sub">IAA, IBA (indole butyric acid)</span></div>
+  <div class="tile">Synthetic auxins<span class="tile-sub">NAA (naphthalene acetic acid), 2,4-D (2,4-dichlorophenoxyacetic acid)</span></div>
+</div>
+
+<div class="sticky-note">
+  Think: <b>Auxin = “growth signal” made at the tips</b> → travels to where the plant needs shaping (roots, buds, fruits).
+</div>
+
+<paragraph id="6a8c16a1c01a40070bd78ff3"><b>Agricultural/horticultural uses and effects of auxins:</b></paragraph>
+<ul class="star-list">
+  <li><b>Root initiation</b> in stem cuttings (used widely in <b>plant propagation</b>).</li>
+  <li><b>Promote flowering</b> (example: <b>pineapple</b>).</li>
+  <li><b>Fruit/leaf drop (abscission control):</b>
+    <ul>
+      <li>Prevent <b>fruit and leaf drop</b> at <b>early stages</b></li>
+      <li>Promote <b>abscission</b> of <b>older mature leaves and fruits</b></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Apical Dominance (Auxin-mediated)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78ff4">In most higher plants, the <b>growing apical bud inhibits</b> the growth of <b>lateral (axillary) buds</b>. This is called <b>apical dominance</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Apical bud present</div><span class="flow-arrow">→</span><div class="flow-box">Lateral buds suppressed</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78ff5"><b>Decapitation effect:</b> Removal of shoot tips (<b>decapitation</b>) usually results in the <b>growth of lateral buds</b> (branching).</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Decapitation (shoot tip removed)</div><span class="flow-arrow">→</span><div class="flow-box">Lateral buds grow</div><span class="flow-arrow">→</span><div class="flow-box">Branching</div>
+</div>
+
+<ul class="star-list">
+  <li><b>Applications:</b> used in <b>tea plantations</b> and <b>hedge-making</b> to promote branching after tip removal.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78ff6">Write clearly in exams: <b>apical bud present → lateral buds suppressed</b>; <b>apical bud removed → lateral buds grow into branches</b>.</paragraph>
+</div>
+
+<h3>Additional Effects/Uses of Auxins</h3>
+
+<div class="tile-grid">
+  <div class="tile">Parthenocarpy<span class="tile-sub">Induction (fruit development without fertilisation), e.g., <b>tomato</b></span></div>
+  <div class="tile">Herbicidal use<span class="tile-sub"><b>2,4-D</b> kills <b>dicotyledonous weeds</b> but does <b>not affect mature monocotyledonous plants</b> → <b>weed-free lawns</b></span></div>
+  <div class="tile">Xylem differentiation<span class="tile-sub"><b>Controls xylem differentiation</b></span></div>
+  <div class="tile">Cell division support<span class="tile-sub"><b>Helps in cell division</b></span></div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd78ff7"><b>Common mix-up:</b> 2,4-D is used to kill <b>dicots</b>, while <b>mature monocots</b> are largely unaffected (hence lawns).</paragraph>
+</div>
+
+<h3>13.4.3.2 Gibberellins</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78ff8"><b>Gibberellins (GAs)</b> are <b>promotory PGRs</b>. Over <b>100</b> gibberellins are reported from diverse organisms (including <b>fungi</b> and <b>higher plants</b>).</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78ff9">They are denoted as <b>GA1, GA2, GA3</b>, etc. <b>Gibberellic acid (GA3)</b> was among the first discovered and is the most intensively studied.</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78ffa"><b>All GAs are acidic.</b></paragraph>
+</div>
+
+<ul class="star-list">
+  <li>GAs produce a <b>wide range</b> of physiological responses.</li>
+  <li><b>Axis/internode elongation</b> is a key, exploited effect.</li>
+</ul>
+
+<paragraph id="6a8c16a1c01a40070bd78ffb"><b>Applications/physiological effects of gibberellins:</b></paragraph>
+<div class="tile-grid">
+  <div class="tile">Grape stalk elongation<span class="tile-sub"><b>Increase length of grape stalks</b> (via increased axis length)</span></div>
+  <div class="tile">Fruit shape improvement<span class="tile-sub">Cause fruits like <b>apple to elongate</b> and improve shape</span></div>
+  <div class="tile">Delay senescence<span class="tile-sub">Fruits remain on trees longer → <b>extended market period</b></span></div>
+  <div class="tile">Malting (brewing)<span class="tile-sub"><b>GA3 speeds up malting</b> process</span></div>
+  <div class="tile">Sugarcane yield boost<span class="tile-sub">Increases <b>stem length</b> → yield ↑ by as much as <b>20 tonnes per acre</b></span></div>
+  <div class="tile">Conifers: early seeds<span class="tile-sub">Spraying <b>juvenile conifers</b> hastens maturity → early seed production</span></div>
+  <div class="tile">Bolting promotion<span class="tile-sub">Promotes bolting in <b>beet</b>, <b>cabbages</b>, and many <b>rosette habit</b> plants</span></div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78ffc"><b>Bolting</b> = <b>internode elongation just prior to flowering</b> (not merely “flowering”).</paragraph>
+</div>
+
+<h3>13.4.3.3 Cytokinins</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd78ffd"><b>Cytokinins</b> have specific effects on <b>cytokinesis</b> (cell division).</paragraph>
+  <paragraph id="6a8c16a1c01a40070bd78ffe">They were discovered as <b>kinetin</b>, a <b>modified adenine</b> (a <b>purine</b>), obtained from <b>autoclaved herring sperm DNA</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd78fff"><b>Kinetin</b> is historically key but <b>does not occur naturally in plants</b>.</paragraph>
+</div>
+
+<paragraph id="6a8c16a1c01a40070bd79000"><b>Search for natural cytokinins:</b></paragraph>
+<ul class="star-list">
+  <li>Isolation of <b>zeatin</b> from <b>corn-kernels</b> and <b>coconut milk</b>.</li>
+  <li>After zeatin: several <b>naturally occurring cytokinins</b> and some <b>synthetic compounds</b> with cell division-promoting activity were identified.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd79001"><b>Do not write</b> “kinetin is a natural plant hormone.” Text states clearly: <b>kinetin does not occur naturally in plants</b>; <b>zeatin</b> is a natural cytokinin.</paragraph>
+</div>
+
+<h2>Plant Growth Regulators (PGRs): Cytokinins (continuation)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd79002"><b>Cytokinins</b> are plant growth regulators synthesised mainly in regions of rapid cell division (e.g., <b>root apices</b>, <b>developing shoot buds</b>, <b>young fruits</b>). They primarily promote <b>cell division</b> and influence several aspects of shoot development.</paragraph>
+</div>
+
+<h3>Sites of synthesis (where made most)</h3>
+
+<div class="tile-grid">
+  <div class="tile">Root apices<span class="tile-sub">Major site of cytokinin synthesis</span></div>
+  <div class="tile">Developing shoot buds<span class="tile-sub">Active growth regions</span></div>
+  <div class="tile">Young fruits<span class="tile-sub">Rapid cell division zones</span></div>
+</div>
+
+<h3>Physiological effects (what they do)</h3>
+<ul class="check-list">
+  <li>Promote formation of <b>new leaves</b></li>
+  <li>Promote development of <b>chloroplasts in leaves</b></li>
+  <li>Promote <b>lateral shoot growth</b></li>
+  <li>Promote <b>adventitious shoot formation</b></li>
+  <li><b>Overcome apical dominance</b> (reduce suppression of lateral buds by the apical bud)</li>
+  <li>Promote <b>nutrient mobilisation</b> → helps in <b>delay of leaf senescence</b></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c16a1c01a40070bd79003"><b>Exam link</b>: “Cytokinins overcome apical dominance” + “delay senescence” are repeatedly tested applications/MCQ stems.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c16a1c01a40070bd79004"><b>Common confusion:</b> Cytokinins are strongly linked with <b>shoot/lateral bud activation</b> and <b>delay of senescence</b>; do not mix this up with <b>ABA</b> (stress/inhibitor) or <b>ethylene</b> (senescence/abscission/ripening).</paragraph>
+</div>
+
+<h2>Ethylene</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd79005"><b>Ethylene</b> = a <b>simple gaseous</b> plant growth regulator (PGR). Produced in high amounts by <b>senescing tissues</b> + <b>ripening fruits</b>. Major roles: <b>senescence</b>, <b>abscission</b>, <b>fruit ripening</b> (and more).</paragraph>
+</div>
+
+<h3>Synthesis (where/when produced more)</h3>
+<div class="tile-grid">
+  <div class="tile">Senescing tissues<span class="tile-sub">high ethylene output during ageing</span></div>
+  <div class="tile">Ripening fruits<span class="tile-sub">major source during ripening</span></div>
+</div>
+
+<h3>Effects on seedling growth (triple-response type features)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd79006"><b>Triple response</b> (seedlings) = classic ethylene effect set.</paragraph>
+</div>
+<ul class="check-list">
+<li>Causes <b>horizontal growth of seedlings</b></li>
+<li>Causes <b>swelling of the axis</b></li>
+<li>Causes <b>apical hook formation</b> in <b>dicot seedlings</b></li>
+</ul>
+
+<h3>Senescence and abscission</h3>
+<ul class="check-list">
+<li>Promotes <b>senescence</b></li>
+<li>Promotes <b>abscission</b> of plant organs, especially <b>leaves</b> and <b>flowers</b></li>
+</ul>
+
+<h3>Fruit ripening and respiratory climactic</h3>
+<div class="flow-row">
+  <div class="flow-box">Ethylene ↑</div><span class="flow-arrow">→</span><div class="flow-box">Fruit ripening ↑</div><span class="flow-arrow">→</span><div class="flow-box">Respiration rate ↑</div>
+</div>
+<ul class="check-list">
+<li>Ethylene is <b>highly effective in fruit ripening</b></li>
+<li>Enhances <b>respiration rate</b> during fruit ripening</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd79007"><b>Respiratory climactic (climacteric rise)</b> = the <b>rise in respiration rate</b> occurring during <b>ripening of fruits</b> under ethylene influence.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd79008"><b>Exam tip:</b> The term asked is exactly “<b>respiratory climactic</b>” (as written here). Define as: <b>rise in respiration during ripening</b>.</paragraph>
+</div>
+
+<h3>Breaking dormancy and promoting germination/sprouting</h3>
+<ul class="star-list">
+<li>Breaks <b>seed dormancy</b> and <b>bud dormancy</b></li>
+<li>Initiates germination in <b>peanut seeds</b></li>
+<li>Promotes sprouting of <b>potato tubers</b></li>
+</ul>
+
+<h3>Deep water rice adaptation (internode/petiole elongation)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd79009">Ethylene promotes <b>rapid internode/petiole elongation</b> in <b>deep water rice plants</b> so <b>leaves/upper shoot</b> stay <b>above water</b> → survival in flooding.</paragraph>
+</div>
+
+<h3>Root growth and root hairs</h3>
+<ul class="check-list">
+<li>Promotes <b>root growth</b></li>
+<li>Promotes <b>root hair formation</b> → increases <b>absorption surface</b></li>
+</ul>
+
+<div class="sticky-note">
+<paragraph id="6a8c16a1c01a40070bd7900a"><b>Real-life analogy:</b> Flooded rice + ethylene = a “<b>rapid lift system</b>” (internodes elongate fast so photosynthetic parts remain above water).</paragraph>
+</div>
+
+<h3>Agricultural/horticultural uses of ethylene</h3>
+<ul class="star-list">
+<li>Used to <b>initiate flowering</b> and <b>synchronise fruit-set</b> in <b>pineapples</b></li>
+<li>Induces <b>flowering in mango</b></li>
+<li>Among the <b>most widely used PGRs in agriculture</b> (because it regulates many processes)</li>
+</ul>
+
+<h3>Ethephon: widely used source of ethylene</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd7900b"><b>Ethephon</b> = <b>most widely used compound</b> as a <b>source of ethylene</b>. In <b>aqueous solution</b> it is readily <b>absorbed</b> + <b>transported</b>, then <b>releases ethylene slowly</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Ripening boost<span class="tile-sub"><b>Hastens fruit ripening</b> in <b>tomatoes</b> + <b>apples</b></span></div>
+  <div class="tile">Thinning tool<span class="tile-sub"><b>Accelerates abscission</b> → thinning of <b>cotton</b>, <b>cherry</b>, <b>walnut</b></span></div>
+  <div class="tile">Yield via sex expression<span class="tile-sub">Promotes <b>female flowers</b> in <b>cucumbers</b> → <b>yield ↑</b></span></div>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd7900c"><b>Don’t write:</b> “ethylene is applied directly” in most field situations. In exams, mention <b>ethephon</b> as the practical source because it <b>releases ethylene slowly</b>.</paragraph>
+</div>
+
+<h2>Abscisic Acid (ABA)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd7900d"><b>Abscisic acid (ABA)</b> was discovered for roles in <b>abscission</b> + <b>dormancy</b>. It acts as a <b>general plant growth inhibitor</b> and an <b>inhibitor of plant metabolism</b>, strongly linked with stress responses.</paragraph>
+</div>
+
+<h3>Core actions: inhibition, dormancy, and germination</h3>
+<ul class="check-list">
+<li>Acts as a <b>general growth inhibitor</b></li>
+<li>Acts as an <b>inhibitor of plant metabolism</b></li>
+<li><b>Inhibits seed germination</b></li>
+</ul>
+
+<h3>Stomatal closure and stress tolerance (“stress hormone”)</h3>
+<ul class="check-list">
+<li><b>Stimulates closure of stomata</b></li>
+<li>Increases tolerance to <b>various kinds of stresses</b></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd7900e"><b>Why ABA is called the stress hormone:</b> promotes <b>stomatal closure</b> + increases <b>stress tolerance</b>.</paragraph>
+</div>
+
+<h3>Seed development, maturation, dormancy, and desiccation tolerance</h3>
+<ul class="check-list">
+<li>Plays an important role in <b>seed development</b></li>
+<li>Important in <b>seed maturation</b></li>
+<li>Induces/maintains <b>seed dormancy</b></li>
+<li>By inducing dormancy, helps seeds withstand <b>desiccation</b> and other <b>unfavourable conditions</b></li>
+</ul>
+
+<h3>Antagonism with gibberellins (GAs)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd7900f">In most situations, <b>ABA antagonises gibberellins (GAs)</b> — ABA generally inhibits processes that GAs promote (esp. around <b>germination</b>/<b>dormancy</b>).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd79010"><b>Exam trap:</b> “Which PGR induces immediate stomatal closure?” → <b>ABA</b> (not ethylene/cytokinin/GA/auxin).</paragraph>
+</div>
+
+<h2>Interaction and Integration of PGRs in Plant Growth and Development</h2>
+
+<h3>PGR roles across growth, differentiation, and development</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c16a1c01a40070bd79011">In <b>any and every phase</b> of plant growth, differentiation, and development, <b>one or more PGRs</b> play roles.</paragraph>
+</div>
+
+<h3>Types of relationships among PGRs</h3>
+<div class="tile-grid">
+  <div class="tile">Complementary<span class="tile-sub">PGRs support each other’s effects in a process</span></div>
+  <div class="tile">Antagonistic<span class="tile-sub">one PGR opposes another (e.g., ABA vs GA)</span></div>
+  <div class="tile">Individualistic<span class="tile-sub">a PGR acts alone as a dominant regulator in a context</span></div>
+  <div class="tile">Synergistic<span class="tile-sub">combined effect is greater/critical together</span></div>
+</div>
+
+<h3>Events controlled by interactions of multiple PGRs</h3>
+<ul class="star-list">
+<li><b>Dormancy</b> in seeds/buds</li>
+<li><b>Abscission</b></li>
+<li><b>Senescence</b></li>
+<li><b>Apical dominance</b></li>
+</ul>
+
+<h3>Intrinsic vs extrinsic control of growth and development</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c16a1c01a40070bd79012">PGRs provide only <b>one kind of intrinsic control</b>. Plant growth &amp; development are controlled by:</paragraph>
+<ul class="check-list">
+<li><b>Genomic control</b></li>
+<li><b>Intrinsic control via PGRs</b></li>
+<li><b>Extrinsic factors</b> (environmental factors)</li>
+</ul>
+</div>
+
+<h3>Extrinsic factors act via PGRs</h3>
+<paragraph id="6a8c16a1c01a40070bd79013">Many extrinsic (environmental) factors like <b>temperature</b> and <b>light</b> control growth &amp; development <b>via PGRs</b>.</paragraph>
+
+<ul class="star-list">
+<li><b>Vernalisation</b></li>
+<li><b>Flowering</b></li>
+<li><b>Dormancy</b></li>
+<li><b>Seed germination</b></li>
+<li><b>Plant movements</b></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8c16a1c01a40070bd79014"><b>Exam phrasing to use:</b> “Extrinsic factors (light/temperature) often influence development <b>through changes in PGR levels/actions</b>.”</paragraph>
+</div>
+
+<paragraph id="6a8c16a1c01a40070bd79015">The chapter next proceeds to briefly discuss the role of <b>light</b> and <b>temperature</b> (extrinsic factors) on <b>initiation of flowering</b>.</paragraph>
+
+<h2>Chapter Summary </h2>
+
+<h3>Growth: definition and characteristics</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd79016"><b>Growth</b> = an <b>irreversible increase</b> expressed as parameters like <b>size, area, length, height, volume, cell number</b>, etc., and it includes an increase in <b>protoplasmic material</b>.</paragraph>
+</div>
+<div class="remember-box">⚠ Don’t confuse growth with temporary swelling — <b>growth is irreversible</b> and tied to <b>protoplasm increase</b>.</div>
+
+<h3>Sites and nature of growth in plants</h3>
+<div class="tile-grid">
+  <div class="tile">Meristems<span class="tile-sub">main sites of growth in plants</span></div>
+  <div class="tile">Root apical meristem<span class="tile-sub">helps in elongation of plant axis</span></div>
+  <div class="tile">Shoot apical meristem<span class="tile-sub">helps in elongation of plant axis</span></div>
+  <div class="tile">Intercalary meristem<span class="tile-sub">sometimes adds to elongation growth</span></div>
+</div>
+<ul class="check-list">
+  <li>Growth in higher plants is <b>indeterminate</b>.</li>
+</ul>
+<div class="sticky-note">Think: plants keep “adding length” from their meristems—like a pencil that keeps sharpening itself from the tip.</div>
+
+<h3>Patterns of growth after cell division</h3>
+<ul class="star-list">
+  <li>After cell division in <b>root</b> &amp; <b>shoot apical meristems</b>, growth may be <b>arithmetic</b> or <b>geometrical</b>.</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  Arithmetic vs geometrical growth are key patterns to name when describing post-meristematic growth behavior.
+</div>
+
+<h3>Growth phases (principle phases)</h3>
+<div class="tile-grid">
+  <div class="tile">Lag phase<span class="tile-sub">initial slow growth</span></div>
+  <div class="tile">Log phase<span class="tile-sub">rapid/exponential growth</span></div>
+  <div class="tile">Senescent phase<span class="tile-sub">decline in growth with ageing</span></div>
+</div>
+<paragraph id="6a8c16a1c01a40070bd79017">Growth is generally <b>not sustained at a high rate</b> throughout the life of a cell/tissue/organ/organism.</paragraph>
+<div class="flow-row">
+  <div class="flow-box">Lag (slow)</div><span class="flow-arrow">→</span><div class="flow-box">Log (rapid)</div><span class="flow-arrow">→</span><div class="flow-box">Senescent (decline)</div>
+</div>
+
+<h3>Differentiation, dedifferentiation, redifferentiation</h3>
+<ul class="check-list">
+  <li>When a cell <b>loses the capacity to divide</b>, it leads to <b>differentiation</b>.</li>
+  <li><b>Differentiation</b> results in development of structures commensurate with the <b>function</b> the cells finally perform.</li>
+  <li>General principles of differentiation for <b>cells, tissues, organs</b> are similar.</li>
+  <li>A differentiated cell may <b>dedifferentiate</b> and then <b>redifferentiate</b>.</li>
+</ul>
+<div class="flow-row">
+  <div class="flow-box">Dividing cell</div><span class="flow-arrow">→</span><div class="flow-box">Differentiation (no division)</div><span class="flow-arrow">→</span><div class="flow-box">Dedifferentiation</div><span class="flow-arrow">→</span><div class="flow-box">Redifferentiation</div>
+</div>
+<div class="remember-box">⚠ “Differentiation” isn’t just change—it's change linked to a <b>specific function</b>.</div>
+
+<h3>Development and plasticity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c16a1c01a40070bd79018">In plants, differentiation is <b>open</b> so development is <b>flexible</b>. <b>Development = growth + differentiation</b>. Plants exhibit <b>plasticity</b> in development.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">Development = Growth + Differentiation</div>
+
+<h3>Control of growth and development: intrinsic + extrinsic</h3>
+<ul class="check-list">
+  <li>Plant growth and development are controlled by <b>intrinsic</b> and <b>extrinsic</b> factors.</li>
+  <li>Intercellular intrinsic chemical factors are <b>plant growth regulators (PGRs)</b>.</li>
+</ul>
+
+<div class="tile-grid">
+  <div class="tile">Auxins<span class="tile-sub">principal PGR group</span></div>
+  <div class="tile">Gibberellins<span class="tile-sub">principal PGR group</span></div>
+  <div class="tile">Cytokinins<span class="tile-sub">principal PGR group</span></div>
+  <div class="tile">Abscisic acid<span class="tile-sub">principal PGR group</span></div>
+  <div class="tile">Ethylene<span class="tile-sub">principal PGR group</span></div>
+</div>
+
+<ul class="check-list">
+  <li>PGRs are synthesised in <b>various parts</b> and regulate <b>differentiation</b> and <b>developmental events</b>.</li>
+  <li>Any one PGR can have <b>diverse physiological effects</b>, and different PGRs can show <b>similar effects</b>.</li>
+  <li>PGRs can act <b>synergistically</b> or <b>antagonistically</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  In answers, mention both: <b>one hormone → many effects</b> and <b>many hormones → similar effects</b>, plus <b>synergy/antagonism</b>.
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Light<span class="tile-sub">external factor affecting growth/development</span></div>
+  <div class="tile">Temperature<span class="tile-sub">external factor affecting growth/development</span></div>
+  <div class="tile">Nutrition<span class="tile-sub">external factor affecting growth/development</span></div>
+  <div class="tile">Oxygen status<span class="tile-sub">external factor affecting growth/development</span></div>
+  <div class="tile">Gravity<span class="tile-sub">external factor affecting growth/development</span></div>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

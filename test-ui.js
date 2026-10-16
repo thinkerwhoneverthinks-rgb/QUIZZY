@@ -40,32 +40,14 @@ function showTcScreen(id) {
 
 function tcTypeset(el) {
     if (!el) return;
-    const render = () => {
-        if (typeof renderMathInElement !== 'undefined') {
-            try {
-                renderMathInElement(el, {
-                    delimiters: [
-                        { left: '$$', right: '$$', display: true },
-                        { left: '$', right: '$', display: false },
-                        { left: '\\[', right: '\\]', display: true },
-                        { left: '\\(', right: '\\)', display: false }
-                    ],
-                    throwOnError: false
-                });
-            } catch (e) { /* ignore */ }
+    if (typeof window.typesetMath === 'function') {
+        return window.typesetMath(el);
+    }
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        if (window.MathJax.typesetClear) {
+            try { window.MathJax.typesetClear([el]); } catch (e) { /* ignore */ }
         }
-    };
-
-    if (typeof renderMathInElement !== 'undefined') {
-        render();
-    } else {
-        const interval = setInterval(() => {
-            if (typeof renderMathInElement !== 'undefined') {
-                clearInterval(interval);
-                render();
-            }
-        }, 25);
-        setTimeout(() => clearInterval(interval), 4000);
+        return window.MathJax.typesetPromise([el]).catch(err => console.warn('MathJax error:', err));
     }
 }
 
@@ -1188,12 +1170,12 @@ function renderMatchLists(q) {
         const hasContentI = Boolean(itI && ((itI.text && itI.text.trim()) || (itI.title && itI.title.trim()) || itI.image_url || itI.image || itI.imageUrl));
         const labelI = hasContentI ? formatLabel(itI.label || itI.key, defaultLabelsI[i]) : '';
         const textI = itI ? (itI.text || itI.title || '') : '';
-        const imgI = itI ? (itI.image_url || itI.image || itI.imageUrl || null) : null;
+        const imgI = itI ? resolveImageUrl(itI.image_url || itI.image || itI.imageUrl || null) : null;
 
         const hasContentII = Boolean(itII && ((itII.text && itII.text.trim()) || (itII.title && itII.title.trim()) || itII.image_url || itII.image || itII.imageUrl));
         const labelII = hasContentII ? formatLabel(itII.label || itII.key, defaultLabelsII[i]) : '';
         const textII = itII ? (itII.text || itII.title || '') : '';
-        const imgII = itII ? (itII.image_url || itII.image || itII.imageUrl || null) : null;
+        const imgII = itII ? resolveImageUrl(itII.image_url || itII.image || itII.imageUrl || null) : null;
 
         rowsHtml += `
             <tr>

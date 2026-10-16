@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-07 : Binomial Theorem</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929c392b454d827fc968bb/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929c392b454d827fc968bb/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-07 : Binomial Theorem</h1>
+
+<h2>7.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="2970b5448c8a81873d92e5e8"><b>Need for Binomial Theorem:</b> Small powers are easy to expand: (a+b)<sup>2</sup>, (a+b)<sup>3</sup> → quick number tricks, e.g. 98<sup>2</sup> = (100−2)<sup>2</sup>, 999<sup>3</sup> = (1000−1)<sup>3</sup>. But big powers like (98)<sup>5</sup> or (101)<sup>6</sup> make repeated multiplication long + tedious.</paragraph>
+  <paragraph id="f64d4388a1e858df18c98c48"><b>Binomial Theorem:</b> Gives a simpler way to expand (a+b)<sup>n</sup> (in general, n may be integer or rational). <b>Here we only use positive integral indices: n ∈ ℕ.</b></paragraph>
+</div>
+
+<h2>7.2 Binomial Theorem for Positive Integral Indices</h2>
+
+<h3>Patterns from earlier identities</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ab57909af2b5fd5e9fa28259"><b>Known expansions (revise):</b></paragraph>
+<ul>
+<li>(a+b)<sup>0</sup> = 1, provided a+b ≠ 0</li>
+<li>(a+b)<sup>1</sup> = a+b</li>
+<li>(a+b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup></li>
+<li>(a+b)<sup>3</sup> = a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup></li>
+<li>(a+b)<sup>4</sup> = a<sup>4</sup> + 4a<sup>3</sup>b + 6a<sup>2</sup>b<sup>2</sup> + 4ab<sup>3</sup> + b<sup>4</sup></li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="273c7048c04212eef4b2bfa7"><b>3 quick patterns in (a+b)<sup>n</sup>:</b></paragraph>
+<ol>
+<li><b># of terms:</b> n+1 (always one more than n)</li>
+<li><b>Powers shift:</b> power of a goes down by 1 each term; power of b goes up by 1</li>
+<li><b>Powers add to n:</b> in every term, (power of a) + (power of b) = n</li>
+</ol>
+</div>
+
+<h3>Pascal’s Triangle (Meru Prastara)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="4d8a1df609d3bc6aa43e6823"><b>Pascal’s Triangle:</b> triangle of numbers: top is 1, and 1’s on both slant sides; every inside entry = (two entries just above it) added.</paragraph>
+<paragraph id="7b21d98cc8ceefc5f568f5b7"><b>Names:</b> called <b>Pascal’s triangle</b> (Blaise Pascal); also <b>Meru Prastara</b> (Pingla).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f6fbab60f840b64675941e01"><b>How it gives binomial coefficients:</b></paragraph>
+<ul>
+<li>Each row starts with 1 and ends with 1.</li>
+<li>Middle numbers come from adding adjacent numbers in the previous row (e.g. 1,2,1 → next row has 3,3 in the middle).</li>
+<li>Row for index n = coefficients of (a+b)<sup>n</sup>.</li>
+</ul>
+</div>
+
+<h3>Worked expansion using Pascal’s triangle: (2x + 3y)<sup>5</sup></h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b2094fe2de8de3e3fb8bb80f"><b>Row for n=5:</b> 1, 5, 10, 10, 5, 1</paragraph>
+<paragraph id="6e96d20d5a66f320b3702c70">Use: (i) 6 terms, (ii) (2x)<sup>5</sup> down to (2x)<sup>0</sup>, and (3y)<sup>0</sup> up to (3y)<sup>5</sup>, (iii) powers add to 5:</paragraph>
+<paragraph id="4cb3bc12aa42f178480afd5c">(2x + 3y)<sup>5</sup> = (2x)<sup>5</sup> + 5(2x)<sup>4</sup>(3y) + 10(2x)<sup>3</sup>(3y)<sup>2</sup> + 10(2x)<sup>2</sup>(3y)<sup>3</sup> + 5(2x)(3y)<sup>4</sup> + (3y)<sup>5</sup></paragraph>
+<paragraph id="4d7b7a0811ee085d51022ca5">= 32x<sup>5</sup> + 240x<sup>4</sup>y + 720x<sup>3</sup>y<sup>2</sup> + 1080x<sup>2</sup>y<sup>3</sup> + 810xy<sup>4</sup> + 243y<sup>5</sup>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="550cf02a151e1d2e3a54759a"><b>Exam tip:</b> For (2x+3y)<sup>n</sup>, treat (2x)=a and (3y)=b first. Then simplify: (2x)<sup>k</sup>=2<sup>k</sup>x<sup>k</sup>, (3y)<sup>m</sup>=3<sup>m</sup>y<sup>m</sup>.</paragraph>
+</div>
+
+<h3>Combinations and rewriting Pascal’s triangle</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="900e8ee7d73e1fc065dca03f"><b>Combination:</b></paragraph>
+<paragraph id="cbe608aa38a1f5d0668d328a"><sup>n</sup>C<sub>r</sub> = n! / (r!(n−r)!)</paragraph>
+<paragraph id="79fe1d4721d0efc1ba2fcf2a">n = non-negative integer</paragraph>
+<paragraph id="279e7621812080446fff52e6">r = integer with 0 ≤ r ≤ n</paragraph>
+<paragraph id="24ea1bbd09348b12f4120779">Also: <sup>n</sup>C<sub>0</sub> = 1 = <sup>n</sup>C<sub>n</sub></paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="47fdf95f2e8fad11e7d7a9e8"><b>Pascal row = combinations:</b> nth row is <sup>n</sup>C<sub>0</sub>, <sup>n</sup>C<sub>1</sub>, …, <sup>n</sup>C<sub>n</sub> (so you don’t need earlier rows).</paragraph>
+<paragraph id="110e2834f3bd181addaeb453"><b>Eg (n=7):</b> <sup>7</sup>C<sub>0</sub>, <sup>7</sup>C<sub>1</sub>, <sup>7</sup>C<sub>2</sub>, <sup>7</sup>C<sub>3</sub>, <sup>7</sup>C<sub>4</sub>, <sup>7</sup>C<sub>5</sub>, <sup>7</sup>C<sub>6</sub>, <sup>7</sup>C<sub>7</sub>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3ed8ab1b3e314f2ca6e91803"><b>Example template (using combinations):</b></paragraph>
+<paragraph id="aec59332bedb070e949763a0">(a+b)<sup>7</sup> = <sup>7</sup>C<sub>0</sub>a<sup>7</sup> + <sup>7</sup>C<sub>1</sub>a<sup>6</sup>b + <sup>7</sup>C<sub>2</sub>a<sup>5</sup>b<sup>2</sup> + <sup>7</sup>C<sub>3</sub>a<sup>4</sup>b<sup>3</sup> + <sup>7</sup>C<sub>4</sub>a<sup>3</sup>b<sup>4</sup> + <sup>7</sup>C<sub>5</sub>a<sup>2</sup>b<sup>5</sup> + <sup>7</sup>C<sub>6</sub>ab<sup>6</sup> + <sup>7</sup>C<sub>7</sub>b<sup>7</sup>.</paragraph>
+</div>
+
+<h3>7.2.1 Binomial theorem for any positive integer n</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5a21f03ecef550a3480ac8a8"><b>Binomial Theorem (n ∈ ℕ):</b></paragraph>
+<paragraph id="cf58be9de775e1420dec27fc">(a + b)<sup>n</sup> = <sup>n</sup>C<sub>0</sub>a<sup>n</sup> + <sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b + <sup>n</sup>C<sub>2</sub>a<sup>n−2</sup>b<sup>2</sup> + … + <sup>n</sup>C<sub>n−1</sub>ab<sup>n−1</sup> + <sup>n</sup>C<sub>n</sub>b<sup>n</sup></paragraph>
+<paragraph id="b3d12d4f60038edace77669a">n = positive integer</paragraph>
+<paragraph id="5b7d0d1a1b14e7e6c492b9bc"><sup>n</sup>C<sub>r</sub> = binomial coefficient (combination)</paragraph>
+<paragraph id="0c71abc42e8c3cfc2c25bb02"><b>General term:</b> <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup>, r = 0,1,2,…,n</paragraph>
+</div>
+
+<h3>Proof by Principle of Mathematical Induction (PMI)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="4c6e31b92671c21d4fffde12"><b>Claim P(n):</b></paragraph>
+<paragraph id="7825f6eff9a5eafde402b3d9">(a + b)<sup>n</sup> = <sup>n</sup>C<sub>0</sub>a<sup>n</sup> + <sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b + <sup>n</sup>C<sub>2</sub>a<sup>n−2</sup>b<sup>2</sup> + … + <sup>n</sup>C<sub>n</sub>b<sup>n</sup></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="e1128cb6aaf45045e6aa638e"><b>Step 1: Base case (n=1)</b></paragraph>
+<paragraph id="92b4b865af9644325aec281d">(a+b)<sup>1</sup> = a+b</paragraph>
+<paragraph id="2df8fad421c0bb93a5066205">RHS: <sup>1</sup>C<sub>0</sub>a<sup>1</sup> + <sup>1</sup>C<sub>1</sub>b<sup>1</sup> = a+b</paragraph>
+<paragraph id="501db5fc1f0415f9d24b61a7">So P(1) true.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="9c2dd4e62542c98db60638f7"><b>Step 2: Induction hypothesis</b></paragraph>
+<paragraph id="34b2de686b0f2a5d958125d2">Assume P(k) true for some positive integer k:</paragraph>
+<paragraph id="9fb0d2d69a397a4bc177f50c">(a + b)<sup>k</sup> = <sup>k</sup>C<sub>0</sub>a<sup>k</sup> + <sup>k</sup>C<sub>1</sub>a<sup>k−1</sup>b + <sup>k</sup>C<sub>2</sub>a<sup>k−2</sup>b<sup>2</sup> + … + <sup>k</sup>C<sub>k</sub>b<sup>k</sup> … (1)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="d4d6d6efcd5a7f1fc84a0442"><b>Step 3: Prove P(k+1)</b></paragraph>
+<paragraph id="2e0be4cf47e4b4396b017902">(a+b)<sup>k+1</sup> = (a+b)(a+b)<sup>k</sup></paragraph>
+<paragraph id="9b1728d04d543a7d8b9f8e88">Sub (1) and multiply by (a+b):</paragraph>
+<ul>
+<li><b>×a:</b> <sup>k</sup>C<sub>0</sub>a<sup>k+1</sup> + <sup>k</sup>C<sub>1</sub>a<sup>k</sup>b + <sup>k</sup>C<sub>2</sub>a<sup>k−1</sup>b<sup>2</sup> + … + <sup>k</sup>C<sub>k</sub>ab<sup>k</sup></li>
+<li><b>×b:</b> <sup>k</sup>C<sub>0</sub>a<sup>k</sup>b + <sup>k</sup>C<sub>1</sub>a<sup>k−1</sup>b<sup>2</sup> + … + <sup>k</sup>C<sub>k</sub>b<sup>k+1</sup></li>
+</ul>
+<paragraph id="2eb79bd793f3b07bbfcbd0e8">Group like terms (same powers of a, b):</paragraph>
+<paragraph id="75d3b34d53c79bb6de88cf3f">= <sup>k</sup>C<sub>0</sub>a<sup>k+1</sup> + (<sup>k</sup>C<sub>1</sub>+<sup>k</sup>C<sub>0</sub>)a<sup>k</sup>b + (<sup>k</sup>C<sub>2</sub>+<sup>k</sup>C<sub>1</sub>)a<sup>k−1</sup>b<sup>2</sup> + … + (<sup>k</sup>C<sub>k</sub>+<sup>k</sup>C<sub>k−1</sub>)ab<sup>k</sup> + <sup>k</sup>C<sub>k</sub>b<sup>k+1</sup></paragraph>
+<paragraph id="743e5103755c2ecd7432f204">Use: <sup>k+1</sup>C<sub>r</sub> = <sup>k</sup>C<sub>r</sub> + <sup>k</sup>C<sub>r−1</sub>, and <sup>k+1</sup>C<sub>0</sub>=1, <sup>k</sup>C<sub>k</sub>=1=<sup>k+1</sup>C<sub>k+1</sub>.</paragraph>
+<paragraph id="056f746279dffb1ac10f3970">So:</paragraph>
+<paragraph id="9a7cfc23d0975fdf57deebff">(a+b)<sup>k+1</sup> = <sup>k+1</sup>C<sub>0</sub>a<sup>k+1</sup> + <sup>k+1</sup>C<sub>1</sub>a<sup>k</sup>b + <sup>k+1</sup>C<sub>2</sub>a<sup>k−1</sup>b<sup>2</sup> + … + <sup>k+1</sup>C<sub>k</sub>ab<sup>k</sup> + <sup>k+1</sup>C<sub>k+1</sub>b<sup>k+1</sup></paragraph>
+<paragraph id="3c23f0e1c873c863a3acf516">Hence P(k+1) true if P(k) true ⇒ by PMI, P(n) true for all positive integers n.</paragraph>
+</div>
+
+<h3>Illustration: Expand (x + 2)<sup>6</sup></h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="fefe63456fc5d2826d15bd4d">(x+2)<sup>6</sup> = <sup>6</sup>C<sub>0</sub>x<sup>6</sup> + <sup>6</sup>C<sub>1</sub>x<sup>5</sup>·2 + <sup>6</sup>C<sub>2</sub>x<sup>4</sup>·2<sup>2</sup> + <sup>6</sup>C<sub>3</sub>x<sup>3</sup>·2<sup>3</sup> + <sup>6</sup>C<sub>4</sub>x<sup>2</sup>·2<sup>4</sup> + <sup>6</sup>C<sub>5</sub>x·2<sup>5</sup> + <sup>6</sup>C<sub>6</sub>·2<sup>6</sup></paragraph>
+<paragraph id="69b59ef36a170b27f98ecf60">= x<sup>6</sup> + 12x<sup>5</sup> + 60x<sup>4</sup> + 160x<sup>3</sup> + 240x<sup>2</sup> + 192x + 64.</paragraph>
+</div>
+
+<h3>Observations (exam-useful properties of the expansion)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ol>
+<li>
+<paragraph id="2f2f0aea86edd50b34501217"><b>Sigma notation:</b></paragraph>
+<paragraph id="12d06e03484720bad48ee34b">∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup></paragraph>
+<paragraph id="32e3c254a6191c55392f95e5">means: <sup>n</sup>C<sub>0</sub>a<sup>n</sup>b<sup>0</sup> + <sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b<sup>1</sup> + … + <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup> + … + <sup>n</sup>C<sub>n</sub>a<sup>n−n</sup>b<sup>n</sup>, where b<sup>0</sup>=1 and a<sup>n−n</sup>=a<sup>0</sup>=1.</paragraph>
+<paragraph id="a32396dc46125f32cc8d2dc8">So compact form:</paragraph>
+<paragraph id="9ec2d5c943bd92d65a5f50cc">(a+b)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup></paragraph>
+</li>
+<li><paragraph id="30439ffa158317d974275e8b"><b>Binomial coefficients:</b> <sup>n</sup>C<sub>r</sub> are called <b>binomial coefficients</b>.</paragraph></li>
+<li><paragraph id="3318a162c06d0c9ecc3ce2fa"><b># of terms:</b> (a+b)<sup>n</sup> has exactly (n+1) terms.</paragraph></li>
+<li><paragraph id="d48326b9ae0bb4d289344b4e"><b>Index flow:</b> powers of a go n → 0; powers of b go 0 → n.</paragraph></li>
+<li><paragraph id="36ce93c79c56f5f959c8ebb4"><b>Sum of indices:</b> in every term, (power of a)+(power of b)=n.</paragraph></li>
+</ol>
+</div>
+
+<h3>7.2.2 Some special cases</h3>
+
+<h3>(i) Expansion of (x − y)<sup>n</sup></h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ff079f18e224faea7d8d9594"><b>Binomial with minus:</b></paragraph>
+<paragraph id="022a064602fe026d7f2b7860">(x−y)<sup>n</sup> = <sup>n</sup>C<sub>0</sub>x<sup>n</sup> − <sup>n</sup>C<sub>1</sub>x<sup>n−1</sup>y + <sup>n</sup>C<sub>2</sub>x<sup>n−2</sup>y<sup>2</sup> − <sup>n</sup>C<sub>3</sub>x<sup>n−3</sup>y<sup>3</sup> + … + (−1)<sup>n</sup><sup>n</sup>C<sub>n</sub>y<sup>n</sup></paragraph>
+<paragraph id="b82d9675f904c166d3a6b73c"><b>General term:</b> (−1)<sup>r</sup><sup>n</sup>C<sub>r</sub>x<sup>n−r</sup>y<sup>r</sup></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="99c5b66000927b5c308663fe"><b>Example:</b> (x−2y)<sup>5</sup></paragraph>
+<paragraph id="42f6147daf81f59ec32900ef">= <sup>5</sup>C<sub>0</sub>x<sup>5</sup> − <sup>5</sup>C<sub>1</sub>x<sup>4</sup>(2y) + <sup>5</sup>C<sub>2</sub>x<sup>3</sup>(2y)<sup>2</sup> − <sup>5</sup>C<sub>3</sub>x<sup>2</sup>(2y)<sup>3</sup> + <sup>5</sup>C<sub>4</sub>x(2y)<sup>4</sup> − <sup>5</sup>C<sub>5</sub>(2y)<sup>5</sup></paragraph>
+<paragraph id="3b37a2366ca3986df6e16b73">= x<sup>5</sup> − 10x<sup>4</sup>y + 40x<sup>3</sup>y<sup>2</sup> − 80x<sup>2</sup>y<sup>3</sup> + 80xy<sup>4</sup> − 32y<sup>5</sup>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="73fb21285c286c95464bc788"><b>Common mistake:</b> Signs in (x−y)<sup>n</sup> alternate because (−y)<sup>r</sup> gives (−1)<sup>r</sup>. Don’t alternate blindly—match sign to r (odd r → −, even r → +).</paragraph>
+</div>
+
+<h3>(ii) Expansion of (1 + x)<sup>n</sup> and a key identity</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="a64335d009577e02f583bcbe"><b>(1+x)<sup>n</sup>:</b></paragraph>
+<paragraph id="62abf38bee8703236a29bfd4">(1+x)<sup>n</sup> = <sup>n</sup>C<sub>0</sub> + <sup>n</sup>C<sub>1</sub>x + <sup>n</sup>C<sub>2</sub>x<sup>2</sup> + <sup>n</sup>C<sub>3</sub>x<sup>3</sup> + … + <sup>n</sup>C<sub>n</sub>x<sup>n</sup></paragraph>
+<paragraph id="58a1ae39083cd6641235878f">(take a=1, b=x in (a+b)<sup>n</sup>)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="50843eca65c4b9588463dc1d"><b>Sum of binomial coefficients:</b></paragraph>
+<paragraph id="cc9ed0f6bcba1895b8e797e3">2<sup>n</sup> = <sup>n</sup>C<sub>0</sub> + <sup>n</sup>C<sub>1</sub> + <sup>n</sup>C<sub>2</sub> + … + <sup>n</sup>C<sub>n</sub></paragraph>
+<paragraph id="0520d47e31f92189a8a9863d">(put x=1 in (1+x)<sup>n</sup>)</paragraph>
+</div>
+
+<h3>(iii) Expansion of (1 − x)<sup>n</sup> and an alternating-sum identity</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="34081956d356654a55fd4f50"><b>(1−x)<sup>n</sup>:</b></paragraph>
+<paragraph id="a9e9915b0fdeab6f4ab8a1e0">(1−x)<sup>n</sup> = <sup>n</sup>C<sub>0</sub> − <sup>n</sup>C<sub>1</sub>x + <sup>n</sup>C<sub>2</sub>x<sup>2</sup> − … + (−1)<sup>n</sup><sup>n</sup>C<sub>n</sub>x<sup>n</sup></paragraph>
+<paragraph id="54776e002335ef2a6c90c074">(take a=1, b=−x in (a+b)<sup>n</sup>)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="40a9003cff3059acac2b8e28"><b>Alternating sum of binomial coefficients:</b></paragraph>
+<paragraph id="579569ca81f97ec3065e49d4">0 = <sup>n</sup>C<sub>0</sub> − <sup>n</sup>C<sub>1</sub> + <sup>n</sup>C<sub>2</sub> − … + (−1)<sup>n</sup><sup>n</sup>C<sub>n</sub></paragraph>
+<paragraph id="8fa4cd4c3ee5285a49176035">(put x=1 in (1−x)<sup>n</sup>)</paragraph>
+</div>
+
+<h3>Example 1: Expand (x<sup>2</sup> + 3/x)<sup>4</sup>, x ≠ 0</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="d1fabe4d83c0e1401f0f5061">Let a = x<sup>2</sup>, b = 3/x.</paragraph>
+<paragraph id="6e72045d2ca7a8faa2c9579b">(x<sup>2</sup> + 3/x)<sup>4</sup> = <sup>4</sup>C<sub>0</sub>(x<sup>2</sup>)<sup>4</sup> + <sup>4</sup>C<sub>1</sub>(x<sup>2</sup>)<sup>3</sup>(3/x) + <sup>4</sup>C<sub>2</sub>(x<sup>2</sup>)<sup>2</sup>(3/x)<sup>2</sup> + <sup>4</sup>C<sub>3</sub>(x<sup>2</sup>)(3/x)<sup>3</sup> + <sup>4</sup>C<sub>4</sub>(3/x)<sup>4</sup></paragraph>
+<paragraph id="21b91cb38f1a2bb9a9f50c91"><b>Compute term-by-term:</b></paragraph>
+<ul>
+<li><sup>4</sup>C<sub>0</sub>(x<sup>2</sup>)<sup>4</sup> = x<sup>8</sup></li>
+<li><sup>4</sup>C<sub>1</sub>(x<sup>2</sup>)<sup>3</sup>(3/x) = 4·x<sup>6</sup>·(3/x) = 12x<sup>5</sup></li>
+<li><sup>4</sup>C<sub>2</sub>(x<sup>2</sup>)<sup>2</sup>(3/x)<sup>2</sup> = 6·x<sup>4</sup>·(9/x<sup>2</sup>) = 54x<sup>2</sup></li>
+<li><sup>4</sup>C<sub>3</sub>(x<sup>2</sup>)(3/x)<sup>3</sup> = 4·x<sup>2</sup>·(27/x<sup>3</sup>) = 108/x</li>
+<li><sup>4</sup>C<sub>4</sub>(3/x)<sup>4</sup> = 81/x<sup>4</sup></li>
+</ul>
+<paragraph id="ca20720c0078d96a996f76a4">So:</paragraph>
+<paragraph id="6158e8a1f4e1f9cc025300dc">(x<sup>2</sup> + 3/x)<sup>4</sup> = x<sup>8</sup> + 12x<sup>5</sup> + 54x<sup>2</sup> + 108/x + 81/x<sup>4</sup>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="4359220867a8b29393acc1c8"><b>Common mistake:</b> If b=3/x, then (3/x)<sup>r</sup>=3<sup>r</sup>/x<sup>r</sup>. Combine with (x<sup>2</sup>)<sup>4−r</sup>=x<sup>2(4−r)</sup> carefully (exponents slip easily).</paragraph>
+</div>
+
+<h3>Example 2: Compute 98<sup>5</sup></h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="459ff2b0c4c9dc1263f15660">98 = 100 − 2</paragraph>
+<paragraph id="aa43ba909ec2cbe7d67b7d93">98<sup>5</sup> = (100−2)<sup>5</sup></paragraph>
+<paragraph id="b0abd86c65ad327a846c239f">= <sup>5</sup>C<sub>0</sub>(100)<sup>5</sup> − <sup>5</sup>C<sub>1</sub>(100)<sup>4</sup>(2) + <sup>5</sup>C<sub>2</sub>(100)<sup>3</sup>(2)<sup>2</sup> − <sup>5</sup>C<sub>3</sub>(100)<sup>2</sup>(2)<sup>3</sup> + <sup>5</sup>C<sub>4</sub>(100)(2)<sup>4</sup> − <sup>5</sup>C<sub>5</sub>(2)<sup>5</sup></paragraph>
+<paragraph id="0ebbf6a6b3059bb4e78e41f5">= 10000000000 − 5×100000000×2 + 10×1000000×4 − 10×10000×8 + 5×100×16 − 32</paragraph>
+<paragraph id="50636c2dd8aa157850243923">= 10040008000 − 1000800032</paragraph>
+<paragraph id="5faf56c99d77757a0eb56c22">= 9039207968.</paragraph>
+</div>
+
+<h3>Example 3: Comparing (1.01)<sup>1000000</sup> and 10,000</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="c5b1bbe5a09279fe35fc2967"><b>Method indicated:</b> Split 1.01 and use binomial theorem to write the first few terms. (Rest of solution continues on next page of the chapter.)</paragraph>
+</div>
+
+<h2>Comparing large powers using Binomial Theorem</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e260e6590f40559f1853f78b"><b>Idea:</b> To compare something like (1+x)<sup>n</sup> with a given number, expand (binomial theorem) and keep only the first few terms.</paragraph>
+<paragraph id="9eb12bdbe0e5968d019f6152">If the leftover terms are all <b>positive</b>, ignoring them still gives a true inequality (a <b>lower bound</b>).</paragraph>
+</div>
+
+<paragraph id="ad8cd7aa5a80bad1759f783f"><b>Given work:</b></paragraph>
+<paragraph id="e1db17168b8cff8115a0d46e">(1.01)<sup>1000000</sup> = (1 + 0.01)<sup>1000000</sup></paragraph>
+<paragraph id="67ab844b909a0e94fb041938">= <sup>1000000</sup>C<sub>0</sub> + <sup>1000000</sup>C<sub>1</sub>(0.01) + other positive terms</paragraph>
+<paragraph id="fec3b7f957b1ae10067d0ce4">= 1 + 1000000 × 0.01 + other positive terms</paragraph>
+<paragraph id="17f9f0191c29ff49b1bd89b0">= 1 + 10000 + other positive terms</paragraph>
+<paragraph id="e51ccb7ac60aed7d8011270a">&gt; 10000</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="34c2dcb3e367f4c5eeb8cc42"><b>Reasoning used:</b> If x &gt; 0, then every term in (1+x)<sup>n</sup> is positive. So</paragraph>
+<paragraph id="1925e255052fb240f5c903d6">(1+x)<sup>n</sup> = 1 + nx + (positive terms) &gt; 1 + nx.</paragraph>
+<paragraph id="4a3afbd9995485cb99d6aaaf">Super exam-useful: shows one value is bigger without fully calculating it.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="1f7164f23ad625d5544dfd0f">⚠ Don’t drop terms unless you justify the sign. “Other positive terms” only works because x = 0.01 &gt; 0 and binomial coefficients are positive.</paragraph>
+</div>
+
+
+<h2>Example 4: Proving a remainder statement using Binomial Theorem</h2>
+
+<h3>Remainder definition (used in the solution)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="10cca2ce5dd3dd85482a7625">For numbers a and b, if we can find q and r such that</paragraph>
+<paragraph id="951c40f7426e21329e365587">a = bq + r,</paragraph>
+<paragraph id="60a85725726720c8d1e8c327">then b divides a with q as the <b>quotient</b> and r as the <b>remainder</b>.</paragraph>
+</div>
+
+<h3>Statement to prove</h3>
+<paragraph id="f446e8558a1915c7bc5dbe7c">Using binomial theorem, prove that 6<sup>n</sup> − 5<sup>n</sup> always leaves remainder 1 when divided by 25.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4257385acb2a40faf61a7de7">To show “remainder 1 when divided by 25”, it’s enough to show:</paragraph>
+<paragraph id="54800d9acb6cd3aa7707aba4">6<sup>n</sup> − 5<sup>n</sup> = 25k + 1 for some natural number k.</paragraph>
+</div>
+
+<h3>Binomial expansion used</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ba4661895409c9114726cb0c">(1 + a)<sup>n</sup> = <sup>n</sup>C<sub>0</sub> + <sup>n</sup>C<sub>1</sub>a + <sup>n</sup>C<sub>2</sub>a<sup>2</sup> + … + <sup>n</sup>C<sub>n</sub>a<sup>n</sup></paragraph>
+<paragraph id="feea41109bfb8bbe2d59bf8d">n = positive integer (power)</paragraph>
+<paragraph id="9d69749c68ef20fe6bc22616">a = the added term in the binomial (here substituted as 5)</paragraph>
+<paragraph id="71bd9f98dad28d67eace5dbb"><sup>n</sup>C<sub>r</sub> = binomial coefficient</paragraph>
+</div>
+
+<h3>Apply with a = 5</h3>
+<paragraph id="001b533e29a26cb8592b32ab">(1 + 5)<sup>n</sup> = <sup>n</sup>C<sub>0</sub> + <sup>n</sup>C<sub>1</sub>5 + <sup>n</sup>C<sub>2</sub>5<sup>2</sup> + … + <sup>n</sup>C<sub>n</sub>5<sup>n</sup></paragraph>
+<paragraph id="158570b2d867491a29d9685e">i.e.</paragraph>
+<paragraph id="4960823cc2512b4cbe29ca97">6<sup>n</sup> = 1 + 5n + 5<sup>2</sup>·<sup>n</sup>C<sub>2</sub> + 5<sup>3</sup>·<sup>n</sup>C<sub>3</sub> + … + 5<sup>n</sup></paragraph>
+
+<h3>Form 6<sup>n</sup> − 5<sup>n</sup> and factor out 25</h3>
+<paragraph id="b428a5bab1c697a4fc3c708e">6<sup>n</sup> − 5<sup>n</sup> = 1 + 5<sup>2</sup>(<sup>n</sup>C<sub>2</sub> + <sup>n</sup>C<sub>3</sub>·5 + … + 5<sup>n−2</sup>)</paragraph>
+<paragraph id="982c659971365acac3b74fe6">or</paragraph>
+<paragraph id="03ab3240b52ca3f2a70feaca">6<sup>n</sup> − 5<sup>n</sup> = 1 + 25(<sup>n</sup>C<sub>2</sub> + 5·<sup>n</sup>C<sub>3</sub> + … + 5<sup>n−2</sup>)</paragraph>
+<paragraph id="718929fde7b8957d24855448">or</paragraph>
+<paragraph id="2a46edf27ba4bbb0f6e312c5">6<sup>n</sup> − 5<sup>n</sup> = 25k + 1</paragraph>
+<paragraph id="ba7c657d54522fa546b1d09c">where</paragraph>
+<paragraph id="f7bcd184484a59992a33b0f2">k = <sup>n</sup>C<sub>2</sub> + 5·<sup>n</sup>C<sub>3</sub> + … + 5<sup>n−2</sup>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ce9a7d639562a723f36b5bdd"><b>Conclusion:</b> Since 6<sup>n</sup> − 5<sup>n</sup> = 25k + 1, it leaves remainder 1 when divided by 25.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="960b5c0d26e47e526f2774fe">⚠ Key exam step: pull out 25 = 5<sup>2</sup> from every term except the first “1”. The last term 5<sup>n</sup> cancels when subtracting 5<sup>n</sup>, so what’s left all has at least 5<sup>2</sup>.</paragraph>
+</div>
+
+
+<h2>Summary: Binomial Theorem and Pascal’s Triangle</h2>
+
+<h3>Binomial Theorem (for positive integral n)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="883910d33b37736234abd3a2">(a + b)<sup>n</sup> = <sup>n</sup>C<sub>0</sub>a<sup>n</sup> + <sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b + <sup>n</sup>C<sub>2</sub>a<sup>n−2</sup>b<sup>2</sup> + … + <sup>n</sup>C<sub>n−1</sub>a·b<sup>n−1</sup> + <sup>n</sup>C<sub>n</sub>b<sup>n</sup></paragraph>
+<paragraph id="4b588f298bcedea9b8bb384f">a, b = the two terms in the binomial</paragraph>
+<paragraph id="7c90c02b5fc7916e64ef8f0e">n = positive integer</paragraph>
+<paragraph id="3f80354cd1611c8261f741c6"><sup>n</sup>C<sub>r</sub> = binomial coefficient (coefficient of a<sup>n−r</sup>b<sup>r</sup>)</paragraph>
+</div>
+
+<h3>Pascal’s Triangle</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="bee151d4d6f8f574ac8aa37a">The coefficients in binomial expansions can be arranged in an array called <b>Pascal’s triangle</b>.</paragraph>
+</div>
+
+
+<h2>Historical Note (Binomial coefficients and Pascal’s triangle)</h2>
+
+<ul>
+<li><paragraph id="a70001af1c2f72b8a3d70581">Ancient Indian mathematicians knew coefficients in expansions of (x + y)<sup>n</sup> for 0 ≤ n ≤ 7.</paragraph></li>
+<li><paragraph id="862f79c6bff7714d92bb7931">Pingla (about 200 B.C.), in <b>Chhanda shastra</b>, gave a triangular diagram arrangement called <b>Meru-Prastara</b>.</paragraph></li>
+<li><paragraph id="29f3124a6948d3eda1aebcea">A similar triangular arrangement appears in the work of Chinese mathematician <b>Chu-shi-kie</b> (1303).</paragraph></li>
+<li><paragraph id="5b8eb5de6c1acf605dfa257f">The term <b>binomial coefficients</b> was first introduced by German mathematician <b>Michael Stipel</b> (1486–1567) around 1544.</paragraph></li>
+<li><paragraph id="13f2827e195da77a26999d31"><b>Bombelli</b> (1572) gave coefficients for (a + b)<sup>n</sup> for n = 1,2,…,7.</paragraph></li>
+<li><paragraph id="d0a5d5b99c417356241c9979"><b>Oughtred</b> (1631) gave them for n = 1,2,…,10.</paragraph></li>
+<li><paragraph id="4214d3ebe97c643ff066a2f7">The arithmetic triangle, popularly known as <b>Pascal’s triangle</b> (similar to Meru-Prastara), was constructed by French mathematician <b>Blaise Pascal</b> (1623–1662) in 1665.</paragraph></li>
+<li><paragraph id="a5713dd52cdb64be6fcaee2f">The present form of the binomial theorem for integral n appeared in <b>Traité du triangle arithmétique</b>, written by Pascal and published posthumously in 1665.</paragraph></li>
+</ul></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

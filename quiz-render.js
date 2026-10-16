@@ -12,6 +12,7 @@ function buildExamBadge(q) {
 
 function getTypeLabel(q) {
     const t = (q.type || '').toLowerCase();
+    if (t.includes('paragraph') || t.includes('comprehension')) return 'comprehension';
     if (t === 'multi_mcq' || t === 'multi' || t === 'multiple') return 'multi';
     if (t === 'integer' || t === 'numerical') return 'integer';
     if (t === 'fill_blank' || t === 'subjective' || t === 'notebook') return 'subjective';
@@ -39,18 +40,69 @@ function getActiveOptions(q) {
     return q.options || [];
 }
 
+function isAcrollyContent(q) {
+    if (!q) return false;
+    if (q.id && (String(q.id).includes('acrolly') || String(q.id).includes('jee_mains_') || String(q.id).includes('jee_jee_'))) return true;
+    if (q.exam_reference && String(q.exam_reference).startsWith('JEE_MAINS_')) return true;
+    if (typeof currentFileName === 'string' && (currentFileName.includes('jee-chapterwise') || currentFileName.includes('jee-mains-tests'))) return true;
+    return false;
+}
+
+function renderSmartQuestionText(q) {
+    const raw = getActiveQuestionText(q);
+    if (!raw) return '';
+    const fnAcro = typeof renderAcrollyText === 'function' ? renderAcrollyText : (typeof window !== 'undefined' ? window.renderAcrollyText : null);
+    const fnPyq = typeof renderPyqhubText === 'function' ? renderPyqhubText : (typeof window !== 'undefined' ? window.renderPyqhubText : null);
+    if (isAcrollyContent(q) && fnAcro) {
+        return fnAcro(raw);
+    }
+    if (fnPyq) {
+        return fnPyq(raw);
+    }
+    return safeHtml(raw);
+}
+
+function renderSmartExplanationText(q) {
+    const raw = getActiveExplanationText(q);
+    if (!raw) return '';
+    const fnAcro = typeof renderAcrollyText === 'function' ? renderAcrollyText : (typeof window !== 'undefined' ? window.renderAcrollyText : null);
+    const fnPyq = typeof renderPyqhubText === 'function' ? renderPyqhubText : (typeof window !== 'undefined' ? window.renderPyqhubText : null);
+    if (isAcrollyContent(q) && fnAcro) {
+        return fnAcro(raw);
+    }
+    if (fnPyq) {
+        return fnPyq(raw);
+    }
+    return safeHtml(raw);
+}
+
+function renderSmartOptionText(q, opt) {
+    if (!opt && opt !== 0) return '';
+    const fnAcroOpt = typeof renderAcrollyOption === 'function' ? renderAcrollyOption : (typeof window !== 'undefined' ? window.renderAcrollyOption : null);
+    const fnPyqOpt = typeof renderPyqhubOption === 'function' ? renderPyqhubOption : (typeof window !== 'undefined' ? window.renderPyqhubOption : null);
+    if (isAcrollyContent(q) && fnAcroOpt) {
+        const cleaned = fnAcroOpt(opt);
+        return safeHtml(cleaned);
+    }
+    if (fnPyqOpt) {
+        const cleaned = fnPyqOpt(opt);
+        return safeHtml(cleaned);
+    }
+    return safeHtml(opt);
+}
+
+window.renderSmartQuestionText = renderSmartQuestionText;
+window.renderSmartExplanationText = renderSmartExplanationText;
+window.renderSmartOptionText = renderSmartOptionText;
+
 function buildQuestionBody(q, idx) {
     if (q.type === 'image_mcq') return renderImageMCQ(q, idx);
-    if (q.type === 'integer') return renderInteger(q, idx);
-    if (q.type === 'mcq' || q.type === 'multi_mcq') return renderMCQ(q, idx);
+    if (q.type === 'integer' || q.type === 'paragraph_integer') return renderInteger(q, idx);
+    if (q.type === 'mcq' || q.type === 'multi_mcq' || q.type === 'paragraph_mcq') return renderMCQ(q, idx);
     return renderFillBlank(q, idx); // fill_blank / untyped
 }
 
-/* Inner HTML of a question card (everything inside .question-card). In bookmark
-   practice mode (currentMode === 'bookmark'), the question's identity for bookmark
-   lookups/removal is its ORIGINAL chapter position (q.origChapterId/origIndex),
-   not its position in this session's subset — and the number shown is the
-   question's real number from its source chapter (q.originalNumber), not idx+1. */
+/* Inner HTML of a question card (everything inside .question-card). */
 function buildQuestionCardInner(q, idx, total) {
     const inBookmarkMode = currentMode === 'bookmark';
     const isBookmarked = inBookmarkMode
@@ -82,8 +134,15 @@ function buildQuestionCardInner(q, idx, total) {
                 </button>
             </div>
         </div>
-        ${qText ? `<div class="question-text">${safeHtml(qText)}</div>` : ''}
-        ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
+        ${q.passage ? `
+            <div class="common-passage-box" style="background:var(--bg-secondary); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:8px; padding:1rem; margin-bottom:1rem;">
+                <div style="font-weight:700; font-size:0.85rem; color:var(--accent); margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+                    <span>📖</span><span>Common Comprehension Passage</span>
+                </div>
+                <div style="line-height:1.6; font-size:0.95rem;">${renderSmartQuestionText({question: q.passage, id: q.id})}</div>
+            </div>
+        ` : ''}
+        ${qText ? `<div class="question-text">${renderSmartQuestionText(q)}</div>` : ''}
         ${q.images && q.images.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                 ${q.images.map((img, i) => `
@@ -97,6 +156,7 @@ function buildQuestionCardInner(q, idx, total) {
                 <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
             </div>
         ` : '')}
+        ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
         ${buildQuestionBody(q, idx)}
     `;
 }
@@ -111,6 +171,11 @@ function buildMatchLists(matchLists) {
     const itemsII = listII.items || [];
     const maxLen = Math.max(itemsI.length, itemsII.length);
     if (maxLen === 0) return '';
+
+    // If either column has no content across all rows, do not draw a broken/empty table
+    const hasAnyI = itemsI.some(it => Boolean(it && ((it.text && it.text.trim()) || (it.title && it.title.trim()) || it.image_url || it.image || it.imageUrl)));
+    const hasAnyII = itemsII.some(it => Boolean(it && ((it.text && it.text.trim()) || (it.title && it.title.trim()) || it.image_url || it.image || it.imageUrl)));
+    if (!hasAnyI || !hasAnyII) return '';
 
     const defaultLabelsI = ['A', 'B', 'C', 'D', 'E', 'F'];
     const defaultLabelsII = ['p', 'q', 'r', 's', 't', 'u'];
@@ -129,12 +194,12 @@ function buildMatchLists(matchLists) {
         const hasContentI = Boolean(itI && ((itI.text && itI.text.trim()) || (itI.title && itI.title.trim()) || itI.image_url || itI.image || itI.imageUrl));
         const labelI = hasContentI ? formatLabel(itI.label || itI.key, defaultLabelsI[i]) : '';
         const textI = itI ? (itI.text || itI.title || '') : '';
-        const imgI = itI ? (itI.image_url || itI.image || itI.imageUrl || null) : null;
+        const imgI = itI ? resolveImageUrl(itI.image_url || itI.image || itI.imageUrl || null) : null;
 
         const hasContentII = Boolean(itII && ((itII.text && itII.text.trim()) || (itII.title && itII.title.trim()) || itII.image_url || itII.image || itII.imageUrl));
         const labelII = hasContentII ? formatLabel(itII.label || itII.key, defaultLabelsII[i]) : '';
         const textII = itII ? (itII.text || itII.title || '') : '';
-        const imgII = itII ? (itII.image_url || itII.image || itII.imageUrl || null) : null;
+        const imgII = itII ? resolveImageUrl(itII.image_url || itII.image || itII.imageUrl || null) : null;
 
         rowsHtml += `
             <tr>
@@ -227,7 +292,7 @@ function renderExplanationBlock(q, revealed) {
     return `
         <div class="explanation-box ${revealed ? 'show' : ''}">
             <h4>💡 Explanation</h4>
-            ${expText ? `<div class="explanation-text" style="line-height: 1.7; margin-top: 0.5rem;">${safeHtml(expText)}</div>` : ''}
+            ${expText ? `<div class="explanation-text" style="line-height: 1.7; margin-top: 0.5rem;">${renderSmartExplanationText(q)}</div>` : ''}
             ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
             ${hasVideo ? renderVideoFacade(q.video, q.id) : ''}
         </div>
@@ -236,36 +301,14 @@ function renderExplanationBlock(q, revealed) {
 
 function typesetMath(el) {
     if (!el) return;
-    const render = () => {
-        if (typeof renderMathInElement !== 'undefined') {
-            try {
-                renderMathInElement(el, {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false},
-                        {left: '\\[', right: '\\]', display: true},
-                        {left: '\\(', right: '\\)', display: false}
-                    ],
-                    throwOnError: false
-                });
-            } catch (e) {
-                console.warn('typesetMath error:', e);
-            }
+    if (typeof window !== 'undefined' && typeof window.typesetMath === 'function' && window.typesetMath !== typesetMath) {
+        return window.typesetMath(el);
+    }
+    if (typeof window !== 'undefined' && window.MathJax && window.MathJax.typesetPromise) {
+        if (window.MathJax.typesetClear) {
+            try { window.MathJax.typesetClear([el]); } catch (e) { /* ignore */ }
         }
-    };
-
-    if (typeof renderMathInElement !== 'undefined') {
-        // Run SYNCHRONOUSLY — no setTimeout delay — before browser paints the frame
-        render();
-    } else {
-        // Cold start fallback: only if KaTeX script hasn't finished loading yet
-        const interval = setInterval(() => {
-            if (typeof renderMathInElement !== 'undefined') {
-                clearInterval(interval);
-                render();
-            }
-        }, 25);
-        setTimeout(() => clearInterval(interval), 4000);
+        return window.MathJax.typesetPromise([el]).catch(err => console.warn('MathJax error:', err));
     }
 }
 window.typesetMath = typesetMath;
@@ -548,7 +591,7 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
             ? `<img class="mcq-opt-image" src="${q.optionImages[i]}" alt="Option ${key}" loading="lazy">`
             : '';
         const label = opt && String(opt).trim() !== ''
-            ? safeHtml(opt)
+            ? renderSmartOptionText(q, opt)
             : (optImg ? '' : `Option ${i + 1}`);
 
         return `

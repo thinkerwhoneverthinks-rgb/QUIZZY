@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Determinants — Maths</title>
+  <meta name="description" content="Determinants — Maths topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Mathematics</div>
+        <h1>Determinants</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DETERMINANT CONCEPT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Determinant is a <b>number (scalar)</b> associated with a <b>square matrix</b> <i>A</i>, written <b>det <i>A</i></b>, <b>|<i>A</i>|</b> or <b>Δ</b>.</li><li>It is a <b>function from matrices to numbers</b>: for square matrices <i>A</i>, det(<i>A</i>) ∈ ℝ or ℂ.</li><li>Only <b>square matrices</b> have determinants; rectangular matrices do <b>not</b>.</li><li>For a square linear system <i>AX</i>=<i>B</i>, the value of |<i>A</i>| controls <b>invertibility</b> and hence <b>uniqueness of solution</b>.</li><li><b>|<i>A</i>| ≠ 0</b> ⇔ <i>A</i> is <b>non-singular</b> ⇔ inverse exists ⇔ <i>AX</i>=<i>B</i> has a <b>unique solution</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#2563EB'/></marker></defs><rect x='18' y='22' width='210' height='86' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='34' y='48' font-size='16' fill='#1f2a44'>Square matrix</text><text x='34' y='72' font-size='16' fill='#1f2a44'><tspan font-style='italic'>A</tspan> (n×n)</text><rect x='252' y='22' width='210' height='86' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='268' y='48' font-size='16' fill='#1f2a44'>Determinant</text><text x='268' y='72' font-size='16' fill='#1f2a44'>det <tspan font-style='italic'>A</tspan> = |<tspan font-style='italic'>A</tspan>| = Δ</text><line x1='228' y1='65' x2='252' y2='65' stroke='#2563EB' stroke-width='3' marker-end='url(#arrow)'/><rect x='18' y='130' width='210' height='120' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='34' y='156' font-size='16' fill='#1f2a44'>Linear system</text><text x='34' y='180' font-size='16' fill='#1f2a44'><tspan font-style='italic'>AX</tspan> = <tspan font-style='italic'>B</tspan></text><text x='34' y='204' font-size='16' fill='#1f2a44'>Coeff. matrix: <tspan font-style='italic'>A</tspan></text><rect x='252' y='130' width='210' height='120' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='268' y='156' font-size='16' fill='#1f2a44'>Uniqueness test</text><text x='268' y='180' font-size='16' fill='#1f2a44'>If |<tspan font-style='italic'>A</tspan>| ≠ 0</text><text x='268' y='204' font-size='16' fill='#1f2a44'>⇒ unique solution</text><line x1='228' y1='190' x2='252' y2='190' stroke='#16A34A' stroke-width='3' marker-end='url(#arrow)'/><text x='44' y='268' font-size='14' fill='#1f2a44'>→ function to number</text><text x='270' y='268' font-size='14' fill='#1f2a44'>→ decides invertibility</text></svg><div class="figcap">Determinant maps a square matrix to a scalar and decides uniqueness for square <i>AX</i>=<i>B</i>.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔢</span><span>Determinant converts a square matrix into one scalar: det: <i>M</i><sub>n</sub> → ℝ/ℂ.</span></li><li><span class="ic">1</span><span>Order 1: for <i>A</i> = [a], det(<i>A</i>) = a.</span></li><li><span class="ic">🧹</span><span>2×2 determinant: for [[a,b],[c,d]], det = <b>ad − bc</b>.</span></li><li><span class="ic">🏋</span><span>3×3 determinant: evaluate by cofactor expansion along a row/column using signs ( −1 )<sup>i+j</sup> and 2×2 minors.</span></li><li><span class="ic">🔁</span><span>|<i>A</i>| ≠ 0 ⇒ <i>A</i><sup>−1</sup> exists and is unique, so <i>X</i>=<i>A</i><sup>−1</sup><i>B</i> is unique (square system).</span></li><li><span class="ic">🚫</span><span>|<i>A</i>| = 0 ⇒ <i>A</i> singular; inverse does not exist; system may have no solution or infinitely many.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">2×2 SYSTEM: WHY <b>a<sub>1</sub>b<sub>2</sub>−a<sub>2</sub>b<sub>1</sub></b> MATTERS</span></h2><ul class="b"><li>System: a<sub>1</sub><i>x</i> + b<sub>1</sub><i>y</i> = c<sub>1</sub>, a<sub>2</sub><i>x</i> + b<sub>2</sub><i>y</i> = c<sub>2</sub>.</li><li>Coefficient matrix <i>A</i> = <b>[[a<sub>1</sub>, b<sub>1</sub>],[a<sub>2</sub>, b<sub>2</sub>]]</b> has det(<i>A</i>) = a<sub>1</sub>b<sub>2</sub> − a<sub>2</sub>b<sub>1</sub>.</li><li>If det(<i>A</i>) ≠ 0, equations are independent ⇒ intersection at exactly one point ⇒ unique solution.</li><li>If det(<i>A</i>) = 0, coefficient rows are proportional ⇒ either parallel distinct (no solution) or same line (infinitely many).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">3×3 IDEA: COFACTOR EXPANSION (MINORS + SIGNS)</span></h2><ul class="b"><li>To expand along row <i>i</i> (or column <i>j</i>): determinant = sum of (entry) × (cofactor).</li><li>Minor M<sub>ij</sub>: delete row <i>i</i> and column <i>j</i>, then take the 2×2 determinant left.</li><li>Cofactor A<sub>ij</sub> = ( −1 )<sup>i+j</sup> M<sub>ij</sub> (checkerboard signs: + − + / − + − / + − +).</li><li>Exam tip: choose the row/column with maximum zeros to reduce work; all expansions give the same value.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">NON-SINGULAR vs SINGULAR (LINK TO SOLUTIONS)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Non-singular</th><th>Singular</th></tr></thead><tbody><tr><td>Determinant</td><td>|<i>A</i>| ≠ 0</td><td>|<i>A</i>| = 0</td></tr><tr><td>Inverse</td><td><i>A</i><sup>−1</sup> exists</td><td><i>A</i><sup>−1</sup> does not exist</td></tr><tr><td>System <i>AX</i>=<i>B</i> (square <i>A</i>)</td><td>Unique solution</td><td>No solution or infinitely many</td></tr><tr><td>2×2 geometry (two lines)</td><td>Two lines meet (one intersection)</td><td>Lines parallel or coincident</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Order 1 determinant (definition level):</div><div class="eqbox"><span class="eq">If <i>A</i> = [a], then det(<i>A</i>) = a.</span></div><div class="fstep">Order 2 determinant (definition used in exams):</div><div class="eqbox"><span class="eq">For <i>A</i> = [[a<sub>11</sub>,a<sub>12</sub>],[a<sub>21</sub>,a<sub>22</sub>]], |<i>A</i>| = a<sub>11</sub>a<sub>22</sub> − a<sub>21</sub>a<sub>12</sub>.</span></div><div class="fstep">Cofactor expansion principle (order 3 and above):</div><div class="eqbox"><span class="eq">Cofactor A<sub>ij</sub> = ( −1 )<sup>i+j</sup> M<sub>ij</sub>, where M<sub>ij</sub> is the minor of a<sub>ij</sub>.</span></div></div><div><div class="fstep">Expansion along first row for 3×3 (standard):</div><div class="eqbox blue"><span class="eq">|<i>A</i>| = a<sub>11</sub>(a<sub>22</sub>a<sub>33</sub> − a<sub>23</sub>a<sub>32</sub>) − a<sub>12</sub>(a<sub>21</sub>a<sub>33</sub> − a<sub>23</sub>a<sub>31</sub>) + a<sub>13</sub>(a<sub>21</sub>a<sub>32</sub> − a<sub>22</sub>a<sub>31</sub>).</span></div><div class="fstep">Uniqueness / inverse link (square system):</div><div class="eqbox blue"><span class="eq">If <i>AX</i>=<i>B</i> and |<i>A</i>| ≠ 0, then <i>A</i><sup>−1</sup> exists and <i>X</i>=<i>A</i><sup>−1</sup><i>B</i> is unique.</span></div><div class="fstep">Inverse via adjoint (as in source):</div><div class="eqbox blue"><span class="eq"><i>A</i><sup>−1</sup> = 1</span>|<i>A</i>| adj(<i>A</i>), provided |<i>A</i>| ≠ 0.</div></div><div><table class="wtab"><tr><td><i>A</i>&nbsp;=</td><td>Square matrix (often coefficient matrix)</td></tr><tr><td><i>X</i>&nbsp;=</td><td>Column vector of unknowns</td></tr><tr><td><i>B</i>&nbsp;=</td><td>Column vector of constants</td></tr><tr><td>|<i>A</i>|, det <i>A</i>, Δ&nbsp;=</td><td>Determinant of <i>A</i> (a scalar)</td></tr><tr><td>M<sub>ij</sub>&nbsp;=</td><td>Minor of element a<sub>ij</sub></td></tr><tr><td>A<sub>ij</sub>&nbsp;=</td><td>Cofactor of element a<sub>ij</sub></td></tr><tr><td>adj(<i>A</i>)&nbsp;=</td><td>Adjoint (adjugate): transpose of cofactor matrix</td></tr></table><div class="hibox">Uniqueness test (2 variables)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">For a<sub>1</sub><i>x</i>+b<sub>1</sub><i>y</i>=c<sub>1</sub>, a<sub>2</sub><i>x</i>+b<sub>2</sub><i>y</i>=c<sub>2</sub>:<br><b>Unique solution ⇔ a<sub>1</sub>b<sub>2</sub> − a<sub>2</sub>b<sub>1</sub> ≠ 0</b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Check if the system has a unique solution: 2<i>x</i> + 5<i>y</i> = 1, 3<i>x</i> + 2<i>y</i> = 7.</div><div class="sol"><span class="lbl">Solution:</span><br>Coefficient matrix <i>A</i> = [[2,5],[3,2]].<br>Compute determinant: |<i>A</i>| = (2)(2) − (3)(5) = 4 − 15 = −11.<br>Since |<i>A</i>| = −11 ≠ 0, <i>A</i> is non-singular ⇒ system has a <b>unique</b> solution.</div><div class="ans">✓&nbsp; Unique solution exists (because |<i>A</i>| = −11 ≠ 0).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find the determinant of <i>A</i> and conclude uniqueness for the system: 4<i>x</i> − 6<i>y</i> = 8, 2<i>x</i> − 3<i>y</i> = 4.</div><div class="sol"><span class="lbl">Solution:</span><br>Coefficient matrix <i>A</i> = [[4, −6],[2, −3]].<br>Compute determinant: |<i>A</i>| = (4)(−3) − (2)(−6) = −12 − (−12) = 0.<br>Since |<i>A</i>| = 0, <i>A</i> is singular ⇒ system is <b>not</b> uniquely solvable.<br>Here, the second equation is exactly half of the first, so both represent the same line.</div><div class="ans">✓&nbsp; |<i>A</i>| = 0, so no unique solution; in fact infinitely many solutions.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Determinant is defined only for <b>n×n</b> matrices; always check squareness first.</li><li>Order 1: det([a]) = a.</li><li>For 2×2, use fixed order: |<i>A</i>| = a<sub>11</sub>a<sub>22</sub> − a<sub>21</sub>a<sub>12</sub> (main diagonal product minus other diagonal product).</li><li>For 3×3, use cofactor expansion: sign ( −1 )<sup>i+j</sup> with the 2×2 minor after deleting row <i>i</i>, column <i>j</i>.</li><li>Unique solution of square <i>AX</i>=<i>B</i> is guaranteed when |<i>A</i>| ≠ 0 (invertible case).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“AD − BC = Main minus Other (2×2)”</div><paragraph id="6a9fd6045018a96d16000282">For [[a,b],[c,d]]: think <b>A</b>cross<b>D</b> minus <b>B</b>cross<b>C</b>.</paragraph><paragraph id="6a9fd604e464adfbc2000283">Say it aloud: “main diagonal minus other diagonal”.</paragraph><paragraph id="6a9fd60474b4ab5442000284">If the two rows look proportional, expect det = 0 (no uniqueness).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Definition: det maps an n×n matrix to a scalar; not defined for non-square matrices.</span><span class="eq">Notation: det <i>A</i> = |<i>A</i>| = Δ; read |<i>A</i>| as “determinant of <i>A</i>” (not modulus).</span><span class="eq">Order 1: if <i>A</i> = [a], then det(<i>A</i>) = a.</span><span class="eq">Order 2: for [[a,b],[c,d]], det = ad − bc.</span><span class="eq">Uniqueness (2 variables): a<sub>1</sub>b<sub>2</sub> − a<sub>2</sub>b<sub>1</sub> ≠ 0 ⇔ unique solution.</span><span class="eq">Cofactor: A<sub>ij</sub> = ( −1 )<sup>i+j</sup> M<sub>ij</sub>, where M<sub>ij</sub> is the minor (delete row <i>i</i>, column <i>j</i>).</span><span class="eq">3×3 expansion along first row: a<sub>11</sub>(a<sub>22</sub>a<sub>33</sub>−a<sub>23</sub>a<sub>32</sub>) − a<sub>12</sub>(a<sub>21</sub>a<sub>33</sub>−a<sub>23</sub>a<sub>31</sub>) + a<sub>13</sub>(a<sub>21</sub>a<sub>32</sub>−a<sub>22</sub>a<sub>31</sub>).</span><span class="eq">Inverse via adjoint: <i>A</i><sup>−1</sup> = (1/|<i>A</i>|) adj(<i>A</i>), only when |<i>A</i>| ≠ 0.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DETERMINANTS OF ORDERS 1–2</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Determinant</b> assigns a single number to a <b>square</b> matrix.</li><li>Order (n) = number of rows = number of columns; only square matrices have determinants.</li><li>Order 1: for [a], <b>det([a]) = a</b>.</li><li>Order 2: for <b>2×2</b>, determinant is <b>(main diagonal product) − (other diagonal product)</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#2563EB'/></marker></defs><rect x='40' y='40' width='170' height='170' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='125' y1='40' x2='125' y2='210' stroke='#123B7A' stroke-width='2'/><line x1='40' y1='125' x2='210' y2='125' stroke='#123B7A' stroke-width='2'/><text x='72' y='98' font-size='16' fill='#1f2a44'>a</text><text x='158' y='98' font-size='16' fill='#1f2a44'>b</text><text x='72' y='182' font-size='16' fill='#1f2a44'>c</text><text x='158' y='182' font-size='16' fill='#1f2a44'>d</text><line x1='60' y1='60' x2='190' y2='190' stroke='#16A34A' stroke-width='4' marker-end='url(#arrow)'/><line x1='190' y1='60' x2='60' y2='190' stroke='#F59E0B' stroke-width='4' marker-end='url(#arrow)'/><text x='230' y='92' font-size='15' fill='#1f2a44'>main diag: a×d</text><text x='230' y='120' font-size='15' fill='#1f2a44'>other diag: b×c</text><text x='230' y='148' font-size='15' fill='#1f2a44'>det = (a×d) − (b×c)</text><rect x='40' y='225' width='400' height='40' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='55' y='252' font-size='15' fill='#1f2a44'>Exam habit: copy a,b,c,d first; then do ad − bc (fixed order).</text></svg><div class="figcap">2×2 determinant: multiply diagonals, then subtract in the fixed order <b>ad − bc</b>.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">1️⃣</span><span>Order 1: <b>|[a]| = a</b> (no operations, just the entry).</span></li><li><span class="ic">2️⃣</span><span>Order 2: <b>|a b; c d| = ad − bc</b> (order is fixed).</span></li><li><span class="ic">🧠</span><span>Always copy entries into <b>a, b, c, d</b> positions first, then multiply.</span></li><li><span class="ic">🎯</span><span>Sign matters: swapping the two diagonal products changes the sign.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">FIXED COMPUTATION (2×2): ad − bc</span></h2><ul class="b"><li>Write matrix as <b>|a b; c d|</b> with correct positions: a=a<sub>11</sub>, b=a<sub>12</sub>, c=a<sub>21</sub>, d=a<sub>22</sub>.</li><li>Compute <b>ad</b> (main diagonal product).</li><li>Compute <b>bc</b> (other diagonal product).</li><li>Determinant = <b>ad − bc</b>; do not reverse the order.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">ACCURACY CHECKS (SPEED + NO SIGN ERRORS)</span></h2><ul class="b"><li>Use brackets with negatives: compute <b>ad − (bc)</b> carefully.</li><li>If one row is a multiple of the other, then <b>ad − bc = 0</b> (quick sanity check).</li><li>Zeros make multiplication faster, but the order remains <b>ad − bc</b>.</li><li>Exam tip: if a printed solution’s steps seem inconsistent, recompute directly from the displayed entries using <b>ad − bc</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Order 1 vs Order 2 Determinants</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Order 1 (1×1)</th><th>Order 2 (2×2)</th></tr></thead><tbody><tr><td>Form</td><td>|a|</td><td>|a b; c d|</td></tr><tr><td>Value</td><td>a</td><td>ad − bc</td></tr><tr><td>Common use in exams</td><td>Quick evaluation</td><td>Uniqueness tests / inverse / 2-variable systems</td></tr><tr><td>Typical error</td><td>Treating |a| as modulus</td><td>Wrong sign by mixing diagonals or miscopying b,c</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Order 1 (definition):</div><div class="eqbox"><span class="eq"><b>For</b> A = [a], <b>|A| = a</b></span></div><div class="fstep">Order 2 (definition):</div><div class="eqbox"><span class="eq"><b>For</b> A = <b>[a<sub>11</sub> a<sub>12</sub>; a<sub>21</sub> a<sub>22</sub>]</b>, <b>|A| = a<sub>11</sub>a<sub>22</sub> − a<sub>21</sub>a<sub>12</sub></b></span></div></div><div><div class="fstep">Rename entries as a,b,c,d to avoid index slips:</div><div class="eqbox blue"><span class="eq"><b>If</b> A = [a b; c d], <b>|A| = ad − bc</b></span></div></div><div><table class="wtab"><tr><td><i>a</i>&nbsp;=</td><td>Entry at position (1,1) in a 2×2 determinant</td></tr><tr><td><i>b</i>&nbsp;=</td><td>Entry at position (1,2)</td></tr><tr><td><i>c</i>&nbsp;=</td><td>Entry at position (2,1)</td></tr><tr><td><i>d</i>&nbsp;=</td><td>Entry at position (2,2)</td></tr><tr><td><i>a</i><sub>ij</sub>&nbsp;=</td><td>General entry in row i, column j (here i,j ∈ {1,2})</td></tr></table><div class="hibox">Most important result (2×2)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>|a b; c d| = (a×d) − (b×c)</b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Evaluate the determinant: | 2  4; −1  2 |.</div><div class="sol"><span class="lbl">Solution:</span><br>Identify a=2, b=4, c=−1, d=2.<br>Compute <b>ad</b> = 2×2 = 4.<br>Compute <b>bc</b> = 4×(−1) = −4.<br>So |A| = ad − bc = 4 − (−4) = 8.</div><div class="ans">✓&nbsp; 8</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Evaluate the determinant: | x  x+1; x  x−1 |.</div><div class="sol"><span class="lbl">Solution:</span><br>Copy entries carefully: a=x, b=x+1, c=x, d=x−1.<br>Compute <b>ad</b> = x(x−1) = x² − x.<br>Compute <b>bc</b> = (x+1)·x = x² + x.<br>So |A| = ad − bc = (x² − x) − (x² + x) = −2x.</div><div class="ans">✓&nbsp; −2x</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Index form: <b>a<sub>11</sub>a<sub>22</sub> − a<sub>21</sub>a<sub>12</sub></b> (do not swap a<sub>12</sub>, a<sub>21</sub>).</li><li>Read |A| as <b>determinant</b>, not modulus; it can be negative.</li><li>For 1×1, the determinant equals the single entry.</li><li>For 2×2, subtraction order is fixed: <b>(main diagonal) − (other diagonal)</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "Main minus Other"”</div><paragraph id="6a9fd6043e6e81b4ef000285">Main diagonal (top-left to bottom-right): <b>a</b> and <b>d</b> give <b>ad</b>.</paragraph><paragraph id="6a9fd604ed729172e8000286">Other diagonal (top-right to bottom-left): <b>b</b> and <b>c</b> give <b>bc</b>.</paragraph><paragraph id="6a9fd604ee3520830d000287">Always do: <b>Main − Other</b> ⇒ <b>ad − bc</b>.</paragraph><paragraph id="6a9fd604ebe0ca87f9000288">Label a,b,c,d positions first to prevent miscopying.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>Order 1:</b> |[a]| = a</span><span class="eq"><b>Order 2:</b> |a b; c d| = ad − bc</span><span class="eq"><b>Index form (2×2):</b> |a<sub>11</sub> a<sub>12</sub>; a<sub>21</sub> a<sub>22</sub>| = a<sub>11</sub>a<sub>22</sub> − a<sub>21</sub>a<sub>12</sub></span><span class="eq">Sanity check: proportional rows/columns ⇒ determinant 0</span><span class="eq">Exam habit: copy entries first, then apply ad − bc</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>3×3 COFACTOR EXPANSION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>3×3 cofactor expansion</b> computes |A| by summing <b>(entry) × (its cofactor)</b> along any one row/column.</li><li>Minor <i>M</i><sub>ij</sub> is the 2×2 determinant after deleting row <i>i</i> and column <i>j</i>.</li><li>Cofactor <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>; signs follow a checkerboard.</li><li>You may expand along R1/R2/R3 or C1/C2/C3; all give the same determinant value.</li><li>To simplify, choose the row/column with <b>maximum zeros</b> so many terms vanish.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><polygon points='0,0 10,5 0,10' fill='#2563EB'/></marker></defs><g><rect x='22' y='22' width='214' height='214' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='22' y1='93' x2='236' y2='93' stroke='#123B7A' stroke-width='2'/><line x1='22' y1='164' x2='236' y2='164' stroke='#123B7A' stroke-width='2'/><line x1='93' y1='22' x2='93' y2='236' stroke='#123B7A' stroke-width='2'/><line x1='164' y1='22' x2='164' y2='236' stroke='#123B7A' stroke-width='2'/><text x='45' y='62' font-size='18' fill='#1f2a44'>+</text><text x='116' y='62' font-size='18' fill='#1f2a44'>−</text><text x='187' y='62' font-size='18' fill='#1f2a44'>+</text><text x='45' y='133' font-size='18' fill='#1f2a44'>−</text><text x='116' y='133' font-size='18' fill='#1f2a44'>+</text><text x='187' y='133' font-size='18' fill='#1f2a44'>−</text><text x='45' y='204' font-size='18' fill='#1f2a44'>+</text><text x='116' y='204' font-size='18' fill='#1f2a44'>−</text><text x='187' y='204' font-size='18' fill='#1f2a44'>+</text><text x='30' y='18' font-size='14' fill='#1f2a44'>R1</text><text x='30' y='89' font-size='14' fill='#1f2a44'>R2</text><text x='30' y='160' font-size='14' fill='#1f2a44'>R3</text><text x='52' y='254' font-size='14' fill='#1f2a44'>C1</text><text x='122' y='254' font-size='14' fill='#1f2a44'>C2</text><text x='192' y='254' font-size='14' fill='#1f2a44'>C3</text><rect x='266' y='38' width='192' height='70' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='280' y='63' font-size='15' fill='#1f2a44'>Pick a row/col</text><text x='280' y='85' font-size='15' fill='#1f2a44'>with most zeros</text><line x1='236' y1='129' x2='266' y2='73' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='266' y='134' width='192' height='96' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='280' y='160' font-size='15' fill='#1f2a44'>Term = sign × entry</text><text x='280' y='182' font-size='15' fill='#1f2a44'>× 2×2 minor</text><text x='280' y='204' font-size='15' fill='#1f2a44'>Add all terms</text><line x1='236' y1='129' x2='266' y2='182' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/></g></svg><div class="figcap">Cofactor sign grid (−1)<sup>i+j</sup> and the expansion workflow.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">♟️</span><span>Checkerboard signs for cofactors: <b>+ − +</b> / <b>− + −</b> / <b>+ − +</b></span></li><li><span class="ic">✂️</span><span>Minor: delete the element’s row &amp; column → remaining 2×2 determinant</span></li><li><span class="ic">➕</span><span>Expansion rule: |A| = Σ a<sub>ij</sub>(−1)<sup>i+j</sup>M<sub>ij</sub> along a fixed row/column</span></li><li><span class="ic">0️⃣</span><span>Best strategy: expand along a row/column containing most zeros</span></li><li><span class="ic">🔁</span><span>Six equivalent expansions: R1,R2,R3,C1,C2,C3</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WORKFLOW (EXAM SPEED)</span></h2><ul class="b"><li>Choose Rk/Ck with maximum zeros; write only the nonzero contributions.</li><li>For chosen entry a<sub>ij</sub>: apply sign (−1)<sup>i+j</sup>, then compute its 2×2 minor.</li><li>Compute each 2×2 as <b>ad − bc</b>, then add the signed terms.</li><li>Cross-check: expanding along another easy row/column should match (if time).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SIX-TERM EXPRESSION (IF EXPANDING ALONG R1)</span></h2><ul class="b"><li>For |A| = | a<sub>11</sub> a<sub>12</sub> a<sub>13</sub> ; a<sub>21</sub> a<sub>22</sub> a<sub>23</sub> ; a<sub>31</sub> a<sub>32</sub> a<sub>33</sub> | :</li><li>|A| = a<sub>11</sub>a<sub>22</sub>a<sub>33</sub> − a<sub>11</sub>a<sub>23</sub>a<sub>32</sub> − a<sub>12</sub>a<sub>21</sub>a<sub>33</sub> + a<sub>12</sub>a<sub>23</sub>a<sub>31</sub> + a<sub>13</sub>a<sub>21</sub>a<sub>32</sub> − a<sub>13</sub>a<sub>22</sub>a<sub>31</sub>.</li><li>Use this only when it is faster than minors (often not, unless memorised well).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ROW vs COLUMN EXPANSION (CHOOSING THE FASTEST)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Expand along a row (R1/R2/R3)</th><th>Expand along a column (C1/C2/C3)</th></tr></thead><tbody><tr><td>Formula form</td><td>For fixed row i: |A| = a<sub>i1</sub>A<sub>i1</sub> + a<sub>i2</sub>A<sub>i2</sub> + a<sub>i3</sub>A<sub>i3</sub></td><td>For fixed column j: |A| = a<sub>1j</sub>A<sub>1j</sub> + a<sub>2j</sub>A<sub>2j</sub> + a<sub>3j</sub>A<sub>3j</sub></td></tr><tr><td>When best</td><td>A row has 1–2 zeros or simpler numbers</td><td>A column has 1–2 zeros or simpler numbers</td></tr><tr><td>Sign handling</td><td>Use checkerboard or (−1)<sup>i+j</sup></td><td>Same checkerboard or (−1)<sup>i+j</sup></td></tr><tr><td>Answer check</td><td>Must match any column expansion</td><td>Must match any row expansion</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Minor of entry a<sub>ij</sub>: delete row <i>i</i> and column <i>j</i></div><div class="eqbox"><span class="eq"><i>M</i><sub>ij</sub> = 2×2 determinant formed after deleting R<i>i</i>, C<i>j</i></span></div><div class="fstep">Cofactor attaches the sign (checkerboard)</div><div class="eqbox"><span class="eq"><i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub></span></div></div><div><div class="fstep">Cofactor expansion along row <i>i</i></div><div class="eqbox blue"><span class="eq">|<i>A</i>| = a<sub>i1</sub><i>A</i><sub>i1</sub> + a<sub>i2</sub><i>A</i><sub>i2</sub> + a<sub>i3</sub><i>A</i><sub>i3</sub></span></div><div class="fstep">Cofactor expansion along column <i>j</i></div><div class="eqbox blue"><span class="eq">|<i>A</i>| = a<sub>1j</sub><i>A</i><sub>1j</sub> + a<sub>2j</sub><i>A</i><sub>2j</sub> + a<sub>3j</sub><i>A</i><sub>3j</sub></span></div></div><div><table class="wtab"><tr><td>a<sub>ij</sub>&nbsp;=</td><td>Entry of the matrix in row <i>i</i>, column <i>j</i></td></tr><tr><td><i>M</i><sub>ij</sub>&nbsp;=</td><td>Minor determinant obtained after deleting row <i>i</i>, column <i>j</i></td></tr><tr><td><i>A</i><sub>ij</sub>&nbsp;=</td><td>Cofactor of a<sub>ij</sub>: (−1)<sup>i+j</sup><i>M</i><sub>ij</sub></td></tr><tr><td>|<i>A</i>|&nbsp;=</td><td>Determinant of the 3×3 matrix <i>A</i></td></tr></table><div class="hibox">Core expansion rule (use any row/column)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">|<i>A</i>| = Σ a<sub>ij</sub>(−1)<sup>i+j</sup><i>M</i><sub>ij</sub> <b>(fixed i for a row, or fixed j for a column)</b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Evaluate Δ = | 1 2 4 ; −1 3 0 ; 4 1 0 | using the fastest cofactor expansion.</div><div class="sol"><span class="lbl">Solution:</span><br>Choose C3 (two zeros). Signs down C3 are <b>+</b>, <b>−</b>, <b>+</b> (checkerboard).<br>Only a<sub>13</sub> = 4 contributes: Δ = (+)4 × <i>M</i><sub>13</sub>.<br>Delete R1,C3 ⇒ <i>M</i><sub>13</sub> = | −1 3 ; 4 1 | = (−1)(1) − (3)(4) = −1 − 12 = −13.<br>So Δ = 4(−13) = −52.</div><div class="ans">✓&nbsp; Δ = −52</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Compute |A| for A = | 2 0 3 ; 1 −1 0 ; 4 2 1 | by expanding along a row/column with zeros.</div><div class="sol"><span class="lbl">Solution:</span><br>Row R2 has one zero (a<sub>23</sub>=0), so expand along R2 (signs across R2: <b>− + −</b>).<br>|A| = (−)a<sub>21</sub><i>M</i><sub>21</sub> + (+)a<sub>22</sub><i>M</i><sub>22</sub> + (−)a<sub>23</sub><i>M</i><sub>23</sub>.<br>Compute <i>M</i><sub>21</sub>: delete R2,C1 ⇒ | 0 3 ; 2 1 | = 0·1 − 3·2 = −6.<br>Term from a<sub>21</sub>=1: (−)1×(−6) = +6.<br>Compute <i>M</i><sub>22</sub>: delete R2,C2 ⇒ | 2 3 ; 4 1 | = 2·1 − 3·4 = 2 − 12 = −10.<br>Term from a<sub>22</sub>=−1: (+)(−1)×(−10) = +10.</div><div class="ans">✓&nbsp; |A| = 16</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always pair elements with cofactors from the <b>same</b> chosen row/column.</li><li>Use (−1)<sup>i+j</sup>: even (i+j) → <b>+</b>, odd → <b>−</b>.</li><li>Minor is a 2×2 determinant; compute each as <b>ad − bc</b> carefully.</li><li>Pick the row/column with maximum zeros to reduce to 1–2 terms.</li><li>All six expansions give identical determinant value; mismatch means sign/minor error.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Chessboard + CUT-AND-KEEP”</div><paragraph id="6a9fd604d9b6c68498000289"><b>Chessboard</b> signs: start with <b>+</b> at (1,1), then alternate.</paragraph><paragraph id="6a9fd604f1d0b2512400028a"><b>CUT</b>: to get the minor, cut out that entry’s row and column.</paragraph><paragraph id="6a9fd60448c7250cf400028b"><b>KEEP</b>: compute the remaining 2×2 by <b>ad − bc</b>, then multiply by sign × entry.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>Minor</b>: <i>M</i><sub>ij</sub> = determinant after deleting row <i>i</i> and column <i>j</i>.</span><span class="eq"><b>Cofactor</b>: <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>.</span><span class="eq"><b>Row expansion</b>: |<i>A</i>| = a<sub>i1</sub><i>A</i><sub>i1</sub> + a<sub>i2</sub><i>A</i><sub>i2</sub> + a<sub>i3</sub><i>A</i><sub>i3</sub>.</span><span class="eq"><b>Column expansion</b>: |<i>A</i>| = a<sub>1j</sub><i>A</i><sub>1j</sub> + a<sub>2j</sub><i>A</i><sub>2j</sub> + a<sub>3j</sub><i>A</i><sub>3j</sub>.</span><span class="eq"><b>Signs (3×3)</b>: + − + / − + − / + − +.</span><span class="eq"><b>2×2</b>: | a b ; c d | = ad − bc.</span><span class="eq"><b>Speed rule</b>: expand along the row/column with maximum zeros.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SCALAR MULTIPLE PROPERTY (DETERMINANTS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Scalar Multiple Property:</b> If <i>A</i> = <i>kB</i> and <i>A</i>, <i>B</i> are square of order <i>n</i>, then |<i>A</i>| = <i>k</i><sup>n</sup>|<i>B</i>|.</li><li>Here <i>k</i> multiplies <b>every entry</b> of <i>B</i> to form <i>A</i>.</li><li>For a 2×2 matrix, |<i>kB</i>| = <i>k</i><sup>2</sup>|<i>B</i>|; for 3×3, it is <i>k</i><sup>3</sup>|<i>B</i>|.</li><li>Special case <i>n</i>=1: for [<i>a</i>], determinant is <i>a</i>, so |<i>k</i>[<i>a</i>]| = <i>k</i>|[<i>a</i>]|.</li><li>Use this to factor scalars quickly while computing determinants and to check answers by scaling.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#2563EB'/></marker></defs><rect x='22' y='28' width='190' height='108' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='38' y='56' font-size='16' fill='#1f2a44'>Matrix <tspan font-style='italic'>B</tspan></text><rect x='55' y='70' width='124' height='50' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='73' y='100' font-size='16' fill='#1f2a44'>entries b<tspan baseline-shift='sub'>ij</tspan></text><line x1='214' y1='82' x2='276' y2='82' stroke='#2563EB' stroke-width='3' marker-end='url(#arrow)'/><text x='226' y='70' font-size='16' fill='#1f2a44'>× <tspan font-style='italic'>k</tspan></text><rect x='286' y='28' width='172' height='108' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='302' y='56' font-size='16' fill='#1f2a44'>Matrix <tspan font-style='italic'>A</tspan> = <tspan font-style='italic'>kB</tspan></text><rect x='310' y='70' width='124' height='50' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='322' y='100' font-size='16' fill='#1f2a44'>entries k·b<tspan baseline-shift='sub'>ij</tspan></text><rect x='62' y='170' width='356' height='82' rx='8' fill='#FFFFFF' stroke='#123B7A' stroke-width='2'/><text x='80' y='202' font-size='16' fill='#1f2a44'>Determinant scaling:</text><text x='80' y='228' font-size='16' fill='#1f2a44'>|<tspan font-style='italic'>A</tspan>| = <tspan font-style='italic'>k</tspan><tspan baseline-shift='super'>n</tspan> |<tspan font-style='italic'>B</tspan>|</text><text x='312' y='228' font-size='16' fill='#1f2a44'>(order <tspan font-style='italic'>n</tspan>)</text></svg><div class="figcap">Multiply every entry by <i>k</i> ⇒ determinant multiplies by <i>k</i><sup>n</sup> (where <i>n</i> is the order).<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">Conc</span><span>Exponent equals the matrix order <i>n</i> (since in <i>A</i>=<i>kB</i>, all <i>n</i> rows/columns get scaled by <i>k</i>).</span></li><li><span class="ic">Key</span><span>Scaling all entries by <i>k</i> scales determinant by <i>k</i><sup>n</sup>.</span></li><li><span class="ic">Sign</span><span>If <i>k</i> is negative, sign of |<i>A</i>| flips only when <i>n</i> is odd.</span></li><li><span class="ic">Note</span><span>Works for any real/complex <i>k</i>; includes <i>k</i>=0 giving |<i>A</i>|=0.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY THE POWER <i>n</i>?</span></h2><ul class="b"><li>Determinant is <b>multilinear</b> in rows/columns: scaling one row by <i>k</i> scales |<i>A</i>| by <i>k</i>.</li><li>In <i>A</i> = <i>kB</i>, each of the <i>n</i> rows (or columns) is scaled by <i>k</i>.</li><li>So total scaling is <i>k</i> × <i>k</i> × ... (<i>n</i> times) = <i>k</i><sup>n</sup>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">FAST USE CASES (EXAM)</span></h2><ul class="b"><li>Factor a common scalar from a whole matrix before expansion: |<i>kB</i>| = <i>k</i><sup>n</sup>|<i>B</i>|.</li><li>Quick sign check: for odd <i>n</i>, |(−<i>B</i>)| = −|<i>B</i>|; for even <i>n</i>, it stays same.</li><li>If <i>k</i>=0 and <i>n</i>≥1, then <i>A</i> is zero matrix ⇒ |<i>A</i>|=0.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">SCALAR EFFECT BY ORDER</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Order</th><th>Matrix form</th><th>Determinant scales as</th></tr></thead><tbody><tr><td><i>n</i>=1</td><td>1×1 (matrix [<i>a</i>])</td><td>|<i>kB</i>| = <i>k</i>|<i>B</i>|</td></tr><tr><td><i>n</i>=2</td><td>2×2</td><td>|<i>kB</i>| = <i>k</i><sup>2</sup>|<i>B</i>|</td></tr><tr><td><i>n</i>=3</td><td>3×3</td><td>|<i>kB</i>| = <i>k</i><sup>3</sup>|<i>B</i>|</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Let <i>B</i> be <i>n</i>×<i>n</i> with rows <i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, ..., <i>R</i><sub>n</sub>.</div><div class="eqbox"><span class="eq"><i>A</i> = <i>kB</i> ⇒ rows of <i>A</i> are <i>kR</i><sub>1</sub>, <i>kR</i><sub>2</sub>, ..., <i>kR</i><sub>n</sub></span></div><div class="fstep">Using property: scaling one row by <i>k</i> scales determinant by <i>k</i>.</div><div class="eqbox"><span class="eq">|<i>A</i>| = |<i>kR</i><sub>1</sub>, <i>kR</i><sub>2</sub>, ..., <i>kR</i><sub>n</sub>| = <i>k</i><sup>n</sup>|<i>R</i><sub>1</sub>, <i>R</i><sub>2</sub>, ..., <i>R</i><sub>n</sub>|</span></div></div><div><div class="fstep">Recognize the last determinant as |<i>B</i>|.</div><div class="eqbox blue"><span class="eq">|<i>A</i>| = <i>k</i><sup>n</sup>|<i>B</i>|</span></div></div><div><table class="wtab"><tr><td><i>A</i>&nbsp;=</td><td>Square matrix of order <i>n</i> obtained after scalar multiplication</td></tr><tr><td><i>B</i>&nbsp;=</td><td>Original square matrix of order <i>n</i></td></tr><tr><td><i>k</i>&nbsp;=</td><td>Scalar (real/complex number)</td></tr><tr><td><i>n</i>&nbsp;=</td><td>Order of the square matrices (size <i>n</i>×<i>n</i>)</td></tr><tr><td>|<i>A</i>|, |<i>B</i>|&nbsp;=</td><td>Determinants of <i>A</i> and <i>B</i> (scalars)</td></tr></table><div class="hibox">Scalar Multiple Property<div class="eqbox gold" style="margin-top:1mm"><span class="eq">If <i>A</i> = <i>kB</i> (order <i>n</i>), then |<i>A</i>| = |<i>kB</i>| = <i>k</i><sup>n</sup>|<i>B</i>|</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Worked check (2×2): <i>B</i> = <span>[</span><span class='frac'><span>1&nbsp;&nbsp;1</span><span>2&nbsp;&nbsp;0</span></span><span>]</span>. Let <i>A</i> = 2<i>B</i>. Verify |<i>A</i>| = 2<sup>2</sup>|<i>B</i>|.</div><div class="sol"><span class="lbl">Solution:</span><br>Compute <i>A</i> = 2<i>B</i> = <span>[</span><span class='frac'><span>2&nbsp;&nbsp;2</span><span>4&nbsp;&nbsp;0</span></span><span>]</span>.<br>Find |<i>B</i>| = (1)(0) − (1)(2) = 0 − 2 = −2.<br>Find |<i>A</i>| = (2)(0) − (2)(4) = 0 − 8 = −8.<br>Compute 2<sup>2</sup>|<i>B</i>| = 4(−2) = −8, which matches |<i>A</i>|.</div><div class="ans">✓&nbsp; Verified: |<i>A</i>| = −8 and 2<sup>2</sup>|<i>B</i>| = −8.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Numerical application: <i>B</i> = <span>[</span><span class='frac'><span>3&nbsp;&nbsp;−1</span><span>2&nbsp;&nbsp;5</span></span><span>]</span>, <i>k</i> = −3. Let <i>A</i> = <i>kB</i>. Find |<i>A</i>| using the property and cross-check directly.</div><div class="sol"><span class="lbl">Solution:</span><br>Order <i>n</i>=2 ⇒ |<i>A</i>| = <i>k</i><sup>2</sup>|<i>B</i>|.<br>Compute |<i>B</i>| = (3)(5) − (−1)(2) = 15 − (−2) = 17.<br>Compute <i>k</i><sup>2</sup>|<i>B</i>| = (−3)<sup>2</sup>(17) = 9×17 = 153.<br>Direct check: <i>A</i> = −3<i>B</i> = <span>[</span><span class='frac'><span>−9&nbsp;&nbsp;3</span><span>−6&nbsp;&nbsp;−15</span></span><span>]</span>.<br>Then |<i>A</i>| = (−9)(−15) − (3)(−6) = 135 − (−18) = 153 (matches).</div><div class="ans">✓&nbsp; |<i>A</i>| = 153.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Property needs <b>square</b> matrices; determinants are not defined for non-square matrices.</li><li>Exponent is the <b>order <i>n</i></b>: 2×2 ⇒ <i>k</i><sup>2</sup>, 3×3 ⇒ <i>k</i><sup>3</sup>.</li><li>Do not confuse |<i>kB</i>| with <i>k</i>|<i>B</i>|; that holds only when <i>n</i>=1.</li><li>If <i>k</i>=0, then <i>A</i> is zero matrix ⇒ |<i>A</i>|=0 for any <i>n</i>≥1.</li><li>Sign check: for odd <i>n</i>, multiplying by −1 flips determinant sign; for even <i>n</i>, it doesn’t.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "Order = power"”</div><paragraph id="6a9fd6046a6131733300028c">Scale the whole matrix by <i>k</i> ⇒ determinant gets multiplied by <i>k</i><sup>n</sup>.</paragraph><paragraph id="6a9fd604eb04b6c35100028d">So 2×2 → <i>k</i><sup>2</sup>, 3×3 → <i>k</i><sup>3</sup>.</paragraph><paragraph id="6a9fd6046aa3546ff400028e">Remember: exponent equals the order <i>n</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">If <i>A</i> = <i>kB</i> (order <i>n</i>), then |<i>A</i>| = <i>k</i><sup>n</sup>|<i>B</i>|.</span><span class="eq">For 2×2: if <i>A</i> = <span>[</span><span class='frac'><span>a<sub>11</sub>&nbsp;&nbsp;a<sub>12</sub></span><span>a<sub>21</sub>&nbsp;&nbsp;a<sub>22</sub></span></span><span>]</span>, then |<i>A</i>| = a<sub>11</sub>a<sub>22</sub> − a<sub>21</sub>a<sub>12</sub>.</span><span class="eq">Special cases: <i>n</i>=1 ⇒ |<i>kB</i>| = <i>k</i>|<i>B</i>|; <i>k</i>=0 ⇒ |<i>kB</i>|=0 (for <i>n</i>≥1).</span><span class="eq">Sign rule from scaling: |(−<i>B</i>)| = (−1)<sup><i>n</i></sup>|<i>B</i>|.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>TRIANGLE AREA BY DETERMINANTS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>For A(<i>x</i><sub>1</sub>,<i>y</i><sub>1</sub>), B(<i>x</i><sub>2</sub>,<i>y</i><sub>2</sub>), C(<i>x</i><sub>3</sub>,<i>y</i><sub>3</sub>), area = <span class='frac'><span>1</span><span>2</span></span>|Δ| where Δ is a 3×3 determinant.</li><li>Δ gives <b>signed</b> twice-area: Δ&gt;0 anticlockwise order, Δ&lt;0 clockwise order of points.</li><li>Physical area is always nonnegative, so use absolute value: <span class='frac'><span>1</span><span>2</span></span>|Δ|.</li><li>If area is given to solve an unknown coordinate/parameter, set Δ = ±2(area) before solving.</li><li>Three points are collinear ⇔ area = 0 ⇔ Δ = 0.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#123B7A'/></marker></defs><line x1='50' y1='240' x2='450' y2='240' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='70' y1='260' x2='70' y2='30' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='438' y='262' font-size='15' fill='#1f2a44'>x</text><text x='52' y='44' font-size='15' fill='#1f2a44'>y</text><polygon points='130,90 170,200 360,170' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><circle cx='130' cy='90' r='4' fill='#7C3AED'/><circle cx='170' cy='200' r='4' fill='#7C3AED'/><circle cx='360' cy='170' r='4' fill='#7C3AED'/><text x='110' y='78' font-size='15' fill='#1f2a44'>A(x1,y1)</text><text x='140' y='220' font-size='15' fill='#1f2a44'>B(x2,y2)</text><text x='340' y='160' font-size='15' fill='#1f2a44'>C(x3,y3)</text><path d='M210 165 L235 150 L255 168' fill='none' stroke='#16A34A' stroke-width='2' marker-end='url(#arrow)'/><text x='265' y='172' font-size='15' fill='#1f2a44'>order</text><rect x='285' y='40' width='170' height='62' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='298' y='63' font-size='15' fill='#1f2a44'>Δ sign depends</text><text x='298' y='84' font-size='15' fill='#1f2a44'>on vertex order</text></svg><div class="figcap">Same triangle, different vertex order changes Δ sign; area uses <span class='frac'><span>1</span><span>2</span></span>|Δ|.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧮</span><span>Δ = |<i>x</i><sub>1</sub> <i>y</i><sub>1</sub> 1; <i>x</i><sub>2</sub> <i>y</i><sub>2</sub> 1; <i>x</i><sub>3</sub> <i>y</i><sub>3</sub> 1| gives twice the signed area</span></li><li><span class="ic">↕️</span><span>Swapping any two vertices swaps two rows ⇒ Δ changes sign, |Δ| unchanged</span></li><li><span class="ic">🧷</span><span>Collinearity test: Δ = 0 (fast coordinate-geometry tool)</span></li><li><span class="ic">➕</span><span>Unknown with given area: Δ = +2A and Δ = −2A both must be considered</span></li><li><span class="ic">📍</span><span>Best expansion: choose row/column with zeros to reduce arithmetic</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WORKING: HOW TO APPLY THE 3×3 DETERMINANT</span></h2><ul class="b"><li>Write Δ = |<i>x</i><sub>1</sub> <i>y</i><sub>1</sub> 1; <i>x</i><sub>2</sub> <i>y</i><sub>2</sub> 1; <i>x</i><sub>3</sub> <i>y</i><sub>3</sub> 1|.</li><li>Expand along any row/column; pick one with most zeros to save time.</li><li>Compute area = <span class='frac'><span>1</span><span>2</span></span>|Δ| (absolute value at the end).</li><li>For collinearity/line test, directly set Δ = 0 (no absolute value needed).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">AREA CONDITION QUESTIONS (UNKNOWN COORDINATE/PARAMETER)</span></h2><ul class="b"><li>Given area = <i>A</i> (&gt;0): set determinant Δ = +2<i>A</i> and Δ = −2<i>A</i>.</li><li>Solve both equations; geometrically they correspond to two orientations (clockwise/anticlockwise).</li><li>If you get one value only, recheck: you may have forgotten the ±.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Signed Area vs Actual Area (Exam Use)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Signed determinant value (Δ/2)</th><th>Actual triangle area</th></tr></thead><tbody><tr><td>Definition</td><td><span class='frac'><span>1</span><span>2</span></span>Δ (can be negative)</td><td><span class='frac'><span>1</span><span>2</span></span>|Δ| (always ≥ 0)</td></tr><tr><td>Depends on order of vertices?</td><td>Yes (swap two rows ⇒ sign flips)</td><td>No (absolute value removes sign)</td></tr><tr><td>Collinearity test</td><td>Δ = 0</td><td>Area = 0</td></tr><tr><td>Given area leads to equation</td><td>Δ = ±2<i>A</i></td><td>|Δ| = 2<i>A</i></td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start with the coordinate-geometry expression for twice the signed area:</div><div class="eqbox"><span class="eq">Δ = <i>x</i><sub>1</sub>(<i>y</i><sub>2</sub>−<i>y</i><sub>3</sub>) + <i>x</i><sub>2</sub>(<i>y</i><sub>3</sub>−<i>y</i><sub>1</sub>) + <i>x</i><sub>3</sub>(<i>y</i><sub>1</sub>−<i>y</i><sub>2</sub>)</span></div><div class="fstep">This same quantity can be written compactly as a 3×3 determinant:</div><div class="eqbox"><span class="eq">Δ = |<i>x</i><sub>1</sub> <i>y</i><sub>1</sub> 1; <i>x</i><sub>2</sub> <i>y</i><sub>2</sub> 1; <i>x</i><sub>3</sub> <i>y</i><sub>3</sub> 1|</span></div></div><div><div class="fstep">Area is the magnitude of the signed area:</div><div class="eqbox blue"><span class="eq">Area = <span class='frac'><span>1</span><span>2</span></span>|Δ|</span></div></div><div><table class="wtab"><tr><td>Δ&nbsp;=</td><td>3×3 determinant value; equals 2×(signed area)</td></tr><tr><td><i>A</i>&nbsp;=</td><td>Area of the triangle (square units, always ≥ 0)</td></tr><tr><td>(<i>x</i><sub>i</sub>, <i>y</i><sub>i</sub>)&nbsp;=</td><td>Coordinates of the i-th vertex (i = 1,2,3)</td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Area = <span class='frac'><span>1</span><span>2</span></span>| |<i>x</i><sub>1</sub> <i>y</i><sub>1</sub> 1; <i>x</i><sub>2</sub> <i>y</i><sub>2</sub> 1; <i>x</i><sub>3</sub> <i>y</i><sub>3</sub> 1| |</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Find the area of the triangle with vertices A(3,8), B(−4,2), C(5,1).</div><div class="sol"><span class="lbl">Solution:</span><br>Form Δ = |3 8 1; −4 2 1; 5 1 1|.<br>Expand along C3 (third column): Δ = 1|−4 2; 5 1| − 1|3 8; 5 1| + 1|3 8; −4 2|.<br>Compute minors:<br>|−4 2; 5 1| = (−4)·1 − 2·5 = −14<br>|3 8; 5 1| = 3·1 − 8·5 = −37<br>|3 8; −4 2| = 3·2 − 8·(−4) = 38<br>So Δ = (−14) − (−37) + 38 = 61.<br>Area = <span class='frac'><span>1</span><span>2</span></span>|61| = <span class='frac'><span>61</span><span>2</span></span> square units.</div><div class="ans">✓&nbsp; Area = <span class='frac'><span>61</span><span>2</span></span> square units (30.5 sq units).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find all values of <i>k</i> such that the area of triangle with A(1,3), B(0,0), D(<i>k</i>,0) is 3 square units.</div><div class="sol"><span class="lbl">Solution:</span><br>Use Area = <span class='frac'><span>1</span><span>2</span></span>|Δ| with Δ = |1 3 1; 0 0 1; <i>k</i> 0 1|.<br>Given area 3 ⇒ |Δ| = 6 ⇒ Δ = +6 or Δ = −6.<br>Expand along C3 (third column): Δ = 1|0 0; <i>k</i> 0| − 1|1 3; <i>k</i> 0| + 1|1 3; 0 0|.<br>Evaluate minors:<br>|0 0; <i>k</i> 0| = 0<br>|1 3; <i>k</i> 0| = 1·0 − 3<i>k</i> = −3<i>k</i><br>|1 3; 0 0| = 0<br>So Δ = 0 − (−3<i>k</i>) + 0 = 3<i>k</i>.<br>Now 3<i>k</i> = ±6 ⇒ <i>k</i> = ±2.</div><div class="ans">✓&nbsp; <i>k</i> = 2 or <i>k</i> = −2.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always write the third column as 1,1,1 for the triangle area determinant.</li><li>Area = <span class='frac'><span>1</span><span>2</span></span>|Δ|; do not forget absolute value in final area.</li><li>Δ itself is twice the signed area; sign depends on clockwise/anticlockwise vertex order.</li><li>Collinear points ⇔ Δ = 0 (fastest test in many JEE/boards questions).</li><li>Given area ⇒ use Δ = ±2(area) to avoid losing a valid solution.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "XY1 → Half-Abs"”</div><paragraph id="6a9fd604dbdbb851c000028f">Stack points as (<i>x</i>,<i>y</i>,1) in three rows: "XY1".</paragraph><paragraph id="6a9fd6047112e8cd74000290">Determinant gives Δ = 2×(signed area).</paragraph><paragraph id="6a9fd604c376972cf2000291">Final area is "Half-Abs": <span class='frac'><span>1</span><span>2</span></span>|Δ|.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Δ = |<i>x</i><sub>1</sub> <i>y</i><sub>1</sub> 1; <i>x</i><sub>2</sub> <i>y</i><sub>2</sub> 1; <i>x</i><sub>3</sub> <i>y</i><sub>3</sub> 1|</span><span class="eq">Area = <span class='frac'><span>1</span><span>2</span></span>|Δ|</span><span class="eq">Δ = <i>x</i><sub>1</sub>(<i>y</i><sub>2</sub>−<i>y</i><sub>3</sub>) + <i>x</i><sub>2</sub>(<i>y</i><sub>3</sub>−<i>y</i><sub>1</sub>) + <i>x</i><sub>3</sub>(<i>y</i><sub>1</sub>−<i>y</i><sub>2</sub>)</span><span class="eq">Collinear ⇔ Δ = 0</span><span class="eq">Given area <i>A</i>: solve Δ = +2<i>A</i> and Δ = −2<i>A</i></span><span class="eq">Swap two vertices (swap two rows) ⇒ Δ changes sign, |Δ| unchanged</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>LINE AND COLLINEARITY CONDITION (DETERMINANTS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Three points A, B, P are collinear ⇔ area(ABP)=0 ⇔</b> <i>det</i> | x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; x y 1 | = 0.</li><li>For any point P(<i>x</i>,<i>y</i>) on the line through A(x<sub>1</sub>,y<sub>1</sub>) and B(x<sub>2</sub>,y<sub>2</sub>), impose <b>determinant = 0</b> to get the line equation.</li><li>Triangle area from coordinates is <b>signed</b> via Δ; actual area = <span class='frac'><span>1</span><span>2</span></span>|Δ|, where Δ is the 3×3 determinant.</li><li>If area is given as a positive number <i>S</i>, then |Δ| = 2<i>S</i> so Δ = ±2<i>S</i> (sign depends on point order).</li><li>Swapping any two rows/points changes sign of Δ but not |Δ| (area unchanged).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><path d='M0,0 L9,3 L0,6 Z' fill='#123B7A'/></marker></defs><g><rect x='18' y='18' width='444' height='244' rx='12' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='70' y1='230' x2='430' y2='230' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='70' y1='230' x2='70' y2='50' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='420' y='252' font-size='14' fill='#1f2a44'>x</text><text x='52' y='60' font-size='14' fill='#1f2a44'>y</text><line x1='70' y1='230' x2='250' y2='80' stroke='#2563EB' stroke-width='3'/><circle cx='70' cy='230' r='5' fill='#16A34A'/><text x='82' y='226' font-size='14' fill='#1f2a44'>B(0,0)</text><circle cx='250' cy='80' r='5' fill='#16A34A'/><text x='262' y='84' font-size='14' fill='#1f2a44'>A(1,3)</text><circle cx='180' cy='142' r='5' fill='#F59E0B'/><text x='192' y='146' font-size='14' fill='#1f2a44'>P(x,y)</text><line x1='180' y1='142' x2='180' y2='230' stroke='#7C3AED' stroke-width='2'/><circle cx='180' cy='230' r='5' fill='#7C3AED'/><text x='192' y='234' font-size='14' fill='#1f2a44'>D(k,0)</text><polygon points='70,230 250,80 180,230' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2' opacity='0.9'/><text x='300' y='78' font-size='14' fill='#1f2a44'>Line AB</text><text x='300' y='98' font-size='14' fill='#1f2a44'>Collinear A,B,P → area=0</text><text x='300' y='132' font-size='14' fill='#1f2a44'>Area(ABD)=3</text></g></svg><div class="figcap">Use P(x,y) as a variable point on line AB for collinearity (area(ABP)=0). For parameter k, use triangle ABD with D(k,0) and apply area = (1/2)|Δ|.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧾</span><span>Line through two points: all P such that <b>det(A,B,P)=0</b>.</span></li><li><span class="ic">📏</span><span>Area constraint for a triangle: <b><span class='frac'><span>1</span><span>2</span></span>|Δ|=S</b> ⇒ solve for unknown(s).</span></li><li><span class="ic">🔁</span><span>When area S is given, use <b>Δ=±2S</b> to avoid missing solutions.</span></li><li><span class="ic">🎯</span><span>For determinant evaluation, expand along a row/column with maximum zeros.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WORKING: LINE THROUGH TWO POINTS USING Δ = 0</span></h2><ul class="b"><li>Take variable point P(<i>x</i>,<i>y</i>) on the line through A(x<sub>1</sub>,y<sub>1</sub>) and B(x<sub>2</sub>,y<sub>2</sub>).</li><li>Impose <b>area(ABP)=0</b> ⇒ <b>Δ = 0</b>, where Δ = | x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; <i>x</i> <i>y</i> 1 |.</li><li>Expand the determinant to get a linear equation in <i>x</i> and <i>y</i> (the required line).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WORKING: USING AREA CONSTRAINT TO FIND A PARAMETER</span></h2><ul class="b"><li>For a triangle with known area <i>S</i>, use <span class='frac'><span>1</span><span>2</span></span>|Δ| = <i>S</i> ⇒ <b>Δ = ±2<i>S</i></b>.</li><li>Substitute coordinates (with parameter) into Δ and solve; both signs may give valid parameter values.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep"><b>Collinearity condition (area zero)</b></div><div class="eqbox"><span class="eq">A,B,P collinear ⇔ area(ABP)=0 ⇔ Δ = <b>| x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; <i>x</i> <i>y</i> 1 | = 0</b></span></div><div class="fstep"><b>Area of triangle from determinant</b></div><div class="eqbox"><span class="eq">Area = <span class='frac'><span>1</span><span>2</span></span>|Δ|, where Δ = | x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; x<sub>3</sub> y<sub>3</sub> 1 |</span></div></div><div><div class="fstep"><b>Given area <i>S</i></b></div><div class="eqbox blue"><span class="eq">Area = <i>S</i> ⇒ |Δ| = 2<i>S</i> ⇒ <b>Δ = ±2<i>S</i></b></span></div></div><div><table class="wtab"><tr><td>Δ&nbsp;=</td><td>3×3 determinant giving signed double-area of the triangle</td></tr><tr><td><i>S</i>&nbsp;=</td><td>Area of the triangle (always non-negative)</td></tr><tr><td>A(x<sub>1</sub>,y<sub>1</sub>), B(x<sub>2</sub>,y<sub>2</sub>), P(<i>x</i>,<i>y</i>)&nbsp;=</td><td>Points in the coordinate plane; P is variable</td></tr></table><div class="hibox">Collinearity / line equation condition<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>| x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; <i>x</i> <i>y</i> 1 | = 0</b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Find the equation of the line through A(1,3) and B(0,0) using the determinant collinearity condition.</div><div class="sol"><span class="lbl">Solution:</span><br>Let P(<i>x</i>,<i>y</i>) be any point on AB. Then area(ABP)=0 ⇒ Δ=0.<br>Write Δ = <b>| 0 0 1; 1 3 1; <i>x</i> <i>y</i> 1 |</b> = 0.<br>Expand along the first row (0,0,1): only the third term contributes.<br>Δ = 1·| 1 3; <i>x</i> <i>y</i> | = 1·(1·<i>y</i> − 3·<i>x</i>) = <i>y</i> − 3<i>x</i>.<br>Set Δ=0 ⇒ <i>y</i> − 3<i>x</i> = 0.</div><div class="ans">✓&nbsp; Equation of AB: <b><i>y</i> = 3<i>x</i></b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Given A(1,3), B(0,0) and D(<i>k</i>,0). If area(ABD)=3 sq units, find <i>k</i> using Δ = ±6.</div><div class="sol"><span class="lbl">Solution:</span><br>Area(ABD) = <span class='frac'><span>1</span><span>2</span></span>|Δ| with Δ = <b>| 1 3 1; 0 0 1; <i>k</i> 0 1 |</b>.<br>Given area = 3 ⇒ |Δ| = 6 ⇒ <b>Δ = ±6</b>.<br>Expand along the second row (0,0,1): only the third entry contributes.<br>Δ = 1·| 1 3; <i>k</i> 0 | = (1·0 − 3·<i>k</i>) = −3<i>k</i>.<br>Set −3<i>k</i> = ±6 ⇒ <i>k</i> = ∓2, so <i>k</i> ∈ {−2, 2}.</div><div class="ans">✓&nbsp; <b><i>k</i> = ±2</b>.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Equation of a line via determinants is the <b>zero-area</b> condition for A, B and variable P.</li><li>Area = <span class='frac'><span>1</span><span>2</span></span>|Δ|; Δ is <b>signed</b>, area is always non-negative.</li><li>If area is specified as S, use <b>Δ = ±2S</b> before solving for unknowns.</li><li>To evaluate Δ quickly, expand along a row/column with maximum zeros.</li><li>Swapping two points (rows) flips sign of Δ; |Δ| (and area) stays the same.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“ABP → "Add P, Put zero"”</div><paragraph id="6a9fd604b1f2e43164000292">To get the line through A and B, write determinant with rows A, B and P(<i>x</i>,<i>y</i>) and last column 1s.</paragraph><paragraph id="6a9fd60490169778b9000293">Set it to <b>0</b> (because area(ABP)=0).</paragraph><paragraph id="6a9fd60458006da962000294">If area is S (positive), set the same determinant to <b>±2S</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Collinear points A(x<sub>1</sub>,y<sub>1</sub>), B(x<sub>2</sub>,y<sub>2</sub>), P(x,y): <b>| x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; x y 1 | = 0</b></span><span class="eq">Triangle area from coordinates: Area = <span class='frac'><span>1</span><span>2</span></span>|Δ|, Δ = | x<sub>1</sub> y<sub>1</sub> 1; x<sub>2</sub> y<sub>2</sub> 1; x<sub>3</sub> y<sub>3</sub> 1 |</span><span class="eq">Given area S: <b>Δ = ±2S</b></span><span class="eq">Example: A(1,3), B(0,0) ⇒ line AB: <b><i>y</i>=3<i>x</i></b></span><span class="eq">Example: D(<i>k</i>,0), area(ABD)=3 ⇒ <b><i>k</i>=±2</b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>MINORS AND COFACTORS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Minor</b> <i>M</i><sub>ij</sub> of element <i>a</i><sub>ij</sub>: determinant obtained by deleting i-th row and j-th column.</li><li>For an n×n determinant (n ≥ 2), each minor is of order (n−1).</li><li><b>Cofactor</b> <i>A</i><sub>ij</sub> is the signed minor: <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>.</li><li>Sign rule: if (i+j) even → <b>+</b>, if (i+j) odd → <b>−</b>.</li><li>In 3×3, cofactors follow the chessboard pattern: <b>+ − +</b><br><b>− + −</b><br><b>+ − +</b>.</li></ul></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">STEP</span><span>To form <i>M</i><sub>ij</sub>, cross out row i and column j.</span></li><li><span class="ic">SIGN</span><span><i>A</i><sub>ij</sub> differs from <i>M</i><sub>ij</sub> only by the factor (−1)<sup>i+j</sup>.</span></li><li><span class="ic">2x2</span><span>For 2×2, each minor is 1×1 (the remaining single entry).</span></li><li><span class="ic">3x3</span><span>For 3×3, each minor is a 2×2 determinant; apply the correct sign for the cofactor.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">2×2: MINORS &amp; COFACTORS (FAST)</span></h2><ul class="b"><li>For <b>| a b ; c d |</b>: <i>M</i><sub>11</sub>=d, <i>M</i><sub>12</sub>=c, <i>M</i><sub>21</sub>=b, <i>M</i><sub>22</sub>=a.</li><li>Sign pattern for cofactors: <b>+ −</b><br><b>− +</b>, so <i>A</i><sub>11</sub>=d, <i>A</i><sub>12</sub>=−c, <i>A</i><sub>21</sub>=−b, <i>A</i><sub>22</sub>=a.</li><li>Minors in 2×2 are 1×1 determinants (single entries).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">3×3: GENERAL MINOR (HOW TO WRITE IT)</span></h2><ul class="b"><li>To find <i>M</i><sub>ij</sub>, strike out row i and column j; compute the remaining 2×2 determinant.</li><li>Then <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>; chessboard signs help avoid parity mistakes.</li><li>Templates:
+
+<i>M</i><sub>11</sub> =
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+
+  <!-- Left determinant line -->
+  <span style="height:42px;border-left:1.5px solid #000;"></span>
+
+  <span style="display:grid;grid-template-columns:45px 45px;grid-template-rows:21px 21px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+    <span><i>a</i><sub>22</sub></span>
+    <span><i>a</i><sub>23</sub></span>
+    <span><i>a</i><sub>32</sub></span>
+    <span><i>a</i><sub>33</sub></span>
+  </span>
+
+  <!-- Right determinant line -->
+  <span style="height:42px;border-right:1.5px solid #000;"></span>
+
+</span>
+
+&nbsp;and&nbsp;
+
+<i>A</i><sub>21</sub> = −
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+
+  <!-- Left determinant line -->
+  <span style="height:42px;border-left:1.5px solid #000;"></span>
+
+  <span style="display:grid;grid-template-columns:45px 45px;grid-template-rows:21px 21px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+    <span><i>a</i><sub>12</sub></span>
+    <span><i>a</i><sub>13</sub></span>
+    <span><i>a</i><sub>32</sub></span>
+    <span><i>a</i><sub>33</sub></span>
+  </span>
+
+  <!-- Right determinant line -->
+  <span style="height:42px;border-right:1.5px solid #000;"></span>
+
+</span>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Minor vs Cofactor (DON'T CONFUSE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Minor <i>M</i><sub>ij</sub></th><th>Cofactor <i>A</i><sub>ij</sub></th></tr></thead><tbody><tr><td>Meaning</td><td>Determinant after deleting row i, column j</td><td>Signed minor of <i>a</i><sub>ij</sub></td></tr><tr><td>Definition relation</td><td>Compute the reduced (n−1) order determinant</td><td>Apply sign: + if (i+j) even, − if (i+j) odd</td></tr><tr><td>Sign involvement</td><td>No extra sign factor</td><td>Sign from chessboard
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+    <span style="display:grid;grid-template-columns:28px 28px 28px;grid-template-rows:22px 22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>+</span><span>−</span><span>+</span>
+      <span>−</span><span>+</span><span>−</span>
+      <span>+</span><span>−</span><span>+</span>
+    </span>
+
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+  </span>
+</span></td></tr><tr><td>Order (3×3 case)</td><td>2×2 determinant</td><td>± (that 2×2 determinant)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">For Δ = |1 2 3; 4 5 6; 7 8 9|, find the <b>minor</b> and <b>cofactor</b> of the element 6 (position (2,3)).</div><div class="sol"><span class="lbl">Answer:</span><br>Element 6 is <i>a</i><sub>23</sub>. Delete row 2 and column 3 to form <i>M</i><sub>23</sub>.<br><i>M</i><sub>23</sub> is the determinant |1 2; 7 8|, which evaluates to −6.<br>Since 2+3 is odd, the cofactor has a negative sign: <i>A</i><sub>23</sub> = −<i>M</i><sub>23</sub> = 6.</div><div class="ans">✓&nbsp; <i>M</i><sub>23</sub> = −6 and <i>A</i><sub>23</sub> = 6.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">For the 2×2 determinant |1 −2; 4 3|, list all minors <i>M</i><sub>ij</sub> and cofactors <i>A</i><sub>ij</sub>.</div><div class="sol"><span class="lbl">Answer:</span><br>Minors are obtained by deleting the corresponding row and column, leaving a 1×1 determinant.<br>Thus <i>M</i><sub>11</sub>=3, <i>M</i><sub>12</sub>=4, <i>M</i><sub>21</sub>=−2, <i>M</i><sub>22</sub>=1.<br>Apply the sign grid <b>+ −</b><br><b>− +</b> to get cofactors: <i>A</i><sub>11</sub>=3, <i>A</i><sub>12</sub>=−4, <i>A</i><sub>21</sub>=2, <i>A</i><sub>22</sub>=1.</div><div class="ans">✓&nbsp; Minors:
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+    <span style="display:grid;grid-template-columns:32px 32px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>3</span><span>4</span>
+      <span>−2</span><span>1</span>
+    </span>
+
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.
+
+Cofactors:
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+    <span style="display:grid;grid-template-columns:32px 32px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>3</span><span>−4</span>
+      <span>2</span><span>1</span>
+    </span>
+
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+in the same (11,12,21,22) order.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Minor: delete i-th row and j-th column; cofactor: apply (−1)<sup>i+j</sup> to that minor.</li><li>In 3×3, minor is 2×2; in 2×2, minor is 1×1 (single entry).</li><li>Cofactor sign depends only on position (i,j), not on the element’s value.</li><li><i>M</i><sub>23</sub> means delete row 2 and column 3 (it is not about the numbers 2 and 3).</li><li>Chessboard signs always start with <b>+</b> at position (1,1).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“M = Minus the row/col, A = Attach the sign”</div><paragraph id="6a9fd6045f2dd3f600000295"><b>M</b>inor: <b>M</b>inus (remove) its row and column.</paragraph><paragraph id="6a9fd604bc773c8a88000296"><b>A</b>cofactor: <b>A</b>ttach sign using chessboard starting with + at (1,1).</paragraph><paragraph id="6a9fd604348cdf3bbc000297">Quick sign check (3×3): (1,1), (1,3), (2,2), (3,1), (3,3) are <b>+</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Minor <i>M</i><sub>ij</sub>: determinant obtained by deleting row i and column j.</span><span class="eq">Order fact: for n×n (n ≥ 2), each minor is (n−1)×(n−1).</span><span class="eq">Cofactor <i>A</i><sub>ij</sub>: signed minor; sign is + if (i+j) even, − if (i+j) odd.</span><span class="eq">3×3 cofactor sign grid:
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+    <span style="display:grid;grid-template-columns:28px 28px 28px;grid-template-rows:22px 22px 22px;text-align:center;align-items:center;font-size:16px;font-weight:bold;line-height:1;">
+      <span>+</span><span>−</span><span>+</span>
+      <span>−</span><span>+</span><span>−</span>
+      <span>+</span><span>−</span><span>+</span>
+    </span>
+
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+  </span>
+</span>.</span><span class="eq">2×2: for |a b; c d|, minors are <i>M</i><sub>11</sub>=d, <i>M</i><sub>12</sub>=c, <i>M</i><sub>21</sub>=b, <i>M</i><sub>22</sub>=a.</span><span class="eq">2×2 cofactors follow <b>+ −</b><br><b>− +</b>, so <i>A</i><sub>11</sub>=d, <i>A</i><sub>12</sub>=−c, <i>A</i><sub>21</sub>=−b, <i>A</i><sub>22</sub>=a.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>COFACTOR EXPANSION PROPERTIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Cofactor expansion:</b> A determinant equals the sum of products of elements of any one row/column with their <b>corresponding cofactors</b>.</li><li>For 3×3, there are <b>six valid expansions</b>: along R1, R2, R3, C1, C2, C3; all give the same value Δ.</li><li>Cofactor of <i>a</i><sub>ij</sub>: <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>, where <i>M</i><sub>ij</sub> is the minor (delete row <i>i</i>, column <i>j</i>).</li><li><b>Mixed row/column property:</b> elements of one row (or column) dotted with cofactors of a different row (or column) give 0.</li><li>Reason idea: that mixed sum can be interpreted as a determinant with <b>two identical rows/columns</b> ⇒ determinant 0.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='210' height='110' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='32' y='44' font-size='16' fill='#1f2a44'>Same row/column</text><text x='32' y='66' font-size='16' fill='#1f2a44'>+ its cofactors</text><text x='32' y='95' font-size='16' fill='#1f2a44'>gives Δ</text><rect x='252' y='18' width='210' height='110' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='266' y='44' font-size='16' fill='#1f2a44'>Row i</text><text x='266' y='66' font-size='16' fill='#1f2a44'>+ cofactors of</text><text x='266' y='95' font-size='16' fill='#1f2a44'>Row k (i≠k)</text><text x='266' y='118' font-size='16' fill='#1f2a44'>gives 0</text><line x1='228' y1='73' x2='252' y2='73' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><rect x='70' y='155' width='340' height='105' rx='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='88' y='180' font-size='16' fill='#1f2a44'>Why mixed sum = 0</text><text x='88' y='205' font-size='15' fill='#1f2a44'>It equals a determinant</text><text x='88' y='228' font-size='15' fill='#1f2a44'>with two identical rows/columns</text><text x='88' y='251' font-size='15' fill='#1f2a44'>⇒ determinant is 0</text></svg><div class="figcap">Cofactor expansion works only with matching row/column; mismatched pairing forces a zero determinant.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Δ = <i>a</i><sub>11</sub><i>A</i><sub>11</sub> + <i>a</i><sub>12</sub><i>A</i><sub>12</sub> + <i>a</i><sub>13</sub><i>A</i><sub>13</sub> (expand along R1)</span></li><li><span class="ic">🧭</span><span>3×3 cofactor sign grid: <br>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+    <span style="display:grid;grid-template-columns:28px 28px 28px;grid-template-rows:22px 22px 22px;text-align:center;align-items:center;font-size:16px;font-weight:bold;line-height:1;">
+      <span>+</span><span>−</span><span>+</span>
+      <span>−</span><span>+</span><span>−</span>
+      <span>+</span><span>−</span><span>+</span>
+    </span>
+
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+
+  </span>
+</span>.</span></li><li><span class="ic">🧱</span><span>Choose the row/column with maximum zeros to reduce computation</span></li><li><span class="ic">🔁</span><span>Orthogonality-like: Row i · (cofactors of Row k) = 0 for i ≠ k (similarly for columns)</span></li><li><span class="ic">⚠️</span><span>Common trap: mixing a row with cofactors of another row gives 0, not Δ</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">SIX COFACTOR EXPANSIONS (3×3)</span></h2><ul class="b"><li><b>Along R1:</b> Δ = <i>a</i><sub>11</sub><i>A</i><sub>11</sub> + <i>a</i><sub>12</sub><i>A</i><sub>12</sub> + <i>a</i><sub>13</sub><i>A</i><sub>13</sub></li><li><b>Along R2:</b> Δ = <i>a</i><sub>21</sub><i>A</i><sub>21</sub> + <i>a</i><sub>22</sub><i>A</i><sub>22</sub> + <i>a</i><sub>23</sub><i>A</i><sub>23</sub></li><li><b>Along R3:</b> Δ = <i>a</i><sub>31</sub><i>A</i><sub>31</sub> + <i>a</i><sub>32</sub><i>A</i><sub>32</sub> + <i>a</i><sub>33</sub><i>A</i><sub>33</sub></li><li><b>Along C1:</b> Δ = <i>a</i><sub>11</sub><i>A</i><sub>11</sub> + <i>a</i><sub>21</sub><i>A</i><sub>21</sub> + <i>a</i><sub>31</sub><i>A</i><sub>31</sub></li><li><b>Along C2:</b> Δ = <i>a</i><sub>12</sub><i>A</i><sub>12</sub> + <i>a</i><sub>22</sub><i>A</i><sub>22</sub> + <i>a</i><sub>32</sub><i>A</i><sub>32</sub></li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MIXED SUM = 0 (ORTHOGONALITY-LIKE PROPERTY)</span></h2><ul class="b"><li>For rows, if <i>i</i> ≠ <i>k</i>: <i>a</i><sub>i1</sub><i>A</i><sub>k1</sub> + <i>a</i><sub>i2</sub><i>A</i><sub>k2</sub> + <i>a</i><sub>i3</sub><i>A</i><sub>k3</sub> = 0</li><li>Interpretation: this equals the determinant after replacing row <i>k</i> by row <i>i</i> ⇒ two identical rows ⇒ determinant 0.</li><li>For columns, if <i>j</i> ≠ <i>l</i>: <i>a</i><sub>1j</sub><i>A</i><sub>1l</sub> + <i>a</i><sub>2j</sub><i>A</i><sub>2l</sub> + <i>a</i><sub>3j</sub><i>A</i><sub>3l</sub> = 0</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">VALID vs INVALID COFACTOR SUMS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Type of sum</th><th>What you multiply</th><th>Result</th></tr></thead><tbody><tr><td>Correct expansion</td><td>One row (or one column) entries with cofactors of the same row (or same column)</td><td>Gives determinant Δ</td></tr><tr><td>Mixed (wrong pairing)</td><td>Row i entries with cofactors of a different row k (i ≠ k) OR Column j entries with cofactors of a different column l (j ≠ l)</td><td>Sum = 0</td></tr><tr><td>Related fact (reason used in proof)</td><td>Determinant with two identical rows/columns</td><td>Determinant = 0</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Concept check: Why does "Row i entries × cofactors of Row k" give 0 when i ≠ k?</div><div class="sol"><span class="lbl">Answer:</span><br>Consider the determinant Δ of the original matrix.<br>Form a new determinant by replacing Row k with Row i, keeping all other rows unchanged.<br>This new determinant has two identical rows (Row i and Row k), so its value is 0.<br>Expanding this new determinant along Row k gives exactly the mixed sum Σ<sub>j=1 to 3</sub><i>a</i><sub>ij</sub><i>A</i><sub>kj</sub>.<br>Hence the mixed sum must be 0.</div><div class="ans">✓&nbsp; Because it represents a determinant with two identical rows/columns, which is 0.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Concept check: How many cofactor expansions are possible for a 3×3 determinant, and why do all give the same value?</div><div class="sol"><span class="lbl">Answer:</span><br>You can expand along any one of 3 rows or any one of 3 columns, giving 6 choices.<br>Each expansion is just a different way of rewriting the same determinant using minors/cofactors.<br>Since all are derived from the same determinant definition, the final value must be the same.</div><div class="ans">✓&nbsp; Six expansions (R1, R2, R3, C1, C2, C3), all equal the same determinant value.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Cofactor: <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>, where <i>M</i><sub>ij</sub> is the minor (delete row <i>i</i>, column <i>j</i>).</li><li>Cofactor expansion: Δ = Σ (entry in a chosen row/column) × (its corresponding cofactor).</li><li>For 3×3, six valid expansions exist: along any row or any column.</li><li>Mixed sum property: Σ<sub>j</sub> <i>a</i><sub>ij</sub><i>A</i><sub>kj</sub> = 0 for rows when <i>i</i>≠<i>k</i>; similarly for columns.</li><li>Speed tip: choose the row/column with maximum zeros for expansion.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Rule: "Same gives Δ, Different gives 0"”</div><paragraph id="6a9fd6049bf64c782c000298">Same row with its cofactors OR same column with its cofactors → determinant Δ.</paragraph><paragraph id="6a9fd6047dba487602000299">Different rows (or different columns) in the pairing → 0 (identical-rows/columns idea).</paragraph><paragraph id="6a9fd6049dc17a2e1500029a">Say it: <b>Same-Same = Δ</b>, <b>Different = 0</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Cofactor: <i>A</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub></span><span class="eq">Cofactor expansion (row i): Δ = Σ<sub>j=1 to 3</sub> <i>a</i><sub>ij</sub><i>A</i><sub>ij</sub></span><span class="eq">Cofactor expansion (column j): Δ = Σ<sub>i=1 to 3</sub> <i>a</i><sub>ij</sub><i>A</i><sub>ij</sub></span><span class="eq">Mixed rows (i≠k): Σ<sub>j=1 to 3</sub> <i>a</i><sub>ij</sub><i>A</i><sub>kj</sub> = 0</span><span class="eq">Mixed columns (j≠l): Σ<sub>i=1 to 3</sub> <i>a</i><sub>ij</sub><i>A</i><sub>il</sub> = 0</span><span class="eq">If any two rows/columns are identical ⇒ determinant = 0</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ADJOINT AND INVERSE (DETERMINANTS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Adjoint (adjugate)</b> of a square matrix <i>A</i> is the <b>transpose of its cofactor matrix</b>: adj(<i>A</i>) = [<i>C</i><sub>ij</sub>]<sup>T</sup>, where <i>C</i><sub>ij</sub> is the cofactor of <i>a</i><sub>ij</sub>.</li><li>Cofactor: <i>C</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>, where <i>M</i><sub>ij</sub> is the minor of <i>a</i><sub>ij</sub>.</li><li>Fundamental identity: <i>A</i>·adj(<i>A</i>) = adj(<i>A</i>)·<i>A</i> = |<i>A</i>|<i>I</i> for any n×n matrix <i>A</i>.</li><li><b>Singular</b>: |<i>A</i>| = 0 ⇒ <i>A</i><sup>−1</sup> does not exist. <b>Nonsingular</b>: |<i>A</i>| ≠ 0 ⇒ inverse exists.</li><li>If |<i>A</i>| ≠ 0 then <i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>|<i>A</i>|</span></span> adj(<i>A</i>); inverse is unique.</li><li>Key determinant facts used with inverses: |<i>AB</i>| = |<i>A</i>||<i>B</i>|, |adj(<i>A</i>)| = |<i>A</i>|<sup>n−1</sup>, and (<i>AB</i>)<sup>−1</sup> = <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup> (when inverses exist).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#2563EB'/></marker></defs><rect x='24' y='26' width='140' height='54' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='54' y='58' font-size='16' fill='#1f2a44'>Matrix <tspan font-style='italic'>A</tspan></text><rect x='198' y='26' width='258' height='54' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='214' y='50' font-size='16' fill='#1f2a44'>Cofactors <tspan font-style='italic'>C</tspan><tspan baseline-shift='sub' font-size='12'>ij</tspan></text><text x='214' y='70' font-size='14' fill='#1f2a44'>(minor + sign)</text><line x1='164' y1='53' x2='198' y2='53' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='24' y='110' width='210' height='54' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='42' y='142' font-size='16' fill='#1f2a44'>adj(<tspan font-style='italic'>A</tspan>) = cofactor<tspan baseline-shift='super' font-size='12'>T</tspan></text><line x1='327' y1='80' x2='160' y2='110' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='260' y='110' width='196' height='54' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='280' y='142' font-size='16' fill='#1f2a44'><tspan font-style='italic'>A</tspan>·adj(<tspan font-style='italic'>A</tspan>)</text><line x1='234' y1='137' x2='260' y2='137' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='260' y='196' width='196' height='54' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='285' y='228' font-size='16' fill='#1f2a44'>|<tspan font-style='italic'>A</tspan>| <tspan font-style='italic'>I</tspan></text><line x1='358' y1='164' x2='358' y2='196' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='24' y='196' width='210' height='54' rx='8' fill='#FDECEC' stroke='#123B7A' stroke-width='2'/><text x='40' y='222' font-size='15' fill='#1f2a44'>If |<tspan font-style='italic'>A</tspan>| ≠ 0</text><text x='40' y='242' font-size='15' fill='#1f2a44'>then <tspan font-style='italic'>A</tspan><tspan baseline-shift='super' font-size='12'>−1</tspan> exists</text><line x1='234' y1='223' x2='260' y2='223' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><text x='26' y='272' font-size='14' fill='#1f2a44'>Legend: arrows show the construction / implication chain</text></svg><div class="figcap">Flow: cofactors → adjoint → identity <i>A</i>·adj(<i>A</i>) = |<i>A</i>|<i>I</i> → inverse when |<i>A</i>| ≠ 0.<br><br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧱</span><span>adj(<i>A</i>) is built from cofactors, then transposed: (adj <i>A</i>)<sub>ij</sub> = cofactor of <i>a</i><sub>ji</sub>.</span></li><li><span class="ic">🎯</span><span>In <i>A</i>·adj(<i>A</i>), diagonal entries become |<i>A</i>|; off-diagonals become 0 (row with other-row cofactors).</span></li><li><span class="ic">🔒</span><span>Invertible ⇔ nonsingular ⇔ |<i>A</i>| ≠ 0.</span></li><li><span class="ic">🔁</span><span>Order matters: (<i>AB</i>)<sup>−1</sup> = <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup>, not <i>A</i><sup>−1</sup><i>B</i><sup>−1</sup>.</span></li><li><span class="ic">📐</span><span>|adj(<i>A</i>)| = |<i>A</i>|<sup>n−1</sup> (useful for determinant-based MCQs).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY <i>A</i>·adj(<i>A</i>) = |<i>A</i>|<i>I</i> (ENTRY-WISE IDEA)</span></h2><ul class="b"><li>Let <i>C</i> = adj(<i>A</i>). Then <i>C</i><sub>kj</sub> = cofactor of <i>a</i><sub>jk</sub>.</li><li>Entry (i,j) of <i>A</i><i>C</i> is Σ<sub>k</sub> <i>a</i><sub>ik</sub><i>C</i><sub>kj</sub> = Σ<sub>k</sub> <i>a</i><sub>ik</sub>·(cofactor of <i>a</i><sub>jk</sub>).</li><li>If i = j: Σ<sub>k</sub> (row i elements)×(their cofactors) = |<i>A</i>| (cofactor expansion).</li><li>If i ≠ j: Σ<sub>k</sub> (row i elements)×(cofactors of row j) = 0 (determinant with two identical rows).</li><li>So <i>A</i>·adj(<i>A</i>) has |<i>A</i>| on diagonal and 0 elsewhere ⇒ |<i>A</i>|<i>I</i>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">THEOREMS YOU USE WITH INVERSES (EXAM TOOLKIT)</span></h2><ul class="b"><li>Invertible ⇔ |<i>A</i>| ≠ 0; if |<i>A</i>| = 0, adjoint method cannot produce <i>I</i>.</li><li>From |<i>AB</i>| = |<i>A</i>||<i>B</i>|: if <i>A</i>, <i>B</i> nonsingular ⇒ <i>AB</i> nonsingular.</li><li>If inverses exist: (<i>AB</i>)<sup>−1</sup> = <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup> (reverse order).</li><li>|adj(<i>A</i>)| = |<i>A</i>|<sup>n−1</sup> (n = order of <i>A</i>); for 3×3: |adj(<i>A</i>)| = |<i>A</i>|<sup>2</sup>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">SINGULAR vs NONSINGULAR / INVERTIBLE</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Singular</th><th>Nonsingular / Invertible</th></tr></thead><tbody><tr><td>Determinant</td><td>|<i>A</i>| = 0</td><td>|<i>A</i>| ≠ 0</td></tr><tr><td>Inverse</td><td><i>A</i><sup>−1</sup> does not exist</td><td><i>A</i><sup>−1</sup> exists and is unique</td></tr><tr><td>Adjoint identity gives</td><td><i>A</i>·adj(<i>A</i>) = <i>O</i> (since |<i>A</i>| = 0 ⇒ |<i>A</i>|<i>I</i> = <i>O</i>)</td><td><i>A</i>·adj(<i>A</i>) = |<i>A</i>|<i>I</i></td></tr><tr><td>Typical system <i>AX</i>=<i>B</i></td><td>May have no solution / infinitely many solutions</td><td>Has unique solution <i>X</i> = <i>A</i><sup>−1</sup><i>B</i></td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Adjoint definition (cofactor matrix then transpose):</div><div class="eqbox"><span class="eq">Let <i>C</i> = [<i>C</i><sub>ij</sub>] be the cofactor matrix of <i>A</i>. Then adj(<i>A</i>) = <i>C</i><sup>T</sup>, i.e. (adj <i>A</i>)<sub>ij</sub> = <i>C</i><sub>ji</sub>.</span></div><div class="fstep">Fundamental identity (entry-wise reasoning via cofactor expansion):</div><div class="eqbox"><span class="eq"><i>A</i>·adj(<i>A</i>) = |<i>A</i>|<i>I</i> = adj(<i>A</i>)·<i>A</i></span></div></div><div><div class="fstep">If |<i>A</i>| ≠ 0, divide the identity by |<i>A</i>| (scalar):</div><div class="eqbox blue"><span class="eq"><i>A</i>·(<span class='frac'><span>1</span><span>|<i>A</i>|</span></span>adj(<i>A</i>)) = <i>I</i> ⇒ <i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>|<i>A</i>|</span></span>adj(<i>A</i>)</span></div><div class="fstep">Determinant of adjoint (order n):</div><div class="eqbox blue"><span class="eq">|adj(<i>A</i>)| = |<i>A</i>|<sup>n−1</sup></span></div></div><div><table class="wtab"><tr><td><i>M</i><sub>ij</sub>&nbsp;=</td><td>Minor of <i>a</i><sub>ij</sub>: determinant after deleting row i and column j</td></tr><tr><td><i>C</i><sub>ij</sub>&nbsp;=</td><td>Cofactor of <i>a</i><sub>ij</sub>: (−1)<sup>i+j</sup><i>M</i><sub>ij</sub></td></tr><tr><td>adj(<i>A</i>)&nbsp;=</td><td>Adjoint (adjugate) matrix: transpose of cofactor matrix</td></tr><tr><td>|<i>A</i>|&nbsp;=</td><td>Determinant of <i>A</i> (scalar)</td></tr><tr><td><i>I</i>&nbsp;=</td><td>Identity matrix of same order as <i>A</i></td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>|<i>A</i>|</span></span> adj(<i>A</i>)<br><b>valid only if</b> |<i>A</i>| ≠ 0</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Find adj(<i>A</i>) and <i>A</i><sup>−1</sup> for <i>A</i> = <b><i>[</i></b>2 3; 1 4<b><i>]</i></b>.</div><div class="sol"><span class="lbl">Solution:</span><br>Compute determinant: |<i>A</i>| = 2·4 − 3·1 = 8 − 3 = 5.<br>For 2×2, adj(<i>A</i>) = <b><i>[</i></b>d −b; −c a<b><i>]</i></b> when <i>A</i> = <b><i>[</i></b>a b; c d<b><i>]</i></b>.<br>So adj(<i>A</i>) = <b><i>[</i></b>4 −3; −1 2<b><i>]</i></b>.<br>Use inverse formula (since |<i>A</i>| ≠ 0):<br><i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>5</span></span> adj(<i>A</i>) = <span class='frac'><span>1</span><span>5</span></span><b><i>[</i></b>4 −3; −1 2<b><i>]</i></b>.</div><div class="ans">✓&nbsp; adj(<i>A</i>) = <b><i>[</i></b>4 −3; −1 2<b><i>]</i></b>, and <i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>5</span></span><b><i>[</i></b>4 −3; −1 2<b><i>]</i></b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Verify (<i>AB</i>)<sup>−1</sup> = <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup> for <i>A</i> = <b><i>[</i></b>2 3; 1 2<b><i>]</i></b>, <i>B</i> = <b><i>[</i></b>1 4; −1 3<b><i>]</i></b>.</div><div class="sol"><span class="lbl">Solution:</span><br>First find <i>AB</i>:<br><i>AB</i> = <b><i>[</i></b>2·1+3·(−1) , 2·4+3·3; 1·1+2·(−1) , 1·4+2·3<b><i>]</i></b> = <b><i>[</i></b>−1 17; −1 10<b><i>]</i></b>.<br>Compute (<i>AB</i>)<sup>−1</sup> using 2×2 rule. |<i>AB</i>| = (−1)·10 − 17·(−1) = −10 + 17 = 7.<br>adj(<i>AB</i>) = <b><i>[</i></b>10 −17; 1 −1<b><i>]</i></b>.<br>(<i>AB</i>)<sup>−1</sup> = <span class='frac'><span>1</span><span>7</span></span><b><i>[</i></b>10 −17; 1 −1<b><i>]</i></b>.<br>Now compute <i>A</i><sup>−1</sup>, <i>B</i><sup>−1</sup>.<br>|<i>A</i>| = 2·2 − 3·1 = 1 ⇒ <i>A</i><sup>−1</sup> = adj(<i>A</i>) = <b><i>[</i></b>2 −3; −1 2<b><i>]</i></b>.<br>|<i>B</i>| = 1·3 − 4·(−1) = 7 ⇒ <i>B</i><sup>−1</sup> = <span class='frac'><span>1</span><span>7</span></span><b><i>[</i></b>3 −4; 1 1<b><i>]</i></b>.<br>Multiply <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup>:<br><span class='frac'><span>1</span><span>7</span></span><b><i>[</i></b>3 −4; 1 1<b><i>]</i></b>·<b><i>[</i></b>2 −3; −1 2<b><i>]</i></b> = <span class='frac'><span>1</span><span>7</span></span><b><i>[</i></b>10 −17; 1 −1<b><i>]</i></b>.<br>This equals (<i>AB</i>)<sup>−1</sup> computed above.</div><div class="ans">✓&nbsp; (<i>AB</i>)<sup>−1</sup> = <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>7</span></span><b><i>[</i></b>10 −17; 1 −1<b><i>]</i></b> (verified).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>adj(<i>A</i>) is defined only for <b>square</b> matrices (cofactors require minors).</li><li>In adj(<i>A</i>), the (i,j) entry is the cofactor of (j,i): be careful about the transpose.</li><li><i>A</i>·adj(<i>A</i>) = |<i>A</i>|<i>I</i> gives inverse immediately when |<i>A</i>| ≠ 0.</li><li>Always state condition: <i>A</i><sup>−1</sup> exists <b>iff</b> |<i>A</i>| ≠ 0.</li><li>|<i>AB</i>| = |<i>A</i>||<i>B</i>| is the fastest way to test nonsingularity of a product.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "C-T-I"”</div><paragraph id="6a9fd604a4e053833800029b"><b>C</b>: Build <b>C</b>ofactors.</paragraph><paragraph id="6a9fd604a2e4425b1b00029c"><b>T</b>: <b>T</b>ranspose them to get adj(<i>A</i>).</paragraph><paragraph id="6a9fd6042c2c7a766000029d"><b>I</b>: Multiply gives |<i>A</i>|<b>I</b> → divide by |<i>A</i>| for inverse (if nonzero).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Cofactor: <i>C</i><sub>ij</sub> = (−1)<sup>i+j</sup><i>M</i><sub>ij</sub>; minor <i>M</i><sub>ij</sub> is determinant after deleting row i, column j</span><span class="eq">adj(<i>A</i>) = (cofactor matrix)<sup>T</sup>; (adj <i>A</i>)<sub>ij</sub> = cofactor of <i>a</i><sub>ji</sub></span><span class="eq"><i>A</i>·adj(<i>A</i>) = adj(<i>A</i>)·<i>A</i> = |<i>A</i>|<i>I</i></span><span class="eq"><i>A</i> is singular ⇔ |<i>A</i>| = 0; nonsingular ⇔ |<i>A</i>| ≠ 0</span><span class="eq"><i>A</i><sup>−1</sup> exists ⇔ |<i>A</i>| ≠ 0</span><span class="eq"><i>A</i><sup>−1</sup> = <span class='frac'><span>1</span><span>|<i>A</i>|</span></span> adj(<i>A</i>) (only if |<i>A</i>| ≠ 0)</span><span class="eq">|adj(<i>A</i>)| = |<i>A</i>|<sup>n−1</sup> for n×n matrix</span><span class="eq">|<i>AB</i>| = |<i>A</i>||<i>B</i>|, and (<i>AB</i>)<sup>−1</sup> = <i>B</i><sup>−1</sup><i>A</i><sup>−1</sup> (when inverses exist)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SOLVING SYSTEMS BY INVERSE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Matrix method:</b> A linear system is written as <b>AX = B</b> and solved by <b>X = A<sup>−1</sup>B</b> when <b>|A| ≠ 0</b>.</li><li><b>A</b> is the coefficient matrix, <b>X</b> the column of unknowns, <b>B</b> the constants column.</li><li>If <b>|A| ≠ 0</b> (non-singular), <b>A<sup>−1</sup></b> exists and the solution is <b>unique</b>.</li><li>Inverse is found via adjoint: <b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b> (only when <b>|A| ≠ 0</b>).</li><li>If <b>|A| = 0</b> (singular), inverse method fails; use <b>(adj A)B</b> to test inconsistency.</li><li>If <b>|A| = 0</b> and <b>(adj A)B = O</b>, system may have infinitely many solutions or no solution.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><path d='M0,0 L10,5 L0,10 Z' fill='#123B7A'/></marker></defs><rect x='28' y='26' width='424' height='228' rx='14' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='52' y='52' width='120' height='62' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='92' y='78' font-size='16' fill='#1f2a44'>A</text><text x='70' y='100' font-size='14' fill='#1f2a44'>coefficients</text><rect x='188' y='52' width='120' height='62' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='232' y='78' font-size='16' fill='#1f2a44'>X</text><text x='210' y='100' font-size='14' fill='#1f2a44'>unknowns</text><rect x='324' y='52' width='120' height='62' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='370' y='78' font-size='16' fill='#1f2a44'>B</text><text x='350' y='100' font-size='14' fill='#1f2a44'>constants</text><line x1='172' y1='83' x2='188' y2='83' stroke='#123B7A' stroke-width='2'/><text x='176' y='78' font-size='16' fill='#1f2a44'>×</text><line x1='308' y1='83' x2='324' y2='83' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='290' y='78' font-size='16' fill='#1f2a44'>=</text><rect x='70' y='138' width='150' height='44' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='84' y='165' font-size='14' fill='#1f2a44'>|A| ≠ 0</text><rect x='262' y='138' width='170' height='44' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='280' y='165' font-size='14' fill='#1f2a44'>Unique solution</text><line x1='220' y1='160' x2='262' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='70' y='196' width='150' height='44' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='84' y='223' font-size='14' fill='#1f2a44'>|A| = 0</text><rect x='262' y='196' width='170' height='44' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='284' y='223' font-size='14' fill='#1f2a44'>Check adjA·B</text><line x1='220' y1='218' x2='262' y2='218' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg><div class="figcap">Flow: build <b>A, X, B</b> → test <b>|A|</b> → solve by inverse or test using <b>(adj A)B</b>.<br><br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧱</span><span>Set-up: convert equations → <b>AX = B</b> by collecting coefficients carefully.</span></li><li><span class="ic">✅</span><span>Uniqueness test: <b>|A| ≠ 0</b> ⇒ <b>A<sup>−1</sup></b> exists ⇒ unique <b>X</b>.</span></li><li><span class="ic">🧩</span><span>Compute inverse fast: <b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b> using cofactors.</span></li><li><span class="ic">🚫</span><span>Singular case: <b>|A| = 0</b> ⇒ cannot write <b>X = A<sup>−1</sup>B</b>.</span></li><li><span class="ic">🧪</span><span>Inconsistency check (square A): <b>|A|=0</b> &amp; <b>(adj A)B ≠ O</b> ⇒ no solution.</span></li><li><span class="ic">🔁</span><span>Borderline case: <b>|A|=0</b> &amp; <b>(adj A)B = O</b> ⇒ may/may not be consistent.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PROCESS (EXAM-FRIENDLY)</span></h2><ul class="b"><li>Step 1: Arrange equations so variables are in the same order in every row.</li><li>Step 2: Write <b>A</b> from coefficients, <b>X</b> as unknown column, <b>B</b> as constants column.</li><li>Step 3: Compute <b>|A|</b>. If <b>|A| ≠ 0</b>, proceed to inverse.</li><li>Step 4: Find <b>adj A</b> (transpose of cofactor matrix), then <b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b>.</li><li>Step 5: Multiply <b>X = A<sup>−1</sup>B</b>; read solution from the resulting column.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SINGULAR CASE CHECK (|A| = 0)</span></h2><ul class="b"><li>When <b>|A| = 0</b>, <b>A<sup>−1</sup></b> does not exist; do not write <b>X = A<sup>−1</sup>B</b>.</li><li>Use identity <b>A(adj A) = |A|I</b> ⇒ when <b>|A|=0</b>, <b>A(adj A)=O</b> (zero matrix).</li><li>Premultiply <b>AX=B</b> by <b>adj A</b>: <b>(adj A)AX = (adj A)B</b> ⇒ <b>O·X = (adj A)B</b> (LHS is zero vector).</li><li>Thus if <b>(adj A)B ≠ O</b> ⇒ contradiction ⇒ <b>no solution (inconsistent)</b>.</li><li>If <b>(adj A)B = O</b> ⇒ possible consistency; could be <b>infinitely many</b> or <b>no</b> solutions.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">OUTCOMES FOR <b>AX = B</b> (A square)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Condition</th><th>What you can conclude</th><th>Next action</th></tr></thead><tbody><tr><td><b>|A| ≠ 0</b></td><td>Unique solution exists</td><td>Compute <b>A<sup>−1</sup></b>, then <b>X = A<sup>−1</sup>B</b></td></tr><tr><td><b>|A| = 0</b> and <b>(adj A)B ≠ O</b></td><td>No solution (inconsistent)</td><td>Stop: report inconsistency</td></tr><tr><td><b>|A| = 0</b> and <b>(adj A)B = O</b></td><td>May or may not be consistent</td><td>Check ranks / reduce equations; could be infinite or none</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#E11D63;--secbg:#FDF0F5;--secbd:#F8CDDD"><h2><span class="secno">🧮</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start from matrix form of the system:</div><div class="eqbox"><span class="eq"><b>AX = B</b></span></div><div class="fstep">If <b>|A| ≠ 0</b>, inverse exists; premultiply by <b>A<sup>−1</sup></b>:</div><div class="eqbox"><span class="eq"><b>A<sup>−1</sup>AX = A<sup>−1</sup>B</b></span></div><div class="fstep">Use <b>A<sup>−1</sup>A = I</b>:</div><div class="eqbox"><span class="eq"><b>IX = A<sup>−1</sup>B</b></span></div></div><div><div class="fstep">Hence solution vector:</div><div class="eqbox blue"><span class="eq"><b>X = A<sup>−1</sup>B</b></span></div><div class="fstep">Inverse via adjoint (valid only when <b>|A| ≠ 0</b>):</div><div class="eqbox blue"><span class="eq"><b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b></span></div><div class="fstep">Singular inconsistency test: premultiply by <b>adj A</b> and use <b>A(adj A)=|A|I</b>:</div><div class="eqbox blue"><span class="eq"><b>(adj A)AX = (adj A)B ⇒ |A|X = (adj A)B</b></span></div></div><div><table class="wtab"><tr><td><i>A</i>&nbsp;=</td><td>Coefficient matrix (n×n)</td></tr><tr><td><i>X</i>&nbsp;=</td><td>Unknown column vector (n×1)</td></tr><tr><td><i>B</i>&nbsp;=</td><td>Constant column vector (n×1)</td></tr><tr><td>|<i>A</i>|&nbsp;=</td><td>Determinant of <i>A</i> (scalar)</td></tr><tr><td>adj <i>A</i>&nbsp;=</td><td>Adjoint (adjugate) of <i>A</i> = transpose of cofactor matrix</td></tr><tr><td><i>I</i>, <i>O</i>&nbsp;=</td><td>Identity matrix, zero matrix (appropriate order)</td></tr></table><div class="hibox">Unique-solution formula (when <b>|A| ≠ 0</b>)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>X = A<sup>−1</sup>B</b> with <b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Solve using inverse: <br><b>2x + 5y = 1</b><br><b>3x + 2y = 7</b></div><div class="sol"><span class="lbl">Solution:</span><br>Write <b>AX = B</b>:<br>
+
+<b>A =</b>
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:32px 32px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>2</span><span>5</span>
+      <span>3</span><span>2</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>,
+
+<b>X =</b>
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span><i>x</i></span><span><i>y</i></span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>,
+
+<b>B =</b>
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>1</span><span>7</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.<br>
+
+Determinant: <b>|A| = 2·2 − 5·3 = 4 − 15 = −11 ≠ 0</b> ⇒ unique solution.<br>
+
+Inverse:<br>
+
+<b>A<sup>−1</sup> =
+<span class="frac"><span>1</span><span>−11</span></span></b>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:35px 35px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>2</span><span>−5</span>
+      <span>−3</span><span>2</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.<br>
+
+Compute <b>X = A<sup>−1</sup>B</b>:<br>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:35px 35px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>2</span><span>−5</span>
+      <span>−3</span><span>2</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>1</span><span>7</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+=
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:75px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>2 − 35</span><span>−3 + 14</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+=
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:38px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>−33</span><span>11</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.<br>
+
+Multiply scalar:
+
+<b>X =
+<span class="frac"><span>1</span><span>−11</span></span></b>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:38px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>−33</span><span>11</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+=
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>3</span><span>−1</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.</div><div class="ans">✓&nbsp; <b>x = 3, y = −1</b></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Solve by inverse method: <br><b>3x − 2y + 3z = 8</b><br><b>2x + y − z = 1</b><br><b>4x − 3y + 2z = 4</b></div><div class="sol"><span class="lbl">Solution:</span><br>Write <b>AX = B</b>:<br>
+
+<b>A =</b>
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:32px 32px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>2</span><span>5</span>
+      <span>3</span><span>2</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>,
+
+<b>X =</b>
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span><i>x</i></span><span><i>y</i></span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>,
+
+<b>B =</b>
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>1</span><span>7</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.<br>
+
+Determinant: <b>|A| = 2·2 − 5·3 = 4 − 15 = −11 ≠ 0</b> ⇒ unique solution.<br>
+
+Inverse:<br>
+
+<b>A<sup>−1</sup> =
+<span class="frac"><span>1</span><span>−11</span></span></b>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 5px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:35px 35px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;line-height:1;">
+      <span>2</span><span>−5</span>
+      <span>−3</span><span>2</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.<br>
+
+Compute <b>X = A<sup>−1</sup>B</b>:<br>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:35px 35px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>2</span><span>−5</span>
+      <span>−3</span><span>2</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>1</span><span>7</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+=
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:75px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>2 − 35</span><span>−3 + 14</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+=
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:38px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>−33</span><span>11</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.<br>
+
+Multiply scalar:
+
+<b>X =
+<span class="frac"><span>1</span><span>−11</span></span></b>
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:38px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>−33</span><span>11</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>
+
+=
+
+<span style="display:inline-flex;align-items:center;vertical-align:middle;margin:0 3px;font-family:'Times New Roman',serif;">
+  <span style="position:relative;display:inline-block;padding:3px 10px;">
+    <span style="position:absolute;left:0;top:0;bottom:0;width:6px;border-left:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+    <span style="display:grid;grid-template-columns:30px;grid-template-rows:22px 22px;text-align:center;align-items:center;font-size:16px;">
+      <span>3</span><span>−1</span>
+    </span>
+    <span style="position:absolute;right:0;top:0;bottom:0;width:6px;border-right:1.5px solid #000;border-top:1.5px solid #000;border-bottom:1.5px solid #000;"></span>
+  </span>
+</span>.</div><div class="ans">✓&nbsp; <b>x = <span class='frac'><span>25</span><span>17</span></span>, y = <span class='frac'><span>106</span><span>17</span></span>, z = <span class='frac'><span>53</span><span>17</span></span></b></div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always convert to <b>AX = B</b> with a fixed variable order (x, y, z) across all equations.</li><li>First check <b>|A|</b>; if <b>|A| ≠ 0</b>, you are guaranteed a <b>unique</b> solution.</li><li>Use <b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b>; write the condition <b>|A| ≠ 0</b> explicitly.</li><li>In singular case, test <b>(adj A)B</b>: if nonzero vector ⇒ <b>inconsistent</b>.</li><li>If <b>|A|=0</b> and <b>(adj A)B=O</b>, answer cannot be concluded without further reduction.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>D–I–M</b> (Determinant → Inverse → Multiply)”</div><paragraph id="6a9fd6040f8f42a3a900029e"><b>D</b>: Compute <b>|A|</b> first (decides if inverse method is legal).</paragraph><paragraph id="6a9fd604a58af74b2000029f"><b>I</b>: If <b>|A| ≠ 0</b>, find <b>A<sup>−1</sup> = (1/|A|)adj A</b>.</paragraph><paragraph id="6a9fd60408a1965da60002a0"><b>M</b>: Multiply <b>X = A<sup>−1</sup>B</b> to read x, y, (z).</paragraph><paragraph id="6a9fd6041910a9848d0002a1">If <b>|A|=0</b>, switch to <b>adj-check</b>: see whether <b>(adj A)B</b> is <b>O</b> or not.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>AX = B</b> (matrix form of a linear system)</span><span class="eq"><b>|A| ≠ 0</b> ⇔ <b>A</b> is non-singular ⇔ <b>A<sup>−1</sup></b> exists</span><span class="eq"><b>A<sup>−1</sup> = <span class='frac'><span>1</span><span>|A|</span></span> adj A</b> (only if <b>|A| ≠ 0</b>)</span><span class="eq"><b>X = A<sup>−1</sup>B</b> (unique solution when <b>|A| ≠ 0</b>)</span><span class="eq"><b>A(adj A) = (adj A)A = |A|I</b></span><span class="eq">If <b>|A| = 0</b> and <b>(adj A)B ≠ O</b> ⇒ <b>no solution</b></span><span class="eq">If <b>|A| = 0</b> and <b>(adj A)B = O</b> ⇒ <b>may or may not</b> have solutions</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DETERMINANTS: HISTORY NOTE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Determinants grew as a tool to <b>eliminate variables</b> in simultaneous linear equations before modern determinant/matrix notation became standard.</li><li>Early determinant-like arrays appeared in <b>Chinese rod calculus</b> on a counting (calculating) board.</li><li><b>Japanese wasan</b> mathematicians (notably <b>Seki Kowa, 1683</b>) developed determinant-like expansion ideas for elimination.</li><li>In Europe (18th–19th century), determinants were <b>formalized</b> with systematic notation, properties, and general theorems.</li><li>Key names linked to milestones: <b>Vandermonde</b>, <b>Laplace</b>, <b>Lagrange</b>, <b>Gauss</b>, <b>Binet &amp; Cauchy (1812)</b>, <b>Jacobi</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 480 280' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='18' y='22' width='444' height='236' rx='12' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='50' font-size='16' fill='#1f2a44'>TIMELINE (idea → formal theory)</text><rect x='40' y='72' width='130' height='54' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='54' y='96' font-size='14' fill='#1f2a44'>China</text><text x='54' y='116' font-size='14' fill='#1f2a44'>Rod board</text><rect x='190' y='72' width='130' height='54' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='204' y='96' font-size='14' fill='#1f2a44'>Japan</text><text x='204' y='116' font-size='14' fill='#1f2a44'>Seki (1683)</text><rect x='340' y='72' width='102' height='54' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='354' y='96' font-size='14' fill='#1f2a44'>Europe</text><text x='354' y='116' font-size='14' fill='#1f2a44'>1700–1800s</text><line x1='170' y1='99' x2='190' y2='99' stroke='#123B7A' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='320' y1='99' x2='340' y2='99' stroke='#123B7A' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='40' y='150' width='402' height='88' rx='10' fill='#FFFFFF' stroke='#2563EB' stroke-width='2'/><text x='56' y='176' font-size='14' fill='#1f2a44'>Core use across eras</text><text x='56' y='198' font-size='14' fill='#1f2a44'>Elimination of variables</text><text x='250' y='176' font-size='14' fill='#1f2a44'>Later formal tools</text><text x='250' y='198' font-size='14' fill='#1f2a44'>Expansion + properties</text><line x1='230' y1='160' x2='230' y2='228' stroke='#2563EB' stroke-width='2'/><text x='56' y='226' font-size='13' fill='#1f2a44'>Board rows ↔ equation rows</text><text x='250' y='226' font-size='13' fill='#1f2a44'>Named theorems + notation</text></svg><div class="figcap">Determinants evolved from practical elimination methods to a formal algebraic object.<br><br></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧮</span><span>Chinese rods: coefficients arranged in a board-table; elimination operations used to simplify the system.</span></li><li><span class="ic">🇯🇵</span><span>Seki Kowa (Japan, 1683): determinant-like expansions used mainly to eliminate a quantity from equations.</span></li><li><span class="ic">🇪🇺</span><span>European period: determinants treated as an abstract function with rules (sign pattern, cofactor expansion, product-type properties).</span></li><li><span class="ic">🧠</span><span>Exam focus: match each name with one contribution; determinants came before matrix notation became common.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CHINESE / JAPANESE ROOTS (ELIMINATION FIRST)</span></h2><ul class="b"><li>Chinese method: coefficients placed as columns on a <b>counting-board</b> using rods; solved by systematic elimination.</li><li>Operations resembled modern row operations: subtracting multiples to create zeros and isolate unknowns.</li><li>Seki Kowa (Japan, 1683): determinant-like expressions/expansions used mainly to <b>eliminate</b> a quantity.</li><li>Historical theme: determinants started as <b>procedures</b>, not as an abstract definition.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">EUROPEAN FORMALIZATION (NAMES TO REMEMBER)</span></h2><ul class="b"><li>Vandermonde: studied special determinant forms; the Vandermonde determinant became a standard named example.</li><li>Laplace: popularized cofactor expansion (Laplace expansion) as a systematic evaluation method.</li><li>Lagrange and Gauss: used determinant ideas within elimination and linear systems; Gauss is linked to Gaussian elimination.</li><li>Binet and Cauchy (1812): developed determinant properties more rigorously (including product-type results).</li><li>Jacobi: helped make determinants a standard tool in analysis and algebra via systematic development.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Early Asian methods vs European theory</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>China/Japan (early use)</th><th>Europe (formal theory)</th></tr></thead><tbody><tr><td>Primary goal</td><td>Eliminate variables in specific equation systems</td><td>Define determinants generally and prove properties</td></tr><tr><td>Representation</td><td>Counting-board arrays of coefficients (rods)</td><td>Symbolic notation; determinants as functions of entries</td></tr><tr><td>Typical technique</td><td>Row-like elimination to create zeros</td><td>Cofactor (Laplace) expansion; general theorems</td></tr><tr><td>Outcome</td><td>Computational procedure tied to problems</td><td>Abstract object used across algebra/geometry/analysis</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Exam-style: Arrange these in a likely historical progression: Laplace expansion, Chinese rod board elimination, Seki Kowa (1683), Binet &amp; Cauchy (1812).</div><div class="sol"><span class="lbl">Answer:</span><br>Chinese rod board elimination is the earliest practical method (ancient).<br>Seki Kowa (1683) comes next as early Japanese determinant-like elimination/expansion work.<br>Laplace expansion is an 18th-century European evaluation method.<br>Binet &amp; Cauchy (1812) belongs to 19th-century rigorous property development.</div><div class="ans">✓&nbsp; Chinese rod board elimination → Seki Kowa (1683) → Laplace expansion → Binet &amp; Cauchy (1812).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Exam-style: State one key idea that connects Chinese rod methods to modern determinants, and one key European step that made determinants a standard theory.</div><div class="sol"><span class="lbl">Answer:</span><br>Connection: coefficients arranged in an array and simplified by elimination operations to create zeros (row-operation viewpoint).<br>European step: giving a general definition (for any order) and proving systematic rules such as cofactor expansion and other properties.</div><div class="ans">✓&nbsp; Link: array-based elimination (row operations). Standard theory: general definition + proven properties (including cofactor expansion) in Europe.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Chinese counting-board rods: think <b>coefficients as an array</b> + elimination operations.</li><li>Seki Kowa (1683): determinants used mainly for <b>eliminating a quantity</b> from equations.</li><li>Laplace expansion = cofactor expansion; a key European method name to quote in theory questions.</li><li>Vandermonde is linked to a famous special determinant; often asked as a named object.</li><li>Binet &amp; Cauchy (1812): major step toward rigorous determinant properties (including product-type results).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: C-J-E ladder (China → Japan → Europe)”</div><paragraph id="6a9fd6046d4b9161850002a2"><b>C</b>hina: <b>C</b>ounting-board coefficients (rods) → elimination.</paragraph><paragraph id="6a9fd604f32f2855ca0002a3"><b>J</b>apan: <b>J</b>apanese Seki (1683) → determinant-like elimination/expansion.</paragraph><paragraph id="6a9fd604826dee7de90002a4"><b>E</b>urope: <b>E</b>stablished theory: Vandermonde, Laplace, Lagrange, Gauss, Binet-Cauchy (1812), Jacobi.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Determinants began as <b>elimination tools</b> for linear equations.</span><span class="eq">Chinese rods on a calculating board: coefficient arrays + elimination operations.</span><span class="eq">Seki Kowa (1683): early determinant-like expansion ideas used for elimination.</span><span class="eq">Vandermonde: special named determinant form in European algebra.</span><span class="eq">Laplace expansion: cofactor expansion method for evaluating determinants.</span><span class="eq">Gauss: elimination tradition for linear systems (Gaussian elimination).</span><span class="eq">Binet &amp; Cauchy (1812): rigorous determinant properties; key 19th-century milestone.</span><span class="eq">Jacobi: further systematic development that helped standardize determinant theory.</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

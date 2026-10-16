@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>RELATIONS AND FUNCTIONS — Mathematics</title>
+  <meta name="description" content="RELATIONS AND FUNCTIONS — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Mathematics</div>
+        <h1>RELATIONS AND FUNCTIONS</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>CARTESIAN PRODUCT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Cartesian product</b> of sets <i>P</i> and <i>Q</i> is <i>P × Q</i> = { (<i>p</i>,<i>q</i>) : <i>p</i> ∈ <i>P</i>, <i>q</i> ∈ <i>Q</i> }</li><li>An <b>ordered pair</b> (<i>a</i>,<i>b</i>) keeps <b>first</b> element from the first set and <b>second</b> from the second set</li><li>Two ordered pairs are equal iff corresponding components are equal: (<i>a</i>,<i>b</i>)=(<i>x</i>,<i>y</i>) ⇒ <i>a</i>=<i>x</i> and <i>b</i>=<i>y</i></li><li><b>Order matters</b>: generally <i>A × B</i> ≠ <i>B × A</i>; e.g. (DL,01) ≠ (01,DL)</li><li>If either set is <b>null set</b> φ, then the product is empty: <i>P × Q</i> = φ</li><li>For finite sets, size multiplies: if n(<i>A</i>)=<i>p</i> and n(<i>B</i>)=<i>q</i>, then n(<i>A × B</i>)=<i>pq</i></li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#2563EB'/></marker></defs><rect x='18' y='20' width='120' height='160' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='222' y='20' width='120' height='160' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='72' y='40' font-size='14' fill='#1f2a44'>Set A</text><text x='272' y='40' font-size='14' fill='#1f2a44'>Set B</text><circle cx='52' cy='72' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='44' y='77' font-size='12' fill='#1f2a44'>DL</text><circle cx='52' cy='112' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='44' y='117' font-size='12' fill='#1f2a44'>MP</text><circle cx='52' cy='152' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='44' y='157' font-size='12' fill='#1f2a44'>KA</text><circle cx='252' cy='82' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='246' y='87' font-size='12' fill='#1f2a44'>01</text><circle cx='252' cy='122' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='246' y='127' font-size='12' fill='#1f2a44'>02</text><circle cx='252' cy='162' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='246' y='167' font-size='12' fill='#1f2a44'>03</text><line x1='64' y1='72' x2='240' y2='82' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='64' y1='72' x2='240' y2='122' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='64' y1='72' x2='240' y2='162' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><text x='120' y='92' font-size='12' fill='#1f2a44'>(DL,01)</text><text x='120' y='112' font-size='12' fill='#1f2a44'>(DL,02)</text><text x='120' y='132' font-size='12' fill='#1f2a44'>(DL,03)</text><text x='18' y='194' font-size='12' fill='#1f2a44'>First from A, second from B</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>Construction rule: for each <i>a</i>∈<i>A</i>, pair it with every <i>b</i>∈<i>B</i></span></li><li><span class="ic">🔁</span><span>Swapping order changes the ordered pair: (<i>a</i>,<i>b</i>) differs from (<i>b</i>,<i>a</i>) unless <i>a</i>=<i>b</i></span></li><li><span class="ic">🧮</span><span>For finite sets: total ordered pairs in <i>A × B</i> equals n(<i>A</i>) times n(<i>B</i>)</span></li><li><span class="ic">🕳️</span><span>Empty-set trap: <i>A × φ</i> and <i>φ × A</i> are both φ (no ordered pair can be formed)</span></li><li><span class="ic">🗺️</span><span><i>R × R</i> is the set of all points (<i>x</i>,<i>y</i>) in the plane (coordinates)</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO CONSTRUCT <b>A × B</b> (ROSTER METHOD)</span></h2><ul class="b"><li>Take each element of <i>A</i> as the first component; pair it with <b>every</b> element of <i>B</i></li><li>Use brackets and comma: (<i>a</i>,<i>b</i>), not {<i>a</i>,<i>b</i>}</li><li>Continue until each <i>a</i>∈<i>A</i> is paired with all <i>b</i>∈<i>B</i></li><li>For finite sets, verify none are missing using n(<i>A × B</i>) = n(<i>A</i>)·n(<i>B</i>)</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">ORDER MATTERS + EMPTY SET CASES</span></h2><ul class="b"><li>Non-commutative in general: <i>A × B</i> and <i>B × A</i> contain different ordered pairs</li><li>Even if <i>A</i>=<i>B</i>, the pair (<i>a</i>,<i>b</i>) is not the same object as (<i>b</i>,<i>a</i>) unless <i>a</i>=<i>b</i></li><li>If <i>A</i>=φ or <i>B</i>=φ, then <i>A × B</i>=φ because no ordered pair can be formed</li><li>Do not write <i>A × φ</i> = {φ}; correct is <i>A × φ</i>=φ</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">ORDERED PAIR vs UNORDERED COLLECTION (SET)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Ordered pair (<i>a</i>,<i>b</i>)</th><th>Set {<i>a</i>,<i>b</i>}</th></tr></thead><tbody><tr><td>Meaning</td><td>First and second positions are fixed</td><td>Elements are collected; no positions</td></tr><tr><td>Equality condition</td><td>(<i>a</i>,<i>b</i>)=(<i>x</i>,<i>y</i>) ⇒ <i>a</i>=<i>x</i> and <i>b</i>=<i>y</i></td><td>{<i>a</i>,<i>b</i>}={<i>x</i>,<i>y</i>} means same elements, order irrelevant</td></tr><tr><td>Order change</td><td>Usually changes the object: (<i>a</i>,<i>b</i>) ≠ (<i>b</i>,<i>a</i>) unless <i>a</i>=<i>b</i></td><td>No change: {<i>a</i>,<i>b</i>} = {<i>b</i>,<i>a</i>}</td></tr><tr><td>Use here</td><td>Cartesian product uses ordered pairs</td><td>Do not replace ordered pairs by sets while forming <i>A × B</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let <i>A</i> = {DL, MP, KA} and <i>B</i> = {01, 02, 03}. List <i>A × B</i>. Are (DL,01) and (01,DL) the same?</div><div class="sol"><span class="lbl">Answer:</span><br>Form ordered pairs with first element from <i>A</i> and second from <i>B</i>.<br><b><i>A × B</i></b> = {(DL,01), (DL,02), (DL,03), (MP,01), (MP,02), (MP,03), (KA,01), (KA,02), (KA,03)}<br>The order is part of the pair, so swapping positions changes the ordered pair.</div><div class="ans">✓&nbsp; (DL,01) and (01,DL) are different ordered pairs, hence not equal.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">If (<i>u</i>, <i>v</i>) = (3, 1), what can you conclude about <i>u</i> and <i>v</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>By equality of ordered pairs, corresponding components must be equal.<br>So the first components match and the second components match.</div><div class="ans">✓&nbsp; <i>u</i> = 3 and <i>v</i> = 1.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Definition: <i>A × B</i> contains <b>all</b> ordered pairs (<i>a</i>,<i>b</i>) with <i>a</i>∈<i>A</i>, <i>b</i>∈<i>B</i></li><li>Ordered pairs use ( ) and a comma; sets use { }</li><li>Component-wise equality: (<i>a</i>,<i>b</i>)=(<i>x</i>,<i>y</i>) iff <i>a</i>=<i>x</i> and <i>b</i>=<i>y</i></li><li>For finite sets, n(<i>A × B</i>) = n(<i>A</i>)·n(<i>B</i>)</li><li>If any one set is φ, then the cartesian product is φ</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing (<i>a</i>,<i>b</i>) as {<i>a</i>,<i>b</i>} and then treating order as irrelevant</li><li>Claiming <i>A × B</i> = <i>B × A</i> because both may have the same number of elements</li><li>Writing <i>A × φ</i> = {φ} instead of φ</li><li>Missing pairs while listing roster form (not pairing every <i>a</i> with every <i>b</i>)</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>F-S</b> for <b>First–Second</b>”</div><paragraph id="6a9fdca090fbe6642400033e"><b>P × Q</b> means <b>First from P</b>, <b>Second from Q</b>.</paragraph><paragraph id="6a9fdca07d1907826600033f">Say: “P-first, Q-second” while writing pairs.</paragraph><paragraph id="6a9fdca058944dbcb7000340">Empty anywhere ⇒ no pair anywhere: “φ kills the product”.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>PROPERTIES OF ORDERED PAIRS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>An <b>ordered pair</b> is a pair written as (a,b) where <b>order matters</b>.</li><li>Two ordered pairs are equal <b>iff</b> corresponding components are equal: (a,b)=(x,y) ⇔ a=x and b=y.</li><li>For sets A, B: <b>Cartesian product</b> A×B = {(a,b): a∈A, b∈B}.</li><li>If A=∅ or B=∅, then A×B=∅.</li><li>An <b>ordered triplet</b> (a,b,c) is an ordered collection; equality is component-wise: (a,b,c)=(x,y,z) ⇔ a=x, b=y, c=z. (For a set A, the set A×A×A consists of all triplets with all three entries from A.)</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='24' width='128' height='152' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><rect x='214' y='24' width='128' height='152' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='70' y='48' font-size='14' fill='#1f2a44'>Set A</text><text x='266' y='48' font-size='14' fill='#1f2a44'>Set B</text><circle cx='60' cy='80' r='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><circle cx='60' cy='120' r='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='56' y='84' font-size='13' fill='#1f2a44'>a</text><text x='56' y='124' font-size='13' fill='#1f2a44'>b</text><circle cx='256' cy='80' r='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><circle cx='256' cy='120' r='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><circle cx='256' cy='160' r='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='252' y='84' font-size='13' fill='#1f2a44'>1</text><text x='252' y='124' font-size='13' fill='#1f2a44'>2</text><text x='252' y='164' font-size='13' fill='#1f2a44'>3</text><line x1='78' y1='80' x2='232' y2='80' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='78' y1='80' x2='232' y2='120' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='78' y1='80' x2='232' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='78' y1='120' x2='232' y2='80' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='78' y1='120' x2='232' y2='120' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='78' y1='120' x2='232' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='108' y='192' font-size='13' fill='#1f2a44'>6 pairs in A×B</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">✅</span><span>Equality test is position-wise: 1st=1st, 2nd=2nd (and 3rd=3rd for triplets).</span></li><li><span class="ic">🔢</span><span>Finite sets: if n(A)=p, n(B)=q then n(A×B)=pq (multiplication principle).</span></li><li><span class="ic">🔁</span><span>Generally A×B ≠ B×A; swapping coordinates changes the ordered pair.</span></li><li><span class="ic">♾️</span><span>If A,B are non-empty and either one is infinite, then A×B is infinite.</span></li><li><span class="ic">📍</span><span>R×R gives all points in 2D plane; R×R×R gives all points in 3D space.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">EQUALITY OF ORDERED PAIRS / TRIPLETS</span></h2><ul class="b"><li>If (a,b)=(x,y) then <b>a=x</b> and <b>b=y</b> (both must match).</li><li>Conversely, if a=x and b=y, then (a,b)=(x,y).</li><li>If (a,b,c)=(x,y,z) then a=x, b=y, c=z.</li><li>So (a,b)≠(b,a) unless <b>a=b</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STRUCTURE FACTS FOR CARTESIAN PRODUCTS</span></h2><ul class="b"><li>A×B is the set of all ordered pairs (a,b) with a∈A and b∈B.</li><li>A×B=∅ if A=∅ or B=∅; if both are non-empty then A×B is non-empty.</li><li>If A,B are non-empty and either A or B is infinite, then A×B is infinite.</li><li>A×A×A = {(a,b,c): a,b,c∈A}; elements are ordered triplets.</li><li>R×R represents all 2D points (x,y); R×R×R represents all 3D points (x,y,z).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">A×B vs B×A (why order matters)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>A×B</th><th>B×A</th></tr></thead><tbody><tr><td>General element</td><td>(a,b) with a∈A, b∈B</td><td>(b,a) with b∈B, a∈A</td></tr><tr><td>Equality rule used</td><td>(a,b)=(x,y) ⇔ a=x, b=y</td><td>(b,a)=(y,x) ⇔ b=y, a=x</td></tr><tr><td>Same set?</td><td>In general A×B ≠ B×A</td><td>In general B×A ≠ A×B</td></tr><tr><td>Number of elements (finite)</td><td>If n(A)=p, n(B)=q then n(A×B)=pq</td><td>If n(A)=p, n(B)=q then n(B×A)=qp (=pq)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">If (2x−3, y+4) = (7, 1), what statements must be true about the components?</div><div class="sol"><span class="lbl">Answer:</span><br>For equality of ordered pairs, the first components must be equal and the second components must be equal.<br>Therefore, 2x−3 must equal 7, and y+4 must equal 1.</div><div class="ans">✓&nbsp; Required conditions: 2x−3=7 and y+4=1.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Let A={1,2,3,4} and B={a,b}. Are A×B and B×A equal sets? What can you say about their sizes (finite case)?</div><div class="sol"><span class="lbl">Answer:</span><br>Elements of A×B have the form (number, letter), while elements of B×A have the form (letter, number).<br>Since order matters, typically (1,a) is not the same as (a,1), so the sets are generally different.<br>However, for finite sets, both products contain the same number of ordered pairs because multiplication is commutative.</div><div class="ans">✓&nbsp; In general A×B ≠ B×A, but for finite sets they have the same number of elements.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>When equating ordered pairs, compare <b>position-wise</b>, not by the set of entries.</li><li>From a non-empty product A×B, A is the set of all first components and B is the set of all second components.</li><li>A×B and B×A have the same size for finite sets, but typically are different sets.</li><li>If A≠∅ and B≠∅ then A×B≠∅; if any is ∅ then product is ∅.</li><li>R×R gives coordinates of all plane points; R×R×R gives coordinates of all space points.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Assuming (a,b)=(b,a) always; true only when a=b.</li><li>Ignoring position and matching values in the wrong order.</li><li>Forgetting that A×B=∅ if A=∅ or B=∅.</li><li>Concluding ordered pairs are equal by checking only one coordinate.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>POSitional Equality</b>”</div><paragraph id="6a9fdca0c334aff294000341">Ordered pair = address with two slots: first slot, second slot.</paragraph><paragraph id="6a9fdca00720f3daf9000342">Equal addresses need same item in each slot: <b>1st=1st, 2nd=2nd</b> (and 3rd=3rd).</paragraph><paragraph id="6a9fdca0a0623e1b7d000343">In A×B, the <b>first</b> entry always comes from A and the <b>second</b> from B.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>CARTESIAN PRODUCT WITH SET OPERATIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Cartesian product</b>: <b>A × B</b> = { (a,b) : a ∈ A, b ∈ B } (ordered pairs).</li><li><b>Intersection</b>: B ∩ C = {x : x ∈ B and x ∈ C}; <b>Union</b>: B ∪ C = {x : x ∈ B or x ∈ C}.</li><li>Key idea: With the same first set <b>A</b>, cartesian product distributes over ∩ and ∪ on the second set.</li><li>Two ordered pairs are equal iff their first elements are equal and their second elements are equal.</li><li>If A = φ or B = φ, then A × B = φ.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='20' y='22' width='150' height='70' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='32' y='45' font-size='14' fill='#1f2a44'>A × (B ∩ C)</text><text x='32' y='66' font-size='12' fill='#1f2a44'>pairs with b in both</text><text x='32' y='84' font-size='12' fill='#1f2a44'>B and C</text><rect x='190' y='22' width='150' height='70' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='202' y='45' font-size='14' fill='#1f2a44'>(A × B) ∩ (A × C)</text><text x='202' y='66' font-size='12' fill='#1f2a44'>common ordered pairs</text><line x1='170' y1='57' x2='190' y2='57' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='20' y='112' width='150' height='70' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='32' y='135' font-size='14' fill='#1f2a44'>A × (B ∪ C)</text><text x='32' y='156' font-size='12' fill='#1f2a44'>pairs with b in</text><text x='32' y='174' font-size='12' fill='#1f2a44'>B or C</text><rect x='190' y='112' width='150' height='70' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='202' y='135' font-size='14' fill='#1f2a44'>(A × B) ∪ (A × C)</text><text x='202' y='156' font-size='12' fill='#1f2a44'>all ordered pairs</text><line x1='170' y1='147' x2='190' y2='147' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>Distribution laws (same first set A): A×(B∩C) = (A×B)∩(A×C) and A×(B∪C) = (A×B)∪(A×C).</span></li><li><span class="ic">🎯</span><span>Membership test: (a,b) ∈ A×(B∩C) ⇔ a ∈ A and b ∈ B and b ∈ C.</span></li><li><span class="ic">🧠</span><span>You may intersect/union two products only as sets of ordered pairs; compare ordered pairs exactly.</span></li><li><span class="ic">📌</span><span>Order matters: generally A×B ≠ B×A, so match the correct side before applying laws.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WHY THE DISTRIBUTION LAWS ARE TRUE (ELEMENT METHOD IDEA)</span></h2><ul class="b"><li>Take any ordered pair (a,b) and translate each side into membership conditions.</li><li>(a,b) ∈ A×(B∩C) means: a ∈ A and b belongs to both B and C.</li><li>That is exactly the condition for (a,b) to be in both A×B and A×C, hence in their intersection.</li><li>Similarly, (a,b) ∈ A×(B∪C) means: a ∈ A and b belongs to B or C, matching union of A×B and A×C.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">EXAM TOOLKIT (FAST VERIFICATION STRATEGY)</span></h2><ul class="b"><li>To verify equality of sets, use element method: show LHS membership iff RHS membership.</li><li>For roster checks, keep ordered pairs in the exact order (first from A, second from B/C).</li><li>For unions, ensure each ordered pair is written once (duplicates are removed automatically in sets).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">INTERSECTION vs UNION INSIDE CARTESIAN PRODUCT (same A)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Operation on B,C</th><th>Inside product</th><th>Equivalent outside</th></tr></thead><tbody><tr><td>Intersection</td><td>A × (B ∩ C)</td><td>(A × B) ∩ (A × C)</td></tr><tr><td>Union</td><td>A × (B ∪ C)</td><td>(A × B) ∪ (A × C)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let A = {1,2}, B = {2,3,4}, C = {1,2,4}. Verify that A×(B∩C) = (A×B)∩(A×C).</div><div class="sol"><span class="lbl">Answer:</span><br>Find the common elements of B and C: B∩C = {2,4}.<br>List A×(B∩C) by pairing each element of A with each element of {2,4}: {(1,2),(1,4),(2,2),(2,4)}.<br>Now list A×B and A×C and keep only ordered pairs appearing in both lists.<br>The common ordered pairs are exactly {(1,2),(1,4),(2,2),(2,4)}, so both sides match.</div><div class="ans">✓&nbsp; A×(B∩C) and (A×B)∩(A×C) are the same set: {(1,2),(1,4),(2,2),(2,4)}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Let A = {0,1,2}, B = {1,2}, C = {2,3}. Verify that A×(B∪C) = (A×B)∪(A×C).</div><div class="sol"><span class="lbl">Answer:</span><br>Combine elements of B and C: B∪C = {1,2,3}.<br>List A×(B∪C): all pairs with first entry from A and second entry from {1,2,3}.<br>Separately list A×B and A×C; their union contains every pair that appears in either list (write each pair once).<br>Both methods produce the same collection of ordered pairs, so the equality holds.</div><div class="ans">✓&nbsp; Both sides give {(0,1),(0,2),(0,3),(1,1),(1,2),(1,3),(2,1),(2,2),(2,3)}.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Distribution works when the <b>same first set A</b> is used on both products.</li><li>Fast proof: use element method with an arbitrary ordered pair (a,b).</li><li>Intersection of products keeps only identical ordered pairs (same first and same second).</li><li>Union of products keeps all ordered pairs from both sets; duplicates are not repeated.</li><li>If either set in a product is φ, then the product is φ.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Mixing order: writing (b,a) instead of (a,b) while listing cartesian products.</li><li>Trying to apply A×(B∩C) = (A×B)∩(A×C) when the first sets on RHS are not the same.</li><li>In union, repeating the same ordered pair multiple times (sets do not keep duplicates).</li><li>Errors in finding B∩C or B∪C, which then affects the product.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "A stays, inside changes"”</div><paragraph id="6a9fdca0607902f90b000344">Keep the first set fixed: A×(something).</paragraph><paragraph id="6a9fdca0c25c4243e4000345">Then ∩/∪ on the second set can be moved outside with A×B and A×C.</paragraph><paragraph id="6a9fdca0fbd757006a000346">If the first sets differ, do not force a distribution rule.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>RELATIONS AS SUBSETS (A×B)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A relation <b>R</b> from non-empty set <b>A</b> to non-empty set <b>B</b> is any <b>subset</b> of <b>A×B</b>.</li><li>Each element of <b>R</b> is an ordered pair <b>(a,b)</b> with <b>a∈A</b>, <b>b∈B</b>.</li><li>If <b>(a,b)∈R</b>, then <b>b</b> is called the <b>image</b> of <b>a</b> under <b>R</b>.</li><li><b>Domain</b> of <b>R</b> = set of all first elements appearing in pairs of <b>R</b>.</li><li><b>Range</b> of <b>R</b> = set of all second elements appearing in pairs of <b>R</b>; <b>Range ⊆ Codomain (B)</b>.</li><li>Relations are represented by <b>roster form</b>, <b>set-builder form</b>, and <b>arrow diagram</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L9,3 L0,6 Z' fill='#2563EB'/></marker></defs><rect x='24' y='22' width='130' height='156' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='206' y='22' width='130' height='156' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='82' y='42' font-size='13' fill='#1f2a44'>Set A</text><text x='262' y='42' font-size='13' fill='#1f2a44'>Set B</text><circle cx='66' cy='70' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><circle cx='66' cy='110' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><circle cx='66' cy='150' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='62' y='74' font-size='13' fill='#1f2a44'>a</text><text x='62' y='114' font-size='13' fill='#1f2a44'>b</text><text x='62' y='154' font-size='13' fill='#1f2a44'>c</text><circle cx='272' cy='70' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><circle cx='272' cy='110' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><circle cx='272' cy='150' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='268' y='74' font-size='13' fill='#1f2a44'>u</text><text x='268' y='114' font-size='13' fill='#1f2a44'>v</text><text x='268' y='154' font-size='13' fill='#1f2a44'>w</text><line x1='78' y1='70' x2='258' y2='70' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='78' y1='110' x2='258' y2='150' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='78' y1='150' x2='258' y2='110' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><text x='132' y='188' font-size='12' fill='#1f2a44'>Arrows show chosen pairs: R ⊆ A×B</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Core idea: <b>R ⊆ A×B</b>; picking some ordered pairs creates a relation.</span></li><li><span class="ic">🧭</span><span><b>Domain</b> need not be all of <b>A</b>; some elements may have no image.</span></li><li><span class="ic">🎯</span><span><b>Range</b> is always contained in <b>Codomain</b>: <b>Range ⊆ B</b> (may equal B).</span></li><li><span class="ic">🗂️</span><span><b>Roster</b> lists pairs; <b>set-builder</b> states the rule; <b>arrow</b> shows mapping visually.</span></li><li><span class="ic">🔁</span><span>Order matters: generally <b>A×B ≠ B×A</b>, hence relations from A to B differ from B to A.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO WRITE A RELATION (3 REPRESENTATIONS)</span></h2><ul class="b"><li><b>Set-builder:</b> R = {(a,b) : condition, a∈A, b∈B}.</li><li><b>Roster:</b> list all ordered pairs that satisfy the condition.</li><li><b>Arrow diagram:</b> draw sets A and B; draw arrow a→b for each (a,b) in R.</li><li>From roster/arrow: <b>Domain</b> = all left elements that have ≥1 outgoing arrow.</li><li>From roster/arrow: <b>Range</b> = all right elements that receive ≥1 arrow.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">COUNTING RELATIONS (EXAM FAVOURITE)</span></h2><ul class="b"><li>Any relation from A to B is a <b>subset</b> of A×B.</li><li>If n(A)=p and n(B)=q (finite sets), then n(A×B)=pq.</li><li>Number of relations from A to B = number of subsets of A×B, i.e., <b>2<sup>pq</sup></b> (for finite A, B).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Set-builder vs Roster vs Arrow Diagram</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Set-builder form</th><th>Roster form</th><th>Arrow diagram</th></tr></thead><tbody><tr><td>What it shows</td><td>Rule/condition for membership</td><td>Exact list of pairs in R</td><td>Visual links between A and B</td></tr><tr><td>Best for</td><td>Large/infinite relations</td><td>Small finite relations</td><td>Quick domain/range check</td></tr><tr><td>Typical writing</td><td>R={(a,b): condition}</td><td>R={(a,b),(c,d),...}</td><td>Draw arrows a→b</td></tr><tr><td>Common drawback</td><td>May hide missing elements</td><td>Becomes lengthy</td><td>Not precise without labels</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let A = {a, b, c} and B = {Ali, Bhanu, Binoy, Chandra, Divya}. Define relation R from A to B by: R = {(x,y): x is the first letter of name y}. Write R in roster form. Find domain, codomain and range.</div><div class="sol"><span class="lbl">Answer:</span><br>Check each element y in B and pair it with its first letter from A, if that first letter lies in A.<br>Ali starts with a, Bhanu and Binoy start with b, Chandra starts with c; Divya starts with d which is not in A.<br>So the related ordered pairs are: (a, Ali), (b, Bhanu), (b, Binoy), (c, Chandra).<br>Domain is the set of first elements that actually appear in R, codomain is B, and range is the set of second elements that actually appear in R.</div><div class="ans">✓&nbsp; R = {(a, Ali), (b, Bhanu), (b, Binoy), (c, Chandra)}; Domain={a,b,c}, Codomain=B, Range={Ali,Bhanu,Binoy,Chandra}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Let A = {1, 2, 3, 4, 5, 6}. Define R from A to A by R = {(x,y): y = x + 1}. (i) Write R in roster form. (ii) Find domain, codomain and range.</div><div class="sol"><span class="lbl">Answer:</span><br>To be in R, both x and y must be elements of A and must satisfy y = x + 1.<br>For x=1,2,3,4,5 we get y=2,3,4,5,6 which are in A; for x=6 we get y=7 which is not in A, so (6,7) is not included.<br>Therefore roster form is {(1,2), (2,3), (3,4), (4,5), (5,6)}.<br>Domain is {1,2,3,4,5}, codomain is A, and range is {2,3,4,5,6}.</div><div class="ans">✓&nbsp; R = {(1,2),(2,3),(3,4),(4,5),(5,6)}; Domain={1,2,3,4,5}, Codomain=A, Range={2,3,4,5,6}.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>A relation from A to B is <b>any</b> subset of A×B; it may be empty, partial, or full.</li><li>Domain and range depend on which pairs are actually present in R, not merely on A and B.</li><li>Always remember: <b>Range ⊆ Codomain</b>; codomain is the whole set B.</li><li>Arrow diagram shows only the chosen pairs; absence of an arrow means that pair is not in R.</li><li>For finite sets with n(A)=p and n(B)=q, the total number of relations from A to B is <b>2<sup>pq</sup></b>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing R = A×B instead of a subset; that describes the universal relation only.</li><li>Taking domain as A always; but elements of A with no pair in R are excluded from domain.</li><li>Confusing range with codomain; range contains only images actually obtained (may equal B).</li><li>Forgetting order in pairs, treating (a,b) and (b,a) as same.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“DRC: Domain-Range-Codomain (Left-Right-Whole)”</div><paragraph id="6a9fdca044f87327f4000347"><b>D</b>omain = left elements that actually connect.</paragraph><paragraph id="6a9fdca0271c2e80e1000348"><b>R</b>ange = right elements that receive at least one connection.</paragraph><paragraph id="6a9fdca03396361313000349"><b>C</b>odomain = the whole right set B, whether connected or not.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DOMAIN • RANGE • CODOMAIN (RELATION)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>For a relation</b> <i>R</i> from set <i>A</i> to set <i>B</i>, <i>R</i> ⊂ <i>A</i>×<i>B</i> and consists of ordered pairs (<i>x</i>,<i>y</i>).</li><li><b>Domain</b> of <i>R</i> = set of all <b>first elements</b> appearing in pairs of <i>R</i>.</li><li><b>Range</b> of <i>R</i> = set of all <b>second elements</b> appearing in pairs of <i>R</i>.</li><li><b>Codomain</b> of <i>R</i> = the whole target set <i>B</i> (may contain unused elements).</li><li>Always: <b>range ⊂ codomain</b> (range can be equal to codomain, but never larger).</li><li>Any element of <i>A</i> that does not appear as a first element in <i>R</i> is <b>not related to any element of</b> <i>B</i> (it has no image in <i>R</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#2563EB'/></marker></defs><rect x='22' y='20' width='140' height='160' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='198' y='20' width='140' height='160' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='52' y='38' font-size='13' fill='#1f2a44'>Set A (source)</text><text x='220' y='38' font-size='13' fill='#1f2a44'>Set B (codomain)</text><circle cx='60' cy='70' r='12' fill='#F4EFFE' stroke='#7C3AED'/><text x='56' y='74' font-size='12' fill='#1f2a44'>1</text><circle cx='60' cy='105' r='12' fill='#F4EFFE' stroke='#7C3AED'/><text x='56' y='109' font-size='12' fill='#1f2a44'>2</text><circle cx='60' cy='140' r='12' fill='#F4EFFE' stroke='#7C3AED'/><text x='56' y='144' font-size='12' fill='#1f2a44'>3</text><circle cx='60' cy='175' r='12' fill='#FEF5E4' stroke='#F59E0B'/><text x='56' y='179' font-size='12' fill='#1f2a44'>4</text><circle cx='240' cy='70' r='12' fill='#EEF4FF' stroke='#2563EB'/><text x='236' y='74' font-size='12' fill='#1f2a44'>2</text><circle cx='240' cy='105' r='12' fill='#EEF4FF' stroke='#2563EB'/><text x='236' y='109' font-size='12' fill='#1f2a44'>3</text><circle cx='240' cy='140' r='12' fill='#EEF4FF' stroke='#2563EB'/><text x='236' y='144' font-size='12' fill='#1f2a44'>4</text><circle cx='240' cy='175' r='12' fill='#EEF4FF' stroke='#2563EB'/><text x='236' y='179' font-size='12' fill='#1f2a44'>5</text><line x1='72' y1='70' x2='228' y2='70' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='72' y1='105' x2='228' y2='105' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='72' y1='140' x2='228' y2='140' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><text x='92' y='58' font-size='12' fill='#1f2a44'>Rule: y = x + 1 (restricted)</text><text x='82' y='192' font-size='10' fill='#1f2a44'> <paragraph id="6a9fdca0c214a994d300034a">4 has no arrow (not related)</text><text x='208' y='192' font-size='12' fill='#1f2a44'>5 unused? still in codomain </text><br><br></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>From ordered pairs: domain = {all first entries}, range = {all second entries}, codomain = given <i>B</i>.</span></li><li><span class="ic">🧩</span><span>From arrow diagram: domain = left nodes with ≥1 outgoing arrow; range = right nodes with ≥1 incoming arrow.</span></li><li><span class="ic">✅</span><span>Codomain depends on the question statement; you cannot infer codomain only from listed pairs.</span></li><li><span class="ic">🔁</span><span>Same first element may map to multiple second elements in a relation (allowed).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO IDENTIFY (EXAM METHOD)</span></h2><ul class="b"><li><b>Given sets A, B and relation R</b>: codomain is <i>B</i> (write it exactly).</li><li>List all pairs in <i>R</i>; collect unique first entries → <b>domain</b>.</li><li>Collect unique second entries → <b>range</b>.</li><li>Check: every pair’s first element ∈ <i>A</i> and second element ∈ <i>B</i>.</li><li>Any element of <i>A</i> missing from domain is <b>not related to any element of</b> <i>B</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">RANGE ⊂ CODOMAIN (WHY IT MATTERS)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#16A34A'/></marker></defs><rect x='28' y='32' width='140' height='136' rx='60' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><rect x='70' y='72' width='96' height='76' rx='38' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='58' y='28' font-size='13' fill='#1f2a44'>Codomain B</text><text x='86' y='68' font-size='13' fill='#1f2a44'>Range</text><line x1='210' y1='100' x2='320' y2='100' stroke='#16A34A' stroke-width='2.5' marker-end='url(#arrow2)'/><text x='214' y='92' font-size='12' fill='#1f2a44'>range ⊂ codomain</text><text x='214' y='118' font-size='12' fill='#1f2a44'>unused outputs exist</text></svg></div><ul class="b"><li>Codomain is the allowed output set; range is the actually achieved outputs.</li><li>Two relations can have same domain and range but different codomain (if target set changes).</li><li>In function questions, range may be smaller than codomain, so function need not be onto.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Domain vs Range vs Codomain</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Domain</th><th>Range</th><th>Codomain</th></tr></thead><tbody><tr><td>What it contains</td><td>All <b>first</b> elements in <i>R</i></td><td>All <b>second</b> elements in <i>R</i></td><td>Entire target set <i>B</i></td></tr><tr><td>From arrow diagram</td><td>Left nodes with ≥1 arrow</td><td>Right nodes hit by arrows</td><td>All right nodes drawn</td></tr><tr><td>Depends on given sets?</td><td>Yes (subset of <i>A</i>)</td><td>Yes (subset of <i>B</i>)</td><td>Yes (exactly <i>B</i>)</td></tr><tr><td>Typical relation size</td><td>≤ |<i>A</i>|</td><td>≤ |<i>B</i>|</td><td>= |<i>B</i>|</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Example 1: Let <i>A</i> = {1,2,3,4,5,6}. Define <i>R</i> from <i>A</i> to <i>A</i> by <i>R</i> = {(<i>x</i>,<i>y</i>) : <i>y</i> = <i>x</i> + 1, <i>x</i>,<i>y</i> ∈ <i>A</i>}. Find domain, range, codomain.</div><div class="sol"><span class="lbl">Answer:</span><br>List all ordered pairs satisfying <i>y</i>=<i>x</i>+1 with both in <i>A</i>: (1,2),(2,3),(3,4),(4,5),(5,6).<br>Domain = set of first elements = {1,2,3,4,5}.<br>Range = set of second elements = {2,3,4,5,6}.<br>Codomain is the declared target set <i>A</i> = {1,2,3,4,5,6}.</div><div class="ans">✓&nbsp; Dom(<i>R</i>)={1,2,3,4,5}, Ran(<i>R</i>)={2,3,4,5,6}, Codom(<i>R</i>)={1,2,3,4,5,6}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Example 2: Let <i>P</i> = {1,4,9,25} and <i>Q</i> = {−5,−3,−2,1,2,3,5}. Relation <i>R</i> from <i>P</i> to <i>Q</i> is “<i>x</i> is the square of <i>y</i>”. Write <i>R</i>, domain, range, codomain.</div><div class="sol"><span class="lbl">Answer:</span><br>Meaning: (<i>x</i>,<i>y</i>) ∈ <i>R</i> if <i>x</i> = <i>y</i><sup>2</sup>, with <i>x</i> ∈ <i>P</i>, <i>y</i> ∈ <i>Q</i>.<br>Check each <i>y</i> in <i>Q</i>: y=±2 give x=4; y=±3 give x=9; y=±5 give x=25; y=1 gives x=1. (y=−1 is not in <i>Q</i>.)<br>So <i>R</i> = {(1,1),(4,2),(4,−2),(9,3),(9,−3),(25,5),(25,−5)}.<br>Domain = {1,4,9,25}. Range = {−5,5,−3,3,−2,2,1}. Codomain = <i>Q</i>.</div><div class="ans">✓&nbsp; <i>R</i> as above; Dom(<i>R</i>)={1,4,9,25}, Ran(<i>R</i>)={−5,5,−3,3,−2,2,1}, Codom(<i>R</i>)=<i>Q</i>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Domain/range are extracted from <b>relation pairs</b>; codomain is taken from the statement (<i>A</i> to <i>B</i>).</li><li>Remove repetitions: domain and range are <b>sets</b>, so write unique elements only.</li><li>If <i>R</i> = φ (empty relation), then domain = φ and range = φ; codomain is still <i>B</i> if given.</li><li>Range can be equal to codomain, but generally <b>range ⊂ codomain</b>.</li><li>Elements of <i>A</i> with <b>no outgoing arrow</b> / never appearing as first component are not related to any element of <i>B</i>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing codomain as the range (forgetting unused elements in <i>B</i>).</li><li>Including all of <i>A</i> as domain even when some elements have no pair in <i>R</i>.</li><li>Swapping domain and range when relation is written as (<i>x</i>,<i>y</i>).</li><li>Repeating elements in domain/range lists; forgetting set notation.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“DRC: First–Second–Set”</div><paragraph id="6a9fdca014ae9b7ef700034b"><b>D</b>omain = <b>D</b>ebut (first) entries of pairs.</paragraph><paragraph id="6a9fdca0621f10018700034c"><b>R</b>ange = <b>R</b>esults (second) entries of pairs.</paragraph><paragraph id="6a9fdca0a36fd2182500034d"><b>C</b>odomain = whole target <b>C</b>ollection (<i>B</i>), even if unused.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>COUNTING RELATIONS <br>(A → B)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>A relation</b> from <i>A</i> to <i>B</i> is any subset <i>R</i> ⊆ <i>A</i>×<i>B</i>.</li><li>Each ordered pair (<i>a</i>,<i>b</i>) with <i>a</i>∈<i>A</i>, <i>b</i>∈<i>B</i> may be <b>chosen</b> or <b>not chosen</b> in <i>R</i>.</li><li>If n(<i>A</i>)=<i>p</i> and n(<i>B</i>)=<i>q</i>, then n(<i>A</i>×<i>B</i>)=<i>pq</i>.</li><li>Total number of relations from <i>A</i> to <i>B</i> equals number of subsets of <i>A</i>×<i>B</i>, i.e. 2<sup><i>pq</i></sup>.</li><li>The empty set φ and the full set <i>A</i>×<i>B</i> are both valid relations.</li></ul></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">2</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">IDEA</span><span>Counting relations means counting all subsets of <i>A</i>×<i>B</i>.</span></li><li><span class="ic">COUN</span><span>If n(<i>A</i>)=<i>p</i>, n(<i>B</i>)=<i>q</i>, then n(<i>A</i>×<i>B</i>)=<i>pq</i>.</span></li><li><span class="ic">CHOI</span><span>Each ordered pair has two options: included or excluded.</span></li><li><span class="ic">ON A</span><span>Relations on <i>A</i> are relations from <i>A</i> to <i>A</i>, so count is 2<sup><i>p</i><sup>2</sup></sup> for finite n(<i>A</i>)=<i>p</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">WHY THE COUNT IS 2<sup><i>pq</i></sup> (reasoning)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='5' orient='auto'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='22' y='30' width='110' height='52' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='34' y='52' font-size='13' fill='#1f2a44'>Count pairs</text><text x='36' y='72' font-size='12' fill='#1f2a44'>n(A×B)=pq</text><rect x='142' y='30' width='90' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='154' y='52' font-size='13' fill='#1f2a44'>Each pair</text><text x='156' y='72' font-size='12' fill='#1f2a44'>in / out</text><rect x='242' y='30' width='96' height='52' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='252' y='52' font-size='13' fill='#1f2a44'>Total</text><text x='250' y='72' font-size='12' fill='#1f2a44'>2^(pq)</text><line x1='132' y1='56' x2='142' y2='56' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='232' y1='56' x2='242' y2='56' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='22' y='110' width='316' height='64' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='34' y='132' font-size='13' fill='#1f2a44'>Interpretation</text><text x='34' y='154' font-size='12' fill='#1f2a44'>Relation = any subset of A×B</text><text x='210' y='154' font-size='12' fill='#1f2a44'>⇒ subset count</text></svg></div><ul class="b"><li>First count ordered pairs in <i>A</i>×<i>B</i>: there are <i>pq</i> pairs when n(<i>A</i>)=<i>p</i>, n(<i>B</i>)=<i>q</i>.</li><li>A relation is any subset, so for each pair you decide: include it or exclude it.</li><li>Independent include/exclude decisions over all pairs give all possible subsets.</li><li>Both extremes are allowed: φ and <i>A</i>×<i>B</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">4</span><span class="htext">EXAM QUICKIES</span></h2><ul class="b"><li>If <i>A</i>=φ or <i>B</i>=φ, then <i>A</i>×<i>B</i>=φ and the only relation is φ.</li><li>If n(<i>A</i>)=<i>p</i>, n(<i>B</i>)=<i>q</i> (finite), then relations A→B and B→A both count to 2<sup><i>pq</i></sup>.</li><li>Do not confuse relations with functions: functions A→B count to <i>q</i><sup><i>p</i></sup>.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">5</span><span class="htext">RELATION COUNT vs FUNCTION COUNT (common confusion)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Relations (A → B)</th><th>Functions (A → B)</th></tr></thead><tbody><tr><td>What is counted?</td><td>All subsets of <i>A</i>×<i>B</i></td><td>Relations where each <i>a</i>∈<i>A</i> has exactly one image in <i>B</i></td></tr><tr><td>Total number (finite sets)</td><td>2<sup><i>pq</i></sup> where <i>p</i>=n(<i>A</i>), <i>q</i>=n(<i>B</i>)</td><td><i>q</i><sup><i>p</i></sup></td></tr><tr><td>May leave some <i>a</i> unrelated?</td><td>Yes (domain can be a proper subset of <i>A</i>)</td><td>No (domain must be <i>A</i>)</td></tr><tr><td>Example when <i>p</i>=2, <i>q</i>=2</td><td>There are 4 pairs in <i>A</i>×<i>B</i>, so 2<sup>4</sup> relations</td><td>Each of 2 elements of <i>A</i> can map to 2 choices in <i>B</i>, so 2<sup>2</sup> functions</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">6</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Let <i>A</i>={1,2} and <i>B</i>={3,4}. How do you reason the number of relations from <i>A</i> to <i>B</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>Write <i>A</i>×<i>B</i>; it consists of all ordered pairs with first element from <i>A</i> and second from <i>B</i>.<br>A relation is any subset of <i>A</i>×<i>B</i>, so each ordered pair can be either present or absent.<br>Therefore, the total number of relations equals the number of subsets of <i>A</i>×<i>B</i>.</div><div class="ans">✓&nbsp; Since <i>A</i>×<i>B</i> has 4 ordered pairs, the number of relations is 2<sup>4</sup>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">If n(<i>A</i>)=3 and n(<i>B</i>)=5, state the number of relations from <i>A</i> to <i>B</i> and justify in one line.</div><div class="sol"><span class="lbl">Answer:</span><br>n(<i>A</i>×<i>B</i>) = n(<i>A</i>)·n(<i>B</i>) = <i>pq</i>, and relations are exactly the subsets of <i>A</i>×<i>B</i>.</div><div class="ans">✓&nbsp; Number of relations = 2<sup>15</sup>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">7</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>A relation from <i>A</i> to <i>B</i> is any subset of <i>A</i>×<i>B</i>.</li><li>For finite sets, n(<i>A</i>×<i>B</i>)=n(<i>A</i>)·n(<i>B</i>)=<i>pq</i>.</li><li>So total relations A→B (finite) = number of subsets of <i>A</i>×<i>B</i> = 2<sup><i>pq</i></sup> (includes φ and <i>A</i>×<i>B</i>).</li><li>If either set is empty, <i>A</i>×<i>B</i>=φ, so there is exactly 1 relation (φ).</li><li>Relation on <i>A</i> means relation from <i>A</i> to <i>A</i>; for n(<i>A</i>)=<i>p</i>, count = 2<sup><i>p</i><sup>2</sup></sup>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">8</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using <i>q</i><sup><i>p</i></sup> (functions) instead of 2<sup><i>pq</i></sup> (relations).</li><li>Computing n(<i>A</i>×<i>B</i>) as <i>p</i>+<i>q</i> instead of <i>pq</i>.</li><li>Forgetting φ and <i>A</i>×<i>B</i> are also relations (they are subsets).</li><li>Treating ordered pairs as unordered and assuming <i>A</i>×<i>B</i> = <i>B</i>×<i>A</i>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">9</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>PAIR → POWER</b>”</div><paragraph id="6a9fdca0bf9e401f7d00034e">Count <b>PAIRS</b> in <i>A</i>×<i>B</i>: it has <i>pq</i> ordered pairs for finite sets.</paragraph><paragraph id="6a9fdca087e9f86bce00034f">Take <b>POWER of 2</b>: each pair is either in the relation or not.</paragraph><paragraph id="6a9fdca0dfa0ed15b5000350">So relations correspond exactly to ON/OFF choices over all pairs.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>FUNCTION CONCEPT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Function</b> <i>f</i> from <i>A</i> to <i>B</i> is a relation where <b>every</b> element of <i>A</i> has <b>one and only one</b> image in <i>B</i>.</li><li>Notation: <b><i>f</i>: <i>A</i> → <i>B</i></b>; if <b>(<i>a</i>,<i>b</i>)</b> is in the function, we write <b><i>f</i>(<i>a</i>) = <i>b</i></b>.</li><li>If <i>f</i>: <i>A</i> → <i>B</i>, then the <b>domain</b> of <i>f</i> is <b>exactly</b> the whole set <i>A</i> (no element of <i>A</i> left unmapped).</li><li><b>Codomain</b> is the whole set <i>B</i>; <b>Range</b> is the set of actual images, so <b>Range ⊂ Codomain</b>.</li><li>If <i>b</i> is the image of <i>a</i>, then <i>a</i> is called a <b>preimage</b> of <i>b</i>.</li><li>Equivalently: in the set of ordered pairs for a function, <b>no two distinct pairs</b> can have the <b>same first element</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow-t7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="20" width="135" height="160" rx="10" fill="#EEF4FF" stroke="#123B7A" stroke-width="2"/>
+  <rect x="205" y="20" width="135" height="160" rx="10" fill="#EAF7EF" stroke="#16A34A" stroke-width="2"/>
+
+  <text x="87" y="42" font-size="14" fill="#1f2a44" text-anchor="middle">Set A</text>
+  <text x="272" y="42" font-size="14" fill="#1f2a44" text-anchor="middle">Set B</text>
+
+  <circle cx="55" cy="70" r="12" fill="#FEF5E4" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="55" cy="110" r="12" fill="#FEF5E4" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="55" cy="150" r="12" fill="#FEF5E4" stroke="#F59E0B" stroke-width="2"/>
+
+  <text x="55" y="74" font-size="12" fill="#1f2a44" text-anchor="middle">a₁</text>
+  <text x="55" y="114" font-size="12" fill="#1f2a44" text-anchor="middle">a₂</text>
+  <text x="55" y="154" font-size="12" fill="#1f2a44" text-anchor="middle">a₃</text>
+
+  <circle cx="272" cy="70" r="12" fill="#F4EFFE" stroke="#7C3AED" stroke-width="2"/>
+  <circle cx="272" cy="110" r="12" fill="#F4EFFE" stroke="#7C3AED" stroke-width="2"/>
+  <circle cx="272" cy="150" r="12" fill="#F4EFFE" stroke="#7C3AED" stroke-width="2"/>
+
+  <text x="272" y="74" font-size="12" fill="#1f2a44" text-anchor="middle">1</text>
+  <text x="272" y="114" font-size="12" fill="#1f2a44" text-anchor="middle">2</text>
+  <text x="272" y="154" font-size="12" fill="#1f2a44" text-anchor="middle">3</text>
+
+  <line x1="67" y1="70" x2="259" y2="70" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-t7)"/>
+  <line x1="67" y1="110" x2="259" y2="110" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-t7)"/>
+  <line x1="67" y1="150" x2="259" y2="150" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arrow-t7)"/>
+</svg>  
+      
+      <div class="figcap"> </div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➡️</span><span>Mapping view: in <i>f</i>: <i>A</i> → <i>B</i>, each <i>a</i> in <i>A</i> must point to exactly one element in <i>B</i>.</span></li><li><span class="ic">🧾</span><span>Pair view: if (<i>a</i>,<i>b</i><sub>1</sub>) and (<i>a</i>,<i>b</i><sub>2</sub>) both occur, then <i>b</i><sub>1</sub> = <i>b</i><sub>2</sub>.</span></li><li><span class="ic">🎯</span><span>Image and preimage: <i>f</i>(<i>a</i>) is the image; <i>a</i> is a preimage of that value.</span></li><li><span class="ic">🧠</span><span>Many-to-one allowed; one-to-many not allowed; unmapped input in <i>A</i> not allowed (for <i>f</i>: <i>A</i> → <i>B</i>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">FUNCTION TEST (QUICK CHECK)</span></h2><ul class="b"><li>Step 1 (coverage): for <i>f</i>: <i>A</i> → <i>B</i>, <b>every</b> element of <i>A</i> must appear as a first element.</li><li>Step 2 (uniqueness): no first element may point to two different second elements.</li><li>Many-to-one is allowed: different inputs can share the same image in <i>B</i>.</li><li>Range is the set of <b>hit</b> elements in <i>B</i>; codomain is the full set <i>B</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">NOT A FUNCTION: TYPICAL CASES</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><path d='M0,0 L8,4 L0,8 Z' fill='#7C3AED'/></marker></defs><rect x='18' y='22' width='150' height='156' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='192' y='22' width='150' height='156' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='93' y='42' font-size='14' fill='#1f2a44' text-anchor='middle'>Not a function</text><circle cx='55' cy='80' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><circle cx='55' cy='130' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='55' y='84' font-size='12' fill='#1f2a44' text-anchor='middle'>a</text><text x='55' y='134' font-size='12' fill='#1f2a44' text-anchor='middle'>b</text><circle cx='230' cy='70' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><circle cx='230' cy='115' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='230' y='74' font-size='12' fill='#1f2a44' text-anchor='middle'>1</text><text x='230' y='119' font-size='12' fill='#1f2a44' text-anchor='middle'>2</text><line x1='67' y1='80' x2='218' y2='70' stroke='#7C3AED' stroke-width='2.5' marker-end='url(#arrow2)'/><line x1='67' y1='80' x2='218' y2='115' stroke='#7C3AED' stroke-width='2.5' marker-end='url(#arrow2)'/><text x='235' y='155' font-size='12' fill='#1f2a44' text-anchor='middle'>a has two images</text></svg></div><ul class="b"><li>Missing image: some <i>a</i> ∈ <i>A</i> has no ordered pair starting with <i>a</i> (so it is not a function <i>A</i> → <i>B</i>).</li><li>One-to-many: same first element has two different images in <i>B</i>.</li><li>Ambiguous rule: for an input, output is not uniquely determined.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">RELATION vs FUNCTION (EXAM FAVOURITE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Relation <i>R</i> from <i>A</i> to <i>B</i></th><th>Function <i>f</i>: <i>A</i> → <i>B</i></th></tr></thead><tbody><tr><td>Definition</td><td>Any subset of <i>A</i>×<i>B</i></td><td>A relation where every element of <i>A</i> has exactly one image in <i>B</i></td></tr><tr><td>Image for each <i>a</i> ∈ <i>A</i></td><td>May have none / one / many images</td><td>Must have <b>exactly one</b> image</td></tr><tr><td>Same first element allowed?</td><td>Yes, with different seconds possible</td><td>No: same first element cannot map to two values</td></tr><tr><td>Domain</td><td>Set of first elements that appear in <i>R</i> (so Domain ⊆ <i>A</i>)</td><td>If <i>f</i>: <i>A</i> → <i>B</i>, then Domain(<i>f</i>) = <i>A</i></td></tr><tr><td>Range</td><td>Set of second elements that appear</td><td>Set of images; always ⊂ codomain <i>B</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Check whether <i>R</i> = {(2,1),(3,1),(4,2)} is a function from {2,3,4} to {1,2}. Also state image/preimage terms.</div><div class="sol"><span class="lbl">Answer:</span><br>For <i>f</i>: {2,3,4} → {1,2}, every element 2, 3, 4 must have exactly one image.<br>Here 2→1, 3→1, 4→2, and no first element repeats with different second element.<br>So it is a function. Image of 3 is 1; preimages of 1 are 2 and 3.</div><div class="ans">✓&nbsp; Yes, it is a function; range (set of images) = {1,2}; preimages of 1 are {2,3}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Decide if <i>R</i> = {(2,2),(2,4),(3,3),(4,4)} can be a function from {2,3,4} to {2,3,4}. Give the exact reason.</div><div class="sol"><span class="lbl">Answer:</span><br>In a function, one input cannot have two different outputs.<br>Here the first element 2 has two images: 2 and 4, so uniqueness fails.</div><div class="ans">✓&nbsp; Not a function because the same first element 2 has two different images.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>If <i>f</i>: <i>A</i> → <i>B</i>, then <b>every</b> element of <i>A</i> must be mapped exactly once (domain = <i>A</i>).</li><li>Uniqueness test: if (<i>a</i>,<i>b</i><sub>1</sub>) and (<i>a</i>,<i>b</i><sub>2</sub>) belong, then <i>b</i><sub>1</sub>=<i>b</i><sub>2</sub>.</li><li>Many-to-one is valid: different elements of <i>A</i> may have the same image.</li><li>Range is a subset of codomain: some elements of <i>B</i> may have no preimage.</li><li>Preimage of a value may be none, one, or many; function does not guarantee inverse.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Thinking different inputs cannot share one output; rejecting many-to-one incorrectly.</li><li>Calling a relation a function even when some element of <i>A</i> has no image (for a claimed function <i>A</i> → <i>B</i>).</li><li>Confusing <b>range</b> with <b>codomain</b>; writing range = <i>B</i> automatically.</li><li>Using ordered pairs but forgetting: repeated first element with different seconds breaks function.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "ONE A → ONE B"”</div><paragraph id="6a9fdca0a51cf17f83000351">Read as: in <i>f</i>: <i>A</i> → <i>B</i>, each <i>a</i>-element gives <b>one</b> output in <i>B</i>.</paragraph><paragraph id="6a9fdca0e2ec48b589000352">If any <i>a</i> has <b>0 arrows</b> or <b>2 arrows</b>, it is <b>not</b> a function <i>A</i> → <i>B</i>.</paragraph><paragraph id="6a9fdca0c2260e8721000353">Many <i>a</i>'s can point to the same <i>b</i>: that is still "ONE A → ONE B".</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>REAL AND REAL-VALUED FUNCTIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Real valued function:</b> a function whose <b>range</b> (set of actual outputs) is <b>R</b> or a subset of <b>R</b>.</li><li><b>Real function:</b> a real valued function whose <b>domain</b> is also <b>R</b> or a subset of <b>R</b>.</li><li>If <i>f</i>: <i>A</i> → <i>B</i> is a function, then <b>domain</b> = <i>A</i>, <b>codomain</b> = <i>B</i>, <b>range</b> = <i>f</i>(<i>A</i>) and <b>range ⊆ codomain</b>.</li><li>So, real valued means: <b>range ⊆ R</b> (this is about outputs; codomain may be larger, but outputs must be real).</li><li>So, real function means: <b>domain ⊆ R</b> and <b>range ⊆ R</b> (i.e., both input and output are real numbers).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='18' y='28' width='140' height='144' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><rect x='202' y='28' width='140' height='144' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='34' y='50' font-size='14' fill='#1f2a44'>Domain (inputs)</text><text x='226' y='50' font-size='14' fill='#1f2a44'>Range (outputs)</text><text x='34' y='78' font-size='13' fill='#1f2a44'>A</text><text x='34' y='102' font-size='13' fill='#1f2a44'>A ⊆ R ?</text><text x='226' y='78' font-size='13' fill='#1f2a44'>f(A)</text><text x='226' y='102' font-size='13' fill='#1f2a44'>f(A) ⊆ R ?</text><line x1='158' y1='102' x2='202' y2='102' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='92' y='132' width='176' height='34' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='104' y='154' font-size='13' fill='#1f2a44'>Decide: real valued / real</text></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span><b>Key test:</b> Check sets: domain ⊆ <b>R</b>? range ⊆ <b>R</b>? Then classify.</span></li><li><span class="ic">🧩</span><span>Every <b>real function</b> is <b>real valued</b>, but not every real valued function is real.</span></li><li><span class="ic">📌</span><span><b>Range</b> depends on actual outputs; <b>codomain</b> is part of the function definition; always <b>range ⊆ codomain</b>.</span></li><li><span class="ic">🔁</span><span>A function can be real-valued even if the domain is not a subset of <b>R</b> (e.g., domain = {a,b,c}).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">DEFINITION 6 (EXAM CORE)</span></h2><ul class="b"><li><b>Real valued function:</b> <b>range</b> is <b>R</b> or a subset of <b>R</b>.</li><li><b>Real function:</b> <b>domain</b> is <b>R</b> or a subset of <b>R</b>, and it is real valued.</li><li>Hence: <b>Real function</b> ⇔ (<b>domain ⊆ R</b>) and (<b>range ⊆ R</b>).</li><li>Always remember: <b>range</b> is the set of actual outputs; <b>range ⊆ codomain</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STANDARD EXAMPLES</span></h2><ul class="b"><li>Example 1: <i>f</i>: <b>R</b> → <b>R</b>, <i>f</i>(x)=x<sup>2</sup>. Domain ⊆ R and range ⊆ R, so <i>f</i> is a <b>real function</b>.</li><li>Example 2: <i>h</i>: {a,b,c} → <b>R</b>, with outputs in {0,1}. Range ⊆ R so <i>h</i> is <b>real valued</b>, but domain ⊄ R so it is <b>not</b> a real function.</li><li>Example 3: <i>g</i>: <b>N</b> → <b>N</b>, <i>g</i>(x)=2x+1. Since <b>N ⊆ R</b>, domain ⊆ R and range ⊆ R, so <i>g</i> is also a real function.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">REAL VALUED vs REAL FUNCTION</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Real valued function</th><th>Real function</th></tr></thead><tbody><tr><td>Domain condition</td><td>Domain can be any set <i>A</i> (not necessarily a subset of <b>R</b>).</td><td>Domain is <b>R</b> or a subset of <b>R</b>.</td></tr><tr><td>Range condition</td><td>Range (set of actual outputs) is <b>R</b> or a subset of <b>R</b>.</td><td>Range (set of actual outputs) is <b>R</b> or a subset of <b>R</b>.</td></tr><tr><td>Inputs / outputs type</td><td>Outputs are real numbers; inputs may be non-real objects.</td><td>Both inputs and outputs are real numbers.</td></tr><tr><td>Implication</td><td>May or may not be a real function.</td><td>Always a real valued function.</td></tr><tr><td>Quick example</td><td><i>h</i>: {a,b} → <b>R</b>, <i>h</i>(a)=0, <i>h</i>(b)=1</td><td><i>f</i>: <b>R</b> → <b>R</b>, <i>f</i>(x)=x<sup>2</sup></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Is the function <i>f</i>: <b>N</b> → <b>N</b> defined by <i>f</i>(x)=2x a real valued function? Is it a real function?</div><div class="sol"><span class="lbl">Answer:</span><br>Domain = <b>N</b>. Using the standard inclusion <b>N ⊆ R</b>, the domain is a subset of <b>R</b>.<br>For x ∈ N, <i>f</i>(x)=2x ∈ N, so the range is {2,4,6,...} (even natural numbers).<br>Even natural numbers ⊆ <b>R</b>, so range ⊆ <b>R</b>.<br>Therefore <i>f</i> is <b>real valued</b>; and since domain ⊆ <b>R</b>, it is also a <b>real function</b>.</div><div class="ans">✓&nbsp; <i>f</i> is both a <b>real valued function</b> and a <b>real function</b>; range = even natural numbers.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Consider <i>h</i>: {a,b,c} → <b>R</b> defined by <i>h</i>(a)=1, <i>h</i>(b)=0, <i>h</i>(c)=1. Classify <i>h</i> as real valued / real function.</div><div class="sol"><span class="lbl">Answer:</span><br>Range = {0,1} and {0,1} ⊆ <b>R</b>, so <i>h</i> is a <b>real valued function</b>.<br>Domain = {a,b,c}. Its elements are not real numbers, so the domain is not a subset of <b>R</b>.<br>Hence <i>h</i> is <b>not</b> a real function.</div><div class="ans">✓&nbsp; <i>h</i> is <b>real valued</b> but <b>not</b> a real function.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Do not confuse <b>codomain</b> with <b>range</b>; always <b>range ⊆ codomain</b>.</li><li>To test Definition 6: check <b>domain ⊆ R</b> and <b>range ⊆ R</b>.</li><li><b>Real function ⇒ real valued function</b> (always).</li><li>If the domain set is a known subset of <b>R</b> (like <b>N</b>, <b>Z</b>, intervals), then the domain-condition for a real function is satisfied.</li><li>For <i>f</i>(x)=2x on <b>N</b>, range is <b>even natural numbers</b>, not all of <b>N</b>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Saying “real valued” means domain is real; actually it refers to the <b>range</b> (outputs).</li><li>Writing range = codomain (e.g., for <b>N</b> → <b>N</b>, claiming range is <b>N</b> without checking outputs).</li><li>Assuming if codomain is <b>R</b> then range must be <b>R</b> (range could be a proper subset).</li><li>Treating {a,b,c} as subset of <b>R</b> just because it has 3 elements.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: “Valued” means values (outputs) are real”</div><paragraph id="6a9fdca041c733e1b6000354"><b>Real-valued</b> ⇒ only <b>values/output</b> must be real ⇒ <b>range ⊆ R</b>.</paragraph><paragraph id="6a9fdca0830bee8d6e000355"><b>Real function</b> ⇒ <b>input</b> and <b>output</b> both real ⇒ <b>domain ⊆ R</b> and <b>range ⊆ R</b>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>STANDARD FUNCTIONS AND GRAPHS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Standard real functions</b> are commonly used functions with known graphs, e.g. identity, constant, polynomial, rational, |x|, sgn(x), [x].</li><li><b>Domain</b>: all x values for which f(x) is defined (avoid zero denominators; even roots need non-negative radicand).</li><li><b>Range</b>: all possible outputs y attained by f(x) over its domain.</li><li>Graphs encode key properties: symmetry, intercepts, discontinuities, boundedness, and asymptotes.</li><li>For rational functions <span class='frac'><span>p(x)</span><span>q(x)</span></span>, the condition q(x) ≠ 0 decides domain gaps (holes/vertical asymptotes).</li><li>Piecewise functions (|x|, sgn(x), [x]) are tested via interval-wise rules and correct endpoint behavior.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='8' markerHeight='8' refX='6' refY='3' orient='auto'><polygon points='0,0 6,3 0,6' fill='#123B7A'/></marker></defs><g><rect x='10' y='10' width='340' height='180' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='1.5'/><line x1='60' y1='165' x2='60' y2='35' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='40' y1='145' x2='190' y2='145' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='178' y='160' font-size='12' fill='#1f2a44'>x</text><text x='48' y='45' font-size='12' fill='#1f2a44'>y</text><line x1='70' y1='135' x2='170' y2='35' stroke='#2563EB' stroke-width='2'/><text x='125' y='40' font-size='12' fill='#2563EB'>y=x</text><line x1='70' y1='110' x2='170' y2='110' stroke='#16A34A' stroke-width='2'/><text x='175' y='114' font-size='12' fill='#16A34A'>y=c</text><polyline points='240,145 270,115 300,145' fill='none' stroke='#7C3AED' stroke-width='2'/><polyline points='240,145 270,175 300,145' fill='none' stroke='#7C3AED' stroke-width='2'/><circle cx='270' cy='145' r='3.5' fill='#7C3AED'/><text x='285' y='110' font-size='12' fill='#7C3AED'>|x|</text><text x='18' y='28' font-size='13' fill='#1f2a44'>Mini-graphs (shapes)</text></g></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>Start with <b>domain</b>, then deduce <b>range</b> using inequalities or inverse reasoning.</span></li><li><span class="ic">📏</span><span>Identity y = x: line through origin, slope 1; domain = range = R.</span></li><li><span class="ic">🧱</span><span>Constant y = c: horizontal line; range = {c}.</span></li><li><span class="ic">🧩</span><span>Polynomial: domain is R; range depends on degree and coefficients (e.g. x<sup>2</sup> has minimum 0).</span></li><li><span class="ic">➗</span><span>Rational <span class='frac'><span>p(x)</span><span>q(x)</span></span>: exclude zeros of q(x); range may also exclude some values.</span></li><li><span class="ic">🪞</span><span>|x|: V-shape; range [0,∞); symmetry about y-axis.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD FUNCTIONS: DOMAIN–RANGE SNAPSHOT</span></h2><ul class="b"><li><b>Identity</b> f(x)=x: Domain = R, Range = R; graph is a line through origin.</li><li><b>Constant</b> f(x)=c: Domain = R, Range = {c}; horizontal line.</li><li><b>Polynomial</b> f(x)=a<sub>0</sub>+a<sub>1</sub>x+…+a<sub>n</sub>x<sup>n</sup>: Domain = R; range depends on shape.</li><li><b>Example</b> x<sup>2</sup>: Domain = R, Range = [0,∞); even symmetry.</li><li><b>Example</b> x<sup>3</sup>: Domain = R, Range = R; odd symmetry.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">GRAPH READING: EXAM MOVES</span></h2><ul class="b"><li>Endpoints: |x| includes the vertex at x=0; [x] is left-closed and right-open on each step.</li><li>Asymptotes: for <span class='frac'><span>1</span><span><i>x</i></span></span>, the axes are asymptotes; x=0 is not in domain and y=0 is not in range.</li><li>Symmetry tests: even f(−x)=f(x) (y-axis symmetry); odd f(−x)=−f(x) (origin symmetry).</li><li>Range quick check: if a minimum/maximum exists (like x<sup>2</sup>), write y ≥ min or y ≤ max.</li><li>For [x], there is a jump at every integer; value at integer n equals n.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Piecewise Staples: |x| vs sgn(x) vs [x]</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>|x|</th><th>sgn(x)</th><th>[x]</th></tr></thead><tbody><tr><td>Definition</td><td>|x| = x (x ≥ 0), −x (x &lt; 0)</td><td>1 (x &gt; 0), 0 (x = 0), −1 (x &lt; 0)</td><td>Greatest integer ≤ x (floor)</td></tr><tr><td>Domain</td><td>R</td><td>R</td><td>R</td></tr><tr><td>Range</td><td>[0,∞)</td><td>{−1, 0, 1}</td><td>Z</td></tr><tr><td>Graph shape</td><td>V with vertex at (0,0)</td><td>3 horizontal pieces</td><td>Steps, jumps at integers</td></tr><tr><td>Key point</td><td>Non-negative output</td><td>Only sign information</td><td>Left-closed right-open on each step: [n, n+1)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">For <i>f</i>(<i>x</i>) = <span class='frac'><span>2<i>x</i>+3</span><span><i>x</i>−1</span></span>, state the domain and one value that is NOT in the range.</div><div class="sol"><span class="lbl">Answer:</span><br>Domain excludes values making denominator zero: x−1 ≠ 0 ⇒ x ≠ 1.<br>To see a missing range value, check whether y=2 is possible.<br>If 2 = (2x+3)/(x−1), then 2x−2 = 2x+3, which is impossible.<br>So y=2 never occurs; other real y values can occur.</div><div class="ans">✓&nbsp; Domain = R − {1}. The value 2 is not in the range.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain why [x] (floor) is left-closed and right-open on each step interval [n, n+1).</div><div class="sol"><span class="lbl">Answer:</span><br>For any real x with n ≤ x &lt; n+1, the greatest integer ≤ x is exactly n.<br>At x=n, the value is [n]=n, so the step includes the left endpoint.<br>As x approaches n+1 from the left, values remain n, but at x=n+1 the value jumps to n+1.<br>Therefore each step is naturally represented as [n, n+1) (closed at left, open at right).</div><div class="ans">✓&nbsp; On [n, n+1), the function value stays n; it includes n but excludes n+1 because the jump occurs at the integer.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For polynomials, <b>domain is always R</b>; restrictions arise mainly in rational, root, and log types.</li><li>For <span class='frac'><span>1</span><span><i>x</i></span></span>, domain and range are R−{0}; the axes are asymptotes.</li><li>For |x|, range is [0,∞); minimum 0 occurs at x=0.</li><li>For sgn(x), range is exactly {−1, 0, 1}; only the point (0,0) is filled at x=0.</li><li>For [x], the interval [n, n+1) maps to n; there is a jump at every integer.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing range of constant function as R instead of {c}.</li><li>For <span class='frac'><span>p(x)</span><span>q(x)</span></span>, forgetting to exclude all real roots of q(x) from the domain.</li><li>Mixing up [x] with nearest integer: [1.9]=1; [−1.1]=−2.</li><li>Plotting signum with a filled dot at (0,1) or (0,−1) instead of only at (0,0).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“V–S–STEP: |x|, sgn(x), [x]”</div><paragraph id="6a9fdca0ea1c5e7f1b000356"><b>V</b> for modulus: V-shape; outputs never negative.</paragraph><paragraph id="6a9fdca0eff687f4a6000357"><b>S</b> for signum: only Sign values −1, 0, 1 (three flat pieces).</paragraph><paragraph id="6a9fdca07306f87d05000358"><b>STEP</b> for floor: staircase; left-closed, right-open at each integer.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ALGEBRA OF FUNCTIONS (OPERATIONS)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>For real functions</b> <i>f</i>: <i>X</i>→R and <i>g</i>: <i>X</i>→R (where <i>X</i> ⊂ R), operations are defined <b>pointwise</b> on common inputs.</li><li>Addition: (<i>f</i>+<i>g</i>)(<i>x</i>) is obtained by adding output values <i>f</i>(<i>x</i>) and <i>g</i>(<i>x</i>).</li><li>Product (<i>fg</i>) is <b>pointwise multiplication</b>: multiply outputs at the same <i>x</i>.</li><li>Quotient (<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>) requires <b><i>g</i>(<i>x</i>)≠0</b>; such <i>x</i> must be excluded from domain.</li><li>Actual domain of the new function is <b>intersection of domains</b>, then apply extra restrictions (like denominator ≠ 0, square-root radicand ≥ 0 for real values).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='18' y='22' width='150' height='52' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='44' font-size='13' fill='#1f2a44'>Input x ∈ X</text><text x='30' y='64' font-size='13' fill='#1f2a44'>Common domain</text><rect x='192' y='18' width='150' height='64' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='204' y='40' font-size='13' fill='#1f2a44'>Compute outputs</text><text x='204' y='60' font-size='13' fill='#1f2a44'>f(x), g(x)</text><line x1='168' y1='48' x2='192' y2='48' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='112' width='324' height='70' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='30' y='136' font-size='13' fill='#1f2a44'>Operate on values:</text><text x='30' y='156' font-size='13' fill='#1f2a44'>+  −  ×  ÷ (with g(x)≠0)</text><text x='30' y='176' font-size='13' fill='#1f2a44'>Result is a new function on allowed x</text><line x1='267' y1='82' x2='267' y2='112' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📍</span><span>All operations are computed at the same input: first plug <i>x</i>, then operate on values.</span></li><li><span class="ic">🧩</span><span>Domain of (<i>f</i>±<i>g</i>), (<i>fg</i>): Dom = Dom(<i>f</i>) ∩ Dom(<i>g</i>).</span></li><li><span class="ic">🚫</span><span>Domain of (<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>): Dom = (Dom(<i>f</i>) ∩ Dom(<i>g</i>)) \ {<i>x</i>: <i>g</i>(<i>x</i>)=0}.</span></li><li><span class="ic">🌱</span><span>If √(expression) occurs in a real function, require the radicand ≥ 0.</span></li><li><span class="ic">🔢</span><span>Scalar multiplication: (α<i>f</i>)(<i>x</i>) = α·<i>f</i>(<i>x</i>); domain unchanged.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">DOMAIN CHECKLIST (EXAM-FRIENDLY)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='a' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='20' y='18' width='320' height='38' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='42' font-size='13' fill='#1f2a44'>Dom = Dom(f) ∩ Dom(g)</text><rect x='20' y='74' width='320' height='38' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='98' font-size='13' fill='#1f2a44'>For f/g: additionally exclude g(x)=0</text><rect x='20' y='130' width='320' height='52' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='30' y='154' font-size='13' fill='#1f2a44'>For √(…): require radicand ≥ 0</text><text x='30' y='174' font-size='13' fill='#1f2a44'>Combine all restrictions</text><line x1='180' y1='56' x2='180' y2='74' stroke='#123B7A' stroke-width='2' marker-end='url(#a)'/><line x1='180' y1='112' x2='180' y2='130' stroke='#123B7A' stroke-width='2' marker-end='url(#a)'/></svg></div><ul class="b"><li><b>Step 1</b>: Write Dom(<i>f</i>) and Dom(<i>g</i>) separately (from each given rule).</li><li><b>Step 2</b>: For (<i>f</i>±<i>g</i>), (<i>fg</i>), take <b>intersection</b> of the two domains.</li><li><b>Step 3</b>: For quotient, also impose <b><i>g</i>(<i>x</i>)≠0</b> (exclude zeros of denominator).</li><li><b>Step 4</b>: For square roots in real functions, impose <b>radicand ≥ 0</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">QUICK NOTES ON OUTPUTS</span></h2><ul class="b"><li>(<i>f</i>+<i>g</i>)(<i>x</i>) and (<i>f</i>−<i>g</i>)(<i>x</i>) are usually simplified as algebraic expressions in <i>x</i>.</li><li>(<i>fg</i>)(<i>x</i>) multiplies expressions; expand only if asked (saves time).</li><li>For quotient, keep as <span class='frac'><span>f(x)</span><span>g(x)</span></span> and clearly state excluded input values.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">OPERATIONS ON FUNCTIONS: RESULT &amp; DOMAIN</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Operation</th><th>Definition (at x)</th><th>Domain condition</th></tr></thead><tbody><tr><td><i>f</i>+<i>g</i></td><td>(<i>f</i>+<i>g</i>)(<i>x</i>) = <i>f</i>(<i>x</i>) + <i>g</i>(<i>x</i>)</td><td><i>x</i> ∈ Dom(<i>f</i>) ∩ Dom(<i>g</i>)</td></tr><tr><td><i>f</i>−<i>g</i></td><td>(<i>f</i>−<i>g</i>)(<i>x</i>) = <i>f</i>(<i>x</i>) − <i>g</i>(<i>x</i>)</td><td><i>x</i> ∈ Dom(<i>f</i>) ∩ Dom(<i>g</i>)</td></tr><tr><td>α<i>f</i></td><td>(α<i>f</i>)(<i>x</i>) = α·<i>f</i>(<i>x</i>)</td><td><i>x</i> ∈ Dom(<i>f</i>)</td></tr><tr><td><i>fg</i></td><td>(<i>fg</i>)(<i>x</i>) = <i>f</i>(<i>x</i>)·<i>g</i>(<i>x</i>)</td><td><i>x</i> ∈ Dom(<i>f</i>) ∩ Dom(<i>g</i>)</td></tr><tr><td><span class='frac'><span><i>f</i></span><span><i>g</i></span></span></td><td>(<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>)(<i>x</i>) = <span class='frac'><span><i>f</i>(<i>x</i>)</span><span><i>g</i>(<i>x</i>)</span></span></td><td><i>x</i> ∈ Dom(<i>f</i>) ∩ Dom(<i>g</i>), and <i>g</i>(<i>x</i>)≠0</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Given <i>f</i>(<i>x</i>) = <i>x</i><sup>2</sup> and <i>g</i>(<i>x</i>) = 2<i>x</i> + 1, both defined on R. Write the expressions for (<i>f</i>+<i>g</i>)(<i>x</i>), (<i>f</i>−<i>g</i>)(<i>x</i>), (2<i>f</i>)(<i>x</i>), (<i>fg</i>)(<i>x</i>) and state the domain of each. Also state the domain of (<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>)(<i>x</i>).</div><div class="sol"><span class="lbl">Answer:</span><br>Since Dom(<i>f</i>) = R and Dom(<i>g</i>) = R, for sum/difference/product: Dom = R ∩ R = R.<br>(<i>f</i>+<i>g</i>)(<i>x</i>) = <i>x</i><sup>2</sup> + (2<i>x</i>+1) = <i>x</i><sup>2</sup> + 2<i>x</i> + 1, Dom = R.<br>(<i>f</i>−<i>g</i>)(<i>x</i>) = <i>x</i><sup>2</sup> − (2<i>x</i>+1) = <i>x</i><sup>2</sup> − 2<i>x</i> − 1, Dom = R.<br>(2<i>f</i>)(<i>x</i>) = 2·<i>x</i><sup>2</sup>, Dom = R.<br>(<i>fg</i>)(<i>x</i>) = <i>x</i><sup>2</sup>(2<i>x</i>+1) = 2<i>x</i><sup>3</sup> + <i>x</i><sup>2</sup>, Dom = R.<br>For quotient: need 2<i>x</i>+1 ≠ 0, so <i>x</i> ≠ −<span class='frac'><span>1</span><span>2</span></span>. Hence Dom(<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>) = R \ {−<span class='frac'><span>1</span><span>2</span></span>}.</div><div class="ans">✓&nbsp; Sum/difference/product/scalar multiple are defined on R. Quotient <span class='frac'><span><i>f</i></span><span><i>g</i></span></span> is defined on R \ {−<span class='frac'><span>1</span><span>2</span></span>}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Let <i>f</i>(<i>x</i>) = √<i>x</i> and <i>g</i>(<i>x</i>) = <i>x</i> − 4 be real functions. State the domains of <i>f</i>, <i>g</i>, (<i>f</i>+<i>g</i>), and (<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>).</div><div class="sol"><span class="lbl">Answer:</span><br>Dom(√<i>x</i>) requires <i>x</i> ≥ 0, so Dom(<i>f</i>) = [0, ∞).<br>Dom(<i>x</i>−4) is all real numbers, so Dom(<i>g</i>) = R.<br>Dom(<i>f</i>+<i>g</i>) = Dom(<i>f</i>) ∩ Dom(<i>g</i>) = [0, ∞).<br>Dom(<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>) = [0, ∞) with the extra restriction <i>x</i>−4 ≠ 0, i.e. <i>x</i> ≠ 4. So domain is [0, ∞) \ {4}.</div><div class="ans">✓&nbsp; Dom(<i>f</i>)=[0,∞), Dom(<i>g</i>)=R, Dom(<i>f</i>+<i>g</i>)=[0,∞), Dom(<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>)=[0,∞) \ {4}.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always state the <b>domain</b> after performing operations; it may shrink (especially for quotients).</li><li>Pointwise means: compute <i>f</i>(<i>x</i>) and <i>g</i>(<i>x</i>) first, then operate.</li><li>For (<span class='frac'><span><i>f</i></span><span><i>g</i></span></span>), excluding <i>x</i> where <i>g</i>(<i>x</i>)=0 is compulsory (even if later algebraic simplification cancels factors).</li><li>If functions are given on different sets, the new function is defined only on the <b>common part</b> of domains.</li><li>For real functions, apply constraints like denominator ≠ 0 and radicand ≥ 0 along with the intersection.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to intersect domains; assuming all operations keep the same domain.</li><li>Not excluding points where denominator is zero in <span class='frac'><span><i>f</i></span><span><i>g</i></span></span>.</li><li>Treating (<i>fg</i>)(<i>x</i>) as <i>f</i>(<i>g</i>(<i>x</i>)) (composition) instead of product.</li><li>Ignoring √ constraint and using negative <i>x</i> for √<i>x</i> in real functions.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“D-I-E Rule for Domains”</div><paragraph id="6a9fdca0472b18ecf8000359"><b>D</b>: Write each function’s Domain separately.</paragraph><paragraph id="6a9fdca0266fcd76b900035a"><b>I</b>: Intersect domains for +, −, ×.</paragraph><paragraph id="6a9fdca056862930d400035b"><b>E</b>: Extra restrictions: denominator ≠ 0, radicand ≥ 0.</paragraph></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

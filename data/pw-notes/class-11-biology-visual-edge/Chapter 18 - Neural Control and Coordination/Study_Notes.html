@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Neural Control and Coordination — Biology</title>
+  <meta name="description" content="Neural Control and Coordination — Biology topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Biology</div>
+        <h1>Neural Control and Coordination</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Neural (fast) + endocrine (hormonal) control integrates organs to keep the internal environment stable</div>
+              <h2>COORDINATION AND HOMEOSTASIS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Coordination</b> is the process by which ≥2 organs interact to produce an <b>integrated response</b>.</li><li><b>Homeostasis</b> requires coordinated functioning of organ systems to maintain stable internal conditions.</li><li>In humans, coordination is achieved by <b>neural system</b> and <b>endocrine system</b> working together.</li><li>Neural control is typically <b>rapid</b> and <b>point-to-point</b>; endocrine control is <b>slower</b> and <b>widespread</b> via hormones.</li><li>After a disturbance ends, body functions <b>return toward normal</b> by feedback-based regulation.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveaspectratio="xMidYMid meet" viewbox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow-t1-s1" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><polygon fill="#123B7A" points="0,0 10,3 0,6"></polygon></marker></defs><rect fill="#EEF4FF" height="34" rx="6" stroke="#2563EB" width="324" x="18" y="18"></rect><text fill="#1f2a44" font-size="13" x="30" y="40">Disturbance (e.g., exercise)</text><line marker-end="url(#arrow-t1-s1)" stroke="#123B7A" stroke-width="2" x1="180" x2="180" y1="52" y2="72"></line><rect fill="#EAF7EF" height="46" rx="6" stroke="#16A34A" width="150" x="18" y="72"></rect><text fill="#1f2a44" font-size="13" x="28" y="92">Neural system</text><text fill="#1f2a44" font-size="12" x="28" y="110">fast, precise</text><rect fill="#F4EFFE" height="46" rx="6" stroke="#7C3AED" width="150" x="192" y="72"></rect><text fill="#1f2a44" font-size="13" x="202" y="92">Endocrine system</text><text fill="#1f2a44" font-size="12" x="202" y="110">hormones, wide</text><line marker-end="url(#arrow-t1-s1)" stroke="#123B7A" stroke-width="2" x1="93" x2="93" y1="118" y2="140"></line><line marker-end="url(#arrow-t1-s1)" stroke="#123B7A" stroke-width="2" x1="267" x2="267" y1="118" y2="140"></line><rect fill="#FEF5E4" height="42" rx="6" stroke="#F59E0B" width="324" x="18" y="140"></rect><text fill="#1f2a44" font-size="13" x="30" y="160">Effectors: lungs, heart, vessels, kidneys</text><text fill="#1f2a44" font-size="12" x="30" y="176">Integrated change → Homeostasis restored</text></svg><div class="figcap">Homeostasis is maintained by integrated neural and endocrine control of multiple effectors.</div></div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Integrated response: multiple organs change together to meet a common body demand</span></li><li><span class="ic">⚡</span><span>Neural system: rapid electrical impulses; precise and localized effects</span></li><li><span class="ic">🧪</span><span>Endocrine system: chemical messages (hormones) in blood; longer-lasting effects</span></li><li><span class="ic">🔁</span><span>Feedback regulation restores balance after change; prevents overshoot</span></li><li><span class="ic">🏃</span><span>Exercise is a classic example of synchronised organ-system coordination</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">EXERCISE: A STANDARD INTEGRATED RESPONSE</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveaspectratio="xMidYMid meet" viewbox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow2-t1-s2" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><polygon fill="#123B7A" points="0,0 10,3 0,6"></polygon></marker></defs><rect fill="#EEF4FF" height="34" rx="6" stroke="#2563EB" width="316" x="22" y="22"></rect><text fill="#1f2a44" font-size="13" x="34" y="44">Exercise → ↑ muscular activity</text><line marker-end="url(#arrow2-t1-s2)" stroke="#123B7A" stroke-width="2" x1="180" x2="180" y1="56" y2="76"></line><rect fill="#FEF5E4" height="32" rx="6" stroke="#F59E0B" width="316" x="22" y="76"></rect><text fill="#1f2a44" font-size="13" x="34" y="97">Need: ↑ O2 delivery + ↑ CO2 removal</text><line marker-end="url(#arrow2-t1-s2)" stroke="#123B7A" stroke-width="2" x1="90" x2="90" y1="108" y2="132"></line><line marker-end="url(#arrow2-t1-s2)" stroke="#123B7A" stroke-width="2" x1="180" x2="180" y1="108" y2="132"></line><line marker-end="url(#arrow2-t1-s2)" stroke="#123B7A" stroke-width="2" x1="270" x2="270" y1="108" y2="132"></line><rect fill="#EAF7EF" height="46" rx="6" stroke="#16A34A" width="104" x="22" y="132"></rect><text fill="#1f2a44" font-size="13" x="32" y="154">Lungs</text><text fill="#1f2a44" font-size="12" x="32" y="172">↑ breathing</text><rect fill="#EAF7EF" height="46" rx="6" stroke="#16A34A" width="104" x="128" y="132"></rect><text fill="#1f2a44" font-size="13" x="138" y="154">Heart</text><text fill="#1f2a44" font-size="12" x="138" y="172">↑ beat</text><rect fill="#EAF7EF" height="46" rx="6" stroke="#16A34A" width="104" x="234" y="132"></rect><text fill="#1f2a44" font-size="13" x="244" y="154">Vessels</text><text fill="#1f2a44" font-size="12" x="244" y="172">↑ flow</text></svg></div><ul class="b"><li>Muscle activity increases → <b>energy demand rises</b>.</li><li>To meet demand: <b>oxygen supply increases</b> via multiple coordinated changes.</li><li>Lungs: <b>respiration rate increases</b> to take in more O<sub>2</sub> and remove CO<sub>2</sub>.</li><li>Heart: <b>heart rate and force increase</b> to pump more blood per minute.</li><li>Blood vessels: <b>blood flow redistributes</b> to working muscles.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">HOW NEURAL + ENDOCRINE TOGETHER MAINTAIN HOMEOSTASIS</span></h2><ul class="b"><li>Stimulus detected → CNS integrates → effectors respond (neural pathway).</li><li>Neural responses are <b>immediate</b>; useful for rapid adjustments during exercise.</li><li>Hormones provide <b>chemical integration</b>; effects are often longer-lasting.</li><li>Together they ensure <b>synchronised functioning</b> of organs, not isolated actions.</li><li>Key idea: homeostasis is a <b>dynamic steady state</b>, not a fixed constant value.</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Neural vs Endocrine Coordination (High-yield Differences)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Neural system</th><th>Endocrine system</th></tr></thead><tbody><tr><td>Signal type</td><td>Electrical impulses; chemical at synapses</td><td>Chemical hormones in blood</td></tr><tr><td>Speed</td><td>Fast (milliseconds)</td><td>Slower (seconds to hours)</td></tr><tr><td>Pathway</td><td>Point-to-point via neurons</td><td>Widespread via circulation</td></tr><tr><td>Specificity</td><td>Highly localized, precise</td><td>Often broad; only target cells respond</td></tr><tr><td>Duration</td><td>Usually short-lived</td><td>Usually longer-lasting</td></tr><tr><td>Typical role in homeostasis</td><td>Rapid adjustments (e.g., heart rate)</td><td>Sustained regulation (e.g., metabolism, growth)</td></tr></tbody></table></div></div>
+
+<div class="row c1"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“FAST vs LAST”</div><paragraph id="6aa538b410d4c85e85000143"><b>Neural = FAST</b>: quick, focused, point-to-point.</paragraph><paragraph id="6aa538b43cde12e104000144"><b>Endocrine = LAST</b>: slower, longer-lasting, acts at many sites via blood.</paragraph><paragraph id="6aa538b4ee4e05e8cb000145">Homeostasis needs both: FAST correction + LASTING adjustment.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Neurons as specialised cells; neural organisation from Hydra to vertebrates</div>
+              <h2>NEURAL SYSTEM BASICS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Neural system</b> is made of specialised cells called <b>neurons</b> that coordinate body activities by rapid signalling.</li><li>Neurons can <b>detect</b> stimuli, <b>receive</b> stimuli, and <b>transmit</b> them as <b>nerve impulses</b>.</li><li>Neural coordination is typically fast and precise due to organised, point-to-point connections between cells.</li><li>Across animal groups, neural organisation shows a trend from <b>diffuse networks</b> to <b>centralised, complex systems</b>.</li><li>Basic functional pathway (exam form): <b>stimulus → receptor → sensory neuron (afferent) → CNS (integration) → motor neuron (efferent) → effector → response</b>.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-63.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚡</span><span>Neurons are <b>excitable</b> cells: they convert stimuli into fast electrical signals called <b>nerve impulses</b>.</span></li><li><span class="ic">📩</span><span><b>Dendrites</b> receive input and carry impulses <b>towards</b> the cell body; the <b>axon</b> conducts impulses <b>away</b> to <b>axon terminals/synaptic knobs</b> across a <b>synapse</b>.</span></li><li><span class="ic">🕸️</span><span>Hydra shows a <b>nerve net</b>: no centralised brain; impulses spread in a diffuse network.</span></li><li><span class="ic">🧩</span><span>Insects show <b>ganglia</b> with a brain and segmental control; more organised than nerve nets.</span></li><li><span class="ic">🏛️</span><span>Vertebrates have a highly <b>centralised</b> neural system (CNS: brain + spinal cord) with specialised control centres.</span></li></ul></div></div>
+
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Neural organisation: Hydra vs Insects vs Vertebrates</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Hydra (lower invertebrate)</th><th>Insects</th><th>Vertebrates</th></tr></thead><tbody><tr><td>Basic plan</td><td>Diffuse network (nerve net)</td><td>Brain + ganglia + nerve cords</td><td>Brain + spinal cord (CNS) with PNS nerves</td></tr><tr><td>Centralisation</td><td>Very low</td><td>Moderate (segmental ganglia)</td><td>High (strong central control)</td></tr><tr><td>Integration level</td><td>Simple, spread-out coordination</td><td>Better coordination via ganglia</td><td>Complex integration and specialised control</td></tr><tr><td>Exam keywords</td><td>Nerve net</td><td>Ganglia, brain</td><td>CNS (brain + spinal cord); highly developed</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: D-R-T + NET→GANG→CNS”</div><paragraph id="6aa538b4114e560c2d000146"><b>D-R-T</b> = Detect, Receive, Transmit (what neurons do).</paragraph><paragraph id="6aa538b47828d4c7b8000147"><b>NET→GANG→CNS</b>: Hydra nerve <b>NET</b>, insects <b>GANG</b>lia, vertebrates <b>CNS</b> (brain + spinal cord) most developed.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">CNS vs PNS, impulse direction (afferent/efferent) &amp; PNS subdivisions (somatic, autonomic, visceral as described)</div>
+              <h2>HUMAN NERVOUS SYSTEM DIVISIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Human nervous system is divided into CNS and PNS for rapid coordination by nerve impulses.</b></li><li><b>CNS</b> = brain + spinal cord; main site of information processing, integration and control.</li><li><b>PNS</b> = all nerves of the body associated with CNS; links receptors and effectors to CNS.</li><li><b>Afferent (sensory) fibres</b> carry impulses <b>towards</b> CNS from tissues/organs.</li><li><b>Efferent (motor/regulatory) fibres</b> carry impulses <b>away</b> from CNS to muscles/glands/tissues.</li><li>PNS is functionally classified into <b>somatic</b> (skeletal muscle control) and <b>autonomic</b> (involuntary organs). <b>Visceral nervous system</b> (as described here) is a PNS complex of nerves/fibres/ganglia/plexuses carrying impulses <b>between viscera and CNS</b>.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-63.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🏛️</span><span><b>CNS</b> is the "command centre": integrates inputs and generates outputs via neural pathways.</span></li><li><span class="ic">🛣️</span><span><b>PNS</b> is the "wiring": nerves + ganglia that carry afferent and efferent signals.</span></li><li><span class="ic">⬅️</span><span><b>Afferent</b> = arrives at CNS (receptor → CNS).</span></li><li><span class="ic">➡️</span><span><b>Efferent</b> = exits CNS (CNS → effector).</span></li><li><span class="ic">💪</span><span><b>Somatic NS</b>: motor output mainly to skeletal muscles; controls voluntary movements and includes somatic reflex arcs.</span></li><li><span class="ic">🫀</span><span><b>Autonomic NS</b>: motor output to smooth muscle, cardiac muscle and glands; involuntary.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PNS: FUNCTIONAL CLASSIFICATION</span></h2><ul class="b"><li><b>Somatic NS</b>: relays impulses from CNS to <b>skeletal muscles</b>; controls voluntary movements; includes somatic reflex arcs.</li><li><b>Autonomic NS (ANS)</b>: relays impulses from CNS to <b>involuntary organs</b> (smooth muscle, cardiac muscle, glands).</li><li><b>ANS has two divisions</b>: <b>sympathetic</b> and <b>parasympathetic</b>; effects on an organ are often opposite to maintain homeostasis.</li><li><b>Visceral nervous system</b> (as described here): part of PNS comprising nerves, fibres, ganglia and plexuses through which impulses travel <b>from CNS → viscera</b> and <b>from viscera → CNS</b>.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">DIRECTION OF IMPULSE FLOW (HIGH-YIELD)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveaspectratio="xMidYMid meet" viewbox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow2-t3-s1" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10"><path d="M 0 0 L 10 5 L 0 10 z" fill="#123B7A"></path></marker></defs><rect fill="#EAF7EF" height="44" rx="6" stroke="#16A34A" stroke-width="2" width="92" x="18" y="78"></rect><text fill="#1f2a44" font-size="12" x="34" y="105">Receptor</text><rect fill="#EEF4FF" height="44" rx="6" stroke="#2563EB" stroke-width="2" width="92" x="134" y="58"></rect><text fill="#1f2a44" font-size="12" x="160" y="85">CNS</text><rect fill="#FEF5E4" height="44" rx="6" stroke="#F59E0B" stroke-width="2" width="92" x="250" y="78"></rect><text fill="#1f2a44" font-size="12" x="268" y="105">Effector</text><line marker-end="url(#arrow2-t3-s1)" stroke="#123B7A" stroke-width="2" x1="110" x2="134" y1="100" y2="84"></line><text fill="#1f2a44" font-size="12" x="98" y="70">Afferent</text><line marker-end="url(#arrow2-t3-s1)" stroke="#123B7A" stroke-width="2" x1="226" x2="250" y1="84" y2="100"></line><text fill="#1f2a44" font-size="12" x="232" y="70">Efferent</text></svg></div><ul class="b"><li><b>Afferent fibres</b>: receptor/tissue/organ → CNS; represent <b>sensory input</b> to integration centres.</li><li><b>Efferent fibres</b>: CNS → effector (muscle/gland/tissue); represent <b>motor/regulatory output</b>.</li><li>In answers, write arrows to avoid reversal: <b>Afferent: → CNS</b>; <b>Efferent: CNS →</b>.</li><li>Typical pathway: <b>receptor → afferent → CNS → efferent → effector</b>.</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Key Differences: CNS vs PNS (plus functional splits within PNS)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>CNS</th><th>PNS</th></tr></thead><tbody><tr><td>Main parts</td><td>Brain and spinal cord</td><td>All nerves associated with CNS (with ganglia and plexuses)</td></tr><tr><td>Primary role</td><td>Information processing, integration and control</td><td>Communication link between CNS and the rest of the body</td></tr><tr><td>Role in pathway</td><td>Integrates sensory inputs and initiates motor/regulatory outputs</td><td>Carries sensory (afferent) impulses to CNS and motor/regulatory (efferent) impulses from CNS</td></tr><tr><td>Common exam phrasing</td><td>"Command and control"</td><td>"Wiring/network connecting body to CNS"</td></tr><tr><td>Functional divisions (PNS)</td><td>Not classified as somatic/autonomic</td><td>Somatic (skeletal muscle) and autonomic (involuntary organs); also "visceral nervous system" (as described in text) for viscera ↔ CNS impulses</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“A &amp; E Direction Trick”</div><paragraph id="6aa538b41e6e445b94000148"><b>Afferent = Arrives</b> at CNS (A → Arrives).</paragraph><paragraph id="6aa538b45c3e46ba85000149"><b>Efferent = Exits</b> CNS (E → Exits).</paragraph><paragraph id="6aa538b4f8a3e09bc200014a">Targets: <b>Somatic → Skeletal</b>; <b>Autonomic → Automatic organs</b> (smooth/cardiac/glands).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Parts of a neuron, synaptic knobs &amp; neurotransmitters, classification, myelination and nodes of Ranvier</div>
+              <h2>NEURON STRUCTURE AND TYPES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Neuron is the structural and functional unit of nervous system that receives, integrates and transmits impulses.</li><li>Main parts: <b>cyton (cell body)</b>, <b>dendrites</b>, and <b>axon</b> with terminal branches.</li><li>Dendrites carry impulses <b>towards</b> cyton; axon conducts impulse <b>away</b> from cyton.</li><li>Axon ends form <b>synaptic knobs</b> containing <b>synaptic vesicles</b> with <b>neurotransmitters</b>.</li><li>Myelin sheath is formed by <b>Schwann cells</b> in PNS (and <b>oligodendrocytes</b> in CNS); gaps in myelin are called <b>nodes of Ranvier</b>.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-65.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+
+
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧫</span><span><b>Cyton</b>: metabolic/integration center; cytoplasm has typical organelles and <b>Nissl's granules</b>.</span></li><li><span class="ic">🌿</span><span><b>Dendrites</b>: short, repeatedly branched; contain Nissl's granules; input region of neuron.</span></li><li><span class="ic">🧵</span><span><b>Axon</b>: long fibre; output region; typically lacks Nissl's granules; ends in axon terminals that form synapses/neuromuscular junctions.</span></li><li><span class="ic">📦</span><span><b>Synaptic knobs</b> store neurotransmitters in vesicles; release produces excitatory or inhibitory effects.</span></li><li><span class="ic">⚡</span><span><b>Myelinated fibres</b> conduct faster via node-to-node (saltatory) conduction.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PARTS &amp; FUNCTIONS (WRITE-IN-EXAM POINTS)</span></h2><ul class="b"><li><b>Cyton</b>: nucleus + cytoplasm with organelles; integrates incoming signals; trophic/metabolic center.</li><li><b>Nissl's granules</b> (RER): present in cyton and dendrites; associated with protein synthesis.</li><li><b>Dendrites</b>: receive stimuli/impulses; conduct towards soma (input region).</li><li><b>Axon hillock</b>: trigger zone where action potential typically initiates.</li><li><b>Axon terminals</b>: synaptic knobs contact next neuron/effector at <b>synapse</b> or <b>neuromuscular junction</b>.</li></ul></div>
+
+
+
+<div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SYNAPTIC KNOBS, VESICLES &amp; NEUROTRANSMITTERS</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"></div><ul class="b"><li>Synaptic knob contains <b>synaptic vesicles</b> storing <b>neurotransmitters</b>.</li><li>Impulse at terminal triggers neurotransmitter release into synaptic cleft (chemical synapse).</li><li>Neurotransmitter binds specific receptors on postsynaptic membrane → ion channels open.</li><li>Postsynaptic response may be <b>excitatory</b> (promotes firing) or <b>inhibitory</b> (reduces firing).</li><li>Chemical synapse is typically <b>one-way</b>: release occurs only from presynaptic terminal.</li></ul></div></div>
+
+
+
+
+
+
+
+
+
+
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Neuron Classification &amp; Axon Types (High-yield)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Type 1</th><th>Type 2</th></tr></thead><tbody><tr><td>No. of processes</td><td><b>Multipolar</b>: 1 axon + ≥2 dendrites</td><td><b>Bipolar</b>: 1 axon + 1 dendrite</td></tr><tr><td>Typical location</td><td>Cerebral cortex</td><td>Retina of eye</td></tr><tr><td>Third type</td><td><b>Unipolar</b>: cell body with a single process; common description is "usually in embryonic stage" (adult sensory neurons are often pseudounipolar)</td><td>—</td></tr><tr><td>Myelination</td><td><b>Myelinated</b>: myelin sheath present; nodes of Ranvier present</td><td><b>Non-myelinated</b>: no myelin sheath; axon may be enclosed within Schwann cell cytoplasm but without myelin wrapping; distinct nodes absent</td></tr><tr><td>Conduction</td><td>Saltatory (node-to-node); faster</td><td>Continuous; slower</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>De-Cy-Ax-Te</b> (signal path)”</div><paragraph id="6aa538b49f8c230bb000014b"><b>De</b>ndrite → <b>Cy</b>ton → <b>Ax</b>on → <b>Te</b>rminals.</paragraph><paragraph id="6aa538b43b64f97c7e00014c">For myelin: think <b>"S-C-M-N"</b> = <b>S</b>chwann <b>C</b>ells make <b>M</b>yelin (PNS); gaps are <b>N</b>odes.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Resting potential → depolarisation (Na<sup>+</sup> in) → repolarisation (K<sup>+</sup> out) → impulse moves by local circuit</div>
+              <h2>NERVE IMPULSE GENERATION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Nerve impulse (action potential) is a brief, reversible change in membrane potential due to regulated ion movement across axonal membrane.</li><li>At rest, axonal membrane is polarised: outside positive, inside negative, due to ion gradients and selective permeability.</li><li>Resting state: membrane more permeable to K<sup>+</sup>, nearly impermeable to Na<sup>+</sup>; intracellular proteins remain trapped (negative).</li><li>Na<sup>+</sup>/K<sup>+</sup> pump maintains ionic gradients by active transport: 3 Na<sup>+</sup> out for every 2 K<sup>+</sup> in.</li><li>A stimulus opens Na<sup>+</sup> channels locally, causing Na<sup>+</sup> influx and depolarisation; polarity reverses at the excited site.</li><li>Soon after, K<sup>+</sup> permeability increases; K<sup>+</sup> efflux repolarises the membrane, restoring resting polarity.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-66.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔋</span><span>Resting (polarised) state: outside +, inside −; set by ion gradients + selective ion channels.</span></li><li><span class="ic">🚪</span><span>Selective permeability: K<sup>+</sup> leaks more easily; Na<sup>+</sup> entry is restricted at rest.</span></li><li><span class="ic">🔁</span><span>Na<sup>+</sup>/K<sup>+</sup> pump: 3 Na<sup>+</sup> out, 2 K<sup>+</sup> in; maintains long-term gradients.</span></li><li><span class="ic">⬆️</span><span>Depolarisation: sudden Na<sup>+</sup> influx makes inside positive at the stimulated site.</span></li><li><span class="ic">⬇️</span><span>Repolarisation: increased K<sup>+</sup> efflux restores inside negativity at the excited site.</span></li><li><span class="ic">➡️</span><span>Local circuit current: excited site A drives current to adjacent resting site B, triggering next action potential.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">RESTING (POLARISED) MEMBRANE: WHY INSIDE IS −</span></h2><ul class="b"><li>Ion distribution: inside high K<sup>+</sup>, high negative proteins; outside high Na<sup>+</sup>, low K<sup>+</sup>.</li><li>Resting permeability: K<sup>+</sup> channels allow easier diffusion than Na<sup>+</sup> channels.</li><li>Negatively charged proteins are impermeable, contributing to inside negativity.</li><li>Na<sup>+</sup>/K<sup>+</sup> pump sustains gradients: 3 Na<sup>+</sup> out : 2 K<sup>+</sup> in (active transport).</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">ACTION POTENTIAL SEQUENCE + LOCAL CIRCUIT (A → B)</span></h2><ul class="b"><li>Stimulus at site A opens Na<sup>+</sup> channels → rapid Na<sup>+</sup> influx → depolarisation (polarity reversal).</li><li>Adjacent site B remains polarised briefly; potential difference drives local current.</li><li>Inner surface current: A → B; outer surface current: B → A, completing the circuit.</li><li>This current depolarises B to threshold, generating a new action potential at B.</li><li>Na<sup>+</sup> permeability rise is short-lived; then K<sup>+</sup> permeability increases.</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">RESTING STATE vs DEPOLARISATION vs REPOLARISATION </span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Resting (polarised)</th><th>Depolarisation (excited)</th><th>Repolarisation (return)</th></tr></thead><tbody><tr><td>Dominant permeability</td><td>K<sup>+</sup> high; Na<sup>+</sup> nearly blocked</td><td>Na<sup>+</sup> suddenly high</td><td>K<sup>+</sup> rises</td></tr><tr><td>Main ion movement</td><td>Net K<sup>+</sup> tendency outward; limited Na<sup>+</sup> entry</td><td>Na<sup>+</sup> influx</td><td>K<sup>+</sup> efflux</td></tr><tr><td>Charge on membrane</td><td>Outside +, inside −</td><td>Outside −, inside + (at that site)</td><td>Returns to outside +, inside −</td></tr><tr><td>Key phrase to write</td><td>Polarised resting membrane</td><td>Polarity reversal at excited site</td><td>Restoration of resting potential</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "Na IN to Fire, K OUT to Retire"”</div><paragraph id="6aa538b4bf4426068f00014d"><b>Fire</b> (depolarise): Na<sup>+</sup> goes <b>in</b> at the stimulated site.</paragraph><paragraph id="6aa538b480a115178700014e"><b>Retire</b> (repolarise): K<sup>+</sup> goes <b>out</b> to restore resting polarity.</paragraph><paragraph id="6aa538b4a19ca8aa8300014f">Pump reminder: <b>3 OUT (Na), 2 IN (K)</b> keeps gradients ready for the next impulse.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Electrical vs chemical synapses; Ca<sup>2+</sup>-triggered neurotransmitter release → EPSP/IPSP → one-way conduction → termination</div>
+              <h2>SYNAPTIC TRANSMISSION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Synapse</b> = functional junction transmitting impulse from <b>pre-synaptic</b> neuron to <b>post-synaptic</b> cell.</li><li>Formed by pre-synaptic membrane (axon terminal) and post-synaptic membrane (dendrite/soma/effector).</li><li><b>Synaptic cleft</b> may be absent in electrical synapse; present and fluid-filled in chemical synapse.</li><li>Electrical synapse: direct ionic current flow between neurons; very fast; rare in our system.</li><li>Chemical synapse: neurotransmitters cross cleft and bind specific receptors to generate a new potential.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-67.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚡</span><span>Electrical synapse: membranes extremely close → current passes directly; faster than chemical; rare in our system.</span></li><li><span class="ic">🧪</span><span>Chemical synapse: vesicular neurotransmitter release into cleft → receptor binding → ion channels open.</span></li><li><span class="ic">🧲</span><span>Ca<sup>2+</sup> entry into pre-synaptic terminal is the trigger for vesicle fusion and transmitter release.</span></li><li><span class="ic">📈</span><span>EPSP: depolarizing post-synaptic potential, often due to Na<sup>+</sup> entry; increases firing chance.</span></li><li><span class="ic">📉</span><span>IPSP: hyperpolarizing post-synaptic potential, often due to Cl<sup>−</sup> entry or K<sup>+</sup> exit; decreases firing chance.</span></li><li><span class="ic">➡️</span><span>One-way conduction (chemical): neurotransmitter released only from pre-synaptic side; receptors on post-synaptic side.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">TYPES OF SYNAPSES (HIGH-YIELD DIFFERENCES)</span></h2><ul class="b"><li><b>Electrical</b>: membranes extremely close; ions pass directly; like continuous conduction.</li><li>Electrical: <b>always faster</b> than chemical; <b>rare</b> in our system.</li><li><b>Chemical</b>: membranes separated by fluid-filled <b>synaptic cleft</b>; uses neurotransmitters.</li><li>Chemical: produces <b>EPSP</b> or <b>IPSP</b>; enables complex integration (summation, modulation).</li><li>Cleft statement is a trap: cleft is characteristic of <b>chemical</b> synapse, not mandatory for electrical.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">CHEMICAL SYNAPTIC MECHANISM (STEPWISE FLOW)</span></h2><ul class="b"><li>Action potential reaches pre-synaptic terminal (synaptic knob).</li><li>Voltage-gated <b>Ca<sup>2+</sup> channels open</b> → Ca<sup>2+</sup> influx into terminal.</li><li>Ca<sup>2+</sup> triggers synaptic vesicle docking and fusion with pre-synaptic membrane.</li><li>Neurotransmitter released by exocytosis into synaptic cleft.</li><li>Neurotransmitter binds <b>specific receptors</b> on post-synaptic membrane.</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Electrical Synapse vs Chemical Synapse</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Electrical synapse</th><th>Chemical synapse</th></tr></thead><tbody><tr><td>Gap/cleft</td><td>Membranes extremely close; synaptic cleft effectively absent</td><td>Fluid-filled synaptic cleft present</td></tr><tr><td>Signal carrier</td><td>Direct ionic current flow</td><td>Neurotransmitter molecules</td></tr><tr><td>Speed</td><td>Very fast; faster than chemical</td><td>Slower than electrical (synaptic delay present)</td></tr><tr><td>Direction</td><td>Usually bidirectional (can be)</td><td>Functionally one-way (pre → post)</td></tr><tr><td>Occurrence in our system</td><td>Rare</td><td>Most common</td></tr><tr><td>Typical outcome</td><td>Passes excitation directly (impulse transmission like continuous conduction)</td><td>Can be excitatory (EPSP) or inhibitory (IPSP)</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>Ca</b>uses <b>V</b>esicles to <b>R</b>elease”</div><paragraph id="6aa538b4c446952369000150"><b>Ca</b><sup>2+</sup> entry → <b>V</b>esicle fusion → <b>R</b>elease of neurotransmitter.</paragraph><paragraph id="6aa538b4fb3a7f7d64000151">Then think <b>E</b> or <b>I</b>: receptor opens channels → <b>E</b>PSP (excite) or <b>I</b>PSP (inhibit).</paragraph><paragraph id="6aa538b432ac163aab000152">End it with <b>R-E-D</b>: <b>R</b>euptake, <b>E</b>nzymatic breakdown, <b>D</b>iffusion.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Command-control organ: protected by skull + meninges; organized into forebrain, midbrain, hindbrain and brain stem</div>
+              <h2>BRAIN PROTECTION AND DIVISIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Brain</b> is the CNS command-and-control centre for processing information and regulating body activities.</li><li>Protected by <b>skull</b> and three <b>cranial meninges</b>: dura mater, arachnoid, pia mater.</li><li>Major divisions: <b>forebrain</b>, <b>midbrain</b>, <b>hindbrain</b>; functionally linked by the <b>brain stem</b>.</li><li><b>Brain stem</b> (midbrain + pons + medulla) forms the main connection between brain and spinal cord.</li><li>Controls <b>voluntary actions</b>, balance, and <b>vital involuntary functions</b> (respiration, cardiovascular reflexes).</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-68.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎛️</span><span>Brain integrates sensory inputs and sends motor/autonomic outputs to coordinate organs.</span></li><li><span class="ic">🦴</span><span>Skull provides rigid mechanical protection against external impacts.</span></li><li><span class="ic">🛡️</span><span>Meninges protect and support the CNS; order is crucial for exam answers.</span></li><li><span class="ic">🧩</span><span>Forebrain handles higher functions and homeostasis via cerebrum, thalamus, hypothalamus.</span></li><li><span class="ic">🔁</span><span>Midbrain is a relay between forebrain and pons; has cerebral aqueduct and corpora quadrigemina.</span></li><li><span class="ic">❤️</span><span>Medulla contains vital centres for breathing, cardiovascular reflexes and gastric secretions.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CRANIAL MENINGES (OUTER → INNER)</span></h2><ul class="b"><li><b>Dura mater</b>: tough outer covering; strongest protective layer.</li><li><b>Arachnoid</b>: very thin middle layer; lies between dura and pia.</li><li><b>Pia mater</b>: delicate inner layer; closely adherent to brain tissue.</li><li>Exam must-write order: <b>Dura → Arachnoid → Pia</b>.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MAJOR BRAIN DIVISIONS: WHAT TO ASSOCIATE</span></h2><ul class="b"><li><b>Forebrain</b> = cerebrum + thalamus + hypothalamus; higher functions and homeostasis control.</li><li><b>Midbrain</b>: between forebrain and pons; has <b>cerebral aqueduct</b> and <b>corpora quadrigemina</b> dorsally.</li><li><b>Hindbrain</b> = pons + cerebellum + medulla; coordination and vital involuntary control.</li><li><b>Brain stem</b> = midbrain + pons + medulla; main pathway between brain and spinal cord.</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Forebrain vs Midbrain vs Hindbrain (high-yield map)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Forebrain</th><th>Midbrain</th><th>Hindbrain</th></tr></thead><tbody><tr><td>Main parts</td><td>Cerebrum, thalamus, hypothalamus</td><td>Cerebral aqueduct; corpora quadrigemina</td><td>Pons, cerebellum, medulla</td></tr><tr><td>Core role</td><td>Higher functions + sensory/motor integration + homeostasis</td><td>Relay and reflex centres; tract conduction</td><td>Coordination + vital involuntary centres</td></tr><tr><td>Typical exam cues</td><td>Corpus callosum; cortex (grey) vs inner white matter</td><td>Corpora quadrigemina (4 swellings) in dorsal midbrain</td><td>Medulla connected to spinal cord; respiration and cardiovascular reflexes</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: DAP + 3-2-3 Brain Map”</div><paragraph id="6aa538b4e7a760512e000153"><b>DAP</b> for meninges outer→inner: <b>D</b>ura, <b>A</b>rachnoid, <b>P</b>ia.</paragraph><paragraph id="6aa538b46be26e699b000154">Brain divisions: <b>Fore(3)</b> = C-T-H; <b>Mid(2)</b> = Aqueduct + Quad; <b>Hind(3)</b> = P-C-M.</paragraph><paragraph id="6aa538b413758e1d8b000155">Brain stem = <b>M + P + M</b>: Midbrain, Pons, Medulla.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Cerebrum organisation + grey/white matter + cortical areas + thalamus–hypothalamus–limbic functions</div>
+              <h2>FOREBRAIN FUNCTIONAL ANATOMY</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Forebrain</b> = <b>cerebrum</b> + <b>thalamus</b> + <b>hypothalamus</b>; centre for higher functions and internal regulation.</li><li>Cerebrum is the <b>largest</b> brain part; a deep cleft divides it into <b>left</b> and <b>right</b> cerebral hemispheres.</li><li>Hemispheres are connected by <b>corpus callosum</b> (tract of nerve fibres) for inter-hemispheric communication.</li><li><b>Cerebral cortex</b> is the outer layer, thrown into folds (gyri/sulci) to increase surface area and neuron count.</li><li><b>Grey matter</b> mainly = cortex (neuron cell bodies); <b>white matter</b> mainly = inner myelinated fibre tracts.</li><li>Forebrain also includes <b>limbic system</b> (e.g., amygdala, hippocampus) linked to emotion, memory and motivation.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-69.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Cerebral cortex has <b>motor</b>, <b>sensory</b> and <b>association</b> areas for integrated behaviour.</span></li><li><span class="ic">🧵</span><span><b>Corpus callosum</b> = major commissural white-matter bundle connecting the two hemispheres.</span></li><li><span class="ic">⚪</span><span><b>White matter</b> looks white due to <b>myelin</b>; it carries long-range tracts within cerebrum.</span></li><li><span class="ic">⚫</span><span><b>Grey matter</b> is grey due to dense neuron cell bodies, dendrites and synapses in cortex.</span></li><li><span class="ic">🚦</span><span><b>Thalamus</b> is a major coordinating centre for <b>sensory</b> and <b>motor</b> signalling to cortex.</span></li><li><span class="ic">🌡️</span><span><b>Hypothalamus</b> controls homeostasis: <b>temperature</b>, <b>hunger</b>, <b>thirst</b>, autonomic outputs.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CEREBRUM: ORGANISATION &amp; CORTICAL AREAS</span></h2><ul class="b"><li>Two <b>cerebral hemispheres</b> separated by longitudinal fissure; connected by <b>corpus callosum</b>.</li><li><b>Cerebral cortex</b> is highly folded; folds increase surface area for more cortical neurons.</li><li><b>Motor areas</b>: initiate and control voluntary movements (commands to skeletal muscles).</li><li><b>Sensory areas</b>: receive and process inputs like touch, pain, temperature, vision, hearing.</li><li><b>Association areas</b>: neither purely sensory nor motor; enable memory, communication, intersensory integration.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">THALAMUS–HYPOTHALAMUS–LIMBIC: CORE ROLES</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveaspectratio="xMidYMid meet" viewbox="0 0 360 200" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow2-t8-s1" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="4"><polygon fill="#123B7A" points="0,0 8,4 0,8"></polygon></marker></defs><rect fill="#EEF4FF" height="164" rx="10" stroke="#123B7A" stroke-width="2" width="336" x="12" y="18"></rect><text fill="#1f2a44" font-size="13" x="22" y="40">Hypothalamus links neural + endocrine</text><rect fill="#FEF5E4" height="45" rx="8" stroke="#F59E0B" stroke-width="2" width="135" x="25" y="55"></rect><text fill="#1f2a44" font-size="12" x="35" y="77">Neurosecretory</text><text fill="#1f2a44" font-size="12" x="35" y="93">cells</text><rect fill="#EAF7EF" height="45" rx="8" stroke="#16A34A" stroke-width="2" width="135" x="200" y="55"></rect><text fill="#1f2a44" font-size="12" x="210" y="77">Hypothalamic</text><text fill="#1f2a44" font-size="12" x="210" y="93">hormones</text><line marker-end="url(#arrow2-t8-s1)" stroke="#123B7A" stroke-width="2" x1="160" x2="200" y1="78" y2="78"></line><rect fill="#F4EFFE" height="45" rx="8" stroke="#7C3AED" stroke-width="2" width="310" x="25" y="120"></rect><text fill="#1f2a44" font-size="12" x="35" y="142">Outputs: temperature • hunger • thirst • autonomic control</text></svg></div><ul class="b"><li><b>Thalamus</b> is a major coordinating/relay centre for <b>sensory</b> and <b>motor</b> signalling to cortex.</li><li><b>Hypothalamus</b> lies at base of thalamus; maintains <b>homeostasis</b> via autonomic regulation.</li><li>Hypothalamic centres control <b>body temperature</b>, <b>hunger</b> (urge for eating) and <b>thirst</b> (urge for drinking).</li><li>Hypothalamus contains <b>neurosecretory cells</b> releasing <b>hypothalamic hormones</b> (endocrine coordination).</li><li><b>Limbic system</b> = inner cerebrum + deep structures (notably <b>amygdala</b>, <b>hippocampus</b>).</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">GREY MATTER vs WHITE MATTER (CEREBRUM)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Grey matter</th><th>White matter</th></tr></thead><tbody><tr><td>Main location</td><td>Outer cerebral cortex</td><td>Inner cerebrum</td></tr><tr><td>Dominant components</td><td>Neuron cell bodies, dendrites, synapses</td><td>Myelinated axons (fibre tracts)</td></tr><tr><td>Appearance reason</td><td>Less myelin; cell bodies concentrated</td><td>Myelin gives opaque white look</td></tr><tr><td>Primary role (exam-usable)</td><td>Processing/integration at cortex</td><td>Fast conduction between regions</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>THAL</b> = <b>TH</b>roughput, <b>HYPO</b> = <b>HY</b>omeostasis”</div><paragraph id="6aa538b41539e4c1b0000156"><b>THAL</b>amus: sensory–motor <b>throughput/relay</b> to cortex.</paragraph><paragraph id="6aa538b4bdee7201b7000157"><b>HYPO</b>thalamus: <b>homeostasis</b> (temperature, hunger, thirst) + hormones.</paragraph><paragraph id="6aa538b44abfa4ae74000158">Limbic = <b>Feel &amp; Form</b>: amygdala (feelings) + hippocampus (forming memories).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Brainstem regions: key landmarks, pathways, reflex centres, and vital control</div>
+              <h2>MIDBRAIN AND HINDBRAIN</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card" style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Midbrain</b> lies between forebrain (thalamus/hypothalamus) and <b>pons</b>; part of the <b>brainstem</b>.</li><li>Midbrain contains the <b>cerebral aqueduct</b>, a narrow canal connecting the 3rd and 4th ventricles.</li><li>Dorsal midbrain has <b>corpora quadrigemina</b> (four swellings): key visual and auditory reflex centres.</li><li><b>Hindbrain</b> includes <b>pons</b>, <b>cerebellum</b>, and <b>medulla oblongata</b>.</li><li><b>Medulla</b> continues with spinal cord and houses vital centres: respiration, cardiovascular reflexes, and gastric secretions.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+  
+   <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-70.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Brainstem = <b>midbrain + pons + medulla</b>; main connection between brain and spinal cord.</span></li><li><span class="ic">🚰</span><span><b>Cerebral aqueduct</b> runs through midbrain; links <b>3rd ↔ 4th ventricle</b> (CSF pathway).</span></li><li><span class="ic">👁️</span><span><b>Superior colliculi</b> (upper pair of corpora quadrigemina): visual reflexes (eye/head turning).</span></li><li><span class="ic">👂</span><span><b>Inferior colliculi</b> (lower pair): auditory reflexes (startle, orientation to sound).</span></li><li><span class="ic">🧵</span><span><b>Pons</b> has fibre tracts ("bridge") interconnecting brain regions; helps regulate breathing rhythm.</span></li><li><span class="ic">🎯</span><span><b>Cerebellum</b> is highly convoluted; coordinates posture, balance, and smooth precise movements.</span></li></ul></div></div>
+<div class="row c2"><div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">MIDBRAIN: LANDMARKS + REFLEX ROLE</span></h2><ul class="b"><li><b>Cerebral aqueduct</b> traverses midbrain; CSF passage between 3rd and 4th ventricles.</li><li><b>Corpora quadrigemina</b> = 4 dorsal lobes: <b>superior</b> (visual) + <b>inferior</b> (auditory).</li><li>Reflex idea: sudden light/sound → midbrain centres → quick orienting movements of head/eyes.</li><li>Midbrain also carries ascending/descending tracts between cerebrum and spinal cord.</li></ul></div><div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">HINDBRAIN: PONS, CEREBELLUM, MEDULLA (HIGH-YIELD FUNCTIONS)</span></h2><ul class="b"><li><b>Pons</b>: fibre tracts interconnect regions; works with medulla in regulating breathing rhythm.</li><li><b>Cerebellum</b>: highly convoluted cortex; posture, balance, and coordination/precision of voluntary movement.</li><li><b>Medulla oblongata</b>: continuous with spinal cord; contains vital centres.</li><li>Medullary centres: <b>respiration centre</b>, <b>cardiovascular reflexes</b>, and control of <b>gastric secretions</b>.</li><li>Brainstem damage can affect basic life-support functions (breathing, circulation).</li></ul></div></div>
+<div class="card" style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">MIDBRAIN vs PONS vs MEDULLA (Brainstem quick compare)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Midbrain</th><th>Pons</th><th>Medulla oblongata</th></tr></thead><tbody><tr><td>Major landmark</td><td>Cerebral aqueduct; corpora quadrigemina</td><td>Bridge-like fibre tracts</td><td>Continues with spinal cord</td></tr><tr><td>Core role</td><td>Reflex + relay pathways</td><td>Interconnects regions; supports respiratory rhythm</td><td>Vital centres + reflex control</td></tr><tr><td>High-yield functions</td><td>Visual/auditory reflexes (orientation)</td><td>Relay; breathing modulation</td><td>Respiration; cardiovascular reflexes; gastric secretions</td></tr></tbody></table></div></div>
+
+<div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>Mi-Po-Me</b> and <b>4Q</b>”</div><paragraph id="6aa538b4d75c564d5a000159"><b>Mi-Po-Me</b> = <b>Midbrain → Pons → Medulla</b> (top to bottom brainstem).</paragraph><paragraph id="6aa538b41391adeca300015a"><b>4Q</b> = <b>4</b> swellings of <b>Q</b>uadrigemina: upper = <b>see</b>, lower = <b>hear</b>.</paragraph><paragraph id="6aa538b43c791818b700015b">Cerebellum: think <b>"Cere-balance"</b> for posture, balance, coordination.</paragraph></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

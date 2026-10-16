@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>CHAPTER TEN</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/><link href="css/katex.min.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c00ddede774a26c2c15a4/vendor/katex/katex.min.js"></script><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c00ddede774a26c2c15a4/vendor/katex/contrib/auto-render.min.js"></script><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c00ddede774a26c2c15a4/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Ch10: Thermal Properties of Matter </h1>
+
+<h2>Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaed4"><b>Thermal properties of matter</b> = heat + temperature, how we measure them, what heating does (ΔT, expansion, change of state), and <b>how heat flows</b>.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaed5">Everyday “hot” vs “cold” feels obvious, but physics needs <b>precise</b> definitions.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaed6">Heat flow explains real-life stuff: heating an iron ring so it fits; wind direction changes near a beach after sunset (both due to <b>temperature differences</b> causing effects).</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaed7">During boiling/freezing of water, <b>temperature may stay constant</b> even while lots of heat enters/leaves (covered later under change of state).</paragraph></li>
+</ul>
+
+<h2>Temperature and Heat</h2>
+
+<h3>Temperature: meaning and limitations of touch</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaed8"><b>Temperature</b> = a <b>relative measure/indication</b> of how hot or cold a body is.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaed9">If body A has higher temperature than body B, A is <b>hotter</b>.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaeda">“Hot” and “cold” are <b>relative</b> terms (like “tall”/“short”).</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaedb">Touch can sense temperature, but it’s <b>unreliable</b> + has a <b>limited range</b> → not good enough for scientific measurement.</paragraph></li>
+</ul>
+
+<h3>Heat: energy transfer due to temperature difference</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaedc"><b>Heat</b> = <b>energy transferred</b> between systems (or system ↔ surroundings) <b>because of a temperature difference</b>.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaedd">If a body and surroundings are at different temperatures, <b>heat transfer happens</b> until both reach the <b>same temperature</b> (thermal equilibrium).</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaede">Direction of heat flow:</paragraph>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaedf">Always from <b>higher temperature</b> → <b>lower temperature</b>.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaee0">Example: ice-cold water warms as heat flows <b>environment → water</b>; hot tea cools as heat flows <b>tea → environment</b>.</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaee1"><b>Units</b></paragraph>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaee2">SI unit of heat (energy transferred): <b>joule (J)</b></paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaee3">SI unit of temperature: <b>kelvin (K)</b></paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaee4">Common practical unit: <b>degree Celsius (°C)</b></paragraph></li>
+</ul>
+</div>
+
+<h3>Effects of heating</h3>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaee5">When you heat an object, one (or more) can happen:</paragraph>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaee6"><b>Temperature rises</b></paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaee7"><b>Expansion</b> (dimensions/volume change)</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaee8"><b>Change of state</b> (e.g. melting/boiling)</paragraph></li>
+</ul>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaee9"><b>Exam tip:</b> Don’t define heat as “something stored in a body.” Here, <b>heat</b> means <b>energy in transit</b> due to a temperature difference.</paragraph>
+</div>
+
+<h2>Measurement of Temperature</h2>
+
+<h3>Thermometers and thermometric properties</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaeea">A <b>thermometer</b> measures temperature using a material property that changes clearly with temperature = a <b>thermometric property</b>.</paragraph>
+</div>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaeeb">Common thermometric property: <b>liquid volume changes with temperature</b>.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaeec">In <b>liquid-in-glass thermometers</b> (mercury/alcohol), liquid volume changes approx <b>linearly</b> with temperature over a wide range.</paragraph></li>
+</ul>
+
+<h3>Calibration: fixed reference points</h3>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaeed">To give temperatures numbers, thermometers must be <b>calibrated</b> using a temperature scale.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaeee">A standard temperature scale needs <b>two fixed reference points</b>.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaeef">No absolute “no-expansion” reference exists because <b>all substances expand/contract</b> with temperature.</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaef0">So we choose fixed points from <b>reproducible physical phenomena</b> that always occur at the same temperature.</paragraph></li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaef1"><b>Ice point</b> (freezing) and <b>steam point</b> (boiling) of water are convenient fixed points: temperatures where <b>pure water</b> freezes/boils at <b>standard pressure</b>.</paragraph>
+</div>
+
+<h3>Fahrenheit and Celsius scales</h3>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaef2">Fixed-point values:</paragraph>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaef3"><b>Fahrenheit:</b> ice point = <b>32 °F</b>, steam point = <b>212 °F</b></paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaef4"><b>Celsius:</b> ice point = <b>0 °C</b>, steam point = <b>100 °C</b></paragraph></li>
+</ul>
+</li>
+<li><paragraph id="6a8930c3a2360cecfa2aaef5">Equal intervals between ice and steam points:</paragraph>
+<ul>
+<li><paragraph id="6a8930c3a2360cecfa2aaef6"><b>Fahrenheit:</b> 180 intervals (212 − 32)</paragraph></li>
+<li><paragraph id="6a8930c3a2360cecfa2aaef7"><b>Celsius:</b> 100 intervals (100 − 0)</paragraph></li>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 737px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01.webp" decoding="async" fetchpriority="high" height="549" loading="eager" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01.webp" srcset="img/fig-01.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="737"/>
+    </button>
+  </div>
+</figure>
+</ul>
+</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaef8"><b>Fahrenheit ↔ Celsius conversion</b> (Eq. 10.1)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaef9">(t<sub>F</sub> − 32) / 180 = t<sub>C</sub> / 100</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaefa"><b>t<sub>F</sub></b> = temperature on Fahrenheit scale (°F)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaefb"><b>t<sub>C</sub></b> = temperature on Celsius scale (°C)</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaefc"><b>Common mistake:</b> Don’t swap the <b>180</b> and <b>100</b> in Eq. (10.1) — they’re the number of divisions between freezing &amp; boiling on each scale.</paragraph>
+</div>
+
+<h2>Ideal-Gas Equation and Absolute Temperature</h2>
+
+<h3>Why gas thermometers are special</h3>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaefd"><b>Liquid-in-glass thermometers</b> can disagree away from fixed points → different liquids expand differently.</paragraph></li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaefe">A <b>gas thermometer</b> gives the <b>same readings no matter which gas</b> is used (as long as the gas is <b>low density</b>).</paragraph></li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaeff">Experiments: <b>all low-density gases</b> show the <b>same expansion behaviour</b>.</paragraph></li>
+</ul>
+
+<h3>State variables and Celsius–Kelvin connection</h3>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf00">A fixed mass of gas is described by <b>pressure (P)</b>, <b>volume (V)</b>, <b>temperature (T)</b>.</paragraph></li>
+  <li>
+    <paragraph id="6a8930c3a2360cecfa2aaf01">Kelvin–Celsius link:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c3a2360cecfa2aaf02">T = t + 273.15 (t in °C)</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Boyle’s law (constant temperature)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aaf03"><b>Boyle’s law:</b> fixed quantity of gas, constant temperature → <b>PV = constant</b>.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf04">Due to <b>Robert Boyle (1627–1691)</b>.</paragraph></li>
+</ul>
+
+<h3>Charles’ law (constant pressure)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aaf05"><b>Charles’ law:</b> fixed quantity of gas, constant pressure → <b>V/T = constant</b>.</paragraph>
+</div>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf06">Due to <b>Jacques Charles (1747–1823)</b>.</paragraph></li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf07"><b>Low-density gases</b> obey Boyle’s + Charles’ laws well.</paragraph></li>
+</ul>
+
+<h3>Ideal gas law and ideal-gas equation</h3>
+<ul>
+  <li>
+    <paragraph id="6a8930c3a2360cecfa2aaf08">Combine: PV = constant (at constant T) + V/T = constant (at constant P) ⇒ for fixed gas amount:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c3a2360cecfa2aaf09"><b>PV/T = constant</b></paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf0a">This combined relation is the <b>ideal gas law</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2aaf0b"><b>Ideal-gas equation</b> (Eq. 10.2):</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf0c">PV = μRT</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf0d"><b>P</b> = pressure (Pa)</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf0e"><b>V</b> = volume (m³)</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf0f"><b>μ</b> = number of moles (mol)</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf10"><b>R</b> = universal gas constant</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf11"><b>T</b> = absolute temperature (K)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2aaf12"><b>Universal gas constant:</b></paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf13">R = 8.31 J mol<sup>−1</sup> K<sup>−1</sup></paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf14"><b>R</b> = same proportionality constant for all low-density (ideal) gases</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aaf15">From PV = μRT, if gas amount is fixed (μ constant):</paragraph>
+  <ul>
+    <li><paragraph id="6a8930c3a2360cecfa2aaf16"><b>PV ∝ T</b> (pressure × volume ∝ absolute temperature)</paragraph></li>
+  </ul>
+</div>
+
+<h3>Constant-volume gas thermometer (P ∝ T)</h3>
+<ul>
+  <li>
+    <paragraph id="6a8930c3a2360cecfa2aaf17">Hold volume constant; from PV ∝ T:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c3a2360cecfa2aaf18"><b>P ∝ T</b></paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf19">So a <b>constant-volume gas thermometer</b> measures temperature via <b>pressure</b>.</paragraph></li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf1a">Pressure–temperature graph is a <b>straight line</b> (low-density gases, wide range).</paragraph></li>
+  <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 954px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-02.webp" decoding="async" height="537" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-02.webp" srcset="img/fig-02.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="954"/>
+    </button>
+  </div>
+</figure>
+</ul>
+
+<h3>Real gas deviation and absolute zero</h3>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf1b">Real gases deviate from ideal behaviour at <b>low temperatures</b>.</paragraph></li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf1c">But over a big range, the P–T relation stays ~<b>linear</b> → suggests pressure would hit <b>zero</b> at some low T (if gas stayed gaseous).</paragraph></li>
+  <li>
+    <paragraph id="6a8930c3a2360cecfa2aaf1d">Extrapolate the straight-line P–T graph to the T-axis (where P = 0) ⇒</paragraph>
+    <ul>
+      <li><paragraph id="6a8930c3a2360cecfa2aaf1e"><b>−273.15 °C</b></paragraph></li>
+    </ul>
+  </li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf1f">This temperature is <b>absolute zero</b>.</paragraph></li>
+  <figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 938px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-03.webp" decoding="async" height="549" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-03.webp" srcset="img/fig-03.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="938"/>
+    </button>
+  </div>
+</figure>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aaf20"><b>Absolute zero</b> (−273.15 °C) underpins the <b>Kelvin (absolute) scale</b>: −273.15 °C ↔ <b>0 K</b>.</paragraph>
+</div>
+
+<h3>Kelvin scale relation to Celsius</h3>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf21">Unit size is the same: change of <b>1 K</b> = change of <b>1 °C</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2aaf22"><b>Kelvin–Celsius relation</b> (Eq. 10.3):</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf23">T = t<sub>C</sub> + 273.15</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf24"><b>T</b> = absolute temperature (K)</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf25"><b>t<sub>C</sub></b> = Celsius temperature (°C)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c3a2360cecfa2aaf26"><b>Exam tip:</b> In PV = μRT, always use <b>T in kelvin</b>. Never plug in °C directly.</paragraph>
+</div>
+
+<h2>Thermal Expansion</h2>
+
+<h3>Everyday observations illustrating thermal expansion</h3>
+<ul>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf27"><b>Metal lids on sealed bottles</b> can stick; dip lid in <b>hot water</b> → lid expands → loosens → easier to open.</paragraph></li>
+  <li><paragraph id="6a8930c3a2360cecfa2aaf28">Liquids: <b>mercury in a thermometer rises</b> in warm water → liquid expands when heated.</paragraph></li>
+</ul>
+
+<h2>Thermal Expansion: Basic Idea and Types</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aaf29"><b>Thermal expansion</b> = increase in a body’s dimensions when its temperature rises.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf2a">Most substances <b>expand on heating</b> and <b>contract on cooling</b>.</paragraph>
+</div>
+<ul>
+  <li><b>Linear expansion</b>: change in length.</li>
+  <li><b>Area (superficial) expansion</b>: change in area.</li>
+  <li><b>Volume (cubical) expansion</b>: change in volume.</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aaf2b">Everyday effects (thermometers, balloons in hot/cold water, etc.) come from expansion/contraction.</paragraph>
+</div>
+
+<h2>Coefficient of Linear Expansion (Linear Expansivity)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aaf2c">For a long rod and small temperature change ΔT: <b>fractional change in length</b> ∝ ΔT.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2aaf2d"><b>Linear expansion</b> (Eq. 10.4): Δl/l = α<sub>l</sub> ΔT</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf2e">Δl = change in length</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf2f">l = original length</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf30">ΔT = change in temperature</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf31">α<sub>l</sub> = coefficient of linear expansion (K<sup>−1</sup>), material property</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>α<sub>l</sub> depends on material; usually quoted over a range (here 0 °C → 100 °C).</li>
+    <li>Metals usually have <b>higher</b> α<sub>l</sub> than non-metals like glass → expand more for same ΔT.</li>
+    <li>From values given: <b>copper expands ~5× more than pyrex glass</b> for the same temperature rise.</li>
+  </ul>
+</div>
+<ul>
+  <li>Typical α<sub>l</sub> (×10<sup>−5</sup> K<sup>−1</sup>): Aluminium 2.5, Brass 1.8, Iron 1.2, Copper 1.7, Silver 1.9, Gold 1.4, Glass (pyrex) 0.32, Lead 0.29.</li>
+</ul>
+
+<h2>Coefficient of Volume Expansion (Volume Expansivity)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aaf32">For temperature change ΔT: <b>fractional change in volume</b> defines α<sub>v</sub>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2aaf33"><b>Volume expansion</b> (Eq. 10.5): ΔV/V = α<sub>v</sub> ΔT</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf34">ΔV = change in volume</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf35">V = original volume</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf36">ΔT = change in temperature</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf37">α<sub>v</sub> = coefficient of volume expansion (K<sup>−1</sup>)</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>α<sub>v</sub> is a substance property but <b>not strictly constant</b>; generally varies with temperature.</li>
+    <li>For some substances (e.g. copper), α<sub>v</sub> is ~constant only at <b>high temperature</b>.</li>
+  </ul>
+</div>
+<ul>
+  <li>Typical α<sub>v</sub> (0–100 °C): Aluminium 7×10<sup>−5</sup>, Brass 6×10<sup>−5</sup>, Iron 3.55×10<sup>−5</sup>, Paraffin 58.8×10<sup>−5</sup>, Glass (ordinary) 2.5×10<sup>−5</sup>, Glass (pyrex) 1×10<sup>−5</sup>, Hard rubber 2.4×10<sup>−4</sup>, Invar 2×10<sup>−6</sup>, Mercury 18.2×10<sup>−5</sup>, Water 20.7×10<sup>−5</sup>, Alcohol (ethanol) 110×10<sup>−5</sup> (all in K<sup>−1</sup>).</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aaf38">From values: <b>ethanol has larger α<sub>v</sub> than mercury</b> ⇒ ethanol expands more for the same ΔT.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aaf39">Some materials (e.g. <b>pyrex glass</b>, <b>invar</b>) have <b>very low</b> thermal expansion.</paragraph>
+</div>
+
+<h2>Anomalous Expansion of Water (0 °C to 4 °C)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf3a"><b>Anomalous behaviour of water</b>: from 0 °C to 4 °C, water <b>contracts on heating</b> (opposite of usual expansion).</paragraph>
+</div>
+<ul>
+<li>Cool water from room temp down to <b>4 °C</b> → <b>volume decreases</b> (so density increases).</li>
+<li>Below <b>4 °C</b> → <b>volume increases</b> (so density decreases).</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf3b"><b>Water has maximum density at 4 °C.</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf3c"><b>Environmental significance</b>: lakes/ponds freeze from the <b>top</b> first.</paragraph>
+<ul>
+<li>Cooling toward 4 °C: surface water loses energy → denser → sinks; warmer water rises (mixing continues).</li>
+<li>Once surface water cools below 4 °C: it becomes less dense → stays on top → freezes there.</li>
+<li>If water didn’t do this, water bodies would freeze <b>bottom-up</b>, threatening aquatic plant/animal life.</li>
+</ul>
+</div>
+
+<h2>Thermal Expansion of Gases and Ideal Gas Result</h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>At ordinary temperatures, <b>gases expand much more</b> than solids + liquids.</li>
+<li>For liquids: α<sub>v</sub> is fairly <b>independent of temperature</b>.</li>
+<li>For gases: α<sub>v</sub> is <b>temperature-dependent</b>.</li>
+</ul>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf3d">For an <b>ideal gas</b>, α<sub>v</sub> at <b>constant pressure</b> comes straight from the ideal gas equation.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf3e"><b>Ideal gas equation</b>: PV = μRT</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf3f">P = pressure</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf40">V = volume</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf41">μ = number of moles</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf42">R = gas constant</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf43">T = absolute temperature (K)</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf44">At constant pressure (ideal gas): α<sub>v</sub> = (1/V)(ΔV/ΔT) = 1/T   (Eq. 10.6)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf45">α<sub>v</sub> = coefficient of volume expansion (constant pressure)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf46">T = absolute temperature (K)</paragraph>
+</div>
+<ul>
+<li>At 0 °C (273 K): α<sub>v</sub> ≈ 3.7 × 10<sup>−3</sup> K<sup>−1</sup> (huge vs solids/liquids).</li>
+<li>Since α<sub>v</sub> = 1/T, α<sub>v</sub> <b>decreases when temperature increases</b>.</li>
+<li>At room temperature (constant pressure): α<sub>v</sub> ≈ 3300 × 10<sup>−6</sup> K<sup>−1</sup> (orders of magnitude bigger than typical liquids).</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaf47">For gases, use <b>absolute temperature (kelvin)</b> in α<sub>v</sub> = 1/T. Using °C directly is a classic exam slip.</paragraph>
+</div>
+
+<h2>Relation Between Volume Expansivity and Linear Expansivity (Isotropic Solids)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf48">For an isotropic solid (same expansion in all directions): <b>volume expansivity</b> links to <b>linear expansivity</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf49">Δl = α<sub>l</sub> l ΔT</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf4a">Δl = change in length of cube edge</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf4b">l = original edge length</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf4c">α<sub>l</sub> = linear expansivity</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf4d">ΔT = temperature change</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf4e">For a cube: ΔV = (l + Δl)<sup>3</sup> − l<sup>3</sup> ≃ 3l<sup>2</sup>Δl   (Eq. 10.7)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf4f">ΔV = change in volume</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf50">l = original edge length</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf51">Δl = small increase in edge length</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf52">Approximation: ignore (Δl)<sup>2</sup> and (Δl)<sup>3</sup> since Δl ≪ l</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf53">ΔV/V = 3(Δl/l) = 3α<sub>l</sub>ΔT   (Eq. 10.8)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf54">V = l<sup>3</sup> (original volume)</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf55"><b>Key relation</b>: α<sub>v</sub> = 3α<sub>l</sub>   (Eq. 10.9)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf56">α<sub>v</sub> = volume expansivity</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf57">α<sub>l</sub> = linear expansivity</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaf58">α<sub>v</sub> = 3α<sub>l</sub> works only for uniform (isotropic) expansion + small ΔT (so higher-order terms stay negligible).</paragraph>
+</div>
+
+<h2>Thermal Stress (Expansion Prevented)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf59">If a rod’s ends are rigidly fixed (can’t expand), it develops <b>compressive strain</b>. The resulting stress is <b>thermal stress</b>.</paragraph>
+</div>
+<ul>
+<li>If free: strain would be Δl/l = α<sub>l</sub>ΔT.</li>
+<li>If prevented: that “would-be” strain is stored as elastic strain → produces stress.</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf5a"><b>Thermal strain (if free)</b>: ε = Δl/l = α<sub>l</sub>ΔT</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf5b">ε = strain</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf5c">α<sub>l</sub> = linear expansivity</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf5d">ΔT = temperature change</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf5e"><b>Thermal stress (expansion prevented)</b>: σ = Y ε = Y α<sub>l</sub>ΔT</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf5f">σ = stress (N m<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf60">Y = Young’s modulus (N m<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf61">ε = strain</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf62"><b>Force due to thermal stress</b>: ΔF = Aσ = AYα<sub>l</sub>ΔT</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf63">ΔF = compressive force developed</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf64">A = cross-sectional area</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf65"><b>Worked numerical (steel rail)</b>:</paragraph>
+<ul>
+<li>Given: l = 5 m, A = 40 cm<sup>2</sup> = 40×10<sup>−4</sup> m<sup>2</sup>, ΔT = 10 °C, α<sub>l</sub>(steel)=1.2×10<sup>−5</sup> K<sup>−1</sup>, Y(steel)=2×10<sup>11</sup> N m<sup>−2</sup>.</li>
+<li>Strain: Δl/l = α<sub>l</sub>ΔT = 1.2×10<sup>−5</sup>×10 = 1.2×10<sup>−4</sup>.</li>
+<li>Stress: σ = Y(Δl/l) = 2×10<sup>11</sup>×1.2×10<sup>−4</sup> = 2.4×10<sup>7</sup> N m<sup>−2</sup>.</li>
+<li>Force: ΔF = Aσ = 2.4×10<sup>7</sup>×(40×10<sup>−4</sup>) ≈ 1×10<sup>5</sup> N (order as given).</li>
+<li>Interpretation: forces this big can bend rails when rails touch and expansion is constrained.</li>
+</ul>
+</div>
+
+<h2>Example 10.1: Coefficient of Area Expansion</h2>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 821px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-04.webp" decoding="async" height="542" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-04.webp" srcset="img/fig-04.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="821"/>
+    </button>
+  </div>
+</figure>
+<h3>Derivation for a Rectangular Sheet: α<sub>A</sub> = 2α<sub>l</sub></h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf66"><b>Coefficient of area expansion</b> = (ΔA/A)/ΔT (for small ΔT).</paragraph>
+</div>
+<paragraph id="6a8930c3a2360cecfa2aaf67">Take a rectangle: length a, breadth b.</paragraph>
+<ul>
+<li>Initial area: A = ab</li>
+<li>Heat by ΔT:</li>
+<ul>
+<li>Δa = α<sub>l</sub>aΔT</li>
+<li>Δb = α<sub>l</sub>bΔT</li>
+</ul>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aaf68">Area increase = 3 contributions:</paragraph>
+<ul>
+<li>ΔA<sub>1</sub> = a(Δb)</li>
+<li>ΔA<sub>2</sub> = b(Δa)</li>
+<li>ΔA<sub>3</sub> = (Δa)(Δb) (tiny “corner” term)</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aaf69">So,</paragraph>
+<ul>
+<li>ΔA = aΔb + bΔa + (Δa)(Δb)</li>
+<li>= a(α<sub>l</sub>bΔT) + b(α<sub>l</sub>aΔT) + (α<sub>l</sub>aΔT)(α<sub>l</sub>bΔT)</li>
+<li>= α<sub>l</sub>abΔT(2 + α<sub>l</sub>ΔT)</li>
+<li>= α<sub>l</sub>AΔT(2 + α<sub>l</sub>ΔT)</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf6a">α<sub>l</sub> ~ 10<sup>−5</sup> K<sup>−1</sup>, so α<sub>l</sub>ΔT ≪ 2 ⇒ drop α<sub>l</sub>ΔT in (2 + α<sub>l</sub>ΔT).</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf6b">ΔA ≈ 2α<sub>l</sub>AΔT ⇒ (ΔA/A)/ΔT = 2α<sub>l</sub></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf6c">ΔA = change in area</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf6d">A = original area</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf6e">α<sub>l</sub> = linear expansivity</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf6f">ΔT = temperature change</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaf70">Don’t delete (Δa)(Δb) immediately—first note it’s second order in the small quantity α<sub>l</sub>ΔT, then neglect it.</paragraph>
+</div>
+
+<h2>Example 10.2: Heating an Iron Ring to Fit a Wooden Wheel</h2>
+<h3>Using Linear Expansion on Diameter</h3>
+<paragraph id="6a8930c3a2360cecfa2aaf71">Situation: heat an iron ring so its diameter increases enough to fit the wooden rim.</paragraph>
+<ul>
+<li>Rim diameter at 27 °C: 5.243 m</li>
+<li>Iron ring diameter at 27 °C: 5.231 m</li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf72">Linear expansion works for any linear size — including <b>diameter</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf73">L<sub>T2</sub> = L<sub>T1</sub>[1 + α<sub>l</sub>(T<sub>2</sub> − T<sub>1</sub>)]</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf74">L<sub>T1</sub> = length (here: diameter) at T<sub>1</sub></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf75">L<sub>T2</sub> = length (diameter) at T<sub>2</sub></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf76">α<sub>l</sub> = coefficient of linear expansion (iron) = 1.20×10<sup>−5</sup> K<sup>−1</sup></paragraph>
+</div>
+<paragraph id="6a8930c3a2360cecfa2aaf77">Given: T<sub>1</sub> = 27 °C, L<sub>T1</sub> = 5.231 m, L<sub>T2</sub> = 5.243 m.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf78">Substitute:</paragraph>
+<ul>
+<li>5.243 = 5.231[1 + 1.20×10<sup>−5</sup>(T<sub>2</sub> − 27)]</li>
+<li>On solving: T<sub>2</sub> = 218 °C.</li>
+</ul>
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaf79">Temperature change can be in °C or K (same number), but keep α in K<sup>−1</sup> and stay consistent.</paragraph>
+</div>
+
+<h2>10.6 Specific Heat Capacity</h2>
+
+<h3>Factors affecting heat required to raise temperature</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf7a">Heating experiments (same heater; time taken ∝ heat supplied):</paragraph>
+<ul>
+<li>Same <b>mass</b>: double the <b>temperature rise</b> → about double the time ⇒ heat required ∝ <b>∆T</b>.</li>
+<li>Same <b>temperature rise</b>: double the <b>mass</b> → about double the time ⇒ heat required ∝ <b>m</b>.</li>
+<li>Same <b>mass</b> + same <b>∆T</b>: different substances take different times ⇒ heat required depends on <b>nature of substance</b>.</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aaf7b">So heat needed to warm a substance depends on <b>mass (m)</b>, <b>temperature change (∆T)</b>, and <b>the material</b>.</paragraph>
+</div>
+
+<h3>Heat capacity (S)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf7c"><b>Heat capacity</b> tells how much the temperature of a <b>given body</b> changes when it absorbs (or gives out) heat.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf7d"><b>(10.10) Heat capacity</b>: S = ∆Q/∆T</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf7e">∆Q: heat supplied to the substance</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf7f">∆T: temperature change produced (from T to T + ∆T)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf80">S: heat capacity of that body (depends on <b>amount</b> + <b>material</b>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf81">Give the same ∆Q to equal masses of different substances → you get different ∆T values ⇒ each substance responds differently to heating.</paragraph>
+</div>
+
+<h3>Specific heat capacity (s)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf82"><b>Specific heat capacity</b> = heat needed <b>per unit mass</b> to raise temperature by <b>1 unit</b> (with <b>no phase change</b>).</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf83">It’s a property of the substance: it controls how much T changes for a given heat absorbed / released.</paragraph>
+<ul>
+<li>Depends on <b>nature of substance</b> and its <b>temperature</b>.</li>
+<li>Defined only when there is <b>no phase change</b> happening.</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf84"><b>(10.11) Specific heat capacity</b>: s = ∆Q/(m∆T)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf85">∆Q: heat absorbed or given off</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf86">m: mass of substance</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf87">∆T: temperature change produced</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf88">s: specific heat capacity</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf89">SI unit of specific heat capacity: <b>J kg<sup>–1</sup> K<sup>–1</sup></b>.</paragraph>
+</div>
+
+<h3>Molar specific heat capacity (C)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf8a">If we measure amount of substance in <b>moles (µ)</b> instead of mass (kg), we use <b>molar specific heat capacity</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaf8b"><b>(10.12) Molar specific heat capacity</b>: C = ∆Q/(µ∆T)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf8c">∆Q: heat absorbed or given off</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf8d">µ: amount of substance (moles)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf8e">∆T: temperature change</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf8f">C: molar specific heat capacity</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf90">Like S, molar specific heat capacity C depends on the <b>nature of the substance</b> and its <b>temperature</b>.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf91">SI unit of molar specific heat capacity: <b>J mol<sup>–1</sup> K<sup>–1</sup></b>.</paragraph>
+</div>
+
+<h3>Molar specific heats of gases: C<sub>p</sub> and C<sub>v</sub></h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf92">For gases, you must state the heating condition because heat transfer can be at:</paragraph>
+<ul>
+<li><b>Constant pressure</b> → molar specific heat at constant pressure, <b>C<sub>p</sub></b></li>
+<li><b>Constant volume</b> → molar specific heat at constant volume, <b>C<sub>v</sub></b></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf93">When using molar specific heats for gases, always say whether heating is at <b>constant pressure</b> or <b>constant volume</b> (more details later in thermodynamics).</paragraph>
+</div>
+
+<h3>Measured values: specific heat capacities (Table 10.3) and molar specific heats of gases (Table 10.4)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf94"><b>Specific heat capacity at room temperature + atmospheric pressure (J kg<sup>–1</sup> K<sup>–1</sup>):</b></paragraph>
+<ul>
+<li>Aluminium: 900.0</li>
+<li>Carbon: 506.5</li>
+<li>Copper: 386.4</li>
+<li>Iron: 450</li>
+<li>Lead: 127.7</li>
+<li>Silver: 236.1</li>
+<li>Tungesten: 134.4</li>
+<li>Mercury: 140</li>
+<li>Ice: 2060</li>
+<li>Glass: 840</li>
+<li>Kerosene: 2118</li>
+<li>Edible oil: 1965</li>
+<li>Water: 4186.0</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aaf95"><b>Molar specific heat capacities of some gases (J mol<sup>–1</sup> K<sup>–1</sup>):</b></paragraph>
+<ul>
+<li>He: C<sub>p</sub>=20.8, C<sub>v</sub>=12.5</li>
+<li>H<sub>2</sub>: C<sub>p</sub>=28.8, C<sub>v</sub>=20.4</li>
+<li>N<sub>2</sub>: C<sub>p</sub>=29.1, C<sub>v</sub>=20.8</li>
+<li>O<sub>2</sub>: C<sub>p</sub>=29.4, C<sub>v</sub>=21.1</li>
+<li>CO<sub>2</sub>: C<sub>p</sub>=37.0, C<sub>v</sub>=28.5</li>
+</ul>
+</div>
+
+<h3>Consequences of water having a high specific heat capacity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf96">Water has the <b>highest specific heat capacity</b> in the list (4186 J kg<sup>–1</sup> K<sup>–1</sup>), so for the same heat input its temperature rises <b>less</b> than most materials.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Coolant in car radiators</b>: takes in lots of heat with only a small rise in temperature.</li>
+<li><b>Hot water bags</b>: stores lots of heat energy, releases it slowly.</li>
+<li><b>Coastal climate</b>: sea warms slower than land in summer → sea breeze feels cool.</li>
+<li><b>Desert climate</b>: land (lower s than water) heats fast by day, cools fast at night.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaf97">Exam tip: always link to the chain: <b>high s</b> → <b>more heat needed for same ∆T</b> → <b>temperature changes slowly</b>.</paragraph>
+</div>
+
+<h2>10.7 Calorimetry</h2>
+
+<h3>Isolated system and heat exchange principle</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf98"><b>Isolated system</b> = system where <b>no heat is exchanged</b> with the surroundings.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf99">If parts of an isolated system are at different temperatures, heat flows from <b>hotter → colder</b> until <b>thermal equilibrium</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf9a"><b>Heat balance (isolated system):</b> heat <b>lost</b> by hot part = heat <b>gained</b> by cold part.</paragraph>
+</div>
+
+<h3>Meaning of calorimetry</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf9b"><b>Calorimetry</b> = <b>measurement of heat</b>.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaf9c">When a hot body touches a cold body:</paragraph>
+<ul>
+<li>Heat lost by hot body = heat gained by cold body</li>
+<li><b>Provided</b> no heat escapes to the surroundings (i.e. setup is effectively isolated).</li>
+</ul>
+</div>
+
+<h3>Calorimeter: construction and function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaf9d"><b>Calorimeter</b> = device used for heat measurements.</paragraph>
+<ul>
+<li>Made of a <b>metal vessel</b> + <b>stirrer</b> (same material; usually <b>copper</b> or <b>aluminium</b>).</li>
+<li>Vessel kept inside a <b>wooden jacket</b> with <b>insulating material</b> (e.g. <b>glass wool</b>).</li>
+<li>Outer jacket acts as a <b>heat shield</b> → reduces heat loss from inner vessel.</li>
+<li>Has an opening to insert a <b>mercury thermometer</b>.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aaf9e">In calorimetry numericals, add heat absorbed by the <b>calorimeter vessel</b> (and stirrer if relevant) along with water, unless the question says to neglect it.</paragraph>
+</div>
+
+<h3>Example 10.3: Determination of specific heat capacity of aluminium using calorimetry</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaf9f"><b>Principle:</b> at steady state (final common temperature),</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafa0"><b>Heat given by hot body = Heat absorbed by water + calorimeter</b> (no heat loss to surroundings).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aafa1"><b>Given:</b></paragraph>
+<ul>
+<li>Mass of aluminium sphere, m<sub>1</sub> = 0.047 kg</li>
+<li>Initial temperature of Al sphere = 100 °C (kept long enough in boiling water)</li>
+<li>Mass of copper calorimeter = 0.14 kg</li>
+<li>Mass of water in calorimeter = 0.25 kg</li>
+<li>Initial temperature of water + calorimeter = 20 °C</li>
+<li>Final steady temperature = 23 °C</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aafa2"><b>Temperature changes:</b></paragraph>
+<ul>
+<li>Aluminium cooling: ∆T<sub>Al</sub> = 100 − 23 = 77 °C</li>
+<li>Water + calorimeter heating: ∆T = 23 − 20 = 3 °C</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aafa3">Let specific heat capacity of aluminium = s<sub>Al</sub>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aafa4"><b>Heat exchanged:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafa5">Heat lost by aluminium: Q<sub>Al</sub> = m<sub>1</sub>s<sub>Al</sub>(100−23)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafa6">Heat gained by water: Q<sub>w</sub> = m<sub>w</sub>s<sub>w</sub>(23−20)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafa7">Heat gained by copper calorimeter: Q<sub>Cu</sub> = m<sub>Cu</sub>s<sub>Cu</sub>(23−20)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafa8">m<sub>1</sub> = mass of aluminium sphere</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafa9">s<sub>Al</sub> = specific heat capacity of aluminium (unknown)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafaa">m<sub>w</sub> = mass of water</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafab">s<sub>w</sub> = specific heat capacity of water (= 4186 J kg<sup>–1</sup> K<sup>–1</sup>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafac">m<sub>Cu</sub> = mass of copper calorimeter</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafad">s<sub>Cu</sub> = specific heat capacity of copper (= 386.4 J kg<sup>–1</sup> K<sup>–1</sup>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aafae"><b>Heat balance equation:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafaf">m<sub>1</sub>s<sub>Al</sub>(100−23) = m<sub>w</sub>s<sub>w</sub>(23−20) + m<sub>Cu</sub>s<sub>Cu</sub>(23−20)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafb0"><b>Substitute:</b></paragraph>
+<ul>
+<li>Left: 0.047·s<sub>Al</sub>·77</li>
+<li>Right: 0.25·4186·3 + 0.14·386.4·3</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aafb1"><b>Right side:</b></paragraph>
+<ul>
+<li>Water: 0.25×4186×3 = 3139.5 J</li>
+<li>Calorimeter: 0.14×386.4×3 = 162.288 J</li>
+<li>Total gained = 3301.788 J</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2aafb2">So: 0.047×77×s<sub>Al</sub> = 3301.788</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafb3">0.047×77 = 3.619</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafb4">s<sub>Al</sub> = 3301.788 / 3.619 ≈ <b>9.12×10<sup>2</sup> J kg<sup>–1</sup> K<sup>–1</sup></b> (≈ 912 J kg<sup>–1</sup> K<sup>–1</sup>, close to tabulated 900).</paragraph>
+</div>
+
+<div class="remember-box">
+<ul>
+<li>Use consistent temperature differences: hot object → (T<sub>hot,initial</sub> − T<sub>final</sub>); cold bodies → (T<sub>final</sub> − T<sub>cold,initial</sub>).</li>
+<li>Include calorimeter heat gain (here copper) unless stated negligible.</li>
+<li><b>Steady state</b> here = <b>final common temperature</b> reached (no further temperature change).</li>
+</ul>
+</div>
+
+<h2>Calorimetry Worked Example: Specific Heat Capacity of Aluminium (Method of Mixtures)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aafb5"><b>Principle (steady state / no heat loss):</b> at thermal equilibrium,</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafb6"><b>Heat lost by hot body = Heat gained by colder bodies (water + calorimeter)</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aafb7"><b>Heat due to temperature change (no phase change):</b> Q = m s ΔT</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafb8">Q = heat transferred (J)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafb9">m = mass (kg)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafba">s = specific heat capacity (J kg<sup>−1</sup> K<sup>−1</sup>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafbb">ΔT = temperature change (K or °C; same numerical value for differences)</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafbc"><b>Given (from the example):</b></paragraph>
+<ul>
+<li>Mass of aluminium sphere, m<sub>Al</sub> = 0.047 kg</li>
+<li>Temperature fall of aluminium sphere, ΔT<sub>1</sub> = 77 °C</li>
+<li>Mass of water, m<sub>2</sub> = 0.25 kg</li>
+<li>Mass of calorimeter (copper), m<sub>3</sub> = 0.14 kg</li>
+<li>Initial temperature of water and calorimeter = 20 °C</li>
+<li>Final temperature of mixture = 23 °C</li>
+<li>Rise in temperature of water and calorimeter: ΔT<sub>2</sub> = 23 − 20 = 3 °C</li>
+<li>Specific heat capacity of water: s<sub>w</sub> = 4.18 × 10<sup>3</sup> J kg<sup>−1</sup> K<sup>−1</sup></li>
+<li>Specific heat capacity of copper (calorimeter): s<sub>cu</sub> = 0.386 × 10<sup>3</sup> J kg<sup>−1</sup> K<sup>−1</sup></li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2aafbd"><b>Heat gained by water + calorimeter:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafbe">Q<sub>gain</sub> = m<sub>2</sub> s<sub>w</sub> ΔT<sub>2</sub> + m<sub>3</sub> s<sub>cu</sub> ΔT<sub>2</sub></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafbf">= (m<sub>2</sub>s<sub>w</sub> + m<sub>3</sub>s<sub>cu</sub>) ΔT<sub>2</sub></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafc0">= (0.25 × 4.18×10<sup>3</sup> + 0.14 × 0.386×10<sup>3</sup>) × (3)</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2aafc1"><b>Heat lost by aluminium sphere:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafc2">Q<sub>loss</sub> = m<sub>Al</sub> s<sub>Al</sub> ΔT<sub>1</sub> = 0.047 × s<sub>Al</sub> × 77</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aafc3"><b>Equilibrium condition:</b> Heat lost by aluminium sphere = Heat gained by water + Heat gained by calorimeter.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafc4">So,</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafc5">0.047 × s<sub>Al</sub> × 77 = (0.25 × 4.18×10<sup>3</sup> + 0.14 × 0.386×10<sup>3</sup>) × 3</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafc6">From this, the example gives:</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafc7"><b>s<sub>Al</sub> = 0.911 kJ kg<sup>−1</sup> K<sup>−1</sup></b></paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2aafc8"><b>Exam tips / common mistakes:</b></paragraph>
+<ul>
+<li>Use <b>temperature differences</b> (ΔT), not absolute temperatures.</li>
+<li>ΔT in °C and K are numerically identical, but <b>s</b> must match units (J kg<sup>−1</sup> K<sup>−1</sup>).</li>
+<li>Don’t miss the <b>calorimeter heat gain</b> (common exam error).</li>
+<li><b>Steady state</b> = <b>thermal equilibrium</b> reached; external heat loss neglected.</li>
+</ul>
+</div>
+
+<h2>10.8 Change of State</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafc9"><b>States of matter:</b> solid, liquid, gas.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aafca"><b>Change of state:</b> shifting from one state to another (solid ↔ liquid, liquid ↔ gas) due to <b>heat exchange</b> with surroundings.</paragraph>
+</div>
+
+<h3>Heating Curve of Ice-Water System (Temperature–Time Graph)</h3>
+<paragraph id="6a8930c3a2360cecfa2aafcb"><b>What you notice when heating ice slowly</b> (stir continuously + note temperature each minute):</paragraph>
+<ul>
+  <li>As long as <b>ice is still present</b>, the system temperature shows <b>no rise</b> even though heat is supplied.</li>
+  <li>The heat supplied is used for <b>state change</b> (ice → water), not for increasing temperature.</li>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 714px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-05.webp" decoding="async" height="530" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-05.webp" srcset="img/fig-05.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="714"/>
+    </button>
+  </div>
+</figure>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aafcc"><b>During any phase change, temperature stays constant</b> even while heat is absorbed/released, because energy goes into rearranging molecules (state), not increasing kinetic energy (temperature).</paragraph>
+</div>
+
+<h3>Melting (Fusion) and Freezing</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafcd"><b>Melting / fusion:</b> <b>solid → liquid</b>.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aafce"><b>Freezing:</b> <b>liquid → solid</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafcf"><b>Main feature:</b> temperature remains constant until the whole solid melts.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafd0">During melting, <b>solid + liquid coexist in thermal equilibrium</b>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafd1"><b>Melting point:</b> the temperature at which <b>solid and liquid</b> phases coexist in <b>thermal equilibrium</b>.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aafd2">It is <b>characteristic</b> of the substance and <b>depends on pressure</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafd3"><b>Normal melting point:</b> melting point at <b>standard atmospheric pressure</b>.</paragraph>
+</div>
+
+<h3>Regelation (Wire Through Ice Demonstration) and Skating</h3>
+<paragraph id="6a8930c3a2360cecfa2aafd4"><b>Experiment idea:</b> put a metallic wire on an ice slab; hang heavy blocks (e.g., 5 kg) at both ends.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-06.webp" decoding="async" height="543" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-06.webp" srcset="img/fig-06.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="635"/>
+    </button>
+  </div>
+</figure>
+<paragraph id="6a8930c3a2360cecfa2aafd5"><b>Observation:</b> wire cuts through the ice, but the slab <b>doesn’t split</b>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafd6"><b>Regelation:</b> <b>refreezing</b> of melted ice when pressure is removed.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafd7"><b>Why it happens:</b></paragraph>
+<ul>
+  <li>Pressure under the wire becomes large → ice just below the wire <b>melts at a lower temperature</b>.</li>
+  <li>Once the wire passes, pressure reduces → the water <b>freezes again</b>.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aafd8"><b>Skating on snow/ice:</b> high pressure under skates makes a thin water film → acts as a <b>lubricant</b> → smooth motion.</paragraph>
+</div>
+
+<h3>Vaporisation and Boiling Point</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafd9"><b>Vaporisation:</b> <b>liquid → vapour (gas)</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafda"><b>Heating water after all ice has melted:</b></paragraph>
+<ul>
+  <li>Temperature starts rising once all ice becomes water.</li>
+  <li>It rises up to about <b>100 °C</b>, then becomes steady again while liquid changes to vapour.</li>
+  <li>During this, <b>liquid + vapour coexist in thermal equilibrium</b>.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafdb"><b>Boiling point:</b> the temperature at which <b>liquid and vapour</b> phases coexist in <b>thermal equilibrium</b>.</paragraph>
+</div>
+
+<h3>Boiling Process in a Flask (What You See and Why)</h3>
+<paragraph id="6a8930c3a2360cecfa2aafdc"><b>Setup:</b> round-bottom flask &gt; half filled with water; heat; fit thermometer + steam outlet through cork.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafdd"><b>What you observe (in order):</b></paragraph>
+<ul>
+  <li>First: small bubbles appear due to <b>dissolved air</b> coming out.</li>
+  <li>Next: steam bubbles form at the bottom but <b>condense</b> in cooler upper water and vanish.</li>
+  <li>When the whole water reaches ~ <b>100 °C</b>, steam bubbles reach the surface continuously → <b>boiling starts</b>.</li>
+  <li>Steam may be invisible inside; outside it condenses into tiny droplets → <b>foggy look</b>.</li>
+</ul>
+
+<h3>Effect of Pressure on Boiling Point (and Applications)</h3>
+<paragraph id="6a8930c3a2360cecfa2aafde"><b>If the steam outlet is closed briefly:</b> pressure inside rises → boiling stops for a while; extra heating is needed to start boiling again.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aafdf"><b>Boiling point ↑ when pressure ↑.</b></paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aafe0"><b>Boiling point ↓ when pressure ↓.</b></paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafe1"><b>Demo: lower pressure → lower boiling point:</b></paragraph>
+<ul>
+  <li>Cool water to ~80 °C, remove thermometer + outlet, seal with airtight cork.</li>
+  <li>Invert the flask; pour ice-cold water on it.</li>
+  <li>Vapour condenses → pressure above water drops → water <b>boils again at lower temperature</b>.</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2aafe2"><b>Consequences:</b></paragraph>
+<ul>
+  <li><b>Cooking on hills is difficult:</b> atmospheric pressure low → boiling point low → cooking temperature low.</li>
+  <li><b>Pressure cooker:</b> pressure high → boiling point high → faster cooking.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafe3"><b>Normal boiling point:</b> boiling point at <b>standard atmospheric pressure</b>.</paragraph>
+</div>
+
+<h3>Sublimation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafe4"><b>Sublimation:</b> <b>solid → vapour</b> directly (no liquid stage), and vice versa.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafe5"><b>Examples:</b> dry ice (solid CO<sub>2</sub>), iodine.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aafe6">During sublimation, <b>solid + vapour coexist in thermal equilibrium</b>.</paragraph>
+
+<h2>Triple Point and Phase Diagram (P–T Diagram)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafe7"><b>Phase change feature:</b> temperature stays constant during change of state.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafe8"><b>Phase diagram / P–T diagram:</b> graph of <b>temperature (T)</b> vs <b>pressure (P)</b> for a substance.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafe9"><b>What the phase diagram tells you:</b></paragraph>
+<ul>
+  <li>It splits the P–T plane into 3 regions: <b>solid</b>, <b>liquid</b>, <b>vapour</b>.</li>
+  <li>Regions are separated by curves:</li>
+  <ul>
+    <li><b>Sublimation curve (BO):</b> solid + vapour coexist (equilibrium solid–vapour).</li>
+    <li><b>Fusion curve (AO):</b> solid + liquid coexist (equilibrium solid–liquid).</li>
+    <li><b>Vaporisation curve (CO):</b> liquid + vapour coexist (equilibrium liquid–vapour).</li>
+  </ul>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafea"><b>Triple point:</b> the unique T and P where <b>fusion, vaporisation, and sublimation curves meet</b> and <b>all 3 phases</b> (solid, liquid, vapour) coexist in equilibrium.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2aafeb"><b>Triple point of water:</b> T = 273.16 K, P = 6.11 × 10<sup>−3</sup> Pa.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2aafec">Phase diagrams are commonly shown for <b>water</b> and <b>CO<sub>2</sub></b>.</paragraph></div>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-07.webp" decoding="async" height="492" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-07.webp" srcset="img/fig-07.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="572"/>
+    </button>
+  </div>
+</figure>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-08.webp" decoding="async" height="545" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-08.webp" srcset="img/fig-08.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="615"/>
+    </button>
+  </div>
+</figure>
+<h2>10.8.1 Latent Heat</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2aafed"><b>Latent heat (for a process):</b> heat <b>transferred per unit mass</b> during a <b>change of state</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2aafee"><b>Key idea (using ice):</b></paragraph>
+<ul>
+  <li>Heat ice at −10 °C → temperature rises to 0 °C.</li>
+  <li>At 0 °C (melting point), adding heat <b>does not</b> increase temperature → it causes melting (state change).</li>
+  <li>After all ice melts, more heating raises the water temperature.</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2aafef"><b>Same idea at boiling point:</b></paragraph>
+<ul>
+  <li>At boiling point, extra heat causes <b>vaporisation</b> with <b>no temperature rise</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930c3a2360cecfa2aaff0"><b>Exam tip:</b> latent heat applies only to the <b>phase-change</b> (constant-temperature) part and is defined <b>per unit mass</b>. Heating within a single phase uses specific heat capacity and gives a temperature change.</paragraph>
+</div>
+
+<h2>Latent Heat and Change of State</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaff1"><b>Latent heat (L)</b> = heat needed <b>per unit mass</b> to change a substance’s <b>state</b> at <b>constant temperature</b> (during the phase change), at a stated pressure (usually <b>1 atm</b>).</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaff2"><b>Depends on:</b> nature of the substance + <b>pressure</b> (values usually quoted at standard atmospheric pressure).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2aaff3"><b>Heat for change of state:</b> Q = mL  (Eq. 10.13)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaff4"><b>Latent heat:</b> L = Q/m</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaff5">Q = heat absorbed/released in phase change (J)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaff6">m = mass changing state (kg)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaff7">L = latent heat for that phase change (J kg<sup>-1</sup>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaff8"><b>SI unit:</b> J kg<sup>-1</sup></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaff9"><b>During melting/boiling etc.:</b> temperature stays <b>constant</b> even though heat is absorbed/released.</paragraph>
+</div>
+
+<h3>Types of Latent Heat</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaffa"><b>Latent heat of fusion (L<sub>f</sub>)</b> = for <b>solid ⇄ liquid</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaffb"><b>Latent heat of vaporisation (L<sub>v</sub>)</b> = for <b>liquid ⇄ gas</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2aaffc">Also called <b>heat of fusion</b> and <b>heat of vaporisation</b>.</paragraph>
+</div>
+
+<h3>Temperature vs Heat Graph for Water (at 1 atm)</h3>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 779px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-09.webp" decoding="async" height="518" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-09.webp" srcset="img/fig-09.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="779"/>
+    </button>
+  </div>
+</figure>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2aaffd">On a <b>temperature vs heat</b> graph for water (1 atm):</paragraph>
+<ul>
+<li>On <b>phase-change sections</b>: heat in/out, but <b>T stays constant</b>.</li>
+<li><b>Different slopes</b> in solid/liquid/gas regions ⇒ <b>specific heats (specific heat capacities) are not the same</b> for different states.</li>
+</ul>
+</div>
+
+<h3>Numerical Values for Water (1 atm) and Physical Significance</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2aaffe">For water:</paragraph>
+<ul>
+<li>L<sub>f</sub> = 3.33 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li>L<sub>v</sub> = 22.6 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>Melt <b>1 kg ice at 0 °C</b> ⇒ heat needed = <b>3.33 × 10<sup>5</sup> J</b>.</li>
+<li>Convert <b>1 kg water at 100 °C</b> to <b>steam at 100 °C</b> ⇒ heat needed = <b>22.6 × 10<sup>5</sup> J</b>.</li>
+<li><b>Steam at 100 °C has 22.6 × 10<sup>5</sup> J kg<sup>-1</sup> more heat than water at 100 °C</b> (that extra is the latent heat of vaporisation).</li>
+<li><b>So steam burns are worse</b> than boiling-water burns: steam <b>condenses</b> on skin and dumps extra latent heat.</li>
+</ul>
+</div>
+
+<h3>Worked Example 10.4: Determining Heat of Fusion from Mixing</h3>
+<paragraph id="6a8930c3a2360cecfa2aafff"><b>Problem:</b> Mix 0.15 kg ice at 0 °C with 0.30 kg water at 50 °C. Final temperature = 6.7 °C. Find heat of fusion of ice. Given s<sub>water</sub> = 4186 J kg<sup>-1</sup> K<sup>-1</sup>.</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab000"><b>Principle:</b> <b>Heat lost by hot water = heat gained by ice</b> (melt + warm the meltwater), assuming no heat loss to container/surroundings.</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab001"><b>Heat lost by water (50.0 → 6.7 °C):</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab002">Heat lost = m s<sub>w</sub>(θ<sub>i</sub> − θ<sub>f</sub>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab003">= (0.30)(4186)(50.0 − 6.7) = 54376.14 J</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab004"><b>Heat to melt ice at 0 °C:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab005">Q<sub>melt</sub> = m L<sub>f</sub> = (0.15) L<sub>f</sub></paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab006"><b>Heat to warm melted ice-water (0 → 6.7 °C):</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab007">Q<sub>warm</sub> = m s<sub>w</sub>(θ<sub>f</sub> − θ<sub>i</sub>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab008">= (0.15)(4186)(6.7 − 0) = 4206.93 J</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab009"><b>Energy balance:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab00a">54376.14 = (0.15)L<sub>f</sub> + 4206.93</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab00b">L<sub>f</sub> = (54376.14 − 4206.93)/0.15 = 3.34 × 10<sup>5</sup> J kg<sup>-1</sup></paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab00c"><b>Common exam errors (mixing + phase change):</b></paragraph>
+<ul>
+<li>Melting at 0 °C: must include <b>mL<sub>f</sub></b> (no temperature rise while melting).</li>
+<li>After melting: include heating of meltwater from 0 °C to final T using <b>msΔT</b>.</li>
+<li>Keep temperature differences consistent; in energy balance handle signs properly, or use magnitudes but state directions clearly.</li>
+</ul>
+</div>
+
+<h3>Latent Heats and Change-of-State Temperatures (1 atm): Table Values</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab00d"><b>At 1 atm</b>, melting point, L<sub>f</sub>, boiling point, and L<sub>v</sub>:</paragraph>
+<ul>
+<li><b>Ethanol:</b> melting point −114 °C; L<sub>f</sub> = 1.0 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point 78 °C; L<sub>v</sub> = 8.5 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li><b>Gold:</b> melting point 1063 °C; L<sub>f</sub> = 0.645 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point 2660 °C; L<sub>v</sub> = 15.8 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li><b>Lead:</b> melting point 328 °C; L<sub>f</sub> = 0.25 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point 1744 °C; L<sub>v</sub> = 8.67 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li><b>Mercury:</b> melting point −39 °C; L<sub>f</sub> = 0.12 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point 357 °C; L<sub>v</sub> = 2.7 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li><b>Nitrogen:</b> melting point −210 °C; L<sub>f</sub> = 0.26 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point −196 °C; L<sub>v</sub> = 2.0 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li><b>Oxygen:</b> melting point −219 °C; L<sub>f</sub> = 0.14 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point −183 °C; L<sub>v</sub> = 2.1 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li><b>Water:</b> melting point 0 °C; L<sub>f</sub> = 3.33 × 10<sup>5</sup> J kg<sup>-1</sup>; boiling point 100 °C; L<sub>v</sub> = 22.6 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2ab00e">Note: In the source, L<sub>f</sub> and L<sub>v</sub> are given in units of <b>10<sup>5</sup> J kg<sup>-1</sup></b>.</paragraph>
+</div>
+
+<h3>Worked Example 10.5: Heating Ice Below 0 °C to Steam at 100 °C</h3>
+<paragraph id="6a8930c3a2360cecfa2ab00f"><b>Problem:</b> Heat needed to convert 3 kg of ice at −12 °C into steam at 100 °C (1 atm). Given:</paragraph>
+<ul>
+<li>s<sub>ice</sub> = 2100 J kg<sup>-1</sup> K<sup>-1</sup></li>
+<li>s<sub>water</sub> = 4186 J kg<sup>-1</sup> K<sup>-1</sup></li>
+<li>L<sub>f,ice</sub> = 3.35 × 10<sup>5</sup> J kg<sup>-1</sup></li>
+<li>L<sub>steam</sub> = 2.256 × 10<sup>6</sup> J kg<sup>-1</sup></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab010"><b>Method:</b> split into 4 physical stages (find each Q, then add):</paragraph>
+<ol>
+<li>Warm ice: −12 °C → 0 °C</li>
+<li>Melt at 0 °C: ice → water (still 0 °C)</li>
+<li>Warm water: 0 °C → 100 °C</li>
+<li>Vaporise at 100 °C: water → steam (still 100 °C)</li>
+</ol>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab011"><b>Step 1:</b> ice (−12 → 0 °C)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab012">Q<sub>1</sub> = m s<sub>ice</sub>ΔT = (3)(2100)[0 − (−12)] = 75600 J</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab013"><b>Step 2:</b> melt at 0 °C</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab014">Q<sub>2</sub> = m L<sub>f</sub> = (3)(3.35 × 10<sup>5</sup>) = 1005000 J</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab015"><b>Step 3:</b> water (0 → 100 °C)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab016">Q<sub>3</sub> = m s<sub>water</sub>ΔT = (3)(4186)(100) = 1255800 J</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab017"><b>Step 4:</b> vaporise at 100 °C</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab018">Q<sub>4</sub> = m L<sub>steam</sub> = (3)(2.256 × 10<sup>6</sup>) = 6768000 J</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab019"><b>Total heat:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab01a">Q = Q<sub>1</sub> + Q<sub>2</sub> + Q<sub>3</sub> + Q<sub>4</sub></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab01b">= 75600 + 1005000 + 1255800 + 6768000</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab01c">= 9.1 × 10<sup>6</sup> J</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab01d"><b>Exam tip:</b> For multi-stage heating, always check you’ve included:</paragraph>
+<ul>
+<li>Heating solid below melting point (use s<sub>solid</sub>)</li>
+<li>Latent heat at melting point</li>
+<li>Heating liquid to boiling point (use s<sub>liquid</sub>)</li>
+<li>Latent heat at boiling point</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2ab01e">Miss one stage ⇒ big error (especially the vaporisation step).</paragraph>
+</div>
+
+<h2>Heat Transfer (Overview)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab01f"><b>Heat transfer</b> = energy transfer due to a <b>temperature difference</b>, either between two systems or within different parts of the same system.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab020"><b>3 modes:</b></paragraph>
+<ul>
+<li><b>Conduction</b></li>
+<li><b>Convection</b></li>
+<li><b>Radiation</b></li>
+</ul>
+</div>
+
+<h2>Conduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab021"><b>Conduction</b> = heat transfer between <b>two adjacent parts of the same body</b> due to a <b>temperature difference</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>Idea/example: heat one end of a metal rod in a flame → the other end gets hot due to <b>conduction along the rod</b>.</li>
+<li><b>Gases</b> are <b>poor thermal conductors</b>.</li>
+<li><b>Liquids</b> have conductivity <b>in between</b> solids and gases.</li>
+</ul>
+</div>
+
+<h3>Steady-State Heat Flow Through a Bar (Experimental Law)</h3>
+<paragraph id="6a8930c3a2360cecfa2ab022">Metallic bar: length <b>L</b>, uniform area <b>A</b>. Ends touch reservoirs at temperatures <b>T<sub>C</sub></b> (hot) and <b>T<sub>D</sub></b> (cold), with <b>T<sub>C</sub> &gt; T<sub>D</sub></b>. Sides fully insulated ⇒ no heat exchange through sides.</paragraph>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 738px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-10.webp" decoding="async" height="495" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-10.webp" srcset="img/fig-10.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="738"/>
+    </button>
+  </div>
+</figure>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab023">After some time, <b>steady state</b> happens:</paragraph>
+<ul>
+<li>Temperature drops <b>uniformly</b> from hot end → cold end.</li>
+<li>Heat taken from hot reservoir per second = heat given to cold reservoir per second ⇒ <b>constant heat current</b>.</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab024"><b>Rate of heat flow (heat current) by conduction</b> (Eq. 10.14): <b>H = K A (T<sub>C</sub> − T<sub>D</sub>) / L</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab025"><b>H</b> = heat current (J s<sup>-1</sup> or W)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab026"><b>K</b> = thermal conductivity (W m<sup>-1</sup> K<sup>-1</sup>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab027"><b>A</b> = cross-sectional area (m<sup>2</sup>)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab028"><b>T<sub>C</sub>, T<sub>D</sub></b> = end temperatures (K or °C; only ΔT matters)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab029"><b>L</b> = length (m)</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab02a"><b>Thermal conductivity (K)</b> = proportionality constant in conduction law; bigger <b>K</b> ⇒ faster heat conduction.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab02b"><b>SI unit of K:</b> J s<sup>-1</sup> m<sup>-1</sup> K<sup>-1</sup> = W m<sup>-1</sup> K<sup>-1</sup>.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab02c"><b>K</b> changes slightly with temperature, but often treated as constant over normal ranges.</paragraph>
+</div>
+
+<h3>Thermal Conductivities: Comparative Understanding and Applications</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Metals</b> usually have <b>large K</b> ⇒ good conductors.</li>
+<li><b>Wood</b>, <b>glass wool</b> have <b>small K</b> ⇒ good insulators.</li>
+<li><b>Copper-coated cooking pots:</b> high K of copper spreads heat fast ⇒ <b>uniform cooking</b>.</li>
+<li><b>Plastic foams:</b> insulate mainly by trapping <b>air pockets</b> (gases are poor conductors).</li>
+<li><b>Concrete roofs:</b> homes get hot in summer since concrete’s K isn’t small enough; adding <b>earth/foam insulation</b> reduces heat transfer → cooler rooms.</li>
+<li><b>Nuclear reactors:</b> heat transfer must be very effective to remove huge fission energy fast enough to <b>avoid overheating</b>.</li>
+</ul>
+</div>
+
+<h3>Thermal Conductivity Values (Given List)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab02d">Thermal conductivities <b>K</b> (J s<sup>-1</sup> m<sup>-1</sup> K<sup>-1</sup>) of some materials:</paragraph>
+<ul>
+<li><b>Metals:</b> Silver 406; Copper 385; Aluminium 205; Brass 109; Steel 50.2; Lead 34.7; Mercury 8.3</li>
+<li><b>Non-metals:</b> Insulating brick 0.15; Concrete 0.8; Body fat 0.20; Felt 0.04; Glass 0.8; Ice 1.6; Glass wool 0.04; Wood 0.12; Water 0.8</li>
+<li><b>Gases:</b> Air 0.024; Argon 0.016; Hydrogen 0.14</li>
+</ul>
+</div>
+
+<h3>Example 10.6 (Set-up Provided): Steel–Copper Junction Temperature in Steady State</h3>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-11.webp" decoding="async" height="386" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-11.webp" srcset="img/fig-11.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="1029"/>
+    </button>
+  </div>
+</figure>
+<paragraph id="6a8930c3a2360cecfa2ab02e"><b>Problem (steady-state conduction, two rods in series):</b> Find the temperature at the steel–copper junction (figure referenced). Data:</paragraph>
+<ul>
+<li>Length of steel rod = 15.0 cm</li>
+<li>Length of copper rod = 10.0 cm</li>
+<li>Temperature of furnace end = 300 °C</li>
+<li>Temperature of other end = 0 °C</li>
+<li>Area of cross-section of steel rod is <b>twice</b> that of copper rod</li>
+<li>K<sub>steel</sub> = 50.2 J s<sup>-1</sup> m<sup>-1</sup> K<sup>-1</sup></li>
+<li>K<sub>copper</sub> = 385 J s<sup>-1</sup> m<sup>-1</sup> K<sup>-1</sup></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab02f">This example continues beyond the provided pages; for junction questions, use steady state: <b>same heat current through both rods</b>. Apply <b>H = K A ΔT / L</b> to each rod, equate, then solve for junction temperature.</paragraph>
+</div>
+
+<h2>Steady-State Heat Conduction Through Composite Rods (Series Combination)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab030"><b>Why insulate the rods (Fig. 10.15 idea)?</b> Insulation cuts heat loss from the <b>sides</b>, so heat flows only <b>along the length</b> (1-D heat flow).</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab031"><b>Steady state:</b> at any cross-section, heat <b>entering</b> a small element = heat <b>leaving</b>. Otherwise its temperature would change (not steady). So the <b>heat current is the same at every cross section</b> along the whole composite rod.</paragraph>
+</div>
+
+<h3>Junction Temperature Condition (Two rods in series)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab032">Two different materials joined end-to-end + sides insulated ⇒ in steady state, <b>same heat current through both</b>. Junction temperature comes from equating conduction rates of the two segments.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab033"><b>Equal heat currents through two segments (steel = 1, copper = 2):</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab034">\(\dfrac{K_1 A_1 (T_\text{hot}-T)}{L_1}=\dfrac{K_2 A_2 (T-T_\text{cold})}{L_2}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab035"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab036">\(K_1, K_2\): thermal conductivities of segment 1 and 2</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab037">\(A_1, A_2\): cross-sectional areas</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab038">\(L_1, L_2\): lengths</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab039">\(T_\text{hot}\): temperature at hot end</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab03a">\(T_\text{cold}\): temperature at cold end</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab03b">\(T\): steady-state junction temperature</paragraph>
+</div>
+
+<h3>Worked Result (Steel–Copper rod with given data)</h3>
+<paragraph id="6a8930c3a2360cecfa2ab03c">Let junction temperature be \(T\) (steady state). Hot end \(=300^\circ\text{C}\), cold end \(=0^\circ\text{C}\):</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab03d">\(\dfrac{K_1 A_1 (300- T)}{L_1}=\dfrac{K_2 A_2 (T-0)}{L_2}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab03e">Given: \(A_1=2A_2,\; L_1=15.0\text{ cm},\; L_2=10.0\text{ cm},\; K_1=50.2\text{ J s}^{-1}\text{ m}^{-1}\text{ K}^{-1},\; K_2=385\text{ J s}^{-1}\text{ m}^{-1}\text{ K}^{-1}\).</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab03f">Substitute:</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab040">\(\dfrac{50.2\times 2 \times (300-T)}{15}=\dfrac{385\times T}{10}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab041">Solve:</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab042"><b>\(T=44.4^\circ\text{C}\)</b></paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab043"><b>Exam tip:</b> Composite rods (series) ⇒ always <b>equate heat currents</b> in each segment (steady state). Don’t equate temperature drops unless \(K A / L\) matches for the segments.</paragraph>
+</div>
+
+<h2>Example 10.7: Iron–Brass Compound Bar (End-to-end)</h2>
+
+<h3>Given Data and Steady-State Condition</h3>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-12.webp" decoding="async" height="393" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-12.webp" srcset="img/fig-12.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="1328"/>
+    </button>
+  </div>
+</figure>
+<paragraph id="6a8930c3a2360cecfa2ab044"><b>Iron bar:</b> \(L_1=0.1\text{ m}\), \(A_1=0.02\text{ m}^2\), \(K_1=79\text{ W m}^{-1}\text{ K}^{-1}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab045"><b>Brass bar:</b> \(L_2=0.1\text{ m}\), \(A_2=0.02\text{ m}^2\), \(K_2=109\text{ W m}^{-1}\text{ K}^{-1}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab046"><b>End temps:</b> \(T_1=373\text{ K}\) (iron free end), \(T_2=273\text{ K}\) (brass free end)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab047">Let junction temperature = \(T_0\).</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab048"><b>Series bars @ steady state:</b> same heat current through each piece</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab049">\(H=H_1=H_2\)</paragraph>
+</div>
+
+<h3>(i) Junction Temperature of the Two Bars</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab04a"><b>Conduction heat current:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab04b">\(H_1=\dfrac{K_1A_1(T_1-T_0)}{L_1}\), \(\;\;H_2=\dfrac{K_2A_2(T_0-T_2)}{L_2}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab04c"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab04d">\(H_1,H_2\): heat currents in bar 1 &amp; 2</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab04e">\(T_0\): junction temperature</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab04f">Set \(H_1=H_2\):</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab050">\(\dfrac{K_1 A_1 (T_1-T_0)}{L_1}=\dfrac{K_2 A_2 (T_0-T_2)}{L_2}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab051">Here \(A_1=A_2=A\) and \(L_1=L_2=L\) ⇒</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab052"><b>\(K_1(T_1-T_0)=K_2(T_0-T_2)\)</b></paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab053"><b>Junction temp (if \(A_1=A_2\) and \(L_1=L_2\)):</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab054">\(T_0=\dfrac{K_1T_1+K_2T_2}{K_1+K_2}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab055"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab056">\(T_0\): junction temperature</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab057">\(K_1,K_2\): thermal conductivities</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab058">\(T_1,T_2\): end temperatures</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab059"><b>Compute:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab05a">\(T_0=\dfrac{79\times 373+109\times 273}{79+109}=315\text{ K}\)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab05b"><b>Result (i):</b> \(T_0=315\text{ K}\)</paragraph>
+</div>
+
+<h3>(ii) Equivalent Thermal Conductivity of the Compound Bar</h3>
+<paragraph id="6a8930c3a2360cecfa2ab05c">Total length \(=L_1+L_2=2L\), area \(=A\). Define equivalent conductivity \(K'\) so same heat current \(H'\) flows for same \(T_1, T_2\).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab05d"><b>Equivalent single-bar conduction:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab05e">\(H'=\dfrac{K'A(T_1-T_2)}{L_1+L_2}=\dfrac{K'A(T_1-T_2)}{2L}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab05f"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab060">\(H'\): heat current in equivalent bar</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab061">\(K'\): equivalent thermal conductivity</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab062">\(A\): cross-sectional area</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab063">\(T_1-T_2\): overall temperature difference</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab064">\(2L\): total length</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab065">For two series bars with equal \(A\) and equal lengths \(L\):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab066"><b>Equivalent conductivity (series, equal \(L\) &amp; equal \(A\)):</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab067">\(K'=\dfrac{2K_1K_2}{K_1+K_2}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab068"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab069">\(K_1,K_2\): conductivities of segments</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab06a">\(K'\): equivalent conductivity of combined length \(2L\)</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab06b"><b>Compute:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab06c">\(K'=\dfrac{2\times 79\times 109}{79+109}=91.6\text{ W m}^{-1}\text{ K}^{-1}\)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab06d"><b>Result (ii):</b> \(K'=91.6\text{ W m}^{-1}\text{ K}^{-1}\)</paragraph>
+</div>
+
+<h3>(iii) Heat Current Through the Compound Bar</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab06e"><b>Heat current via equivalent conductivity:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab06f">\(H'=\dfrac{K'A(T_1-T_2)}{2L}\)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab070"><b>Symbols:</b></paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab071">\(H'\): heat current (W)</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab072">\(K'\): equivalent conductivity</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab073">\(A\): area</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab074">\(T_1-T_2\): temperature difference</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab075">\(2L\): total length</paragraph>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab076">Substitute \(K'=91.6\text{ W m}^{-1}\text{ K}^{-1}\), \(A=0.02\text{ m}^2\), \(T_1-T_2=373-273=100\text{ K}\), \(2L=2\times 0.1=0.2\text{ m}\):</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab077">\(H'=\dfrac{91.6\times 0.02\times 100}{0.2}=916.1\text{ W}\)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab078"><b>Result (iii):</b> \(H'=916.1\text{ W}\)</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab079"><b>Common mistake:</b> In series, don’t “add conductivities”. Use same heat current + (generally) thermal resistance \(R=\dfrac{L}{KA}\). The special result \(K'=\dfrac{2K_1K_2}{K_1+K_2}\) works here only because <b>lengths and areas are equal</b>.</paragraph>
+</div>
+
+<h2>Convection (10.9.2)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab07a"><b>Convection:</b> heat transfer by <b>actual bulk motion of matter</b>.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab07b"><b>Possible where?</b> only in <b>fluids</b> (liquids + gases).</paragraph>
+</div>
+
+<h3>Types of Convection: Natural and Forced</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab07c"><b>Natural convection:</b> flow happens on its own due to density differences; <b>gravity is key</b>.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab07d"><b>Forced convection:</b> flow driven by an external agent (e.g. <b>pump</b>, fan, etc.).</paragraph>
+</div>
+
+<h3>Natural Convection: Mechanism (Heating from below)</h3>
+<paragraph id="6a8930c3a2360cecfa2ab07e">When a fluid is heated from below:</paragraph>
+<ul>
+<li>Bottom (hot) layer <b>expands</b> → becomes <b>less dense</b>.</li>
+<li>Because of <b>buoyancy</b>, hot fluid <b>rises</b>.</li>
+<li>Top cold fluid sinks to replace it, gets heated, rises… cycle repeats.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab07f"><b>Convection vs conduction:</b> convection = <b>bulk transport</b> of fluid chunks; conduction = energy passed by microscopic collisions (no bulk flow).</paragraph>
+</div>
+
+<h3>Forced Convection: Examples and Human Body</h3>
+<ul>
+<li>Forced-air heating in houses</li>
+<li>Human circulatory system</li>
+<li>Automobile engine cooling system</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2ab080"><b>Human body:</b> the <b>heart</b> works like a pump → blood circulation transfers heat by forced convection → helps keep <b>uniform body temperature</b>.</paragraph>
+
+<h3>Natural Convection Phenomena: Sea Breeze (Day and Night) and Convection Cycle</h3>
+<ul>
+<li><b>Day:</b> land heats faster than big water bodies because:
+<ul>
+<li>water has <b>higher specific heat capacity</b></li>
+<li><b>mixing currents</b> spread heat through a large volume</li>
+</ul>
+</li>
+<li>Air touching warm land heats by <b>conduction</b>, expands, becomes less dense, and <b>rises</b>.</li>
+<li>Cool air moves in to fill the gap → causes <b>winds</b>; near coasts → <b>sea breeze</b>.</li>
+<li>Cool air sinks, setting up a <b>thermal convection cycle</b> that carries heat away from land.</li>
+<li><b>Night:</b> land cools faster; water surface stays warmer → cycle <b>reverses</b>.</li>
+</ul>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 840px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-13.webp" decoding="async" height="510" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-13.webp" srcset="img/fig-13.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="840"/>
+    </button>
+  </div>
+</figure>
+<h3>Natural Convection Phenomena: Trade Winds</h3>
+
+<paragraph id="6a8930c3a2360cecfa2ab081"><b>Trade wind:</b> steady surface wind blowing from <b>north-east towards the equator</b>.</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab082"><b>Reasonable explanation:</b></paragraph>
+<ul>
+<li>Equator and poles get <b>unequal solar heating</b>.</li>
+<li>Air near equator (surface) is <b>hot</b>; upper-atmosphere air near poles is <b>cool</b>.</li>
+<li>Without Earth’s rotation, convection loop would be:
+<ul>
+<li>air rises at equator and moves aloft towards poles</li>
+<li>air sinks at poles and returns along surface towards equator</li>
+</ul>
+</li>
+<li><b>Earth’s rotation effect:</b> changes the convection flow because:
+<ul>
+<li>equatorial air has eastward speed \(\approx\) <b>1600 km/h</b></li>
+<li>near poles, eastward speed \(\approx\) <b>0</b></li>
+</ul>
+</li>
+<li>So air sinks not at poles but near <b>30° N latitude</b>, then flows back to equator → gives the observed trade-wind pattern.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab083"><b>Exam tip:</b> For natural convection, write the chain: heating → expansion → density ↓ → buoyancy rise → circulation. Also mention: “only in fluids” + “gravity essential”.</paragraph>
+</div>
+
+<h2>10.9.3 Radiation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab084"><b>Radiation (heat transfer)</b> = energy transfer by <b>electromagnetic (EM) waves</b>; <b>no material medium needed</b>.</paragraph>
+  <ul>
+    <li><b>Conduction</b> + <b>convection</b> need a medium → <b>can’t</b> transfer heat through <b>vacuum</b>.</li>
+    <li>Radiation <b>works through vacuum</b> (e.g. Sun heating Earth across space).</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab085">We feel heat from a nearby fire quickly even though air conducts poorly and convection takes time → that fast heating is due to <b>radiation</b>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab086"><b>Radiant energy</b> = energy carried by EM waves during radiation heat transfer.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab087">In an EM wave, <b>electric</b> and <b>magnetic</b> fields <b>oscillate</b> in space and time.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>EM waves have different wavelengths, but all travel in vacuum at the same speed: <b>c = 3 × 10<sup>8</sup> m s<sup>–1</sup></b>.</li>
+    <li>So radiation needs no medium and can be <b>very fast</b>.</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab088"><b>Thermal radiation</b> = EM radiation emitted by a body <b>because of its temperature</b> (e.g. red-hot iron, filament lamp).</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab089"><b>All bodies</b> (solids, liquids, gases) emit radiant energy.</paragraph>
+</div>
+
+<h3>Absorption and colour; everyday applications</h3>
+
+<paragraph id="6a8930c3a2360cecfa2ab08a">When thermal radiation hits a body: some is <b>reflected</b>, some <b>absorbed</b>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab08b"><b>Absorbing power depends on colour:</b></paragraph>
+  <ul>
+    <li><b>Black</b> surfaces are better <b>absorbers</b> and also better <b>emitters</b> than light-coloured surfaces.</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Summer:</b> wear <b>white/light</b> colours → absorb least solar heat.</li>
+    <li><b>Winter:</b> wear <b>dark</b> colours → absorb more heat → warmer.</li>
+    <li><b>Cooking utensils:</b> bottoms <b>blackened</b> → maximum absorption from fire → better heating of food.</li>
+  </ul>
+</div>
+
+<h3>Dewar flask (Thermos bottle): minimising heat transfer</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab08c"><b>Dewar flask / thermos</b> is built to <b>minimise heat transfer</b> between contents and surroundings.</paragraph>
+</div>
+
+<ul>
+  <li><b>Construction:</b> double-walled glass vessel; <b>inner + outer walls silvered</b> (silver coating).</li>
+  <li><b>Radiation reduction:</b>
+    <ul>
+      <li>Radiation from the <b>inner wall</b> is <b>reflected back</b> into the contents.</li>
+      <li>The <b>outer wall</b> reflects back <b>incoming radiation</b>.</li>
+    </ul>
+  </li>
+  <li><b>Conduction + convection reduction:</b> space between walls is <b>evacuated (vacuum)</b>.</li>
+  <li><b>Support:</b> flask rests on an <b>insulator</b> like <b>cork</b>.</li>
+  <li><b>Use:</b> stops hot liquids (e.g. milk) cooling; also keeps cold things (e.g. ice) cold.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930c3a2360cecfa2ab08d"><b>Exam pitfall:</b> Thermos reduces <b>all 3</b> modes: vacuum → <b>conduction &amp; convection</b>, silvering → <b>radiation</b>, insulating supports → fewer conduction paths.</paragraph>
+</div>
+
+<h2>10.9.4 Blackbody Radiation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab08e"><b>Blackbody thermal radiation spectrum:</b> at any temperature, emission is <b>not</b> one wavelength; it’s a <b>continuous spectrum</b> (short → long wavelengths).</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab08f"><b>Energy depends on wavelength</b>; the curve of <i>radiation energy per unit area per unit wavelength</i> vs wavelength changes with temperature.</paragraph>
+</div>
+
+<h3>Wien’s Displacement Law</h3>
+
+<paragraph id="6a8930c3a2360cecfa2ab090">From blackbody curves: wavelength of maximum emission <b>λ<sub>m</sub></b> <b>decreases</b> as temperature increases.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab091"><b>Wien’s Displacement Law:</b> λ<sub>m</sub> T = constant</paragraph>
+  <ul>
+    <li>λ<sub>m</sub> = wavelength at which emitted energy is maximum</li>
+    <li>T = absolute temperature (K)</li>
+    <li>constant = <b>2.9 × 10<sup>–3</sup> m K</b> (Wien’s constant)</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Heated iron colours:</b> as T ↑, λ<sub>m</sub> ↓ → colour shifts <b>dull red → reddish yellow → white hot</b>.</li>
+    <li><b>Astrophysics:</b> use Wien’s law to estimate surface temperatures (Moon, Sun, stars) from λ<sub>m</sub>.</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab092"><b>Worked examples (as in text):</b></paragraph>
+<ul>
+  <li><b>Moon:</b> maximum intensity near λ<sub>m</sub> = 14 μm = 14 × 10<sup>–6</sup> m.
+    <ul>
+      <li>λ<sub>m</sub>T = 2.9 × 10<sup>–3</sup> ⇒ T ≈ (2.9 × 10<sup>–3</sup>)/(14 × 10<sup>–6</sup>) ≈ 200 K.</li>
+    </ul>
+  </li>
+  <li><b>Sun:</b> maximum at λ<sub>m</sub> = 4753 Å = 4753 × 10<sup>–10</sup> m = 4.753 × 10<sup>–7</sup> m.
+    <ul>
+      <li>T ≈ (2.9 × 10<sup>–3</sup>)/(4.753 × 10<sup>–7</sup>) ≈ 6060 K.</li>
+      <li><b>Note:</b> this is the Sun’s <b>surface temperature</b>, <b>not</b> its interior temperature.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930c3a2360cecfa2ab093"><b>Unit traps:</b> convert μm and Å to meters before using Wien’s law; use <b>T in kelvin</b> (not °C).</paragraph>
+</div>
+
+<h3>Universality of blackbody curves</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2ab094">Blackbody curves are <b>universal</b>: depend only on <b>temperature</b>, not on <b>size, shape, material</b>.</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab095">Historical note (concept): explaining blackbody radiation triggered the early-20th-century <b>quantum revolution</b>.</paragraph>
+</div>
+
+<h2>Stefan–Boltzmann Law and Emissivity</h2>
+<paragraph id="6a8930c3a2360cecfa2ab096">Radiation transfers energy over large distances, even through vacuum. The <b>total electromagnetic energy radiated</b> by a body at absolute temperature <b>T</b> depends on:</paragraph>
+<ul>
+<li><b>size</b> (surface area),</li>
+<li>ability to radiate (<b>emissivity</b>),</li>
+<li>and most strongly on <b>temperature</b>.</li>
+</ul>
+
+<h3>Perfect radiator (blackbody): total power emitted</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab097"><b>Stefan–Boltzmann law (perfect radiator)</b>: <b>H = AσT<sup>4</sup></b></paragraph>
+<ul>
+<li><b>H</b> = energy emitted per unit time (radiant power) (W)</li>
+<li><b>A</b> = surface area (m<sup>2</sup>)</li>
+<li><b>T</b> = absolute temperature (K)</li>
+<li><b>σ</b> = Stefan–Boltzmann constant = <b>5.67 × 10<sup>–8</sup> W m<sup>–2</sup> K<sup>–4</sup></b></li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c3a2360cecfa2ab098">Found experimentally by <b>Stefan</b>, later proved theoretically by <b>Boltzmann</b>.</paragraph>
+</div>
+
+<h3>Real bodies: emissivity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c3a2360cecfa2ab099"><b>Emissivity (e)</b> = dimensionless fraction showing how well a real body radiates compared to a perfect radiator at the same <b>T</b>.</paragraph>
+<ul>
+<li><b>e = 1</b> for a perfect radiator</li>
+<li>Most real bodies have <b>e &lt; 1</b></li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab09a"><b>Stefan–Boltzmann law (real body)</b>: <b>H = AeσT<sup>4</sup></b></paragraph>
+<ul>
+<li><b>e</b> = emissivity (dimensionless)</li>
+<li>Other symbols = same as above</li>
+</ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab09b"><b>Example (tungsten lamp):</b> for tungsten, <b>e ≈ 0.4</b>. Given <b>T = 3000 K</b>, <b>A = 0.3 cm<sup>2</sup> = 0.3 × 10<sup>–4</sup> m<sup>2</sup></b>,</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab09c"><b>H</b> = 0.3 × 10<sup>–4</sup> × 0.4 × 5.67 × 10<sup>–8</sup> × (3000)<sup>4</sup> = <b>60 W</b>.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab09d"><b>Conversion tip:</b> cm<sup>2</sup> → m<sup>2</sup>: multiply by <b>10<sup>–4</sup></b>. Common mistake: forget this, so power comes out wrong by <b>10<sup>4</sup></b>.</paragraph>
+</div>
+
+<h3>Net radiation exchange with surroundings</h3>
+<paragraph id="6a8930c3a2360cecfa2ab09e">A body at temperature <b>T</b> both <b>emits</b> and <b>absorbs</b> radiation from surroundings at temperature <b>T<sub>s</sub></b>. Net loss depends on the difference of <b>T<sup>4</sup></b> terms.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab09f"><b>Net radiant heat loss (perfect radiator)</b>: <b>H = σA (T<sup>4</sup> − T<sub>s</sub><sup>4</sup>)</b></paragraph>
+<ul>
+<li><b>T</b> = body temperature (K)</li>
+<li><b>T<sub>s</sub></b> = surroundings temperature (K)</li>
+<li><b>H, σ, A</b> = as defined above</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c3a2360cecfa2ab0a0"><b>Net radiant heat loss (emissivity e)</b>: <b>H = eσA (T<sup>4</sup> − T<sub>s</sub><sup>4</sup>)</b></paragraph>
+<ul>
+<li><b>e</b> = emissivity of the body</li>
+<li><b>T, T<sub>s</sub>, σ, A, H</b> = as defined above</li>
+</ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab0a1"><b>Example: heat radiated by the human body</b></paragraph>
+<ul>
+<li>Body surface area <b>A ≈ 1.9 m<sup>2</sup></b></li>
+<li>Room temperature = <b>22 °C</b> ⇒ <b>T<sub>s</sub> = 295 K</b></li>
+<li>Skin temperature ≈ <b>28 °C</b> ⇒ <b>T = 301 K</b></li>
+<li>Skin emissivity <b>e ≈ 0.97</b> (in the relevant EM region)</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2ab0a2"><b>H</b> = 5.67 × 10<sup>–8</sup> × 1.9 × 0.97 × {(301)<sup>4</sup> − (295)<sup>4</sup>} = <b>66.4 W</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>66.4 W</b> is <b>more than half</b> the body’s energy production rate at rest (≈ <b>120 W</b>).</li>
+<li><b>Arctic clothing idea:</b> add a thin <b>shiny metallic layer</b> next to skin → reflects body radiation → cuts radiative heat loss better than ordinary clothing.</li>
+</ul>
+</div>
+
+<h2>10.10 Newton’s Law of Cooling (Activity setup)</h2>
+<paragraph id="6a8930c3a2360cecfa2ab0a3">Hot water/milk left on a table cools slowly and finally reaches surroundings temperature. To study <b>how fast/slow</b> a body cools while exchanging heat with surroundings, use this setup.</paragraph>
+
+<h3>Experimental procedure (calorimeter method)</h3>
+<ol>
+<li>Put about <b>300 mL</b> water in a <b>calorimeter</b> with a <b>stirrer</b>; cover with a <b>two-holed lid</b>.</li>
+<li>Fix the <b>stirrer</b> through one hole.</li>
+<li>Fix a <b>thermometer</b> through the other hole so the bulb is <b>immersed in water</b>.</li>
+<li>Note the reading; call it <b>T<sub>1</sub></b>. This is the <b>surroundings temperature</b>.</li>
+<li>Heat water until it is about <b>40 °C above room temperature</b> (i.e., above surroundings).</li>
+<li>Stop heating by removing the heat source.</li>
+<li>Start a stop-watch; note thermometer reading after a fixed interval (e.g., <b>every 1 minute</b>) while stirring gently.</li>
+<li>Keep noting water temperature (<b>T<sub>2</sub></b>) until it becomes about <b>5 °C above</b> surroundings temperature.</li>
+<li>Then <b>plot</b> (plotting instruction continues on next page).</li>
+</ol>
+
+<div class="remember-box">
+<paragraph id="6a8930c3a2360cecfa2ab0a4"><b>Experimental care:</b> Stir gently throughout (uniform temperature). Keep thermometer bulb fully immersed, otherwise readings go wrong.</paragraph>
+</div>
+
+<h2>Newton’s Law of Cooling</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c3a2360cecfa2ab0a5"><b>Newton’s law of cooling:</b> rate of <b>heat loss</b> of a body ∝ <b>(temperature of body − temperature of surroundings)</b> = <b>excess temperature</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Valid only for <b>small temperature differences</b> (body vs surroundings).</li>
+    <li>In real cooling: rate is <b>highest at start</b> (large excess temp) and <b>falls with time</b> as the body cools.</li>
+    <li>Heat loss by radiation (→ cooling rate) also depends on:
+      <ul>
+        <li><b>Nature of surface</b> (polished vs dull/black)</li>
+        <li><b>Area of exposed surface</b></li>
+      </ul>
+      These get “packed into” the proportionality constant.</li>
+  </ul>
+</div>
+
+<h3>Mathematical statement of the law</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0a6"><b>Newton’s law of cooling</b>:</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab0a7">− dQ/dt = k (T<sub>2</sub> − T<sub>1</sub>)   ...(10.19)</paragraph>
+  <ul>
+    <li><b>Q</b> = heat content / heat lost (J)</li>
+    <li><b>t</b> = time (s)</li>
+    <li><b>T<sub>2</sub></b> = body temperature at time t</li>
+    <li><b>T<sub>1</sub></b> = surroundings temperature (assumed constant)</li>
+    <li><b>k</b> = +ve constant (depends on <b>area</b> + <b>nature of surface</b>)</li>
+    <li>“−” sign: body is <b>losing</b> heat ⇒ Q decreases with time</li>
+  </ul>
+</div>
+
+<h3>Derivation of cooling equation (temperature as a function of time)</h3>
+
+<paragraph id="6a8930c3a2360cecfa2ab0a8">Consider a body with:</paragraph>
+<ul>
+  <li>mass = <b>m</b></li>
+  <li>specific heat capacity = <b>s</b></li>
+  <li>temperature = <b>T<sub>2</sub></b> (at some instant)</li>
+  <li>surroundings at constant temperature = <b>T<sub>1</sub></b></li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2ab0a9">In a small time <b>dt</b>, temperature falls by <b>dT<sub>2</sub></b> ⇒ heat lost:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0aa">dQ = m s dT<sub>2</sub></paragraph>
+  <ul>
+    <li><b>m</b> = mass (kg)</li>
+    <li><b>s</b> = specific heat capacity (J kg<sup>−1</sup> K<sup>−1</sup>)</li>
+    <li><b>dT<sub>2</sub></b> = small change in body temperature (K or °C difference)</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab0ab">So, rate of heat loss:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0ac">dQ/dt = m s (dT<sub>2</sub>/dt)   ...(10.20)</paragraph>
+  <ul>
+    <li><b>dT<sub>2</sub>/dt</b> is negative during cooling</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab0ad">Use (10.19) with (10.20):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0ae">− m s (dT<sub>2</sub>/dt) = k (T<sub>2</sub> − T<sub>1</sub>)</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab0af">⇒ dT<sub>2</sub> / (T<sub>2</sub> − T<sub>1</sub>) = − (k/(m s)) dt</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab0b0">Let K = k/(m s), then:</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab0b1">dT<sub>2</sub> / (T<sub>2</sub> − T<sub>1</sub>) = −K dt   ...(10.21)</paragraph>
+  <ul>
+    <li><b>K</b> = k/(m s) (depends on surface/area via k, and on body via m, s)</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab0b2">Integrate:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0b3">ln (T<sub>2</sub> − T<sub>1</sub>) = −K t + c   ...(10.22)</paragraph>
+  <ul>
+    <li><b>c</b> = integration constant (fixed by initial condition)</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c3a2360cecfa2ab0b4">Write in exponential form:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0b5">T<sub>2</sub> = T<sub>1</sub> + C′ e<sup>−Kt</sup>   ...(10.23)</paragraph>
+  <ul>
+    <li><b>C′</b> = e<sup>c</sup> (set by initial excess temperature)</li>
+    <li>So <b>excess temperature</b> (T<sub>2</sub>−T<sub>1</sub>) falls <b>exponentially</b> with time</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c3a2360cecfa2ab0b6"><b>Use of Eq. (10.23):</b> lets you find <b>cooling time</b> across any chosen temperature range (when the law applies).</paragraph>
+  <paragraph id="6a8930c3a2360cecfa2ab0b7"><b>Combined modes:</b> for <b>small ΔT</b>, net cooling by <b>conduction + convection + radiation</b> is ≈ proportional to (T<sub>2</sub>−T<sub>1</sub>), so Newton’s law works well in cases like:</paragraph>
+  <ul>
+    <li>Heat transfer from a <b>radiator to a room</b></li>
+    <li>Heat loss through a <b>wall of a room</b></li>
+    <li>Cooling of a <b>cup of tea</b></li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <ul>
+    <li>Don’t use Newton’s law for <b>large</b> temperature differences (radiation then varies strongly with temperature → linear law fails).</li>
+    <li>For the standard derivation, take <b>T<sub>1</sub> constant</b> (surroundings = big heat reservoir).</li>
+    <li>In numericals, use <b>excess temperature</b> (T<sub>2</sub>−T<sub>1</sub>), not just T<sub>2</sub>.</li>
+  </ul>
+</div>
+
+<h3>Graphical inference from cooling curve</h3>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 723px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-14.webp" decoding="async" height="528" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-14.webp" srcset="img/fig-14.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="723"/>
+    </button>
+  </div>
+</figure>
+<paragraph id="6a8930c3a2360cecfa2ab0b8">Plot cooling data as:</paragraph>
+<ul>
+  <li>y-axis: <b>ΔT = T<sub>2</sub> − T<sub>1</sub></b></li>
+  <li>x-axis: <b>time t</b></li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2ab0b9">Inference: cooling rate is <b>high initially</b> and <b>decreases</b> as T<sub>2</sub> approaches T<sub>1</sub>.</paragraph>
+
+<h3>Experimental verification of Newton’s law of cooling</h3>
+
+<paragraph id="6a8930c3a2360cecfa2ab0ba">Experimental set-up (as described):</paragraph>
+<ul>
+  <li>A <b>double-walled vessel (V)</b> has water between its two walls.</li>
+  <li>A <b>copper calorimeter (C)</b> with hot water is kept inside the vessel.</li>
+  <li>Two thermometers measure:
+    <ul>
+      <li><b>T<sub>2</sub></b> = temperature of water in the calorimeter</li>
+      <li><b>T<sub>1</sub></b> = temperature of hot water between the walls (acts as surroundings)</li>
+    </ul>
+  </li>
+  <li>Note <b>T<sub>2</sub></b> at <b>equal time intervals</b>.</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2ab0bb">Verification method:</paragraph>
+<ul>
+  <li>Find excess temperature (T<sub>2</sub>−T<sub>1</sub>) for each reading.</li>
+  <li>Plot <b>ln(T<sub>2</sub>−T<sub>1</sub>)</b> vs <b>time t</b>.</li>
+  <li>You get a <b>straight line with negative slope</b> → supports Eq. (10.22).</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c3a2360cecfa2ab0bc">From ln(T<sub>2</sub>−T<sub>1</sub>) = −Kt + c:</paragraph>
+  <ul>
+    <li>Straight-line: y = mx + c where y = ln(T<sub>2</sub>−T<sub>1</sub>), x = t</li>
+    <li>Slope <b>m = −K</b> (negative)</li>
+  </ul>
+</div>
+
+<h3>Worked Example 10.8 (cooling time between two ranges)</h3>
+
+<paragraph id="6a8930c3a2360cecfa2ab0bd"><b>Problem:</b> A pan of hot food cools from 94 °C to 86 °C in 2 min (room temp = 20 °C). Time to cool from 71 °C to 69 °C?</paragraph>
+
+<paragraph id="6a8930c3a2360cecfa2ab0be"><b>Key idea:</b> For small temperature differences: cooling rate ∝ excess temperature (T−T<sub>room</sub>). Over short ranges, take <b>average excess temperature</b>:</paragraph>
+<ul>
+  <li>Cooling rate ≈ (ΔT)/(time) ∝ average excess temperature.</li>
+  <li>Same object + same conditions ⇒ proportionality constant <b>K</b> same in both intervals.</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2ab0bf"><b>Step 1: First interval (94→86 °C)</b></paragraph>
+<ul>
+  <li>Average temperature = (94+86)/2 = <b>90 °C</b></li>
+  <li>Average excess = 90 − 20 = <b>70 °C</b></li>
+  <li>Drop = 8 °C in 2 min</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2ab0c0">Using the text’s proportionality (from Eq. 10.21 idea):</paragraph>
+<paragraph id="6a8930c3a2360cecfa2ab0c1">(change in temperature)/(time) = K (excess temperature)</paragraph>
+<ul>
+  <li>8 °C / 2 min = K (70 °C)</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2ab0c2"><b>Step 2: Second interval (71→69 °C)</b></paragraph>
+<ul>
+  <li>Average temperature = (71+69)/2 = <b>70 °C</b></li>
+  <li>Average excess = 70 − 20 = <b>50 °C</b></li>
+  <li>Drop = 2 °C in time = t</li>
+</ul>
+<paragraph id="6a8930c3a2360cecfa2ab0c3">So:</paragraph>
+<ul>
+  <li>2 °C / t = K (50 °C)</li>
+</ul>
+
+<paragraph id="6a8930c3a2360cecfa2ab0c4"><b>Step 3: Remove K (divide equations)</b></paragraph>
+<ul>
+  <li>(8 °C / 2 min) / (70 °C) = (2 °C / t) / (50 °C)</li>
+  <li>t = 0.7 min = <b>42 s</b></li>
+</ul>
+
+<div class="remember-box">
+  <ul>
+    <li>Here we used <b>average excess temperature</b> (approx over small interval). For exact results, use the <b>exponential law</b> (Eq. 10.23).</li>
+    <li>Always subtract <b>room temperature</b> first to get excess temperature before comparing cooling rates.</li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

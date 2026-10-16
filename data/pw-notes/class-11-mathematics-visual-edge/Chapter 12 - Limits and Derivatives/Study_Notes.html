@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>LIMITS AND DERIVATIVES — Mathematics</title>
+  <meta name="description" content="LIMITS AND DERIVATIVES — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Mathematics</div>
+        <h1>LIMITS AND DERIVATIVES</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>INTUITIVE DERIVATIVE IDEA</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Derivative at a point</b> is the limiting value of average rate of change as the interval shrinks to 0 (when the limit exists).</li><li>For motion, <b>instantaneous velocity</b> at time <i>t</i> is the limit of average velocities over intervals ending/starting at <i>t</i>.</li><li>Geometrically, derivative equals <b>slope of the tangent</b> to the curve <i>s</i> vs <i>t</i> at that point.</li><li>Average rate of change over interval <i>h</i> uses a <b>chord</b>; as <i>h</i>→0, chord approaches <b>tangent</b>.</li><li>Two-sided approach (from left and right) should give the same limit when the instantaneous rate exists.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='16' width='324' height='168' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='1.5'/><line x1='55' y1='160' x2='325' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='55' y1='160' x2='55' y2='35' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='310' y='176' font-size='12' fill='#1f2a44'>t</text><text x='40' y='46' font-size='12' fill='#1f2a44'>s</text><path d='M 60 158 C 110 140, 160 115, 200 85 C 240 55, 280 40, 320 38' fill='none' stroke='#2563EB' stroke-width='3'/><circle cx='200' cy='85' r='4' fill='#7C3AED'/><circle cx='250' cy='58' r='4' fill='#F59E0B'/><line x1='200' y1='85' x2='250' y2='58' stroke='#F59E0B' stroke-width='2'/><text x='187' y='100' font-size='12' fill='#1f2a44'>A</text><text x='257' y='55' font-size='12' fill='#1f2a44'>B</text><text x='214' y='108' font-size='12' fill='#1f2a44'>chord</text><line x1='175' y1='112' x2='285' y2='30' stroke='#16A34A' stroke-width='2.5'/><text x='290' y='34' font-size='12' fill='#1f2a44'>tangent</text><text x='85' y='28' font-size='12' fill='#1f2a44'>Fig 12.1 idea</text></svg><div class="figcap">As <i>h</i>→0, slopes of chords (secants) through A and nearby points approach the slope of the tangent at A.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⏱️</span><span>Average velocity over <i>h</i>: <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span></span></li><li><span class="ic">🔍</span><span>Instantaneous velocity: common limit of these averages as <i>h</i>→0 from both sides (if both sides match).</span></li><li><span class="ic">📉</span><span>Chord slope → tangent slope: secant line through A and B approaches the tangent at A as B→A.</span></li><li><span class="ic">🧠</span><span>For <i>s</i>=4.9<i>t</i><sup>2</sup>, averages near <i>t</i>=2 approach a value between 19.551 and 19.649 m/s (NCERT table-based estimate).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">FALLING BODY: AVERAGE VELOCITY → INSTANTANEOUS VELOCITY</span></h2><ul class="b"><li>Given displacement: <i>s</i>(<i>t</i>)=4.9<i>t</i><sup>2</sup> m (free fall from rest).</li><li>Average velocity from <i>t</i> to <i>t</i>+<i>h</i>: <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span>.</li><li>Compute: <i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)=4.9[(<i>t</i>+<i>h</i>)<sup>2</sup>−<i>t</i><sup>2</sup>]=4.9(2<i>t</i><i>h</i>+<i>h</i><sup>2</sup>).</li><li>So average velocity = 4.9(2<i>t</i>+<i>h</i>) (m/s).</li><li>At <i>t</i>=2, this becomes 19.6+4.9<i>h</i>; as <i>h</i>→0 from either side, it approaches 19.6 m/s, consistent with the table-based bounds 19.551 to 19.649 m/s.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">GEOMETRIC VIEW: SECANT (CHORD) → TANGENT</span></h2><ul class="b"><li>On graph of <i>s</i> vs <i>t</i>, take A at time <i>t</i> and B at <i>t</i>+<i>h</i>.</li><li>Slope of chord AB = <span class='frac'><span>vertical change</span><span>horizontal change</span></span> = <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span>.</li><li>When |<i>h</i>| becomes very small, B approaches A and chord AB approaches the tangent at A.</li><li>Therefore, if the limit exists, the derivative at <i>t</i> equals the slope of the tangent at that point.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">AVERAGE RATE vs INSTANTANEOUS RATE</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Average (over interval)</th><th>Instantaneous (at a point)</th></tr></thead><tbody><tr><td>Time window</td><td>Finite interval <i>h</i> (e.g., 2 to 2.1 s)</td><td>Defined as a <b>limit</b> as <i>h</i>→0</td></tr><tr><td>Formula</td><td><span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span></td><td>lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span> (if it exists)</td></tr><tr><td>Graph meaning</td><td>Slope of chord (secant)</td><td>Slope of tangent (as a limit of secants)</td></tr><tr><td>Dependence on endpoints</td><td>Uses two distinct times</td><td>Depends on behavior near the instant (two-sided limit)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Average velocity for displacement <i>s</i>(<i>t</i>):</div><div class="eqbox"><span class="eq"><i>v</i><sub>avg</sub> = <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span></span></div><div class="fstep">Instantaneous velocity at time <i>t</i> (limit of average velocity):</div><div class="eqbox"><span class="eq"><i>v</i>(<i>t</i>) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span></span></div></div><div><div class="fstep">For <i>s</i>(<i>t</i>)=4.9<i>t</i><sup>2</sup>:</div><div class="eqbox blue"><span class="eq"><span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span> = 4.9(2<i>t</i>+<i>h</i>)</span></div><div class="fstep">At <i>t</i>=2 and take limit as <i>h</i>→0:</div><div class="eqbox blue"><span class="eq"><i>v</i>(2) = lim<sub><i>h</i>→0</sub> (19.6+4.9<i>h</i>) = 19.6</span></div></div><div><table class="wtab"><tr><td><i>s</i>(<i>t</i>)&nbsp;=</td><td>Displacement (distance fallen) at time <i>t</i> (m)</td></tr><tr><td><i>t</i>&nbsp;=</td><td>Time (s)</td></tr><tr><td><i>h</i>&nbsp;=</td><td>Small time interval (s); can be + or −</td></tr><tr><td><i>v</i><sub>avg</sub>&nbsp;=</td><td>Average velocity over interval (m/s)</td></tr><tr><td><i>v</i>(<i>t</i>)&nbsp;=</td><td>Instantaneous velocity at time <i>t</i> defined via a limit (m/s)</td></tr></table><div class="hibox">Key link (physics + geometry)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Instantaneous rate at <i>t</i> = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span> = slope of tangent (when the limit exists)</span></div></div></div></div></div>
+    <div class="card"
+     style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0;">
+
+  <h2>
+    <span class="secno">9</span>
+    <span class="htext">Solved Examples</span>
+  </h2>
+
+  <div class="row c2"
+       style="
+         display:grid;
+         grid-template-columns:1fr 1fr;
+         gap:4mm;
+         align-items:start;
+       ">
+
+    <!-- Example 1 -->
+    <div class="ex" style="height:100%;box-sizing:border-box;">
+      <div class="n">1</div>
+      <div>
+
+        <div class="prob">
+          For <i>s</i>(<i>t</i>)=4.9<i>t</i><sup>2</sup>, find the instantaneous velocity at <i>t</i>=2 s using the limit definition.
+        </div>
+
+        <div class="sol">
+          <span class="lbl">Solution:</span><br>
+
+          Average velocity over <i>h</i>:
+          <i>v</i><sub>avg</sub>=
+          <span class="frac">
+            <span><i>s</i>(2+<i>h</i>)−<i>s</i>(2)</span>
+            <span><i>h</i></span>
+          </span>.<br>
+
+          <i>s</i>(2+<i>h</i>)=
+          4.9(2+<i>h</i>)<sup>2</sup>
+          =4.9(4+4<i>h</i>+<i>h</i><sup>2</sup>)
+          =19.6+19.6<i>h</i>+4.9<i>h</i><sup>2</sup>.<br>
+
+          <i>s</i>(2)=4.9×4=19.6.<br>
+
+          <i>v</i><sub>avg</sub>=
+          <span class="frac">
+            <span>19.6<i>h</i>+4.9<i>h</i><sup>2</sup></span>
+            <span><i>h</i></span>
+          </span>
+          =19.6+4.9<i>h</i>.<br>
+
+          Instantaneous velocity:
+          <i>v</i>(2)=lim<sub><i>h</i>→0</sub>(19.6+4.9<i>h</i>)=19.6.
+        </div>
+
+        <div class="ans">
+          ✓&nbsp; <i>v</i>(2)=19.6 m/s
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- Example 2 -->
+    <div class="ex" style="height:100%;box-sizing:border-box;">
+      <div class="n">2</div>
+      <div>
+
+        <div class="prob">
+          Estimate average velocities near <i>t</i>=2 and show they approach the instantaneous value.
+        </div>
+
+        <div class="sol">
+          <span class="lbl">Solution:</span><br>
+
+          Use
+          <i>v</i><sub>avg</sub>(2,<i>h</i>)=19.6+4.9<i>h</i>
+          (m/s).<br>
+
+          For <i>h</i>=−0.01:
+          <i>v</i><sub>avg</sub>=19.6−0.049=19.551 m/s.<br>
+
+          For <i>h</i>=+0.01:
+          <i>v</i><sub>avg</sub>=19.6+0.049=19.649 m/s.<br>
+
+          As |<i>h</i>| gets smaller,
+          4.9<i>h</i>→0,
+          so <i>v</i><sub>avg</sub>→19.6.
+        </div>
+
+        <div class="ans">
+          ✓&nbsp; From both sides, average velocities approach 19.6 m/s; this limiting value represents the instantaneous velocity at <i>t</i>=2.
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Derivative is a <b>limit of a difference quotient</b>, not computed by directly putting <i>h</i>=0.</li><li>Both one-sided limits (<i>h</i>→0<sup>−</sup> and <i>h</i>→0<sup>+</sup>) must match for the instantaneous rate to exist.</li><li>Average velocity corresponds to <b>secant slope</b>; instantaneous velocity to <b>tangent slope</b> (as a limit).</li><li>For <i>s</i>=4.9<i>t</i><sup>2</sup>, <i>v</i><sub>avg</sub>(<i>t</i>,<i>h</i>)=4.9(2<i>t</i>+<i>h</i>) is linear in <i>h</i>.</li><li>At <i>t</i>=2, table values 19.551 m/s (from left) and 19.649 m/s (from right) support the common limiting value 19.6 m/s.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Substituting <i>h</i>=0 inside <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span> and treating 0/0 as 0.</li><li>Using only left or only right intervals and calling it instantaneous rate without checking both sides.</li><li>Confusing chord AB with tangent at A for a large <i>h</i>; tangent is the <i>h</i>→0 limit.</li><li>Mixing units: <i>s</i> in m, <i>t</i> in s, so velocity must be m/s.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“C→T: Chord to Tangent”</div><paragraph id="6aa538c148bb5d10b4000432"><b>C</b>hord slope = average rate over finite interval.</paragraph><paragraph id="6aa538c167a5d9379b000433">Shrink interval: <i>h</i>→0 ⇒ chord becomes <b>T</b>angent (in the limit).</paragraph><paragraph id="6aa538c1ada4221d6b000434">Left-limit = right-limit ⇒ instantaneous rate exists.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Average rate over <i>h</i>: <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span></span><span class="eq">Instantaneous rate at <i>t</i>: lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>s</i>(<i>t</i>+<i>h</i>)−<i>s</i>(<i>t</i>)</span><span><i>h</i></span></span> (if the limit exists)</span><span class="eq">Geometric meaning: instantaneous rate = slope of tangent as limit of secant slopes</span><span class="eq">Free-fall model used in NCERT example: <i>s</i>(<i>t</i>)=4.9<i>t</i><sup>2</sup> m</span><span class="eq">Near <i>t</i>=2, table-based averages approach a common value between 19.551 and 19.649 m/s</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>LIMIT CONCEPT BASICS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Limit (intuitive meaning)</b>: the value that <i>f</i>(<i>x</i>) approaches when <i>x</i> is taken very close to <i>a</i> (usually with <i>x</i>≠<i>a</i>). Written as <b>lim</b><sub><i>x</i>→<i>a</i></sub> <i>f</i>(<i>x</i>)=<i>l</i>.</li><li>Idea: choose <i>x</i> values very close to <i>a</i> (but <i>x</i>≠<i>a</i>), observe what <i>f</i>(<i>x</i>) approaches.</li><li>Two approaches: <b>Left-hand</b> limit <b>lim</b><sub><i>x</i>→<i>a</i>−</sub> <i>f</i>(<i>x</i>) and <b>Right-hand</b> limit <b>lim</b><sub><i>x</i>→<i>a</i>+</sub> <i>f</i>(<i>x</i>).</li><li>If left-hand limit = right-hand limit = <i>l</i>, then <b>lim</b><sub><i>x</i>→<i>a</i></sub> <i>f</i>(<i>x</i>) exists and equals <i>l</i>.</li><li>Limit may exist even if <i>f</i>(<i>a</i>) is not defined (e.g., define <i>g</i>(<i>x</i>)=|<i>x</i>| for <i>x</i>≠0; then <b>lim</b><sub><i>x</i>→0</sub>|<i>x</i>|=0 though <i>g</i>(0) is undefined).</li><li>Limit may exist even when <i>f</i>(<i>a</i>) is defined but different from the limit (a removable discontinuity).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><line x1='40' y1='165' x2='330' y2='165' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='55' y1='180' x2='55' y2='20' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='320' y='185' font-size='12' fill='#1f2a44'>x</text><text x='40' y='30' font-size='12' fill='#1f2a44'>y</text><path d='M 55 155 C 105 140, 145 110, 185 80 C 225 50, 275 35, 330 30' fill='none' stroke='#2563EB' stroke-width='3'/><line x1='190' y1='165' x2='190' y2='75' stroke='#F59E0B' stroke-width='2' stroke-dasharray='5,4'/><circle cx='190' cy='75' r='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><circle cx='190' cy='120' r='5' fill='#FFFFFF' stroke='#7C3AED' stroke-width='2'/><text x='178' y='182' font-size='12' fill='#1f2a44'>a</text><text x='205' y='78' font-size='12' fill='#1f2a44'>limit l</text><text x='205' y='124' font-size='12' fill='#1f2a44'>f(a)</text><text x='72' y='52' font-size='12' fill='#2563EB'>graph y=f(x)</text></g></svg><div class="figcap">As <i>x</i>→<i>a</i>, the graph approaches y=<i>l</i> (open circle); the function value <i>f</i>(<i>a</i>) may be different (separate marked point).</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span><b>Near</b> matters: limit depends on values close to <i>a</i>, not on the single value at <i>a</i>.</span></li><li><span class="ic">↔️</span><span>Existence test: <b>lim</b><sub><i>x</i>→<i>a</i>−</sub> <i>f</i>(<i>x</i>) = <b>lim</b><sub><i>x</i>→<i>a</i>+</sub> <i>f</i>(<i>x</i>).</span></li><li><span class="ic">🧩</span><span>Hole-type graph: curve approaches a y-value though the point may be missing or differently defined.</span></li><li><span class="ic">📌</span><span>Polynomial/continuous functions: limit at <i>a</i> equals substitution value <i>f</i>(<i>a</i>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">CORE EXAMPLES (FROM KEYWORDS)</span></h2><ul class="b"><li><b>1)</b> <i>f</i>(<i>x</i>)=<i>x</i><sup>2</sup>: as <i>x</i>→0, <i>x</i><sup>2</sup>→0 ⇒ <b>lim</b><sub><i>x</i>→0</sub> <i>x</i><sup>2</sup>=0.</li><li><b>2)</b> Define <i>g</i>(<i>x</i>)=|<i>x</i>| for <i>x</i>≠0: values near 0 give |<i>x</i>|→0 ⇒ <b>lim</b><sub><i>x</i>→0</sub>|<i>x</i>|=0 (even though <i>g</i>(0) is undefined).</li><li><b>3)</b> <i>h</i>(<i>x</i>)=<span class='frac'><span><i>x</i><sup>2</sup>−4</span><span><i>x</i>−2</span></span>, <i>x</i>≠2: for <i>x</i> near 2, values are near 4; graph shows a hole at (2,4) (removable discontinuity).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">LEFT vs RIGHT HAND LIMIT (WHEN LIMIT FAILS)</span></h2><ul class="b"><li>Define <i>f</i>(<i>x</i>)=1 for <i>x</i>≤0, and 2 for <i>x</i>&gt;0: <b>lim</b><sub><i>x</i>→0−</sub><i>f</i>(<i>x</i>)=1 but <b>lim</b><sub><i>x</i>→0+</sub><i>f</i>(<i>x</i>)=2.</li><li>Since LHL ≠ RHL, <b>lim</b><sub><i>x</i>→0</sub><i>f</i>(<i>x</i>) does <b>not</b> exist, even though <i>f</i>(0)=1.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">LIMIT vs FUNCTION VALUE (AT x=a)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Limit <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>)</th><th>Value <i>f</i>(<i>a</i>)</th></tr></thead><tbody><tr><td>What it uses</td><td>Values of <i>f</i>(<i>x</i>) for <i>x</i> very near <i>a</i></td><td>Only the single point <i>x</i>=<i>a</i></td></tr><tr><td>Needs <i>f</i>(<i>a</i>)?</td><td>No; can exist even if <i>f</i>(<i>a</i>) is undefined</td><td>Yes; must be defined to have a value</td></tr><tr><td>Can differ?</td><td>Yes (removable discontinuity example)</td><td>Yes; may be any assigned value</td></tr><tr><td>Graph cue</td><td>Where the curve is heading as <i>x</i> approaches <i>a</i></td><td>Actual plotted point at <i>x</i>=<i>a</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Concept check: Can <b>lim</b><sub><i>x</i>→0</sub> |<i>x</i>| exist even if the function is not defined at <i>x</i>=0?</div><div class="sol"><span class="lbl">Answer:</span><br>Yes. If we define <i>g</i>(<i>x</i>)=|<i>x</i>| only for <i>x</i>≠0, then <i>g</i>(0) is undefined by domain choice.<br>But for <i>x</i> close to 0 from either side, |<i>x</i>| gets close to 0.<br>So the limit exists and equals 0 even though the function value at 0 is not defined.</div><div class="ans">✓&nbsp; <b>lim</b><sub><i>x</i>→0</sub>|<i>x</i>|=0 can exist even when <i>g</i>(0) is undefined (domain restricted).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Concept check: When does <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) fail to exist for a piecewise function?</div><div class="sol"><span class="lbl">Answer:</span><br>Compute the left-hand limit using values with <i>x</i>&lt;<i>a</i> and the right-hand limit using values with <i>x</i>&gt;<i>a</i>.<br>If the two one-sided limits are different, there is no single value that <i>f</i>(<i>x</i>) approaches.<br>Then the limit at <i>a</i> does not exist, even if <i>f</i>(<i>a</i>) is defined.</div><div class="ans">✓&nbsp; If LHL ≠ RHL, then the limit at <i>a</i> does not exist.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Limit is about approach: use <i>x</i> near <i>a</i>, not necessarily at <i>a</i>.</li><li>To claim <b>lim</b><sub><i>x</i>→<i>a</i></sub> exists, check both sides (LHL and RHL).</li><li>For piecewise functions, compute LHL and RHL separately from definition/graph.</li><li>A removable discontinuity: limit exists; function value may be undefined or assigned differently.</li><li>A function value <i>f</i>(<i>a</i>) can exist even when the limit does not (jump at <i>a</i>).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Assuming <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) always equals <i>f</i>(<i>a</i>), even for holes or piecewise definitions.</li><li>Checking only one side (usually right side) and declaring the limit exists.</li><li>Mixing up: "limit exists" vs "function value exists" (they are independent).</li><li>Using a wrong domain example (e.g., saying |<i>x</i>| is undefined at 0 without stating a domain restriction).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“N-E-A-R rule for limits”</div><paragraph id="6aa538c1cd3949d971000435"><b>N</b>: use <b>Near</b> values of <i>x</i>, not necessarily <i>x</i>=<i>a</i>.</paragraph><paragraph id="6aa538c103f1d0291a000436"><b>E</b>: find the <b>Expected</b> y-value the graph is heading toward.</paragraph><paragraph id="6aa538c118a64adc64000437"><b>A</b>: check both <b>Approaches</b> (left and right).</paragraph><paragraph id="6aa538c129907d45a1000438"><b>R</b>: if the limit seems to differ from <i>f</i>(<i>a</i>), look for a <b>Removable</b> discontinuity (a hole) or a jump.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Limit is about approach: <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) depends on values near <i>a</i>, not necessarily on <i>f</i>(<i>a</i>).</span><span class="eq"><b>LHL</b>: <b>lim</b><sub><i>x</i>→<i>a</i>−</sub><i>f</i>(<i>x</i>) (approach from <i>x</i>&lt;<i>a</i>).</span><span class="eq"><b>RHL</b>: <b>lim</b><sub><i>x</i>→<i>a</i>+</sub><i>f</i>(<i>x</i>) (approach from <i>x</i>&gt;<i>a</i>).</span><span class="eq">Existence: <b>lim</b><sub><i>x</i>→<i>a</i></sub> exists iff LHL = RHL.</span><span class="eq">Removable discontinuity: the limit can exist even if <i>f</i>(<i>a</i>) is undefined or defined differently.</span><span class="eq">Jump discontinuity: if LHL ≠ RHL, the (two-sided) limit does not exist, even if <i>f</i>(<i>a</i>) is defined.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ONE-SIDED LIMITS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Left-hand limit</b>: <b>lim</b><sub><i>x</i>→<i>a</i><sup>−</sup></sub> <i>f</i>(<i>x</i>) is the value suggested by <i>f</i>(<i>x</i>) when <i>x</i> approaches <i>a</i> using only <i>x</i>&lt;<i>a</i>.</li><li><b>Right-hand limit</b>: <b>lim</b><sub><i>x</i>→<i>a</i><sup>+</sup></sub> <i>f</i>(<i>x</i>) is the value suggested by <i>f</i>(<i>x</i>) when <i>x</i> approaches <i>a</i> using only <i>x</i>&gt;<i>a</i>.</li><li>The (two-sided) limit <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) <b>exists</b> iff both one-sided limits exist and are equal.</li><li>If <b>lim</b><sub><i>x</i>→<i>a</i><sup>−</sup></sub><i>f</i>(<i>x</i>) ≠ <b>lim</b><sub><i>x</i>→<i>a</i><sup>+</sup></sub><i>f</i>(<i>x</i>), then <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) <b>does not exist</b> (typically a jump at <i>a</i>).</li><li>A limit depends on values <b>near</b> <i>a</i>; it may differ from <i>f</i>(<i>a</i>) or exist even when <i>f</i>(<i>a</i>) is undefined.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='5' orient='auto'><path d='M0,0 L10,5 L0,10 Z' fill='#123B7A'/></marker></defs><g><line x1='40' y1='160' x2='330' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='185' y1='30' x2='185' y2='170' stroke='#123B7A' stroke-width='2'/><text x='335' y='164' font-size='12' fill='#1f2a44'>x</text><text x='190' y='24' font-size='12' fill='#1f2a44'>y</text><text x='178' y='176' font-size='12' fill='#1f2a44'>0</text><line x1='60' y1='90' x2='185' y2='90' stroke='#2563EB' stroke-width='4'/><line x1='185' y1='60' x2='310' y2='60' stroke='#16A34A' stroke-width='4'/><circle cx='185' cy='90' r='6' fill='#2563EB'/><circle cx='185' cy='60' r='6' fill='#EEF4FF' stroke='#16A34A' stroke-width='3'/><text x='70' y='82' font-size='12' fill='#1f2a44'>y=1</text><text x='240' y='52' font-size='12' fill='#1f2a44'>y=2</text><text x='70' y='110' font-size='12' fill='#1f2a44'>x≤0</text><text x='240' y='80' font-size='12' fill='#1f2a44'>x&gt;0</text><text x='205' y='104' font-size='12' fill='#1f2a44'>LHL=1</text><text x='205' y='48' font-size='12' fill='#1f2a44'>RHL=2</text></g></svg><div class="figcap">Example: <i>f</i>(<i>x</i>)=1 for <i>x</i>≤0, 2 for <i>x</i>&gt;0 shows LHL ≠ RHL, so limit at 0 does not exist.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">←</span><span>Approach from left: use <i>x</i> values like <i>a</i>−0.1, <i>a</i>−0.01, ...</span></li><li><span class="ic">→</span><span>Approach from right: use <i>x</i> values like <i>a</i>+0.1, <i>a</i>+0.01, ...</span></li><li><span class="ic">⧉</span><span>In a piecewise function, the rule may change at the boundary point.</span></li><li><span class="ic">✕</span><span>If LHL and RHL are different, the two-sided limit is DNE.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO EVALUATE ONE-SIDED LIMITS (EXAM METHOD)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='8' refY='5' orient='auto'><path d='M0,0 L10,5 L0,10 Z' fill='#7C3AED'/></marker></defs><g><rect x='20' y='30' width='150' height='44' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='32' y='58' font-size='13' fill='#1f2a44'>Use rule for x&lt;a</text><rect x='190' y='30' width='150' height='44' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='202' y='58' font-size='13' fill='#1f2a44'>Use rule for x&gt;a</text><line x1='170' y1='52' x2='190' y2='52' stroke='#7C3AED' stroke-width='2' marker-end='url(#arrow2)'/><rect x='105' y='105' width='150' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='118' y='130' font-size='13' fill='#1f2a44'>Compare LHL &amp; RHL</text><text x='118' y='148' font-size='13' fill='#1f2a44'>Equal? limit exists</text><line x1='95' y1='74' x2='150' y2='105' stroke='#123B7A' stroke-width='2'/><line x1='265' y1='74' x2='210' y2='105' stroke='#123B7A' stroke-width='2'/></g></svg></div><ul class="b"><li>Identify the point <i>a</i> and the rule valid just left of <i>a</i> and just right of <i>a</i>.</li><li>Compute <b>lim</b><sub><i>x</i>→<i>a</i><sup>−</sup></sub><i>f</i>(<i>x</i>) using only the expression for <i>x</i>&lt;<i>a</i>.</li><li>Compute <b>lim</b><sub><i>x</i>→<i>a</i><sup>+</sup></sub><i>f</i>(<i>x</i>) using only the expression for <i>x</i>&gt;<i>a</i>.</li><li>If both values match, the two-sided limit equals the common value; otherwise write DNE.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WHEN LIMIT DOES NOT EXIST (JUMP AT THE POINT)</span></h2><ul class="b"><li>If left side approaches <i>L</i> and right side approaches <i>R</i> with <i>L</i>≠<i>R</i>, there is no single two-sided limit.</li><li>A limit can fail even if <i>f</i>(<i>a</i>) is defined (function value does not control the limit).</li><li>Graph cue: near <i>x</i>=<i>a</i>, the curve approaches two different y-levels from left and right.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">LEFT-HAND vs RIGHT-HAND LIMIT vs (TWO-SIDED) LIMIT</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Left-hand limit</th><th>Right-hand limit</th></tr></thead><tbody><tr><td>Notation</td><td><b>lim</b><sub><i>x</i>→<i>a</i><sup>−</sup></sub><i>f</i>(<i>x</i>)</td><td><b>lim</b><sub><i>x</i>→<i>a</i><sup>+</sup></sub><i>f</i>(<i>x</i>)</td></tr><tr><td>Direction</td><td>Approach with <i>x</i>&lt;<i>a</i></td><td>Approach with <i>x</i>&gt;<i>a</i></td></tr><tr><td>Which values of <i>f</i> matter?</td><td>Values of <i>f</i>(<i>x</i>) for <i>x</i> just less than <i>a</i></td><td>Values of <i>f</i>(<i>x</i>) for <i>x</i> just greater than <i>a</i></td></tr><tr><td>Two-sided limit</td><td>If LHL equals RHL, the common value is <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>)</td><td>If RHL equals LHL, the common value is <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">For <i>f</i>(<i>x</i>) = 1 for <i>x</i>≤0 and 2 for <i>x</i>&gt;0, find LHL and RHL at 0. Does <b>lim</b><sub><i>x</i>→0</sub><i>f</i>(<i>x</i>) exist?</div><div class="sol"><span class="lbl">Answer:</span><br>As <i>x</i>→0<sup>−</sup>, we use the rule for <i>x</i>≤0, so <i>f</i>(<i>x</i>) stays 1 near 0 from the left.<br>So <b>lim</b><sub><i>x</i>→0<sup>−</sup></sub><i>f</i>(<i>x</i>) = 1.<br>As <i>x</i>→0<sup>+</sup>, we use the rule for <i>x</i>&gt;0, so <i>f</i>(<i>x</i>) stays 2 near 0 from the right.<br>So <b>lim</b><sub><i>x</i>→0<sup>+</sup></sub><i>f</i>(<i>x</i>) = 2.<br>Since the one-sided limits are unequal, the two-sided limit does not exist.</div><div class="ans">✓&nbsp; <b>lim</b><sub><i>x</i>→0<sup>−</sup></sub><i>f</i>(<i>x</i>)=1, <b>lim</b><sub><i>x</i>→0<sup>+</sup></sub><i>f</i>(<i>x</i>)=2, so <b>lim</b><sub><i>x</i>→0</sub><i>f</i>(<i>x</i>) does not exist.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Let <i>f</i>(<i>x</i>) = <i>x</i>−2 for <i>x</i>&lt;0, <i>f</i>(0)=0, and <i>f</i>(<i>x</i>)=<i>x</i>+2 for <i>x</i>&gt;0. Find one-sided limits at 0 and decide existence of <b>lim</b><sub><i>x</i>→0</sub><i>f</i>(<i>x</i>).</div><div class="sol"><span class="lbl">Answer:</span><br>For <i>x</i>&lt;0, the expression is <i>x</i>−2, so as <i>x</i>→0<sup>−</sup>, the values approach −2.<br>Thus <b>lim</b><sub><i>x</i>→0<sup>−</sup></sub><i>f</i>(<i>x</i>) = −2.<br>For <i>x</i>&gt;0, the expression is <i>x</i>+2, so as <i>x</i>→0<sup>+</sup>, the values approach 2.<br>Thus <b>lim</b><sub><i>x</i>→0<sup>+</sup></sub><i>f</i>(<i>x</i>) = 2.<br>Since −2 ≠ 2, the two-sided limit at 0 does not exist; the value <i>f</i>(0)=0 does not change this.</div><div class="ans">✓&nbsp; <b>lim</b><sub><i>x</i>→0<sup>−</sup></sub><i>f</i>(<i>x</i>)=−2, <b>lim</b><sub><i>x</i>→0<sup>+</sup></sub><i>f</i>(<i>x</i>)=2 ⇒ <b>lim</b><sub><i>x</i>→0</sub><i>f</i>(<i>x</i>) does not exist.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Compute LHL and RHL separately; each uses only its own side’s behaviour near <i>a</i>.</li><li>Two-sided limit exists iff both one-sided limits exist and are equal.</li><li>Limit depends on nearby values, so it may differ from <i>f</i>(<i>a</i>) or exist even if <i>f</i>(<i>a</i>) is undefined.</li><li>If the domain allows only one side (e.g., only <i>x</i>&gt;0), only that one-sided limit is meaningful.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Assuming <i>f</i>(<i>a</i>) equals the limit without checking both sides.</li><li>Computing only one side but writing the two-sided notation <b>lim</b><sub><i>x</i>→<i>a</i></sub>.</li><li>Using the wrong piece of a piecewise function near the boundary point.</li><li>Concluding DNE just because <i>f</i>(<i>a</i>) is not defined (the limit may still exist).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>L</b>eft uses <b>L</b>ess-than”</div><paragraph id="6aa538c1bf99af5d33000439"><b>LHL</b>: approach from <i>x</i>&lt;<i>a</i> ("less").</paragraph><paragraph id="6aa538c1c614d6be5000043a"><b>RHL</b>: approach from <i>x</i>&gt;<i>a</i> ("right").</paragraph><paragraph id="6aa538c1df3eaab38a00043b">Two-sided limit exists only when both sides agree.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Left-hand limit: approach <i>a</i> using only <i>x</i>&lt;<i>a</i> values.</span><span class="eq">Right-hand limit: approach <i>a</i> using only <i>x</i>&gt;<i>a</i> values.</span><span class="eq">Two-sided limit exists iff LHL = RHL (and both are finite real numbers).</span><span class="eq"><i>f</i>(<i>a</i>) may be different from the limit, or even be undefined, without affecting whether the limit exists.</span><span class="eq">For piecewise functions, check the rule that applies on each side of the point separately.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>LIMIT EVALUATION EXAMPLES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>The limit <b>lim</b><sub><i>x</i>→<i>a</i></sub> <i>f</i>(<i>x</i>) is the value <i>f</i>(<i>x</i>) approaches when <i>x</i> is near <i>a</i>, not necessarily at <i>a</i>.</li><li>Table idea: compute <i>f</i>(<i>x</i>) for <i>x</i> slightly less than and slightly greater than <i>a</i> and observe the approached value.</li><li>Graph idea: as <i>x</i>→<i>a</i>, the curve approaches a height <i>l</i>; that height is the limit.</li><li>Left-hand limit <b>lim</b><sub><i>x</i>→<i>a</i>−</sub> and right-hand limit <b>lim</b><sub><i>x</i>→<i>a</i>+</sub> must be equal for the (two-sided) limit to exist.</li><li>Even if <i>f</i>(<i>a</i>) is defined, it may differ from the limit; the limit depends on nearby values.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='14' y='14' width='332' height='172' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='48' y1='160' x2='318' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='60' y1='170' x2='60' y2='36' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='305' y='178' font-size='12' fill='#1f2a44'>x</text><text x='40' y='44' font-size='12' fill='#1f2a44'>y</text><path d='M60 150 C110 120, 150 108, 190 92 C220 80, 250 70, 300 56' fill='none' stroke='#2563EB' stroke-width='3'/><line x1='190' y1='160' x2='190' y2='92' stroke='#7C3AED' stroke-width='2' stroke-dasharray='5 4'/><circle cx='190' cy='92' r='5' fill='#7C3AED'/><text x='174' y='176' font-size='12' fill='#1f2a44'>a</text><text x='200' y='96' font-size='12' fill='#1f2a44'>limit l</text><circle cx='190' cy='120' r='5' fill='#F59E0B'/><text x='208' y='124' font-size='12' fill='#1f2a44'>f(a)</text><text x='86' y='30' font-size='13' fill='#1f2a44'><tspan fill='#2563EB'>curve y=f(x)</tspan> approaches <tspan fill='#7C3AED'>l</tspan> as x→a</text></svg><div class="figcap">Graph view: limit is approached height; <b>f(a)</b> can be a different plotted point.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📋</span><span>Table method: choose <i>a</i>±0.1, <i>a</i>±0.01, <i>a</i>±0.001; compare LHL and RHL trends.</span></li><li><span class="ic">📈</span><span>Graph method: move along the curve toward <i>x</i>=<i>a</i>; the approached y-value is the limit.</span></li><li><span class="ic">↔️</span><span>Existence test: if LHL = RHL = <i>l</i>, then <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) exists and equals <i>l</i>.</span></li><li><span class="ic">🧩</span><span>Use limit laws: evaluate sums/products/quotients by taking limits of parts when those limits exist.</span></li><li><span class="ic">⚠️</span><span><i>f</i>(<i>a</i>) can differ from the limit in modified/piecewise definitions (removable discontinuity).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">ILLUSTRATION QUICK SET (TABLE/GRAPH INTUITION)</span></h2><ul class="b"><li><b>Illustration 1:</b> <i>f</i>(<i>x</i>)=<i>x</i>+10 ⇒ <b>lim</b><sub><i>x</i>→5</sub><i>f</i>(<i>x</i>)=15.</li><li><b>Illustration 2:</b> <i>f</i>(<i>x</i>)=<i>x</i><sup>3</sup> ⇒ <b>lim</b><sub><i>x</i>→1</sub><i>x</i><sup>3</sup>=1.</li><li><b>Illustration 3:</b> <i>f</i>(<i>x</i>)=3<i>x</i> ⇒ <b>lim</b><sub><i>x</i>→2</sub>3<i>x</i>=6.</li><li><b>Illustration 6:</b> <b>lim</b><sub><i>x</i>→π/2</sub>sin<i>x</i>=1 (radians).</li><li><b>Illustration 7:</b> <i>f</i>(<i>x</i>)=<i>x</i>+cos<i>x</i> ⇒ <b>lim</b><sub><i>x</i>→0</sub>(<i>x</i>+cos<i>x</i>)=1.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">REMOVABLE DISCONTINUITY EXAMPLE (SOURCE h(x))</span></h2><ul class="b"><li>Let <i>h</i>(<i>x</i>)=(<i>x</i><sup>2</sup>−4)/(<i>x</i>−2), <i>x</i>≠2. Values near 2 are near 4 (hole at <i>x</i>=2).</li><li>Algebra: <i>x</i><sup>2</sup>−4=(<i>x</i>−2)(<i>x</i>+2), so for <i>x</i>≠2, <i>h</i>(<i>x</i>)=<i>x</i>+2.</li><li>Hence <b>lim</b><sub><i>x</i>→2</sub><i>h</i>(<i>x</i>)=<b>lim</b><sub><i>x</i>→2</sub>(<i>x</i>+2)=4, but <i>h</i>(2) is not defined unless separately defined.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">LIMIT vs FUNCTION VALUE</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Situation at <i>x</i>=<i>a</i></th><th><b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>)</th><th><i>f</i>(<i>a</i>)</th></tr></thead><tbody><tr><td>Continuous (e.g. <i>x</i>+10, <i>x</i><sup>3</sup>, 3<i>x</i>, <i>x</i><sup>2</sup>+<i>x</i>)</td><td>Exists; equals nearby approached value</td><td>Same as limit (direct substitution works)</td></tr><tr><td>Removable discontinuity (hole) (e.g. (<i>x</i><sup>2</sup>−4)/(<i>x</i>−2) at <i>x</i>=2)</td><td>Exists (LHL=RHL)</td><td>May be undefined or defined but different</td></tr><tr><td>Jump (different LHL, RHL) (piecewise step)</td><td>Does not exist (two-sided)</td><td>May still be defined</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Two-sided limit exists only when both one-sided limits match.</div><div class="eqbox"><span class="eq"><b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) exists ⇔ <b>lim</b><sub><i>x</i>→<i>a</i>−</sub><i>f</i>(<i>x</i>) = <b>lim</b><sub><i>x</i>→<i>a</i>+</sub><i>f</i>(<i>x</i>) = <i>l</i></span></div><div class="fstep">If <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) and <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>) exist, limit laws apply.</div><div class="eqbox"><span class="eq"><b>lim</b><sub><i>x</i>→<i>a</i></sub>[<i>f</i>(<i>x</i>)+<i>g</i>(<i>x</i>)] = <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) + <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>)</span></div></div><div><div class="fstep">Product law (Theorem 1).</div><div class="eqbox blue"><span class="eq"><b>lim</b><sub><i>x</i>→<i>a</i></sub>[<i>f</i>(<i>x</i>)·<i>g</i>(<i>x</i>)] = (<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>))·(<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>))</span></div><div class="fstep">Quotient law (denominator limit nonzero) (Theorem 1).</div><div class="eqbox blue"><span class="eq"><b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>)</span><i>g</i>(<i>x</i>) = <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>)<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>) , if <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>) ≠ 0</div></div><div><table class="wtab"><tr><td><i>a</i>&nbsp;=</td><td>Point being approached on x-axis</td></tr><tr><td><i>l</i>&nbsp;=</td><td>Common approached value (the limit)</td></tr><tr><td><b>lim</b><sub><i>x</i>→<i>a</i>−</sub>&nbsp;=</td><td>Left-hand limit (x approaches a from values <i>&lt;a</i>)</td></tr><tr><td><b>lim</b><sub><i>x</i>→<i>a</i>+</sub>&nbsp;=</td><td>Right-hand limit (x approaches a from values <i>&gt;a</i>)</td></tr></table><div class="hibox">Exam core<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) exists ⇔ LHL = RHL; and it may still be ≠ <i>f</i>(<i>a</i>)</span></div></div></div></div></div>
+    <div class="card"
+     style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0;">
+
+  <h2>
+    <span class="secno">9</span>
+    <span class="htext">Solved Examples</span>
+  </h2>
+
+  <div class="row c2"
+       style="
+         display:grid;
+         grid-template-columns:1fr 1fr;
+         gap:4mm;
+         align-items:start;
+       ">
+
+    <!-- Example 1 -->
+    <div class="ex" style="height:100%;box-sizing:border-box;">
+      <div class="n">1</div>
+
+      <div>
+        <div class="prob">
+          Using a table idea, estimate
+          <b>lim</b><sub><i>x</i>→2</sub> 3<i>x</i>
+          using <i>x</i>=1.99 and 2.01.
+        </div>
+
+        <div class="sol">
+          <span class="lbl">Solution:</span><br>
+
+          For <i>x</i>=1.99,
+          3<i>x</i>=3×1.99=5.97.<br>
+
+          For <i>x</i>=2.01,
+          3<i>x</i>=3×2.01=6.03.<br>
+
+          Both sides approach 6, so the two-sided limit is 6.<br>
+
+          Since 3<i>x</i> is continuous, direct substitution gives the exact limit:
+          3×2=6.
+        </div>
+
+        <div class="ans">
+          ✓&nbsp;
+          <b>lim</b><sub><i>x</i>→2</sub>3<i>x</i> = 6
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Example 2 -->
+    <div class="ex" style="height:100%;box-sizing:border-box;">
+      <div class="n">2</div>
+
+      <div>
+        <div class="prob">
+          Evaluate
+          <b>lim</b><sub><i>x</i>→2</sub>
+          <span class="frac">
+            <span><i>x</i><sup>2</sup>−4</span>
+            <span><i>x</i>−2</span>
+          </span>
+          given the expression is defined only for <i>x</i>≠2.
+        </div>
+
+        <div class="sol">
+          <span class="lbl">Solution:</span><br>
+
+          Factor:
+          <i>x</i><sup>2</sup>−4
+          =(<i>x</i>−2)(<i>x</i>+2).<br>
+
+          For <i>x</i>≠2, cancel (<i>x</i>−2):
+          the expression equals <i>x</i>+2.<br>
+
+          Now take the limit:
+          <b>lim</b><sub><i>x</i>→2</sub>
+          (<i>x</i>+2)=4.
+        </div>
+
+        <div class="ans">
+          ✓&nbsp;
+          <b>lim</b><sub><i>x</i>→2</sub>
+          <span class="frac">
+            <span><i>x</i><sup>2</sup>−4</span>
+            <span><i>x</i>−2</span>
+          </span>
+          = 4
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Two-sided limit needs approach from <b>both</b> sides unless domain allows only one side (e.g. <i>x</i>&gt;0).</li><li>If LHL ≠ RHL, write: “two-sided limit does not exist” even if <i>f</i>(<i>a</i>) is defined.</li><li>For polynomials/linear functions and sin/cos at standard points, direct substitution gives the limit (continuity).</li><li>While using trig limits/values here, keep angles in radians (as stated in the question).</li><li>For removable forms like (<i>x</i><sup>2</sup>−4)/(<i>x</i>−2), simplify first (factor/cancel), then substitute.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Checking only one side and concluding a two-sided limit without verifying the other side.</li><li>Mixing up <i>f</i>(<i>a</i>) with <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) in piecewise/modified definitions.</li><li>Cancelling terms at the point where the expression is not defined (e.g. cancelling and then claiming original value at <i>x</i>=2 exists).</li><li>Using degree mode instead of radians while evaluating sin(π/2) type limits.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“LHL–RHL–THEN VALUE”</div><paragraph id="6aa538c1215af847aa00043c">Check <b>L</b>eft approach and <b>R</b>ight approach.</paragraph><paragraph id="6aa538c19e5e5e411400043d">If they <b>Match</b>, that number is the (two-sided) limit.</paragraph><paragraph id="6aa538c1c736e8b10800043e">Then separately evaluate/compare <i>f</i>(<i>a</i>) (may be different).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Two-sided limit exists ⇔ <b>lim</b><sub><i>x</i>→<i>a</i>−</sub><i>f</i>(<i>x</i>) = <b>lim</b><sub><i>x</i>→<i>a</i>+</sub><i>f</i>(<i>x</i>).</span><span class="eq">Sum law: <b>lim</b><sub><i>x</i>→<i>a</i></sub>(<i>f</i>+<i>g</i>) = <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i> + <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i> (when both exist).</span><span class="eq">Product law: <b>lim</b><sub><i>x</i>→<i>a</i></sub>(<i>f</i>·<i>g</i>) = (<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>)(<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>) (when both exist).</span><span class="eq">Quotient law: <b>lim</b><sub><i>x</i>→<i>a</i></sub>(<i>f</i>/<i>g</i>) = (<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>f</i>)/(<b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>) if <b>lim</b><sub><i>x</i>→<i>a</i></sub><i>g</i>≠0.</span><span class="eq">Removable case: if <i>h</i>(<i>x</i>)=(<i>x</i><sup>2</sup>−4)/(<i>x</i>−2), <i>x</i>≠2, then <i>h</i>(<i>x</i>)=<i>x</i>+2 for <i>x</i>≠2, so <b>lim</b><sub><i>x</i>→2</sub><i>h</i>(<i>x</i>)=4.</span><span class="eq"><b>Illustration 1:</b> <b>lim</b><sub><i>x</i>→5</sub>(<i>x</i>+10)=15.</span><span class="eq"><b>Illustration 2:</b> <b>lim</b><sub><i>x</i>→1</sub><i>x</i><sup>3</sup>=1.</span><span class="eq"><b>Illustration 3:</b> <b>lim</b><sub><i>x</i>→2</sub>3<i>x</i>=6.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ALGEBRA OF LIMITS (THEOREM 1)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Algebra of limits:</b> if <span class='frac'><span>lim</span><span>x→a</span></span> <i>f</i>(<i>x</i>) and <span class='frac'><span>lim</span><span>x→a</span></span> <i>g</i>(<i>x</i>) exist, then limits combine by +, −, ×, ÷ (with nonzero denominator).</li><li>These are stated as <b>Theorem 1</b> in section <b>12.3.1</b> and are used <b>without proof</b>.</li><li>Quotient rule needs <span class='frac'><span>lim</span><span>x→a</span></span> <i>g</i>(<i>x</i>) ≠ 0; otherwise the law cannot be applied directly.</li><li>Constant multiple is a special case of product: multiplying by λ pulls outside the limit.</li><li>Use these laws to simplify expressions into known limits or direct substitution (when valid).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#2563EB'/></marker></defs><rect x='16' y='18' width='368' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='42' font-size='14' fill='#1f2a44'>Given limits exist at a</text><rect x='28' y='56' width='130' height='40' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='44' y='80' font-size='13' fill='#1f2a44'>lim f(x)</text><rect x='176' y='56' width='130' height='40' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='192' y='80' font-size='13' fill='#1f2a44'>lim g(x)</text><line x1='93' y1='98' x2='93' y2='120' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><line x1='241' y1='98' x2='241' y2='120' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='28' y='126' width='316' height='42' rx='8' fill='#EAF7EF' stroke='#16A34A'/><text x='40' y='152' font-size='13' fill='#1f2a44'>Apply Theorem 1: +  −  ×  ÷  (÷ needs denom ≠ 0), and λ·</text></svg><div class="figcap">Flow: if component limits exist, combine using Theorem 1; check denominator-limit ≠ 0 before dividing.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Sum/difference: take limits termwise when both component limits exist.</span></li><li><span class="ic">✖</span><span>Product: limit of product = product of limits (existence assumed).</span></li><li><span class="ic">➗</span><span>Quotient: allowed only if denominator-limit is <b>not zero</b>.</span></li><li><span class="ic">λ</span><span>Constant multiple: <span class='frac'><span>lim</span><span>x→a</span></span> [λ<i>f</i>(<i>x</i>)] = λ <span class='frac'><span>lim</span><span>x→a</span></span> <i>f</i>(<i>x</i>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">THEOREM 1 (12.3.1): LIMIT LAWS (NO PROOF)</span></h2><ul class="b"><li><b>Sum:</b> <span class='frac'><span>lim</span><span>x→a</span></span>[<i>f</i>(<i>x</i>)+<i>g</i>(<i>x</i>)] = <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) + <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>).</li><li><b>Difference:</b> <span class='frac'><span>lim</span><span>x→a</span></span>[<i>f</i>(<i>x</i>)−<i>g</i>(<i>x</i>)] = <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) − <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>).</li><li><b>Product:</b> <span class='frac'><span>lim</span><span>x→a</span></span>[<i>f</i>(<i>x</i>)·<i>g</i>(<i>x</i>)] = ( <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) )·( <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) ).</li><li><b>Quotient:</b> <span class='frac'><span>lim</span><span>x→a</span></span><span class='frac'><span><i>f</i>(<i>x</i>)</span><span><i>g</i>(<i>x</i>)</span></span> = <span class='frac'><span><span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>)</span><span><span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>)</span></span> <b>only if</b> <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) ≠ 0.</li><li><b>Constant multiple (λ):</b> <span class='frac'><span>lim</span><span>x→a</span></span>[λ<i>f</i>(<i>x</i>)] = λ <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">QUICK APPLICATION CHECKLIST</span></h2><ul class="b"><li>Step 1: Ensure <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) and <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) exist (finite).</li><li>Step 2: For quotient, verify <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) ≠ 0 before splitting limits.</li><li>Step 3: Pull out constants: λ can be taken outside early to simplify arithmetic.</li><li>Step 4: After using laws, compute remaining basic limits (often by substitution).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">WHEN YOU CAN SPLIT A LIMIT (COMMON EXAM TRAP)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Form</th><th>Allowed if</th><th>Result</th></tr></thead><tbody><tr><td><i>f</i>(<i>x</i>) + <i>g</i>(<i>x</i>)</td><td>Both limits exist</td><td>Split into sum of limits</td></tr><tr><td><i>f</i>(<i>x</i>)·<i>g</i>(<i>x</i>)</td><td>Both limits exist</td><td>Split into product of limits</td></tr><tr><td><span class='frac'><span><i>f</i>(<i>x</i>)</span><span><i>g</i>(<i>x</i>)</span></span></td><td>Both limits exist <b>and</b> denominator-limit ≠ 0</td><td>Split into quotient of limits</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Special case (constant multiple) comes from product law with <i>g</i>(<i>x</i>)=λ (constant):</div><div class="eqbox"><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span>[λ·<i>f</i>(<i>x</i>)] = <span class='frac'><span>lim</span><span>x→a</span></span>[<i>g</i>(<i>x</i>)·<i>f</i>(<i>x</i>)]</span></div></div><div><div class="eqbox blue"><span class="eq">= ( <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) )·( <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) ) = λ·<span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>)</span></div></div><div><table class="wtab"><tr><td><i>f</i>(<i>x</i>), <i>g</i>(<i>x</i>)&nbsp;=</td><td>Real-valued functions defined near <i>a</i> (possibly not at <i>a</i>)</td></tr><tr><td><i>a</i>&nbsp;=</td><td>Point to which <i>x</i> tends</td></tr><tr><td>λ&nbsp;=</td><td>Real constant (constant function value)</td></tr></table><div class="hibox">Most important safety condition<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span><span class='frac'><span><i>f</i>(<i>x</i>)</span><span><i>g</i>(<i>x</i>)</span></span> = <span class='frac'><span><span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>)</span><span><span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>)</span></span> <span><b>if</b></span> <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) ≠ 0</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Evaluate using Theorem 1: <span class='frac'><span>lim</span><span>x→2</span></span> [ (3<i>x</i><sup>2</sup>−5<i>x</i>+1) + 4(2<i>x</i>−7) ].</div><div class="sol"><span class="lbl">Solution:</span><br>Let <i>f</i>(<i>x</i>)=3<i>x</i><sup>2</sup>−5<i>x</i>+1 and <i>g</i>(<i>x</i>)=4(2<i>x</i>−7). Both are polynomials ⇒ limits exist.<br>By sum and constant multiple laws:<br><span class='frac'><span>lim</span><span>x→2</span></span>[<i>f</i>(<i>x</i>)+<i>g</i>(<i>x</i>)] = <span class='frac'><span>lim</span><span>x→2</span></span><i>f</i>(<i>x</i>) + <span class='frac'><span>lim</span><span>x→2</span></span>4(2<i>x</i>−7).<br>Compute by substitution:<br><span class='frac'><span>lim</span><span>x→2</span></span><i>f</i>(<i>x</i>) = 3(2)<sup>2</sup>−5(2)+1 = 12−10+1 = 3.<br><span class='frac'><span>lim</span><span>x→2</span></span>4(2<i>x</i>−7) = 4(2·2−7)=4(4−7)=4(−3)=−12.<br>Add: 3 + (−12) = −9.</div><div class="ans">✓&nbsp; −9</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Evaluate using Theorem 1 (check denominator): <span class='frac'><span>lim</span><span>x→1</span></span> <span class='frac'><span> (2<i>x</i>+3)(<i>x</i><sup>2</sup>−1) </span><span> 5(<i>x</i>−1) </span></span>.</div><div class="sol"><span class="lbl">Solution:</span><br>First check denominator-limit: <span class='frac'><span>lim</span><span>x→1</span></span>5(<i>x</i>−1)=5(1−1)=0, so quotient law cannot be applied directly in split form.<br>Simplify algebraically (allowed for <i>x</i>≠1):<br><i>x</i><sup>2</sup>−1=(<i>x</i>−1)(<i>x</i>+1).<br>So expression becomes <span class='frac'><span>(2<i>x</i>+3)(<i>x</i>−1)(<i>x</i>+1)</span><span>5(<i>x</i>−1)</span></span> = <span class='frac'><span>(2<i>x</i>+3)(<i>x</i>+1)</span><span>5</span></span> for <i>x</i>≠1.<br>Now apply limit (constant denominator 5 ≠ 0):<br><span class='frac'><span>lim</span><span>x→1</span></span> <span class='frac'><span>(2<i>x</i>+3)(<i>x</i>+1)</span><span>5</span></span> = <span class='frac'><span>(2·1+3)(1+1)</span><span>5</span></span>.<br>Compute: (5·2)/5 = 2.</div><div class="ans">✓&nbsp; 2</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Theorem 1 assumes the individual limits exist; you cannot use it to prove existence.</li><li>Quotient law needs denominator-limit ≠ 0; otherwise simplify first or use other methods.</li><li>Constant multiple λ always pulls out: simplifies long expressions quickly.</li><li>If a function is polynomial, limit at <i>a</i> equals value at <i>a</i> (via repeated use of laws).</li><li>Do not confuse <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) with <i>f</i>(<i>a</i>); they may differ even if both defined.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Splitting a quotient when denominator-limit becomes 0 (illegal use of (iv)).</li><li>Assuming laws work even when one of the limits does not exist.</li><li>Forgetting λ factor outside the limit, leading to sign/scale errors.</li><li>Cancelling factors without stating restriction <i>x</i>≠<i>a</i> while simplifying.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "SMDP-Q (Q needs NZ)"”</div><paragraph id="6aa538c1231178233000043f"><b>S</b>um, <b>M</b>inus, <b>D</b>ot (product), <b>P</b>ull constants (λ) are safe when limits exist.</paragraph><paragraph id="6aa538c134e3a67f50000440"><b>Q</b>uotient is safe only when denominator-limit is <b>N</b>on-<b>Z</b>ero.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span>[<i>f</i>(<i>x</i>)+<i>g</i>(<i>x</i>)] = <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) + <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>)</span><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span>[<i>f</i>(<i>x</i>)−<i>g</i>(<i>x</i>)] = <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) − <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>)</span><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span>[<i>f</i>(<i>x</i>)·<i>g</i>(<i>x</i>)] = ( <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>) )·( <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) )</span><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span><span class='frac'><span><i>f</i>(<i>x</i>)</span><span><i>g</i>(<i>x</i>)</span></span> = <span class='frac'><span><span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>)</span><span><span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>)</span></span>, if <span class='frac'><span>lim</span><span>x→a</span></span><i>g</i>(<i>x</i>) ≠ 0</span><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span>[λ<i>f</i>(<i>x</i>)] = λ <span class='frac'><span>lim</span><span>x→a</span></span><i>f</i>(<i>x</i>)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>POLYNOMIAL AND RATIONAL LIMITS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Polynomial:</b> If <i>p</i>(<i>x</i>) is a polynomial, then <span class='frac'><span>lim</span><span>x→a</span></span> <i>p</i>(<i>x</i>) = <i>p</i>(<i>a</i>).</li><li><b>Power law:</b> For any natural number <i>n</i>, <span class='frac'><span>lim</span><span>x→a</span></span> <i>x</i><sup>n</sup> = <i>a</i><sup>n</sup>.</li><li><b>Rational:</b> If <i>f</i>(<i>x</i>)=<span class='frac'><span><i>g</i>(<i>x</i>)</span><span><i>h</i>(<i>x</i>)</span></span> with polynomials <i>g</i>, <i>h</i>, and <i>h</i>(<i>a</i>)≠0, then <span class='frac'><span>lim</span><span>x→a</span></span> <i>f</i>(<i>x</i>)=<span class='frac'><span><i>g</i>(<i>a</i>)</span><span><i>h</i>(<i>a</i>)</span></span>.</li><li>If <i>h</i>(<i>a</i>)=0 and <i>g</i>(<i>a</i>)≠0, the limit is not finite; it may diverge to ±∞ or may not exist if one-sided behaviors differ.</li><li>If <i>g</i>(<i>a</i>)=0 and <i>h</i>(<i>a</i>)=0, it is a <b>0/0 indeterminate form</b>; factor and cancel common powers of (<i>x</i>−<i>a</i>).</li><li>After cancelling, evaluate the simplified expression at <i>x</i>=<i>a</i> (only for the limit; the original function may be undefined at <i>a</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='42' font-size='14' fill='#1f2a44'>Rational limit check at x=a</text><rect x='30' y='58' width='300' height='30' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='40' y='78' font-size='13' fill='#1f2a44'>Compute g(a), h(a)</text><line x1='180' y1='88' x2='180' y2='104' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='30' y='106' width='140' height='58' rx='8' fill='#EAF7EF' stroke='#16A34A'/><text x='40' y='128' font-size='13' fill='#1f2a44'>Case 1</text><text x='40' y='146' font-size='12' fill='#1f2a44'>h(a) ≠ 0</text><text x='40' y='162' font-size='12' fill='#1f2a44'>Substitute</text><rect x='190' y='106' width='140' height='58' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='200' y='128' font-size='13' fill='#1f2a44'>Case 2</text><text x='200' y='146' font-size='12' fill='#1f2a44'>h(a) = 0</text><text x='200' y='162' font-size='12' fill='#1f2a44'>Check g(a)</text><line x1='260' y1='164' x2='260' y2='182' stroke='#7C3AED' stroke-width='2' marker-end='url(#arrow)'/><text x='30' y='192' font-size='12' fill='#1f2a44'>If g(a)=0: factor (x−a)^k, cancel, then substitute. If g(a)≠0: limit not finite (±∞) or may not exist.</text></svg><div class="figcap">Decision flow for limits of rational functions at x = a.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">✅</span><span>Polynomials are continuous everywhere ⇒ limit equals value.</span></li><li><span class="ic">➗</span><span>For <span class='frac'><span><i>g</i></span><span><i>h</i></span></span>, direct substitution works only if <i>h</i>(<i>a</i>)≠0.</span></li><li><span class="ic">🧩</span><span>0/0 means factor: pull out (<i>x</i>−<i>a</i>)<sup>k</sup> from numerator/denominator.</span></li><li><span class="ic">⚖️</span><span>Compare powers: higher leftover power upstairs → limit 0; higher downstairs → unbounded/diverges.</span></li><li><span class="ic">🧠</span><span>Cancel only common factors, never cancel terms joined by + or −.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">POLYNOMIAL LIMITS (12.3.2 CORE IDEA)</span></h2><ul class="b"><li>If <i>p</i>(<i>x</i>) = <i>a</i><sub>0</sub> + <i>a</i><sub>1</sub><i>x</i> + … + <i>a</i><sub>n</sub><i>x</i><sup>n</sup>, then <span class='frac'><span>lim</span><span>x→a</span></span> <i>p</i>(<i>x</i>) = <i>p</i>(<i>a</i>).</li><li>Reason: limits respect + and ×; and <span class='frac'><span>lim</span><span>x→a</span></span> <i>x</i><sup>n</sup> = <i>a</i><sup>n</sup>.</li><li>So for polynomials, no special technique: just substitute <i>x</i>=<i>a</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">RATIONAL LIMITS: THE 0/0 FACTOR-CANCELLATION RULE</span></h2><ul class="b"><li>For <i>f</i>(<i>x</i>)=<span class='frac'><span><i>g</i>(<i>x</i>)</span><span><i>h</i>(<i>x</i>)</span></span>, first try substitution: if <i>h</i>(<i>a</i>)≠0 ⇒ <span class='frac'><span>lim</span><span>x→a</span></span> <i>f</i>(<i>x</i>)=<span class='frac'><span><i>g</i>(<i>a</i>)</span><span><i>h</i>(<i>a</i>)</span></span>.</li><li>If <i>h</i>(<i>a</i>)=0 and <i>g</i>(<i>a</i>)≠0 ⇒ limit is not finite; it may diverge to ±∞ or may fail to exist as a two-sided limit.</li><li>If <i>g</i>(<i>a</i>)=0 too ⇒ 0/0: write <i>g</i>(<i>x</i>)=(<i>x</i>−<i>a</i>)<sup>k</sup><i>g</i><sub>1</sub>(<i>x</i>), <i>h</i>(<i>x</i>)=(<i>x</i>−<i>a</i>)<sup>l</sup><i>h</i><sub>1</sub>(<i>x</i>).</li><li>After cancellation: if <i>k</i>=<i>l</i> ⇒ finite limit = <span class='frac'><span><i>g</i><sub>1</sub>(<i>a</i>)</span><span><i>h</i><sub>1</sub>(<i>a</i>)</span></span>; if <i>k</i>&gt;<i>l</i> ⇒ 0; if <i>k</i>&lt;<i>l</i> ⇒ unbounded/diverges (not a finite real limit).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Limits: Polynomial vs Rational (key exam contrast)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Polynomial <i>p</i>(<i>x</i>)</th><th>Rational <span class='frac'><span><i>g</i>(<i>x</i>)</span><span><i>h</i>(<i>x</i>)</span></span></th></tr></thead><tbody><tr><td>Direct substitution</td><td>Always works</td><td>Works only if <i>h</i>(<i>a</i>)≠0</td></tr><tr><td>At <i>x</i>=<i>a</i></td><td>Continuous everywhere</td><td>May be discontinuous/undefined if <i>h</i>(<i>a</i>)=0</td></tr><tr><td>Indeterminate form</td><td>Not needed</td><td>0/0 requires factor &amp; cancel</td></tr><tr><td>When <i>h</i>(<i>a</i>)=0, <i>g</i>(<i>a</i>)≠0</td><td>Not applicable</td><td>Limit is not a finite real number; may diverge to ±∞ or may not exist (one-sided behaviors differ)</td></tr><tr><td>When both vanish</td><td>Not applicable</td><td>Compare powers of (<i>x</i>−<i>a</i>) after factoring</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Power limit used inside polynomial evaluation:</div><div class="eqbox"><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span> <i>x</i><sup>n</sup> = <i>a</i><sup>n</sup> (n∈N)</span></div><div class="fstep">Polynomial limit (built from sums/products):</div><div class="eqbox"><span class="eq">If <i>p</i>(<i>x</i>) = Σ<sub>i=0</sub><sup>n</sup> <i>a</i><sub>i</sub><i>x</i><sup>i</sup>, then <span class='frac'><span>lim</span><span>x→a</span></span> <i>p</i>(<i>x</i>) = Σ<sub>i=0</sub><sup>n</sup> <i>a</i><sub>i</sub><i>a</i><sup>i</sup> = <i>p</i>(<i>a</i>)</span></div></div><div><div class="fstep">Rational limit when denominator not zero:</div><div class="eqbox blue"><span class="eq">If <i>h</i>(<i>a</i>)≠0, then <span class='frac'><span>lim</span><span>x→a</span></span> <span class='frac'><span><i>g</i>(<i>x</i>)</span><span><i>h</i>(<i>x</i>)</span></span> = <span class='frac'><span><i>g</i>(<i>a</i>)</span><span><i>h</i>(<i>a</i>)</span></span></span></div><div class="fstep">0/0 cancellation template (k,l are max powers of (x−a)):</div><div class="eqbox blue"><span class="eq"><span class='frac'><span><i>g</i>(<i>x</i>)</span><span><i>h</i>(<i>x</i>)</span></span>=<span class='frac'><span>(<i>x</i>−<i>a</i>)<sup>k</sup><i>g</i><sub>1</sub>(<i>x</i>)</span><span>(<i>x</i>−<i>a</i>)<sup>l</sup><i>h</i><sub>1</sub>(<i>x</i>)</span></span>=(<i>x</i>−<i>a</i>)<sup>k−l</sup> <span class='frac'><span><i>g</i><sub>1</sub>(<i>x</i>)</span><span><i>h</i><sub>1</sub>(<i>x</i>)</span></span></span></div></div><div><table class="wtab"><tr><td><i>p</i>(<i>x</i>)&nbsp;=</td><td>Polynomial function (degree n)</td></tr><tr><td><i>g</i>(<i>x</i>), <i>h</i>(<i>x</i>)&nbsp;=</td><td>Polynomials in a rational function <span class='frac'><span><i>g</i></span><span><i>h</i></span></span></td></tr><tr><td><i>a</i>&nbsp;=</td><td>Point where limit is evaluated</td></tr><tr><td><i>k</i>, <i>l</i>&nbsp;=</td><td>Highest powers of (<i>x</i>−<i>a</i>) dividing <i>g</i> and <i>h</i></td></tr></table><div class="hibox">Fastest exam rule<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>Polynomial:</b> <span class='frac'><span>lim</span><span>x→a</span></span> <i>p</i>(<i>x</i>) = <i>p</i>(<i>a</i>)<br><b>Rational:</b> if <i>h</i>(<i>a</i>)≠0 ⇒ substitute; if 0/0 ⇒ factor &amp; cancel.</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><path d='M0,0 L10,3 L0,6 Z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='60' y1='160' x2='320' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='80' y1='170' x2='80' y2='40' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='308' y='178' font-size='12' fill='#1f2a44'>x</text><text x='60' y='48' font-size='12' fill='#1f2a44'>y</text><path d='M110 80 C140 95, 170 115, 200 130 C230 145, 260 150, 300 152' fill='none' stroke='#2563EB' stroke-width='3'/><circle cx='200' cy='130' r='5' fill='#16A34A'/><text x='208' y='126' font-size='12' fill='#1f2a44'>approach</text><line x1='200' y1='130' x2='200' y2='160' stroke='#16A34A' stroke-width='2' stroke-dasharray='4 3'/><text x='188' y='178' font-size='12' fill='#1f2a44'>a</text><circle cx='200' cy='130' r='10' fill='none' stroke='#16A34A' stroke-width='2'/><text x='98' y='32' font-size='13' fill='#1f2a44'>Polynomial is smooth: limit = value at a</text></svg><div class="figcap">Polynomials are continuous: as x→a along the curve, y approaches p(a).</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Example 1 (Polynomial): Evaluate <span class='frac'><span>lim</span><span>x→−1</span></span> [1 + <i>x</i> + <i>x</i><sup>2</sup> + … + <i>x</i><sup>10</sup>].</div><div class="sol"><span class="lbl">Solution:</span><br>This is a polynomial in <i>x</i> (finite sum).<br>So <span class='frac'><span>lim</span><span>x→−1</span></span> equals the value at <i>x</i>=−1.<br>Compute: 1+(−1)+(−1)<sup>2</sup>+…+(−1)<sup>10</sup>.<br>Even powers give 1; odd powers give −1.<br>Even exponents: 0,2,4,6,8,10 → 6 terms. Odd exponents: 1,3,5,7,9 → 5 terms.<br>Sum = 6(1) + 5(−1) = 1.</div><div class="ans">✓&nbsp; 1</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Example 2 (Rational 0/0): Evaluate <span class='frac'><span>lim</span><span>x→2</span></span> <span class='frac'><span><i>x</i><sup>3</sup> − 4<i>x</i><sup>2</sup> + 4<i>x</i></span><span><i>x</i><sup>2</sup> − 4</span></span>.</div><div class="sol"><span class="lbl">Solution:</span><br>Direct substitution gives 0/0 ⇒ factor.<br>Numerator: <i>x</i><sup>3</sup> − 4<i>x</i><sup>2</sup> + 4<i>x</i> = <i>x</i>(<i>x</i><sup>2</sup> − 4<i>x</i> + 4) = <i>x</i>(<i>x</i>−2)<sup>2</sup>.<br>Denominator: <i>x</i><sup>2</sup> − 4 = (<i>x</i>−2)(<i>x</i>+2).<br>Cancel one common factor (<i>x</i>−2) (valid for limit since <i>x</i>≠2 during cancellation).<br>Expression becomes <span class='frac'><span><i>x</i>(<i>x</i>−2)</span><span>(<i>x</i>+2)</span></span>.<br>Now substitute <i>x</i>=2: <span class='frac'><span>2(0)</span><span>4</span></span> = 0.</div><div class="ans">✓&nbsp; 0</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For any polynomial <i>p</i>, <span class='frac'><span>lim</span><span>x→a</span></span> <i>p</i>(<i>x</i>) is obtained by substitution.</li><li>For rational <span class='frac'><span><i>g</i></span><span><i>h</i></span></span>, check <i>h</i>(<i>a</i>) first; do not start factoring blindly.</li><li>0/0 is the main case here where algebraic simplification can reveal a finite limit.</li><li>When cancelling (<i>x</i>−<i>a</i>), remember the function may be undefined at <i>a</i>, but the limit can still exist.</li><li>If after cancellation a factor (<i>x</i>−<i>a</i>) remains in the numerator, the limit becomes 0.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using <span class='frac'><span>g(a)</span><span>h(a)</span></span> even when <i>h</i>(<i>a</i>)=0.</li><li>Cancelling terms like (<i>x</i><sup>2</sup>−4) with (<i>x</i>−2) without factoring correctly.</li><li>Cancelling (<i>x</i>−<i>a</i>) and then treating the cancelled factor as if substitution at <i>x</i>=<i>a</i> was done before simplifying.</li><li>Assuming 0/0 always gives 1; it can be 0, finite nonzero, unbounded, or not exist.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“SUB-FAC-COMP: a 3-step hook”</div><paragraph id="6aa538c18d4c881066000441"><b>SUB</b>: Substitute first; if denominator ≠0, you are done.</paragraph><paragraph id="6aa538c11003ddb274000442"><b>FAC</b>: If 0/0, factor numerator &amp; denominator fully.</paragraph><paragraph id="6aa538c14b1773e8c7000443"><b>COMP</b>: Compare leftover (<i>x</i>−<i>a</i>) powers: more upstairs → 0; more downstairs → unbounded/diverges.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span> <i>x</i><sup>n</sup> = <i>a</i><sup>n</sup> (n∈N)</span><span class="eq"><span class='frac'><span>lim</span><span>x→a</span></span> [<i>a</i><sub>0</sub> + <i>a</i><sub>1</sub><i>x</i> + … + <i>a</i><sub>n</sub><i>x</i><sup>n</sup>] = <i>a</i><sub>0</sub> + <i>a</i><sub>1</sub><i>a</i> + … + <i>a</i><sub>n</sub><i>a</i><sup>n</sup></span><span class="eq">If <i>h</i>(<i>a</i>)≠0, then <span class='frac'><span>lim</span><span>x→a</span></span> <span class='frac'><span><i>g</i>(<i>x</i>)</span><span><i>h</i>(<i>x</i>)</span></span> = <span class='frac'><span><i>g</i>(<i>a</i>)</span><span><i>h</i>(<i>a</i>)</span></span></span><span class="eq">0/0: write <i>g</i>(<i>x</i>)=(<i>x</i>−<i>a</i>)<sup>k</sup><i>g</i><sub>1</sub>(<i>x</i>), <i>h</i>(<i>x</i>)=(<i>x</i>−<i>a</i>)<sup>l</sup><i>h</i><sub>1</sub>(<i>x</i>)</span><span class="eq">If <i>k</i>=<i>l</i>: limit = <span class='frac'><span><i>g</i><sub>1</sub>(<i>a</i>)</span><span><i>h</i><sub>1</sub>(<i>a</i>)</span></span></span><span class="eq">If <i>k</i>&gt;<i>l</i>: limit = 0; if <i>k</i>&lt;<i>l</i>: limit is unbounded/diverges (not a finite real limit)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>KEY LIMIT: (x<sup>N</sup>−a<sup>N</sup>)/(x−a)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Core result (key limit): <b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = <b>n</b>a<sup>n−1</sup> for positive integer <i>n</i>.</li><li>Idea: factorise <b>x<sup>n</sup>−a<sup>n</sup></b> as (x−a)(sum); cancel (x−a) for x≠a near the limit.</li><li>Inside bracket there are <b>n terms</b>: x<sup>n−1</sup> + x<sup>n−2</sup>a + ... + xa<sup>n−2</sup> + a<sup>n−1</sup>.</li><li>After cancellation, substitute <i>x</i>=<i>a</i> (polynomial is continuous) to get n copies of a<sup>n−1</sup>.</li><li>Generalisation (real powers): If f(x)=x<sup>r</sup> is real-valued in a neighbourhood of a (in particular, take a&gt;0 and restrict x&gt;0 near a), then <b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>r</sup>−a<sup>r</sup></span><span>x−a</span></span> = r a<sup>r−1</sup> (consistent with derivative of x<sup>r</sup>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='34' y='34' width='292' height='34' rx='8' fill='#FEF5E4' stroke='#F59E0B'/><text x='46' y='56' font-size='14' fill='#1f2a44'>Start: 0/0 at x=a</text><rect x='34' y='78' width='292' height='42' rx='8' fill='#EAF7EF' stroke='#16A34A'/><text x='46' y='103' font-size='14' fill='#1f2a44'>Factorise: (x−a)(sum)</text><rect x='34' y='130' width='292' height='40' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='46' y='154' font-size='14' fill='#1f2a44'>Cancel (x−a), then x→a</text><line x1='180' y1='68' x2='180' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='180' y1='120' x2='180' y2='130' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='238' y='156' font-size='12' fill='#1f2a44'>Result: n a^(n−1)</text></g></svg><div class="figcap">Flow: detect 0/0 → factorise difference of powers → cancel → substitute x=a.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Factorisation: x<sup>n</sup>−a<sup>n</sup> = (x−a)(x<sup>n−1</sup>+x<sup>n−2</sup>a+...+a<sup>n−1</sup>) for n∈ℕ.</span></li><li><span class="ic">🔁</span><span>0/0 form: if numerator and denominator vanish at x=a, cancel the common (x−a) factor after factorising.</span></li><li><span class="ic">⚡</span><span>Fast ratio trick (a≠0): <b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>m</sup>−a<sup>m</sup></span><span>x<sup>n</sup>−a<sup>n</sup></span></span> = <span class='frac'><span>m</span><span>n</span></span>a<sup>m−n</sup>, using the key limit twice.</span></li><li><span class="ic">🔄</span><span>Substitution: if x→0 and expression has (1+x), put y=1+x so y→1 and use (y<sup>n</sup>−1)/(y−1).</span></li><li><span class="ic">📌</span><span>For integer n: valid for all real a. For real/rational powers: ensure x<sup>r</sup> is real-defined near a (commonly a&gt;0, x&gt;0).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">DERIVATION (USING FACTORISATION)</span></h2><ul class="b"><li>Use identity (n∈ℕ): x<sup>n</sup>−a<sup>n</sup>=(x−a)(x<sup>n−1</sup>+x<sup>n−2</sup>a+...+a<sup>n−1</sup>).</li><li>Then <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = x<sup>n−1</sup>+x<sup>n−2</sup>a+...+a<sup>n−1</sup> for x≠a.</li><li>Take limit x→a: each term → a<sup>n−1</sup>; there are n terms ⇒ n a<sup>n−1</sup>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">HOW TO APPLY QUICKLY (EXAM PLAYBOOK)</span></h2><ul class="b"><li>If you see <span class='frac'><span>0</span><span>0</span></span>, try to rewrite into <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> or its ratio version.</li><li>For (1+x) near 1: put y=1+x, convert to (y<sup>n</sup>−1)/(y−1).</li><li>For ratio: <span class='frac'><span>x<sup>m</sup>−a<sup>m</sup></span><span>x<sup>n</sup>−a<sup>n</sup></span></span> = <span class='frac'><span>(x<sup>m</sup>−a<sup>m</sup>)/(x−a)</span><span>(x<sup>n</sup>−a<sup>n</sup>)/(x−a)</span></span>, then apply the key limit to each.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Difference of powers: matching patterns to cancel (x−a)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Pattern</th><th>Factorisation</th><th>Limit shortcut</th></tr></thead><tbody><tr><td>x<sup>n</sup>−a<sup>n</sup></td><td>(x−a)(x<sup>n−1</sup>+x<sup>n−2</sup>a+...+a<sup>n−1</sup>)</td><td><b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = n a<sup>n−1</sup> (n∈ℕ)</td></tr><tr><td>x<sup>n</sup>−1</td><td>(x−1)(x<sup>n−1</sup>+...+1)</td><td><b>lim</b><sub>x→1</sub> <span class='frac'><span>x<sup>n</sup>−1</span><span>x−1</span></span> = n</td></tr><tr><td>(1+x)<sup>n</sup>−1</td><td>Let y=1+x ⇒ y<sup>n</sup>−1</td><td><b>lim</b><sub>x→0</sub> <span class='frac'><span>(1+x)<sup>n</sup>−1</span><span>x</span></span> = n</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Factorise difference of powers (n∈ℕ)</div><div class="eqbox"><span class="eq">x<sup>n</sup>−a<sup>n</sup> = (x−a)(x<sup>n−1</sup>+x<sup>n−2</sup>a+...+xa<sup>n−2</sup>+a<sup>n−1</sup>)</span></div><div class="fstep">Divide by (x−a) (for x≠a)</div><div class="eqbox"><span class="eq"><span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = x<sup>n−1</sup>+x<sup>n−2</sup>a+...+a<sup>n−1</sup></span></div></div><div><div class="fstep">Now take x→a (n terms, each → a<sup>n−1</sup>)</div><div class="eqbox blue"><span class="eq"><b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = n a<sup>n−1</sup></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>positive integer (for the factorisation-based result)</td></tr><tr><td><i>a</i>&nbsp;=</td><td>real constant</td></tr><tr><td><i>x</i>&nbsp;=</td><td>variable approaching <i>a</i></td></tr></table><div class="hibox">Most important result (Key Limit)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = n a<sup>n−1</sup> (n∈ℕ)</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><line x1='60' y1='160' x2='320' y2='160' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='60' y1='160' x2='60' y2='36' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='310' y='178' font-size='12' fill='#1f2a44'>x</text><text x='40' y='44' font-size='12' fill='#1f2a44'>y</text><path d='M 70 150 C 110 138, 150 120, 190 98 C 230 76, 270 58, 310 46' fill='none' stroke='#2563EB' stroke-width='3'/><text x='230' y='62' font-size='12' fill='#1f2a44'>y = x<tspan baseline-shift='super'>n</tspan></text><circle cx='190' cy='98' r='4' fill='#16A34A'/><line x1='145' y1='123' x2='235' y2='73' stroke='#16A34A' stroke-width='2'/><text x='200' y='118' font-size='12' fill='#1f2a44'>tangent</text><text x='170' y='92' font-size='12' fill='#1f2a44'>x=a</text></g></svg><div class="figcap">Geometric meaning: the limit equals slope of secant → slope of tangent to y=x<sup>n</sup> at x=a.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Evaluate <b>lim</b><sub>x→1</sub> <span class='frac'><span>x<sup>15</sup>−1</span><span>x<sup>10</sup>−1</span></span>.</div><div class="sol"><span class="lbl">Solution:</span><br>Rewrite using (x−1):<br><span class='frac'><span>x<sup>15</sup>−1</span><span>x<sup>10</sup>−1</span></span> = <span class='frac'><span>(x<sup>15</sup>−1)/(x−1)</span><span>(x<sup>10</sup>−1)/(x−1)</span></span> (for x≠1).<br>Apply key limit with a=1:<br><b>lim</b><sub>x→1</sub> <span class='frac'><span>x<sup>15</sup>−1</span><span>x−1</span></span> = 15,<br><b>lim</b><sub>x→1</sub> <span class='frac'><span>x<sup>10</sup>−1</span><span>x−1</span></span> = 10.<br>Therefore required limit = <span class='frac'><span>15</span><span>10</span></span> = <span class='frac'><span>3</span><span>2</span></span>.</div><div class="ans">✓&nbsp; <span class='frac'><span>3</span><span>2</span></span></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Evaluate <b>lim</b><sub>x→0</sub> <span class='frac'><span>(1+x)<sup>6</sup>−1</span><span>x</span></span> using substitution y=1+x.</div><div class="sol"><span class="lbl">Solution:</span><br>Let y=1+x. Then as x→0, y→1 and x=y−1.<br>Convert the limit:<br><b>lim</b><sub>x→0</sub> <span class='frac'><span>(1+x)<sup>6</sup>−1</span><span>x</span></span> = <b>lim</b><sub>y→1</sub> <span class='frac'><span>y<sup>6</sup>−1</span><span>y−1</span></span>.<br>Apply key limit with n=6, a=1:<br><b>lim</b><sub>y→1</sub> <span class='frac'><span>y<sup>6</sup>−1</span><span>y−1</span></span> = 6.</div><div class="ans">✓&nbsp; 6</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Key limit applies after rewriting to <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> with n∈ℕ (a any real).</li><li>Cancelling (x−a) is valid because we simplify for x≠a, then take x→a.</li><li>After division, there are exactly <b>n</b> terms; each tends to a<sup>n−1</sup>, giving n a<sup>n−1</sup>.</li><li>For ratios (x<sup>m</sup>−a<sup>m</sup>)/(x<sup>n</sup>−a<sup>n</sup>), split using (x−a) and apply the key limit twice.</li><li>If using real/rational powers, ensure x<sup>r</sup> is real-defined near a (commonly require a&gt;0 and x&gt;0 near a).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting there are <b>n</b> terms in the sum; writing (n−1)a<sup>n−1</sup> etc.</li><li>Substituting x=a before cancelling (x−a), getting 0/0 and stopping.</li><li>Applying the real/rational-power extension without ensuring x<sup>r</sup> is real-defined near a.</li><li>In ratio problems, cancelling x<sup>k</sup>−a<sup>k</sup> directly instead of using the common factor (x−a) via the key limit.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">““DOP → n copies” (Difference Of Powers)”</div><paragraph id="6aa538c140f4c42c41000444">Divide DOP by (x−a) → a sum with <b>n</b> terms.</paragraph><paragraph id="6aa538c158b69a4ce8000445">As x→a, every term becomes a<sup>n−1</sup>.</paragraph><paragraph id="6aa538c177e9e24f3e000446">So the answer is <b>n</b>×a<sup>n−1</sup>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Factorisation (n∈ℕ): x<sup>n</sup>−a<sup>n</sup>=(x−a)(x<sup>n−1</sup>+x<sup>n−2</sup>a+...+a<sup>n−1</sup>)</span><span class="eq">Key limit (n∈ℕ): <b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>n</sup>−a<sup>n</sup></span><span>x−a</span></span> = n a<sup>n−1</sup></span><span class="eq">Special case: <b>lim</b><sub>x→1</sub> <span class='frac'><span>x<sup>n</sup>−1</span><span>x−1</span></span> = n</span><span class="eq">Special case: <b>lim</b><sub>x→0</sub> <span class='frac'><span>(1+x)<sup>n</sup>−1</span><span>x</span></span> = n (put y=1+x)</span><span class="eq">Ratio (a≠0, m,n∈ℕ): <b>lim</b><sub>x→a</sub> <span class='frac'><span>x<sup>m</sup>−a<sup>m</sup></span><span>x<sup>n</sup>−a<sup>n</sup></span></span> = <span class='frac'><span>m</span><span>n</span></span>a<sup>m−n</sup></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>TRIG LIMITS &amp; SQUEEZE (SANDWICH THEOREM)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Sandwich (Squeeze) Theorem:</b> if <i>f</i>(<i>x</i>) ≤ <i>g</i>(<i>x</i>) ≤ <i>h</i>(<i>x</i>) near <i>a</i> and lim<sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) = lim<sub><i>x</i>→<i>a</i></sub><i>h</i>(<i>x</i>) = <i>L</i>, then lim<sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>) = <i>L</i>.</li><li><b>Order limit property:</b> if <i>f</i>(<i>x</i>) ≤ <i>g</i>(<i>x</i>) near <i>a</i> and both limits exist at <i>a</i>, then lim<sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) ≤ lim<sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>).</li><li>Key geometric inequality on unit circle (for 0&lt;<i>x</i>&lt;π/2): <b>sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i></b>.</li><li>From it (for 0&lt;<i>x</i>&lt;π/2): <b>cos<i>x</i> &lt; (sin<i>x</i>)/<i>x</i> &lt; 1</b>. Using sin(−<i>x</i>)=−sin<i>x</i>, cos(−<i>x</i>)=cos<i>x</i>, the two-sided limit at 0 follows.</li><li><b>Standard trig limits (radians):</b> lim<sub><i>x</i>→0</sub>(sin<i>x</i>)/<i>x</i> = 1 and lim<sub><i>x</i>→0</sub>(1−cos<i>x</i>)/<i>x</i> = 0.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <div style="display: flex; justify-content: center;">
+    <img src="img/Figure_12.8.webp" alt="" style="max-width: 100%; height: auto;">
+</div>  
+      
+      <div class="figcap">Unit circle: triangle/sector/tangent-area comparison implies sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i> for 0&lt;<i>x</i>&lt;π/2.<Br><Br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚖️</span><span>Squeeze works only if both bounding functions approach the <b>same</b> limit.</span></li><li><span class="ic">🧭</span><span>Unit-circle area comparison gives sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i> for 0&lt;<i>x</i>&lt;π/2.</span></li><li><span class="ic">🔁</span><span>Use odd/even facts to extend results from (0, π/2) to a two-sided limit at 0.</span></li><li><span class="ic">🧩</span><span>Identity: 1−cos<i>x</i> = 2 sin²(<i>x</i>/2) reduces the limit to known factors.</span></li><li><span class="ic">🎯</span><span>Standard trick: rewrite in terms of (sin <i>k</i><i>x</i>)/(<i>k</i><i>x</i>) so each factor tends to 1.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">UNIT CIRCLE INEQUALITY → SQUEEZE SETUP</span></h2><ul class="b"><li>For 0&lt;<i>x</i>&lt;π/2: Area(∆OAC) &lt; Area(sector OAC) &lt; Area(∆OAT).</li><li>With unit radius: <span class='frac'><span>1</span><span>2</span></span>sin<i>x</i> &lt; <span class='frac'><span>1</span><span>2</span></span><i>x</i> &lt; <span class='frac'><span>1</span><span>2</span></span>tan<i>x</i> ⇒ sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i>.</li><li>Divide by <i>x</i>sin<i>x</i> (&gt;0): 1 &lt; <span class='frac'><span><i>x</i></span><span>sin<i>x</i></span></span> &lt; <span class='frac'><span>1</span><span>cos<i>x</i></span></span>.</li><li>Now take reciprocals (all terms positive, so inequalities reverse): cos<i>x</i> &lt; <span class='frac'><span>sin<i>x</i></span><span><i>x</i></span></span> &lt; 1.</li><li>As <i>x</i>→0, cos<i>x</i>→1, so by Squeeze: (sin<i>x</i>)/<i>x</i>→1.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STANDARD TRIG LIMITS AT 0 (RADIAN MODE)</span></h2><ul class="b"><li>From cos<i>x</i> &lt; (sin<i>x</i>)/<i>x</i> &lt; 1 and lim<sub><i>x</i>→0</sub>cos<i>x</i> = 1 ⇒ lim<sub><i>x</i>→0</sub>(sin<i>x</i>)/<i>x</i> = 1.</li><li>Use 1−cos<i>x</i> = 2 sin²(<i>x</i>/2): <span class='frac'><span>1−cos<i>x</i></span><span><i>x</i></span></span> = sin(<i>x</i>/2) · <span class='frac'><span>sin(<i>x</i>/2)</span><span>(<i>x</i>/2)</span></span>.</li><li>As <i>x</i>→0: sin(<i>x</i>/2)→0 and <span class='frac'><span>sin(<i>x</i>/2)</span><span>(<i>x</i>/2)</span></span>→1 ⇒ the product tends to 0.</li><li>Radian condition: if <i>x</i> is in degrees, then lim<sub><i>x</i>→0</sub>(sin<i>x</i>)/<i>x</i> = π/180 (not 1).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Order Property vs Squeeze (Sandwich) Theorem</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Order property (limits preserve inequality)</th><th>Squeeze (Sandwich) Theorem</th></tr></thead><tbody><tr><td>Given</td><td><i>f</i>(<i>x</i>) ≤ <i>g</i>(<i>x</i>) near <i>a</i></td><td><i>f</i>(<i>x</i>) ≤ <i>g</i>(<i>x</i>) ≤ <i>h</i>(<i>x</i>) near <i>a</i></td></tr><tr><td>Need limits of</td><td>lim<sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) and lim<sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>) exist</td><td>lim<sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) and lim<sub><i>x</i>→<i>a</i></sub><i>h</i>(<i>x</i>) exist and are equal</td></tr><tr><td>Conclusion</td><td>lim<sub><i>x</i>→<i>a</i></sub><i>f</i>(<i>x</i>) ≤ lim<sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>)</td><td>lim<sub><i>x</i>→<i>a</i></sub><i>g</i>(<i>x</i>) equals the common limit</td></tr><tr><td>Typical trig use</td><td>After proving cos<i>x</i> &lt; (sin<i>x</i>)/<i>x</i> &lt; 1, take limits</td><td>Trap (sin<i>x</i>)/<i>x</i> between cos<i>x</i> and 1 as <i>x</i>→0</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is the condition 0&lt;<i>x</i>&lt;π/2 used in sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>The inequality is proved from a unit-circle area argument where all involved areas are positive.<br>Positivity ensures we can divide by <i>x</i>, sin<i>x</i> and take reciprocals without changing sign unexpectedly.<br>For <i>x</i>&lt;0, we extend the final limit result using odd/even properties rather than reusing the same area comparison.</div><div class="ans">✓&nbsp; It guarantees positivity needed for valid inequality manipulations; negative-side behavior is handled using symmetry.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain why lim<sub><i>x</i>→0</sub>(1−cos 3<i>x</i>)/<i>x</i> equals 0 without doing series expansion.</div><div class="sol"><span class="lbl">Answer:</span><br>Use 1−cos<i>t</i> = 2 sin²(<i>t</i>/2) with <i>t</i>=3<i>x</i>: 1−cos 3<i>x</i> = 2 sin²(3<i>x</i>/2).<br>Then <span class='frac'><span>1−cos 3<i>x</i></span><span><i>x</i></span></span> = 2·sin(3<i>x</i>/2)·<span class='frac'><span>sin(3<i>x</i>/2)</span><span><i>x</i></span></span>.<br>Rewrite <span class='frac'><span>sin(3<i>x</i>/2)</span><span><i>x</i></span></span> = <span class='frac'><span>sin(3<i>x</i>/2)</span><span>(3<i>x</i>/2)</span></span> · <span class='frac'><span>3</span><span>2</span></span>.<br>As <i>x</i>→0: sin(3<i>x</i>/2)→0 and <span class='frac'><span>sin(3<i>x</i>/2)</span><span>(3<i>x</i>/2)</span></span>→1, so the whole expression → 2·0·1·<span class='frac'><span>3</span><span>2</span></span> = 0.</div><div class="ans">✓&nbsp; 0</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always use <b>radian</b> measure for lim<sub><i>x</i>→0</sub>(sin<i>x</i>)/<i>x</i> = 1.</li><li>Inequality sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i> is proved for 0&lt;<i>x</i>&lt;π/2; extend the limit at 0 using symmetry.</li><li>Before taking reciprocals in an inequality, confirm all quantities are positive.</li><li>To apply Squeeze, prove both bounds approach the same number at the limit point.</li><li>For limits with 1−cos<i>x</i>, use 1−cos<i>x</i> = 2 sin²(<i>x</i>/2) to reduce to known limits.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using degrees and still claiming lim<sub><i>x</i>→0</sub>(sin<i>x</i>)/<i>x</i> = 1.</li><li>Taking reciprocals of an inequality without checking sign, or forgetting the inequality reverses.</li><li>Applying sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i> outside (0, π/2) without justification.</li><li>Substituting <i>x</i>=0 directly into (sin<i>x</i>)/<i>x</i> or similar undefined forms.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“S-A-T: Sin–Arc–Tan”</div><paragraph id="6aa538c1eee95bf591000447">On unit circle (0&lt;<i>x</i>&lt;π/2): triangle area (<b>S</b>in) &lt; sector area (<b>A</b>rc) &lt; outer triangle area (<b>T</b>an).</paragraph><paragraph id="6aa538c1486807a172000448">So: sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i> ⇒ cos<i>x</i> &lt; (sin<i>x</i>)/<i>x</i> &lt; 1.</paragraph><paragraph id="6aa538c1f735e192da000449">At <i>x</i>→0, both bounds →1, so the middle also →1.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Squeeze theorem: if <i>f</i>≤<i>g</i>≤<i>h</i> and lim <i>f</i> = lim <i>h</i> = <i>L</i>, then lim <i>g</i> = <i>L</i>.</span><span class="eq">Order property: if <i>f</i>≤<i>g</i> and both limits exist, then lim <i>f</i> ≤ lim <i>g</i>.</span><span class="eq">For 0&lt;<i>x</i>&lt;π/2: sin<i>x</i> &lt; <i>x</i> &lt; tan<i>x</i>.</span><span class="eq">Hence (0&lt;<i>x</i>&lt;π/2): cos<i>x</i> &lt; (sin<i>x</i>)/<i>x</i> &lt; 1.</span><span class="eq">Standard result (radians): lim<sub><i>x</i>→0</sub>(sin<i>x</i>)/<i>x</i> = 1.</span><span class="eq">Identity: 1−cos<i>x</i> = 2 sin²(<i>x</i>/2).</span><span class="eq">Standard result (radians): lim<sub><i>x</i>→0</sub>(1−cos<i>x</i>)/<i>x</i> = 0.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DERIVATIVE: DEFINITION (FIRST PRINCIPLES)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Definition 1 (at a point):</b> <i>f</i>'(<i>a</i>) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span>, provided the limit exists.</li><li>The quotient <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span> is the <b>average rate of change</b> over the interval [<i>a</i>, <i>a</i>+<i>h</i>].</li><li>If the limit exists, derivative measures <b>instantaneous rate of change</b> of <i>f</i> with respect to <i>x</i> at <i>x</i>=<i>a</i>.</li><li><b>Geometric meaning:</b> <i>f</i>'(<i>a</i>) equals the slope of the tangent to <i>y</i>=<i>f</i>(<i>x</i>) at (<i>a</i>, <i>f</i>(<i>a</i>)).</li><li><b>Derivative exists at <i>a</i></b> only when the above limit exists (equivalently, the left-hand and right-hand limits of the quotient match).</li><li><b>Definition 2 (as a function):</b> If derivative exists for each <i>x</i> in an interval, define <i>f</i>'(<i>x</i>) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(<i>x</i>+<i>h</i>)−<i>f</i>(<i>x</i>)</span><span><i>h</i></span></span>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+     <svg viewBox="0 0 420 300"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <defs>
+      <marker id="axisArrowSecant-t9-s1" markerWidth="9" markerHeight="9"
+              refX="8" refY="4.5" orient="auto">
+        <path d="M0,0 L9,4.5 L0,9 Z" fill="#222"/>
+      </marker>
+    </defs>
+
+    <!-- Axes -->
+    <line x1="55" y1="250" x2="360" y2="250"
+          stroke="#222" stroke-width="2.2"
+          marker-end="url(#axisArrowSecant-t9-s1)"/>
+
+    <line x1="95" y1="285" x2="95" y2="22"
+          stroke="#222" stroke-width="2.2"
+          marker-end="url(#axisArrowSecant-t9-s1)"/>
+
+    <!-- Axis labels -->
+    <text x="365" y="257"
+          font-size="18"
+          fill="#222">X</text>
+
+    <text x="85" y="18"
+          font-size="18"
+          fill="#222">Y</text>
+
+    <text x="75" y="268"
+          font-size="18"
+          fill="#222">O</text>
+
+    <!-- Function curve -->
+    <path d="M110 265
+             C145 238, 165 220, 185 205
+             C210 185, 228 165, 248 135
+             C260 115, 270 85, 282 55"
+          fill="none"
+          stroke="#0B9ED9"
+          stroke-width="3"/>
+
+    <!-- Secant line -->
+    <line x1="160" y1="205"
+          x2="330" y2="70"
+          stroke="#0B9ED9"
+          stroke-width="2.5"/>
+
+    <!-- Tangent line near P -->
+    <line x1="125" y1="205"
+          x2="250" y2="185"
+          stroke="#222"
+          stroke-width="2"/>
+
+    <!-- P and Q -->
+    <circle cx="205" cy="180" r="4.5" fill="#111"/>
+    <circle cx="280" cy="60" r="4.5" fill="#111"/>
+
+    <!-- Horizontal dashed guides -->
+    <line x1="95" y1="180" x2="205" y2="180"
+          stroke="#222"
+          stroke-width="1.8"
+          stroke-dasharray="6 6"/>
+
+    <line x1="95" y1="60" x2="280" y2="60"
+          stroke="#222"
+          stroke-width="1.8"
+          stroke-dasharray="6 6"/>
+
+    <!-- Vertical dashed guides -->
+    <line x1="205" y1="180" x2="205" y2="250"
+          stroke="#222"
+          stroke-width="1.8"
+          stroke-dasharray="6 6"/>
+
+    <line x1="280" y1="60" x2="280" y2="250"
+          stroke="#222"
+          stroke-width="1.8"
+          stroke-dasharray="6 6"/>
+
+    <!-- y labels -->
+    <text x="15" y="66"
+          font-size="16"
+          font-style="italic"
+          fill="#222">
+      f(a+h)
+    </text>
+
+    <text x="25" y="186"
+          font-size="16"
+          font-style="italic"
+          fill="#222">
+      f(a)
+    </text>
+
+    <!-- P label -->
+    <text x="130" y="170"
+          font-size="16"
+          fill="#222">
+      P
+      <tspan font-style="italic">(a, f(a))</tspan>
+    </text>
+
+    <!-- Q label -->
+    <text x="288" y="65"
+          font-size="16"
+          fill="#222">
+      Q
+      <tspan font-style="italic">(a+h, f(a+h))</tspan>
+    </text>
+
+    <!-- x-axis labels -->
+    <text x="198" y="272"
+          font-size="16"
+          font-style="italic"
+          fill="#222">a</text>
+
+    <text x="260" y="272"
+          font-size="16"
+          font-style="italic"
+          fill="#222">a+h</text>
+
+    <!-- h label -->
+    <text x="235" y="200"
+          font-size="16"
+          font-style="italic"
+          fill="#222">h</text>
+
+    <!-- R label -->
+    <text x="288" y="187"
+          font-size="16"
+          fill="#222">R</text>
+
+    <!-- y=f(x) -->
+    <text x="105" y="220"
+          font-size="16"
+          font-style="italic"
+          fill="#222">
+      y=f(x)
+    </text>
+
+    <!-- psi angle -->
+    <path d="M145 250 A34 34 0 0 1 138 225"
+          fill="none"
+          stroke="#222"
+          stroke-width="1.6"/>
+
+    <text x="140" y="240"
+          font-size="16"
+          font-style="italic"
+          fill="#222">ψ</text>
+
+  </svg>  
+      
+      <div class="figcap">As <i>h</i>→0, secant slope approaches the tangent slope: this limit is the derivative.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧠</span><span>Derivative is a limit of a difference quotient; it is not found by putting <i>h</i>=0 directly.</span></li><li><span class="ic">⏱️</span><span>In motion: if <i>s</i>(<i>t</i>) is displacement, then <i>s</i>'(<i>t</i>) gives instantaneous velocity.</span></li><li><span class="ic">📌</span><span>Notations: <i>f</i>'(<i>x</i>), <span class='frac'><span><i>dy</i></span><span><i>dx</i></span></span>, <i>D</i>(<i>f</i>(<i>x</i>)), <i>y</i>' for <i>y</i>=<i>f</i>(<i>x</i>).</span></li><li><span class="ic">⚖️</span><span>Existence test: derivative at <i>a</i> requires both one-sided limits of the quotient to be equal.</span></li><li><span class="ic">📍</span><span>Domain of <i>f</i>' is the set of points where the defining limit exists (may be smaller than domain of <i>f</i>).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">FIRST PRINCIPLE: WHAT THE LIMIT MEANS</span></h2><ul class="b"><li>Take two points: (<i>a</i>, <i>f</i>(<i>a</i>)) and (<i>a</i>+<i>h</i>, <i>f</i>(<i>a</i>+<i>h</i>)).</li><li>Average rate of change over input change <i>h</i>: <span class='frac'><span>Δ<i>y</i></span><span>Δ<i>x</i></span></span> = <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span>.</li><li>Instantaneous rate at <i>a</i> is the limit of these average rates as <i>h</i>→0.</li><li>If left-hand and right-hand limits differ, tangent slope is not unique, so derivative does not exist.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">RATE OF CHANGE: QUICK EXAM CONTEXTS</span></h2><ul class="b"><li>If <i>s</i>(<i>t</i>) is displacement, then <i>s</i>'(<i>t</i>) is instantaneous velocity.</li><li>If <i>A</i>(<i>x</i>) is area depending on <i>x</i>, then <i>A</i>'(<i>x</i>) is rate of change of area per unit change in <i>x</i>.</li><li>Units follow the ratio: if <i>y</i> in metres and <i>x</i> in seconds, then <span class='frac'><span><i>dy</i></span><span><i>dx</i></span></span> in m/s.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">AVERAGE RATE vs INSTANTANEOUS RATE (DERIVATIVE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Average rate</th><th>Instantaneous rate (derivative)</th></tr></thead><tbody><tr><td>Expression</td><td><span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span> (<i>h</i> fixed, ≠0)</td><td>lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span> (if limit exists)</td></tr><tr><td>Geometric meaning</td><td>Slope of secant line through two points</td><td>Slope of tangent at one point</td></tr><tr><td>Depends on interval size</td><td>Yes; changes with <i>h</i></td><td>No; single value at <i>a</i> if limit exists</td></tr><tr><td>Needs a limit?</td><td>No</td><td>Yes; left and right limits must match</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Using the definition, what does <i>f</i>'(2) represent for <i>f</i>(<i>x</i>) = 3<i>x</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>Form the difference quotient: <span class='frac'><span><i>f</i>(2+<i>h</i>)−<i>f</i>(2)</span><span><i>h</i></span></span>.<br>Here <i>f</i>(2+<i>h</i>) and <i>f</i>(2) are outputs at inputs separated by <i>h</i>.<br>Taking lim<sub><i>h</i>→0</sub> means the average rate over an interval shrinks to the instantaneous rate at <i>x</i>=2.<br>So <i>f</i>'(2) is the instantaneous rate of change (slope of tangent) of the line <i>y</i>=3<i>x</i> at <i>x</i>=2.</div><div class="ans">✓&nbsp; <i>f</i>'(2) is the slope of the tangent to <i>y</i>=3<i>x</i> at <i>x</i>=2 (i.e., the instantaneous rate of change at that point).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Using first principles, find <i>f</i>'(−1) for <i>f</i>(<i>x</i>) = 2<i>x</i><sup>2</sup> + 3<i>x</i> − 5, and verify that <i>f</i>'(0) + 3<i>f</i>'(−1) = 0.</div><div class="sol"><span class="lbl">Answer:</span><br><i>f</i>'(−1) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(−1+<i>h</i>)−<i>f</i>(−1)</span><span><i>h</i></span></span>.<br>Compute <i>f</i>(−1+<i>h</i>) = 2(−1+<i>h</i>)<sup>2</sup> + 3(−1+<i>h</i>) − 5 = 2(1−2<i>h</i>+<i>h</i><sup>2</sup>) − 3 + 3<i>h</i> − 5 = −6 − <i>h</i> + 2<i>h</i><sup>2</sup>.<br>Also <i>f</i>(−1) = 2(1) + 3(−1) − 5 = −6.<br>Difference quotient: <span class='frac'><span>(−6−<i>h</i>+2<i>h</i><sup>2</sup>)−(−6)</span><span><i>h</i></span></span> = <span class='frac'><span>−<i>h</i>+2<i>h</i><sup>2</sup></span><span><i>h</i></span></span> = −1 + 2<i>h</i> (for <i>h</i>≠0).<br>Limit: <i>f</i>'(−1) = lim<sub><i>h</i>→0</sub>(−1 + 2<i>h</i>) = −1.<br>Now compute <i>f</i>'(0) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(<i>h</i>)−<i>f</i>(0)</span><span><i>h</i></span></span>.</div><div class="ans">✓&nbsp; <i>f</i>'(−1)=−1, <i>f</i>'(0)=3, and <i>f</i>'(0)+3<i>f</i>'(−1)=0 verified.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Derivative at <i>a</i> is defined only if lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span> exists.</li><li>Simplify the difference quotient for <i>h</i>≠0, then apply the limit.</li><li>Derivative is the limit of slopes of secants; the limit value equals the tangent slope.</li><li>If one-sided limits of the difference quotient do not match, derivative does not exist at that point.</li><li>The derivative function <i>f</i>' has domain consisting of points where the defining limit exists.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Putting <i>h</i>=0 directly in <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span> before taking the limit.</li><li>Cancelling <i>h</i> without first factoring/simplifying the numerator correctly.</li><li>Assuming derivative exists everywhere on the domain (it can fail at corners, cusps, discontinuities).</li><li>Mixing symbols: writing <i>f</i>'(a) but substituting values inconsistently.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“H → 0: "SHRINK the Step"”</div><paragraph id="6aa538c102e2c6989900044a"><b>S</b>ecant slope uses two points (step <i>h</i>).<br><b>H</b>→0 shrinks the step.<br><b>R</b>esult becomes tangent slope = derivative.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Meaning:</b> Derivative is the instantaneous rate of change at a point.</span><span class="eq"><b>Key idea:</b> Instantaneous rate is obtained as the limit of average rates as the interval shrinks.</span><span class="eq"><b>Geometric:</b> Derivative at a point equals slope of the tangent to the curve at that point.</span><span class="eq"><b>Existence:</b> Derivative exists at <i>a</i> only if the left-hand and right-hand limits of the difference quotient are equal.</span><span class="eq"><b>Notation:</b> <i>f</i>'(<i>x</i>), <span class='frac'><span><i>dy</i></span><span><i>dx</i></span></span>, and <i>y</i>' all denote derivative with respect to <i>x</i> (when defined).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>GEOMETRIC MEANING OF DERIVATIVE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>For <i>y</i>=<i>f</i>(<i>x</i>), <i>f</i>′(<i>a</i>) is the slope of the tangent to the curve at the point (<i>a</i>, <i>f</i>(<i>a</i>)).</li><li>Slope of secant through (<i>a</i>, <i>f</i>(<i>a</i>)) and (<i>a</i>+<i>h</i>, <i>f</i>(<i>a</i>+<i>h</i>)) is <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span>.</li><li>As <i>h</i>→0, the secant line approaches the tangent line; the limiting slope (if it exists and is finite) is <i>f</i>′(<i>a</i>).</li><li>Geometrically, for a very small change Δ<i>x</i>, the change in the function is approximately Δ<i>y</i> ≈ <i>f</i>′(<i>a</i>)·Δ<i>x</i> (near <i>x</i>=<i>a</i>).</li><li>If left-hand and right-hand limits of the difference quotient match (and are finite), the tangent slope is well-defined; otherwise derivative does not exist at that point.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" xmlns='http://www.w3.org/2000/svg' width='520' height='260' viewBox='0 0 520 260'>
+  <rect x='0' y='0' width='520' height='260' fill='white'/>
+  <line x1='60' y1='220' x2='490' y2='220' stroke='#111' stroke-width='2'/>
+  <line x1='60' y1='220' x2='60' y2='30' stroke='#111' stroke-width='2'/>
+  <text x='494' y='224' font-size='14' fill='#111'>x</text>
+  <text x='52' y='26' font-size='14' fill='#111'>y</text>
+  <path d='M80 200 C150 165, 200 120, 245 145 C300 175, 330 120, 395 85 C435 63, 455 55, 470 50' fill='none' stroke='#0B6' stroke-width='3'/>
+  <text x='400' y='78' font-size='14' fill='#0B6'>y=f(x)</text>
+  <circle cx='250' cy='145' r='5' fill='#111'/>
+  <circle cx='325' cy='128' r='5' fill='#111'/>
+  <text x='238' y='138' font-size='14' fill='#111'>A</text>
+  <text x='333' y='122' font-size='14' fill='#111'>B</text>
+  <line x1='250' y1='145' x2='325' y2='128' stroke='#2563EB' stroke-width='2'/>
+  <text x='282' y='118' font-size='13' fill='#2563EB'>secant</text>
+  <line x1='170' y1='165' x2='360' y2='125' stroke='#DC2626' stroke-width='2'/>
+  <text x='172' y='155' font-size='13' fill='#DC2626'>tangent</text>
+  <line x1='250' y1='220' x2='250' y2='145' stroke='#777' stroke-dasharray='4 4' stroke-width='1.5'/>
+  <line x1='325' y1='220' x2='325' y2='128' stroke='#777' stroke-dasharray='4 4' stroke-width='1.5'/>
+  <line x1='250' y1='232' x2='325' y2='232' stroke='#111' stroke-width='1.5'/>
+  <text x='285' y='246' font-size='13' fill='#111'>h</text>
+</svg><div class="figcap">As point B approaches A along the curve, secant AB approaches the tangent at A; its slope tends to <i>f</i>′(<i>a</i>).</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📍</span><span>Point of contact: A(<i>a</i>, <i>f</i>(<i>a</i>)) on the curve</span></li><li><span class="ic">🧮</span><span>Secant slope = average rate of change over an interval</span></li><li><span class="ic">🎯</span><span>Tangent slope = instantaneous rate of change (limit of secant slopes)</span></li><li><span class="ic">↔️</span><span>Derivative exists only if left and right limits of the difference quotient are equal and finite</span></li><li><span class="ic">📈</span><span>Sign of <i>f</i>′(<i>a</i>): positive rises, negative falls, zero gives a horizontal tangent</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">SECANT TO TANGENT (LIMIT IDEA)</span></h2><ul class="b"><li>Pick A(<i>a</i>, <i>f</i>(<i>a</i>)) and B(<i>a</i>+<i>h</i>, <i>f</i>(<i>a</i>+<i>h</i>)) on the curve.</li><li>Slope of secant AB = <span class='frac'><span>rise</span><span>run</span></span> = <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span>.</li><li>Let <i>h</i>→0 (B→A): if the slope approaches a unique finite limit, the tangent exists.</li><li>That limit equals slope of the tangent at A, i.e., <i>f</i>′(<i>a</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">GEOMETRIC INTERPRETATIONS YOU USE IN PROBLEMS</span></h2><ul class="b"><li>Instantaneous rate: tangent slope at A equals rate of change of <i>y</i> with respect to <i>x</i> at <i>x</i>=<i>a</i>.</li><li>Horizontal tangent ⇔ <i>f</i>′(<i>a</i>)=0 (stationary point candidate).</li><li>Vertical tangent / corner / cusp: slope may not be a finite unique number ⇒ derivative may not exist.</li><li>Sign meaning: <i>f</i>′(<i>a</i>)&gt;0 rising, <i>f</i>′(<i>a</i>)&lt;0 falling at that point.</li></ul></div></div>
+    
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">6</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why does the slope of the secant line AB represent an "average rate of change" of <i>f</i> between <i>x</i>=<i>a</i> and <i>x</i>=<i>a</i>+<i>h</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>On the graph, the vertical change from A to B equals <i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>), and the horizontal change equals <i>h</i>.<br>So the secant slope compares total change in output to total change in input over that interval.<br>This matches the idea of "average change per unit change" on an interval.</div><div class="ans">✓&nbsp; Secant slope measures average change of <i>f</i> per unit change in <i>x</i> over the interval.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">At a corner point on a graph, why can the derivative fail to exist even though the function is continuous there?</div><div class="sol"><span class="lbl">Answer:</span><br>Approaching the point from the left, the curve can have one limiting secant/tangent slope.<br>Approaching from the right, it can have a different limiting slope.<br>Because these one-sided limiting slopes are unequal, there is no single well-defined tangent slope.</div><div class="ans">✓&nbsp; Continuity alone does not guarantee differentiability; unequal left and right slopes at a corner make <i>f</i>′ not exist there.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">7</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Derivative at a point is defined by a limit; geometric meaning comes from secant lines approaching the tangent.</li><li>Slope of tangent = instantaneous rate of change of <i>y</i> with respect to <i>x</i> at that point.</li><li>If the limit of the difference quotient is finite and unique, the tangent has a well-defined slope.</li><li>Left derivative uses <i>h</i>→0− and right derivative uses <i>h</i>→0+; derivative exists only if both are finite and equal.</li><li>A horizontal tangent (<i>f</i>′(<i>a</i>)=0) indicates a stationary point, but further testing is needed for maxima/minima.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">8</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using average slope over a finite interval as the derivative without taking the limit <i>h</i>→0.</li><li>Ignoring that <i>h</i> approaches 0 from both sides; missing corners where one-sided derivatives differ.</li><li>Algebraic simplification errors in the difference quotient (especially while factoring before taking limits).</li><li>Assuming <i>f</i>′(<i>a</i>)=0 automatically means maximum/minimum (it is only a necessary condition).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">9</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“SEC → TAN”</div><paragraph id="6aa538c1c486b8cbdf00044b">SECant slope: take two points A and B (average change).</paragraph><paragraph id="6aa538c147ea8edf5e00044c">Bring B to A (make <i>h</i>→0).</paragraph><paragraph id="6aa538c1ce46c2916700044d">Limit gives TANgent slope: that number is <i>f</i>′(<i>a</i>).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">10</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Derivative at <i>x</i>=<i>a</i> is the slope of the tangent to <i>y</i>=<i>f</i>(<i>x</i>) at A(<i>a</i>, <i>f</i>(<i>a</i>)).</span><span class="eq">Secant slope between A(<i>a</i>, <i>f</i>(<i>a</i>)) and B(<i>a</i>+<i>h</i>, <i>f</i>(<i>a</i>+<i>h</i>)) uses total rise over total run.</span><span class="eq">Tangent slope is the limiting value of secant slopes as B approaches A along the curve.</span><span class="eq">Derivative exists at <i>a</i> only if left-hand and right-hand limiting slopes are equal and finite.</span><span class="eq">Sign meaning at a point: <i>f</i>′(<i>a</i>)&gt;0 rising, <i>f</i>′(<i>a</i>)&lt;0 falling, <i>f</i>′(<i>a</i>)=0 horizontal tangent.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DERIVATIVE RULES &amp; STANDARD DERIVATIVES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Derivative at <i>x</i>=<i>a</i>: <i>f</i>′(<i>a</i>) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>f</i>(<i>a</i>+<i>h</i>)−<i>f</i>(<i>a</i>)</span><span><i>h</i></span></span>, if limit exists.</li><li><i>f</i>′(<i>x</i>) gives instantaneous rate of change of <i>f</i> w.r.t. <i>x</i>.</li><li>Derivative rules let you differentiate complicated expressions using simpler pieces.</li><li>Standard derivatives (power, polynomial, trig) are used repeatedly in JEE/NEET/boards.</li><li>All trig derivatives here assume angles are in radians.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 10 3, 0 6' fill='#123B7A'/></marker></defs><rect x='16' y='18' width='328' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><rect x='32' y='36' width='130' height='42' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='45' y='61' font-size='13' fill='#1f2a44'>Split into u, v</text><rect x='198' y='36' width='130' height='42' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='214' y='61' font-size='13' fill='#1f2a44'>Apply rule</text><rect x='32' y='106' width='130' height='42' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='46' y='131' font-size='13' fill='#1f2a44'>Use standard</text><rect x='198' y='106' width='130' height='42' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='216' y='131' font-size='13' fill='#1f2a44'>Simplify</text><line x1='162' y1='57' x2='198' y2='57' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='97' y1='78' x2='97' y2='106' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='162' y1='127' x2='198' y2='127' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><line x1='263' y1='78' x2='263' y2='106' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='118' y='22' font-size='13' fill='#1f2a44'>Differentiate: workflow</text></svg><div class="figcap">Workflow: split expression → choose rule → use standard derivatives → simplify.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Theorem 5 (derivatives): (<i>u</i>±<i>v</i>)′ = <i>u</i>′ ± <i>v</i>′; (<i>c</i><i>u</i>)′ = <i>c</i><i>u</i>′.</span></li><li><span class="ic">✖️</span><span>Product rule: (<i>u</i><i>v</i>)′ = <i>u</i>′<i>v</i> + <i>u</i><i>v</i>′.</span></li><li><span class="ic">➗</span><span>Quotient rule: (<span class='frac'><span><i>u</i></span><span><i>v</i></span></span>)′ = <span class='frac'><span><i>u</i>′<i>v</i>−<i>u</i><i>v</i>′</span><span><i>v</i><sup>2</sup></span></span>, <i>v</i>≠0.</span></li><li><span class="ic">🔁</span><span>Leibniz rule: differentiate term-by-term in sums; repeated use for products like <i>x</i><sup>2</sup>sin<i>x</i>.</span></li><li><span class="ic">🔺</span><span>Theorem 6: <span class='frac'><span>d</span><span>d<i>x</i></span></span>(<i>x</i><sup><i>n</i></sup>) = <i>n</i><i>x</i><sup><i>n</i>−1</sup> (integer <i>n</i>); Theorem 7: polynomial derivative termwise.</span></li><li><span class="ic">🌊</span><span>Trig: <span class='frac'><span>d</span><span>d<i>x</i></span></span>(sin<i>x</i>)=cos<i>x</i>, <span class='frac'><span>d</span><span>d<i>x</i></span></span>(tan<i>x</i>)=sec<sup>2</sup><i>x</i>, <span class='frac'><span>d</span><span>d<i>x</i></span></span>(cot<i>x</i>)=−cosec<sup>2</sup><i>x</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">THEOREM 5: ALGEBRA OF DERIVATIVES</span></h2><ul class="b"><li>If <i>u</i>, <i>v</i> differentiable: (<i>u</i>+<i>v</i>)′=<i>u</i>′+<i>v</i>′ and (<i>u</i>−<i>v</i>)′=<i>u</i>′−<i>v</i>′.</li><li>Constant multiple: (<i>c</i><i>u</i>)′ = <i>c</i><i>u</i>′ (constant <i>c</i>).</li><li>Product rule: (<i>u</i><i>v</i>)′ = <i>u</i>′<i>v</i> + <i>u</i><i>v</i>′.</li><li>Quotient rule: (<span class='frac'><span><i>u</i></span><span><i>v</i></span></span>)′ = <span class='frac'><span><i>u</i>′<i>v</i>−<i>u</i><i>v</i>′</span><span><i>v</i><sup>2</sup></span></span>, valid where <i>v</i>≠0.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">THEOREM 6 &amp; 7: POWER AND POLYNOMIAL DERIVATIVES</span></h2><ul class="b"><li><span class='frac'><span>d</span><span>d<i>x</i></span></span>(constant)=0; so <span class='frac'><span>d</span><span>d<i>x</i></span></span>(5)=0.</li><li>Power rule (integer <i>n</i>): <span class='frac'><span>d</span><span>d<i>x</i></span></span>(<i>x</i><sup><i>n</i></sup>) = <i>n</i><i>x</i><sup><i>n</i>−1</sup>.</li><li>Polynomial: differentiate term-by-term, keep coefficients: <span class='frac'><span>d</span><span>d<i>x</i></span></span>(∑ <i>a</i><sub>k</sub><i>x</i><sup>k</sup>) = ∑ <i>a</i><sub>k</sub>k<i>x</i><sup>k−1</sup>.</li><li>Combine with product/quotient rules for mixed expressions like (<i>x</i><sup>2</sup>+1)sin<i>x</i>.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Rule selection (what to use?)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Expression form</th><th>Derivative rule</th><th>Quick cue</th></tr></thead><tbody><tr><td><i>u</i> ± <i>v</i></td><td>(<i>u</i> ± <i>v</i>)′ = <i>u</i>′ ± <i>v</i>′</td><td>Differentiate each term</td></tr><tr><td><i>u</i><i>v</i></td><td>(<i>u</i><i>v</i>)′ = <i>u</i>′<i>v</i> + <i>u</i><i>v</i>′</td><td>First-deriv × second + first × second-deriv</td></tr><tr><td><span class='frac'><span><i>u</i></span><span><i>v</i></span></span></td><td>(<span class='frac'><span><i>u</i></span><span><i>v</i></span></span>)′ = <span class='frac'><span><i>u</i>′<i>v</i>−<i>u</i><i>v</i>′</span><span><i>v</i><sup>2</sup></span></span></td><td>Low dHigh − High dLow, over square</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Product rule from definition (sketch): let <i>y</i>=<i>u</i><i>v</i>.</div><div class="eqbox"><span class="eq"><span class='frac'><span>d</span><span>d<i>x</i></span></span>(<i>u</i><i>v</i>) = lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>u</i>(<i>x</i>+<i>h</i>)<i>v</i>(<i>x</i>+<i>h</i>)−<i>u</i>(<i>x</i>)<i>v</i>(<i>x</i>)</span><span><i>h</i></span></span></span></div><div class="fstep">Add and subtract <i>u</i>(<i>x</i>+<i>h</i>)<i>v</i>(<i>x</i>).</div><div class="eqbox"><span class="eq">= lim<sub><i>h</i>→0</sub> <span class='frac'><span><i>u</i>(<i>x</i>+<i>h</i>)[<i>v</i>(<i>x</i>+<i>h</i>)−<i>v</i>(<i>x</i>)] + <i>v</i>(<i>x</i>)[<i>u</i>(<i>x</i>+<i>h</i>)−<i>u</i>(<i>x</i>)]</span><span><i>h</i></span></span></span></div></div><div><div class="fstep">Split limits (assuming differentiability) and use lim<sub><i>h</i>→0</sub><i>u</i>(<i>x</i>+<i>h</i>)=<i>u</i>(<i>x</i>).</div><div class="eqbox blue"><span class="eq">= <i>u</i>(<i>x</i>)<i>v</i>′(<i>x</i>) + <i>v</i>(<i>x</i>)<i>u</i>′(<i>x</i>)</span></div></div><div><table class="wtab"><tr><td><i>u</i>(<i>x</i>), <i>v</i>(<i>x</i>)&nbsp;=</td><td>Differentiable functions of <i>x</i></td></tr><tr><td><i>c</i>&nbsp;=</td><td>Real constant</td></tr><tr><td><i>n</i>&nbsp;=</td><td>Positive integer (power rule stated for integers)</td></tr></table><div class="hibox">Core rules to remember<div class="eqbox gold" style="margin-top:1mm"><span class="eq">(<i>u</i><i>v</i>)′=<i>u</i>′<i>v</i>+<i>u</i><i>v</i>′ <br>(<span class='frac'><span><i>u</i></span><span><i>v</i></span></span>)′=<span class='frac'><span><i>u</i>′<i>v</i>−<i>u</i><i>v</i>′</span><span><i>v</i><sup>2</sup></span></span></span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto">
+    <div style="font-family:Arial,sans-serif;max-width:640px;margin:auto;background:#EAF7F7;padding:10px;box-sizing:border-box;">
+
+  <svg viewBox="0 0 640 340"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <defs>
+      <marker id="axisArrow-t11-s1"
+              markerWidth="10"
+              markerHeight="10"
+              refX="9"
+              refY="5"
+              orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#123B7A"/>
+      </marker>
+    </defs>
+
+    <!-- Title -->
+    <text x="320" y="34"
+          text-anchor="middle"
+          font-size="22"
+          fill="#1f2a44">
+      Derivative = slope of tangent
+    </text>
+
+    <!-- Y-axis -->
+    <line x1="55" y1="290"
+          x2="55" y2="65"
+          stroke="#123B7A"
+          stroke-width="4"
+          marker-end="url(#axisArrow-t11-s1)"/>
+
+    <!-- X-axis -->
+    <line x1="55" y1="290"
+          x2="570" y2="290"
+          stroke="#123B7A"
+          stroke-width="4"
+          marker-end="url(#axisArrow-t11-s1)"/>
+
+    <!-- Axis labels -->
+    <text x="25" y="82"
+          font-family="'Times New Roman',serif"
+          font-size="24"
+          font-style="italic"
+          fill="#1f2a44">y</text>
+
+    <text x="585" y="318"
+          font-family="'Times New Roman',serif"
+          font-size="24"
+          font-style="italic"
+          fill="#1f2a44">x</text>
+
+    <!-- Blue curve -->
+    <path d="
+      M55 290
+      C130 280, 205 250, 270 205
+      C335 160, 390 110, 455 88
+      C510 70, 555 78, 575 82"
+      fill="none"
+      stroke="#2563EB"
+      stroke-width="4"
+      stroke-linecap="round"/>
+
+    <!-- Orange tangent line -->
+    <line x1="285" y1="180"
+          x2="520" y2="45"
+          stroke="#F97316"
+          stroke-width="4"
+          stroke-linecap="round"/>
+
+    <!-- Tangent label -->
+    <text x="355" y="185"
+          font-size="22"
+          fill="#111">
+      tangent
+    </text>
+
+  </svg>
+
+</div>  
+      
+      <div class="figcap">Geometric meaning: <i>f</i>′(<i>a</i>) is slope of tangent to <i>y</i>=<i>f</i>(<i>x</i>) at <i>x</i>=<i>a</i>.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Differentiate <i>y</i> = (2<i>x</i><sup>2</sup>+3<i>x</i>−5) sin<i>x</i>.</div><div class="sol"><span class="lbl">Solution:</span><br>Let <i>u</i>=2<i>x</i><sup>2</sup>+3<i>x</i>−5 and <i>v</i>=sin<i>x</i>.<br><i>u</i>′ = 4<i>x</i>+3, and <i>v</i>′ = cos<i>x</i>.<br>By product rule: <i>y</i>′ = <i>u</i>′<i>v</i> + <i>u</i><i>v</i>′.<br>So <i>y</i>′ = (4<i>x</i>+3)sin<i>x</i> + (2<i>x</i><sup>2</sup>+3<i>x</i>−5)cos<i>x</i>.</div><div class="ans">✓&nbsp; <i>y</i>′ = (4<i>x</i>+3)sin<i>x</i> + (2<i>x</i><sup>2</sup>+3<i>x</i>−5)cos<i>x</i></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find <span class='frac'><span>d</span><span>d<i>x</i></span></span> of <i>y</i> = <span class='frac'><span>sin<i>x</i></span><span><i>x</i><sup>2</sup>+1</span></span> and evaluate at <i>x</i>=1.</div><div class="sol"><span class="lbl">Solution:</span><br>Use quotient rule with <i>u</i>=sin<i>x</i>, <i>v</i>=<i>x</i><sup>2</sup>+1.<br><i>u</i>′=cos<i>x</i>; <i>v</i>′=2<i>x</i>.<br><i>y</i>′ = <span class='frac'><span><i>u</i>′<i>v</i>−<i>u</i><i>v</i>′</span><span><i>v</i><sup>2</sup></span></span> = <span class='frac'><span>cos<i>x</i>(<i>x</i><sup>2</sup>+1) − sin<i>x</i>(2<i>x</i>)</span><span>(<i>x</i><sup>2</sup>+1)<sup>2</sup></span></span>.<br>At <i>x</i>=1: numerator = cos1·(2) − sin1·(2) = 2(cos1−sin1); denominator = (2)<sup>2</sup>=4.<br>So <i>y</i>′(1) = <span class='frac'><span>2(cos1−sin1)</span><span>4</span></span> = <span class='frac'><span>cos1−sin1</span><span>2</span></span>.</div><div class="ans">✓&nbsp; <i>y</i>′(1) = <span class='frac'><span>cos1−sin1</span><span>2</span></span></div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always identify structure first: sum/product/quotient; then apply the correct rule.</li><li>Quotient rule requires <i>v</i>(<i>x</i>)≠0 at the point of differentiation.</li><li>Theorem 6 gives power derivative; then Theorem 7 follows for polynomials by linearity.</li><li>Trig derivatives listed hold only when angles are in radians (exam trap).</li><li>Simplify after differentiating; avoid cancelling terms that are not common factors.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Wrong quotient sign: writing <i>u</i>′<i>v</i>+<i>u</i><i>v</i>′ instead of <i>u</i>′<i>v</i>−<i>u</i><i>v</i>′.</li><li>Forgetting to square the denominator in quotient rule.</li><li>Differentiating sin<i>x</i> as −cos<i>x</i> (confusing with derivative of cos<i>x</i>).</li><li>Applying power rule to sum: (<i>x</i><sup>2</sup>+1)′ ≠ 2(<i>x</i><sup>2</sup>+1).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Quotient mnemonic: Lo dHi − Hi dLo”</div><paragraph id="6aa538c1ed71d62cbe00044e">For <span class='frac'><span><i>u</i></span><span><i>v</i></span></span>: numerator = <i>v</i>·<i>u</i>′ − <i>u</i>·<i>v</i>′.</paragraph><paragraph id="6aa538c1aff87f49ac00044f">Denominator is always <i>v</i><sup>2</sup>.</paragraph><paragraph id="6aa538c1d93cc607bf000450">Say it aloud while writing to avoid sign errors.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><span class='frac'><span>d</span><span>d<i>x</i></span></span>(<i>c</i>) = 0</span><span class="eq"><span class='frac'><span>d</span><span>d<i>x</i></span></span>(<i>x</i><sup><i>n</i></sup>) = <i>n</i><i>x</i><sup><i>n</i>−1</sup></span><span class="eq">(<i>u</i>±<i>v</i>)′ = <i>u</i>′ ± <i>v</i>′</span><span class="eq">(<i>u</i><i>v</i>)′ = <i>u</i>′<i>v</i> + <i>u</i><i>v</i>′</span><span class="eq">(<span class='frac'><span><i>u</i></span><span><i>v</i></span></span>)′ = <span class='frac'><span><i>u</i>′<i>v</i>−<i>u</i><i>v</i>′</span><span><i>v</i><sup>2</sup></span></span></span><span class="eq"><span class='frac'><span>d</span><span>d<i>x</i></span></span>(sin<i>x</i>)=cos<i>x</i>, <span class='frac'><span>d</span><span>d<i>x</i></span></span>(tan<i>x</i>)=sec<sup>2</sup><i>x</i>, <span class='frac'><span>d</span><span>d<i>x</i></span></span>(cot<i>x</i>)=−cosec<sup>2</sup><i>x</i></span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

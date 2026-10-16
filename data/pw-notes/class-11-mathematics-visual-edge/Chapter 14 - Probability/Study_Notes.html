@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>PROBABILITY — Mathematics</title>
+  <meta name="description" content="PROBABILITY — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Mathematics</div>
+        <h1>PROBABILITY</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>EVENTS AND SAMPLE SPACE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Sample space</b> <i>S</i> = set of all possible outcomes of a random experiment.</li><li><b>Event</b> <i>E</i> = any subset of <i>S</i>; i.e., <i>E</i> ⊆ <i>S</i>.</li><li><b>Occurrence</b>: event <i>E</i> occurs if actual outcome <i>ω</i> satisfies <i>ω</i> ∈ <i>E</i>.</li><li><b>Sure event</b> is <i>S</i>; it always occurs.</li><li><b>Impossible event</b> is <i>φ</i> (empty set); it never occurs.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 8 3, 0 6' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='150' height='160' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='40' font-size='13' fill='#1f2a44'>Random experiment</text><rect x='32' y='55' width='122' height='34' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='42' y='77' font-size='13' fill='#1f2a44'>Toss coin twice</text><line x1='168' y1='72' x2='205' y2='72' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='210' y='20' width='132' height='76' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='220' y='40' font-size='14' fill='#1f2a44'>Sample space S</text><text x='222' y='60' font-size='13' fill='#1f2a44'>HH HT</text><text x='222' y='78' font-size='13' fill='#1f2a44'>TH TT</text><line x1='276' y1='96' x2='276' y2='118' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='210' y='122' width='132' height='68' rx='10' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='220' y='142' font-size='14' fill='#1f2a44'>Event E ⊆ S</text><text x='220' y='162' font-size='11' fill='#1f2a44'>Exactly 1 head</text><text x='222' y='180' font-size='11' fill='#1f2a44'>E = {HT, TH}</text><text x='28' y='120' font-size='13' fill='#1f2a44'>Map words → subset</text><text x='28' y='142' font-size='10' fill='#1f2a44'>Condition picks outcomes</text></svg><div class="figcap">Flow: experiment → sample space <i>S</i> (universal set) → event <i>E</i> as subset.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎲</span><span>Random experiment: outcome is uncertain but outcomes set <i>S</i> is known.</span></li><li><span class="ic">🧩</span><span>Sample space acts as the <b>universal set</b> for all event-sets in that experiment.</span></li><li><span class="ic">📌</span><span>Writing an event means selecting outcomes in <i>S</i> satisfying a condition.</span></li><li><span class="ic">⭕</span><span><i>φ</i> corresponds to an event description that no outcome can satisfy.</span></li><li><span class="ic">✅</span><span><i>S</i> corresponds to an event description that every outcome satisfies.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WORDING → SUBSET: COIN TOSSED TWICE</span></h2><ul class="b"><li>Experiment: toss a coin twice; <i>S</i> = {HH, HT, TH, TT}.</li><li>Event “exactly one head” ⇒ <i>E</i> = {HT, TH} (pick outcomes with one H).</li><li>Event “exactly two tails” ⇒ {TT}.</li><li>Event “at least one tail” ⇒ {HT, TH, TT}.</li><li>Event “second toss is not head” ⇒ {HT, TT} (second symbol is T).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">CHECKING OCCURRENCE (USING ω ∈ E)</span></h2><ul class="b"><li>If actual outcome <i>ω</i> lies in the set for <i>E</i>, then <i>E</i> has occurred.</li><li>Die example: <i>S</i> = {1,2,3,4,5,6}; <i>E</i>: “number &lt; 4” ⇒ <i>E</i> = {1,2,3}.</li><li>If result is 2, then 2 ∈ <i>E</i> ⇒ event occurs; if result is 5, 5 ∉ <i>E</i> ⇒ does not occur.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Key event-types as subsets of <i>S</i></span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Type / meaning</th><th>Set form (w.r.t. <i>S</i>)</th><th>Quick example (coin twice)</th></tr></thead><tbody><tr><td>Sure event (certain)</td><td><i>S</i></td><td>{HH, HT, TH, TT}</td></tr><tr><td>Impossible event (cannot happen)</td><td><i>φ</i></td><td>Tails &gt; 2 ⇒ <i>φ</i></td></tr><tr><td>Simple (elementary) event</td><td>Singleton {ω}</td><td>{HT} or {TT}</td></tr><tr><td>Compound event</td><td>More than one outcome</td><td>Exactly one head ⇒ {HT, TH}</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A coin is tossed twice. Write the sample space <i>S</i> and the event <i>E</i>: “exactly one head”. Also state whether outcome TH implies that <i>E</i> occurred.</div><div class="sol"><span class="lbl">Answer:</span><br>All possible outcomes: <i>S</i> = {HH, HT, TH, TT}.<br>Exactly one head means one H and one T: <i>E</i> = {HT, TH}.<br>Given outcome TH satisfies TH ∈ <i>E</i>, so <i>E</i> occurs.</div><div class="ans">✓&nbsp; <i>S</i> = {HH, HT, TH, TT}, <i>E</i> = {HT, TH}; for outcome TH, the event occurs.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A die is thrown. Let <i>E</i> be the event “number is a multiple of 7”. Write <i>S</i> and <i>E</i>. Name the type of event <i>E</i>.</div><div class="sol"><span class="lbl">Answer:</span><br>Sample space for one die throw: <i>S</i> = {1,2,3,4,5,6}.<br>No element of <i>S</i> is a multiple of 7, so the corresponding subset is empty.<br>Hence <i>E</i> = <i>φ</i>, which is an impossible event.</div><div class="ans">✓&nbsp; <i>S</i> = {1,2,3,4,5,6}, <i>E</i> = <i>φ</i>; <i>E</i> is an impossible event.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For a fixed experiment, every event must be a subset of the same sample space <i>S</i>.</li><li>Translate conditions using the outcome format: for coin twice, each outcome has 2 symbols.</li><li>Sure event = <i>S</i>; impossible event = <i>φ</i>.</li><li>Event occurs exactly when the observed outcome lies inside its set: <i>ω</i> ∈ <i>E</i>.</li><li>Simple event = singleton {ω}; compound event contains multiple outcomes.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing the sample space incompletely (missing HT or TH in coin twice).</li><li>Confusing “at least one tail” with “exactly one tail”.</li><li>Using <i>φ</i> when the event is rare but still possible (should be non-empty subset).</li><li>Treating an event as a sentence only, not converting it into a subset of <i>S</i>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“SUE: Sample–Universe–Event”</div><paragraph id="6aa538c232b57cc4a2000475"><b>S</b>ample space is the <b>U</b>niversal set for the experiment.</paragraph><paragraph id="6aa538c24dcdfd062f000476"><b>E</b>vent is everything you select from <i>S</i> that matches the words.</paragraph><paragraph id="6aa538c2101457e75e000477">If nothing matches, select nothing: event = <i>φ</i>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>OCCURRENCE OF AN EVENT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>For a random experiment, an event <i>E</i> is said to occur if the outcome <i>ω</i> satisfies <i>ω</i> ∈ <i>E</i>.</b></li><li>If the observed outcome <i>ω</i> satisfies <i>ω</i> ∉ <i>E</i>, then event <i>E</i> has <b>not</b> occurred.</li><li>An event is a <b>subset</b> of sample space <i>S</i>; outcome <i>ω</i> is a <b>sample point</b> with <i>ω</i> ∈ <i>S</i>.</li><li>Occurrence/non-occurrence is decided <b>after</b> performing the experiment and observing <i>ω</i>.</li><li>Always check membership: first write <i>E</i> as a set, then test <i>ω</i> ∈ <i>E</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='324' height='160' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='40' font-size='14' fill='#1f2a44'>Sample space S (die)</text><rect x='30' y='54' width='300' height='46' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='42' y='82' font-size='14' fill='#1f2a44'>S = {1,2,3,4,5,6}</text><rect x='30' y='110' width='140' height='56' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='40' y='132' font-size='14' fill='#1f2a44'>Event E</text><text x='40' y='152' font-size='14' fill='#1f2a44'>E = {1,2,3}</text><rect x='190' y='110' width='140' height='56' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='200' y='132' font-size='14' fill='#1f2a44'>Observed ω</text><text x='200' y='152' font-size='14' fill='#1f2a44'>e.g. ω = 5</text><line x1='170' y1='138' x2='190' y2='138' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='178' y='168' font-size='12' fill='#1f2a44'>test</text></svg><div class="figcap">Decide occurrence by membership: compare observed <i>ω</i> with event set <i>E</i>.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Outcome is a single sample point <i>ω</i>; event <i>E</i> is a set of outcomes.</span></li><li><span class="ic">✅</span><span>Event occurs when observed result is favourable: <i>ω</i> ∈ <i>E</i>.</span></li><li><span class="ic">❌</span><span>Event does not occur when observed result is not favourable: <i>ω</i> ∉ <i>E</i>.</span></li><li><span class="ic">🎲</span><span>Die example: <i>E</i> = {1,2,3} for “number less than 4”.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO CHECK OCCURRENCE (EXAM STEPS)</span></h2><ul class="b"><li>Write the sample space <i>S</i> and the event as a set <i>E</i> ⊆ <i>S</i>.</li><li>Perform the experiment; record the actual outcome <i>ω</i> (one element of <i>S</i>).</li><li>If <i>ω</i> ∈ <i>E</i> ⇒ <b>event occurs</b>; if <i>ω</i> ∉ <i>E</i> ⇒ <b>event not occurred</b>.</li><li>Same event can occur for many outcomes (all outcomes inside <i>E</i>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">DIE EXAMPLE: “NUMBER LESS THAN 4”</span></h2><ul class="b"><li>Experiment: throw a die; <i>S</i> = {1,2,3,4,5,6}.</li><li>Event <i>E</i>: “number less than 4” ⇒ <i>E</i> = {1,2,3}.</li><li>If <i>ω</i> = 1,2,3 ⇒ <i>ω</i> ∈ <i>E</i> ⇒ <b><i>E</i> occurs</b>.</li><li>If <i>ω</i> = 4,5,6 ⇒ <i>ω</i> ∉ <i>E</i> ⇒ <b><i>E</i> does not occur</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Event Occurs vs Event Does Not Occur</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Event occurs</th><th>Event not occurred</th></tr></thead><tbody><tr><td>Membership test</td><td><i>ω</i> ∈ <i>E</i></td><td><i>ω</i> ∉ <i>E</i></td></tr><tr><td>Meaning</td><td>Outcome is favourable to <i>E</i></td><td>Outcome is unfavourable to <i>E</i></td></tr><tr><td>Die: <i>E</i> = {1,2,3}</td><td><i>ω</i> = 1 or 2 or 3</td><td><i>ω</i> = 4 or 5 or 6</td></tr><tr><td>Language</td><td><b><i>E</i> has occurred</b></td><td><b><i>E</i> has not occurred</b></td></tr></tbody></table></div></div>
+    
+        <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A die is thrown. Let <i>E</i> be the event “a number less than 4 appears”. If the observed outcome is <i>ω</i> = 3, does <i>E</i> occur?</div><div class="sol"><span class="lbl">Answer:</span><br>Write event set: <i>E</i> = {1,2,3}.<br>Observed outcome is <i>ω</i> = 3.<br>Check membership: 3 ∈ {1,2,3} ⇒ <i>ω</i> ∈ <i>E</i>.</div><div class="ans">✓&nbsp; Yes, event <i>E</i> occurs.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A die is thrown. Same event <i>E</i>: “number less than 4”. If the observed outcome is <i>ω</i> = 5, what can you say about occurrence of <i>E</i>?</div><div class="sol"><span class="lbl">Answer:</span><br>Event set is <i>E</i> = {1,2,3}.<br>Observed outcome is <i>ω</i> = 5.<br>Check membership: 5 ∉ {1,2,3} ⇒ <i>ω</i> ∉ <i>E</i>.</div><div class="ans">✓&nbsp; No, event <i>E</i> has not occurred.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Outcome <i>ω</i> is a single result; event <i>E</i> is a subset of <i>S</i>.</li><li>Use only the membership rule: <i>ω</i> ∈ <i>E</i> (occurs) or <i>ω</i> ∉ <i>E</i> (not occurs).</li><li>First convert the verbal description into a set <i>E</i>; then test the observed <i>ω</i>.</li><li>Event occurrence is not probability; it is a yes/no statement after observation.</li><li>For a die, “less than 4” means {1,2,3}, not including 4.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Treating event as a single outcome: writing <i>E</i> = 3 instead of <i>E</i> = {1,2,3}.</li><li>Including wrong elements while forming <i>E</i> from language (e.g., adding 4 in “less than 4”).</li><li>Confusing <i>ω</i> ∈ <i>E</i> with <i>E</i> ∈ <i>S</i> (event is subset, not an element).</li><li>Saying “event occurs” without checking the observed outcome <i>ω</i>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“IN = OCCURS, OUT = NOT”</div><paragraph id="6aa538c2c20a17a41e000478">If the observed <i>ω</i> is <b>IN</b> the set <i>E</i>, the event <b>OCCURS</b>.</paragraph><paragraph id="6aa538c2b1d0473513000479">If <i>ω</i> is <b>OUT</b> of <i>E</i>, the event is <b>NOT occurred</b>.</paragraph><paragraph id="6aa538c2b5fbd2177d00047a">Think: circle the favourable outcomes (set <i>E</i>); check where <i>ω</i> lands.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ALGEBRA OF EVENTS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>An <b>event</b> is any subset of sample space <i>S</i>; algebra of events uses set operations on events.</li><li><b>Complement</b> of <i>A</i>: <i>A</i>′ = <i>S</i> − <i>A</i>, called <b>not A</b>.</li><li><b>Union</b> <i>A</i> ∪ <i>B</i>: event <b>A or B (or both)</b>.</li><li><b>Intersection</b> <i>A</i> ∩ <i>B</i>: event <b>A and B</b> simultaneously.</li><li><b>Difference</b> <i>A</i> − <i>B</i>: event <b>A but not B</b>; equals <i>A</i> ∩ <i>B</i>′.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='220' height='160' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='38' font-size='13' fill='#1f2a44'>Sample space S</text><circle cx='98' cy='102' r='52' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><circle cx='158' cy='102' r='52' fill='#EAF7EF' stroke='#16A34A' stroke-width='2' fill-opacity='0.85'/><text x='70' y='106' font-size='13' fill='#1f2a44'>A</text><text x='180' y='106' font-size='13' fill='#1f2a44'>B</text><text x='118' y='106' font-size='13' fill='#1f2a44'>A∩B</text><text x='58' y='146' font-size='12' fill='#1f2a44'>A−B</text><text x='172' y='146' font-size='12' fill='#1f2a44'>B−A</text><text x='30' y='62' font-size='12' fill='#1f2a44'>Outside circles: A′∩B′</text><g><line x1='250' y1='48' x2='330' y2='48' stroke='#2563EB' stroke-width='2' marker-end='url(#arr)'/><text x='255' y='42' font-size='12' fill='#1f2a44'>A∪B</text><rect x='250' y='58' width='92' height='28' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='258' y='77' font-size='12' fill='#1f2a44'>A or B</text></g><g><line x1='250' y1='112' x2='330' y2='112' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='255' y='106' font-size='12' fill='#1f2a44'>A∩B</text><rect x='250' y='122' width='92' height='28' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='258' y='141' font-size='12' fill='#1f2a44'>A and B</text></g></svg><div class="figcap">Venn view: union, intersection, difference, and complement regions in sample space <i>S</i>.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🟦</span><span><b>Complement</b>: <i>A</i>′ contains exactly those outcomes not in <i>A</i>.</span></li><li><span class="ic">🟪</span><span><b>Union</b> collects outcomes in either event; overlap is counted once.</span></li><li><span class="ic">🟩</span><span><b>Intersection</b> is the overlap region: outcomes satisfying both conditions.</span></li><li><span class="ic">🟧</span><span><b>Difference</b> keeps only the part of <i>A</i> outside <i>B</i>: <i>A</i> ∩ <i>B</i>′.</span></li><li><span class="ic">🔁</span><span><b>De Morgan</b>: ( <i>A</i> ∪ <i>B</i> )′ = <i>A</i>′ ∩ <i>B</i>′ and ( <i>A</i> ∩ <i>B</i> )′ = <i>A</i>′ ∪ <i>B</i>′.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">SET-LANGUAGE OPERATIONS ON EVENTS</span></h2><ul class="b"><li><b>Complement</b>: <i>A</i>′ = {ω : ω ∈ <i>S</i> and ω ∉ <i>A</i>} = <i>S</i> − <i>A</i>.</li><li><b>Union</b>: <i>A</i> ∪ <i>B</i> = {ω : ω ∈ <i>A</i> or ω ∈ <i>B</i>}.</li><li><b>Intersection</b>: <i>A</i> ∩ <i>B</i> = {ω : ω ∈ <i>A</i> and ω ∈ <i>B</i>}.</li><li><b>Difference</b>: <i>A</i> − <i>B</i> = {ω : ω ∈ <i>A</i> and ω ∉ <i>B</i>} = <i>A</i> ∩ <i>B</i>′.</li><li><b>Basic identities</b>: <i>A</i> ∪ <i>A</i>′ = <i>S</i>, <i>A</i> ∩ <i>A</i>′ = φ.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">DE MORGAN + QUICK PROBABILITY LINKS</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><rect x='22' y='22' width='316' height='156' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='34' y='48' font-size='14' fill='#1f2a44'>De Morgan mapping</text><rect x='40' y='70' width='120' height='42' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='52' y='95' font-size='13' fill='#1f2a44'>(A∪B)′</text><rect x='200' y='70' width='120' height='42' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='212' y='95' font-size='13' fill='#1f2a44'>A′∩B′</text><line x1='160' y1='91' x2='200' y2='91' stroke='#2563EB' stroke-width='2'/><rect x='40' y='126' width='120' height='42' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='52' y='151' font-size='13' fill='#1f2a44'>(A∩B)′</text><rect x='200' y='126' width='120' height='42' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='212' y='151' font-size='13' fill='#1f2a44'>A′∪B′</text><line x1='160' y1='147' x2='200' y2='147' stroke='#2563EB' stroke-width='2'/></svg></div><ul class="b"><li><b>De Morgan</b>: ( <i>A</i> ∪ <i>B</i> )′ = <i>A</i>′ ∩ <i>B</i>′ ("not(A or B)" = "not A and not B").</li><li><b>De Morgan</b>: ( <i>A</i> ∩ <i>B</i> )′ = <i>A</i>′ ∪ <i>B</i>′ ("not(A and B)" = "not A or not B").</li><li><b>Link to probability</b>: Taking probability preserves set equalities, e.g. from <i>A</i>′ = <i>S</i> − <i>A</i> we get <i>P</i>(<i>A</i>′) = 1 − <i>P</i>(<i>A</i>).</li><li><b>Union probability rule</b>: For any events <i>A</i>, <i>B</i>, <i>P</i>(<i>A</i> ∪ <i>B</i>) = <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>) − <i>P</i>(<i>A</i> ∩ <i>B</i>).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">OPERATIONS AT A GLANCE</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Operation (event wording)</th><th>Set form</th><th>Meaning in outcomes</th></tr></thead><tbody><tr><td>Complement (not A)</td><td><i>A</i>′ = <i>S</i> − <i>A</i></td><td>All ω in <i>S</i> that are not in <i>A</i></td></tr><tr><td>Union (A or B)</td><td><i>A</i> ∪ <i>B</i></td><td>ω in at least one of <i>A</i>, <i>B</i></td></tr><tr><td>Intersection (A and B)</td><td><i>A</i> ∩ <i>B</i></td><td>ω common to both <i>A</i> and <i>B</i></td></tr><tr><td>Difference (A but not B)</td><td><i>A</i> − <i>B</i> = <i>A</i> ∩ <i>B</i>′</td><td>ω in <i>A</i> excluding overlap with <i>B</i></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A die is rolled. <i>S</i>={1,2,3,4,5,6}. Let <i>A</i>={2,3,5} (prime) and <i>B</i>={1,3,5} (odd). Write (i) <i>A</i>∪<i>B</i> (ii) <i>A</i>∩<i>B</i> (iii) <i>A</i>−<i>B</i> (iv) <i>A</i>′.</div><div class="sol"><span class="lbl">Answer:</span><br>(i) Union collects outcomes that are in <i>A</i> or in <i>B</i> (or both): {1,2,3,5}.<br>(ii) Intersection collects outcomes common to both sets: {3,5}.<br>(iii) Difference <i>A</i>−<i>B</i> keeps outcomes in <i>A</i> but not in <i>B</i>: {2}.<br>(iv) Complement <i>A</i>′ is everything in <i>S</i> except <i>A</i>: {1,4,6}.</div><div class="ans">✓&nbsp; <i>A</i>∪<i>B</i>={1,2,3,5}, <i>A</i>∩<i>B</i>={3,5}, <i>A</i>−<i>B</i>={2}, <i>A</i>′={1,4,6}.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain why ( <i>A</i> ∪ <i>B</i> )′ equals <i>A</i>′ ∩ <i>B</i>′ using outcome-by-outcome reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>Take any outcome ω.<br>ω ∈ ( <i>A</i> ∪ <i>B</i> )′ means ω is NOT in the union, i.e., ω is neither in <i>A</i> nor in <i>B</i>.<br>That is equivalent to: (ω ∉ <i>A</i>) AND (ω ∉ <i>B</i>).<br>So ω belongs to <i>A</i>′ and also belongs to <i>B</i>′, i.e., ω ∈ <i>A</i>′ ∩ <i>B</i>′.</div><div class="ans">✓&nbsp; For every ω, membership in ( <i>A</i> ∪ <i>B</i> )′ is equivalent to membership in <i>A</i>′ ∩ <i>B</i>′, hence the sets are equal.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><b>"Or" in probability is inclusive</b>: <i>A</i>∪<i>B</i> includes overlap <i>A</i>∩<i>B</i>.</li><li><b>Difference</b> is directional: <i>A</i>−<i>B</i> ≠ <i>B</i>−<i>A</i> generally.</li><li><b>Partition idea</b>: <i>A</i> = (<i>A</i>−<i>B</i>) ∪ (<i>A</i>∩<i>B</i>), disjoint union.</li><li>Use <b>De Morgan</b> to convert complements of unions/intersections before taking probability.</li><li>If <i>A</i> and <i>B</i> are mutually exclusive: <i>A</i>∩<i>B</i>=φ ⇒ <i>A</i>∪<i>B</i> is a disjoint union.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Treating <b>"A or B"</b> as exclusive-or; forgetting that overlap is included in <i>A</i>∪<i>B</i>.</li><li>Mixing direction in difference: <i>A</i>−<i>B</i> means in <i>A</i> but not in <i>B</i>.</li><li>Applying De Morgan incorrectly: flipping ∪/∩ but not complementing both events.</li><li>Taking complement without fixing the sample space <i>S</i>, causing a wrong <i>A</i>′.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“De Morgan: "Break the bracket, flip the sign"”</div><paragraph id="6aa538c24f9d3a270600047b">Complement outside bracket goes inside: ( )′ distributes to each event.</paragraph><paragraph id="6aa538c2537d5a121b00047c">While distributing, <b>flip</b> ∪ ↔ ∩ and complement each term: (A∪B)′=A′∩B′.</paragraph><paragraph id="6aa538c2556aac65ba00047d">Read aloud: <b>NOT(OR)=AND of NOTs</b>, <b>NOT(AND)=OR of NOTs</b>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>MUTUALLY EXCLUSIVE EVENTS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Two events <i>A</i> and <i>B</i> are mutually exclusive</b> if they cannot occur simultaneously in the same trial.</li><li>Set language: <b><i>A</i> and <i>B</i> are disjoint</b> (no common outcomes).</li><li>Key test: <b><i>A</i> ∩ <i>B</i> = φ</b> (empty set).</li><li>If <i>A</i> ∩ <i>B</i> contains even one outcome, events are <b>not</b> mutually exclusive.</li><li>Remark: Two <b>distinct</b> simple events {ω<sub>i</sub>} and {ω<sub>j</sub>} (i ≠ j) are mutually exclusive.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='20' y='20' width='320' height='160' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='40' font-size='13' fill='#1f2a44'>Sample space <tspan font-style='italic'>S</tspan></text><circle cx='150' cy='115' r='55' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><circle cx='240' cy='115' r='55' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='135' y='118' font-size='14' fill='#1f2a44' font-style='italic'>A</text><text x='235' y='118' font-size='14' fill='#1f2a44' font-style='italic'>B</text><text x='90' y='165' font-size='12' fill='#1f2a44'>No overlap</text><line x1='155' y1='158' x2='175' y2='142' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='180' y='145' font-size='12' fill='#1f2a44'><tspan font-style='italic'>A</tspan> ∩ <tspan font-style='italic'>B</tspan> = φ</text></svg><div class="figcap">Mutually exclusive events are disjoint: intersection is empty.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Mutually exclusive ⇔ disjoint sets ⇔ no common sample point</span></li><li><span class="ic">✖️</span><span>Same trial: if <i>A</i> happens, <i>B</i> cannot happen in that trial</span></li><li><span class="ic">∩</span><span>Fast check: find <i>A</i> ∩ <i>B</i>; empty means mutually exclusive</span></li><li><span class="ic">🎲</span><span>Die: odd vs even are mutually exclusive; odd vs &lt; 4 are not</span></li><li><span class="ic">🗂️</span><span>Mutual exclusivity is about impossibility of overlap, not about independence</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO TEST (INTERSECTION TEST)</span></h2><ul class="b"><li>Write both events as subsets of the same sample space <i>S</i>.</li><li>List the outcomes in <i>A</i> and in <i>B</i> clearly.</li><li>Find <i>A</i> ∩ <i>B</i> (common outcomes).</li><li>If <i>A</i> ∩ <i>B</i> = φ, they are mutually exclusive; otherwise they are not.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STANDARD EXAMPLES (DIE)</span></h2><ul class="b"><li>Odd: <i>A</i>={1,3,5}, Even: <i>B</i>={2,4,6} ⇒ <i>A</i> ∩ <i>B</i>=φ (mutually exclusive).</li><li>Odd: <i>A</i>={1,3,5}, Less than 4: <i>B</i>={1,2,3} ⇒ <i>A</i> ∩ <i>B</i>={1,3} (not mutually exclusive).</li><li>If one outcome belongs to both events, they can occur together in that outcome.</li><li>Distinct simple events {1} and {2} cannot occur together in one die roll.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">MUTUALLY EXCLUSIVE vs NOT MUTUALLY EXCLUSIVE</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Mutually exclusive</th><th>Not mutually exclusive</th></tr></thead><tbody><tr><td>Can occur together (same trial)?</td><td>No, cannot occur simultaneously</td><td>Yes, may occur simultaneously</td></tr><tr><td>Intersection</td><td><i>A</i> ∩ <i>B</i> = φ</td><td><i>A</i> ∩ <i>B</i> ≠ φ</td></tr><tr><td>Venn picture</td><td>Disjoint circles</td><td>Overlapping circles</td></tr><tr><td>Key probability idea (word form)</td><td>No overlap to subtract in union</td><td>Overlap must be accounted for</td></tr><tr><td>Example (die)</td><td>Odd vs Even</td><td>Odd vs Less than 4</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A fair die is thrown. Let <i>A</i> be "odd number" and <i>B</i> be "number less than 4". Are <i>A</i> and <i>B</i> mutually exclusive?</div><div class="sol"><span class="lbl">Answer:</span><br>Write the outcome sets: <i>A</i>={1,3,5} and <i>B</i>={1,2,3}.<br>Common outcomes are 1 and 3, so <i>A</i> ∩ <i>B</i>={1,3}.<br>Since the intersection is not empty, the events can occur together (e.g., outcome 3 satisfies both).</div><div class="ans">✓&nbsp; <i>A</i> and <i>B</i> are not mutually exclusive.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">From a standard 52-card deck, consider the event <i>A</i>: "first card is an Ace" and <i>B</i>: "first card is a King". Are <i>A</i> and <i>B</i> mutually exclusive?</div><div class="sol"><span class="lbl">Answer:</span><br>Both events refer to the identity of the first card only.<br>A single card cannot be both an Ace and a King at the same time.<br>Therefore, there is no common outcome where both happen together, i.e., <i>A</i> ∩ <i>B</i> = φ.</div><div class="ans">✓&nbsp; Yes, <i>A</i> and <i>B</i> are mutually exclusive.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Mutually exclusive means <b>cannot occur together</b> in the same trial.</li><li>To test: show <i>A</i> ∩ <i>B</i> = φ (set method) or argue logical impossibility.</li><li>If events are mutually exclusive, their intersection is the impossible event (empty set).</li><li>Do not confuse mutually exclusive with independent; they are different ideas.</li><li>Distinct simple events {ω<sub>i</sub>} and {ω<sub>j</sub>} (i ≠ j) are mutually exclusive.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Calling events mutually exclusive without checking for any shared outcome.</li><li>Confusing "mutually exclusive" with "exhaustive" (together cover all outcomes).</li><li>Mixing up mutually exclusive with independent events.</li><li>Comparing events from different experiments/trials (they must share the same sample space).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“ME = "Meet Empty"”</div><paragraph id="6aa538c2698b19b2cf00047e">If events <b>ME</b>et (intersection) and it is <b>Empty</b>, they are mutually exclusive.</paragraph><paragraph id="6aa538c2f4462a9f2900047f">Think: <i>A</i> ∩ <i>B</i> empty ⇒ they never happen together.</paragraph><paragraph id="6aa538c2e345a0bfa9000480">Not empty ⇒ they can meet ⇒ not mutually exclusive.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Mutually exclusive ⇔ <i>A</i> ∩ <i>B</i> = φ (no common outcomes).</span><span class="eq">Distinct simple events are mutually exclusive: {ω<sub>i</sub>} ∩ {ω<sub>j</sub>} = φ for i ≠ j.</span><span class="eq">If two events are mutually exclusive, they cannot happen together in one trial.</span><span class="eq">If events overlap (intersection not empty), they are not mutually exclusive.</span><span class="eq">Mutually exclusive is about overlap; independence is about probability dependence.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>EXHAUSTIVE EVENTS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Events</b> <i>E</i><sub>1</sub>, <i>E</i><sub>2</sub>, …, <i>E</i><sub>n</sub> are <b>exhaustive</b> if <b>at least one must occur</b> in every trial.</li><li>Set form: <i>E</i><sub>1</sub> ∪ <i>E</i><sub>2</sub> ∪ … ∪ <i>E</i><sub>n</sub> = <i>S</i> (sample space).</li><li>Exhaustive does <b>not</b> mean disjoint; events may overlap and still cover <i>S</i>.</li><li><b>Mutually exclusive and exhaustive</b> means they are <b>pairwise disjoint</b> and cover <i>S</i>.</li><li>Such a collection is a <b>partition</b> of <i>S</i>: each outcome belongs to <b>exactly one</b> event.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='26' y='38' font-size='13' fill='#1f2a44'>Sample space S</text><rect x='60' y='70' width='110' height='90' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><rect x='190' y='70' width='110' height='90' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='105' y='65' font-size='13' fill='#1f2a44'>E₁</text><text x='235' y='65' font-size='13' fill='#1f2a44'>E₂</text><text x='78' y='115' font-size='12' fill='#1f2a44'>covers</text><text x='78' y='132' font-size='12' fill='#1f2a44'>this part</text><text x='208' y='115' font-size='12' fill='#1f2a44'>covers</text><text x='208' y='132' font-size='12' fill='#1f2a44'>this part</text><line x1='170' y1='115' x2='190' y2='115' stroke='#123B7A' stroke-width='2'/><text x='118' y='175' font-size='12' fill='#1f2a44'>If E₁ ∪ E₂ = S, then {E₁, E₂} is exhaustive</text></svg><div class="figcap">Exhaustive means the union of events covers the entire sample space <i>S</i>.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Exhaustive ⇔ <b>union is whole</b>: ∪<sub>i=1</sub><sup>n</sup><i>E</i><sub>i</sub> = <i>S</i></span></li><li><span class="ic">🚫</span><span>Mutually exclusive ⇔ <b>no overlap</b>: <i>E</i><sub>i</sub> ∩ <i>E</i><sub>j</sub> = φ for <i>i</i> ≠ <i>j</i></span></li><li><span class="ic">📦</span><span>Mutually exclusive + exhaustive ⇔ <b>partition</b> (exactly one occurs)</span></li><li><span class="ic">✅</span><span>For a partition, probabilities of parts add to 1 (total certainty)</span></li><li><span class="ic">🔁</span><span><b>Complement pair</b>: <i>A</i> and <i>A</i><sup>′</sup> are always mutually exclusive and exhaustive</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">CHECKLIST: EXHAUSTIVE vs MUTUALLY EXCLUSIVE + EXHAUSTIVE</span></h2><ul class="b"><li><b>Exhaustive</b>: every outcome ω ∈ <i>S</i> lies in at least one <i>E</i><sub>i</sub>.</li><li><b>Not required</b>: overlaps allowed; some ω may lie in two events.</li><li><b>Mutually exclusive &amp; exhaustive</b>: union covers <i>S</i> and pairwise intersections are φ.</li><li>Then each ω belongs to <b>exactly one</b> event (a partition).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">QUICK EXAMPLES (WHAT THEY LOOK LIKE)</span></h2><ul class="b"><li>Die: A={1,2,3}, B={3,4}, C={5,6} ⇒ A∪B∪C=<i>S</i> (exhaustive but not mutually exclusive).</li><li>Die partition: E<sub>1</sub>={1,2}, E<sub>2</sub>={3,4}, E<sub>3</sub>={5,6} ⇒ disjoint and exhaustive.</li><li>Coin tossed thrice: A(no head), B(exactly one head), C(at least two heads) ⇒ mutually exclusive and exhaustive.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">EXHAUSTIVE vs MUTUALLY EXCLUSIVE vs BOTH</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Exhaustive</th><th>Mutually exclusive</th><th>Mutually exclusive &amp; exhaustive</th></tr></thead><tbody><tr><td>Set condition</td><td>∪<i>E</i><sub>i</sub>=<i>S</i></td><td><i>E</i><sub>i</sub>∩<i>E</i><sub>j</sub>=φ</td><td>Both conditions hold</td></tr><tr><td>Can two occur together?</td><td>May or may not (overlap allowed)</td><td>No (cannot overlap)</td><td>No; exactly one occurs</td></tr><tr><td>Covers all outcomes?</td><td>Yes</td><td>Not necessary</td><td>Yes</td></tr><tr><td>Typical name</td><td>Covering family</td><td>Disjoint events</td><td>Partition of <i>S</i></td></tr><tr><td>Probability note</td><td>Union need not equal sum if events overlap</td><td>For two events: P(<i>A</i>∪<i>B</i>)=P(<i>A</i>)+P(<i>B</i>)</td><td>Total probability across parts is 1</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A die is thrown once. Let <i>E</i><sub>1</sub>={1,2}, <i>E</i><sub>2</sub>={3}, <i>E</i><sub>3</sub>={4,5,6}. (i) Are they exhaustive? (ii) Are they mutually exclusive and exhaustive?</div><div class="sol"><span class="lbl">Answer:</span><br>Write the sample space <i>S</i>={1,2,3,4,5,6}.<br>Check exhaustiveness: <i>E</i><sub>1</sub>∪<i>E</i><sub>2</sub>∪<i>E</i><sub>3</sub>={1,2,3,4,5,6} which equals <i>S</i>.<br>Check mutual exclusivity: pairwise intersections are empty (no number is common to two sets).<br>So they are mutually exclusive and exhaustive; they form a partition of <i>S</i>.</div><div class="ans">✓&nbsp; (i) Yes, exhaustive. (ii) Yes, mutually exclusive and exhaustive (a partition).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A coin is tossed three times. Define A: no head, B: exactly one head, C: at least two heads. Are A, B, C mutually exclusive and exhaustive?</div><div class="sol"><span class="lbl">Answer:</span><br>List outcomes by number of heads: 0 heads (A), 1 head (B), and 2 or 3 heads (C).<br>Every outcome has a unique head-count category, so A∪B∪C=<i>S</i> (exhaustive).<br>No outcome can belong to two different head-count categories, so intersections are φ (mutually exclusive).</div><div class="ans">✓&nbsp; Yes. They are mutually exclusive and exhaustive.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Exhaustive means <b>covering</b>: at least one event in the list must occur.</li><li>Exhaustive events may <b>overlap</b>; disjointness is a separate condition.</li><li>Mutually exclusive + exhaustive implies <b>exactly one</b> event occurs (partition).</li><li>To test exhaustiveness: verify the union equals <i>S</i> (no outcome left out).</li><li>Complementary events <i>A</i> and <i>A</i><sup>′</sup> always form an exhaustive and mutually exclusive pair.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Assuming exhaustive events must be disjoint; overlaps are allowed.</li><li>Declaring 'exhaustive' by intuition without checking the union equals <i>S</i>.</li><li>Using the disjoint-sum probability idea when events overlap.</li><li>Missing outcomes that belong to neither listed event, so the collection is not exhaustive.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“E-X-HAUST: "EX" = entire eXperiment covered”</div><paragraph id="6aa538c2fe5c7d7a12000481"><b>EX</b>haustive ⇒ union gives the entire sample space <i>S</i>.</paragraph><paragraph id="6aa538c288bb89ef8e000482">Add <b>NO overlap</b> (mutually exclusive) ⇒ each outcome falls in <b>one box only</b> (partition).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>AXIOMS OF PROBABILITY</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A probability function <i>P</i> maps each event <i>E</i> ⊆ <i>S</i> to a real number in [0,1].</li><li>Domain: <b>power set</b> 2<sup><i>S</i></sup> (all subsets of <i>S</i>); range: [0,1].</li><li>Axiom 1 (Non-negativity): For any event <i>E</i>, <i>P</i>(<i>E</i>) ≥ 0.</li><li>Axiom 2 (Normalization): <i>P</i>(<i>S</i>) = 1, where <i>S</i> is the sample space.</li><li>Axiom 3 (Additivity for disjoint events): If <i>E</i> and <i>F</i> are mutually exclusive, <i>P</i>(<i>E</i> ∪ <i>F</i>) = <i>P</i>(<i>E</i>) + <i>P</i>(<i>F</i>).</li><li>Consequence: <i>P</i>(φ) = 0 where φ is the empty set (impossible event).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><polygon points='0,0 10,5 0,10' fill='#2563EB'/></marker></defs><rect x='20' y='18' width='320' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='40' font-size='14' fill='#1f2a44'>Sample space S</text><circle cx='120' cy='110' r='52' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><circle cx='260' cy='110' r='52' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='98' y='86' font-size='13' fill='#1f2a44'>E</text><text x='275' y='86' font-size='13' fill='#1f2a44'>F</text><line x1='54' y1='62' x2='104' y2='86' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><text x='38' y='62' font-size='12' fill='#1f2a44'>If disjoint</text><text x='40' y='78' font-size='12' fill='#1f2a44'>(no overlap)</text><text x='30' y='160' font-size='12' fill='#1f2a44'>Then: add probabilities</text><text x='30' y='178' font-size='12' fill='#1f2a44'>P(E∪F)=P(E)+P(F)</text></svg><div class="figcap">Additivity axiom applies when events are mutually exclusive (disjoint sets).<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Events are sets: probability is a <b>set function</b> <i>P</i>: 2<sup><i>S</i></sup> → [0,1].</span></li><li><span class="ic">✅</span><span>Mutually exclusive means <i>E</i> ∩ <i>F</i> = φ (cannot occur together).</span></li><li><span class="ic">➕</span><span>Axiom 3 applies only when events are disjoint. For overlapping events, one uses the standard derived rule <i>P</i>(<i>E</i>∪<i>F</i>) = <i>P</i>(<i>E</i>)+<i>P</i>(<i>F</i>)−<i>P</i>(<i>E</i>∩<i>F</i>).</span></li><li><span class="ic">0️⃣</span><span>Using additivity with φ gives <i>P</i>(φ)=0, a frequently tested inference.</span></li><li><span class="ic">🎯</span><span><i>P</i>(<i>S</i>)=1 fixes the scale: total probability over the sample space is 1.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">AXIOMS (KOLMOGOROV) IN EXAM LANGUAGE</span></h2><ul class="b"><li>Treat <i>P</i> like a rule that assigns a number to every subset (event) of <i>S</i>.</li><li>Axiom 1: probabilities cannot be negative: <i>P</i>(<i>E</i>) ≥ 0.</li><li>Axiom 2: certainty of the sample space: <i>P</i>(<i>S</i>) = 1.</li><li>Axiom 3: if events cannot occur together (<i>E</i> ∩ <i>F</i> = φ), then probabilities add.</li><li>Extension: for pairwise disjoint <i>E</i><sub>1</sub>, <i>E</i><sub>2</sub>, ..., <i>E</i><sub>n</sub>, <i>P</i>(<i>E</i><sub>1</sub>∪<i>E</i><sub>2</sub>∪...∪<i>E</i><sub>n</sub>) = <i>P</i>(<i>E</i><sub>1</sub>)+<i>P</i>(<i>E</i><sub>2</sub>)+...+<i>P</i>(<i>E</i><sub>n</sub>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">STANDARD CONSEQUENCE: <i>P</i>(φ)=0 (ONE-LINE PROOF IDEA)</span></h2><ul class="b"><li>φ is disjoint from every event <i>E</i>: <i>E</i> ∩ φ = φ.</li><li>Apply additivity to <i>E</i> and φ: <i>P</i>(<i>E</i> ∪ φ) = <i>P</i>(<i>E</i>) + <i>P</i>(φ).</li><li>But <i>E</i> ∪ φ = <i>E</i>, so the only way the equation can hold is <i>P</i>(φ)=0.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">SURE vs IMPOSSIBLE vs (ANY) EVENT</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Event</th><th>Set meaning</th><th>Probability (from axioms)</th></tr></thead><tbody><tr><td>Sure event</td><td><i>S</i></td><td><i>P</i>(<i>S</i>) = 1</td></tr><tr><td>Impossible event</td><td>φ</td><td><i>P</i>(φ) = 0</td></tr><tr><td>General event</td><td><i>E</i> ⊆ <i>S</i></td><td>0 ≤ <i>P</i>(<i>E</i>) ≤ 1</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why must <i>P</i>(φ)=0 in the axiomatic approach?</div><div class="sol"><span class="lbl">Answer:</span><br>Take any event <i>E</i>. The empty set φ cannot occur with anything, so <i>E</i> and φ are disjoint.<br>By additivity for disjoint events: <i>P</i>(<i>E</i>∪φ) = <i>P</i>(<i>E</i>) + <i>P</i>(φ).<br>But <i>E</i>∪φ is just <i>E</i>, so <i>P</i>(<i>E</i>) = <i>P</i>(<i>E</i>) + <i>P</i>(φ).<br>Therefore <i>P</i>(φ)=0.</div><div class="ans">✓&nbsp; <i>P</i>(φ)=0.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student adds <i>P</i>(<i>E</i>) + <i>P</i>(<i>F</i>) to get <i>P</i>(<i>E</i>∪<i>F</i>) without checking overlap. What is the axiom-level error?</div><div class="sol"><span class="lbl">Answer:</span><br>Axiom 3 allows addition only when events are mutually exclusive.<br>Mutually exclusive means <i>E</i> ∩ <i>F</i> = φ.<br>If <i>E</i> and <i>F</i> overlap, directly adding double-counts the overlap region, so the axiom does not apply.</div><div class="ans">✓&nbsp; They used additivity without verifying <i>E</i> ∩ <i>F</i> = φ.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>State clearly: <i>P</i> is defined on 2<sup><i>S</i></sup>, i.e., on all events (subsets), not only on single outcomes.</li><li>Axiom 3 needs <b>mutual exclusivity</b>; check <i>E</i> ∩ <i>F</i> = φ before adding.</li><li><i>P</i>(φ)=0 is derived from the axioms (not an independent axiom).</li><li>From axioms: always 0 ≤ <i>P</i>(<i>E</i>) ≤ 1 for every event <i>E</i>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Applying <i>P</i>(<i>E</i>∪<i>F</i>)=<i>P</i>(<i>E</i>)+<i>P</i>(<i>F</i>) even when <i>E</i> and <i>F</i> overlap.</li><li>Forgetting that φ is an event (subset) and its probability is 0.</li><li>Confusing the sample space <i>S</i> with an event; <i>S</i> is the universal set of outcomes and always has probability 1.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: NAT-0”</div><paragraph id="6aa538c280fd10dc71000483"><b>N</b>: Non-negativity: <i>P</i>(<i>E</i>) ≥ 0</paragraph><paragraph id="6aa538c2edeed8d0eb000484"><b>A</b>: Additivity for disjoint events: <i>E</i>∩<i>F</i>=φ ⇒ <i>P</i>(<i>E</i>∪<i>F</i>)=<i>P</i>(<i>E</i>)+<i>P</i>(<i>F</i>)</paragraph><paragraph id="6aa538c2e7757f29bd000485"><b>T</b>: Total certainty: <i>P</i>(<i>S</i>) = 1</paragraph><paragraph id="6aa538c25da461794c000486"><b>0</b>: Empty set: <i>P</i>(φ)=0 (follows from additivity)</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>PROBABILITY OF AN EVENT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>If sample space <i>S</i> = {<i>ω</i><sub>1</sub>, …, <i>ω</i><sub>n</sub>}, then for any event <i>A</i> ⊆ <i>S</i>, <b>P(A) = Σ P(<i>ω</i><sub>i</sub>)</b> over all <i>ω</i><sub>i</sub> ∈ <i>A</i>.</li><li>A singleton event {<i>ω</i><sub>i</sub>} is an <b>elementary (simple) event</b>; write P(<i>ω</i><sub>i</sub>) for P({<i>ω</i><sub>i</sub>}).</li><li>A probability assignment is <b>valid</b> only if 0 ≤ P(<i>ω</i><sub>i</sub>) ≤ 1 for every outcome and Σ P(<i>ω</i><sub>i</sub>) = 1 over all outcomes in <i>S</i>.</li><li>For equally likely outcomes, P(<i>ω</i><sub>i</sub>) = <span class='frac'><span>1</span><span>n(<i>S</i>)</span></span>, so P(A) = <span class='frac'><span>n(<i>A</i>)</span><span>n(<i>S</i>)</span></span>.</li><li>Always list outcomes in <i>A</i> first, then add their probabilities; do not assume equal likelihood unless stated.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#2563EB'/></marker></defs><rect x='18' y='24' width='150' height='52' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='46' font-size='13' fill='#1f2a44'>Sample space S</text><text x='30' y='64' font-size='13' fill='#1f2a44'>Outcomes ω1…ωn</text><rect x='18' y='112' width='150' height='60' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='30' y='134' font-size='13' fill='#1f2a44'>Event A ⊆ S</text><text x='30' y='152' font-size='13' fill='#1f2a44'>Select some outcomes</text><line x1='170' y1='50' x2='224' y2='50' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><line x1='170' y1='142' x2='224' y2='142' stroke='#2563EB' stroke-width='2.5' marker-end='url(#arrow)'/><rect x='228' y='36' width='114' height='128' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='242' y='58' font-size='13' fill='#1f2a44'>Assign P(ω)</text><text x='242' y='78' font-size='13' fill='#1f2a44'>0 ≤ P ≤ 1</text><text x='242' y='98' font-size='13' fill='#1f2a44'>Σ over S = 1</text><text x='242' y='124' font-size='13' fill='#1f2a44'>Then add</text><text x='242' y='144' font-size='13' fill='#1f2a44'>over ω ∈ A</text></svg><div class="figcap">Workflow: define <i>S</i>, pick event <i>A</i>, verify assignment, then sum probabilities of outcomes in <i>A</i>.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Event <i>A</i> is a <b>set of outcomes</b>; probability is a <b>set-sum</b> over its outcomes.</span></li><li><span class="ic">🔎</span><span>Use <b>elementary outcomes</b> (HH, HT, …) as building blocks: P(A) adds their P-values.</span></li><li><span class="ic">⚖️</span><span><b>Non-uniform</b> assignments are allowed if <b>non-negative</b> and <b>sum to 1</b>.</span></li><li><span class="ic">✅</span><span>Quick validity check: any negative? any &gt; 1? total ≠ 1? → assignment invalid.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">VALID ASSIGNMENT CONDITIONS (AXIOM CHECK)</span></h2><ul class="b"><li><b>Non-negativity:</b> for every outcome <i>ω</i>, P(<i>ω</i>) ≥ 0.</li><li><b>Upper bound:</b> for every outcome <i>ω</i>, P(<i>ω</i>) ≤ 1.</li><li><b>Total probability:</b> Σ P(<i>ω</i><sub>i</sub>) over all outcomes in <i>S</i> equals 1.</li><li>If any condition fails, computed event probabilities become meaningless.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">HOW TO COMPUTE <b>P(A)</b> (SET-SUM METHOD)</span></h2><ul class="b"><li>Step 1: Write <i>S</i> explicitly (or describe outcomes clearly).</li><li>Step 2: Write event <i>A</i> as a subset of <i>S</i> (list outcomes).</li><li>Step 3: Use <b>P(A) = Σ P(<i>ω</i>)</b> for all <i>ω</i> ∈ <i>A</i>.</li><li>Tip: For a single outcome event {<i>ω</i>}, <b>P({<i>ω</i>}) = P(<i>ω</i>)</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">EQUALLY LIKELY vs NON-UNIFORM OUTCOMES</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Equally likely</th><th>Non-uniform (still valid)</th></tr></thead><tbody><tr><td>Elementary probability</td><td>P(<i>ω</i>) is same for all <i>ω</i></td><td>P(<i>ω</i>) can differ across outcomes</td></tr><tr><td>How to compute P(A)</td><td>Use <span class='frac'><span>n(<i>A</i>)</span><span>n(<i>S</i>)</span></span></td><td>Always use Σ P(<i>ω</i>) for <i>ω</i> ∈ <i>A</i></td></tr><tr><td>Validity conditions</td><td>Automatically Σ = 1 if all are <span class='frac'><span>1</span><span>n(<i>S</i>)</span></span></td><td>Must explicitly check: non-negative and Σ over <i>S</i> equals 1</td></tr><tr><td>Typical use</td><td>Fair coin, fair die</td><td>Biased coin, weighted outcomes, machine defects</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Let <i>S</i> = {<i>ω</i><sub>1</sub>, …, <i>ω</i><sub>n</sub>} be the sample space.</div><div class="eqbox"><span class="eq">P(<i>S</i>) = Σ P(<i>ω</i><sub>i</sub>) = 1</span></div><div class="fstep">For any event <i>A</i> ⊆ <i>S</i>, probability is the sum over outcomes in <i>A</i>.</div><div class="eqbox"><span class="eq">P(<i>A</i>) = Σ P(<i>ω</i><sub>i</sub>), for all <i>ω</i><sub>i</sub> ∈ <i>A</i></span></div></div><div><div class="fstep">If outcomes are equally likely and n(<i>S</i>) = <i>n</i>, then each P(<i>ω</i>) is same.</div><div class="eqbox blue"><span class="eq">P(<i>ω</i>) = <span class='frac'><span>1</span><span><i>n</i></span></span></span></div><div class="fstep">Then for an event with n(<i>A</i>) = <i>m</i> outcomes:</div><div class="eqbox blue"><span class="eq">P(<i>A</i>) = <span class='frac'><span><i>m</i></span><span><i>n</i></span></span> = <span class='frac'><span>n(<i>A</i>)</span><span>n(<i>S</i>)</span></span></span></div></div><div><table class="wtab"><tr><td><i>S</i>&nbsp;=</td><td>sample space (set of all outcomes)</td></tr><tr><td><i>ω</i><sub>i</sub>&nbsp;=</td><td>i-th elementary outcome (sample point)</td></tr><tr><td><i>A</i>&nbsp;=</td><td>event (subset of <i>S</i>)</td></tr><tr><td>P(<i>ω</i><sub>i</sub>)&nbsp;=</td><td>probability assigned to outcome <i>ω</i><sub>i</sub></td></tr><tr><td>n(<i>S</i>), n(<i>A</i>)&nbsp;=</td><td>number of outcomes in <i>S</i>, and in <i>A</i> (only for equally likely case)</td></tr></table><div class="hibox">Core result used everywhere<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>P(<i>A</i>) = Σ P(<i>ω</i><sub>i</sub>)</b> for all <i>ω</i><sub>i</sub> ∈ <i>A</i></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Pens produced by a machine: examine 3 consecutive pens. Outcomes are sequences of <b>B</b>(bad/defective) and <b>G</b>(good).<br><br><i>S</i> = {BBB, BBG, BGB, GBB, BGG, GBG, GGB, GGG}. Each outcome has probability <span class='frac'><span>1</span><span>8</span></span>.<br>Find (i) P(A) for A: "exactly one defective pen" and (ii) P(B) for B: "at least two defective pens".</div><div class="sol"><span class="lbl">Solution:</span><br>Write the events as subsets.<br>A = {BGG, GBG, GGB} (exactly one B).<br>B = {BBB, BBG, BGB, GBB} (two or three B).<br>Use <b>P(event) = Σ P(outcomes in event)</b>.<br>P(A) = P(BGG)+P(GBG)+P(GGB) = <span class='frac'><span>1</span><span>8</span></span>+<span class='frac'><span>1</span><span>8</span></span>+<span class='frac'><span>1</span><span>8</span></span> = <span class='frac'><span>3</span><span>8</span></span>.<br>P(B) = P(BBB)+P(BBG)+P(BGB)+P(GBB) = 4×<span class='frac'><span>1</span><span>8</span></span> = <span class='frac'><span>4</span><span>8</span></span> = <span class='frac'><span>1</span><span>2</span></span>.</div><div class="ans">✓&nbsp; P(A) = <span class='frac'><span>3</span><span>8</span></span>, P(B) = <span class='frac'><span>1</span><span>2</span></span>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A coin is tossed twice with <b>unequal</b> assigned probabilities:<br>P(HH)=<span class='frac'><span>1</span><span>4</span></span>, P(HT)=<span class='frac'><span>1</span><span>7</span></span>, P(TH)=<span class='frac'><span>2</span><span>7</span></span>, P(TT)=<span class='frac'><span>9</span><span>28</span></span>.<br><br>(i) Check if this is a valid assignment. (ii) Find P(E) for E: "both tosses yield same result".</div><div class="sol"><span class="lbl">Solution:</span><br>Validity check: all probabilities are non-negative.<br>Also each is ≤ 1 (obvious from fractions).<br>Sum over <i>S</i>:<br><span class='frac'><span>1</span><span>4</span></span>+<span class='frac'><span>1</span><span>7</span></span>+<span class='frac'><span>2</span><span>7</span></span>+<span class='frac'><span>9</span><span>28</span></span> = <span class='frac'><span>7</span><span>28</span></span>+<span class='frac'><span>4</span><span>28</span></span>+<span class='frac'><span>8</span><span>28</span></span>+<span class='frac'><span>9</span><span>28</span></span> = <span class='frac'><span>28</span><span>28</span></span> = 1, so valid.<br>Event E = {HH, TT}. So P(E) = P(HH)+P(TT).<br>P(E) = <span class='frac'><span>1</span><span>4</span></span> + <span class='frac'><span>9</span><span>28</span></span> = <span class='frac'><span>7</span><span>28</span></span> + <span class='frac'><span>9</span><span>28</span></span> = <span class='frac'><span>16</span><span>28</span></span> = <span class='frac'><span>4</span><span>7</span></span>.</div><div class="ans">✓&nbsp; Valid assignment; P(E) = <span class='frac'><span>4</span><span>7</span></span>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always express event <i>A</i> as a subset of <i>S</i>; probability comes after set-writing.</li><li>For any finite <i>S</i>, <b>P(A)</b> is the <b>sum of probabilities</b> of outcomes inside <i>A</i>.</li><li>Elementary event {<i>ω</i>} has probability P(<i>ω</i>); do not multiply by counts unless equally likely.</li><li>Non-uniform outcome probabilities are allowed; only constraints are <b>0 ≤ P ≤ 1</b> and <b>total = 1</b>.</li><li>In numerical questions, first check validity quickly; it prevents impossible answers.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Assuming outcomes are equally likely when explicit P(HH), P(HT), … are given.</li><li>Forgetting to list event outcomes correctly (e.g., mixing "exactly one B" with "at least one B").</li><li>Not checking Σ P(<i>ω</i>) = 1; proceeding with an invalid distribution.</li><li>Double-counting outcomes when forming the event set (writing duplicates, then summing twice).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“S-A-S: <b>Space → Assemble → Sum</b>”</div><paragraph id="6aa538c2a9b10ebd1d000487"><b>Space:</b> write the sample space <i>S</i> (all outcomes).</paragraph><paragraph id="6aa538c2ac72f3daa3000488"><b>Assemble:</b> collect the outcomes that satisfy event <i>A</i>.</paragraph><paragraph id="6aa538c2a3ca0c907d000489"><b>Sum:</b> add their probabilities: P(A) = Σ P(<i>ω</i>) for <i>ω</i> ∈ <i>A</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Validity: 0 ≤ P(<i>ω</i><sub>i</sub>) ≤ 1 and Σ P(<i>ω</i><sub>i</sub>) = 1 over <i>S</i></span><span class="eq">Elementary event: P({<i>ω</i>}) = P(<i>ω</i>)</span><span class="eq">Probability of an event: P(<i>A</i>) = Σ P(<i>ω</i><sub>i</sub>), <i>ω</i><sub>i</sub> ∈ <i>A</i></span><span class="eq">Equally likely: P(<i>ω</i>) = <span class='frac'><span>1</span><span>n(<i>S</i>)</span></span></span><span class="eq">Equally likely event: P(<i>A</i>) = <span class='frac'><span>n(<i>A</i>)</span><span>n(<i>S</i>)</span></span></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>EQUALLY LIKELY OUTCOMES (CLASSICAL PROBABILITY)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Equally likely outcomes</b>: each elementary outcome ω<sub>i</sub> in <i>S</i> has the same probability.</li><li>If <i>S</i> has <i>n</i> outcomes, then <b>P(ω<sub>i</sub>)=p</b> for all i and <b>np=1</b>.</li><li>Hence <b>p=1/n</b>; every simple event has probability <span class='frac'><span>1</span><span>n</span></span>.</li><li>For an event <i>E</i> with <i>m</i> favourable outcomes, <b>P(E)=m/n</b>.</li><li><b>Favourable outcomes</b> = outcomes in <i>E</i>; <b>total outcomes</b> = outcomes in <i>S</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 10 3, 0 6' fill='#123B7A'/></marker></defs><rect x='16' y='20' width='150' height='56' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='28' y='44' font-size='13' fill='#1f2a44'>Sample space S</text><text x='28' y='62' font-size='13' fill='#1f2a44'>n(S) = n</text><rect x='194' y='20' width='150' height='56' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='206' y='44' font-size='13' fill='#1f2a44'>Event E ⊆ S</text><text x='206' y='62' font-size='13' fill='#1f2a44'>n(E) = m</text><line x1='166' y1='48' x2='194' y2='48' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='16' y='106' width='328' height='70' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='28' y='130' font-size='13' fill='#1f2a44'>Equally likely: P(ωi)=p for all ωi ∈ S</text><text x='28' y='150' font-size='13' fill='#1f2a44'>Total probability: np = 1  ⇒  p = 1/n</text><text x='28' y='170' font-size='13' fill='#1f2a44'>So P(E) = m × (1/n) = m/n</text></svg><div class="figcap">Flow: equal chances + counting outcomes ⇒ classical probability formula.<br><br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚖️</span><span>Equal chance means <b>P(ω<sub>1</sub>)=P(ω<sub>2</sub>)=…=P(ω<sub>n</sub>)</b>.</span></li><li><span class="ic">🧩</span><span><b>Counting</b> converts probability to a ratio: favourable ÷ total (only for equal likelihood).</span></li><li><span class="ic">🔢</span><span>Write <i>S</i> first, then count <i>n(S)</i> and <i>n(E)</i>; reduce the fraction.</span></li><li><span class="ic">✅</span><span>Classical formula needs: <b>finite</b> <i>S</i> and <b>equally likely</b> outcomes.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">DERIVATION (FINITE EQUALLY LIKELY SAMPLE SPACE)</span></h2><ul class="b"><li>Let <i>S</i> = {ω<sub>1</sub>, …, ω<sub>n</sub>} with <b>P(ω<sub>i</sub>)=p</b> for all i.</li><li>Since <b>P(S)=1</b>, we have <b>P(ω<sub>1</sub>)+…+P(ω<sub>n</sub>)=1</b>.</li><li>So <b>np=1 ⇒ p=1/n</b>; each outcome has probability <span class='frac'><span>1</span><span>n</span></span>.</li><li>If event <i>E</i> contains <i>m</i> outcomes, then <b>P(E)=m×(1/n)=m/n</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WHEN YOU MAY / MAY NOT USE m/n</span></h2><ul class="b"><li>Use <b>m/n</b> only when outcomes are <b>equally likely</b> and <i>S</i> is <b>finite</b>.</li><li>If outcomes have different probabilities, use <b>P(E)=∑P(ω)</b> over ω ∈ <i>E</i>.</li><li>In dice/coins/cards, equal likelihood is valid only with <b>fair</b> objects and proper shuffling.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Equally likely vs Not equally likely (same sample space size n)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Equally likely outcomes</th><th>Not equally likely outcomes</th></tr></thead><tbody><tr><td>Elementary probabilities</td><td>P(ω<sub>i</sub>) = <span class='frac'><span>1</span><span>n</span></span> for all i</td><td>P(ω<sub>i</sub>) can differ across i</td></tr><tr><td>How to find P(E)</td><td>Count outcomes: P(E)=<span class='frac'><span>n(E)</span><span>n(S)</span></span></td><td>Add weights: P(E)=∑P(ω), ω ∈ E</td></tr><tr><td>Typical examples</td><td>Fair coin, fair die, well-shuffled deck</td><td>Biased coin, loaded die, imperfect shuffle</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Let <i>S</i> = {ω<sub>1</sub>, …, ω<sub>n</sub>} and outcomes are equally likely.</div><div class="eqbox"><span class="eq">P(ω<sub>1</sub>)=P(ω<sub>2</sub>)=…=P(ω<sub>n</sub>)=p</span></div><div class="fstep">Total probability of sample space is 1.</div><div class="eqbox"><span class="eq">P(S)=P(ω<sub>1</sub>)+P(ω<sub>2</sub>)+…+P(ω<sub>n</sub>)=np=1</span></div></div><div><div class="fstep">So each outcome has probability 1/n.</div><div class="eqbox blue"><span class="eq">p=<span class='frac'><span>1</span><span>n</span></span></span></div><div class="fstep">If event <i>E</i> has <i>m</i> outcomes, add m identical probabilities.</div><div class="eqbox blue"><span class="eq">P(E)=m·p=m·<span class='frac'><span>1</span><span>n</span></span>=<span class='frac'><span>m</span><span>n</span></span>=<span class='frac'><span>n(E)</span><span>n(S)</span></span></span></div></div><div><table class="wtab"><tr><td><i>S</i>&nbsp;=</td><td>Sample space (set of all possible outcomes)</td></tr><tr><td>ω<sub>i</sub>&nbsp;=</td><td>i-th elementary outcome (simple event)</td></tr><tr><td><i>n</i> = n(<i>S</i>)&nbsp;=</td><td>Total number of outcomes in sample space (finite)</td></tr><tr><td><i>E</i>&nbsp;=</td><td>Event (subset of <i>S</i>)</td></tr><tr><td><i>m</i> = n(<i>E</i>)&nbsp;=</td><td>Number of favourable outcomes for event <i>E</i></td></tr><tr><td><i>p</i>&nbsp;=</td><td>Probability of each elementary outcome when equally likely</td></tr></table><div class="hibox">Classical probability (equally likely outcomes)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">P(E)=<span class='frac'><span>n(E)</span><span>n(S)</span></span>=<span class='frac'><span>m</span><span>n</span></span></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A fair die is thrown once. Find the probability of getting a prime number.</div><div class="sol"><span class="lbl">Solution:</span><br>Sample space: <i>S</i>={1,2,3,4,5,6} so n(<i>S</i>)=6 (equally likely).<br>Event <i>E</i>: prime number ⇒ <i>E</i>={2,3,5} so n(<i>E</i>)=3.<br>Use classical formula: P(<i>E</i>)=<span class='frac'><span>n(E)</span><span>n(S)</span></span>=<span class='frac'><span>3</span><span>6</span></span>=<span class='frac'><span>1</span><span>2</span></span>.</div><div class="ans">✓&nbsp; P(prime) = <span class='frac'><span>1</span><span>2</span></span></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A bag has 4 red, 3 blue, 2 yellow identical discs. One disc is drawn at random. Find P(not blue) and P(red or blue).</div><div class="sol"><span class="lbl">Solution:</span><br>Total outcomes n(<i>S</i>)=4+3+2=9 (each disc equally likely).<br>Let <i>C</i> be event “blue”: n(<i>C</i>)=3 ⇒ P(<i>C</i>)=<span class='frac'><span>3</span><span>9</span></span>=<span class='frac'><span>1</span><span>3</span></span>.<br>So P(not blue)=1−P(<i>C</i>)=1−<span class='frac'><span>1</span><span>3</span></span>=<span class='frac'><span>2</span><span>3</span></span>.<br>Let <i>A</i> be “red” and <i>C</i> be “blue”. Then n(<i>A</i>)=4, n(<i>C</i>)=3 and <i>A</i>,<i>C</i> are disjoint.<br>P(red or blue)=<span class='frac'><span>n(A)+n(C)</span><span>n(S)</span></span>=<span class='frac'><span>4+3</span><span>9</span></span>=<span class='frac'><span>7</span><span>9</span></span>.</div><div class="ans">✓&nbsp; P(not blue)=<span class='frac'><span>2</span><span>3</span></span>, P(red or blue)=<span class='frac'><span>7</span><span>9</span></span></div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Equal likelihood implies <b>uniform</b> elementary probability <i>p</i> across all ω<sub>i</sub>.</li><li><b>np=1</b> comes from <b>P(S)=1</b> and additivity over distinct outcomes.</li><li>Classical formula is <b>counting-based</b>: P(E)=favourable/total.</li><li>Always verify <i>S</i> is <b>finite</b>; otherwise m/n is meaningless.</li><li>In JEE/boards, most errors are due to wrong sample space size n(<i>S</i>).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using <b>m/n</b> even when outcomes are not equally likely (biased coin, unequal selection).</li><li>Counting favourable outcomes correctly but using wrong total outcomes n(<i>S</i>).</li><li>Mixing up event size: writing n(<i>E</i>) as number of events instead of outcomes.</li><li>For multi-step experiments, forgetting to use ordered pairs/tuples in <i>S</i>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>ELC</b> = Equal → List → Count”</div><paragraph id="6aa538c287c44e092700048a"><b>E</b>qual? First check equal likelihood.</paragraph><paragraph id="6aa538c2669c06778d00048b"><b>L</b>ist <i>S</i> (or count n(<i>S</i>)) clearly.</paragraph><paragraph id="6aa538c2f8d9eb893600048c"><b>C</b>ount n(<i>E</i>) and apply <span class='frac'><span>n(E)</span><span>n(S)</span></span>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Equally likely: P(ω<sub>i</sub>)=p for all ω<sub>i</sub> ∈ <i>S</i></span><span class="eq">Normalization: P(S)=1 ⇒ np=1 ⇒ p=<span class='frac'><span>1</span><span>n</span></span></span><span class="eq">Classical probability: P(E)=<span class='frac'><span>n(E)</span><span>n(S)</span></span>=<span class='frac'><span>m</span><span>n</span></span></span><span class="eq">Favourable outcomes = elements of <i>E</i>; total outcomes = elements of <i>S</i></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>ADDITION AND COMPLEMENT RULES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Addition (2 events):</b> <i>P</i>(<i>A</i> ∪ <i>B</i>) = <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>) − <i>P</i>(<i>A</i> ∩ <i>B</i>).</li><li><b>Mutually exclusive case:</b> if <i>A</i> ∩ <i>B</i> = φ, then <i>P</i>(<i>A</i> ∪ <i>B</i>) = <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>).</li><li><b>Complement rule:</b> <i>P</i>(<i>A</i>′) = 1 − <i>P</i>(<i>A</i>), where <i>A</i>′ = <i>S</i> − <i>A</i>.</li><li><b>Always true (set identities):</b> <i>A</i> ∪ <i>A</i>′ = <i>S</i> and <i>A</i> ∩ <i>A</i>′ = φ.</li><li><b>Three-event extension (statement):</b> <i>P</i>(<i>A</i> ∪ <i>B</i> ∪ <i>C</i>) follows inclusion–exclusion: add singles, subtract pairwise overlaps, add the triple overlap.</li><li><b>De Morgan's laws:</b> (<i>A</i> ∪ <i>B</i>)′ = <i>A</i>′ ∩ <i>B</i>′ and (<i>A</i> ∩ <i>B</i>)′ = <i>A</i>′ ∪ <i>B</i>′.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 10 3, 0 6' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='8' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='30' y='40' font-size='13' fill='#1f2a44'>Sample space S</text><circle cx='140' cy='110' r='55' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><circle cx='220' cy='110' r='55' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='118' y='110' font-size='14' fill='#1f2a44'>A</text><text x='242' y='110' font-size='14' fill='#1f2a44'>B</text><text x='170' y='110' font-size='12' fill='#1f2a44'>A∩B</text><line x1='300' y1='62' x2='248' y2='88' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='284' y='58' font-size='12' fill='#1f2a44'>overlap</text><line x1='60' y1='62' x2='114' y2='88' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='34' y='58' font-size='12' fill='#1f2a44'>only A</text><line x1='300' y1='158' x2='246' y2='132' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='284' y='172' font-size='12' fill='#1f2a44'>only B</text></svg><div class="figcap">Venn idea: <i>A</i> ∪ <i>B</i> includes both circles; the overlap <i>A</i> ∩ <i>B</i> must not be counted twice.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">+</span><span>Union adds but corrects double counting: subtract the overlap once.</span></li><li><span class="ic">X</span><span>Mutually exclusive means no common outcomes: <i>A</i> ∩ <i>B</i> = φ.</span></li><li><span class="ic">1-</span><span>Complement means "not": <i>P</i>(<i>A</i>′) equals 1 minus <i>P</i>(<i>A</i>).</span></li><li><span class="ic">DM</span><span>De Morgan: "not (or)" becomes "and of nots"; "not (and)" becomes "or of nots".</span></li><li><span class="ic">IE</span><span>Inclusion–exclusion for 3 events prevents double and triple counting.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WHY THE ADDITION RULE SUBTRACTS THE OVERLAP</span></h2><ul class="b"><li>Split <i>A</i> into disjoint parts: (<i>A</i> − <i>B</i>) and (<i>A</i> ∩ <i>B</i>).</li><li>Split <i>B</i> into disjoint parts: (<i>B</i> − <i>A</i>) and (<i>A</i> ∩ <i>B</i>).</li><li>Then <i>A</i> ∪ <i>B</i> is the disjoint union of: only-<i>A</i>, overlap, only-<i>B</i>.</li><li>Adding <i>P</i>(<i>A</i>) and <i>P</i>(<i>B</i>) counts the overlap twice; subtract it once.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">THREE EVENTS: INCLUSION–EXCLUSION (IDEA ONLY)</span></h2><ul class="b"><li>Add <i>P</i>(<i>A</i>), <i>P</i>(<i>B</i>), <i>P</i>(<i>C</i>): pairwise overlaps get counted twice.</li><li>Subtract all pairwise overlaps to fix double counting.</li><li>Now the triple overlap got removed too many times; add it back once.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Special cases to recognise fast</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Situation</th><th>Set condition</th><th>Probability result</th></tr></thead><tbody><tr><td>Mutually exclusive</td><td><i>A</i> ∩ <i>B</i> = φ</td><td><i>P</i>(<i>A</i> ∪ <i>B</i>) = <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>)</td></tr><tr><td>Exhaustive (two events)</td><td><i>A</i> ∪ <i>B</i> = <i>S</i></td><td><i>P</i>(<i>A</i> ∪ <i>B</i>) = 1, so <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>) − <i>P</i>(<i>A</i> ∩ <i>B</i>) = 1</td></tr><tr><td>Complementary pair</td><td><i>B</i> = <i>A</i>′</td><td><i>P</i>(<i>A</i>) + <i>P</i>(<i>A</i>′) = 1</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is <i>P</i>(<i>A</i> ∪ <i>B</i>) not always equal to <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>)?</div><div class="sol"><span class="lbl">Answer:</span><br>If <i>A</i> and <i>B</i> can occur together, outcomes in <i>A</i> ∩ <i>B</i> are included in both <i>A</i> and <i>B</i>.<br>So adding <i>P</i>(<i>A</i>) and <i>P</i>(<i>B</i>) double-counts the overlap.<br>To correct this, subtract <i>P</i>(<i>A</i> ∩ <i>B</i>) once.</div><div class="ans">✓&nbsp; Because overlap outcomes are counted twice unless you subtract <i>P</i>(<i>A</i> ∩ <i>B</i>).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">How do you find probability of "neither <i>A</i> nor <i>B</i>" using the complement rule?</div><div class="sol"><span class="lbl">Answer:</span><br>"Neither <i>A</i> nor <i>B</i>" means the complement of "<i>A</i> or <i>B</i>".<br>So the event is (<i>A</i> ∪ <i>B</i>)′.<br>Hence <i>P</i>(neither) = 1 − <i>P</i>(<i>A</i> ∪ <i>B</i>).</div><div class="ans">✓&nbsp; <i>P</i>(neither <i>A</i> nor <i>B</i>) = 1 − <i>P</i>(<i>A</i> ∪ <i>B</i>).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For any event <i>A</i>: 0 ≤ <i>P</i>(<i>A</i>) ≤ 1; also <i>P</i>(φ)=0 and <i>P</i>(<i>S</i>)=1.</li><li>Use the subtraction term −<i>P</i>(<i>A</i> ∩ <i>B</i>) when <i>A</i> and <i>B</i> may overlap.</li><li>Mutually exclusive means intersection is φ; independent events are different and may overlap.</li><li>Complement shortcut: convert "not" to 1 minus the required probability.</li><li>De Morgan's laws help rewrite complements of unions/intersections.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using <i>P</i>(<i>A</i> ∪ <i>B</i>) = <i>P</i>(<i>A</i>) + <i>P</i>(<i>B</i>) without checking overlap.</li><li>Confusing mutually exclusive with independent.</li><li>Writing <i>P</i>(<i>A</i>′) = 1/<i>P</i>(<i>A</i>) or forgetting the minus sign.</li><li>Applying De Morgan incorrectly: taking (<i>A</i> ∪ <i>B</i>)′ as <i>A</i>′ ∪ <i>B</i>′.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“ADD–SUB–ADD (Inclusion–Exclusion rhythm)”</div><paragraph id="6aa538c29ddaed35f700048d">For 2 events: Add singles, Sub the overlap once.</paragraph><paragraph id="6aa538c22a5a8e111800048e">For 3 events: Add singles, Sub pairwise overlaps, Add triple overlap.</paragraph><paragraph id="6aa538c2d47c2ca71f00048f">Complement: "Not" means "1 minus".</paragraph></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

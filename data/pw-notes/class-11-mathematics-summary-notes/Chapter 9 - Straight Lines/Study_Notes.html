@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-09 : Straight Lines</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  
+  
+  
+<style>math, math * { font-family: 'Kalam', cursive !important; }
+math { font-size: 1.08em; vertical-align: middle; }</style>  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-09 : Straight Lines</h1>
+
+<h2>9.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="422df67a5cdcab66d826a975"><b>Coordinate (analytical) geometry</b> = geometry done using algebra.</paragraph>
+  <paragraph id="65e97063ac2f7b2dacbdda4f">First developed systematically by <b>René Descartes</b> (1637, <i>La Géométrie</i>) → idea: represent curves using equations.</paragraph>
+</div>
+
+<paragraph id="57e66942b82619c1848a3c48">Basics already done (used throughout this chapter): coordinate axes + plane, plotting points, distance between points, section formula, midpoint, and area of a triangle using coordinates.</paragraph>
+<paragraph id="b809a8daedd1dffa06203b73">This chapter focuses on the simplest figure: the <b>straight line</b> — mainly its <b>algebraic form</b>. Key idea needed: <b>slope</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8a9f634f1a207296dd32a155"><b>Reading coordinates:</b> A point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow></math> is</paragraph>
+  <ul>
+    <li><b>x</b> units from the y-axis along x-direction (right if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, left if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow></math>)</li>
+    <li><b>y</b> units from the x-axis along y-direction (up if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, down if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>&lt;</mo><mn>0</mn></mrow></math>)</li>
+  </ul>
+</div>
+
+<h3>Recall: Key formulae from earlier classes</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d6825110e376002eeb01814d"><b>I. Distance formula</b></paragraph>
+  <paragraph id="34b3452157125eec2a883bb4"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><mrow></mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph>
+  <ul>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>: first point</li>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>: second point</li>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi></mrow></math>: distance between P and Q</li>
+  </ul>
+</div>
+
+<paragraph id="55c84ec5ea3ac054bc267458"><b>Example:</b> Distance between <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mn>6</mn><mo>,</mo><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></math></paragraph>
+<paragraph id="999fa7dded3dd99e2548ac3b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><mrow></mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>−</mo><mn>6</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mrow><mrow></mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mn>4</mn><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mrow><mn>9</mn><mo>+</mo><mn>16</mn></mrow></msqrt><mo>=</mo><msqrt><mn>25</mn></msqrt><mo>=</mo><mn>5</mn></mrow></math> units.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="608502ca57226c030468ca13"><b>II. Section formula (internal division)</b></paragraph>
+  <paragraph id="67ccf154c61707171d883909">If a point divides the line segment joining <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> <b>internally</b> in the ratio <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>:</mo><mi>n</mi></mrow></math>, then coordinates are:</paragraph>
+  <paragraph id="6bf1d1e708673511286846d9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mrow><mi>m</mi><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>n</mi><msub><mi>x</mi><mn>1</mn></msub></mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow></mfrac><mo>,</mo><mspace width="0.222em"></mspace><mfrac displaystyle="true"><mrow><mi>m</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mi>n</mi><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><mi>m</mi><mo>+</mo><mi>n</mi></mrow></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></math></paragraph>
+  <ul>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>:</mo><mi>n</mi></mrow></math>: ratio in which the point divides <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mi>B</mi></mrow></math> (A-side : B-side)</li>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub></mrow></math>: coordinates of endpoints</li>
+  </ul>
+</div>
+
+<paragraph id="f039eff01a96b9ce55c1b2c9"><b>Example:</b> Point dividing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo>,</mo><mn>9</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> internally in ratio <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>:</mo><mn>3</mn></mrow></math></paragraph>
+<paragraph id="fd3186692751fcde4e514feb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>1</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mn>1</mn><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mo>−</mo><mn>3</mn><mo>+</mo><mn>3</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mn>0</mn></mrow></math></paragraph>
+<paragraph id="e3e7e03f5026c51dc7c4aa0b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>1</mn><mrow><mo form="prefix" stretchy="true">(</mo><mn>9</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mn>1</mn><mo>+</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><mn>9</mn><mo>−</mo><mn>9</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mn>0</mn></mrow></math></paragraph>
+<paragraph id="cdbf9c8563e42ab9b9ac4f89">So the point is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></math>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="1321f2e9ede2df3146bb6fc1"><b>III. Midpoint formula</b> (special case of section formula with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow></math>)</paragraph>
+  <paragraph id="dbae72d121ceaaef08d45966">Midpoint of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>:</paragraph>
+  <paragraph id="87031c2def681d4829e069f5"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mfrac displaystyle="true"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><mn>2</mn></mfrac><mo>,</mo><mspace width="0.222em"></mspace><mfrac displaystyle="true"><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></math></paragraph>
+  <ul>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub></mrow></math>: coordinates of endpoints</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="e52a95031b54fb2a5c89bf3f"><b>IV. Area of triangle (coordinate formula)</b></paragraph>
+  <paragraph id="788ba3c37afbc07e3600f9df">Area of triangle with vertices <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>3</mn></msub><mo>,</mo><msub><mi>y</mi><mn>3</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math>:</paragraph>
+  <paragraph id="f5249c8d242f5fcb66211e07"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtext mathvariant="normal">Area</mtext><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">|</mo><msub><mi>x</mi><mn>1</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>3</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mn>3</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><msub><mi>x</mi><mn>3</mn></msub><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph>
+  <ul>
+    <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>3</mn></msub><mo>,</mo><msub><mi>y</mi><mn>3</mn></msub></mrow></math>: coordinates of the three vertices</li>
+  </ul>
+</div>
+
+<paragraph id="c23a156956b707eaf3f9503a"><b>Example:</b> Area of triangle with vertices <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>,</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo>,</mo><mn>16</mn><mo form="postfix" stretchy="true">)</mo></mrow></math></paragraph>
+<paragraph id="efe3babeee6134981d7bc32a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtext mathvariant="normal">Area</mtext><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><mn>16</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mn>16</mn><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph>
+<paragraph id="31dca1d5e9fe40afb5a3fed3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>18</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mn>12</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>6</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mo>−</mo><mn>72</mn><mo>+</mo><mn>36</mn><mo>−</mo><mn>18</mn><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph>
+<paragraph id="4c3fe9f0590942dbd06743cf"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac displaystyle="true"><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mo>−</mo><mn>54</mn><mo form="postfix" stretchy="true">|</mo></mrow><mo>=</mo><mn>27</mn></mrow></math> square units.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="433d8141273e83ab139cd288"><b>Collinearity test:</b> If the area of the triangle formed by three points A, B, C is <b>0</b>, then A, B, C lie on the same straight line (are <b>collinear</b>).</paragraph>
+</div>
+
+<h2>9.2 Slope of a Line</h2>
+<paragraph id="b77473a709839c05137ee7a7">A line in the coordinate plane makes two supplementary angles with the x-axis. The angle <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math> made with the <b>positive x-axis</b>, measured anticlockwise, is called the <b>inclination</b> of the line.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6d446cfdcc96acb3ff5879df"><b>Inclination:</b> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math> satisfies <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>≤</mo><mi>θ</mi><mo>≤</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></math>.</paragraph>
+<paragraph id="afcc5cf37256de73601aca9a">Line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>∥</mo></math> (or same as) x-axis <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>⇒</mo></math> inclination <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>0</mn><mo>∘</mo></msup></math>.</paragraph>
+<paragraph id="f2e85fcda8cdd9a91f9e32e1">Vertical line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>∥</mo></math> (or same as) y-axis <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>⇒</mo></math> inclination <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>90</mn><mo>∘</mo></msup></math>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b14d5fc4e4301e7dbfc00bbd"><b>Definition (Slope/Gradient):</b> If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math> is the inclination of line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>l</mi></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi></mrow></math> is the <b>slope</b> (gradient) of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>l</mi></math>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="eedbf7cba9609e157db935e6"><b>Slope from inclination</b></paragraph>
+<paragraph id="c0985e50eedaabbafe687554"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mo>tan</mo><mi>θ</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>θ</mi><mo>≠</mo><msup><mn>90</mn><mo>∘</mo></msup></mrow></math></paragraph>
+<paragraph id="3ebc8c2bd65f9041a5e831dc"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math>: slope of the line</paragraph>
+<paragraph id="67323abb56de27384bcc3d07"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math>: inclination with the +x-axis</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="769e3fb212dc4867777616c3">Slope of x-axis <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo></math> <b>0</b> (since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>θ</mi><mo>=</mo><msup><mn>0</mn><mo>∘</mo></msup><mo>⇒</mo><mo>tan</mo><msup><mn>0</mn><mo>∘</mo></msup><mo>=</mo><mn>0</mn></mrow></math>).</paragraph>
+<paragraph id="c8bd1469334f24ebafc05a1a">Slope of y-axis <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo></math> <b>not defined</b> (since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>θ</mi><mo>=</mo><msup><mn>90</mn><mo>∘</mo></msup><mo>⇒</mo><mo>tan</mo><msup><mn>90</mn><mo>∘</mo></msup></mrow></math> is undefined).</paragraph>
+</div>
+
+<h3>9.2.1 Slope of a line through two given points</h3>
+<paragraph id="94ba04065ab3ee8bd0f75660">A non-vertical line is fixed by any two points on it. Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> lie on a non-vertical line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>l</mi></math> with inclination <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math>. For a non-vertical line, we must have <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>≠</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math> (otherwise it’s vertical and slope is undefined).</paragraph>
+<paragraph id="347967e0f57f68c9d3f10460"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math> can be acute or obtuse, but you still get the same slope formula:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d5c757c6b09e19d3675642ea"><b>Slope through two points</b></paragraph>
+<paragraph id="249ba5325b6bd3257646bced"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac displaystyle="true"><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mrow></math>, provided <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>≠</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></math></paragraph>
+<paragraph id="ed56240120d2b9c7d322ab72"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math>: slope of the line through <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph>
+<paragraph id="c1d2f764b270826eeb077ee9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub></mrow></math>: coordinates of the two points</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="ee4ea7dd77435a6a01fca137"><b>Common exam pitfall:</b> If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></math>, denominator <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mn>0</mn></mrow></math> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>⇒</mo></math> vertical line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>⇒</mo></math> slope <b>undefined</b>. (Don’t write “infinite” unless your syllabus allows it.)</paragraph>
+</div>
+
+<h3>9.2.2 Conditions for parallelism and perpendicularity (in terms of slopes)</h3>
+<paragraph id="f142a71f7518d4a2934a8f37">Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>l</mi><mn>1</mn></msub></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>l</mi><mn>2</mn></msub></math> be two <b>non-vertical</b> lines with slopes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math>, and inclinations <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>α</mi><mo>,</mo><mi>β</mi></mrow></math> respectively.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="3275380c90d5d330d902b6c7"><b>Parallel lines:</b> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>l</mi><mn>1</mn></msub><mo>∥</mo><msub><mi>l</mi><mn>2</mn></msub><mo>⇔</mo><mi>α</mi><mo>=</mo><mi>β</mi><mo>⇔</mo><mo>tan</mo><mi>α</mi><mo>=</mo><mo>tan</mo><mi>β</mi><mo>⇔</mo><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-02.webp" decoding="async" height="153" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-02.webp" srcset="img/fig-01-02.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="183"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="95e757ef97cfeec35a2ecc6b"><b>Perpendicular lines:</b> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>l</mi><mn>1</mn></msub><mo>⊥</mo><msub><mi>l</mi><mn>2</mn></msub><mo>⇔</mo><mi>β</mi><mo>=</mo><mi>α</mi><mo>+</mo><msup><mn>90</mn><mo>∘</mo></msup></mrow></math>.</paragraph>
+<paragraph id="a7c5abe762d7a1b348798145">Then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>β</mi><mo>=</mo><mo>tan</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>α</mi><mo>+</mo><msup><mn>90</mn><mo>∘</mo></msup><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mo>cot</mo><mi>α</mi><mo>=</mo><mo>−</mo><mfrac displaystyle="true"><mn>1</mn><mrow><mo>tan</mo><mi>α</mi></mrow></mfrac></mrow></math>.</paragraph>
+<paragraph id="87a00d3ae19d7cda53a8d371">So <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mfrac displaystyle="true"><mn>1</mn><msub><mi>m</mi><mn>1</mn></msub></mfrac></mrow></math>, i.e. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="dc781814bbc7443b1ae2b9c7"><b>Conditions using slopes (non-vertical lines)</b></paragraph>
+<paragraph id="9a975dfa67b703d666d673d7">Parallel: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math></paragraph>
+<paragraph id="5583aa8d89326ada5f33ed4f">Perpendicular: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mfrac displaystyle="true"><mn>1</mn><msub><mi>m</mi><mn>1</mn></msub></mfrac></mrow></math> or <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math></paragraph>
+<paragraph id="767005d87896cd45ddd3d8d8"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math>: slopes of the two lines</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="ae76c6d65089353f19e3bec8">These slope tests are for <b>non-vertical</b> lines. A vertical line has undefined slope, so treat that case separately.</paragraph>
+</div>
+
+<h3>Example 1: Finding slopes in common situations</h3>
+<paragraph id="8f94af4e37b1a597666b635b"><b>Find the slope of the lines:</b></paragraph>
+<paragraph id="96dbfd06bfc56e0869e704b5">(a) Through (3, −2) and (−1, 4)</paragraph>
+<paragraph id="fb8fef19dea6165a140dd392">(b) Through (3, −2) and (7, −2)</paragraph>
+<paragraph id="ed03d3438feb454cd6769ae6">(c) Through (3, −2) and (3, 4)</paragraph>
+<paragraph id="5a377cfc6b9c3ffe9e430ba9">(d) Making inclination 60° with positive x-axis</paragraph>
+
+<paragraph id="fb3fcdc3d05a448bc1a76a49"><b>Solution</b></paragraph>
+<paragraph id="69d9d4a1305eeaa8cb939b36">(a) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>4</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mo>−</mo><mn>1</mn><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>6</mn><mrow><mo>−</mo><mn>4</mn></mrow></mfrac><mo>=</mo><mo>−</mo><mfrac displaystyle="true"><mn>3</mn><mn>2</mn></mfrac></mrow></math>.</paragraph>
+<paragraph id="079d1de3390664e1f146ee01">(b) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mo>−</mo><mn>2</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mn>7</mn><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>0</mn><mn>4</mn></mfrac><mo>=</mo><mn>0</mn></mrow></math>. (Horizontal line)</paragraph>
+<paragraph id="94cec9191cfed886dbb38ce3">(c) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac displaystyle="true"><mrow><mn>4</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><mrow><mn>3</mn><mo>−</mo><mn>3</mn></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mn>6</mn><mn>0</mn></mfrac></mrow></math>, not defined. (Vertical line)</paragraph>
+<paragraph id="7a5c42a0f6352b8c65a97803">(d) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>α</mi><mo>=</mo><msup><mn>60</mn><mo>∘</mo></msup><mo>⇒</mo><mi>m</mi><mo>=</mo><mo>tan</mo><msup><mn>60</mn><mo>∘</mo></msup><mo>=</mo><msqrt><mn>3</mn></msqrt></mrow></math>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="27ac916b4fbcc0d093282de7">Horizontal line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>⇒</mo><mi>m</mi><mo>=</mo><mn>0</mn></mrow></math>. Vertical line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>⇒</mo></math> slope undefined. Inclination given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>⇒</mo><mi>m</mi><mo>=</mo><mo>tan</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtext mathvariant="normal">inclination</mtext><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> (except <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>90</mn><mo>∘</mo></msup></math>).</paragraph>
+</div>
+
+<h3>9.2.3 Angle between two lines</h3>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-03.webp" decoding="async" height="250" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-03.webp" srcset="img/fig-01-03.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="303"/>
+    </button>
+  </div>
+</figure>
+
+<paragraph id="b0efce01eff6c12a4108ec65">For two lines in a plane: either parallel or intersecting. If they intersect, the angle(s) between them can be written using slopes.</paragraph>
+<paragraph id="b1cc878c0def5d9a7d4f9bde">Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>L</mi><mn>1</mn></msub><mo>,</mo><msub><mi>L</mi><mn>2</mn></msub></mrow></math> be two <b>non-vertical</b> lines with slopes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math> and inclinations <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>,</mo><msub><mi>α</mi><mn>2</mn></msub></mrow></math>, so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>=</mo><mo>tan</mo><msub><mi>α</mi><mn>1</mn></msub></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mo>tan</mo><msub><mi>α</mi><mn>2</mn></msub></mrow></math>.</paragraph>
+<paragraph id="eeed70cc2ce127474c5f5384">If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϕ</mi></math> are adjacent angles at the intersection, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>θ</mi><mo>+</mo><mi>ϕ</mi><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></math>. Taking <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>θ</mi><mo>=</mo><msub><mi>α</mi><mn>2</mn></msub><mo>−</mo><msub><mi>α</mi><mn>1</mn></msub></mrow></math> (with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>,</mo><msub><mi>α</mi><mn>2</mn></msub><mo>≠</mo><msup><mn>90</mn><mo>∘</mo></msup></mrow></math>):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="8b573baf414ce79a0c9c7ea5"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>tan</mo></math> of the angle between two lines (slopes form)</b></paragraph>
+<paragraph id="c68b4fc389e81162f6fba678"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi><mo>=</mo><mo>tan</mo><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>α</mi><mn>2</mn></msub><mo>−</mo><msub><mi>α</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac displaystyle="true"><mrow><mo>tan</mo><msub><mi>α</mi><mn>2</mn></msub><mo>−</mo><mo>tan</mo><msub><mi>α</mi><mn>1</mn></msub></mrow><mrow><mn>1</mn><mo>+</mo><mo>tan</mo><msub><mi>α</mi><mn>1</mn></msub><mo>tan</mo><msub><mi>α</mi><mn>2</mn></msub></mrow></mfrac><mo>=</mo><mfrac displaystyle="true"><mrow><msub><mi>m</mi><mn>2</mn></msub><mo>−</mo><msub><mi>m</mi><mn>1</mn></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></mrow></math>, provided <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>+</mo><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math>.</paragraph>
+<paragraph id="1573b5de63205c9b4058829f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>θ</mi></math>: one angle between the two lines</paragraph>
+<paragraph id="08e636884b8aba9d37b2e637"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math>: slopes of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>L</mi><mn>1</mn></msub><mo>,</mo><msub><mi>L</mi><mn>2</mn></msub></mrow></math></paragraph>
+</div>
+
+<paragraph id="cdcfd1f1caaf28d25f872f09">The adjacent angle is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>−</mo><mi>θ</mi></mrow></math>, hence</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1fb651f79157b8ba07647d28"><b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mo>tan</mo></math> of the adjacent angle</b></paragraph>
+<paragraph id="55abce99e29466e08ed8ec6d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>ϕ</mi><mo>=</mo><mo>tan</mo><mrow><mo form="prefix" stretchy="true">(</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>−</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mo>tan</mo><mi>θ</mi><mo>=</mo><mfrac displaystyle="true"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>−</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></mrow></math>, provided <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>+</mo><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mo>≠</mo><mn>0</mn></mrow></math>.</paragraph>
+<paragraph id="ed531585dec775873035f9db"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϕ</mi></math>: adjacent angle between the lines (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>ϕ</mi><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>−</mo><mi>θ</mi></mrow></math>)</paragraph>
+<paragraph id="f758c0f12931c51768b4e443"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></math>: slopes of the lines</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="74a12ce68762595b0572827a">If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>+</mo><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow></math>, don’t use the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi></mrow></math> formula: the lines are <b>perpendicular</b> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math>), so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>θ</mi><mo>=</mo><msup><mn>90</mn><mo>∘</mo></msup></mrow></math> directly.</paragraph>
+</div>
+
+<h2>Angle Between Two Lines (in Terms of Slopes)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="1a4b2dcc7d51b45c6c1fcbd6">For two <b>non-vertical</b> lines <b>L<sub>1</sub></b>, <b>L<sub>2</sub></b> with slopes <b>m<sub>1</sub></b>, <b>m<sub>2</sub></b>, the angle(s) between them come from the <b>tangent</b> of the angle between their directions.</paragraph>
+</div>
+
+<h3>Sign cases and identifying acute/obtuse angle</h3>
+<paragraph id="79baeb25d575bb027f8937e7">Look at:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2ec068718b881fc09bcd7ca4"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>2</mn><mo>−</mo><mi>m</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>m</mi><mn>1</mn><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></math></paragraph><paragraph id="21de55cec93a230816bb9733">m<sub>1</sub>, m<sub>2</sub> = slopes of the two lines</paragraph>
+</div>
+
+<ul>
+<li>
+<paragraph id="d2b0e6d7951016e5aee5be95"><b>Case I:</b> If <b>(m<sub>2</sub> − m<sub>1</sub>) / (1 + m<sub>1</sub>m<sub>2</sub>) &gt; 0</b>, then one angle has <b>tan</b> positive and the other has <b>tan</b> negative → one angle is <b>acute</b>, the other is <b>obtuse</b>. (Name them θ and φ: tan θ &gt; 0 ⇒ θ acute; tan φ &lt; 0 ⇒ φ obtuse.)</paragraph>
+</li>
+<li>
+<paragraph id="c421c060eb8b032b0e9b5fd8"><b>Case II:</b> If <b>(m<sub>2</sub> − m<sub>1</sub>) / (1 + m<sub>1</sub>m<sub>2</sub>) &lt; 0</b>, then tan θ is negative and tan φ is positive → θ is <b>obtuse</b> and φ is <b>acute</b>.</paragraph>
+</li>
+</ul>
+
+<h3>Formula for the acute angle between two lines</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="94afcbdc3eb037308259d568"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>2</mn><mo>−</mo><mi>m</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>m</mi><mn>1</mn><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>,</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>θ</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>k</mi><mi>e</mi><mi>n</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>a</mi><mi>c</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>l</mi><mi>e</mi></mrow></math></paragraph><paragraph id="d38d0faf011765343ae577e1">θ = acute angle between the lines</paragraph>
+<paragraph id="48395a2318965db2f7d81e85">m<sub>1</sub>, m<sub>2</sub> = slopes of the lines</paragraph>
+<paragraph id="925259927ada1044919978ba">Condition: <b>1 + m<sub>1</sub>m<sub>2</sub> ≠ 0</b> (if = 0, lines are perpendicular and tan θ is undefined)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b30acf7a63966e81fc6cff9a"><b>Obtuse</b> angle comes from the acute one:</paragraph>
+<paragraph id="4e57e287ebe9a178dabc8558"><b>φ = 180° − θ</b></paragraph>
+</div>
+
+<h3>Example 2: Find the slope of the other line given the angle and one slope</h3>
+<paragraph id="642854380b95660ce7d27fcf"><b>Given:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>a</mi><mi>n</mi><mi>g</mi><mi>l</mi><mi>e</mi><mi>b</mi><mi>e</mi><mi>t</mi><mi>w</mi><mi>e</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>s</mi><mo>=</mo><mfrac><mi>π</mi><mn>4</mn></mfrac><mo>,</mo><mi>s</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>o</mi><mi>n</mi><mi>e</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>m</mi><mn>1</mn><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi><mi>F</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>s</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>m</mi><mn>2</mn><mo>=</mo><mi>m</mi><mi>.</mi></mrow></math> </paragraph><paragraph id="f82741f859da5f6c3297feba">Use:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="05f007aa0aa913d3bdff5620"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mo>−</mo><mi>m</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>m</mi><mn>1</mn><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="0252d3ef5167fa25bb74abc3">θ = acute angle between lines</paragraph>
+<paragraph id="0d17a8842a43134a73acf648">m<sub>1</sub> = slope of given line</paragraph>
+<paragraph id="9078d13c362cc429bf312081">m = slope of other line</paragraph>
+</div>
+
+<paragraph id="e4e7c23318811a166a92b367"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>u</mi><mi>b</mi><mi>θ</mi><mo>=</mo><mfrac><mi>π</mi><mn>4</mn></mfrac><mo>⇒</mo><mo>tan</mo><mi>θ</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>a</mi><mi>n</mi><mi>d</mi><mi>m</mi><mn>1</mn><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>:</mo></mrow></math></paragraph><paragraph id="c906a8599a1454c89e18a2c0"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="2d3c6131fe7b66df746295a7"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>⇒</mo><mn>1</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>m</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>m</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math></paragraph><paragraph id="b7d1275b95997c24a0272c37">⇒ 2 + m = 2m − 1</paragraph>
+<paragraph id="78775c411637af099b195f9b">⇒ m = 3</paragraph>
+
+<paragraph id="9f28aa06df9fbf45c8888f2b">But “angle between two lines” could mean either (acute/obtuse), so we get <b>two possible slopes</b>. Other valid slope:</paragraph>
+<paragraph id="e257176c3f53b98c2e09414b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></math></paragraph><div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="33b7c9f043fbfc1720eb991b"><b>Final answers:</b> slope of the other line is <b>3</b> or <b>−1/3</b>. (These match the two different lines that make angle π/4 with the given line.)</paragraph>
+</div>
+
+<h3>Example 3: Perpendicular lines using slopes from two points</h3>
+<paragraph id="c975d8d1da769a07b4e7fde6"><b>Given:</b> Line through (−2, 6) and (4, 8) is perpendicular to the line through (8, 12) and (x, 24). Find x.</paragraph>
+
+<paragraph id="185e69039d79938ef3a98e45"><b>Step 1: Slope of first line</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5fce4705c510bbdaccd110d6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="0110c25c9f22991f39245bc5">(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>) = two points on the line</paragraph>
+</div>
+<paragraph id="2e57c9a9250dca3f1e04bf82"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mn>1</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>8</mn><mo>−</mo><mn>6</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>2</mn><mn>6</mn></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow></math></paragraph><paragraph id="7a7b8fc367a78b16b99c87c2"><b>Step 2: Slope of second line</b></paragraph>
+<paragraph id="9decc531e9bbf9d586faf91e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mn>2</mn><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>24</mn><mo>−</mo><mn>12</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>8</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>12</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>8</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="a22279d83f37bf48882c0cd1"><b>Step 3: Perpendicular condition</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e889bc628f67be82cfea2f3c"><b>If two lines are perpendicular: m<sub>1</sub>m<sub>2</sub> = −1</b></paragraph>
+<paragraph id="d091e8ccb219b6b8fb755fd3">m<sub>1</sub>, m<sub>2</sub> = slopes of the two lines</paragraph>
+</div>
+
+<paragraph id="7362baa1a4f2954b1c197725"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>·</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>12</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>8</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math></paragraph><paragraph id="1fc93efbb579286aeaf945c9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>⇒</mo><mfrac><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>8</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mo>−</mo><mn>1</mn></mrow></math></paragraph><paragraph id="4f6b4947aa05346c8e6663aa">⇒ x − 8 = −4</paragraph>
+<paragraph id="ab0cbba51e34a33c4957fa65">⇒ <b>x = 4</b></paragraph>
+
+<div class="remember-box">
+<paragraph id="72c965c90a66ab1cc4b0ac4c">Using m<sub>1</sub>m<sub>2</sub> = −1 only works if both lines are <b>non-vertical</b> (vertical slope is undefined). Here, 12/(x−8) also shows <b>x ≠ 8</b>, otherwise the line through (8,12) and (8,24) would be vertical.</paragraph>
+</div>
+
+<h2>9.3 Various Forms of the Equation of a Line</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="19c521ac44d717dad30d3483">A line has infinitely many points. The <b>equation of a line</b> is an algebraic condition in <b>x</b> and <b>y</b> that is:</paragraph>
+  <ul>
+    <li><paragraph id="1628ab25a7e5f2c8bcdf03b7"><b>true</b> for points (x, y) on the line</paragraph></li>
+    <li><paragraph id="b29b530b28fa3118153c0f95"><b>false</b> for points not on the line</paragraph></li>
+  </ul>
+  <paragraph id="3b50bc0c681a059d026bce14">We pick different forms depending on what info is given.</paragraph>
+</div>
+
+<h3>9.3.1 Horizontal and vertical lines</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="3bba1fa021cb499c615c5f95"><b>Horizontal line</b>: ∥ x-axis ⇒ y-coordinate (ordinate) stays constant.</paragraph>
+  <paragraph id="9f80aa7bd710e631439d25b8"><b>Vertical line</b>: ∥ y-axis ⇒ x-coordinate (abscissa) stays constant.</paragraph>
+</div>
+
+<paragraph id="c7232eb464cdecd45ad62d95"><b>Horizontal line at distance a from x-axis:</b></paragraph>
+<ul>
+  <li><paragraph id="d6afc92a1eb94350a8ae18bd">Above x-axis: <b>y = a</b></paragraph></li>
+  <li><paragraph id="e7bfc39b35fece3ec8ef852c">Below x-axis: <b>y = −a</b></paragraph></li>
+</ul>
+
+<paragraph id="5e35d3a675957fed5c9d1eb1"><b>Vertical line at distance b from y-axis:</b></paragraph>
+<ul>
+  <li><paragraph id="61e1b011ee9b3b0b69627554">Right of y-axis: <b>x = b</b></paragraph></li>
+  <li><paragraph id="a74475c5f94cac6809fb9367">Left of y-axis: <b>x = −b</b></paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="f6539eaec05fe333f7bc8ca9"><b>Sign comes from position:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mi>a</mi><mi>b</mi><mi>o</mi><mi>v</mi><mi>e</mi></mrow><mrow><mi>b</mi><mi>e</mi><mi>l</mi><mi>o</mi><mi>w</mi></mrow></mfrac><mi>f</mi><mi>o</mi><mi>r</mi><mi>y</mi><mo>=</mo><mo>±</mo><mi>a</mi><mo>,</mo><mfrac><mrow><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi></mrow><mrow><mi>l</mi><mi>e</mi><mi>f</mi><mi>t</mi></mrow></mfrac><mi>f</mi><mi>o</mi><mi>r</mi><mi>x</mi><mo>=</mo><mo>±</mo><mi>b</mi><mi>.</mi></mrow></math> </paragraph></div>
+
+<h3>Example 4: Lines parallel to axes through a given point</h3>
+<paragraph id="e12487543456faf253abb768"><b>Given:</b> Find equations of lines ∥ axes through (−2, 3).</paragraph>
+<ul>
+  <li><paragraph id="87629d790f33623e9bda055d">∥ x-axis ⇒ y constant = 3 ⇒ <b>y = 3</b></paragraph></li>
+  <li><paragraph id="146dd3bbe1c2b98a9327d810">∥ y-axis ⇒ x constant = −2 ⇒ <b>x = −2</b></paragraph></li>
+</ul>
+
+<h3>9.3.2 Point-slope form</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="0cccaf3bbfc168e7128185ef">For a non-vertical line with <b>slope m</b> through fixed point <b>P<sub>0</sub>(x<sub>0</sub>, y<sub>0</sub>)</b>, a point <b>P(x, y)</b> lies on it ⇔ slope between P and P<sub>0</sub> is m.</paragraph>
+</div>
+
+<paragraph id="0366da228f6a61c031507f6a">From slope definition:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="2a2508d2f852085774e2ca7a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mi>y</mi><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>x</mi><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="0584b19eef9c6c2cb5e3a73e">m: slope</paragraph>
+  <paragraph id="864aefb4f4353c488f0cd9b4">(x, y): general point on line</paragraph>
+  <paragraph id="dd8ed311ab3ad80aa6ec85f8">(x<sub>0</sub>, y<sub>0</sub>): fixed point on line</paragraph>
+</div>
+
+<paragraph id="29770db11a9e5b02baed7c71">Rearrange ⇒ <b>point-slope form</b>:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="21b26d49b555bcafdfe52d00"><b>y − y<sub>0</sub> = m(x − x<sub>0</sub>)</b></paragraph>
+  <paragraph id="ae5b998a8e9e58eeafd890c2">m: slope</paragraph>
+  <paragraph id="e6f7a93b7228d11afe0b6b26">(x<sub>0</sub>, y<sub>0</sub>): known point</paragraph>
+  <paragraph id="4e42a770fc1d7e888f81f402">(x, y): any point on the line</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="2359055fb918d8b8dd0f705f">This equation fully defines the line: every on-line point satisfies it; every off-line point doesn’t.</paragraph>
+</div>
+
+<h3>Example 5: Equation through a point with given slope</h3>
+<paragraph id="b23f35ba9eec18f6c1a4c6b9"><b>Given:</b> Line through (−2, 3) with slope −4.</paragraph>
+<paragraph id="62448cb733bbb8dee2e14f0f">Use y − y<sub>0</sub> = m(x − x<sub>0</sub>), with (x<sub>0</sub>, y<sub>0</sub>) = (−2, 3), m = −4:</paragraph>
+<paragraph id="24300d0572e99ebb6f681543">y − 3 = −4(x − (−2)) = −4(x + 2)</paragraph>
+<paragraph id="0ce5fa166fd71e9e78b6c2be">⇒ y − 3 = −4x − 8</paragraph>
+<paragraph id="beda40326bd4fa7f141f5bcf">⇒ <b>4x + y + 5 = 0</b></paragraph>
+
+<h3>9.3.3 Two-point form</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="d71c8fd493bc292099224b43">If a line passes through two distinct points <b>P<sub>1</sub>(x<sub>1</sub>, y<sub>1</sub>)</b> and <b>P<sub>2</sub>(x<sub>2</sub>, y<sub>2</sub>)</b>, then <b>P(x, y)</b> is on the line ⇔ slopes P<sub>1</sub>P and P<sub>1</sub>P<sub>2</sub> are equal (collinearity).</paragraph>
+</div>
+
+<paragraph id="dfffc520c61732f4c47dea27">So:</paragraph>
+<paragraph id="b3c721443148981aebaf6a28"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="952f8774fab95543f8d851d1"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>T</mi><mi>w</mi><mi>o</mi><mo>−</mo><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="c9dfa7af0eb4302fb4dda5bf">(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>): given points</paragraph>
+  <paragraph id="d6772b69944b5d97985ddd11">(x, y): general point</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="c10e6806bcc4a523f1fd2e6b">If <b>x<sub>2</sub> = x<sub>1</sub></b>, line is vertical ⇒ slope form fails; equation is just <b>x = x<sub>1</sub></b>.</paragraph>
+</div>
+
+<h3>Example 6: Equation through two points</h3>
+<paragraph id="0a6d56368c30001356c4a058"><b>Given:</b> Line through (1, −1) and (3, 5).</paragraph>
+<paragraph id="693d2f31cb3ec4e4ddf35e7a">Use two-point form:</paragraph>
+<paragraph id="e74fd157e1699852073f13c3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>6</mn><mn>2</mn></mfrac><mo>=</mo><mn>3</mn></mrow></math></paragraph><paragraph id="a32c19cd20435557a6670935">So y + 1 = 3(x − 1)</paragraph>
+<paragraph id="5a8d3e8715b169c83a8701aa">⇒ y + 1 = 3x − 3</paragraph>
+<paragraph id="6da05e0ac466cc72794d1ace">⇒ <b>−3x + y + 4 = 0</b></paragraph>
+
+<h3>9.3.4 Slope-intercept form</h3>
+
+<h3>Case I: Given slope and y-intercept</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="d2c2231ec27105280a9665ef"><b>y-intercept</b> = directed distance <b>c</b> from origin to where line meets y-axis.</paragraph>
+  <paragraph id="39f2a9d1f0b2026b0f911c8f">Intercept point is <b>(0, c)</b> (c can be + or −).</paragraph>
+</div>
+
+<paragraph id="e4115ff5bcf80dc0c82afa49">Line with slope m through (0, c) (via point-slope):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d383369b3680aa49524d209d"><b>y = mx + c</b> (Slope-intercept form)</paragraph>
+  <paragraph id="27e9211be546bc0c2590e809">m: slope</paragraph>
+  <paragraph id="0ad1e3bd22e124b3d8a23db5">c: y-intercept (y when x = 0)</paragraph>
+  <paragraph id="8036703f338a68d69c90caa8">(x, y): any point on the line</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="682467e300f1aa230caf14b2"><b>c &gt; 0</b> if line cuts y-axis above origin; <b>c &lt; 0</b> if it cuts below.</paragraph>
+</div>
+
+<h3>Case II: Given slope and x-intercept</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="03d1b306dec1bc8d40981554"><b>x-intercept</b> = directed distance <b>d</b> from origin to where line meets x-axis.</paragraph>
+  <paragraph id="58023e279f681e6593c264e1">Intercept point is <b>(d, 0)</b>.</paragraph>
+</div>
+
+<paragraph id="8e27d216154e213ae06cf5d5">Line with slope m and x-intercept d:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="75ee8bce106932c2c5af6285"><b>y = m(x − d)</b></paragraph>
+  <paragraph id="46b83b688e5c7bf879a0b9f2">m: slope</paragraph>
+  <paragraph id="5d8d60a09c66c943a5b8a5bf">d: x-intercept (x when y = 0)</paragraph>
+  <paragraph id="fec07739afa876129c1338c8">(x, y): any point on the line</paragraph>
+</div>
+
+<h3>Example 7: Equations using inclination and intercepts</h3>
+<paragraph id="8976156dc0f06ee703beb97e"><b>Given:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>θ</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>i</mi><mi>n</mi><mi>c</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>.</mi></mrow></math> </paragraph><div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="0c38e836443cb40aac1ec0ac"><b>Slope for inclination θ:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mo>tan</mo><mi>θ</mi><mo>⇒</mo><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>m</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi></mrow></math> </paragraph></div>
+
+<paragraph id="d31b0016377f1dbffac46754"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>i</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>y</mi><mo>−</mo><mi>i</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>p</mi><mi>t</mi><mi>i</mi><mi>s</mi><mo>−</mo><mfrac><mn>2</mn><mn>3</mn></mfrac></mrow></math></paragraph><paragraph id="4e38e07f2107780928ddfaa3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>c</mi><mo>=</mo><mo>−</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mo>,</mo><mi>m</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi><mi>U</mi><mi>s</mi><mi>e</mi><mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>:</mo></mrow></math></paragraph><paragraph id="6ce7554b3d9664eb62d8b303"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>x</mi><mo>−</mo><mfrac><mn>2</mn><mn>3</mn></mfrac></mrow></math></paragraph><paragraph id="428c02089231d12bcaf5ecae"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>⇒</mo><mn>0</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>x</mi><mo>−</mo><mi>y</mi><mo>−</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="8d223ba5558ce5723848c96a"><b>(ii) x-intercept is 4</b></paragraph>
+<paragraph id="64b4e8d00a657ab9202d6e5f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mn>4</mn><mo>,</mo><mi>m</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi><mi>U</mi><mi>s</mi><mi>e</mi><mi>y</mi><mo>=</mo><mi>m</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>:</mo></mrow></math></paragraph><paragraph id="d8a25810769d4264c4f61859"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="53a7f89c3883b56417d5e9ce"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>⇒</mo><mn>0</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>x</mi><mo>−</mo><mi>y</mi><mo>−</mo><mn>2</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>r</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><div class="remember-box">
+  <paragraph id="ed28024509cd539f7e837890">Exam move: if <b>inclination θ</b> is given, first do <b>m = tan θ</b>, then pick the right form: <b>y = mx + c</b> (y-intercept) or <b>y = m(x − d)</b> (x-intercept).</paragraph>
+</div>
+
+<h2>9.3.5 Intercept Form of a Line</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="5847b55568fbc6c9d8f34be3"><b>Intercepts:</b> If line cuts x-axis at <b>x-intercept = a</b> and y-axis at <b>y-intercept = b</b>, then it passes through <b>(a, 0)</b> and <b>(0, b)</b>.</paragraph>
+</div>
+
+<paragraph id="4b3a68bbf0be170445cee502">Using <b>two-point form</b> through <b>(a, 0)</b> and <b>(0, b)</b> ⇒ intercept form:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="60966fd6fe4d7fcffee92a2b"><b>Intercept form:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mi>x</mi><mi>a</mi></mfrac><mo>+</mo><mfrac><mi>y</mi><mi>b</mi></mfrac><mo>=</mo><mn>1</mn></mrow></math> </paragraph><paragraph id="83e7eea3ca0c8ac58da74956">x: x-coordinate of any point on line</paragraph>
+  <paragraph id="267263577b23aaec7c255e63">y: y-coordinate of any point on line</paragraph>
+  <paragraph id="cda36a1b837b4c61eb7b48af">a: x-intercept (meets x-axis at (a, 0))</paragraph>
+  <paragraph id="8ec7a5a9d0081323656e7ecd">b: y-intercept (meets y-axis at (0, b))</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="daec36c4a2682621a28c6a5b">If <b>a = 0</b> or <b>b = 0</b>, intercept form fails (division by zero). Then the line passes through origin—use slope form/general form instead.</paragraph>
+</div>
+
+<h3>Example 8: Line with given intercepts</h3>
+<paragraph id="28a83613162764ab4f9f3adb"><b>Problem:</b> Find equation of the line with intercepts <b>–3</b> (x-axis) and <b>2</b> (y-axis).</paragraph>
+<paragraph id="34a8cd7f1c076f7533b844e8"><b>Given:</b> a = –3, b = 2</paragraph>
+<paragraph id="b2a59854acd9fe18c2096119"><b>Use:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mi>x</mi><mi>a</mi></mfrac><mo>+</mo><mfrac><mi>y</mi><mi>b</mi></mfrac><mo>=</mo><mn>1</mn></mrow></math> </paragraph><paragraph id="d51f3587a442d9d1afc9bca6"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>o</mi><mo>,</mo><mfrac><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>–</mi><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>+</mo><mfrac><mi>y</mi><mn>2</mn></mfrac><mo>=</mo><mn>1</mn></mrow></math></paragraph><paragraph id="5cda7843fb042c7369bbabc7">Multiply by 6: <b>–2x + 3y = 6</b></paragraph>
+<paragraph id="219ba04a71ce8ae17586cf9e">General form: <b>2x – 3y + 6 = 0</b> (any equivalent form ok)</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="33b45f5bbe0817efc45e6a30"><b>General linear equation (general equation of a line):</b> Any equation <b>Ax + By + C = 0</b>, where <b>A and B are not both zero</b>, represents a straight line.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="e3726a82c1e456d19c2bd1eb">Don’t write “A and B are nonzero”. Correct: <b>A and B are not zero simultaneously</b> (at least one is nonzero).</paragraph>
+</div>
+
+<h2>9.4 Distance of a Point from a Line</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="948ca79750001f4bae54d5a9"><b>Distance of a point from a line</b> = <b>length of the perpendicular</b> from the point to the line.</paragraph>
+</div>
+
+<paragraph id="6fc304d67f75d6bb8b7ca5ae">Line: <b>L: Ax + By + C = 0</b>, Point: <b>P(x<sub>1</sub>, y<sub>1</sub>)</b>. Drop perpendicular <b>PM</b> to the line ⇒ distance <b>d = PM</b>.</paragraph>
+
+<paragraph id="adfff31b8165bb4e36277339"><b>Derivation idea (as in text):</b></paragraph>
+<ul>
+<li>Line cuts x-axis at <b>Q(−C/A, 0)</b> and y-axis at <b>R(0, −C/B)</b>.</li>
+<li>Area: <b>area(ΔPQR) = (1/2)·PM·QR</b> ⇒ <b>PM = 2·area(ΔPQR)/QR</b>.</li>
+<li>Find <b>area(ΔPQR)</b> (coordinate area formula) + find <b>QR</b> (distance formula), then substitute into PM to get the standard formula.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="aeeb9bb3a1dd4eda48a0fe4c"><b>Perpendicular distance (point → line):</b></paragraph>
+<paragraph id="3ed9e4d35acd065c32314542"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mi>x</mi><mn>1</mn><mo>+</mo><mi>B</mi><mi>y</mi><mn>1</mn><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="74e266d0ed264c9063c84324">d = perpendicular distance from point to line</paragraph>
+<paragraph id="9950498bbbecdbf7c85cccc7">(x<sub>1</sub>, y<sub>1</sub>) = given point</paragraph>
+<paragraph id="bc571063ef407ba44625233f">Ax + By + C = 0 = line (general form)</paragraph>
+<paragraph id="240e508bf906edccccb248f5">A, B, C = real constants; <b>A and B not both zero</b></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="e85d72cb33648ca469e6c1b3">Put <b>absolute value</b> in the numerator so distance is never negative.</paragraph>
+</div>
+
+<h3>9.4.1 Distance between Two Parallel Lines</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="9b75db3c533e0ccb561ea8a7"><b>Parallel lines</b> ⇒ <b>same slope</b>.</paragraph>
+<paragraph id="1a59e54d2181376e2d2778ed">So they can be written as: <b>y = mx + c<sub>1</sub></b> and <b>y = mx + c<sub>2</sub></b></paragraph>
+</div>
+
+<paragraph id="b9bf20972fce62b89df50f4a"><b>Idea of derivation:</b></paragraph><paragraph id="5876ec9de546a11f9b8509b6">
+  Take point <i>A</i> where
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><msub><mi>c</mi><mn>1</mn></msub>
+  </math>
+  meets the x-axis. Setting
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>y</mi><mo>=</mo><mn>0</mn>
+  </math>,
+</paragraph>
+
+<paragraph id="cb300d9180ae4ba78d545557">
+  <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>x</mi><mo>=</mo><mo>−</mo>
+    <mfrac>
+      <msub><mi>c</mi><mn>1</mn></msub>
+      <mi>m</mi>
+    </mfrac>
+    <mo>,</mo>
+    <mspace width="0.5em"></mspace>
+    <mtext>so</mtext>
+    <mspace width="0.5em"></mspace>
+    <mi>A</mi>
+    <mo>(</mo>
+    <mo>−</mo>
+    <mfrac>
+      <msub><mi>c</mi><mn>1</mn></msub>
+      <mi>m</mi>
+    </mfrac>
+    <mo>,</mo><mn>0</mn>
+    <mo>)</mo>
+  </math>
+</paragraph>
+
+<paragraph id="38c782936ab1e401f0a2f2fb">
+  The distance between the lines is the perpendicular distance from
+  <i>A</i> to
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>y</mi><mo>=</mo><mi>m</mi><mi>x</mi><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub>
+  </math>.
+  Use the point-to-line distance formula.
+</paragraph>
+
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b1dfc5f29220452b5323037f"><b>Distance between parallel lines (slope–intercept form):</b></paragraph>
+<paragraph id="291e9b4c7a8c45b6d971d781"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>c</mi><mn>1</mn><mo>−</mo><mi>c</mi><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mn>1</mn><mo>+</mo><mi>m</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="a0fe69b81fc19b803e144b0a">d = distance between the two parallel lines</paragraph>
+<paragraph id="3c6623bb6c331fd2187beaa1">m = common slope</paragraph>
+<paragraph id="559043ddc23e7b4e383c3034">c<sub>1</sub>, c<sub>2</sub> = y-intercepts</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="978b6c77c5725220b062e997"><b>Distance between parallel lines (general form):</b></paragraph>
+<paragraph id="b17a33479f0393e4ca194727">If <b>Ax + By + C<sub>1</sub> = 0</b> and <b>Ax + By + C<sub>2</sub> = 0</b>, then</paragraph>
+<paragraph id="ae2cf28cd262693d55bcf1ff"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>C</mi><mn>1</mn><mo>−</mo><mi>C</mi><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="6e072c9961656b311ef144c0">A, B = same in both lines</paragraph>
+<paragraph id="c0181dc8f86258bbf18348e9">C<sub>1</sub>, C<sub>2</sub> = constants of the two lines</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="4a2336a5f3d49b9a1f45dd75">For the general-form parallel distance formula, coefficients of x and y must be <b>identical</b> (same A, same B). If not, rewrite first (or confirm they’re actually parallel).</paragraph>
+</div>
+
+<h3>Example 9: Distance of a point from a line</h3>
+<paragraph id="ca19b58808720cfc401f6c0d"><b>Problem:</b> Find distance of (3, –5) from 3x – 4y – 26 = 0.</paragraph>
+<paragraph id="9feeefab88e58b54ba7942b0"><b>Given:</b> 3x − 4y − 26 = 0 ⇒ A = 3, B = −4, C = −26; (x<sub>1</sub>, y<sub>1</sub>) = (3, −5)</paragraph>
+<paragraph id="3923d887e58b2cb7512cc771"><b>Use formula:</b></paragraph>
+<paragraph id="a72a2c354a87387baaf28904"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mi>x</mi><mn>1</mn><mo>+</mo><mi>B</mi><mi>y</mi><mn>1</mn><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="783295da2f64d5ac387d773c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>3</mn><mo>·</mo><mn>3</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>26</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>²</mi><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="b8570b293414bba03bcb547f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>9</mn><mo>+</mo><mn>20</mn><mo>−</mo><mn>26</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mn>9</mn><mo>+</mo><mn>16</mn></mrow></msqrt></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>3</mn><mo form="postfix" stretchy="true">|</mo></mrow><mn>5</mn></mfrac><mo>=</mo><mfrac><mn>3</mn><mn>5</mn></mfrac></mrow></math></paragraph><h3>Example 10: Distance between two parallel lines</h3>
+<paragraph id="bf50fc1823d9403056187823"><b>Problem:</b> Find distance between 3x – 4y + 7 = 0 and 3x – 4y + 5 = 0.</paragraph>
+<paragraph id="97a16c3c12132023e5ccac39"><b>Given:</b> A = 3, B = −4, C<sub>1</sub> = 7, C<sub>2</sub> = 5</paragraph>
+<paragraph id="8b798313bd605f860deb0c02"><b>Use formula:</b></paragraph>
+<paragraph id="b456fd919a2f0f039f6b150a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>C</mi><mn>1</mn><mo>−</mo><mi>C</mi><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>7</mn><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mi>²</mi><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mn>2</mn><mn>5</mn></mfrac></mrow></math></paragraph><paragraph id="bdaa30c4c2b440e1448e311e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>D</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mo>=</mo><mfrac><mn>2</mn><mn>5</mn></mfrac></mrow></math></paragraph><h2>Miscellaneous Examples</h2>
+
+<h3>Example 11: Concurrency of three lines</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f7af2584344dde8ffc6e4228"><b>Concurrent lines</b>: three lines pass through a <b>common point</b>.</paragraph>
+<paragraph id="3193ec05687537763e53fa64">Equivalent idea: intersection of any two lies on the third.</paragraph>
+</div>
+
+<paragraph id="0719635673bce421659ee4b0"><b>Problem:</b> If the lines</paragraph>
+<ul>
+<li>2x + y − 3 = 0</li>
+<li>5x + ky − 3 = 0</li>
+<li>3x − y − 2 = 0</li>
+</ul>
+<paragraph id="a5271ca5016b7803cbd54d65">are concurrent, find k.</paragraph>
+
+<paragraph id="2d89f136bfcb9cab19e1f9ab"><b>Step 1: Intersection of two lines</b> (use (1) and (3)):</paragraph>
+<paragraph id="cbfaf13dd2ac11f1e4012b00">(1) 2x + y = 3</paragraph>
+<paragraph id="563feea7e0a35383744001f7">(3) 3x − y = 2</paragraph>
+<paragraph id="40933cca28e55c1879a914ef">Add: 5x = 5 ⇒ x = 1</paragraph>
+<paragraph id="1d51604bd2d921bf3b03caa6">Put in (1): 2(1) + y = 3 ⇒ y = 1</paragraph>
+<paragraph id="8e3563de7fe22070f052d705">Intersection point = <b>(1, 1)</b></paragraph>
+
+<paragraph id="73aeb1ee589e69551d243651"><b>Step 2: Concurrency condition</b> ⇒ (1,1) lies on line (2):</paragraph>
+<paragraph id="f0396631c53bbaf6dfbc0392">5(1) + k(1) − 3 = 0 ⇒ 2 + k = 0 ⇒ <b>k = −2</b></paragraph>
+
+<div class="remember-box">
+<paragraph id="e223a15a8c7ff7b345a2a905">Concurrency: don’t solve all 3 at once. Find intersection of any 2, then substitute into the 3rd.</paragraph>
+</div>
+
+<h2>Distance of a Line from a Point Measured Along a Given Direction (Worked Idea)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="4212d1dcc9ea3582540e03d0"><b>Distance of a line from a point measured along another line</b>:</paragraph>
+<paragraph id="ecbbb2f4a708cdceb602fd5f">Through the point, draw the line in the given direction → meet the given line → required distance = distance between the point and that intersection.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="47058360c5314f52be7483fe">Method (always 3 steps):</paragraph>
+<ol>
+<li>Equation of the <b>direction line</b> through the point using slope <b>m = tan θ</b>.</li>
+<li>Find intersection with the given line (solve the pair).</li>
+<li>Use distance formula between the point and intersection point.</li>
+</ol>
+</div>
+
+<h3>Example 12: Distance of 4x − y = 0 from P(4, 1) measured along a line at 135°</h3>
+<paragraph id="a24190194048d20446347f98">Given line: <b>4x − y = 0</b> …(1)</paragraph>
+<paragraph id="517b9c627625ec0c6888632b">Measuring line makes 135° with +x-axis ⇒ slope:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0239e1cb8b74f32301d87a42"><b>Slope from inclination:</b> m = tan θ</paragraph>
+<paragraph id="7afb8ae0194d7d81de5c149f">m = slope; θ = angle with +x-axis</paragraph>
+</div>
+
+<paragraph id="64cde54c80e62449099978ce">m = tan 135° = −1. Line through P(4,1):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f83146fa537ac6589aefb424"><b>Point–slope form:</b> y − y<sub>1</sub> = m(x − x<sub>1</sub>)</paragraph>
+<paragraph id="7ae8459810ee3e43378bb1b3">(x<sub>1</sub>, y<sub>1</sub>) = given point; m = slope</paragraph>
+</div>
+
+<paragraph id="9da9c5f3b90af23ac7f72416">y − 1 = −1(x − 4) ⇒ <b>x + y − 5 = 0</b> …(2)</paragraph>
+<paragraph id="5b971e87477f9cf8db459e45">Intersection of (1) and (2): from (1), y = 4x. In (2): x + 4x − 5 = 0 ⇒ 5x = 5 ⇒ x = 1 ⇒ y = 4</paragraph>
+<paragraph id="17c2b2474a74cfa2d7fc206a">Intersection Q = (1,4). Required distance = PQ.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0bb4f7a731be2fb3ddbf39ef"><b>Distance between two points:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><mrow></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mrow></msqrt></mrow></math> </paragraph><paragraph id="0d7e0c3c68183dcae88f36ca">(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>) = the two points</paragraph>
+</div>
+
+<paragraph id="57ba8f708934b8a3830cbc0e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><mrow></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mrow></msqrt><mo>=</mo><msqrt><mrow><mn>9</mn><mo>+</mo><mn>9</mn></mrow></msqrt><mo>=</mo><msqrt><mn>18</mn></msqrt><mo>=</mo><mn>3</mn><msqrt><mn>2</mn></msqrt><mi>u</mi><mi>n</mi><mi>i</mi><mi>t</mi><mi>s</mi></mrow></math></paragraph><div class="remember-box">
+<paragraph id="e58e3c8e0395ab0d008ca8b6">Common slip: using perpendicular distance here. This is <b>not</b> perpendicular distance—distance is along a given direction, so find intersection first, then use point-to-point distance.</paragraph>
+</div>
+
+<h2>Image of a Point in a Line (Plane Mirror Concept)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="7c77c7a3a2d1d746c0c2185e">If a line behaves like a <b>plane mirror</b>, then the image Q of a point P is such that:</paragraph>
+  <ul>
+    <li>Mirror line is the <b>perpendicular bisector</b> of segment PQ.</li>
+    <li>So: (i) PQ ⟂ mirror line, and (ii) midpoint of PQ lies on the mirror line.</li>
+  </ul>
+</div>
+
+<h3>Example 13: Image of (1,2) in the line x − 3y + 4 = 0</h3>
+<paragraph id="b91b5a475adbb58afc13dcbf">Mirror line: <b>x − 3y + 4 = 0</b> …(1)</paragraph>
+<paragraph id="f3d51c2361dbe254b0d7f913">Let image of P(1,2) be Q(h, k).</paragraph>
+<paragraph id="87bb59bd26be47ee8afa9542">Since (1) is the perpendicular bisector of PQ:</paragraph>
+<ol>
+  <li><b>Slope condition (⊥)</b>: slope(PQ) × slope(line) = −1</li>
+</ol>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="4645be408e99bfb4cd77b5ee"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn><mo>:</mo><mi>m</mi><mo>=</mo><mo>−</mo><mfrac><mi>a</mi><mi>b</mi></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>b</mi><mo>≠</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="5e22daf6800cdf5e42f52089">a, b = coefficients of x and y; m = slope</paragraph>
+</div>
+
+<paragraph id="089e54caaab691718bd3e051"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>F</mi><mi>o</mi><mi>r</mi><mi>x</mi><mo>−</mo><mn>3</mn><mi>y</mi><mo>+</mo><mn>4</mn><mo>=</mo><mn>0</mn><mo>,</mo><mi>s</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>.</mi></mrow></math></paragraph><paragraph id="1865824e45b4ba5290c91640"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>o</mi><mi>f</mi><mi>P</mi><mi>Q</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>k</mi><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>h</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mi>.</mi><mi>U</mi><mi>s</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>⊥</mo><mo>:</mo></mrow></math></paragraph><paragraph id="948f5f0b39629e081b8e1279"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>k</mi><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>h</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mo>−</mo><mn>3</mn><mo>⇒</mo><mi>k</mi><mo>=</mo><mo>−</mo><mn>3</mn><mi>h</mi><mo>+</mo><mn>5</mn><mi>…</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><ol start="2">
+  <li><b>Midpoint condition</b>: midpoint of P and Q lies on (1)</li>
+</ol>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="cbc213a827e8d8e7b135d3de"><b>Midpoint of P(x1,y1) and Q(x2,y2):</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>1</mn><mo>+</mo><mi>x</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>,</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>1</mn><mo>+</mo><mi>y</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> </paragraph><paragraph id="57d3e51330730e2f3b712ccd">M = midpoint coordinates</paragraph>
+</div>
+
+<paragraph id="cab518f78f5465e5241ae272"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mi>i</mi><mi>d</mi><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>M</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>,</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>+</mo><mi>k</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mi>P</mi><mi>u</mi><mi>t</mi><mi>i</mi><mi>n</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>:</mo></mrow></math></paragraph><paragraph id="e277c4d35f010599dad1ab72"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>−</mo><mn>3</mn><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>+</mo><mi>k</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>+</mo><mn>4</mn><mo>=</mo><mn>0</mn></mrow></math></paragraph><paragraph id="772ba3f3d9488b9c30eeab99">×2: (1 + h) − 3(2 + k) + 8 = 0 ⇒ 1 + h − 6 − 3k + 8 = 0 ⇒ <b>h − 3k + 3 = 0</b> …(3)</paragraph>
+
+<paragraph id="2782cba3735ce1a7e19f5090">Solve (2) &amp; (3): from (2), k = −3h + 5. Put in (3):</paragraph>
+<paragraph id="6708bdf6f99067f8c88f1549"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>h</mi><mo>−</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mi>h</mi><mo>+</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>3</mn><mo>=</mo><mn>0</mn><mo>⇒</mo><mi>h</mi><mo>+</mo><mn>9</mn><mi>h</mi><mo>−</mo><mn>15</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>0</mn><mo>⇒</mo><mn>10</mn><mi>h</mi><mo>−</mo><mn>12</mn><mo>=</mo><mn>0</mn><mo>⇒</mo><mi>h</mi><mo>=</mo><mfrac><mn>6</mn><mn>5</mn></mfrac></mrow></math></paragraph><paragraph id="7dc12298e4558626412c3070"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>k</mi><mo>=</mo><mo>−</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>6</mn><mn>5</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>5</mn><mo>=</mo><mo>−</mo><mfrac><mn>18</mn><mn>5</mn></mfrac><mo>+</mo><mfrac><mn>25</mn><mn>5</mn></mfrac><mo>=</mo><mfrac><mn>7</mn><mn>5</mn></mfrac></mrow></math></paragraph><paragraph id="29179e86d6a03d53401b1351"><b>Image point:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>Q</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>6</mn><mn>5</mn></mfrac><mo>,</mo><mfrac><mn>7</mn><mn>5</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> </paragraph><div class="remember-box">
+  <paragraph id="0685f22748359b6c878cca64">Need <b>both</b> conditions: (i) perpendicularity, (ii) midpoint on mirror line. Only one condition won’t fix the image uniquely.</paragraph>
+</div>
+
+<h2>Area of Triangle Formed by Two Lines and the y-axis</h2>
+<h3>Example 14: Area of triangle formed by y = m<sub>1</sub>x + c<sub>1</sub>, y = m<sub>2</sub>x + c<sub>2</sub>, and x = 0</h3>
+<paragraph id="86856588b215b8494f72a9ce">Given lines:</paragraph>
+<paragraph id="a9a3a2ada4158152c0ce1829">y = m<sub>1</sub>x + c<sub>1</sub> …(1)</paragraph>
+<paragraph id="97fab804843faf1f3538c093">y = m<sub>2</sub>x + c<sub>2</sub> …(2)</paragraph>
+<paragraph id="7e3e09d8f4cd3f1aa85e70df">x = 0 …(3) (y-axis)</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8664ee3cf62ed13c6163a10b">Line y = mx + c cuts y-axis (x = 0) at (0, c). So vertices on y-axis:</paragraph>
+  <ul>
+    <li>P(0, c<sub>1</sub>) from (1)</li>
+    <li>Q(0, c<sub>2</sub>) from (2)</li>
+  </ul>
+</div>
+
+<paragraph id="7a89aa2c88c1e1af41701368">Third vertex R = intersection of (1) and (2):</paragraph>
+<paragraph id="5423a403e43e9103eb592f86">m<sub>1</sub>x + c<sub>1</sub> = m<sub>2</sub>x + c<sub>2</sub> ⇒ (m<sub>1</sub> − m<sub>2</sub>)x = c<sub>2</sub> − c<sub>1</sub></paragraph>
+<paragraph id="9175a1e7ab1e0a862f3429e4">So:</paragraph>
+<paragraph id="ce7a83b8976487c95feb3d5d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mn>2</mn><mo>−</mo><mi>c</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mo>−</mo><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="2496e368c88b0b874475e549">Sub into y = m<sub>1</sub>x + c<sub>1</sub>:</paragraph>
+<paragraph id="412a75b38ede84782b481d8b"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mi>c</mi><mn>2</mn><mo>−</mo><mi>m</mi><mn>2</mn><mi>c</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mo>−</mo><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="348ac760149ddcd1cdb54999">Thus:</paragraph>
+<paragraph id="3866ba9b9480f197909b1c80"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>R</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mn>2</mn><mo>−</mo><mi>c</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mo>−</mo><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>,</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mi>c</mi><mn>2</mn><mo>−</mo><mi>m</mi><mn>2</mn><mi>c</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mo>−</mo><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow></math></paragraph><paragraph id="0a9165bff0b53cfe6aa62f1b">Area idea (P, Q on y-axis): base PQ is vertical, length |c<sub>1</sub> − c<sub>2</sub>|, and ⟂ distance of R from y-axis is |x<sub>R</sub>|. Hence:</paragraph>
+<paragraph id="d5debd50d733e858c13fa00d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mi>r</mi><mi>e</mi><mi>a</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>c</mi><mn>1</mn><mo>−</mo><mi>c</mi><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><mo>×</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>x</mi><mi>R</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="5ddfd37045040407af519486"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>c</mi><mn>1</mn><mo>−</mo><mi>c</mi><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><mo>×</mo><mrow><mo form="prefix" stretchy="true">|</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mn>2</mn><mo>−</mo><mi>c</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mo>−</mo><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo form="postfix" stretchy="true">|</mo></mrow></mrow></math></paragraph><paragraph id="f9a41af0f38cd842fb2fbcad">= <b>(c<sub>1</sub> − c<sub>2</sub>)<sup>2</sup> / (2(m<sub>1</sub> − m<sub>2</sub>))</b> in magnitude; standard stated positive-area result:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="c0615153de25b34b2239d28a"><b>Area of triangle formed by y = m<sub>1</sub>x + c<sub>1</sub>, y = m<sub>2</sub>x + c<sub>2</sub>, and x = 0:</b></paragraph>
+  <paragraph id="bf8bfeba1225f21ee8691d13"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mi>r</mi><mi>e</mi><mi>a</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mn>1</mn><mo>−</mo><mi>c</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>1</mn><mo>−</mo><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mi>a</mi><mi>k</mi><mi>e</mi><mi>m</mi><mi>a</mi><mi>g</mi><mi>n</mi><mi>i</mi><mi>t</mi><mi>u</mi><mi>d</mi><mi>e</mi><mi>i</mi><mi>f</mi><mi>n</mi><mi>e</mi><mi>e</mi><mi>d</mi><mi>e</mi><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="8fb0640a500f63e6965cb8a6">m<sub>1</sub>, m<sub>2</sub> = slopes; c<sub>1</sub>, c<sub>2</sub> = y-intercepts</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="d0a5bcc9c7a5ebae9dbabbd0">Area ≥ 0 always. If (m<sub>1</sub> − m<sub>2</sub>) comes negative, report area using absolute value.</paragraph>
+</div>
+
+<h2>Line Segment Between Two Lines Bisected at a Given Point</h2>
+<h3>Example 15: Segment between 5x − y + 4 = 0 and 3x + 4y − 4 = 0 is bisected at (1,5)</h3>
+<paragraph id="988b00b326827e0d9aeb8e28">Given lines:</paragraph>
+<paragraph id="efabf18346a6a2e636492e5f">5x − y + 4 = 0 …(1)</paragraph>
+<paragraph id="ac382e8ece8bf3a33cebda44">3x + 4y − 4 = 0 …(2)</paragraph>
+
+<paragraph id="feecf2bebafeb0425af59722">Let required line cut (1) at A(α<sub>1</sub>, β<sub>1</sub>) and cut (2) at B(α<sub>2</sub>, β<sub>2</sub>).</paragraph>
+<paragraph id="15dbdcc00dc1a9101c17960f">A on (1): 5α<sub>1</sub> − β<sub>1</sub> + 4 = 0 ⇒ <b>β<sub>1</sub> = 5α<sub>1</sub> + 4</b></paragraph>
+<paragraph id="ac113097f8ce4bdb7af8a438"><b>B on (2):</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>3</mn><mi>α</mi><mn>2</mn><mo>+</mo><mn>4</mn><mi>β</mi><mn>2</mn><mo>−</mo><mn>4</mn><mo>=</mo><mn>0</mn><mo>⇒</mo><mi>β</mi><mn>2</mn><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>−</mo><mn>3</mn><mi>α</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>4</mn></mfrac></mrow></math> </paragraph><paragraph id="2e92887ebf3e3cd4f5d32273">Midpoint of AB is (1,5):</paragraph>
+<paragraph id="f313f8987e997cc774a93512"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>α</mi><mn>1</mn><mo>+</mo><mi>α</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mn>1</mn><mo>⇒</mo><mi>α</mi><mn>1</mn><mo>+</mo><mi>α</mi><mn>2</mn><mo>=</mo><mn>2</mn></mrow></math></paragraph><paragraph id="83b1cfcc1d14ee43268f712d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>β</mi><mn>1</mn><mo>+</mo><mi>β</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mn>5</mn><mo>⇒</mo><mi>β</mi><mn>1</mn><mo>+</mo><mi>β</mi><mn>2</mn><mo>=</mo><mn>10</mn></mrow></math></paragraph><paragraph id="907066567dd6c63342bf93f3">Sub β<sub>1</sub>, β<sub>2</sub>:</paragraph>
+<paragraph id="f0f5d0faeb70275e04cd1957"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>5</mn><mi>α</mi><mn>1</mn><mo>+</mo><mn>4</mn><mo>+</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mo>−</mo><mn>3</mn><mi>α</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>4</mn></mfrac><mo>=</mo><mn>10</mn></mrow></math></paragraph><paragraph id="183e2f3b571f9dde58b1e339">×4: 20α<sub>1</sub> + 16 + 4 − 3α<sub>2</sub> = 40 ⇒ <b>20α<sub>1</sub> − 3α<sub>2</sub> = 20</b></paragraph>
+
+<paragraph id="bfd01c870682d973d4908a76">Solve:</paragraph>
+<paragraph id="3df65106773bd48fe989afb9">α<sub>1</sub> + α<sub>2</sub> = 2</paragraph>
+<paragraph id="702683c33e2f68d439cba447">20α<sub>1</sub> − 3α<sub>2</sub> = 20</paragraph>
+
+<paragraph id="1bc6e57f34aadc296ccbf75a">From α<sub>2</sub> = 2 − α<sub>1</sub>:</paragraph>
+<paragraph id="ebbb447ea3853eb84a27bfd3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>20</mn><mi>α</mi><mn>1</mn><mo>−</mo><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mi>α</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mn>20</mn><mo>⇒</mo><mn>20</mn><mi>α</mi><mn>1</mn><mo>−</mo><mn>6</mn><mo>+</mo><mn>3</mn><mi>α</mi><mn>1</mn><mo>=</mo><mn>20</mn><mo>⇒</mo><mn>23</mn><mi>α</mi><mn>1</mn><mo>=</mo><mn>26</mn><mo>⇒</mo><mi>α</mi><mn>1</mn><mo>=</mo><mfrac><mn>26</mn><mn>23</mn></mfrac></mrow></math></paragraph><paragraph id="1bc912065522a5d89d2e1c43"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>α</mi><mn>2</mn><mo>=</mo><mn>2</mn><mo>−</mo><mfrac><mn>26</mn><mn>23</mn></mfrac><mo>=</mo><mfrac><mn>20</mn><mn>23</mn></mfrac></mrow></math></paragraph><paragraph id="09acb98c7e8075603b342c3f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi><mi>o</mi><mi>w</mi><mi>β</mi><mn>1</mn><mo>=</mo><mn>5</mn><mi>α</mi><mn>1</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>5</mn><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>26</mn><mn>23</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>4</mn><mo>=</mo><mfrac><mn>130</mn><mn>23</mn></mfrac><mo>+</mo><mfrac><mn>92</mn><mn>23</mn></mfrac><mo>=</mo><mfrac><mn>222</mn><mn>23</mn></mfrac></mrow></math></paragraph><paragraph id="b140b7faf26043602cf6bacb">Required line passes through (1,5) and A(26/23, 222/23). Use two-point form:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3dba81f421056f11193a4e12"><b>Two-point form:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math> </paragraph><paragraph id="e6608de28e86f906c952ebff">(x<sub>1</sub>,y<sub>1</sub>), (x<sub>2</sub>,y<sub>2</sub>) = two points on the line</paragraph>
+</div>
+
+<paragraph id="0c0d2f85e1c47869efea54cf">Slope from these two points:</paragraph>
+<paragraph id="a0ccffc97cb57295bfd33d10"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>222</mn><mn>23</mn></mfrac><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>26</mn><mn>23</mn></mfrac><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>222</mn><mo>−</mo><mn>115</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>23</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>26</mn><mo>−</mo><mn>23</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>23</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>107</mn><mn>23</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>3</mn><mn>23</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>107</mn><mn>3</mn></mfrac></mrow></math></paragraph><paragraph id="81fc2b3a5c7a530d91398ce4">Through (1,5):<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>−</mo><mn>5</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>107</mn><mn>3</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math> </paragraph><paragraph id="52a41e73e78103e0624b52d2">⇒ 3y − 15 = 107x − 107 ⇒ <b>107x − 3y − 92 = 0</b></paragraph>
+
+<div class="remember-box">
+  <paragraph id="262d5f7bf9f37faf074c6f30">Pattern: assume intersection points with each given line → apply midpoint equations → build final line using midpoint + one intersection point.</paragraph>
+</div>
+
+<h2>Locus of a Point Equidistant from Two Lines</h2>
+<h3>Example 16: Distances from 3x − 2y = 5 and 3x + 2y = 5 are equal</h3>
+<paragraph id="e32372ab1952c410777ab2ba">Write in standard form:</paragraph>
+<paragraph id="cec5e60d4815c9e54e1a1635">3x − 2y − 5 = 0 …(1)</paragraph>
+<paragraph id="111dfb58634693ed7825b5b9">3x + 2y − 5 = 0 …(2)</paragraph>
+
+<paragraph id="deebd54aab10b8f5cd0e430c">Let (h, k) be a point with equal ⟂ distances from (1) and (2).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="850bb926b83384f5e6539eba"><b>Perpendicular distance of (x<sub>1</sub>,y<sub>1</sub>) from ax + by + c = 0:</b></paragraph>
+  <paragraph id="cc7fb4c250bea8ddc425c6ed"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>a</mi><mi>x</mi><mn>1</mn><mo>+</mo><mi>b</mi><mi>y</mi><mn>1</mn><mo>+</mo><mi>c</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mrow><mi>a</mi><mn>2</mn></mrow><mo>+</mo><mi>b</mi><mn>2</mn></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="dd5af10b88138ad62ddfd2db">a, b, c = line coefficients; (x<sub>1</sub>, y<sub>1</sub>) = point; d = distance</paragraph>
+</div>
+
+<paragraph id="3c8d1fa7829cc5c157f3037e">Equal distances:</paragraph>
+<paragraph id="b371aefd7f43173b2a0c7287"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>3</mn><mi>h</mi><mo>−</mo><mn>2</mn><mi>k</mi><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mn>32</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>3</mn><mi>h</mi><mo>+</mo><mn>2</mn><mi>k</mi><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mn>32</mn><mo>+</mo><mn>22</mn></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="2034e7411e29dcc508fb8701"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mi>o</mi><mi>t</mi><mi>h</mi><mi>d</mi><mi>e</mi><mi>n</mi><mi>o</mi><mi>m</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>s</mi><mo>=</mo><msqrt><mn>13</mn></msqrt><mo>,</mo><mi>s</mi><mi>o</mi><mo>:</mo></mrow></math></paragraph><paragraph id="a7189782a6c6d893f7780de1">|3h − 2k − 5| = |3h + 2k − 5|</paragraph>
+
+<paragraph id="f218735d4ec90a956bed938f">So either:</paragraph>
+<ul>
+  <li>3h − 2k − 5 = 3h + 2k − 5 ⇒ −2k = 2k ⇒ <b>k = 0</b> ⇒ <b>y = 0</b></li>
+  <li>3h − 2k − 5 = −(3h + 2k − 5) ⇒ 3h − 2k − 5 = −3h − 2k + 5 ⇒ 6h = 10 ⇒ <b>h = 5/3</b> ⇒ <b>x = 5/3</b></li>
+</ul>
+
+<paragraph id="0afca095d207d052a43e3fa5"><b>Hence locus:</b><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>=</mo><mn>0</mn><mi>o</mi><mi>r</mi><mi>x</mi><mo>=</mo><mfrac><mn>5</mn><mn>3</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>b</mi><mi>o</mi><mi>t</mi><mi>h</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mi>S</mi><mi>o</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>m</mi><mi>o</mi><mi>v</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>e</mi><mi>s</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mi>c</mi><mi>t</mi><mi>u</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>y</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>p</mi><mi>a</mi><mi>i</mi><mi>r</mi><mi>o</mi><mi>f</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>l</mi><mi>e</mi><mi>b</mi><mi>i</mi><mi>s</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>g</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi>n</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>s</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow></math> </paragraph><div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="7dd8e1c7aeaf7f9b0a7bcc96">Equidistant from two intersecting lines ⇒ locus = the two <b>angle bisectors</b>. In algebra: absolute values split into two linear cases.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="68974bff090618ccfc82d007">Never ignore | | : |A| = |B| always gives <b>A = B</b> and <b>A = −B</b> → two bisectors.</paragraph>
+</div>
+
+<h2>Miscellaneous Exercise on Chapter 9 (Questions Only)</h2>
+<ul>
+  <li><paragraph id="2e477a6479bb375854359786">Find values of <i>k</i> for which (k−3)x − (4 − k<sup>2</sup>)y + k<sup>2</sup> − 7k + 6 = 0 is (a) ∥ x-axis, (b) ∥ y-axis, (c) passes through origin.</paragraph></li>
+  <li><paragraph id="839f64e12690e6ee1a12d197">Find equations of lines cutting intercepts on axes whose sum and product are 1 and −6 respectively.</paragraph></li>
+  <li><paragraph id="aa5ffd5c672b061256acf3d0">Find points on y-axis whose distance from line x/3 + y/4 = 1 is 4 units.</paragraph></li>
+  <li><paragraph id="a8be2d0563d7a0bdf23880d9">Find perpendicular distance from origin to the line joining (cosθ, sinθ) and (cosφ, sinφ).</paragraph></li>
+  <li><paragraph id="c70cbe5a60de3eab98c4681f">Equation of line ∥ y-axis through intersection of x − 7y + 5 = 0 and 3x + y = 0.</paragraph></li>
+  <li><paragraph id="4c5623e53344e42113b6f5ff">Equation of a line ⟂ to x/6 + y/4 = 1 through the point where it meets the y-axis.</paragraph></li>
+  <li><paragraph id="771b6eeed7468ab55c189c68">Area of triangle formed by y − x = 0, x + y = 0 and x − k = 0.</paragraph></li>
+  <li><paragraph id="fd1ff97fa9d319c22f0affd7">Find <i>p</i> so that 3x + y − 2 = 0, px + 2y − 3 = 0 and 2x − y − 3 = 0 are concurrent.</paragraph></li>
+  <li><paragraph id="5ec3e66ef2ae610e3dabea2f">If y = m<sub>1</sub>x + c<sub>1</sub>, y = m<sub>2</sub>x + c<sub>2</sub>, y = m<sub>3</sub>x + c<sub>3</sub> are concurrent, show m<sub>1</sub>(c<sub>2</sub> − c<sub>3</sub>) + m<sub>2</sub>(c<sub>3</sub> − c<sub>1</sub>) + m<sub>3</sub>(c<sub>1</sub> − c<sub>2</sub>) = 0.</paragraph></li>
+  <li><paragraph id="ab659f7891e18c8c4b4222ec">Equations of lines through (3,2) making 45° with x − 2y = 3.</paragraph></li>
+  <li><paragraph id="b6a2efad98e2aaa7b2384922">Equation of line through intersection of 4x + 7y − 3 = 0 and 2x − 3y + 1 = 0 with equal intercepts.</paragraph></li>
+  <li><paragraph id="ebedcdf0e27ee4c7625cd06e">Show equation of line through origin making angle θ with y = mx + c is y/x = (m ± tanθ)/(1 ∓ m tanθ).</paragraph></li>
+  <li><paragraph id="9284c4e50aef2a88dd8c3db0">In what ratio does x + y = 4 divide segment joining (−1,1) and (5,7)?</paragraph></li>
+  <li><paragraph id="b195d0656ae6187cc97ff4af">Distance of 4x + 7y + 5 = 0 from (1,2) along 2x − y = 0.</paragraph></li>
+  <li><paragraph id="b0b286d7db63924c92a29829">Direction of line through (−1,2) so its intersection with x + y = 4 is 3 units away.</paragraph></li>
+  <li><paragraph id="34fb83ad77a8b6a20801f532">Right triangle hypotenuse endpoints (1,3), (−4,1): equations of legs ∥ axes.</paragraph></li>
+  <li><paragraph id="42184ea4d3fa3661c5307d60">Image of (3,8) in line x + 3y = 7 (mirror).</paragraph></li>
+  <li><paragraph id="f3092e7b10e3810e4096ba5f">If y = 3x + 1 and 2y = x + 3 are equally inclined to y = mx + 4, find <i>m</i>.</paragraph></li>
+  <li><paragraph id="8bae7b2fee09fc017851de00">If sum of perpendicular distances of P(x,y) from x + y − 5 = 0 and 3x − 2y + 7 = 0 is always 10, show P moves on a line.</paragraph></li>
+</ul>
+
+<h2>Exam Practice Problems (20–23)</h2>
+
+<h3>20. Line equidistant from two parallel lines</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="0674533163e18c93e0e1a5d6">Two ∥ lines ⇒ locus of points equidistant from them = the two angle bisectors (internal + external). For ∥ lines, these bisectors are also ∥ to the given lines and lie halfway between them.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="f4cc9d7341014170ac59d3cb">Step 1: Make both lines have same coeffs of <i>x</i>, <i>y</i> (same <i>A</i>, <i>B</i>).<br/>Step 2: Use “equal perpendicular distances” (distance-from-line formula).</paragraph>
+</div>
+<paragraph id="be6bf65865b59ff222950e99">Given:</paragraph>
+<paragraph id="acde02e21e70c2cb9e3a1b23">L<sub>1</sub>: 9x + 6y − 7 = 0</paragraph>
+<paragraph id="affcb6479b2be0cff49891b8">L<sub>2</sub>: 3x + 2y + 6 = 0</paragraph>
+<paragraph id="d3fa8f14cc9adeec8ae26177">Make coeffs same ⇒ multiply L<sub>2</sub> by 3:</paragraph>
+<paragraph id="1eebc3f4356cbd5387b5e580">L<sub>2</sub>: 9x + 6y + 18 = 0</paragraph>
+<paragraph id="90115fe2a82ee37c47f05811">Equidistant condition for any point (x, y):</paragraph>
+<paragraph id="8d8a0176115be96746d8604f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>9</mn><mi>x</mi><mo>+</mo><mn>6</mn><mi>y</mi><mo>−</mo><mn>7</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mn>9</mn><mi>²</mi><mo>+</mo><mn>6</mn><mi>²</mi></mrow></msqrt></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mn>9</mn><mi>x</mi><mo>+</mo><mn>6</mn><mi>y</mi><mo>+</mo><mn>18</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mn>9</mn><mi>²</mi><mo>+</mo><mn>6</mn><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="144772e6a97176bbaab9fbf9">Same denominator ⇒</paragraph>
+<paragraph id="abd4d70940ee35c895780a75">|9x + 6y − 7| = |9x + 6y + 18|</paragraph>
+<paragraph id="dd67b3f13fe3ab6c73799aa5">Cases:</paragraph>
+<ul>
+  <li><paragraph id="31995f71dba2be255db5af38">9x + 6y − 7 = 9x + 6y + 18 (impossible since −7 ≠ 18)</paragraph></li>
+  <li>
+    <paragraph id="9c2864d969293279027fd5ba">9x + 6y − 7 = −(9x + 6y + 18)</paragraph>
+    <paragraph id="87297734f45f6715e49d8b39">⇒ 9x + 6y − 7 = −9x − 6y − 18</paragraph>
+    <paragraph id="3ae68292a36dc6a3bcb24e07">⇒ 18x + 12y + 11 = 0</paragraph>
+    <paragraph id="846c8e4a0ade22ef312e7932">Mid (equidistant) line: <b>18x + 12y + 11 = 0</b></paragraph>
+  </li>
+</ul>
+<div class="remember-box">
+  <paragraph id="ba8e49b4cb45f685ee3e4b95">For two distinct ∥ lines written with identical <i>A</i>, <i>B</i>, the “+” bisector (… = …) becomes impossible; only the “−” case gives the middle parallel line.</paragraph>
+</div>
+
+<h3>21. Reflection on the x-axis (finding point of incidence A)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="444855414f553d7c103f9202">Reflection in x-axis: (x, y) → (x, −y).<br/>Broken path off x-axis follows: <b>∠ incidence = ∠ reflection</b> ⇒ use <b>image method</b>: reflect one point, join by straight line, cut x-axis to get the hit point.</paragraph>
+</div>
+<paragraph id="5cdb5902013b7234d77a3686">Ray goes through P(1, 2), reflects at A on x-axis, then passes through Q(5, 3).</paragraph>
+<paragraph id="a43563e39056ddd37907f1b3">Reflect Q in x-axis: Q′(5, −3).</paragraph>
+<paragraph id="f7d77f4d1e82d1522a18269e">So A = intersection of line PQ′ with x-axis (y = 0).</paragraph>
+<paragraph id="42f8febe380448525dcbf2dc">Slope of PQ′:</paragraph>
+<paragraph id="49d403cf46c6ab1be5474caf"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>5</mn><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mo>−</mo><mfrac><mn>5</mn><mn>4</mn></mfrac></mrow></math></paragraph><paragraph id="a673ab535141e541e9d49c9f">Line through P(1,2):</paragraph>
+<paragraph id="5e8a8bafaea82d061d6673ce"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>−</mo><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>5</mn><mn>4</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="8cb2ffca5c03eaf61cc967f2">On x-axis, y = 0:</paragraph>
+<paragraph id="2896a3215944be4a50c3f1b9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>−</mo><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>5</mn><mn>4</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="969398038173a445ed686090"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>5</mn><mn>4</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>⇒</mo><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>5</mn><mn>4</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="509ba8f2ee901dbc2096a22c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>x</mi><mo>−</mo><mn>1</mn><mo>=</mo><mfrac><mn>8</mn><mn>5</mn></mfrac><mo>⇒</mo><mi>x</mi><mo>=</mo><mfrac><mn>13</mn><mn>5</mn></mfrac></mrow></math></paragraph><paragraph id="a12a91252c156bc884f01309"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>o</mi><mo>,</mo><mi>A</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>13</mn><mn>5</mn></mfrac><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow></math></paragraph><div class="remember-box">
+  <paragraph id="f027eb4cc7f553d25bdca98d">Common slip: reflecting the wrong thing. Reflect exactly ONE point (either incoming or outgoing), then join to the other original point.</paragraph>
+</div>
+
+<h3>22. Product of perpendicular distances from two points to a line</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="bb7c2e379e7106df2fbdbabf">Distance from (x<sub>1</sub>, y<sub>1</sub>) to Ax + By + C = 0:</paragraph>
+  <paragraph id="7d9761b1d09c366cf6fc6b36"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mi>x</mi><mn>1</mn><mo>+</mo><mi>B</mi><mi>y</mi><mn>1</mn><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph></div>
+<paragraph id="d81794d93fd58320b9cb4d29"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>s</mi><mo>:</mo><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><mo>,</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mi>Q</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><mo>,</mo><mo>−</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow></math></paragraph><paragraph id="6dc43f74a4b149fe7cc7f56e">Line:<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mfrac><mi>x</mi><mi>a</mi></mfrac><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>sin</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mfrac><mi>y</mi><mi>b</mi></mfrac><mo>=</mo><mn>1</mn><mi>.</mi></mrow></math> </paragraph><paragraph id="de663e4536cb4ee78042f890">General form:</paragraph>
+<paragraph id="32c31541217a034057c6d810"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo>cos</mo><mi>θ</mi></mrow><mi>a</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>x</mi><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo>sin</mo><mi>θ</mi></mrow><mi>b</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>y</mi><mo>−</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow></math></paragraph><paragraph id="33aea3f7754c5151f138ac91"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>o</mi><mi>A</mi><mo>=</mo><mfrac><mrow><mo>cos</mo><mi>θ</mi></mrow><mi>a</mi></mfrac><mo>,</mo><mi>B</mi><mo>=</mo><mfrac><mrow><mo>sin</mo><mi>θ</mi></mrow><mi>b</mi></mfrac><mo>,</mo><mi>C</mi><mo>=</mo><mo>−</mo><mn>1</mn><mi>.</mi></mrow></math></paragraph><paragraph id="d450cd6c6f4fd2c068e29563">Distance from P:</paragraph>
+<paragraph id="85d5dd1af176055097a4f759"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mn>1</mn><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>B</mi><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="01eb36d5b3535ca83c0b3b37"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo>cos</mo><mi>θ</mi></mrow><mi>a</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><mo>sin</mo><mi>θ</mi></mrow><mi>b</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="8b8ad2f07f1e21699bd4d99c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>+</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>sin</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="9ed00845f68ab24699c14794"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mo>sin</mo><mi>θ</mi><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="5d59c525d7a1d07a8ed3137c">Distance from Q:</paragraph>
+<paragraph id="c848d7e74f0712f722d0e659"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mn>2</mn><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>B</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="d95e6ceee845f52cc90046ca"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mo>−</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>−</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>sin</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="6e26e7d4cc05bcbda124d66c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mo>−</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mo>sin</mo><mi>θ</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="88260006c37288fe566c5dc8"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mo>sin</mo><mi>θ</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></mfrac><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow></mrow></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="ef913d0cec6aeef4f57e23f8">Product:</paragraph>
+<paragraph id="02632caf19844efdc3ec937c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mn>1</mn><mi>d</mi><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">|</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mo>sin</mo><mi>θ</mi><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><mo>·</mo><mrow><mo form="prefix" stretchy="true">|</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mo>sin</mo><mi>θ</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="true">|</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="5180379a248e0df15d643203">Use |u−2||u+2| = |u² − 4|, where u = cosθ + sinθ:</paragraph>
+<paragraph id="18c8e201beb40457c7349cf8"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mn>1</mn><mi>d</mi><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">|</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mo>sin</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>²</mi><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">|</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="a27ecced2b4beef3016b39a4">Now (cosθ + sinθ)² = cos²θ + sin²θ + 2sinθcosθ = 1 + sin2θ.</paragraph>
+<paragraph id="efd9eca4685ae39925a89233">So:</paragraph>
+<paragraph id="068ce912b596b2790d8b2f31">(cosθ + sinθ)² − 4 = (1 + sin2θ) − 4 = sin2θ − 3</paragraph>
+<paragraph id="7a28e313475ee81c7013dd2c">Hence:</paragraph>
+<paragraph id="65b03aa6d55862c3db8f279d"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mn>1</mn><mi>d</mi><mn>2</mn><mo>=</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>s</mi><mi>i</mi><mi>n</mi><mn>2</mn><mi>θ</mi><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">|</mo></mrow><mi>/</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>4</mn><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>²</mi><mfrac><mi>θ</mi><mi>a</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>s</mi><mi>i</mi><mi>n</mi><mi>²</mi><mfrac><mi>θ</mi><mi>b</mi></mfrac><mi>²</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="75c021748d96d2422264e6d5">Pattern: same denominator √(A²+B²) for both ⇒ product denominator becomes (A²+B²). Numerators look like conjugates: (u−2)(u+2).</paragraph>
+</div>
+<div class="remember-box">
+  <paragraph id="1b52c774279f8f2bcbb1fc30">Convert to Ax + By + C = 0 carefully; sign of C changes the distance numerators.</paragraph>
+</div>
+
+<h3>23. Shortest-time path from intersection point to a line</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="641fbed5c9d2202e6b0cb59a">Uniform speed ⇒ least time = shortest distance.<br/>Shortest distance from a point to a line is along the <b>perpendicular</b>.</paragraph>
+</div>
+<paragraph id="286a0a348f9e7ddc91fc9852">Standing point = intersection of:</paragraph>
+<paragraph id="ae2cb1e2c521d93f41bfaa30">L<sub>1</sub>: 2x − 3y + 4 = 0</paragraph>
+<paragraph id="7592ecbf68e3ebbd6c3bc7ae">L<sub>2</sub>: 3x + 4y − 5 = 0</paragraph>
+<paragraph id="79e130f7fbaa1c320b598ca0">Solve intersection:</paragraph>
+<paragraph id="1ad4450c9512454b5cfa5d35">2x − 3y = −4 ...(1)</paragraph>
+<paragraph id="1ad124b9151215ab87c812b3">3x + 4y = 5 ...(2)</paragraph>
+<paragraph id="51809aa4df4fd297998a1a26">(1)×4: 8x − 12y = −16</paragraph>
+<paragraph id="05d4b672064685abd0bcbbcb">(2)×3: 9x + 12y = 15</paragraph>
+<paragraph id="91ae2f7f35be2b2531d04a5c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mi>d</mi><mi>d</mi><mo>⇒</mo><mn>17</mn><mi>x</mi><mo>=</mo><mo>−</mo><mn>1</mn><mo>⇒</mo><mi>x</mi><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mn>17</mn></mfrac></mrow></math></paragraph><paragraph id="52ca9e523606851a9b97897d">Put in (2):<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>3</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>1</mn><mn>17</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>4</mn><mi>y</mi><mo>=</mo><mn>5</mn></mrow></math> </paragraph><paragraph id="37b2fcd60eccea534c5c48fb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>−</mo><mfrac><mn>3</mn><mn>17</mn></mfrac><mo>+</mo><mn>4</mn><mi>y</mi><mo>=</mo><mfrac><mn>85</mn><mn>17</mn></mfrac><mo>⇒</mo><mn>4</mn><mi>y</mi><mo>=</mo><mfrac><mn>88</mn><mn>17</mn></mfrac><mo>⇒</mo><mi>y</mi><mo>=</mo><mfrac><mn>22</mn><mn>17</mn></mfrac></mrow></math></paragraph><paragraph id="b50d221915c6c709ded3d25c"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>o</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>p</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>P</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>1</mn><mn>17</mn></mfrac><mo>,</mo><mfrac><mn>22</mn><mn>17</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow></math></paragraph><paragraph id="a8d512684fddcc4457c68841">Target line:<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>6</mn><mi>x</mi><mo>−</mo><mn>7</mn><mi>y</mi><mo>+</mo><mn>8</mn><mo>=</mo><mn>0</mn><mi>h</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mi>m</mi><mo>=</mo><mo>−</mo><mfrac><mi>A</mi><mi>B</mi></mfrac><mo>=</mo><mo>−</mo><mfrac><mn>6</mn><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>7</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mn>6</mn><mn>7</mn></mfrac><mi>.</mi></mrow></math> </paragraph><paragraph id="8ae97dab175c182afb37d08e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>e</mi><mi>r</mi><mi>p</mi><mi>e</mi><mi>n</mi><mi>d</mi><mi>i</mi><mi>c</mi><mi>u</mi><mi>l</mi><mi>a</mi><mi>r</mi><mi>s</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mo>=</mo><mo>−</mo><mfrac><mn>7</mn><mn>6</mn></mfrac><mi>.</mi></mrow></math></paragraph><paragraph id="67ebcdb2d00c74d996e60592"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>S</mi><mi>h</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>s</mi><mi>t</mi><mi>p</mi><mi>a</mi><mi>t</mi><mi>h</mi><mi>t</mi><mi>h</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>P</mi><mi>w</mi><mi>i</mi><mi>t</mi><mi>h</mi><mi>s</mi><mi>l</mi><mi>o</mi><mi>p</mi><mi>e</mi><mo>−</mo><mfrac><mn>7</mn><mn>6</mn></mfrac><mo>:</mo></mrow></math></paragraph><paragraph id="1f5f0508e1a1301d0b18dd93"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>y</mi><mo>−</mo><mfrac><mn>22</mn><mn>17</mn></mfrac><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mfrac><mn>7</mn><mn>6</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>+</mo><mfrac><mn>1</mn><mn>17</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><paragraph id="9206a19c76e6eb43c8e079b9">Standard form (×102):</paragraph>
+<paragraph id="85a94a663d4e9a211dc49ef3">102y − 132 = −119x − 7</paragraph>
+<paragraph id="a04e152793646bd6d3835b55">⇒ 119x + 102y − 125 = 0</paragraph>
+<paragraph id="a21fc2d701c8ae8790bd90a9">Required path: <b>119x + 102y − 125 = 0</b></paragraph>
+<div class="remember-box">
+  <paragraph id="ccae0730431366603ac2c33c">Don’t mix up “⟂ to target line” with “through origin”. Start point is the intersection of the two given paths.</paragraph>
+</div>
+
+<h2>Summary: Straight Lines (Must-Know Results)</h2>
+
+<h3>Slope of a line</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4b4c5fccae6086bae12cd28a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>,</mo><mi>p</mi><mi>r</mi><mi>o</mi><mi>v</mi><mi>i</mi><mi>d</mi><mi>e</mi><mi>d</mi><mi>x</mi><mn>2</mn><mo>≠</mo><mi>x</mi><mn>1</mn></mrow></math></paragraph><paragraph id="4c7b9c477cae5e69c5498a90">m = slope of the non-vertical line through (x<sub>1</sub>, y<sub>1</sub>) and (x<sub>2</sub>, y<sub>2</sub>)</paragraph>
+<paragraph id="6b2406011f7210599f61da66">x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub> = coordinates of two distinct points on the line</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1681a1997cef3be8d00d8906">m = tan α, α ≠ 90°</paragraph>
+<paragraph id="7c50462d94e14877bc3d1bb1">m = slope of a line making angle α with the positive x-axis</paragraph>
+<paragraph id="f2f99670ad2e68d5aaab1314">α = inclination of the line with +x direction</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="be3474b45e3515d1dcf499ec">Horizontal line ⇒ slope = 0.</paragraph>
+<paragraph id="e6954d8ffb25c83c7ad1f07d">Vertical line ⇒ slope undefined (division by 0 in slope formula).</paragraph>
+</div>
+
+<h3>Angle between two lines</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="867b6c0529513ed2e2bb5c4f"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>tan</mo><mi>θ</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">|</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>m</mi><mn>2</mn><mo>−</mo><mi>m</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mi>m</mi><mn>1</mn><mi>m</mi><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo form="postfix" stretchy="true">|</mo></mrow><mo>,</mo><mi>w</mi><mi>i</mi><mi>t</mi><mi>h</mi><mn>1</mn><mo>+</mo><mi>m</mi><mn>1</mn><mi>m</mi><mn>2</mn><mo>≠</mo><mn>0</mn></mrow></math></paragraph><paragraph id="b10689c2f0443bd5e34ead5e">θ = acute angle between lines L<sub>1</sub> and L<sub>2</sub></paragraph>
+<paragraph id="f6904e91ff5b854ff3789972">m<sub>1</sub>, m<sub>2</sub> = slopes of L<sub>1</sub>, L<sub>2</sub></paragraph>
+</div>
+
+<h3>Parallelism, perpendicularity, and collinearity</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><paragraph id="12d0368329d2aa48d959a85b">Parallel lines ⇔ slopes equal: m<sub>1</sub> = m<sub>2</sub>.</paragraph></li>
+<li><paragraph id="6006b9df62e17de2e96e1e27">Perpendicular lines ⇔ product of slopes = −1: m<sub>1</sub>m<sub>2</sub> = −1.</paragraph></li>
+<li><paragraph id="a1f3ecca5cb6a2d0ab6aa1bb">Points A, B, C collinear ⇔ slope(AB) = slope(BC).</paragraph></li>
+</ul>
+</div>
+
+<h3>Equations of special lines at a fixed distance from axes</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d567cffbe273320832358442">y = a or y = −a</paragraph>
+<paragraph id="4e056f1b45b81170535e75ac">y = horizontal line at distance a from the x-axis</paragraph>
+<paragraph id="6a4a75383dc89b300905a2bc">a = perpendicular distance from x-axis (a &gt; 0)</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="fbc2f0464b60e354a7776e14">x = b or x = −b</paragraph>
+<paragraph id="6e565c8e48ab8a42443d48bd">x = vertical line at distance b from the y-axis</paragraph>
+<paragraph id="94a8243e64276509ad366e31">b = perpendicular distance from y-axis (b &gt; 0)</paragraph>
+</div>
+
+<h3>Point–slope form</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7f4f54a9dab714f37be2774b">y − y<sub>0</sub> = m(x − x<sub>0</sub>)</paragraph>
+<paragraph id="174f6678f27fa570507ee1b4">(x, y) = any point on the line</paragraph>
+<paragraph id="57331d76c2d8aed49cb767ec">(x<sub>0</sub>, y<sub>0</sub>) = fixed point the line passes through</paragraph>
+<paragraph id="70df34d4813c5841d4132436">m = slope of the line</paragraph>
+</div>
+
+<h3>Two-point form</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0da93d0fc657995e30893fa4"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mn>2</mn><mo>−</mo><mi>y</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mn>2</mn><mo>−</mo><mi>x</mi><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow></mfrac></mrow></math></paragraph><paragraph id="552f8ae50056b1de4ece5c79">(x, y) = any point on the required line</paragraph>
+<paragraph id="f20bcdbce5684437649fa401">(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>) = two given distinct points on the line</paragraph>
+</div>
+
+<h3>Slope–intercept form</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ff9a53a5258fdd9cc0a218c5">y = mx + c</paragraph>
+<paragraph id="fe263c5d9f36aff5a1f86930">m = slope of the line</paragraph>
+<paragraph id="fcfde9e7b416bb4d1697e458">c = y-intercept (value of y where x = 0)</paragraph>
+</div>
+
+<h3>Form using x-intercept</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="25c0884328dc0d87cc992b8a">y = m(x − d)</paragraph>
+<paragraph id="2eeb036e7aa82b1466a00a33">m = slope of the line</paragraph>
+<paragraph id="83ccda519cacd9e89239e20a">d = x-intercept (value of x where y = 0)</paragraph>
+</div>
+
+<h3>Intercept form</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7f442ed7fc492fad159d7a16"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mi>x</mi><mi>a</mi></mfrac><mo>+</mo><mfrac><mi>y</mi><mi>b</mi></mfrac><mo>=</mo><mn>1</mn></mrow></math></paragraph><paragraph id="63c9fc3b4d3a86f9f5a8fe3b">a = intercept made on x-axis</paragraph>
+<paragraph id="65e627efe7034683dd9628fc">b = intercept made on y-axis</paragraph>
+<paragraph id="2dcc85674f09a5339bf10e6a">(x, y) = any point on the line</paragraph>
+</div>
+
+<h3>General equation of a line</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e831b807e35ca360db67ecfc">Any equation Ax + By + C = 0 (A and B not both 0 at the same time) is the <b>general linear equation</b> (general equation) of a straight line.</paragraph>
+</div>
+
+<h3>Perpendicular distance from a point to a line</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f9289de8a14fb1eabd90e3f4"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>A</mi><mi>x</mi><mn>1</mn><mo>+</mo><mi>B</mi><mi>y</mi><mn>1</mn><mo>+</mo><mi>C</mi><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="03cabde678fd2672e0e4cc91">d = perpendicular distance from point (x<sub>1</sub>, y<sub>1</sub>) to line Ax + By + C = 0</paragraph>
+<paragraph id="b31a28acf0d44737f01dd62c">A, B, C = coefficients of the line</paragraph>
+<paragraph id="e704eaaf2b8eb29e8c1d88ae">(x<sub>1</sub>, y<sub>1</sub>) = given point</paragraph>
+</div>
+
+<h3>Distance between two parallel lines</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1bc956421af92f5c2b698ae3"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="true">|</mo><mi>C</mi><mn>2</mn><mo>−</mo><mi>C</mi><mn>1</mn><mo form="postfix" stretchy="true">|</mo></mrow><msqrt><mrow><mi>A</mi><mi>²</mi><mo>+</mo><mi>B</mi><mi>²</mi></mrow></msqrt></mfrac></mrow></math></paragraph><paragraph id="edfd85a0ab8eb85c07fb02d1">d = distance between Ax + By + C<sub>1</sub> = 0 and Ax + By + C<sub>2</sub> = 0</paragraph>
+<paragraph id="deaba33df8407653ee89422a">A, B = same coefficients for both lines (parallel condition)</paragraph>
+<paragraph id="15c9589c3aa03b6a3a08cb26">C<sub>1</sub>, C<sub>2</sub> = constants of the two lines</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="9c53986deada95d8ab4cca7c">The parallel-lines distance formula works only if both lines have identical A and B.</paragraph>
+<paragraph id="8f2309c77ec1cc74291046c5">If not, first multiply one (or both) equations so A and B match.</paragraph>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

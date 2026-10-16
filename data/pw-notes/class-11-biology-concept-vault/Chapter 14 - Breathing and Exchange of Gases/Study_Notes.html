@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5: Human Physiology (Systems Biology Perspective)</title>
+  <link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="container chapter-wrap" id="main-content"><paragraph class="page-label" id="6a8c169ec01a40070bd787bb">Handwritten Notes</paragraph>
+<h1>BREATHING AND EXCHANGE OF GASES</h1>
+
+<h2>Unit 5: Human Physiology (Systems Biology Perspective)</h2>
+
+<h3>From “parts” to “systems”</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787bc"><b>Reductionist approach</b>: studying life by breaking it into smaller parts (molecules, reactions, cell-free systems), leading to heavy use of <b>physico-chemical concepts and techniques</b>.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787bd"><b>Surviving tissue models</b> and <b>cell-free systems</b> were widely used and produced an <b>explosion of knowledge</b> → major growth of <b>molecular biology</b>.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787be"><b>Molecular physiology</b> became almost synonymous with <b>biochemistry and biophysics</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  ⚠ Don’t overcommit to one lens: studying only the whole organism OR only molecules can miss key explanations.
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787bf">Modern understanding: <b>neither</b> a purely organismic approach <b>nor</b> a purely reductionist molecular approach alone fully explains living phenomena.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Think: knowing every instrument ≠ automatically understanding the “music” — interactions create the full effect.
+</div>
+
+<h3>Systems Biology &amp; Emergence</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787c0"><b>Systems biology</b>: explains living phenomena as <b>emergent properties</b> produced by <b>interactions among components</b> of a system.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787c1"><b>Emergent properties</b>: new properties/behaviours that arise from interactions among parts and are not predictable by studying parts in isolation.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787c2">Emergent properties can arise from regulatory networks spanning:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Molecules<span class="tile-sub">regulatory networks, signaling</span></div>
+    <div class="tile">Supramolecular assemblies<span class="tile-sub">large functional complexes</span></div>
+    <div class="tile">Cells<span class="tile-sub">cellular interactions</span></div>
+    <div class="tile">Tissues<span class="tile-sub">coordinated tissue-level function</span></div>
+    <div class="tile">Organisms<span class="tile-sub">integrated body functions</span></div>
+    <div class="tile">Populations &amp; communities<span class="tile-sub">ecological interactions</span></div>
+  </div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Components</div><span class="flow-arrow">→</span><div class="flow-box">Interactions</div><span class="flow-arrow">→</span><div class="flow-box">Regulatory networks</div><span class="flow-arrow">→</span><div class="flow-box">Emergent properties</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787c3">This unit studies major human physiological processes (e.g., <b>gas exchange</b>, <b>blood circulation</b>, <b>locomotion</b>) in <b>cellular and molecular terms</b>, and later emphasizes <b>coordination and regulation</b> at the <b>organismic level</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li>Early focus: explain processes via <b>cells + molecules</b> (mechanisms).</li>
+</ul>
+<ul class="star-list">
+  <li>Later focus: how the body achieves <b>coordination + regulation</b> at the <b>whole-organism</b> scale.</li>
+</ul>
+
+<h2>Biographical Note: Alfonso Corti (1822–1888)</h2>
+
+<h3>Who he was &amp; what he discovered</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787c4"><b>Alfonso Corti</b> (Italian anatomist, born 1822) initially studied the <b>cardiovascular systems of reptiles</b>, then focused on the <b>mammalian auditory system</b>.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787c5">In <b>1851</b>, he described a structure on the <b>basilar membrane of the cochlea</b> containing <b>hair cells</b> that convert <b>sound vibrations</b> into <b>nerve impulses</b>: the <b>organ of Corti</b>.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787c6">Died in <b>1888</b>.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Sound vibrations</div><span class="flow-arrow">→</span><div class="flow-box">Hair cells (organ of Corti)</div><span class="flow-arrow">→</span><div class="flow-box">Nerve impulses</div>
+</div>
+
+<div class="sticky-note">
+  The organ of Corti is basically the ear’s “translator”: vibration signals → electrical messages for the brain.
+</div>
+
+<h2>Chapter 14: Breathing and Exchange of Gases</h2>
+
+<h3>Why organisms need breathing (respiration)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787c7"><b>O<sub>2</sub> is used to indirectly break down</b> simple molecules like <b>glucose, amino acids, fatty acids</b> → to obtain <b>energy</b> for activities.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787c8">These catabolic reactions release <b>CO<sub>2</sub></b> (harmful) → must be <b>removed</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787c9"><b>Breathing (commonly called respiration here)</b> = exchange of <b>O<sub>2</sub></b> from atmosphere with <b>CO<sub>2</sub></b> produced by cells.</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">O<sub>2</sub> supply must be continuous</div><span class="flow-arrow">→</span>
+    <div class="flow-box">CO<sub>2</sub> release must be continuous</div>
+  </div>
+</div>
+
+<div class="sticky-note">
+  <paragraph id="6a8c169ec01a40070bd787ca">Hands on chest = the up–down movement is due to <b>breathing movements</b> changing <b>thoracic volume</b> → driving air flow.</paragraph>
+</div>
+
+<h3>14.1 Respiratory Organs (across animal groups)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787cb"><b>Respiratory mechanisms vary</b> mainly based on:</paragraph>
+  <ul class="check-list">
+    <li><b>Habitat</b> (aquatic vs terrestrial)</li>
+    <li><b>Level of organisation</b> (simple body plan vs complex organ systems)</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787cc"><b>Major respiratory structures</b> + the animal groups using them:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Body surface diffusion<span class="tile-sub">sponges, coelenterates, flatworms (simple diffusion over entire body surface)</span></div>
+    <div class="tile">Moist cuticle<span class="tile-sub">earthworms (gas exchange through cuticle)</span></div>
+    <div class="tile">Tracheal tubes<span class="tile-sub">insects (tube network transports atmospheric air within body)</span></div>
+    <div class="tile">Gills<span class="tile-sub">aquatic arthropods &amp; molluscs; also fishes (branchial respiration)</span></div>
+    <div class="tile">Lungs<span class="tile-sub">terrestrial forms; amphibians, reptiles, birds, mammals (pulmonary respiration)</span></div>
+    <div class="tile">Moist skin<span class="tile-sub">frogs also use skin (cutaneous respiration)</span></div>
+  </div>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd787cd"><b>Don’t mix terms</b>:</paragraph>
+  <ul>
+    <li><b>Branchial respiration</b> = gills</li>
+    <li><b>Pulmonary respiration</b> = lungs</li>
+    <li><b>Cutaneous respiration</b> = skin (not “lungs through skin”)</li>
+  </ul>
+</div>
+
+<h3>14.1.1 Human Respiratory System (structure and divisions)</h3>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 14.1" class="zoomable" data-full="img/Figure_14.1.webp" decoding="async" height="1028" loading="lazy" src="img/Figure_14.1.webp" style="max-width: 100%; height: auto;" width="1602"/>
+</div>
+<paragraph id="6a8c169ec01a40070bd787ce" style="text-align:center;"><b>Figure 14.1:</b> Diagrammatic view of human respiratory system (sectional view of the left lung is also shown)</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787cf"><b>Air passage pathway (outside → exchange site)</b>:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">External nostrils</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Nasal passage</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Nasal chamber</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Pharynx</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Larynx</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Trachea</div>
+  </div>
+
+  <paragraph id="6a8c169ec01a40070bd787d0"><b>Trachea</b> extends to <b>mid-thoracic cavity</b> and divides at the level of the <b>5th thoracic vertebra</b> into:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Right primary bronchus</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Secondary bronchi</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Tertiary bronchi</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Bronchioles</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Terminal bronchioles</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Alveoli</div>
+  </div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <div class="tile-grid">
+    <div class="tile">Pharynx<span class="tile-sub">common passage for <b>food and air</b></span></div>
+    <div class="tile">Larynx<span class="tile-sub"><b>cartilaginous box</b>; helps in <b>sound production</b> → “<b>sound box</b>”</span></div>
+    <div class="tile">Epiglottis<span class="tile-sub">thin, elastic, cartilaginous flap; covers <b>glottis during swallowing</b> → prevents food entry into larynx</span></div>
+  </div>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787d1"><b>Support by cartilage</b>:</paragraph>
+  <ul class="check-list">
+    <li><b>Trachea</b>, <b>primary/secondary/tertiary bronchi</b>, and <b>initial bronchioles</b> are supported by <b>incomplete cartilaginous rings</b>.</li>
+  </ul>
+
+  <paragraph id="6a8c169ec01a40070bd787d2"><b>Alveoli</b>:</paragraph>
+  <ul>
+    <li>Very thin, irregular-walled, <b>vascularised</b> bag-like structures</li>
+    <li>Arise from <b>terminal bronchioles</b></li>
+    <li><b>Key exchange units</b></li>
+  </ul>
+
+  <paragraph id="6a8c169ec01a40070bd787d3"><b>Lungs</b> = branching network of <b>bronchi + bronchioles + alveoli</b>.</paragraph>
+</div>
+
+<h3>Pleura and pleural fluid</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787d4">Each lung is covered by a <b>double-layered pleura</b> with <b>pleural fluid</b> between the layers.</paragraph>
+  <ul class="check-list">
+    <li><b>Pleural fluid</b> reduces <b>friction</b> on lung surface during breathing movements</li>
+    <li><b>Outer pleural membrane</b> → close contact with <b>thoracic lining</b></li>
+    <li><b>Inner pleural membrane</b> → in contact with <b>lung surface</b></li>
+  </ul>
+</div>
+
+<h3>Conducting part vs respiratory (exchange) part</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <div class="flow-row">
+    <div class="flow-box"><b>Conducting part</b><br/>External nostrils → terminal bronchioles</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><b>Respiratory / exchange part</b><br/>Alveoli + their ducts</div>
+  </div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787d5"><b>Functions of conducting part</b> (state explicitly):</paragraph>
+  <ul class="check-list">
+    <li>Transports atmospheric air to the <b>alveoli</b></li>
+    <li><b>Clears</b> air of foreign particles</li>
+    <li><b>Humidifies</b> the air</li>
+    <li>Brings air to <b>body temperature</b></li>
+  </ul>
+
+  <paragraph id="6a8c169ec01a40070bd787d6"><b>Function of exchange part</b>:</paragraph>
+  <ul class="star-list">
+    <li>Actual diffusion of <b>O<sub>2</sub></b> and <b>CO<sub>2</sub></b> between <b>blood</b> and <b>atmospheric air</b></li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd787d7">Common exam slip: “bronchi are exchange surfaces.”</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787d8"><b>Exchange occurs at alveoli (and their ducts)</b>; bronchi/bronchioles mainly conduct air (up to terminal bronchioles).</paragraph>
+</div>
+
+<h3>Thoracic chamber and its role in breathing</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787d9"><b>Lungs lie in the thoracic chamber</b> → anatomically an <b>air-tight chamber</b>.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787da"><b>Boundaries of thoracic chamber</b>:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Dorsal<span class="tile-sub">vertebral column</span></div>
+    <div class="tile">Ventral<span class="tile-sub">sternum</span></div>
+    <div class="tile">Lateral<span class="tile-sub">ribs</span></div>
+    <div class="tile">Lower side<span class="tile-sub">dome-shaped diaphragm</span></div>
+  </div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787db"><b>Key mechanical principle</b>:</paragraph>
+  <div class="flow-row">
+    <div class="flow-box">Change in thoracic cavity volume</div><span class="flow-arrow">→</span>
+    <div class="flow-box">Change in lung (pulmonary) cavity volume</div>
+  </div>
+  <paragraph id="6a8c169ec01a40070bd787dc">Essential because we <b>cannot directly alter pulmonary volume</b>; lung volume changes happen via <b>thoracic volume</b>.</paragraph>
+</div>
+
+<h3>Steps of respiration (full sequence)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787dd">Respiration steps (in order):</paragraph>
+  <ol>
+    <li><b>Breathing / pulmonary ventilation</b>: atmospheric air drawn in; CO<sub>2</sub>-rich alveolar air released out.</li>
+    <li><b>Diffusion of gases</b> (O<sub>2</sub>, CO<sub>2</sub>) across the <b>alveolar membrane</b>.</li>
+    <li><b>Transport of gases</b> by the <b>blood</b>.</li>
+    <li><b>Diffusion</b> of O<sub>2</sub> and CO<sub>2</sub> between <b>blood and tissues</b>.</li>
+    <li><b>Utilisation of O<sub>2</sub></b> by cells for catabolic reactions + release of CO<sub>2</sub> (<b>cellular respiration</b>).</li>
+  </ol>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd787de">Exam trap: “breathing = respiration.”</paragraph>
+  <paragraph id="6a8c169ec01a40070bd787df">Here, breathing is commonly called respiration, but mechanistically respiration includes <b>ventilation + diffusion + transport + tissue diffusion + cellular utilisation</b>.</paragraph>
+</div>
+
+<h3>14.2 Mechanism of Breathing (pressure gradients and muscles)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787e0"><b>Two stages of breathing</b>:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Inspiration<span class="tile-sub">atmospheric air is drawn in</span></div>
+    <div class="tile">Expiration<span class="tile-sub">alveolar air is released out</span></div>
+  </div>
+  <paragraph id="6a8c169ec01a40070bd787e1">Air moves in/out due to a <b>pressure gradient</b> between <b>lungs</b> and <b>atmosphere</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd787e2"><b>Rule for airflow (pressure gradient)</b>:</paragraph>
+  <ul>
+    <li><b>Inspiration</b> when <b>intra-pulmonary pressure</b> &lt; <b>atmospheric pressure</b> (negative pressure relative to atmosphere)</li>
+    <li><b>Expiration</b> when <b>intra-pulmonary pressure</b> &gt; <b>atmospheric pressure</b></li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787e3"><b>Muscles generating pressure gradients</b>:</paragraph>
+  <div class="tile-grid">
+    <div class="tile">Diaphragm<span class="tile-sub">primary muscle; changes thoracic volume</span></div>
+    <div class="tile">External intercostals<span class="tile-sub">between ribs; aid inspiration</span></div>
+    <div class="tile">Internal intercostals<span class="tile-sub">between ribs; involved in generating gradients (specialised set)</span></div>
+  </div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787e4"><b>Initiation of inspiration</b> (as stated):</paragraph>
+  <ul class="star-list">
+    <li><b>Diaphragm contracts</b> → increases thoracic chamber volume in the <b>antero-posterior axis</b></li>
+    <li><b>External intercostal muscles contract</b> → <b>lift up ribs</b> → further increases thoracic volume</li>
+  </ul>
+</div>
+
+<h2>Mechanism of Breathing (Inspiration &amp; Expiration)</h2>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 14.2" class="zoomable" data-full="img/Figure_14.2.webp" decoding="async" height="1854" loading="lazy" src="img/Figure_14.2.webp" style="max-width: 100%; height: auto;" width="980"/>
+</div>
+<paragraph id="6a8c169ec01a40070bd787e5" style="text-align:center;"><b>Figure 14.2:</b> Mechanism of breathing showing :
+(a) inspiration (b) expiration</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787e6"><b>Breathing (pulmonary ventilation)</b> happens because of <b>pressure differences</b> made by <b>changes in thoracic (chest) volume</b>. When thoracic volume changes, <b>pulmonary (lung) volume</b> changes too → this alters <b>intra‑pulmonary pressure</b> relative to atmospheric pressure → airflow occurs.</paragraph>
+</div>
+
+<div class="sticky-note">
+  Think: <b>Air = “moves down a pressure slope”</b>. Your chest changes size first, then lung pressure changes, then air follows.
+</div>
+
+<h3>Inspiration (breathing in)</h3>
+
+<div class="flow-row">
+  <div class="flow-box">Diaphragm contracts</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Thoracic volume increases</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Pulmonary volume increases</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Intra-pulmonary pressure falls below atmospheric pressure</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Air moves into lungs</div>
+</div>
+
+<ul class="check-list">
+  <li><b>Diaphragm</b> contraction increases thoracic volume.</li>
+  <li><b>Inter-costal muscles</b> contract, raising the sternum, increasing thoracic chamber volume in the <b>dorso‑ventral axis</b>.</li>
+  <li>Air enters because <b>intra‑pulmonary pressure becomes less than atmospheric pressure</b>.</li>
+</ul>
+
+<h3>Expiration (breathing out)</h3>
+
+<div class="flow-row">
+  <div class="flow-box">Diaphragm &amp; inter-costal muscles relax</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Diaphragm &amp; sternum return to normal position</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Thoracic &amp; pulmonary volumes decrease</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Intra‑pulmonary pressure rises slightly above atmospheric</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Air is expelled</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787e7"><b>Key exam logic:</b> Air always moves <b>from higher pressure to lower pressure</b>.</paragraph>
+  <ul>
+    <li><b>Inspiration:</b> intra‑pulmonary pressure <b>&lt;</b> atmospheric</li>
+    <li><b>Expiration:</b> intra‑pulmonary pressure <b>&gt;</b> atmospheric (even if only slightly)</li>
+  </ul>
+</div>
+
+<h3>Forceful breathing &amp; breathing rate</h3>
+
+<ul class="star-list">
+  <li><b>Force of inspiration/expiration can be increased</b> using <b>additional abdominal muscles</b>.</li>
+  <li><b>Normal breathing rate:</b> about <b>12–16 breaths/minute</b> in a healthy human (average).</li>
+</ul>
+
+<h3>Spirometer (clinical estimation of air volumes)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787e8">A <b>spirometer</b> estimates the <b>volume of air involved in breathing movements</b> and helps in <b>clinical assessment of pulmonary functions</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd787e9">Do not confuse <b>thoracic volume</b> change (chest cavity) with <b>pulmonary volume</b> change (lungs). <b>Thoracic change drives pulmonary change</b>, which then changes intra‑pulmonary pressure.</paragraph>
+</div>
+
+<hr/>
+
+<h2>Respiratory Volumes and Capacities</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787ea"><b>Respiratory volumes</b> are basic measurable air volumes. By <b>adding</b> specific volumes, we obtain <b>pulmonary capacities</b> used in clinical diagnosis.</paragraph>
+</div>
+
+<h3>Respiratory Volumes (basic components)</h3>
+
+<div class="tile-grid">
+  <div class="tile">Tidal Volume (TV)<span class="tile-sub">Air inspired/expired in normal respiration; ~500 mL</span></div>
+  <div class="tile">Inspiratory Reserve Volume (IRV)<span class="tile-sub">Extra air inspired by forcible inspiration; ~2500–3000 mL</span></div>
+  <div class="tile">Expiratory Reserve Volume (ERV)<span class="tile-sub">Extra air expired by forcible expiration; ~1000–1100 mL</span></div>
+  <div class="tile">Residual Volume (RV)<span class="tile-sub">Air remaining after forcible expiration; ~1100–1200 mL</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787eb"><b>Minute air moved in quiet breathing:</b> TV ≈ 500 mL. With ~12–16 breaths/min, a healthy man can inspire/expire about <b>6000–8000 mL of air per minute</b>.</paragraph>
+</div>
+
+<h3>Pulmonary Capacities (derived by adding volumes)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd787ec"><b>Inspiratory Capacity (IC) = TV + IRV</b></paragraph>
+  <paragraph id="6a8c169ec01a40070bd787ed">Total air a person can inspire <b>after a normal expiration</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd787ee"><b>Expiratory Capacity (EC) = TV + ERV</b></paragraph>
+  <paragraph id="6a8c169ec01a40070bd787ef">Total air a person can expire <b>after a normal inspiration</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd787f0"><b>Functional Residual Capacity (FRC) = ERV + RV</b></paragraph>
+  <paragraph id="6a8c169ec01a40070bd787f1">Air remaining in lungs <b>after a normal expiration</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd787f2"><b>Vital Capacity (VC) = ERV + TV + IRV</b></paragraph>
+  <paragraph id="6a8c169ec01a40070bd787f3"><b>Maximum</b> air that can be breathed in <b>after a forced expiration</b>, OR maximum air that can be breathed out <b>after a forced inspiration</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd787f4"><b>Total Lung Capacity (TLC) = RV + ERV + TV + IRV = VC + RV</b></paragraph>
+  <paragraph id="6a8c169ec01a40070bd787f5">Total air accommodated in lungs at the end of a <b>forced inspiration</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd787f6">Exam trap: <b>VC does NOT include RV</b>. <b>TLC includes RV</b> (because lungs never completely empty).</paragraph>
+</div>
+
+<hr/>
+
+<h2>Exchange of Gases</h2>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 14.3" class="zoomable" data-full="img/Figure_14.3.webp" decoding="async" height="1235" loading="lazy" src="img/Figure_14.3.webp" style="max-width: 100%; height: auto;" width="1520"/>
+</div>
+<paragraph id="6a8c169ec01a40070bd787f7" style="text-align:center;"><b>Figure 14.3:</b> Diagrammatic representation of exchange of gases at the alveolus and the body tissues with blood and transport of oxygen and carbon dioxide</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787f8"><b>Alveoli</b> are the primary sites of gas exchange. Gas exchange also occurs between <b>blood and tissues</b>. O<sub>2</sub> and CO<sub>2</sub> move by <b>simple diffusion</b>, mainly due to a <b>pressure/concentration gradient</b>.</paragraph>
+</div>
+
+<h3>Factors affecting diffusion of O<sub>2</sub> and CO<sub>2</sub></h3>
+
+<ul class="check-list">
+  <li><b>Pressure/concentration gradient</b> (major driver)</li>
+  <li><b>Solubility</b> of gases</li>
+  <li><b>Thickness</b> of the diffusion membranes</li>
+</ul>
+
+<h3>Partial pressure (pO<sub>2</sub>, pCO<sub>2</sub>)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787f9"><b>Partial pressure</b> = pressure contributed by an individual gas in a mixture of gases.</paragraph>
+  <ul>
+    <li>Oxygen: <b>pO<sub>2</sub></b></li>
+    <li>Carbon dioxide: <b>pCO<sub>2</sub></b></li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787fa">The values below establish the diffusion gradients across <b>alveoli ↔ blood</b> and <b>blood ↔ tissues</b>.</paragraph>
+</div>
+
+<ul class="star-list">
+  <li><b>Atmospheric air:</b> pO<sub>2</sub> = 159 mm Hg; pCO<sub>2</sub> = 0.3 mm Hg</li>
+  <li><b>Alveoli:</b> pO<sub>2</sub> = 104 mm Hg; pCO<sub>2</sub> = 40 mm Hg</li>
+  <li><b>Blood (deoxygenated):</b> pO<sub>2</sub> = 40 mm Hg; pCO<sub>2</sub> = 45 mm Hg</li>
+  <li><b>Blood (oxygenated):</b> pO<sub>2</sub> = 95 mm Hg; pCO<sub>2</sub> = 40 mm Hg</li>
+  <li><b>Tissues:</b> pO<sub>2</sub> = 40 mm Hg; pCO<sub>2</sub> = 45 mm Hg</li>
+</ul>
+
+<div class="flow-row">
+  <div class="flow-box">O<sub>2</sub>: Alveoli (104)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Blood (40)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Tissues (40)</div>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">CO<sub>2</sub>: Tissues (45)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Blood (45→40)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Alveoli (40)</div>
+</div>
+
+<h3>Why CO<sub>2</sub> diffuses efficiently despite smaller gradient</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787fb"><b>CO<sub>2</sub> solubility is 20–25 times higher than O<sub>2</sub></b>. So, for the same partial pressure difference, <b>more CO<sub>2</sub></b> diffuses across the membrane than O<sub>2</sub>.</paragraph>
+</div>
+
+<h3>Diffusion membrane (structure and thickness)</h3>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 14.4" class="zoomable" data-full="img/Figure_14.4.webp" decoding="async" height="564" loading="lazy" src="img/Figure_14.4.webp" style="max-width: 100%; height: auto;" width="1052"/>
+</div>
+<paragraph id="6a8c169ec01a40070bd787fc" style="text-align:center;"><b>Figure 14.4:</b> A Diagram of a section of an
+alveolus with a pulmonary capillary.</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd787fd">The <b>diffusion membrane</b> (alveolar air ↔ blood) has <b>three major layers</b>:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Alveolar epithelium<span class="tile-sub">Thin squamous epithelium of alveoli</span></div>
+  <div class="tile">Capillary endothelium<span class="tile-sub">Endothelium of alveolar capillaries</span></div>
+  <div class="tile">Basement substance<span class="tile-sub">Thin basement membrane supporting alveolar epithelium + basement membrane around endothelial cells</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd787fe"><b>Total thickness</b> is <b>much less than a millimetre</b> → diffusion is highly favourable for:</paragraph>
+  <ul class="check-list">
+    <li><b>O<sub>2</sub>:</b> alveoli → tissues</li>
+    <li><b>CO<sub>2</sub>:</b> tissues → alveoli</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd787ff">Always state diffusion directions with both steps:</paragraph>
+  <ul>
+    <li><b>O<sub>2</sub>:</b> <b>alveoli → blood → tissues</b></li>
+    <li><b>CO<sub>2</sub>:</b> <b>tissues → blood → alveoli</b></li>
+  </ul>
+</div>
+
+<hr/>
+
+<h2>Transport of Gases</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78800"><b>Blood</b> transports O<sub>2</sub> and CO<sub>2</sub>. Transport occurs via <b>RBCs</b> and <b>plasma</b> in specific proportions.</paragraph>
+</div>
+
+<h3>Overall transport proportions (must-know values)</h3>
+<div class="tile-grid">
+  <div class="tile">O<sub>2</sub> via RBCs<span class="tile-sub">~97% transported by RBCs (as Hb-bound)</span></div>
+  <div class="tile">O<sub>2</sub> via plasma<span class="tile-sub">~3% dissolved in plasma</span></div>
+  <div class="tile">CO<sub>2</sub> via RBCs<span class="tile-sub">~20–25% transported by RBCs</span></div>
+  <div class="tile">CO<sub>2</sub> as bicarbonate<span class="tile-sub">~70% carried as bicarbonate</span></div>
+  <div class="tile">CO<sub>2</sub> dissolved<span class="tile-sub">~7% dissolved in plasma</span></div>
+</div>
+
+<h3>Transport of Oxygen</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78801"><b>Haemoglobin (Hb)</b> is a red, iron-containing pigment in RBCs. O<sub>2</sub> binds <b>reversibly</b> with Hb to form <b>oxyhaemoglobin</b>.</paragraph>
+</div>
+
+<ul class="check-list">
+  <li><b>Carrying capacity:</b> each Hb molecule can carry a maximum of <b>4 O<sub>2</sub> molecules</b>.</li>
+  <li>Hb–O<sub>2</sub> binding is primarily related to <b>pO<sub>2</sub></b>.</li>
+  <li>Other factors that interfere with binding: <b>pCO<sub>2</sub></b>, <b>H<sup>+</sup> concentration</b>, and <b>temperature</b>.</li>
+</ul>
+
+<div class="sticky-note">
+  Think “Hb is a reversible taxi”: it <b>loads</b> O<sub>2</sub> where pO<sub>2</sub> is high (lungs) and <b>drops</b> it where pO<sub>2</sub> is low (tissues).
+</div>
+
+<h3>Oxygen dissociation curve (sigmoid curve)</h3>
+<div style="display: flex; justify-content: center;">
+    <img alt="Figure 14.5" class="zoomable" data-full="img/Figure_14.5.webp" decoding="async" height="939" loading="lazy" src="img/Figure_14.5.webp" style="max-width: 100%; height: auto;" width="922"/>
+</div>
+<paragraph id="6a8c169ec01a40070bd78802" style="text-align:center;"><b>Figure 14.5:</b> Oxygen dissociation curve</paragraph>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78803">Plotting <b>% saturation of Hb with O<sub>2</sub></b> against <b>pO<sub>2</sub></b> gives a <b>sigmoid (S-shaped) curve</b> called the <b>oxygen dissociation curve</b>. It is used to study how factors like <b>pCO<sub>2</sub></b> and <b>H<sup>+</sup></b> affect Hb–O<sub>2</sub> binding.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd78804"><b>Alveoli (favour binding/formation of oxyhaemoglobin):</b> high pO<sub>2</sub>, low pCO<sub>2</sub>, lower H<sup>+</sup> concentration, lower temperature.</paragraph>
+  <paragraph id="6a8c169ec01a40070bd78805"><b>Tissues (favour dissociation/release of O<sub>2</sub>):</b> low pO<sub>2</sub>, high pCO<sub>2</sub>, high H<sup>+</sup> concentration, higher temperature.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Lungs: O<sub>2</sub> binds Hb</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Blood transports oxyhaemoglobin</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Tissues: O<sub>2</sub> dissociates</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd78806">Under normal physiological conditions, every <b>100 mL of oxygenated blood</b> can deliver about <b>5 mL of O<sub>2</sub></b> to tissues.</paragraph>
+</div>
+
+<h3>Transport of Carbon dioxide</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78807">CO<sub>2</sub> is transported in three forms: (i) dissolved in plasma, (ii) as bicarbonate (major share), and (iii) bound to haemoglobin as <b>carbamino‑haemoglobin</b> (about <b>20–25%</b>).</paragraph>
+</div>
+
+<ul class="check-list">
+  <li>CO<sub>2</sub> binding to Hb (carbamino‑haemoglobin) is related to <b>pCO<sub>2</sub></b>.</li>
+  <li><b>pO<sub>2</sub></b> is a major factor affecting this binding.</li>
+  <li><b>Tissues:</b> high pCO<sub>2</sub> + low pO<sub>2</sub> → <b>more CO<sub>2</sub> binding</b>.</li>
+  <li><b>Alveoli:</b> low pCO<sub>2</sub> + high pO<sub>2</sub> → <b>CO<sub>2</sub> dissociation</b>.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd78808">Write the condition pairs exactly in exams: <b>tissues = high pCO<sub>2</sub>, low pO<sub>2</sub> (binding)</b>; <b>alveoli = low pCO<sub>2</sub>, high pO<sub>2</sub> (dissociation)</b>.</paragraph>
+</div>
+
+<h2><b>CO<sub>2</sub> Transport: Release at Alveoli &amp; Role of Carbonic Anhydrase</b></h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78809"><b>Carbamino-haemoglobin</b> = CO<sub>2</sub> bound to haemoglobin (formed mainly in tissues; CO<sub>2</sub> is delivered/unloaded at alveoli).</paragraph>
+  <paragraph id="6a8c169ec01a40070bd7880a"><b>Carbonic anhydrase (CA)</b> = enzyme present in very high concentration in <b>RBCs</b>; minute quantities also occur in <b>plasma</b>. It catalyses the interconversion between CO<sub>2</sub> and bicarbonate, in <b>both directions</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8c169ec01a40070bd7880b"><b>Carbonic anhydrase reaction (reversible):</b></paragraph>
+  <paragraph id="6a8c169ec01a40070bd7880c">CO<sub>2</sub> + H<sub>2</sub>O ⇌ H<sub>2</sub>CO<sub>3</sub> (catalysed by <b>carbonic anhydrase</b>)</paragraph>
+  <paragraph id="6a8c169ec01a40070bd7880d">H<sub>2</sub>CO<sub>3</sub> ⇌ HCO<sub>3</sub><sup>−</sup> + H<sup>+</sup></paragraph>
+</div>
+
+<h3>At Tissue Site (High pCO<sub>2</sub>)</h3>
+<paragraph id="6a8c169ec01a40070bd7880e">Because catabolism produces CO<sub>2</sub>, <b>partial pressure of CO<sub>2</sub> (pCO<sub>2</sub>) is high</b> in tissues.</paragraph>
+
+<div class="flow-row">
+  <div class="flow-box">High tissue pCO<sub>2</sub></div><span class="flow-arrow">→</span>
+  <div class="flow-box">CO<sub>2</sub> diffuses into blood (plasma + RBC)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">CA drives formation of HCO<sub>3</sub><sup>−</sup> + H<sup>+</sup></div>
+</div>
+
+<ul class="star-list">
+  <li>Net effect: CO<sub>2</sub> becomes “trapped” largely as <b>bicarbonate (HCO<sub>3</sub><sup>−</sup>)</b> for transport in blood.</li>
+</ul>
+
+<h3>At Alveolar Site (Low pCO<sub>2</sub>)</h3>
+<paragraph id="6a8c169ec01a40070bd7880f">At the alveoli, <b>pCO<sub>2</sub> is low</b>, so the same reversible reactions proceed in the <b>opposite direction</b>.</paragraph>
+
+<div class="flow-row">
+  <div class="flow-box">Low alveolar pCO<sub>2</sub></div><span class="flow-arrow">→</span>
+  <div class="flow-box">HCO<sub>3</sub><sup>−</sup> + H<sup>+</sup> recombine</div><span class="flow-arrow">→</span>
+  <div class="flow-box">H<sub>2</sub>CO<sub>3</sub> → CO<sub>2</sub> + H<sub>2</sub>O</div><span class="flow-arrow">→</span>
+  <div class="flow-box">CO<sub>2</sub> diffuses into alveoli and is exhaled</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd78810"><b>Key transport idea:</b> CO<sub>2</sub> produced at tissues is converted mainly to <b>bicarbonate</b> for transport; at alveoli it is reconverted to <b>CO<sub>2</sub></b> and eliminated.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78811"><b>Quantitative fact (exam use):</b> Every <b>100 mL</b> of <b>deoxygenated blood</b> delivers approximately <b>4 mL of CO<sub>2</sub></b> to the alveoli.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd78812">Do not state carbonic anhydrase is only in plasma: it is in <b>very high concentration in RBCs</b> and only <b>minute</b> amounts in plasma.</paragraph>
+</div>
+
+<h2>Regulation of Respiration</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78813">Humans can <b>maintain and modify respiratory rhythm</b> according to tissue demands primarily through a <b>neural system</b>.</paragraph>
+</div>
+
+<h3>Respiratory Rhythm Centre (Medulla)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78814"><b>Respiratory rhythm centre</b> = specialised centre in the <b>medulla</b> that is <b>primarily responsible</b> for regulation of breathing rhythm.</paragraph>
+</div>
+
+<h3>Pneumotaxic Centre (Pons)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78815"><b>Pneumotaxic centre</b> = centre in the <b>pons</b> that can <b>moderate</b> the function of the respiratory rhythm centre.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd78816"><b>Effect:</b> Neural signals from the pneumotaxic centre can <b>reduce the duration of inspiration</b> and thereby <b>alter respiratory rate</b>.</paragraph>
+</div>
+
+<h3>Chemosensitive Area (Adjacent to Rhythm Centre)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78817">A <b>chemosensitive area</b> located adjacent to the rhythm centre is highly sensitive to:</paragraph>
+  <ul class="check-list">
+    <li><b>CO<sub>2</sub></b></li>
+    <li><b>H<sup>+</sup></b> (hydrogen ions)</li>
+  </ul>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">↑ CO<sub>2</sub> and/or ↑ H<sup>+</sup></div><span class="flow-arrow">→</span>
+  <div class="flow-box">Chemosensitive area activated</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Signals rhythm centre</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Breathing adjusted to eliminate CO<sub>2</sub>/H<sup>+</sup></div>
+</div>
+
+<h3>Peripheral Receptors: Aortic Arch &amp; Carotid Artery</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8c169ec01a40070bd78818"><b>Receptors in the aortic arch and carotid artery</b> can detect changes in:</paragraph>
+  <ul class="check-list">
+    <li>CO<sub>2</sub> concentration</li>
+    <li>H<sup>+</sup> concentration</li>
+  </ul>
+  <paragraph id="6a8c169ec01a40070bd78819">They send necessary signals to the <b>rhythm centre</b> for remedial actions.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8c169ec01a40070bd7881a"><b>Role of oxygen:</b> Oxygen has a <b>quite insignificant</b> role in the regulation of respiratory rhythm (compared with CO<sub>2</sub>/H<sup>+</sup>).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8c169ec01a40070bd7881b">Exam pitfall: writing “breathing is regulated mainly by O<sub>2</sub> levels.” In humans, regulation is dominated by <b>CO<sub>2</sub> and H<sup>+</sup></b>.</paragraph>
+</div>
+
+<h2>Disorders of Respiratory System</h2>
+
+<h3>Asthma</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd7881c"><b>Asthma</b> = difficulty in breathing causing <b>wheezing</b> due to <b>inflammation of bronchi and bronchioles</b>.</paragraph>
+</div>
+<div class="remember-box">⚠ Don’t mix it up: asthma is mainly about <b>inflamed/narrowed airways</b> (bronchi/bronchioles), not damaged alveoli.</div>
+<div class="sticky-note">Think of the airways like a “squeezed” straw → air struggles to move → you hear wheezing.</div>
+
+<h3>Emphysema</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd7881d"><b>Emphysema</b> = chronic disorder where <b>alveolar walls are damaged</b>, causing a <b>decrease in respiratory surface area</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169ec01a40070bd7881e"><b>Major cause:</b> cigarette smoking.</paragraph>
+</div>
+<div class="sticky-note">Imagine popping the tiny “bubble walls” of alveoli → fewer separate bubbles = less surface area for gas exchange.</div>
+
+<h3>Occupational Respiratory Disorders</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd7881f">In some industries (especially <b>grinding</b> or <b>stone-breaking</b>), heavy dust production may overwhelm the body’s defence mechanisms.</paragraph>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Long-term dust exposure</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Inflammation</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Fibrosis (proliferation of fibrous tissue)</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Serious lung damage</div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169ec01a40070bd78820"><b>Prevention:</b> workers should wear <b>protective masks</b>.</paragraph>
+</div>
+<div class="remember-box">⚠ Key idea: it’s the <b>long-term</b> exposure that drives fibrosis and lasting damage.</div>
+
+
+
+<h2>Chapter Wrap-Up: What You Must Be Able to State (from the Summary)</h2>
+
+<h3>Overall Purpose &amp; Steps in Respiration</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd78821">Cells use <b>O<sub>2</sub></b> for metabolism to release energy and produce <b>CO<sub>2</sub></b> (harmful if accumulated). Animals evolved mechanisms for:</paragraph>
+<ul class="check-list">
+<li>Transport of O<sub>2</sub> to cells</li>
+<li>Removal of CO<sub>2</sub> from cells</li>
+</ul>
+<paragraph id="6a8c169ec01a40070bd78822">Humans have a well-developed respiratory system: <b>two lungs + associated air passages</b>.</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">Breathing<span class="tile-sub">Inspiration (air in) + Expiration (alveolar air out)</span></div>
+  <div class="tile">Alveoli ↔ Blood exchange<span class="tile-sub">O<sub>2</sub> into blood; CO<sub>2</sub> into alveoli</span></div>
+  <div class="tile">Transport by blood<span class="tile-sub">Gases carried throughout body</span></div>
+  <div class="tile">Blood ↔ Tissues exchange<span class="tile-sub">O<sub>2</sub> to tissues; CO<sub>2</sub> to blood</span></div>
+  <div class="tile">Cellular respiration<span class="tile-sub">Cells utilise O<sub>2</sub></span></div>
+</div>
+
+<h3>Mechanism of Inspiration/Expiration &amp; Spirometry</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd78823">Inspiration and expiration occur by creating <b>pressure gradients</b> between atmosphere and alveoli using specialised muscles:</paragraph>
+<ul class="check-list">
+<li><b>Intercostal muscles</b></li>
+<li><b>Diaphragm</b></li>
+</ul>
+<paragraph id="6a8c169ec01a40070bd78824">Air volumes can be measured using a <b>spirometer</b>; these measurements are of <b>clinical significance</b>.</paragraph>
+</div>
+<div class="sticky-note">Pressure gradient = “air moves from higher pressure to lower pressure” (like air rushing out of a squeezed balloon).</div>
+
+<h3>Diffusion of Gases: Determinants</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd78825">Exchange of O<sub>2</sub> and CO<sub>2</sub> at alveoli and tissues occurs by <b>diffusion</b>. Rate of diffusion depends on:</paragraph>
+<ul class="check-list">
+<li>Partial pressure gradients of O<sub>2</sub> (pO<sub>2</sub>) and CO<sub>2</sub> (pCO<sub>2</sub>)</li>
+<li>Solubility of the gases</li>
+<li>Thickness of the diffusion surface</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8c169ec01a40070bd78826">These factors favour diffusion of:</paragraph>
+<ul class="star-list">
+<li><b>O<sub>2</sub>:</b> alveoli → deoxygenated blood; oxygenated blood → tissues</li>
+<li><b>CO<sub>2</sub>:</b> tissues → alveoli (opposite direction)</li>
+</ul>
+</div>
+<div class="remember-box">⚠ Common slip: the direction is set by <b>partial pressure gradients</b>, not “where there is more oxygen in general.”</div>
+
+<h3>Transport of O<sub>2</sub></h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd78827">Oxygen is transported mainly as <b>oxyhaemoglobin</b>.</paragraph>
+<ul class="star-list">
+<li>At <b>alveoli</b> (high pO<sub>2</sub>): O<sub>2</sub> binds haemoglobin.</li>
+<li>At <b>tissues</b> (low pO<sub>2</sub>, high pCO<sub>2</sub> and high H<sup>+</sup>): O<sub>2</sub> dissociates from haemoglobin.</li>
+</ul>
+</div>
+<div class="flow-row">
+  <div class="flow-box">Alveoli: high pO<sub>2</sub></div><span class="flow-arrow">→</span>
+  <div class="flow-box">Hb loads O<sub>2</sub></div><span class="flow-arrow">→</span>
+  <div class="flow-box">Tissues: low pO<sub>2</sub>, high pCO<sub>2</sub>/H<sup>+</sup></div><span class="flow-arrow">→</span>
+  <div class="flow-box">Hb unloads O<sub>2</sub></div>
+</div>
+
+<h3>Transport of CO<sub>2</sub></h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8c169ec01a40070bd78828">Major CO<sub>2</sub> transport forms:</paragraph>
+</div>
+
+<div class="tile-grid">
+  <div class="tile">~70% as HCO<sub>3</sub><sup>−</sup><span class="tile-sub">via carbonic anhydrase</span></div>
+  <div class="tile">20–25% as carbamino-Hb<span class="tile-sub">CO<sub>2</sub> bound to haemoglobin</span></div>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul class="star-list">
+<li>At <b>tissues</b> (high pCO<sub>2</sub>): At tissues, CO<sub>2</sub> enters the blood and is transported mainly as bicarbonate and partly as carbamino-haemoglobin. </li>
+<li>At <b>alveoli</b> (low pCO<sub>2</sub> and high pO<sub>2</sub>): CO<sub>2</sub> is removed/unloaded from blood.</li>
+</ul>
+</div>
+
+<div class="flow-row">
+  <div class="flow-box">Tissues: high pCO<sub>2</sub></div><span class="flow-arrow">→</span>
+  <div class="flow-box">CO<sub>2</sub> loads into blood</div><span class="flow-arrow">→</span>
+  <div class="flow-box">Alveoli: low pCO<sub>2</sub>, high pO<sub>2</sub></div><span class="flow-arrow">→</span>
+  <div class="flow-box">CO<sub>2</sub> unloads to alveoli</div>
+</div>
+
+<h3>Neural Control Centres (Recap)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul class="check-list">
+<li><b>Respiratory centre (medulla):</b> maintains respiratory rhythm</li>
+<li><b>Pneumotaxic centre (pons):</b> alters/moderates respiratory mechanism (reduces inspiration duration)</li>
+<li><b>Chemosensitive area (medulla, adjacent):</b> responds strongly to CO<sub>2</sub> and H<sup>+</sup></li>
+</ul>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+  <span class="mnemonic-word">MPC</span>
+  <div class="mnemonic-expand">
+    M — <b>Medulla</b>: rhythm maker (respiratory centre)<br/>
+    P — <b>Pons</b>: “paces” inspiration (pneumotaxic centre reduces inspiration duration)<br/>
+    C — <b>CO<sub>2</sub>/H<sup>+</sup></b> sensing area: chemosensitive area responds strongly
+  </div>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

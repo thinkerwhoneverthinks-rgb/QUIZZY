@@ -160,6 +160,9 @@ function showTopicSelect() {
 let practiceOrder = 'topic'; // 'topic' or 'serial'
 
 function isExerciseTopicRearranged() {
+    if (typeof topics !== 'undefined' && topics && topics.length > 1) {
+        return true;
+    }
     if (!questions || questions.length <= 1) return false;
     for (let i = 1; i < questions.length; i++) {
         const prev = questions[i - 1].originalNumber;
@@ -173,6 +176,7 @@ function isExerciseTopicRearranged() {
 
 function setPracticeOrder(order) {
     practiceOrder = order;
+    if (typeof currentPracticeOrder !== 'undefined') currentPracticeOrder = order;
     renderTopicSelect();
 }
 
@@ -286,6 +290,7 @@ function startPractice() {
     }
 
     questions = filteredQuestions;
+    if (typeof currentPracticeOrder !== 'undefined') currentPracticeOrder = practiceOrder;
     if (typeof restoreSavedTopicProgress === 'function') {
         restoreSavedTopicProgress();
     } else {

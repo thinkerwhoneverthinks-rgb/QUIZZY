@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Evolution — Biology</title>
+  <meta name="description" content="Evolution — Biology topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Biology</div>
+        <h1>Evolution</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Evolution needs a deep-time lens: Earth history + the idea of look-back time supports thinking across long timescales</div>
+              <h2>EVOLUTIONARY BIOLOGY CONTEXT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Evolutionary biology</b> is the study of the <b>history of life on Earth</b>: origin and changes in biodiversity over millions of years.</li><li>It explains how lineages appear, diversify and go extinct through time, producing present-day biodiversity.</li><li>To understand evolution, we need <b>context</b>: Earth’s age and changing environments across geological time.</li><li>Astronomy adds a time-scale idea: distant objects are seen via older light, so <b>seeing</b> can mean seeing the <b>past state</b>.</li></ul></div>
+    
+    
+  
+  
+  <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🕰️</span><span><b>Deep time</b>: evolutionary change accumulates over millions to billions of years.</span></li><li><span class="ic">🌍</span><span><b>Earth context</b>: climate, oceans, atmosphere and geology change; evolution responds to changing conditions.</span></li><li><span class="ic">🌌</span><span><b>Universe context</b>: Earth is part of a much older universe; life’s history is a late chapter.</span></li><li><span class="ic">🔭</span><span><b>Looking back</b>: farther objects are seen farther back in time due to finite speed of light.</span></li><li><span class="ic">💡</span><span><b>Present vs past observation</b>: nearby objects ≈ present; distant stars/galaxies show earlier emitted light.</span></li><li><span class="ic">📏</span><span><b>Light year</b>: a distance unit equal to the distance light travels in one year.</span></li></ul></div></div>
+
+
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHAT EVOLUTIONARY BIOLOGY ASKS </span></h2><ul class="b"><li>How did life originate and diversify across geological time?</li><li>Why do some lineages persist while others go extinct in changing environments?</li><li>How does biodiversity shift with long-term changes in Earth’s surface and atmosphere?</li><li>How do fossils and rock layers place life forms in a time-ordered sequence?</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">ASTRONOMICAL TIME IDEA: "LOOKING BACK IN TIME"</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='18' y='22' width='324' height='156' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='28' y='46' font-size='13' fill='#1f2a44'>Light travel idea</text><circle cx='64' cy='110' r='18' fill='#FEF5E4' stroke='#F59E0B'/><text x='53' y='114' font-size='12' fill='#1f2a44'>Star</text><circle cx='296' cy='110' r='16' fill='#EAF7EF' stroke='#16A34A'/><text x='282' y='114' font-size='12' fill='#1f2a44'>Eye</text><line x1='86' y1='110' x2='278' y2='110' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='120' y='98' font-size='12' fill='#1f2a44'>light travels</text><text x='114' y='132' font-size='12' fill='#1f2a44'>arrival = earlier info</text></svg></div><ul class="b"><li>Light takes time to travel; the sky can show an earlier state of the source.</li><li><b>Light year</b> is a <b>distance</b> unit used for cosmic scales.</li><li>Because light speed is finite, greater distance generally means greater look-back time (qualitative idea).</li><li>This supports deep-time thinking: long histories are normal in nature, including life’s history.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">IMMEDIATE SURROUNDINGS vs DISTANT STARS (LOOK-BACK TIME AS CONTEXT)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Immediate surroundings (Earth/local)</th><th>Distant stars/galaxies (astronomy)</th></tr></thead><tbody><tr><td>Light travel time</td><td>Negligible; appears almost instant</td><td>Large; light can take years or more</td></tr><tr><td>What you observe</td><td>Approx. present state</td><td>Past state of the source (look-back)</td></tr><tr><td>Unit used</td><td>m, km, AU</td><td>Light year (distance unit)</td></tr><tr><td>Relevance to evolution</td><td>Life observations are present-day snapshots</td><td>Builds intuition that nature preserves past information and that deep time is real</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>FAR = FORMER</b>”</div><paragraph id="6a9fd5fb17dde0d53800008c"><b>Far</b> objects show <b>Former</b> (earlier emitted) light.</paragraph><paragraph id="6a9fd5fb8b847d9f3100008d">Nearby ≈ <b>Now</b> view; far away ≈ <b>Then</b> view.</paragraph><paragraph id="6a9fd5fbdbf99e781b00008e">Remember: <b>LY</b> is a <b>distance</b> unit used for cosmic scales.</paragraph></div></div></div>
+    
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Big Bang → Earth forms → atmosphere &amp; oceans → first life (key dates + processes)</div>
+              <h2>ORIGIN OF LIFE BASICS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Origin of life basics links cosmic evolution (universe → Earth) to conditions that enabled first life.</li><li>Big Bang theory: universe began ~13.8 billion years ago and has been expanding and cooling since.</li><li>Earth formed in the Milky Way ~4.5 billion years ago; early Earth was hot and initially airless.</li><li>Early atmosphere formed mainly by volcanic outgassing: H<sub>2</sub>O vapour, CH<sub>4</sub>, CO<sub>2</sub>, NH<sub>3</sub>.</li><li>Cooling led to condensation, rain and ocean formation; life appeared about 500 million years after Earth formed (~4.0 billion years ago).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-1.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;">
+    
+    
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">💥</span><span>Big Bang → expansion + cooling → H &amp; He form → gravity condenses matter → galaxies</span></li><li><span class="ic">🌌</span><span>Galaxies contain stars plus gas and dust; Earth is part of the Milky Way system</span></li><li><span class="ic">🌋</span><span>Early atmosphere arose by outgassing from molten Earth, not by retained primordial air</span></li><li><span class="ic">☀️</span><span>UV split H<sub>2</sub>O; H escaped; O reacted with CH<sub>4</sub> and NH<sub>3</sub> forming H<sub>2</sub>O, CO<sub>2</sub> and other compounds; ozone formed later</span></li><li><span class="ic">🌊</span><span>Cooling → condensation → rain → oceans filled surface depressions</span></li><li><span class="ic">🦠</span><span>Life appeared about 500 million years after Earth formed, i.e., ~4.0 billion years ago</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">BIG BANG → EARTH: WHAT TO REMEMBER</span></h2><ul class="b"><li>Big Bang: single origin event; expansion causes cooling and allows atoms to form.</li><li>Early formed elements mainly H and He; heavier elements formed later inside stars.</li><li>Gravity condensed gas and dust into galaxies; galaxies contain stars plus interstellar clouds.</li><li>Earth formed ~4.5 billion years ago in the solar system within the Milky Way.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">EARLY EARTH: ATMOSPHERE → OCEANS (PROCESS FLOW)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><rect x='18' y='24' width='100' height='38' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='30' y='48' font-size='12' fill='#1f2a44'>Molten Earth</text><rect x='132' y='24' width='108' height='38' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='142' y='48' font-size='12' fill='#1f2a44'>Outgassing</text><rect x='254' y='24' width='88' height='38' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='264' y='48' font-size='12' fill='#1f2a44'>Gases</text><line x1='118' y1='43' x2='132' y2='43' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='240' y1='43' x2='254' y2='43' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='18' y='82' width='154' height='38' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='28' y='106' font-size='12' fill='#1f2a44'>UV splits H2O</text><rect x='188' y='82' width='154' height='38' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='198' y='106' font-size='12' fill='#1f2a44'>Ozone forms</text><line x1='172' y1='101' x2='188' y2='101' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='18' y='140' width='154' height='38' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='34' y='164' font-size='12' fill='#1f2a44'>Cooling + rain</text><rect x='188' y='140' width='154' height='38' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='214' y='164' font-size='12' fill='#1f2a44'>Oceans</text><line x1='172' y1='159' x2='188' y2='159' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/></g></svg></div><ul class="b"><li>Initially: no stable atmosphere; hot molten surface drove continuous volcanic outgassing.</li><li>Gases released: H<sub>2</sub>O vapour, CH<sub>4</sub>, CO<sub>2</sub>, NH<sub>3</sub> (reducing tendency).</li><li>UV split water: H escaped (light), while O reacted with CH<sub>4</sub> and NH<sub>3</sub> to form H<sub>2</sub>O, CO<sub>2</sub>, and other compounds.</li><li>Ozone layer formed later, reducing lethal UV at the surface.</li><li>Cooling condensed water vapour → rain → oceans formed in surface depressions.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">EARLY EARTH vs PRESENT EARTH (ATMOSPHERE &amp; CONDITIONS)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Early Earth</th><th>Present Earth</th></tr></thead><tbody><tr><td>Source of atmosphere</td><td>Volcanic outgassing from molten Earth</td><td>Long-term recycling + biological contributions</td></tr><tr><td>Major gases (core idea)</td><td>H<sub>2</sub>O vapour, CH<sub>4</sub>, CO<sub>2</sub>, NH<sub>3</sub></td><td>N<sub>2</sub> and O<sub>2</sub> dominate</td></tr><tr><td>UV at surface</td><td>Very high (no protective ozone initially)</td><td>Lower due to ozone layer</td></tr><tr><td>Water on surface</td><td>Condensing; oceans forming as cooling proceeds</td><td>Stable oceans and active water cycle</td></tr><tr><td>Life</td><td>Absent initially; appeared about 500 million years after Earth formed (~4.0 bya)</td><td>Abundant and diverse</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>BOAL</b> for the Earth-side sequence”</div><paragraph id="6a9fd5fc65734dec1200008f"><b>B</b>elches (outgassing) → <b>O</b>zone (later) → <b>A</b>qua (rain, oceans) → <b>L</b>ife (~4.0 bya)</paragraph><paragraph id="6a9fd5fcf8391b0896000090">Attach dates: 13.8 (universe), 4.5 (Earth), ~4.0 (life).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Three views: life from space, life from rotting matter, or life from pre-existing life</div>
+              <h2>IDEAS ON ORIGIN OF LIFE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Origin of life ideas</b> compare where the first living organisms came from and how new life appears.</li><li><b>Panspermia</b>: life (or its units like spores) arrived on Earth from outer space.</li><li><b>Spontaneous generation</b>: life arises directly from decaying/rotting non-living matter (straw, mud, etc.).</li><li><b>Biogenesis</b>: life arises only from pre-existing life; supported experimentally by Pasteur.</li><li>Modern science rejects spontaneous generation for present-day organisms; first life is explained by <b>chemical evolution</b>, not spontaneous generation.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      
+            <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-2.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;">
+    
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🛰️</span><span><b>Panspermia</b> suggests spores/"seeds" of life travelled between planets; some astronomers favour it.</span></li><li><span class="ic">🪱</span><span><b>Spontaneous generation</b> claimed maggots/microbes come from rotting matter like straw and mud.</span></li><li><span class="ic">🧫</span><span><b>Biogenesis</b>: contamination by existing microbes explains growth in nutrient media exposed to air.</span></li><li><span class="ic">✅</span><span>Pasteur’s swan-neck flask work led to <b>dismissal of spontaneous generation</b> for current organisms.</span></li><li><span class="ic">⚠️</span><span>Exam nuance: biogenesis answers <b>how life arises now</b>, not <b>how first life began</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHAT EACH IDEA CLAIMS</span></h2><ul class="b"><li><b>Panspermia</b>: life’s "units" (spores) originated elsewhere and seeded Earth.</li><li><b>Spontaneous generation</b>: living organisms arise from non-living rotting matter (straw, mud).</li><li><b>Biogenesis</b>: a living cell comes only from another living cell (reproduction).</li><li>Panspermia shifts <b>location</b> of origin; biogenesis shifts <b>source</b> of new life to existing life.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">PASTEUR’S KEY LOGIC (WHY SPONTANEOUS GENERATION FAILED)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto'><polygon points='0,0 10,4 0,8' fill='#2563EB'/></marker></defs><rect x='20' y='30' width='140' height='60' rx='8' fill='#EEF4FF' stroke='#2563EB'/><text x='30' y='55' font-size='13' fill='#1f2a44'>Sterile broth</text><text x='30' y='73' font-size='12' fill='#1f2a44'>No microbes</text><line x1='160' y1='60' x2='200' y2='60' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow2)'/><rect x='200' y='30' width='140' height='60' rx='8' fill='#EAF7EF' stroke='#16A34A'/><text x='210' y='55' font-size='13' fill='#1f2a44'>Air allowed</text><text x='210' y='73' font-size='12' fill='#1f2a44'>Dust blocked</text><text x='118' y='115' font-size='12' fill='#1f2a44'>⇒ No growth</text><line x1='160' y1='150' x2='200' y2='150' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow2)'/><rect x='20' y='120' width='140' height='60' rx='8' fill='#FEF5E4' stroke='#F59E0B'/><text x='30' y='145' font-size='13' fill='#1f2a44'>Sterile broth</text><text x='30' y='163' font-size='12' fill='#1f2a44'>Exposed</text><rect x='200' y='120' width='140' height='60' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='210' y='145' font-size='13' fill='#1f2a44'>Dust enters</text><text x='210' y='163' font-size='12' fill='#1f2a44'>Microbes enter</text><text x='235' y='105' font-size='12' fill='#1f2a44'>⇒ Growth</text></svg></div><ul class="b"><li>Sterilise nutrient/yeast broth: <b>no life appears</b> if microbes are killed and excluded.</li><li>Allow air but prevent dust/microbes entering: broth remains <b>sterile</b> (no spontaneous life).</li><li>If exposed to open air/dust: growth occurs due to <b>contamination</b> by pre-existing microbes.</li><li>Conclusion: life does not originate from dead matter under present conditions; it comes from existing life.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Panspermia vs Spontaneous Generation vs Biogenesis</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Panspermia</th><th>Spontaneous generation</th><th>Biogenesis</th></tr></thead><tbody><tr><td>Core claim</td><td>Life came from outside Earth</td><td>Life arises from rotting matter</td><td>Life comes from pre-existing life</td></tr><tr><td>Typical keywords</td><td>Spores from outer space</td><td>Straw, mud, decaying meat</td><td>Contamination, reproduction</td></tr><tr><td>Status today</td><td>Hypothesis; some astronomers favour</td><td>Rejected for current organisms</td><td>Accepted for current organisms</td></tr><tr><td>Key evidence idea</td><td>Not proven by direct experiment</td><td>Failed on controlled experiments</td><td>Supported by Pasteur’s sterilisation results</td></tr><tr><td>Exam pitfall</td><td>Does not itself explain first origin</td><td>Confused with chemical evolution</td><td>Does not explain first life’s origin</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>Pa–Sp–Bi</b>”</div><paragraph id="6a9fd5fcd75b9f9a8c000091"><b>Pa</b>nspermia = <b>Pa</b>ssed in from space (spores).</paragraph><paragraph id="6a9fd5fc4b7019ec29000092"><b>Sp</b>ontaneous = from <b>sp</b>oiled/rotting matter (straw, mud).</paragraph><paragraph id="6a9fd5fca8e9a211d8000093"><b>Bi</b>ogenesis = <b>bi</b>ology from biology (life from life).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Experimental disproof of spontaneous generation; supports biogenesis, not first-life origin</div>
+              <h2>PASTEUR SWAN-NECK EXPERIMENT</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span>
+      
+      
+      📖<span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Pasteur’s swan-neck flask experiment showed that microorganisms arise from pre-existing life, not spontaneously.</b></li><li>Boiled/sterilised nutrient broth ("killed yeast" in syllabus wording) remained sterile when protected from dust.</li><li>A swan-neck (S-shaped) bend allowed air entry but trapped airborne particles and microbes in the curve.</li><li>When the broth contacted trapped dust (by tilting/breaking neck), microbial growth appeared due to contamination.</li><li>Conclusion: <b>spontaneous generation</b> for present-day microbes was disproved; <b>biogenesis</b> supported.</li></ul></div>
+      
+      
+    
+    
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">👨‍🔬</span><span>Louis Pasteur used <b>pre-sterilised flasks</b> to test if life appears in sterile nutrient media.</span></li><li><span class="ic">🦢</span><span>Swan-neck: <b>open to air</b> but blocks <b>dust/microbes</b> from reaching broth.</span></li><li><span class="ic">🚫</span><span>Result: <b>no life appeared</b> in intact swan-neck flasks despite air exposure.</span></li><li><span class="ic">🌬️</span><span>When contamination route opened (tilt/break), microbes grew: <b>life from life</b>.</span></li><li><span class="ic">⚠️</span><span>Limitation (exam trap): does <b>not explain first life</b>; chemical evolution comes next.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">SET-UP &amp; KEY STEPS (WHAT PASTEUR DID)</span></h2><ul class="b"><li>Took nutrient broth/yeast infusion in glass flasks with long S-shaped (swan-neck) tubes.</li><li>Boiled the broth to sterilise: existing microbes were killed; flask contents became sterile.</li><li>Left flask <b>open to air</b> via swan-neck; dust settled in the bend, not in the broth.</li><li>Observed: intact swan-neck flasks stayed clear (no microbial growth) for long periods.</li><li>Then tilted/broke neck so broth contacted dust; observed turbidity and microbial growth.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">INFERENCE + LIMITATION </span></h2><ul class="b"><li>Inference: microbes originate from <b>pre-existing microbes</b> (biogenesis).</li><li>Spontaneous generation for present-day conditions was dismissed “once and for all”.</li><li>Limitation: the experiment starts with <b>already-made organic broth</b> and modern microbes.</li><li>So it <b>does not explain how the first life originated</b> on early Earth.</li><li>Next concept: <b>chemical evolution</b> (Oparin–Haldane) addresses first-life origin idea.</li></ul></div></div>
+    <div class="card " style="--sec:#2a2b2b;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Swan-neck intact vs contamination allowed</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Intact swan-neck flask</th><th>Neck broken/tilted</th></tr></thead><tbody><tr><td>Air exposure</td><td>Air enters through curved neck</td><td>Air enters directly</td></tr><tr><td>Dust/microbe access to broth</td><td>Blocked/trapped in bend</td><td>Reaches broth</td></tr><tr><td>Observation</td><td>Broth remains clear</td><td>Broth becomes turbid</td></tr><tr><td>Conclusion</td><td>No spontaneous generation</td><td>Growth due to contamination</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“S-W-A-N = <b>S</b>hape blocks <b>W</b>aste(dust), <b>A</b>ir allowed, <b>N</b>o new life”</div><paragraph id="6a9fd5fca9a330cb7c000094"><b>S</b>-neck curve traps dust (microbes).</paragraph><paragraph id="6a9fd5fc43d7147346000095"><b>A</b>ir still enters, so oxygen isn’t the issue.</paragraph><paragraph id="6a9fd5fcc77874642d000096"><b>N</b>o growth until contamination route opens → life from life.</paragraph></div></div></div>
+    
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Oparin–Haldane hypothesis + Miller–Urey (1953) experimental support for abiotic organic synthesis</div>
+              <h2>CHEMICAL EVOLUTION: EVIDENCE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Chemical evolution</b> = stepwise abiotic formation and accumulation of organic molecules from inorganic precursors on early Earth.</li><li>Proposed independently by <b>A. I. Oparin</b> and <b>J. B. S. Haldane</b> ("primordial soup" idea).</li><li>Assumes early Earth had <b>high temperature</b>, volcanic storms, and a <b>reducing atmosphere</b> (little/no free O<sub>2</sub>).</li><li>Key gases considered: CH<sub>4</sub>, NH<sub>3</sub>, H<sub>2</sub> and water vapour; energy from lightning/UV/heat.</li><li>Evidence: <b>Miller–Urey experiment (1953)</b> produced amino acids and other organics abiotically in a closed system.</li><li>Supporting clues: similar simulation experiments by others formed sugars, nitrogen bases, pigments and fats; similar organics are found in meteorites.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      
+                  <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-3.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;"></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">1</span><span>Early Earth: hot surface, volcanic activity, storms → abundant energy for reactions</span></li><li><span class="ic">2</span><span>Reducing atmosphere (CH<sub>4</sub>, NH<sub>3</sub>, H<sub>2</sub>, H<sub>2</sub>O vapour) favours organic synthesis</span></li><li><span class="ic">3</span><span>Lightning/electric discharge acts as an energy source driving bond formation</span></li><li><span class="ic">4</span><span>Closed cycling (evaporation → spark → condensation) helps concentrate products over time</span></li><li><span class="ic">5</span><span>Miller produced building blocks (e.g., amino acids); later steps to polymers/first cells are still not clearly established</span></li><li><span class="ic">6</span><span>Meteorites contain organic compounds → organic synthesis is chemically plausible beyond Earth too</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">OPARIN–HALDANE: CORE IDEA </span></h2><ul class="b"><li>First life did <b>not</b> appear suddenly; it was preceded by <b>chemical evolution</b>.</li><li>Early atmosphere was <b>reducing</b> (very low free O<sub>2</sub>), enabling synthesis of organics.</li><li>Energy sources: <b>lightning</b>, <b>UV radiation</b>, and <b>high temperature</b> from volcanic activity.</li><li>Simple inorganic molecules → <b>diverse organics</b> → accumulation in water bodies ("primordial soup").</li><li>Life later arose from pre-existing organics; exact pathway to first self-replicating/cellular life remains unresolved.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MILLER–UREY (1953): SET-UP, CONDITIONS, RESULTS</span></h2>
+      
+      
+      
+    
+      
+      
+      
+      <ul class="b"><li>Closed apparatus with CH<sub>4</sub> + NH<sub>3</sub> + H<sub>2</sub> + water vapour (simulated early Earth).</li><li>Electric discharge (spark) provided high-energy conditions (very high temperature in the discharge).</li><li>After circulation and condensation, <b>amino acids</b> were detected in the trap.</li><li>In similar experiments by others, <b>sugars, nitrogen bases, pigments and fats</b> were also formed (supporting abiotic synthesis).</li><li>Meteorite organics support that <b>abiotic organic formation</b> is chemically plausible beyond Earth.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Reducing vs Oxidising Atmosphere (Relevance to Chemical Evolution)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Reducing (early-Earth model)</th><th>Oxidising (O<sub>2</sub>-rich)</th></tr></thead><tbody><tr><td>Dominant gases</td><td>CH<sub>4</sub>, NH<sub>3</sub>, H<sub>2</sub>, H<sub>2</sub>O vapour (very low free O<sub>2</sub>)</td><td>O<sub>2</sub> abundant; oxidised gases dominate</td></tr><tr><td>Effect on organics</td><td>Favours abiotic synthesis and survival/accumulation of reduced organics</td><td>Tends to oxidise/break down many reduced organic molecules</td></tr><tr><td>Miller-type yield expectation</td><td>Organic molecules can form under energy input in a closed system</td><td>Yields would be much lower because products get oxidised</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>MiLLeR</b> = <b>Mi</b>x gases + <b>LL</b> (Lightning) + <b>R</b>esult organics”</div><paragraph id="6a9fd5fc15c7830f66000097"><b>Mi</b>x: CH<sub>4</sub> + NH<sub>3</sub> + H<sub>2</sub> + H<sub>2</sub>O vapour</paragraph><paragraph id="6a9fd5fc349ce1d381000098"><b>LL</b>: Lightning/electric discharge energy</paragraph><paragraph id="6a9fd5fc64997d202e000099"><b>R</b>: Result = amino acids (then other organics in related experiments)</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">From abiotic organics → non-cellular replicators → first cells (Earth: 4.5 bya to ~2.0 bya; approximate anchors)</div>
+              <h2>FIRST LIFE FORMS TIMELINE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>First life forms timeline</b> = proposed sequence from chemical evolution to first cellular organisms, with approximate time anchors.</li><li>Earth formed (~<b>4.5 bya</b>); early Earth initially had no atmosphere, then outgassing produced an early gaseous envelope.</li><li>Cooling condensed water vapour → rain → oceans; organic molecules accumulated in an aquatic medium.</li><li>Non-cellular stage (~<b>3.0 bya</b>, proposed): <b>giant molecules</b> (RNA/proteins/polysaccharides, etc.) capable of reproducing their molecules.</li><li>A hypothetical <b>self-replicating metabolic capsule</b> is suggested to bridge abiotic chemistry and cells; exact mechanism is unknown.</li><li>First <b>cellular life forms</b> likely appeared later (~<b>2.0 bya</b>) as <b>single-celled organisms</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      
+                    <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-4.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;">
+
+    
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🌍</span><span>Earth forms at ~4.5 bya; early Earth had no atmosphere initially, then outgassing produced gases like H2O vapour, CH4, CO2, NH3 (and H2).</span></li><li><span class="ic">🌊</span><span>Cooling condenses water vapour → rain → oceans; early origin-of-life stages are described as occurring in an aquatic medium (standard account).</span></li><li><span class="ic">⚡</span><span>Energy sources (electric discharge, UV) can drive abiotic synthesis of organic molecules (Miller-type support).</span></li><li><span class="ic">🧫</span><span>Non-cellular life (~3 bya; proposed): macromolecular systems reproducing their own molecules.</span></li><li><span class="ic">🧬</span><span>First cells (~2 bya): membranous envelope + metabolism + heredity; exact origin of the envelope/boundary is unclear.</span></li><li><span class="ic">⏳</span><span>Timeline anchors are approximate and used mainly to memorise the order of events for exams.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">STEPWISE TRANSITION (WHAT THE TIMELINE IMPLIES)</span></h2><ul class="b"><li><b>Abiotic synthesis</b>: early gases + energy → simple organics (amino acids; sugars/bases/pigments/fats reported in similar experiments).</li><li><b>Accumulation</b>: organics concentrate in oceans/ponds; water acts as reaction medium and stabiliser.</li><li><b>Polymer stage</b>: formation of <b>giant molecules</b> such as RNA, proteins, polysaccharides (etc.).</li><li><b>Non-cellular replicators</b> (~3 bya; proposed): macromolecular systems capable of reproducing their molecules.</li><li><b>Metabolic capsule idea</b>: proposed self-replicating system with basic metabolism + boundary; mechanism still uncertain.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">TIME ANCHORS </span></h2><ul class="b"><li>Earth forms: <b>~4.5 billion years ago</b>.</li><li>Life appearance timing (broad marker): ~<b>0.5 billion years after Earth formed</b> → about <b>~4.0 bya</b>.</li><li>First non-cellular life forms: ~<b>3.0 bya</b> (giant molecules reproducing their molecules; proposed).</li><li>First cellular life forms: ~<b>2.0 bya</b> (probably single-celled organisms).</li><li>Early life stages are described as existing in an <b>aquatic medium</b> (standard account in syllabus/source).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">NON-CELLULAR LIFE FORMS vs FIRST CELLULAR LIFE FORMS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Non-cellular (≈3.0 bya; proposed)</th><th>Cellular (≈2.0 bya; later)</th></tr></thead><tbody><tr><td>Basic unit</td><td>Giant molecules / aggregates (hypothetical)</td><td>Membrane-bounded cell</td></tr><tr><td>Key biomolecules</td><td>RNA, proteins, polysaccharides (reported as "giant molecules"; proposed stage)</td><td>DNA/RNA + proteins + lipids (membrane)</td></tr><tr><td>Replication</td><td>Reproduction of their own molecules (proposed)</td><td>Genome replication + cell division</td></tr><tr><td>Metabolism</td><td>Primitive/partial ("self-replicating metabolic capsule" idea; mechanism unclear)</td><td>Organised metabolic pathways</td></tr><tr><td>Environment</td><td>Aquatic medium (standard account in syllabus/source)</td><td>Initially aquatic; later diversification</td></tr><tr><td>Certainty level</td><td>Highly inferential; mechanism unclear</td><td>More supported by geologic/biologic evidence (still not fully resolved)</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: 4.5–4–3–2 Ladder”</div><paragraph id="6a9fd5fc7b3939ded700009a"><b>4.5</b> Earth formed</paragraph><paragraph id="6a9fd5fcadf711cef000009b"><b>4</b> Oceans + life marker</paragraph><paragraph id="6a9fd5fc89d5a255a300009c"><b>3</b> Non-cellular replicators (giant molecules; proposed)</paragraph><paragraph id="6a9fd5fc527e93a12b00009d"><b>2</b> First cells (unicellular; likely)</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">From special creation to branching descent via differential reproductive success</div>
+              <h2>DARWINISM AND NATURAL SELECTION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Darwinism</b> explains evolution mainly by <b>natural selection</b> acting on <b>heritable variation</b> in populations.</li><li>From similarities among living forms, fossils, and the reality of extinction, Darwin inferred <b>gradual change</b> over long time.</li><li><b>Natural selection</b> means individuals with advantageous inherited traits leave <b>more offspring</b>.</li><li><b>Fitness</b> in Darwinian sense is <b>reproductive fitness</b>, not mere strength or survival alone.</li><li>Evolution produces <b>common ancestry</b> and <b>branching descent</b> (lineages split and diversify).</li><li><b>Lamarckism</b> (inheritance of acquired characters by use/disuse) is rejected as an explanation.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      
+        <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-5.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;">
+
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⛪</span><span><b>Special creation</b> (conventional religious view): species created in fixed forms; diversity constant; Earth ~4000 years old (traditional claim).</span></li><li><span class="ic">⛵</span><span><b>H.M.S. Beagle</b>: Darwin’s voyage led to evidence-based inferences about change and relatedness.</span></li><li><span class="ic">🦴</span><span><b>Past forms</b>: fossils show earlier life; many forms extinct; new forms appear in different layers.</span></li><li><span class="ic">🧩</span><span><b>Variation</b>: individuals in a population differ; many differences are inherited.</span></li><li><span class="ic">🎯</span><span><b>Selection</b>: environment filters variants; advantageous traits increase in frequency over generations.</span></li><li><span class="ic">👶</span><span><b>Fitness</b> = leaving more progeny in that environment; always <b>context-dependent</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">DARWIN’S OBSERVATIONS → INFERENCE CHAIN </span></h2><ul class="b"><li>Living forms show varying degrees of similarity among themselves.</li><li>Living forms also resemble forms that lived millions of years ago (fossil record).</li><li>Many past life forms no longer exist → <b>extinction</b> is real and common.</li><li>New forms appear at different times in Earth’s history → life is not fixed.</li><li>Conclusion: gradual evolution over long time; Earth is very old (billions of years).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">NATURAL SELECTION: MECHANISM + TERMS</span></h2><ul class="b"><li>Population has <b>variation</b>; resources are limited → competition/struggle.</li><li>Individuals with advantageous <b>inherited</b> traits leave more progeny.</li><li>Over generations, favourable variants become more common in the population.</li><li><b>Fitness</b> = reproductive success in a given environment, not “strongest body”.</li><li>Selection acts on individuals, but <b>evolution is seen in populations</b> across generations.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">SPECIAL CREATION vs LAMARCKISM vs DARWINISM</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Special creation</th><th>Lamarckism</th><th>Darwinism (natural selection)</th></tr></thead><tbody><tr><td>Status of species</td><td>Fixed, created as such</td><td>Change occurs</td><td>Change occurs (evolution)</td></tr><tr><td>Key cause of change</td><td>Creation event</td><td>Use/disuse; acquired characters</td><td>Selection on heritable variation</td></tr><tr><td>Role of environment</td><td>Not a selector</td><td>Induces needed changes</td><td>Selects among pre-existing variants</td></tr><tr><td>Inheritance</td><td>Given at creation</td><td>Acquired traits inherited</td><td>Only inherited traits drive evolution</td></tr><tr><td>Main issue</td><td>Does not explain fossil succession/extinction; assumes Earth ~4000 years old (traditional view)</td><td>Rejected explanation (acquired traits are not inherited as a rule)</td><td>Mechanism supported by multiple observations</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>V I F B</b> (Variation → Inheritance → Fitness → Branching)”</div><paragraph id="6a9fd5fc6321c0c44b00009e"><b>V</b>: Variation exists in populations.</paragraph><paragraph id="6a9fd5fc36c9723fe700009f"><b>I</b>: Inherited differences matter (not acquired).</paragraph><paragraph id="6a9fd5fc78cb93811e0000a0"><b>F</b>: Fitness = more offspring in that environment.</paragraph><paragraph id="6a9fd5fce75aaddb620000a1"><b>B</b>: Over time → Branching descent from common ancestors.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">How fossils, embryos, anatomy, molecules and observable selection support evolution</div>
+              <h2>EVIDENCES FOR EVOLUTION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Evidences for evolution are independent observations showing that life has changed over time and that organisms share varying degrees of relatedness (common ancestry).</li><li>Major lines commonly asked: <b>paleontology</b> (fossils in strata), <b>embryology</b>, <b>comparative anatomy</b> (homology/analogy), <b>molecular similarities</b>, and <b>evolution observed in action</b> (selection, resistance).</li><li>They support: <b>extinction</b>, <b>appearance of new forms</b>, and <b>relatedness</b> among organisms.</li><li>Best answers link each evidence to an inference: <b>change over time</b> and/or <b>common ancestry</b>.</li><li>Multiple evidences converging on the same conclusion make evolution scientifically robust.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='10' y='12' width='340' height='176' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='22' y='34' font-size='14' fill='#1f2a44'>EVIDENCES → inference: common ancestry + change over time</text><rect x='22' y='48' width='152' height='56' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='68' font-size='13' fill='#1f2a44'>Fossils</text><text x='30' y='86' font-size='12' fill='#1f2a44'>strata (old → young)</text><rect x='186' y='48' width='152' height='56' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='194' y='68' font-size='13' fill='#1f2a44'>Embryology</text><text x='194' y='86' font-size='12' fill='#1f2a44'>shared early traits</text><rect x='22' y='112' width='152' height='56' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='30' y='132' font-size='13' fill='#1f2a44'>Comparative</text><text x='30' y='150' font-size='12' fill='#1f2a44'>homology/analogy</text><rect x='186' y='112' width='152' height='56' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='194' y='132' font-size='13' fill='#1f2a44'>Molecular</text><text x='194' y='150' font-size='12' fill='#1f2a44'>genes + proteins</text><line x1='174' y1='76' x2='186' y2='76' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='174' y1='140' x2='186' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='98' y1='104' x2='98' y2='112' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='262' y1='104' x2='262' y2='112' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg><div class="figcap">Four major independent lines of evidence converge to support evolution; selection-based examples are additional direct observations.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🦴</span><span><b>Paleontological evidence</b>: fossils (remains/impressions, usually hard parts) occur in sedimentary layers of different ages.</span></li><li><span class="ic">🪨</span><span>Older strata typically hold older fossil forms; many fossils are <b>extinct</b> (e.g., dinosaurs).</span></li><li><span class="ic">🧫</span><span><b>Radioactive dating</b> of rocks helps estimate ages of fossil-bearing layers, linking fossils to geological time.</span></li><li><span class="ic">🐣</span><span><b>Embryology</b>: embryos of all vertebrates show early common features such as <b>pharyngeal (gill) slits</b>.</span></li><li><span class="ic">⚖️</span><span>Heckel proposed recapitulation; <b>von Baer</b> corrected: embryos do <b>not</b> pass through other animals’ adult stages.</span></li><li><span class="ic">🦇</span><span><b>Homology</b> (same basic plan) ⇒ common ancestry + <b>divergent evolution</b>; <b>Analogy</b> (same function, different origin) ⇒ <b>convergent evolution</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">PALEONTOLOGICAL EVIDENCE (FOSSILS + STRATA)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='16' y='18' width='150' height='164' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><rect x='28' y='34' width='126' height='32' rx='6' fill='#EEF4FF' stroke='#123B7A' stroke-width='1.5'/><text x='40' y='54' font-size='12' fill='#1f2a44'>Young layer</text><rect x='28' y='70' width='126' height='32' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='1.5'/><text x='40' y='90' font-size='12' fill='#1f2a44'>Middle layer</text><rect x='28' y='106' width='126' height='32' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='1.5'/><text x='40' y='126' font-size='12' fill='#1f2a44'>Old layer</text><rect x='28' y='142' width='126' height='32' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='1.5'/><text x='40' y='162' font-size='12' fill='#1f2a44'>Oldest</text><line x1='184' y1='42' x2='332' y2='42' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='194' y='46' font-size='12' fill='#1f2a44'>different fossils</text><line x1='184' y1='78' x2='332' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='194' y='82' font-size='12' fill='#1f2a44'>different fossils</text><line x1='184' y1='114' x2='332' y2='114' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='194' y='118' font-size='12' fill='#1f2a44'>different fossils</text><line x1='184' y1='150' x2='332' y2='150' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='194' y='154' font-size='12' fill='#1f2a44'>different fossils</text><text x='210' y='176' font-size='12' fill='#1f2a44'>depth ↑ age ↑</text></svg></div><ul class="b"><li>Fossils are <b>remains/impressions</b>, commonly of <b>hard parts</b>, preserved in rocks.</li><li>Sedimentary rocks form in layers; deeper layers are generally <b>older</b> than upper layers.</li><li>Different-aged sediments contain fossils of different life-forms → life has <b>changed with time</b>.</li><li>Some fossils resemble living forms; many are <b>extinct</b> (classic example: <b>dinosaurs</b>).</li><li>Fossils in a layer represent organisms that lived/died around that layer’s formation; rock age can be linked using <b>radioactive dating</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">EMBRYOLOGY + ANATOMY + MOLECULES (WHAT THEY REALLY SHOW)</span></h2><ul class="b"><li><b>Embryological support</b>: embryos of all vertebrates show early features such as <b>pharyngeal (gill) slits</b>; these are functional only in fish.</li><li>Heckel: proposed <b>recapitulation</b>; exam-safe point: <b>not accepted as stated</b>.</li><li>von Baer: embryos of higher animals resemble embryos of related groups, <b>not</b> adult stages of other animals.</li><li><b>Homology</b>: same basic plan (e.g., mammalian forelimb bones) → <b>common ancestry</b> + <b>divergent evolution</b>.</li><li><b>Analogy</b>: same function, different origin/plan (bird vs butterfly wings; octopus vs mammal eye) → <b>convergent evolution</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">HOMOLOGY vs ANALOGY (High-yield contrast)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Homology</th><th>Analogy</th></tr></thead><tbody><tr><td>Basic plan/origin</td><td>Similar (common structural origin)</td><td>Different (different origin/plan)</td></tr><tr><td>Function</td><td>Often different</td><td>Similar</td></tr><tr><td>Evolutionary pattern</td><td>Divergent evolution</td><td>Convergent evolution</td></tr><tr><td>Inference</td><td>Common ancestry likely</td><td>Common ancestry not implied by function alone</td></tr><tr><td>Examples</td><td>Mammalian forelimbs; Bougainvillea thorn &amp; Cucurbita tendril</td><td>Bird &amp; butterfly wings; octopus &amp; mammal eye; penguin &amp; dolphin flippers; potato (stem) &amp; sweet potato (root)</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>F E A M + S</b> = Fossils, Embryos, Anatomy, Molecules + Selection”</div><paragraph id="6a9fd5fcc8b63d891e0000a2"><b>F</b>ossils in layers → time sequence + extinction</paragraph><paragraph id="6a9fd5fccab76ea4150000a3"><b>E</b>mbryos share early traits (but not adult replay)</paragraph><paragraph id="6a9fd5fc4aabec04670000a4"><b>A</b>natomy: <b>HOMO</b> = same <b>home</b> (origin) → divergence; <b>ANA</b> = same <b>action</b> (function) → convergence</paragraph><paragraph id="6a9fd5fc569d72bfb10000a5"><b>M</b>olecules: similar genes/proteins → relatedness</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Evolution observable now: frequencies shift under strong selection, not because organisms "need" it</div>
+              <h2>SELECTION IN REAL TIME</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Selection in real time</b> = measurable change in variant (allele/phenotype) frequencies within a few generations under current conditions.</li><li>Requires <b>heritable variation</b> already present or arising by <b>chance mutation</b>; selection changes proportions.</li><li>Strong, human-driven selection can cause evolution in <b>months to years</b> (microbes, pests, weeds).</li><li>Classic visible example: <b>industrial melanism</b> in England moths (1850s → 1920).</li><li>Key idea: evolution is <b>stochastic</b> (chance variation) and <b>not need-driven</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      
+                    <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-6.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;">
+
+    
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🎯</span><span>Selection acts on <b>phenotype</b>, but evolution is tracked as changing <b>frequencies</b> in a population.</span></li><li><span class="ic">🎲</span><span>Mutations are <b>random/directionless</b>; environment <b>filters</b> variants by reproductive success.</span></li><li><span class="ic">🧑‍🌾</span><span><b>Artificial selection</b>: humans choose breeders → rapid breed change (e.g., domesticated dogs).</span></li><li><span class="ic">🦋</span><span><b>Industrial melanism</b>: camouflage vs predation shifts colour frequencies with soot/lichens.</span></li><li><span class="ic">💊</span><span><b>Anthropogenic resistance</b>: overuse of antibiotics/pesticides/herbicides selects resistant variants fast.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">1) ARTIFICIAL SELECTION (SELECTIVE BREEDING)</span></h2><ul class="b"><li>Humans choose which individuals reproduce based on desired traits (milk yield, size, behaviour).</li><li>Produces <b>domesticated breeds</b> that differ markedly, yet remain within the same broader group (e.g., dogs).</li><li>Shows how strong selection can create major phenotypic change in <b>hundreds of years</b>.</li><li>Selection does not create variation; it <b>sorts</b> pre-existing heritable variation.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">2) INDUSTRIAL MELANISM (ENGLAND MOTHS: 1850s → 1920)</span></h2>
+      
+      
+      
+     
+      
+      
+      
+      <ul class="b"><li>Pre-industrial (1850s): trunks pale due to <b>lichens</b> → <b>light moths</b> better camouflaged → more common.</li><li>Post-industrial (1920): soot darkens trunks; lichens decline → <b>melanic moths</b> better camouflaged → increase.</li><li>Predators spot moths on contrasting backgrounds → differential survival and reproduction.</li><li>In <b>rural</b> (less polluted) areas, melanic moth frequency remained low → supports pollution-linked selection.</li><li>Lichens are <b>pollution indicators</b>: absence suggests higher pollution.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Artificial selection vs Industrial melanism vs Anthropogenic resistance</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Artificial selection</th><th>Industrial melanism</th><th>Anthropogenic resistance</th></tr></thead><tbody><tr><td>Selector</td><td>Human choice of breeders</td><td>Predators + environment</td><td>Chemicals/drugs via human use</td></tr><tr><td>Trait example</td><td>Dog breed traits</td><td>Light vs melanic moths</td><td>Drug/pesticide resistance</td></tr><tr><td>Timescale</td><td>Often decades–centuries</td><td>Decades (1850s→1920)</td><td>Months–years (microbes/pests)</td></tr><tr><td>Key message</td><td>Selection can rapidly shape populations</td><td>Natural selection observed in nature</td><td>Strong selection quickly raises resistant variants</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>V-S-F</b> (Variation → Selection → Frequency shift)”</div><paragraph id="6a9fd5fcfcc045cbea0000a6"><b>V</b>: variants exist first (chance mutation/recombination).</paragraph><paragraph id="6a9fd5fc26e2e260550000a7"><b>S</b>: a pressure acts (humans, predators, antibiotics).</paragraph><paragraph id="6a9fd5fca3da912bfb0000a8"><b>F</b>: frequencies change in the next generations (evolution you can measure now).</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">One ancestor → many niche-specialists; similar selection can also produce look-alikes in unrelated groups</div>
+              <h2>ADAPTIVE RADIATION AND CONVERGENCE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Adaptive radiation</b> = evolution of many species in a given geographical area from a <b>single ancestral point</b>, each adapted to different habitats/niches.</li><li>It is a form of <b>divergent evolution</b>: related descendants become increasingly different due to niche adaptation.</li><li>Often seen on <b>islands/isolated continents</b> where multiple habitats are available and lineages diversify.</li><li>Classic evidence: <b>Darwin’s finches</b> on <b>Galápagos Islands</b> showing strong <b>beak variation</b> linked to feeding habits.</li><li><b>Convergent evolution</b>: unrelated lineages independently evolve similar adaptations under similar selection pressures, producing <b>analogous</b> similarities.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+      <div class="figbox" style="height:auto;margin-bottom:1.5mm;">
+  <img src="img/Untitled-7.webp"
+       alt="Diagram"
+       style="display:block;max-width:100%;height:auto;margin:0 auto;object-fit:contain;">
+
+    
+    
+    
+    </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🌋</span><span>Isolation + multiple available niches can promote diversification from one ancestor.</span></li><li><span class="ic">🪶</span><span>Darwin’s finches: seed-eating ancestral stock → multiple finch species with different beaks.</span></li><li><span class="ic">🦘</span><span>Australian marsupials: many distinct marsupial forms radiated from an ancestral marsupial stock.</span></li><li><span class="ic">🐺</span><span>Convergence cue: placentals can evolve marsupial-like forms under similar ecological roles (e.g., placental wolf vs Tasmanian wolf).</span></li><li><span class="ic">🎯</span><span>Exam core: <b>common ancestry</b> (adaptive radiation) vs <b>similar selection</b> (convergence).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">CLASSIC EXAMPLES </span></h2><ul class="b"><li><b>Galápagos Islands</b>: Darwin’s finches diversified from a <b>seed-eating stock</b> into multiple species.</li><li>Major observable trait: <b>beak variation</b> suited to different foods and microhabitats.</li><li>Beak changes enabled new feeding habits such as <b>insectivory</b> and <b>vegetarian</b> modes besides seed eating.</li><li><b>Australian marsupials</b>: many distinct marsupial forms evolved from an ancestral marsupial stock.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">RELATIONSHIP WITH CONVERGENT EVOLUTION </span></h2><ul class="b"><li>In an isolated geographical area with different habitats, <b>more than one radiation</b> may occur in different groups.</li><li>If resulting forms are similar in function/appearance despite different ancestry, it indicates <b>convergent evolution</b> (analogy).</li><li>Australia: <b>placental mammals</b> evolved forms resembling corresponding marsupials under similar ecological roles.</li><li>Example pair: <b>placental wolf</b> and <b>Tasmanian wolf</b> (marsupial) are ecological look-alikes, not close relatives.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ADAPTIVE RADIATION vs CONVERGENT EVOLUTION</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Adaptive radiation</th><th>Convergent evolution</th></tr></thead><tbody><tr><td>Starting point</td><td>Single ancestral point</td><td>Different ancestral lineages</td></tr><tr><td>Pattern</td><td>One lineage splits into many species</td><td>Different lineages evolve similar traits</td></tr><tr><td>Driver</td><td>Different niches within the same geographical area</td><td>Similar selection pressures in similar environments/niches</td></tr><tr><td>Type of evolution</td><td>Divergent evolution</td><td>Convergent evolution (analogy)</td></tr><tr><td>Classic example</td><td>Darwin’s finches (Galápagos)</td><td>Placental mammals resembling marsupials in Australia (e.g., placental wolf and Tasmanian wolf)</td></tr><tr><td>Key exam cue</td><td>Related species, different adaptations</td><td>Unrelated species, similar adaptations</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Memory hook: <b>RAD</b> vs <b>CON</b>”</div><paragraph id="6a9fd5fccda3950c1b0000a9"><b>RAD</b>iation: one ancestor "<b>R</b>adiates" into many niches in one area.</paragraph><paragraph id="6a9fd5fc13902722930000aa"><b>CON</b>vergence: different lines "<b>CON</b>verge" to similar forms under similar selection.</paragraph><paragraph id="6a9fd5fce29cb181d20000ab">Finches = <b>R</b>adiation; placental vs marsupial counterparts = <b>CON</b>vergence.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">No-evolution baseline: expected allele/genotype frequencies; evolution = deviation due to forces</div>
+              <h2>HARDY–WEINBERG EQUILIBRIUM &amp; EVOLUTIONARY FORCES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Hardy–Weinberg principle: in a large random-mating population, allele frequencies remain constant across generations unless disturbed.</li><li>Gene pool = total genes and alleles present in a population; genetic equilibrium = constant gene pool over time.</li><li>For two alleles <i>A</i> and <i>a</i>, allelic frequencies satisfy <i>p</i> + <i>q</i> = 1.</li><li>Expected genotype frequencies under equilibrium are <i>p</i><sup>2</sup> (<i>AA</i>), 2<i>pq</i> (<i>Aa</i>), <i>q</i><sup>2</sup> (<i>aa</i>).</li><li>Any consistent deviation of observed frequencies from Hardy–Weinberg expectations indicates evolution (forces acting).</li></ul></div>
+    
+    <div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF;">
+  
+  <h2>
+    <span class="secno">🖼️</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+
+    <img src="img/Untitled-8.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+
+  </div>
+
+</div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚖️</span><span>Hardy–Weinberg = null model: compare observed vs expected to detect evolutionary change.</span></li><li><span class="ic">🔢</span><span>Random union of gametes leads to genotype proportions given by the binomial expansion of (p + q)×(p + q).</span></li><li><span class="ic">🧳</span><span>Gene flow: migration adds/removes alleles, changing allele frequencies in both donor and recipient populations.</span></li><li><span class="ic">🎲</span><span>Genetic drift: chance sampling shifts allele frequencies; strongest in small populations.</span></li><li><span class="ic">🏝️</span><span>Founder effect: a new population started by few individuals shows drifted allele frequencies.</span></li><li><span class="ic">🧪</span><span>Mutation creates new alleles (raw material for evolution) and can shift allele frequencies over long time.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">HARDY–WEINBERG MODEL (WHAT YOU ASSUME)</span></h2><ul class="b"><li>Choose a locus with two alleles <i>A</i> and <i>a</i> in a population gene pool.</li><li>Let <i>p</i> = freq(<i>A</i>) and <i>q</i> = freq(<i>a</i>); for two alleles, <i>p</i> + <i>q</i> = 1.</li><li>Random mating: gametes unite at random, so genotype proportions follow the (p + q)×(p + q) expansion.</li><li>Hardy–Weinberg expectations: <i>AA</i> = p², <i>Aa</i> = 2pq, <i>aa</i> = q² (sum = 1).</li><li>If <i>p</i> and <i>q</i> stay constant across generations, there is no evolution at that locus.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">FORCES/FACTORS THAT DISTURB EQUILIBRIUM (CAUSE EVOLUTION)</span></h2><ul class="b"><li><b>Gene flow (migration):</b> movement of individuals/genes changes allele frequencies; tends to reduce differences between populations.</li><li><b>Genetic drift:</b> random change in allele frequencies; can fix or lose alleles by chance; strongest in small populations.</li><li><b>Founder effect:</b> a few founders carry an unrepresentative allele sample, so the new population starts with shifted frequencies.</li><li><b>Mutation:</b> introduces new alleles; rare per generation but important over evolutionary time.</li><li><b>Natural selection:</b> genotypes differ in reproductive success, shifting allele frequencies non-randomly.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">GENE FLOW vs GENETIC DRIFT vs NATURAL SELECTION</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Gene flow</th><th>Genetic drift</th><th>Natural selection</th></tr></thead><tbody><tr><td>Primary cause</td><td>Migration between populations</td><td>Chance sampling error</td><td>Differential reproductive success</td></tr><tr><td>Directionality</td><td>Depends on migrant alleles</td><td>Random (non-adaptive)</td><td>Non-random (often adaptive)</td></tr><tr><td>Strongest when</td><td>Populations exchange individuals frequently</td><td>Population size is small</td><td>Fitness differs among phenotypes/genotypes</td></tr><tr><td>Typical outcome</td><td>Homogenises populations</td><td>Divergence; fixation/loss by chance</td><td>Shifts allele frequencies toward higher fitness</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Forces mnemonic: <b>GDM-SN</b>”</div><paragraph id="6a9fd5fc38a7c7c99e0000ac"><b>G</b>ene flow, <b>D</b>rift, <b>M</b>utation, <b>S</b>election, <b>N</b>on-random mating disturb Hardy–Weinberg assumptions.</paragraph><paragraph id="6a9fd5fc507a1c52ea0000ad">H-W idea: expected (p², 2pq, q²) + assumptions OK ⇒ equilibrium; otherwise ⇒ evolution/violation.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-12">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">12</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">From oxygenic photosynthesis to mammals; primates to <i>Homo sapiens</i> in a time-ordered storyline</div>
+              <h2>GEOLOGICAL AND HUMAN EVOLUTION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Geological evolution</b> correlates the fossil sequence in rock layers with major biological changes across Earth’s history.</li><li>Early life originated in aquatic environments; later diversification produced complex multicellular plants and animals.</li><li>Oxygen release by early photosynthetic organisms reshaped the atmosphere and enabled widespread aerobic metabolism.</li><li>Land was colonised in stages: plants first, then arthropods and other animals, then vertebrates (fish → amphibians → reptiles).</li><li><b>Human evolution</b> traces primate ancestry through hominins to <i>Homo sapiens</i> with key traits and approximate dates.</li></ul></div>
+    
+    
+              <div class="card" style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF;">
+  
+  <h2>
+    <span class="secno">🖼️</span>
+    <span class="htext">Diagram</span>
+  </h2>
+
+  <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+
+    <img src="img/Untitled-9.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+
+
+  
+  
+  </div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">Phot</span><span>Oxygenic photosynthesis releases O<sub>2</sub> (from water splitting in the light reaction); major atmospheric turning point.</span></li><li><span class="ic">Comp</span><span>Unicellular → multicellular: division of labour and specialization increase organismal complexity over time.</span></li><li><span class="ic">Foss</span><span>Older sedimentary layers generally contain earlier and simpler forms; newer layers show derived forms plus extinctions.</span></li><li><span class="ic">Amni</span><span>Reptiles: the <b>amniotic egg</b> reduced dependence on water for reproduction; key terrestrial adaptation.</span></li><li><span class="ic">Meso</span><span>Mesozoic era: reptiles diversified widely (including dinosaurs on land; several marine reptile groups in seas).</span></li><li><span class="ic">Homi</span><span>Hominin trends: bipedalism → tool use → increased brain size → culture/language in <i>H. sapiens</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">GEOLOGICAL EVOLUTION: KEY MILESTONES (ORDER + APPROX. DATES + TRAITS)</span></h2><ul class="b"><li>Earth formed ≈4.5 bya; oceans formed as Earth cooled.</li><li>Life appeared ≈4.0 bya; earliest life was aquatic.</li><li>First non-cellular life forms (giant molecules) ≈3.0 bya (as per source summary).</li><li>First cellular life forms ≈2000 mya (2.0 bya), likely single-celled; aquatic only.</li><li>Oxygenic photosynthesis increased atmospheric O<sub>2</sub>, enabling aerobic respiration and an ozone shield over time.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">HUMAN EVOLUTION: SEQUENCE WITH DATES AND DIAGNOSTIC TRAITS</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><g><rect x='18' y='20' width='110' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='30' y='42' font-size='12' fill='#1f2a44'>Australo.</text><rect x='140' y='20' width='85' height='34' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='150' y='42' font-size='12' fill='#1f2a44'>H. habilis</text><rect x='235' y='20' width='95' height='34' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='245' y='42' font-size='12' fill='#1f2a44'>H. erectus</text><line x1='128' y1='37' x2='140' y2='37' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='225' y1='37' x2='235' y2='37' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='70' y='90' width='125' height='34' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='80' y='112' font-size='12' fill='#1f2a44'>Neanderthal</text><rect x='210' y='90' width='125' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='220' y='112' font-size='12' fill='#1f2a44'>H. sapiens</text><line x1='195' y1='107' x2='210' y2='107' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='20' y='160' font-size='12' fill='#1f2a44'>Key traits:</text><text x='20' y='178' font-size='12' fill='#1f2a44'>bipedal → tools → larger brain → culture</text></g></svg></div><ul class="b"><li>Primates (≈65–55 mya): grasping hands, nails, forward-facing eyes; arboreal adaptations.</li><li>Apes (Miocene, ≈23–5 mya): no tail; larger brains; diverse African and Eurasian forms.</li><li><b><i>Australopithecus</i></b> (≈4.2–2.0 mya): <b>bipedal</b>, small brain; lived in Africa.</li><li><b><i>Homo habilis</i></b> (≈2.4–1.4 mya): early <b>stone tools</b>; increased cranial capacity.</li><li><b><i>Homo erectus</i></b> (≈1.9 mya–≈0.14 mya): long-distance walker; likely used fire; expanded out of Africa.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">AMNIOTIC EGG (REPTILES) vs AMPHIBIAN EGG</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Reptiles (amniotes)</th><th>Amphibians (anamniotes)</th></tr></thead><tbody><tr><td>Egg covering</td><td>Thick leathery or calcareous shell (in many reptiles); reduced water loss</td><td>Jelly-like covering; lacks a protective shell</td></tr><tr><td>Need for water for reproduction</td><td>Greatly reduced; reproduction possible on land due to extra-embryonic membranes</td><td>High; eggs usually laid in water or very moist sites</td></tr><tr><td>Embryo environment</td><td>Amnion (plus other membranes like chorion, allantois) helps prevent desiccation and supports development</td><td>No amnion; embryo is more prone to drying</td></tr><tr><td>Evolutionary advantage</td><td>Key step towards fully terrestrial life</td><td>Limits permanent colonisation of dry land</td></tr></tbody></table></div></div>
+    
+    
+    
+    <div class="row c3"><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Timeline hook: Earth → Oceans → Life → Cells → O<sub>2</sub> → Multi → Sea animals → Fish → Land plants → Amphib → Rept egg → Mammals”</div><paragraph id="6a9fd5fc4b881f6a8f0000ae">Anchor the early timeline: <b>Earth</b> forms, <b>oceans</b> form, then <b>life</b> appears; later <b>cells</b> dominate.</paragraph><paragraph id="6a9fd5fc534b5994b80000af">Then <b>O<sub>2</sub></b> rises, <b>multicellular</b> life spreads; seas diversify with <b>invertebrates</b> and <b>fishes</b>.</paragraph><paragraph id="6a9fd5fc5e8fbe1a9a0000b0">On land: <b>plants</b> first, then <b>amphibians</b>; <b>reptile egg</b> reduces water dependence; <b>mammals</b> diversify later.</paragraph></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

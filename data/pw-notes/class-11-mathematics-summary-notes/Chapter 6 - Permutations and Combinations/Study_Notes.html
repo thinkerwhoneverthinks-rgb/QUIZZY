@@ -1,0 +1,2726 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-06 : Permutations and Combinations</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929a5d2b454d827fc93f73/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a929a5d2b454d827fc93f73/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-06 : Permutations and Combinations</h1>
+
+<h2>Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e138b385b7ab27c7760c9d6d"><b>Counting techniques (Permutations + Combinations)</b> help us count arrangements/selections <b>without listing</b> every case.</paragraph>
+</div>
+<paragraph id="c4f77764d319e485ee7ba6ce"><b>Motivating situation (number lock):</b> A 4-wheel lock has digits 0–9 on each wheel. It opens using <b>4 fixed digits in a fixed order</b> with <b>no repetition</b>. If the 1st digit is known to be 7, then we only need to count how many possible <b>3-digit sequences</b> (from the remaining 9 digits) might be tried. Listing is too long → use counting principles.</paragraph>
+
+<h2>Fundamental Principle of Counting</h2>
+
+<h3>Idea through basic examples</h3>
+<paragraph id="91ae4a5b1e1df14830f08f79"><b>Example (pants and shirts):</b> Mohan has 3 pants + 2 shirts. For each pant choice (3 ways), shirts (2 ways). Total pairs = <b>3 × 2 = 6</b>.</paragraph>
+<paragraph id="94537b257538c7d343bc5910"><b>Example (bag–tiffin–bottle):</b> Sabnam has 2 school bags, 3 tiffin boxes, 2 water bottles. Pick one of each:</paragraph>
+<ul>
+<li>Bag: 2 ways</li>
+<li>For each bag, tiffin: 3 ways ⇒ bag–tiffin pairs = 2 × 3 = 6</li>
+<li>For each pair, bottle: 2 ways ⇒ total = 6 × 2 = <b>12</b></li>
+</ul>
+
+<h3>Statement of the principle (Multiplication Principle)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="35ed710d9391bae7c8b18607"><b>Fundamental Principle of Counting / Multiplication Principle:</b></paragraph>
+<paragraph id="e0e2d21296dca4ec57452d2c">If an event can happen in <b>m</b> ways, and <b>following which</b> a second event can happen in <b>n</b> ways, then total outcomes of the two events <b>in that order</b> = <b>m × n</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="e271a653e91fb0ed81c551e1"><b>Key words:</b> “<b>following which</b>” + “<b>in the given order</b>”. The 2nd count is taken <b>after</b> the 1st choice, and we’re counting outcomes for a chosen order of steps.</paragraph>
+</div>
+
+<h3>Generalisation to three events</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5089cb398e2169b35a34c72a">If 1st event: <b>m</b> ways, then 2nd: <b>n</b> ways, then 3rd: <b>p</b> ways, total outcomes (in that order) = <b>m × n × p</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="f808277175516dfa0dd5210a"><b>Exam tip:</b> If actions can be done in different orders, you may pick any valid order and apply multiplication—just make sure each step’s count matches that chosen order (especially with restrictions).</paragraph>
+</div>
+
+<h3>Worked Examples (with reasoning)</h3>
+
+<h3>Example 1: 4-letter words from ROSE (no repetition)</h3>
+<paragraph id="f3faf53120e3e716d2b059d3"><b>Task:</b> Number of 4-letter words (meaningful or not) from R, O, S, E with <b>no repetition</b>.</paragraph>
+<paragraph id="6a75a750077271add82d4f57"><b>Reasoning (vacant places idea):</b> Fill 4 slots left → right:</paragraph>
+<ul>
+<li>1st place: 4 choices (R/O/S/E)</li>
+<li>2nd place: 3 choices left</li>
+<li>3rd place: 2 choices left</li>
+<li>4th place: 1 choice left</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="953991741111469e5bbf824d"><b>Total</b> = 4 × 3 × 2 × 1 = 24</paragraph>
+<paragraph id="3e03e6a68aa0a0166e965c9e">4, 3, 2, 1 = available letters at each next position (since no repetition).</paragraph>
+</div>
+<paragraph id="33b037ff50cfe8b91b1180cb"><b>Answer:</b> 24 words.</paragraph>
+
+<h3>Note (linked to Example 1): if repetition of letters is allowed</h3>
+<paragraph id="14f94226ac22e681bfd63b33">If repetition is allowed, each of the 4 places has 4 independent choices.</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="dd20184afc632983b0c2938c"><b>Total</b> = 4 × 4 × 4 × 4 = 256</paragraph>
+<paragraph id="0a7e0c78c70941f41a54845d">Each “4” = choices per position when repetition is allowed.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="d3824481c059fbef301b375f"><b>Common mistake:</b> Using 4×3×2×1 even when repetition is allowed. If repetition is allowed, choices <b>do not</b> reduce after each pick.</paragraph>
+</div>
+
+<h3>Example 2: Signals using 2 flags one below the other (no repetition)</h3>
+<paragraph id="871b66cca9b7a1666972304b"><b>Given:</b> 4 flags of different colours. A signal uses <b>2 flags</b> (top + bottom), so <b>order matters</b>.</paragraph>
+<ul>
+<li>Top position: 4 choices</li>
+<li>Bottom position: 3 remaining choices</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e67a569e94e1a8d1b0a05a27"><b>Total signals</b> = 4 × 3 = 12</paragraph>
+<paragraph id="3ae6bfed4f8806e84a8f8fab">4 = choice for upper flag; 3 = choice for lower flag after upper is chosen.</paragraph>
+</div>
+<paragraph id="c120bc5e45efcebf9d887430"><b>Answer:</b> 12 signals.</paragraph>
+
+<h3>Example 3: 2-digit even numbers from 1,2,3,4,5 (repetition allowed)</h3>
+<paragraph id="85e3a5e90276f94a55347865"><b>Task:</b> Form 2-digit even numbers using digits 1–5, repetition allowed.</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3c6f305d904aa06096c64e63"><b>Strategy:</b> Start with the <b>unit’s place</b> (evenness restricts it).</paragraph>
+</div>
+<ul>
+<li>Unit’s digit must be even: 2 or 4 ⇒ 2 ways</li>
+<li>Ten’s digit can be any of the 5 digits (repetition allowed) ⇒ 5 ways</li>
+</ul>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="07130a206ba2e5b136877c85"><b>Total even numbers</b> = 2 × 5 = 10</paragraph>
+<paragraph id="1204a71d9593c7cdda71acde">2 = choices for unit’s digit (2 or 4); 5 = choices for ten’s digit.</paragraph>
+</div>
+<paragraph id="d261aaa9847c122312ee3a36"><b>Answer:</b> 10 two-digit even numbers.</paragraph>
+
+<div class="remember-box">
+<paragraph id="120074dd1173992985c0714b"><b>Common mistake:</b> Starting with the ten’s place is okay, but then you must still restrict the unit’s place to {2,4}. Starting with the restricted place avoids slips.</paragraph>
+</div>
+
+<h3>Example 4: Signals using at least 2 flags from 5 different flags (no repetition)</h3>
+<paragraph id="03844104453b31aad042a69b"><b>Given:</b> 5 different flags; arrange <b>at least 2</b> on a vertical staff (order matters; no repetition implied since flags are different + arranged).</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="7a2935121a593dc2734a4841">“At least 2” ⇒ lengths 2, 3, 4, or 5. Count each length separately, then <b>add</b>.</paragraph>
+</div>
+<ol>
+<li>
+<paragraph id="49839dedb7ad6d8bfa8cc6a4"><b>2-flag signals:</b> Fill 2 positions in order from 5 flags:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="52c010755ff9663f4dd2fd1a">5 × 4 = 20</paragraph>
+<paragraph id="edecc81944153216cefb94ce">5 = choices for top; 4 = remaining choices for next spot.</paragraph>
+</div>
+</li>
+<li>
+<paragraph id="1d1dc4aeb54028009c2e7ef3"><b>3-flag signals:</b> Fill 3 positions in order from 5 flags:</paragraph>
+<paragraph id="f12c4e9ac8c777cb892d7114">(Same logic: 1st spot 5 ways, 2nd 4 ways, 3rd 3 ways.)</paragraph>
+</li>
+<li>
+<paragraph id="1545aa4884e32f983640f4d3"><b>4-flag signals:</b> Fill 4 positions in order from 5 flags:</paragraph>
+<paragraph id="565561a10c5c9ece8c9a4b0a">(Continue: 5, then 4, then 3, then 2 choices.)</paragraph>
+</li>
+<li>
+<paragraph id="631607b11dbdb70bbff3c651"><b>5-flag signals:</b> Fill all 5 positions in order:</paragraph>
+<paragraph id="a96f8bdc214b824203a3095c">(Choices: 5, 4, 3, 2, 1.)</paragraph>
+</li>
+</ol>
+
+<h2>6.3 Permutations</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="292c678ef43ec32366a2857e"><b>Permutation (idea):</b> counting <b>arrangements</b> where <b>order matters</b> → different orders = different outcomes.</paragraph>
+</div>
+
+<paragraph id="c44cb39dfaaeab4716a4c85c"><b>Illustration (order matters):</b> ROSE, REOS, … are all different because the letter positions change.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f44e879ece47b5bb055495a6">Typical exam decision:</paragraph>
+<ul>
+<li>If <b>order matters</b> → use <b>permutations</b>.</li>
+<li>If <b>repetition allowed</b> → each position can be filled independently from the full set.</li>
+<li>If <b>no repetition</b> → choices decrease after each pick.</li>
+</ul>
+</div>
+
+<paragraph id="80f62140c06d7cd511d16d76"><b>Example (from text):</b> Number of 3-letter “words” from NUMBER (6 distinct letters).</paragraph>
+<ul>
+<li><b>Without repetition:</b> 6 choices, then 5, then 4 → <b>6 × 5 × 4 = 120</b>.</li>
+<li><b>With repetition:</b> 6 choices for each place → <b>6 × 6 × 6 = 216</b>.</li>
+</ul>
+
+<h3>Definition 1: Permutation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f8fe03f3c2e3c5f786c26bc8"><b>Permutation:</b> an arrangement <b>in a definite order</b> of objects taken <b>some or all</b> at a time.</paragraph>
+</div>
+
+<h3>6.3.1 Permutations when all the objects are distinct</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="728113de5cbe520755d2a573"><b>Theorem 1 (no repetition):</b> permutations of <b>n distinct</b> objects taken <b>r</b> at a time (0 &lt; r ≤ n), without repetition:</paragraph>
+<paragraph id="ac84351061e02d9b9229cb59"><b><span><sup>n</sup>P</span><sub>r</sub> = n(n − 1)(n − 2)…(n − r + 1)</b></paragraph>
+<paragraph id="d00aeb00b2b57da8828600f7">n = total distinct objects available</paragraph>
+<paragraph id="acb9db70d263c02a81fc5e03">r = number arranged (chosen + ordered)</paragraph>
+</div>
+
+<paragraph id="29f24e576ee1e4e73377df85"><b>Reasoning (vacant places method):</b></paragraph>
+<ul>
+<li>There are <b>r empty places</b> to fill in order.</li>
+<li>1st place: <b>n</b> choices</li>
+<li>2nd place: <b>(n − 1)</b> choices (no repetition)</li>
+<li>3rd place: <b>(n − 2)</b> choices</li>
+<li>…</li>
+<li>rth place: <b>n − (r − 1)</b> choices</li>
+<li>Multiply (multiplication principle) → <b>n(n − 1)…(n − r + 1)</b></li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="2f7fe60bc1db7b96f567b222">Don’t mix up “taken r at a time” with combinations: for <b>permutations</b>, (A,B,C) and (B,A,C) are <b>different</b>.</paragraph>
+</div>
+
+<h3>6.3.2 Factorial notation</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d0426e3c2906dc35ef261c3c"><b>Factorial:</b> for natural number n,</paragraph>
+<paragraph id="6b5cf8bed8f372ba2d60c9a9"><b>n! = 1 × 2 × 3 × … × (n − 1) × n</b></paragraph>
+<paragraph id="5a369c4b1466d8360e704985">Read: “n factorial”.</paragraph>
+</div>
+
+<ul>
+<li>1! = 1</li>
+<li>2! = 1 × 2</li>
+<li>3! = 1 × 2 × 3</li>
+<li>4! = 1 × 2 × 3 × 4, and so on.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="1e03bb06995976dc449d0dc3"><b>Definition:</b> <b>0! = 1</b></paragraph>
+</div>
+
+<paragraph id="8680eacc9a6cca9b4a6f3529"><b>Useful expansions (to simplify):</b></paragraph>
+<ul>
+<li>5! = 5 × 4! = 5 × 4 × 3! = 5 × 4 × 3 × 2! = 5 × 4 × 3 × 2 × 1!</li>
+<li>In general, for natural number n:</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="49e3007d3909b35b27f35f18"><b>Recursive factorial identities:</b></paragraph>
+<paragraph id="6777bb5ac659286be549267b"><b>n! = n(n − 1)!</b> (n ≥ 2)</paragraph>
+<paragraph id="fd0c2c79d7c4409358e8c91d"><b>n! = n(n − 1)(n − 2)!</b> (n ≥ 3)</paragraph>
+<paragraph id="8cb1044b069cb640987e7d61">n = a natural number</paragraph>
+</div>
+
+<h3>Worked Examples on factorials</h3>
+
+<paragraph id="5c840528a5138b9684f026ee"><b>Example 5:</b> Evaluate (i) 5! (ii) 7! (iii) 7! − 5!</paragraph>
+<ul>
+<li>5! = 1×2×3×4×5 = 120</li>
+<li>7! = 1×2×3×4×5×6×7 = 5040</li>
+<li>7! − 5! = 5040 − 120 = 4920</li>
+</ul>
+
+<paragraph id="315880411604a7fec587dc37"><b>Example 6:</b> Compute (i) \(\dfrac{7!}{5!}\) (ii) \(\dfrac{12!}{10!\,(2!)}\)</paragraph>
+<ul>
+<li>
+<paragraph id="57d42739734a681307b5b802">(i) \(\dfrac{7!}{5!}\):</paragraph>
+<paragraph id="d476ee97341298b0d209c8a2">7! = 7 × 6 × 5! ⇒ \(\dfrac{7!}{5!} = \dfrac{7 \times 6 \times 5!}{5!} = 7 \times 6 = 42\)</paragraph>
+</li>
+<li>
+<paragraph id="55b9f37bfd69c04f1c67e8c2">(ii) \(\dfrac{12!}{10!\,(2!)}\):</paragraph>
+<paragraph id="12ac3fe5684b3b9499af0f7f">12! = 12 × 11 × 10!</paragraph>
+<paragraph id="b35013ec029b92bb9f446fc5">So \(\dfrac{12!}{10! \times 2!} = \dfrac{12 \times 11 \times 10!}{10! \times 2} = \dfrac{12 \times 11}{2} = 6 \times 11 = 66\)</paragraph>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="a7d0cec47a0dadc1eb985a1c">Factorial fractions: rewrite the <b>bigger</b> factorial to cancel the smaller (e.g., 12! = 12×11×10!). Don’t expand everything.</paragraph>
+</div>
+
+<paragraph id="46131e1043dfa69c95631b83"><b>Example 7:</b> <style>
+  @font-face {
+    font-family: "Kalam";
+    src: url("fonts/Kalam-Regular.ttf") format("truetype");
+  }
+
+  .kalam-math,
+  .kalam-math math,
+  .kalam-math math * {
+    font-family: "Kalam", cursive !important;
+  }
+
+  .kalam-math {
+    font-size: 22px;
+    line-height: 1.8;
+  }
+</style>
+
+</paragraph><div class="kalam-math">
+  <paragraph id="7ab40b5c12bffca506320b6b">
+    Evaluate
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mfrac>
+        <mrow><mi>n</mi><mo>!</mo></mrow>
+        <mrow>
+          <mi>r</mi><mo>!</mo>
+          <mo>(</mo><mi>n</mi><mo>−</mo><mi>r</mi><mo>)</mo><mo>!</mo>
+        </mrow>
+      </mfrac>
+    </math>
+    when
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi><mo>=</mo><mn>5</mn><mo>,</mo>
+      <mi>r</mi><mo>=</mo><mn>2</mn>
+    </math>.
+  </paragraph>
+
+  <ul>
+    <li>
+      Substitute:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+          <mrow><mn>5</mn><mo>!</mo></mrow>
+          <mrow>
+            <mn>2</mn><mo>!</mo>
+            <mo>(</mo><mn>5</mn><mo>−</mo><mn>2</mn><mo>)</mo><mo>!</mo>
+          </mrow>
+        </mfrac>
+
+        <mo>=</mo>
+
+        <mfrac>
+          <mrow><mn>5</mn><mo>!</mo></mrow>
+          <mrow><mn>2</mn><mo>!</mo><mn>3</mn><mo>!</mo></mrow>
+        </mfrac>
+      </math>
+    </li>
+
+    <li>
+      Write
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn>5</mn><mo>!</mo>
+        <mo>=</mo>
+        <mn>5</mn><mo>×</mo><mn>4</mn><mo>×</mo><mn>3</mn><mo>!</mo>
+      </math>
+    </li>
+
+    <li>
+      Then
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+          <mrow><mn>5</mn><mo>!</mo></mrow>
+          <mrow><mn>2</mn><mo>!</mo><mn>3</mn><mo>!</mo></mrow>
+        </mfrac>
+
+        <mo>=</mo>
+
+        <mfrac>
+          <mrow>
+            <mn>5</mn><mo>×</mo><mn>4</mn><mo>×</mo><mn>3</mn><mo>!</mo>
+          </mrow>
+          <mrow>
+            <mn>2</mn><mo>!</mo><mo>×</mo><mn>3</mn><mo>!</mo>
+          </mrow>
+        </mfrac>
+
+        <mo>=</mo>
+
+        <mfrac>
+          <mrow><mn>5</mn><mo>×</mo><mn>4</mn></mrow>
+          <mn>2</mn>
+        </mfrac>
+
+        <mo>=</mo>
+        <mn>10</mn>
+      </math>.
+    </li>
+  </ul>
+</div>
+
+
+<paragraph id="d603685ee60044b8beddafc6"><style>
+  @font-face {
+    font-family: "Kalam";
+    src: url("fonts/Kalam-Regular.ttf") format("truetype");
+  }
+
+  .kalam-math,
+  .kalam-math math,
+  .kalam-math math * {
+    font-family: "Kalam", cursive !important;
+  }
+
+  .kalam-math {
+    font-size: 22px;
+    line-height: 1.8;
+  }
+</style>
+
+</paragraph><div class="kalam-math">
+  <paragraph id="073f77130fd9c0074734b946">
+    <b>Example 8:</b> If
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mfrac><mn>1</mn><mrow><mn>8</mn><mo>!</mo></mrow></mfrac>
+      <mo>+</mo>
+      <mfrac><mn>1</mn><mi>x</mi></mfrac>
+      <mo>=</mo>
+      <mfrac>
+        <mrow><mn>9</mn><mo>!</mo></mrow>
+        <mrow><mn>10</mn><mo>!</mo></mrow>
+      </mfrac>
+    </math>,
+    find <i>x</i>.
+  </paragraph>
+
+  <ul>
+    <li>
+      Convert the RHS:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+          <mrow><mn>9</mn><mo>!</mo></mrow>
+          <mrow><mn>10</mn><mo>!</mo></mrow>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+          <mrow><mn>9</mn><mo>!</mo></mrow>
+          <mrow><mn>10</mn><mo>×</mo><mn>9</mn><mo>!</mo></mrow>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac><mn>1</mn><mn>10</mn></mfrac>
+      </math>
+    </li>
+
+    <li>
+      The LHS is
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac><mn>1</mn><mrow><mn>8</mn><mo>!</mo></mrow></mfrac>
+        <mo>+</mo>
+        <mfrac><mn>1</mn><mi>x</mi></mfrac>
+      </math>;
+      however, the text rewrites 9! and 10! in terms of 8!.
+    </li>
+
+    <li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn>9</mn><mo>!</mo>
+        <mo>=</mo>
+        <mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo>
+        <mo>,</mo>
+        <mspace width="1em"></mspace>
+        <mn>10</mn><mo>!</mo>
+        <mo>=</mo>
+        <mn>10</mn><mo>×</mo><mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo>
+      </math>
+    </li>
+
+    <li>
+      The given equation becomes:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac><mn>1</mn><mi>x</mi></mfrac>
+        <mo>+</mo>
+        <mfrac>
+          <mn>1</mn>
+          <mrow><mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo></mrow>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac>
+          <mn>1</mn>
+          <mrow>
+            <mn>10</mn><mo>×</mo><mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo>
+          </mrow>
+        </mfrac>
+      </math>
+    </li>
+
+    <li>
+      Multiplying throughout by
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn>10</mn><mo>×</mo><mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo>
+      </math>
+      gives
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+          <mrow>
+            <mn>10</mn><mo>×</mo><mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo>
+          </mrow>
+          <mi>x</mi>
+        </mfrac>
+        <mo>+</mo><mn>10</mn><mo>=</mo><mn>9</mn>
+      </math>.
+    </li>
+
+    <li>
+      Therefore,
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac>
+          <mrow>
+            <mn>10</mn><mo>×</mo><mn>9</mn><mo>×</mo><mn>8</mn><mo>!</mo>
+          </mrow>
+          <mi>x</mi>
+        </mfrac>
+        <mo>=</mo><mo>−</mo><mn>1</mn>
+      </math>,
+      which is inconsistent with the subsequent steps in the text.
+    </li>
+
+    <li>
+      Following the algebra presented in the text:
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac><mn>1</mn><mi>x</mi></mfrac>
+        <mo>+</mo>
+        <mfrac><mn>1</mn><mn>9</mn></mfrac>
+        <mo>=</mo>
+        <mfrac><mn>1</mn><mrow><mn>10</mn><mo>×</mo><mn>9</mn></mrow></mfrac>
+      </math>
+    </li>
+
+    <li>
+      Thus,
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac><mn>1</mn><mi>x</mi></mfrac>
+        <mo>=</mo>
+        <mfrac><mn>1</mn><mn>90</mn></mfrac>
+        <mo>−</mo>
+        <mfrac><mn>1</mn><mn>9</mn></mfrac>
+        <mo>=</mo>
+        <mfrac>
+          <mrow><mn>1</mn><mo>−</mo><mn>10</mn></mrow>
+          <mn>90</mn>
+        </mfrac>
+        <mo>=</mo>
+        <mfrac><mrow><mo>−</mo><mn>9</mn></mrow><mn>90</mn></mfrac>
+        <mo>=</mo>
+        <mfrac><mrow><mo>−</mo><mn>1</mn></mrow><mn>10</mn></mfrac>
+      </math>,
+      giving
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>x</mi><mo>=</mo><mo>−</mo><mn>10</mn>
+      </math>.
+    </li>
+  </ul>
+</div>
+
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="a6cea7e2e9a0d0f5bc91ec4e"><b>Note for exams:</b> the printed example’s intermediate simplification looks inconsistent; if this comes up, redo carefully from the original equation. (If the examiner uses the book’s official scheme, follow that marking scheme.)</paragraph>
+</div>
+
+<h3>6.3.3 Derivation of the factorial form of nPr</h3>
+
+<paragraph id="f1295f30129b01af4412ca0e">We start from:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4c425ac95230b0173a73aecd"><b><sup>n</sup>P</b><sub>r</sub> = n(n − 1)(n − 2)…(n − r + 1)</paragraph>
+<paragraph id="72780178b254d5ff505aa954">n = total distinct objects</paragraph>
+<paragraph id="4d5bcb804ba13a547c9352d1">r = number arranged</paragraph>
+</div>
+
+<paragraph id="cc0aca23bd91ced506b6bc00">To write it in factorials: multiply and divide by (n − r)(n − r − 1)…3×2×1 so the top becomes n! and the bottom becomes (n − r)!.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2af6c8565d538fff4c297599"><b>Factorial form (0 ≤ r ≤ n):</b></paragraph>
+<paragraph id="1d451b58c57100ae25e54ce7"><b>\(^{n}P_r = \dfrac{n!}{(n-r)!}\)</b></paragraph>
+<paragraph id="cdebfe27482e38b447218d97">n = total distinct objects</paragraph>
+<paragraph id="9cbeafe36c1b8fcfa7d140a5">r = number arranged</paragraph>
+</div>
+
+<paragraph id="1ea6798fbbae5ffe5fb1f76a"><b>Special cases:</b></paragraph>
+<ul>
+<li>If r = n, then \(^{n}P_n = \dfrac{n!}{0!} = n!\) (since 0! = 1).</li>
+<li>Arranging <b>no object</b> (r = 0) = leave everything as is → <b>exactly 1</b> way.</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="8c4eaf43f05e90c8987dacca"><b>Zero case:</b> \(^{n}P_0 = 1 = \dfrac{n!}{n!}\)</paragraph>
+<paragraph id="97513b4cc59c57d27585140a">n = total distinct objects</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6539c61a90f58d9bfdc068ac">So <b>\(^{n}P_r = \dfrac{n!}{(n-r)!}\)</b> works for <b>all</b> r with <b>0 ≤ r ≤ n</b>.</paragraph>
+</div>
+
+<h3>Theorem 2: Permutations with repetition allowed</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="240eda0e2673ea638d19ff72"><b>Theorem 2 (repetition allowed):</b> permutations of n distinct objects taken r at a time, with repetition allowed:</paragraph>
+<paragraph id="e80d0c99fb7b1ed747ffd7d5"><b>n</b><sup>r</sup></paragraph>
+<paragraph id="61ca5ba48a2b025457bbf633">n = number of distinct objects available for each position</paragraph>
+<paragraph id="db063fcb9c89e241e8f30767">r = number of positions to fill</paragraph>
+</div>
+
+<paragraph id="dfdee4fd51f548fc6dea09b6"><b>Reasoning (same idea as Theorem 1):</b> each of the r places has n choices (independent), so total = n × n × … × n (r times) = n<sup>r</sup>.</paragraph>
+
+<h3>Using nPr in earlier-type questions (illustrations)</h3>
+
+<ul>
+<li>
+<paragraph id="17ca820e85f1b3046429b445"><b>4-letter word from 4 distinct letters (e.g., ROSE):</b></paragraph>
+<ul>
+<li>Without repetition: \(^{4}P_4 = 4! = 24\)</li>
+<li>With repetition: 4<sup>4</sup> = 256</li>
+</ul>
+</li>
+<li>
+<paragraph id="51a0386a2612f0c56433f231"><b>3-letter words from NUMBER (6 distinct letters):</b></paragraph>
+<ul>
+<li>Without repetition: \(^{6}P_3 = \dfrac{6!}{3!} = 6\times5\times4 = 120\)</li>
+<li>With repetition: 6<sup>3</sup> = 216</li>
+</ul>
+</li>
+<li>
+<paragraph id="57c6183666124ad32076d7ef"><b>Choosing a Chairman and Vice-Chairman from 12 persons (no person holds both posts):</b></paragraph>
+<ul>
+<li>Order matters (Chairman vs Vice-Chairman) → permutations</li>
+<li>\(^{12}P_2 = 12!/10! = 12\times11 = 132\)</li>
+</ul>
+</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="0a102a73751f01f19927cc88">Different posts/roles (Chairman, Vice-Chairman) ⇒ selection is <b>ordered</b> ⇒ use <b>permutations</b>, not combinations.</paragraph>
+</div>
+
+<h3>6.3.4 Permutations when all the objects are not distinct</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="cf589a15ebd41e2031086f5c">If some objects are identical, using n! <b>overcounts</b> (swapping identical items doesn’t make a new arrangement). Fix it by <b>dividing by factorials of repetition counts</b>.</paragraph>
+</div>
+
+<paragraph id="e023ae0b56e717560e3a7877"><b>Example: ROOT</b></paragraph>
+<ul>
+<li>Letters: R, O, O, T (4 letters; O repeats twice).</li>
+<li>Pretend the Os are different: O<sub>1</sub>, O<sub>2</sub>.</li>
+<li>Then total = 4! permutations (as if all distinct).</li>
+<li>But each true arrangement is counted 2! times (swap O<sub>1</sub> and O<sub>2</sub> looks the same).</li>
+<li>So required number = \(\dfrac{4!}{2!} = 12\).</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0441f021963787345a431b5f"><b>Repeated objects (ROOT idea):</b></paragraph>
+<paragraph id="ec3427382aabf488f2ce9c5c">Number of distinct permutations = <b>\(\dfrac{4!}{2!}\)</b></paragraph>
+<paragraph id="72012defd0e51cdd2e618e73">4 = total letters; 2 = number of identical Os</paragraph>
+</div>
+
+<paragraph id="f21bb76fc5f1f70a1058e079">The listed pairs in the text (e.g., RO<sub>1</sub>O<sub>2</sub>T and RO<sub>2</sub>O<sub>1</sub>T) show how two “different” permutations collapse into one when O<sub>1</sub>, O<sub>2</sub> are identical.</paragraph>
+
+<paragraph id="ef81aa4fd33f9884a9f12964"><b>Next illustration setup: INSTITUTE</b></paragraph>
+<ul>
+<li>Total letters = 9</li>
+<li>I appears 2 times; T appears 3 times</li>
+<li>Temporarily label repeats: I<sub>1</sub>, I<sub>2</sub>, T<sub>1</sub>, T<sub>2</sub>, T<sub>3</sub> so all 9 are distinct</li>
+<li>Then total permutations (if all distinct) = 9!</li>
+<li>For any fixed arrangement (e.g., I<sub>1</sub>N T<sub>1</sub>S I<sub>2</sub> T<sub>2</sub> U E T<sub>3</sub>), swapping I<sub>1</sub>, I<sub>2</sub> doesn’t change the word → overcount factor 2!; similarly T’s → factor 3! overcount.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="5bfe10d95e6e9dfd7d514466">Rule: count as if all letters are distinct, then divide by factorials for each repeated group (e.g., 2! for two I’s, 3! for three T’s).</paragraph>
+</div>
+
+<h2>Permutations with Repeated Objects (Identical Items)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d1491b8f213e1581a295fbae"><b>Idea:</b> If some objects are <b>identical</b> (indistinguishable), swapping them gives <b>no new</b> arrangement. So while counting, <b>divide by factorial</b> of the repeated items.</paragraph>
+</div>
+
+<h3>Theorem 3 (One set of identical objects)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="245000ad879c912d92e202eb"><b>Permutations of n objects when p are identical (rest all different):</b></paragraph>
+<paragraph id="13aaed92060f30998c7e8b2b">
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mfrac>
+      <mrow><mi>n</mi><mo>!</mo></mrow>
+      <mrow><mi>p</mi><mo>!</mo></mrow>
+    </mfrac>
+  </math>
+</paragraph>
+<paragraph id="a98c01c2f019d79d2de95304"><b>n</b> = total objects</paragraph>
+<paragraph id="a724dabd7f3866eb54364fca"><b>p</b> = number of identical objects (same kind)</paragraph>
+</div>
+
+<h3>Theorem 4 (Multiple sets of identical objects)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="63bb713e74ca8be967214cdb"><style>
+  @font-face {
+    font-family: "Kalam";
+    src: url("fonts/Kalam-Regular.ttf") format("truetype");
+  }
+
+  .kalam,
+  .kalam math,
+  .kalam math * {
+    font-family: "Kalam", cursive !important;
+  }
+
+  .kalam {
+    font-size: 22px;
+    line-height: 1.8;
+  }
+</style>
+
+</paragraph><div class="kalam">
+  <paragraph id="be6deb77a230b37dded2f4b6">
+    <b>Permutations of <i>n</i> objects when</b>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <msub><mi>p</mi><mn>1</mn></msub>
+    </math>
+    are of one kind,
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <msub><mi>p</mi><mn>2</mn></msub>
+    </math>
+    are of a second kind, …,
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <msub><mi>p</mi><mi>k</mi></msub>
+    </math>
+    are of a <i>k</i>th kind (any remaining objects are distinct):
+  </paragraph>
+
+  <paragraph id="31b117520946bf6c355ec855">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mfrac>
+        <mrow>
+          <mi>n</mi><mo>!</mo>
+        </mrow>
+
+        <mrow>
+          <msub><mi>p</mi><mn>1</mn></msub><mo>!</mo>
+          <mspace width="0.4em"></mspace>
+
+          <msub><mi>p</mi><mn>2</mn></msub><mo>!</mo>
+          <mspace width="0.4em"></mspace>
+
+          <mo>⋯</mo>
+          <mspace width="0.4em"></mspace>
+
+          <msub><mi>p</mi><mi>k</mi></msub><mo>!</mo>
+        </mrow>
+      </mfrac>
+    </math>
+  </paragraph>
+</div><paragraph id="63936f59bbd5ab63da089947"></paragraph>
+<paragraph id="f38d7496e1b41210bdb067b0"><b>n</b> = total objects</paragraph>
+<paragraph id="d491a596e9ddb1f3f5afa03b"><b>p<sub>1</sub>, p<sub>2</sub>, …, p<sub>k</sub></b> = counts of each identical kind</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4ca772ba39b6ae78df8b7160"><b>Why divide?</b> </paragraph><div class="kalam">
+  <paragraph id="ee9e0bb24a5bd4fa10fda6b8">
+    <i>n</i>! counts some arrangements more than once because swapping identical objects does not produce a new arrangement.
+  </paragraph>
+
+  <paragraph id="156a6c404d6b9ac9a9358d77">
+    If <i>p</i> objects are identical, every distinct arrangement is counted <i>p</i>! times. Therefore, we divide by <i>p</i>!.
+  </paragraph>
+
+  <paragraph id="43402698309aa06b400a66b3">
+    If there are several groups of identical objects, the total overcounting factor is
+    <i>p</i><sub>1</sub>! <i>p</i><sub>2</sub>! ⋯ <i>p</i><sub>k</sub>!.
+  </paragraph>
+</div><paragraph id="dd2b00af07a0cc01631fc483"></paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="eeef0b42a2af0f1941b4e955"><b>Exam trap:</b> Divide <b>only</b> for truly repeated/identical items. Don’t divide for distinct letters/digits just because they “look similar”.</paragraph>
+</div>
+
+<h3>Example 9: Permutations of ALLAHABAD</h3>
+<paragraph id="99e0c49cbc32478d61b3370d"><b>Word:</b> ALLAHABAD has 9 letters.</paragraph>
+<ul>
+<li>A appears 4 times</li>
+<li>L appears 2 times</li>
+<li>H, B, D appear once each (distinct)</li>
+</ul>
+<paragraph id="75e81b1475e156042e7113fe">Required number of distinct permutations:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5e79f1b4a0f66ab00aea1d5d"></paragraph><paragraph class="kalam" id="af961e7a189ce2f36d5b5961">
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mfrac>
+      <mrow><mn>9</mn><mo>!</mo></mrow>
+      <mrow>
+        <mn>4</mn><mo>!</mo>
+        <mspace width="0.4em"></mspace>
+        <mn>2</mn><mo>!</mo>
+      </mrow>
+    </mfrac>
+    <mo>=</mo>
+    <mn>7560</mn>
+  </math>
+</paragraph><paragraph id="88717ffd2aff94248a424219"></paragraph>
+<paragraph id="793ba7c4ac163fd5b1bf9b0e"><b>9!</b> = if all 9 letters were different</paragraph>
+<paragraph id="a9c2cf47238db9f30c1fa4aa"><b>4!</b> = correct for 4 identical A’s</paragraph>
+<paragraph id="0cc3d75ddb149d904e8cde8d"><b>2!</b> = correct for 2 identical L’s</paragraph>
+</div>
+
+<h2>Permutations of Digits and Formation of Numbers (No Repetition)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="15780363524ea0d38270fbaa"><b>Forming numbers from digits:</b> order matters (1234 ≠ 1324) ⇒ use <b>permutations</b>.</paragraph>
+</div>
+
+<h3>Example 10: 4-digit numbers using digits 1 to 9 (no repetition)</h3>
+<paragraph id="f94a5c619cb9eab6e42a6279">Choose + arrange 4 digits from 9 distinct digits.</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c90e8175c8a1b0827364aab6"></paragraph><paragraph class="kalam" id="8cd2c05c4c99572dd2f82f90">
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mmultiscripts>
+      <mi>P</mi>
+      <mn>4</mn><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mn>9</mn>
+    </mmultiscripts>
+
+    <mo>=</mo>
+
+    <mfrac>
+      <mrow><mn>9</mn><mo>!</mo></mrow>
+      <mrow>
+        <mo>(</mo><mn>9</mn><mo>−</mo><mn>4</mn><mo>)</mo><mo>!</mo>
+      </mrow>
+    </mfrac>
+
+    <mo>=</mo>
+
+    <mfrac>
+      <mrow><mn>9</mn><mo>!</mo></mrow>
+      <mrow><mn>5</mn><mo>!</mo></mrow>
+    </mfrac>
+
+    <mo>=</mo>
+
+    <mn>9</mn><mo>×</mo><mn>8</mn><mo>×</mo>
+    <mn>7</mn><mo>×</mo><mn>6</mn>
+
+    <mo>=</mo>
+    <mn>3024</mn>
+  </math>
+</paragraph><paragraph id="0a4baf77e6b4be32cb47890b"></paragraph>
+<paragraph id="3bdfd86c67db4847d9579b9f"><b>\(^{n}P_r\)</b> = permutations of n distinct objects taken r at a time</paragraph>
+<paragraph id="a448c4b52059c00a290b314a"><b>n</b> = 9 digits, <b>r</b> = 4 places</paragraph>
+</div>
+
+<h3>Example 11: Numbers between 100 and 1000 from digits 0,1,2,3,4,5 (no repetition)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b104183b3fbed7e0a0d9710e">Between 100 and 1000 ⇒ exactly <b>3-digit</b> numbers. Hundreds digit <b>cannot</b> be 0.</paragraph>
+</div>
+<ol>
+<li>
+<paragraph id="09b54b8c3fd68b870683df15"><b>Step 1:</b> Count all ordered selections of 3 digits from 6 (including those starting with 0): <sup>6</sup>P<sub>3</sub>.</paragraph>
+</li>
+<li>
+<paragraph id="1402ec1b2ac1637a2bfa76e0"><b>Step 2:</b> Subtract the invalid ones with 0 in the hundreds place (these become 2-digit like 092).</paragraph>
+<paragraph id="dffd2f4155a7dc919bcbcb6e">Fix 0 first, then arrange 2 places from remaining 5 digits: <sup>5</sup>P<sub>2</sub>.</paragraph>
+</li>
+</ol>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b7d79b7d77899f6d96ab582f"></paragraph><div class="kalam">
+  <paragraph id="46e068d5ef11c86567b545e9">
+    Required count
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>=</mo>
+
+      <mmultiscripts>
+        <mi>P</mi>
+        <mn>3</mn><none></none>
+        <mprescripts></mprescripts>
+        <none></none><mn>6</mn>
+      </mmultiscripts>
+
+      <mo>−</mo>
+
+      <mmultiscripts>
+        <mi>P</mi>
+        <mn>2</mn><none></none>
+        <mprescripts></mprescripts>
+        <none></none><mn>5</mn>
+      </mmultiscripts>
+    </math>
+  </paragraph>
+
+  <paragraph id="f81a87a83027fc28d968ef12">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>=</mo>
+
+      <mfrac>
+        <mrow><mn>6</mn><mo>!</mo></mrow>
+        <mrow><mn>3</mn><mo>!</mo></mrow>
+      </mfrac>
+
+      <mo>−</mo>
+
+      <mfrac>
+        <mrow><mn>5</mn><mo>!</mo></mrow>
+        <mrow><mn>3</mn><mo>!</mo></mrow>
+      </mfrac>
+
+      <mo>=</mo>
+
+      <mn>4</mn><mo>×</mo><mn>5</mn><mo>×</mo><mn>6</mn>
+      <mo>−</mo>
+      <mn>4</mn><mo>×</mo><mn>5</mn>
+
+      <mo>=</mo>
+      <mn>120</mn><mo>−</mo><mn>20</mn>
+      <mo>=</mo><mn>100</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="0380d929fb75e57b8726f741">
+    <b><sup>6</sup>P<sub>3</sub></b> = all ordered selections of three digits from six digits.
+  </paragraph>
+
+  <paragraph id="b44e9400a6f4f6dd4d60fde4">
+    <b><sup>5</sup>P<sub>2</sub></b> = invalid selections in which the first digit is 0.
+  </paragraph>
+</div><paragraph id="fb4ed0069811412c940c33b0"></paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="180b77b1056b977e8a7a01e2"><b>Common mistake:</b> Writing <sup>6</sup>P<sub>3</sub> and stopping. Always check: can the leading digit be 0?</paragraph>
+</div>
+
+<h2>Solving Equations Involving Permutations</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="aa81cfb36f27609e2ff35576"></paragraph><paragraph class="kalam" id="20fb633ea573717cef17d177">
+  Use
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mmultiscripts>
+      <mi>P</mi>
+      <mi>r</mi><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mi>n</mi>
+    </mmultiscripts>
+
+    <mo>=</mo>
+
+    <mfrac>
+      <mrow><mi>n</mi><mo>!</mo></mrow>
+      <mrow>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mi>r</mi><mo>)</mo><mo>!</mo>
+      </mrow>
+    </mfrac>
+  </math>.
+
+  While cancelling, ensure that the factor being cancelled is
+  <b>non-zero</b>. Apply the necessary condition, such as
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>n</mi><mo>&gt;</mo><mn>4</mn>
+  </math>.
+</paragraph><paragraph id="2554897775a075b444e884c0"></paragraph>
+</div>
+
+<h3>Example 12: Find n</h3>
+
+<h3>(i) <paragraph class="kalam" id="8fbf8e58e06f54cb94b544ee">
+  Find
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>n</mi>
+  </math>
+  if
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mmultiscripts>
+      <mi>P</mi>
+      <mn>5</mn><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mi>n</mi>
+    </mmultiscripts>
+
+    <mo>=</mo>
+    <mn>42</mn>
+
+    <mmultiscripts>
+      <mi>P</mi>
+      <mn>3</mn><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mi>n</mi>
+    </mmultiscripts>
+  </math>,
+
+  given
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>n</mi><mo>&gt;</mo><mn>4</mn>
+  </math>.
+</paragraph></h3>
+<paragraph id="e3c71eb2943fb6057040b0a3">Write in product form:</paragraph>
+<ul>
+<div class="kalam">
+  <ul>
+    <li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mmultiscripts>
+          <mi>P</mi>
+          <mn>5</mn><none></none>
+          <mprescripts></mprescripts>
+          <none></none><mi>n</mi>
+        </mmultiscripts>
+
+        <mo>=</mo>
+
+        <mi>n</mi>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo>
+      </math>
+    </li>
+
+    <li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mmultiscripts>
+          <mi>P</mi>
+          <mn>3</mn><none></none>
+          <mprescripts></mprescripts>
+          <none></none><mi>n</mi>
+        </mmultiscripts>
+
+        <mo>=</mo>
+
+        <mi>n</mi>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+        <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      </math>
+    </li>
+  </ul>
+
+  <paragraph id="d61db8127b99b522a537191f">Therefore,</paragraph>
+
+  <paragraph id="d45380cedcb87e8e068760f9">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo>
+
+      <mo>=</mo>
+
+      <mn>42</mn>
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+    </math>
+  </paragraph>
+
+  <paragraph id="1be9ba77f969d315d659dcee">
+    Since
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi><mo>&gt;</mo><mn>4</mn>
+    </math>,
+    we have
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>≠</mo><mn>0</mn>
+    </math>.
+    Dividing both sides by
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+    </math>,
+    we get:
+  </paragraph>
+
+  <paragraph id="8ecad8b1d9fd07a95f7d88aa">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo>
+      <mo>=</mo><mn>42</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="241216d6144d39bb5ffc5321">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <msup><mi>n</mi><mn>2</mn></msup>
+      <mo>−</mo><mn>7</mn><mi>n</mi>
+      <mo>+</mo><mn>12</mn>
+      <mo>=</mo><mn>42</mn>
+
+      <mo>⇒</mo>
+
+      <msup><mi>n</mi><mn>2</mn></msup>
+      <mo>−</mo><mn>7</mn><mi>n</mi>
+      <mo>−</mo><mn>30</mn>
+      <mo>=</mo><mn>0</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="1b1f6141d3fdd0b448fd29ae">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>10</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>+</mo><mn>3</mn><mo>)</mo>
+      <mo>=</mo><mn>0</mn>
+
+      <mo>⇒</mo>
+
+      <mi>n</mi><mo>=</mo><mn>10</mn>
+      <mtext> or </mtext>
+      <mi>n</mi><mo>=</mo><mo>−</mo><mn>3</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="a5f5f684bf5ec7563e9a4702">
+    Rejecting the negative value, we obtain
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi><mo>=</mo><mn>10</mn>
+    </math>.
+  </paragraph>
+</div>
+
+<h3><paragraph class="kalam" id="765122906ab85bd26fbc4837">
+  (ii) Find
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>n</mi>
+  </math>
+  if
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mn>5</mn>
+
+    <mmultiscripts>
+      <mi>P</mi>
+      <mn>4</mn><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mi>n</mi>
+    </mmultiscripts>
+
+    <mo>=</mo>
+
+    <mn>3</mn>
+
+    <mmultiscripts>
+      <mi>P</mi>
+      <mrow><mn>4</mn><mo>−</mo><mn>1</mn></mrow><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mi>n</mi>
+    </mmultiscripts>
+  </math>,
+
+  given
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>n</mi><mo>&gt;</mo><mn>4</mn>
+  </math>.
+</paragraph></h3>
+<paragraph id="ed28fd5792d19e58faf9d7c6"></paragraph><div class="kalam">
+  <paragraph id="5c56b294974f10f725d62333">
+    Given:
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mn>5</mn>
+
+      <mmultiscripts>
+        <mi>P</mi>
+        <mn>4</mn><none></none>
+        <mprescripts></mprescripts>
+        <none></none><mi>n</mi>
+      </mmultiscripts>
+
+      <mo>=</mo>
+
+      <mn>3</mn>
+
+      <mmultiscripts>
+        <mi>P</mi>
+        <mn>3</mn><none></none>
+        <mprescripts></mprescripts>
+        <none></none><mi>n</mi>
+      </mmultiscripts>
+    </math>
+  </paragraph>
+
+  <paragraph id="44c58cc74aee33de5349d764">Using the product form:</paragraph>
+
+  <paragraph id="f284c0ef0e0e7403f72ecff7">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mn>5</mn>
+      <mo>[</mo>
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+      <mo>]</mo>
+
+      <mo>=</mo>
+
+      <mn>3</mn>
+      <mo>[</mo>
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>]</mo>
+    </math>
+  </paragraph>
+
+  <paragraph id="158955fe9b7be1fb34cce7e3">
+    Since
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>≠</mo><mn>0</mn>
+    </math>
+    for
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi><mo>&gt;</mo><mn>4</mn>
+    </math>,
+    cancel this common factor:
+  </paragraph>
+
+  <paragraph id="7651949b0adab907be7fa22e">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mn>5</mn>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+      <mo>=</mo><mn>3</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="191c4eb3a1c5ed3729c9f801">However, the working in the text corresponds to a different rearrangement:</paragraph>
+
+  <paragraph id="64bf77b37922718f61c3ecbd">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mn>3</mn><mi>n</mi>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+
+      <mo>=</mo>
+
+      <mn>5</mn>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo>
+    </math>
+  </paragraph>
+
+  <paragraph id="afd6644641aca5431c11a981">
+    For
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>n</mi><mo>&gt;</mo><mn>4</mn>
+    </math>,
+    cancel the non-zero factor
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+    </math>:
+  </paragraph>
+
+  <paragraph id="f85380a1215fbc92b48d9d79">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mn>3</mn><mi>n</mi>
+      <mo>=</mo>
+      <mn>5</mn>
+      <mo>(</mo><mi>n</mi><mo>−</mo><mn>4</mn><mo>)</mo>
+
+      <mo>⇒</mo>
+
+      <mn>3</mn><mi>n</mi>
+      <mo>=</mo>
+      <mn>5</mn><mi>n</mi><mo>−</mo><mn>20</mn>
+
+      <mo>⇒</mo>
+
+      <mi>n</mi><mo>=</mo><mn>10</mn>
+    </math>
+  </paragraph>
+</div><paragraph id="5f2d9aa15c489592121fc2b5"></paragraph>
+
+<div class="remember-box">
+<paragraph id="3e83843d0bc0aea4a33007f8"><b>Exam tip:</b> When cancelling, always state why the factor ≠ 0 using the given condition (like (n &gt; 4)). Not writing this can cost marks.</paragraph>
+</div>
+
+<h3 class="kalam">
+  Example <b>13</b>: Find
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>r</mi>
+  </math>
+  if
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mstyle mathvariant="bold"><mn>5</mn></mstyle>
+
+    <mmultiscripts>
+      <mi>P</mi>
+      <mi>r</mi><none></none>
+      <mprescripts></mprescripts>
+      <none></none><mstyle mathvariant="bold"><mn>4</mn></mstyle>
+    </mmultiscripts>
+
+    <mo>=</mo>
+
+    <mstyle mathvariant="bold"><mn>6</mn></mstyle>
+
+    <mmultiscripts>
+      <mi>P</mi>
+      <mrow>
+        <mi>r</mi><mo>−</mo>
+        <mstyle mathvariant="bold"><mn>1</mn></mstyle>
+      </mrow>
+      <none></none>
+      <mprescripts></mprescripts>
+      <none></none><mstyle mathvariant="bold"><mn>5</mn></mstyle>
+    </mmultiscripts>
+  </math>
+</h3>
+<paragraph id="70be1b39d6a6c98336b0ea09">Use factorial form:</paragraph>
+<ul>
+<style>
+  .bold-numbers mn {
+    font-weight: bold !important;
+  }
+</style>
+
+<div class="kalam">
+  <ul>
+    <li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mmultiscripts>
+          <mi>P</mi>
+          <mi>r</mi><none></none>
+          <mprescripts></mprescripts>
+          <none></none><mn>4</mn>
+        </mmultiscripts>
+
+        <mo>=</mo>
+
+        <mfrac>
+          <mrow><mn>4</mn><mo>!</mo></mrow>
+          <mrow>
+            <mo>(</mo><mn>4</mn><mo>−</mo><mi>r</mi><mo>)</mo><mo>!</mo>
+          </mrow>
+        </mfrac>
+      </math>
+    </li>
+
+    <li>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mmultiscripts>
+          <mi>P</mi>
+          <mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow><none></none>
+          <mprescripts></mprescripts>
+          <none></none><mn>5</mn>
+        </mmultiscripts>
+
+        <mo>=</mo>
+
+        <mfrac>
+          <mrow><mn>5</mn><mo>!</mo></mrow>
+          <mrow>
+            <mo>(</mo>
+            <mn>5</mn><mo>−</mo>
+            <mo>(</mo><mi>r</mi><mo>−</mo><mn>1</mn><mo>)</mo>
+            <mo>)</mo><mo>!</mo>
+          </mrow>
+        </mfrac>
+
+        <mo>=</mo>
+
+        <mfrac>
+          <mrow><mn>5</mn><mo>!</mo></mrow>
+          <mrow>
+            <mo>(</mo><mn>6</mn><mo>−</mo><mi>r</mi><mo>)</mo><mo>!</mo>
+          </mrow>
+        </mfrac>
+      </math>
+    </li>
+  </ul>
+
+  <paragraph id="22a10b5b62da8ed23d72c697">Given:</paragraph>
+
+  <paragraph id="49f786d63bfc7f1edfe5b287">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mn>5</mn><mo>·</mo>
+
+      <mfrac>
+        <mrow><mn>4</mn><mo>!</mo></mrow>
+        <mrow>
+          <mo>(</mo><mn>4</mn><mo>−</mo><mi>r</mi><mo>)</mo><mo>!</mo>
+        </mrow>
+      </mfrac>
+
+      <mo>=</mo>
+
+      <mn>6</mn><mo>·</mo>
+
+      <mfrac>
+        <mrow><mn>5</mn><mo>!</mo></mrow>
+        <mrow>
+          <mo>(</mo><mn>6</mn><mo>−</mo><mi>r</mi><mo>)</mo><mo>!</mo>
+        </mrow>
+      </mfrac>
+    </math>
+  </paragraph>
+
+  <paragraph id="a02debd06c2cab69fb6d4b7d">Simplifying as shown in the text:</paragraph>
+
+  <paragraph id="a32870b59aa22c24ad37b7bb">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>(</mo><mn>6</mn><mo>−</mo><mi>r</mi><mo>)</mo>
+      <mo>(</mo><mn>5</mn><mo>−</mo><mi>r</mi><mo>)</mo>
+      <mo>=</mo><mn>6</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="f257916e1443020efe64888a">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <msup><mi>r</mi><mn>2</mn></msup>
+      <mo>−</mo><mn>11</mn><mi>r</mi>
+      <mo>+</mo><mn>30</mn>
+      <mo>=</mo><mn>6</mn>
+
+      <mo>⇒</mo>
+
+      <msup><mi>r</mi><mn>2</mn></msup>
+      <mo>−</mo><mn>11</mn><mi>r</mi>
+      <mo>+</mo><mn>24</mn>
+      <mo>=</mo><mn>0</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="5d131b6c26c1d101dcf18bf3">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>(</mo><mi>r</mi><mo>−</mo><mn>8</mn><mo>)</mo>
+      <mo>(</mo><mi>r</mi><mo>−</mo><mn>3</mn><mo>)</mo>
+      <mo>=</mo><mn>0</mn>
+
+      <mo>⇒</mo>
+
+      <mi>r</mi><mo>=</mo><mn>8</mn>
+      <mtext> or </mtext>
+      <mi>r</mi><mo>=</mo><mn>3</mn>
+    </math>
+  </paragraph>
+
+  <paragraph id="0108670c9cc37f328e57c250">
+    Hence,
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>r</mi><mo>=</mo><mn>8</mn><mo>,</mo><mn>3</mn>
+    </math>.
+  </paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="bfecbef0287b571c127feb09">Permutation equations are usually easiest after cancellation, converting into simple product factors like \((n-r+1)\), etc.</paragraph>
+<paragraph id="5a217323b5152f9a5ff92464">Final answers must fit the domain: \(r\) integer, and factorial inputs must be non-negative.</paragraph>
+</div>
+
+<h2>Arrangements with Restrictions (Together / Not Together / Fixed Positions)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="8d4256d43572e70df1fa692e"><b>“Together” idea:</b> lock the required letters into <b>one block</b> → permute the blocks/objects → then × (ways inside the block).</paragraph>
+<paragraph id="d68c02072bf33790a4b5c786"><b>“Not together” idea:</b> <b>total</b> arrangements − <b>together</b> arrangements.</paragraph>
+</div>
+
+<h3>Example 14: Arrangements of DAUGHTER (8 distinct letters)</h3>
+<paragraph id="531ee064b586e47c4097b98f">All letters different: D, A, U, G, H, T, E, R. Vowels = A, U, E (3 vowels).</paragraph>
+
+<h3>(i) All vowels occur together</h3>
+<ol>
+<li><paragraph id="b9b07a3232f8e181c38ddf29">Group vowels as one block: (AUE).</paragraph></li>
+<li><paragraph id="f0d36785b184cc23c011d295">Objects now: (AUE), D, G, H, T, R → total 6 objects → arrange in \(6!\) ways.</paragraph></li>
+<li><paragraph id="682c6510fd2883faca704e60">Inside the block, A/U/E can shuffle in \(3!\) ways.</paragraph></li>
+</ol>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d279b90758e9f5d855977ffe">Required arrangements \(= 6! \times 3! = 4320\)</paragraph>
+<paragraph id="35a3660d88f29cbc7cc6f828"><b>6!</b> = arrange (1 vowel-block + 5 other letters)</paragraph>
+<paragraph id="04a3ecc860131f9ada8b2bac"><b>3!</b> = arrange A, U, E within the block</paragraph>
+</div>
+
+<h3>(ii) All vowels do not occur together</h3>
+<paragraph id="87fdbaa066b95466970d6af1">Total arrangements (no restriction) of 8 distinct letters = \(8!\).</paragraph>
+<paragraph id="0c68ae6fffdf9815c6dc20af">Subtract cases where all vowels are together (from part (i)).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="17eb05152f9e0b0a8138f9fe">Required \(= 8! - (6! \times 3!)\)</paragraph>
+<paragraph id="b958d4a99b52e9facea6a78e">\(= 40320 - 4320 = 36000\)</paragraph>
+<paragraph id="140808e9098519446c31099c"><b>8!</b> = all unrestricted arrangements</paragraph>
+<paragraph id="7f97ec2bd6a31c84d4bae9bc"><b>6!* 3!</b> = arrangements with vowels together</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="b3d6d6eca50a674ddc3b8184"><b>Common mistake:</b> For “vowels together”, using \(5!\) instead of \(6!\). Always recount objects: <b>1 block + remaining letters</b>.</paragraph>
+</div>
+
+<h3>Example 15: Arranging coloured discs (indistinguishable within colour)</h3>
+<paragraph id="954ae343f4e59b96b088efa4">4 red, 3 yellow, 2 green discs in a row; same-colour discs indistinguishable.</paragraph>
+<paragraph id="997d051a6e41c6b336a3dc07">Total discs \(= 4+3+2=9\).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="aab9000248c6cd3d559b2caa">Number of arrangements \(= \dfrac{9!}{4!\,3!\,2!} = 1260\)</paragraph>
+<paragraph id="8227ef8a730ccd76cab119a8"><b>9!</b> = if all 9 discs were different</paragraph>
+<paragraph id="4a950f715e3177bc08577785"><b>4!, 3!, 2!</b> = divide out repeats (reds, yellows, greens)</paragraph>
+</div>
+
+<h3>Example 16: Arrangements of INDEPENDENCE (with restrictions)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="91a12d8512fc2c589648f5e6">With repeated letters: distinct arrangements \(= \dfrac{n!}{\prod (\text{repeat factorials})}\).</paragraph>
+</div>
+
+<paragraph id="2699dc3c66c7cf742e41ec23">INDEPENDENCE has 12 letters, repeats:</paragraph>
+<ul>
+<li>N appears 3 times</li>
+<li>E appears 4 times</li>
+<li>D appears 2 times</li>
+<li>I, P, C appear once each</li>
+</ul>
+
+<h3>Total number of distinct arrangements</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="40920a9b94e697f69313bb11">\(\dfrac{12!}{3!\,4!\,2!} = 1663200\)</paragraph>
+<paragraph id="eeefc58550e3b6abf62e4711"><b>12</b> = total letters</paragraph>
+<paragraph id="b0fd420d908f09356ccf85a3"><b>3!</b> for NNN, <b>4!</b> for EEEE, <b>2!</b> for DD</paragraph>
+</div>
+
+<h3>(i) Arrangements that start with P</h3>
+<paragraph id="f38644013b8f293654c14033">Fix P in position 1. Arrange the remaining 11 letters; repeats still: N×3, E×4, D×2.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="96ac0af30998728cdc5f57cd">Required \(= \dfrac{11!}{3!\,2!\,4!} = 138600\)</paragraph>
+<paragraph id="2eceeb14fe261548e0f2fc05"><b>11</b> = letters left after fixing P</paragraph>
+</div>
+
+<h3>(ii) Arrangements in which all vowels always occur together</h3>
+<paragraph id="308026e11dabd352dcd701ae">Vowels: E,E,E,E and I → 5 vowels (with 4 identical E’s).</paragraph>
+<ol>
+<li><paragraph id="6e04a6ff8240e585b4544e18">Make one vowel block: (EEEEI).</paragraph></li>
+<li><paragraph id="0e2ae3cdd7fcc8bb9dea6912">Consonants left: N,N,N, D,D, P, C → 7 objects.</paragraph></li>
+<li><paragraph id="9f17b6b0a056da964f5b7286">Total objects = 1 block + 7 consonants = 8 objects; repeats among consonants: N×3, D×2.</paragraph></li>
+<li><paragraph id="75dbee9e61214076eaf2c42b">Arrange the 8 objects: \(\dfrac{8!}{3!\,2!}\).</paragraph></li>
+<li><paragraph id="8654efe19df47c215b6d62d8">Arrange vowels inside block: \(\dfrac{5!}{4!}\) (4 E’s identical).</paragraph></li>
+</ol>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="32c05d05d3875a6a5ea76888">Required \(= \left(\dfrac{8!}{3!\,2!}\right)\left(\dfrac{5!}{4!}\right) = 16800\)</paragraph>
+<paragraph id="5dfd6c395d32b55e9475d0ba"><b>8!</b> = permutations of (block + consonants)</paragraph>
+<paragraph id="267e277c152fc42bdb8149fc"><b>3!, 2!</b> = adjust for NNN and DD</paragraph>
+<paragraph id="9491eeccfc93ec1abcc529a4"><b>5!/4!</b> = internal vowel arrangements with 4 identical E’s</paragraph>
+</div>
+
+<h3>(iii) Arrangements in which vowels never occur together</h3>
+<paragraph id="ea8ce5afc8203fe5d1be0a99">Complement method:</paragraph>
+<paragraph id="e0d0e0fddec76562168c418e">Required = (total arrangements) − (arrangements with all vowels together).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="46ab515828a0d5a17ab0fb6d">Required \(= 1663200 - 16800 = 1646400\)</paragraph>
+<paragraph id="d003fcd3532bd1ed932c7b2a"><b>1663200</b> = total distinct arrangements</paragraph>
+<paragraph id="f7fdc6a20eb680ab1fee8883"><b>16800</b> = vowels-together arrangements (from part ii)</paragraph>
+</div>
+
+<h3>(iv) Arrangements that begin with I and end with P</h3>
+<paragraph id="a037dce992bb8475c53f7884">Fix I at the start and P at the end. Letters left = 10 with repeats N×3, E×4, D×2, C×1.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3d80a20a35a117dc1f26fa31">Required \(= \dfrac{10!}{3!\,2!\,4!} = 12600\)</paragraph>
+<paragraph id="c79b73899082d843700edada"><b>10</b> = letters remaining after fixing I and P</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="f11fabff7f513ca88025ba21"><b>Exam tip:</b> If positions are fixed, reduce \(n\) first (12 → 11 or 10), then divide by factorials of the repeats that are still left.</paragraph>
+</div>
+
+<h2>Start of Combinations (Introduction)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e9481581ed029327b0492fce"><b>Combinations:</b> selections where <b>order doesn’t matter</b>. Team (X,Y) = team (Y,X).</paragraph>
+</div>
+
+<paragraph id="a01adb6b39518a537597c090">Illustration: From 3 lawn tennis players X, Y, Z, form a team of 2. Since order isn’t important, count only distinct <b>selections</b> (teams), not arrangements.</paragraph>
+
+<h2>Combinations: Meaning and Basic Illustrations</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="84fdd09abd71497e82b88044"><b>Combination</b> = selection where <b>order is not important</b> → AB and BA are the <b>same</b> combination.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f4403bdb8fa730ce226701b0">Use <b>combinations</b> for “choose/select” questions where rearranging the chosen items does <b>not</b> create a new result.</paragraph>
+</div>
+
+<ul>
+<li><paragraph id="62fcb39dbadbb56d10a64531"><b>3 objects X, Y, Z taken 2 at a time:</b> XY, YZ, ZX (these are the combinations).</paragraph></li>
+<li><paragraph id="ed2c8150d0c2497bd2d30659"><b>Handshake problem:</b> 12 persons; each handshake is a pair. “X with Y” = “Y with X” → number of handshakes = combinations of 12 taken 2 at a time = <b>\(^{12}C_2\)</b>.</paragraph></li>
+<li><paragraph id="4dbc5a829defbd386c4b1bae"><b>Chords from points on a circle:</b> 7 points; each chord needs 2 points → number of chords = combinations of 7 taken 2 at a time = <b>\(^{7}C_2\)</b>.</paragraph></li>
+</ul>
+
+<h2>Relationship Between Permutations and Combinations</h2>
+
+<h3>Worked Illustration: 4 objects taken 2 at a time</h3>
+<ul>
+  <li><paragraph id="bb7033b2854fad90bfe7af1f">Objects: A, B, C, D. Combinations of 2: AB, AC, AD, BC, BD, CD (6 total) ⇒ <b>\(^{4}C_2 = 6\)</b>.</paragraph></li>
+  <li><paragraph id="9927421e4b7ac01341b9a7a6">For each combo (e.g. AB), the 2 chosen objects can be ordered in <b>2!</b> ways: AB, BA.</paragraph></li>
+  <li><paragraph id="719606fced15fda196a3b332">So permutations of 4 objects taken 2 at a time:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="93ca9af4b20de11c54fb78c0"><b>\(^{4}P_2 = {}^{4}C_2 \times 2!\)</b></paragraph>
+  <paragraph id="552ee301d1e09967aa36600c">\(^{4}P_2\) = ordered selections of 4 objects taken 2</paragraph>
+  <paragraph id="39a8058a6a3e4ac563ca3e52">\(^{4}C_2\) = unordered selections of 4 objects taken 2</paragraph>
+  <paragraph id="7539c760646cb3e5102edbeb">2! = rearrangements of the 2 chosen objects</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="fe8660ee63e908b2c9a2a9e9"><b>\(^{4}C_2 = \dfrac{4!}{2!\,(4-2)!}\)</b></paragraph>
+  <paragraph id="1165e51e5e7e66f5daa75236">4! = factorial of 4</paragraph>
+  <paragraph id="d895b811ca64b68f7520ae7a">2! = factorial of r = 2</paragraph>
+  <paragraph id="8f6c5d0460e54c64b78f8f3f">(4−2)! = factorial of (n−r)</paragraph>
+</div>
+
+<h3>Worked Illustration: 5 objects taken 3 at a time</h3>
+<ul>
+  <li><paragraph id="72e87192a0c116bff4c30bdf">Objects: A, B, C, D, E. Total combinations of 3 = <b>\(^{5}C_3\)</b> (e.g. ABC, ABD, …, BDE).</paragraph></li>
+  <li><paragraph id="198261ff4857faec86444e9f">Each combo of 3 objects can be ordered in <b>3!</b> ways.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3c75dd04b1e42b15950bfc8d"><b>\(^{5}P_3 = {}^{5}C_3 \times 3!\)</b></paragraph>
+  <paragraph id="dad85c7d0c40919028284f69">\(^{5}P_3\) = permutations of 5 objects taken 3 at a time</paragraph>
+  <paragraph id="5ff15f9374f7f672b58aa0c1">\(^{5}C_3\) = combinations of 5 objects taken 3 at a time</paragraph>
+  <paragraph id="32f5b78821b54ee2ebf0e7fb">3! = rearrangements of the 3 selected objects</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="ded7084a338f563282a3b864"><b>\(^{5}C_3 = \dfrac{5!}{3!\,(5-3)!}\)</b></paragraph>
+  <paragraph id="04d4d1ec1701222b65b41c97">5! = factorial of 5</paragraph>
+  <paragraph id="4770d411071b8355e1890176">3! = factorial of r = 3</paragraph>
+  <paragraph id="db09989d28a1d6bb2cd95b3a">(5−3)! = factorial of (n−r)</paragraph>
+</div>
+
+<h3>Theorem: Connecting nPr and nCr</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="f96a5e09afed3608e5e2dafb"><b>Theorem (Permutation–Combination Relationship)</b>:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8ae1ac345da558ea64d46d2c">\(^{n}P_r = {}^{n}C_r \times r!\), where \(0 &lt; r \le n\).</paragraph>
+  <paragraph id="a46aa36cd10ab34609dbdb79">\(^{n}P_r\) = the number of permutations of <i>n</i> distinct objects taken <i>r</i> at a time.</paragraph>
+  <paragraph id="eca47265a0220cf3955907b3">\(^{n}C_r\) = the number of combinations of <i>n</i> distinct objects taken <i>r</i> at a time.</paragraph>
+  <paragraph id="da3435b725ca0bacb4bd8d24">\(r!\) = the number of ways to arrange the selected <i>r</i> objects.</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="599c49dd59242d6f99e8698b"><b>Reasoning (proof idea)</b>: every 1 combination gives exactly <b>r!</b> permutations (all possible orders). So total perms = (no. of combos) × r!.</paragraph></li>
+</ul>
+
+<h3>Remarks on nCr</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="707948e4a94969c41a44267e"><b>\(^{n}C_r = \dfrac{n!}{r!\,(n-r)!}\)</b></paragraph>
+  <paragraph id="78c962cea1fc7b419bf0edd0">n = total distinct objects</paragraph>
+  <paragraph id="c07e62e951e56ddd95cdbb70">r = number selected</paragraph>
+  <paragraph id="7bea138389a1c08d5fab3226">n! = factorial of n</paragraph>
+  <paragraph id="38c1f6d9b3ac2a15fabef597">r! = factorial of r</paragraph>
+  <paragraph id="592bda5f04f5c65b742020c9">(n−r)! = factorial of the remaining (not selected)</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="275765a1a8c71a2763037f12"><b>Remark 1 (special case r = n)</b>:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="7f406c69af867e5454420570"><b>\(^{n}C_n = 1 = \dfrac{n!}{n!\,\cdot\,0!}\)</b></paragraph>
+  <paragraph id="653934fb312d3b71370e40bf">0! = 1 (definition)</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="7e9edaa69b57be00c9eec354"><b>Remark 2 (definition of nC0)</b>:</paragraph></li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="87bb0e04ad65b547a8e02dbf"><b>\(^{n}C_0 = 1\)</b>: choosing nothing from n objects is just 1 way (leave everything).</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="67e67608d6e74fffd28efe17"><b>Remark 3 (formula works for r = 0 too)</b>: since 0! = 1, the combo formula is valid for <b>0 ≤ r ≤ n</b>.</paragraph></li>
+  <li><paragraph id="6c5f642af82fb54d0042ec2e"><b>Remark 4 (symmetry property)</b>: choosing r is the same as rejecting (n−r).</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="9e3a65059064401483a3b159"><b>\(^{n}C_r = {}^{n}C_{(n-r)}\)</b></paragraph>
+  <paragraph id="77d60aff3fce72164a6b1638">n = total objects</paragraph>
+  <paragraph id="7f985b6684a706a2da312956">r = chosen objects</paragraph>
+  <paragraph id="19537e3d8b2b0a2a07335668">n−r = not chosen</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="6a65ce5c63fd664cdb326c84"><b>Remark 5 (equality condition)</b>:</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="5e1ac93fba482a2325a6717d">If \(^{n}C_a = {}^{n}C_b\), then \(a = b\) or \(a = n - b\) (i.e. \(n = a + b\)).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="eeca71933bf892eafc04a69f">Do NOT assume \(^{n}C_a = {}^{n}C_b\) ⇒ only a = b. Also test <b>a = n−b</b>.</paragraph>
+</div>
+
+<h2>Theorem 6 (Pascal’s Identity)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="34805df2bd0292378438c6a8"><b>Theorem 6</b>:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="30d17b9262b5ff725d6cc289"><b>\(^{(n+1)}C_r = {}^{n}C_r + {}^{n}C_{r-1}\)</b></paragraph>
+  <paragraph id="900a9a37e59de98fb41daaef">n = non-negative integer</paragraph>
+  <paragraph id="27352e5793c1a1d7d080a816">r = integer in a valid range (usually 1 ≤ r ≤ n)</paragraph>
+  <paragraph id="bfbeaaeca444f1f63dbd7f00">\(^{(n+1)}C_r\) = combinations from n+1 objects</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="47024b720ef5805217e66a8a"><b>Proof method shown in text</b>: write each term in factorial form, then simplify to reach \(^{(n+1)}C_r\).</paragraph></li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="57b7043a39d04ec3c3a3f023">Pascal check: RHS has same top <b>n</b>; bottom indices differ by 1: <b>r</b> and <b>r−1</b>.</paragraph>
+</div>
+
+<h2>Example 17: Using Equality of Combinations to Find n</h2>
+<ul>
+  <li><paragraph id="0190f426e258bfaf0e60f495">Given: <b>\(^{n}C_9 = {}^{n}C_8\)</b>.</paragraph></li>
+  <li><paragraph id="d8fa561d7a6a6b723802aab1">Use factorial form:</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="1751c7ad3dc9d4716cd73001"><b>\(^{n}C_9 = \dfrac{n!}{9!\,(n-9)!}\)</b></paragraph>
+  <paragraph id="b1f603fc9ef85fdb23a43b1c"><b>\(^{n}C_8 = \dfrac{n!}{8!\,(n-8)!}\)</b></paragraph>
+</div>
+
+<ul>
+ <ul>
+  <li>
+    <paragraph id="1511814aee2437d9fa556142">Equate:</paragraph>
+  </li>
+
+  <li>
+    <paragraph id="d5f95b3d115472f56f41acea">\(\dfrac{n!}{9!\,(n-9)!} = \dfrac{n!}{8!\,(n-8)!}\)</paragraph>
+  </li>
+
+  <li>
+    <paragraph id="5b7fef3b6801ff3f54dc3c7a">Cancel \(n!\) and rearrange:</paragraph>
+  </li>
+
+  <li>
+    <paragraph id="8702b218018743605bd93edb">\(\dfrac{1}{9} = \dfrac{1}{n-8} \Rightarrow n-8 = 9 \Rightarrow n = 17\).</paragraph>
+  </li>
+
+  <li>
+    <paragraph id="265800506dcc6df2943cb43c">Therefore, \(^{n}C_{17} = {}^{17}C_{17} = 1\).</paragraph>
+  </li>
+</ul>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="9b513793f802ae1ba703a336">Once you find n, check if they want another value like \(^{n}C_{17}\)—often it collapses using <b>\(^{n}C_n = 1\)</b>.</paragraph>
+</div>
+
+<h2>Example 18: Committees from Men and Women</h2>
+<ul>
+  <li><paragraph id="d0254003bf2428f90fd8c01f">Committee of 3 from 2 men + 3 women ⇒ total = 5; order irrelevant ⇒ combinations.</paragraph></li>
+  <li><paragraph id="2b026b022e266bbd03747e82">Total committees: <b>\(^{5}C_3 = 10\)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="5c9129733754675bf8541e09"><b>\(^{5}C_3 = \dfrac{5!}{3!\,2!} = 10\)</b></paragraph>
+  <paragraph id="983e61de55963052f531b0ce">5 = total persons</paragraph>
+  <paragraph id="51a8e839084d41eff3948feb">3 = committee size</paragraph>
+</div>
+
+<ul>
+  <li><paragraph id="401ffaf92e06dc983a1e3480">Committees with 1 man and 2 women:</paragraph></li>
+  <li><paragraph id="5b8ca8263b1b40279ad60573">Choose 1 man from 2: <b>\(^{2}C_1\)</b>; choose 2 women from 3: <b>\(^{3}C_2\)</b>.</paragraph></li>
+  <li><paragraph id="0b58317fa8a57f6cbed8b685">Independent choices ⇒ multiply: <b>\(^{2}C_1 \times {}^{3}C_2 = 2 \times 3 = 6\)</b>.</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="e4f9872373bba725152e83d2">Mixed-group picks usually: <b>(ways from group 1) × (ways from group 2) × …</b> (multiplication principle), and each “ways” is a combination.</paragraph>
+</div>
+
+<h2>Example 19: Choosing 4 Cards from a 52-Card Deck</h2>
+
+<h3>Total ways to choose 4 cards</h3>
+<ul>
+  <li><paragraph id="26f2679d793d5b5c16cfb672">Choose 4 from 52; order doesn’t matter ⇒ <b>\(^{52}C_4\)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="c91e08b822341f18d3493126"><b>\(^{52}C_4 = \dfrac{52!}{4!\,48!} = \dfrac{49\cdot50\cdot51\cdot52}{2\cdot3\cdot4} = 270725\)</b></paragraph>
+  <paragraph id="52ec17041b4245bb6722752c">52 = total cards</paragraph>
+  <paragraph id="530d72764ad1e6cd8c936849">4 = cards chosen</paragraph>
+</div>
+
+<h3>(i) Four cards of the same suit</h3>
+<ul>
+  <li><paragraph id="98ce92d5ac123abaf117e60c">4 suits (diamond, club, spade, heart); each suit has 13 cards.</paragraph></li>
+  <li><paragraph id="be6c16ebf1a6b14637e4be43">Pick 4 from one suit: <b>\(^{13}C_4\)</b>.</paragraph></li>
+  <li><paragraph id="834457068978aeabd48ccd67">Suit can be any of the 4 ⇒ total: <b>\(4 \times {}^{13}C_4\)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="3e3f1c566b08faf3c5625e93"><b>\(4 \times {}^{13}C_4 = 4 \times \dfrac{13!}{4!\,9!} = 2860\)</b></paragraph>
+  <paragraph id="f743a8f0c4d6e7e1dd49f7c4">13 = cards per suit</paragraph>
+  <paragraph id="3f960bce2a7171f7200666bc">4 = suits</paragraph>
+</div>
+
+<h3>(ii) Four cards from four different suits</h3>
+<ul>
+  <li><paragraph id="fcbef97642b49378c09f8cab">Pick 1 card from each suit: diamonds, hearts, clubs, spades.</paragraph></li>
+  <li><paragraph id="614f72f210c52a539158920a">Ways per suit = <b>\(^{13}C_1\)</b>.</paragraph></li>
+  <li><paragraph id="9cba5d69200ffc1b7fbc554b">Multiply: <b>\(^{13}C_1 \times {}^{13}C_1 \times {}^{13}C_1 \times {}^{13}C_1 = 13^4\)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="16ad610c96f9f973022eee63"><b>\((^{13}C_1)^4 = 13^4\)</b></paragraph>
+  <paragraph id="e710be9e116456413c2b1a21">\(^{13}C_1\) = ways to pick 1 card from a suit of 13</paragraph>
+</div>
+
+<h3>(iii) Four face cards</h3>
+<ul>
+  <li><paragraph id="f5895979ca858de2d65c3ddf">There are 12 face cards total; choose 4.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="923f9a16546e2682e1b2c41b"><b>\(^{12}C_4 = \dfrac{12!}{4!\,8!} = 495\)</b></paragraph>
+  <paragraph id="7cd88709e4a5206af1a44f09">12 = total face cards</paragraph>
+  <paragraph id="9e6212515e1de7e1744a414a">4 = chosen face cards</paragraph>
+</div>
+
+<h3>(iv) Two red and two black cards</h3>
+<ul>
+  <li><paragraph id="43f552807dea1b0bc38c8aad">26 red cards and 26 black cards.</paragraph></li>
+  <li><paragraph id="cd8c3b3ae3b69903caf00e16">Choose 2 red and 2 black (independent):</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="76a50d407f02d63defa4d0c2"><b>\(^{26}C_2 \times {}^{26}C_2 = 105625\)</b></paragraph>
+  <paragraph id="2886d69a616cf92c10f1b9ae">\(^{26}C_2\) = ways to choose 2 from 26</paragraph>
+</div>
+
+<h3>(v) Four cards of the same colour</h3>
+<ul>
+  <li><paragraph id="2efb74ac6ba4569bc451ff1a">Either all 4 red, or all 4 black.</paragraph></li>
+  <li><paragraph id="d1b0a4e59f9f5c71598a2ff3">Ways: 4 red = <b>\(^{26}C_4\)</b>; 4 black = <b>\(^{26}C_4\)</b>.</paragraph></li>
+  <li><paragraph id="ac44d10654decfe283e3214e">Total = <b>\(^{26}C_4 + {}^{26}C_4 = 2 \times {}^{26}C_4\)</b>.</paragraph></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="7de4cec14a128fa30acaefd6"><b>\(2 \times {}^{26}C_4 = 2 \times \dfrac{26!}{4!\,22!} = 29900\)</b></paragraph>
+  <paragraph id="a738816f0fdefd9d330a3a05">26 = cards of each colour</paragraph>
+  <paragraph id="5f0c904b4d75548223a0f9ff">4 = chosen cards</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="32900b1a418bb2d6c32e40e7">“Same suit” = one suit only (4 suit choices). “Same colour” = all red or all black (2 choices). Don’t swap them.</paragraph>
+</div>
+
+<h2>Miscellaneous Example 20 (Start): Words from INVOLUTE</h2>
+<ul>
+  <li><paragraph id="6c6de190471970cd22e72330">Word: <b>INVOLUTE</b>.</paragraph></li>
+  <li><paragraph id="f240181e1f54d1fd5076fc5c">Vowels: <b>I, O, E, U</b> (4 vowels).</paragraph></li>
+  <li><paragraph id="b145dfcfcf74b3a73739a98a">Consonants: <b>N, V, L, T</b> (4 consonants).</paragraph></li>
+  <li><paragraph id="1630fa373486a03f5551eab1">Task: form words (meaningful or not) with <b>3 vowels and 2 consonants</b> from these letters.</paragraph></li>
+</ul>
+
+<h2>Selection + Arrangement (Combination × Permutation Principle)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="05a9bddf21c3f932d7ae237d">Lots of counting questions = 2 stages:</paragraph>
+<ul>
+<li><paragraph id="ce2fd6776f0c3819f23fe904"><b>Stage 1: Select</b> the required objects (order doesn’t matter) → <b>combinations</b>.</paragraph></li>
+<li><paragraph id="797181bcfd08221f026f6f87"><b>Stage 2: Arrange</b> what you selected (order matters) → <b>permutations / factorials</b>.</paragraph></li>
+<li><paragraph id="6b33acfdac2d150c6eb9205a"><b>Total ways</b> = (ways to select) × (ways to arrange).</paragraph></li>
+</ul>
+</div>
+<paragraph id="7d6f685f0dbd34cfefebb860"><b>Worked idea (vowels &amp; consonants):</b></paragraph>
+<ul>
+<li><paragraph id="919cac8f8881704693b930bd">Select 3 vowels out of 4: <b>\(^{4}C_3 = 4\)</b></paragraph></li>
+<li><paragraph id="8f21027f27bbc9e484ace7d3">Select 2 consonants out of 4: <b>\(^{4}C_2 = 6\)</b></paragraph></li>
+<li><paragraph id="c4d022931da805ca2dc547af">Total selections of 5 letters (3 vowels + 2 consonants): <b>4 × 6 = 24</b></paragraph></li>
+<li><paragraph id="a8a15b106a547c88a6e5e28b">Each selection has 5 letters → arrange in <b>5!</b> ways.</paragraph></li>
+<li><paragraph id="9b42c64e727e95edd80cb5f3">Required number of different words: <b>24 × 5! = 2880</b></paragraph></li>
+</ul>
+<div class="remember-box">
+<paragraph id="9d400ee85b8974594d0b9100">Don’t arrange first when letters come from groups (vowels/consonants). <b>Choose required numbers from each group</b> first, then arrange.</paragraph>
+</div>
+
+<h2>Example 21: Team selection from 4 girls and 7 boys</h2>
+<h3>(i) Team of 5 with no girl</h3>
+<paragraph id="61299d1383477d5a2f09bb85">Girls not allowed → choose only boys: pick 5 from 7 boys.</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="26c5452a5fdf447ddbbac6cf"><b>Number of ways</b> = <b>\(^{7}C_5\)</b> = <b>\(^{7}C_2\)</b> = 21</paragraph>
+<paragraph id="efe588faf73b20ee2553ed99"><b>\(^{n}C_r\)</b> = number of ways to choose r objects from n objects (order ignored).</paragraph>
+</div>
+
+<h3>(ii) Team of 5 with at least one boy and one girl</h3>
+<paragraph id="18ee6e08f771b8902f665217">Team size 5, with ≥1 of each → list all (boys, girls) cases:</paragraph>
+<ul>
+<li><paragraph id="e1d51276535e872e30d9aebf">(1,4): \(^{7}C_1 \times {}^{4}C_4\)</paragraph></li>
+<li><paragraph id="552aeaee23523ef2b243a587">(2,3): \(^{7}C_2 \times {}^{4}C_3\)</paragraph></li>
+<li><paragraph id="fcdfa93eb6c90a2e634d15c0">(3,2): \(^{7}C_3 \times {}^{4}C_2\)</paragraph></li>
+<li><paragraph id="79499013a74910a052677594">(4,1): \(^{7}C_4 \times {}^{4}C_1\)</paragraph></li>
+</ul>
+<paragraph id="a5611bda27f9d3f70ae973cb">Total:</paragraph>
+<paragraph id="7cff92a5754c024235520374"><b>\(^{7}C_1 \times {}^{4}C_4 + {}^{7}C_2 \times {}^{4}C_3 + {}^{7}C_3 \times {}^{4}C_2 + {}^{7}C_4 \times {}^{4}C_1\)</b></paragraph>
+<paragraph id="2b618019c14a8963e8b7b902">= 7 + 84 + 210 + 140 = <b>441</b></paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="0d08190051c2f49291daacbb">“At least one boy and one girl” → usually do a <b>case split</b> by number of girls (or boys), making sure every valid case is counted once.</paragraph>
+</div>
+
+<h3>(iii) Team of 5 with at least 3 girls</h3>
+<paragraph id="8180b2af2d7cdf8d37832577">Possible compositions:</paragraph>
+<ul>
+<li><paragraph id="32cc580af47a9264b5f06b9f">3 girls + 2 boys: \(^{4}C_3 \times {}^{7}C_2\)</paragraph></li>
+<li><paragraph id="5e6397826e571e744553dcc1">4 girls + 1 boy: \(^{4}C_4 \times {}^{7}C_1\)</paragraph></li>
+</ul>
+<paragraph id="41068d9e811be4b2057344dd">Note: 5 girls is impossible (only 4 girls exist).</paragraph>
+<paragraph id="bf65c53eedcf3e9d3311caf1">Total = \(^{4}C_3 \times {}^{7}C_2 + {}^{4}C_4 \times {}^{7}C_1 = 84 + 7 = \textbf{91}\)</paragraph>
+<div class="remember-box">
+<paragraph id="e3b6e7521130070ca8c2deee">For “at least k girls”, always check the max available. Exclude impossible cases clearly (e.g. 5 girls here).</paragraph>
+</div>
+
+<h2>Example 22: Dictionary order words from AGAIN; find the 50th word</h2>
+<h3>Total number of distinct words</h3>
+<paragraph id="f06e76962c775e38412d6e96">AGAIN = 5 letters, with A repeated twice.</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="123a4304cf5a68f4b185b290"><b>Distinct permutations</b> of n items with repeats \(p_1, p_2, \ldots\) = <b>\(\dfrac{n!}{p_1!\,p_2!\,\ldots}\)</b></paragraph>
+<paragraph id="67ee329fe9bafedee849f589">n = total letters; pᵢ = frequency of each repeated letter.</paragraph>
+</div>
+<paragraph id="362f52150ba934a4044fe51d">So total words = <b>\(\dfrac{5!}{2!} = 60\)</b>.</paragraph>
+
+<h3>Finding the 50th word in dictionary order</h3>
+<paragraph id="1952eb371c1fc194ebd928e3">Work in blocks by the <b>first letter</b> (alphabetical), counting permutations of what’s left.</paragraph>
+<ul>
+<li><paragraph id="eabd7db4d2dcb68161d5aac0"><b>Starting with A:</b> Fix A first; remaining A, G, I, N (all different). Count = <b>4! = 24</b>.</paragraph></li>
+<li><paragraph id="2d25989dedadf45b2709e6cd"><b>Starting with G:</b> Fix G; remaining A, A, I, N (A repeated). Count = <b>\(\dfrac{4!}{2!} = 12\)</b>.</paragraph></li>
+<li><paragraph id="8f21a5c75c1d1fd6c5efe5dc"><b>Starting with I:</b> similarly = <b>12</b>.</paragraph></li>
+</ul>
+<paragraph id="2d63e5c6f4b18496b66b388f">Total up to I-starting words: 24 + 12 + 12 = <b>48</b>.</paragraph>
+<paragraph id="e24e502a381af5f7549c0c81">So the 49th and 50th words are in the block starting with <b>N</b>. Given:</paragraph>
+<ul>
+<li><paragraph id="d8e06267e3983f30be2574d6"><b>49th word:</b> NAAGI</paragraph></li>
+<li><paragraph id="153b668b4527e91bf6bcc351"><b>50th word:</b> NAAIG</paragraph></li>
+</ul>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="a843d7a1c3d9a86c252efca1">Lexicographic (dictionary-order) method: <b>fix a letter</b> → count permutations after it → subtract blocks until you land in the right one → repeat for next position.</paragraph>
+</div>
+
+<h2>Example 23: 7-digit numbers &gt; 1000000 from digits 1,2,0,2,4,2,4</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="c98dab18abf23b66e6c9b3c0">This digit list is a <b>multiset</b>: you can only use each digit as many times as it appears.</paragraph>
+</div>
+
+<h3>Method 1: Count by leading digit (must form 7-digit numbers &gt; 1000000)</h3>
+<paragraph id="b7bdd1192cd745816aaf5483">We use all 7 digits → answers are 7-digit automatically. For &gt; 1000000, first digit can be 1, 2, or 4 (not 0).</paragraph>
+<ul>
+<li><paragraph id="b840f8700b357dcc1e5ac7c8"><b>Beginning with 1:</b> Fix 1 first. Remaining: 0, 2, 2, 2, 4, 4 (three 2s, two 4s).</paragraph>
+<paragraph id="f5c4a765759be78acf07c424">Count = <b>\(\dfrac{6!}{3!\,2!} = 60\)</b>.</paragraph></li>
+<li><paragraph id="585f2f0c6d222d6dea74676a"><b>Beginning with 2:</b> Fix one 2 first. Remaining: 0, 1, 2, 2, 4, 4 (two 2s, two 4s).</paragraph>
+<paragraph id="759fa24a7ee3a0f97f059c32">Count = <b>\(\dfrac{6!}{2!\,2!} = 180\)</b>.</paragraph></li>
+<li><paragraph id="f2eaa461b1dfde09a1c9d039"><b>Beginning with 4:</b> Fix one 4 first. Remaining: 0, 1, 2, 2, 2, 4 (three 2s).</paragraph>
+<paragraph id="0a74d3edc2250247b0df073a">Count = <b>\(\dfrac{6!}{3!} = 120\)</b>.</paragraph></li>
+</ul>
+<paragraph id="18c049d240dec7249c03ac47">Total required numbers = 60 + 180 + 120 = <b>360</b>.</paragraph>
+
+<h3>Alternative method: Total arrangements − those starting with 0</h3>
+<ul>
+<li><b>Total distinct arrangements of 1,0,2,2,2,4,4:</b> \(\dfrac{7!}{3!\,2!} = \textbf{420}\).</li>
+<li><b>Invalid ones starting with 0:</b> Fix 0 first; remaining 1,2,2,2,4,4. Count = \(\dfrac{6!}{3!\,2!} = \textbf{60}\).</li>
+</ul>
+<paragraph id="dcd83744bf9e140a2d021327">Required = 420 − 60 = <b>360</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="dc7d1bce821218d3a6ae0488">Numbers from digits: always handle <b>leading zero</b> by either (i) splitting by first digit or (ii) total − leading-zero cases.</paragraph>
+</div>
+
+<h3>Note on repeated digits (as stated)</h3>
+<paragraph id="1ae8048ae5b3060b0c55a2b0">Repeated digits mean limited supply (not unlimited reuse). Here:</paragraph>
+<ul>
+<li><paragraph id="5beabc010f372c38c432ea5a">1 and 0 can be used <b>once</b> each.</paragraph></li>
+<li><paragraph id="813bed84fe65f196eaa72c77">2 can be used <b>three times</b>.</paragraph></li>
+<li><paragraph id="1533431ff7b0ac1bfa0f26c9">4 can be used <b>two times</b>.</paragraph></li>
+</ul>
+<div class="remember-box">
+<paragraph id="d920a5ef499c5d48ea80abbf">Don’t treat repeated digits as “repeat as many times as you like”. The list is the supply available.</paragraph>
+</div>
+
+<h2>Example 24: Seating 5 girls and 3 boys in a row, no two boys together</h2>
+<h3>Step 1: Arrange the girls</h3>
+<paragraph id="47ea6b7a3ece9401e1cd86eb">Seat 5 girls first → <b>5!</b> ways.</paragraph>
+
+<h3>Step 2: Identify available gaps for boys</h3>
+<paragraph id="75d258ce40400e599d74d652">With girls fixed, there are 6 gaps (including both ends) where boys can go so they’re not adjacent:</paragraph>
+<paragraph id="bcd05a2d00d43e9eebbbbc21">× G × G × G × G × G ×</paragraph>
+<paragraph id="d65b61d59e4fa6963c927929">Choose + arrange 3 boys into these 6 gaps → <b>\(^{6}P_3\)</b> ways.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="62073cece8b42d6c35f34bdb"><b>\(^{n}P_r = \dfrac{n!}{(n-r)!}\)</b></paragraph>
+<paragraph id="df6c3bf49372c9ab58a99ab8">n = number of available positions/items; r = number placed/selected with order.</paragraph>
+</div>
+
+<paragraph id="62cf15ab9cfb908cde2cd6cc">Total arrangements (multiplication principle):</paragraph>
+<paragraph id="392357dd31a3614f76ea49b5"><b>\(5! \times {}^{6}P_3\)</b> = \(5! \times \dfrac{6!}{3!} = \textbf{14400}\).</paragraph>
+
+<div class="remember-box">
+<paragraph id="ebca18674a384343368189b2">“No two boys together” → seat the larger group first, then place the others in the gaps. With <b>g</b> girls, gaps = <b>g + 1</b>.</paragraph>
+</div>
+
+<h2>Miscellaneous Exercise on Chapter 6 (list only)</h2>
+<paragraph id="1131d8143b30bb7aa2a5730f">Exercise set shown here only (not solved in this section): items <b>1–11</b>.</paragraph>
+
+<h2>Summary (portion shown)</h2>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><paragraph id="d0a7af6aed1b9d423a037020"><b>Fundamental Principle of Counting (Multiplication Principle):</b> If one step happens in m ways and the next step happens in n ways (in order), total = <b>m × n</b>.</paragraph></li>
+<li><paragraph id="cce8f7f41c9661f25477e5b9"><b>Permutations without repetition:</b> permutations of n different things taken r at a time:</paragraph>
+<paragraph id="6b3f5cd6f3bdc3fc9c28d4b9"><b>\(^{n}P_r = \dfrac{n!}{(n-r)!}\)</b>, where <b>0 ≤ r ≤ n</b>.</paragraph></li>
+<li><paragraph id="ade1ecc3333257f8b1e186c0"><b>Factorial:</b> <b>n! = 1 × 2 × 3 × … × n</b></paragraph></li>
+<li><paragraph id="7a1c206e1ddaafbf92138a8b"><b>Factorial recursion:</b> <b>n! = n × (n − 1)!</b></paragraph></li>
+<li><paragraph id="9acf82f5caa6982a4a28f2a2"><b>Permutations with repetition allowed:</b> permutations of n things taken r at a time = <b>\(n^r\)</b>.</paragraph></li>
+</ul>
+</div>
+
+<h2>Combinations: Formula and Notation</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="3e7bd6ad84593fc458c156cb"><b>Combinations</b> = selections where <b>order doesn’t matter</b>.</paragraph>
+<paragraph id="65fde9ac92b7678a0e789924">Number of combinations of <b>n different things</b> taken <b>r at a time</b> is written as <b>\(^{n}C_r\)</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="295a0742ac43fe941521db9a"><b>Number of combinations:</b></paragraph>
+<paragraph id="162d14fddebe9d692a25673f"><b>\(^{n}C_r = \dfrac{n!}{r!\,(n-r)!}\)</b>, for <b>0 ≤ r ≤ n</b></paragraph>
+<paragraph id="013d4d48010a420e94f32d80"><b>n</b> = total number of different objects available</paragraph>
+<paragraph id="b9f5a5b38677c22f0c9af628"><b>r</b> = number of objects selected</paragraph>
+<paragraph id="3d09d28c7b918d49935c6bdb"><b>n!</b> = factorial of n (1·2·3·…·n), with <b>0! = 1</b></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="15df548f3d4cd4089fca6518"><b>Validity condition:</b> use this formula when the <b>n objects are all different</b>, and you choose <b>r</b> of them, ignoring order.</paragraph>
+</div>
+
+<h2>Counting Arrangements When Some Objects Are Identical</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="08d6c5657c6204a44b9e4d91">If you have <b>n</b> total objects, with some repeats (identical groups):</paragraph>
+<ul>
+<li><b>p</b><sub>1</sub> objects of the 1st kind are identical</li>
+<li><b>p</b><sub>2</sub> objects of the 2nd kind are identical</li>
+<li>…</li>
+<li><b>p</b><sub>k</sub> objects of the k-th kind are identical</li>
+<li>any remaining objects (if any) are all different</li>
+</ul>
+<paragraph id="e024591588f2e01ae48f3e9a">Then to count <b>distinct permutations</b>, divide by the factorial of each identical-group size.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="9ade70b944c2dd34989a3112"><b>Permutations with identical objects</b>:</paragraph>
+<paragraph id="21296b432e6ed04139b711d2"><b>Number of distinct arrangements \(= \dfrac{n!}{p_1!\,p_2!\,\ldots\,p_k!}\)</b></paragraph>
+<paragraph id="9bf3f1fda011951e05de6065"><b>n</b> = total objects arranged</paragraph>
+<paragraph id="1063beec7281a1d85b8ee3a1"><b>p</b><sub>1</sub>, <b>p</b><sub>2</sub>, …, <b>p</b><sub>k</sub> = sizes of identical groups</paragraph>
+<paragraph id="674bb700c83d62427cdb2646"><b>!</b> = factorial</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="e49994c724869fb8c9bfd09b"><b>Exam tip:</b> Only divide by factorials for objects that are truly <b>identical</b>. If objects are “all different”, there’s <b>no</b> extra division.</paragraph>
+</div>
+
+<h2>Historical Note: Development of Permutations and Combinations</h2>
+
+<h3>Early Origins in India (Jain Tradition and Others)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4e2428c155a5c950c6f6b8bc">Ideas of permutations + combinations go back to the rise of <b>Jainism in India</b> (maybe earlier). Jains treated it as a separate topic called <b>Vikalpa</b>.</paragraph>
+</div>
+
+<ul>
+<li><b>Mahavira</b> (around <b>850</b>): possibly the first to give <b>general formulae</b> for permutations and combinations.</li>
+<li><b>Sushruta</b> (6th century B.C.), in <b>Sushruta Samhita</b>: said <b>63 combinations</b> can be made from <b>6 different tastes</b>, taken 1 at a time, 2 at a time, etc.</li>
+<li><b>Pingala</b> (around 3rd century B.C.), in <b>Chhanda Sutra</b>: gave a method to find the number of combinations of letters, taken 1 at a time, 2 at a time, etc.</li>
+<li><b>Bhaskaracharya</b> (born <b>1114</b>), in <b>Lilavati</b>: studied permutations/combinations under <b>Anka Pasha</b>; along with Mahavira’s general formulae for <b>\(^{n}C_r\)</b> and <b>\(^{n}P_r\)</b>, he added several key theorems and results.</li>
+</ul>
+
+<h3>Work Outside India (China, Greece/Latin, Arabic/Hebrew)</h3>
+<ul>
+<li><b>China</b>: early work in <b>I–King (Book of Changes)</b>. Exact dating is hard because in <b>213 B.C.</b> an emperor ordered books/manuscripts burned (not fully carried out).</li>
+<li><b>Greeks and later Latin writers</b>: provided scattered contributions to the theory.</li>
+<li><b>Arabic and Hebrew writers</b>: applied permutations/combinations in <b>astronomy</b>.</li>
+<li><b>Rabbi ben Ezra</b> (around <b>1140</b>): calculated combinations of known planets taken 2 at a time, 3 at a time, etc. He likely did <b>not</b> know the general <b>\(^{n}C_r\)</b> formula, but knew symmetry in specific cases (i.e. <b>\(^{n}C_r = {}^{n}C_{n-r}\)</b> for certain n, r).</li>
+<li><b>Levi Ben Gerson</b> (in <b>1321</b>): gave formulae for <b><span>nP</span><sub>r</sub></b>, <b><span>nP</span><sub>n</sub></b>, and the general formula for <b><span>nC</span><sub>r</sub></b>.</li>
+</ul>
+
+<h3>First Complete Book Treatment</h3>
+<ul>
+<li><b>Ars Conjectandi</b> by Swiss mathematician <b>Jacob Bernoulli</b> (1654–1705), published after his death in <b>1713</b>: described as the <b>first full book treatment</b> of permutations and combinations, basically the theory as we know it today.</li>
+</ul></ul></ul></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

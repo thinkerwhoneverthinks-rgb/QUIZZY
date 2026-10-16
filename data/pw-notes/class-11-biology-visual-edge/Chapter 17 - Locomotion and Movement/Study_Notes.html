@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Locomotion and Movement — Biology</title>
+  <meta name="description" content="Locomotion and Movement — Biology topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Biology</div>
+        <h1>Locomotion and Movement</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Movement = any positional/state change; Locomotion (as defined here) = voluntary movement causing change of place</div>
+              <h2>MOVEMENT VS LOCOMOTION</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Movement</b> is any change in position/state of a body part or the whole organism.</li><li><b>Locomotion</b> is a type of movement that results in a <b>change of place</b> (the whole organism shifts from one place to another). In this exam-style definition, it is described as <b>voluntary</b>.</li><li>Link: <b>All locomotions are movements</b>, but <b>all movements are not locomotions</b>.</li><li>Movement may be internal or external; locomotion specifically refers to displacement of the <b>whole organism</b> from one place to another.</li><li>Locomotory structures can have <b>multiple roles</b>, not only locomotion.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='20' y='30' width='150' height='60' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='35' y='55' font-size='14' fill='#1f2a44'>MOVEMENT</text><text x='35' y='75' font-size='12' fill='#1f2a44'>Any change</text><rect x='190' y='30' width='150' height='60' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='205' y='55' font-size='14' fill='#1f2a44'>LOCOMOTION</text><text x='205' y='75' font-size='12' fill='#1f2a44'>Change of place</text><line x1='170' y1='60' x2='190' y2='60' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='105' y='120' font-size='12' fill='#1f2a44'>All locomotions ⊂ movements</text><circle cx='90' cy='160' r='18' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='78' y='165' font-size='12' fill='#1f2a44'>Eye</text><circle cx='180' cy='160' r='18' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='167' y='165' font-size='12' fill='#1f2a44'>Jaw</text><circle cx='270' cy='160' r='18' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='253' y='165' font-size='12' fill='#1f2a44'>Walk</text><text x='40' y='145' font-size='12' fill='#1f2a44'>Movement only</text><text x='245' y='145' font-size='12' fill='#1f2a44'>Locomotion</text></svg><div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">✅</span><span>Key distinction: <b>change of place</b> is mandatory for locomotion, not for movement.</span></li><li><span class="ic">🧠</span><span>Locomotion is described here as <b>voluntary</b> (NCERT-style exam wording).</span></li><li><span class="ic">🧫</span><span>Example of movement (not necessarily locomotion): <b>streaming of protoplasm inside Amoeba</b> (internal movement without ensured change of place).</span></li><li><span class="ic">🚶</span><span>Examples of locomotion: <b>walking</b>, <b>running</b>, <b>swimming</b>, <b>flying</b>, <b>climbing</b>.</span></li><li><span class="ic">🔁</span><span>Same structure, many functions: cilia/tentacles/limbs can aid feeding, posture, and locomotion.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">EXAMPLES TO WRITE IN EXAMS</span></h2><ul class="b"><li><b>Movement (no change of place)</b>: streaming of protoplasm inside Amoeba; blinking; tongue/jaw movement.</li><li><b>Movement by cell structures</b>: cilia/flagella/tentacles can move (e.g., to move food/water current) even without whole-organism displacement.</li><li><b>Locomotion</b>: walking, running, swimming, flying, climbing (whole organism changes location).</li><li>Humans: limbs help in <b>posture change</b> and also in locomotion.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">WHY ANIMALS LOCOMOTE (PURPOSES)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='115' y='20' width='130' height='40' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='130' y='45' font-size='14' fill='#1f2a44'>WHY LOCOMOTE?</text><rect x='20' y='85' width='90' height='36' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='42' y='108' font-size='12' fill='#1f2a44'>Food</text><rect x='135' y='85' width='90' height='36' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='154' y='108' font-size='12' fill='#1f2a44'>Shelter</text><rect x='250' y='85' width='90' height='36' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='273' y='108' font-size='12' fill='#1f2a44'>Mate</text><rect x='60' y='140' width='110' height='36' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='72' y='163' font-size='12' fill='#1f2a44'>Breeding</text><rect x='200' y='140' width='140' height='36' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='210' y='163' font-size='12' fill='#1f2a44'>Escape predators</text><line x1='180' y1='60' x2='65' y2='85' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='180' y1='60' x2='180' y2='85' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='180' y1='60' x2='295' y2='85' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='180' y1='60' x2='115' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='180' y1='60' x2='270' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/></svg></div><ul class="b"><li>Search of <b>food</b> and <b>shelter</b>.</li><li>Search of <b>mate</b> and reaching suitable <b>breeding grounds</b>.</li><li>Seeking favourable <b>climatic conditions</b> (better survival).</li><li>Escape from <b>enemies/predators</b> (avoid being eaten).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">MOVEMENT vs LOCOMOTION</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Movement</th><th>Locomotion</th></tr></thead><tbody><tr><td>Meaning</td><td>Any change in position/state</td><td>A type of movement that causes change of place (organism shifts from one place to another)</td></tr><tr><td>Voluntary?</td><td>May be voluntary or involuntary</td><td>Described here (NCERT-style) as voluntary movement</td></tr><tr><td>Scale</td><td>May involve a body part, a cell part, or the whole organism</td><td>Involves the whole organism shifting location</td></tr><tr><td>Result</td><td>May or may not change location</td><td>Changes location (change of place is essential)</td></tr><tr><td>Examples</td><td>Blinking, jaw/tongue movement, internal streaming of protoplasm</td><td>Walking, running, swimming, flying, climbing</td></tr><tr><td>Relation</td><td>Includes locomotion</td><td>Subset of movement</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Amoeba shows streaming of protoplasm inside its body. Is this movement or locomotion? Justify.</div><div class="sol"><span class="lbl">Answer:</span><br>Streaming of protoplasm is a <b>change in position/state within the body</b>.<br>This internal streaming <b>does not by itself ensure</b> that the whole organism shifts from one place to another.<br>So, it is a <b>movement</b>; it is <b>not necessarily locomotion</b> unless it causes change of place.</div><div class="ans">✓&nbsp; It is movement (internal protoplasmic streaming). It is not necessarily locomotion because change of place is not ensured by streaming alone.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">State whether each is movement, locomotion, or both: (i) blinking (ii) walking (iii) Paramecium cilia moving food.</div><div class="sol"><span class="lbl">Answer:</span><br>(i) Blinking: <b>movement only</b>; eyelids change position, no change of place.<br>(ii) Walking: <b>both</b>; it is movement that causes <b>change of place</b>.<br>(iii) Paramecium cilia moving food: <b>movement</b>; cilia beat to move food through cytopharynx (the same cilia can also enable locomotion when they move the organism).</div><div class="ans">✓&nbsp; (i) Movement only (ii) Both movement and locomotion (iii) Movement (feeding-related; the same cilia may also be used for locomotion).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write the core line: <b>All locomotions are movements, but all movements are not locomotions</b>.</li><li>In exams, locomotion must mention <b>change of place</b> and is described here as <b>voluntary</b>.</li><li>Give one non-locomotory movement example: <b>streaming of protoplasm inside Amoeba</b>.</li><li>Locomotory structures may be multifunctional: Paramecium <b>cilia</b>, Hydra <b>tentacles</b>, human <b>limbs</b>.</li><li>Common locomotion examples to list: walking, running, swimming, flying, climbing.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>LOCO</b> = <b>LOCA</b>tion change”</div><paragraph id="6aa538b4269088fbc4000127"><b>LOCO</b>motion → change of <b>LOCA</b>tion (place).</paragraph><paragraph id="6aa538b480f5e539bd000128">If no location change, it stays as <b>movement only</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Movement</b>: any change in position/state of a body part, cell part, or whole organism.</span><span class="eq"><b>Locomotion</b>: movement that causes <b>change of place</b> (whole organism shifts from one place to another); described here as voluntary in exam wording.</span><span class="eq"><b>Relation</b>: all locomotions are movements; all movements are not locomotions.</span><span class="eq">Movement (non-locomotory) example: <b>streaming of protoplasm inside Amoeba</b>, blinking, jaw/tongue movement.</span><span class="eq">Locomotion examples: <b>walking</b>, <b>running</b>, <b>swimming</b>, <b>flying</b>, <b>climbing</b>.</span><span class="eq">Why animals locomote: food, shelter, mate, breeding ground, favourable climate, escape predators.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Amoeboid, ciliary and muscular movements in humans: mechanism + examples</div>
+              <h2>TYPES OF MOVEMENT (17.1)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Types of movement in human body cells</b> mainly include <b>amoeboid</b>, <b>ciliary</b> and <b>muscular</b> movements.</li><li>Amoeboid movement: cell creeps by forming <b>pseudopodia</b> due to protoplasmic streaming.</li><li>Ciliary movement: <b>coordinated beating</b> of cilia moves materials along tubular passages.</li><li>Muscular movement: movement due to <b>contraction</b> of muscles; basis of limb and organ movements.</li><li>Underlying control: movement needs <b>cytoskeleton</b> (microfilaments) or <b>cilia</b> or <b>muscle fibres</b> depending on type.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='10' y='10' width='340' height='180' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='18' y='30' font-size='14' fill='#1f2a44'>17.1 Types of Movement</text><rect x='20' y='45' width='100' height='135' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='30' y='65' font-size='13' fill='#1f2a44'>Amoeboid</text><path d='M55 105 C40 95,40 75,62 78 C70 62,92 72,88 88 C105 92,102 115,85 118 C78 132,60 128,58 115 C44 118,44 108,55 105 Z' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><line x1='86' y1='90' x2='112' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='72' y='140' font-size='12' fill='#1f2a44'>Pseudopodia
+</text><text x='28' y='160' font-size='12' fill='#1f2a44'>WBC, macrophages
+</text><rect x='130' y='45' width='100' height='135' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='152' y='65' font-size='13' fill='#1f2a44'>Ciliary</text><rect x='145' y='85' width='70' height='22' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><line x1='152' y1='85' x2='152' y2='74' stroke='#2563EB' stroke-width='2'/><line x1='160' y1='85' x2='160' y2='72' stroke='#2563EB' stroke-width='2'/><line x1='168' y1='85' x2='168' y2='74' stroke='#2563EB' stroke-width='2'/><line x1='176' y1='85' x2='176' y2='72' stroke='#2563EB' stroke-width='2'/><line x1='184' y1='85' x2='184' y2='74' stroke='#2563EB' stroke-width='2'/><line x1='192' y1='85' x2='192' y2='72' stroke='#2563EB' stroke-width='2'/><line x1='200' y1='85' x2='200' y2='74' stroke='#2563EB' stroke-width='2'/><polyline points='148,115 170,115 192,115 210,115' fill='none' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='146' y='140' font-size='12' fill='#1f2a44'>Trachea</text><text x='146' y='158' font-size='12' fill='#1f2a44'>Oviduct</text><rect x='240' y='45' width='100' height='135' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='254' y='65' font-size='13' fill='#1f2a44'>Muscular</text><path d='M260 120 C268 98,292 98,300 120 C308 142,292 150,280 142 C268 150,252 142,260 120 Z' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><line x1='300' y1='120' x2='332' y2='120' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='252' y='140' font-size='12' fill='#1f2a44'>Contraction</text><text x='248' y='160' font-size='12' fill='#1f2a44'>Limbs, jaw, tongue</text></svg><div class="figcap">Three major human movement types: amoeboid (pseudopodia), ciliary (beating cilia), muscular (contraction).</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧬</span><span>Amoeboid movement is driven by <b>cytoskeletal microfilaments</b> and pseudopodia formation.</span></li><li><span class="ic">🫁</span><span>Cilia on <b>ciliated epithelium</b> beat in a coordinated manner to move mucus/particles or ova.</span></li><li><span class="ic">💪</span><span>Muscular movement uses the <b>contractile property</b> of muscles; produces movements of limbs, jaw, tongue.</span></li><li><span class="ic">🧫</span><span>Examples commonly asked: <b>macrophages</b>, <b>leucocytes (WBC)</b>, <b>trachea</b>, <b>oviduct</b>.</span></li><li><span class="ic">🧠</span><span>Human locomotion requires coordinated activity of <b>muscular</b>, <b>skeletal</b> and <b>neural</b> systems.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">AMOEBOID MOVEMENT (PSEUDOPODIA + CYTOSKELETON)</span></h2><ul class="b"><li>Occurs in specialised cells like <b>macrophages</b> and <b>leucocytes (WBC)</b>.</li><li>Cell forms temporary projections called <b>pseudopodia</b> and flows into them.</li><li>Driven and supported by <b>cytoskeletal microfilaments</b> (actin-based).</li><li>Role in body: helps immune cells move toward infection sites (chemotaxis).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">CILIARY MOVEMENT (COORDINATED BEATING IN TUBES)</span></h2><ul class="b"><li>Seen in organs lined by <b>ciliated epithelium</b>.</li><li>Cilia beat in a coordinated pattern to produce directional flow.</li><li><b>Trachea:</b> moves mucus to remove <b>dust/foreign particles</b> inhaled with air.</li><li><b>Female reproductive tract:</b> facilitates <b>passage of ova</b> toward uterus.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Amoeboid vs Ciliary vs Muscular Movement</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Amoeboid</th><th>Ciliary</th><th>Muscular</th></tr></thead><tbody><tr><td>Main structure</td><td>Pseudopodia + cytoskeleton</td><td>Cilia on ciliated epithelium</td><td>Muscle fibres</td></tr><tr><td>Key driver</td><td>Microfilaments (actin) + protoplasmic flow</td><td>Coordinated ciliary beating</td><td>Contractile proteins (actin–myosin)</td></tr><tr><td>Where in humans</td><td>WBC, macrophages</td><td>Trachea, oviduct</td><td>Limbs, jaw, tongue etc.</td></tr><tr><td>Primary function</td><td>Cell crawling/immune surveillance</td><td>Moves mucus/particles or ova</td><td>Body movement and locomotion</td></tr><tr><td>Typical exam example</td><td>Leucocyte migration to infection site</td><td>Dust removal from trachea</td><td>Walking/chewing/speaking movements</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A patient has defective ciliary action in the trachea. Predict one direct consequence and justify.</div><div class="sol"><span class="lbl">Answer:</span><br>Tracheal cilia normally beat to move mucus upward, carrying trapped dust/foreign particles.<br>With reduced beating, mucus clearance decreases, so particles accumulate in airways.</div><div class="ans">✓&nbsp; Impaired dust removal (poor mucociliary clearance) leading to accumulation of inhaled particles and higher infection risk.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A WBC moving out of a blood capillary toward an infection site shows which type of movement? Mention the key cellular structure involved.</div><div class="sol"><span class="lbl">Answer:</span><br>WBCs and macrophages move by forming pseudopodia and streaming cytoplasm into them.<br>This is supported/driven by cytoskeletal microfilaments (actin).</div><div class="ans">✓&nbsp; Amoeboid movement; involves pseudopodia formation using cytoskeletal microfilaments.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write clearly: <b>locomotion ⊂ movement</b>; locomotion changes place, movement may not.</li><li>Amoeboid movement in humans: <b>macrophages</b> and <b>leucocytes (WBC)</b>.</li><li>Amoeboid movement depends on <b>pseudopodia</b> and <b>cytoskeletal microfilaments</b>.</li><li>Ciliary movement occurs in <b>tubular organs</b> with <b>ciliated epithelium</b>.</li><li>Tracheal cilia: <b>remove dust/foreign particles</b>; oviduct cilia: <b>ova passage</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>A-C-M</b> = <b>A</b>moeboid, <b>C</b>iliary, <b>M</b>uscular”</div><paragraph id="6aa538b4205ed8b2a7000129"><b>A</b>moeboid: <b>A</b>ctin microfilaments make <b>A</b>rm-like pseudopodia in WBC.</paragraph><paragraph id="6aa538b4f0a8338e6000012a"><b>C</b>iliary: <b>C</b>ilia in <b>C</b>onducting tubes (trachea, oviduct) create flow.</paragraph><paragraph id="6aa538b4bd33a2e6dd00012b"><b>M</b>uscular: <b>M</b>uscles move <b>M</b>andible (jaw) and limbs by contraction.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Amoeboid movement = pseudopodia-based cell crawling; seen in macrophages and leucocytes (WBC).</span><span class="eq">Amoeboid driver/support = cytoskeletal <b>microfilaments</b> (actin) + protoplasmic streaming.</span><span class="eq">Ciliary movement = coordinated beating of cilia in ciliated epithelium of tubular organs.</span><span class="eq">Trachea: cilia move mucus to remove dust/foreign particles; Female tract: cilia aid ova passage.</span><span class="eq">Muscular movement = contraction of muscles; produces movements of limbs, jaw, tongue, eyelids.</span><span class="eq">Locomotion in humans requires coordination of muscular, skeletal and neural systems.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Locomotory structures + what muscles are, their properties, and major types</div>
+              <h2>MUSCLE TISSUE BASICS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Muscle tissue</b> is a specialised tissue (mainly <b>mesodermal</b> in origin) that produces movement by contraction.</li><li>In human adults, muscles contribute about <b>40–50%</b> of total body weight.</li><li>Locomotion is voluntary movement causing change of place; it relies mainly on <b>muscular contraction</b> in most animals.</li><li>Cilia and flagella are <b>cell membrane outgrowths</b> that can also produce movement in many organisms.</li><li>Core functional properties: <b>excitability</b>, <b>contractility</b>, <b>extensibility</b>, <b>elasticity</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto'><polygon points='0,0 10,4 0,8' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='150' height='62' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='26' y='40' font-size='13' fill='#1f2a44'>Cilia / Flagella</text><text x='26' y='58' font-size='12' fill='#1f2a44'>membrane outgrowths</text><rect x='196' y='18' width='150' height='62' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='208' y='40' font-size='13' fill='#1f2a44'>Muscle tissue</text><text x='208' y='58' font-size='12' fill='#1f2a44'>mesodermal origin</text><line x1='164' y1='49' x2='196' y2='49' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='150' y='34' font-size='12' fill='#1f2a44'>movement</text><rect x='14' y='104' width='332' height='82' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='26' y='126' font-size='13' fill='#1f2a44'>Key muscle properties</text><text x='26' y='146' font-size='12' fill='#1f2a44'>Excitability</text><text x='122' y='146' font-size='12' fill='#1f2a44'>Contractility</text><text x='234' y='146' font-size='12' fill='#1f2a44'>Extensibility</text><text x='26' y='166' font-size='12' fill='#1f2a44'>Elasticity</text><line x1='271' y1='80' x2='271' y2='104' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='286' y='96' font-size='12' fill='#1f2a44'>tested</text></svg><div class="figcap">Movement in organisms: cell outgrowths (cilia/flagella) and muscle tissue; muscles show 4 core properties.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🦠</span><span>Cilia/flagella: membrane outgrowths; beating helps movement and other functions.</span></li><li><span class="ic">🧬</span><span>Flagella help <b>spermatozoa</b> swim; essential for motility in male gametes.</span></li><li><span class="ic">🧽</span><span>Sponges: flagellar action maintains <b>water current</b> in the canal system.</span></li><li><span class="ic">🟢</span><span>Protists like <b>Euglena</b> show locomotion using a flagellum.</span></li><li><span class="ic">⚡</span><span><b>Excitability</b>: muscle responds to a stimulus (nerve/chemical/mechanical).</span></li><li><span class="ic">🔻</span><span><b>Contractility</b>: shortens to generate force; basis of movement.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHERE CILIA/FLAGELLA MATTER (EXAM LINES)</span></h2><ul class="b"><li>Cilia/flagella are <b>cell membrane outgrowths</b> producing locomotion or fluid/food movement.</li><li>Flagellum enables <b>spermatozoa swimming</b> (male gamete motility).</li><li>Sponges: flagella maintain <b>water current</b> through canal system (feeding/respiration aid).</li><li>Protists (e.g., <b>Euglena</b>) locomote using flagellar movement.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MUSCLE PROPERTIES: DEFINITIONS YOU MUST NOT MIX</span></h2><ul class="b"><li><b>Excitability</b>: ability to respond to a stimulus by generating an electrical/chemical response.</li><li><b>Contractility</b>: ability to shorten and develop tension (force generation).</li><li><b>Extensibility</b>: ability to be stretched; prevents tearing during normal movements.</li><li><b>Elasticity</b>: ability to return to original length after stretch or contraction.</li><li>Common exam phrase: muscles show <b>excitability, contractility, extensibility, elasticity</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">CLASSIFICATION BASED ON LOCATION: SKELETAL vs VISCERAL vs CARDIAC</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Skeletal muscle</th><th>Visceral (smooth) muscle</th><th>Cardiac muscle</th></tr></thead><tbody><tr><td>Location</td><td>Attached to bones / body wall</td><td>Walls of hollow organs (alimentary canal, reproductive tract, etc.)</td><td>Heart wall</td></tr><tr><td>Appearance</td><td>Striated (striped)</td><td>Nonstriated (smooth)</td><td>Striated; branching arrangement</td></tr><tr><td>Regulation</td><td>Voluntary</td><td>Involuntary</td><td>Involuntary (not under direct conscious control)</td></tr><tr><td>Main role</td><td>Locomotion and posture changes</td><td>Movement of contents (food, gametes, etc.)</td><td>Pumping blood continuously</td></tr><tr><td>High-yield trap</td><td>Striated and voluntary</td><td>Smooth and involuntary</td><td><b>Striated but involuntary</b></td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student writes: "All striated muscles are voluntary." Correct the statement with a reason.</div><div class="sol"><span class="lbl">Answer:</span><br>Striations indicate banded appearance under microscope, not control type.<br>Cardiac muscle is <b>striated</b> but <b>involuntary</b> because heartbeat is not under conscious control.</div><div class="ans">✓&nbsp; Correct statement: <b>Not all striated muscles are voluntary</b>; cardiac muscle is striated yet involuntary.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Differentiate <b>extensibility</b> and <b>elasticity</b> in muscles using one example each.</div><div class="sol"><span class="lbl">Answer:</span><br><b>Extensibility</b>: muscle can be stretched (e.g., stretching hamstrings during a forward bend).<br><b>Elasticity</b>: muscle returns to original length after stretch (e.g., hamstrings recoil when you release the stretch).</div><div class="ans">✓&nbsp; Extensibility = stretchability; Elasticity = recoil back to original length after stretch.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Muscle tissue is of <b>mesodermal origin</b> (standard school-level fact).</li><li>Muscles form about <b>40–50%</b> of adult human body weight.</li><li>Write all four properties with meaning: <b>excitability, contractility, extensibility, elasticity</b>.</li><li>Cilia/flagella are <b>cell membrane outgrowths</b>; know key examples: sperm, sponges, Euglena.</li><li>Classification based on location: <b>skeletal, visceral, cardiac</b> (with striation + control).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "ECCE" for muscle properties”</div><paragraph id="6aa538b4a27b31c03d00012c"><b>E</b>xcitability: responds to stimulus<br><b>C</b>ontractility: shortens to pull<br><b>C</b>an stretch: extensibility<br><b>E</b>lasticity: returns back</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Muscle tissue: specialised, mainly <b>mesodermal</b>; causes movement by contraction.</span><span class="eq">Adult human muscles ≈ <b>40–50%</b> of body weight.</span><span class="eq">Cilia/flagella: <b>cell membrane outgrowths</b>; examples: sperm swimming, sponge canal currents, Euglena locomotion.</span><span class="eq">Four properties: <b>excitability</b>, <b>contractility</b>, <b>extensibility</b>, <b>elasticity</b>.</span><span class="eq">Skeletal: striated, voluntary, attached to bones (locomotion/posture).</span><span class="eq">Visceral (smooth): nonstriated, involuntary, walls of hollow organs.</span><span class="eq">Cardiac: striated, branched, involuntary, in heart (<b>striated ≠ always voluntary</b>).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Organisation from whole muscle → fascicle → fibre → myofibril → sarcomere + banding pattern</div>
+              <h2>SKELETAL MUSCLE STRUCTURE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Skeletal muscle</b> is a striated, voluntary muscle made of fascicles containing long multinucleate fibres.</li><li>Whole muscle is wrapped/held together by <b>fascia</b> (collagenous connective tissue).</li><li>Each <b>muscle fibre</b> (cell) is a <b>syncytium</b> with <b>many nuclei</b> in the sarcoplasm.</li><li><b>Sarcolemma</b> = plasma membrane of the muscle fibre; <b>sarcoplasm</b> = its cytoplasm.</li><li><b>Sarcoplasmic reticulum</b> (specialised ER) stores <b>Ca<sup>2+</sup></b> needed to control contraction.</li><li>Striations arise from alternating <b>A band</b> (myosin-rich) and <b>I band</b> (actin-rich) regions in myofibrils.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+       <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-60.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+<div class="figcap"></div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Hierarchy: <b>muscle</b> → <b>fascicle</b> → <b>muscle fibre</b> → <b>myofibril</b> → <b>sarcomere</b></span></li><li><span class="ic">🧵</span><span><b>Myofibrils</b> are parallel rods in sarcoplasm; made of <b>myofilaments</b> (actin + myosin)</span></li><li><span class="ic">🧫</span><span><b>Sarcolemma</b> encloses fibre; sarcoplasm contains organelles, glycogen, myoglobin, and nuclei</span></li><li><span class="ic">🧠</span><span><b>Muscle fibre syncytium</b>: many nuclei share one sarcoplasm inside one sarcolemma</span></li><li><span class="ic">🧯</span><span><b>Sarcoplasmic reticulum</b> is the major <b>Ca<sup>2+</sup></b> store; Ca<sup>2+</sup> release triggers contraction</span></li><li><span class="ic">🌓</span><span>Bands/lines: <b>I</b> (actin), <b>A</b> (myosin), <b>Z</b> (boundary), <b>M</b> (middle), <b>H</b> (thick-only zone)</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">FROM WHOLE MUSCLE TO MUSCLE FIBRE (CELL)</span></h2><ul class="b"><li><b>Fascicle</b> = bundle of muscle fibres; many fascicles make the whole muscle.</li><li><b>Fascia</b> = collagenous connective tissue holding fascicles together as a common covering.</li><li><b>Muscle fibre</b> is long, cylindrical, unbranched and shows striations under microscope.</li><li><b>Sarcolemma</b> surrounds the fibre; invagination forms tubules (covered later with contraction).</li><li><b>Sarcoplasm</b> contains mitochondria, glycogen and myoglobin; packed with myofibrils.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MYOFIBRIL → SARCOMERE (CONTRACTILE UNIT) + STRIATIONS</span></h2><ul class="b"><li><b>Myofibrils</b> run parallel to the long axis; striations reflect their banding alignment.</li><li><b>Thin filament</b> = actin; <b>thick filament</b> = myosin; arranged as longitudinal rods.</li><li><b>I band</b> (light, isotropic): mainly actin; <b>Z line</b> bisects I band and anchors thin filaments.</li><li><b>A band</b> (dark, anisotropic): length of thick filaments; includes overlap with thin filaments.</li><li><b>H zone</b>: central part of A band with only thick filaments (no overlap in resting state).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">BANDING FEATURES IN A MYOFIBRIL (EXAM FAVOURITES)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Feature</th><th>Location / Composition</th><th>Key point</th></tr></thead><tbody><tr><td>I band</td><td>Thin (actin) region; light</td><td>Bisected by <b>Z line</b></td></tr><tr><td>A band</td><td>Thick (myosin) length; dark</td><td>Contains overlap + central thick-only part</td></tr><tr><td>Z line</td><td>Centre of I band</td><td>Sarcomere boundary; thin filaments attach</td></tr><tr><td>H zone</td><td>Centre of A band (thick only)</td><td>No actin overlap (resting)</td></tr><tr><td>M line</td><td>Middle of A band</td><td>Holds/stabilises thick filaments</td></tr><tr><td>Sarcomere</td><td>Between two successive Z lines</td><td>Functional unit of contraction</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A diagram of a myofibril shows a dark band with a lighter central region. Name the band and the central region, and state the filament composition.</div><div class="sol"><span class="lbl">Answer:</span><br>Dark band corresponds to <b>A band</b> (anisotropic).<br>Lighter central region within A band is the <b>H zone</b>.<br><b>A band</b> spans the length of <b>thick (myosin) filaments</b> and includes overlap with thin filaments at edges.<br><b>H zone</b> contains <b>only thick (myosin) filaments</b> (no actin overlap in resting state).</div><div class="ans">✓&nbsp; Band: <b>A band</b>; central region: <b>H zone</b>; thick filament = myosin, thin filament = actin.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why is a skeletal muscle fibre called a syncytium? Mention one structural hallmark that supports this.</div><div class="sol"><span class="lbl">Answer:</span><br>A <b>syncytium</b> is a structure with a common cytoplasm containing <b>many nuclei</b>.<br>Skeletal muscle fibre has <b>sarcoplasm</b> with <b>multiple nuclei</b> inside one <b>sarcolemma</b>.<br>Peripheral placement of nuclei under the sarcolemma is a common histological clue.</div><div class="ans">✓&nbsp; It is called a syncytium because one fibre has a common sarcoplasm with <b>many nuclei</b> inside a single sarcolemma.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write definition of <b>sarcomere</b> as <b>Z line to Z line</b> + <b>functional unit of contraction</b>.</li><li><b>Fascia</b> is <b>collagenous connective tissue</b> holding muscle fascicles together.</li><li><b>Sarcolemma</b> (membrane) vs <b>sarcoplasm</b> (cytoplasm): don’t interchange.</li><li>Striations are due to orderly arrangement of <b>actin</b> (thin) and <b>myosin</b> (thick) in myofibrils.</li><li><b>Z line</b> anchors thin filaments; <b>M line</b> stabilises thick filaments; <b>H zone</b> is thick-only.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>ZIMH</b> + bands”</div><paragraph id="6aa538b4bb1d03dd1d00012d"><b>Z</b> = ends (sarcomere boundary), <b>I</b> = thin only, <b>M</b> = middle (thick held), <b>H</b> = thick-only centre.</paragraph><paragraph id="6aa538b479d549f60a00012e">Also: <b>I</b> looks like a thin line → <b>I band = actin</b>; <b>A</b> for <b>All</b> of thick filament length.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Organisation: <b>Muscle → fascicle → muscle fibre → myofibril → sarcomere</b>.</span><span class="eq"><b>Fascia</b>: collagenous connective tissue holding fascicles.</span><span class="eq"><b>Sarcolemma</b> = muscle fibre membrane; <b>sarcoplasm</b> = cytoplasm; fibre is multinucleate (syncytium).</span><span class="eq"><b>Sarcoplasmic reticulum</b> = specialised ER; <b>Ca<sup>2+</sup></b> storehouse.</span><span class="eq">Filaments: <b>actin = thin</b>, <b>myosin = thick</b>.</span><span class="eq">Bands/lines: <b>I</b> (actin, light), <b>A</b> (myosin length, dark), <b>Z</b> (I centre, boundary), <b>M</b> (A centre), <b>H</b> (thick-only).</span><span class="eq"><b>Sarcomere</b>: region between two successive <b>Z lines</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Thin (actin) + thick (myosin) filaments: structure + regulation by troponin–tropomyosin + myosin head ATPase</div>
+              <h2>CONTRACTILE PROTEINS (ACTIN &amp; MYOSIN)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Contractile proteins are <b>actin (thin)</b> and <b>myosin (thick)</b> that form myofilaments in skeletal muscle.</li><li><b>Actin filament</b> is built from F-actin polymers of G-actin, with <b>tropomyosin</b> and <b>troponin</b> as regulatory proteins.</li><li>In resting muscle, <b>a subunit of troponin masks the myosin-binding (active) sites</b> on actin, preventing cross-bridge formation.</li><li><b>Myosin filament</b> is a polymerised protein made of many monomers called <b>meromyosins</b>; projecting heads form <b>cross arms</b>.</li><li>The <b>myosin globular head</b> has <b>ATP-binding</b> sites, <b>ATPase</b> activity, and <b>actin-binding</b> (active) sites.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2> <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-61.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">1</span><span><b>F-actin</b>: two helical strands; each strand is a polymer of <b>G-actin</b> monomers.</span></li><li><span class="ic">2</span><span><b>Tropomyosin</b>: two filaments run close to F-actins along their length; helps keep active sites covered in resting state.</span></li><li><span class="ic">3</span><span><b>Troponin complex</b> occurs at regular intervals on tropomyosin; <b>a troponin subunit masks</b> actin active sites in rest.</span></li><li><span class="ic">4</span><span>Rise of <b>Ca<sup>2+</sup></b> binds troponin → masking removed → actin sites exposed for myosin.</span></li><li><span class="ic">5</span><span><b>Meromyosin</b> has <b>HMM</b> (globular head + short arm) and <b>LMM</b> (tail).</span></li><li><span class="ic">6</span><span><b>Myosin head</b> is the motor: actin-binding + ATP-binding + <b>ATPase</b> enzyme site.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">ACTIN (THIN FILAMENT): BUILD + REGULATION</span></h2><ul class="b"><li><b>Two F-actins</b> helically wound; each F-actin is a polymer of <b>G-actin</b> monomers.</li><li><b>Active site</b> on actin = myosin-binding site; must be exposed for cross-bridge formation.</li><li><b>Tropomyosin</b> runs along F-actin length; in rest it lies close to active sites.</li><li><b>Troponin</b> complex occurs at intervals on tropomyosin; <b>a troponin subunit masks active sites</b> in resting state.</li><li>On Ca<sup>2+</sup> binding to troponin, masking is removed and actin becomes available to myosin.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">MYOSIN (THICK FILAMENT): MEROMYOSIN + HEAD FEATURES</span></h2><ul class="b"><li>Thick filament is a polymerised protein made of many monomers called <b>meromyosins</b>.</li><li>Each meromyosin has <b>HMM</b> = globular head + short arm; <b>LMM</b> = tail.</li><li><b>Cross arm</b> = projecting HMM (head + short arm) parts on thick filament surface.</li><li>Myosin <b>globular head</b> contains: <b>actin-binding (active) site</b> + <b>ATP-binding site</b> + <b>ATPase</b> activity.</li><li>New ATP binding helps detach myosin from actin during cross-bridge cycling.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">ACTIN vs MYOSIN (STRUCTURE &amp; ROLE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Actin (Thin)</th><th>Myosin (Thick)</th></tr></thead><tbody><tr><td>Major form</td><td>Two helically wound <b>F-actin</b> strands</td><td>Polymerised filament made of many <b>meromyosin</b> monomers</td></tr><tr><td>Subunits</td><td><b>G-actin</b> monomers polymerise → F-actin</td><td><b>HMM</b> (head+short arm) + <b>LMM</b> (tail)</td></tr><tr><td>Regulatory proteins</td><td><b>Tropomyosin</b> + <b>troponin</b> present</td><td>No troponin/tropomyosin; motor is myosin head</td></tr><tr><td>Key functional site</td><td>Myosin-binding (active) sites may be masked in resting state</td><td>Head has actin-binding + ATP-binding + ATPase</td></tr><tr><td>Projection</td><td>Does not form heads</td><td><b>Cross arms</b> (projecting HMM) extend outwards</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">In a resting skeletal muscle fibre, why does myosin not bind to actin even though both filaments overlap?</div><div class="sol"><span class="lbl">Answer:</span><br>In resting state, a <b>subunit of troponin</b> (present on the actin filament via tropomyosin) <b>masks the myosin-binding sites on actin</b>.<br>Therefore, cross-bridges cannot form despite overlap.<br>When Ca<sup>2+</sup> binds troponin, the masking is removed and the active sites become exposed for myosin binding.</div><div class="ans">✓&nbsp; Because a troponin subunit masks actin myosin-binding sites in rest; Ca<sup>2+</sup> binding to troponin removes masking.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student labels the long tail of myosin as the cross arm. Correct the statement with reason.</div><div class="sol"><span class="lbl">Answer:</span><br><b>Cross arm</b> refers to the projecting <b>HMM</b> portion (globular head + short arm) extending from the thick filament at intervals.<br>The <b>LMM</b> portion forms the tail/backbone and does not project as cross arms.<br>Heads project outward and carry actin-binding sites and ATPase activity.</div><div class="ans">✓&nbsp; Cross arm = HMM (head + short arm), not the LMM tail; the globular head has actin-binding and ATPase/ATP-binding sites.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Thin filament = <b>F-actin</b> (G-actin polymer) + <b>tropomyosin</b> + <b>troponin</b>.</li><li>Resting state: <b>a troponin subunit masks</b> myosin-binding sites on actin.</li><li>Thick filament = polymer made of many <b>meromyosin</b> monomers.</li><li><b>HMM</b> contains globular head + short arm; <b>LMM</b> forms tail/backbone.</li><li>Myosin head has <b>ATP-binding</b> sites, <b>ATPase</b> activity, and <b>actin-binding</b> sites.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>G-F-T-T</b> &amp; <b>H Head, L Long</b>”</div><paragraph id="6aa538b4a51ff45aa900012f"><b>G</b>-actin monomers → <b>F</b>-actin filament; along it lie <b>T</b>ropomyosin + <b>T</b>roponin.</paragraph><paragraph id="6aa538b48eb5aa9296000130"><b>H</b>MM has <b>Head</b> + short arm; <b>L</b>MM is <b>Long</b> tail (backbone).</paragraph><paragraph id="6aa538b4572eaf2c6f000131">Remember: <b>Troponin</b> (subunit) <b>locks</b> actin sites in rest; Ca<sup>2+</sup> unlocks.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Actin (thin) filament: <b>two F-actins</b> helically wound; each F-actin is a polymer of <b>G-actin</b>.</span><span class="eq"><b>Tropomyosin</b>: two filaments run close to F-actins along their length.</span><span class="eq"><b>Troponin</b>: complex protein at regular intervals on tropomyosin.</span><span class="eq">Resting state: <b>a troponin subunit masks</b> myosin-binding sites on actin.</span><span class="eq">Ca<sup>2+</sup> binds troponin → masking removed → myosin can bind actin.</span><span class="eq">Myosin (thick) filament: polymer made of many <b>meromyosin</b> monomers.</span><span class="eq">Meromyosin: <b>HMM</b> = head + short arm; <b>LMM</b> = tail.</span><span class="eq"><b>Cross arms</b> are projecting <b>HMM</b> portions on thick filament surface.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">NMJ → Ca<sup>2+</sup> trigger → cross-bridge cycling → sliding filaments → relaxation &amp; fatigue</div>
+              <h2>MUSCLE CONTRACTION MECHANISM</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Muscle contraction occurs by <b>sliding of thin (actin) filaments over thick (myosin) filaments</b> (sliding filament theory).</li><li>A nerve impulse at the <b>neuromuscular junction (NMJ)</b> initiates an action potential in the <b>sarcolemma</b> of a muscle fibre.</li><li>Rise of <b>Ca<sup>2+</sup></b> in sarcoplasm is the key intracellular trigger for contraction.</li><li><b>Ca<sup>2+</sup> binds troponin</b> → tropomyosin shifts → actin active sites exposed → myosin heads attach (cross-bridges).</li><li><b>ATP</b> is required because <b>ATP hydrolysis</b> energises (re-cocks) the myosin head and <b>new ATP binding</b> is essential for myosin <b>detachment</b> from actin.</li><li>Relaxation occurs when Ca<sup>2+</sup> is pumped back into <b>sarcoplasmic reticulum</b>, restoring actin site masking.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2>
+      
+       <div class="figbox"
+       style="
+         width:100%;
+         height:auto !important;
+         min-height:0 !important;
+         overflow:visible !important;
+         margin-bottom:1.5mm;
+         padding:4px;
+         box-sizing:border-box;
+       ">
+    <img src="img/Untitled-62.webp"
+         alt="Diagram"
+         style="
+           display:block;
+           width:100% !important;
+           max-width:100% !important;
+           height:auto !important;
+           max-height:none !important;
+           object-fit:contain;
+           margin:0 auto;
+         ">
+</div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧠</span><span><b>Motor unit</b> = one motor neuron + all muscle fibres it innervates; basic unit of neural control.</span></li><li><span class="ic">🔗</span><span><b>NMJ / motor end plate</b>: acetylcholine release generates action potential in sarcolemma.</span></li><li><span class="ic">🧪</span><span><b>Ca<sup>2+</sup> switch</b>: Ca<sup>2+</sup>–troponin interaction unmasks actin’s myosin-binding sites.</span></li><li><span class="ic">⚙️</span><span><b>Cross-bridge cycle</b>: attachment → power stroke → detachment (ATP binding) → re-cocking (ATP hydrolysis).</span></li><li><span class="ic">📏</span><span><b>Band changes</b>: I band decreases; A band constant; Z lines move closer; H zone narrows.</span></li><li><span class="ic">🧯</span><span><b>Fatigue (NCERT line)</b>: repeated activity can cause lactic acid accumulation due to anaerobic breakdown of glycogen in muscles.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">FROM NERVE SIGNAL TO Ca<sup>2+</sup> TRIGGER (NMJ EVENTS)</span></h2><ul class="b"><li><b>Motor unit</b> activation: one motor neuron fires and activates all its fibres together.</li><li>At <b>NMJ (motor end plate)</b>, nerve impulse causes <b>acetylcholine</b> release.</li><li>ACh generates <b>action potential</b> in muscle fibre <b>sarcolemma</b>.</li><li>AP leads to <b>Ca<sup>2+</sup> release</b> from sarcoplasmic reticulum into sarcoplasm.</li><li>Key line: <b>rise of sarcoplasmic Ca<sup>2+</sup></b> is the immediate trigger for contraction.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">CROSS-BRIDGE CYCLE (ATP-DEPENDENT) + BAND CHANGES</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='20' y='24' width='150' height='54' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='32' y='46' font-size='13' fill='#1f2a44'>Resting sarcomere</text><text x='32' y='66' font-size='13' fill='#1f2a44'>I wider, H present</text><rect x='190' y='24' width='150' height='54' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='202' y='46' font-size='13' fill='#1f2a44'>Contracted</text><text x='202' y='66' font-size='13' fill='#1f2a44'>I ↓, H ↓, A same</text><line x1='170' y1='51' x2='190' y2='51' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='34' y1='124' x2='326' y2='124' stroke='#123B7A' stroke-width='3'/><line x1='70' y1='98' x2='70' y2='150' stroke='#7C3AED' stroke-width='4'/><line x1='290' y1='98' x2='290' y2='150' stroke='#7C3AED' stroke-width='4'/><rect x='110' y='106' width='140' height='36' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='140' y='129' font-size='13' fill='#1f2a44'>A band</text><text x='56' y='168' font-size='12' fill='#1f2a44'>Z</text><text x='294' y='168' font-size='12' fill='#1f2a44'>Z</text><text x='84' y='94' font-size='12' fill='#1f2a44'>I</text><text x='264' y='94' font-size='12' fill='#1f2a44'>I</text><text x='174' y='94' font-size='12' fill='#1f2a44'>H</text></svg></div><ul class="b"><li><b>Ca<sup>2+</sup> binds troponin</b> → tropomyosin moves → actin active sites exposed.</li><li><b>Attachment</b>: myosin head binds exposed actin site → <b>cross-bridge</b> forms.</li><li><b>Power stroke</b>: myosin pulls actin towards <b>centre of A band</b>; ADP + P<sub>i</sub> released.</li><li><b>Detachment</b>: <b>new ATP binds myosin</b> → cross-bridge breaks (ATP needed to separate).</li><li><b>Re-cocking</b>: ATP hydrolysis energises myosin head; cycle repeats while Ca<sup>2+</sup> stays high.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">CONTRACTION vs RELAXATION (HIGH-YIELD CONTRAST)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Contraction</th><th>Relaxation</th></tr></thead><tbody><tr><td>Ca<sup>2+</sup> in sarcoplasm</td><td>Increases (released from SR)</td><td>Decreases (pumped back into SR)</td></tr><tr><td>Troponin–tropomyosin</td><td>Ca<sup>2+</sup> binds troponin; masking removed</td><td>Masking restored; actin sites blocked</td></tr><tr><td>Cross-bridges</td><td>Attach and cycle repeatedly (while Ca<sup>2+</sup> is high)</td><td>Cycling stops as Ca<sup>2+</sup> falls; cross-bridges detach when ATP binds</td></tr><tr><td>Sarcomere bands</td><td>I band ↓; A band same; Z lines closer; H zone ↓</td><td>I band returns; Z lines separate; H zone reappears</td></tr><tr><td>ATP role</td><td>ATP hydrolysis energises myosin head; new ATP binding causes detachment</td><td>ATP needed for Ca<sup>2+</sup> pumping into SR + resetting cross-bridge cycle</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is ATP required for muscle relaxation even though ATP provides energy for contraction?</div><div class="sol"><span class="lbl">Answer:</span><br>Relaxation needs <b>cross-bridge breaking</b>; this occurs when <b>new ATP binds myosin</b> and dissociates it from actin.<br>Relaxation also requires <b>removal of Ca<sup>2+</sup></b> from sarcoplasm by pumping it back into the <b>sarcoplasmic reticulum</b>, an ATP-dependent process.<br>Without ATP, actin–myosin remains attached and Ca<sup>2+</sup> removal is impaired, so muscle cannot relax fully (rigor-like state).</div><div class="ans">✓&nbsp; ATP is essential for both <b>detachment of myosin from actin</b> and <b>Ca<sup>2+</sup> reuptake into SR</b>, hence required for relaxation.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student says: “During contraction, the A band shortens and I band stays same.” Correct the statement with reasoning.</div><div class="sol"><span class="lbl">Answer:</span><br>In sliding filament theory, <b>filament lengths do not change</b>; only the degree of overlap changes.<br>The <b>A band corresponds to the length of thick (myosin) filaments</b>, so it remains <b>constant</b>.<br>The <b>I band contains only thin filaments</b>; as actin slides inward, the non-overlap region decreases, so <b>I band shortens</b>.</div><div class="ans">✓&nbsp; Correct: <b>I band decreases</b> while <b>A band remains constant</b> during contraction.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Core line: <b>thin filaments slide over thick filaments</b>; filaments themselves do not shorten.</li><li><b>Acetylcholine</b> at NMJ triggers <b>sarcolemma action potential</b>.</li><li><b>Ca<sup>2+</sup> binds troponin</b> to expose actin sites; Ca<sup>2+</sup> rise is the key trigger.</li><li><b>ATP binding causes detachment</b>; <b>ATP hydrolysis</b> re-cocks/energises the myosin head.</li><li><b>I band reduces; A band unchanged</b>; Z lines move closer during shortening.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>ACh → AP → Ca → Tn → CB → Slide → Pump</b>”</div><paragraph id="6aa538b4f175b654cd000132"><b>ACh</b> at NMJ starts it; <b>AP</b> runs on sarcolemma.</paragraph><paragraph id="6aa538b424f00bfb12000133"><b>Ca</b> rises; binds <b>Tn</b> (troponin) to open sites.</paragraph><paragraph id="6aa538b4843497b657000134"><b>CB</b> (cross-bridges) cycle to <b>Slide</b> actin inward; Ca is then <b>Pump</b>ed back into <b>SR</b> to relax.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Sliding filament theory</b>: thin (actin) filaments slide over thick (myosin) filaments.</span><span class="eq"><b>Motor unit</b> = motor neuron + all muscle fibres it supplies.</span><span class="eq"><b>NMJ neurotransmitter</b>: acetylcholine (generates sarcolemma action potential).</span><span class="eq"><b>Trigger</b>: rise of sarcoplasmic Ca<sup>2+</sup> released from sarcoplasmic reticulum.</span><span class="eq"><b>Regulation</b>: Ca<sup>2+</sup> + troponin → tropomyosin shift → actin sites exposed.</span><span class="eq"><b>Cross-bridge</b>: myosin head binds actin; actin pulled towards A-band centre.</span><span class="eq"><b>ATP roles</b>: ATP hydrolysis energises head; new ATP binding causes detachment.</span><span class="eq"><b>Band changes</b>: I band ↓; A band same; Z lines closer; H zone ↓.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Myoglobin, mitochondria, SR and metabolism decide colour, speed and fatigue</div>
+              <h2>RED VS WHITE MUSCLE FIBRES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Red and white fibres are skeletal muscle fibre types classified mainly by myoglobin content.</b></li><li><b>Myoglobin</b> is a red, oxygen-storing pigment; higher myoglobin makes fibres look reddish.</li><li>Red fibres: rich in myoglobin and mitochondria; mainly produce ATP by <b>aerobic</b> metabolism.</li><li>White fibres: low myoglobin, few mitochondria, but <b>high sarcoplasmic reticulum</b>; depend mainly on <b>anaerobic</b> pathways during high-intensity work.</li><li>Functional outcome: red fibres sustain activity longer; white fibres contract fast but fatigue early.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='150' height='160' rx='10' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><rect x='192' y='20' width='150' height='160' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='58' y='42' font-size='14' fill='#1f2a44'>RED FIBRE</text><text x='232' y='42' font-size='14' fill='#1f2a44'>WHITE FIBRE</text><circle cx='48' cy='64' r='8' fill='#7C3AED' opacity='0.25' stroke='#7C3AED'/><text x='66' y='68' font-size='12' fill='#1f2a44'>High myoglobin</text><circle cx='222' cy='64' r='8' fill='#7C3AED' opacity='0.12' stroke='#7C3AED'/><text x='240' y='68' font-size='12' fill='#1f2a44'>Low myoglobin</text><g><circle cx='48' cy='92' r='4' fill='#16A34A'/><circle cx='62' cy='92' r='4' fill='#16A34A'/><circle cx='76' cy='92' r='4' fill='#16A34A'/><circle cx='90' cy='92' r='4' fill='#16A34A'/><text x='110' y='96' font-size='12' fill='#1f2a44'>Many mitochondria</text></g><g><circle cx='222' cy='92' r='4' fill='#16A34A'/><text x='240' y='96' font-size='12' fill='#1f2a44'>Few mitochondria</text></g><rect x='34' y='110' width='56' height='14' rx='4' fill='#EAF7EF' stroke='#16A34A'/><text x='40' y='121' font-size='12' fill='#1f2a44'>Aerobic</text><rect x='208' y='110' width='68' height='14' rx='4' fill='#F4EFFE' stroke='#7C3AED'/><text x='214' y='121' font-size='12' fill='#1f2a44'>Anaerobic</text><path d='M34 142 C52 132, 72 152, 90 142' fill='none' stroke='#F59E0B' stroke-width='2'/><text x='100' y='146' font-size='12' fill='#1f2a44'>Stored O2 use</text><path d='M208 142 C226 132, 246 152, 264 142' fill='none' stroke='#2563EB' stroke-width='2'/><text x='276' y='146' font-size='12' fill='#1f2a44'>High SR</text><line x1='168' y1='100' x2='192' y2='100' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='140' y='92' font-size='12' fill='#1f2a44'>Compare</text></svg><div class="figcap">Schematic comparison: myoglobin and mitochondria favour aerobic endurance; high SR supports rapid contraction (often with mainly anaerobic ATP supply during intense bursts).</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🩸</span><span>Myoglobin stores O<sub>2</sub>; more myoglobin → redder fibre and better O<sub>2</sub> supply during work.</span></li><li><span class="ic">🔋</span><span>Many mitochondria → efficient aerobic ATP, high endurance; few mitochondria → less aerobic capacity.</span></li><li><span class="ic">⚡</span><span>High sarcoplasmic reticulum (SR) → faster Ca<sup>2+</sup> handling, quick contraction/relaxation.</span></li><li><span class="ic">🏃</span><span>Red fibres suit postural/endurance work; white fibres suit sprinting, bursts and rapid movements.</span></li><li><span class="ic">🥛</span><span>Anaerobic glycolysis (common in white fibres during intense activity) causes metabolite buildup (lactate/H<sup>+</sup>, etc.) → faster fatigue.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">WHY COLOUR &amp; ENDURANCE DIFFER</span></h2><ul class="b"><li>Myoglobin binds and stores O<sub>2</sub> inside muscle, reducing O<sub>2</sub> shortage during sustained work.</li><li>High mitochondrial density in red fibres enables continuous ATP synthesis via aerobic respiration.</li><li>Therefore red fibres are more fatigue-resistant than white fibres during prolonged activity.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SR (CALCIUM STORE) &amp; SPEED OF CONTRACTION</span></h2><ul class="b"><li>Sarcoplasmic reticulum stores Ca<sup>2+</sup> needed to initiate contraction (Ca<sup>2+</sup> rise triggers actin–myosin interaction).</li><li>White fibres have higher SR → faster Ca<sup>2+</sup> release and reuptake → quicker contraction/relaxation cycles.</li><li>Trade-off: fast output but mainly anaerobic energy during bursts → quicker fatigue due to metabolite buildup (lactate/H<sup>+</sup>, etc.).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Red Fibres vs White Fibres</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Red fibres</th><th>White fibres</th></tr></thead><tbody><tr><td>Colour/appearance</td><td>Reddish</td><td>Pale/whitish</td></tr><tr><td>Myoglobin (O<sub>2</sub>-storing pigment)</td><td>High</td><td>Low</td></tr><tr><td>Stored O<sub>2</sub> availability</td><td>More (via myoglobin)</td><td>Less</td></tr><tr><td>Mitochondria</td><td>Many</td><td>Few</td></tr><tr><td>Major ATP pathway</td><td>Aerobic respiration</td><td>Mainly anaerobic pathways (esp. during intense bursts)</td></tr><tr><td>Sarcoplasmic reticulum (SR)</td><td>Relatively less developed</td><td>Highly developed (high SR)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A muscle shows pale fibres with few mitochondria but abundant sarcoplasmic reticulum. Predict its fibre type and metabolism during intense activity.</div><div class="sol"><span class="lbl">Answer:</span><br>Pale colour implies <b>low myoglobin</b> → points to <b>white fibres</b>.<br>Few mitochondria means limited aerobic ATP production capacity.<br>High SR supports rapid Ca<sup>2+</sup> cycling → fast contractions typical of white fibres.<br>Hence ATP demand is met mainly by <b>anaerobic</b> pathways during intense bursts.</div><div class="ans">✓&nbsp; White fibres; predominantly anaerobic metabolism during intense activity.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why do red fibres sustain activity longer than white fibres, even though both are skeletal muscle?</div><div class="sol"><span class="lbl">Answer:</span><br>Red fibres have <b>high myoglobin</b>, so they store more O<sub>2</sub> within the fibre.<br>They contain <b>many mitochondria</b>, enabling continuous aerobic ATP synthesis.<br>Aerobic metabolism produces ATP efficiently and delays fatigue compared to heavy dependence on anaerobic pathways.<br>White fibres have low myoglobin and few mitochondria, so they shift to anaerobic ATP supply sooner during intense work, causing faster fatigue.</div><div class="ans">✓&nbsp; High myoglobin + many mitochondria in red fibres support sustained aerobic ATP production, making them fatigue-resistant.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Primary basis of classification: <b>myoglobin amount</b> (red pigment storing O<sub>2</sub>).</li><li>Red fibres: <b>many mitochondria</b> and use stored O<sub>2</sub> → called <b>aerobic muscles</b>.</li><li>White fibres: <b>few mitochondria</b>, <b>high SR</b>, depend mainly on <b>anaerobic</b> energy during high-intensity bursts.</li><li>High SR is a speed adaptation: faster Ca<sup>2+</sup> release/reuptake supports rapid contractions.</li><li>Fatigue link (NCERT): repeated activation can cause lactic acid accumulation due to anaerobic breakdown of glycogen; broadly, anaerobic metabolism leads to metabolite buildup that promotes fatigue.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>RED = Rich in O<sub>2</sub> &amp; Endurance</b>”</div><paragraph id="6aa538b47b0734bfe1000135"><b>R</b>ED: <b>R</b>ich myoglobin, <b>E</b>ndurance, <b>D</b>ense mitochondria.</paragraph><paragraph id="6aa538b458b6496270000136"><b>W</b>HITE: <b>W</b>hiter (low myoglobin), <b>H</b>igh SR, <b>I</b>ntense bursts, <b>T</b>ires early, <b>E</b>nergy mainly anaerobic.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Myoglobin = red coloured <b>oxygen-storing</b> pigment in muscle fibres.</span><span class="eq">Red fibres: <b>high myoglobin</b> + <b>many mitochondria</b> → mainly <b>aerobic</b> ATP production; fatigue-resistant.</span><span class="eq">White fibres: <b>low myoglobin</b> → pale/whitish; <b>few mitochondria</b> → limited aerobic capacity.</span><span class="eq">White fibres have <b>high sarcoplasmic reticulum</b> → fast Ca<sup>2+</sup> cycling → rapid contractions.</span><span class="eq">During intense activity, white fibres depend mainly on anaerobic pathways; repeated anaerobic work can lead to lactate/H<sup>+</sup> and other metabolite buildup, promoting fatigue (NCERT mentions lactic acid accumulation).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Bones + a few cartilages form the body framework enabling support, protection and movement</div>
+              <h2>SKELETAL SYSTEM OVERVIEW</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Skeletal system</b> = framework of <b>bones</b> and a few <b>cartilages</b> that provides <b>support</b>, <b>protection</b> and enables <b>movement</b>.</li><li>Bones and cartilages are <b>specialised connective tissues</b> with distinct matrices.</li><li>Provides <b>support</b>, <b>protection</b> (brain, spinal cord, thoracic organs) and <b>attachment</b> sites for muscles.</li><li>Acts as a lever system: muscles pull on bones; movement occurs at <b>joints</b> (joint acts like a fulcrum).</li><li>Adult human skeleton has <b>206 bones</b> (plus a few cartilages).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0,0 9,3 0,6' fill='#123B7A'/></marker></defs><rect x='92' y='12' width='176' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='110' y='34' font-size='14' fill='#1f2a44'>Skeletal system</text><line x1='180' y1='46' x2='180' y2='64' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='68' width='150' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='90' font-size='13' fill='#1f2a44'>Axial skeleton</text><text x='30' y='108' font-size='12' fill='#1f2a44'>Main axis</text><rect x='192' y='68' width='150' height='52' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='204' y='90' font-size='13' fill='#1f2a44'>Appendicular</text><text x='204' y='108' font-size='12' fill='#1f2a44'>Limbs + girdles</text><line x1='180' y1='64' x2='93' y2='68' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='180' y1='64' x2='267' y2='68' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='130' width='150' height='56' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='30' y='152' font-size='12' fill='#1f2a44'>Skull</text><text x='30' y='168' font-size='12' fill='#1f2a44'>Vertebral column</text><text x='96' y='152' font-size='12' fill='#1f2a44'>Ribs</text><text x='96' y='168' font-size='12' fill='#1f2a44'>Sternum</text><line x1='93' y1='120' x2='93' y2='130' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><rect x='192' y='130' width='150' height='56' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='204' y='152' font-size='12' fill='#1f2a44'>Upper limb</text><text x='204' y='168' font-size='12' fill='#1f2a44'>Lower limb</text><text x='260' y='152' font-size='12' fill='#1f2a44'>Pectoral girdle</text><text x='260' y='168' font-size='12' fill='#1f2a44'>Pelvic girdle</text><line x1='267' y1='120' x2='267' y2='130' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/></svg><div class="figcap">Flow: Skeletal system → Axial (main axis) + Appendicular (limbs + girdles) → key components.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧱</span><span>Bone matrix is <b>hard</b> due to deposition of <b>calcium salts</b>.</span></li><li><span class="ic">🧽</span><span>Cartilage matrix is <b>pliable</b> due to <b>chondroitin salts</b>.</span></li><li><span class="ic">🧍</span><span>Skeleton is divided into <b>axial</b> (main axis) and <b>appendicular</b> (limbs + girdles).</span></li><li><span class="ic">🛡️</span><span>Axial skeleton major roles: <b>support</b> + <b>protection</b> (brain, spinal cord, thorax).</span></li><li><span class="ic">🦾</span><span>Appendicular skeleton major role: <b>locomotion</b> via limb bones articulated with girdles.</span></li><li><span class="ic">🔢</span><span>Key exam number: <b>206 bones</b> in adult human skeleton.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">BONE &amp; CARTILAGE: WHAT EXAMS LOVE</span></h2><ul class="b"><li><b>Bone</b>: very hard matrix due to deposition of <b>calcium salts</b>.</li><li><b>Cartilage</b>: slightly pliable matrix due to <b>chondroitin salts</b>.</li><li>Both are <b>specialised connective tissues</b> forming the skeletal framework.</li><li>Cartilage is crucial where <b>flexibility</b> and smooth surfaces are needed; bone for <b>rigidity</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">DIVISIONS OF HUMAN SKELETON (OVERVIEW)</span></h2><ul class="b"><li>Total bones in adult human: <b>206</b>.</li><li><b>Axial skeleton</b>: along body axis; includes <b>skull, vertebral column, ribs, sternum</b>.</li><li><b>Appendicular skeleton</b>: includes <b>limb bones</b> and <b>girdles</b> (pectoral, pelvic).</li><li>Concept link: locomotion needs coordination of <b>skeletal</b>, <b>muscular</b> and <b>neural</b> systems.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Bone vs Cartilage (Matrix-based comparison)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Bone</th><th>Cartilage</th></tr></thead><tbody><tr><td>Type of tissue</td><td>Specialised connective tissue</td><td>Specialised connective tissue</td></tr><tr><td>Matrix nature</td><td>Very hard, rigid</td><td>Slightly pliable, flexible</td></tr><tr><td>Key matrix salt</td><td>Calcium salts</td><td>Chondroitin salts</td></tr><tr><td>Main role in skeleton</td><td>Support, protection, lever for movement</td><td>Flexibility, cushioning/support at specific sites</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">State two reasons why bones are well-suited to act as a framework for movement in humans.</div><div class="sol"><span class="lbl">Answer:</span><br>Bones form a <b>rigid framework</b> because their matrix is hardened by <b>calcium salts</b>.<br>They provide <b>attachment points</b> for skeletal muscles; muscle pull on bones produces movement at joints.</div><div class="ans">✓&nbsp; Bones are rigid (calcium-salt matrix) and provide levers/attachment sites for muscles to produce movement.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student writes: "Cartilage is hard because of calcium salts, and bone is flexible due to chondroitin salts." Identify and correct the statement.</div><div class="sol"><span class="lbl">Answer:</span><br>The matrix composition is interchanged in the statement.<br><b>Correction</b>: Bone is hard due to <b>calcium salts</b>; cartilage is pliable due to <b>chondroitin salts</b>.</div><div class="ans">✓&nbsp; Correct statement: Bone matrix hard (calcium salts); cartilage matrix pliable (chondroitin salts).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><b>Skeletal system</b> = bones + a few cartilages; essential for <b>support</b>, <b>protection</b>, <b>movement</b>.</li><li>Bone and cartilage are <b>specialised connective tissues</b>; matrix salts are a frequent exam ask.</li><li>Adult human skeleton: <b>206 bones</b> (standard value).</li><li>Two main divisions: <b>axial</b> (body axis) and <b>appendicular</b> (limbs + girdles).</li><li>Axial components to list fast: <b>skull, vertebral column, ribs, sternum</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>A</b>XIS vs <b>A</b>PPENDAGES”</div><paragraph id="6aa538b40f3ec873f4000137"><b>A</b>xial = along the body <b>axis</b>: skull + backbone + ribs + sternum.</paragraph><paragraph id="6aa538b48309c9f184000138"><b>A</b>ppendicular = <b>appendages</b>: limbs plus their girdles.</paragraph><paragraph id="6aa538b456c4c70db3000139">Matrix hook: <b>Ca</b> in <b>Ca</b>lcium makes bone hard; <b>Chon</b>droitin sounds like cushion.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Skeletal system = bones + a few cartilages; provides support, protection and enables movement.</span><span class="eq">Bone &amp; cartilage are specialised connective tissues.</span><span class="eq">Bone matrix: hard due to calcium salts.</span><span class="eq">Cartilage matrix: pliable due to chondroitin salts.</span><span class="eq">Adult human skeleton: 206 bones.</span><span class="eq">Divisions: axial (skull, vertebral column, ribs, sternum) + appendicular (limbs + pectoral &amp; pelvic girdles).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Skull + vertebral column + sternum + ribs (80 bones): protection, support and muscle attachment</div>
+              <h2>AXIAL SKELETON DETAILS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Axial skeleton</b> = bones along the body’s main axis; total <b>80 bones</b> in humans.</li><li>Major parts: <b>skull</b>, <b>vertebral column</b>, <b>sternum</b>, and <b>12 pairs of ribs</b>.</li><li>Primary roles: protects <b>brain</b> and <b>spinal cord</b>; supports head and trunk.</li><li>Provides attachment for ribs and muscles of neck, back, and thorax.</li><li><b>Thoracic cage</b> is formed by <b>thoracic vertebrae + ribs + sternum</b>.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><polygon points='0,0 10,5 0,10' fill='#123B7A'/></marker></defs><rect x='12' y='12' width='336' height='176' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='22' y='32' font-size='14' fill='#1f2a44'>Axial skeleton (80 bones)</text><rect x='22' y='44' width='150' height='64' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='32' y='64' font-size='13' fill='#1f2a44'>Skull</text><text x='32' y='82' font-size='12' fill='#1f2a44'>22 bones</text><text x='32' y='98' font-size='12' fill='#1f2a44'>Cranial 8 + Facial 14</text><rect x='188' y='44' width='150' height='64' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='198' y='64' font-size='13' fill='#1f2a44'>Vertebral column</text><text x='198' y='82' font-size='12' fill='#1f2a44'>26 vertebrae</text><text x='198' y='98' font-size='12' fill='#1f2a44'>Neural canal → cord</text><rect x='22' y='122' width='150' height='56' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='32' y='142' font-size='13' fill='#1f2a44'>Thoracic cage</text><text x='32' y='160' font-size='12' fill='#1f2a44'>Sternum + ribs</text><rect x='188' y='122' width='150' height='56' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='198' y='142' font-size='13' fill='#1f2a44'>Ribs (12 pairs)</text><text x='198' y='160' font-size='12' fill='#1f2a44'>True / False / Floating</text><line x1='97' y1='108' x2='97' y2='122' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='263' y1='108' x2='263' y2='122' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='110' y='118' font-size='12' fill='#1f2a44'>protect + support</text><text x='276' y='118' font-size='12' fill='#1f2a44'>attach</text></svg><div class="figcap">High-yield map of axial skeleton components and what they protect/support.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">💀</span><span>Skull: <b>22 bones</b> = <b>8 cranial</b> (brain box) + <b>14 facial</b> (face framework).</span></li><li><span class="ic">🦻</span><span>Middle ear ossicles: <b>MIS</b> order = <b>Malleus → Incus → Stapes</b>.</span></li><li><span class="ic">🦴</span><span>Hyoid: <b>single U-shaped</b> bone at base of buccal cavity; does not articulate with other bones.</span></li><li><span class="ic">🔗</span><span><b>Dicondylic skull</b>: 2 <b>occipital condyles</b> articulate with <b>atlas</b> (1st cervical vertebra).</span></li><li><span class="ic">🧠</span><span>Each vertebra has a <b>neural canal</b>; collectively they form the <b>vertebral canal</b> for the spinal cord.</span></li><li><span class="ic">🫁</span><span>Ribs: 12 pairs; true (1–7), false/vertebrochondral (8–10), floating (11–12).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">SKULL: BONES + SPECIAL ELEMENTS</span></h2><ul class="b"><li><b>Skull = 22 bones</b> in two sets: <b>cranial (8)</b> + <b>facial (14)</b>.</li><li><b>Cranial bones</b> form the <b>cranium</b>, a hard covering that protects the brain.</li><li><b>Facial bones</b> form the front of skull; provide shape and support to face.</li><li><b>Hyoid</b>: single <b>U-shaped</b> bone at base of buccal cavity; supports tongue and laryngeal attachments.</li><li><b>Ear ossicles</b> (each middle ear): <b>Malleus, Incus, Stapes</b>; transmit vibrations to inner ear.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">VERTEBRAL COLUMN + STERNUM + RIB TYPES</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto'><polygon points='0,0 10,5 0,10' fill='#2563EB'/></marker></defs><rect x='16' y='18' width='328' height='164' rx='10' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='26' y='40' font-size='14' fill='#1f2a44'>Vertebral regions (26 vertebrae)</text><rect x='28' y='56' width='70' height='42' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='38' y='78' font-size='13' fill='#1f2a44'>Cervical</text><text x='52' y='94' font-size='12' fill='#1f2a44'>7</text><rect x='110' y='56' width='70' height='42' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='120' y='78' font-size='13' fill='#1f2a44'>Thoracic</text><text x='134' y='94' font-size='12' fill='#1f2a44'>12</text><rect x='192' y='56' width='70' height='42' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='202' y='78' font-size='13' fill='#1f2a44'>Lumbar</text><text x='216' y='94' font-size='12' fill='#1f2a44'>5</text><rect x='274' y='56' width='70' height='42' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='288' y='78' font-size='13' fill='#1f2a44'>Sacral</text><text x='298' y='94' font-size='12' fill='#1f2a44'>1 (fused)</text><rect x='274' y='108' width='70' height='42' rx='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='284' y='130' font-size='13' fill='#1f2a44'>Coccyx</text><text x='298' y='146' font-size='12' fill='#1f2a44'>1 (fused)</text><line x1='145' y1='104' x2='145' y2='150' stroke='#16A34A' stroke-width='2' marker-end='url(#arrow2)'/><text x='156' y='132' font-size='12' fill='#1f2a44'>Neural canal → spinal cord</text></svg></div><ul class="b"><li><b>Vertebral column</b>: dorsally placed; extends from skull base; <b>main trunk framework</b>.</li><li>Total <b>26 vertebrae</b>: <b>7 cervical</b>, <b>12 thoracic</b>, <b>5 lumbar</b>, <b>1 sacral</b> (fused), <b>1 coccygeal</b> (fused).</li><li>Each vertebra has a <b>neural canal</b>; collectively forms vertebral canal for the <b>spinal cord</b>.</li><li><b>Atlas (C1)</b> articulates with occipital condyles → supports head movement (nodding).</li><li><b>Sternum</b>: flat bone on ventral midline of thorax; rib cage anchor.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">RIB TYPES (NEET/JEE MAIN BIO FAVOURITE)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>True ribs (1–7)</th><th>False ribs (8–10)</th><th>Floating ribs (11–12)</th></tr></thead><tbody><tr><td>Ventral attachment</td><td>To sternum via own hyaline cartilage</td><td>Indirect: join 7th rib cartilage</td><td>No ventral connection</td></tr><tr><td>Also called</td><td>Vertebrosternal</td><td>Vertebrochondral</td><td>Floating</td></tr><tr><td>Key idea</td><td>Direct sternum link</td><td>Sternum link through rib 7</td><td>Free anterior ends</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is the human skull called a <b>dicondylic skull</b>, and which vertebra articulates with it?</div><div class="sol"><span class="lbl">Answer:</span><br>Human skull bears <b>two occipital condyles</b> at the base of the cranium.<br>These two condyles articulate with the <b>atlas (C1)</b>, the first cervical vertebra.<br>Because articulation uses <b>two</b> condyles, it is termed <b>dicondylic</b>.</div><div class="ans">✓&nbsp; Dicondylic because <b>two occipital condyles</b> articulate with <b>atlas (C1)</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A student says: “Ribs 8–10 are floating ribs because they don’t attach directly to the sternum.” Identify and correct the error.</div><div class="sol"><span class="lbl">Answer:</span><br>Not attaching <b>directly</b> to sternum describes <b>false (vertebrochondral) ribs</b> 8–10, not floating ribs.<br>Ribs <b>8–10</b> attach ventrally by joining the <b>7th rib cartilage</b> (indirect attachment).<br>Floating ribs are <b>11–12</b>, with <b>no ventral attachment</b>.</div><div class="ans">✓&nbsp; Correction: <b>8–10 are false ribs</b> (attach via 7th rib cartilage); <b>11–12 are floating</b> (no ventral attachment).</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li><b>Axial skeleton = 80 bones</b>; includes skull, vertebral column, sternum, ribs.</li><li><b>Skull = 22 bones</b>: <b>cranial 8</b> + <b>facial 14</b>; exam expects exact numbers.</li><li><b>Hyoid</b> is single and <b>U-shaped</b>; important for tongue/neck muscle attachment.</li><li><b>Ear ossicles</b> are in <b>middle ear</b>; order <b>MIS</b> is frequently asked.</li><li><b>Vertebral column = 26</b>; neural canal encloses spinal cord; <b>atlas</b> articulates with occipital condyles.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Fast mnemonics: MIS + 7-12-5-1-1”</div><paragraph id="6aa538b46933ee2c0d00013a"><b>MIS</b> (outer → inner): <b>Malleus → Incus → Stapes</b>.</paragraph><paragraph id="6aa538b43eca1fcf2d00013b">Vertebrae: <b>7-12-5-1-1</b> = Cervical, Thoracic, Lumbar, Sacral, Coccygeal.</paragraph><paragraph id="6aa538b4d6de4e51d300013c">Ribs: <b>7 True, 3 False, 2 Floating</b> → (1–7), (8–10), (11–12).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Axial skeleton: <b>80 bones</b> along main body axis.</span><span class="eq">Skull: <b>22 bones</b> = <b>8 cranial</b> + <b>14 facial</b>.</span><span class="eq">Hyoid: <b>single U-shaped</b> bone at base of buccal cavity; does not articulate with other bones.</span><span class="eq">Ear ossicles (middle ear): <b>Malleus, Incus, Stapes</b> (<b>MIS</b>).</span><span class="eq"><b>Dicondylic skull</b>: <b>two occipital condyles</b> articulate with <b>atlas (C1)</b>.</span><span class="eq">Vertebral column: <b>26 vertebrae</b>; regions <b>7C, 12T, 5L, 1S (fused), 1Co (fused)</b>.</span><span class="eq">Ribs: <b>12 pairs</b>; <b>true 1–7</b>, <b>false 8–10</b>, <b>floating 11–12</b>.</span><span class="eq">Thoracic cage: <b>thoracic vertebrae + ribs + sternum</b>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-10">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">10</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Appendicular skeleton = limb bones (30 per limb) + pectoral &amp; pelvic girdles: names, counts, key joints</div>
+              <h2>APPENDICULAR SKELETON</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Appendicular skeleton</b> = bones of <b>limbs</b> plus their <b>girdles</b> that attach limbs to axial skeleton.</li><li>Humans have <b>two pairs of limbs</b>: forelimbs (upper limbs) and hind limbs (lower limbs).</li><li>Each limb typically consists of <b>30 bones</b> arranged as proximal long bones + distal small bones.</li><li>Pectoral girdle articulates upper limb; pelvic girdle articulates lower limb and bears body weight.</li><li>Key articulation cavities: <b>glenoid cavity</b> (shoulder) and <b>acetabulum</b> (hip).</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">🖼️</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='12' y='14' width='336' height='172' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='22' y='34' font-size='14' fill='#1f2a44'>Appendicular skeleton overview</text><rect x='22' y='50' width='154' height='58' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='32' y='70' font-size='13' fill='#1f2a44'>Pectoral girdle</text><text x='32' y='88' font-size='12' fill='#1f2a44'>Clavicle + Scapula</text><rect x='22' y='122' width='154' height='52' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='32' y='142' font-size='13' fill='#1f2a44'>Pelvic girdle</text><text x='32' y='160' font-size='12' fill='#1f2a44'>Coxal bone (fused 3)</text><rect x='204' y='50' width='134' height='58' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='214' y='70' font-size='13' fill='#1f2a44'>Forelimb</text><text x='214' y='88' font-size='12' fill='#1f2a44'>30 bones</text><rect x='204' y='122' width='134' height='52' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='214' y='142' font-size='13' fill='#1f2a44'>Hind limb</text><text x='214' y='160' font-size='12' fill='#1f2a44'>30 bones</text><line x1='176' y1='78' x2='204' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='176' y1='148' x2='204' y2='148' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='132' y='44' font-size='12' fill='#1f2a44'>Girdles attach limbs</text></svg><div class="figcap">Girdles connect limb bones to axial skeleton; each limb has 30 bones.</div></div></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🖐️</span><span>Forelimb bone set: humerus; radius+ulna; carpals 8; metacarpals 5; phalanges 14.</span></li><li><span class="ic">🦵</span><span>Hind limb bone set: femur (longest); tibia+fibula; tarsals 7; metatarsals 5; phalanges 14; patella.</span></li><li><span class="ic">🧩</span><span>Pectoral girdle each side: clavicle + scapula; scapula has spine, acromion, glenoid cavity.</span></li><li><span class="ic">🏋️</span><span>Pelvic girdle each side: one coxal bone (ilium+ischium+pubis fused); acetabulum for femur.</span></li><li><span class="ic">🔗</span><span>Girdles provide attachment area for muscles and enable stable limb articulation with trunk.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">FORELIMB (UPPER LIMB): 30 BONES — QUICK MAP</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='a' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#2563EB'/></marker></defs><rect x='16' y='18' width='328' height='164' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><rect x='32' y='40' width='110' height='28' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='40' y='59' font-size='12' fill='#1f2a44'>Humerus (1)</text><rect x='160' y='40' width='84' height='28' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='168' y='59' font-size='12' fill='#1f2a44'>Radius</text><rect x='252' y='40' width='84' height='28' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='260' y='59' font-size='12' fill='#1f2a44'>Ulna</text><line x1='142' y1='54' x2='160' y2='54' stroke='#2563EB' stroke-width='2' marker-end='url(#a)'/><rect x='60' y='88' width='110' height='28' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='68' y='107' font-size='12' fill='#1f2a44'>Carpals (8)</text><line x1='202' y1='68' x2='130' y2='88' stroke='#2563EB' stroke-width='2' marker-end='url(#a)'/><rect x='60' y='124' width='110' height='28' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='66' y='143' font-size='12' fill='#1f2a44'>Metacarpals (5)</text><line x1='115' y1='116' x2='115' y2='124' stroke='#2563EB' stroke-width='2' marker-end='url(#a)'/><rect x='60' y='156' width='110' height='28' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='70' y='175' font-size='12' fill='#1f2a44'>Phalanges (14)</text><line x1='115' y1='152' x2='115' y2='156' stroke='#2563EB' stroke-width='2' marker-end='url(#a)'/><text x='210' y='110' font-size='12' fill='#1f2a44'>Proximal → distal</text></svg></div><ul class="b"><li><b>Arm</b>: Humerus (1).</li><li><b>Forearm</b>: Radius (1) + Ulna (1).</li><li><b>Wrist</b>: Carpals (8) — small bones forming wrist joint region.</li><li><b>Palm</b>: Metacarpals (5).</li><li><b>Digits</b>: Phalanges (14) — 3 per finger, 2 in thumb.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">HIND LIMB (LOWER LIMB): 30 BONES — QUICK MAP</span></h2><ul class="b"><li><b>Thigh</b>: Femur (1) — <b>longest bone</b> in human body.</li><li><b>Leg</b>: Tibia (1) + Fibula (1).</li><li><b>Knee</b>: Patella (1) — cup-shaped bone covering knee ventrally (knee cap).</li><li><b>Ankle</b>: Tarsals (7).</li><li><b>Foot</b>: Metatarsals (5) and Phalanges (14).</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Forelimb vs Hind limb (bone counts &amp; highlights)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Forelimb (Upper limb)</th><th>Hind limb (Lower limb)</th></tr></thead><tbody><tr><td>Proximal long bone</td><td>Humerus (1)</td><td>Femur (1; longest)</td></tr><tr><td>Next segment</td><td>Radius (1) + Ulna (1)</td><td>Tibia (1) + Fibula (1)</td></tr><tr><td>Wrist/Ankle bones</td><td>Carpals (8)</td><td>Tarsals (7)</td></tr><tr><td>Palm/Foot bones</td><td>Metacarpals (5)</td><td>Metatarsals (5)</td></tr><tr><td>Digits</td><td>Phalanges (14)</td><td>Phalanges (14)</td></tr><tr><td>Special bone</td><td>—</td><td>Patella (1; knee cap)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">NEET-style: Name the bones forming the pectoral girdle and state two features of scapula important for the shoulder joint.</div><div class="sol"><span class="lbl">Answer:</span><br>Pectoral girdle has <b>two halves</b>; each half contains <b>clavicle</b> and <b>scapula</b>.<br>Scapula bears the <b>glenoid cavity</b> that articulates with head of humerus to form shoulder joint.<br>Scapula has a <b>spine</b> ending in <b>acromion</b>; clavicle articulates with acromion.</div><div class="ans">✓&nbsp; Pectoral girdle = clavicle + scapula (on each side); scapula features: glenoid cavity (humerus articulation) and spine/acromion (clavicle articulation).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">JEE/Boards-style: A student says patella is part of the pelvic girdle. Correct the statement with proper anatomical placement and function.</div><div class="sol"><span class="lbl">Answer:</span><br>Pelvic girdle is made of <b>two coxal bones</b> (ilium, ischium, pubis fused) and articulates with femur at acetabulum.<br>Patella is a <b>hind limb bone</b> located at the <b>knee joint</b>, covering the knee ventrally (knee cap).<br>Therefore patella is not a girdle bone; it is a bone of the lower limb at the knee region.</div><div class="ans">✓&nbsp; Patella belongs to the hind limb at the knee (knee cap), not to the pelvic girdle; pelvic girdle is formed by coxal bones.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Appendicular skeleton = <b>limbs + girdles</b>; limbs attach to axial skeleton via girdles.</li><li>Each limb has <b>30 bones</b>; counts of carpals (8) and tarsals (7) are frequent MCQ traps.</li><li>Scapula location: dorsal thorax between <b>2nd and 7th ribs</b>; triangular flat bone.</li><li>Shoulder joint: head of humerus articulates with <b>glenoid cavity</b> of scapula.</li><li>Pelvic girdle: each coxal bone = fusion of <b>ilium + ischium + pubis</b> with <b>acetabulum</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Quick mnemonics for counts”</div><paragraph id="6aa538b44f40f3594800013d"><b>Hand</b>: <b>Carpals 8</b> → think "CAr = 8"; <b>Metacarpals 5</b> = five rays.</paragraph><paragraph id="6aa538b46d51a8b12c00013e"><b>Foot</b>: <b>Tarsals 7</b> → "TAR-7"; <b>Metatarsals 5</b> = five rays.</paragraph><paragraph id="6aa538b4aa8f90215a00013f"><b>Phalanges 14</b> (hand/foot): thumb or big toe has <b>2</b>; each of the remaining four digits has <b>3</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Appendicular skeleton = limb bones + pectoral girdle + pelvic girdle.</span><span class="eq">Each limb contains <b>30 bones</b>.</span><span class="eq">Forelimb: humerus (1); radius (1) + ulna (1); carpals (8); metacarpals (5); phalanges (14).</span><span class="eq">Hind limb: femur (1; longest); tibia (1) + fibula (1); tarsals (7); metatarsals (5); phalanges (14); patella (1; knee cap).</span><span class="eq">Pectoral girdle (each side): clavicle + scapula; scapula has spine, acromion, glenoid cavity.</span><span class="eq">Pelvic girdle: two coxal bones; each coxal bone = ilium + ischium + pubis (fused); acetabulum articulates with femur.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-11">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">11</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Articulation types + key locomotion-related disorders (high-yield examples)</div>
+              <h2>JOINTS AND DISORDERS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#0D9488;--secbg:#E6F6F3;--secbd:#C2E8E2"><h2><span class="secno">📖</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Joint (articulation)</b> = point of contact between two bones, or bone and cartilage.</li><li>Muscles generate force; movement occurs at joints where the joint acts as a <b>fulcrum</b> (lever concept).</li><li>Joints are classified by <b>structure</b> and <b>movability</b>: fibrous, cartilaginous, synovial.</li><li>Synovial joints have a <b>synovial cavity</b> with <b>synovial fluid</b> → maximum mobility for locomotion.</li><li>Many locomotion problems are due to joint inflammation, bone loss, NMJ failure, or muscle degeneration.</li></ul></div><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🎯</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔗</span><span>Fibrous joints: dense fibrous connective tissue; <b>immovable</b>.</span></li><li><span class="ic">🧩</span><span>Cartilaginous joints: bones joined by cartilage; <b>slightly movable</b>.</span></li><li><span class="ic">💧</span><span>Synovial joints: cavity + synovial fluid; <b>freely movable</b>.</span></li><li><span class="ic">⚙️</span><span>Identify synovial type from bones: shoulder (ball-socket), knee (hinge), atlas-axis (pivot).</span></li><li><span class="ic">🧠</span><span>Myasthenia gravis: <b>autoimmune</b> disorder of <b>neuromuscular junction</b> → fatigable weakness.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">🔎</span><span class="htext">17.4 CLASSIFICATION WITH EXAMPLES (MUST-REMEMBER)</span></h2><ul class="b"><li><b>Fibrous (immovable)</b>: skull bones joined by dense fibrous tissue → <b>sutures</b> forming cranium.</li><li><b>Cartilaginous (slightly movable)</b>: bones joined by cartilage → <b>adjacent vertebrae</b>.</li><li><b>Synovial (freely movable)</b>: synovial cavity present; articulating ends enclosed by a capsule; fluid reduces friction.</li><li>Synovial joints are most tested because they form major limb joints and decide range of motion.</li></ul></div><div class="card " style="--sec:#0E7490;--secbg:#E6F4F9;--secbd:#BEE3EF"><h2><span class="secno">⚙️</span><span class="htext">SYNOVIAL JOINT TYPES (BONE-BASED IDENTIFICATION)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='10' markerHeight='10' refX='9' refY='3' orient='auto'><polygon points='0,0 10,3 0,6' fill='#123B7A'/></marker></defs><rect x='14' y='16' width='156' height='78' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='24' y='38' font-size='13' fill='#1f2a44'>Ball-socket</text><circle cx='52' cy='62' r='16' fill='#EEF4FF' stroke='#2563EB'/><path d='M95 46 Q130 62 95 78' fill='none' stroke='#2563EB' stroke-width='3'/><line x1='52' y1='62' x2='85' y2='62' stroke='#123B7A' marker-end='url(#arrow2)'/><text x='24' y='90' font-size='12' fill='#1f2a44'>Shoulder</text><rect x='190' y='16' width='156' height='78' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='200' y='38' font-size='13' fill='#1f2a44'>Hinge</text><rect x='206' y='52' width='32' height='20' rx='6' fill='#EEF4FF' stroke='#2563EB'/><rect x='244' y='52' width='32' height='20' rx='6' fill='#EEF4FF' stroke='#2563EB'/><line x1='238' y1='62' x2='244' y2='62' stroke='#123B7A' stroke-width='3'/><line x1='222' y1='82' x2='260' y2='82' stroke='#123B7A' marker-end='url(#arrow2)'/><text x='200' y='90' font-size='12' fill='#1f2a44'>Knee</text><rect x='14' y='112' width='156' height='72' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='24' y='134' font-size='13' fill='#1f2a44'>Pivot</text><circle cx='55' cy='156' r='14' fill='#EEF4FF' stroke='#2563EB'/><line x1='55' y1='142' x2='55' y2='170' stroke='#2563EB' stroke-width='3'/><path d='M88 156 A20 20 0 1 1 87 155' fill='none' stroke='#123B7A' marker-end='url(#arrow2)'/><text x='24' y='182' font-size='12' fill='#1f2a44'>Atlas-axis</text><rect x='190' y='112' width='156' height='72' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='200' y='134' font-size='13' fill='#1f2a44'>Gliding / Saddle</text><rect x='202' y='148' width='26' height='18' rx='4' fill='#EAF7EF' stroke='#16A34A'/><rect x='230' y='148' width='26' height='18' rx='4' fill='#EAF7EF' stroke='#16A34A'/><line x1='215' y1='176' x2='245' y2='176' stroke='#123B7A' marker-end='url(#arrow2)'/><text x='262' y='160' font-size='12' fill='#1f2a44'>Carpals</text><text x='262' y='178' font-size='12' fill='#1f2a44'>Thumb</text></svg></div><ul class="b"><li><b>Ball-and-socket</b>: head fits into socket; movement in all directions → <b>humerus–pectoral girdle</b> (shoulder).</li><li><b>Hinge</b>: movement mainly in one plane (flexion–extension) → <b>knee joint</b>.</li><li><b>Pivot</b>: one bone rotates around another → <b>atlas–axis</b> (head rotation).</li><li><b>Gliding</b>: flat surfaces slide → <b>between carpals</b> (wrist).</li><li><b>Saddle</b>: articular surfaces reciprocally concavo-convex → <b>carpal–metacarpal of thumb</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#0F766E;--secbg:#E4F3F1;--secbd:#BFE3DD"><h2><span class="secno">⚖️</span><span class="htext">Fibrous vs Cartilaginous vs Synovial Joints</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Fibrous</th><th>Cartilaginous</th><th>Synovial</th></tr></thead><tbody><tr><td>Tissue joining bones</td><td>Dense fibrous CT</td><td>Cartilage</td><td>Cavity + capsule + synovial fluid</td></tr><tr><td>Movability</td><td>Immovable</td><td>Slightly movable</td><td>Freely movable</td></tr><tr><td>Key clue</td><td>No joint space</td><td>Cartilage pad between bones</td><td>Synovial cavity present</td></tr><tr><td>Classic example</td><td>Skull sutures (cranium)</td><td>Adjacent vertebrae</td><td>Shoulder / knee / atlas-axis</td></tr><tr><td>Role in locomotion</td><td>Minimal</td><td>Limited flexibility</td><td>Major movements of limbs</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#EA580C;--secbg:#FEF0E6;--secbd:#FAD5B8"><h2><span class="secno">✏️</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student writes: "The joint between carpals is a saddle joint." Correct the statement with proper examples.</div><div class="sol"><span class="lbl">Answer:</span><br>Between <b>carpals</b>, the synovial joint is <b>gliding</b> (sliding of flat surfaces).<br>A <b>saddle</b> joint is the <b>carpal–metacarpal joint of thumb</b> (enables opposability).</div><div class="ans">✓&nbsp; Carpals: <b>gliding</b> joint; Thumb carpal–metacarpal: <b>saddle</b> joint.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why does myasthenia gravis cause early fatigue in skeletal muscles though bones and joints are normal?</div><div class="sol"><span class="lbl">Answer:</span><br>Myasthenia gravis is an <b>autoimmune</b> disorder affecting the <b>neuromuscular junction</b> (motor end plate).<br>Transmission from motor neuron to muscle fibre becomes inefficient → fewer effective contractions.<br>Hence <b>fatigable weakness</b>, sometimes progressing to paralysis, despite normal skeletal framework.</div><div class="ans">✓&nbsp; Because the defect is at the <b>NMJ</b>, not in bones/joints; nerve-to-muscle transmission fails → fatigable weakness.</div></div></div></div></div>
+    <div class="row c3"><div class="card q" style="--sec:#15803D;--secbg:#EAF6EC;--secbd:#C6E6CE"><h2><span class="secno">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write definition: joint = contact between <b>bone–bone</b> or <b>bone–cartilage</b> (articulation).</li><li>In lever view: <b>bone = lever</b>, <b>muscle = effort</b>, <b>joint = fulcrum</b>.</li><li>Fibrous joint example to quote: <b>sutures</b> between skull bones forming cranium.</li><li>Cartilaginous joint example to quote: <b>between adjacent vertebrae</b> (limited movement).</li><li>Synovial joint hallmark: <b>synovial cavity + synovial fluid</b> → free mobility.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF6DC;--secbd:#F3E1A0"><h2><span class="secno">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>Fi–Ca–Sy</b> = Fix–Can–Swing”</div><paragraph id="6aa538b4cc20f6c745000140"><b>Fi</b>brous → <b>Fix</b>ed (no movement) → skull <b>sutures</b>.</paragraph><paragraph id="6aa538b42c2b84aeff000141"><b>Ca</b>rtilaginous → <b>Can</b> move a little → <b>vertebrae</b>.</paragraph><paragraph id="6aa538b4928dc6d820000142"><b>Sy</b>novial → <b>Swing</b> freely → shoulder, knee, wrist, thumb.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F6;--secbd:#F7CDE2"><h2><span class="secno">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><b>Joint (articulation)</b>: contact point between bones / bone and cartilage.</span><span class="eq"><b>Fibrous</b>: immovable; skull bones joined by fibrous tissue → sutures (cranium).</span><span class="eq"><b>Cartilaginous</b>: slightly movable; cartilage between bones → adjacent vertebrae.</span><span class="eq"><b>Synovial</b>: synovial cavity + synovial fluid → freely movable.</span><span class="eq">Synovial examples: ball-socket (humerus–pectoral girdle), hinge (knee), pivot (atlas–axis), gliding (carpals), saddle (thumb CMC).</span><span class="eq"><b>Myasthenia gravis</b>: autoimmune NMJ disorder → fatigue, weakness, paralysis of skeletal muscles.</span><span class="eq"><b>Tetany</b>: muscle spasms due to <b>hypocalcaemia</b> (low Ca<sup>2+</sup>).</span><span class="eq"><b>Arthritis</b>: joint inflammation; <b>Gout</b>: uric acid crystal deposition; <b>Osteoporosis</b>: ↓ bone mass, ↑ fracture risk (often with ↓ estrogen).</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

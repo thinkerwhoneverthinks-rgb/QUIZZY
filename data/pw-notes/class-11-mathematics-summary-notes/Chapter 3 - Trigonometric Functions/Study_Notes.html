@@ -1,0 +1,3093 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-03 : Trigonometric Functions</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a92999cc1b45c24fdfad03f/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a92999cc1b45c24fdfad03f/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-03 : Trigonometric Functions</h1>
+
+<h2>3.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="af70b8a66ff43e3329727d21"><b>Meaning of trigonometry:</b> from Greek <b>“trigon”</b> (triangle) + <b>“metron”</b> (measure) → <b>“measuring the sides of a triangle”</b>.</paragraph>
+</div>
+
+<paragraph id="51dc8c506c7d582e2f827daa"><b>Origin and uses:</b> made to solve geometric triangle problems; used in navigation (sea captains), surveying (mapping land), engineering, etc. Modern uses: seismology, electric circuits, atomic physics (state of an atom), tides, musical tone analysis, and many more.</paragraph>
+
+<paragraph id="7486783fcd7b70319d902b81"><b>Link with earlier study:</b> earlier: trigonometric ratios of <b>acute angles</b> = ratios of sides in a right triangle; identities; applications to heights &amp; distances. Now: extend ratios to <b>trigonometric functions</b> and study their properties.</paragraph>
+
+<h2>3.2 Angles</h2>
+
+<h3>Angle as a measure of rotation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="146fddefda61359d9c350eba"><b>Angle</b> = measure of the <b>rotation</b> of a ray about its starting point.</paragraph>
+  <ul>
+    <li><b>Initial side</b>: ray before turning</li>
+    <li><b>Terminal side</b>: ray after turning</li>
+    <li><b>Vertex</b>: fixed point of rotation</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>Positive angle</b>: rotate <b>anticlockwise</b></li>
+    <li><b>Negative angle</b>: rotate <b>clockwise</b></li>
+    <li><b>Angle measure</b>: how much rotation takes initial side → terminal side</li>
+  </ul>
+</div>
+
+<paragraph id="93aec482462540a7b4a462ea"><b>Units for angles:</b> A natural unit is a <b>full revolution</b> (handy for big turns, e.g., a wheel doing 15 rev/s). In maths we mostly use <b>degrees</b> and <b>radians</b>.</paragraph>
+
+<h3>3.2.1 Degree measure</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="17a3b4eaeb07a1d33335e883">If the turn is <b>1/360</b> of a full revolution, the angle is <b>1 degree</b> = <b>1°</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li><b>1° = 60′</b> (minutes)</li>
+    <li><b>1′ = 60″</b> (seconds)</li>
+    <li>So <b>1° = 3600″</b></li>
+  </ul>
+</div>
+
+<paragraph id="de1339132d4ca22f357c47b2"><b>Examples (as rotations):</b> 360°, 180°, 270°, 420°, −30°, −420° (can exceed one full turn; negatives are clockwise).</paragraph>
+
+<h3>3.2.2 Radian measure</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="ca8a363215e2390b022e3e5f"><b>1 radian</b> = angle at the centre of a <b>unit circle</b> (radius 1) subtended by an arc of length <b>1</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Unit circle circumference = <b>2π</b> ⇒ <b>1 full revolution = 2π radians</b></li>
+    <li>Radians link angles directly to arc length</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d8fc11ea2518499bc868b7d4"><b>Arc length ↔ angle (radians):</b> θ = l/r   or   l = rθ</paragraph>
+  <paragraph id="9bd2b5ea6afcdee64799983c">θ = angle in radians</paragraph>
+  <paragraph id="c371da7b25e8be38e370d1b2">l = intercepted arc length</paragraph>
+  <paragraph id="cabc7e4180d9d5f276ebd19b">r = circle radius</paragraph>
+</div>
+
+<paragraph id="891ebb6140be3296da574603"><b>Reasoning:</b> In radius r, an arc of length r makes 1 radian at the centre. Equal arcs → equal central angles, so arc length l gives angle l/r radians.</paragraph>
+
+<h3>3.2.3 Relation between radian measure and real numbers</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="0bb85a899947c5c76aba10b4">On a <b>unit circle</b> (centre O), pick point A and take OA as the <b>initial side</b>. Then the <b>arc length</b> matches the <b>radian measure</b> of the central angle.</paragraph>
+</div>
+
+<paragraph id="629395fe41f381fe812cc273">Draw the tangent at A (line PAQ). Let A represent real number <b>0</b>.</paragraph>
+<ul>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-02.webp" decoding="async" height="303" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-02.webp" srcset="img/fig-01-02.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="180"/>
+    </button>
+  </div>
+</figure>
+
+  <li>Segment <b>AP</b> represents <b>positive</b> real numbers</li>
+  <li>Segment <b>AQ</b> represents <b>negative</b> real numbers</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="8033d5e4295aca858ccc4248">If we “wrap” (like a rope) AP anticlockwise onto the circle and AQ clockwise, then:</paragraph>
+  <ul>
+    <li><b>Every real number</b> ↔ a <b>radian measure</b></li>
+    <li><b>Every radian measure</b> ↔ a <b>real number</b></li>
+  </ul>
+  <paragraph id="e2182b3919907c7b19ff49a0">So <b>radian measures and real numbers can be treated the same</b> (for locating angles on the real line).</paragraph>
+</div>
+
+<h3>3.2.4 Relation between degree and radian</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="e44c7721cb790795b7e7f680"><b>Conversion base:</b> 2π radians = 360°  ⇒  π radians = 180°</paragraph>
+  <paragraph id="cd7f8af139cad277834a7ce2">π = pi (≈ 3.14159; often use 22/7 if told)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="8dbcab71b27434ce9a530a7b"><b>Degree ↔ Radian:</b></paragraph>
+  <paragraph id="0aab4cb4de121db3d0287ea5">Radian measure = (π/180) × Degree measure</paragraph>
+  <paragraph id="fe17271aa32ab08121844a49">Degree measure = (180/π) × Radian measure</paragraph>
+  <paragraph id="16debd9580030ce7125628ea">Degree measure = angle in degrees (°)</paragraph>
+  <paragraph id="350eb75bc0da0b71f48a47da">Radian measure = angle in radians</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="7bf4f1ae99d17168c0e372b4">Using π ≈ 22/7:</paragraph>
+  <ul>
+    <li><b>1 radian = 180/π degrees ≈ 57°16′</b></li>
+    <li><b>1° = π/180 radians ≈ 0.01746 radian</b></li>
+  </ul>
+</div>
+
+<paragraph id="e2d1d92f5bbe7b5c8e58b32c"><b>Common angles:</b></paragraph>
+<ul>
+  <li>30° = π/6</li>
+  <li>45° = π/4</li>
+  <li>60° = π/3</li>
+  <li>90° = π/2</li>
+  <li>180° = π</li>
+  <li>270° = 3π/2</li>
+  <li>360° = 2π</li>
+</ul>
+
+<h3>Notational Convention</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Write <b>θ°</b> ⇒ θ is in <b>degrees</b></li>
+    <li>Write <b>β</b> (no °) ⇒ β is in <b>radians</b></li>
+    <li>In radians, we often <b>omit the word “radian”</b> (e.g., π/4 means radians)</li>
+  </ul>
+</div>
+
+<h3>Example 1: Convert 40° 20′ into radian measure</h3>
+<paragraph id="c1c091b75994b996e4fb36cf"><b>Step 1 (minutes → degree fraction):</b> 20′ = 20/60° = 1/3°.</paragraph>
+<paragraph id="3970fb407ea49068e9f403be">So 40°20′ = 40 + 1/3 = <b>121/3 degrees</b>.</paragraph>
+<paragraph id="f1694ce6614677f870fc66e3"><b>Step 2 (degrees → radians):</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="f22fcb4277f5fa5c0c19fb82">Radians = (π/180) × Degrees</paragraph>
+  <paragraph id="0f75449d7055631ab8f3316d">π = pi</paragraph>
+</div>
+<paragraph id="98146c4886c88ec059fbb35f">Radians = (π/180) × (121/3) = <b>121π/540 radians</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="ce68c60ba547066a0646b7f9"><b>Answer:</b> 40°20′ = <b>121π/540</b> radians.</paragraph>
+</div>
+
+<h3>Example 2: Convert 6 radians into degree measure</h3>
+<paragraph id="eacd3fc647832c37ee4de77a">Use π radian = 180°.</paragraph>
+<paragraph id="6b0b06543a69505b86a07384">Degrees = (180/π) × 6 = 1080/π degrees.</paragraph>
+<paragraph id="18c4fbc1813157b7fc2f1479">Using π ≈ 22/7:</paragraph>
+<paragraph id="b8617eabfb61f337a01e239e">Degrees ≈ 1080 × 7/22 = 343 7/11 degrees.</paragraph>
+<paragraph id="cd8b2eeb9f56c45c46001f9f"><b>Convert fractional degree → minutes:</b></paragraph>
+<ul>
+  <li>7/11 degree = (7/11)×60′ = 420/11′ = 38 + 2/11′</li>
+  <li>2/11′ = (2/11)×60″ = 120/11″ ≈ 10.9″</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="f901ea8dd127ec517f808bb7"><b>Answer:</b> 6 radians ≈ <b>343°38′11″</b> (approx).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="9e999e7ffda7042c5e291559">When radians → degrees → minutes/seconds: multiply the fractional part by 60 each time (degree fraction → minutes; minute fraction → seconds).</paragraph>
+</div>
+
+<h3>Example 3: Radius when 60° intercepts an arc of length 37.4 cm (use π = 22/7)</h3>
+<paragraph id="a4debc2414c1fad8a8ef7ca0">Given arc length l = 37.4 cm and central angle θ = 60°.</paragraph>
+<paragraph id="4d38b203f6fa051e2c6d9cc0"><b>Step 1 (angle → radians):</b> 60° = (π/180)×60 = <b>π/3</b> radians.</paragraph>
+<paragraph id="f469bd840cef16448af7f6c9"><b>Step 2 (use l = rθ):</b> r = l/θ.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="fb2f8077106fe2c95de5a5e0">r = l/θ</paragraph>
+  <paragraph id="a4ca099a63628fac076f2150">r = radius</paragraph>
+  <paragraph id="c3378ec1477ffd3c8b697e5b">l = arc length</paragraph>
+  <paragraph id="1934088f84e7f4305c16ed01">θ = central angle in radians</paragraph>
+</div>
+
+<paragraph id="3ee679a5aaea0a333a5fa89e">r = 37.4 ÷ (π/3) = 37.4×3/π.</paragraph>
+<paragraph id="546f8c8ed97420fca1fc3f57">Using π = 22/7:</paragraph>
+<paragraph id="24d70ac2bf80c0b8505eabf4">r = 37.4×3×7/22 = <b>35.7 cm</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6bd9cde972a3d2d0154ecf8f"><b>Answer:</b> radius = <b>35.7 cm</b>.</paragraph>
+</div>
+
+<h3>Example 4: Distance moved by the tip of a 1.5 cm minute hand in 40 minutes (use π = 3.14)</h3>
+<paragraph id="ce262ceb5ca52a8995d96fe7">The minute hand does 1 revolution in 60 minutes.</paragraph>
+<paragraph id="fe903df54faae5e1e9fe4a39">In 40 minutes: 40/60 = <b>2/3 revolution</b>.</paragraph>
+<paragraph id="5104cde035e2135c9481071a">Angle turned: θ = (2/3)×360° = 240° = (2/3)×2π = <b>4π/3 radians</b>.</paragraph>
+<paragraph id="67432c2fd0294d26529393f5">Arc distance of the tip: l = rθ = 1.5 × (4π/3) = 2π cm.</paragraph>
+<paragraph id="8ae56f21c77129c238ea789d">Using π = 3.14: l = 2×3.14 = <b>6.28 cm</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="94db7c95a67cfc33e9186fa1"><b>Answer:</b> distance moved = <b>6.28 cm</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6f05ee3fd71911a47fbf5c7c">For circular motion, use <b>l = rθ</b> with <b>θ in radians</b>. Convert to radians early to avoid slips.</paragraph>
+</div>
+
+<h3>Example 5: Same arc lengths subtend 65° and 110°; find ratio of radii</h3>
+<paragraph id="d30e8eb5b19f41895224e61a">Let the radii be r<sub>1</sub>, r<sub>2</sub>. Arc length l is the same in both circles.</paragraph>
+<paragraph id="3359f21e8bc8b06fc6b8960e">Convert angles to radians:</paragraph>
+<ul>
+  <li>θ<sub>1</sub> = 65° = (π/180)×65 = <b>13π/36</b></li>
+  <li>θ<sub>2</sub> = 110° = (π/180)×110 = <b>22π/36</b></li>
+</ul>
+<paragraph id="07be8282ac9210c6e2748d42">Since l is same and l = rθ:</paragraph>
+<paragraph id="5bc41aeb9316d8ef8bc8a681">r<sub>1</sub>θ<sub>1</sub> = r<sub>2</sub>θ<sub>2</sub></paragraph>
+<paragraph id="bf8f4f8c7a13cc32b4a9df00">r<sub>1</sub>(13π/36) = r<sub>2</sub>(22π/36)</paragraph>
+<paragraph id="6dab650b654c3e81ce3a07f4">Cancel π/36: 13r<sub>1</sub> = 22r<sub>2</sub> ⇒ r<sub>1</sub>/r<sub>2</sub> = 22/13.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="c7ae177a04243aa6999cb8ee"><b>Answer:</b> r<sub>1</sub> : r<sub>2</sub> = <b>22 : 13</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="2efe4a8bef5bfd4e61e9b3ad">Equal arc lengths ⇒ radii are <b>inversely proportional</b> to angles (in radians): if l fixed, r = l/θ.</paragraph>
+</div>
+
+<h2>3.3 Trigonometric Functions</h2>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-03.webp" decoding="async" height="325" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-03.webp" srcset="img/fig-01-03.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="375"/>
+    </button>
+  </div>
+</figure>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="d7d7e65cabc91a239a80f0a2"><b>Trig for ANY angle (unit circle idea)</b></paragraph>
+  <paragraph id="d669471dc3bc62976f6060db">Use a <b>unit circle</b> (radius 1) centred at origin O. Let P(a, b) be on the circle and ∠AOP = x radians, where A = (1, 0) on the +x-axis. Then:</paragraph>
+  <ul>
+    <li><b>cos x = a</b> (x-coordinate of P)</li>
+    <li><b>sin x = b</b> (y-coordinate of P)</li>
+  </ul>
+  <paragraph id="1d3f0298c2a0f8b060a4a35e">Since OP = 1 and triangle OMP is right-angled:</paragraph>
+  <paragraph id="89c38f800fe3349a54ff6060">a² + b² = 1 ⟹ <b>cos²x + sin²x = 1</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="1a28329993da159c93e52f18"><b>Pythagorean identity</b></paragraph>
+  <paragraph id="51875460dae600e0888f91f0">cos²x + sin²x = 1</paragraph>
+  <paragraph id="5861553c92e25f74806bc2f3">cos x = x-coordinate on unit circle at angle x</paragraph>
+  <paragraph id="c45d90e8baa97846c2f70690">sin x = y-coordinate on unit circle at angle x</paragraph>
+</div>
+
+<h3>Quadrantal angles and standard values of sin and cos</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="df726a7f7282c41fdc327d2a"><b>Quadrantal angles</b>: integral multiples of π/2</paragraph>
+  <paragraph id="d28daa630aa63420322b934d">x = n(π/2), n ∈ Z.</paragraph>
+  <paragraph id="9d78e508763d4761ac21ef61">One full revolution = <b>2π radians</b>. Key unit-circle points:</paragraph>
+  <ul>
+    <li>A at angle 0: (1, 0)</li>
+    <li>B at angle π/2: (0, 1)</li>
+    <li>C at angle π: (−1, 0)</li>
+    <li>D at angle 3π/2: (0, −1)</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="f57e75a3f1e523ee89773545"><b>Exact values at quadrantal angles</b></paragraph>
+  <ul>
+    <li>cos 0 = 1, sin 0 = 0</li>
+    <li>cos(π/2) = 0, sin(π/2) = 1</li>
+    <li>cos π = −1, sin π = 0</li>
+    <li>cos(3π/2) = 0, sin(3π/2) = −1</li>
+    <li>cos(2π) = 1, sin(2π) = 0</li>
+  </ul>
+</div>
+
+<h3>Periodicity of sine and cosine</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="159f85463ddaa28ec97c2a91">After one complete turn (2π radians), the terminal point comes back to the same spot ⇒ sin and cos repeat.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d3e0b1dd11850cd987eedbc7"><b>Periodicity (sine and cosine)</b></paragraph>
+  <paragraph id="d3ade91c375c3feb959f90dc">sin(2nπ + x) = sin x, n ∈ Z</paragraph>
+  <paragraph id="681931ea2a8eb4d6bd490eaa">cos(2nπ + x) = cos x, n ∈ Z</paragraph>
+  <paragraph id="a9d70feb982fcf75caa1886b">n = any integer; Z = set of integers</paragraph>
+</div>
+
+<h3>Zeros of sin x and cos x</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="41504e6866498eee3a81a8a7"><b>When does sin x vanish?</b> sin x = 0 at multiples of π.</paragraph>
+  <paragraph id="a130e0b0836634d526818ebc"><b>When does cos x vanish?</b> cos x = 0 at odd multiples of π/2.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="23910e1fe4644d67f5553757"><b>Solutions for sin x = 0</b></paragraph>
+  <paragraph id="9cfe95728cb4e6e20d1cc438">sin x = 0 ⟹ x = nπ, n ∈ Z</paragraph>
+  <paragraph id="57213b196cd1145ab037801e">n = any integer</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="d39ba8c7c5bd8a23d230741a"><b>Solutions for cos x = 0</b></paragraph>
+  <paragraph id="cc54715bb573028cd0ae3af1">cos x = 0 ⟹ x = (2n + 1)π/2, n ∈ Z</paragraph>
+  <paragraph id="ac6616b797ade02def9ce69e">n = any integer</paragraph>
+</div>
+
+<h3>Other trigonometric functions (definitions + restrictions)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="2ec1fbd503c74d4730ae8aa5">Other trig functions are built from sin x and cos x.</paragraph>
+  <paragraph id="73d10aeda49c2199652d3356"><b>Undefined</b> when the denominator = 0.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="1f2548d368668b3c577c9342"><b>cosec x</b></paragraph>
+  <paragraph id="5d9499e784c11d430eb9adea">cosec x = 1/sin x, defined only if sin x ≠ 0 ⟹ x ≠ nπ (n ∈ Z)</paragraph>
+  <paragraph id="5ce6461840fca50de3eea2f4">x = angle in radians; n ∈ Z</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="f09b94a926593dd28b46dd29"><b>sec x</b></paragraph>
+  <paragraph id="8f99464a9ba98a9c1892195f">sec x = 1/cos x, defined only if cos x ≠ 0 ⟹ x ≠ (2n + 1)π/2 (n ∈ Z)</paragraph>
+  <paragraph id="05d9c38041bfc415485422c4">x = angle in radians; n ∈ Z</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="7b37973f54c3a8c396d021de"><b>tan x</b></paragraph>
+  <paragraph id="4f2af4b701cfbb1ea43631ff">tan x = (sin x)/(cos x), defined only if cos x ≠ 0 ⟹ x ≠ (2n + 1)π/2 (n ∈ Z)</paragraph>
+  <paragraph id="6202c76e6b307813c693b7e0">x = angle in radians; n ∈ Z</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="289539a0b35ea871fcb9f86b"><b>cot x</b></paragraph>
+  <paragraph id="173e1bde9c6dad10a6f992b0">cot x = (cos x)/(sin x), defined only if sin x ≠ 0 ⟹ x ≠ nπ (n ∈ Z)</paragraph>
+  <paragraph id="604ebb647c61f711ce5e96bf">x = angle in radians; n ∈ Z</paragraph>
+</div>
+
+<h3>Derived identities: 1 + tan²x = sec²x and 1 + cot²x = cosec²x</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="44e8c1e4fa9e897f5a5e9032">From sin²x + cos²x = 1:</paragraph>
+  <ul>
+    <li>Divide by cos²x (where cos x ≠ 0)</li>
+    <li>Divide by sin²x (where sin x ≠ 0)</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="50099d8384c41eed5a3b679e"><b>Identity involving tan and sec</b></paragraph>
+  <paragraph id="f7aafc57f21ab470fc6868db">1 + tan²x = sec²x</paragraph>
+  <paragraph id="4f0a97a349ab7faac797e2e0">Valid where tan x and sec x are defined (i.e. cos x ≠ 0)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="36c3f81c2f0777d3f86c95dc"><b>Identity involving cot and cosec</b></paragraph>
+  <paragraph id="54c59abf9743b7ffdbb4c87e">1 + cot²x = cosec²x</paragraph>
+  <paragraph id="a46efd9d09fbe4ae49f72213">Valid where cot x and cosec x are defined (i.e. sin x ≠ 0)</paragraph>
+</div>
+
+<h3>Standard values at key angles (0, π/6, π/4, π/3, π/2, π, 3π/2, 2π)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="a6a4f192484c144d97f01578">Same values as 0°, 30°, 45°, 60°, 90° — now in radians + extended to π, 3π/2, 2π.</paragraph>
+  <ul>
+<style>
+  @font-face {
+    font-family: "Kalam-Regular";
+    src: url("fonts/Kalam-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .trig-table-wrap {
+    width: 100%;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+
+  .trig-table {
+    width: 100%;
+    min-width: 720px;
+    border: 2px solid #000;
+    border-collapse: collapse;
+    background-color: #d8f0fa00;
+    font-family: "Kalam-Regular", cursive !important;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .trig-table td {
+    padding: 10px 6px;
+    border: 1.5px solid #000;
+    vertical-align: middle;
+    font-family: "Kalam-Regular", cursive !important;
+  }
+
+  .trig-table td:first-child {
+    font-weight: bold;
+  }
+
+  .trig-table math,
+  .trig-table math * {
+    font-family: "Kalam-Regular", cursive !important;
+    font-size: 20px;
+  }
+</style>
+
+<div aria-label="Scrollable trigonometric table" class="trig-table-wrap" role="region" tabindex="0">
+  <table class="trig-table">
+    <tbody>
+      <tr>
+        <td></td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msup><mn>0</mn><mo>°</mo></msup>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac><mi>π</mi><mn>6</mn></mfrac>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac><mi>π</mi><mn>4</mn></mfrac>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac><mi>π</mi><mn>3</mn></mfrac>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac><mi>π</mi><mn>2</mn></mfrac>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>π</mi>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mfrac>
+              <mrow><mn>3</mn><mi>π</mi></mrow>
+              <mn>2</mn>
+            </mfrac>
+          </math>
+        </td>
+
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow><mn>2</mn><mi>π</mi></mrow>
+          </math>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi mathvariant="normal">sin</mi>
+          </math>
+        </td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>−</mo><mn>1</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+      </tr>
+
+      <tr>
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi mathvariant="normal">cos</mi>
+          </math>
+        </td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>−</mo><mn>1</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn></math></td>
+      </tr>
+
+      <tr>
+        <td>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi mathvariant="normal">tan</mi>
+          </math>
+        </td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><msqrt><mn>3</mn></msqrt></mfrac></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn></math></td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mn>3</mn></msqrt></math></td>
+        <td>Not<br/>defined</td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+        <td>Not<br/>defined</td>
+        <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </ul>
+  <paragraph id="cfa55a225bfc6e7a9cccca89">Also: cosec x, sec x, cot x are reciprocals of sin x, cos x, tan x (where defined).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="ee11ee9078ec09fa4a251b1b"><b>Exam tip:</b> tan x is <b>not defined</b> at x = π/2 and x = 3π/2 since cos x = 0 there.</paragraph>
+</div>
+
+<h2>3.3.1 Sign of trigonometric functions</h2>
+
+<h3>Even-odd properties from unit circle symmetry</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="5a6bb9591b5e1b43b8fb1cb8">If P(a, b) is at angle x, then the point at angle −x is Q(a, −b). So:</paragraph>
+  <ul>
+    <li>cos(−x) = cos x ⇒ cos is <b>even</b></li>
+    <li>sin(−x) = −sin x ⇒ sin is <b>odd</b></li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="93edd7f8346a0df6ada25482"><b>Parity (even/odd) identities</b></paragraph>
+  <paragraph id="5e3b0dd3665d3ba74f4ce8a4">cos(−x) = cos x</paragraph>
+  <paragraph id="82e7e9a2f025e681e17b4927">sin(−x) = −sin x</paragraph>
+  <paragraph id="16f42ccc72ad0bac8c07300c">x = any real number</paragraph>
+</div>
+
+<h3>Bounds of sin x and cos x</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="11e7371e5455b5c6c748de99">On the unit circle: −1 ≤ a ≤ 1 and −1 ≤ b ≤ 1, hence:</paragraph>
+  <ul>
+    <li>−1 ≤ cos x ≤ 1</li>
+    <li>−1 ≤ sin x ≤ 1</li>
+  </ul>
+</div>
+
+<h3>Signs in different quadrants</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="30d51e0d887be9d34fe059ab">Quadrant signs using P(a, b) on unit circle:</paragraph>
+  <ul>
+    <li>I (0 &lt; x &lt; π/2): a &gt; 0, b &gt; 0</li>
+    <li>II (π/2 &lt; x &lt; π): a &lt; 0, b &gt; 0</li>
+    <li>III (π &lt; x &lt; 3π/2): a &lt; 0, b &lt; 0</li>
+    <li>IV (3π/2 &lt; x &lt; 2π): a &gt; 0, b &lt; 0</li>
+  </ul>
+  <paragraph id="4eebc6748db17b2da3708e31">So:</paragraph>
+  <ul>
+    <li>sin x: + for 0 &lt; x &lt; π, and − for π &lt; x &lt; 2π</li>
+    <li>cos x: + for 0 &lt; x &lt; π/2, − for π/2 &lt; x &lt; 3π/2, + for 3π/2 &lt; x &lt; 2π</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="26f27d1f4006838b151e8d26"><b>Sign table (by quadrant)</b></paragraph>
+  <ul>
+    <li>I: sin +, cos +, tan +, cosec +, sec +, cot +</li>
+    <li>II: sin +, cos −, tan −, cosec +, sec −, cot −</li>
+    <li>III: sin −, cos −, tan +, cosec −, sec −, cot +</li>
+    <li>IV: sin −, cos +, tan −, cosec −, sec +, cot −</li>
+  </ul>
+</div>
+
+<div class="mnemonic-box" data-label="🧠 MNEMONIC">
+  <span class="mnemonic-word">ASTC</span>
+  <div class="mnemonic-expand">
+    A — All (I: all +)<br/>
+    S — Sine (II: sin, cosec +)<br/>
+    T — Tangent (III: tan, cot +)<br/>
+    C — Cosine (IV: cos, sec +)
+  </div>
+</div>
+
+<h2>3.3.2 Domain and range of trigonometric functions</h2>
+
+<h3>Domain and range of sin x and cos x</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="30b8f11ef477d3fd13136229">sin x and cos x are defined for <b>every real x</b>.</paragraph>
+  <ul>
+    <li><b>Domain</b> of y = sin x: R</li>
+    <li><b>Range</b> of y = sin x: [−1, 1]</li>
+    <li><b>Domain</b> of y = cos x: R</li>
+    <li><b>Range</b> of y = cos x: [−1, 1]</li>
+  </ul>
+</div>
+
+<h3>Domain and range of cosec x and sec x</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>y = cosec x is undefined where sin x = 0 ⟹ x = nπ</li>
+    <li>Range of cosec x: y ≥ 1 or y ≤ −1</li>
+    <li>y = sec x is undefined where cos x = 0 ⟹ x = (2n+1)π/2</li>
+    <li>Range of sec x: y ≥ 1 or y ≤ −1</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="470a18f44a6acd72f570f9e7"><b>Domain and range: y = cosec x</b></paragraph>
+  <paragraph id="c319ca8b1a3d3078deea438b">Domain = {x : x ∈ R and x ≠ nπ, n ∈ Z}</paragraph>
+  <paragraph id="1c296d29fad07510a9cdb8a6">Range = {y : y ∈ R, y ≥ 1 or y ≤ −1}</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="45b2236b63b1906d6045e636"><b>Domain and range: y = sec x</b></paragraph>
+  <paragraph id="68e28be9d8bb3599e72a083b">Domain = {x : x ∈ R and x ≠ (2n + 1)π/2, n ∈ Z}</paragraph>
+  <paragraph id="bbb2a4739619be09f63ef31a">Range = {y : y ∈ R, y ≥ 1 or y ≤ −1}</paragraph>
+</div>
+
+<h3>Domain and range of tan x and cot x</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>tan x undefined when cos x = 0 ⟹ x = (2n+1)π/2; its range is all real numbers</li>
+    <li>cot x undefined when sin x = 0 ⟹ x = nπ; its range is all real numbers</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="f463cf902fe70b27b1aee635"><b>Domain and range: y = tan x</b></paragraph>
+  <paragraph id="73727ecac9d676853fbca7ed">Domain = {x : x ∈ R and x ≠ (2n + 1)π/2, n ∈ Z}</paragraph>
+  <paragraph id="8dd330c7b33f9203d7af3c30">Range = R</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="83d497aaacb5d85306d4f2db"><b>Domain and range: y = cot x</b></paragraph>
+  <paragraph id="5b9f468fd161c730981192e0">Domain = {x : x ∈ R and x ≠ nπ, n ∈ Z}</paragraph>
+  <paragraph id="b30d34702b72bc0359b1068f">Range = R</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="5c2b360ffe0f4c17a1f47cd7"><b>Common mistake:</b> writing range of sec/cosec as (−1,1). Correct range is <b>(−∞, −1] ∪ [1, ∞)</b> since they’re reciprocals of cos/sin (whose |value| ≤ 1).</paragraph>
+</div>
+
+<h3>Behaviour (increase/decrease) in each quadrant</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="b6fec813df4e0a00a4128d1f"><b>Monotonic behaviour by quadrant</b> (inside each open quadrant interval):</paragraph>
+  <ul>
+    <li><b>sin x</b>: I increases 0→1; II decreases 1→0; III decreases 0→−1; IV increases −1→0</li>
+    <li><b>cos x</b>: I decreases 1→0; II decreases 0→−1; III increases −1→0; IV increases 0→1</li>
+    <li><b>tan x</b>: I increases 0→∞; II increases −∞→0; III increases 0→∞; IV increases −∞→0</li>
+    <li><b>cot x</b>: I decreases ∞→0; II decreases 0→−∞; III decreases ∞→0; IV decreases 0→−∞</li>
+    <li><b>sec x</b>: I increases 1→∞; II increases −∞→−1; III decreases −1→−∞; IV decreases ∞→1</li>
+    <li><b>cosec x</b>: I decreases ∞→1; II increases 1→∞; III increases −∞→−1; IV decreases −1→−∞</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="c2185e514fc4998701eb0409"><b>What “→ ∞” and “→ −∞” mean here</b></paragraph>
+  <ul>
+    <li>“tan x increases from 0 to ∞ for 0 &lt; x &lt; π/2” = keeps increasing and gets arbitrarily large +ve as x → (π/2)−.</li>
+    <li>“cosec x decreases from −1 to −∞ in IV quadrant” = keeps decreasing (more −ve) and gets arbitrarily large in magnitude as x → (2π)−.</li>
+  </ul>
+  <paragraph id="8c910335746c55cfbee275e9">∞ and −∞ describe <b>behaviour</b>, not actual real-number outputs.</paragraph>
+</div>
+
+<h3>Periodicity and graphs (sketching idea)</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>sin x and cos x repeat every 2π, so their reciprocals also repeat every 2π:
+      <ul>
+        <li>sec x has period 2π</li>
+        <li>cosec x has period 2π</li>
+      </ul>
+    </li>
+    <li>tan(π + x) = tan x (shown later), so:
+      <ul>
+        <li>tan x has period π</li>
+        <li>cot x (reciprocal of tan x) also has period π</li>
+      </ul>
+    </li>
+  </ul>
+  <paragraph id="352fa50585ab6aea50ecfa7d">Use these periods + the quadrant behaviour above to sketch all 6 trig graphs.</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-04.webp" decoding="async" height="319" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-04.webp" srcset="img/fig-01-04.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="519"/>
+    </button>
+  </div>
+</figure>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-05.webp" decoding="async" height="247" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-05.webp" srcset="img/fig-01-05.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="567"/>
+    </button>
+  </div>
+</figure>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01-06.webp" decoding="async" height="261" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01-06.webp" srcset="img/fig-01-06.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="568"/>
+    </button>
+  </div>
+</figure>
+
+</div>
+
+<h2>Example 6: Finding all trig functions given cos x and the quadrant</h2>
+
+<h3>Given cos x = −3/5, x in the third quadrant</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="891800cc7d0599611e26267b">Use sin²x + cos²x = 1 to get sin x (±), then fix the sign using the quadrant. Then use reciprocals/ratios for the rest.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="66efabc4e80db837fda0d133"><b>Step 1: sec x</b></paragraph>
+  <paragraph id="fc11ddbfa2d98efe76410e4f">sec x = 1/cos x = 1/(−3/5) = −5/3.</paragraph>
+
+  <paragraph id="fe22f23aa46cd74f0fac87a7"><b>Step 2: sin x from Pythagorean identity</b></paragraph>
+  <paragraph id="e71bc0b00989d45a0f299cbb">sin²x = 1 − cos²x = 1 − (9/25) = 16/25.</paragraph>
+  <paragraph id="9ae123dd243bec893152e90e">So sin x = ±4/5.</paragraph>
+
+  <paragraph id="2ecb64751a3f64ffe2679f0a"><b>Step 3: choose sign using quadrant</b></paragraph>
+  <paragraph id="a154157580f1e8d340dee59d">In <b>QIII</b>, sin x is negative ⟹ sin x = −4/5.</paragraph>
+
+  <paragraph id="8323c169dc176b293ef6964d"><b>Step 4: cosec x</b></paragraph>
+  <paragraph id="1b11d1aabc45a6cefab6b8d1">cosec x = 1/sin x = 1/(−4/5) = −5/4.</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="d0bc383f8b84c556707e9c5a"><b>Common mistake:</b> taking the square root and forgetting to use the quadrant to pick the correct sign for sin x (or cos x).</paragraph>
+</div>
+
+<h2>Using One Trigonometric Function to Find the Other Five (with Quadrant)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="1e9b483fe0e82d8f32e2be70"><b>Reciprocal + quotient links</b></paragraph>
+  <ul>
+    <li><b>tan x = (sin x)/(cos x)</b></li>
+    <li><b>cot x = (cos x)/(sin x)</b></li>
+    <li><b>sec x = 1/(cos x)</b></li>
+    <li><b>cosec x = 1/(sin x)</b></li>
+  </ul>
+  <paragraph id="d42e0bdb89b2c39651bac8d1"><b>Example relation used</b>: If <b>tan x = 4/3</b>, then <b>cot x = 3/4</b> (reciprocals).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="e1023c7a22cff4330f5aa865"><b>Quadrant decides signs</b> of sin x, cos x, tan x (so also cosec, sec, cot). After finding a magnitude (e.g. |sec x|), attach the sign using the quadrant.</paragraph>
+</div>
+
+<h3>Example 7: Given cot x = −5/12, x in second quadrant; find other five functions</h3>
+
+<paragraph id="310cc79426a95b007330136f"><b>Given:</b> cot x = −5/12, x is in QII.</paragraph>
+
+<paragraph id="e3d38ea42867cee1e9a28dbd"><b>Step 1: Convert cot to tan</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="242f190dfe4789fcc9a1a1ba"><b>tan x = 1 / cot x</b></paragraph>
+  <ul>
+    <li>tan x = tangent of angle x</li>
+    <li>cot x = cotangent of angle x</li>
+  </ul>
+</div>
+<paragraph id="73e61bc76a14cb5853f7fcd3">So, tan x = 1/(−5/12) = −12/5.</paragraph>
+
+<paragraph id="498a0e079107b71e0164440b"><b>Step 2: Use identity to get sec x</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6256b6d865cfd3e1539dc8d3"><b>sec² x = 1 + tan² x</b></paragraph>
+  <ul>
+    <li>sec x = secant of x</li>
+    <li>tan x = tangent of x</li>
+  </ul>
+</div>
+<paragraph id="eec03c0bbc3a14f0a7ac4cd4">sec² x = 1 + (−12/5)² = 1 + 144/25 = 169/25</paragraph>
+<paragraph id="0de98bb3479557bf04c9dee9">Hence sec x = ±13/5.</paragraph>
+
+<paragraph id="54a82c69363c5de6048e0d42"><b>Step 3: Choose sign using quadrant</b></paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="29e851175ab50b95707aa032">In <b>QII</b>, <b>cos x &lt; 0</b> so <b>sec x &lt; 0</b>.</paragraph>
+</div>
+<paragraph id="a415305855ecd8248db4033f">Therefore, sec x = −13/5.</paragraph>
+
+<paragraph id="a50c3c7104c3fbee53485d16"><b>Step 4: Find cos x</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="efcaf533cc7ede5620e05876"><b>sec x = 1 / cos x</b> (so <b>cos x = 1 / sec x</b>)</paragraph>
+  <ul>
+    <li>sec x = secant of x</li>
+    <li>cos x = cosine of x</li>
+  </ul>
+</div>
+<paragraph id="4f2f2b1aa78fd26452380a08">cos x = 1/(−13/5) = −5/13.</paragraph>
+
+<paragraph id="22f067578da390731b2e3a2f"><b>Step 5: Find sin x using tan x = sin x / cos x</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="5e2fc26d0bf5f7615c690399"><b>tan x = (sin x)/(cos x)</b> (so <b>sin x = tan x · cos x</b>)</paragraph>
+  <ul>
+    <li>tan x = tangent of x</li>
+    <li>sin x = sine of x</li>
+    <li>cos x = cosine of x</li>
+  </ul>
+</div>
+<paragraph id="4d02def46965be74be77ea7f">sin x = (−12/5) × (−5/13) = 12/13.</paragraph>
+
+<paragraph id="83364fa57873501006fb02d1"><b>Step 6: Find cosec x</b></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="1654bef279ed86a3a7756e8b"><b>cosec x = 1 / sin x</b></paragraph>
+  <ul>
+    <li>cosec x = cosecant of x</li>
+    <li>sin x = sine of x</li>
+  </ul>
+</div>
+<paragraph id="d92bf84b9f00073eada81692">cosec x = 1/(12/13) = 13/12.</paragraph>
+
+<paragraph id="fdf60f9d2f2b1ccbabec048e"><b>Step 7: Find remaining function cot x (already given) and/or verify</b></paragraph>
+<ul>
+  <li>cot x = −5/12 (given)</li>
+  <li>tan x = −12/5 (found)</li>
+  <li>sec x = −13/5 (found)</li>
+  <li>cos x = −5/13 (found)</li>
+  <li>sin x = 12/13 (found)</li>
+  <li>cosec x = 13/12 (found)</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="455b1864a9bb5f81c26e339f"><b>Exam tip:</b> If you get sec x = ±13/5 from sec² x, don’t stop—use the <b>quadrant</b> to choose the sign.</paragraph>
+</div>
+
+<h2>Periodicity (Repeating Values) to Evaluate Trigonometric Functions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="06d458c3a07c52ed3d224330"><b>Periodicity</b> = trig functions repeat after fixed intervals.</paragraph>
+  <ul>
+    <li><b>sin(x + 2π) = sin x</b></li>
+    <li><b>cos(x + 2π) = cos x</b></li>
+    <li>In degrees: <b>sin(θ + 360°) = sin θ</b>, <b>cos(θ + 360°) = cos θ</b></li>
+  </ul>
+</div>
+
+<h3>Example 8: Find sin(31π/3)</h3>
+<paragraph id="80223f9b928b73c9e13d3b8b"><b>Idea:</b> reduce the angle using multiples of 2π.</paragraph>
+<paragraph id="3533e8012c2748b0f5b3bffa">Since 2π = 6π/3, subtract a suitable multiple:</paragraph>
+<ul>
+  <li>31π/3 = 30π/3 + π/3 = 10π + π/3</li>
+</ul>
+<paragraph id="29b3935c7df86d77d93ecdd3">sin repeats every 2π, so sin(10π + π/3) = sin(π/3).</paragraph>
+<paragraph id="ea89257f0c71cdb06e192f43">Therefore,</paragraph>
+<paragraph id="192a98fea5129e61161f7943"><b>sin(31π/3) = sin(π/3) = √3/2.</b></paragraph>
+
+<h3>Example 9: Find cos(−1710°)</h3>
+<paragraph id="43b2fb9e598f3bfd87521907"><b>Idea:</b> reduce using cosine period 360°.</paragraph>
+<paragraph id="d6480576c6ade5b108a692aa">Add 5 × 360° = 1800°:</paragraph>
+<ul>
+  <li>−1710° + 1800° = 90°</li>
+</ul>
+<paragraph id="994feaf511ee6dacbe364718">So, cos(−1710°) = cos(90°) = 0.</paragraph>
+
+<div class="remember-box">
+  <paragraph id="16ce2efd2b6992bb9b18fb2d"><b>Common mistake:</b> reducing angles wrongly. You can add/subtract <b>any integer multiple</b> of 2π (or 360°) until you hit a standard angle.</paragraph>
+</div>
+
+<h2>3.4 Trigonometric Functions of Sum and Difference of Two Angles</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="502f631e9de5ac5b6d6429ca"><b>Trigonometric identities</b> = equations with trig functions that are true for all angles (where both sides make sense). Here: identities for <b>sum</b> &amp; <b>difference</b> of two angles + related results.</paragraph>
+</div>
+
+<h3>Even–Odd Properties (recap used in proofs)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="aef31602d50953411faabab8"><b>sin(−x) = −sin x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5f7634a60ba29f195bb9e3bf"><b>cos(−x) = cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<h3>Cosine of Sum: cos(x + y)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="9608cedaffd571f388d72d56"><b>cos(x + y) = cos x cos y − sin x sin y</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+<li>sin, cos = usual trig functions</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3d641f79b4ecdab67b592214"><b>Geometric derivation outline (unit circle):</b> take points on the unit circle:</paragraph>
+<ul>
+<li>P<sub>1</sub>(cos x, sin x)</li>
+<li>P<sub>2</sub>(cos(x + y), sin(x + y))</li>
+<li>P<sub>3</sub>(cos(−y), sin(−y)) = (cos y, −sin y)</li>
+<li>P<sub>4</sub>(1, 0)</li>
+</ul>
+<paragraph id="1b1ae0f3a4b31be91ddfbebb">Triangles P<sub>1</sub>OP<sub>3</sub> and P<sub>2</sub>OP<sub>4</sub> are congruent ⇒ P<sub>1</sub>P<sub>3</sub> = P<sub>2</sub>P<sub>4</sub>. Square + distance formula:</paragraph>
+<ul>
+<li><paragraph id="3a4b38ba81eda7b744d99f97"></paragraph><paragraph id="0d2b834eb95431d014955e7f">P<sub>1</sub>P<sub>3</sub><sup>2</sup> = 2 − 2(cos x cos y − sin x sin y)</paragraph></li>
+<li>P<sub>2</sub>P<sub>4</sub>² = 2 − 2cos(x + y)</li>
+</ul>
+<paragraph id="83f613b53a2c7c89dadb86d5">Set them equal ⇒ cos(x + y) = cos x cos y − sin x sin y.</paragraph>
+</div>
+
+<h3>Cosine of Difference: cos(x − y)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="325c21d41ff2b6c212b884b2"><b>cos(x − y) = cos x cos y + sin x sin y</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<paragraph id="5580e3b8ca1dc41d4d11e308"><b>Method:</b> in cos(x + y), replace y with −y:</paragraph>
+<ul>
+<li>cos(x + (−y)) = cos x cos(−y) − sin x sin(−y)</li>
+<li>use cos(−y)=cos y and sin(−y)=−sin y ⇒ the term becomes “+ sin x sin y”.</li>
+</ul>
+
+<h3>Related Shift Identities with π/2</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="168eed5f8526a1c58e76a4fd"><b>cos( (π/2) − x ) = sin x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<paragraph id="ced3fe85e1cc435fb9519fa5"><b>Derivation idea:</b> put x → π/2 and y → x in cos(x − y).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e01634f82f50651063cf8f56"><b>sin( (π/2) − x ) = cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<paragraph id="749a17fea2347d8736297286"><b>Derivation idea:</b> use sin A = cos(π/2 − A) + the previous identity.</paragraph>
+
+<h3>Sine of Sum and Difference</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4278a5224347d89c18f05ef5"><b>sin(x + y) = sin x cos y + cos x sin y</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<paragraph id="0a9879eeef004950627c965e"><b>Derivation idea used:</b> sin(x + y) = cos(π/2 − (x + y)); then apply cosine difference with angles (π/2 − x) and y.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f35fe47b57f3a6d6c7350561"><b>sin(x − y) = sin x cos y − cos x sin y</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<paragraph id="ce2763487d70034ea366cc3b"><b>Method:</b> replace y by −y in sin(x + y).</paragraph>
+
+<h3>Standard Transformations from Sum–Difference Identities</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4907a8c0c560b35b27e30790"><b>cos( (π/2) + x ) = − sin x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7b6fd29a6102cbe9ccca635c"><b>sin( (π/2) + x ) = cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="481a73287fe566c8ef2ef98f"><b>cos(π − x) = − cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1c8001e6f570a6404da19787"><b>sin(π − x) = sin x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3ddd390c2b4f5803a5900d7e"><b>cos(π + x) = − cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7445f73358e110dc408bc92a"><b>sin(π + x) = − sin x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="8262e5577e10da02b5afd83c"><b>cos(2π − x) = cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="50104494e2bac573081590d5"><b>sin(2π − x) = − sin x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="7c7c5d95bb90ee1b1557adaa"><b>Similar results</b> for tan x, cot x, sec x, cosec x come from:</paragraph>
+<ul>
+<li>tan x = sin x / cos x</li>
+<li>cot x = cos x / sin x</li>
+<li>sec x = 1 / cos x</li>
+<li>cosec x = 1 / sin x</li>
+</ul>
+</div>
+
+<h2>Tangent and Cotangent of Sum and Difference</h2>
+
+<h3>tan(x + y)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e4f28998c7f43d7452874dd3"><b>tan(x + y) = (tan x + tan y) / (1 − tan x tan y)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="2082dc0337e7059052d0024d"><b>Condition:</b> none of x, y, (x + y) is an <b>odd multiple of π/2</b> ⇒ cos x, cos y, cos(x + y) ≠ 0, so tan is defined.</paragraph>
+</div>
+<paragraph id="37f5c8c8cc5f0248a24d26db"><b>Derivation idea:</b> start with tan(x+y)=sin(x+y)/cos(x+y), plug in sum formulas, then divide top &amp; bottom by cos x cos y to reach the tan form.</paragraph>
+
+<h3>tan(x − y)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="83c36bae9433ebd7aade1757"><b>tan(x − y) = (tan x − tan y) / (1 + tan x tan y)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<paragraph id="74cb423af1a877f48d7541ee"><b>Method:</b> replace y by −y in tan(x + y).</paragraph>
+
+<h3>cot(x + y)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="dbc4237b0cabc0e98f92c171"><b>cot(x + y) = (cot x cot y − 1) / (cot x + cot y)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="dacfd6b2ac684662f67e7d17"><b>Condition:</b> none of x, y, (x + y) is a <b>multiple of π</b> ⇒ sin x, sin y, sin(x + y) ≠ 0, so cot is defined.</paragraph>
+</div>
+<paragraph id="cb5f9a21d81833f0014bb281"><b>Derivation idea:</b> use cot(x+y)=cos(x+y)/sin(x+y), plug in sum formulas, then divide top &amp; bottom by sin x sin y.</paragraph>
+
+<h3>cot(x − y)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5124a480d7dfe54c1e14f581"><b>cot(x − y) = (cot x cot y + 1) / (cot y − cot x)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="24f75621eb81f877c573460b"><b>Condition:</b> none of x, y, (x − y) is a <b>multiple of π</b>.</paragraph>
+</div>
+<paragraph id="119731c1def41fce9546576b"><b>Method:</b> replace y by −y in cot(x + y).</paragraph>
+
+<div class="remember-box">
+<paragraph id="263a1b8251323a31b94c7bd5"><b>Sign trap:</b> tan(x+y) denominator is <b>1 − tan x tan y</b>, but tan(x−y) denominator is <b>1 + tan x tan y</b>.</paragraph>
+</div>
+
+<h2>Multiple-Angle Identities (2x and 3x)</h2>
+
+<h3>Double-angle formulas for cosine</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="66956ed1cf5ed3c592389abd"><b>cos 2x = cos²x − sin²x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6700a58cc38e7fa12f39fd45"><b>cos 2x = 2cos²x − 1</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c54b50ae530c804d5e8fc96f"><b>cos 2x = 1 − 2sin²x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="cc54e0b3bb3f329786fa9d55"><b>cos 2x = (1 − tan²x)/(1 + tan²x)</b></paragraph>
+<ul>
+<li>x = any angle</li>
+<li><b>Restriction:</b> x ≠ π/2 + nπ (n ∈ ℤ), so tan x is defined (cos x ≠ 0)</li>
+</ul>
+</div>
+
+<paragraph id="d79b2ef528781c8ea28567e3"><b>Derivation path shown:</b> start with cos(x+y), put y=x ⇒ cos2x = cos²x − sin²x; rewrite using sin²x + cos²x = 1; then divide top &amp; bottom by cos²x to get the tan form.</paragraph>
+
+<h3>Double-angle formulas for sine</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="862ad5be42f083a695cacd8a"><b>sin 2x = 2 sin x cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="99a49d0f8b16daa9e96ec440"><b>sin 2x = (2 tan x)/(1 + tan²x)</b></paragraph>
+<ul>
+<li>x = any angle</li>
+<li><b>Restriction:</b> x ≠ π/2 + nπ (n ∈ ℤ), so tan x is defined</li>
+</ul>
+</div>
+
+<paragraph id="76b6ac6d0cec22d982e2542d"><b>Derivation path shown:</b> from sin(x+y), put y=x ⇒ sin 2x = 2 sin x cos x; then divide by cos²x to switch to tan.</paragraph>
+
+<h3>Double-angle formula for tangent</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6ac47af9b3028e0b5660c1c3"><b>tan 2x = (2 tan x)/(1 − tan²x)</b></paragraph>
+<ul>
+<li>x = any angle</li>
+<li><b>Restriction:</b> x ≠ π/2 + nπ (n ∈ ℤ) (tan x defined) and also denominator ≠ 0 (i.e., tan²x ≠ 1) so the final form is defined</li>
+</ul>
+</div>
+
+<paragraph id="935a38196de4d300475c35b5"><b>Derivation path shown:</b> use tan(x+y) and set y=x.</paragraph>
+
+<h3>Triple-angle formulas for sine and cosine</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4e175893debda290fb0a1a72"><b>sin 3x = 3 sin x − 4 sin³x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<paragraph id="c33066a5e5c1772097f18b0e"><b>Derivation steps shown:</b></paragraph>
+<ul>
+<li>sin 3x = sin(2x + x)</li>
+<li>= sin 2x cos x + cos 2x sin x</li>
+<li>= (2 sin x cos x) cos x + (1 − 2sin²x) sin x</li>
+<li>= 2 sin x cos²x + sin x − 2 sin³x</li>
+<li>Use cos²x = 1 − sin²x:</li>
+<li>2 sin x(1 − sin²x) + sin x − 2 sin³x = 3 sin x − 4 sin³x</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="fe0489c553f2c3e438ec433e"><b>cos 3x = 4 cos³x − 3 cos x</b></paragraph>
+<ul>
+<li>x = any angle</li>
+</ul>
+</div>
+
+<paragraph id="d3b74bd2b08fca54eb4d1c85"><b>Derivation steps shown:</b></paragraph>
+<ul>
+<li>cos 3x = cos(2x + x)</li>
+<li>= cos 2x cos x − sin 2x sin x</li>
+<li>= (2cos²x − 1)cos x − (2sin x cos x)sin x</li>
+<li>= (2cos²x − 1)cos x − 2cos x sin²x</li>
+<li>Use sin²x = 1 − cos²x:</li>
+<li>= 2cos³x − cos x − 2cos x(1 − cos²x) = 4cos³x − 3cos x</li>
+</ul>
+
+<h3>Triple-angle formula for tangent</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="354ae50200c47f37b405ce60"><b>tan 3x = (3 tan x − tan³x)/(1 − 3 tan²x)</b></paragraph>
+<ul>
+<li>x = any angle</li>
+<li><b>Restriction:</b> x ≠ π/2 + nπ (n ∈ ℤ), so tan x is defined; also 1 − 3 tan²x ≠ 0 so the expression is defined</li>
+</ul>
+</div>
+
+<paragraph id="3a15a4b79bb83544b454c91b"><b>Derivation idea shown:</b> tan 3x = tan(2x + x); use tan-sum + tan 2x = (2 tan x)/(1 − tan²x); simplify to reach the stated form.</paragraph>
+
+<div class="remember-box">
+<paragraph id="a7a2edc53fbb5e02ad499b38"><b>Exam tip:</b> know at least one standard form for each multiple-angle identity—esp. the compact “polynomial” ones:
+<b>sin 3x = 3s − 4s³</b>, <b>cos 3x = 4c³ − 3c</b>, <b>tan 3x = (3t − t³)/(1 − 3t²)</b> where s=sin x, c=cos x, t=tan x.</paragraph>
+</div>
+
+<h2>Sum-to-Product (and Product-to-Sum Setup) Identities</h2>
+
+<h3>Core sum-to-product results</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="565397fa400feb5a420eae5b"><b>(i) cos x + cos y = 2 cos((x + y)/2) cos((x − y)/2)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5b5d50643880344d8366dbec"><b>(ii) cos x − cos y = −2 sin((x + y)/2) sin((x − y)/2)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5bc768a5764281995e568342"><b>(iii) sin x + sin y = 2 sin((x + y)/2) cos((x − y)/2)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b173da6894f0655c83d0aebc"><b>(iv) sin x − sin y = 2 cos((x + y)/2) sin((x − y)/2)</b></paragraph>
+<ul>
+<li>x, y = angles</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3ba25801d4a48dbbc079eccd"><b>Derivation method given:</b></paragraph>
+<ul>
+<li>Start from:
+<ul>
+<li>cos(x+y) = cos x cos y − sin x sin y … (1)</li>
+<li>cos(x−y) = cos x cos y + sin x sin y … (2)</li>
+</ul>
+</li>
+<li>Add/subtract (1) and (2) to get:
+<ul>
+<li>cos(x+y) + cos(x−y) = 2 cos x cos y … (3)</li>
+<li>cos(x+y) − cos(x−y) = −2 sin x sin y … (4)</li>
+</ul>
+</li>
+<li>Similarly from:
+<ul>
+<li>sin(x+y) = sin x cos y + cos x sin y … (5)</li>
+<li>sin(x−y) = sin x cos y − cos x sin y … (6)</li>
+</ul>
+</li>
+<li>Add/subtract (5) and (6) to get:
+<ul>
+<li>sin(x+y) + sin(x−y) = 2 sin x cos y … (7)</li>
+<li>sin(x+y) − sin(x−y) = 2 cos x sin y … (8)</li>
+</ul>
+</li>
+<li>Then let:
+<ul>
+<li>x + y = θ and x − y = φ</li>
+<li>So x = (θ + φ)/2 and y = (θ − φ)/2</li>
+</ul>
+</li>
+<li>Sub θ, φ into (3), (4), (7), (8) to get the 4 sum-to-product formulas above (then rename θ, φ back to x, y).</li>
+</ul>
+</div>
+
+<h2>Sum-to-Product Identities (Two Angles)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="692ce7890871f04762a74d7e">Turns sums/differences of sin/cos into products. Built from the standard angle sum/difference formulas + substitutions + algebra.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e3d9227cf765fc3f585f95f1"><b>Cosine sum:</b> cos x + cos y = 2 cos((x + y)/2) cos((x − y)/2)</paragraph>
+<paragraph id="7f71e901ca600ee062e4b223">x, y: real angles (radians or degrees—just be consistent in a question)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3779f629f2895a0694c5a53d"><b>Cosine difference:</b> cos x − cos y = −2 sin((x + y)/2) sin((x − y)/2)</paragraph>
+<paragraph id="d05f4a32f0ecf09e56a2aeed">x, y: real angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="88f70cedd83cb613a1488ed7"><b>Sine sum:</b> sin x + sin y = 2 sin((x + y)/2) cos((x − y)/2)</paragraph>
+<paragraph id="3470227007b12aef5c1a983b">x, y: real angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c5b0793b5bc1111f7ef327e4"><b>Sine difference:</b> sin x − sin y = 2 cos((x + y)/2) sin((x − y)/2)</paragraph>
+<paragraph id="1628a3ae673ffe81185a9441">x, y: real angles</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6b8093266e3f2c46818647c8">In the textbook derivation, θ and φ are any real values ⇒ we can swap θ → x and φ → y, so the identities hold for all real x, y.</paragraph>
+</div>
+
+<h3>Product-to-Sum Results (Remark)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="fd701348b68b75be1b2538dc">Just rearrangements of the sum-to-product identities (super common for simplifying trig products).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="a785040e5eeba988cb20e47a">(i) 2 cos x cos y = cos(x + y) + cos(x − y)</paragraph>
+<paragraph id="b49e31f01b7c8bb818a4e4ef">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="844b0d9ffbef60d340888a26">(ii) −2 sin x sin y = cos(x + y) − cos(x − y)</paragraph>
+<paragraph id="5f59a1c79d76baf716606b2c">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1b20f66b6bc90b30ddf6f412">(iii) 2 sin x cos y = sin(x + y) + sin(x − y)</paragraph>
+<paragraph id="0a020c366e4445cfa6a940d5">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="574af60c4891a0653f18edc9">(iv) 2 cos x sin y = sin(x + y) − sin(x − y)</paragraph>
+<paragraph id="7efb7e562272a288fb5e6164">x, y: angles</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="2d88eb9b8d8e189ddc7d6722">Common sign slip: <b>cos x − cos y</b> has a <b>minus</b> out front:
+cos x − cos y = −2 sin((x + y)/2) sin((x − y)/2).</paragraph>
+</div>
+
+<h2>Worked Examples on Identities and Exact Values</h2>
+
+<h3>Example 10: Evaluate an expression using standard values and a sine-difference idea</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="188dc9bfc7ae2010a219952d"><b>Target:</b> prove</paragraph>
+<paragraph id="9cfe94568a1e9896105e5417"><style>
+  .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1}
+  .frac span:first-child{border-bottom:1px solid #000;padding:0 3px}
+  .frac span:last-child{padding-top:2px}
+</style>
+
+</paragraph><paragraph id="6a34cd013d1e30804435d1d2">
+  3 sin <span class="frac"><span>π</span><span>6</span></span>
+  sec <span class="frac"><span>π</span><span>3</span></span>
+  − 4 sin <span class="frac"><span>5π</span><span>6</span></span>
+  cot <span class="frac"><span>π</span><span>4</span></span> = 1
+</paragraph><paragraph id="af7b1512951ef76a5b52a410"></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="c3e1fccaad1402aa950270c3">Use exact values: sin(π/6)=1/2, sec(π/3)=2, cot(π/4)=1.</paragraph>
+<paragraph id="d644841bce43649b9a0a2f30">Be careful with sin(π/4): the book rewrites a sine term using <b>sin(π/2 − θ)=cos θ</b> (symmetry/complementary angle) to link to sin(π/6).</paragraph>
+</div>
+
+<paragraph id="4549fdcdc21da18331cbb426"><style>
+
+</style>
+
+</paragraph><div class="solution">
+  <paragraph id="78815b605dd560fe7ae9f34f"><span class="solution-title">Solution</span> We have</paragraph>
+
+  <paragraph class="equation" id="13cc7f65a88a27ae5afce752">
+    L.H.S. = 3 sin
+    <span class="frac"><span>π</span><span>6</span></span>
+    sec
+    <span class="frac"><span>π</span><span>3</span></span>
+    − 4 sin
+    <span class="frac"><span>5π</span><span>6</span></span>
+    cot
+    <span class="frac"><span>π</span><span>4</span></span>
+  </paragraph>
+
+  <paragraph class="equation" id="ec64ed339e0193cc04cd63b9">
+    = 3 ×
+    <span class="frac"><span>1</span><span>2</span></span>
+    × 2 − 4 sin
+    (
+    π −
+    <span class="frac"><span>π</span><span>6</span></span>
+    )
+    × 1
+    = 3 − 4 sin
+    <span class="frac"><span>π</span><span>6</span></span>
+  </paragraph>
+
+  <paragraph class="equation" id="f0662c20d87ae75ea0340599">
+    = 3 − 4 ×
+    <span class="frac"><span>1</span><span>2</span></span>
+    = 1 = R.H.S.
+  </paragraph>
+</div><paragraph id="115a49ab04e991a40b3178a5"></paragraph>
+
+<div class="remember-box">
+<paragraph id="1edcdb4e75ce8c05d0ff490f">⚠ If the solution uses a “hidden” rewrite (e.g. sin(π/2 − θ)=cos θ), <b>write the identity first</b>, then plug exact values.</paragraph>
+</div>
+
+<h3>Example 11: Exact value of sin 15°</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5917223b244fc55015871136">Find sin 15° using sin(A − B).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c69cf6df452d09921c8efd44">sin(A − B) = sin A cos B − cos A sin B</paragraph>
+<paragraph id="028035de5687f1c9f18e3484">A, B: angles</paragraph>
+</div>
+
+<paragraph id="89be26761f960c082bbb5ca6">sin 15° = sin(45° − 30°)</paragraph>
+<paragraph id="81b0e20c4fc744785d58391d">= sin45° cos30° − cos45° sin30°</paragraph>
+<paragraph id="bdba5a5d8448637ecf514777">= (1/√2)(√3/2) − (1/√2)(1/2)</paragraph>
+<paragraph id="2482ac3493edb267914a821a">= (√3 − 1)/(2√2).</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="8f8346713240e531fa6b5a01">Exact form usually accepted: (√3 − 1)/(2√2). (Rationalise if required.)</paragraph>
+</div>
+
+<h3>Example 12: Exact value of tan(13π/12)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="ddff37001717e453e8b1215d">Use periodicity + tan addition:</paragraph>
+<paragraph id="8b4dbc0e8e827169496ad604">13π/12 = π + π/12 ⇒ tan(13π/12) = tan(π/12).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f8c2d27a12b8b9104b056dad">tan(π + θ) = tan θ</paragraph>
+<paragraph id="02d7fcb1a300386c4b79eab8">θ: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e84c66be5572e435649dbbde">tan(A − B) = (tan A − tan B)/(1 + tan A tan B)</paragraph>
+<paragraph id="9cf932b61487e59ce5a2b03b">A, B: angles where denominator ≠ 0</paragraph>
+</div>
+
+<paragraph id="e57dd8959a0d32b749a60d35">tan(13π/12) = tan(π + π/12) = tan(π/12).</paragraph>
+<paragraph id="38c1c5163cfd4675487d67ac">Now π/12 = π/4 − π/6, so</paragraph>
+<paragraph id="11494218e7930a789b950e5b">tan(π/12) = (tan(π/4) − tan(π/6)) / (1 + tan(π/4)tan(π/6))</paragraph>
+<paragraph id="e038c3d770354e8dd7c45b50">= (1 − 1/√3)/(1 + 1·1/√3)</paragraph>
+<paragraph id="a5f380bb8e5399452c326cdb">= ((√3 − 1)/√3)/((√3 + 1)/√3)</paragraph>
+<paragraph id="2184cbd828f510e4aaa061ae">= (√3 − 1)/(√3 + 1)</paragraph>
+<paragraph id="6c2c77814befa7b89c50b983">= 2 − √3.</paragraph>
+
+<div class="remember-box">
+<paragraph id="c91c09dccbb8c42a14bdd810">⚠ tan has period π: tan(π + θ)=tan θ. (sin/cos have period 2π.)</paragraph>
+</div>
+
+<h3>Example 13: Prove a sine ratio identity leading to tangent form</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="2bdc4a65fb4472d29914067a">Prove:</paragraph>
+<paragraph id="2bf41c232b2dc5994e26b1eb">sin(x + y)/sin(x − y) = (tan x + tan y)/(tan x − tan y).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="fb26e915d2638e75b156b711">sin(x + y) = sin x cos y + cos x sin y</paragraph>
+<paragraph id="448ec80b47cb7c1b2ea32154">sin(x − y) = sin x cos y − cos x sin y</paragraph>
+<paragraph id="447b600aab1414e9cdb6ec74">x, y: angles</paragraph>
+</div>
+
+<paragraph id="d1c2e372df5fdf7c8357fa33">LHS = sin(x + y)/sin(x − y)</paragraph>
+<paragraph id="300b07208d3e03e43b3549ac">= (sin x cos y + cos x sin y)/(sin x cos y − cos x sin y).</paragraph>
+<paragraph id="fda7704e798d849a61ff060c">Divide top + bottom by cos x cos y:</paragraph>
+<paragraph id="6ad5009ae0308c6d2800a351">= (tan x + tan y)/(tan x − tan y) = RHS.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f42d378c2cc75d92664769bb">Dividing by cos x cos y assumes cos x ≠ 0 and cos y ≠ 0.</paragraph>
+<paragraph id="7880a61b4a116f25820e62ac">If cos x=0 or cos y=0, check separately (often both sides are undefined, or it still holds where defined).</paragraph>
+</div>
+
+<h3>Example 14: Prove tan3x·tan2x·tanx identity</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="250bceed28a5044f1c92b68f">Show:</paragraph>
+<paragraph id="f77252c2fa0cb746f041bad8">tan 3x tan 2x tan x = tan 3x − tan 2x − tan x.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="411462d5d5e3dfa449d4e7bb">tan(A + B) = (tan A + tan B)/(1 − tan A tan B)</paragraph>
+<paragraph id="bc571cb06ee74e1922f5b99a">A, B: angles where denominator ≠ 0</paragraph>
+</div>
+
+<paragraph id="3ce5c0083f84d56bf307521e">Since 3x = 2x + x,</paragraph>
+<paragraph id="43ba79a10dd1b7eec4167960">tan 3x = tan(2x + x) = (tan2x + tan x)/(1 − tan2x·tan x).</paragraph>
+<paragraph id="345105a570a09a24aa454023">Multiply both sides by (1 − tan2x·tan x):</paragraph>
+<paragraph id="ab10eee7b82a1d4eac43e244">tan3x − tan3x·tan2x·tan x = tan2x + tan x.</paragraph>
+<paragraph id="2c38714724c0d2d27fad7524">Rearrange:</paragraph>
+<paragraph id="e9baec9b774fb28d2ca3cc78">tan3x − tan2x − tan x = tan3x·tan2x·tan x.</paragraph>
+<paragraph id="822a44c536c02a20eadfdb2d">Hence tan3x·tan2x·tan x = tan3x − tan2x − tan x.</paragraph>
+
+<div class="remember-box">
+<paragraph id="2d11a30d2883d1accf1d2557">⚠ Rearranging is where sign mistakes happen—track the product term tan3x·tan2x·tanx carefully.</paragraph>
+</div>
+
+<h3>Example 15: Prove a cosine sum leading to $\sqrt{2}$cosx</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="488525aa3f0dc6981dadeb99">Prove:</paragraph>
+<paragraph id="e1fcaa1fcbd0706864f7e901">cos(x + π/4) + cos(x − π/4) = $\sqrt{2}$ cos x.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c9073a9b7c0d06cbab127954">cos α + cos β = 2 cos((α + β)/2) cos((α − β)/2)</paragraph>
+<paragraph id="19fe94dec7e7929b27459dab">α, β: angles</paragraph>
+</div>
+
+<paragraph id="ee65f906f47158698e0c9538">Let α = x + π/4 and β = x − π/4.</paragraph>
+<paragraph id="7867992c34634a82139971f6">Then</paragraph>
+<paragraph id="0bd517960c2601ff2b4bb5e9">cos(x + π/4) + cos(x − π/4)</paragraph>
+<paragraph id="043f72487e224356f8fef30f">= 2 cos(((x + π/4) + (x − π/4))/2) · cos(((x + π/4) − (x − π/4))/2)</paragraph>
+<paragraph id="1f8a9c85b3ed32752ad8b5c8">= 2 cos((2x)/2) · cos((π/2)/2)</paragraph>
+<paragraph id="252666e1a46c273023462fab">= 2 cos x · cos(π/4)</paragraph>
+<paragraph id="bb44756529ba00ea3452f07e">= 2 cos x · (1/√2).</paragraph>
+<paragraph id="261afec55c689edd46876b3c">The textbook’s intended simplification gives $\sqrt{2}$cos x as RHS (using the chapter’s established identity structure/notation).</paragraph>
+<paragraph id="3e5bda2f2fbc9d99ffbe7025">Hence LHS = RHS.</paragraph>
+
+<h3>Example 16: Prove a cotangent expression using sum-to-product</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="12f6217dc7bbb7dff9c3f711">Prove:</paragraph>
+<paragraph id="15520ac12f096b0a49fa9ba1">(cos 7x + cos 5x)/(sin 7x − sin 5x) = cot x.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="96ed1f7060b4042acb29c7a5">cos a + cos b = 2 cos((a + b)/2) cos((a − b)/2)</paragraph>
+<paragraph id="3589867730ce87c3f6fc26d6">sin a − sin b = 2 cos((a + b)/2) sin((a − b)/2)</paragraph>
+<paragraph id="9a8e25b9c4863a75740099b7">a, b: angles</paragraph>
+</div>
+
+<paragraph id="ea62e7a3325d532fd7cecf93">Numerator: cos7x + cos5x = 2 cos(6x) cos(x).</paragraph>
+<paragraph id="9645036b8304b04680232e20">Denominator: sin7x − sin5x = 2 cos(6x) sin(x).</paragraph>
+<paragraph id="fc774eca820e8608d76670ff">So</paragraph>
+<paragraph id="6fc9e2ecb8d8ecb2cd728e0c">(cos7x + cos5x)/(sin7x − sin5x) = [2 cos6x cos x]/[2 cos6x sin x] = cos x/sin x = cot x.</paragraph>
+
+<div class="remember-box">
+<paragraph id="62dfcafa9950a9bb2c174afe">⚠ Cancel 2cos6x only after noting it might be 0; the identity holds where the original expression is defined.</paragraph>
+</div>
+
+<h3>Example 17: Prove a tangent result from a sine-cosine rational expression</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="ff26f4b14b1ce887d9e33eb5">Prove:</paragraph>
+<paragraph id="a8412d90a3391cfd380a24ca">(sin 5x − 2 sin 3x + sin x)/(cos 5x − cos x) = tan x.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="80df87dbf53cbf6bca13fc90">Technique: regroup → use sum-to-product → reduce to sin x / cos x.</paragraph>
+</div>
+
+<paragraph id="5a9ba434dd32dae9f5ae1810">Start with LHS:</paragraph>
+<paragraph id="631bb0744714c7bd6a2de2fc">(sin5x − 2sin3x + sin x)/(cos5x − cos x)</paragraph>
+<paragraph id="79fd0dc0b6b7ae78522b9740">= [(sin5x + sin x) − 2sin3x]/(cos5x − cos x).</paragraph>
+<paragraph id="9fea85915ad7db6f8ae624f6">Use sin5x + sin x = 2 sin3x cos2x:</paragraph>
+<paragraph id="d5794b6bd08493daf72a51fd">Numerator = 2sin3x cos2x − 2sin3x = 2sin3x(cos2x − 1).</paragraph>
+<paragraph id="4d2eb78bcca000028af07bc4">Now cos2x − 1 = −2sin^2 x, so numerator = 2sin3x(−2sin^2 x) = −4 sin3x sin^2 x.</paragraph>
+<paragraph id="fd155fad3bfdc4f6b61e3481">Also cos5x − cos x = −2 sin3x sin2x (from cos a − cos b identity), so</paragraph>
+<paragraph id="eeaa89f9d2a7a9c42b1ad122">LHS = [−4 sin3x sin^2 x]/[−2 sin3x sin2x] = [2 sin^2 x]/[sin2x].</paragraph>
+<paragraph id="2b1e4d1b9f4158c7f7041bce">Since sin2x = 2 sin x cos x,</paragraph>
+<paragraph id="1db04702dadb748427b26513">LHS = (2 sin^2 x)/(2 sin x cos x) = sin x/cos x = tan x = RHS.</paragraph>
+
+<div class="remember-box">
+<paragraph id="0abfc9304bd98a737d5be9bb">⚠ Key substitutions: sin5x + sin x = 2sin3x cos2x and cos5x − cos x = −2sin3x sin2x.</paragraph>
+</div>
+
+<h2>Miscellaneous Examples (Applications &amp; Quadrant Logic)</h2>
+
+<h3>Example 18: Given sin x and cos y in quadrant II, find sin(x + y)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="9151ef7df20d2624fae34ca0">If sin x = 3/5 and cos y = −12/13, where x and y are in quadrant II, find sin(x + y).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d91923f3f89446b7be291eef">sin(x + y) = sin x cos y + cos x sin y</paragraph>
+<paragraph id="68fe7406123f309fef76b403">x, y: angles</paragraph>
+</div>
+
+<paragraph id="0a9b183254454fc27cf8fc2a">Given sin x = 3/5.</paragraph>
+<paragraph id="c928e017d274df4dc056c8d9">cos²x = 1 − sin²x = 1 − 9/25 = 16/25 ⟹ cos x = ±4/5.</paragraph>
+<paragraph id="a60f4cb11d1494e50ebcbae1">Quadrant II ⟹ cos x &lt; 0 ⟹ cos x = −4/5.</paragraph>
+
+<paragraph id="1eadab1b161e676cc0132d34">Given cos y = −12/13.</paragraph>
+<paragraph id="3405946a64961d289163d90f">sin²y = 1 − cos²y = 1 − 144/169 = 25/169 ⟹ sin y = ±5/13.</paragraph>
+<paragraph id="d34a6ab41ba6e25a801d32df">Quadrant II ⟹ sin y &gt; 0 ⟹ sin y = 5/13.</paragraph>
+
+<paragraph id="18a0430c6054a4507449fcd4">Now</paragraph>
+<paragraph id="19ace506cf835bd248b28411">sin(x + y) = (3/5)(−12/13) + (−4/5)(5/13)</paragraph>
+<paragraph id="606fffe58a0cd14478a1f7db">= −36/65 − 20/65 = −56/65.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="452583378c8f60d437c62419">Quadrant II signs: sin +, cos −, tan −.</paragraph>
+</div>
+
+<h3>Example 19: Prove an identity involving cos products and sin products</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="816e9ca9d2dff3cbaf115b2e">Prove: </paragraph><paragraph id="9b1359e75ffab6db3607ae1e">
+  cos 2x cos
+  <span class="frac"><span>x</span><span>2</span></span>
+  cos 3x cos
+  <span class="frac"><span>9x</span><span>2</span></span>
+  = sin 5x sin
+  <span class="frac"><span>5x</span><span>2</span></span>.
+</paragraph><paragraph id="4fc20650b15619d262193ec4"></paragraph>
+</div>
+
+
+<style>
+  @font-face {
+    font-family: "Kalam";
+    src: url("fonts/Kalam-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .math-solution,
+  .math-solution math,
+  .math-solution math * {
+    font-family: "Kalam", cursive !important;
+  }
+
+  .math-solution {
+    font-size: 22px;
+    line-height: 2.4;
+    overflow-x: auto;
+  }
+
+  .math-solution p {
+    white-space: nowrap;
+    margin: 8px 0;
+  }
+
+  .equation-line {
+    margin-left: 70px !important;
+  }
+</style>
+
+<div class="math-solution">
+
+  <paragraph id="3e1081bc6626c412d4968f2d">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtext>L.H.S.</mtext>
+      <mo>=</mo>
+
+      <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>[</mo>
+
+      <mn>2</mn>
+      <mi>cos</mi>
+      <mn>2</mn><mi>x</mi>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mi>x</mi>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>−</mo>
+
+      <mn>2</mn>
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>9</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mi>cos</mi>
+      <mn>3</mn><mi>x</mi>
+
+      <mo>]</mo>
+    </math>
+  </paragraph>
+
+  <paragraph class="equation-line" id="d6b51de4e01486ac983eeead">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>=</mo>
+
+      <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>[</mo>
+
+      <mi>cos</mi>
+      <mo>(</mo>
+      <mn>2</mn><mi>x</mi>
+      <mo>+</mo>
+      <mfrac>
+        <mi>x</mi>
+        <mn>2</mn>
+      </mfrac>
+      <mo>)</mo>
+
+      <mo>+</mo>
+
+      <mi>cos</mi>
+      <mo>(</mo>
+      <mn>2</mn><mi>x</mi>
+      <mo>−</mo>
+      <mfrac>
+        <mi>x</mi>
+        <mn>2</mn>
+      </mfrac>
+      <mo>)</mo>
+
+      <mo>−</mo>
+
+      <mi>cos</mi>
+      <mo>(</mo>
+      <mfrac>
+        <mrow><mn>9</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+      <mo>+</mo>
+      <mn>3</mn><mi>x</mi>
+      <mo>)</mo>
+
+      <mo>−</mo>
+
+      <mi>cos</mi>
+      <mo>(</mo>
+      <mfrac>
+        <mrow><mn>9</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+      <mo>−</mo>
+      <mn>3</mn><mi>x</mi>
+      <mo>)</mo>
+
+      <mo>]</mo>
+    </math>
+  </paragraph>
+
+  <paragraph class="equation-line" id="4943f8a16f7eb9eb57689e4d">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>=</mo>
+
+      <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>[</mo>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>5</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>+</mo>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>3</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>−</mo>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>15</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>−</mo>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>3</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>]</mo>
+
+      <mo>=</mo>
+
+      <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>[</mo>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>5</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>−</mo>
+
+      <mi>cos</mi>
+      <mfrac>
+        <mrow><mn>15</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>]</mo>
+    </math>
+  </paragraph>
+
+  <paragraph class="equation-line" id="5309415773d351801e9576fa">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>=</mo>
+
+      <mfrac>
+        <mn>1</mn>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>[</mo>
+      <mo>−</mo>
+      <mn>2</mn>
+      <mi>sin</mi>
+
+      <mo>{</mo>
+      <mfrac>
+        <mrow>
+          <mfrac>
+            <mrow><mn>5</mn><mi>x</mi></mrow>
+            <mn>2</mn>
+          </mfrac>
+
+          <mo>+</mo>
+
+          <mfrac>
+            <mrow><mn>15</mn><mi>x</mi></mrow>
+            <mn>2</mn>
+          </mfrac>
+        </mrow>
+        <mn>2</mn>
+      </mfrac>
+      <mo>}</mo>
+
+      <mi>sin</mi>
+
+      <mo>{</mo>
+      <mfrac>
+        <mrow>
+          <mfrac>
+            <mrow><mn>5</mn><mi>x</mi></mrow>
+            <mn>2</mn>
+          </mfrac>
+
+          <mo>−</mo>
+
+          <mfrac>
+            <mrow><mn>15</mn><mi>x</mi></mrow>
+            <mn>2</mn>
+          </mfrac>
+        </mrow>
+        <mn>2</mn>
+      </mfrac>
+      <mo>}</mo>
+
+      <mo>]</mo>
+    </math>
+  </paragraph>
+
+  <paragraph class="equation-line" id="787cd1a5d0a0485ccc1a3cff">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mo>=</mo>
+      <mo>−</mo>
+
+      <mi>sin</mi>
+      <mn>5</mn><mi>x</mi>
+
+      <mi>sin</mi>
+      <mo>(</mo>
+      <mo>−</mo>
+      <mfrac>
+        <mrow><mn>5</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+      <mo>)</mo>
+
+      <mo>=</mo>
+
+      <mi>sin</mi>
+      <mn>5</mn><mi>x</mi>
+
+      <mi>sin</mi>
+      <mfrac>
+        <mrow><mn>5</mn><mi>x</mi></mrow>
+        <mn>2</mn>
+      </mfrac>
+
+      <mo>=</mo>
+      <mtext>R.H.S.</mtext>
+    </math>
+  </paragraph>
+
+</div>
+
+<div class="remember-box">
+<paragraph id="2ebbfee56f1e8f31d562dcf1">Long trig proofs: first push everything into one “family” (all cos or all sin). Convert to products right at the end.</paragraph>
+</div>
+
+<h3>Example 20: Find tan(π/8)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b8717d09ddefb663ad98b4dd">Use the tangent double-angle formula with x = π/8 so that 2x = π/4.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4ad4d7a55a277c5f16f36aa0">tan 2x = (2 tan x)/(1 − tan²x)</paragraph>
+<paragraph id="374d785e411e40ad2ad31484">x: angle where denominator ≠ 0</paragraph>
+</div>
+
+<paragraph id="4acad850eb2f21af857e80d2">Let x = π/8 ⟹ 2x = π/4 and tan(π/4)=1.</paragraph>
+<paragraph id="5ee1b49acfde73c7528ad893">Then</paragraph>
+<paragraph id="80ae52eda76fa1d55509aba1">1 = tan(π/4) = tan(2x) = (2 tan x)/(1 − tan²x).</paragraph>
+<paragraph id="8519d331d475f9b3ab9e878a">Let y = tan x = tan(π/8). Then</paragraph>
+<paragraph id="0e954580d37852fa4d0e1dc9">1 = 2y/(1 − y²) ⟹ 1 − y² = 2y ⟹ y² + 2y − 1 = 0.</paragraph>
+<paragraph id="407587c0a2f123f56dfcb839">So y = [−2 ± √(4 + 4)]/2 = −1 ± √2.</paragraph>
+<paragraph id="2291bf31c586283300e9eb5b">Quadrant I ⟹ tan(π/8) &gt; 0 ⟹ y = −1 + √2 = √2 − 1.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="8926b2f5260a3958d128e99c">tan(π/8) = √2 − 1.</paragraph>
+</div>
+
+<h3>Example 21: Given tan x and range of x, find sin(x/2), cos(x/2), tan(x/2)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="dc34755ca4152040e82796d0">If tan x = 3/4 and π &lt; x &lt; 3π/2, find sin(x/2), cos(x/2), tan(x/2).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="41b611605d43fe28d6fe6e76">x in quadrant III ⟹ sin x &lt; 0, cos x &lt; 0, tan x &gt; 0. Also x/2 is in quadrant II ⟹ sin(x/2) &gt; 0 and cos(x/2) &lt; 0.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4c4a6cb0f7790bc8248b6f0b">sec²x = 1 + tan²x</paragraph>
+<paragraph id="1476e003ddf06a761f4d2c90">x: angle</paragraph>
+</div>
+
+<paragraph id="7b26cad355d098f8ac137e00">sec²x = 1 + (3/4)² = 1 + 9/16 = 25/16.</paragraph>
+<paragraph id="579bbc46f64f590f40ce920a">So cos²x = 1/sec²x = 16/25 ⟹ cos x = ±4/5.</paragraph>
+<paragraph id="e0c705172123cf38daba6d52">Quadrant III ⟹ cos x &lt; 0 ⟹ cos x = −4/5. (This is the book’s “Why?”)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="bbe8a996c364282b7dbaf370">sin²x + cos²x = 1</paragraph>
+<paragraph id="599ca419de4511139810f10b">x: angle</paragraph>
+</div>
+
+<paragraph id="1dd7e605f680f5047481407f">sin²x = 1 − cos²x = 1 − 16/25 = 9/25.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="451a39803f93ddf2f1d038ba">sin²(x/2) = (1 − cos x)/2</paragraph>
+<paragraph id="56d15302b72de16570a2f9a2">cos²(x/2) = (1 + cos x)/2</paragraph>
+<paragraph id="87089b3ad0a575dbdd4b41d1">x: angle</paragraph>
+</div>
+
+<paragraph id="8cf7b982de7005108578426e">sin²(x/2) = (1 − (−4/5))/2 = (1 + 4/5)/2 = (9/5)/2 = 9/10.</paragraph>
+<paragraph id="bb5328db2abde91cf829a7a0">So sin(x/2) = +3/√10 (positive in quadrant II). (This is the book’s “Why?”)</paragraph>
+
+<paragraph id="d9f28fb1ef3f6334708bd4ca">cos²(x/2) = (1 + (−4/5))/2 = (1/5)/2 = 1/10.</paragraph>
+<paragraph id="880638ec7e8bb37ffda049f6">So cos(x/2) = −1/√10 (negative in quadrant II). (This is the book’s “Why?”)</paragraph>
+
+<paragraph id="664e22469c4eab44561cd64a">tan(x/2) = sin(x/2)/cos(x/2) = (3/√10)/(−1/√10) = −3.</paragraph>
+
+<div class="remember-box">
+<paragraph id="df3a41ad61a5380570a16251">Half-angle signs come from the quadrant of x/2 (not x). Always place x/2 first using the given range.</paragraph>
+</div>
+
+<h3>Example 22: Prove a cosine-square sum identity with phase shifts</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="a292fab4fc6a36c61ce18fa7"><style>
+  @font-face {
+    font-family: "Kalam";
+    src: url("fonts/Kalam-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .kalam-math,
+  .kalam-math math,
+  .kalam-math math * {
+    font-family: "Kalam", cursive !important;
+  }
+
+  .kalam-math {
+    font-size: 22px;
+    line-height: 1.8;
+  }
+</style>
+
+</paragraph><paragraph class="kalam-math" id="97f7280948984f9daf2667ed">
+  Prove that
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <msup>
+      <mrow><mi>cos</mi><mi>x</mi></mrow>
+      <mn>2</mn>
+    </msup>
+
+    <mo>+</mo>
+
+    <msup>
+      <mrow>
+        <mi>cos</mi>
+        <mo>(</mo>
+        <mi>x</mi>
+        <mo>+</mo>
+        <mfrac><mi>π</mi><mn>3</mn></mfrac>
+        <mo>)</mo>
+      </mrow>
+      <mn>2</mn>
+    </msup>
+
+    <mo>+</mo>
+
+    <msup>
+      <mrow>
+        <mi>cos</mi>
+        <mo>(</mo>
+        <mi>x</mi>
+        <mo>−</mo>
+        <mfrac><mi>π</mi><mn>3</mn></mfrac>
+        <mo>)</mo>
+      </mrow>
+      <mn>2</mn>
+    </msup>
+
+    <mo>=</mo>
+
+    <mfrac><mn>3</mn><mn>2</mn></mfrac>
+  </math>.
+</paragraph> (As per the given textbook expression involving squares; the book’s method is to expand cos^2 terms and simplify using cosine sum identities.)<paragraph id="bef540c3299c1d515698b0a4"></paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="94154e7d564acef65a4d57bc">Book idea: rewrite each cos² as (1 + cos(2·angle))/2, then add + simplify using cos(A+B)+cos(A−B)=2cosAcosB and cos(π)=−1.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="9430ea4607ad5360ae1e046c">cos²t = (1 + cos 2t)/2</paragraph>
+<paragraph id="1bb449df79978aee7d2f22b4">t: angle</paragraph>
+</div>
+
+<paragraph id="62e5dab20740399b33de54ee">Following the textbook line:</paragraph>
+<ul>
+<li>Turn each squared cosine into: (constant) + (cos of double-angle).</li>
+<li>Group: cos(2x + 2π/3) + cos(2x − 2π/3) = 2cos(2x)cos(2π/3).</li>
+<li>Use cos(2π/3)=cos(π − π/3)=−cos(π/3)=−1/2, then simplify to reach the RHS stated in the text.</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="9817a87179a40232a26f4ed8">See cos² in a proof? Try cos²t = (1 + cos 2t)/2 first (drops the power fast).</paragraph>
+</div>
+
+<h2>Chapter-End Summary Items (as listed in this portion)</h2>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="801e411789eccf581dbf6f24"><b>Arc length (radians):</b> l = rθ</paragraph>
+<paragraph id="78d486a9b1a491834c79be2c">l: arc length</paragraph>
+<paragraph id="808e3c867c0ff0d669d16cb8">r: circle radius</paragraph>
+<paragraph id="9d454e766c1e5ce72d58939a">θ: angle at centre (radians)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ca72d148354b1aedad850a23"><b>Angle conversion:</b> Radian measure = (π/180) × Degree measure</paragraph>
+<paragraph id="0a9e97ea2dc764a0ac7815d1">Degree measure: angle in degrees</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c3bf69fd83d78c54908825cb"><b>Angle conversion:</b> Degree measure = (180/π) × Radian measure</paragraph>
+<paragraph id="66da2d7e3aa75b56cdf5e235">Radian measure: angle in radians</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="63b481c9dc0b469b85af51ad">cos²x + sin²x = 1</paragraph>
+<paragraph id="40843324cb9234f257916638">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="9258bf0273d512dbd876b1a9">1 + tan²x = sec²x</paragraph>
+<paragraph id="e8a7d28cb7a4642f4b5a7eaa">x: angle where tan x, sec x are defined</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d2399703b41249df4994f690">1 + cot²x = cosec²x</paragraph>
+<paragraph id="d04c8f7f06cd6a8693d63991">x: angle where cot x, cosec x are defined</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f4adcd3cd4417918708f57d6">cos(2nπ + x) = cos x</paragraph>
+<paragraph id="d3ca460b63ef5cf6c1002905">n: integer</paragraph>
+<paragraph id="ab5dc462ab27719a41dca401">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7c4a3f2bd87ae5121ce38c6d">sin(2nπ + x) = sin x</paragraph>
+<paragraph id="f1e2aae7eb74948f2793a750">n: integer</paragraph>
+<paragraph id="2307d13f293c2193dc456a18">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="88fccaae38972b98e75921c4">sin(−x) = −sin x</paragraph>
+<paragraph id="5c8df5a0567bbeeccf250756">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="862d05613f53b633b4cbf3a5">cos(−x) = cos x</paragraph>
+<paragraph id="a85c5be5a9d0b2c47aa83ef7">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="3ea2fc3999ec04eccc8495b4">cos(x + y) = cos x cos y − sin x sin y</paragraph>
+<paragraph id="5882ec5dd5d13b392dac866a">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="aa24f416393a0d8e53f50868">cos(x − y) = cos x cos y + sin x sin y</paragraph>
+<paragraph id="5d9b887cd9027beea4fc97c8">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="11b4ab6f369f09edb7750d96">cos(π/2 − x) = sin x</paragraph>
+<paragraph id="39762f52a9360447e2b53eb5">x: angle</paragraph>
+</div>
+
+<h2>Standard Trigonometric Identities (Addition, Subtraction, Multiple Angles)</h2>
+
+<h3>Co-function and allied angle identities</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1e93fbfa3db87431c48969b6"><b>Co-function (complementary angle)</b></paragraph>
+<paragraph id="0239eb35b7822b1458b95561">sin(π/2 − x) = cos x</paragraph>
+<paragraph id="63c26f0902dd246092c18289">x: angle (in radians)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="986f23319501a552bf0ce8bc"><b>Shift by π/2 (quadrantal angles)</b></paragraph>
+<paragraph id="104ed589bd9300d4ab5344b9">cos(π/2 + x) = − sin x</paragraph>
+<paragraph id="523a6e652dc5f34af7c72313">sin(π/2 + x) = cos x</paragraph>
+<paragraph id="4eacd05db5e4b1d94e56914f">x: angle (in radians)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="fcc24d3805f5532192c6700a"><b>Allied angles with π and 2π</b></paragraph>
+<paragraph id="d111dbf9fc0110f6777924ff">cos(π − x) = − cos x</paragraph>
+<paragraph id="cadfdcb266e9cd96ecc58aa4">sin(π − x) = sin x</paragraph>
+<paragraph id="b1091f745a16bd692b1d112c">cos(π + x) = − cos x</paragraph>
+<paragraph id="87b7af0189389a18caa5dfff">sin(π + x) = − sin x</paragraph>
+<paragraph id="79f2154902ffcdda692a36fe">cos(2π − x) = cos x</paragraph>
+<paragraph id="b164478418449370106def77">sin(2π − x) = − sin x</paragraph>
+<paragraph id="f473586d3beacbce0005278b">x: angle (in radians)</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="7c0f0193ad9cd551f6482128">Unit-circle shortcut:</paragraph>
+<ul>
+<li>(π − x) is in QII → sin +, cos −</li>
+<li>(π + x) is in QIII → sin −, cos −</li>
+<li>(2π − x) is in QIV → cos +, sin −</li>
+</ul>
+</div>
+
+<h3>Sine addition and subtraction formulas</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ccb06afb541425c60fdfca98"><b>Sine of sum</b></paragraph>
+<paragraph id="f77ef256054a66b915e2ec5b">sin(x + y) = sin x cos y + cos x sin y</paragraph>
+<paragraph id="fbfb1513e35b58b233f15ab1">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="18633d7a23fb266d2f8782fb"><b>Sine of difference</b></paragraph>
+<paragraph id="95ead376e2fecf29b533930f">sin(x − y) = sin x cos y − cos x sin y</paragraph>
+<paragraph id="465d8ab7b62734bf5984e1e0">x, y: angles</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="98efd3d49f15b3ec757c4037">For sin(x ± y): the middle sign matches the sign between the two product terms.</paragraph>
+<paragraph id="ec37c5989c8b3157b3117839">Sum → “+ +” ; Difference → “− −”.</paragraph>
+</div>
+
+<h3>Tangent addition and subtraction (with restrictions)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="0e050edcec6c197fd6aae855"><b>Why restrictions matter:</b></paragraph>
+<ul>
+<li>tan θ undefined when cos θ = 0 → θ is an odd multiple of π/2</li>
+<li>Also, tan sum/diff has denominators (1 ∓ tan x tan y) → invalid if denominator = 0</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b3309847c1a86d5c8de9e2c2"><b>Tangent of sum</b></paragraph>
+<paragraph id="a18210a51dcdbcc8f4aef1e5">If none of x, y, (x + y) is an odd multiple of π/2, then</paragraph>
+<paragraph id="c90d67ddc1ff015e34a6866a">tan(x + y) = (tan x + tan y)/(1 − tan x tan y)</paragraph>
+<paragraph id="1e169b729758eb8941d8ea2e">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="dd9d2f4e44b88057d8a55437"><b>Tangent of difference</b></paragraph>
+<paragraph id="19f1ead30b12307ad5fef317">If none of x, y, (x − y) is an odd multiple of π/2, then</paragraph>
+<paragraph id="13c00fe33494a1fb5198a633">tan(x − y) = (tan x − tan y)/(1 + tan x tan y)</paragraph>
+<paragraph id="3376bbd0cfce47f0648f2333">x, y: angles</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="c83d4b0a527cee178619ec00">Classic sign trap (tan): denominator uses the <b>opposite</b> sign.</paragraph>
+<paragraph id="60b1705b9cd20b8f37861163">“+ upstairs → − downstairs” and “− upstairs → + downstairs”.</paragraph>
+</div>
+
+<h3>Cotangent addition and subtraction (with restrictions)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="dcd393bba176a78f1c510785"><b>Why restrictions differ from tan:</b></paragraph>
+<ul>
+<li>cot θ undefined when sin θ = 0 → θ is a multiple of π</li>
+<li>So require: none of x, y, (x ± y) is a multiple of π</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="abe58af0240d757dc308aca3"><b>Cotangent of sum</b></paragraph>
+<paragraph id="e4619982548ed56d62360fa8">If none of x, y, (x + y) is a multiple of π, then</paragraph>
+<paragraph id="4f505d04faf10026daba9846">cot(x + y) = (cot x cot y − 1)/(cot x + cot y)</paragraph>
+<paragraph id="6c99d10dab883cd6bb7a973f">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="55d15dca6948f4fe742962de"><b>Cotangent of difference</b></paragraph>
+<paragraph id="b0644645d5fe9bcf8a38b4f0">If none of x, y, (x − y) is a multiple of π, then</paragraph>
+<paragraph id="92d8e3614943ec0b6fe6e715">cot(x − y) = (cot x cot y + 1)/(cot y − cot x)</paragraph>
+<paragraph id="4689ab07f19c32dca0b1e4f2">x, y: angles</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="00d8fdef704893c30f2905fa">For cot(x − y): denominator order matters → (cot y − cot x), NOT (cot x − cot y).</paragraph>
+</div>
+
+<h3>Double-angle identities</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d4a1adceb2e9f091158fd915"><b>Cosine double-angle (all equivalent forms)</b></paragraph>
+<paragraph id="941b4e3ef8b9e49fdd821e8a">cos 2x = cos²x − sin²x = 2cos²x − 1 = 1 − 2sin²x = (1 − tan²x)/(1 + tan²x)</paragraph>
+<paragraph id="d1b339ffb88d7de17a9ede8f">x: angle</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4710fc9e5cf79fa87e514df4">Pick the cos 2x form based on what you’re given:</paragraph>
+<ul>
+<li>Given sin x → cos 2x = 1 − 2sin²x</li>
+<li>Given cos x → cos 2x = 2cos²x − 1</li>
+<li>Given tan x → cos 2x = (1 − tan²x)/(1 + tan²x)</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="537b813321cf97aebf65074d"><b>Sine double-angle</b></paragraph>
+<paragraph id="19449b833a8a14b228904dbf">sin 2x = 2 sin x cos x = (2 tan x)/(1 + tan²x)</paragraph>
+<paragraph id="b1dc9e8a024f23f8f2c4eaa9">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6d73b4a43911414b37f7b947"><b>Tangent double-angle</b></paragraph>
+<paragraph id="72e4751b33b45ac0e73fd0ac">tan 2x = (2 tan x)/(1 − tan²x)</paragraph>
+<paragraph id="3300c3f1792dbf0cedfce9f3">x: angle</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6b78a6f37dd1cf11acae9960">tan 2x blows up when 1 − tan²x = 0 → tan x = ±1.</paragraph>
+<paragraph id="90b8829351f43ab88f4e432e">This matches 2x = π/2 + kπ where tan 2x is undefined.</paragraph>
+</div>
+
+<h3>Triple-angle identities</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="345a516945b7d755cb8dcd11"><b>Sine triple-angle</b></paragraph>
+<paragraph id="5461466fca9c65b070c27d50">sin 3x = 3 sin x − 4 sin³x</paragraph>
+<paragraph id="ea7ca9b7a296d29a33bc12f4">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c5a8b6dfa83ce5d635654d2a"><b>Cosine triple-angle</b></paragraph>
+<paragraph id="91af04094009c64b9d7f7229">cos 3x = 4 cos³x − 3 cos x</paragraph>
+<paragraph id="e6baef5a9d1b468bee6235cb">x: angle</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0c8a7b6a968954159191c678"><b>Tangent triple-angle</b></paragraph>
+<paragraph id="53b573c5b5400e1f84ac6ffd">tan 3x = (3 tan x − tan³x)/(1 − 3 tan²x)</paragraph>
+<paragraph id="706687beaa99295c2b4b2d27">x: angle</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="35255c518ead1002b2df12f3">For tan 3x, track the pattern: (3t − t³)/(1 − 3t²).</paragraph>
+<paragraph id="15166cf770fb27353e9d7858">Common error: flipping the sign in the denominator.</paragraph>
+</div>
+
+<h2>Sum-to-Product and Product-to-Sum Transformations</h2>
+
+<h3>Sum-to-product identities</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="45417399bbd14ae59261426d"><b>(i) cos x + cos y</b></paragraph>
+<paragraph id="30a6c257cab365f71dc27a0b">cos x + cos y = 2 cos((x + y)/2) cos((x − y)/2)</paragraph>
+<paragraph id="9fe9d5e2eac2ac238fb20365">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1cc255fffac8e6dd561b4779"><b>(ii) cos x − cos y</b></paragraph>
+<paragraph id="413aa10e9c34488e8fba80c5">cos x − cos y = −2 sin((x + y)/2) sin((x − y)/2)</paragraph>
+<paragraph id="7e9c8064efab3b97a4e024ae">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2702bb70b589dd92488b4fae"><b>(iii) sin x + sin y</b></paragraph>
+<paragraph id="0d8484af7050e965fcfc8f58">sin x + sin y = 2 sin((x + y)/2) cos((x − y)/2)</paragraph>
+<paragraph id="f57a56241804a88c96481b24">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ece51c56db3353fd92fc9723"><b>(iv) sin x − sin y</b></paragraph>
+<paragraph id="159ec084fc5e6e1af7605030">sin x − sin y = 2 cos((x + y)/2) sin((x − y)/2)</paragraph>
+<paragraph id="fab20b80936ed06dd968b0b3">x, y: angles</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="058da98f34b4e58bad8f66b4">Sum-to-product pattern spotting:</paragraph>
+<ul>
+<li>cos ± cos → (cos·cos) or (sin·sin); the “−” case has a leading minus</li>
+<li>sin ± sin → (sin·cos) or (cos·sin); no leading minus</li>
+<li>Angles become half-sum (x + y)/2 and half-diff (x − y)/2</li>
+</ul>
+</div>
+
+<h3>Product-to-sum identities</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="94debc5fc16f3a5f45c9b9ba"><b>(i) Product of cosines</b></paragraph>
+<paragraph id="d83af42d30e4c231ff245125">2 cos x cos y = cos(x + y) + cos(x − y)</paragraph>
+<paragraph id="bb28c1f41626a2a074098f30">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="5024a02443f784e547a1986d"><b>(ii) Product of sines</b></paragraph>
+<paragraph id="d8bbb2096284d6016c35f797">−2 sin x sin y = cos(x + y) − cos(x − y)</paragraph>
+<paragraph id="f9251afe89abc748d9c0cb89">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="0e5cc19e3baeb73514790aa7"><b>(iii) sin x cos y</b></paragraph>
+<paragraph id="036ecc6188beba147eb8f0e6">2 sin x cos y = sin(x + y) + sin(x − y)</paragraph>
+<paragraph id="8dd8cf4250172c25e51c38b1">x, y: angles</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="7864a2e832c13303b8352b97"><b>(iv) cos x sin y</b></paragraph>
+<paragraph id="042b3517f89027950b3832cf">2 cos x sin y = sin(x + y) − sin(x − y)</paragraph>
+<paragraph id="5d8b2426d02297278f4415cd">x, y: angles</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="3e9933a973c5c775485984c4">Don’t mix these:</paragraph>
+<ul>
+<li>2 sin x cos y → sin(x + y) + sin(x − y)</li>
+<li>2 cos x sin y → sin(x + y) − sin(x − y)</li>
+</ul>
+</div>
+
+<h2>Historical Notes and Applications (Height &amp; Distance)</h2>
+
+<h3>Historical development of trigonometry (India and beyond)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="78c35c9fecc3845e937be08a">Trigonometry study first started in India. Key ancient Indian mathematicians:</paragraph>
+  <ul>
+    <li>Aryabhatta (476)</li>
+    <li>Brahmagupta (598)</li>
+    <li>Bhaskara I (600)</li>
+    <li>Bhaskara II (1114)</li>
+  </ul>
+  <paragraph id="0dd263e163f66507e5d0dfaa">Knowledge travelled India → middle-east → Europe. Greeks had begun trig too, but their method was seen as clumsy; once the Indian approach became known, it was widely adopted.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="58093ae8f57f1672cd96a805">The forerunner of modern trig functions was the “sine of an angle.” Introducing sine is described as the main contribution of the <i>siddhantas</i> (Sanskrit astronomical works) to math history.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="2188195bc3ac60e05b0dee9f">More historical points:</paragraph>
+  <ul>
+    <li>Bhaskara I (about 600) gave formulae to find sine values for angles &gt; 90°.</li>
+    <li>16th-century Malayalam work <i>Yuktibhasa</i> gives a proof for expansion of sin(A + B).</li>
+    <li>Exact expressions for sin/cos of 18°, 36°, 54°, 72°, etc., are given by Bhaskara II.</li>
+  </ul>
+</div>
+
+<h3>Notation for inverse trigonometric functions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="347f02aad1cd920888d3f4c1">The symbols sin<sup>−1</sup>x, cos<sup>−1</sup>x, etc. (for arc sin x, arc cos x, etc.) were suggested by astronomer Sir John F. W. Hersehel (1813).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="84ddd2acf0cc63dedc4653ac">sin<sup>−1</sup>x means “inverse sine (arcsin)”, NOT 1/sin x. (Reciprocal is cosec x.)</paragraph>
+</div>
+
+<h3>Thales and height–distance problems (similar triangles)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="daf6a38ef64b0dbc59553799">Thales (about 600 B.C.) is closely linked with height &amp; distance problems. He’s credited with finding the height of a great Egyptian pyramid by comparing shadows of the pyramid and a staff/gnomon of known height, using proportionality.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="b5603f33f99061c690e07948"><b>Shadow proportion + tangent link</b></paragraph>
+  <paragraph id="6d2baf6e2c32a52261418a5d">H/S = h/s = tan(sun’s altitude)</paragraph>
+  <paragraph id="0ee0be83dda5cf6e3b18e8b3">H: height of pyramid (or tall object)</paragraph>
+  <paragraph id="342c0deb90e461b5e9b7bf67">S: length of pyramid’s shadow</paragraph>
+  <paragraph id="1e6df9640bae7342380c4ef4">h: height of staff/gnomon (known)</paragraph>
+  <paragraph id="8bf4aede145e20bf66cac3b1">s: length of staff’s shadow</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="e4dbfc48a1dbf085082c087e">Reason: sun’s rays make the same angle of elevation with the ground for both objects ⇒ the “height vs shadow” triangles are similar. So height/shadow is constant = tan(altitude).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="0d3d09dda14b325ff6b4ec3b">Thales is also said to have found the distance of a ship at sea using proportional sides of similar triangles. Similarity-based height–distance problems also appear in ancient Indian works.</paragraph>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

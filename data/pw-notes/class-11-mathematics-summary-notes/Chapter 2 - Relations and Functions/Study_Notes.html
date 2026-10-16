@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-02 : Relations and Functions</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="css/katex.min.css" rel="stylesheet"/>
+  <script defer="" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a92994e3f7fb9850c8e1e36/scripts/katex.min.js"></script>
+  <script defer="" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})" src="https://pikachu-books.vercel.app/api/reader/6a8d0f827d2ca2e8740871dd/6a92994e3f7fb9850c8e1e36/scripts/auto-render.min.js">
+  </script>
+  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-02 : Relations and Functions</h1>
+
+<h2>2.1 Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="794471fddcd3305df74bb2f6"><b>Pattern/relationship idea:</b> Much of mathematics studies <b>patterns</b>—recognisable links between quantities that vary.</paragraph>
+<paragraph id="e9f50a4b28e619bfed6b929d"><b>Relation (informal idea):</b> A relation describes how <b>two objects</b> are connected, typically in a specific <b>order</b> (e.g., “m is less than n”, “line l is parallel to line m”, “A is a subset of B”).</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="9c38d66e1acebb0a8ee9e31d">In this chapter (overall), we:</paragraph>
+<ul>
+<li>link <b>pairs of objects</b> taken from two sets,</li>
+<li>introduce <b>relations</b> between the objects in each pair,</li>
+<li>identify special relations that qualify as <b>functions</b>.</li>
+</ul>
+<paragraph id="b30751ceef94f5f2a28bc4c8"><b>Why functions matter:</b> A function is a mathematically precise correspondence between one quantity and another.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="a5c57893250070dbe4985561">Many real-world relationships (brother–sister, teacher–student) and mathematical relationships (≤, ∥, ⊆) involve <b>ordered pairs</b>; the order often changes the meaning.</paragraph>
+</div>
+
+<h2>2.2 Cartesian Products of Sets</h2>
+
+<h3>Ordered Pair: meaning and importance of order</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="99d44f4c553118ea06108c61"><b>Ordered pair:</b> If P and Q are sets, an ordered pair is written as <b>(p, q)</b> where <b>p ∈ P</b> and <b>q ∈ Q</b>. The order is fixed: first element from the first set, second element from the second set.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4d69a0c6e2a1e290150c85a4"><b>Order matters:</b> In general, <b>(p, q) ≠ (q, p)</b>. Example: (DL, 01) is not the same code as (01, DL).</paragraph>
+</div>
+
+<h3>Definition: Cartesian Product</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="a7139c37f4117455798d751a"><b>Definition 1 (Cartesian product):</b> For two non-empty sets P and Q,</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b4a6c286875ebd7a9c0add0e"><b>P × Q = { (p, q) : p ∈ P, q ∈ Q }</b></paragraph>
+<paragraph id="89dcb5a98e8d5d91ae3f30b9">P, Q: given sets</paragraph>
+<paragraph id="f6adc057cb8f407a90b7aa6f">(p, q): ordered pair with first element from P and second from Q</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="3bbd44bd5c9b2dc8ea123c99">If either set is empty (null), then the product is empty:</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4a84b122272bb65d531514cf"><b>If P = φ or Q = φ, then P × Q = φ</b></paragraph>
+<paragraph id="7d36cd3834a1434957456ff4">φ: empty (null) set</paragraph>
+</div>
+
+<h3>Illustrations of forming Cartesian products</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="a3d0822b87627f16f8295a51"><b>Method:</b> Fix the first element from the first set and pair it with <b>every</b> element of the second set; repeat for each first-set element. This ensures all ordered pairs are listed without omission.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4e0cf03df20354a88e916991"><b>Illustration 1:</b> A = {red, blue}, B = {b, c, s} (bag, coat, shirt)</paragraph>
+<ul>
+<li>A × B = {(red, b), (red, c), (red, s), (blue, b), (blue, c), (blue, s)}</li>
+<li>Total pairs = 6</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="10c8e1e98998c143644695a7"><b>Illustration 2 (licence codes):</b> A = {DL, MP, KA}, B = {01, 02, 03} with restriction: code begins with an element of A.</paragraph>
+<ul>
+<li>A × B = {(DL,01), (DL,02), (DL,03), (MP,01), (MP,02), (MP,03), (KA,01), (KA,02), (KA,03)}</li>
+<li>Total codes = 9</li>
+</ul>
+<paragraph id="bed2b23b9e0872de58c1a326">Key point: (DL, 01) and (01, DL) are different because ordered pairs depend on position.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="009985cc167ae82d8f10b229"><b>Illustration 3:</b> A = {a<sub>1</sub>, a<sub>2</sub>}, B = {b<sub>1</sub>, b<sub>2</sub>, b<sub>3</sub>, b<sub>4</sub>}</paragraph>
+<ul>
+<li>A × B = {(a<sub>1</sub>, b<sub>1</sub>), (a<sub>1</sub>, b<sub>2</sub>), (a<sub>1</sub>, b<sub>3</sub>), (a<sub>1</sub>, b<sub>4</sub>), (a<sub>2</sub>, b<sub>1</sub>), (a<sub>2</sub>, b<sub>2</sub>), (a<sub>2</sub>, b<sub>3</sub>), (a<sub>2</sub>, b<sub>4</sub>)}</li>
+<li>Total pairs = 8</li>
+</ul>
+<paragraph id="bb4d96b29931b8b47f2c4d06">If A and B are subsets of real numbers, these ordered pairs can represent coordinates of points in the plane. Then (a<sub>1</sub>, b<sub>2</sub>) represents a different point from (b<sub>2</sub>, a<sub>1</sub>).</paragraph>
+</div>
+
+<h3>Remarks (properties of ordered pairs and Cartesian products)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="1692a2c70407b89f116371d9"><b>(i) Equality of ordered pairs:</b> Two ordered pairs are equal iff corresponding components are equal.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b99228942e1b71ef02f0c053"><b>(a, b) = (c, d) ⇔ a = c and b = d</b></paragraph>
+<paragraph id="ec4335a40d1adc51e9b5c710">a, c: first components</paragraph>
+<paragraph id="ade898f2db7ba2dcb56cec12">b, d: second components</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b8077a6d6a979db9f25efaae"><b>(ii) Cardinality (finite sets):</b> If A has p elements and B has q elements, then A × B has pq elements.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c80ed6bf53a6aff47732ab7c"><b>If n(A) = p and n(B) = q, then n(A × B) = pq</b></paragraph>
+<paragraph id="f9c2e8c340502f9923696694">n(S): number of elements in set S (cardinality)</paragraph>
+<paragraph id="64d43d4c5b73ffd07d905626">p, q: sizes of A and B</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="70715caa35335936cf9fabda"><b>(iii) Infinite case:</b> If A and B are non-empty and at least one of them is infinite, then A × B is infinite.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e0a761dfd695b6187e961767"><b>(iv) Cartesian product of three sets (triples):</b></paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="c461e20bfc958f368346c319"><b>A × A × A = { (a, b, c) : a, b, c ∈ A }</b></paragraph>
+<paragraph id="b43b6b8ebf811b56ddc4244e">(a, b, c): ordered triplet</paragraph>
+<paragraph id="afd3d2c896c08d39501a6f18">a, b, c: elements of A in first, second, third positions respectively</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6c119f7a684035157a837f49">To prove/solve using ordered pair equality, always equate <b>first with first</b>, <b>second with second</b> (and similarly for triplets). Never cross-match components.</paragraph>
+</div>
+
+<h3>Example 1: Using equality of ordered pairs</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="34309ebb4fc6f59bed38821a"><b>Given:</b> (x + 1, y − 2) = (3, 1)</paragraph>
+<paragraph id="8f0cf3d0bf336f314bfa5737"><b>Use:</b> Equality of ordered pairs ⇒ corresponding components are equal.</paragraph>
+<ul>
+<li>x + 1 = 3 ⇒ x = 2</li>
+<li>y − 2 = 1 ⇒ y = 3</li>
+</ul>
+<paragraph id="dbfc84acbcbefea65e125625"><b>Answer:</b> x = 2, y = 3</paragraph>
+</div>
+
+<h3>Example 2: Showing P × Q need not equal Q × P</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="90b88b12ffb219bafd656fbc"><b>Given:</b> P = {a, b, c}, Q = {r}</paragraph>
+<ul>
+<li>P × Q = {(a, r), (b, r), (c, r)}</li>
+<li>Q × P = {(r, a), (r, b), (r, c)}</li>
+</ul>
+<paragraph id="ce77a9d0ddb45363fcda5e7c"><b>Conclusion:</b> P × Q ≠ Q × P because (a, r) ≠ (r, a) (order differs).</paragraph>
+<paragraph id="62535b1f07d02c66318f3437"><b>Extra point:</b> Even though the sets are not equal, they have the <b>same number</b> of elements (here, 3).</paragraph>
+</div>
+
+<h3>Example 3: Distributive-style identities with × over ∩ and ∪ (verification by listing)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="72102c00bbf43a6f74e5c290"><b>Given:</b> A = {1, 2, 3}, B = {3, 4}, C = {4, 5, 6}</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="40fe92bb0c756bffba2cd7cb"><b>(i) Find A × (B ∩ C)</b></paragraph>
+<ul>
+<li>B ∩ C = {4}</li>
+<li>A × (B ∩ C) = {(1,4), (2,4), (3,4)}</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="1a889bda677cf09d75c88356"><b>(ii) Find (A × B) ∩ (A × C)</b></paragraph>
+<ul>
+<li>A × B = {(1,3), (1,4), (2,3), (2,4), (3,3), (3,4)}</li>
+<li>A × C = {(1,4), (1,5), (1,6), (2,4), (2,5), (2,6), (3,4), (3,5), (3,6)}</li>
+<li>Common pairs ⇒ (A × B) ∩ (A × C) = {(1,4), (2,4), (3,4)}</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="27561620265683ecf43678d7"><b>(iii) Find A × (B ∪ C)</b></paragraph>
+<ul>
+<li>B ∪ C = {3, 4, 5, 6}</li>
+<li>A × (B ∪ C) = {(1,3), (1,4), (1,5), (1,6), (2,3), (2,4), (2,5), (2,6), (3,3), (3,4), (3,5), (3,6)}</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="27350a4decd8ac1663ef937a"><b>(iv) Find (A × B) ∪ (A × C)</b></paragraph>
+<ul>
+<li>Using the sets from (ii), union collects all pairs appearing in either product:</li>
+<li>(A × B) ∪ (A × C) = {(1,3), (1,4), (1,5), (1,6), (2,3), (2,4), (2,5), (2,6), (3,3), (3,4), (3,5), (3,6)}</li>
+</ul>
+<paragraph id="6607f78e28c90a7405e23f48">Here, results in (iii) and (iv) match (verified by explicit listing).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="9f8dd4774c30095c77f596be">For questions involving × with ∩ or ∪, the safest exam method is: compute the set operation first (∩ or ∪), then form the product; and separately form products and apply ∩/∪, then compare.</paragraph>
+</div>
+
+<h3>Example 4: Cartesian product of three identical sets (triplets)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="2f1e1b943e66687be0dfbb54"><b>Given:</b> P = {1, 2}</paragraph>
+<paragraph id="b9ee35399657a4a95be6a918"><b>Form:</b> P × P × P</paragraph>
+<ul>
+<li>P × P × P = {(1,1,1), (1,1,2), (1,2,1), (1,2,2), (2,1,1), (2,1,2), (2,2,1), (2,2,2)}</li>
+</ul>
+</div>
+
+<h3>Example 5: Geometric meaning of R × R and R × R × R</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="36a5601d30395b7ec01f8976"><b>Given:</b> R = set of all real numbers</paragraph>
+<ul>
+<li>R × R = {(x, y) : x, y ∈ R} represents coordinates of all points in <b>two-dimensional space</b> (the plane).</li>
+<li>R × R × R = {(x, y, z) : x, y, z ∈ R} represents coordinates of all points in <b>three-dimensional space</b>.</li>
+</ul>
+</div>
+
+<h3>Example 6: Recovering sets A and B from A × B</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="e2a91f55cc78ba70f8bb0302"><b>Given:</b> A × B = {(p, q), (p, r), (m, q), (m, r)}</paragraph>
+<paragraph id="ed242e8c27d480267fa9c0b5"><b>Idea:</b></paragraph>
+<ul>
+<li>The set of <b>first components</b> of ordered pairs in A × B is A.</li>
+<li>The set of <b>second components</b> of ordered pairs in A × B is B.</li>
+</ul>
+<paragraph id="61a8aa8fffe8b0fba05331e8"><b>Hence:</b></paragraph>
+<ul>
+<li>A = {p, m}</li>
+<li>B = {q, r}</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="117d0e2e9623fdedd6571ba8">When reconstructing A and B from A × B, ensure the product contains <b>all combinations</b> between the identified first-elements set and second-elements set; if any combination is missing, the given set is not a full Cartesian product.</paragraph>
+</div>
+
+<h2>2.3 Relations</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="e4bd1b2d17441cbb7dcae925"><b>Relation (from A to B)</b>: If A and B are non-empty sets, a relation R from A to B is any <b>subset</b> of the cartesian product A × B, obtained by specifying a rule/relationship between the first and second elements of ordered pairs in A × B.</paragraph>
+<paragraph id="4aed994be16406ac4bdd89e2">If (x, y) ∈ R, then <b>y is called the image of x</b> (under the relation).</paragraph>
+</div>
+
+<h3>Example: Forming a relation as a subset of a cartesian product</h3>
+<paragraph id="0db7843d779cbcb33c6d4b5a">Let P = {a, b, c} and Q = {Ali, Bhanu, Binoy, Chandra, Divya}.</paragraph>
+<ul>
+<li>Cartesian product P × Q has 3 × 5 = 15 ordered pairs:
+<paragraph id="8f33403633932c0128968e39">P × Q = {(a, Ali), (a, Bhanu), (a, Binoy), ..., (c, Divya)}.</paragraph>
+</li>
+<li>Define relation R by: “x is the first letter of the name y”, with x ∈ P, y ∈ Q:
+<paragraph id="6fb88f119caf439e5bbb7063">R = {(x, y) : x is the first letter of the name y, x ∈ P, y ∈ Q}.</paragraph>
+<paragraph id="0671bad85dd30eb3e4d0328f">So, R = {(a, Ali), (b, Bhanu), (b, Binoy), (c, Chandra)}.</paragraph>
+</li>
+<li>An <b>arrow diagram</b> gives a visual representation of such pairings.</li>
+</ul>
+
+<h3>Domain, codomain, range</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="cd8b1c532197104214301da5"><b>Domain of a relation R</b> (from A to B): the set of all <b>first elements</b> of ordered pairs in R.</paragraph>
+<paragraph id="c6128c450b680a9f6d2531a0"><b>Range of a relation R</b> (from A to B): the set of all <b>second elements</b> of ordered pairs in R.</paragraph>
+<paragraph id="7ebf43e5549b315975f00373"><b>Codomain</b>: the entire set <b>B</b> (the target set).</paragraph>
+<paragraph id="01e351bcd4bac482c5e4bf5e"><b>Important inclusion</b>: range ⊂ codomain.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="858bb7a950a3892e70247d0f"><b>Domain is taken from what actually appears in R</b>, not automatically all of A (unless the relation is a function with domain A).</paragraph>
+<paragraph id="e6e51aa41855accda1279775"><b>Range is taken from what actually appears in R</b>, not automatically all of B.</paragraph>
+</div>
+
+<h3>Representing relations</h3>
+<ul>
+<li><b>Roster form</b>: list all ordered pairs explicitly, e.g. {(1,2), (2,3), ...}.</li>
+<li><b>Set-builder form</b>: describe the rule, e.g. {(x, y) : y = x + 1, x ∈ A, y ∈ A}.</li>
+<li><b>Arrow diagram</b>: visual linking from elements of first set to second set.</li>
+</ul>
+
+<h3>Example 7: Relation defined by a rule on a set</h3>
+<paragraph id="50dbb8d0526c5f18f9ed538a">Let A = {1, 2, 3, 4, 5, 6}. Define R from A to A by:</paragraph>
+<paragraph id="4bc35a9591cddd3e9c14e625">R = {(x, y) : y = x + 1}.</paragraph>
+<ol>
+<li>
+<paragraph id="86ad86b2b9f449608cf6201d"><b>Find the ordered pairs (roster form):</b></paragraph>
+<paragraph id="f84b783924a6141596800864">For x ∈ A, y = x + 1 must also lie in A.</paragraph>
+<ul>
+<li>x = 1 → y = 2 ⇒ (1,2)</li>
+<li>x = 2 → y = 3 ⇒ (2,3)</li>
+<li>x = 3 → y = 4 ⇒ (3,4)</li>
+<li>x = 4 → y = 5 ⇒ (4,5)</li>
+<li>x = 5 → y = 6 ⇒ (5,6)</li>
+<li>x = 6 → y = 7 (not in A) ⇒ no pair</li>
+</ul>
+<paragraph id="34c636263e9e1436b4786518">So, R = {(1,2), (2,3), (3,4), (4,5), (5,6)}.</paragraph>
+<paragraph id="aa997570a0b816b424eca4c3">Arrow diagram: 1→2, 2→3, 3→4, 4→5, 5→6 (6 has no arrow).</paragraph>
+</li>
+<li>
+<paragraph id="37d0d5c5dd54e523e7f5b632"><b>Domain, codomain, range:</b></paragraph>
+<ul>
+<li>Domain = {1, 2, 3, 4, 5} (first elements that actually occur)</li>
+<li>Codomain = A = {1, 2, 3, 4, 5, 6}</li>
+<li>Range = {2, 3, 4, 5, 6} (second elements that actually occur)</li>
+</ul>
+</li>
+</ol>
+
+<h3>Example 8: Writing a relation in set-builder and roster forms; domain and range</h3>
+<paragraph id="35441b1bcaeaca07f2c94b98">From the given arrow diagram between sets P and Q, the relation is:</paragraph>
+<paragraph id="7a1609fa36ba95232059a641">“x is the square of y”.</paragraph>
+<ol>
+<li>
+<paragraph id="510f17de91f1fbf32ac2ee05"><b>Set-builder form:</b></paragraph>
+<paragraph id="75bd5a1f3e5c2f34a086a801">R = {(x, y) : x is the square of y, x ∈ P, y ∈ Q}.</paragraph>
+</li>
+<li>
+<paragraph id="685c8bc5a3150f1b8a99973a"><b>Roster form:</b></paragraph>
+<paragraph id="54f9ef0c2199ec93a56e5a83">R = {(9, 3), (9, −3), (4, 2), (4, −2), (25, 5), (25, −5)}.</paragraph>
+</li>
+<li>
+<paragraph id="453111860f1c765306739470"><b>Domain and range:</b></paragraph>
+<ul>
+<li>Domain = {4, 9, 25} (the first elements appearing)</li>
+<li>Range = {−2, 2, −3, 3, −5, 5} (the second elements appearing)</li>
+</ul>
+<paragraph id="67fbc53d36f977b9942bf267"><b>Codomain</b> is the whole set Q.</paragraph>
+</li>
+</ol>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6f42b3a189bdfb45d304b50c">An element of the codomain may have <b>no preimage</b> under a relation. Here, element 1 is not related to any element of set P.</paragraph>
+</div>
+
+<h3>Total number of relations from A to B</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="13c6d951b907a8b28a239465"><b>Total relations from A to B</b> = number of subsets of A × B = 2<sup>pq</sup></paragraph>
+<paragraph id="a5aa059344dc6ce922ab0c68">p = n(A) (number of elements in A)</paragraph>
+<paragraph id="cbb0a79d696102c29b18c474">q = n(B) (number of elements in B)</paragraph>
+<paragraph id="5cd52687ae23c4cfa7f6593d">n(A × B) = pq</paragraph>
+</div>
+
+<h3>Example 9: Counting relations</h3>
+<paragraph id="3b22e9f629e9de90fed1d1b4">Let A = {1, 2} and B = {3, 4}.</paragraph>
+<ul>
+<li>A × B = {(1,3), (1,4), (2,3), (2,4)} ⇒ n(A × B) = 4</li>
+<li>Number of subsets of A × B = 2<sup>4</sup> = 16</li>
+<li>Therefore, the number of relations from A to B is 16.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6e6ab6df6320940468cc3d09"><b>Relation on A</b>: A relation R from A to A is also described as a <b>relation on A</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="06852896625f536e6123f3bd"><b>Common exam slips:</b></paragraph>
+<ul>
+<li>Do not confuse <b>codomain</b> (entire B) with <b>range</b> (only values actually hit).</li>
+<li>When listing pairs from a rule, ensure both x and y lie in the specified sets; otherwise the pair is not included (Example 7: x = 6 gives y = 7 which is not in A).</li>
+<li>Counting relations: first find n(A×B)=pq, then compute 2<sup>pq</sup>. Don’t forget the exponent is pq.</li>
+</ul>
+</div>
+
+<h2>2.4 Functions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="14ad4e0332942a3320ee27ec"><b>Function</b>: A relation f from a set A to a set B is a function if <b>every element of A has one and only one image in B</b>.</paragraph>
+<paragraph id="b36b6c00a60e3995f4276a24">Equivalently:</paragraph>
+<ul>
+<li>The <b>domain</b> of f is <b>all of A</b>.</li>
+<li>No two distinct ordered pairs in f have the same first element (i.e. each a ∈ A appears exactly once as a first component).</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="233da26919d1a1c0983ab372"><b>Function notation</b>: If f is a function from A to B and (a, b) ∈ f, then <b>f(a) = b</b>.</paragraph>
+<ul>
+<li>b is the <b>image</b> of a under f.</li>
+<li>a is the <b>preimage</b> of b under f.</li>
+</ul>
+<paragraph id="ce7a0bc0e9f0050aca2652cc">Denoted by: <b>f: A → B</b>.</paragraph>
+</div>
+
+<h3>Why some earlier relations are not functions</h3>
+<ul>
+<li>Example 7 is <b>not</b> a function because <b>6 has no image</b> (so domain is not all of A).</li>
+<li>Example 8 is <b>not</b> a function because some domain elements have <b>more than one image</b> (e.g. 9 relates to 3 and −3, etc.).</li>
+<li>Example 9 is <b>not</b> a function because it is not a specific single-valued mapping rule for every element of A; it is about the <b>set of all relations</b>, many of which fail the “exactly one image for each element of A” condition.</li>
+</ul>
+
+<h3>Example 10: Function check using domain/range</h3>
+<paragraph id="1749ada6cd6f195715f27729">Let N be the set of natural numbers. Define relation R on N:</paragraph>
+<paragraph id="b517999fcb828c440b8d3067">R = {(x, y) : y = 2x, x, y ∈ N}.</paragraph>
+<ul>
+<li>Domain = N (every natural number x is allowed)</li>
+<li>Codomain = N</li>
+<li>Range = set of <b>even natural numbers</b> (values 2x)</li>
+</ul>
+<paragraph id="7c9f4b597b9f2695c6732dbe"><b>Is it a function?</b> Yes, because each x ∈ N produces exactly one y = 2x.</paragraph>
+
+<h3>Example 11: Testing whether a relation is a function</h3>
+<paragraph id="89e4378779dcb2b6fcf5185d">State whether each relation is a function, with reason.</paragraph>
+<ol>
+<li>
+<paragraph id="78b036183b7a472fd217efcf">R = {(2,1), (3,1), (4,2)}</paragraph>
+<ul>
+<li>First elements: 2, 3, 4 each appear once and each has a unique image.</li>
+<li>Therefore, <b>this is a function</b>.</li>
+</ul>
+</li>
+<li>
+<paragraph id="7708836e9bb4f8e692953522">R = {(2,2), (2,4), (3,3), (4,4)}</paragraph>
+<ul>
+<li>First element 2 has two images (2 and 4).</li>
+<li>Therefore, <b>this is not a function</b>.</li>
+</ul>
+</li>
+<li>
+<paragraph id="1310f134b9dcb421316fc61b">R = {(1,2), (2,3), (3,4), (4,5), (5,6), (6,7)}</paragraph>
+<ul>
+<li>Each first element has exactly one image.</li>
+<li>Therefore, <b>this is a function</b>.</li>
+</ul>
+</li>
+</ol>
+
+<h3>Real valued function and real function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="c05efe9f6680574e5e76c20f"><b>Real valued function</b>: A function whose range is either <b>R</b> (the set of real numbers) or a subset of <b>R</b>.</paragraph>
+<paragraph id="0e5b659390e87c110f94e424"><b>Real function</b>: A real valued function whose domain is also either <b>R</b> or a subset of <b>R</b>.</paragraph>
+</div>
+
+<h3>Example 12: Evaluating a function from a formula</h3>
+<paragraph id="9ada6f5639979bf09b82c1e4">Let N be the set of natural numbers. Define a (real valued) function f: N → N by:</paragraph>
+<paragraph id="e334f26343fabbae130ee6c8">f(x) = 2x + 1.</paragraph>
+<paragraph id="2e4e12b362694abc1273bb46">Compute f(1) to f(7):</paragraph>
+<ul>
+<li>f(1) = 2(1) + 1 = 3</li>
+<li>f(2) = 2(2) + 1 = 5</li>
+<li>f(3) = 2(3) + 1 = 7</li>
+<li>f(4) = 2(4) + 1 = 9</li>
+<li>f(5) = 2(5) + 1 = 11</li>
+<li>f(6) = 2(6) + 1 = 13</li>
+<li>f(7) = 2(7) + 1 = 15</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="8811216e5e0256e9debb1e1a"><b>Function check checklist (exam):</b></paragraph>
+<ul>
+<li>Every element of A must have an image (no missing arrows from A).</li>
+<li>Each element of A must have exactly one image (no “splitting” into two arrows).</li>
+<li>Many-to-one is allowed (different a values may share the same image), as in Example 11(i).</li>
+</ul>
+</div>
+
+<h2>2.4.1 Some functions and their graphs</h2>
+
+<h3>(i) Identity function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="94e1bd11a02f0b9ede3786f9">Let R be the set of real numbers. Define f: R → R by:</paragraph>
+<paragraph id="bbeebfda16a1b6e810d16a1b">y = f(x) = x for each x ∈ R.</paragraph>
+<paragraph id="9242b1356822cb875fc45a3d">This is called the <b>identity function</b>.</paragraph>
+</div>
+<ul>
+<li>Domain = R</li>
+<li>Range = R</li>
+<li>Graph: straight line y = x, passing through the origin.</li>
+</ul>
+
+<h3>(ii) Constant function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="056c5dfbbc9231b8f606ff96">Define f: R → R by:</paragraph>
+<paragraph id="3611ebf3405ba0b72ed6015b">y = f(x) = c for all x ∈ R, where c is a constant.</paragraph>
+<paragraph id="c0154ee80bcaf1edb6983fa5">This is called a <b>constant function</b>.</paragraph>
+</div>
+<ul>
+<li>Domain = R</li>
+<li>Range = {c} (a single-element set)</li>
+</ul>
+
+<h2>Graphs of Some Standard Real Functions (continued)</h2>
+
+<h3>Constant function: graph parallel to x-axis</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5680e44a10ff2a3ad08b3d68">If a function has the same value for every real input (e.g., f(x) = 3 for all x ∈ R), then its graph is a horizontal straight line (parallel to the x-axis) at height y = 3.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="aeecb3490b86d4e4261939ee">A constant function has domain typically R (unless restricted) and range a single value {c}.</paragraph>
+</div>
+
+<h3>Polynomial function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="4684bf7b78ff8c3cbc3bc288">A function f : R → R is a <b>polynomial function</b> if for each x ∈ R,</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4e60c48ea93a4e9917d2ede3">f(x) = a<sub>0</sub> + a<sub>1</sub>x + a<sub>2</sub>x<sup>2</sup> + ... + a<sub>n</sub>x<sup>n</sup></paragraph>
+<paragraph id="353e1047fdd5638045006e32">a<sub>0</sub>, a<sub>1</sub>, ..., a<sub>n</sub> ∈ R: real coefficients</paragraph>
+<paragraph id="a735dc0b0d8502e6ff15a805">n: a non-negative integer (0, 1, 2, ...)</paragraph>
+<paragraph id="e968705cd2053c6c0b239313">x ∈ R: real variable</paragraph>
+</div>
+<ul>
+<li>Examples of polynomial functions:
+<ul>
+<li>f(x) = x<sup>3</sup> − x<sup>2</sup> + 2</li>
+<li>g(x) = x<sup>4</sup> + 2x</li>
+</ul>
+</li>
+<li>Non-example:
+<ul>
+<li>h(x) = (2/3)x + 2x is <b>not</b> a polynomial function.</li>
+</ul>
+</li>
+</ul>
+<div class="remember-box">
+<paragraph id="309ad86c2541d82b68d28571">To be a polynomial: all powers of x must be non-negative integers. Any fractional/negative power, x in denominator, or x under a root breaks “polynomial”. (This is the intended reason for “Why?”)</paragraph>
+</div>
+
+<h3>Example 13: f(x) = x<sup>2</sup> (table, domain, range, graph)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="16e7fb13eced28cad084a83f">Given f : R → R defined by y = f(x) = x<sup>2</sup>, evaluate y for given x-values, then identify domain and range, and sketch the graph.</paragraph>
+</div>
+<ul>
+<li>Compute using y = x<sup>2</sup>:
+<ul>
+<li>x = −4 ⇒ y = 16</li>
+<li>x = −3 ⇒ y = 9</li>
+<li>x = −2 ⇒ y = 4</li>
+<li>x = −1 ⇒ y = 1</li>
+<li>x = 0 ⇒ y = 0</li>
+<li>x = 1 ⇒ y = 1</li>
+<li>x = 2 ⇒ y = 4</li>
+<li>x = 3 ⇒ y = 9</li>
+<li>x = 4 ⇒ y = 16</li>
+</ul>
+</li>
+<li>Domain of f: {x : x ∈ R}</li>
+<li>Range of f: {x<sup>2</sup> : x ∈ R} (i.e., all non-negative real numbers)</li>
+<li>Graph: parabola y = x<sup>2</sup>, symmetric about the y-axis, vertex at (0,0).</li>
+</ul>
+<div class="remember-box">
+<paragraph id="4d6c0788e11cb2602c1a9ed9">For y = x<sup>2</sup>, negative and positive x give the same y-value; do not list negative values in the range.</paragraph>
+</div>
+
+<h3>Example 14: f(x) = x<sup>3</sup> (graph)</h3>
+<ul>
+<li>Evaluate at some integers to plot points:
+<ul>
+<li>f(0)=0</li>
+<li>f(1)=1, f(−1)=−1</li>
+<li>f(2)=8, f(−2)=−8</li>
+<li>f(3)=27, f(−3)=−27</li>
+</ul>
+</li>
+<li>So the function as a set of ordered pairs: f = {(x, x<sup>3</sup>) : x ∈ R}.</li>
+<li>Graph: the standard cubic curve through the origin, increasing for all x (odd symmetry about origin).</li>
+</ul>
+
+<h3>Rational functions</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5dcc9afcd26d42e7993343e6"><b>Rational functions</b> are functions of the form f(x)/g(x), where f(x) and g(x) are polynomial functions, defined on a domain where g(x) ≠ 0.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="28e2f5d76102af6228ba13aa">The domain of a rational function excludes values of x that make the denominator zero.</paragraph>
+</div>
+
+<h3>Example 15: f(x) = 1/x (table, domain, range, graph)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="88d498c9e277b41e0509d43c">Define f : R − {0} → R by f(x) = 1/x. Evaluate at given x-values and determine domain and range.</paragraph>
+</div>
+<ul>
+<li>Table values:
+<ul>
+<li>x = −2 ⇒ y = −0.5</li>
+<li>x = −1.5 ⇒ y ≈ −0.67</li>
+<li>x = −1 ⇒ y = −1</li>
+<li>x = −0.5 ⇒ y = −2</li>
+<li>x = 0.25 ⇒ y = 4</li>
+<li>x = 0.5 ⇒ y = 2</li>
+<li>x = 1 ⇒ y = 1</li>
+<li>x = 1.5 ⇒ y ≈ 0.67</li>
+<li>x = 2 ⇒ y = 0.5</li>
+</ul>
+</li>
+<li>Domain: all real numbers except 0, i.e., R − {0}.</li>
+<li>Range: all real numbers except 0, i.e., R − {0} (since 1/x can never be 0).</li>
+<li>Graph: rectangular hyperbola with two branches (in quadrants I and III), approaching axes as asymptotes.</li>
+</ul>
+<div class="remember-box">
+<paragraph id="e12075eb22ce0c3298b0076d">For 1/x: x = 0 is never allowed (undefined), and y = 0 never occurs (impossible output).</paragraph>
+</div>
+
+<h3>Modulus function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="fe4994067ae1ce889154acde">The function f : R → R defined by f(x) = |x| is called the <b>modulus function</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="d32ae56dd313a3e3d3e2e923">|x| = x, if x ≥ 0</paragraph>
+<paragraph id="b70fddc158b6a8bc2e327cfd">|x| = −x, if x &lt; 0</paragraph>
+<paragraph id="c6cf97e31af1345498bc7501">x ∈ R: input real number</paragraph>
+</div>
+<ul>
+<li>Graph: V-shaped graph with vertex at (0,0), symmetric about the y-axis; consists of lines y = x (for x ≥ 0) and y = −x (for x &lt; 0).</li>
+</ul>
+
+<h3>Signum function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f9c504c8734b5f108e9da784">The function f : R → R defined below is called the <b>signum function</b>.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e5ebc5b0d604f8baae6a6259">f(x) = 1, if x &gt; 0</paragraph>
+<paragraph id="f34f4b886b972878c6a91fc1">f(x) = 0, if x = 0</paragraph>
+<paragraph id="bc3ec4a01fa8ebf1df5c6a35">f(x) = −1, if x &lt; 0</paragraph>
+<paragraph id="2d77b43707899b9fd98a3e61">x ∈ R: input real number</paragraph>
+</div>
+<ul>
+<li>Domain: R</li>
+<li>Range: {−1, 0, 1}</li>
+<li>Graph: three horizontal “levels”: y = 1 for x &gt; 0, y = −1 for x &lt; 0, and the single point (0,0) (with open/closed circles as appropriate in a sketch).</li>
+</ul>
+<div class="remember-box">
+<paragraph id="26be3d663fd97d4697514283">At x = 0, signum is exactly 0 (do not confuse with 1 or −1).</paragraph>
+</div>
+
+<h3>Greatest integer function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="396b5e244952762ce23da053">The function f : R → R defined by f(x) = [x], x ∈ R, is called the <b>greatest integer function</b>. It gives the greatest integer less than or equal to x.</paragraph>
+</div>
+<ul>
+<li>From the definition:
+<ul>
+<li>[x] = −1 for −1 ≤ x &lt; 0</li>
+<li>[x] = 0 for 0 ≤ x &lt; 1</li>
+<li>[x] = 1 for 1 ≤ x &lt; 2</li>
+<li>[x] = 2 for 2 ≤ x &lt; 3, and so on.</li>
+</ul>
+</li>
+<li>Graph: step-like graph with horizontal segments on each interval [n, n+1), taking value n; closed at left endpoint and open at right endpoint.</li>
+</ul>
+<div class="remember-box">
+<paragraph id="52159bfcea9aa54706a92a51">Key endpoint rule: [n] = n, but as x approaches (n+1) from the left, value stays n; at x = n+1 it “jumps” to n+1.</paragraph>
+</div>
+
+<h2>2.4.2 Algebra of Real Functions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="970d6baac7a4e3a19fcb2a8a">Given real functions f and g on the same set X ⊂ R, we can form new functions by adding, subtracting, multiplying (by a scalar or pointwise), and dividing (where denominator is nonzero).</paragraph>
+</div>
+
+<h3>(i) Addition of two real functions</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="776702076e8e06d06903c302">(f + g)(x) = f(x) + g(x), for all x ∈ X</paragraph>
+<paragraph id="96166955c03298ea6af59714">f, g : X → R; X ⊂ R</paragraph>
+</div>
+
+<h3>(ii) Subtraction of a real function from another</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="2752464a79dd6f51154b1dd2">(f − g)(x) = f(x) − g(x), for all x ∈ X</paragraph>
+<paragraph id="5e2b666097dc10e62becb300">f, g : X → R; X ⊂ R</paragraph>
+</div>
+
+<h3>(iii) Multiplication by a scalar</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e571e869f5d79b733fab70e5">(αf)(x) = α f(x), for all x ∈ X</paragraph>
+<paragraph id="23d27c3a3dba80ac40e577fb">α ∈ R: scalar (real number)</paragraph>
+<paragraph id="5884ca3f76466525a409b2d5">f : X → R</paragraph>
+</div>
+
+<h3>(iv) Multiplication of two real functions (pointwise multiplication)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="96dda96e4661c0387e6052fe">(fg)(x) = f(x)g(x), for all x ∈ X</paragraph>
+<paragraph id="b747463107b1c2cf73ae9483">f, g : X → R</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ccd24bbe81f3ee55bbc5937f">This multiplication is called <b>pointwise multiplication</b> because the outputs are multiplied at each x.</paragraph>
+</div>
+
+<h3>(v) Quotient of two real functions</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="ea66ae44947cecda364a45c9">(f/g)(x) = f(x)/g(x), provided g(x) ≠ 0, x ∈ X</paragraph>
+<paragraph id="c884b31a11986343d57e8f13">f, g : X → R; X ⊂ R</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="52e662f2917e71f53bdf78b7">For (f/g), the new domain is the set of x in X where g(x) ≠ 0.</paragraph>
+</div>
+
+<h3>Example 16: Operations on f(x) = x<sup>2</sup>, g(x) = 2x + 1</h3>
+<ul>
+<li>(f + g)(x) = x<sup>2</sup> + (2x + 1) = x<sup>2</sup> + 2x + 1</li>
+<li>(f − g)(x) = x<sup>2</sup> − (2x + 1) = x<sup>2</sup> − 2x − 1</li>
+<li>(fg)(x) = x<sup>2</sup>(2x + 1) = 2x<sup>3</sup> + x<sup>2</sup></li>
+<li>(f/g)(x) = x<sup>2</sup>/(2x + 1), with restriction 2x + 1 ≠ 0 ⇒ x ≠ −1/2</li>
+</ul>
+<div class="remember-box">
+<paragraph id="1dd27fe9de81ff15bafd69b4">When dividing by g(x), always solve g(x)=0 and exclude those x-values.</paragraph>
+</div>
+
+<h3>Example 17: Operations on f(x) = √x and g(x) = x (domain: non-negative reals)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="99a26cc82f1425171957b4b2">Both functions are defined over the set of non-negative real numbers (x ≥ 0). For the quotient f/g, additionally require x ≠ 0.</paragraph>
+</div>
+<ul>
+<li>(f + g)(x) = √x + x</li>
+<li>(f − g)(x) = √x − x</li>
+<li>(fg)(x) = (√x)(x) = x√x = x<sup>3/2</sup></li>
+<li>(f/g)(x) = (√x)/x = 1/√x, with x ≠ 0 (so x &gt; 0)</li>
+</ul>
+<div class="remember-box">
+<paragraph id="cf5b3c34a9d64173e78d779e">Common slip: writing √x / x = √(x/x) = 1 is wrong. Correct simplification is √x / x = 1/√x (for x &gt; 0).</paragraph>
+</div>
+
+<h2>Miscellaneous Examples (from this portion)</h2>
+
+<h3>Example 18: Linear function f(x) = x + 10 and its graph</h3>
+<ul>
+<li>Compute a few values to plot:
+<ul>
+<li>f(0)=10, f(1)=11, f(2)=12, …, f(10)=20</li>
+<li>f(−1)=9, f(−2)=8, …, f(−10)=0</li>
+</ul>
+</li>
+<li>Graph: a straight line with slope 1 and y-intercept 10 (passes through (0,10) and (−10,0)).</li>
+</ul>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b09a9d9df84cdcc951416217"><b>Remark (Linear function):</b> A function of the form f(x) = mx + c, x ∈ R, is called a <b>linear function</b>, where m and c are constants.</paragraph>
+</div>
+
+<h3>Example 19: Relation R on Q defined by a − b ∈ Z (show it is an equivalence relation)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="1ff1182137fcd6563a68555f">Let R be a relation from Q to Q defined by R = {(a, b) : a, b ∈ Q and a − b ∈ Z}. The three properties below establish that R is an equivalence relation (reflexive, symmetric, transitive).</paragraph>
+</div>
+<ol>
+<li>
+<paragraph id="6b925d662c53f10edca71251">(i) Reflexive: (a, a) ∈ R for all a ∈ Q</paragraph>
+<ul>
+<li>a − a = 0 ∈ Z ⇒ (a, a) ∈ R.</li>
+</ul>
+</li>
+<li>
+<paragraph id="f091fd0c38ff202f6ac0c720">(ii) Symmetric: (a, b) ∈ R ⇒ (b, a) ∈ R</paragraph>
+<ul>
+<li>(a, b) ∈ R ⇒ a − b ∈ Z</li>
+<li>Then b − a = −(a − b) ∈ Z ⇒ (b, a) ∈ R.</li>
+</ul>
+</li>
+<li>
+<paragraph id="13b217893e4efb82c52827b7">(iii) Transitive: (a, b) ∈ R and (b, c) ∈ R ⇒ (a, c) ∈ R</paragraph>
+<ul>
+<li>a − b ∈ Z and b − c ∈ Z</li>
+<li>Add: (a − b) + (b − c) = a − c ∈ Z ⇒ (a, c) ∈ R.</li>
+</ul>
+</li>
+</ol>
+<div class="remember-box">
+<paragraph id="137d5ef97a0b11f444b85163">For transitivity here, the key step is writing a − c as (a − b) + (b − c) so it is an integer sum of integers.</paragraph>
+</div>
+
+<h3>Example 20: Find f(x) given a linear function as a set of ordered pairs</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d6ca3f6d28dca7648d1551f2">Given f = {(1,1), (2,3), (0, −1), (−1, −3)} is a linear function from Z into Z. For a linear function, assume f(x) = mx + c and use given points to determine m and c.</paragraph>
+</div>
+<ul>
+<li>Since (1, 1) ∈ f, we have f(1) = m + c = 1.</li>
+<li>Since (0, −1) ∈ f, we have f(0) = c = −1.</li>
+<li>So m = 2 and therefore f(x) = 2x − 1.</li>
+</ul>
+<div class="remember-box">
+<paragraph id="a7ed57877d3ddd6a6e4d9e57">Use the point with x = 0 first whenever available: it directly gives c (the y-intercept).</paragraph>
+</div>
+
+<h3>Example 21: Domain of a rational function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="1ee8e6a54ad8cd8274055f17">To find the domain of a rational function, exclude real x-values that make the denominator zero.</paragraph>
+</div>
+<paragraph id="512b272988bfb9eab412424c">Given:</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="a1d9a3a5325962a4552fdbca">f(x) = (x<sup>2</sup> + 3x + 5)/(x<sup>2</sup> − 5x + 4)</paragraph>
+<paragraph id="fab16f6a38b3bc719e78717c">x ∈ R</paragraph>
+</div>
+<ul>
+<li>Factor denominator: x<sup>2</sup> − 5x + 4 = (x − 4)(x − 1).</li>
+<li>Denominator = 0 when x = 4 or x = 1.</li>
+<li>Domain = R − {1, 4}.</li>
+</ul>
+
+<h3>Example 22: Graph of a piecewise-defined function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="3774dbcb84b0f24db6d5a589">A piecewise function is graphed by graphing each formula on its specified interval, handling boundary points carefully.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="f6ff2772a6a66affd3014fa7">f(x) = 1 − x, for x &lt; 0</paragraph>
+<paragraph id="ea249f1d5175184446d231d1">f(x) = x + 1, for x &gt; 0</paragraph>
+</div>
+<ul>
+<li>For x &lt; 0 (use f(x)=1−x):
+<ul>
+<li>f(−4)=5</li>
+<li>f(−3)=4</li>
+<li>f(−2)=3</li>
+<li>f(−1)=2</li>
+</ul>
+</li>
+<li>For x &gt; 0 (use f(x)=x+1):
+<ul>
+<li>f(1)=2</li>
+<li>f(2)=3</li>
+<li>f(3)=4</li>
+<li>f(4)=5</li>
+</ul>
+</li>
+<li>Graph: two straight-line pieces:
+<ul>
+<li>Line y = 1 − x on the left of 0 (not including x=0)</li>
+<li>Line y = x + 1 on the right of 0 (not including x=0)</li>
+</ul>
+</li>
+</ul>
+<div class="remember-box">
+<paragraph id="0acb1880489d93eedb5dcb27">Since the definition excludes x = 0 (strict inequalities), the graph has no point at x = 0 (show a break/open point at x=0).</paragraph>
+</div>
+
+<h2>Miscellaneous Exercise on Chapter 2 (Exam-style Revision)</h2>
+
+<h3>1. Checking whether a relation is a function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b3e47860d4bacfebfdcc9837">A relation from a set A to a set B is any subset of <b>A × B</b>.</paragraph>
+<paragraph id="db558a4f31d39a620e90c862">A function is a special relation in which <b>each</b> element of the domain has <b>exactly one</b> image in the codomain.</paragraph>
+<paragraph id="ae5167851671b22387b015f3">To show a relation is <b>not</b> a function, it is enough to find one input <b>x</b> that has <b>two different outputs</b> (two different ordered pairs with the same first element).</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="66e69e7c520d3b4d95cf01c1">In Q1, the given piecewise relation <b>f</b> assigns exactly one value to each x in its stated intervals, so f is a function. The relation <b>g</b> assigns <b>more than one value</b> to at least one x (due to overlapping/duplicate assignment in the definition), so g is not a function.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="d690bba536151b92319ae17b">When a relation is defined piecewise, always check whether any intervals overlap; overlap may cause one x to produce two outputs, violating the definition of a function.</paragraph>
+</div>
+
+<h3>2. Evaluating expressions like f(1 + 1), f(1) − f(1 − 1)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="948153d3fda83031ea7eee2a">Given f(x) = x²:</paragraph>
+<ul>
+<li>First simplify the <b>input</b> inside brackets (e.g., 1 + 1), then apply f.</li>
+<li>Compute f(·) values first, then perform subtraction/division outside.</li>
+</ul>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="1ac808282af854e98b8f95f3"><b>f(x) = x²</b></paragraph>
+<paragraph id="c8d565efb599ae4554e18bba">x: input (real number)</paragraph>
+<paragraph id="a964219d7e1ac8e707ead524">f(x): output (square of x)</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="3034f2a2d5caaf99e8547da0">Common error: treating f(a ± b) as f(a) ± f(b). This is false in general. Always evaluate the inside first.</paragraph>
+</div>
+
+<h3>3. Domain of a rational function</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5379216b69e7feb0fa873359">The domain of a rational function is all real x for which the expression is defined, i.e., the denominator is not zero.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="2e6482f7085251c00eba476a">For the function in Q3, identify all values of x that make the denominator zero and exclude them from the domain.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="1b155fa9076deddc650efb3a">When finding domain: do not “cancel” a factor from numerator and denominator and then forget the excluded values; the original denominator restrictions remain.</paragraph>
+</div>
+
+<h3>4. Domain and range of f(x) = √(x − 1)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="76311fa61f52d749458dfc97">A square root √(expression) is defined (over reals) only when the expression inside is ≥ 0.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="16886a37086417fc4870da46"><b>For f(x) = √(x − 1)</b></paragraph>
+<paragraph id="80c1da3573914e967845fe23">Domain condition: x − 1 ≥ 0</paragraph>
+<paragraph id="b8dbc41d59128671dff03d0c">Range condition: √(x − 1) ≥ 0</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><paragraph id="e65d176a6073e81529e1dd45"><b>Domain</b>: x − 1 ≥ 0 ⟹ x ≥ 1.</paragraph></li>
+<li><paragraph id="995df1390a31fefccd972e87"><b>Range</b>: f(x) = √(x − 1) takes all values ≥ 0.</paragraph></li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="09732bb9fcb23e3103dc0cb6">Range of a square-root function is never negative (in real numbers).</paragraph>
+</div>
+
+<h3>5. Domain and range of f(x) = 1/x</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5e5ebba9f3f767357c8ed05c">For f(x) = 1/x, division by zero is undefined, so x ≠ 0.</paragraph>
+<paragraph id="ac8de2394b1667ccedcaa426">Also, 1/x can never be 0 for any real x, so the range excludes 0.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="8d6b20232651a62fc8e46058"><b>f(x) = 1/x</b></paragraph>
+<paragraph id="6e8b2615913e7d99aca77565">x: real input with x ≠ 0</paragraph>
+<paragraph id="66e2eb40cd1006b1fd41639d">f(x): reciprocal of x</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><paragraph id="5f7f86a94aec0a6fc784c7a8"><b>Domain</b>: ℝ \ {0}</paragraph></li>
+<li><paragraph id="ff74c0d016f1264de9297b94"><b>Range</b>: ℝ \ {0}</paragraph></li>
+</ul>
+</div>
+
+<h3>6. Range of f(x) = x²/(x + 1)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="32125d73847fc04c1386f6de">To find the range of a rational function, set y = f(x), then try to solve for x in terms of y. The condition “real x exists” typically becomes a discriminant condition (≥ 0) for a quadratic in x.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="f8d57fe9dc81e648746bd8db">Given f: ℝ → ℝ with f(x) = x²/(x + 1), note x ≠ −1 (since denominator ≠ 0).</paragraph>
+<paragraph id="eba6a7dac6e95ba0380b6410">Let y = x²/(x + 1). Then y(x + 1) = x² ⟹ x² − yx − y = 0, a quadratic in x.</paragraph>
+<paragraph id="2c765ad0c12dde1be23f1e55">For real x, discriminant Δ ≥ 0:</paragraph>
+<paragraph id="1415b9e07fea921afdabc51c">Δ = (−y)² − 4(1)(−y) = y² + 4y = y(y + 4) ≥ 0.</paragraph>
+<paragraph id="81cdb84fff509990cc6f33bd">Thus y ≤ −4 or y ≥ 0.</paragraph>
+<paragraph id="7245ab47f327e093e90853f5">So the <b>range</b> is (−∞, −4] ∪ [0, ∞).</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="fc02a5fbc9d29eede77b5f6c"><b>Quadratic discriminant condition</b></paragraph>
+<paragraph id="97e4f3ce0bfbcd171a7171ce">For ax² + bx + c = 0 to have real solution(s): Δ = b² − 4ac ≥ 0</paragraph>
+<paragraph id="20f70fb85f7437932c0ecc54">a, b, c: real coefficients</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="92f23b71b67b669facd1c3e5">Also check whether boundary values are actually achieved (here y = −4 and y = 0 do occur for some x), so the endpoints are included.</paragraph>
+</div>
+
+<h3>7. Algebra of functions: (f + g), (f − g), (f/g)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6cdafd4e88693d6fc1e06603">If f, g: X → ℝ, then new functions can be formed pointwise on X.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="b81fe11ec40a11b8e16ba0a1"><b>(f + g)(x) = f(x) + g(x)</b></paragraph>
+<paragraph id="162406bb5ae16f959a0d261b"><b>(f − g)(x) = f(x) − g(x)</b></paragraph>
+<paragraph id="22d45fce05ecc616ca80c707"><b>(f·g)(x) = f(x)·g(x)</b></paragraph>
+<paragraph id="24480b3a1f1869faf9904439"><b>(kf)(x) = k·f(x)</b></paragraph>
+<paragraph id="e00cffcea2a55b0be0e65a3d"><b>(f/g)(x) = f(x)/g(x)</b>, provided g(x) ≠ 0</paragraph>
+<paragraph id="4efe9a351cc3e15649c6354e">x: element of common domain X</paragraph>
+<paragraph id="86ee975effe107ddc48c226d">k: real constant</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="ec718a3857be02c61483cf27">For f(x) = x + 1 and g(x) = 2x − 3:</paragraph>
+<ul>
+<li><paragraph id="3e9fd750b24960a671a64bfa">(f + g)(x) = (x + 1) + (2x − 3) = 3x − 2</paragraph></li>
+<li><paragraph id="4ef95b15714a6602f0ef225f">(f − g)(x) = (x + 1) − (2x − 3) = −x + 4</paragraph></li>
+<li><paragraph id="49320971dbc64f0dfba0fd1c">(f/g)(x) = (x + 1)/(2x − 3), with restriction 2x − 3 ≠ 0 ⟹ x ≠ 3/2</paragraph></li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="3ffb267c3f8835f688dfbf52">When forming (f/g), always state the restriction g(x) ≠ 0 even if f and g are defined on all ℝ.</paragraph>
+</div>
+
+<h3>8. Finding a linear function from given ordered pairs</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="2978bdf8ba2b61882b7fc052">If f(x) = ax + b and f is given by ordered pairs (x, f(x)), then each pair gives a linear equation in a and b.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b432060f9b7743ac23830853">Given f = {(1,1), (2,3), (0,−1), (−1,−3)} and f(x) = ax + b:</paragraph>
+<ul>
+<li><paragraph id="8ee19574e7acb27115d81edf">From (0, −1): b = −1</paragraph></li>
+<li><paragraph id="ac535a02b120b30b1b9ca0b4">From (1, 1): a + b = 1 ⟹ a − 1 = 1 ⟹ a = 2</paragraph></li>
+</ul>
+<paragraph id="5d061e0ee1ff5cd486b03eb1">So a = 2, b = −1. (Check: f(2) = 4 − 1 = 3; f(−1) = −2 − 1 = −3, correct.)</paragraph>
+</div>
+
+<h3>9. Testing properties of a relation R on ℕ where a = b²</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6e35b54330e21621556fe0fb">Given relation R = {(a, b): a, b ∈ ℕ and a = b²}.</paragraph>
+<ul>
+<li><paragraph id="d82643c6a5d585147c45bcc8"><b>Reflexive</b>: (a, a) ∈ R for all a.</paragraph></li>
+<li><paragraph id="0b6819f338c1d03f9c9c376e"><b>Symmetric</b>: (a, b) ∈ R ⇒ (b, a) ∈ R.</paragraph></li>
+<li><paragraph id="e9f33dfa5a21626a82fec598"><b>Transitive</b>: (a, b) ∈ R and (b, c) ∈ R ⇒ (a, c) ∈ R.</paragraph></li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ol>
+<li>
+<paragraph id="38fb0a1d9ef531d8392e47c0"><b>(i) (a, a) ∈ R for all a ∈ ℕ?</b></paragraph>
+<paragraph id="6a5aaf4bc209e696042cb39c">Need a = a² for all a, which is not true (only a = 1 works in ℕ). So <b>false</b>.</paragraph>
+</li>
+<li>
+<paragraph id="11338bdb673b4c27a2c7e021"><b>(ii) Symmetric?</b></paragraph>
+<paragraph id="8fc9c71ac05dca59440b851a">If (a, b) ∈ R, then a = b². For symmetry we would need (b, a) ∈ R, i.e., b = a². Not true in general. Example: take b = 2, then a = 4, so (4,2) ∈ R but (2,4) ∉ R (since 2 ≠ 16). So <b>false</b>.</paragraph>
+</li>
+<li>
+<paragraph id="67a327c2689f944fb5627d75"><b>(iii) Transitive?</b></paragraph>
+<paragraph id="3cfb4dc8b5e385856ac51ccd">If (a, b) ∈ R and (b, c) ∈ R, then a = b² and b = c², hence a = (c²)² = c⁴.</paragraph>
+<paragraph id="0dfe2e54bfbff4782918e12c">For (a, c) ∈ R we need a = c², but we have a = c⁴, not always equal to c² (only when c = 1). So <b>false</b>.</paragraph>
+</li>
+</ol>
+</div>
+<div class="remember-box">
+<paragraph id="d37447dc18a9ba4a37a4ff74">For these property questions, one counterexample is enough to prove “false”.</paragraph>
+</div>
+
+<h3>10. Deciding whether a set of ordered pairs is (i) a relation from A to B and (ii) a function from A to B</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="5a0f43b544ad0d2cf871dcc9">Let A = {1,2,3,4}, B = {1,5,9,11,15,16}.</paragraph>
+<paragraph id="b13ffd4833605ec7712c05fd">A set f of ordered pairs is a <b>relation from A to B</b> if every first element lies in A and every second element lies in B (i.e., f ⊆ A × B).</paragraph>
+<paragraph id="6a99e6941de655dc5111698e">It is a <b>function from A to B</b> if it is a relation and each element of A appears exactly once as a first element (i.e., has a unique image in B).</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="20fb8b3e64cff398c9de4479">Given f = {(1,5), (2,9), (3,1), (4,5), (2,11)}:</paragraph>
+<ul>
+<li><paragraph id="8f4c39a6f21678f33fc4dbce">(i) It is a relation from A to B because all first components are in A and all second components are in B.</paragraph></li>
+<li><paragraph id="f0034b405b313686ef309dbe">(ii) It is <b>not</b> a function from A to B because the input 2 has two different outputs: (2,9) and (2,11).</paragraph></li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="f4cacbc453f1da0d1e330d5b">A function cannot assign two images to the same element of the domain.</paragraph>
+</div>
+
+<h3>11. Function check for f = {(ab, a + b): a, b ∈ ℤ}</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="1608f5f9746de927b8b55988">To be a function from ℤ to ℤ, each integer x in the domain must have exactly one image y.</paragraph>
+<paragraph id="4a3d82b76564783ea45b1e63">Here, the first component is ab, so one x can be represented by many pairs (a, b).</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="5b83a4e00951ccbae1657d3c">This is <b>not</b> a function from ℤ to ℤ because the same first element can give different second elements.</paragraph>
+<paragraph id="aa61967525ab569d90fd6bc0">Example: take ab = 2.</paragraph>
+<ul>
+<li><paragraph id="1cfd8e85537d8ce7c423921c">(a, b) = (1, 2) gives (ab, a + b) = (2, 3)</paragraph></li>
+<li><paragraph id="992e7167b86c488d423d4c01">(a, b) = (2, 1) gives (2, 3) (same here), but choose (a, b) = (−1, −2) gives (2, −3)</paragraph></li>
+</ul>
+<paragraph id="b29962cc5a3b1ddda9cb1b9e">So x = 2 has images 3 and −3. Hence not a function.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="c735c4c6fd33f118844dee6e">Whenever the rule depends on “a representation” (like factor pairs of x), check if different representations yield different outputs.</paragraph>
+</div>
+
+<h3>12. Range of a function defined by “highest prime factor”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="be3125ab508eef749aaca0c8">If f: A → ℕ is defined by f(n) = highest prime factor of n, then:</paragraph>
+<ul>
+<li><paragraph id="6203126e70f29ecfd8a05ec8">Factor each n ∈ A into primes.</paragraph></li>
+<li><paragraph id="196a13c0f486065b2719022b">Pick the greatest prime in that factorization.</paragraph></li>
+<li><paragraph id="74a06b12b1364450715d5293">The <b>range</b> is the set of distinct outputs obtained.</paragraph></li>
+</ul>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="8781423e82fece66cccb2bfc">A = {9, 10, 11, 12, 13}:</paragraph>
+<ul>
+<li><paragraph id="db7ed82948835197013b129b">9 = 3² ⟹ highest prime factor = 3</paragraph></li>
+<li><paragraph id="5fba8051f3c46ef9038299d3">10 = 2 × 5 ⟹ highest prime factor = 5</paragraph></li>
+<li><paragraph id="b32768e4ccc688fa54b7adda">11 is prime ⟹ highest prime factor = 11</paragraph></li>
+<li><paragraph id="3b070503583d1e5e307e13f4">12 = 2² × 3 ⟹ highest prime factor = 3</paragraph></li>
+<li><paragraph id="ea9b26f9016d1e92c73a099d">13 is prime ⟹ highest prime factor = 13</paragraph></li>
+</ul>
+<paragraph id="233fa4c7ba5801bf00901e13">So the <b>range</b> is {3, 5, 11, 13}.</paragraph>
+</div>
+
+<h2>Chapter Summary: Relations and Functions (Complete Revision List)</h2>
+
+<h3>Ordered pair</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="823be32e54473aaf0b496bd2"><b>Ordered pair</b>: a pair of elements grouped together in a particular order, written (a, b).</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="251c52367852015b2e0f27be">If (a, b) = (x, y), then <b>a = x</b> and <b>b = y</b> (equality of ordered pairs means equality of corresponding components).</paragraph>
+</div>
+
+<h3>Cartesian product</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="b6efd903c8b54555d3ac962b"><b>Cartesian product</b> of sets A and B:</paragraph>
+<paragraph id="14a9cdb0bd2383f850406279">A × B = {(a, b): a ∈ A, b ∈ B}</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><paragraph id="63f7e8e4c952b6a2e7d57453">ℝ × ℝ = {(x, y): x, y ∈ ℝ}</paragraph></li>
+<li><paragraph id="6e807edc5944d44f388c0950">ℝ × ℝ × ℝ = {(x, y, z): x, y, z ∈ ℝ}</paragraph></li>
+<li><paragraph id="348e0ca20c4be0fb8e8490cf">If n(A) = p and n(B) = q, then n(A × B) = pq.</paragraph></li>
+<li><paragraph id="ee753478d76877d079b97af3">A × φ = φ.</paragraph></li>
+<li><paragraph id="266e54f860293fc43c3a9d16">In general, A × B ≠ B × A.</paragraph></li>
+</ul>
+</div>
+
+<h3>Relation: definition, image, domain, range</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="d6e9a32d6c59fbb388d05830"><b>Relation</b> R from a set A to a set B: a subset of A × B obtained by describing a relationship between the first element x and the second element y of ordered pairs in A × B.</paragraph>
+<paragraph id="1031fbe4cd6b6feb90421bc1"><b>Image</b> of an element x under relation R: the element y such that (x, y) ∈ R.</paragraph>
+<paragraph id="bba9cf6588fe44984df95ab7"><b>Domain</b> of R: set of all first elements of ordered pairs in R.</paragraph>
+<paragraph id="d2edd5d818ee7cd859d29ea5"><b>Range</b> of R: set of all second elements of ordered pairs in R.</paragraph>
+</div>
+
+<h3>Function: definition, notation, domain, codomain, range</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="fbdb803cf3d00b027d8cdc93"><b>Function</b> f from set A to set B: a relation in which every element x of A has <b>one and only one</b> image y in B.</paragraph>
+<paragraph id="5b4b7ff34d3b5f56f5639f13">Notation: f: A → B, where f(x) = y.</paragraph>
+<paragraph id="d82660dc527a7788a690e2b8">A is the <b>domain</b> and B is the <b>codomain</b> of f.</paragraph>
+<paragraph id="185dbb64c1daaa6591321f64"><b>Range of a function</b>: the set of images f(x) actually obtained as x varies over the domain.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="b67e449754a199e50188cb4b"><b>Real function</b>: a function whose domain and range are the set of real numbers or subsets of ℝ.</paragraph>
+</div>
+
+<h3>Algebra of functions (pointwise operations)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="535c4ecbcc1fd658d9a1ee80">For functions f: X → ℝ and g: X → ℝ, operations are defined pointwise.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="cce92ffbe4b0a84f0146dc4a"><b>(f + g)(x) = f(x) + g(x), x ∈ X</b></paragraph>
+<paragraph id="d4fc14eee61def3f680f3afa"><b>(f − g)(x) = f(x) − g(x), x ∈ X</b></paragraph>
+<paragraph id="8d124bb44ccc6ac36129cc14"><b>(f·g)(x) = f(x)·g(x), x ∈ X</b></paragraph>
+<paragraph id="8af92d958b7d6f155f288e3d"><b>(kf)(x) = k(f(x)), x ∈ X</b></paragraph>
+<paragraph id="5b0953cfb9db483aa3e3d72f"><b>(f/g)(x) = f(x)/g(x), x ∈ X, g(x) ≠ 0</b></paragraph>
+<paragraph id="75c440c9512041832a78e8c7">X: common domain set</paragraph>
+<paragraph id="191d3c2c0b1a044eb571b1a5">k: real number (constant)</paragraph>
+</div>
+
+<h2>Historical Note (Function terminology)</h2>
+
+<h3>Origin and early usage of the word “function”</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f9f12372d7a52748ab0f037b">The word <b>FUNCTION</b> first appears in a Latin manuscript titled “Methodus tangentium inversa, seu de fuctionibus” written by <b>Gottfried Wilhelm Leibnitz (1646–1716)</b> in <b>1673</b>.</paragraph>
+<paragraph id="b7c4a693f9cc4dcbdab622ac">Leibnitz used the word in a <b>non-analytical sense</b>: he viewed a function as a “mathematical job,” with the “employee” being a curve.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><paragraph id="766dd79239c342e401034ed1">On <b>July 5, 1698</b>, <b>Johan Bernoulli</b> first deliberately assigned a specialised analytical meaning of “function” in a letter to Leibnitz.</paragraph></li>
+<li><paragraph id="9e2c60affc34ec2a57e13353">Later that month, Leibnitz replied approvingly.</paragraph></li>
+<li><paragraph id="cd34a68879f4b3510c80e6ed">The term appears in English in <b>1779</b> in <b>Chambers’ Cyclopaedia</b>: “The term function is used in algebra, for an analytical expression any way compounded of a variable quantity, and of numbers, or constant quantities”.</paragraph></li>
+</ul>
+</div></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

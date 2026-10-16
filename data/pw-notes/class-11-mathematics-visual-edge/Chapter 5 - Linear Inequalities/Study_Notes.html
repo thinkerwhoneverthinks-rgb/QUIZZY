@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>LINEAR INEQUALITIES — Mathematics</title>
+  <meta name="description" content="LINEAR INEQUALITIES — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Class 11 &middot; Mathematics</div>
+        <h1>LINEAR INEQUALITIES</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Comparing numbers/expressions using &lt;, &gt;, ≤, ≥ and interpreting solution sets</div>
+              <h2>MEANING OF INEQUALITIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Two real numbers or two algebraic expressions related by &lt;, &gt;, ≤ or ≥ form an inequality.</li><li>If the symbol is &lt; or &gt;, it is a strict inequality; if it is ≤ or ≥, it is a slack inequality.</li><li>A value of the variable that makes the inequality a true statement is called a solution.</li><li>The set of all solutions is the solution set (depends on the domain: ℕ, ℤ, ℝ).</li><li>Inequalities model “at most”, “at least”, “less than”, “greater than” type conditions in real life.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 120"><rect x="0" y="0" width="560" height="120" fill="white"/><line x1="60" y1="70" x2="520" y2="70" stroke="#111" stroke-width="3"/><polygon points="520,70 505,62 505,78" fill="#111"/><line x1="280" y1="58" x2="280" y2="82" stroke="#111" stroke-width="3"/><text x="272" y="102" font-family="Arial" font-size="16" fill="#111">a</text><circle cx="280" cy="70" r="9" fill="white" stroke="#111" stroke-width="3"/><line x1="280" y1="70" x2="500" y2="70" stroke="#0B6" stroke-width="7"/><text x="70" y="30" font-family="Arial" font-size="16" fill="#111">x &gt; a</text><text x="355" y="30" font-family="Arial" font-size="14" fill="#111">open circle</text></svg><div class="figcap">Number line representation of a strict inequality (open endpoint).</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔣</span><span>Symbols: &gt; (greater than), &lt; (less than), ≤ (less than or equal), ≥ (greater than or equal)</span></li><li><span class="ic">🧮</span><span>Numerical: 3 &lt; 5; Literal: <i>x</i> &lt; 5, <i>y</i> &gt; 2, <i>x</i> ≥ 3</span></li><li><span class="ic">↔️</span><span>Double inequality: a &lt; <i>x</i> &lt; b means <i>x</i> lies between a and b (endpoints excluded)</span></li><li><span class="ic">✅</span><span>Solution check: substitute the value and verify the statement becomes true</span></li><li><span class="ic">📍</span><span>Number line: open circle for &lt; or &gt;; closed circle for ≤ or ≥</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">TYPES &amp; LANGUAGE CLUES</span></h2><ul class="b"><li>Strict: <i>LHS</i> &lt; <i>RHS</i> or <i>LHS</i> &gt; <i>RHS</i> (endpoint not included).</li><li>Slack: <i>LHS</i> ≤ <i>RHS</i> or <i>LHS</i> ≥ <i>RHS</i> (endpoint included).</li><li>“At most” → ≤ ; “At least” → ≥.</li><li>“Less than” → &lt; ; “Greater than” → &gt;.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">SOLUTION SET &amp; DOMAIN</span></h2><ul class="b"><li>Solution set depends on allowed values: natural numbers (ℕ), integers (ℤ), or real numbers (ℝ).</li><li>Same inequality can have different solution sets in ℕ, ℤ, ℝ (due to domain restrictions).</li><li>For real solutions, number line shading represents all values that satisfy the inequality.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">STRICT vs SLACK INEQUALITIES</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Strict (&lt;, &gt;)</th><th>Slack (≤, ≥)</th></tr></thead><tbody><tr><td>Equality allowed?</td><td>No</td><td>Yes</td></tr><tr><td>Number line endpoint</td><td>Open circle</td><td>Closed (filled) circle</td></tr><tr><td>Typical words</td><td>less than / greater than</td><td>at most / at least</td></tr><tr><td>Example</td><td><i>x</i> &gt; 3</td><td><i>x</i> ≥ 3</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Identify the inequality type and read it in words: 40<i>x</i> + 20<i>y</i> ≤ 120.</div><div class="sol"><span class="lbl">Answer:</span><br>Symbol is ≤, so it is a slack inequality.<br>Read: 40<i>x</i> + 20<i>y</i> is “at most” 120 (does not exceed 120).</div><div class="ans">✓&nbsp; Slack inequality; 40<i>x</i> + 20<i>y</i> ≤ 120 means the total is not more than 120.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Why does <i>x</i> &lt; 3 use an open circle at 3 on a number line?</div><div class="sol"><span class="lbl">Answer:</span><br>The symbol “&lt;” is strict, so equality is not allowed.<br>Therefore, 3 itself is not included in the solution set.<br>An open circle at 3 shows the endpoint is excluded; shading to the left shows all values less than 3.</div><div class="ans">✓&nbsp; Because “&lt;” excludes the endpoint, 3 is not a solution; use an open circle at 3 and shade left.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Inequalities use &lt;, &gt;, ≤, ≥ (not the equality sign).</li><li>Strict (&lt;, &gt;) excludes equality; slack (≤, ≥) includes equality.</li><li>A solution is any value that makes the inequality true; all solutions form the solution set.</li><li>Always state the domain (ℕ/ℤ/ℝ) because it can change the solution set.</li><li>Double inequality a &lt; <i>x</i> &lt; b describes an interval between a and b (endpoints excluded).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Treating ≤ as &lt; and losing the endpoint.</li><li>Forgetting to mention the domain (ℕ/ℤ/ℝ) while giving the solution set.</li><li>Using a closed dot for &lt; or &gt; (should be open), or an open dot for ≤ or ≥ (should be closed).</li><li>Reading “at most” as ≥ instead of ≤, or “at least” as ≤ instead of ≥.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“MOST–LESS, LEAST–GREATER”</div><paragraph id="6a9fdca3d72617c1ce00038a">“At most” means “not more than” → ≤.</paragraph><paragraph id="6a9fdca3eebc8273f300038b">“At least” means “not less than” → ≥.</paragraph><paragraph id="6a9fdca38c7bcf8bb900038c">&lt; or &gt;: strict → endpoint not included (open circle).</paragraph><paragraph id="6a9fdca3e5069e59fb00038d">≤ or ≥: equal allowed → endpoint included (closed circle).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Inequality symbols: &lt;, &gt;, ≤, ≥</span><span class="eq">Strict inequalities: use &lt; or &gt; (endpoint not included)</span><span class="eq">Slack inequalities: use ≤ or ≥ (endpoint included)</span><span class="eq">Solution: a value that makes the inequality true</span><span class="eq">Solution set depends on the domain: ℕ, ℤ or ℝ</span><span class="eq">Number line: open circle for &lt;/&gt;; filled circle for ≤/≥</span><span class="eq">Double inequality: a &lt; <i>x</i> &lt; b means <i>x</i> is between a and b</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Classify by what is compared, how many bounds, and algebraic form</div>
+              <h2>TYPES OF INEQUALITIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>An inequality relates two real numbers/expressions using <b>&lt;</b>, <b>&gt;</b>, <b>≤</b> or <b>≥</b>.</li><li>If both sides are numbers, it is a <b>numerical inequality</b>; if variables appear, it is <b>literal</b>.</li><li>A <b>single</b> inequality has one relation; a <b>double</b> inequality has two relations in one chain.</li><li><b>Strict</b>: uses <b>&lt;</b> or <b>&gt;</b> (endpoints excluded). <b>Slack</b>: uses <b>≤</b> or <b>≥</b> (endpoint included).</li><li><b>Linear</b> inequalities have variables of degree 1 (no squares, products like xy). Otherwise they are <b>non-linear</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><text x='20' y='22' font-size='14' fill='#1f2a44'>Classification map</text><rect x='20' y='35' width='150' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='30' y='57' font-size='13' fill='#1f2a44'>Inequality</text><rect x='205' y='35' width='135' height='34' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='215' y='57' font-size='13' fill='#1f2a44'>Numerical / Literal</text><line x1='170' y1='52' x2='205' y2='52' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><rect x='20' y='85' width='150' height='34' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='30' y='107' font-size='13' fill='#1f2a44'>Single / Double</text><line x1='95' y1='69' x2='95' y2='85' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><rect x='205' y='85' width='135' height='34' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='215' y='107' font-size='13' fill='#1f2a44'>Strict / Slack</text><line x1='170' y1='102' x2='205' y2='102' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><rect x='20' y='135' width='150' height='34' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='30' y='157' font-size='13' fill='#1f2a44'>Linear / Non-linear</text><line x1='95' y1='119' x2='95' y2='135' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='210' y='155' font-size='12' fill='#1f2a44'>Number line:</text><line x1='210' y1='170' x2='340' y2='170' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><circle cx='250' cy='170' r='6' fill='white' stroke='#2563EB' stroke-width='2'/><text x='244' y='190' font-size='12' fill='#1f2a44'>a</text><circle cx='300' cy='170' r='6' fill='#2563EB' stroke='#2563EB' stroke-width='2'/><text x='294' y='190' font-size='12' fill='#1f2a44'>b</text><text x='258' y='162' font-size='12' fill='#1f2a44'>&lt;</text><text x='308' y='162' font-size='12' fill='#1f2a44'>≤</text></g></svg><div class="figcap">Flow of common classifications; open dot = strict, filled dot = slack.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">1</span><span>Numerical: compare numbers only, e.g. 3 &lt; 5, 7 ≥ 7.</span></li><li><span class="ic">2</span><span>Literal: compare expressions with variables, e.g. x − 2 ≤ 5.</span></li><li><span class="ic">3</span><span>Double inequality: a &lt; x &lt; b means x is between a and b.</span></li><li><span class="ic">4</span><span>Slack includes boundary; strict excludes boundary (filled vs open dot).</span></li><li><span class="ic">5</span><span>In two variables, ax + by ≤ c represents a half-plane in the x–y plane.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD FORMS (WHAT TO RECOGNISE FAST)</span></h2><ul class="b"><li><b>One-variable linear</b>: <i>a</i><i>x</i> + <i>b</i> <b>&lt;</b> 0, <b>&gt;</b> 0, <b>≤</b> 0, or <b>≥</b> 0, with <i>a</i> ≠ 0.</li><li><b>Two-variable linear</b>: <i>a</i><i>x</i> + <i>b</i><i>y</i> <b>&lt;</b> <i>c</i>, <b>&gt;</b> <i>c</i>, <b>≤</b> <i>c</i>, or <b>≥</b> <i>c</i>, with <i>a</i>, <i>b</i> not both 0.</li><li><b>Non-linear (for classification)</b>: <i>a</i><i>x</i><sup>2</sup> + <i>b</i><i>x</i> + <i>c</i> ≥ 0; <i>x</i><i>y</i> ≤ 1; √<i>x</i> &gt; 2.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">DOUBLE INEQUALITIES: CHAIN MEANING</span></h2><ul class="b"><li><b>a ≤ x ≤ b</b> means (<b>a ≤ x</b>) <b>and</b> (<b>x ≤ b</b>) simultaneously (intersection).</li><li>If bounds are strict: <b>a &lt; x &lt; b</b> excludes both endpoints.</li><li>On number line: strict end uses open circle; slack end uses filled circle.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Quick classification contrasts</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Type 1</th><th>Type 2</th></tr></thead><tbody><tr><td>By content</td><td>Numerical: 3 &lt; 5</td><td>Literal: x + 1 ≥ 0</td></tr><tr><td>By number of relations</td><td>Single: x ≥ 2</td><td>Double: 2 ≤ x &lt; 6</td></tr><tr><td>By equality allowed</td><td>Strict: &lt;, &gt; (exclude boundary)</td><td>Slack: ≤, ≥ (include boundary)</td></tr><tr><td>By algebraic degree</td><td>Linear: ax + b ≤ 0; ax + by ≥ c</td><td>Non-linear: ax<sup>2</sup> + bx + c &gt; 0</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Classify each as numerical/literal, single/double, strict/slack, linear/non-linear: (i) 7 &gt; 5 (ii) 3 &lt; x ≤ 8 (iii) ax + by ≥ c (a,b not both 0) (iv) x<sup>2</sup> − 4x + 1 ≤ 0</div><div class="sol"><span class="lbl">Answer:</span><br>(i) Numbers only ⇒ <b>numerical</b>; one relation ⇒ <b>single</b>; symbol <b>&gt;</b> ⇒ <b>strict</b>.<br>(ii) Variable present ⇒ <b>literal</b>; chain ⇒ <b>double</b>; left is strict and right is slack ⇒ <b>mixed</b>; highest power of x is 1 ⇒ <b>linear</b>.<br>(iii) Variables x,y with power 1 only ⇒ <b>literal</b>; one relation ⇒ <b>single</b>; symbol ≥ ⇒ <b>slack</b>; <b>linear</b> in two variables.<br>(iv) Contains x<sup>2</sup> ⇒ <b>literal</b>; <b>single</b>; symbol ≤ ⇒ <b>slack</b>; <b>non-linear</b> (quadratic).</div><div class="ans">✓&nbsp; (i) Numerical, single, strict. (ii) Literal, double, mixed, linear. (iii) Literal, single, slack, linear (2 variables). (iv) Literal, single, slack, non-linear.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Write in standard form and state type: 2(3x − 1) − 5 &lt; 0 and 40x + 20y ≤ 120</div><div class="sol"><span class="lbl">Answer:</span><br>First: 2(3x − 1) − 5 &lt; 0 ⇒ 6x − 2 − 5 &lt; 0 ⇒ <b>6x − 7 &lt; 0</b>.<br>So it is <b>literal</b>, <b>single</b>, <b>strict</b>, <b>linear</b> in one variable.<br>Second: 40x + 20y ≤ 120 ⇒ divide by 20 (positive, so sign unchanged) ⇒ <b>2x + y ≤ 6</b>.<br>So it is <b>literal</b>, <b>single</b>, <b>slack</b>, <b>linear</b> in two variables.</div><div class="ans">✓&nbsp; Standard forms: 6x − 7 &lt; 0 (linear, strict, 1 variable) and 2x + y ≤ 6 (linear, slack, 2 variables).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Numerical vs literal depends only on presence of variables.</li><li>Strict (&lt;, &gt;) excludes boundary; slack (≤, ≥) includes boundary.</li><li>A double inequality represents an AND condition (intersection).</li><li>Linear means highest power of each variable is 1 and no products like xy.</li><li>For linear in two variables, the boundary ax + by = c is a straight line.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Calling 3 &lt; x ≤ 8 a strict inequality overall; it is mixed.</li><li>Thinking ax + b ≤ 0 is non-linear because of two terms; it is degree 1.</li><li>Reading a ≤ x ≤ b as an OR condition; it is an AND condition.</li><li>Assuming in ax + by ≤ c both a and b must be nonzero; one may be 0.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“N-L / S-D / Sharp-Soft: three quick checks”</div><paragraph id="6a9fdca32ddb6cdafa00038e"><b>N-L</b>: Numbers only or Letters (variables) present?</paragraph><paragraph id="6a9fdca3ada46c589500038f"><b>S-D</b>: Single sign or Double chain?</paragraph><paragraph id="6a9fdca33fd0ea7e6a000390"><b>Sharp-Soft</b>: Sharp (&lt;,&gt;) or Soft (≤,≥) boundary?</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Inequality symbols: <b>&lt;</b>, <b>&gt;</b>, <b>≤</b>, <b>≥</b>.</span><span class="eq">Numerical inequality: only numbers on both sides (e.g. 3 &lt; 5).</span><span class="eq">Literal inequality: variable(s) present (e.g. x ≤ 4).</span><span class="eq">Double inequality: a ≤ x ≤ b means x is at least a and at most b.</span><span class="eq">Linear inequality: variables only to power 1 (no x<sup>2</sup>, no xy).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Solving an inequality = finding all values that make it a <b>true statement</b></div>
+              <h2>SOLUTIONS AND SOLUTION SET</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A <b>solution</b> of an inequality in one variable is a value of the variable that makes it a <b>true statement</b>.</li><li>The <b>solution set</b> is the collection (set) of all solutions, written in roster or interval form.</li><li>To <b>solve</b> an inequality means to describe the entire solution set within a specified <b>domain</b> (ℕ/ℤ/ℝ).</li><li>Different domains give different solution sets for the <b>same</b> inequality (e.g., integers vs reals).</li><li><b>Trial-and-error</b> can find some solutions, but is slow and may miss solutions; algebra gives a systematic method.</li><li>On a number line: use an <b>open circle</b> for &lt; or &gt;, and a <b>filled circle</b> for ≤ or ≥.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><path d='M0,0 L8,4 L0,8 Z' fill='#123B7A'/></marker></defs><g><rect x='18' y='18' width='324' height='54' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='40' font-size='13' fill='#1f2a44'>Solve: find all x making statement true</text><text x='30' y='58' font-size='13' fill='#1f2a44'>Example forms: x &lt; 2  and  x ≥ −2</text><line x1='40' y1='130' x2='320' y2='130' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><line x1='80' y1='124' x2='80' y2='136' stroke='#123B7A' stroke-width='2'/><text x='74' y='152' font-size='12' fill='#1f2a44'>-2</text><line x1='160' y1='124' x2='160' y2='136' stroke='#123B7A' stroke-width='2'/><text x='156' y='152' font-size='12' fill='#1f2a44'>0</text><line x1='240' y1='124' x2='240' y2='136' stroke='#123B7A' stroke-width='2'/><text x='236' y='152' font-size='12' fill='#1f2a44'>2</text><circle cx='240' cy='130' r='6' fill='#EEF4FF' stroke='#7C3AED' stroke-width='2'/><line x1='48' y1='130' x2='234' y2='130' stroke='#7C3AED' stroke-width='5' stroke-linecap='round'/><text x='52' y='176' font-size='12' fill='#1f2a44'>Open circle: x &lt; 2 (2 not included)</text><circle cx='80' cy='170' r='6' fill='#16A34A' stroke='#16A34A' stroke-width='2'/><line x1='86' y1='170' x2='312' y2='170' stroke='#16A34A' stroke-width='5' stroke-linecap='round'/><text x='128' y='192' font-size='12' fill='#1f2a44'>Filled circle: x ≥ −2 (−2 included)</text></g></svg><div class="figcap">Solution sets can be shown on a number line using open/filled circles at boundary points.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">None</span><span>Check a value by substitution: inequality becomes <b>true</b> → it is a solution.</span></li><li><span class="ic">None</span><span><b>Domain matters</b>: <i>x</i> ∈ ℕ, ℤ, ℝ changes which values are allowed.</span></li><li><span class="ic">None</span><span>Goal is <b>all</b> solutions: express as a set/interval and (often) show on number line.</span></li><li><span class="ic">None</span><span>Multiplying/dividing by a <b>negative</b> number reverses the inequality sign.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WHAT DOES IT MEAN TO SOLVE?</span></h2><ul class="b"><li>Start with an inequality (e.g., 30<i>x</i> &lt; 200) and a domain (ℕ/ℤ/ℝ).</li><li>A value is a solution if substitution makes the inequality statement true.</li><li>Write the answer as a <b>set</b>: roster (often for ℕ/ℤ) or interval form (often for ℝ).</li><li>If the domain is restricted, exclude values not allowed by the domain (e.g., fractions if <i>x</i> counts packets).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WHY NOT JUST TRIAL-AND-ERROR?</span></h2><ul class="b"><li>Trial-and-error is slow when many values must be checked.</li><li>It may miss solutions when the set is infinite (e.g., <i>x</i> &lt; 2 in ℝ).</li><li>Algebraic rules help isolate the variable systematically.</li><li>Always state the final set consistent with the given domain.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">SAME INEQUALITY, DIFFERENT DOMAINS → DIFFERENT SOLUTION SETS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Domain of <i>x</i></th><th>Allowed values</th><th>For 30<i>x</i> &lt; 200, solution set</th></tr></thead><tbody><tr><td>ℕ (natural numbers)</td><td>1,2,3,...</td><td>{1,2,3,4,5,6}</td></tr><tr><td>ℤ (integers)</td><td>...,-2,-1,0,1,...</td><td>{...,−3,−2,−1,0,1,2,3,4,5,6}</td></tr><tr><td>ℝ (real numbers)</td><td>all real numbers</td><td><i>x</i> &lt; <span class='frac'><span>20</span><span>3</span></span></td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Example inequality (budget):</div><div class="eqbox"><span class="eq">30<i>x</i> &lt; 200 ⇒ <i>x</i> &lt; <span class='frac'><span>200</span><span>30</span></span> = <span class='frac'><span>20</span><span>3</span></span></span></div><div class="fstep">Rule 1 (add/subtract same expression):</div><div class="eqbox"><span class="eq">If <i>a</i> &lt; <i>b</i>, then <i>a</i> + <i>c</i> &lt; <i>b</i> + <i>c</i></span></div></div><div><div class="fstep">Rule 2 (multiply/divide by negative flips sign):</div><div class="eqbox blue"><span class="eq">If <i>a</i> &lt; <i>b</i> and <i>k</i> &lt; 0, then <i>ka</i> &gt; <i>kb</i></span></div></div><div><table class="wtab"><tr><td><i>x</i>&nbsp;=</td><td>variable; allowed values depend on the stated domain (ℕ/ℤ/ℝ)</td></tr><tr><td><i>k</i>&nbsp;=</td><td>a non-zero real number used to multiply/divide both sides</td></tr><tr><td><i>a</i>, <i>b</i>, <i>c</i>&nbsp;=</td><td>real numbers/algebraic expressions in an inequality</td></tr></table><div class="hibox">Exam-critical rule<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Multiply/divide by negative ⇒ reverse sign: &lt; ↔ &gt; and ≤ ↔ ≥</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Packets of rice: Ravi has ₹200, rice costs ₹30 per 1 kg packet. If <i>x</i> is the number of packets, find the solution set of 30<i>x</i> &lt; 200 for (i) <i>x</i> ∈ ℕ, (ii) <i>x</i> ∈ ℤ, (iii) <i>x</i> ∈ ℝ.</div><div class="sol"><span class="lbl">Solution:</span><br>Given 30<i>x</i> &lt; 200.<br>Divide both sides by 30 (positive, so sign unchanged): <i>x</i> &lt; <span class='frac'><span>200</span><span>30</span></span> = <span class='frac'><span>20</span><span>3</span></span> ≈ 6.666...<br>(i) If <i>x</i> ∈ ℕ = {1,2,3,...}, then <i>x</i> can be 1,2,3,4,5,6.<br>(ii) If <i>x</i> ∈ ℤ, then <i>x</i> can be any integer ≤ 6: ...,−3,−2,−1,0,1,2,3,4,5,6.<br>(iii) If <i>x</i> ∈ ℝ, then all real numbers less than <span class='frac'><span>20</span><span>3</span></span> satisfy it.</div><div class="ans">✓&nbsp; (i) {1,2,3,4,5,6}  (ii) {...,−3,−2,−1,0,1,2,3,4,5,6}  (iii) <i>x</i> &lt; <span class='frac'><span>20</span><span>3</span></span> (i.e., (−∞, <span class='frac'><span>20</span><span>3</span></span>))</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Solve 5<i>x</i> − 3 &lt; 3<i>x</i> + 1 for (i) <i>x</i> ∈ ℤ, (ii) <i>x</i> ∈ ℝ. Write the solution set.</div><div class="sol"><span class="lbl">Solution:</span><br>Start: 5<i>x</i> − 3 &lt; 3<i>x</i> + 1.<br>Add 3 to both sides: 5<i>x</i> &lt; 3<i>x</i> + 4.<br>Subtract 3<i>x</i> from both sides: 2<i>x</i> &lt; 4.<br>Divide by 2 (positive): <i>x</i> &lt; 2.<br>(i) If <i>x</i> ∈ ℤ: all integers less than 2, i.e., ..., −3, −2, −1, 0, 1.<br>(ii) If <i>x</i> ∈ ℝ: all real numbers less than 2.</div><div class="ans">✓&nbsp; (i) {...,−3,−2,−1,0,1}  (ii) <i>x</i> ∈ (−∞, 2)</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always mention the <b>domain</b>; without it, the solution set can change.</li><li>A solution is a <b>value</b>; the solution set is a <b>set</b> of all such values.</li><li>For ℝ, answers are often written in interval form like (−∞,2), [8,∞).</li><li>Number line: open circle for &lt;,&gt;; filled circle for ≤,≥.</li><li>Multiplying/dividing by a negative reverses the sign; a common exam trap.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to reverse the inequality sign when multiplying/dividing by a negative number.</li><li>Giving a real-number interval when the domain is ℤ or ℕ (or vice versa).</li><li>Including the boundary point in strict inequalities (&lt; or &gt;).</li><li>Listing a few trial values and calling it the full solution set.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "NEG flips the sign"”</div><paragraph id="6a9fdca36635ef161f000391">If you multiply/divide both sides by a <b>NEGative</b> number, the inequality sign <b>flips</b> direction.</paragraph><paragraph id="6a9fdca3ca452e1d95000392">No flip when you add/subtract the <b>same</b> number/expression on both sides.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>Solution</b>: a value of <i>x</i> that makes an inequality <b>true</b>.</span><span class="eq"><b>Solution set</b>: set of all solutions, respecting the given domain (ℕ/ℤ/ℝ).</span><span class="eq">Rule 1: Add/subtract the same expression on both sides → sign unchanged.</span><span class="eq">Rule 2: Multiply/divide by positive → sign unchanged.</span><span class="eq">Rule 2 (special): Multiply/divide by negative → <b>reverse sign</b> (&lt;↔&gt;, ≤↔≥).</span><span class="eq">Number line: open circle for &lt;,&gt;; filled circle for ≤,≥.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Operational rules: add/subtract freely; multiply/divide carefully (negative flips sign)</div>
+              <h2>RULES FOR SOLVING LINEAR INEQUALITIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>To solve an inequality</b>, apply operations to both sides to isolate the variable while keeping truth unchanged.</li><li><b>Rule 1:</b> Add (or subtract) the <b>same real number</b> on both sides; inequality sign stays the same.</li><li><b>Rule 2 (positive):</b> Multiply (or divide) both sides by the <b>same positive number</b>; sign stays the same.</li><li><b>Rule 2 (negative):</b> Multiply (or divide) both sides by the <b>same negative number</b>; <b>reverse</b> the inequality sign.</li><li>After solving, express the <b>solution set</b> (interval form) and verify with a quick test value if needed.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='32' y='44' font-size='14' fill='#1f2a44'>Operate on both sides</text><rect x='32' y='58' width='296' height='46' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='44' y='82' font-size='13' fill='#1f2a44'>Add / Subtract same number</text><text x='244' y='82' font-size='13' fill='#16A34A'>Sign same</text><rect x='32' y='114' width='296' height='26' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='44' y='132' font-size='13' fill='#1f2a44'>× or ÷ by positive</text><text x='244' y='132' font-size='13' fill='#F59E0B'>Sign same</text><rect x='32' y='146' width='296' height='26' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='44' y='164' font-size='13' fill='#1f2a44'>× or ÷ by negative</text><text x='240' y='164' font-size='13' fill='#7C3AED'>Flip sign</text><line x1='250' y1='168' x2='316' y2='168' stroke='#7C3AED' stroke-width='2' marker-end='url(#arr)'/></svg><div class="figcap">Flow of operations: only multiplying/dividing by a negative reverses the inequality sign.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Adding/subtracting the same number preserves order: <i>a</i> &lt; <i>b</i> ⇒ <i>a</i>+<i>c</i> &lt; <i>b</i>+<i>c</i></span></li><li><span class="ic">✖️</span><span>Multiplying/dividing by positive preserves order; by negative reverses order</span></li><li><span class="ic">🔁</span><span>Sign flip mapping: &lt; ↔ &gt; and ≤ ↔ ≥ when multiplied/divided by a negative</span></li><li><span class="ic">🧪</span><span>Quick sanity check: pick a test value from your interval; substitute to confirm truth</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">PROPERTY STATEMENTS (ORDER PRESERVING / REVERSING)</span></h2><ul class="b"><li>If <i>a</i> &lt; <i>b</i>, then <i>a</i> + <i>c</i> &lt; <i>b</i> + <i>c</i> for any real <i>c</i>.</li><li>If <i>a</i> &lt; <i>b</i> and <i>c</i> &gt; 0, then <i>ac</i> &lt; <i>bc</i> and <i>a</i> ÷ <i>c</i> &lt; <i>b</i> ÷ <i>c</i>.</li><li>If <i>a</i> &lt; <i>b</i> and <i>c</i> &lt; 0, then <i>ac</i> &gt; <i>bc</i> and <i>a</i> ÷ <i>c</i> &gt; <i>b</i> ÷ <i>c</i>.</li><li>Same rules hold for ≤ and ≥ (keep equality allowed; only direction may flip).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WHY DOES THE SIGN FLIP FOR NEGATIVES? (MICRO-DERIVATION IDEA)</span></h2><ul class="b"><li>Start with true inequality 3 &gt; 2.</li><li>Multiply by −1: (−1)·3 = −3 and (−1)·2 = −2.</li><li>On number line, −3 lies left of −2, so −3 &lt; −2: direction reverses.</li><li>Hence multiplying/dividing by a negative reverses &lt;↔&gt; and ≤↔≥.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Effect of the Same Operation on Both Sides</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Operation on both sides</th><th>Condition</th><th>Result on inequality sign</th></tr></thead><tbody><tr><td>Add / subtract <i>c</i></td><td><i>c</i> any real</td><td>No change</td></tr><tr><td>Multiply / divide by <i>c</i></td><td><i>c</i> &gt; 0</td><td>No change</td></tr><tr><td>Multiply / divide by <i>c</i></td><td><i>c</i> &lt; 0</td><td>Reverse sign</td></tr><tr><td>Divide by <i>c</i></td><td><i>c</i> = 0</td><td>Not allowed</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Order reversal example:</div><div class="eqbox"><span class="eq">3 &gt; 2</span></div><div class="fstep">Multiply both sides by −1:</div><div class="eqbox"><span class="eq">(−1)·3 &lt; (−1)·2</span></div></div><div><div class="fstep">So the direction flips:</div><div class="eqbox blue"><span class="eq">−3 &lt; −2</span></div></div><div><table class="wtab"><tr><td><i>a</i>, <i>b</i>&nbsp;=</td><td>Real numbers being compared</td></tr><tr><td><i>c</i>&nbsp;=</td><td>Same real number used to add/subtract/multiply/divide (with <i>c</i> ≠ 0 for ÷)</td></tr></table><div class="hibox">Core rule (most tested)<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>a</i> &lt; <i>b</i>, <i>c</i> &lt; 0 ⇒ <i>ac</i> &gt; <i>bc</i> (and similarly for ÷)</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='16' y='22' width='328' height='156' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='48' font-size='14' fill='#1f2a44'>Example: solution of</text><text x='168' y='48' font-size='14' fill='#2563EB'>x &gt; −2</text><line x1='40' y1='118' x2='320' y2='118' stroke='#123B7A' stroke-width='3' marker-end='url(#arr2)'/><line x1='80' y1='112' x2='80' y2='124' stroke='#123B7A' stroke-width='2'/><text x='72' y='140' font-size='12' fill='#1f2a44'>−4</text><line x1='140' y1='112' x2='140' y2='124' stroke='#123B7A' stroke-width='2'/><text x='134' y='140' font-size='12' fill='#1f2a44'>−2</text><line x1='200' y1='112' x2='200' y2='124' stroke='#123B7A' stroke-width='2'/><text x='196' y='140' font-size='12' fill='#1f2a44'>0</text><line x1='260' y1='112' x2='260' y2='124' stroke='#123B7A' stroke-width='2'/><text x='256' y='140' font-size='12' fill='#1f2a44'>2</text><circle cx='140' cy='118' r='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='3'/><line x1='148' y1='118' x2='312' y2='118' stroke='#2563EB' stroke-width='6' opacity='0.9'/><text x='30' y='170' font-size='12' fill='#1f2a44'>Open circle: not included</text><text x='210' y='170' font-size='12' fill='#1f2a44'>Shade right for &gt;</text></svg><div class="figcap">Number line representation (typical after applying rules): open circle for &gt; or &lt; ; filled for ≥ or ≤.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Solve the inequality: 5<i>x</i> − 3 &lt; 3<i>x</i> + 1 (for real <i>x</i>).</div><div class="sol"><span class="lbl">Solution:</span><br>Add 3 to both sides (Rule 1): 5<i>x</i> − 3 + 3 &lt; 3<i>x</i> + 1 + 3<br>So, 5<i>x</i> &lt; 3<i>x</i> + 4<br>Subtract 3<i>x</i> from both sides (Rule 1): 2<i>x</i> &lt; 4<br>Divide by 2 (&gt;0, Rule 2): <i>x</i> &lt; 2</div><div class="ans">✓&nbsp; Solution set: <i>x</i> ∈ (−∞, 2).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Solve the inequality: −12<i>x</i> &gt; 30 (for real <i>x</i>).</div><div class="sol"><span class="lbl">Solution:</span><br>Divide both sides by −12 (negative, so reverse sign): <i>x</i> &lt; 30 ÷ (−12)<br>Compute: 30 ÷ (−12) = −<span class='frac'><span>30</span><span>12</span></span> = −<span class='frac'><span>5</span><span>2</span></span><br>Hence <i>x</i> &lt; −<span class='frac'><span>5</span><span>2</span></span></div><div class="ans">✓&nbsp; Solution set: <i>x</i> ∈ (−∞, −<span class='frac'><span>5</span><span>2</span></span>).</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Only multiplying/dividing by a <b>negative</b> changes the direction of inequality.</li><li>Division by 0 is <b>never</b> permitted in inequalities (same as equations).</li><li>Keep track of strict vs slack: &lt;,&gt; give open endpoints; ≤,≥ include endpoints.</li><li>When simplifying, apply Rule 1/2 stepwise; avoid jumping steps that hide a sign flip.</li><li>After final interval, a quick substitution value can catch sign-flip mistakes fast.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to reverse the sign when dividing or multiplying by a negative number.</li><li>Reversing sign when adding/subtracting a negative (not needed; Rule 1 never flips).</li><li>Dropping the equality part while moving from ≤/≥ to final answer (endpoint lost).</li><li>Arithmetic slip in fraction simplification after dividing (especially with negatives).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "NEG → FLIP"”</div><paragraph id="6a9fdca3e34b7962b6000393">Add/Subtract: <b>Never</b> flips.</paragraph><paragraph id="6a9fdca3dce85f47e5000394">×/÷ by <b>Positive</b>: sign stays.</paragraph><paragraph id="6a9fdca3577c69ef5d000395">×/÷ by <b>NEGative</b>: <b>FLIP</b> (&lt;↔&gt;, ≤↔≥).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Rule 1: <i>a</i> &lt; <i>b</i> ⇒ <i>a</i> ± <i>c</i> &lt; <i>b</i> ± <i>c</i></span><span class="eq">If <i>c</i> &gt; 0: <i>a</i> &lt; <i>b</i> ⇒ <i>ac</i> &lt; <i>bc</i> and <i>a</i> ÷ <i>c</i> &lt; <i>b</i> ÷ <i>c</i></span><span class="eq">If <i>c</i> &lt; 0: <i>a</i> &lt; <i>b</i> ⇒ <i>ac</i> &gt; <i>bc</i> and <i>a</i> ÷ <i>c</i> &gt; <i>b</i> ÷ <i>c</i></span><span class="eq">Sign flip key: &lt; ↔ &gt; and ≤ ↔ ≥ (only for ×/÷ by negative)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Solve <b>ax+b</b> type inequalities; remember the <b>sign flip</b> on × or ÷ by negative</div>
+              <h2>LINEAR INEQUALITIES IN ONE VARIABLE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A <b>linear inequality in one variable</b> compares two linear expressions using <b>&lt;, &gt;, ≤, ≥</b>.</li><li>A <b>solution</b> is any value of <i>x</i> that makes the inequality a <b>true</b> statement.</li><li>Solutions depend on the <b>domain</b>: real numbers, integers, or natural numbers.</li><li>To solve, use algebra like equations, but <b>reverse the inequality sign</b> when multiplying/dividing by a <b>negative</b>.</li><li>Final answers are written as <b>intervals</b> (reals) or as a <b>set/list</b> (integers/naturals) and shown on a number line.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='324' height='70' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='42' font-size='13' fill='#1f2a44'>Solve in reals: ax + b &lt; cx + d</text><text x='30' y='62' font-size='13' fill='#1f2a44'>Bring x terms together, constants together</text><text x='30' y='82' font-size='13' fill='#1f2a44'>Divide by coefficient (flip if negative)</text><line x1='40' y1='135' x2='320' y2='135' stroke='#123B7A' stroke-width='3' marker-end='url(#arr)'/><line x1='40' y1='135' x2='40' y2='129' stroke='#123B7A' stroke-width='2'/><line x1='120' y1='135' x2='120' y2='129' stroke='#123B7A' stroke-width='2'/><line x1='200' y1='135' x2='200' y2='129' stroke='#123B7A' stroke-width='2'/><line x1='280' y1='135' x2='280' y2='129' stroke='#123B7A' stroke-width='2'/><text x='34' y='155' font-size='12' fill='#1f2a44'>-2</text><text x='115' y='155' font-size='12' fill='#1f2a44'>0</text><text x='195' y='155' font-size='12' fill='#1f2a44'>2</text><text x='274' y='155' font-size='12' fill='#1f2a44'>4</text><circle cx='200' cy='135' r='6' fill='#EEF4FF' stroke='#7C3AED' stroke-width='2'/><line x1='40' y1='170' x2='190' y2='170' stroke='#7C3AED' stroke-width='6'/><text x='30' y='190' font-size='12' fill='#1f2a44'>x &lt; 2 : open dot, shade left</text></svg><div class="figcap">Workflow + number-line convention (open dot for strict inequality).</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">➕</span><span>Add/subtract same number on both sides: sign stays same.</span></li><li><span class="ic">✖️</span><span>Multiply/divide by positive: sign stays same; by negative: <b>flip</b> (&lt;↔&gt;, ≤↔≥).</span></li><li><span class="ic">🧩</span><span>For fractions, clear denominators using LCM; track sign if multiplying by a negative.</span></li><li><span class="ic">🔢</span><span>Domain filter: after solving in reals, restrict to integers/naturals if asked.</span></li><li><span class="ic">📍</span><span>Graph on number line: open dot for &lt;,&gt;; filled dot for ≤,≥; shade correct side.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD PROCEDURE (ONE VARIABLE)</span></h2><ul class="b"><li>Step 1: Expand brackets; simplify both sides.</li><li>Step 2: Move all <i>x</i>-terms to one side using Rule 1 (add/subtract).</li><li>Step 3: Move constants to the other side.</li><li>Step 4: Divide by the coefficient of <i>x</i>; if it is <b>negative</b>, <b>reverse</b> the sign.</li><li>Step 5: Write solution in interval form; then apply domain (ℝ/ℤ/ℕ) if specified.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">FRACTION INEQUALITIES &amp; DOMAIN NOTES</span></h2><ul class="b"><li>Clear denominators by multiplying both sides by LCM of denominators.</li><li>If LCM is positive (usual case), sign stays; if multiplied by a negative, <b>flip</b> sign.</li><li>For real-domain answers: use ( ) for &lt;,&gt;; use [ ] for ≤,≥.</li><li>For integer/natural domains: list all integers satisfying the final real inequality.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">NUMBER LINE GRAPH: STRICT vs SLACK INEQUALITIES</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Form</th><th>Dot at boundary</th><th>Shading</th></tr></thead><tbody><tr><td><b>x &lt; a</b> or <b>x &gt; a</b></td><td>Open circle (a not included)</td><td>Left of a (for &lt;) / Right of a (for &gt;)</td></tr><tr><td><b>x ≤ a</b> or <b>x ≥ a</b></td><td>Filled circle (a included)</td><td>Left of a (for ≤) / Right of a (for ≥)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">General solving idea:</div><div class="eqbox"><span class="eq">ax + b &lt; cx + d</span></div><div class="fstep">Collect like terms (Rule 1):</div><div class="eqbox"><span class="eq">(a − c)x &lt; (d − b)</span></div></div><div><div class="fstep">Divide (Rule 2):</div><div class="eqbox blue"><span class="eq">If (a − c) &gt; 0, then <i>x</i> &lt; <span class='frac'><span>(d − b)</span><span>(a − c)</span></span>; if (a − c) &lt; 0, then <i>x</i> &gt; <span class='frac'><span>(d − b)</span><span>(a − c)</span></span></span></div></div><div><table class="wtab"><tr><td><i>x</i>&nbsp;=</td><td>Real variable (unless domain is specified as ℤ or ℕ)</td></tr><tr><td><i>a</i>, <i>b</i>, <i>c</i>, <i>d</i>&nbsp;=</td><td>Real constants; for linear inequality, coefficients are fixed numbers</td></tr></table><div class="hibox">SIGN-FLIP RULE (MOST TESTED)<div class="eqbox gold" style="margin-top:1mm"><span class="eq">If you multiply/divide both sides by a <b>negative</b> number, reverse the inequality sign.</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='18' width='324' height='164' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='40' font-size='13' fill='#1f2a44'>Solution on number line: x ≥ 8</text><line x1='50' y1='105' x2='320' y2='105' stroke='#123B7A' stroke-width='3' marker-end='url(#arr2)'/><line x1='50' y1='105' x2='50' y2='99' stroke='#123B7A' stroke-width='2'/><line x1='140' y1='105' x2='140' y2='99' stroke='#123B7A' stroke-width='2'/><line x1='230' y1='105' x2='230' y2='99' stroke='#123B7A' stroke-width='2'/><text x='42' y='128' font-size='12' fill='#1f2a44'>0</text><text x='132' y='128' font-size='12' fill='#1f2a44'>4</text><text x='222' y='128' font-size='12' fill='#1f2a44'>8</text><circle cx='230' cy='105' r='6' fill='#16A34A' stroke='#16A34A' stroke-width='2'/><line x1='238' y1='105' x2='315' y2='105' stroke='#16A34A' stroke-width='7'/><text x='30' y='165' font-size='12' fill='#1f2a44'>Filled dot at 8, shade right</text></svg><div class="figcap">Example of inclusive boundary: <b>x ≥ 8</b>.</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Solve for <i>x</i>: <b>5x − 3 &lt; 3x + 1</b>. Give real solution set and integer solutions.</div><div class="sol"><span class="lbl">Solution:</span><br>Start: 5x − 3 &lt; 3x + 1<br>Add 3 to both sides: 5x &lt; 3x + 4<br>Subtract 3x from both sides: 2x &lt; 4<br>Divide by 2 (positive, so sign unchanged): <b>x &lt; 2</b><br>Real solution set: <b>(−∞, 2)</b><br>Integer solutions: ..., −3, −2, −1, 0, 1</div><div class="ans">✓&nbsp; For ℝ: <b>x &lt; 2</b>; for ℤ: <b>x ∈ {..., −3, −2, −1, 0, 1}</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Solve the fraction inequality for real <i>x</i>: <b><span class='frac'><span>5 − 2x</span><span>3</span></span> ≤ <span class='frac'><span>x</span><span>6</span></span> − 5</b>.</div><div class="sol"><span class="lbl">Solution:</span><br>Multiply both sides by 6 (positive LCM of 3 and 6): 6·<span class='frac'><span>5 − 2x</span><span>3</span></span> ≤ 6·<span class='frac'><span>x</span><span>6</span></span> − 6·5<br>Simplify: 2(5 − 2x) ≤ x − 30<br>Expand: 10 − 4x ≤ x − 30<br>Add 4x to both sides: 10 ≤ 5x − 30<br>Add 30 to both sides: 40 ≤ 5x<br>Divide by 5 (positive): <b>x ≥ 8</b></div><div class="ans">✓&nbsp; Solution set in ℝ: <b>[8, ∞)</b>.</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always mention the domain: ℝ gives intervals; ℤ/ℕ give discrete sets.</li><li>Only operation that changes sign is multiplying/dividing by a <b>negative</b> number.</li><li>When clearing fractions, multiply by LCM; check whether it is positive or negative.</li><li>Keep inequality direction consistent while moving terms: use Rule 1 carefully.</li><li>Graphing: open dot for &lt;,&gt;; filled dot for ≤,≥; shade correct side.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to reverse the sign after dividing by a negative coefficient (e.g., −2x &lt; 4).</li><li>Clearing fractions incorrectly (wrong LCM factor or wrong distribution).</li><li>Writing interval brackets wrongly: using [ ] for strict inequalities.</li><li>Listing integer solutions without applying the final bound correctly (off-by-one near boundary).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>NEG → FLIP</b>”</div><paragraph id="6a9fdca3eba175cf4b000396">If you multiply or divide by a <b>NEGative</b>, the sign must <b>FLIP</b>.</paragraph><paragraph id="6a9fdca30844c77398000397">Say it aloud: “Negative? Reverse the arrow.”</paragraph><paragraph id="6a9fdca3d7417ede61000398">For fractions: clear denominators first, then apply NEG→FLIP if needed.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Rule 1: Add/subtract same number both sides ⇒ inequality sign unchanged.</span><span class="eq">Rule 2: ×/÷ by positive ⇒ sign unchanged; ×/÷ by negative ⇒ <b>reverse sign</b>.</span><span class="eq">Standard form: ax + b &lt; cx + d ⇒ (a − c)x &lt; (d − b) ⇒ solve for <i>x</i> with sign-flip check.</span><span class="eq">Interval notation: &lt; or &gt; uses ( ); ≤ or ≥ uses [ ].</span><span class="eq">Number line: open dot = boundary excluded; filled dot = boundary included.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Show inequality solution sets using open/closed circles and shaded rays/intervals</div>
+              <h2>NUMBER LINE GRAPHS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A <b>number line graph</b> shows a set of real numbers on a number line using an endpoint marker and shading.</li><li><b>Open circle</b> at <i>a</i> means <i>a</i> is <b>not included</b> (used for &lt; or &gt;).</li><li><b>Closed (filled) circle</b> at <i>a</i> means <i>a</i> <b>is included</b> (used for ≤ or ≥).</li><li><b>Shading</b> shows all allowed values: left side for “less than”, right side for “greater than”.</li><li><b>Interval notation</b> matches the endpoint type: ( ) for open end, [ ] for closed end.</li><li>For a double inequality, shade only between the two boundary points with correct open/closed endpoints.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><text x='14' y='20' font-size='14' fill='#1f2a44'>Fig 5.1: x &lt; 3</text><line x1='30' y1='55' x2='330' y2='55' stroke='#123B7A' stroke-width='3' marker-end='url(#arrow)'/><line x1='180' y1='45' x2='180' y2='65' stroke='#123B7A' stroke-width='2'/><text x='174' y='82' font-size='12' fill='#1f2a44'>3</text><line x1='60' y1='55' x2='178' y2='55' stroke='#2563EB' stroke-width='6'/><circle cx='180' cy='55' r='8' fill='#EEF4FF' stroke='#2563EB' stroke-width='3'/><text x='14' y='110' font-size='14' fill='#1f2a44'>Fig 5.2: x ≥ 1</text><line x1='30' y1='145' x2='330' y2='145' stroke='#123B7A' stroke-width='3' marker-end='url(#arrow)'/><line x1='140' y1='135' x2='140' y2='155' stroke='#123B7A' stroke-width='2'/><text x='136' y='172' font-size='12' fill='#1f2a44'>1</text><line x1='142' y1='145' x2='330' y2='145' stroke='#16A34A' stroke-width='6'/><circle cx='140' cy='145' r='8' fill='#16A34A' stroke='#16A34A' stroke-width='2'/></g></svg><div class="figcap">Open circle for &lt;/&gt;; closed circle for ≤/≥; shade left/right to show the solution set.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">⚪</span><span>Strict inequality (&lt;, &gt;) → open circle; boundary excluded.</span></li><li><span class="ic">⚫</span><span>Inclusive inequality (≤, ≥) → closed circle; boundary included.</span></li><li><span class="ic">➡️</span><span>Shading direction: <i>x</i>&lt;<i>a</i> left; <i>x</i>&gt;<i>a</i> right.</span></li><li><span class="ic">🔁</span><span>Graph ↔ interval: open end ↔ ( ), closed end ↔ [ ].</span></li><li><span class="ic">🧩</span><span>For multiple conditions together, keep only the common shaded part (intersection).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO DRAW (EXAM-FAST)</span></h2><ul class="b"><li>Step 1: Mark the boundary value(s) on the number line.</li><li>Step 2: Use open circle for &lt; or &gt;; closed circle for ≤ or ≥.</li><li>Step 3: Shade left for “less than”, shade right for “greater than”.</li><li>Step 4: For two boundaries, shade only the region between them.</li><li>Step 5: Write the matching interval notation using ( ) or [ ].</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">INTERVAL &amp; SET NOTATION (QUICK CONVERSIONS)</span></h2><ul class="b"><li><i>x</i> &lt; <i>a</i> ↔ (−∞, <i>a</i>) and graph is open at <i>a</i> + left ray.</li><li><i>x</i> ≤ <i>a</i> ↔ (−∞, <i>a</i>] and graph is closed at <i>a</i> + left ray.</li><li><i>x</i> &gt; <i>a</i> ↔ (<i>a</i>, ∞) and graph is open at <i>a</i> + right ray.</li><li><i>x</i> ≥ <i>a</i> ↔ [<i>a</i>, ∞) and graph is closed at <i>a</i> + right ray.</li><li><i>p</i> &lt; <i>x</i> &lt; <i>q</i> ↔ (<i>p</i>, <i>q</i>); <i>p</i> ≤ <i>x</i> &lt; <i>q</i> ↔ [<i>p</i>, <i>q</i>).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">OPEN vs CLOSED ENDPOINTS (NUMBER LINE + INTERVAL)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Open circle ⚪</th><th>Closed circle ⚫</th></tr></thead><tbody><tr><td>Inequality sign</td><td><i>x</i> &lt; <i>a</i> or <i>x</i> &gt; <i>a</i></td><td><i>x</i> ≤ <i>a</i> or <i>x</i> ≥ <i>a</i></td></tr><tr><td>Endpoint included?</td><td>No, value <i>a</i> excluded</td><td>Yes, value <i>a</i> included</td></tr><tr><td>Interval bracket</td><td>( ) at that end</td><td>[ ] at that end</td></tr><tr><td>Typical picture</td><td>Hollow point + shading</td><td>Filled point + shading</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Convert the inequality <i>x</i> &lt; 3 into (i) number line graph description and (ii) interval notation.</div><div class="sol"><span class="lbl">Answer:</span><br>Boundary point is 3.<br>Use an open circle at 3 because the sign is &lt; (3 not included).<br>Shade to the left because values are less than 3.<br>Write interval using ( ) with −∞: (−∞, 3).</div><div class="ans">✓&nbsp; Number line: open circle at 3, shade left; interval: <i>x</i> ∈ (−∞, 3).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Convert the interval [1, ∞) into an inequality and a number line graph description.</div><div class="sol"><span class="lbl">Answer:</span><br>The bracket [ at 1 means 1 is included → closed circle at 1.<br>The interval goes to ∞, so shade to the right.<br>Inequality is <i>x</i> ≥ 1.</div><div class="ans">✓&nbsp; Inequality: <i>x</i> ≥ 1; number line: closed circle at 1, shade right.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Open circle means the boundary value is excluded; closed circle means included.</li><li>Left shading corresponds to “less than”; right shading corresponds to “greater than”.</li><li>Infinity is never included, so ±∞ always uses round brackets: (−∞, a), (a, ∞).</li><li>Two-sided inequalities shade only between the two endpoints.</li><li>For multiple inequalities together, final graph shows the intersection (common region).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using a closed circle for &lt; or &gt; (including the boundary incorrectly).</li><li>Shading in the wrong direction after identifying the sign.</li><li>Writing [−∞, <i>a</i>) or (<i>a</i>, ∞] (incorrectly including infinity).</li><li>Swapping [ ] and ( ) while converting between a graph and interval notation.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: O-C-S (Open–Closed–Side)”</div><paragraph id="6a9fdca33e936f9ef7000399"><b>O</b>pen for strict signs (&lt; or &gt;): boundary not allowed.</paragraph><paragraph id="6a9fdca377d2e68d1f00039a"><b>C</b>losed for inclusive signs (≤ or ≥): boundary allowed.</paragraph><paragraph id="6a9fdca3d0fa6e6c4100039b"><b>S</b>ide: ‘&lt;’ shades <b>left</b>, ‘&gt;’ shades <b>right</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Open endpoint ↔ ( ) ; closed endpoint ↔ [ ].</span><span class="eq">Less than (&lt;) or ≤ → shade left from the boundary point.</span><span class="eq">Greater than (&gt;) or ≥ → shade right from the boundary point.</span><span class="eq">Intervals with ±∞ always use round brackets.</span><span class="eq">For two conditions together, keep only the overlapping shaded part (intersection).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Solve multiple inequalities together; answer is their common solution set</div>
+              <h2>SYSTEMS OF INEQUALITIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A system of inequalities is a set of two or more inequalities considered simultaneously.</li><li>A solution is a value (or ordered pair) that satisfies every inequality in the system.</li><li>The solution set is the intersection (common part) of the individual solution sets.</li><li>For one variable, the solution is usually an interval (or union of intervals) on the number line.</li><li>For two variables, the solution is a region in the plane common to all half-planes (with boundary included for ≤, ≥).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" xmlns='http://www.w3.org/2000/svg' width='520' height='110' viewBox='0 0 520 110'><rect width='520' height='110' fill='white'/><line x1='50' y1='60' x2='470' y2='60' stroke='#111' stroke-width='2'/><line x1='50' y1='55' x2='50' y2='65' stroke='#111' stroke-width='2'/><line x1='470' y1='55' x2='470' y2='65' stroke='#111' stroke-width='2'/><text x='42' y='85' font-family='Arial' font-size='14' fill='#111'>0</text><text x='458' y='85' font-family='Arial' font-size='14' fill='#111'>8</text><line x1='150' y1='55' x2='150' y2='65' stroke='#111' stroke-width='2'/><line x1='350' y1='55' x2='350' y2='65' stroke='#111' stroke-width='2'/><text x='143' y='45' font-family='Arial' font-size='14' fill='#111'>2</text><text x='343' y='45' font-family='Arial' font-size='14' fill='#111'>6</text><circle cx='150' cy='60' r='7' fill='#111'/><circle cx='350' cy='60' r='7' fill='white' stroke='#111' stroke-width='2'/><line x1='150' y1='60' x2='350' y2='60' stroke='#0b57d0' stroke-width='6' stroke-linecap='round'/><text x='200' y='100' font-family='Arial' font-size='14' fill='#0b57d0'>common part</text></svg><div class="figcap">Example intersection: filled dot included, open dot excluded</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>Solve each inequality, then take common values (intersection).</span></li><li><span class="ic">➕</span><span>Add/subtract the same number on both sides: inequality sign unchanged.</span></li><li><span class="ic">✖️</span><span>Multiply/divide by a positive number: sign unchanged; by a negative number: sign reverses.</span></li><li><span class="ic">⚪</span><span>Graphing in 1D: open circle for <span>&lt;</span>, <span>&gt;</span>; filled circle for ≤, ≥.</span></li><li><span class="ic">📍</span><span>A double inequality like <i>a</i> ≤ <i>expr</i> <span>&lt;</span> <i>b</i> means both: <i>a</i> ≤ <i>expr</i> AND <i>expr</i> <span>&lt;</span> <i>b</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO SOLVE (ONE VARIABLE)</span></h2><ul class="b"><li>Step 1: Solve each inequality separately (get intervals).</li><li>Step 2: If you multiply/divide by a negative number, reverse <span>&lt;</span> ↔ <span>&gt;</span>, ≤ ↔ ≥.</li><li>Step 3: Take intersection of intervals (common overlap).</li><li>Step 4: Write answer in interval form, and optionally show on number line.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">DOUBLE INEQUALITIES &amp; SYSTEMS</span></h2><ul class="b"><li>A chain <i>a</i> <span>&lt;</span> <i>expr</i> ≤ <i>b</i> means: (<i>a</i> <span>&lt;</span> <i>expr</i>) AND (<i>expr</i> ≤ <i>b</i>).</li><li>You can solve the chain by operating on all three parts together, or split into two inequalities and intersect.</li><li>Final solution keeps each endpoint strict/inclusive based on <span>&lt;</span>, <span>&gt;</span>, ≤, ≥.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">STRICT vs SLACK INEQUALITIES</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Strict (<span>&lt;</span>, <span>&gt;</span>)</th><th>Slack (≤, ≥)</th></tr></thead><tbody><tr><td>Endpoint included?</td><td>No</td><td>Yes</td></tr><tr><td>Number line mark</td><td>Open circle</td><td>Filled circle</td></tr><tr><td>Geometric meaning (2 variables)</td><td>Boundary line not included</td><td>Boundary line included</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">System means common solutions:</div><div class="eqbox"><span class="eq">If <i>S</i><sub>1</sub> and <i>S</i><sub>2</sub> are solution sets, then <i>S</i> = <i>S</i><sub>1</sub> ∩ <i>S</i><sub>2</sub></span></div></div><div><div class="fstep">Sign reversal rule (core):</div><div class="eqbox blue"><span class="eq">If <i>a</i> <span>&lt;</span> <i>b</i>, then for <i>k</i> &gt; 0: <i>ka</i> <span>&lt;</span> <i>kb</i>; for <i>k</i> &lt; 0: <i>ka</i> <span>&gt;</span> <i>kb</i>.</span></div></div><div><table class="wtab"><tr><td><i>S</i>&nbsp;=</td><td>solution set of the system</td></tr><tr><td><i>S</i><sub>1</sub>, <i>S</i><sub>2</sub>&nbsp;=</td><td>solution sets of individual inequalities</td></tr><tr><td><i>k</i>&nbsp;=</td><td>non-zero real number used to multiply/divide both sides</td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq">Solution(system) = intersection of all individual solution sets</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">8</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" xmlns='http://www.w3.org/2000/svg' width='420' height='260' viewBox='0 0 420 260'><rect width='420' height='260' fill='white'/><line x1='50' y1='210' x2='390' y2='210' stroke='#111' stroke-width='2'/><line x1='50' y1='210' x2='50' y2='30' stroke='#111' stroke-width='2'/><text x='380' y='230' font-family='Arial' font-size='14' fill='#111'>x</text><text x='30' y='40' font-family='Arial' font-size='14' fill='#111'>y</text><line x1='120' y1='210' x2='120' y2='30' stroke='#888' stroke-width='2'/><text x='110' y='230' font-family='Arial' font-size='12' fill='#111'>a</text><line x1='300' y1='210' x2='300' y2='30' stroke='#888' stroke-width='2' stroke-dasharray='6,6'/><text x='290' y='230' font-family='Arial' font-size='12' fill='#111'>b</text><rect x='120' y='30' width='180' height='180' fill='#0b57d0' opacity='0.12'/><text x='150' y='55' font-family='Arial' font-size='13' fill='#0b57d0'>solution region</text></svg><div class="figcap">In 2 variables, solutions are the common shaded region (here: between two vertical boundaries)</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">9</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Solve the system: <i>x</i> <span>&lt;</span> 6 and <i>x</i> ≥ 2. Represent the solution on number line.</div><div class="sol"><span class="lbl">Solution:</span><br>From <i>x</i> <span>&lt;</span> 6, solution set is (−∞, 6).<br>From <i>x</i> ≥ 2, solution set is [2, ∞).<br>Intersection: [2, ∞) ∩ (−∞, 6) = [2, 6).<br>Graph: filled dot at 2, open dot at 6, dark segment between them.</div><div class="ans">✓&nbsp; <i>x</i> ∈ [2, 6)</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Solve the double inequality: −8 ≤ 5<i>x</i> − 3 &lt; 7.</div><div class="sol"><span class="lbl">Solution:</span><br>Add 3 to all parts: −8 + 3 ≤ 5<i>x</i> <span>&lt;</span> 7 + 3, so −5 ≤ 5<i>x</i> <span>&lt;</span> 10.<br>Divide all parts by 5 (positive): <span class='frac'><span>−5</span><span>5</span></span> ≤ <i>x</i> <span>&lt;</span> <span class='frac'><span>10</span><span>5</span></span>.<br>Simplify: −1 ≤ <i>x</i> <span>&lt;</span> 2.</div><div class="ans">✓&nbsp; <i>x</i> ∈ [−1, 2)</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">10</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>System solution is always the common part; if no overlap, solution set is empty (no real solution).</li><li>Keep track of strict vs inclusive endpoints to write correct interval brackets.</li><li>Multiplying/dividing by a negative number reverses the inequality sign.</li><li>A double inequality is a compact system; treat it as two inequalities joined by AND.</li><li>For real-number solutions, intervals are natural; for integer/natural solutions, list allowable values in the interval.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">11</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to reverse the inequality when multiplying/dividing by a negative number.</li><li>Combining inequalities by taking union instead of intersection (using OR instead of AND).</li><li>Wrong brackets: using [ ] for strict , or using ( ) for ≤ or ≥.</li><li>In a chain inequality, performing an operation on only one side instead of all three parts.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">12</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“AND = OVERLAP”</div><paragraph id="6a9fdca34964bf15a500039c">System means AND, not OR.</paragraph><paragraph id="6a9fdca34e337d8c7700039d">Draw each solution on number line, then keep only the overlap.</paragraph><paragraph id="6a9fdca3fd01fb179400039e">Negative multiply/divide? Flip the sign.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">13</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>S</i>(system) = <i>S</i><sub>1</sub> ∩ <i>S</i><sub>2</sub> ∩ ...</span><span class="eq">Add/subtract the same number on both sides: sign unchanged</span><span class="eq">Multiply/divide by <i>k</i> &gt; 0: sign unchanged</span><span class="eq">Multiply/divide by <i>k</i> &lt; 0: reverse inequality sign</span><span class="eq">Number line marks: open for <span>&lt;</span>, <span>&gt;</span>; filled for ≤, ≥</span><span class="eq">Double inequality: <i>a</i> <span>&lt;</span> <i>x</i> <span>&lt;</span> <i>b</i> ⇒ <i>x</i> ∈ (<i>a</i>, <i>b</i>)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Solve <b>a ≤ expression &lt; b</b> by splitting, solving, then intersecting intervals</div>
+              <h2>DOUBLE INEQUALITIES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A <b>double (compound) inequality</b> chains two inequalities, e.g. <b>a ≤ f(x) &lt; b</b>.</li><li>It means <b>both</b> conditions hold simultaneously: <b>a ≤ f(x)</b> and <b>f(x) &lt; b</b>.</li><li>Solve by <b>splitting</b> into two inequalities, solving each, then taking the <b>common x</b> values (intersection).</li><li>For linear cases, the solution is usually an <b>interval</b> such as <b>[p, q)</b>, <b>(p, q]</b>, etc.</li><li>When multiplying/dividing by a <b>negative</b> number, <b>reverse</b> every inequality sign in the chain.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><line x1='40' y1='120' x2='320' y2='120' stroke='#123B7A' stroke-width='3' marker-end='url(#arrow)'/><line x1='80' y1='114' x2='80' y2='126' stroke='#123B7A' stroke-width='2'/><line x1='200' y1='114' x2='200' y2='126' stroke='#123B7A' stroke-width='2'/><line x1='280' y1='114' x2='280' y2='126' stroke='#123B7A' stroke-width='2'/><text x='74' y='145' font-size='13' fill='#1f2a44'>-1</text><text x='195' y='145' font-size='13' fill='#1f2a44'>0</text><text x='275' y='145' font-size='13' fill='#1f2a44'>2</text><circle cx='80' cy='120' r='7' fill='#123B7A'/><circle cx='280' cy='120' r='7' fill='#EEF4FF' stroke='#123B7A' stroke-width='3'/><line x1='80' y1='120' x2='280' y2='120' stroke='#2563EB' stroke-width='8' stroke-linecap='round'/><text x='92' y='85' font-size='13' fill='#1f2a44'>solution</text><text x='150' y='85' font-size='13' fill='#1f2a44'>-1 ≤ x &lt; 2</text><rect x='28' y='18' rx='6' ry='6' width='304' height='40' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='42' y='44' font-size='13' fill='#1f2a44'>closed dot: ≤ / ≥</text><text x='190' y='44' font-size='13' fill='#1f2a44'>open dot: &lt; / &gt;</text></svg><div class="figcap">Number-line view: closed at <b>-1</b>, open at <b>2</b> gives <b>[-1, 2)</b>.</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔗</span><span>Chain meaning: <b>a ≤ f(x) &lt; b</b> is shorthand for two inequalities at once.</span></li><li><span class="ic">✂️</span><span>Method: <b>split → solve → intersect</b> (keep common part).</span></li><li><span class="ic">↔️</span><span>If you multiply/divide the whole chain by a <b>negative</b>, reverse <b>both</b> inequality signs.</span></li><li><span class="ic">📍</span><span>Interval language: <b>≤</b>/<b>≥</b> gives a <b>closed</b> endpoint; <b>&lt;</b>/<b>&gt;</b> gives an <b>open</b> endpoint.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD PROCESS (SPLIT → SOLVE → COMBINE)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='25' y='20' rx='6' ry='6' width='310' height='36' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='40' y='43' font-size='13' fill='#1f2a44'>a ≤ f(x) &lt; b</text><line x1='180' y1='58' x2='180' y2='78' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='25' y='80' rx='6' ry='6' width='145' height='40' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><rect x='190' y='80' rx='6' ry='6' width='145' height='40' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='40' y='104' font-size='13' fill='#1f2a44'>a ≤ f(x)</text><text x='205' y='104' font-size='13' fill='#1f2a44'>f(x) &lt; b</text><line x1='95' y1='122' x2='95' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='260' y1='122' x2='260' y2='140' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><rect x='25' y='142' rx='6' ry='6' width='145' height='40' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><rect x='190' y='142' rx='6' ry='6' width='145' height='40' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='38' y='166' font-size='13' fill='#1f2a44'>x-interval 1</text><text x='205' y='166' font-size='13' fill='#1f2a44'>x-interval 2</text><line x1='170' y1='162' x2='190' y2='162' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='120' y='190' font-size='13' fill='#1f2a44'>combine: intersection</text></svg></div><ul class="b"><li>Write <b>a ≤ f(x) &lt; b</b> as <b>a ≤ f(x)</b> and <b>f(x) &lt; b</b>.</li><li>Solve each inequality using normal rules (add/subtract same number; ×/÷ positive keeps sign).</li><li>If you ×/÷ by a <b>negative</b>, reverse the sign in that inequality (or reverse both signs in the whole chain).</li><li>Combine by taking the <b>intersection</b>: keep only x-values common to both solutions.</li><li>Express final answer in <b>interval form</b> and (optionally) show on a number line.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">ENDPOINTS &amp; INTERVAL NOTATION (EXAM-FAVOURITE)</span></h2><ul class="b"><li>If endpoint uses <b>≤</b> or <b>≥</b>, it is <b>included</b>: write <b>[</b> or <b>]</b> and use a filled dot.</li><li>If endpoint uses <b>&lt;</b> or <b>&gt;</b>, it is <b>excluded</b>: write <b>(</b> or <b>)</b> and use a hollow dot.</li><li>Example: <b>p ≤ x &lt; q</b> ⇔ <b>x ∈ [p, q)</b>.</li><li>Always keep chain in increasing order: write smaller bound on left, larger on right.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">STRICT vs SLACK (NON-STRICT) INEQUALITY SIGNS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Feature</th><th>Strict</th><th>Slack (non-strict)</th></tr></thead><tbody><tr><td>Symbols</td><td><b>&lt;</b>, <b>&gt;</b></td><td><b>≤</b>, <b>≥</b></td></tr><tr><td>Endpoint on number line</td><td>open circle</td><td>closed (filled) circle</td></tr><tr><td>Interval bracket</td><td><b>( )</b></td><td><b>[ ]</b></td></tr><tr><td>Equality allowed?</td><td>No</td><td>Yes</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Core idea (split the chain)</div><div class="eqbox"><span class="eq"><b>a ≤ f(x) &lt; b</b> ⇔ <b>(a ≤ f(x))</b> and <b>(f(x) &lt; b)</b></span></div><div class="fstep">Then combine solutions</div><div class="eqbox"><span class="eq"><b>Solution set</b> = <b>S<sub>1</sub> ∩ S<sub>2</sub></b></span></div></div><div><div class="fstep">Negative multiplier/divisor rule (apply to each inequality sign)</div><div class="eqbox blue"><span class="eq">If <b>k &lt; 0</b>, then from <b>A &lt; B</b> we get <b>kA &gt; kB</b> (sign reverses)</span></div></div><div><table class="wtab"><tr><td><i>f</i>(<i>x</i>)&nbsp;=</td><td>Given expression in <i>x</i> (often linear here)</td></tr><tr><td><i>S</i><sub>1</sub>, <i>S</i><sub>2</sub>&nbsp;=</td><td>Solution sets of the left and right inequalities</td></tr><tr><td>∩&nbsp;=</td><td>Intersection (common values)</td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>a ≤ f(x) &lt; b</b> ⇒ solve separately and take the <b>common interval</b>.</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Solve the double inequality <b>−8 ≤ 5x − 3 &lt; 7</b>.</div><div class="sol"><span class="lbl">Solution:</span><br>Split: <b>−8 ≤ 5x − 3</b> and <b>5x − 3 &lt; 7</b>.<br>First: <b>−8 ≤ 5x − 3</b> ⇒ add 3: <b>−5 ≤ 5x</b> ⇒ divide by 5: <b>−1 ≤ x</b>.<br>Second: <b>5x − 3 &lt; 7</b> ⇒ add 3: <b>5x &lt; 10</b> ⇒ divide by 5: <b>x &lt; 2</b>.<br>Combine (intersection): <b>−1 ≤ x</b> and <b>x &lt; 2</b> ⇒ <b>−1 ≤ x &lt; 2</b>.</div><div class="ans">✓&nbsp; <b>x ∈ [−1, 2)</b></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Solve the double inequality <b>−5 ≤ <span class='frac'><span>5 − 3x</span><span>2</span></span> ≤ 8</b>.</div><div class="sol"><span class="lbl">Solution:</span><br>Multiply the whole chain by <b>2</b> (positive, signs unchanged): <b>−10 ≤ 5 − 3x ≤ 16</b>.<br>Subtract 5 throughout: <b>−15 ≤ −3x ≤ 11</b>.<br>Divide throughout by <b>−3</b> (negative, reverse both signs): <b>5 ≥ x ≥ −<span class='frac'><span>11</span><span>3</span></span></b>.<br>Write in increasing order: <b>−<span class='frac'><span>11</span><span>3</span></span> ≤ x ≤ 5</b>.</div><div class="ans">✓&nbsp; <b>x ∈ [−11/3, 5]</b></div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>A chained inequality means <b>both</b> inequalities must hold (logical AND).</li><li>When manipulating a chain, apply operations to <b>all three parts</b> consistently.</li><li>Dividing/multiplying by a <b>negative</b> reverses each inequality sign; many errors happen here.</li><li>Final answer is the <b>intersection</b> of the two solution sets; it may be an interval or an empty set.</li><li>Write endpoints correctly using <b>[ ]</b> for inclusive and <b>( )</b> for exclusive.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Solving the two parts correctly but taking <b>union</b> instead of <b>intersection</b>.</li><li>Forgetting to reverse signs when dividing by a <b>negative</b> (especially in a chained step).</li><li>Not applying an operation to the <b>entire chain</b> (changing only one side).</li><li>Leaving the final chain in decreasing order without rewriting, e.g. <b>5 ≥ x ≥ −11/3</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“S-S-I: Split, Solve, Intersect”</div><paragraph id="6a9fdca3b300b75b9400039f"><b>S</b>plit the chain into two inequalities.</paragraph><paragraph id="6a9fdca3c6cf053c6c0003a0"><b>S</b>olve both completely (watch negative ÷ flips signs).</paragraph><paragraph id="6a9fdca369415e5cfd0003a1"><b>I</b>ntersect: keep only common x-values → one clean interval.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>a ≤ f(x) &lt; b</b> ⇔ <b>(a ≤ f(x))</b> AND <b>(f(x) &lt; b)</b></span><span class="eq"><b>Solution</b> = <b>S<sub>1</sub> ∩ S<sub>2</sub></b></span><span class="eq">If <b>k &gt; 0</b>, then <b>A &lt; B</b> ⇒ <b>kA &lt; kB</b></span><span class="eq">If <b>k &lt; 0</b>, then <b>A &lt; B</b> ⇒ <b>kA &gt; kB</b></span><span class="eq"><b>p ≤ x &lt; q</b> ⇔ <b>x ∈ [p, q)</b></span><span class="eq"><b>p &lt; x ≤ q</b> ⇔ <b>x ∈ (p, q]</b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow">Translate real-life constraints into linear inequalities and find the feasible range</div>
+              <h2>APPLICATIONS IN WORD PROBLEMS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Word problems become <i>linear inequalities</i> when conditions involve “at most / at least / less than / more than”.</li><li>Choose variables, write each condition as an inequality, then solve to get the <i>feasible set</i>.</li><li>For “average at least …”, convert to a condition on <i>total</i>: total marks ≥ (number of tests) × (required average).</li><li>For “between … and …”, write a <i>double inequality</i> and solve simultaneously.</li><li>In mixture/percentage problems, work with <i>amount of solute</i> and compare it with required % of the total mixture.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" xmlns='http://www.w3.org/2000/svg' width='520' height='120' viewBox='0 0 520 120'><rect x='0' y='0' width='520' height='120' fill='white'/><line x1='40' y1='70' x2='480' y2='70' stroke='#111' stroke-width='3'/><polygon points='480,70 468,64 468,76' fill='#111'/><line x1='150' y1='62' x2='150' y2='78' stroke='#111' stroke-width='3'/><line x1='360' y1='62' x2='360' y2='78' stroke='#111' stroke-width='3'/><circle cx='150' cy='70' r='8' fill='#111'/><circle cx='360' cy='70' r='8' fill='white' stroke='#111' stroke-width='3'/><line x1='150' y1='70' x2='360' y2='70' stroke='#1a73e8' stroke-width='8' stroke-linecap='round'/><text x='142' y='100' font-family='Arial' font-size='16' fill='#111'>a</text><text x='352' y='100' font-family='Arial' font-size='16' fill='#111'>b</text><text x='210' y='35' font-family='Arial' font-size='16' fill='#111'>a ≤ x &lt; b</text></svg><div class="figcap">Intersection-type answer often appears as an interval on a number line (filled vs open endpoint).</div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>“At most” → ≤, “at least” → ≥, “less than” → &lt;, “more than” → &gt;</span></li><li><span class="ic">🧮</span><span>When multiplying/dividing an inequality by a negative number, reverse the sign</span></li><li><span class="ic">📌</span><span>If variable represents count/length, apply domain: natural number/integer/real as stated</span></li><li><span class="ic">🧭</span><span>Solve multiple conditions by taking the intersection (common part) of solution sets</span></li><li><span class="ic">📈</span><span>On number line: open circle for &lt; or &gt; (endpoint excluded); filled circle for ≤ or ≥</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD WORD-TO-MATH TRANSLATIONS</span></h2><ul class="b"><li>Budget: “Total cost at most M” → cost expression ≤ <i>M</i></li><li>Capacity: “Can occupy at most …” → sum of items ≤ limit</li><li>Average: “Average at least A” → <span class='frac'><span>sum of scores</span><span>number</span></span> ≥ <i>A</i></li><li>Consecutive integers: use <i>x</i>, <i>x</i>+1; consecutive odd: <i>x</i>, <i>x</i>+2</li><li>Range: “between p and q” → <i>p</i> &lt; variable &lt; <i>q</i> (use ≤ if endpoints included)</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">PROCESS (FAST EXAM METHOD)</span></h2><ul class="b"><li>Step 1: Define variable(s) with units (packets, marks, litres, cm).</li><li>Step 2: Convert each sentence to an inequality (use ≤/≥ carefully).</li><li>Step 3: Solve using Rule 1 (add/subtract) and Rule 2 (×/÷; reverse sign if negative).</li><li>Step 4: If multiple inequalities, take common solution; write interval form.</li><li>Step 5: Apply domain restriction (natural/integer/real) and state final range.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">6</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Average condition</div><div class="eqbox"><span class="eq">If average ≥ <i>A</i> for <i>n</i> items, then <span class='frac'><span>S + <i>x</i></span><span>n</span></span> ≥ <i>A</i> ⇒ S + <i>x</i> ≥ <i>nA</i> (where <i>S</i> is sum of known marks).</span></div><div class="fstep">Mixture (percentage) model</div><div class="eqbox"><span class="eq">If <i>x</i> litres of p% is added to <i>V</i> litres of q%, then solute = <span class='frac'><span>p<i>x</i></span><span>100</span></span> + <span class='frac'><span>q<i>V</i></span><span>100</span></span>, total = <i>x</i> + <i>V</i>.</span></div></div><div><div class="fstep">Required percentage range (r% to s%)</div><div class="eqbox blue"><span class="eq">To keep resulting % between r and s: <span class='frac'><span><i>r</i></span><span>100</span></span>(<i>x</i>+<i>V</i>) &lt; solute &lt; <span class='frac'><span><i>s</i></span><span>100</span></span>(<i>x</i>+<i>V</i>), where solute is as above.</span></div></div><div><table class="wtab"><tr><td><i>x</i>&nbsp;=</td><td>unknown quantity (marks / litres / length / number of items)</td></tr><tr><td><i>S</i>&nbsp;=</td><td>sum of known scores/quantities</td></tr><tr><td><i>n</i>&nbsp;=</td><td>total number of observations/tests/items</td></tr><tr><td><i>p</i>, <i>q</i>, <i>r</i>, <i>s</i>&nbsp;=</td><td>percent concentrations (in %)</td></tr><tr><td><i>V</i>&nbsp;=</td><td>given volume/quantity before adding</td></tr></table><div class="hibox">Key inequality-solving rule<div class="eqbox gold" style="margin-top:1mm"><span class="eq">If <i>a</i> &lt; <i>b</i>, then (−<i>a</i>) &gt; (−<i>b</i>) (inequality reverses when multiplied/divided by a negative number).</span></div></div></div></div></div>
+    <div class="row c2" style="grid-template-columns:1fr 1.6fr"><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">7</span><span class="htext">Graph</span></h2><div class="figbox" style="height:auto"><svg preserveAspectRatio="xMidYMid meet" xmlns='http://www.w3.org/2000/svg' width='520' height='120' viewBox='0 0 520 120'><rect x='0' y='0' width='520' height='120' fill='white'/><line x1='40' y1='70' x2='480' y2='70' stroke='#111' stroke-width='3'/><polygon points='480,70 468,64 468,76' fill='#111'/><line x1='260' y1='62' x2='260' y2='78' stroke='#111' stroke-width='3'/><circle cx='260' cy='70' r='8' fill='white' stroke='#111' stroke-width='3'/><line x1='40' y1='70' x2='252' y2='70' stroke='#1a73e8' stroke-width='8' stroke-linecap='round'/><text x='245' y='100' font-family='Arial' font-size='16' fill='#111'>a</text><text x='200' y='35' font-family='Arial' font-size='16' fill='#111'>x &lt; a</text></svg><div class="figcap">Example graph: open circle means endpoint not included (strict inequality).</div></div></div><div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A student scored 62 and 48 in two exams. Find the minimum marks <i>x</i> in the annual exam to have an average of at least 60 (3 exams total).</div><div class="sol"><span class="lbl">Solution:</span><br>Average condition: <span class='frac'><span>62 + 48 + <i>x</i></span><span>3</span></span> ≥ 60<br>62 + 48 + <i>x</i> ≥ 180  ⇒  110 + <i>x</i> ≥ 180<br><i>x</i> ≥ 70</div><div class="ans">✓&nbsp; Minimum marks required = 70.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find all pairs of consecutive odd natural numbers, both larger than 10, whose sum is less than 40.</div><div class="sol"><span class="lbl">Solution:</span><br>Let smaller odd number be <i>x</i>, next is <i>x</i> + 2.<br>Conditions: <i>x</i> &gt; 10 and <i>x</i> + (<i>x</i> + 2) &lt; 40<br>2<i>x</i> + 2 &lt; 40  ⇒  2<i>x</i> &lt; 38  ⇒  <i>x</i> &lt; 19<br>So 10 &lt; <i>x</i> &lt; 19 and <i>x</i> odd ⇒ <i>x</i> = 11, 13, 15, 17</div><div class="ans">✓&nbsp; Pairs: (11, 13), (13, 15), (15, 17), (17, 19).</div></div></div></div></div></div>
+    
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Write inequalities exactly as the language: “at most” includes equality; “less than” excludes equality.</li><li>After solving, always state solution in correct set: interval for real numbers, list for integers/naturals when required.</li><li>For double inequality, perform the same operation on all three parts; if multiplying/dividing by a negative, reverse all inequality signs.</li><li>In mixture problems, work with “amount of solute” (percentage × quantity) and compare with required fraction of total.</li><li>Final answer should satisfy every original condition (quick check by substitution if time).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Forgetting to reverse the inequality sign when multiplying/dividing by a negative number.</li><li>Mixing up “at least” (≥) with “more than” (&gt;) and “at most” (≤) with “less than” (&lt;).</li><li>Ignoring domain constraints like <i>x</i> must be a natural number or cannot be negative (length/volume).</li><li>In mixture problems, comparing percentages directly without converting to solute amounts.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“WORD → SIGN QUICK MAP”</div><paragraph id="6a9fdca344a69a2ddf0003a2">Most/Maximum/At most → ≤</paragraph><paragraph id="6a9fdca398077750730003a3">Least/Minimum/At least → ≥</paragraph><paragraph id="6a9fdca3a79f5908320003a4">More than → &gt; ; Less than → &lt;</paragraph><paragraph id="6a9fdca30bd3879f0b0003a5">Negative multiply flips → if ×(−k) or ÷(−k), flip the sign</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Rule 1: Add/subtract same number on both sides ⇒ inequality sign unchanged.</span><span class="eq">Rule 2: Multiply/divide by positive number ⇒ sign unchanged; by negative number ⇒ sign reverses.</span><span class="eq">Average ≥ <i>A</i> (for <i>n</i> items): total ≥ <i>nA</i>.</span><span class="eq">Consecutive odd: <i>x</i>, <i>x</i>+2; consecutive even: <i>x</i>, <i>x</i>+2 (choose <i>x</i> even).</span><span class="eq">Mixture: solute (in L) = <span class='frac'><span>p×volume</span><span>100</span></span>; percentage = <span class='frac'><span>solute</span><span>total</span></span> × 100.</span><span class="eq">Double inequality form: <i>a</i> ≤ expression ≤ <i>b</i> ⇒ apply operations to all three parts (flip signs if ×/÷ by negative).</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

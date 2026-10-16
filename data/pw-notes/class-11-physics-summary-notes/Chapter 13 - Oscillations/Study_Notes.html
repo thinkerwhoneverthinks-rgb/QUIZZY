@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Chapter 13 : Oscillations</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c0146611858014066ca89/css/style.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8c0146611858014066ca89/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Chapter 13 : Oscillations</h1>
+
+
+<h3>13.1 Introduction</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2903"><b>Non-repetitive motions:</b> don’t repeat with time (e.g. rectilinear motion, projectile motion).</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2904"><b>Periodic motion:</b> repeats itself after a fixed time interval (motion “recurs” identically).</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2905"><b>Oscillatory motion:</b> a type of periodic motion where the body moves <b>to-and-fro about a mean position</b> (usually the equilibrium position).</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2906"><b>Everyday examples of oscillatory (to-and-fro) motion:</b></paragraph>
+<ul>
+<li>Rocking in a cradle; swinging on a swing</li>
+<li>Pendulum of a wall clock</li>
+<li>Boat tossing up and down in a river</li>
+<li>Piston in a steam engine moving back and forth</li>
+</ul>
+
+<paragraph id="6a8930c9eb0bf639076c2907"><b>Why oscillations matter in physics (applications):</b></paragraph>
+<ul>
+<li><b>Musical instruments:</b> vibrating strings (sitar, guitar, violin) → sound</li>
+<li><b>Drums:</b> vibrating membranes</li>
+<li><b>Telephones/speakers:</b> vibrating diaphragms</li>
+<li><b>Sound propagation:</b> oscillations of air molecules</li>
+<li><b>Solids:</b> atoms vibrate about equilibrium; <b>average vibrational energy ∝ temperature</b></li>
+<li><b>AC power supply:</b> voltage alternates + and − about mean value (zero)</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2908">To describe periodic/oscillatory motion we use: <b>period</b>, <b>frequency</b>, <b>displacement</b>, <b>amplitude</b>, <b>phase</b>. (Developed आगे in the chapter.)</paragraph>
+</div>
+
+<h3>13.2 Periodic and Oscillatory Motions</h3>
+
+<h3>Examples of periodic motion (height–time graphs)</h3>
+<paragraph id="6a8930c9eb0bf639076c2909">Think of motions that repeat identically with time:</paragraph>
+<ul>
+<li><b>Insect on a ramp:</b> climbs up, falls down, returns to start, repeats → periodic (height–time repeats).</li>
+<li><b>Child on a step:</b> climbs up, comes down, repeats same way → periodic.</li>
+<li><b>Bouncing ball:</b> bounces between palm and ground → periodic (height–time repeats with curved segments).</li>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-01.webp" decoding="async" fetchpriority="high" height="545" loading="eager" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-01.webp" srcset="img/fig-01.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="453"/>
+    </button>
+  </div>
+</figure>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c290a"><b>Newton’s equation for vertical displacement</b> (for bouncing ball’s curved/parabolic parts):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c290b"><b>Downward:</b> h = ut + (1/2)gt<sup>2</sup></paragraph>
+<paragraph id="6a8930c9eb0bf639076c290c"><b>Upward:</b> h = ut − (1/2)gt<sup>2</sup></paragraph>
+<paragraph id="6a8930c9eb0bf639076c290d"><b>h</b> = height above ground (vertical displacement)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c290e"><b>u</b> = initial vertical velocity for that segment (can change each segment)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c290f"><b>g</b> = acceleration due to gravity</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2910"><b>t</b> = time from start of that segment</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2911"><b>Periodic motion:</b> motion that repeats at <b>regular time intervals</b>.</paragraph>
+</div>
+
+<h3>Equilibrium position and origin of oscillations</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2912"><b>Equilibrium position:</b> position where <b>net external force = 0</b>. If placed there at rest, it stays there.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2913"><b>Restoring tendency:</b> small displacement from equilibrium → a force appears that pulls it back → leads to <b>oscillations/vibrations</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2914"><b>Illustrative example:</b> ball in a bowl: equilibrium at the bottom. Displace slightly → it oscillates due to restoring tendency toward the bottom.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2915"><b>Periodic vs oscillatory:</b></paragraph>
+<ul>
+<li><b>Every oscillatory motion is periodic.</b></li>
+<li><b>Not every periodic motion is oscillatory.</b> Example: <b>uniform circular motion</b> is periodic but not “to-and-fro” about a mean position.</li>
+</ul>
+</div>
+
+<h3>Oscillations vs vibrations (terminology)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2916"><b>No major physical difference</b> between <b>oscillations</b> and <b>vibrations</b>.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2917">Usually we name them by frequency:</paragraph>
+<ul>
+<li><b>Lower frequency:</b> called <b>oscillation</b> (e.g. tree branch)</li>
+<li><b>Higher frequency:</b> called <b>vibration</b> (e.g. musical string)</li>
+</ul>
+</div>
+
+<h3>Simple harmonic motion (SHM): the simplest oscillation</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2918"><b>Simple harmonic motion (SHM):</b> simplest oscillation, when:</paragraph>
+<ul>
+<li><b>Force ∝ displacement</b> from mean position (mean position = equilibrium position).</li>
+<li>Force always acts <b>towards</b> mean (equilibrium) position ⇒ restoring force.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c2919"><b>Exam tip:</b> For SHM, write <b>both</b> conditions: (1) force proportional to displacement, AND (2) force directed toward mean position. Proportionality alone isn’t enough if direction is wrong.</paragraph>
+</div>
+
+<h3>Damping and forced oscillations (practical note)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c291a"><b>Damping:</b> real oscillations slowly die out; body finally rests at equilibrium due to <b>friction</b> + other <b>dissipative effects</b>.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c291b"><b>Forced oscillations:</b> can be sustained by an <b>external periodic agency</b> (periodic driving).</paragraph>
+<paragraph id="6a8930c9eb0bf639076c291c">These are discussed later in the chapter.</paragraph>
+</div>
+
+<h3>Coupled oscillators and waves (link to next chapter)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c291d">Any material medium ≈ huge collection of <b>coupled oscillators</b>. Their <b>collective oscillations</b> appear as <b>waves</b>.</paragraph>
+</div>
+<paragraph id="6a8930c9eb0bf639076c291e"><b>Examples of waves:</b> water waves, seismic waves, electromagnetic waves. (Wave phenomena → next chapter.)</paragraph>
+
+<h3>13.2.1 Period and frequency</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c291f"><b>Period (T):</b> for a periodic motion, the <b>smallest time</b> after which the motion repeats.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2920"><b>Symbol:</b> T</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2921"><b>SI unit of period:</b> second (s)</paragraph>
+</div>
+
+<h2>Oscillations: Period and Frequency</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2922"><b>Period (T):</b> time for one complete repetition (one cycle/one oscillation).</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2923"><b>Frequency (ν):</b> number of repetitions (oscillations) per unit time; reciprocal of period.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2924"><b>Frequency–Period relation</b> (Eq. 13.1): ν = 1/T</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2925">ν = frequency (oscillations per second)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2926">T = time period (time for one oscillation)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2927">If seconds aren’t convenient, use suitable time units:</paragraph>
+<ul>
+<li>Quartz crystal vibrations: periods often in <b>microseconds</b>, µs = 10<sup>−6</sup> s</li>
+<li>Mercury orbital period: <b>88 earth days</b></li>
+<li>Halley’s comet recurrence: about <b>76 years</b></li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2928"><b>Unit of frequency:</b> s<sup>−1</sup>. Special name: <b>hertz</b> (Hz), after Heinrich Rudolf Hertz.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2929"><b>Definition of hertz</b> (Eq. 13.2): 1 hertz = 1 Hz = 1 oscillation per second = 1 s<sup>−1</sup></paragraph>
+<paragraph id="6a8930c9eb0bf639076c292a">Hz = unit of frequency</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c292b"><b>Exam tip:</b> Frequency ν doesn’t have to be an integer; it can be fractional (e.g. 1.25 Hz).</paragraph>
+</div>
+
+<h3>Example 13.1: Heartbeat frequency and period</h3>
+<paragraph id="6a8930c9eb0bf639076c292c"><b>Given:</b> average heartbeats = 75 per minute.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c292d"><b>Frequency:</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c292e">ν = 75/(1 min) = 75/(60 s) = 1.25 s<sup>−1</sup> = 1.25 Hz</paragraph>
+<paragraph id="6a8930c9eb0bf639076c292f"><b>Period:</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c2930">T = 1/ν = 1/(1.25 s<sup>−1</sup>) = 0.8 s</paragraph>
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c2931">Minutes → seconds before writing Hz (since Hz = s<sup>−1</sup>).</paragraph>
+</div>
+
+<h2>Displacement in Oscillations (General Meaning)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c2932">In oscillations, <b>displacement</b> is used in a <b>general</b> way: it just means a physical quantity that <b>changes with time</b> (not only position).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c2933">Examples of “displacement” variables:</paragraph>
+  <ul>
+    <li><b>Rectilinear motion</b> of a steel ball: displacement = distance from a chosen starting point (origin picked for convenience).</li>
+    <li><b>Spring–block system</b>: measure displacement <b>from equilibrium position</b>; call it <b>x</b>.</li>
+    <li><b>Simple pendulum</b>: use <b>angular displacement</b> <b>θ</b> from the vertical.</li>
+    <li><b>AC circuit</b>: voltage across a capacitor varies with time.</li>
+    <li><b>Sound wave</b>: pressure variation with time.</li>
+    <li><b>Light wave</b>: time-varying electric and magnetic fields.</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c2934">A displacement variable can be <b>+</b> or <b>−</b>. In experiments, record it at different times and write it as a <b>function of time</b>.</paragraph>
+</div>
+
+<h3>Periodic functions used to represent displacement</h3>
+<paragraph id="6a8930c9eb0bf639076c2935">For periodic motion, displacement is shown by a function that <b>repeats after a fixed time</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2936"><b>Simple periodic function</b> (Eq. 13.3a): <b>f(t) = A cos(ωt)</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2937">f(t): displacement-like quantity vs time</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2938">A: amplitude (max value of f)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2939">ω: angular frequency (rad s<sup>−1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c293a">t: time</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c293b">Since cos(θ) repeats when θ increases by <b>2π</b> (or any integer multiple), <b>cos(ωt)</b> is periodic.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c293c"><b>Period of cos(ωt)</b> (Eq. 13.3b): <b>T = 2π/ω</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c293d">T: time period (s)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c293e">ω: angular frequency (rad s<sup>−1</sup>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c293f">Periodicity condition: <b>f(t) = f(t + T)</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2940">Same period result also holds for: <b>f(t) = A sin(ωt)</b></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2941"><b>Linear combination</b> (Eq. 13.3c): <b>f(t) = A sin(ωt) + B cos(ωt)</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2942">A, B: constants (set how much sine/cosine contribute)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c2943">Any combo of sin &amp; cos with the <b>same ω</b> is still periodic with the <b>same</b> period <b>T = 2π/ω</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2944"><b>Single-sine form</b> (Eq. 13.3d): if <b>A = D cosφ</b> and <b>B = D sinφ</b>, then</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2945"><b>f(t) = D sin(ωt + φ)</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2946">D: resultant amplitude</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2947">φ: phase angle (constant)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2948"><b>Relations for D and φ</b>:</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2949"><b>D = √(A<sup>2</sup> + B<sup>2</sup>)</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c294a"><b>tanφ = B/A</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c294b">D: overall amplitude of the combined wave</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c294c">A, B: coefficients in A sin(ωt) + B cos(ωt)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c294d">φ: phase angle set by A and B</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c294e"><b>Fourier’s result (Fourier theorem/idea)</b> (Jean Baptiste Joseph Fourier): <b>Any periodic function</b> can be written as a sum (superposition) of <b>sines and cosines</b> with different time periods (frequencies), with suitable coefficients.</paragraph>
+</div>
+
+<h3>Example 13.2: Identifying periodic vs non-periodic functions</h3>
+<paragraph id="6a8930c9eb0bf639076c294f"><b>Task:</b> Decide if each is (a) periodic or (b) non-periodic; if periodic, find the period. (ω &gt; 0)</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2950"><b>(i) sin(ωt) + cos(ωt)</b></paragraph>
+<ul>
+  <li>Periodic.</li>
+  <li>Rewrite: <b>√2 sin(ωt + π/4)</b>.</li>
+  <li>Repeat check: √2 sin(ωt + π/4) = √2 sin(ωt + π/4 + 2π) = √2 sin[ω(t + 2π/ω) + π/4].</li>
+  <li><b>Period:</b> <b>T = 2π/ω</b>.</li>
+</ul>
+
+<paragraph id="6a8930c9eb0bf639076c2951"><b>(ii) sin(ωt) + cos(2ωt) + sin(4ωt)</b></paragraph>
+<ul>
+  <li>Periodic (sum of periodic terms).</li>
+  <li>Individual periods:</li>
+  <ul>
+    <li>sin(ωt): <b>T<sub>0</sub> = 2π/ω</b></li>
+    <li>cos(2ωt): period = 2π/(2ω) = <b>π/ω = T<sub>0</sub>/2</b></li>
+    <li>sin(4ωt): period = 2π/(4ω) = (2π/ω)/4 = <b>T<sub>0</sub>/4</b></li>
+  </ul>
+  <li>Overall period = <b>least time</b> after which the whole sum repeats. Since <b>T<sub>0</sub></b> is a multiple of the other two, smallest common repeating interval is <b>T<sub>0</sub></b>.</li>
+  <li><b>Period:</b> <b>T = 2π/ω</b>.</li>
+</ul>
+
+<paragraph id="6a8930c9eb0bf639076c2952"><b>(iii) e<sup>−ωt</sup></b></paragraph>
+<ul>
+  <li>Non-periodic: decreases monotonically, tends to 0 as t → ∞, never repeats.</li>
+</ul>
+
+<paragraph id="6a8930c9eb0bf639076c2953"><b>(iv) log(ωt)</b></paragraph>
+<ul>
+  <li>Non-periodic: increases monotonically, never repeats.</li>
+  <li>As t → ∞, log(ωt) → ∞ (diverges), so it <b>can’t represent a physical displacement</b> (here).</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c2954"><b>How to test periodicity:</b> periodic only if some finite <b>T</b> exists with <b>f(t+T)=f(t)</b> for all t in the domain. Strictly monotonic (always ↑ or always ↓) functions can’t be periodic.</paragraph>
+</div>
+
+<h2>Simple Harmonic Motion (SHM)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c2955">A particle oscillating between <b>+A</b> and <b>−A</b> about an origin executes <b>SHM</b> if its displacement is <b>sinusoidal in time</b>:</paragraph>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-02.webp" decoding="async" height="307" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-02.webp" srcset="img/fig-02.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="1187"/>
+    </button>
+  </div>
+</figure>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2956"><b>Displacement in SHM</b> (Eq. 13.4): <b>x(t) = A cos(ωt + φ)</b></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2957">x(t): displacement from origin at time t</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2958">A: amplitude (max |displacement|)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2959">ω: angular frequency</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c295a">φ: phase constant (phase angle at t = 0)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c295b">(ωt + φ): phase (varies with time)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c295c"><b>SHM ≠ any periodic motion.</b> SHM is periodic motion where displacement is specifically a <b>sine/cosine</b> function of time.</paragraph>
+</div>
+
+<h3>Standard parameters describing SHM: A, ω, phase and phase constant</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c295d"><b>Amplitude (A)</b>: maximum displacement magnitude from equilibrium/origin.</paragraph>
+  <ul>
+    <li>cos ranges +1 to −1 ⇒ x ranges <b>+A to −A</b>.</li>
+    <li>Take <b>A &gt; 0</b> (no loss of generality).</li>
+    <li>Two SHMs can share same <b>ω</b> and <b>φ</b> but have different <b>A</b> (different max displacement).</li>
+  </ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c295e"><b>Phase</b>: the time-dependent angle <b>(ωt + φ)</b>; it tells the “state” of motion (position + velocity) at time t.</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c295f"><b>Phase constant (φ)</b>: phase at <b>t = 0</b>; also called phase angle.</paragraph>
+  <ul>
+    <li>If <b>A</b> is known, find <b>φ</b> from initial displacement <b>x(0)</b>.</li>
+    <li>Two SHMs can have same <b>A</b> and <b>ω</b> but different <b>φ</b> (they’re <b>out of phase</b>).</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c2960">From SHM diagrams/description: motion repeats after time <b>T</b> no matter which position you pick as <b>t = 0</b>. Speed is <b>max at x = 0</b> and <b>zero at the extremes</b> (x = ±A).</paragraph>
+</div>
+
+<h3>Angular frequency and its connection to period (setup)</h3>
+<paragraph id="6a8930c9eb0bf639076c2961">Angular frequency <b>ω</b> is linked to period <b>T</b>. To see this: set <b>φ = 0</b> in x(t) = A cos(ωt + φ), then match one full phase repeat (phase increase of <b>2π</b>) to one time period <b>T</b>.</paragraph>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 990px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-03.webp" decoding="async" height="536" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-03.webp" srcset="img/fig-03.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="990"/>
+    </button>
+  </div>
+</figure>
+<h2>Angular frequency, time period and phase in SHM</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2962">Motion is <b>SHM</b> if displacement is a <b>single sinusoid</b> in time. Standard form:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2963"><b>x(t) = A cos(ωt + φ)</b></paragraph>
+<ul>
+<li><b>A</b> = amplitude (max displacement from equilibrium)</li>
+<li><b>ω</b> = angular frequency</li>
+<li><b>φ</b> = phase constant (initial phase)</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2964"><b>x(t) = A cos ωt</b> (special case: φ = 0) (Eq. 13.5)</paragraph>
+<ul>
+<li><b>x(t)</b>: displacement at time t</li>
+<li><b>A</b>: amplitude</li>
+<li><b>ω</b>: angular frequency (rad s<sup>−1</sup>)</li>
+<li><b>t</b>: time</li>
+</ul>
+</div>
+
+<h3>Derivation of ω = 2π/T using periodicity</h3>
+<paragraph id="6a8930c9eb0bf639076c2965">If the motion has period <b>T</b>, displacement repeats after one period:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2966"><b>x(t) = x(t + T)</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c2967">Using Eq. (13.5):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2968"><b>A cos ωt = A cos ω(t + T)</b> (Eq. 13.6)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2969">Cos repeats when its angle increases by <b>2π</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c296a">So for the first repeat,</paragraph>
+<paragraph id="6a8930c9eb0bf639076c296b"><b>ω(t + T) = ωt + 2π</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c296c">Cancel ωt:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c296d"><b>ωT = 2π ⟹ ω = 2π/T</b> (Eq. 13.7)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c296e"><b>ω = 2π/T</b> (Eq. 13.7)</paragraph>
+<ul>
+<li><b>ω</b>: angular frequency (rad s<sup>−1</sup>)</li>
+<li><b>T</b>: time period (s)</li>
+<li><b>π</b>: constant (≈ 3.1416)</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>ω is 2π times ordinary frequency</b>: since <b>f = 1/T</b>, we get <b>ω = 2πf</b>.</li>
+<li>Two SHMs can have same <b>A</b> and same <b>φ</b>, but different <b>ω</b> (so different period/frequency).</li>
+<li>From the SHM form: <b>T = 2π/ω</b>.</li>
+</ul>
+</div>
+
+<h3>Period of related periodic functions (as illustrated)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>x(t) = A cos(ωt + φ)</b> is SHM with <b>T = 2π/ω</b> and phase angle <b>φ</b> (example phase: <b>−π/4</b> or equivalently <b>7π/4</b>).</li>
+<li><b>sin<sup>2</sup>(ωt)</b> using identity:
+<b>sin<sup>2</sup>(ωt) = 1/2 − (1/2)cos(2ωt)</b>
+So it’s <b>periodic</b> with <b>T = π/ω</b>.</li>
+<li><b>sin<sup>2</sup>(ωt)</b> has a harmonic cosine part but oscillates about shifted equilibrium <b>1/2</b> (not about 0).</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c296f"><b>Exam tip:</b> “Periodic” ≠ automatically “SHM”. SHM must be a <b>single</b> sine/cosine in time: <b>A cos(ωt + φ)</b> (or <b>A sin(ωt + φ)</b>) about an equilibrium position (could be shifted if you redefine the origin).</paragraph>
+</div>
+
+<h2>Example 13.3: Identifying SHM vs periodic-but-not-SHM</h2>
+
+<h3>(1) sin ωt − cos ωt</h3>
+<paragraph id="6a8930c9eb0bf639076c2970">Check if it can be written as one sinusoid.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2971">Write cos as sine: <b>cos ωt = sin(π/2 − ωt)</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c2972">So,</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2973"><b>sin ωt − cos ωt = sin ωt − sin(π/2 − ωt)</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c2974">Use: <b>sin α − sin β = 2 cos((α+β)/2) sin((α−β)/2)</b></paragraph>
+<ul>
+<li>α = ωt</li>
+<li>β = π/2 − ωt</li>
+</ul>
+<paragraph id="6a8930c9eb0bf639076c2975">Then:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2976"><b>sin ωt − sin(π/2 − ωt) = 2 cos(π/4) sin(ωt − π/4)</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c2977">Since <b>cos(π/4) = 1/√2</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2978"><b>sin ωt − cos ωt = √2 sin(ωt − π/4)</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>It’s a <b>single sine</b> ⇒ it is <b>SHM</b>.</li>
+<li>Amplitude = <b>√2</b> (same units as the original scale).</li>
+<li>Angular frequency = <b>ω</b> ⇒ <b>T = 2π/ω</b>.</li>
+<li>Phase constant (sine form) = <b>−π/4</b>.</li>
+</ul>
+</div>
+
+<h3>(2) sin<sup>2</sup> ωt</h3>
+<paragraph id="6a8930c9eb0bf639076c2979">Use identity:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c297a"><b>sin<sup>2</sup>(ωt) = 1/2 − (1/2)cos(2ωt)</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>Periodic: cosine term has angular frequency <b>2ω</b>, so
+<b>T = 2π/(2ω) = π/ω</b>
+</li>
+<li><b>Not SHM about zero</b> because of the constant term <b>1/2</b> ⇒ equilibrium (mean) is shifted to <b>1/2</b>.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c297b"><b>Common exam slip:</b> Don’t say “sin²(ωt) is SHM” just because it looks sinusoidal. Must fit <b>A sin(Ωt + φ)</b> or <b>A cos(Ωt + φ)</b> with <b>no added constant</b>. Here the constant shifts the mean value.</paragraph>
+</div>
+
+<h2>Simple harmonic motion and uniform circular motion</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c297c"><b>Key link:</b> The <b>projection</b> of <b>uniform circular motion</b> on any diameter gives <b>SHM</b> along that diameter.</paragraph>
+</div>
+
+<h3>Physical visualisation (ball tied to a string)</h3>
+<ul>
+<li>Ball moves in a horizontal circle about a fixed point with constant angular speed ⇒ <b>uniform circular motion</b>.</li>
+<li>Viewed edge-on (or as its shadow on a wall ⟂ to the plane), it appears to move back-and-forth in a line.</li>
+<li>That straight-line motion is the <b>projection</b> on a diameter normal to the viewing direction.</li>
+</ul>
+
+<h3>Reference circle description and SHM equation</h3>
+<paragraph id="6a8930c9eb0bf639076c297d">Let particle <b>P</b> move uniformly on a circle of radius <b>A</b> with angular speed <b>ω</b> (anticlockwise). At <b>t = 0</b>, OP makes angle <b>φ</b> with the +x-axis.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c297e">After time t, the angle is <b>ωt + φ</b>.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c297f">Projection onto x-axis (point P′) gives displacement:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2980"><b>x(t) = A cos(ωt + φ)</b> (SHM form; referenced as Eq. 13.4 in text)</paragraph>
+<ul>
+<li><b>x(t)</b>: displacement of x-projection</li>
+<li><b>A</b>: radius of reference circle = SHM amplitude</li>
+<li><b>ω</b>: circular angular speed = SHM angular frequency</li>
+<li><b>φ</b>: initial phase angle at t = 0</li>
+</ul>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2981">P is the <b>reference particle</b>, and the circle is the <b>reference circle</b>.</paragraph>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 801px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-04.webp" decoding="async" height="533" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-04.webp" srcset="img/fig-04.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="801"/>
+    </button>
+  </div>
+</figure>
+<h3>Projection on y-axis and phase difference</h3>
+<paragraph id="6a8930c9eb0bf639076c2982">Projection of OP on y-axis:</paragraph>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-05.webp" decoding="async" height="543" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-05.webp" srcset="img/fig-05.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="539"/>
+    </button>
+  </div>
+</figure>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2983"><b>y(t) = A sin(ωt + φ)</b></paragraph>
+<ul>
+<li><b>y(t)</b>: displacement of y-projection</li>
+<li><b>A, ω, φ</b>: same meanings as above</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>x- and y-projections have the <b>same amplitude A</b> and <b>same ω</b>.</li>
+<li>Phase difference is <b>π/2</b> (sine = cosine shifted by π/2).</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c2984"><b>Very important:</b> SHM can be described as a projection of circular motion, but the <b>linear SHM force</b> is <b>not</b> the centripetal force. The link is <b>kinematic</b> (description), not “same forces”.</paragraph>
+</div>
+
+<h2>Example 13.4: Finding SHM from circular motion (x-projection)</h2>
+
+<h3>General method</h3>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 779px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-06.webp" decoding="async" height="404" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-06.webp" srcset="img/fig-06.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="779"/>
+    </button>
+  </div>
+</figure>
+<ul>
+  <li>At t = 0, note initial angle from +x-axis: φ</li>
+  <li>Angular displacement in time t: <b>(2π/T)t</b> (sign depends on rotation)
+    <ul>
+      <li>anticlockwise: + (2π/T)t</li>
+      <li>clockwise: − (2π/T)t</li>
+    </ul>
+  </li>
+  <li>Angle at time t: φ ± (2π/T)t</li>
+  <li>x-projection: <b>x(t) = (radius) cos(angle)</b></li>
+</ul>
+
+<h3>(a) Anticlockwise motion, radius A, T = 4 s, initial angle 45°</h3>
+<ul>
+  <li>At t = 0: φ = 45° = <b>π/4</b></li>
+  <li>In time t, angle covered = <b>(2π/T)t</b> anticlockwise</li>
+  <li>Angle at time t = <b>π/4 + (2π/T)t</b></li>
+</ul>
+<paragraph id="6a8930c9eb0bf639076c2985">So the x-projection is:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2986"><b>x(t) = A cos( (2π/T)t + π/4 )</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c2987">For T = 4 s:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2988"><b>x(t) = A cos( (π/2)t + π/4 )</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>This is SHM with:
+      <ul>
+        <li>Amplitude = <b>A</b></li>
+        <li>Period = <b>4 s</b></li>
+        <li>Initial phase = <b>π/4</b></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<h3>Angle units note (radian vs degree)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li>Natural angle unit = <b>radian</b> = (arc length)/(radius) ⇒ angle is <b>dimensionless</b>.</li>
+    <li>If trig argument is written <b>without units</b>, assume <b>radians</b>.</li>
+    <li>If using degrees, write the ° explicitly.</li>
+  </ul>
+</div>
+<div class="remember-box">
+  <ul>
+    <li><b>sin(15)</b> means sine of <b>15 radians</b>.</li>
+    <li><b>sin(15°)</b> means sine of <b>15 degrees</b>.</li>
+    <li>In this chapter, “rad” is often omitted → assume radians unless degrees are shown.</li>
+  </ul>
+</div>
+
+<h3>(b) Clockwise motion, radius B, T = 30 s, initial angle 90°</h3>
+<ul>
+  <li>At t = 0: φ = 90° = <b>π/2</b></li>
+  <li>Clockwise ⇒ angle decreases by (2π/T)t</li>
+  <li>Angle at time t = <b>π/2 − (2π/T)t</b></li>
+</ul>
+<paragraph id="6a8930c9eb0bf639076c2989">x-projection:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c298a"><b>x(t) = B cos( π/2 − (2π/T)t )</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c298b">Use identity <b>cos(π/2 − θ) = sin θ</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c298c"><b>x(t) = B sin( (2π/T)t )</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c298d">For T = 30 s:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c298e"><b>x(t) = B sin( (π/15)t )</b></paragraph>
+<paragraph id="6a8930c9eb0bf639076c298f">Write in cosine form to match x(t) = A cos(ωt + φ):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2990"><b>x(t) = B cos( (π/15)t − π/2 )</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>This represents SHM with:
+      <ul>
+        <li>Amplitude = <b>B</b></li>
+        <li>Period = <b>30 s</b></li>
+        <li>Initial phase (cos form) = <b>−π/2</b></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<h2>Velocity and acceleration in simple harmonic motion</h2>
+
+<h3>Speed in uniform circular motion</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2991"><b>v = ωA</b> (Eq. 13.8)</paragraph>
+  <ul>
+    <li><b>v</b>: speed in uniform circular motion</li>
+    <li><b>ω</b>: angular speed</li>
+    <li><b>A</b>: radius of circle</li>
+  </ul>
+</div>
+<paragraph id="6a8930c9eb0bf639076c2992">Velocity is always tangential to the circle.</paragraph>
+
+<h3>Instantaneous velocity in SHM</h3>
+<paragraph id="6a8930c9eb0bf639076c2993">For <b>x(t) = A cos(ωt + φ)</b>, projection idea (or differentiate) gives:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2994"><b>v(t) = −ωA sin(ωt + φ)</b> (Eq. 13.9)</paragraph>
+  <ul>
+    <li><b>v(t)</b>: instantaneous SHM velocity</li>
+    <li><b>− sign</b>: direction opposite to +x (for this setup)</li>
+    <li><b>ω, A, φ</b>: as defined earlier</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2995">Also (definition of instantaneous velocity):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c2996"><b>v(t) = dx(t)/dt</b> (Eq. 13.10)</paragraph>
+  <ul>
+    <li><b>dx/dt</b>: time derivative of displacement</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c2997"><b>Sign matters:</b> velocity in SHM flips sign with direction. Only give magnitude if they ask for “speed”.</paragraph>
+</div>
+
+<h3>Instantaneous acceleration in SHM</h3>
+<paragraph id="6a8930c9eb0bf639076c2998">In uniform circular motion: centripetal acceleration magnitude <b>v<sup>2</sup>/A = ω<sup>2</sup>A</b>, toward the centre.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2999">Project onto x-axis (SHM projection) ⇒</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c299a"><b>a(t) = −ω<sup>2</sup>A cos(ωt + φ) = −ω<sup>2</sup>x(t)</b> (Eq. 13.11)</paragraph>
+  <ul>
+    <li><b>a(t)</b>: instantaneous SHM acceleration</li>
+    <li><b>− sign</b>: acceleration points toward equilibrium (opposite to displacement)</li>
+    <li><b>x(t)</b>: instantaneous displacement</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c299b">Also (definition):</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c299c"><b>a(t) = dv(t)/dt</b> (Eq. 13.12)</paragraph>
+  <ul>
+    <li><b>dv/dt</b>: time derivative of velocity</li>
+  </ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c299d"><b>Key SHM property:</b> a ∝ x but opposite direction:</paragraph>
+  <ul>
+    <li>If <b>x(t) &gt; 0</b>, then <b>a(t) &lt; 0</b></li>
+    <li>If <b>x(t) &lt; 0</b>, then <b>a(t) &gt; 0</b></li>
+  </ul>
+  <paragraph id="6a8930c9eb0bf639076c299e">So acceleration always “pulls back” to the equilibrium position.</paragraph>
+</div>
+
+<h2>Oscillations: Displacement, Velocity and Acceleration in SHM (Phase relations)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c299f">In SHM, x(t) stays between -A and +A. For any x in this range, acceleration a(t) always points towards the centre (mean position).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c29a0">Often we set φ = 0 to simplify. SHM doesn’t change — it just fixes the time origin.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c29a1">x(t) = A cos(ωt)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a2">v(t) = -ωA sin(ωt)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a3">a(t) = -ω<sup>2</sup>A cos(ωt)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a4">x(t): displacement from mean position (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a5">v(t): velocity (m s<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a6">a(t): acceleration (m s<sup>-2</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a7">A: amplitude (max displacement) (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a8">ω: angular frequency (rad s<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29a9">t: time (s)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c29aa">x, v, a are all sinusoidal with the same period T, but different maxima + phase.</paragraph>
+  <ul>
+    <li>x(t) ranges: -A to +A</li>
+    <li>v(t) ranges: -ωA to +ωA</li>
+    <li>a(t) ranges: -ω<sup>2</sup>A to +ω<sup>2</sup>A</li>
+    <li>Compared to displacement: v is phase-shifted by π/2, and a by π.</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c29ab">Same T ≠ same phase: they repeat after T, but peaks/zeros happen at different times (phase differences).</paragraph>
+</div>
+
+<h3>Worked Example 13.5: Displacement, speed, acceleration at a given time</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29ac">Given (SI): x = 5 cos(2πt + π/4). At t = 1.5 s, find: (a) displacement, (b) speed, (c) acceleration.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c29ad">From x = A cos(ωt + φ), read off:</paragraph>
+  <ul>
+    <li><paragraph id="6a8930c9eb0bf639076c29ae">A = 5 m</paragraph></li>
+    <li><paragraph id="6a8930c9eb0bf639076c29af">ω = 2π s<sup>-1</sup></paragraph></li>
+    <li><paragraph id="6a8930c9eb0bf639076c29b0">T = 2π/ω = 1 s</paragraph></li>
+  </ul>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c29b1">(a) Displacement at t = 1.5 s:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29b2">x = (5.0 m) cos[(2π)(1.5) + π/4] = 5 cos(3π + π/4)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29b3">cos(3π + π/4) = -cos(π/4) = -0.707</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29b4">x = -5(0.707) = -3.535 m</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c29b5">(b) Speed (velocity) at t = 1.5 s using v = -ωA sin(ωt+φ):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29b6">v = -(5.0)(2π) sin[(2π)(1.5) + π/4] = -(10π) sin(3π + π/4)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29b7">sin(3π + π/4) = -sin(π/4) = -0.707</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29b8">v = -(10π)(-0.707) = 10π(0.707) m s<sup>-1</sup> ≈ 22 m s<sup>-1</sup></paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c29b9">(c) Acceleration using a = -ω<sup>2</sup>x:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29ba">a = -(2π)<sup>2</sup> × (displacement) = -(2π)<sup>2</sup> × (-3.535)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29bb">a ≈ 140 m s<sup>-2</sup></paragraph>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c29bc">Part (b): “speed” = magnitude of velocity. Work out v with sign first, then take magnitude only if they explicitly ask. Here the simplified numerical answer is positive.</paragraph>
+</div>
+
+<h2>13.6 Force Law for Simple Harmonic Motion</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29bd">Use Newton’s 2nd law + SHM acceleration: in SHM, net force ∝ displacement and points opposite to it (back to the mean position).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c29be">F(t) = ma = -mω<sup>2</sup>x(t)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29bf">F(t) = -kx(t) (13.13)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c0">k = mω<sup>2</sup> (13.14a)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c1">ω = √(k/m) (13.14b)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c2">F: restoring force (N)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c3">m: mass (kg)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c4">ω: angular frequency (rad s<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c5">x: displacement (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29c6">k: force constant (spring constant in spring SHM) (N m<sup>-1</sup>)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Because F always points to the mean position, it’s called the restoring force.</li>
+    <li>SHM can be defined either by:
+      <ul>
+        <li>displacement form: x(t) = A cos(ωt + φ), or</li>
+        <li>force law: F = -kx.</li>
+      </ul>
+    </li>
+    <li>From displacement → force law: differentiate twice (since a = d<sup>2</sup>x/dt<sup>2</sup>).</li>
+    <li>From force law → displacement: integrate twice (to recover x(t)).</li>
+  </ul>
+</div>
+
+<h3>Linear vs Non-linear Oscillators</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29c7">If restoring force is linear in displacement (F ∝ x, specifically F = -kx), it’s a linear harmonic oscillator.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c29c8">Real systems may have extra small terms like x<sup>2</sup>, x<sup>3</sup>, … ⇒ these are non-linear oscillators.</paragraph>
+</div>
+
+<h3>Worked Example 13.6: Block connected to two identical springs</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29c9">Two identical springs (each spring constant k) attached to a block of mass m between fixed supports. Displace either way: show motion is SHM and find the period.</paragraph>
+<figure class="fig image-container photo wide-media" style="margin: 15px auto !important; width: 100% !important; text-align: center !important; --media-legible-width: 1000px;">
+  <div class="figure-row media-scroll" style="display: flex !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-07.webp" decoding="async" height="530" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-07.webp" srcset="img/fig-07.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="1194"/>
+    </button>
+  </div>
+</figure>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c29ca">Displace the block a small distance x to the right from equilibrium.</paragraph>
+
+<ul>
+  <li>Left spring stretched by x ⇒ force back to mean: F<sub>1</sub> = -kx.</li>
+  <li>Right spring compressed by x ⇒ force back to mean: F<sub>2</sub> = -kx.</li>
+</ul>
+
+<paragraph id="6a8930c9eb0bf639076c29cb">Net restoring force:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29cc">F = F<sub>1</sub> + F<sub>2</sub> = -kx -kx = -2kx</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930c9eb0bf639076c29cd">Force ∝ displacement and points to mean ⇒ SHM, with effective force constant:</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29ce">k<sub>eff</sub> = 2k</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c29cf">T = 2π √(m/k<sub>eff</sub>) = 2π √(m/2k)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d0">T: time period (s)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d1">m: mass (kg)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d2">k<sub>eff</sub>: effective spring constant (N m<sup>-1</sup>)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c29d3">Common error: using k instead of 2k. Two identical springs act together, so restoring forces add.</paragraph>
+</div>
+
+<h2>13.7 Energy in Simple Harmonic Motion</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29d4">In SHM, kinetic energy (K) and potential energy (U) swap back and forth (0 ↔ max). Total mechanical energy E stays constant if forces are conservative.</paragraph>
+</div>
+
+<h3>Kinetic Energy in SHM</h3>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>v = 0 at extremes (x = ±A), and v is max at mean (x = 0).</li>
+    <li>So K is 0 at extremes, max at mean position.</li>
+    <li>K ∝ v<sup>2</sup> ⇒ sign of v doesn’t matter.</li>
+    <li>Kinetic energy has period T/2 (repeats twice per oscillation).</li>
+  </ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c29d5">K = ½mv<sup>2</sup></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d6">v = -ωA sin(ωt+φ)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d7">K = ½mω<sup>2</sup>A<sup>2</sup> sin<sup>2</sup>(ωt+φ)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d8">K = ½kA<sup>2</sup> sin<sup>2</sup>(ωt+φ) (13.15)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29d9">K: kinetic energy (J)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29da">m: mass (kg)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29db">v: speed/velocity magnitude for energy (m s<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29dc">ω: angular frequency (rad s<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29dd">A: amplitude (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29de">φ: phase constant (rad)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29df">k: force constant (N m<sup>-1</sup>), using k = mω<sup>2</sup></paragraph>
+</div>
+
+<h3>Potential Energy in SHM (spring force as conservative force)</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29e0">Potential energy is only defined for conservative forces. Spring restoring force F = -kx is conservative.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c29e1">U = ½kx<sup>2</sup> (13.16)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e2">x = A cos(ωt+φ)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e3">U(x) = ½kA<sup>2</sup> cos<sup>2</sup>(ωt+φ) (13.17)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e4">U: potential energy (J)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e5">k: spring constant/force constant (N m<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e6">x: displacement (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e7">A: amplitude (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e8">ω: angular frequency (rad s<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29e9">φ: phase constant (rad)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>U is 0 at mean position (x=0), max at extremes (x=±A).</li>
+    <li>U has period T/2.</li>
+  </ul>
+</div>
+
+<h3>Total Mechanical Energy in SHM (constant)</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-09.webp" decoding="async" height="546" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-09.webp" srcset="img/fig-09.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="483"/>
+    </button>
+  </div>
+</figure>
+  <paragraph id="6a8930c9eb0bf639076c29ea">E = U + K</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29eb">E = ½kA<sup>2</sup>cos<sup>2</sup>(ωt+φ) + ½kA<sup>2</sup>sin<sup>2</sup>(ωt+φ)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29ec">E = ½kA<sup>2</sup>[cos<sup>2</sup>(ωt+φ) + sin<sup>2</sup>(ωt+φ)]</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29ed">E = ½kA<sup>2</sup> (13.18)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29ee">E: total mechanical energy (J)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29ef">k: force constant (N m<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29f0">A: amplitude (m)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Using sin<sup>2</sup>θ + cos<sup>2</sup>θ = 1, total energy is constant (time-independent) for SHM with a conservative force.</li>
+    <li>Energy sharing:
+      <ul>
+        <li>At x=0: all energy is kinetic.</li>
+        <li>At x=±A: all energy is potential.</li>
+        <li>In between: K increases as U decreases, and vice-versa.</li>
+      </ul>
+    </li>
+    <li>K and U are always positive:
+      <ul>
+        <li>K ≥ 0 since it depends on v<sup>2</sup>.</li>
+        <li>U taken positive by choosing the arbitrary additive constant in PE.</li>
+      </ul>
+    </li>
+    <li>Both K and U peak twice in each period T ⇒ repeat after T/2.</li>
+  </ul>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c29f1">Exam trap: total energy repeats with T (actually it’s constant), but K and U repeat with T/2, not T.</paragraph>
+</div>
+
+<h3>Worked Example 13.7: Energies of a spring–block oscillator at a given displacement</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930c9eb0bf639076c29f2">m = 1 kg, k = 50 N m<sup>-1</sup>. Pulled to x = 10 cm on a frictionless surface, released from rest at t=0 ⇒ amplitude A=0.10 m. Find K, U, and E when it’s 5 cm from mean (x = 0.05 m).</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c29f3">Angular frequency:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29f4">ω = √(k/m) = √(50/1) = 7.07 rad s<sup>-1</sup></paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c29f5">Displacement (released from rest at max displacement ⇒ cosine):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29f6">x(t) = 0.1 cos(7.07t)</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c29f7">At x = 0.05 m:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29f8">0.05 = 0.1 cos(7.07t)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c29f9">This equation just picks the time(s) when the block is at 5 cm; energies at that displacement are found straight from the energy formulas in x and A.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930c9eb0bf639076c29fa">U = ½kx<sup>2</sup></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29fb">E = ½kA<sup>2</sup></paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29fc">K = E - U</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29fd">U: potential energy at displacement x (J)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29fe">K: kinetic energy at displacement x (J)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c29ff">E: total energy (J)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2a00">k: spring constant (N m<sup>-1</sup>)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2a01">x: instantaneous displacement (m)</paragraph>
+  <paragraph id="6a8930c9eb0bf639076c2a02">A: amplitude (m)</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930c9eb0bf639076c2a03">Frictionless surface + conservative spring force ⇒ E stays constant and depends only on A (not on position along the path).</paragraph>
+</div>
+
+<h2>Energy in SHM (spring–block): K.E., P.E. and conservation</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2a04">Mass–spring SHM (no friction):</paragraph>
+<ul>
+<li><paragraph id="6a8930c9eb0bf639076c2a05">Kinetic energy depends on speed:</paragraph><paragraph id="6a8930c9eb0bf639076c2a06">K = ½ m v<sup>2</sup></paragraph></li>
+<li><paragraph id="6a8930c9eb0bf639076c2a07">Spring potential energy depends on displacement:</paragraph><paragraph id="6a8930c9eb0bf639076c2a08">U = ½ k x<sup>2</sup></paragraph></li>
+<li><paragraph id="6a8930c9eb0bf639076c2a09">Total mechanical energy stays fixed:</paragraph><paragraph id="6a8930c9eb0bf639076c2a0a">E = K + U = constant</paragraph></li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2a0b">At max displacement (x = A): v = 0 ⇒ K = 0, so all energy is spring P.E.:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a0c">E = ½ k A<sup>2</sup></paragraph>
+</div>
+
+<h3>Worked energy check at x = 5 cm (given m = 1 kg, k = 50 N m<sup>–1</sup>, A = 0.10 m, ω = 7.07 s<sup>–1</sup>)</h3>
+
+<paragraph id="6a8930c9eb0bf639076c2a0d">At x = 5 cm = 0.05 m, from SHM displacement relation:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a0e">cos(7.07 t) = 0.5 ⇒ sin(7.07 t) = √(1 − 0.5<sup>2</sup>) = √(3/4) = 0.866</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a0f">Speed at this instant (using |v| = ωA sin(ωt + φ)):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a10">v = 0.1 × 7.07 × 0.866 m s<sup>–1</sup> = 0.61 m s<sup>–1</sup></paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a11">Kinetic energy:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a12">K = ½ m v<sup>2</sup> = ½[1 × (0.6123)<sup>2</sup>] J = 0.19 J</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a13">Spring potential energy:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a14">U = ½ k x<sup>2</sup> = ½(50 × 0.05 × 0.05) J = 0.0625 J</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a15">Total energy at x = 5 cm:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a16">E = K + U = 0.19 + 0.0625 = 0.25 J</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a17">Energy at max displacement x = A = 0.10 m:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a18">E = ½ k A<sup>2</sup> = ½(50 × 0.1 × 0.1) = 0.25 J</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2a19">Same total energy (0.25 J) at x = 5 cm and at x = A ⇒ mechanical energy is conserved in SHM (no friction), even though K and U each change with time.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c2a1a">Common exam slip: taking x = 5 cm as 5 (instead of 0.05 m). Always convert cm → m before using energy formulas.</paragraph>
+</div>
+
+<h2>13.8 The Simple Pendulum</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2a1b"><b>Simple pendulum</b>: small bob (mass m) on an inextensible, massless string (length L), hung from a fixed rigid support. Bob swings in a vertical plane about the vertical through the support (mean position at θ = 0).</paragraph>
+</div>
+
+<h3>Forces on the bob and their components</h3>
+<figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/fig-10.webp" decoding="async" height="542" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/fig-10.webp" srcset="img/fig-10.webp 505w" style="border: 1.5px solid #38bdf8 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff !important;" width="603"/>
+    </button>
+  </div>
+</figure>
+<paragraph id="6a8930c9eb0bf639076c2a1c">When the string makes angle θ with the vertical, forces on the bob:</paragraph>
+<ul>
+<li><paragraph id="6a8930c9eb0bf639076c2a1d">Tension T along the string (towards support).</paragraph></li>
+<li><paragraph id="6a8930c9eb0bf639076c2a1e">Weight mg vertically downward.</paragraph></li>
+</ul>
+
+<paragraph id="6a8930c9eb0bf639076c2a1f">Resolve mg relative to the string:</paragraph>
+<ul>
+<li><paragraph id="6a8930c9eb0bf639076c2a20">Along string: mg cosθ</paragraph></li>
+<li><paragraph id="6a8930c9eb0bf639076c2a21">Perpendicular (tangential): mg sinθ</paragraph></li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2a22">Bob moves on a circular arc (radius L, centre at support), so:</paragraph>
+<ul>
+<li><paragraph id="6a8930c9eb0bf639076c2a23"><b>Radial (centripetal) acceleration</b> magnitude ω<sup>2</sup>L, from net radial force (T − mg cosθ).</paragraph></li>
+<li><paragraph id="6a8930c9eb0bf639076c2a24"><b>Tangential acceleration</b> due to mg sinθ (speed along arc changes).</paragraph></li>
+</ul>
+<paragraph id="6a8930c9eb0bf639076c2a25">For SHM derivation, using <b>torque about the support</b> is easier, since radial forces give <b>zero torque</b> about the support.</paragraph>
+</div>
+
+<h3>Restoring torque and equation of motion</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2a26"><b>Restoring torque about the support</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a27">τ = −L (mg sinθ)    (13.19)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a28">τ = torque about the support (N m)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a29">L = length (m)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a2a">m = bob mass (kg)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a2b">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a2c">θ = angular displacement from vertical (rad)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a2d">Minus sign: torque reduces θ (restoring).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2a2e"><b>Newton’s rotational law</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a2f">τ = I α    (13.20)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a30">I = moment of inertia about support (kg m<sup>2</sup>)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a31">α = angular acceleration (rad s<sup>−2</sup>)</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2a32">Combine (13.19) + (13.20):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a33">I α = −m g L sinθ    (13.21)</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a34">So,</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a35">α = −(m g L / I) sinθ    (13.22)</paragraph>
+
+<h3>Small-angle approximation and SHM condition</h3>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2a36"><b>Series for sinθ</b> (θ in radians):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a37">sinθ = θ − θ<sup>3</sup>/3! + θ<sup>5</sup>/5! ± …    (13.23)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a38">θ = angular displacement (rad)</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2a39">If θ is small: sinθ ≈ θ, so from (13.22):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2a3a"><b>Small-angle pendulum equation</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a3b">α = −(m g L / I) θ    (13.24)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a3c">α = angular acceleration (rad s<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a3d">θ = angular displacement (rad)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a3e">m, g, L, I as above</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2a3f">(13.24) matches linear SHM form: acceleration ∝ displacement and opposite in direction. So <b>for small θ, a simple pendulum executes SHM</b>.</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a40">Angular SHM form:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a41">α = −ω<sup>2</sup> θ</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2a42">Text note: comparing sinθ with θ (in radians) shows that even up to ~20°, sinθ ≈ θ (rad) closely enough for many exam questions.</paragraph>
+</div>
+
+<h3>Angular frequency and time period of a simple pendulum</h3>
+
+<paragraph id="6a8930c9eb0bf639076c2a43">Compare α = −(m g L / I) θ with α = −ω<sup>2</sup> θ:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2a44"><b>Simple pendulum (small angles): ω and T</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a45">ω = √(m g L / I)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a46">T = 2π √(I / (m g L))    (13.25)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a47">ω = angular frequency (rad s<sup>−1</sup>)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a48">T = time period (s)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a49">I = moment of inertia about support (kg m<sup>2</sup>)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a4a">m = bob mass (kg)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a4b">g = gravitational acceleration (m s<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a4c">L = length (m)</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2a4d">For a massless string, the bob ≈ point mass at distance L:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a4e">I = mL<sup>2</sup></paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a4f">Sub into (13.25):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930c9eb0bf639076c2a50"><b>Time period (massless string, small angles)</b>:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a51">T = 2π √(L/g)    (13.26)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a52">T = time period (s)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a53">L = length (m)</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a54">g = acceleration due to gravity (m s<sup>−2</sup>)</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930c9eb0bf639076c2a55">For T = 2π√(L/g), exams assume: (i) small angle (sinθ ≈ θ, θ in radians), (ii) string massless + inextensible, bob small (point mass). If not, formula isn’t exact.</paragraph>
+</div>
+
+<h3>Example 13.8: Length of a seconds pendulum</h3>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930c9eb0bf639076c2a56"><b>Seconds pendulum</b>: “ticks seconds” ⇒ time period T = 2 s.</paragraph>
+</div>
+
+<paragraph id="6a8930c9eb0bf639076c2a57">Using (13.26):</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a58">T = 2π √(L/g)</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a59">Rearrange for L:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a5a">L = gT<sup>2</sup> / (4π<sup>2</sup>)</paragraph>
+
+<paragraph id="6a8930c9eb0bf639076c2a5b">Given g = 9.8 m s<sup>−2</sup>, T = 2 s:</paragraph>
+<paragraph id="6a8930c9eb0bf639076c2a5c">L = 9.8 × (2)<sup>2</sup> / (4π<sup>2</sup>) = 1 m</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930c9eb0bf639076c2a5d">So a seconds pendulum has length ≈ 1 m (for g ≈ 9.8 m s<sup>−2</sup>).</paragraph>
+</div>
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

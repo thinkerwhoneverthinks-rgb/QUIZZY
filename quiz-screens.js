@@ -599,14 +599,50 @@ function backFromQuiz() {
 let currentPracticeOrder = 'topic'; // 'topic' or 'serial'
 
 function setGridOrder(order) {
+    if (currentPracticeOrder === order) return;
     currentPracticeOrder = order;
+    if (typeof practiceOrder !== 'undefined') practiceOrder = order;
+
+    // Preserve current question identity
+    const currentQ = questions && questions[currentQIndex];
+
+    // Preserve user answers by question identity across index shifts
+    const answersByQId = new Map();
+    if (questions && typeof userAnswers === 'object' && userAnswers) {
+        questions.forEach((q, i) => {
+            if (userAnswers[i] !== undefined) {
+                const key = q.id || (q.originalNumber !== undefined ? `orig_${q.originalNumber}` : `idx_${i}`);
+                answersByQId.set(key, userAnswers[i]);
+            }
+        });
+    }
+
     if (order === 'serial' && questions.some(q => typeof q.originalNumber === 'number')) {
         questions.sort((a, b) => (a.originalNumber || 0) - (b.originalNumber || 0));
     } else if (order === 'topic') {
-        if (topics && topics.length > 0) {
+        if (typeof topics !== 'undefined' && topics && topics.length > 0) {
             questions = topics.flatMap(t => (t.questions || []).map(q => ({ ...q, topicName: t.topic })));
         }
     }
+
+    // Remap user answers to new indices
+    if (questions && answersByQId.size > 0) {
+        const newUserAnswers = {};
+        questions.forEach((q, newIdx) => {
+            const key = q.id || (q.originalNumber !== undefined ? `orig_${q.originalNumber}` : `idx_${newIdx}`);
+            if (answersByQId.has(key)) {
+                newUserAnswers[newIdx] = answersByQId.get(key);
+            }
+        });
+        userAnswers = newUserAnswers;
+    }
+
+    // Restore current question index to same question
+    if (currentQ && questions) {
+        const newIdx = questions.findIndex(q => q === currentQ || (q.id && currentQ.id && q.id === currentQ.id) || (q.originalNumber && q.originalNumber === currentQ.originalNumber));
+        if (newIdx !== -1) currentQIndex = newIdx;
+    }
+
     renderQuestionGrid();
     const activeScreen = document.querySelector('.screen.active');
     if (activeScreen && activeScreen.id === 'screenFullQuiz' && typeof renderFullQuiz === 'function') {
@@ -692,7 +728,7 @@ function renderQuestionGrid() {
         </div>
     ` : '';
 
-    const topicFilterHtml = (topics && topics.length > 1) ? `
+    const topicFilterHtml = (currentPracticeOrder !== 'serial' && topics && topics.length > 1) ? `
         <div class="grid-filter-bar">
             <span>📂 Jump to Topic:</span>
             <select class="grid-topic-select" id="gridTopicSelect" onchange="jumpToTopicFromGrid(this.value)">
@@ -709,7 +745,7 @@ function renderQuestionGrid() {
         <div class="grid-context">
             <div class="gc-chapter">${escapeHtml(chapterLabel)}</div>
             <div class="gc-meta">
-                ${topicCount} topic${topicCount !== 1 ? 's' : ''} ·
+                ${currentPracticeOrder === 'serial' ? 'Original Serial Order · ' : (topicCount + ' topic' + (topicCount !== 1 ? 's' : '') + ' · ')}
                 ${questions.length} question${questions.length !== 1 ? 's' : ''} ·
                 ${doneCount} ${isTestMode ? 'answered' : 'revealed'}
             </div>
@@ -727,16 +763,16 @@ function renderQuestionGrid() {
         </div>
     `;
 
-    Object.entries(groups).forEach(([topicName, items]) => {
-        const topicDone = items.reduce((n, it) => n + (isDone(it.index) ? 1 : 0), 0);
+    if (currentPracticeOrder === 'serial') {
+        // Continuous, unified sequential grid without topic divider headers
         html += `<div class="grid-topic-section">`;
         html += `
             <div class="grid-topic-title">
-                <span>📌 ${escapeHtml(topicName)}</span>
-                <span class="gt-count">${topicDone} / ${items.length}</span>
+                <span>🔢 All Questions in Sequential Order (1..${questions.length})</span>
+                <span class="gt-count">${doneCount} / ${questions.length}</span>
             </div>`;
         html += `<div class="grid-nums">`;
-        items.forEach(({ q, index }) => {
+        questions.forEach((q, index) => {
             const ans = userAnswers[index];
             const bookmarked = isBookmarked(index);
             const status = showCorrectness ? getAnswerStatus(index) : 'skipped';
@@ -748,10 +784,38 @@ function renderQuestionGrid() {
             if (isTestMode && ans && ans.reviewed) cls += ' reviewed';
             if (!isTestMode && index === currentQIndex) cls += ' current';
             const num = q.originalNumber || (index + 1);
-            html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="Question ${num}">${num}</div>`;
+            const tip = q.topicName ? `Question ${num} · ${q.topicName}` : `Question ${num}`;
+            html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="${escapeHtml(tip)}">${num}</div>`;
         });
         html += `</div></div>`;
-    });
+    } else {
+        // Topic-wise section grouping
+        Object.entries(groups).forEach(([topicName, items]) => {
+            const topicDone = items.reduce((n, it) => n + (isDone(it.index) ? 1 : 0), 0);
+            html += `<div class="grid-topic-section">`;
+            html += `
+                <div class="grid-topic-title">
+                    <span>📌 ${escapeHtml(topicName)}</span>
+                    <span class="gt-count">${topicDone} / ${items.length}</span>
+                </div>`;
+            html += `<div class="grid-nums">`;
+            items.forEach(({ q, index }) => {
+                const ans = userAnswers[index];
+                const bookmarked = isBookmarked(index);
+                const status = showCorrectness ? getAnswerStatus(index) : 'skipped';
+                let cls = 'grid-num';
+                if (isDone(index)) cls += ' answered';
+                if (bookmarked) cls += ' bookmarked';
+                if (status === 'correct') cls += ' correct';
+                if (status === 'wrong') cls += ' wrong';
+                if (isTestMode && ans && ans.reviewed) cls += ' reviewed';
+                if (!isTestMode && index === currentQIndex) cls += ' current';
+                const num = q.originalNumber || (index + 1);
+                html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="Question ${num}">${num}</div>`;
+            });
+            html += `</div></div>`;
+        });
+    }
 
     body.innerHTML = html;
 }

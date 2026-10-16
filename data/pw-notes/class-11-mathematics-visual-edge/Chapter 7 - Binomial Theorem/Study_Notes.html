@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>BINOMIAL THEOREM — Mathematics</title>
+  <meta name="description" content="BINOMIAL THEOREM — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Mathematics</div>
+        <h1>BINOMIAL THEOREM</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>NEED FOR BINOMIAL THEOREM</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Need:</b> For higher powers like (a+b)<sup>5</sup>, repeated multiplication becomes long and error-prone.</li><li><b>Binomial theorem</b> provides a direct way to write the fully simplified expansion of <b>(a+b)<sup>n</sup></b> (here, for <b>positive integers n</b>).</li><li>It is especially useful when a number is close to a convenient base: write it as <b>(base ± small)</b> and expand.</li><li>Coefficients follow a fixed combination pattern <b><sup>n</sup>C<sub>r</sub></b> (same as Pascal’s triangle).</li><li>In successive terms, power of <i>a</i> decreases by 1, power of <i>b</i> increases by 1, and the total power stays <i>n</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='7' markerHeight='7' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><rect x='18' y='20' width='150' height='52' rx='6' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='30' y='42' font-size='13' fill='#1f2a44'>Repeated</text><text x='30' y='60' font-size='13' fill='#1f2a44'>multiplication</text><rect x='192' y='20' width='150' height='52' rx='6' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='204' y='42' font-size='13' fill='#1f2a44'>Binomial</text><text x='204' y='60' font-size='13' fill='#1f2a44'>theorem</text><line x1='168' y1='46' x2='192' y2='46' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><rect x='18' y='96' width='150' height='86' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='30' y='118' font-size='13' fill='#1f2a44'>Higher power</text><text x='30' y='136' font-size='13' fill='#1f2a44'>many steps</text><text x='30' y='154' font-size='13' fill='#1f2a44'>more errors</text><rect x='192' y='96' width='150' height='86' rx='6' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='204' y='118' font-size='13' fill='#1f2a44'>Fixed pattern</text><text x='204' y='136' font-size='13' fill='#1f2a44'>coefficients</text><text x='204' y='154' font-size='13' fill='#1f2a44'>direct terms</text><line x1='168' y1='139' x2='192' y2='139' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/></svg><div class="figcap">Higher powers make direct multiplication bulky; binomial theorem provides a direct expansion pattern.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>For large <i>n</i>, repeated multiplication creates many intermediate terms before simplification.</span></li><li><span class="ic">⚡</span><span>Binomial theorem gives the final collected expansion directly.</span></li><li><span class="ic">🔁</span><span>Term pattern: coefficients are <sup>n</sup>C<sub>r</sub>; powers of <i>a</i> descend and <i>b</i> ascend.</span></li><li><span class="ic">🎯</span><span>Near-base numbers like 98=100−2 and 101=100+1 become easier to handle after rewriting.</span></li><li><span class="ic">🧠</span><span><sup>n</sup>C<sub>r</sub> counts ways to choose <i>r</i> times "b" from <i>n</i> factors of (a+b).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WHY REPEATED MULTIPLICATION BECOMES HARD</span></h2><ul class="b"><li>To expand (a+b)<sup>5</sup>, you must multiply (a+b) five times and then collect like terms.</li><li>Intermediate expressions quickly grow in number of terms.</li><li>Most mistakes happen while collecting signs and coefficients.</li><li>For positive integer n, the final expansion must have exactly (n+1) terms.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">WHAT BINOMIAL THEOREM ADDS (CHAPTER RESTRICTION: POSITIVE INTEGERS)</span></h2><ul class="b"><li>Gives the fully simplified expansion without writing messy intermediate products.</li><li>Powers follow: <i>a</i><sup>n</sup>, <i>a</i><sup>n−1</sup><i>b</i>, ..., <i>b</i><sup>n</sup>.</li><li>Coefficients follow Pascal’s triangle / combinations: <sup>n</sup>C<sub>0</sub>, <sup>n</sup>C<sub>1</sub>, ..., <sup>n</sup>C<sub>n</sub>.</li><li>Helpful for numbers near bases like 100, 1000, 1 (rewrite as base ± small).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Repeated Multiplication vs Binomial Pattern</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Repeated multiplication</th><th>Binomial theorem idea</th></tr></thead><tbody><tr><td>Goal for (a+b)<sup>n</sup></td><td>Multiply (a+b) repeatedly and simplify</td><td>Write the final collected form using a fixed term pattern</td></tr><tr><td>Number of final terms</td><td>Becomes clear only after full simplification</td><td>Exactly (n+1) terms for positive integer n</td></tr><tr><td>Error risk</td><td>High: sign and coefficient collection mistakes</td><td>Lower: coefficients and powers follow a rule</td></tr><tr><td>Best use</td><td>Small n (2, 3) expansions</td><td>Higher n and expressions near round bases</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is (98)<sup>5</sup> harder than (98)<sup>2</sup> by direct multiplication?</div><div class="sol"><span class="lbl">Answer:</span><br>For a square/cube, you can use known identities like (a−b)<sup>2</sup> and (a−b)<sup>3</sup> quickly.<br>For a 5th power, repeated multiplication produces many intermediate terms before simplification.<br>Binomial theorem avoids these intermediate steps by giving a direct term pattern.</div><div class="ans">✓&nbsp; Higher powers make manual multiplication lengthy and error-prone; binomial theorem gives a direct expansion.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">How does rewriting near a base show the need for binomial theorem?</div><div class="sol"><span class="lbl">Answer:</span><br>Rewrite a difficult number as base ± small, e.g., 101 = 100 + 1 or 999 = 1000 − 1.<br>Then (base ± small)<sup>n</sup> becomes an expansion where powers of the base are easy to compute.<br>Binomial theorem supplies the correct coefficients and term structure for any positive integer n.</div><div class="ans">✓&nbsp; Near-base rewriting becomes practical only when a systematic expansion rule (binomial theorem) is available.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Main need: avoid long repeated multiplication for high powers of a binomial.</li><li>For positive integer n, (a+b)<sup>n</sup> has exactly (n+1) terms in its expansion.</li><li>Term structure: power of <i>a</i> decreases by 1 each step; power of <i>b</i> increases by 1 each step.</li><li>Coefficients come from combinations and match Pascal’s triangle entries.</li><li>Near-base calculations become systematic: write number as (base ± small) and expand.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Trying to expand high powers by repeated multiplication and losing terms during collection.</li><li>Forgetting that the number of terms should be (n+1) for positive integer n.</li><li>Mixing up the descending/ascending power pattern of <i>a</i> and <i>b</i> in successive terms.</li><li>Confusing Pascal’s triangle coefficients for different n (wrong row).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“DESCEND–ASCEND–CHOOSE”</div><paragraph id="6aa538c53c59f8c6f0000557"><b>DESCEND</b>: power of <i>a</i> goes n, n−1, ..., 0.</paragraph><paragraph id="6aa538c5e1a0c8e273000558"><b>ASCEND</b>: power of <i>b</i> goes 0, 1, ..., n.</paragraph><paragraph id="6aa538c51c22a1d873000559"><b>CHOOSE</b>: coefficients are <sup>n</sup>C<sub>0</sub>, <sup>n</sup>C<sub>1</sub>, ..., <sup>n</sup>C<sub>n</sub>.</paragraph></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>PATTERNS IN BINOMIAL EXPANSIONS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Binomial expansion (for non-negative integer <i>n</i>)</b> expresses (a+b)<sup>n</sup> as a sum of terms with powers of <i>a</i> and <i>b</i>.</li><li>For non-negative integer <i>n</i>, the expansion has exactly <b>n+1</b> terms.</li><li>Across successive terms: power of <i>a</i> decreases by 1, power of <i>b</i> increases by 1.</li><li>In every term, <b>(power of <i>a</i>) + (power of <i>b</i>) = n</b>.</li><li>Coefficients follow binomial coefficients <i><sub>n</sub>C<sub>r</sub></i> (Pascal triangle pattern).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#2563EB'/></marker></defs><rect x='16' y='14' width='328' height='172' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='26' y='38' font-size='14' fill='#1f2a44'>Successive terms pattern</text><line x1='28' y1='50' x2='332' y2='50' stroke='#123B7A' stroke-width='1.5'/><rect x='26' y='62' width='150' height='40' rx='8' fill='#FEF5E4' stroke='#F59E0B'/><text x='36' y='86' font-size='13' fill='#1f2a44'>a power: n→0</text><rect x='184' y='62' width='150' height='40' rx='8' fill='#EAF7EF' stroke='#16A34A'/><text x='194' y='86' font-size='13' fill='#1f2a44'>b power: 0→n</text><rect x='26' y='112' width='308' height='56' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='36' y='136' font-size='13' fill='#1f2a44'>Each term: a<tspan baseline-shift='super' font-size='10'>n−r</tspan>b<tspan baseline-shift='super' font-size='10'>r</tspan></text><text x='36' y='156' font-size='13' fill='#1f2a44'>Index sum: (n−r)+r = n</text><line x1='101' y1='102' x2='101' y2='112' stroke='#2563EB' stroke-width='2' marker-end='url(#arr)'/><line x1='259' y1='102' x2='259' y2='112' stroke='#2563EB' stroke-width='2' marker-end='url(#arr)'/></svg><div class="figcap">Across terms: <i>a</i> exponent steps down, <i>b</i> exponent steps up, sum stays <i>n</i>.<br><br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔢</span><span>Term structure (n is a non-negative integer): T<sub>r+1</sub> = <sub>n</sub>C<sub>r</sub> a<sup>n−r</sup>b<sup>r</sup>, r = 0 to n</span></li><li><span class="ic">📉</span><span>Exponents shift: a<sup>n</sup> → a<sup>n−1</sup> → … → a<sup>0</sup></span></li><li><span class="ic">📈</span><span>Exponents shift: b<sup>0</sup> → b<sup>1</sup> → … → b<sup>n</sup></span></li><li><span class="ic">🧩</span><span>Index-sum invariant: (n−r)+r = n in every term</span></li><li><span class="ic">🧱</span><span>Coefficients are symmetric: <sub>n</sub>C<sub>r</sub> = <sub>n</sub>C<sub>n−r</sub></span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">FROM (a+b)⁰ TO (a+b)⁴: SEE THE PATTERN</span></h2><ul class="b"><li>(a+b)<sup>0</sup> = 1  → terms = 1</li><li>(a+b)<sup>1</sup> = a + b  → terms = 2</li><li>(a+b)<sup>2</sup> = a<sup>2</sup> + 2ab + b<sup>2</sup>  → terms = 3</li><li>(a+b)<sup>3</sup> = a<sup>3</sup> + 3a<sup>2</sup>b + 3ab<sup>2</sup> + b<sup>3</sup>  → terms = 4</li><li>(a+b)<sup>4</sup> = a<sup>4</sup> + 4a<sup>3</sup>b + 6a<sup>2</sup>b<sup>2</sup> + 4ab<sup>3</sup> + b<sup>4</sup>  → terms = 5</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">SUCCESSIVE TERMS: QUICK CHECKLIST</span></h2><ul class="b"><li>Total terms = n+1; first term is a<sup>n</sup>, last term is b<sup>n</sup> (for non-negative integer n).</li><li>General term: coefficient × a<sup>n−r</sup>b<sup>r</sup>; r increases 0,1,2,…,n.</li><li>Degree check: each term has total degree n (sum of exponents).</li><li>Coefficient symmetry gives matching pairs equidistant from ends.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">PATTERN SPOTTING IN (a+b)ⁿ TERMS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>First term (r=0)</th><th>General term (r)</th><th>Last term (r=n)</th></tr></thead><tbody><tr><td>Coefficient</td><td><sub>n</sub>C<sub>0</sub> = 1</td><td><sub>n</sub>C<sub>r</sub></td><td><sub>n</sub>C<sub>n</sub> = 1</td></tr><tr><td>Power of a</td><td>a<sup>n</sup></td><td>a<sup>n−r</sup></td><td>a<sup>0</sup> = 1</td></tr><tr><td>Power of b</td><td>b<sup>0</sup> = 1</td><td>b<sup>r</sup></td><td>b<sup>n</sup></td></tr><tr><td>Sum of exponents (of a and b)</td><td>n+0 = n</td><td>(n−r)+r = n</td><td>0+n = n</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Write the pattern of powers using r = 0,1,2,…,n (n is a non-negative integer)</div><div class="eqbox"><span class="eq">(a+b)<sup>n</sup> = <sub>n</sub>C<sub>0</sub>a<sup>n</sup>b<sup>0</sup> + <sub>n</sub>C<sub>1</sub>a<sup>n−1</sup>b<sup>1</sup> + … + <sub>n</sub>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup> + … + <sub>n</sub>C<sub>n</sub>a<sup>0</sup>b<sup>n</sup></span></div></div><div><div class="fstep">Hence the (r+1)th term (counting from 1) is</div><div class="eqbox blue"><span class="eq">T<sub>r+1</sub> = <sub>n</sub>C<sub>r</sub> a<sup>n−r</sup>b<sup>r</sup></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>non-negative integer index in (a+b)<sup>n</sup></td></tr><tr><td><i>r</i>&nbsp;=</td><td>term parameter, integer with 0 ≤ r ≤ n</td></tr><tr><td><sub>n</sub>C<sub>r</sub>&nbsp;=</td><td>binomial coefficient = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></td></tr><tr><td>T<sub>r+1</sub>&nbsp;=</td><td>(r+1)th term in the expansion</td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq">(a+b)<sup>n</sup> = ∑</span><sub>r=0</sub><sup>n</sup> <sub>n</sub>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Using patterns only, write the 4th term of (2x + 3)<sup>7</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Here <i>n</i>=7 and 4th term ⇒ r+1=4 ⇒ r=3.<br>Use T<sub>r+1</sub> = <sub>n</sub>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup> with a=2x, b=3.<br>T<sub>4</sub> = <sub>7</sub>C<sub>3</sub>(2x)<sup>4</sup>3<sup>3</sup>.<br><sub>7</sub>C<sub>3</sub>=35, (2x)<sup>4</sup>=16x<sup>4</sup>, 3<sup>3</sup>=27.<br>Multiply: 35×16×27 = 560×27 = 15120.</div><div class="ans">✓&nbsp; 4th term = 15120x<sup>4</sup>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find the coefficient of x<sup>3</sup> in (x + 2)<sup>5</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>General term: T<sub>r+1</sub> = <sub>5</sub>C<sub>r</sub> x<sup>5−r</sup> 2<sup>r</sup>.<br>Need power of x to be 3: 5−r = 3 ⇒ r = 2.<br>So coefficient of x<sup>3</sup> is <sub>5</sub>C<sub>2</sub> 2<sup>2</sup>.<br><sub>5</sub>C<sub>2</sub>=10 and 2<sup>2</sup>=4 ⇒ 10×4=40.</div><div class="ans">✓&nbsp; Coefficient of x<sup>3</sup> is 40.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Number of terms in (a+b)<sup>n</sup> is n+1 (count r = 0 to n), for non-negative integer n.</li><li>Exponents follow a<sup>n−r</sup>b<sup>r</sup>; track r to avoid wrong power.</li><li>Sum of exponents in each term is always n (useful for quick verification).</li><li>First and last coefficients are 1; coefficients are symmetric about middle term(s).</li><li>Middle term(s): if n is even, one middle term; if n is odd, two middle terms.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Counting terms incorrectly (forgetting r=0 term), writing n terms instead of n+1.</li><li>Making both powers decrease or both increase; correct pattern is opposite shifts.</li><li>Using wrong r when asked for k-th term (remember k-th term ⇒ r=k−1).</li><li>Forgetting to raise numerical parts (like 3 or 2x) to the correct power.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Down-Up-Sum = n”</div><paragraph id="6aa538c5e68acc778500055a"><b>Down</b>: exponent of <i>a</i> goes n, n−1, …, 0.</paragraph><paragraph id="6aa538c5d4187820d300055b"><b>Up</b>: exponent of <i>b</i> goes 0, 1, …, n.</paragraph><paragraph id="6aa538c5239a8867ac00055c">Quick check: in every term, exponents <b>add to n</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">General term (r+1)th: T<sub>r+1</sub> = <sub>n</sub>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup> (n is a non-negative integer, 0 ≤ r ≤ n)</span><span class="eq">Range: r = 0,1,2,…,n</span><span class="eq">Term count: r runs over n+1 values ⇒ n+1 terms</span><span class="eq">Exponent pattern: a exponent = n−r (decreases by 1); b exponent = r (increases by 1)</span><span class="eq">Index-sum per term: (n−r)+r = n</span><span class="eq">Binomial coefficient: <sub>n</sub>C<sub>r</sub> = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></span><span class="eq">Symmetry: <sub>n</sub>C<sub>r</sub> = <sub>n</sub>C<sub>n−r</sub></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>PASCAL'S TRIANGLE</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c2"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Pascal’s triangle</b> is an array where row <i>n</i> gives coefficients of (a+b)<sup>n</sup>.</li><li>Each row starts and ends with <b>1</b>; rows are indexed <i>n</i>=0,1,2,…</li><li>Every interior entry equals the <b>sum of the two entries above it</b> (additive rule).</li><li>Row <i>n</i> contains <b>(n+1)</b> numbers; it is symmetric about the middle.</li><li>Also called <b>Meru Prastara</b>, described by <b>Pingla</b> in ancient India.</li></ul></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">2</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧱</span><span>Additive pattern: each entry = upper-left + upper-right</span></li><li><span class="ic">🧮</span><span>Row <i>n</i> equals <i><sup>n</sup>C<sub>0</sub>, <sup>n</sup>C<sub>1</sub>, …, <sup>n</sup>C<sub>n</sub></i></span></li><li><span class="ic">🪞</span><span>Symmetry: <sup>n</sup>C<sub>r</sub> = <sup>n</sup>C<sub>n−r</sub></span></li><li><span class="ic">📌</span><span>For index 5, row is 1 5 10 10 5 1</span></li><li><span class="ic">⚙️</span><span>Use row + power pattern to expand (p+q)<sup>n</sup> without repeated multiplication</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">HOW TO FORM THE TRIANGLE (FAST RULES)</span></h2><ul class="b"><li>Start with row <i>n</i>=0: <b>1</b>.</li><li>Next row: write <b>1</b> at both ends.</li><li>Each interior number = (upper-left) + (upper-right).</li><li>Row <i>n</i> is symmetric: read same left→right and right→left.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">4</span><span class="htext">USING A ROW TO EXPAND (p+q)<sup>n</sup></span></h2><ul class="b"><li>Take coefficients from row <i>n</i>: <sup>n</sup>C<sub>0</sub> … <sup>n</sup>C<sub>n</sub>.</li><li>Write terms: (<i>p</i>)<sup>n</sup>, (<i>p</i>)<sup>n−1</sup>(<i>q</i>), …, (<i>q</i>)<sup>n</sup>.</li><li>Multiply each term by the matching coefficient; total terms = <b>n+1</b>.</li><li>For (2x+3y)<sup>5</sup>, use row: <b>1 5 10 10 5 1</b>.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">5</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Pascal’s triangle entries are combinations:</div><div class="eqbox"><span class="eq">Row <i>n</i> = <sup>n</sup>C<sub>0</sub>, <sup>n</sup>C<sub>1</sub>, …, <sup>n</sup>C<sub>n</sub></span></div><div class="fstep">Additive rule comes from combinations:</div><div class="eqbox"><span class="eq"><sup>n</sup>C<sub>r</sub> = <sup>n−1</sup>C<sub>r−1</sub> + <sup>n−1</sup>C<sub>r</sub></span></div></div><div><div class="fstep">Use coefficients to write the binomial expansion:</div><div class="eqbox blue"><span class="eq">(a+b)<sup>n</sup> = Σ<sub>r=0</sub><sup>n</sup> <sup>n</sup>C<sub>r</sub> a<sup>n−r</sup>b<sup>r</sup></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>positive integer index in (a+b)<sup>n</sup></td></tr><tr><td><i>r</i>&nbsp;=</td><td>term position (0 to <i>n</i>)</td></tr><tr><td><sup>n</sup>C<sub>r</sub>&nbsp;=</td><td>binomial coefficient = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></td></tr><tr><td><i>a</i>, <i>b</i>&nbsp;=</td><td>two terms of the binomial (can be numbers/variables/expressions)</td></tr></table><div class="hibox">Row-to-expansion rule<div class="eqbox gold" style="margin-top:1mm"><span class="eq">(p+q)<sup>n</sup> has coefficients from row <i>n</i> of Pascal’s triangle</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">6</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Using Pascal’s triangle, expand (2x+3y)<sup>5</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Row for index 5: <b>1 5 10 10 5 1</b>.<br>Write term pattern: (2x)<sup>5</sup>, (2x)<sup>4</sup>(3y), (2x)<sup>3</sup>(3y)<sup>2</sup>, (2x)<sup>2</sup>(3y)<sup>3</sup>, (2x)(3y)<sup>4</sup>, (3y)<sup>5</sup>.<br>Multiply by coefficients:<br>=(2x)<sup>5</sup> + 5(2x)<sup>4</sup>(3y) + 10(2x)<sup>3</sup>(3y)<sup>2</sup> + 10(2x)<sup>2</sup>(3y)<sup>3</sup> + 5(2x)(3y)<sup>4</sup> + (3y)<sup>5</sup>.<br>Compute each term carefully:<br>(2x)<sup>5</sup>=32x<sup>5</sup><br>5(2x)<sup>4</sup>(3y)=5·16x<sup>4</sup>·3y=240x<sup>4</sup>y<br>10(2x)<sup>3</sup>(3y)<sup>2</sup>=10·8x<sup>3</sup>·9y<sup>2</sup>=720x<sup>3</sup>y<sup>2</sup><br>10(2x)<sup>2</sup>(3y)<sup>3</sup>=10·4x<sup>2</sup>·27y<sup>3</sup>=1080x<sup>2</sup>y<sup>3</sup><br>5(2x)(3y)<sup>4</sup>=5·2x·81y<sup>4</sup>=810xy<sup>4</sup><br>(3y)<sup>5</sup>=243y<sup>5</sup></div><div class="ans">✓&nbsp; (2x+3y)<sup>5</sup> = 32x<sup>5</sup> + 240x<sup>4</sup>y + 720x<sup>3</sup>y<sup>2</sup> + 1080x<sup>2</sup>y<sup>3</sup> + 810xy<sup>4</sup> + 243y<sup>5</sup></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Use Pascal’s triangle row n=6 to expand (x+2)<sup>6</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Row for index 6: <b>1 6 15 20 15 6 1</b>.<br>Write with decreasing powers of x and increasing powers of 2:<br>(x+2)<sup>6</sup> = 1·x<sup>6</sup> + 6·x<sup>5</sup>(2) + 15·x<sup>4</sup>(2)<sup>2</sup> + 20·x<sup>3</sup>(2)<sup>3</sup> + 15·x<sup>2</sup>(2)<sup>4</sup> + 6·x(2)<sup>5</sup> + 1·(2)<sup>6</sup>.<br>Compute coefficients numerically:<br>= x<sup>6</sup> + 12x<sup>5</sup> + 15·4x<sup>4</sup> + 20·8x<sup>3</sup> + 15·16x<sup>2</sup> + 6·32x + 64<br>= x<sup>6</sup> + 12x<sup>5</sup> + 60x<sup>4</sup> + 160x<sup>3</sup> + 240x<sup>2</sup> + 192x + 64</div><div class="ans">✓&nbsp; (x+2)<sup>6</sup> = x<sup>6</sup> + 12x<sup>5</sup> + 60x<sup>4</sup> + 160x<sup>3</sup> + 240x<sup>2</sup> + 192x + 64</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">7</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Row index equals the power <i>n</i> in (a+b)<sup>n</sup>; do not shift by 1.</li><li>Total terms in expansion = <b>n+1</b>; powers: a<sup>n</sup>→a<sup>0</sup>, b<sup>0</sup>→b<sup>n</sup>.</li><li>Coefficients are symmetric: 1 5 10 10 5 1 for <i>n</i>=5.</li><li>Additive rule: boundary 1’s; interior from sums of adjacent upper entries.</li><li>For (2x+3y)<sup>5</sup>, include factors 2<sup>k</sup> and 3<sup>k</sup> inside each term.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">8</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using row 6 instead of row 5 for power 5 (index mismatch).</li><li>Forgetting to apply powers to 2 and 3 in (2x) and (3y) terms.</li><li>Mixing power pattern: writing x powers increasing instead of decreasing.</li><li>Arithmetic slips in middle terms: 10·8·9 = 720 (often miscomputed).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">9</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“EDGE-ADD-EDGE (EAE) for building rows”</div><paragraph id="6aa538c5f718b3cfd600055d">Put <b>1</b> on both edges.</paragraph><paragraph id="6aa538c5ae4bea18dc00055e">Each middle number = <b>add</b> the two directly above.</paragraph><paragraph id="6aa538c55b9e390e8000055f">Then use that row as coefficients for power <i>n</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">10</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">Row <i>n</i> of Pascal’s triangle: <sup>n</sup>C<sub>0</sub>, <sup>n</sup>C<sub>1</sub>, …, <sup>n</sup>C<sub>n</sub></span><span class="eq"><sup>n</sup>C<sub>r</sub> = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></span><span class="eq">Pascal identity: <sup>n</sup>C<sub>r</sub> = <sup>n−1</sup>C<sub>r−1</sub> + <sup>n−1</sup>C<sub>r</sub></span><span class="eq">(a+b)<sup>n</sup> = Σ<sub>r=0</sub><sup>n</sup> <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></span><span class="eq">Power pattern: term <i>r</i> has a<sup>n−r</sup>b<sup>r</sup></span><span class="eq">Row <i>n</i>=5: <b>1 5 10 10 5 1</b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>BINOMIAL COEFFICIENTS AS nCr</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Binomial coefficient <b>nC<sub>r</sub></b> counts ways to choose <i>r</i> objects from <i>n</i> and equals the <i>r</i>-th entry in Pascal’s row <i>n</i>.</li><li><b>nC<sub>r</sub> = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></b>, defined for integers with <b>0 ≤ r ≤ n</b>, <i>n</i> ≥ 0.</li><li>Pascal row <i>n</i> written in combination form is <b>nC<sub>0</sub>, nC<sub>1</sub>, …, nC<sub>n</sub></b> (so you need not build earlier rows).</li><li>Edge values: <b>nC<sub>0</sub> = nC<sub>n</sub> = 1</b>.</li><li>Symmetry: <b>nC<sub>r</sub> = nC<sub>n−r</sub></b> (row reads same forwards/backwards).</li><li>Pascal addition rule: <b>(n−1)C<sub>r−1</sub> + (n−1)C<sub>r</sub> = nC<sub>r</sub></b> generates each interior entry.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#2563EB'/></marker></defs><rect x='10' y='14' width='340' height='172' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='22' y='38' font-size='14' fill='#1f2a44'>Pascal entry = nC_r</text><g><rect x='22' y='52' width='150' height='46' rx='8' fill='#EAF7EF' stroke='#16A34A'/><text x='34' y='78' font-size='13' fill='#1f2a44'>Pascal Triangle</text><text x='34' y='94' font-size='12' fill='#1f2a44'>Row n</text></g><g><rect x='190' y='52' width='150' height='46' rx='8' fill='#F4EFFE' stroke='#7C3AED'/><text x='202' y='78' font-size='13' fill='#1f2a44'>Combinations</text><text x='202' y='94' font-size='12' fill='#1f2a44'>nC_r</text></g><line x1='172' y1='75' x2='190' y2='75' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><g><rect x='22' y='112' width='318' height='60' rx='8' fill='#FEF5E4' stroke='#F59E0B'/><text x='34' y='134' font-size='13' fill='#1f2a44'>Row n can be written directly</text><text x='34' y='154' font-size='12' fill='#1f2a44'>nC0, nC1, ..., nCn</text><text x='220' y='154' font-size='12' fill='#1f2a44'>Example: n = 7</text></g></svg><div class="figcap">Each Pascal entry equals a combination nC<sub>r</sub>; row <i>n</i> is nC<sub>0</sub>…nC<sub>n</sub>.<br><br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔺</span><span>Pascal triangle row <i>n</i> = coefficients in (a+b)<sup>n</sup> = nC<sub>0</sub>…nC<sub>n</sub></span></li><li><span class="ic">🧩</span><span>Combinations meaning: choose <i>r</i> items; order ignored ⇒ nC<sub>r</sub></span></li><li><span class="ic">↔️</span><span>Fast computation: use symmetry nC<sub>r</sub>=nC<sub>n−r</sub> to reduce factorial work</span></li><li><span class="ic">🧱</span><span>Row index 7 directly: 7C<sub>0</sub> to 7C<sub>7</sub> gives full row without writing rows 0–6</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">REWRITING PASCAL’S TRIANGLE IN nCr FORM</span></h2><ul class="b"><li>Row index <i>n</i> has <b>(n+1)</b> entries: <b>nC<sub>0</sub>, nC<sub>1</sub>, …, nC<sub>n</sub></b>.</li><li>First and last entries are 1 because <b>nC<sub>0</sub>=nC<sub>n</sub>=1</b>.</li><li>Interior entries satisfy Pascal identity: <b>nC<sub>r</sub> = (n−1)C<sub>r−1</sub> + (n−1)C<sub>r</sub></b>.</li><li>Symmetry gives quick fill: entry positions <i>r</i> and <i>n−r</i> are equal.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">ROW FOR INDEX 7 (DIRECTLY, WITHOUT BUILDING TRIANGLE)</span></h2><ul class="b"><li>Write the row as <b>7C<sub>0</sub>, 7C<sub>1</sub>, 7C<sub>2</sub>, 7C<sub>3</sub>, 7C<sub>4</sub>, 7C<sub>5</sub>, 7C<sub>6</sub>, 7C<sub>7</sub></b>.</li><li>Compute: <b>7C<sub>0</sub>=1</b>, <b>7C<sub>1</sub>=7</b>, <b>7C<sub>2</sub>=21</b>, <b>7C<sub>3</sub>=35</b>.</li><li>Use symmetry: <b>7C<sub>4</sub>=35</b>, <b>7C<sub>5</sub>=21</b>, <b>7C<sub>6</sub>=7</b>, <b>7C<sub>7</sub>=1</b>.</li><li>So row 7 numbers are <b>1, 7, 21, 35, 35, 21, 7, 1</b>.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">6</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Define combinations using factorials (valid for integers 0 ≤ r ≤ n):</div><div class="eqbox"><span class="eq"><b>nC<sub>r</sub> = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></b></span></div><div class="fstep">Show Pascal identity from factorial form (for 1 ≤ r ≤ n−1):</div><div class="eqbox"><span class="eq"><b>(n−1)C<sub>r−1</sub> + (n−1)C<sub>r</sub> = <span class='frac'><span>(n−1)!</span><span>(r−1)!(n−r)!</span></span> + <span class='frac'><span>(n−1)!</span><span>r!(n−1−r)!</span></span></b></span></div></div><div><div class="fstep">Take common factor <span class='frac'><span>(n−1)!</span><span>r!(n−r)!</span></span>:</div><div class="eqbox blue"><span class="eq"><b>= <span class='frac'><span>(n−1)!</span><span>r!(n−r)!</span></span>[r + (n−r)] = <span class='frac'><span>(n−1)!·n</span><span>r!(n−r)!</span></span> = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span> = nC<sub>r</sub></b></span></div><div class="fstep">Symmetry (swap r and n−r in the factorial formula):</div><div class="eqbox blue"><span class="eq"><b>nC<sub>r</sub> = nC<sub>n−r</sub></b></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>Row index / total objects (non-negative integer)</td></tr><tr><td><i>r</i>&nbsp;=</td><td>Chosen objects / position in row (integer, 0 ≤ r ≤ n)</td></tr><tr><td><i>n</i>!&nbsp;=</td><td>Factorial: <i>n</i>! = n(n−1)(n−2)…1, and 0! = 1</td></tr></table><div class="hibox">Direct row-writing rule<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>Row n in Pascal’s triangle: nC<sub>0</sub>, nC<sub>1</sub>, …, nC<sub>n</sub></b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Write the complete row for index 7 of Pascal’s triangle using nC<sub>r</sub>, and evaluate the numbers.</div><div class="sol"><span class="lbl">Solution:</span><br>Row 7 is <b>7C<sub>0</sub>, 7C<sub>1</sub>, 7C<sub>2</sub>, 7C<sub>3</sub>, 7C<sub>4</sub>, 7C<sub>5</sub>, 7C<sub>6</sub>, 7C<sub>7</sub></b>.<br><b>7C<sub>0</sub>=1</b> and <b>7C<sub>7</sub>=1</b>.<br><b>7C<sub>1</sub>=<span class='frac'><span>7!</span><span>1!6!</span></span>=7</b> ⇒ by symmetry <b>7C<sub>6</sub>=7</b>.<br><b>7C<sub>2</sub>=<span class='frac'><span>7!</span><span>2!5!</span></span>=<span class='frac'><span>7×6</span><span>2×1</span></span>=21</b> ⇒ <b>7C<sub>5</sub>=21</b>.<br><b>7C<sub>3</sub>=<span class='frac'><span>7!</span><span>3!4!</span></span>=<span class='frac'><span>7×6×5</span><span>3×2×1</span></span>=35</b> ⇒ <b>7C<sub>4</sub>=35</b>.</div><div class="ans">✓&nbsp; Row 7 = <b>1, 7, 21, 35, 35, 21, 7, 1</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Using combination form, find the 4th entry (from the left) in row index 10 of Pascal’s triangle.</div><div class="sol"><span class="lbl">Solution:</span><br>Row 10 entries are <b>10C<sub>0</sub>, 10C<sub>1</sub>, 10C<sub>2</sub>, 10C<sub>3</sub>, …</b> (counting from left starts at r=0).<br>4th entry from left corresponds to <b>r=3</b>, so value is <b>10C<sub>3</sub></b>.<br><b>10C<sub>3</sub>=<span class='frac'><span>10!</span><span>3!7!</span></span>=<span class='frac'><span>10×9×8</span><span>3×2×1</span></span></b>.<br>Compute: <b><span class='frac'><span>10×9×8</span><span>6</span></span> = <span class='frac'><span>720</span><span>6</span></span> = 120</b>.</div><div class="ans">✓&nbsp; The 4th entry in row 10 is <b>120</b>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Pascal row numbering starts at <i>n</i>=0: row 0 is just <b>1</b> (= 0C<sub>0</sub>).</li><li>In row <i>n</i>, the <b>(r+1)</b>-th entry from left equals <b>nC<sub>r</sub></b>.</li><li>Always ensure <b>0 ≤ r ≤ n</b>; otherwise <b>nC<sub>r</sub></b> is not defined in this syllabus.</li><li>Use <b>nC<sub>r</sub>=nC<sub>n−r</sub></b> to avoid big factorials.</li><li>Pascal identity builds next row quickly and is consistent with factorial definition.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using wrong <i>r</i> due to entry counting starting from 1 instead of 0.</li><li>Forgetting symmetry and doing long factorial computations unnecessarily.</li><li>Writing nC<sub>r</sub> with <i>r</i> outside 0…n (e.g., 7C<sub>8</sub>).</li><li>Cancelling factorials incorrectly: not reducing before multiplying.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Row n = ‘choose r’ list”</div><paragraph id="6aa538c56ebb570ea3000560">Say aloud: <b>Row n is choose-0 to choose-n</b>.</paragraph><paragraph id="6aa538c50a85af9187000561">To get k-th entry from left, use <b>r = k−1</b> then compute <b>nC<sub>r</sub></b>.</paragraph><paragraph id="6aa538c5361bbdec84000562">To halve work, mirror it: <b>… nC<sub>2</sub>, nC<sub>1</sub>, nC<sub>0</sub></b> on the right.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>nC<sub>r</sub> = <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></b>, valid for integers <b>0 ≤ r ≤ n</b></span><span class="eq"><b>nC<sub>0</sub> = nC<sub>n</sub> = 1</b></span><span class="eq"><b>nC<sub>r</sub> = nC<sub>n−r</sub></b></span><span class="eq"><b>(n−1)C<sub>r−1</sub> + (n−1)C<sub>r</sub> = nC<sub>r</sub></b></span><span class="eq"><b>Row n in Pascal: nC<sub>0</sub>, nC<sub>1</sub>, …, nC<sub>n</sub></b></span><span class="eq">Row 7 values: <b>1, 7, 21, 35, 35, 21, 7, 1</b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>BINOMIAL THEOREM (STATEMENT)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>For positive integer <i>n</i>, <b>(a+b)<sup>n</sup></b> expands into a sum of terms with binomial coefficients.</li><li>The expansion has <b>(n+1)</b> terms, with powers of <i>a</i> decreasing and powers of <i>b</i> increasing.</li><li>The coefficient of each term is a combination number <b><sup>n</sup>C<sub>r</sub></b> (called a binomial coefficient).</li><li>General term (r+1)th is <b><sup>n</sup>C<sub>r</sub> a<sup>n−r</sup>b<sup>r</sup></b>, where <i>r</i>=0,1,2,…,<i>n</i>.</li><li>In every term, the sum of exponents of <i>a</i> and <i>b</i> equals <i>n</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><polygon points='0,0 8,4 0,8' fill='#123B7A'/></marker></defs><rect x='14' y='18' width='332' height='164' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='28' y='44' font-size='14' fill='#1f2a44'>Term pattern in (a+b)^n</text><rect x='28' y='58' width='304' height='38' rx='8' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='40' y='82' font-size='13' fill='#1f2a44'>T₁: C(n,0) a^n b^0</text><rect x='28' y='104' width='304' height='38' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='40' y='128' font-size='13' fill='#1f2a44'>T(r+1): C(n,r) a^(n−r) b^r</text><rect x='28' y='150' width='304' height='24' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='40' y='167' font-size='13' fill='#1f2a44'>T(n+1): C(n,n) a^0 b^n</text><line x1='248' y1='96' x2='248' y2='104' stroke='#123B7A' stroke-width='2' marker-end='url(#arr)'/><text x='262' y='101' font-size='12' fill='#1f2a44'>r = 0 → n</text></svg><div class="figcap">Each next term decreases power of <i>a</i> by 1 and increases power of <i>b</i> by 1.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>Statement: <b>(a+b)<sup>n</sup> = <sup>n</sup>C<sub>0</sub>a<sup>n</sup> + <sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b + … + <sup>n</sup>C<sub>n</sub>b<sup>n</sup></b></span></li><li><span class="ic">🔁</span><span>Term structure: <i>a</i> power: <i>n</i> to 0; <i>b</i> power: 0 to <i>n</i></span></li><li><span class="ic">🧷</span><span>General term: (r+1)th term <b>T<sub>r+1</sub>=<sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b></span></li><li><span class="ic">🧩</span><span>Binomial coefficient (for integers <b>0 ≤ r ≤ n</b>): <b><sup>n</sup>C<sub>r</sub>= <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></b></span></li><li><span class="ic">🧠</span><span>Total terms: r runs 0→n, so exactly <b>n+1</b> terms appear</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">TERM STRUCTURE (WHAT CHANGES FROM TERM TO TERM?)</span></h2><ul class="b"><li>There are <b>n+1</b> terms: from <i>r</i>=0 (first term) to <i>r</i>=<i>n</i> (last term).</li><li>In term with parameter <i>r</i>: exponent of <i>a</i> is <b>n−r</b>, exponent of <i>b</i> is <b>r</b>.</li><li>Every term has total degree <b>(n−r)+r=n</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">HOW TO LOCATE A SPECIFIC TERM QUICKLY</span></h2><ul class="b"><li>The (r+1)th term is <b>T<sub>r+1</sub>=<sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b>.</li><li>The term containing <i>a</i><sup>k</sup> has <i>k</i>=n−r ⇒ <b>r=n−k</b> (must be an integer between 0 and n).</li><li>The term containing <i>b</i><sup>m</sup> has <b>r=m</b> directly (with 0 ≤ m ≤ n).</li><li>This statement is for positive integer <i>n</i>, so the expansion has finite <b>n+1</b> terms.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">6</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Binomial theorem (statement form):</div><div class="eqbox"><span class="eq"><b>(a+b)<sup>n</sup> = <sup>n</sup>C<sub>0</sub>a<sup>n</sup> + <sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b + <sup>n</sup>C<sub>2</sub>a<sup>n−2</sup>b<sup>2</sup> + … + <sup>n</sup>C<sub>n</sub>b<sup>n</sup></b></span></div><div class="fstep">Compact summation form:</div><div class="eqbox"><span class="eq"><b>(a+b)<sup>n</sup> = ∑<sub>r=0</sub><sup>n</sup> <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b></span></div></div><div><div class="fstep">Definition of binomial coefficient (integers 0 ≤ r ≤ n):</div><div class="eqbox blue"><span class="eq"><b><sup>n</sup>C<sub>r</sub>= <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></b></span></div><div class="fstep">General term (r+1)th term:</div><div class="eqbox blue"><span class="eq"><b>T<sub>r+1</sub>=<sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>positive integer index (n = 1,2,3,...)</td></tr><tr><td><i>a</i>, <i>b</i>&nbsp;=</td><td>algebraic quantities (numbers/variables/expressions)</td></tr><tr><td><i>r</i>&nbsp;=</td><td>term parameter, integer with 0 ≤ r ≤ n</td></tr><tr><td><sup>n</sup>C<sub>r</sub>&nbsp;=</td><td>binomial coefficient (number of combinations of r from n)</td></tr><tr><td>T<sub>r+1</sub>&nbsp;=</td><td>(r+1)th term in the expansion (counting starts from 1)</td></tr></table><div class="hibox">Core statement + general term<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>(a+b)<sup>n</sup> = ∑<sub>r=0</sub><sup>n</sup> <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b> and <b>T<sub>r+1</sub>=<sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Write the expansion of <b>(2x+3y)<sup>5</sup></b> using the binomial theorem.</div><div class="sol"><span class="lbl">Solution:</span><br>Use <b>(a+b)<sup>n</sup>=∑<sub>r=0</sub><sup>n</sup> <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b> with <i>a</i>=2x, <i>b</i>=3y, <i>n</i>=5.<br>Binomial coefficients: <b><sup>5</sup>C<sub>0</sub>=1</b>, <b><sup>5</sup>C<sub>1</sub>=5</b>, <b><sup>5</sup>C<sub>2</sub>=10</b>, <b><sup>5</sup>C<sub>3</sub>=10</b>, <b><sup>5</sup>C<sub>4</sub>=5</b>, <b><sup>5</sup>C<sub>5</sub>=1</b>.<br>Write the terms: <b>(2x)<sup>5</sup> + 5(2x)<sup>4</sup>(3y) + 10(2x)<sup>3</sup>(3y)<sup>2</sup> + 10(2x)<sup>2</sup>(3y)<sup>3</sup> + 5(2x)(3y)<sup>4</sup> + (3y)<sup>5</sup></b>.<br>Compute: (2x)<sup>5</sup>=32x<sup>5</sup>; 5(2x)<sup>4</sup>(3y)=5·16x<sup>4</sup>·3y=240x<sup>4</sup>y.<br>10(2x)<sup>3</sup>(3y)<sup>2</sup>=10·8x<sup>3</sup>·9y<sup>2</sup>=720x<sup>3</sup>y<sup>2</sup>.<br>10(2x)<sup>2</sup>(3y)<sup>3</sup>=10·4x<sup>2</sup>·27y<sup>3</sup>=1080x<sup>2</sup>y<sup>3</sup>.</div><div class="ans">✓&nbsp; <b>(2x+3y)<sup>5</sup>=32x<sup>5</sup>+240x<sup>4</sup>y+720x<sup>3</sup>y<sup>2</sup>+1080x<sup>2</sup>y<sup>3</sup>+810xy<sup>4</sup>+243y<sup>5</sup></b></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find the <b>4th term</b> in the expansion of <b>(x+2)<sup>6</sup></b>.</div><div class="sol"><span class="lbl">Solution:</span><br>For <b>(a+b)<sup>n</sup></b>, the (r+1)th term is <b>T<sub>r+1</sub>=<sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b>.<br>Here <i>a</i>=x, <i>b</i>=2, <i>n</i>=6. 4th term ⇒ r+1=4 ⇒ <b>r=3</b>.<br>So <b>T<sub>4</sub>=<sup>6</sup>C<sub>3</sub>x<sup>6−3</sup>·2<sup>3</sup></b>.<br>Compute: <b><sup>6</sup>C<sub>3</sub>= <span class='frac'><span>6!</span><span>3!3!</span></span>=20</b> and <b>2<sup>3</sup>=8</b>.<br>Thus <b>T<sub>4</sub>=20·x<sup>3</sup>·8=160x<sup>3</sup></b>.</div><div class="ans">✓&nbsp; <b>4th term = 160x<sup>3</sup></b></div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>For this chapter section, the statement is used for <b>positive integer</b> <i>n</i>, giving a finite expansion.</li><li>General term indexing: (r+1)th term corresponds to exponent of <i>b</i> being <i>r</i>.</li><li>Number of terms is <b>n+1</b>; first term has <i>b</i><sup>0</sup>, last term has <i>a</i><sup>0</sup>.</li><li>Degree check: each term has total power <b>n</b>; helps verify expansions quickly.</li><li>Symmetry of coefficients: <b><sup>n</sup>C<sub>r</sub>=<sup>n</sup>C<sub>n−r</sub></b>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using wrong r for the k-th term: forgetting <b>k=r+1</b>.</li><li>Dropping <i>a</i><sup>0</sup> or <i>b</i><sup>0</sup> terms; they equal 1 but must be included.</li><li>Swapping exponents: writing <i>a</i><sup>r</sup><i>b</i><sup>n−r</sup> instead of <i>a</i><sup>n−r</sup><i>b</i><sup>r</sup>.</li><li>Incorrect combination values, especially middle terms like <sup>6</sup>C<sub>3</sub>=20.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“ABC of each term: A-power, Binomial, C-power”</div><paragraph id="6aa538c56dfbb8fe08000563">Think: <b>C(n,r)</b> sits in the middle, powers sit on sides.</paragraph><paragraph id="6aa538c5d1a353888b000564">Left power: <b>a<sup>n−r</sup></b> (decreases), right power: <b>b<sup>r</sup></b> (increases).</paragraph><paragraph id="6aa538c56dc58903e8000565"><i>r</i> goes 0→n, so you automatically get first to last term.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>(a+b)<sup>n</sup>=<sup>n</sup>C<sub>0</sub>a<sup>n</sup>+<sup>n</sup>C<sub>1</sub>a<sup>n−1</sup>b+…+<sup>n</sup>C<sub>n</sub>b<sup>n</sup></b></span><span class="eq"><b>(a+b)<sup>n</sup>=∑<sub>r=0</sub><sup>n</sup> <sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b></span><span class="eq"><b>T<sub>r+1</sub>=<sup>n</sup>C<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup></b></span><span class="eq"><b><sup>n</sup>C<sub>r</sub>= <span class='frac'><span>n!</span><span>r!(n−r)!</span></span></b>, <b>0≤r≤n</b></span><span class="eq">Total terms in expansion: <b>n+1</b></span><span class="eq">Symmetry: <b><sup>n</sup>C<sub>r</sub>=<sup>n</sup>C<sub>n−r</sub></b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>INDUCTION PROOF (PRINCIPLE OF MATHEMATICAL INDUCTION)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Mathematical induction</b> is a method to prove a statement <i>P</i>(n) for all natural numbers.</li><li>Step 1: Prove the <b>base case</b> (usually <i>P</i>(1) or <i>P</i>(0)).</li><li>Step 2: Assume <i>P</i>(k) is true for an arbitrary natural number <i>k</i> (induction hypothesis).</li><li>Step 3: Using the hypothesis, prove <i>P</i>(k+1) is true (induction step).</li><li>Then <i>P</i>(n) is true for every natural number in the intended range.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='8' refX='9' refY='4' orient='auto'><polygon points='0,0 10,4 0,8' fill='#2563EB'/></marker></defs><g><rect x='18' y='18' width='150' height='42' rx='6' fill='#EEF4FF' stroke='#123B7A'/><text x='28' y='44' font-size='13' fill='#1f2a44'>1) Base: P(1) or P(0)</text><rect x='192' y='18' width='150' height='42' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='202' y='44' font-size='13' fill='#1f2a44'>2) Assume: P(k)</text><line x1='168' y1='39' x2='192' y2='39' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='82' width='324' height='44' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='28' y='108' font-size='13' fill='#1f2a44'>3) Prove: P(k+1) using P(k)</text><line x1='267' y1='60' x2='267' y2='82' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/><rect x='18' y='142' width='324' height='44' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='28' y='168' font-size='13' fill='#1f2a44'>4) Conclude: P(n) true for all n</text><line x1='180' y1='126' x2='180' y2='142' stroke='#2563EB' stroke-width='2' marker-end='url(#arrow)'/></g></svg><div class="figcap">Standard induction flow: base case → induction hypothesis → induction step → conclusion.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>Write the exact statement <i>P</i>(n) with its domain (e.g. for all n≥1).</span></li><li><span class="ic">✅</span><span>Base case: check the first allowed value (n=0 or n=1) carefully.</span></li><li><span class="ic">🔁</span><span>Induction hypothesis: assume <i>P</i>(k) is true; do not re-prove it.</span></li><li><span class="ic">🔗</span><span>Induction step: transform the <i>(k+1)</i> case until the <i>k</i> case appears.</span></li><li><span class="ic">🧠</span><span>Conclusion: base case + (P(k)⇒P(k+1)) implies truth for all n in the range.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO DO THE INDUCTION STEP (COMMON PATTERNS)</span></h2><ul class="b"><li>Goal: start from the expression in <i>P</i>(k+1) and rewrite it to involve the form in <i>P</i>(k).</li><li>Often use algebraic rewriting like splitting: f(k+1)=f(k)+[extra term], or factoring: A(k+1)=A(k)·[factor].</li><li>After substitution of the induction hypothesis, simplify to reach exactly the required statement.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">EXAMPLE (BRIEF): BINOMIAL THEOREM VIA INDUCTION</span></h2><ul class="b"><li>Let <i>P</i>(n): (a+b)<sup>n</sup>=∑<sub>r=0</sub><sup>n</sup> nC<sub>r</sub>a<sup>n−r</sup>b<sup>r</sup> for n≥1.</li><li>Base case n=1 is immediate: (a+b)=1C<sub>0</sub>a+1C<sub>1</sub>b.</li><li>Induction step uses (a+b)<sup>k+1</sup>=(a+b)(a+b)<sup>k</sup>, index shift, then Pascal identity.</li></ul></div></div>
+    
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">6</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Why is it necessary to assume <i>P</i>(k) for an arbitrary <i>k</i>, and not only verify a few values like n=1,2,3?</div><div class="sol"><span class="lbl">Answer:</span><br>Checking finitely many cases only proves the statement for those values.<br>Induction requires a link: proving <i>P</i>(k)⇒<i>P</i>(k+1) ensures the truth propagates from the base case to all larger integers.<br>Without the implication step, there is no guarantee beyond the checked values.</div><div class="ans">✓&nbsp; Induction works because it establishes a chain from the base case to every next integer; finite checking cannot do this.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In an induction proof, what is the most common logical mistake with the induction hypothesis?</div><div class="sol"><span class="lbl">Answer:</span><br>Treating <i>P</i>(k) as something to be proved again, instead of using it as an allowed assumption inside the induction step.<br>Using <i>P</i>(k+1)</i> (or a stronger statement than <i>P</i>(k)) while trying to prove <i>P</i>(k+1), which becomes circular.</div><div class="ans">✓&nbsp; The key mistake is circular reasoning: using the result for (k+1) (directly or indirectly) instead of only using the assumed <i>P</i>(k).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">7</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>State the domain clearly (e.g. n≥1 or n≥0) before starting.</li><li>Base case must match the smallest allowed n in the domain.</li><li>In the induction step, only assume <i>P</i>(k) and prove <i>P</i>(k+1); do not assume <i>P</i>(k+1).</li><li>Final line should explicitly invoke the principle of induction to conclude "true for all n".</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">8</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Wrong base case (proving <i>P</i>(1) when the statement starts at n=0, or vice versa).</li><li>Not specifying the domain of n, leading to a mismatch in base case/conclusion.</li><li>Circular use of <i>P</i>(k+1) while proving <i>P</i>(k+1).</li><li>Proving <i>P</i>(k)⇒<i>P</i>(k+1) but forgetting to combine it with the base case.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">9</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>B-A-S-C</b> (Base–Assume–Show–Conclude)”</div><paragraph id="6aa538c50b44a7afff000566"><b>B</b>: Prove the base case.</paragraph><paragraph id="6aa538c53b1e49c828000567"><b>A</b>: Assume <i>P</i>(k) (induction hypothesis).</paragraph><paragraph id="6aa538c567169aac1e000568"><b>S</b>: Show <i>P</i>(k+1) using the hypothesis.</paragraph><paragraph id="6aa538c51dfd7f8e49000569"><b>C</b>: Conclude <i>P</i>(n) for all n in the domain.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">10</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Induction structure: Base case + (for all k, P(k)⇒P(k+1)) ⇒ P(n) for all n in the stated range.</span><span class="eq">Induction hypothesis: assume P(k) is true for an arbitrary fixed k; use it only inside the induction step.</span><span class="eq">Conclusion must reference the principle of mathematical induction explicitly.</span><span class="eq">Example identity often used in binomial-theorem induction: kC<sub>r</sub> + kC<sub>r−1</sub> = (k+1)C<sub>r</sub>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SUMMATION FORM AND PROPERTIES (BINOMIAL THEOREM)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>For a positive integer <i>n</i>, <b>(a+b)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub> a<sup>n−k</sup>b<sup>k</sup></b>.</li><li>Here <sup>n</sup>C<sub>k</sub> are <b>binomial coefficients</b> (same as the <i>n</i>-th row of Pascal triangle).</li><li>Expansion has exactly <b>(n+1)</b> terms corresponding to <i>k</i>=0,1,2,…,<i>n</i>.</li><li>In the <i>k</i>-th term (starting k=0), power of <i>a</i> decreases, power of <i>b</i> increases.</li><li>In every term, <b>(power of a) + (power of b) = n</b>; also use <b>b<sup>0</sup>=1</b>, <b>a<sup>0</sup>=1</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' markerWidth='10' markerHeight='10' refX='8' refY='3' orient='auto'><polygon points='0 0, 10 3, 0 6' fill='#123B7A'/></marker></defs><g><rect x='18' y='18' width='324' height='164' rx='10' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='28' y='42' font-size='14' fill='#1f2a44'>k = 0</text><text x='140' y='42' font-size='14' fill='#1f2a44'>...</text><text x='300' y='42' font-size='14' fill='#1f2a44'>k = n</text><g><rect x='30' y='58' width='90' height='34' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='40' y='80' font-size='13' fill='#1f2a44'>a^n b^0</text></g><g><rect x='240' y='58' width='90' height='34' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='250' y='80' font-size='13' fill='#1f2a44'>a^0 b^n</text></g><line x1='125' y1='75' x2='235' y2='75' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow)'/><text x='132' y='100' font-size='13' fill='#1f2a44'>a power ↓</text><text x='230' y='120' font-size='13' fill='#1f2a44'>b power ↑</text><g><rect x='30' y='126' width='300' height='40' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='40' y='151' font-size='13' fill='#1f2a44'>Each term: a^(n−k) b^k  ⇒  (n−k)+k = n</text></g></g></svg><div class="figcap">Σ form organizes terms by k: a-exponent falls, b-exponent rises, sum of exponents stays n.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧩</span><span>General term: <i>T</i><sub>k+1</sub> = <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup>, k=0…n</span></li><li><span class="ic">🔢</span><span>Number of terms = n+1; first term k=0, last term k=n</span></li><li><span class="ic">📉</span><span>Powers: a : n,n−1,…,0 and b : 0,1,…,n (successive terms differ by 1)</span></li><li><span class="ic">⚖️</span><span>Index-sum rule: (n−k)+k=n in every term</span></li><li><span class="ic">🏷️</span><span>Binomial coefficient: <sup>n</sup>C<sub>k</sub>=<span class='frac'><span>n!</span><span>k!(n−k)!</span></span>, with symmetry <sup>n</sup>C<sub>k</sub>=<sup>n</sup>C<sub>n−k</sub></span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">Σ-NOTATION: HOW TO READ IT</span></h2><ul class="b"><li>∑<sub>k=0</sub><sup>n</sup> means: add terms obtained by putting k=0,1,2,…,n.</li><li>Term at k=0 gives <sup>n</sup>C<sub>0</sub>a<sup>n</sup>b<sup>0</sup> = a<sup>n</sup> (since <sup>n</sup>C<sub>0</sub>=1, b<sup>0</sup>=1).</li><li>Term at k=n gives <sup>n</sup>C<sub>n</sub>a<sup>0</sup>b<sup>n</sup> = b<sup>n</sup> (since <sup>n</sup>C<sub>n</sub>=1, a<sup>0</sup>=1).</li><li>In general, coefficient for a<sup>n−k</sup>b<sup>k</sup> is exactly <sup>n</sup>C<sub>k</sub>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">KEY PROPERTIES EXAMINERS LOVE</span></h2><ul class="b"><li>Number of terms is n+1 (not n): because k takes n+1 integer values from 0 to n.</li><li>Power progression: successive terms change exponents by 1: a: (n−k)→(n−k−1), b: k→k+1.</li><li>Index-sum rule: exponents of a and b always add to n; quickly checks term correctness.</li><li>Coefficient symmetry: <sup>n</sup>C<sub>k</sub>=<sup>n</sup>C<sub>n−k</sub> pairs terms equidistant from ends.</li><li>Edge coefficients: <sup>n</sup>C<sub>0</sub>=<sup>n</sup>C<sub>n</sub>=1; next ones are <sup>n</sup>C<sub>1</sub>=<sup>n</sup>C<sub>n−1</sub>=n.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">6</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Write terms by choosing <i>k</i> factors of <i>b</i> from <i>n</i> factors of (a+b).</div><div class="eqbox"><span class="eq">(a+b)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub> a<sup>n−k</sup>b<sup>k</sup></span></div></div><div><div class="fstep">General term (k starting at 0):</div><div class="eqbox blue"><span class="eq"><i>T</i><sub>k+1</sub> = <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup></span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>Positive integer index (power) of the binomial</td></tr><tr><td><i>k</i>&nbsp;=</td><td>Term-selector integer running from 0 to n</td></tr><tr><td><sup>n</sup>C<sub>k</sub>&nbsp;=</td><td>Binomial coefficient = <span class='frac'><span>n!</span><span>k!(n−k)!</span></span></td></tr><tr><td><i>a</i>, <i>b</i>&nbsp;=</td><td>Terms of the binomial; b<sup>0</sup>=1 and a<sup>0</sup>=1</td></tr></table><div class="hibox">Summation (sigma) form of Binomial Theorem<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>(a+b)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub> a<sup>n−k</sup>b<sup>k</sup></b></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Write (2x+3)<sup>5</sup> in Σ-notation and find the coefficient of x<sup>3</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Use Σ form: (2x+3)<sup>5</sup> = ∑<sub>k=0</sub><sup>5</sup> <sup>5</sup>C<sub>k</sub>(2x)<sup>5−k</sup>3<sup>k</sup>.<br>Power of x in term k is (5−k). For x<sup>3</sup>: 5−k=3 ⇒ k=2.<br>Required term: <sup>5</sup>C<sub>2</sub>(2x)<sup>3</sup>3<sup>2</sup> = 10 · 8x<sup>3</sup> · 9 = 720x<sup>3</sup>.</div><div class="ans">✓&nbsp; Coefficient of x<sup>3</sup> is <b>720</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In the expansion of (a+b)<sup>8</sup>, find the term containing a<sup>5</sup>b<sup>3</sup> and its numerical coefficient.</div><div class="sol"><span class="lbl">Solution:</span><br>Match exponents with general term: <i>T</i><sub>k+1</sub>=<sup>8</sup>C<sub>k</sub>a<sup>8−k</sup>b<sup>k</sup>.<br>Need a<sup>5</sup>b<sup>3</sup>: so 8−k=5 and k=3 (index-sum check: 5+3=8).<br>Term = <sup>8</sup>C<sub>3</sub>a<sup>5</sup>b<sup>3</sup>.<br>Compute <sup>8</sup>C<sub>3</sub>=<span class='frac'><span>8×7×6</span><span>3×2×1</span></span>=56.</div><div class="ans">✓&nbsp; Term is <b>56a<sup>5</sup>b<sup>3</sup></b>; numerical coefficient = <b>56</b>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Always state k-range: k=0 to n gives exactly n+1 terms.</li><li>Use <i>T</i><sub>k+1</sub>=<sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup> to target a specific power quickly.</li><li>Index-sum rule (n−k)+k=n is the fastest self-check for exponents.</li><li>Endpoints: first term a<sup>n</sup>, last term b<sup>n</sup>; both have coefficient 1.</li><li>Coefficient symmetry: coefficients mirror about the middle: <sup>n</sup>C<sub>k</sub>=<sup>n</sup>C<sub>n−k</sub>.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing Σ from k=1 to n and losing the k=0 term (misses a<sup>n</sup>).</li><li>Using wrong general term: mixing a<sup>k</sup>b<sup>n−k</sup> with a<sup>n−k</sup>b<sup>k</sup> unintentionally.</li><li>Forgetting b<sup>0</sup>=1 or a<sup>0</sup>=1, leading to missing first/last term.</li><li>Taking number of terms as n instead of n+1.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">““k counts b” trick”</div><paragraph id="6aa538c56c471bf6ed00056a">In ∑ <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup>, <b>k is the power of b</b>.</paragraph><paragraph id="6aa538c5ec4d60879300056b">So b-power rises 0→n, and a-power is the leftover: n−k.</paragraph><paragraph id="6aa538c50c33524eb900056c">Quick check: add exponents = n every time.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">(a+b)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup></span><span class="eq"><i>T</i><sub>k+1</sub> = <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup>, 0≤k≤n</span><span class="eq"><sup>n</sup>C<sub>k</sub> = <span class='frac'><span>n!</span><span>k!(n−k)!</span></span>, and <sup>n</sup>C<sub>k</sub>=<sup>n</sup>C<sub>n−k</sub></span><span class="eq">Number of terms in (a+b)<sup>n</sup> is n+1</span><span class="eq">Power pattern: a : n,n−1,…,0 and b : 0,1,…,n</span><span class="eq">Index-sum rule: (power of a) + (power of b) = n in every term</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SPECIAL CASES OF EXPANSION (BINOMIAL THEOREM)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Special cases arise by choosing <i>a</i>, <i>b</i> in <b>(a+b)<sup>n</sup></b> to get quick standard expansions.</li><li>For <b>(x−y)<sup>n</sup></b>, signs alternate because powers of <b>(−y)</b> contribute <b>(−1)<sup>k</sup></b>.</li><li>For <b>(1+x)<sup>n</sup></b>, coefficients are <b><sup>n</sup>C<sub>k</sub></b> with all positive terms.</li><li>For <b>(1−x)<sup>n</sup></b>, coefficients are <b><sup>n</sup>C<sub>k</sub></b> with alternating signs.</li><li>Setting <b>x=1</b> yields identities: sum of coefficients <b>=2<sup>n</sup></b>, alternating sum <b>=0</b> (for <i>n</i>≥1).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='#123B7A'/></marker></defs><g><rect x='16' y='16' width='328' height='44' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='26' y='42' font-size='13' fill='#1f2a44'>Start: (a+b)<tspan baseline-shift='super'>n</tspan></text><line x1='180' y1='60' x2='180' y2='76' stroke='#123B7A' marker-end='url(#arrow)'/><rect x='20' y='78' width='150' height='46' rx='6' fill='#EAF7EF' stroke='#16A34A'/><text x='28' y='98' font-size='13' fill='#1f2a44'>a=x, b=−y</text><text x='28' y='116' font-size='13' fill='#1f2a44'>(x−y)<tspan baseline-shift='super'>n</tspan></text><rect x='190' y='78' width='150' height='46' rx='6' fill='#F4EFFE' stroke='#7C3AED'/><text x='198' y='98' font-size='13' fill='#1f2a44'>a=1, b=±x</text><text x='198' y='116' font-size='13' fill='#1f2a44'>(1±x)<tspan baseline-shift='super'>n</tspan></text><line x1='95' y1='124' x2='95' y2='140' stroke='#123B7A' marker-end='url(#arrow)'/><line x1='265' y1='124' x2='265' y2='140' stroke='#123B7A' marker-end='url(#arrow)'/><rect x='20' y='142' width='150' height='44' rx='6' fill='#FEF5E4' stroke='#F59E0B'/><text x='28' y='162' font-size='13' fill='#1f2a44'>Signs: + − + −</text><text x='28' y='180' font-size='13' fill='#1f2a44'>(−1)<tspan baseline-shift='super'>k</tspan></text><rect x='190' y='142' width='150' height='44' rx='6' fill='#EEF4FF' stroke='#2563EB'/><text x='198' y='162' font-size='13' fill='#1f2a44'>x=1 gives</text><text x='198' y='180' font-size='13' fill='#1f2a44'>2<tspan baseline-shift='super'>n</tspan> and 0</text></g></svg><div class="figcap">Flow: choose substitutions to get (x−y)<sup>n</sup>, (1±x)<sup>n</sup>, and key coefficient identities.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔁</span><span>Sign rule: (−y)<sup>k</sup> = (−1)<sup>k</sup>y<sup>k</sup> ⇒ alternating +,−,+,−,…</span></li><li><span class="ic">📌</span><span>Coefficient sum: put <i>a</i>=<i>b</i>=1 ⇒ (1+1)<sup>n</sup>=2<sup>n</sup>=∑<sub>k=0</sub><sup>n</sup><sup>n</sup>C<sub>k</sub></span></li><li><span class="ic">⚖️</span><span>Alternating sum: put <i>a</i>=1,<i>b</i>=−1 ⇒ (1−1)<sup>n</sup>=0=∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub> (for <i>n</i>≥1)</span></li><li><span class="ic">🧩</span><span>In (1±x)<sup>n</sup>, the coefficient of x<sup>k</sup> is (±1)<sup>k</sup><sup>n</sup>C<sub>k</sub></span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">STANDARD VARIANTS (WRITE DIRECTLY)</span></h2><ul class="b"><li><b>(x−y)<sup>n</sup></b> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub> x<sup>n−k</sup>(−y)<sup>k</sup> = ∑ <sup>n</sup>C<sub>k</sub>(−1)<sup>k</sup> x<sup>n−k</sup>y<sup>k</sup></li><li>So terms alternate signs: x<sup>n</sup> − <sup>n</sup>C<sub>1</sub>x<sup>n−1</sup>y + <sup>n</sup>C<sub>2</sub>x<sup>n−2</sup>y<sup>2</sup> − … + (−1)<sup>n</sup>y<sup>n</sup></li><li><b>(1+x)<sup>n</sup></b> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub> x<sup>k</sup> (all positive)</li><li><b>(1−x)<sup>n</sup></b> = ∑<sub>k=0</sub><sup>n</sup> (−1)<sup>k</sup><sup>n</sup>C<sub>k</sub> x<sup>k</sup> (alternating signs)</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">CONSEQUENCES (COEFFICIENT SUMS)</span></h2><ul class="b"><li>Sum of coefficients of (1+x)<sup>n</sup> equals its value at x=1: <b>2<sup>n</sup></b>.</li><li>Alternating sum of coefficients of (1+x)<sup>n</sup> equals its value at x=−1: <b>0</b> (for <i>n</i>≥1).</li><li>More generally: ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub> = (1−1)<sup>n</sup> (for <i>n</i>≥1).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">QUICK COMPARISON: (1+x)<sup>n</sup> vs (1−x)<sup>n</sup></span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>(1+x)<sup>n</sup></th><th>(1−x)<sup>n</sup></th></tr></thead><tbody><tr><td>General term</td><td><sup>n</sup>C<sub>k</sub>x<sup>k</sup></td><td>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub>x<sup>k</sup></td></tr><tr><td>Signs</td><td>All +</td><td>+ − + − …</td></tr><tr><td>Value at x=1</td><td>2<sup>n</sup></td><td>0 (for n≥1)</td></tr><tr><td>Coefficient sum</td><td>2<sup>n</sup></td><td>Alternating sum = 0 (for n≥1)</td></tr></tbody></table></div></div>
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">7</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Start with binomial theorem:</div><div class="eqbox"><span class="eq">(a+b)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub>a<sup>n−k</sup>b<sup>k</sup></span></div><div class="fstep">Put <b>a=x</b>, <b>b=−y</b>:</div><div class="eqbox"><span class="eq">(x−y)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup> <sup>n</sup>C<sub>k</sub> x<sup>n−k</sup>(−y)<sup>k</sup> = ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub>x<sup>n−k</sup>y<sup>k</sup></span></div></div><div><div class="fstep">Put <b>a=1</b>, <b>b=x</b> and then x=1:</div><div class="eqbox blue"><span class="eq">(1+x)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup><sup>n</sup>C<sub>k</sub>x<sup>k</sup> ⇒ 2<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup><sup>n</sup>C<sub>k</sub></span></div><div class="fstep">Put <b>a=1</b>, <b>b=−x</b> and then x=1:</div><div class="eqbox blue"><span class="eq">(1−x)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub>x<sup>k</sup> ⇒ 0 = ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub> (n≥1)</span></div></div><div><table class="wtab"><tr><td><i>n</i>&nbsp;=</td><td>positive integer (index of expansion)</td></tr><tr><td><i>k</i>&nbsp;=</td><td>term counter, 0 ≤ <i>k</i> ≤ <i>n</i></td></tr><tr><td><sup>n</sup>C<sub>k</sub>&nbsp;=</td><td>binomial coefficient = <span class='frac'><span>n!</span><span>k!(n−k)!</span></span></td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq">(1±x)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup>(±1)<sup>k</sup><sup>n</sup>C<sub>k</sub>x<sup>k</sup></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">8</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Expand (2x−3)<sup>4</sup> using the binomial theorem / (x−y)<sup>n</sup> sign idea.</div><div class="sol"><span class="lbl">Solution:</span><br>Write (2x−3)<sup>4</sup> = (2x + (−3))<sup>4</sup> = ∑<sub>k=0</sub><sup>4</sup> <sup>4</sup>C<sub>k</sub>(2x)<sup>4−k</sup>(−3)<sup>k</sup>.<br>k=0: <sup>4</sup>C<sub>0</sub>(2x)<sup>4</sup> = 1·16x<sup>4</sup> = 16x<sup>4</sup><br>k=1: <sup>4</sup>C<sub>1</sub>(2x)<sup>3</sup>(−3) = 4·8x<sup>3</sup>·(−3) = −96x<sup>3</sup><br>k=2: <sup>4</sup>C<sub>2</sub>(2x)<sup>2</sup>(−3)<sup>2</sup> = 6·4x<sup>2</sup>·9 = 216x<sup>2</sup><br>k=3: <sup>4</sup>C<sub>3</sub>(2x)(−3)<sup>3</sup> = 4·2x·(−27) = −216x<br>k=4: <sup>4</sup>C<sub>4</sub>(−3)<sup>4</sup> = 1·81 = 81</div><div class="ans">✓&nbsp; (2x−3)<sup>4</sup> = 16x<sup>4</sup> − 96x<sup>3</sup> + 216x<sup>2</sup> − 216x + 81</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find (a) the sum of coefficients and (b) the alternating sum of coefficients of P(x)=(1+x)<sup>7</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Sum of coefficients = P(1) = (1+1)<sup>7</sup> = 2<sup>7</sup> = 128.<br>Alternating sum of coefficients = P(−1) = (1−1)<sup>7</sup> = 0.</div><div class="ans">✓&nbsp; (a) 128, (b) 0</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">9</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>In (x−y)<sup>n</sup>, sign of the term with y<sup>k</sup> is (−1)<sup>k</sup>.</li><li>Coefficient of x<sup>k</sup> in (1±x)<sup>n</sup> is (±1)<sup>k</sup><sup>n</sup>C<sub>k</sub>.</li><li>Sum of all coefficients of any polynomial equals its value at x=1.</li><li>Alternating sum of coefficients equals its value at x=−1.</li><li>Identity: ∑<sub>k=0</sub><sup>n</sup><sup>n</sup>C<sub>k</sub> = 2<sup>n</sup>; ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub> = 0 for n≥1.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">10</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing the last term of (x−y)<sup>n</sup> as +y<sup>n</sup> instead of (−1)<sup>n</sup>y<sup>n</sup>.</li><li>Mixing k with n−k: wrong powers of x and y in the general term.</li><li>Forgetting that alternating sum uses x=−1 in (1+x)<sup>n</sup>, not x=1 in (1−x)<sup>n</sup>.</li><li>Treating 0<sup>0</sup> cases casually; here the alternating-sum identity is stated for n≥1.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">11</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“ONE-LINER HOOK: "Plus at 1, Minus at −1"”</div><paragraph id="6aa538c56b97029ad600056d">Sum of coefficients: plug <b>x=1</b> into the expression.</paragraph><paragraph id="6aa538c517ba66def200056e">Alternating sum: plug <b>x=−1</b> into the same expression.</paragraph><paragraph id="6aa538c528f774c18700056f">For (x−y)<sup>n</sup>, remember: every odd power of y carries a <b>−</b> sign.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">12</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq">(x−y)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub>x<sup>n−k</sup>y<sup>k</sup></span><span class="eq">(1+x)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup><sup>n</sup>C<sub>k</sub>x<sup>k</sup></span><span class="eq">(1−x)<sup>n</sup> = ∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub>x<sup>k</sup></span><span class="eq">∑<sub>k=0</sub><sup>n</sup><sup>n</sup>C<sub>k</sub> = 2<sup>n</sup></span><span class="eq">∑<sub>k=0</sub><sup>n</sup>(−1)<sup>k</sup><sup>n</sup>C<sub>k</sub> = 0 (n≥1)</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>APPLICATIONS AND EXAMPLES (BINOMIAL THEOREM)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Binomial theorem expands <i>(a+b)</i><sup><i>n</i></sup> (positive integer <i>n</i>) into a sum of <i>n</i>+1 terms using binomial coefficients.</li><li>Typical use: rewrite numbers as (easy base ± small) and expand to compute quickly.</li><li>Also used to compare magnitudes by keeping first few terms (all remaining terms positive when <i>x</i>&gt;0).</li><li>Useful to prove divisibility/remainder statements by factoring out a fixed power like 25, 64, etc.</li><li>Gives standard identities such as <i>(a+b)</i><sup>4</sup>−<i>(a−b)</i><sup>4</sup> and symmetric sums <i>(x+1)</i><sup>6</sup>+<i>(x−1)</i><sup>6</sup>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" xmlns='http://www.w3.org/2000/svg' width='520' height='180' viewBox='0 0 520 180'>
+  <rect x='10' y='10' width='500' height='160' rx='14' fill='#ffffff' stroke='#111' stroke-width='2'/>
+  <text x='260' y='38' text-anchor='middle' font-family='Arial' font-size='16' fill='#111'>Pascal coefficients (row n)</text>
+  <text x='65' y='70' font-family='Arial' font-size='13' fill='#111'>ends: 1</text>
+  <text x='65' y='92' font-family='Arial' font-size='13' fill='#111'>inside: sum of two above</text>
+
+  <g font-family='Arial' font-size='14' fill='#111'>
+    <text x='260' y='70' text-anchor='middle'>1</text>
+    <text x='220' y='95' text-anchor='middle'>1</text>
+    <text x='300' y='95' text-anchor='middle'>1</text>
+    <text x='200' y='120' text-anchor='middle'>1</text>
+    <text x='260' y='120' text-anchor='middle'>2</text>
+    <text x='320' y='120' text-anchor='middle'>1</text>
+    <text x='180' y='145' text-anchor='middle'>1</text>
+    <text x='240' y='145' text-anchor='middle'>3</text>
+    <text x='280' y='145' text-anchor='middle'>3</text>
+    <text x='340' y='145' text-anchor='middle'>1</text>
+  </g>
+
+  <line x1='260' y1='75' x2='220' y2='90' stroke='#777' stroke-width='1'/>
+  <line x1='260' y1='75' x2='300' y2='90' stroke='#777' stroke-width='1'/>
+  <line x1='220' y1='100' x2='200' y2='115' stroke='#777' stroke-width='1'/>
+  <line x1='220' y1='100' x2='260' y2='115' stroke='#777' stroke-width='1'/>
+  <line x1='300' y1='100' x2='260' y2='115' stroke='#777' stroke-width='1'/>
+  <line x1='300' y1='100' x2='320' y2='115' stroke='#777' stroke-width='1'/>
+</svg><div class="figcap">Binomial coefficients can be read from Pascal’s triangle (row gives coefficients).<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🔢</span><span>General term: <i>T</i><sub><i>r</i>+1</sub> = <sup><i>n</i></sup><span class='frac'><span><i>n</i>!</span><span><i>r</i>!(<i>n</i>−<i>r</i>)!</span></span> <i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup>, for <i>r</i>=0…<i>n</i></span></li><li><span class="ic">📌</span><span>Number of terms in <i>(a+b)</i><sup><i>n</i></sup> is <i>n</i>+1; powers of <i>a</i> decrease, powers of <i>b</i> increase; sum of exponents is always <i>n</i>.</span></li><li><span class="ic">🧱</span><span>For <i>(x−y)</i><sup><i>n</i></sup>, signs alternate: coefficient has factor (−1)<sup><i>r</i></sup> with <i>y</i><sup><i>r</i></sup>.</span></li><li><span class="ic">⚡</span><span>Quick comparison: for <i>x</i>&gt;0, in <i>(1+x)</i><sup><i>n</i></sup> all terms after 1+<i>n</i><i>x</i> are positive, so it is strictly greater than 1+<i>n</i><i>x</i>.</span></li><li><span class="ic">🧩</span><span>Remainder/divisibility: expand (1+<i>m</i>)<sup><i>n</i></sup>; terms from <i>m</i><sup>2</sup> onward share factor <i>m</i><sup>2</sup>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">FAST NUMERICAL COMPUTATION</span></h2><ul class="b"><li>Rewrite number near a base: <i>N</i> = <i>A</i> ± <i>h</i>, then expand <i>(A±h)</i><sup><i>n</i></sup>.</li><li>Example idea: (98)<sup>5</sup> = (100−2)<sup>5</sup>; only 6 terms.</li><li>For minus case, signs alternate: <i>(A−h)</i><sup><i>n</i></sup> = <i>A</i><sup><i>n</i></sup> − <i>n</i><i>A</i><sup><i>n</i>−1</sup><i>h</i> + <sup><i>n</i></sup><span class='frac'><span><i>n</i>!</span><span>2!(<i>n</i>−2)!</span></span><i>A</i><sup><i>n</i>−2</sup><i>h</i><sup>2</sup> − …</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">COMPARISON, IDENTITIES, AND DIVISIBILITY</span></h2><ul class="b"><li>Comparison (<i>x</i>&gt;0): <i>(1+x)</i><sup><i>n</i></sup> = 1 + <i>n</i><i>x</i> + (positive terms) ⇒ <i>(1+x)</i><sup><i>n</i></sup> &gt; 1 + <i>n</i><i>x</i>.</li><li>Even/odd symmetry: <i>(x+1)</i><sup><i>n</i></sup> + <i>(x−1)</i><sup><i>n</i></sup> cancels odd powers of 1; doubles even-power terms.</li><li>Remainder idea: write 6<sup><i>n</i></sup> = (1+5)<sup><i>n</i></sup>; all terms from 5<sup>2</sup> onward have factor 25, enabling mod 25 results.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">6</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">Binomial theorem (positive integer <i>n</i>)</div><div class="eqbox"><span class="eq"><i>(a+b)</i><sup><i>n</i></sup> = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> <sup><i>n</i></sup><span class='frac'><span><i>n</i>!</span><span><i>r</i>!(<i>n</i>−<i>r</i>)!</span></span> <i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup></span></div><div class="fstep">Special case (alternating signs)</div><div class="eqbox"><span class="eq"><i>(x−y)</i><sup><i>n</i></sup> = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> (−1)<sup><i>r</i></sup> <sup><i>n</i></sup><span class='frac'><span><i>n</i>!</span><span><i>r</i>!(<i>n</i>−<i>r</i>)!</span></span> <i>x</i><sup><i>n</i>−<i>r</i></sup><i>y</i><sup><i>r</i></sup></span></div></div><div><div class="fstep">Sum of coefficients (standard identity)</div><div class="eqbox blue"><span class="eq">Putting <i>a</i>=1, <i>b</i>=1: 2<sup><i>n</i></sup> = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> <i>n</i>C<sub><i>r</i></sub></span></div></div><div><table class="wtab"><tr><td><sup><i>n</i></sup><span class='frac'><span><i>n</i>!</span><span><i>r</i>!(<i>n</i>−<i>r</i>)!</span></span>&nbsp;=</td><td>Binomial coefficient, written as <i>n</i>C<sub><i>r</i></sub></td></tr><tr><td><i>T</i><sub><i>r</i>+1</sub>&nbsp;=</td><td>(<i>r</i>+1)th term in the expansion, with <i>r</i> starting from 0</td></tr><tr><td><i>n</i>&nbsp;=</td><td>Positive integer index (power)</td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>T</i><sub><i>r</i>+1</sub> = <i>n</i>C<sub><i>r</i></sub> <i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup></span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Expand <i>(2x+3y)</i><sup>5</sup>.</div><div class="sol"><span class="lbl">Solution:</span><br>Use coefficients for <i>n</i>=5: 1, 5, 10, 10, 5, 1.<br>Write terms: (2x)<sup>5</sup> + 5(2x)<sup>4</sup>(3y) + 10(2x)<sup>3</sup>(3y)² + 10(2x)²(3y)³ + 5(2x)(3y)<sup>4</sup> + (3y)<sup>5</sup>.<br>Compute each: (2x)<sup>5</sup>=32x<sup>5</sup>; 5(2x)<sup>4</sup>(3y)=5·16·3 x<sup>4</sup>y=240x<sup>4</sup>y; 10(2x)<sup>3</sup>(3y)²=10·8·9 x<sup>3</sup>y²=720x<sup>3</sup>y².<br>Next: 10(2x)²(3y)³=10·4·27 x²y³=1080x²y³; 5(2x)(3y)<sup>4</sup>=5·2·81 xy<sup>4</sup>=810xy<sup>4</sup>; (3y)<sup>5</sup>=243y<sup>5</sup>.</div><div class="ans">✓&nbsp; 32<i>x</i><sup>5</sup> + 240<i>x</i><sup>4</sup><i>y</i> + 720<i>x</i><sup>3</sup><i>y</i><sup>2</sup> + 1080<i>x</i><sup>2</sup><i>y</i><sup>3</sup> + 810<i>x</i><i>y</i><sup>4</sup> + 243<i>y</i><sup>5</sup></div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Compute (98)<sup>5</sup> using binomial theorem.</div><div class="sol"><span class="lbl">Solution:</span><br>Write 98 = 100 − 2 ⇒ (98)<sup>5</sup> = (100−2)<sup>5</sup>.<br>Expand: (100−2)<sup>5</sup> = 100<sup>5</sup> − 5·100<sup>4</sup>·2 + 10·100<sup>3</sup>·2² − 10·100²·2³ + 5·100·2<sup>4</sup> − 2<sup>5</sup>.<br>Compute powers: 100<sup>5</sup>=10,000,000,000; 100<sup>4</sup>=100,000,000; 100<sup>3</sup>=1,000,000; 100²=10,000; 2²=4; 2³=8; 2<sup>4</sup>=16; 2<sup>5</sup>=32.<br>Evaluate terms: 5·100<sup>4</sup>·2 = 5·100,000,000·2 = 1,000,000,000.<br>10·100<sup>3</sup>·2² = 10·1,000,000·4 = 40,000,000.<br>10·100²·2³ = 10·10,000·8 = 800,000.</div><div class="ans">✓&nbsp; 9039207968</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>To expand, fix coefficients from <i>n</i>C<sub>0</sub> to <i>n</i>C<sub><i>n</i></sub> and attach powers: <i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup>.</li><li>In <i>(x−y)</i><sup><i>n</i></sup>, sign of term with <i>y</i><sup><i>r</i></sup> is (−1)<sup><i>r</i></sup>.</li><li>For quick magnitude: if <i>x</i>&gt;0, then <i>(1+x)</i><sup><i>n</i></sup> &gt; 1 + <i>n</i><i>x</i> (since remaining terms are positive).</li><li>For remainder/divisibility, express number as (1+<i>m</i>) and separate 1 + <i>n</i><i>m</i> from terms containing <i>m</i><sup>2</sup> (or higher).</li><li>Useful identities come from adding/subtracting expansions of <i>(a+b)</i><sup><i>n</i></sup> and <i>(a−b)</i><sup><i>n</i></sup> (cancellation of odd/even terms).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Wrong general term: mixing up powers as <i>a</i><sup><i>r</i></sup><i>b</i><sup><i>n</i>−<i>r</i></sup> instead of <i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup>.</li><li>For (a−b)<sup><i>n</i></sup>, forgetting alternating signs (using all +).</li><li>Arithmetic slips with large bases (e.g., 100<sup>5</sup>, 100<sup>4</sup>×2) and with 2², 2³, …</li><li>Using comparison inequality without checking <i>x</i>&gt;0 (needed so omitted terms are positive).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“COEF–POW–SIGN”</div><paragraph id="6aa538c549ee548860000570">COEF: write <i>n</i>C<sub>0</sub>, <i>n</i>C<sub>1</sub>, …, <i>n</i>C<sub><i>n</i></sub>.</paragraph><paragraph id="6aa538c545b014a562000571">POW: attach <i>a</i> powers down (<i>n</i> to 0) and <i>b</i> powers up (0 to <i>n</i>).</paragraph><paragraph id="6aa538c548a7a82601000572">SIGN: if it is (a−b)<sup><i>n</i></sup>, alternate + − + − … using (−1)<sup><i>r</i></sup>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>(a+b)</i><sup><i>n</i></sup> = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> <i>n</i>C<sub><i>r</i></sub> <i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup></span><span class="eq"><i>(x−y)</i><sup><i>n</i></sup> = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> (−1)<sup><i>r</i></sup> <i>n</i>C<sub><i>r</i></sub> <i>x</i><sup><i>n</i>−<i>r</i></sup><i>y</i><sup><i>r</i></sup></span><span class="eq"><i>T</i><sub><i>r</i>+1</sub> in <i>(a+b)</i><sup><i>n</i></sup>: <i>n</i>C<sub><i>r</i></sub><i>a</i><sup><i>n</i>−<i>r</i></sup><i>b</i><sup><i>r</i></sup></span><span class="eq">Sum of coefficients: putting <i>a</i>=1, <i>b</i>=1 gives 2<sup><i>n</i></sup> = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> <i>n</i>C<sub><i>r</i></sub></span><span class="eq">Alternating sum: putting <i>a</i>=1, <i>b</i>=−1 gives 0 = Σ<sub><i>r</i>=0</sub><sup><i>n</i></sup> (−1)<sup><i>r</i></sup><i>n</i>C<sub><i>r</i></sub></span><span class="eq">Lower bound for <i>x</i>&gt;0: <i>(1+x)</i><sup><i>n</i></sup> &gt; 1 + <i>n</i><i>x</i></span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

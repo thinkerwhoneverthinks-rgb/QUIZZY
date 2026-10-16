@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>CHAPTER FOUR</title>
+  
+  
+  
+  
+<link href="data:," rel="icon"/><link href="css/styles.css" rel="stylesheet"/><link href="css/katex.min.css" rel="stylesheet"/><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8bec94c3e952dec345f0ba/vendor/katex/katex.min.js"></script><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8bec94c3e952dec345f0ba/vendor/katex/contrib/auto-render.min.js"></script><script defer src="https://pikachu-books.vercel.app/api/reader/6a8bd668f64868e00c706205/6a8bec94c3e952dec345f0ba/js/chapter.js"></script>
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body><main class="chapter-wrap" id="main-content"><h1>Ch 04 : Laws of Motion</h1>
+
+<h2>4.1 Introduction</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206ab3"><b>Aim of the chapter (shift in focus):</b> Earlier we <b>described</b> motion using <b>velocity</b> (uniform motion) + <b>acceleration</b> (non-uniform motion). Now we ask: <b>what governs motion?</b> i.e. <b>what causes changes in motion</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ab4"><b>Everyday observations suggesting the need of force:</b></paragraph>
+<ul>
+  <li>To move a football from rest → it must be kicked.</li>
+  <li>To throw a stone upward → an upward push is needed.</li>
+  <li>Breeze swings branches; strong wind can move heavy objects.</li>
+  <li>A boat can move in a flowing river without rowing (external agency: stream).</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206ab5"><b>Key inference from common experience:</b> Need an <b>external agency</b> to provide a <b>force</b> to (i) start motion from rest, and (ii) retard/stop motion (e.g. stop a ball rolling down an incline by applying a force opposite to its motion).</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ab6"><b>Contact force is not always necessary:</b></paragraph>
+<ul>
+  <li>A stone released from a building accelerates downward due to <b>gravitational pull</b> (force at a distance).</li>
+  <li>A bar magnet attracts an iron nail from a distance (<b>magnetic force</b> at a distance).</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206ab7"><b>Force and external agency:</b> A force is needed to set a stationary body in motion or to stop a moving body; some <b>external agency</b> provides this force. The agency <b>may or may not be in contact</b> with the body.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ab8"><b>Central question raised:</b> If a body is moving uniformly (e.g. a skater moving straight with constant speed on a horizontal ice slab), <b>is an external force required to keep it in uniform motion?</b> This leads into the next sections.</paragraph>
+
+
+<h2>4.2 Aristotle’s Fallacy</h2>
+
+<paragraph id="6a8930d1663d2d329e206ab9">The question “is force needed to maintain uniform motion?” looks easy, but historically it took a long time. <b>Galileo’s correct answer (17th century)</b> became the base of <b>Newtonian mechanics</b> and modern science.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206aba"><b>Aristotle (384 B.C.–322 B.C.) view:</b> If a body is moving, something external must keep it moving.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206abb"><b>Aristotelian law of motion (as phrased here):</b> <b>An external force is required to keep a body in motion.</b></paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206abc"><b>Illustration Aristotle used (example):</b> An arrow keeps flying because the <b>air behind it keeps pushing it</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206abd"><b>Why Aristotle’s view feels natural (common experience):</b> A child pulling a toy car with a string must keep pulling; if the pull stops, the car soon stops. On Earth, motion often seems to need continuous force; left alone, bodies appear to come to rest.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206abe"><b>The flaw in Aristotle’s argument:</b> The toy car stops due to an external force—<b>friction</b> from the floor—that <b>opposes motion</b>.</paragraph>
+<ul>
+  <li>To maintain motion, the child must pull forward to <b>counter</b> friction.</li>
+  <li>When the car is in <b>uniform motion</b>, the <b>net external force is zero</b> because pull = friction (they cancel).</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206abf"><b>Corollary:</b> If there were <b>no friction</b>, then <b>no force would be required</b> to keep the toy car in <b>uniform motion</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ac0"><b>Role of resistive forces in the real world:</b></paragraph>
+<ul>
+  <li><b>Friction</b> (solids) and <b>viscous forces</b> (fluids) are almost always present.</li>
+  <li>So, external forces are often needed just to <b>overcome</b> these opposing forces so motion can continue uniformly.</li>
+</ul>
+
+<div class="remember-box">
+  <paragraph id="6a8930d1663d2d329e206ac1"><b>Exam trap:</b> Don’t say “force is needed to keep motion” just from daily life—check for <b>friction/viscous drag</b>. Uniform motion can happen with <b>zero net force</b>; applied forces may only be balancing resistive forces.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ac2"><b>Galileo’s key step:</b> To find the true force–motion law, imagine an ideal world where <b>uniform motion is possible with no frictional forces opposing it</b>. Galileo did this and corrected Aristotle.</paragraph>
+
+
+<h2>4.3 The Law of Inertia</h2>
+
+<h3>Galileo’s inclined plane reasoning</h3>
+
+<paragraph id="6a8930d1663d2d329e206ac3">Galileo studied motion on inclined planes and noted 3 cases:</paragraph>
+<ul>
+  <li>(i) Objects moving <b>down</b> an incline <b>accelerate</b>.</li>
+  <li>(ii) Objects moving <b>up</b> an incline <b>retard</b> (slow down).</li>
+  <li>(iii) Motion on a <b>horizontal</b> plane is an <b>intermediate</b> case.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206ac4"><b>Conclusion from (iii):</b> On a <b>frictionless horizontal plane</b>, an object has <b>no acceleration</b> and <b>no retardation</b> → it moves with <b>constant velocity</b> (uniform motion). This is the core idea of inertia.</paragraph>
+</div>
+
+<h3>Double inclined plane experiment (idealisation leading to inertia)</h3>
+
+<paragraph id="6a8930d1663d2d329e206ac5">Galileo also considered a ball on a <b>double inclined plane</b>:</paragraph>
+<ul>
+  <li>Ball released from rest rolls down one plane and climbs the other.</li>
+  <li>If planes are not smooth, final height is almost the initial height—<b>slightly less</b> due to friction, but <b>never greater</b>.</li>
+  <li>In ideal <b>no friction</b>, final height = initial height.</li>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="magnenpattern." class="zoomable" data-full="img/fig-11.webp" decoding="async" fetchpriority="high" height="798" loading="eager" src="img/fig-11.webp" width="1188"/></div>
+</figure>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206ac6"><b>Changing the second plane’s slope:</b></paragraph>
+<ul>
+  <li>Make the second plane gentler → ball still reaches the <b>same height</b>, but travels a <b>longer distance</b>.</li>
+  <li>Limit: slope → <b>zero</b> (horizontal) → to reach same height, ball must travel an <b>infinite distance</b>.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206ac7"><b>Law of inertia (as inferred here):</b> With no friction (and no resistive forces), a moving body on a horizontal surface keeps moving with <b>constant velocity</b>; its motion <b>never ceases</b> (idealised).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d1663d2d329e206ac8"><b>Exam wording tip:</b> Inertia is concluded under an <b>ideal condition</b> (no friction). In real life, motion stops due to <b>opposing forces</b>, not because motion “naturally dies out”.</paragraph>
+</div>
+
+<h2>Laws of Motion (Inertia and Newton’s First Law)</h2>
+
+<h3>Friction and the idea of motion without net force</h3>
+<paragraph id="6a8930d1663d2d329e206ac9">In real life, an object (e.g., a ball rolling on a horizontal surface) stops after some distance because an opposing force—<b>friction</b>—acts on it and can’t be fully removed.</paragraph>
+<paragraph id="6a8930d1663d2d329e206aca">If there were <b>no friction</b>, the ball would keep moving with <b>constant velocity</b> (uniform straight-line motion). This was Galileo’s key insight (fixing Aristotle’s idea).</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206acb"><b>Rest ≡ uniform straight-line motion:</b> Rest and uniform motion in a straight line are equivalent because in both cases <b>net external force = 0</b> ⇒ <b>no acceleration</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206acc"><b>Common mistake (exam point):</b> It’s <b>wrong</b> to think a net force is needed to keep a body moving uniformly. Net force is needed only to <b>change</b> motion (i.e., to produce acceleration).</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206acd">On Earth, to keep uniform motion we often apply a force just to <b>balance friction</b>, so that applied force + friction give <b>zero net external force</b>.</paragraph>
+
+<h3>Inertia</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206ace"><b>Inertia:</b> property of a body that makes it <b>resist changes</b> in its state of rest or uniform motion.</paragraph>
+<paragraph id="6a8930d1663d2d329e206acf">A body won’t change its state of rest/uniform motion unless an <b>external force</b> forces it to.</paragraph>
+</div>
+
+<h3>Ideas on Motion in Ancient Indian Science (contextual notes)</h3>
+<paragraph id="6a8930d1663d2d329e206ad0">Ancient Indian thinkers gave a detailed classification of causes/types of motion:</paragraph>
+<ul>
+<li><b>Force due to continuous pressure :</b> e.g., wind pushing a sailing boat.</li>
+<li><b>Impact:</b> e.g., a potter’s rod striking a wheel.</li>
+<li><b>Persistent tendency:</b> including:
+<ul>
+<li>tendency to move in a straight line, and</li>
+<li>restoration of shape in an elastic body.</li>
+</ul>
+</li>
+<li><b>Transmitted force:</b> through a string, rod, etc.</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206ad1">They also correctly noted: different motions of an extended body come from translational motion of its constituent particles:</paragraph>
+<ul>
+<li>An extended body may show <b>translational</b>, <b>rotational</b>, and <b>vibrational</b> motion.</li>
+<li>Example idea: a falling leaf can move downward as a whole (<b>patan</b>) and also rotate/vibrate (<b>bhraman</b>, <b>spandan</b>), but each particle at an instant has only a definite small displacement.</li>
+</ul>
+
+<h2>Newton’s First Law of Motion</h2>
+
+<h3>Historical link: Galileo to Newton</h3>
+<paragraph id="6a8930d1663d2d329e206ad2">Galileo overturned Aristotelian mechanics; Newton built a new mechanics based on <b>three laws of motion</b>. Galileo’s idea of inertia became Newton’s starting point → written as Newton’s First Law.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206ad3"><b>Newton’s First Law (statement):</b> Every body stays at rest or moves with uniform speed in a straight line unless an external force makes it do otherwise.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ad4">Both “rest” and “uniform straight-line motion” mean <b>zero acceleration</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206ad5"><b>First-law condition (conceptual equation):</b> If net external force on a body = 0, then acceleration = 0.</paragraph>
+<paragraph id="6a8930d1663d2d329e206ad6"><b>Net external force:</b> vector sum of all forces from outside the body.</paragraph>
+<paragraph id="6a8930d1663d2d329e206ad7"><b>Acceleration (a):</b> rate of change of velocity; a = 0 ⇒ velocity constant (includes the special case v = 0).</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206ad8"><b>Acceleration can be non-zero only if net external force exists.</b> If acceleration ≠ 0, then <b>net external force ≠ 0</b>.</paragraph>
+</div>
+
+<h3>How the First Law is used in practice (two situations)</h3>
+<ul>
+<li><b>Case 1: Net external force known to be zero ⇒ acceleration is zero.</b>
+<ul>
+<li>Example: spaceship in deep interstellar space, far from objects, rockets off → net external force = 0 → a = 0 → if moving, keeps same uniform velocity.</li>
+</ul>
+</li>
+<li><b>Case 2: Object observed unaccelerated ⇒ net external force is zero.</b>
+<ul>
+<li>On Earth, gravity is always there; motion usually has friction/drag. So if an object is at rest or moving uniformly, it’s typically because forces <b>cancel</b> out giving <b>zero net external force</b>—not because forces are absent.</li>
+</ul>
+</li>
+</ul>
+
+<h3>Book at rest on a table: normal reaction and correct reasoning</h3>
+<paragraph id="6a8930d1663d2d329e206ad9">A book at rest on a horizontal table has two external forces:</paragraph>
+<ul>
+<li><b>Weight (W):</b> gravitational force downward.</li>
+<li><b>Normal force (R):</b> upward force from the table on the book.</li>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 716px;">
+  <div class="media-scroll"><img alt="fig13." class="zoomable" data-full="img/fig-13.webp" decoding="async" height="437" loading="lazy" src="img/fig-13.webp" width="716"/></div>
+</figure>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206ada"><b>Normal force (R) is self-adjusting:</b> it takes whatever value is needed (within limits) to satisfy contact + equilibrium/acceleration conditions.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206adb">Since the book is seen to be at rest, First Law ⇒ net external force = 0 ⇒ <b>R = W in magnitude and opposite in direction</b>.</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206adc"><b>Common incorrect reasoning (do NOT write this in exams):</b> “Since W = R, forces cancel and therefore the book is at rest.”</paragraph>
+<paragraph id="6a8930d1663d2d329e206add"><b>Correct reasoning:</b> “Since the book is observed to be at rest, net external force must be zero (First Law). Hence R must be equal and opposite to W.”</paragraph>
+</div>
+
+<h3>Car motion on a road: acceleration requires an external force</h3>
+<paragraph id="6a8930d1663d2d329e206ade">Car starts from rest, speeds up (pick-up), then moves with uniform speed on a smooth straight road:</paragraph>
+<ul>
+<li>When stationary: net force = 0.</li>
+<li>During pick-up: it accelerates ⇒ must have a <b>net external force</b>.</li>
+<li>At constant velocity: net external force = 0 again.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206adf"><b>Key exam point:</b> Car’s acceleration cannot be due to any <b>internal force</b> (forces inside the car). To accelerate the car as a whole, you need an <b>external force</b>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206ae0">Along the road, the only possible external force is <b>friction</b>. So the <b>frictional force accelerates the car</b> as a whole.</paragraph>
+<paragraph id="6a8930d1663d2d329e206ae1">(Details of friction come later; point here: external friction provides the forward push.)</paragraph>
+</div>
+
+<h3>Inertia in everyday life: starting/stopping bus and apparent “throwing”</h3>
+<paragraph id="6a8930d1663d2d329e206ae2"><b>Sudden start of a bus:</b> person standing feels “thrown” backward.</paragraph>
+<ul>
+<li>If there were no friction between feet and floor: person tends to stay where they were (inertia) while the floor moves forward; bus back would hit them.</li>
+<li>In reality, friction exists: it accelerates the feet with the bus (if acceleration is not too large).</li>
+<li>Body is <b>deformable</b> (not perfectly rigid): feet go with bus, but rest of body tends to stay due to inertia → relative to the bus, person lurches backward.</li>
+<li>Then muscular (internal) forces transmitted from the feet bring the rest of the body into motion with the bus.</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206ae3"><b>Sudden stop of a bus:</b> person feels “thrown” forward.</paragraph>
+<ul>
+<li>Feet stop due to friction with the floor (no slipping).</li>
+<li>Rest of body keeps moving forward due to inertia → person lurches forward.</li>
+<li>Muscular restoring forces then bring the body to rest.</li>
+</ul>
+
+<h3>Example 4.1: Astronaut separated from an accelerating spaceship</h3>
+<paragraph id="6a8930d1663d2d329e206ae4"><b>Problem:</b> An astronaut gets separated from a small spaceship accelerating in interstellar space at constant <b>100 m s<sup>–2</sup></b>. Find astronaut’s acceleration immediately after he is outside. Assume no nearby stars pull gravitationally.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206ae5"><b>Given/assumptions:</b></paragraph>
+<ul>
+<li>No nearby stars → negligible external gravitational force on astronaut.</li>
+<li>Spaceship’s gravitational pull negligible.</li>
+<li>After separation: no contact force from the spaceship.</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206ae6"><b>Reasoning (First Law):</b> With negligible external forces, <b>net external force on astronaut = 0</b> ⇒ <b>astronaut’s acceleration = 0</b> just after separation.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206ae7"><b>Result:</b> astronaut’s acceleration immediately after leaving spaceship = <b>0 m s<sup>–2</sup></b>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206ae8"><b>Interpretation:</b> astronaut keeps the velocity he had at separation, while the spaceship keeps accelerating away.</paragraph>
+</div>
+
+<h2>SECOND LAW OF MOTION</h2>
+
+<h3>Force, time of action, and change in momentum (impulse idea from catching a ball)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206ae9">To stop (or deflect) a moving object, its <b>momentum must change</b>. The <b>force needed</b> depends on (i) <b>how much</b> momentum changes and (ii) <b>how fast</b> that change happens.</paragraph>
+</div>
+<ul>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206aea"><b>Cricket catch example:</b> A skilled cricketer <b>pulls hands backward</b> while catching → <b>increases stopping time</b> → same Δmomentum spread over longer time → <b>smaller force</b>. A beginner keeps hands rigid → stops ball quickly → <b>much larger force</b> → pain/injury.</paragraph>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206aeb"><b>Conclusion:</b> Same Δmomentum, <b>less time ⇒ more force</b>. In words: <b>greater rate of change of momentum ⇒ greater force</b>.</paragraph>
+  </li>
+</ul>
+
+<h3>Observation leading to Newton’s Second Law (same force, same time ⇒ same change in momentum)</h3>
+<ul>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206aec">Apply a <b>fixed force</b> for the <b>same time interval</b> to two bodies of <b>different masses</b>, both starting from rest:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930d1663d2d329e206aed">The <b>lighter</b> body gets a <b>higher speed</b> than the heavier one.</paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206aee">But after the same time, each is observed to have <b>the same momentum</b>.</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206aef"><b>Key inference:</b> <b>Same force acting for same time → same change in momentum</b>, whatever the mass. (Big clue for 2nd law.)</paragraph>
+  </li>
+</ul>
+
+<h3>Newton’s Second Law of Motion: statement and scope</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206af0"><b>First law</b> = special case: <b>net external force = 0</b>. <b>Second law</b> = general case: there is a <b>net external force</b>, and it links force to <b>acceleration</b> via momentum change.</paragraph>
+</div>
+
+<h3>Momentum: definition and significance</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206af1"><b>Momentum:</b> p = m v  </paragraph>
+  <paragraph id="6a8930d1663d2d329e206af2">p = momentum (vector)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206af3">m = mass of body</paragraph>
+  <paragraph id="6a8930d1663d2d329e206af4">v = velocity (vector)</paragraph>
+</div>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206af5"><b>Momentum is a vector</b> (same direction as velocity). It’s a key variable for describing how force affects motion.</paragraph>
+</div>
+<ul>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206af6"><b>Mass matters:</b></paragraph>
+    <ul>
+      <li><paragraph id="6a8930d1663d2d329e206af7">To push a <b>loaded truck</b> to some speed in a given time needs a <b>bigger force</b> than for a small car.</paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206af8">To stop a <b>heavier</b> moving body in the same time (same speed) needs a <b>greater opposing force</b> than for a light body.</paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206af9">Catching a <b>heavy stone</b> dropped from height is harder than a light stone → mass strongly affects force impact.</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206afa"><b>Speed matters:</b> A fast bullet penetrates much more than the same bullet at moderate speed; for same mass, <b>higher speed</b> needs <b>more opposing force</b> to stop in a given time.</paragraph>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206afb"><b>Together:</b> Since force effect depends on both mass and velocity, <b>m v</b> is the relevant quantity. <b>Bigger Δmomentum in same time ⇒ bigger force needed.</b></paragraph>
+  </li>
+</ul>
+
+<h3>Momentum as a vector: changing direction requires force (uniform circular motion example)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206afc">Force is needed to change <b>momentum magnitude</b> <i>and</i> to change <b>momentum direction</b> (because momentum is a vector).</paragraph>
+</div>
+<ul>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206afd"><b>Stone on a string in a horizontal circle:</b> At <b>uniform speed</b>, momentum <b>magnitude</b> stays constant, but its <b>direction keeps changing</b>.</paragraph>
+  <figure class="fig fig--small wide-media" style="; --media-legible-width: 712px;">
+  <div class="media-scroll"><img alt="fig14." class="zoomable" data-full="img/fig-14.webp" decoding="async" height="546" loading="lazy" src="img/fig-14.webp" width="712"/></div>
+</figure>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206afe">So the <b>momentum vector changes</b> → a <b>force is required</b>. Here, force is supplied by the hand via the string.</paragraph>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206aff"><b>Experience-based trend:</b> You feel a greater force when:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930d1663d2d329e206b00">speed is <b>higher</b>,</paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206b01">radius is <b>smaller</b>,</paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206b02">or <b>both</b>.</paragraph></li>
+    </ul>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206b03">This matches <b>greater acceleration</b> i.e. <b>greater rate of change of momentum vector</b>.</paragraph>
+  </li>
+</ul>
+
+<h3>Newton’s Second Law: proportionality form and mathematical statement</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206b04"><b>Newton’s Second Law (words):</b> Rate of change of momentum is directly proportional to the applied force, and happens in the <b>direction of the force</b>.</paragraph>
+</div>
+<ul>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206b05">Let a force <b>F</b> act for time <b>Δt</b> on mass <b>m</b>:</paragraph>
+    <ul>
+      <li><paragraph id="6a8930d1663d2d329e206b06">velocity changes from <b>v</b> to <b>v + Δv</b></paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206b07">initial momentum: p = m v</paragraph></li>
+      <li><paragraph id="6a8930d1663d2d329e206b08">change in momentum: Δp = m Δv</paragraph></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b09"><b>Second law (proportionality):</b> F ∝ Δp/Δt</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b0a">F = applied/net external force (vector)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b0b">Δp = change in momentum (vector)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b0c">Δt = time interval of action</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b0d"><b>With constant k:</b> F = k (Δp/Δt)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b0e">k = proportionality constant (depends on unit choice)</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206b0f">As Δt → 0, average rate becomes instantaneous: Δp/Δt → dp/dt.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b10"><b>Differential form:</b> F = k (dp/dt)   (Eq. 4.2)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b11">dp/dt = time rate of change of momentum (vector)</paragraph>
+</div>
+
+<h3>Second law for constant mass: connection to acceleration</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b12"><b>For constant mass m:</b> dp/dt = d(mv)/dt = m (dv/dt) = m a   (Eq. 4.3)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b13">
+
+
+  
+
+
+   \( \vec{a} \) = acceleration (vector) = dv/dt</paragraph>
+
+
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b14"><b>Hence:</b> F = k m a   (Eq. 4.4)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b15">m = mass</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b16">a = acceleration</paragraph>
+</div>
+
+<h3>Defining the unit of force; choosing k = 1</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206b17">We use F = k m a to <b>define the unit of force</b>. Since force unit wasn’t defined earlier, we can choose k. For convenience, take <b>k = 1</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b18"><b>Second law (k = 1):</b> F = dp/dt = m a   (Eq. 4.5)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b19">F = net external force</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b1a">p = momentum</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b1b">m = mass (constant)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b1c">a = acceleration</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b1d"><b>SI unit (newton):</b> 1 N = 1 kg m s<sup>-2</sup></paragraph>
+  <paragraph id="6a8930d1663d2d329e206b1e">Definition: force that gives 1 kg an acceleration of 1 m s<sup>-2</sup>.</paragraph>
+</div>
+
+<h3>Important points about Newton’s Second Law</h3>
+<ol>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206b1f"><b>Matches first law:</b> From F = m a, if <b>F = 0</b> then <b>a = 0</b>. So second law agrees with first law (no net force ⇒ no acceleration).</paragraph>
+  </li>
+  <li>
+    <paragraph id="6a8930d1663d2d329e206b20"><b>Vector law (components):</b> Second law is vector → equivalent to 3 scalar equations (x, y, z).</paragraph>
+  </li>
+</ol>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206b21"><b>Component form:</b> F<sub>x</sub> = dp<sub>x</sub>/dt = m a<sub>x</sub></paragraph>
+  <paragraph id="6a8930d1663d2d329e206b22">F<sub>y</sub> = dp<sub>y</sub>/dt = m a<sub>y</sub></paragraph>
+  <paragraph id="6a8930d1663d2d329e206b23">F<sub>z</sub> = dp<sub>z</sub>/dt = m a<sub>z</sub>   (Eq. 4.6)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b24">F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub> = components of net external force</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b25">p<sub>x</sub>, p<sub>y</sub>, p<sub>z</sub> = components of momentum</paragraph>
+  <paragraph id="6a8930d1663d2d329e206b26">a<sub>x</sub>, a<sub>y</sub>, a<sub>z</sub> = components of acceleration</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206b27">If force is not parallel to velocity (makes an angle), it changes <b>only the velocity component along the force direction</b> (since acceleration is along force).</paragraph>
+</div>
+
+<div class="remember-box">
+  <paragraph id="6a8930d1663d2d329e206b28"><b>Exam tip:</b> Treat momentum, force, acceleration as <b>vectors</b>. Even if speed is constant, changing direction of velocity (so momentum changes) means <b>force ≠ 0</b> (e.g. circular motion).</paragraph>
+</div>
+
+<h2>Laws of Motion: Newton’s Second Law — Key Implications</h2>
+
+<h3>Component of velocity normal to a force remains unchanged</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b29">If a force acts in some direction, only the velocity component <strong>along</strong> the force changes. The component of velocity <strong>perpendicular (normal)</strong> to the force stays unchanged (if no other forces act).</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b2a">Projectile under gravity: force is vertical ⇒ horizontal component of velocity is constant (ignore air resistance).</paragraph>
+</div>
+
+<h3>Second law for a system of particles / rigid body (external vs internal forces)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b2b">Newton’s 2nd law (<em>F = ma</em>) for a single particle also works for a rigid body / system of particles if read correctly:</paragraph>
+<ul>
+<li><paragraph id="6a8930d1663d2d329e206b2c"><strong>F</strong> = total (net) <strong>external</strong> force on the system.</paragraph></li>
+<li><paragraph id="6a8930d1663d2d329e206b2d"><strong>a</strong> = acceleration of the system as a whole = <strong>acceleration of the centre of mass</strong>.</paragraph></li>
+<li><paragraph id="6a8930d1663d2d329e206b2e"><strong>Internal forces</strong> between particles are <strong>not counted</strong> in F.</paragraph></li>
+</ul>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206b2f">Multi-particle system: don’t include internal forces (they cancel in action–reaction pairs). Use only net external force.</paragraph>
+</div>
+
+<h3>Example 4.2 — Average resistive force stopping a bullet</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b30">Given: m = 0.04 kg, initial speed u = 90 m s<sup>−1</sup>, final speed v = 0, stopping distance s = 0.60 m. Find average resistive force.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b31">Assume constant retardation to get an <strong>average</strong> force; real resistive force can vary during penetration.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b32"><strong>Kinematics (constant a):</strong> v<sup>2</sup> = u<sup>2</sup> + 2as</paragraph>
+<paragraph id="6a8930d1663d2d329e206b33">v = final speed</paragraph>
+<paragraph id="6a8930d1663d2d329e206b34">u = initial speed</paragraph>
+<paragraph id="6a8930d1663d2d329e206b35">a = acceleration (negative here: retardation)</paragraph>
+<paragraph id="6a8930d1663d2d329e206b36">s = displacement over which a acts</paragraph>
+</div>
+<paragraph id="6a8930d1663d2d329e206b37">Using v = 0:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b38">a = (v<sup>2</sup> − u<sup>2</sup>)/(2s) = (0 − 90<sup>2</sup>)/(2 × 0.6) = −6750 m s<sup>−2</sup></paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b39"><strong>Newton’s 2nd law:</strong> F = ma</paragraph>
+<paragraph id="6a8930d1663d2d329e206b3a">F = net force on the body (here: average resistive force magnitude)</paragraph>
+<paragraph id="6a8930d1663d2d329e206b3b">m = mass</paragraph>
+<paragraph id="6a8930d1663d2d329e206b3c">a = acceleration</paragraph>
+</div>
+<paragraph id="6a8930d1663d2d329e206b3d">Magnitude of resistive force = m|a| = 0.04 × 6750 = 270 N.</paragraph>
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206b3e">Resistive force inside the block is usually non-uniform, so 270 N is an <strong>average</strong> value (not necessarily the max/min instantaneous force).</paragraph>
+</div>
+
+<h3>Example 4.3 — Force from the equation of motion y = ut + (1/2)gt²</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b3f">Given motion: y = ut + (1/2)gt². Find force acting on mass m.</paragraph>
+</div>
+<paragraph id="6a8930d1663d2d329e206b40">Differentiate w.r.t. time:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b41">v = dy/dt = u + gt</paragraph>
+<paragraph id="6a8930d1663d2d329e206b42">a = dv/dt = g</paragraph>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b43"><strong>Newton’s 2nd law:</strong> F = ma</paragraph>
+<paragraph id="6a8930d1663d2d329e206b44">F = net force</paragraph>
+<paragraph id="6a8930d1663d2d329e206b45">m = mass</paragraph>
+<paragraph id="6a8930d1663d2d329e206b46">a = acceleration</paragraph>
+</div>
+<paragraph id="6a8930d1663d2d329e206b47">So, F = mg.</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b48">This is motion with constant acceleration due to gravity. Coordinate y is measured along the direction of g.</paragraph>
+</div>
+
+<h2>Impulse and Impulsive Force</h2>
+
+<h3>Impulse: definition and meaning</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b49">Sometimes a <strong>large force</strong> acts for a <strong>very short time</strong> but still produces a <strong>finite change in momentum</strong> (e.g., ball hits wall and rebounds). Force and time are hard to measure separately, but their product is measurable.</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b4a"><strong>Impulse:</strong> Impulse = Force × time duration = Change in momentum (Eq. 4.7)</paragraph>
+<paragraph id="6a8930d1663d2d329e206b4b">Impulse = product of force and the time interval of action</paragraph>
+<paragraph id="6a8930d1663d2d329e206b4c">Force = (typically) large contact force during collision/impact</paragraph>
+<paragraph id="6a8930d1663d2d329e206b4d">time duration = short interval over which force acts</paragraph>
+<paragraph id="6a8930d1663d2d329e206b4e">Change in momentum = final momentum − initial momentum</paragraph>
+</div>
+
+<h3>Impulsive force (conceptual point)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b4f">A large force acting for a short time causing a finite momentum change is an <strong>impulsive force</strong>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206b50">It’s <strong>not a special/new kind</strong> of force—just an ordinary force that is large and short-lived.</paragraph>
+</div>
+
+<h3>Example 4.4 — Impulse when a ball is hit back with same speed</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b51">Ball is hit straight back towards the bowler with no change in speed.</paragraph>
+<ul>
+<li><paragraph id="6a8930d1663d2d329e206b52">Speed = 12 m s<sup>−1</sup> before and after, but direction reverses.</paragraph></li>
+<li><paragraph id="6a8930d1663d2d329e206b53">Mass m = 0.15 kg.</paragraph></li>
+</ul>
+</div>
+<paragraph id="6a8930d1663d2d329e206b54">Take initial direction (towards batsman) as negative and final direction (towards bowler) as positive (any consistent sign convention works).</paragraph>
+<paragraph id="6a8930d1663d2d329e206b55">Initial momentum p<sub>i</sub> = −(0.15 × 12)</paragraph>
+<paragraph id="6a8930d1663d2d329e206b56">Final momentum p<sub>f</sub> = +(0.15 × 12)</paragraph>
+<paragraph id="6a8930d1663d2d329e206b57">Change in momentum Δp = p<sub>f</sub> − p<sub>i</sub> = 0.15×12 − (−0.15×12) = 3.6 N s</paragraph>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b58">Impulse = Δp = 3.6 N s, directed from the batsman to the bowler.</paragraph>
+<paragraph id="6a8930d1663d2d329e206b59">Why impulse helps: contact force + contact time are hard to know, but impulse comes straight from momentum change.</paragraph>
+</div>
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206b5a">If speed stays same but direction reverses, momentum change magnitude = <strong>2mv</strong> (direction as per sign convention).</paragraph>
+</div>
+
+<h2>Newton’s Third Law of Motion</h2>
+
+<h3>Origin of external force: interaction between bodies</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b5b">Any <strong>external force</strong> on a body is always due to <strong>some other body</strong> → forces come from <strong>interactions</strong>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206b5c">Contact example: hand compresses a spring → spring pushes back on hand.</paragraph>
+<paragraph id="6a8930d1663d2d329e206b5d">Non-contact example: Earth pulls a stone (gravity) → stone also pulls Earth. Earth’s acceleration ≈ negligible since Earth’s mass is huge.</paragraph>
+</div>
+
+<h3>Statement of the third law</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b5e"><strong>To every action, there is always an equal and opposite reaction.</strong></paragraph>
+<paragraph id="6a8930d1663d2d329e206b5f">In Newtonian mechanics, force never exists alone in nature → it appears as <strong>mutual interaction forces in pairs</strong>.</paragraph>
+</div>
+
+<h3>Action–reaction: essential clarifications (common misconceptions)</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ol>
+<li><paragraph id="6a8930d1663d2d329e206b60"><strong>“Action” and “reaction” are both forces.</strong> Better wording: forces occur in pairs — force on A by B equals and is opposite to force on B by A.</paragraph></li>
+<li><paragraph id="6a8930d1663d2d329e206b61"><strong>No cause–effect time order.</strong> Neither comes first; both forces act <strong>simultaneously</strong>. Either one may be called action/reaction.</paragraph></li>
+<li><paragraph id="6a8930d1663d2d329e206b62"><strong>They act on different bodies (not the same body).</strong> So don’t add them as if they act on one body.</paragraph></li>
+</ol>
+</div>
+
+<h3>Mathematical form and implications for systems</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b63"><strong>Newton’s third law (pair forces):</strong> F<sub>AB</sub> = −F<sub>BA</sub> (Eq. 4.8)</paragraph>
+<paragraph id="6a8930d1663d2d329e206b64">F<sub>AB</sub> = force on body A by body B</paragraph>
+<paragraph id="6a8930d1663d2d329e206b65">F<sub>BA</sub> = force on body B by body A</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206b66">Exam trap: don’t claim “net force = 0” on one body by adding F<sub>AB</sub> and F<sub>BA</sub>. They act on different bodies → they can’t cancel for the motion of a single body.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b67">For the combined system (A + B): F<sub>AB</sub> and F<sub>BA</sub> are <strong>internal forces</strong> and their sum is zero → internal forces in a system of particles <strong>cancel in pairs</strong>.</paragraph>
+</div>
+
+<h2>LAWS OF MOTION (Impulses in collisions with a wall)</h2>
+
+<h3>Example 4.5: Two identical billiard balls reflected from a rigid wall</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b68">If a ball hits a smooth rigid wall and reflects with <b>no change in speed</b>:</paragraph>
+<ul>
+<li>Only the <b>momentum component normal to the wall</b> reverses.</li>
+<li>The component <b>parallel to the wall</b> stays unchanged.</li>
+<li>So the <b>impulse (and avg force) from the wall is purely normal</b>.</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b69">The “instinct” idea that force on the wall is along the incident direction is wrong.</paragraph>
+<paragraph id="6a8930d1663d2d329e206b6a">Steps: find <b>force/impulse on the ball due to the wall</b> (via 2nd law), then use <b>3rd law</b> to reverse direction to get <b>force on the wall</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b6b"><b>Impulse = change in momentum</b>: <b>J</b> = Δ<b>p</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206b6c"><b>J</b>: impulse vector given to the body</paragraph>
+<paragraph id="6a8930d1663d2d329e206b6d">Δ<b>p</b> = <b>p</b><sub>final</sub> − <b>p</b><sub>initial</sub></paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b6e"><b>Second law (impulse form)</b>: <b>F</b> Δt = Δ<b>p</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206b6f"><b>F</b>: (average) force during contact</paragraph>
+<paragraph id="6a8930d1663d2d329e206b70">Δt: collision/interaction time</paragraph>
+<paragraph id="6a8930d1663d2d329e206b71">Δ<b>p</b>: change in momentum</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b72"><b>Third law</b>: <b>F</b><sub>wall on ball</sub> = − <b>F</b><sub>ball on wall</sub></paragraph>
+<paragraph id="6a8930d1663d2d329e206b73"><b>F</b><sub>wall on ball</sub>: force by wall on ball</paragraph>
+<paragraph id="6a8930d1663d2d329e206b74"><b>F</b><sub>ball on wall</sub>: force by ball on wall</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206b75"><b>Given/Setup:</b> Each ball has mass <b>m</b>, speed <b>u</b> before + after. Axes: <b>x</b> normal to wall, <b>y</b> along wall.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206b76"><b>(i) Direction of force on the wall due to each ball</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206b77"><b>Key method:</b> find impulse (Δp) of the <b>ball</b> due to wall → get its direction → use 3rd law to flip direction for force on wall.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206b78"><b>Case (a): normal incidence</b></paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="fig15." class="zoomable" data-full="img/fig-15.webp" decoding="async" height="848" loading="lazy" src="img/fig-15.webp" width="1124"/></div>
+</figure>
+<paragraph id="6a8930d1663d2d329e206b79">Initial momentum components:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b7a">(p<sub>x</sub>)<sub>initial</sub> = m u, (p<sub>y</sub>)<sub>initial</sub> = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206b7b">Final momentum components (speed same, normal reverses):</paragraph>
+<paragraph id="6a8930d1663d2d329e206b7c">(p<sub>x</sub>)<sub>final</sub> = − m u, (p<sub>y</sub>)<sub>final</sub> = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206b7d">Impulse on ball (Δp) components:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b7e">J<sub>x</sub> = (p<sub>x</sub>)<sub>final</sub> − (p<sub>x</sub>)<sub>initial</sub> = −m u − (m u) = −2 m u</paragraph>
+<paragraph id="6a8930d1663d2d329e206b7f">J<sub>y</sub> = 0 − 0 = 0</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b80">Impulse (⇒ force) on the <b>ball</b> is along <b>−x</b> (normal). So by 3rd law, <b>force on the wall due to the ball</b> is normal along <b>+x</b>.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206b81">Magnitude of force needs collision time Δt. From momentum change you can get only impulse (Δp), not force magnitude.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206b82"><b>Case (b): oblique incidence at 30° to the normal</b></paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="fig16." class="zoomable" data-full="img/fig-16.webp" decoding="async" height="839" loading="lazy" src="img/fig-16.webp" width="1275"/></div>
+</figure>
+<paragraph id="6a8930d1663d2d329e206b83">Initial components:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b84">(p<sub>x</sub>)<sub>initial</sub> = m u cos 30°, (p<sub>y</sub>)<sub>initial</sub> = − m u sin 30°</paragraph>
+<paragraph id="6a8930d1663d2d329e206b85">Final components (after reflection from rigid wall):</paragraph>
+<paragraph id="6a8930d1663d2d329e206b86">(p<sub>x</sub>)<sub>final</sub> = − m u cos 30°, (p<sub>y</sub>)<sub>final</sub> = − m u sin 30°</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b87">After collision: <b>p<sub>x</sub> changes sign</b> (normal reverses) but <b>p<sub>y</sub> does not</b> (tangential unchanged).</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206b88">Impulse components:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b89">J<sub>x</sub> = −m u cos 30° − (m u cos 30°) = −2 m u cos 30°</paragraph>
+<paragraph id="6a8930d1663d2d329e206b8a">J<sub>y</sub> = (−m u sin 30°) − (−m u sin 30°) = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206b8b">So impulse (and force) on ball is again purely along −x (normal). Hence force on wall due to ball is along +x (normal) here too.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206b8c"><b>(ii) Ratio of magnitudes of impulses imparted to the balls by the wall</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206b8d">|Impulse| = |Δp|. Since impulse is purely along x in both cases:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b8e">|J|<sub>(a)</sub> = 2 m u</paragraph>
+<paragraph id="6a8930d1663d2d329e206b8f">|J|<sub>(b)</sub> = 2 m u cos 30°</paragraph>
+<paragraph id="6a8930d1663d2d329e206b90">Required ratio:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b91">|J|<sub>(a)</sub> / |J|<sub>(b)</sub> = (2 m u)/(2 m u cos 30°) = 1 / cos 30° = 2/√3 ≈ 1.2</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206b92">Rigid wall reflection with same speed: impulse depends only on <b>normal component</b> of velocity = u cosθ (θ w.r.t. normal), not on total speed u.</paragraph>
+</div>
+
+<h2>Conservation of Momentum</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206b93"><b>Law of conservation of momentum:</b> In an <b>isolated system</b> of interacting particles, the <b>total momentum stays constant</b>.</paragraph>
+</div>
+
+<h3>Derivation idea from Newton’s second and third laws (gun–bullet example)</h3>
+<paragraph id="6a8930d1663d2d329e206b94">Bullet fired from a gun. If force on bullet by gun is <b>F</b>, then force on gun by bullet is <b>−F</b> (Newton’s 3rd law). Both act for same time <b>Δt</b>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206b95">Newton’s 2nd law (impulse form):</paragraph>
+<paragraph id="6a8930d1663d2d329e206b96">Impulse on bullet = <b>F Δt</b> = change in bullet momentum</paragraph>
+<paragraph id="6a8930d1663d2d329e206b97">Impulse on gun = <b>(−F) Δt</b> = change in gun momentum</paragraph>
+<paragraph id="6a8930d1663d2d329e206b98">If both start from rest ⇒ initial momenta = 0, so final momenta = changes:</paragraph>
+<paragraph id="6a8930d1663d2d329e206b99"><b>p</b><sub>b</sub> = F Δt, <b>p</b><sub>g</sub> = −F Δt</paragraph>
+<paragraph id="6a8930d1663d2d329e206b9a">So <b>p</b><sub>g</sub> = − <b>p</b><sub>b</sub> ⇒ <b>p</b><sub>b</sub> + <b>p</b><sub>g</sub> = 0 ⇒ total momentum (gun + bullet) stays constant.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206b9b">In an <b>isolated system</b> (no external force): internal forces can change <b>individual</b> momenta, but they come in <b>equal &amp; opposite pairs</b>, so momentum changes cancel pairwise ⇒ <b>total momentum unchanged</b>.</paragraph>
+</div>
+
+<h3>Two-body collision form (Equation 4.9)</h3>
+<paragraph id="6a8930d1663d2d329e206b9c">Two bodies A and B collide. Initial momenta: <b>p</b><sub>A</sub>, <b>p</b><sub>B</sub>. Final momenta: <b>p</b>′<sub>A</sub>, <b>p</b>′<sub>B</sub>. During contact time <b>Δt</b>: force on A due to B is <b>F</b><sub>AB</sub>, and on B due to A is <b>F</b><sub>BA</sub>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206b9d"><b>Impulse–momentum for each body (during collision):</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206b9e"><b>F</b><sub>AB</sub> Δt = <b>p</b>′<sub>A</sub> − <b>p</b><sub>A</sub></paragraph>
+<paragraph id="6a8930d1663d2d329e206b9f"><b>F</b><sub>BA</sub> Δt = <b>p</b>′<sub>B</sub> − <b>p</b><sub>B</sub></paragraph>
+<paragraph id="6a8930d1663d2d329e206ba0"><b>F</b><sub>AB</sub>: force on A due to B</paragraph>
+<paragraph id="6a8930d1663d2d329e206ba1"><b>F</b><sub>BA</sub>: force on B due to A</paragraph>
+<paragraph id="6a8930d1663d2d329e206ba2">Δt: common contact time</paragraph>
+<paragraph id="6a8930d1663d2d329e206ba3"><b>p</b><sub>A</sub>, <b>p</b>′<sub>A</sub>: initial, final momentum of A</paragraph>
+<paragraph id="6a8930d1663d2d329e206ba4"><b>p</b><sub>B</sub>, <b>p</b>′<sub>B</sub>: initial, final momentum of B</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ba5">By Newton’s 3rd law: <b>F</b><sub>AB</sub> = − <b>F</b><sub>BA</sub>. Hence:</paragraph>
+<paragraph id="6a8930d1663d2d329e206ba6">(<b>p</b>′<sub>A</sub> − <b>p</b><sub>A</sub>) = −(<b>p</b>′<sub>B</sub> − <b>p</b><sub>B</sub>)</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206ba7"><b>Conservation of momentum in collision (Eq. 4.9):</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206ba8"><b>p</b>′<sub>A</sub> + <b>p</b>′<sub>B</sub> = <b>p</b><sub>A</sub> + <b>p</b><sub>B</sub></paragraph>
+<paragraph id="6a8930d1663d2d329e206ba9"><b>p</b><sub>A</sub>, <b>p</b><sub>B</sub>: initial momenta</paragraph>
+<paragraph id="6a8930d1663d2d329e206baa"><b>p</b>′<sub>A</sub>, <b>p</b>′<sub>B</sub>: final momenta</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206bab">Momentum is conserved for <b>elastic</b> and <b>inelastic</b> collisions (if system is isolated). For <b>elastic</b> collisions, extra condition: <b>total kinetic energy is also conserved</b> (later).</paragraph>
+</div>
+
+<h2>Equilibrium of a Particle</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206bac"><b>Equilibrium of a particle:</b> net external force on the particle is <b>zero</b>. By Newton’s 1st law ⇒ particle is either <b>at rest</b> or moving with <b>constant velocity</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206bad">For a <b>body</b> (extended object), equilibrium needs: (i) <b>net force = 0</b> (translational) and (ii) <b>net torque = 0</b> (rotational). Here: only <b>particle equilibrium</b> (force balance).</paragraph>
+</div>
+
+<h3>Equilibrium under two forces (Equation 4.10)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bae"><b>Two-force equilibrium</b> (Eq. 4.10): <b>F</b><sub>1</sub> = − <b>F</b><sub>2</sub></paragraph>
+<paragraph id="6a8930d1663d2d329e206baf"><b>F</b><sub>1</sub>, <b>F</b><sub>2</sub>: the two forces on the particle</paragraph>
+</div>
+<paragraph id="6a8930d1663d2d329e206bb0">Meaning: forces are <b>equal magnitude</b> and <b>opposite direction</b>.</paragraph>
+
+<h3>Equilibrium under three concurrent forces (Equations 4.11, 4.12)</h3>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bb1"><b>Three-force equilibrium</b> (Eq. 4.11): <b>F</b><sub>1</sub> + <b>F</b><sub>2</sub> + <b>F</b><sub>3</sub> = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206bb2"><b>F</b><sub>1</sub>, <b>F</b><sub>2</sub>, <b>F</b><sub>3</sub>: three concurrent (meet at one point) forces</paragraph>
+<figure class="fig fig--small">
+  <img alt="fig17." class="zoomable" data-full="img/fig-17.webp" decoding="async" height="412" loading="lazy" src="img/fig-17.webp" width="582"/>
+</figure>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206bb3"><b>Geometrical meaning:</b> Resultant of any two (via <b>parallelogram law</b>) must be equal and opposite to the third. So in equilibrium, the 3 vectors can be drawn head-to-tail as <b>sides of a triangle</b> (arrows in same sense).</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206bb4"><b>Generalisation:</b> A particle is in equilibrium under <b>F</b><sub>1</sub>, <b>F</b><sub>2</sub>, …, <b>F</b><sub>n</sub> if the vectors form a <b>closed n-sided polygon</b> with arrows in the same sense (polygon law for equilibrium).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bb5"><b>Component form of Eq. (4.11)</b> (Eq. 4.12):</paragraph>
+<paragraph id="6a8930d1663d2d329e206bb6">F<sub>1x</sub> + F<sub>2x</sub> + F<sub>3x</sub> = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206bb7">F<sub>1y</sub> + F<sub>2y</sub> + F<sub>3y</sub> = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206bb8">F<sub>1z</sub> + F<sub>2z</sub> + F<sub>3z</sub> = 0</paragraph>
+<paragraph id="6a8930d1663d2d329e206bb9">F<sub>1x</sub>, F<sub>1y</sub>, F<sub>1z</sub>: components of <b>F</b><sub>1</sub> along x, y, z (similarly for <b>F</b><sub>2</sub>, <b>F</b><sub>3</sub>)</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206bba">Equilibrium: write <b>vector sum = 0</b> first, then resolve into components along convenient axes. Sign mistakes (wrong +/− directions) are the classic trap.</paragraph>
+</div>
+
+<h3>Example 4.6: Mass suspended by a rope with a horizontal force at the midpoint</h3>
+<paragraph id="6a8930d1663d2d329e206bbb"><b>Problem:</b> A 6 kg mass hangs from ceiling by a light rope of length 2 m. A horizontal force of 50 N is applied at midpoint P. Find the angle the rope makes with the vertical in equilibrium. Take g = 10 m s<sup>−2</sup>. Neglect rope mass.</paragraph>
+<figure class="fig fig--small">
+  <img alt="fig18." class="zoomable" data-full="img/fig-18.webp" decoding="async" height="828" loading="lazy" src="img/fig-18.webp" width="735"/>
+</figure>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206bbc">Set up using <b>particle equilibrium</b> at P and/or at the mass: at equilibrium, net force = 0, so the <b>vector sum of tensions + applied forces</b> must balance. (Working continues later.)</paragraph>
+</div>
+
+<h2>LAWS OF MOTION (Worked equilibrium example: free-body diagrams and tensions)</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206bbd"><b>Free-body diagram (FBD):</b> draw the body/point isolated, with <b>all external forces</b> shown as vectors.</paragraph>
+<ul>
+<li>FBD of the <b>weight W</b>.</li>
+<figure class="fig fig--small">
+  <img alt="fig19." class="zoomable" data-full="img/fig-19.webp" decoding="async" height="542" loading="lazy" src="img/fig-19.webp" width="465"/>
+</figure>
+<li>FBD of <b>point P</b> (junction point).</li>
+<figure class="fig fig--small">
+  <img alt="fig20." class="zoomable" data-full="img/fig-20.webp" decoding="async" height="546" loading="lazy" src="img/fig-20.webp" width="623"/>
+</figure>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206bbe"><b>Equilibrium condition:</b> net force = 0. In 2-D equilibrium: resultant <b>horizontal component = 0</b> and resultant <b>vertical component = 0</b> (separately).</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206bbf"><b>Step 1: Equilibrium of weight W.</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206bc0">From FBD of W: tension balances weight. Mass = 6 kg, so</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bc1"><b>Weight:</b> W = mg</paragraph>
+<paragraph id="6a8930d1663d2d329e206bc2">W: weight (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bc3">m: mass (kg)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bc4">g: acceleration due to gravity (m s<sup>−2</sup>), here g = 10</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206bc5">So vertical rope tension:</paragraph>
+<paragraph id="6a8930d1663d2d329e206bc6"><b>T<sub>2</sub> = 6 × 10 = 60 N</b>.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206bc7"><b>Step 2: Equilibrium of point P under three forces.</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206bc8">At P, three forces: tensions <b>T<sub>1</sub></b> and <b>T<sub>2</sub></b>, plus horizontal <b>50 N</b>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206bc9">Resolve and set component sums to zero:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bca"><b>Equilibrium at P (components = 0 separately):</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206bcb">T<sub>1</sub> cosθ = T<sub>2</sub> = 60 N</paragraph>
+<paragraph id="6a8930d1663d2d329e206bcc">T<sub>1</sub> sinθ = 50 N</paragraph>
+<paragraph id="6a8930d1663d2d329e206bcd">T<sub>1</sub>: tension in inclined segment (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bce">T<sub>2</sub>: tension in vertical segment (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bcf">θ: angle made by T<sub>1</sub> with horizontal/vertical as defined in the figure (use these relations exactly)</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206bd0">From these: get <b>T<sub>1</sub></b> and <b>θ</b> (e.g. square+add: T<sub>1</sub> = √(60<sup>2</sup> + 50<sup>2</sup>); divide: tanθ = 50/60).</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206bd1"><b>Exam tip:</b> This result <b>does not depend</b> on (i) rope length (massless rope) or (ii) where along the rope the horizontal force is applied. Only force balance at the junction matters.</paragraph>
+</div>
+
+<h2>COMMON FORCES IN MECHANICS</h2>
+
+<h3>Gravitational force vs contact forces</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Gravitational force:</b> acts on every object near Earth (also controls celestial motion). It’s a <b>non-contact</b> force → can act <b>at a distance</b> with no medium.</li>
+<li><b>Contact forces:</b> come from <b>physical contact</b> (solid–solid or solid–fluid). Forces occur in equal &amp; opposite pairs (fits <b>Newton’s 3rd law</b>).</li>
+</ul>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206bd2"><b>Normal reaction (N):</b> part of the contact force <b>perpendicular</b> to the surfaces.</paragraph>
+<paragraph id="6a8930d1663d2d329e206bd3"><b>Friction:</b> part of the contact force <b>parallel</b> to the surfaces.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206bd4"><b>Contact forces involving fluids:</b></paragraph>
+<ul>
+<li><b>Buoyant force:</b> for a solid in a fluid → an <b>upward</b> force = <b>weight of fluid displaced</b>.</li>
+<li><b>Viscous force</b>, <b>air resistance</b> (drag), etc. are also contact forces.</li>
+</ul>
+
+<h3>Tension and spring force</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206bd5"><b>Spring force (restoring force):</b> compress/extend a spring → restoring force produced; for <b>small displacements</b>, force ∝ displacement.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bd6"><b>Hooke’s law (spring force):</b> F = −kx</paragraph>
+<paragraph id="6a8930d1663d2d329e206bd7">F = restoring force by spring (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bd8">k = spring (force) constant (N m<sup>−1</sup>)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bd9">x = displacement from unstretched (natural) length (m)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bda"><b>Negative sign:</b> force is opposite to displacement (towards equilibrium).</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>Inextensible string:</b> effectively has a very large force constant (very stiff).</li>
+<li><b>Tension (T):</b> restoring force transmitted along a string.</li>
+<li><b>Massless string assumption:</b> if string mass ≈ 0, tension is taken <b>constant throughout</b> the string.</li>
+</ul>
+</div>
+
+<h3>Fundamental forces and microscopic origin of contact forces</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>There are <b>four fundamental forces</b>. For macroscopic mechanics here, mainly <b>gravitational</b> + <b>electrical</b> matter.</li>
+<li><b>Strong</b> and <b>weak</b> forces act in domains not needed for typical mechanics questions.</li>
+<li>Most <b>contact forces</b> (normal reaction, friction, elasticity, collision forces, etc.) <b>ultimately come from electrical forces</b> between charged parts of matter (nuclei + electrons).</li>
+</ul>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206bdb">Even if bodies are uncharged/non-magnetic macroscopically, microscopically they contain charges; charge–charge interactions produce macroscopic contact effects (elasticity, impacts, molecular collisions, etc.).</paragraph>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206bdc">The microscopic origin is complicated and <b>not used directly</b> in standard mechanics problem-solving → treat contact forces as separate force types with properties found <b>empirically</b> (from experiments).</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206bdd"><b>Scope note:</b> charged/magnetic bodies can also feel electrical/magnetic <b>non-contact</b> forces; ignored here for simplicity.</paragraph>
+</div>
+
+<h2>FRICTION</h2>
+
+<h3>Static friction: origin and behaviour</h3>
+<paragraph id="6a8930d1663d2d329e206bde">Body of mass <b>m</b> at rest on a horizontal table:</paragraph>
+<ul>
+<li>Weight <b>mg</b> down is balanced by normal reaction <b>N</b> up.</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206bdf">Now apply a horizontal force <b>F</b>:</paragraph>
+<ul>
+<li>If <b>F</b> were the only horizontal external force, the body would accelerate at <b>F/m</b> (even if <b>F</b> is tiny).</li>
+<li>In reality, for small <b>F</b> the body can stay at rest because friction appears to oppose it.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206be0"><b>Frictional force (friction):</b> contact force <b>parallel</b> to the surfaces that opposes relative motion (or the tendency to move).</paragraph>
+<ul>
+<li><b>Static friction (f<sub>s</sub>):</b> when surfaces are not sliding.</li>
+<li><b>Kinetic/sliding friction (f<sub>k</sub>):</b> when sliding happens (below).</li>
+</ul>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Static friction doesn’t exist “on its own”:</b> if there’s <b>no applied tangential force</b>, static friction is <b>0</b>.</li>
+<li>As applied <b>F</b> increases from 0, <b>f<sub>s</sub></b> increases to match it (same size, opposite direction) <b>until a maximum</b>, keeping the body at rest.</li>
+<li><b>Static friction opposes impending motion</b> (the motion that would occur without friction).</li>
+</ul>
+</div>
+
+<h3>Limiting static friction and its laws</h3>
+<paragraph id="6a8930d1663d2d329e206be1">From experiments, the maximum (limiting) static friction:</paragraph>
+<ul>
+<li>is <b>independent of area of contact</b></li>
+<li>is roughly proportional to the normal reaction <b>N</b></li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206be2"><b>Limiting static friction:</b> (f<sub>s</sub>)<sub>max</sub> = μ<sub>s</sub> N    (Eq. 4.13)</paragraph>
+<paragraph id="6a8930d1663d2d329e206be3">(f<sub>s</sub>)<sub>max</sub> = maximum possible static friction (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206be4">μ<sub>s</sub> = coefficient of static friction (dimensionless), depends only on nature of surfaces</paragraph>
+<paragraph id="6a8930d1663d2d329e206be5">N = normal reaction (N)</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206be6"><b>Law of static friction:</b> f<sub>s</sub> ≤ μ<sub>s</sub> N    (Eq. 4.14)</paragraph>
+<paragraph id="6a8930d1663d2d329e206be7">f<sub>s</sub> self-adjusts up to the limit; it’s <b>not always</b> equal to μ<sub>s</sub>N.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206be8"><b>Common mistake:</b> writing f<sub>s</sub> = μ<sub>s</sub>N every time. Correct: <b>f<sub>s</sub> ≤ μ<sub>s</sub>N</b>, with equality only at impending motion.</paragraph>
+</div>
+
+<h3>Kinetic (sliding) friction and its laws</h3>
+<paragraph id="6a8930d1663d2d329e206be9">When applied force exceeds (f<sub>s</sub>)<sub>max</sub>, the body slides. Experiments show:</paragraph>
+<ul>
+<li>Friction drops from max static value once motion starts.</li>
+<li>Kinetic friction is <b>independent of area of contact</b>.</li>
+<li>Kinetic friction is <b>nearly independent of velocity</b> (in basic models).</li>
+<li>Usually <b>μ<sub>k</sub> &lt; μ<sub>s</sub></b>.</li>
+</ul>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206bea"><b>Kinetic (sliding) friction (f<sub>k</sub>):</b> friction that opposes relative sliding motion between surfaces in contact.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206beb"><b>Law of kinetic friction:</b> f<sub>k</sub> = μ<sub>k</sub> N    (Eq. 4.15)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bec">f<sub>k</sub> = kinetic friction force (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bed">μ<sub>k</sub> = coefficient of kinetic friction (dimensionless), depends only on surfaces</paragraph>
+<paragraph id="6a8930d1663d2d329e206bee">N = normal reaction (N)</paragraph>
+</div>
+
+<h3>Using Newton’s second law with friction</h3>
+<paragraph id="6a8930d1663d2d329e206bef">Once sliding begins under a horizontal applied force <b>F</b>, net horizontal force = <b>F − f<sub>k</sub></b>, so</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206bf0"><b>Acceleration during sliding:</b> a = (F − f<sub>k</sub>)/m</paragraph>
+<paragraph id="6a8930d1663d2d329e206bf1">a = acceleration (m s<sup>−2</sup>)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bf2">F = applied force (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bf3">f<sub>k</sub> = kinetic friction (N)</paragraph>
+<paragraph id="6a8930d1663d2d329e206bf4">m = mass (kg)</paragraph>
+</div>
+
+<ul>
+<li><b>Constant velocity:</b> a = 0 ⇒ <b>F = f<sub>k</sub></b>.</li>
+<li>If applied force is removed (F = 0): <b>a = −f<sub>k</sub>/m</b> → body slows and stops.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206bf5"><b>Status of friction laws:</b> these are <b>empirical</b> (observed), not fundamental like gravitational/electric/magnetic force laws.</paragraph>
+</div>
+
+<h2>Laws of Motion: Friction (continued)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206bf6"><b>Contact force</b>: when 2 bodies touch, each pushes/pulls on the other (contact force).</paragraph>
+  <paragraph id="6a8930d1663d2d329e206bf7"><b>Friction</b>: the <b>part of contact force parallel to the surfaces</b> that <b>opposes impending/actual relative motion</b> between them.</paragraph>
+  <paragraph id="6a8930d1663d2d329e206bf8"><b>Key idea</b>: friction opposes <b>relative motion</b> (not “motion” in absolute terms).</paragraph>
+</div>
+
+<h3>Static friction in an accelerating train: why the box moves with the train</h3>
+<paragraph id="6a8930d1663d2d329e206bf9">Box on the floor of a train accelerating forward.</paragraph>
+<ul>
+  <li>If the box stays <b>at rest relative to the train</b>, it is still <b>accelerating</b> in the ground frame (same as train).</li>
+  <li>If no other agent acts, the only possible horizontal force on the box is <b>friction</b>.</li>
+  <li>If there were <b>no friction</b>, the floor would slide under the box; due to inertia the box tends to keep its state of motion → appears to move backward relative to train and hit the rear side.</li>
+  <li>This <b>impending relative motion</b> is opposed by <b>static friction</b> <b>f<sub>s</sub></b>, which adjusts as needed up to a max.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206bfa"><b>Static friction is self-adjusting</b>: it takes the value needed to prevent slipping, <b>as long as</b> it stays below its maximum.</paragraph>
+</div>
+
+<h3>Example 4.7: Maximum train acceleration for no slipping</h3>
+<paragraph id="6a8930d1663d2d329e206bfb"><b>Given</b>: µ<sub>s</sub> = 0.15. Find max train acceleration so the box doesn’t slip.</paragraph>
+<paragraph id="6a8930d1663d2d329e206bfc">Horizontal acceleration of the box is provided by static friction:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206bfd"><b>Newton’s 2nd law (box)</b>: m a = f<sub>s</sub></paragraph>
+  <paragraph id="6a8930d1663d2d329e206bfe"><b>Max static friction</b>: f<sub>s</sub> ≤ µ<sub>s</sub> N</paragraph>
+  <paragraph id="6a8930d1663d2d329e206bff"><b>Normal on level floor</b>: N = m g</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c00"><b>So</b>: m a ≤ µ<sub>s</sub> m g ⇒ a ≤ µ<sub>s</sub> g</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c01"><b>Symbols</b>: a = acceleration of train/box; f<sub>s</sub> = static friction; µ<sub>s</sub> = coefficient of static friction; N = normal reaction; m = mass; g = acceleration due to gravity.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c02"><b>Maximum acceleration</b>:</paragraph>
+<paragraph id="6a8930d1663d2d329e206c03">a<sub>max</sub> = µ<sub>s</sub> g = 0.15 × 10 m s<sup>−2</sup> = <b>1.5 m s<sup>−2</sup></b></paragraph>
+
+<div class="remember-box">
+  <paragraph id="6a8930d1663d2d329e206c04">Don’t write f<sub>s</sub> = µ<sub>s</sub>N automatically. Use <b>f<sub>s</sub> ≤ µ<sub>s</sub>N</b>; equality only at the slipping threshold / maximum acceleration case.</paragraph>
+</div>
+
+<h3>Example 4.8: Block on an incline—finding µ<sub>s</sub> from the angle of impending slip</h3>
+<paragraph id="6a8930d1663d2d329e206c05"><b>Given</b>: 4 kg block on a plane. Tilt until at θ = 15° the block just starts to slide. Find µ<sub>s</sub>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206c06"><b>Forces on block</b>:</paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 768px;">
+  <div class="media-scroll"><img alt="fig21." class="zoomable" data-full="img/fig-21.webp" decoding="async" height="494" loading="lazy" src="img/fig-21.webp" width="768"/></div>
+</figure>
+<ul>
+  <li>Weight mg downward</li>
+  <li>Normal reaction N ⟂ to plane</li>
+  <li>Static friction f<sub>s</sub> up the plane (opposes impending downward slip)</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206c07">At rest (equilibrium): net force = 0. Resolve mg:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206c08">Along plane: m g sinθ = f<sub>s</sub></paragraph>
+  <paragraph id="6a8930d1663d2d329e206c09">Perpendicular: m g cosθ = N</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c0a"><b>Symbols</b>: θ = inclination angle; f<sub>s</sub> = static friction; N = normal; m = mass; g = gravitational acceleration.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c0b">Increase θ ⇒ required f<sub>s</sub> increases, until max static friction at θ = θ<sub>max</sub>:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206c0c">At impending slip: f<sub>s,max</sub> = µ<sub>s</sub> N</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c0d">So: m g sinθ<sub>max</sub> = µ<sub>s</sub> (m g cosθ<sub>max</sub>)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c0e">Therefore: tanθ<sub>max</sub> = µ<sub>s</sub></paragraph>
+  <paragraph id="6a8930d1663d2d329e206c0f">Equivalently: θ<sub>max</sub> = tan<sup>−1</sup>(µ<sub>s</sub>)</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c10"><b>Symbols</b>: θ<sub>max</sub> = angle when slipping just begins; µ<sub>s</sub> = coefficient of static friction.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c11">For θ<sub>max</sub> = 15°:</paragraph>
+<paragraph id="6a8930d1663d2d329e206c12">µ<sub>s</sub> = tan 15° = <b>0.27</b></paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206c13"><b>Angle of repose</b>: θ<sub>max</sub> depends only on µ<sub>s</sub> and is <b>independent of mass</b> (m cancels).</paragraph>
+</div>
+
+<h3>Example 4.9: Block–trolley system with kinetic friction</h3>
+<paragraph id="6a8930d1663d2d329e206c14"><b>System</b> (Fig. 4.12): 3 kg block hangs over a smooth pulley, connected to a 20 kg trolley on a horizontal surface. µ<sub>k</sub> = 0.04. Take g = 10 m s<sup>−2</sup>. String mass negligible.</paragraph>
+<figure class="fig fig--small">
+  <img alt="fig22." class="zoomable" data-full="img/fig-22.webp" decoding="async" height="417" loading="lazy" src="img/fig-22.webp" width="642"/>
+</figure>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206c15"><b>Constraints</b>:</paragraph>
+  <ul>
+    <li><b>Inextensible string</b> ⇒ both bodies have the <b>same magnitude of acceleration</b>.</li>
+    <li><b>Smooth pulley</b> ⇒ tension is the same everywhere in the string.</li>
+  </ul>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c16">Take 3 kg moving down and 20 kg trolley moving right with acceleration a; tension = T.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206c17"><b>For the 3 kg block</b> (Fig. 4.12(b)):</paragraph>
+<figure class="fig fig--small">
+  <img alt="fig23." class="zoomable" data-full="img/fig-23.webp" decoding="async" height="540" loading="lazy" src="img/fig-23.webp" width="353"/>
+</figure>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206c18">Weight − tension = m a</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c19">30 − T = 3 a</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c1a"><b>Symbols</b>: T = tension; a = acceleration; weight = mg = 3×10 = 30 N.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c1b"><b>For the 20 kg trolley</b> (Fig. 4.12(c)):</paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="fig24." class="zoomable" data-full="img/fig-24.webp" decoding="async" height="767" loading="lazy" src="img/fig-24.webp" width="1598"/></div>
+</figure>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="6a8930d1663d2d329e206c1c">T − f<sub>k</sub> = 20 a</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c1d">Kinetic friction: f<sub>k</sub> = µ<sub>k</sub> N</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c1e">Normal on level surface: N = 20×10 = 200 N</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c1f">Thus f<sub>k</sub> = 0.04×200 = 8 N</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c20">So: T − 8 = 20 a</paragraph>
+  <paragraph id="6a8930d1663d2d329e206c21"><b>Symbols</b>: f<sub>k</sub> = kinetic friction; µ<sub>k</sub> = coefficient of kinetic friction; N = normal reaction.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c22">Solve:</paragraph>
+<ul>
+  <li>30 − T = 3a</li>
+  <li>T − 8 = 20a</li>
+</ul>
+<paragraph id="6a8930d1663d2d329e206c23">Add: 22 = 23a ⇒ a = 22/23 m s<sup>−2</sup> = <b>0.96 m s<sup>−2</sup></b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c24">Then T = 30 − 3a = 30 − 66/23 = <b>27.1 N</b></paragraph>
+
+<div class="remember-box">
+  <paragraph id="6a8930d1663d2d329e206c25">On the trolley, friction opposes the <b>actual relative motion</b>. Trolley moves right ⇒ friction on trolley acts left.</paragraph>
+</div>
+
+<h3>Rolling friction</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="6a8930d1663d2d329e206c26"><b>Ideal rolling without slipping</b> (ring/sphere on horizontal plane): at any instant only one contact point, and it has <b>no relative motion</b> w.r.t. the surface. So (in principle) <b>static &amp; kinetic friction can be zero</b> → rolls at constant speed.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c27"><b>Reality</b>: rolling bodies slow down; a resistive effect called <b>rolling friction</b> acts, so an external force is needed to keep them rolling.</paragraph>
+<paragraph id="6a8930d1663d2d329e206c28"><b>Origin (qualitative)</b>: slight deformation during rolling → contact is over a <b>finite area</b> (not a point). Net effect: a contact-force component parallel to surface that opposes motion.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="6a8930d1663d2d329e206c29">For the same weight, <b>rolling friction ≪</b> static/sliding friction (often by <b>2–3 orders of magnitude</b>). That’s why the wheel is a huge milestone.</paragraph>
+</div>
+
+<h3>Reducing friction: practical methods</h3>
+<ul>
+  <li><b>Lubricants</b>: reduce <b>kinetic friction</b> between moving machine parts.</li>
+  <li><b>Ball bearings</b>: replace sliding with rolling; rolling friction is small ⇒ <b>less power loss</b>.</li>
+  <li><b>Air cushion</b>: thin compressed air layer between surfaces in relative motion → very effective friction reduction.</li>
+</ul>
+
+<h3>When friction is desirable (applications)</h3>
+<ul>
+  <li>Kinetic friction dissipates energy (often “undesirable”) but is useful in <b>brakes</b> to stop quickly.</li>
+  <li><b>Walking</b> needs static friction with the ground.</li>
+  <li>A car can’t move on a very slippery road: not enough friction available.</li>
+  <li>On a normal road, tyre–road friction provides the <b>external force</b> to accelerate the car.</li>
+</ul>
+
+<h2>Circular Motion</h2>
+
+<h3>Centripetal acceleration and centripetal force</h3>
+<paragraph id="6a8930d1663d2d329e206c2a">Uniform circular motion (radius <b>R</b>, speed <b>v</b>) ⇒ acceleration points <b>toward the centre</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c2b"><b>Centripetal acceleration</b>: a<sub>c</sub> = v<sup>2</sup>/R  (towards centre)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c2c"><b>Centripetal force</b>: f<sub>c</sub> = m v<sup>2</sup>/R  (Eq. 4.16)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c2d"><b>Symbols</b>: f<sub>c</sub> = centripetal force; m = mass; v = speed; R = radius of circular path.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206c2e"><b>Centripetal force</b> is NOT a new force type — it’s just the <b>net inward force</b> that keeps an object moving in a circle.</paragraph>
+<ul>
+<li>Stone in a circle → centripetal force = <b>tension</b> in the string</li>
+<li>Planet around Sun → centripetal force = <b>gravitational force</b></li>
+<li>Car turning on a level road → centripetal force = <b>friction</b></li>
+</ul>
+</div>
+
+<h3>Motion of a car on a level road</h3>
+<paragraph id="6a8930d1663d2d329e206c2f">Car turning on a flat road has forces:</paragraph>
+<ul>
+<li>Weight <b>mg</b> (down)</li>
+<li>Normal reaction <b>N</b> (up)</li>
+<li>Friction <b>f</b> along road surface</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206c30">No vertical acceleration ⇒ vertical forces balance:</paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="fig24." class="zoomable" data-full="img/fig-24.webp" decoding="async" height="767" loading="lazy" src="img/fig-24.webp" width="1598"/></div>
+</figure>
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c31">N − mg = 0 ⇒ N = mg  (Eq. 4.17)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c32"><b>Symbols</b>: N = normal reaction; m = mass; g = acceleration due to gravity.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c33">Centripetal force needed is horizontal, provided by friction. For <b>no skidding</b>, it’s <b>static friction</b> and must satisfy f ≤ µ<sub>s</sub>N.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c34"><b>Required</b>: f = m v<sup>2</sup>/R</paragraph>
+<paragraph id="6a8930d1663d2d329e206c35"><b>Available</b>: f ≤ µ<sub>s</sub> N</paragraph>
+<paragraph id="6a8930d1663d2d329e206c36">Using N = mg: m v<sup>2</sup>/R ≤ µ<sub>s</sub> m g</paragraph>
+<paragraph id="6a8930d1663d2d329e206c37">So: v<sup>2</sup> ≤ µ<sub>s</sub> R g</paragraph>
+<paragraph id="6a8930d1663d2d329e206c38"><b>Symbols</b>: v = speed; R = turn radius; µ<sub>s</sub> = coefficient of static friction.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206c39"><b>Maximum safe speed on a level road</b>:</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c3a">v<sub>max</sub> = √(µ<sub>s</sub> R g)  (Eq. 4.18)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c3b"><b>Symbols</b>: v<sub>max</sub> = maximum speed without skidding; µ<sub>s</sub> = coefficient of static friction; R = radius of turn; g = acceleration due to gravity.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c3c">This is <b>independent of car mass</b> (m cancels). Here, static friction opposes the <b>impending motion away from the circle</b> → so it acts <b>toward the centre</b> to stop outward slipping.</paragraph>
+
+<h3>Motion of a car on a banked road</h3>
+<paragraph id="6a8930d1663d2d329e206c3d">Banking reduces how much you rely on friction (Fig. 4.14(b)). Let θ be the banking angle. Forces: weight <b>mg</b>, normal <b>N</b> (⊥ road), friction <b>f</b> along the surface.</paragraph>
+<paragraph id="6a8930d1663d2d329e206c3e">No vertical acceleration ⇒ net vertical component = 0:</paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="fig25." class="zoomable" data-full="img/fig-25.webp" decoding="async" height="783" loading="lazy" src="img/fig-25.webp" width="1265"/></div>
+</figure>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c3f"><b>Vertical balance</b>: N cosθ = mg + f sinθ  (Eq. 4.19a)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c40"><b>Symbols</b>: N = normal reaction; θ = banking angle; f = frictional force; m = mass; g = gravitational acceleration.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c41">Centripetal force comes from horizontal components of <b>N</b> and <b>f</b>:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c42"><b>Horizontal (toward centre)</b>: N sinθ + f cosθ = m v<sup>2</sup>/R  (Eq. 4.19b)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c43"><b>Symbols</b>: v = speed; R = radius of turn; other symbols as above.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c44">For static friction, limiting condition:</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c45">f ≤ µ<sub>s</sub> N</paragraph>
+<paragraph id="6a8930d1663d2d329e206c46">To get v<sub>max</sub>, take the limit: f = µ<sub>s</sub>N</paragraph>
+<paragraph id="6a8930d1663d2d329e206c47"><b>Symbols</b>: µ<sub>s</sub> = coefficient of static friction.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c48">Substitute f = µ<sub>s</sub>N into Eqs. (4.19a) and (4.19b):</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c49">N cosθ = mg + µ<sub>s</sub> N sinθ  (Eq. 4.20a)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c4a"><b>Symbols</b>: as defined above.</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206c4b">Banked-road Qs: resolve forces into <b>vertical</b> (no acceleration) + <b>horizontal</b> (centripetal). Then apply f ≤ µ<sub>s</sub>N. For <b>maximum speed</b>, use the limiting case <b>f = µ<sub>s</sub>N</b>.</paragraph>
+</div>
+
+<h2>Maximum speed on a banked road with friction</h2>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c4c"><b>Radial (centripetal) force balance on a banked road with friction</b> (Eq. 4.20b):</paragraph>
+<paragraph id="6a8930d1663d2d329e206c4d"><b>N sinθ + μ<sub>s</sub>N cosθ = mv²/R</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c4e">N = normal reaction (road on vehicle)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c4f">θ = banking angle</paragraph>
+<paragraph id="6a8930d1663d2d329e206c50">μ<sub>s</sub> = coefficient of static friction (tyres–road)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c51">m = mass of vehicle</paragraph>
+<paragraph id="6a8930d1663d2d329e206c52">v = speed of vehicle</paragraph>
+<paragraph id="6a8930d1663d2d329e206c53">R = radius of circular turn</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c54">Use the companion relation (Eq. 4.20a) to eliminate N. Substitute into Eq. (4.20b) to get the <b>maximum speed</b> when friction is at its <b>limiting value</b>.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c55"><b>Maximum speed on a banked road with friction</b> (Eq. 4.21):</paragraph>
+<paragraph id="6a8930d1663d2d329e206c56"><b>v<sub>max</sub>² = Rg (tanθ + μ<sub>s</sub>) / (1 − μ<sub>s</sub>tanθ)</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c57">v<sub>max</sub> = max speed without slipping</paragraph>
+<paragraph id="6a8930d1663d2d329e206c58">R = radius of circular path</paragraph>
+<paragraph id="6a8930d1663d2d329e206c59">g = acceleration due to gravity</paragraph>
+<paragraph id="6a8930d1663d2d329e206c5a">θ = banking angle</paragraph>
+<paragraph id="6a8930d1663d2d329e206c5b">μ<sub>s</sub> = coefficient of static friction</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206c5c"><b>Compare with flat (unbanked) road:</b> From Eq. (4.21) vs unbanked result (Eq. 4.18), the <b>max possible speed on a banked road is higher</b> than on a flat road (same μ<sub>s</sub>, R).</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c5d"><b>Optimum speed on a banked road (no friction needed)</b> (Eq. 4.22; set μ<sub>s</sub> = 0 in Eq. 4.21):</paragraph>
+<paragraph id="6a8930d1663d2d329e206c5e"><b>v<sub>0</sub> = √(Rg tanθ)</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c5f">v<sub>0</sub> = speed where friction is not needed for centripetal force</paragraph>
+<paragraph id="6a8930d1663d2d329e206c60">R = radius of turn</paragraph>
+<paragraph id="6a8930d1663d2d329e206c61">g = acceleration due to gravity</paragraph>
+<paragraph id="6a8930d1663d2d329e206c62">θ = banking angle</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206c63"><b>Meaning of “optimum speed” v<sub>0</sub>:</b> When v = v<sub>0</sub>, the <b>horizontal component of N alone</b> supplies the centripetal force ⇒ <b>friction = 0</b>.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li><b>Practical significance:</b> Driving at v = v<sub>0</sub> gives <b>minimal tyre wear</b> (no friction needed).</li>
+<li><b>Friction direction for v &lt; v<sub>0</sub>:</b> friction acts <b>up the slope</b>.</li>
+<li><b>Parking condition on a banked road:</b> car can be parked only if <b>tanθ ≤ μ<sub>s</sub></b>.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206c64">Don’t assume friction always acts down the slope on a banked road. Direction depends on whether the vehicle tends to slide up/down the bank relative to the road: for <b>v &lt; v<sub>0</sub></b>, it acts <b>up the slope</b>.</paragraph>
+</div>
+
+<h3>Example 4.10: Cyclist turning on a level road (unbanked)</h3>
+<paragraph id="6a8930d1663d2d329e206c65"><b>Given:</b> v = 18 km/h, R = 3 m, μ<sub>s</sub> = 0.1, g = 9.8 m s<sup>−2</sup>.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206c66">On an <b>unbanked</b> road, <b>static friction only</b> provides centripetal force. If required centripetal force &gt; max static friction, the vehicle <b>slips</b>.</paragraph>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c67"><b>No-slip condition on a level road</b> (Eq. 4.18):</paragraph>
+<paragraph id="6a8930d1663d2d329e206c68"><b>v² ≤ μ<sub>s</sub> R g</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c69">v = speed</paragraph>
+<paragraph id="6a8930d1663d2d329e206c6a">μ<sub>s</sub> = coefficient of static friction</paragraph>
+<paragraph id="6a8930d1663d2d329e206c6b">R = radius of turn</paragraph>
+<paragraph id="6a8930d1663d2d329e206c6c">g = acceleration due to gravity</paragraph>
+</div>
+
+<ol>
+<li>
+<paragraph id="6a8930d1663d2d329e206c6d">μ<sub>s</sub>Rg = 0.1 × 3 × 9.8 = 2.94 m² s<sup>−2</sup>.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c6e">Convert speed: 18 km/h = 5 m s<sup>−1</sup> ⇒ v² = 25 m² s<sup>−2</sup>.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c6f">Check: 25 ≤ 2.94 ❌ (false).</paragraph>
+</li>
+</ol>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206c70"><b>Conclusion:</b> Cyclist <b>will slip</b> on the turn (needed centripetal force &gt; what static friction can supply).</paragraph>
+</div>
+
+<h3>Example 4.11: Banked racetrack — optimum speed and maximum speed</h3>
+<paragraph id="6a8930d1663d2d329e206c71"><b>Given:</b> R = 300 m, θ = 15°, μ<sub>s</sub> = 0.2, g = 9.8 m s<sup>−2</sup>.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206c72"><b>(a) Optimum speed (no wear and tear):</b> at optimum speed, friction not required.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c73"><b>Optimum speed</b> (Eq. 4.22):</paragraph>
+<paragraph id="6a8930d1663d2d329e206c74"><b>v<sub>0</sub> = √(Rg tanθ)</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c75">R = 300 m</paragraph>
+<paragraph id="6a8930d1663d2d329e206c76">g = 9.8 m s<sup>−2</sup></paragraph>
+<paragraph id="6a8930d1663d2d329e206c77">θ = 15°</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c78">Substitute ⇒ <b>v<sub>0</sub> = 28.1 m s<sup>−1</sup></b>.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206c79"><b>(b) Maximum permissible speed to avoid slipping:</b> use Eq. (4.21).</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c7a"><b>Maximum permissible speed on a banked road</b> (Eq. 4.21):</paragraph>
+<paragraph id="6a8930d1663d2d329e206c7b"><b>v<sub>max</sub>² = Rg (tanθ + μ<sub>s</sub>) / (1 − μ<sub>s</sub>tanθ)</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c7c">R = radius of track</paragraph>
+<paragraph id="6a8930d1663d2d329e206c7d">g = acceleration due to gravity</paragraph>
+<paragraph id="6a8930d1663d2d329e206c7e">θ = banking angle</paragraph>
+<paragraph id="6a8930d1663d2d329e206c7f">μ<sub>s</sub> = coefficient of static friction</paragraph>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206c80">In banked-road questions, keep these separate:</paragraph>
+<ul>
+<li><b>v<sub>0</sub></b>: speed needing <b>no friction</b>.</li>
+<li><b>v<sub>max</sub></b>: speed where friction is at its <b>limiting value</b>; above this → slip.</li>
+</ul>
+</div>
+
+<h2>Solving problems in mechanics</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206c81"><b>Foundation:</b> Newton’s 3 laws = the base of all mechanics problems.</paragraph>
+<paragraph id="6a8930d1663d2d329e206c82"><b>Realistic systems:</b> Often you’ve got an <b>assembly of bodies</b> pushing/pulling each other + each has <b>weight</b>.</paragraph>
+</div>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206c83"><b>System vs environment:</b> Pick <b>any part</b> of the assembly as the <b>system</b> and use Newton’s laws on it, as long as you include <b>all external forces</b> on that system due to:</paragraph>
+<ul>
+<li>the rest of the assembly, and</li>
+<li>other agencies (e.g. gravity, supports).</li>
+</ul>
+<paragraph id="6a8930d1663d2d329e206c84">The rest (remaining assembly + other agencies) = the <b>environment</b>.</paragraph>
+</div>
+
+<h3>Systematic steps (free-body diagram method)</h3>
+<ol>
+<li>
+<paragraph id="6a8930d1663d2d329e206c85"><b>Sketch the overall setup</b>: bodies, links, supports, contacts, etc.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c86"><b>Choose a convenient system</b> (some part of the assembly).</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c87"><b>Draw the FBD</b> of that system showing:</paragraph>
+<ul>
+<li>the system <b>alone</b>, and</li>
+<li><b>all forces on the system</b> from the rest of the assembly + other agencies (e.g. weight).</li>
+</ul>
+<paragraph id="6a8930d1663d2d329e206c88"><b>Do NOT include</b> forces on the environment by the system.</paragraph>
+<paragraph id="6a8930d1663d2d329e206c89"><b>Note:</b> “Free-body” ≠ net force is zero.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c8a">On the FBD, put in force info that’s <b>given/certain</b> (size/direction). Example: <b>tension</b> acts along the string. Everything else = <b>unknowns</b> to solve using Newton’s laws.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c8b">If needed, redo with a <b>different system</b> and keep <b>Newton’s 3rd law</b> consistent:</paragraph>
+<paragraph id="6a8930d1663d2d329e206c8c">If in A’s FBD the force on A due to B is <b>F</b>, then in B’s FBD the force on B due to A is <b>−F</b>.</paragraph>
+</li>
+</ol>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206c8d">Common FBD errors:</paragraph>
+<ul>
+<li>Mixing forces <b>on</b> the system with forces <b>by</b> the system (breaks step 3).</li>
+<li>Including <b>internal forces</b> even though your chosen system already contains both interacting bodies.</li>
+<li>Forgetting 3rd-law pairs: equal size, opposite direction, and act on <b>different bodies</b>.</li>
+</ul>
+</div>
+
+<h3>Example 4.12: Block on floor + cylinder placed on block; action on floor; action-reaction pairs</h3>
+<paragraph id="6a8930d1663d2d329e206c8e"><b>Given:</b> block mass = 2 kg, cylinder mass = 25 kg, g = 10 m s<sup>−2</sup>. When cylinder is placed, floor yields and (block + cylinder) accelerate downward with a = 0.1 m s<sup>−2</sup>.</paragraph>
+
+<paragraph id="6a8930d1663d2d329e206c8f"><b>(a) Action of the block on the floor before the floor yields</b></paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 1000px;">
+  <div class="media-scroll"><img alt="fig26." class="zoomable" data-full="img/fig-27.webp" decoding="async" height="672" loading="lazy" src="img/fig-27.webp" width="1362"/></div>
+</figure>
+<ul>
+<li>
+<paragraph id="6a8930d1663d2d329e206c90"><b>System:</b> block only, at rest.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c91"><b>Forces on block (FBD):</b></paragraph>
+<ul>
+<li>Weight of block = 2g = 2 × 10 = <b>20 N</b> downward (Earth on block).</li>
+<li>Normal reaction from floor on block = <b>R</b> upward.</li>
+</ul>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c92"><b>Newton’s 1st law (rest):</b> net force = 0 ⇒ <b>R = 20 N</b>.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c93"><b>Action of block on floor:</b> by Newton’s 3rd law, force by block on floor = <b>20 N</b>, <b>vertically downward</b>.</paragraph>
+</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206c94"><b>(b) Action of the block+cylinder system on the floor after the floor yields</b></paragraph>
+<figure class="fig fig--small wide-media" style="; --media-legible-width: 812px;">
+  <div class="media-scroll"><img alt="fig28." class="zoomable" data-full="img/fig-28.webp" decoding="async" height="509" loading="lazy" src="img/fig-28.webp" width="812"/></div>
+</figure>
+<ul>
+<li>
+<paragraph id="6a8930d1663d2d329e206c95"><b>System:</b> (block + cylinder) together.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c96"><b>Key FBD point:</b> block–cylinder forces are <b>internal</b> here → <b>don’t draw them</b>.</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c97"><b>External forces on system:</b></paragraph>
+<ul>
+<li>Total weight = (2 + 25)g = 27 × 10 = <b>270 N</b> downward.</li>
+<li>Normal reaction from floor on system = <b>R′</b> upward.</li>
+</ul>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206c98"><b>Newton’s 2nd law</b> (acceleration downward a = 0.1):</paragraph>
+</li>
+</ul>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="6a8930d1663d2d329e206c99"><b>2nd law vertically (take downward +):</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c9a"><b>270 − R′ = 27 × 0.1</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206c9b">270 N = total weight of system</paragraph>
+<paragraph id="6a8930d1663d2d329e206c9c">R′ = normal reaction (floor on system)</paragraph>
+<paragraph id="6a8930d1663d2d329e206c9d">27 kg = total mass</paragraph>
+<paragraph id="6a8930d1663d2d329e206c9e">0.1 m s<sup>−2</sup> = downward acceleration</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206c9f">So <b>R′ = 267.3 N</b>.</paragraph>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206ca0"><b>Action of system on floor (after yielding):</b> by Newton’s 3rd law, force by system on floor = <b>267.3 N vertically downward</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206ca1"><b>Identify action–reaction pairs</b></paragraph>
+<paragraph id="6a8930d1663d2d329e206ca2"><b>For (a):</b></paragraph>
+<ul>
+<li>
+<paragraph id="6a8930d1663d2d329e206ca3">(i) <b>Gravity pair:</b> gravity (20 N) on block by Earth (action); gravity on Earth by block (reaction) = <b>20 N upward</b> (not shown in figure).</paragraph>
+</li>
+<li>
+<paragraph id="6a8930d1663d2d329e206ca4">(ii) <b>Contact pair:</b> force on floor by block (action); force on block by floor (reaction).</paragraph>
+</li>
+</ul>
+
+<paragraph id="6a8930d1663d2d329e206ca5"><b>For (b):</b></paragraph>
+<ul>
+<li>
+<paragraph id="6a8930d1663d2d329e206ca6">(i) <b>Gravity pair:</b> gravity (270 N) on system by Earth (action); gravity on Earth by system (reaction) = <b>270 N</b> opposite direction.</paragraph>
+</li>
+</ul>
+
+<h2>Newton’s Third Law of Motion: Action–Reaction Forces</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206ca7"><b>Newton’s 3rd law:</b> For every action, there is an equal and opposite reaction.</paragraph>
+<paragraph id="6a8930d1663d2d329e206ca8">Meaning: <b>forces come in pairs</b> between two bodies. If A pushes/pulls B, then B pushes/pulls A at the same time, same size, opposite direction.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206ca9"><b>Properties of action–reaction forces:</b></paragraph>
+<ul>
+<li><b>Equal magnitude</b>, <b>opposite direction</b>.</li>
+<li><b>Different bodies</b> (never on the same body).</li>
+<li><b>Simultaneous</b> (no delay).</li>
+<li><b>No cause/effect</b>: either can be called “action”.</li>
+<li><b>Do not cancel</b> (cancelling needs forces on the <b>same body</b>).</li>
+<li><b>Internal forces</b> inside a system add to <b>zero</b> when treating the whole system.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206caa"><b>Most common exam trap:</b> Two forces on the <b>same body</b> that are equal and opposite are <b>not</b> a 3rd-law pair.</paragraph>
+<paragraph id="6a8930d1663d2d329e206cab">Trap example: block at rest on floor → <b>weight</b> (Earth on block) and <b>normal</b> (floor on block) may be equal/opposite, but <b>not</b> a 3rd-law pair since both act on the <b>block</b>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206cac">3rd-law partner of the block’s weight = <b>gravity by block on Earth</b>.</paragraph>
+<paragraph id="6a8930d1663d2d329e206cad">3rd-law partner of the normal (floor on block) = <b>normal by block on floor</b>.</paragraph>
+</div>
+
+<paragraph id="6a8930d1663d2d329e206cae"><b>Illustrative identification of pairs (as described in the text)</b>:</paragraph>
+<ul>
+<li>Force on the floor by the system (action) + force on the system by the floor (reaction) = a 3rd-law pair.</li>
+<li>For block + cylinder contact: force on block by cylinder + force on cylinder by block = a 3rd-law pair.</li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206caf"><b>Numerical note from the text:</b> Earlier, weight of system = <b>270 N</b> but normal force = <b>R′ = 267.3 N</b>. So two forces on the same body don’t have to be equal/opposite (and anyway they’re not an action–reaction pair).</paragraph>
+</div>
+
+<h2>Free-Body Diagrams (FBDs) in Mechanics</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="6a8930d1663d2d329e206cb0"><b>Free-body diagram (FBD):</b> a sketch of a clearly chosen system showing <b>all forces acting on it</b> from things <b>outside</b> the system.</paragraph>
+</div>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="6a8930d1663d2d329e206cb1"><b>Why FBDs matter:</b></paragraph>
+<ul>
+<li>Forces you to <b>define the system</b> (particle/body/collection).</li>
+<li>Makes you include only <b>external forces</b> on that system.</li>
+<li>Main tool for solving mechanics problems cleanly + systematically.</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="6a8930d1663d2d329e206cb2"><b>FBD exam tip:</b> Don’t mix forces from different bodies into one force balance. Draw separate FBDs if needed (block vs floor vs Earth, etc.).</paragraph>
+</div>
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>

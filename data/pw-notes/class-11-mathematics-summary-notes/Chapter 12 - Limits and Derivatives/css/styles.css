@@ -1,0 +1,303 @@
+@font-face {
+  font-family: "Kalam";
+  src: url("../fonts/Kalam-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Kalam";
+  src: url("../fonts/Kalam-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --ink: #1a1a2e;
+  --blue: #1a5276;
+  --green: #1e8449;
+  --gold: #d4ac0d;
+  --purple: #6c3483;
+  --formula: #1b2a8e;
+  --red: #b03a2e;
+}
+
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow-wrap: anywhere;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+.container,
+.chapter-wrap {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(20px, 3vw, 48px) clamp(14px, 3vw, 40px) 60px;
+}
+
+.container > *,
+.chapter-wrap > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+h1 {
+  margin: 0 0 clamp(22px, 3vw, 30px);
+  padding: 14px 0;
+  border-bottom: 3px solid var(--ink);
+  color: var(--ink);
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  margin: clamp(26px, 4vw, 34px) 0 14px;
+  padding-left: 10px;
+  border-left: 5px solid var(--blue);
+  color: var(--blue);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+h3 {
+  margin: 22px 0 8px;
+  color: var(--green);
+  font-size: clamp(1.06rem, 1.5vw, 1.12rem);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+paragraph,
+p {
+  display: block;
+  margin: 0 0 12px;
+  text-align: justify;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+ul, ol {
+  margin: 6px 0 12px;
+  padding-left: clamp(20px, 4vw, 28px);
+}
+
+li {
+  min-width: 0;
+  margin-bottom: 6px;
+}
+
+.highlight-box,
+.key-box,
+.mnemonic-box,
+.formula-box,
+.remember-box {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin: 18px 0;
+  padding: 14px clamp(12px, 2.5vw, 18px);
+  border-radius: 8px;
+  font-size: clamp(0.9375rem, 1.5vw, 1rem);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.highlight-box::before,
+.key-box::before,
+.mnemonic-box::before,
+.formula-box::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -11px;
+  left: 12px;
+  max-width: calc(100% - 24px);
+  padding: 2px 8px;
+  overflow: hidden;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.highlight-box { border: 1.5px solid var(--gold); border-left-width: 5px; background: #fffbe6; }
+.highlight-box::before { background: var(--gold); }
+.key-box { border: 1.5px solid var(--blue); border-left-width: 5px; background: #eaf4ff; }
+.key-box::before { background: var(--blue); }
+.mnemonic-box { border: 1.5px solid var(--purple); border-left-width: 5px; background: #f5eeff; }
+.mnemonic-box::before { background: var(--purple); }
+.mnemonic-word { display: block; margin-bottom: 5px; color: var(--purple); font-weight: 700; letter-spacing: 3px; }
+.formula-box { border: 1.5px solid var(--formula); border-left-width: 5px; background: #f0f3ff; overflow: visible; }
+.formula-box::before { background: var(--formula); }
+.remember-box { border: 1.5px dashed var(--red); color: var(--red); background: #fff0f0; font-weight: 700; text-align: center; }
+.remember-box paragraph, .remember-box p { text-align: center; }
+
+figure,
+.fig,
+.image-container {
+  width: 100% !important;
+  min-width: 0;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+img {
+  object-fit: contain;
+}
+
+figcaption {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.table-scroll,
+.trig-table-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 12px 0;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
+  box-shadow: inset -10px 0 8px -12px rgba(26, 26, 46, 0.55);
+}
+
+.table-scroll > table,
+.trig-table-wrap > table {
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+}
+
+table {
+  border-spacing: 0;
+}
+
+th, td {
+  max-width: min(70vw, 520px);
+  overflow-wrap: break-word;
+  vertical-align: middle;
+}
+
+.katex {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  font-size: 1.05em !important;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.katex math {
+  display: inline;
+  max-width: none;
+  overflow: visible;
+}
+
+.katex-display > .katex {
+  display: block;
+  max-width: none;
+  overflow: visible;
+}
+
+math {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.katex-display,
+math[display="block"],
+pre {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+code {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .container,
+  .chapter-wrap {
+    padding: 24px 12px 48px;
+  }
+
+  .highlight-box,
+  .key-box,
+  .mnemonic-box,
+  .formula-box,
+  .remember-box {
+    padding: 14px 12px;
+  }
+
+  th, td {
+    max-width: 82vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .container,
+  .chapter-wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

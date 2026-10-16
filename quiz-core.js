@@ -56,9 +56,17 @@ function toggleQuestionLanguage() {
 // ==================== UTILS ====================
 function escapeHtml(text) {
     if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = String(text);
-    return div.innerHTML;
+    if (typeof document !== 'undefined') {
+        const div = document.createElement('div');
+        div.textContent = String(text);
+        return div.innerHTML;
+    }
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function escapeHtmlAttr(str) {
@@ -72,19 +80,65 @@ function escapeHtmlAttr(str) {
 }
 
 /**
+ * resolveImageUrl(src)
+ * Resolves local, relative, or custom protocol URLs into fully-qualified CDN URLs:
+ * - pyq-asset://... → https://www.neetpulse.online/api/pyq/asset?file=...
+ * - Bare numeric Allen images → https://d2lbh14zkcqlst.cloudfront.net/content_data/content_images/...
+ */
+function resolveImageUrl(src) {
+    if (!src) return '';
+    let url = String(src).trim();
+    if (url.startsWith('pyq-asset://')) {
+        return url.replace('pyq-asset://', 'https://www.neetpulse.online/api/pyq/asset?file=');
+    }
+    if (/^[0-9]{10,}[a-zA-Z0-9_-]*\.(?:png|jpg|webp|jpeg)$/i.test(url)) {
+        return `https://d2lbh14zkcqlst.cloudfront.net/content_data/content_images/${url}`;
+    }
+    return url;
+}
+if (typeof window !== 'undefined') window.resolveImageUrl = resolveImageUrl;
+
+/**
  * safeHtml(text)
- * Used for question bodies and explanations which may contain:
- *   - **markdown bold** → <strong>
- *   - Safe HTML: <ul>, <ol>, <li>, <table>, <thead>, <tbody>, <tr>, <td>, <th>,
- *                <img>, <br>, <b>, <strong>, <em>, <i>, <sup>, <sub>, <p>, <hr>
- *   - Dangerous tags are stripped (script, iframe, style, object, a[href=js])
- * Math delimiters ($, $$) are passed through untouched for KaTeX.
+ * Cleans and formats question bodies, options, and explanations.
+ * - Resolves image URLs
+ * - Extracts LaTeX from <img alt="...">
+ * - Fixes rogue $ around tags and common words
+ * - Normalizes nested minus in superscripts ({$-$1} -> {-1})
+ * - Converts markdown headers and bold/italic
+ * - Protects math blocks ($$, \[\], \(\), and inline $)
+ * - Preserves HTML formatting without KaTeX error pollution
  */
 function safeHtml(text) {
     if (!text) return '';
     let s = String(text);
 
-    // 0. Convert markdown headers (e.g. ### Detailed Solution)
+    // 0. Clean up triple-escaped JSON artifacts and excessive backslashes
+    if (s.includes('\\\\\\\"')) s = s.replace(/\\\\\\"/g, '"');
+    if (s.includes('\\\\\"')) s = s.replace(/\\\\"/g, '"');
+    s = s.replace(/\\\\([a-zA-Z]+)/g, '\\$1');
+
+    // 0.1. Fix nested minus signs in superscripts (e.g. s^{$-$1} -> s^{-1})
+    s = s.replace(/\{\s*\$\s*-\s*\$\s*([0-9]+)\s*\}/g, '{-$1}');
+    s = s.replace(/\$\s*-\s*\$/g, '-');
+    s = s.replace(/\{\s*-\s*\$\s*([0-9]+)\s*\}/g, '{-$1}');
+
+    // 0.2. Extract LaTeX from <img alt="..."> (handles World B formulas trapped in image tags)
+    s = s.replace(/<img[^>]+alt="([\\$][^"]+)"[^>]*\/?>/gi, (match, alt) => {
+        let cleanLatex = alt.replace(/\\\\/g, '\\').trim();
+        if (cleanLatex.startsWith('$') && cleanLatex.endsWith('$')) return cleanLatex;
+        return `$${cleanLatex}$`;
+    });
+
+    // 0.3. Clean rogue dollar signs around HTML tags
+    s = s.replace(/\$\s*(<\/?(?:table|tbody|thead|tr|td|th|div|span|p|br|strong|b|em|i|ul|ol|li)[^>]*>)\s*\$?/gi, '$1');
+    s = s.replace(/(<\/?(?:table|tbody|thead|tr|td|th|div|span|p|br|strong|b|em|i|ul|ol|li)[^>]*>)\s*\$/gi, '$1');
+    s = s.replace(/\$\s*(Match|Assume|Which|Choose|Select|Following|Given|Statement|Assertion|Reason)\s*\$/gi, '$1');
+
+    // 0.4. Clean broken markdown bold closing
+    s = s.replace(/\*\*([^*<]+)<\/strong>/gi, '<strong>$1</strong>');
+
+    // 0.5. Convert markdown headers (e.g. ### Detailed Solution)
     s = s.replace(/^###\s+(.+)$/gm, '<h4 style="margin:0.8rem 0 0.35rem; font-size:1.02rem; font-weight:700; color:var(--text-primary);">$1</h4>');
     s = s.replace(/^##\s+(.+)$/gm, '<h3 style="margin:1rem 0 0.45rem; font-size:1.15rem; font-weight:700; color:var(--text-primary);">$1</h3>');
     s = s.replace(/^#\s+(.+)$/gm, '<h2 style="margin:1.2rem 0 0.55rem; font-size:1.25rem; font-weight:700; color:var(--text-primary);">$1</h2>');
@@ -111,14 +165,25 @@ function safeHtml(text) {
     s = s.replace(/<(\/?)([\w-]+)([^>]*)>/g, (match, slash, tag, attrs) => {
         const t = tag.toLowerCase();
         if (!ALLOWED.has(t)) return ''; // strip unknown/dangerous tags
-        // For img tags: only allow src, alt, class, style, loading, width, height attrs
+        // For img tags: resolve source and ensure clean responsive styling
         if (t === 'img') {
-            const src = (attrs.match(/src\s*=\s*["']([^"']*)["']/i) || [])[1] || '';
+            let src = (attrs.match(/src\s*=\s*["']([^"']*)["']/i) || [])[1] || '';
             const alt = (attrs.match(/alt\s*=\s*["']([^"']*)["']/i) || [])[1] || '';
             const cls = (attrs.match(/class\s*=\s*["']([^"']*)["']/i) || [])[1] || 'question-image';
             const loading = 'lazy';
+            src = resolveImageUrl(src);
             if (!src) return '';
             return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" style="max-width:100%;height:auto;display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
+        }
+        // For table tags: auto-attach match-table class for neat dual-column layout
+        if (t === 'table' && !slash) {
+            let tableAttrs = attrs;
+            if (!/class\s*=\s*["'][^"']*["']/i.test(tableAttrs)) {
+                tableAttrs += ' class="match-table"';
+            } else if (!tableAttrs.includes('match-table')) {
+                tableAttrs = tableAttrs.replace(/class\s*=\s*["']([^"']*)["']/i, 'class="$1 match-table"');
+            }
+            return `<table${tableAttrs}>`;
         }
         // For all other tags: strip any event handlers (onclick, onerror, etc.)
         const cleanAttrs = attrs
@@ -142,24 +207,17 @@ function safeHtml(text) {
     // 6. Protect all math blocks ($$, \[\], \(\), and inline $) so newlines and tags NEVER corrupt formulas
     const mathTokens = [];
     s = s.replace(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$[^$\n]+?\$)/g, (match) => {
-        // Strip any rogue <br> tags from inside math
         let clean = match.replace(/<br\s*\/?>/gi, ' ');
-
-        // Smart normalization (same as JeeHub and Acrolly):
-        // If a $$...$$ block is single-line without multiline environments,
-        // treat it as inline math \(...\) so words in sentences don't break into vertical blocks!
+        // If a $$...$$ block is single-line without multiline environments, treat as inline \(...\)
         if (clean.startsWith('$$') && clean.endsWith('$$') && !clean.includes('\n') && !clean.includes('\\begin{') && !clean.includes('\\\\')) {
             clean = '\\(' + clean.slice(2, -2).trim() + '\\)';
         }
-
         const token = `QQQMATHTOKEN${mathTokens.length}QQQ`;
         mathTokens.push(clean);
         return token;
     });
 
     // 6.5. Smart newline normalization on plain text only (never inside math!)
-    // Preserves intentional paragraph breaks (\n\n+) and list/statement lines,
-    // while merging soft-wrapped PDF/OCR single newlines into flowing prose.
     const hasBlockHtml = /<(ul|ol|table|tbody|thead|tr|li)/i.test(s);
     if (!hasBlockHtml) {
         s = s.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -183,22 +241,14 @@ function safeHtml(text) {
         s = s.replace(/___PARABREAK___/g, '<br><br>');
     }
 
-    // 7. Auto-wrap bare LaTeX tokens outside math tokens (math is 100% safe inside mathTokens!)
-    if (/[\\^_]/.test(s)) {
-        if (s.includes('\\left') && s.includes('\\right')) {
-            s = s.replace(/((?:[A-Za-z0-9_^{}\\]+\s*=\s*)?[A-Za-z0-9_^{}\\]*\s*\\(?:sin|cos|tan|cot|sec|csc|ln|log|exp)?\s*[A-Za-z0-9_^{}\\]*\s*\\left[\(\[\{\|\.][^\n]*?\\right[\)\]\}\|\.]|\\left[\(\[\{\|\.][^\n]*?\\right[\)\]\}\|\.])/g, '$$$1$$');
-        }
-        s = s.replace(/([A-Za-z0-9]+(?:\^\{[^{}]*\}|_\{[^{}]*\}|[\^_][A-Za-z0-9])+(?:\^\{[^{}]*\}|_\{[^{}]*\}|[\^_][A-Za-z0-9])*)/g, '$$$1$$');
-        s = s.replace(/(\\(?!left|right|begin|end|cdot|to|pm|mp|times|div|infty|ldots|dots|vdots|cdots|frac)[a-zA-Z]+(?:\{[^{}]*\}|\[[^\[\]]*\])*)/g, '$$$1$$');
-    }
+    // 7. Math tokens protection: MathJax natively renders all math delimiters without token-splitting hacks
 
     // 7.5. Restore math tokens
     s = s.replace(/QQQMATHTOKEN(\d+)QQQ/g, (match, idx) => {
         return mathTokens[parseInt(idx, 10)] || match;
     });
 
-    // 7.6. Clean spacing around headings and display math ($$ and \[)
-    // Strip redundant <br> directly after headings and directly before/after display math
+    // 7.6. Clean spacing around headings and display math
     s = s.replace(/(<\/(?:h[1-6]|p)>)(?:\s*<br\s*\/?>)+/gi, '$1');
     s = s.replace(/(?:<br\s*\/?>\s*)+(?=\$\$|\\\[)/gi, '');
     s = s.replace(/(?<=\$\$|\\\])(?:\s*<br\s*\/?>)+/gi, '');
@@ -207,62 +257,43 @@ function safeHtml(text) {
     s = s.replace(/(^|[^$])\\begin\{(aligned|gathered|matrix|cases)\}([\s\S]*?)\\end\{\2\}\$\$?/g, '$1$$\\begin{$2}$3\\end{$2}$$');
     s = s.replace(/(^|[^$])\\begin\{(aligned|gathered|matrix|cases)\}([\s\S]*?)\\end\{\2\}(?!\$)/g, '$1$$\\begin{$2}$3\\end{$2}$$');
 
-    // 8. If KaTeX is loaded, pre-render math tokens directly to HTML string
-    //    so the browser never paints raw LaTeX text and eliminates any flash/blink!
-    s = renderMathInString(s);
-
     return s;
 }
 
+// ==================== MATHJAX 3 TYPESETTING QUEUE ====================
+let mathJaxQueue = Promise.resolve();
+
 /**
- * Synchronously converts LaTeX delimiters ($$...$$, $...$, \[...\], \(...\))
- * inside an HTML string directly into KaTeX HTML elements.
- * If KaTeX is not loaded, returns the string untouched.
+ * typesetMath(el)
+ * High-performance, queue-safe MathJax 3 typesetter for dynamic DOM updates.
+ * Guarantees zero-conflict execution, handles Chemistry (mhchem), Physics (cancel),
+ * and suppresses errors cleanly (noerrors).
  */
-function renderMathInString(html) {
-    if (!html || typeof katex === 'undefined' || typeof katex.renderToString !== 'function') {
-        return html;
+function typesetMath(el) {
+    if (!el) return Promise.resolve();
+    if (window.MathJax && window.MathJax.typesetPromise) {
+        if (window.MathJax.typesetClear) {
+            try { window.MathJax.typesetClear([el]); } catch (e) { /* ignore */ }
+        }
+        mathJaxQueue = mathJaxQueue
+            .then(() => window.MathJax.typesetPromise([el]))
+            .catch(err => console.warn('MathJax typeset error:', err));
+        return mathJaxQueue;
+    } else {
+        const interval = setInterval(() => {
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                clearInterval(interval);
+                typesetMath(el);
+            }
+        }, 50);
+        setTimeout(() => clearInterval(interval), 6000);
+        return Promise.resolve();
     }
-    let s = String(html);
-    // Display math: $$...$$
-    s = s.replace(/\$\$([\s\S]*?)\$\$/g, (match, tex) => {
-        const clean = tex.replace(/<br\s*\/?>/gi, ' ').trim();
-        if (!clean) return match;
-        try {
-            return katex.renderToString(clean, { displayMode: true, throwOnError: false });
-        } catch (e) {
-            return match;
-        }
-    });
-    // Display math: \[...\]
-    s = s.replace(/\\\[([\s\S]*?)\\\]/g, (match, tex) => {
-        const clean = tex.replace(/<br\s*\/?>/gi, ' ').trim();
-        if (!clean) return match;
-        try {
-            return katex.renderToString(clean, { displayMode: true, throwOnError: false });
-        } catch (e) {
-            return match;
-        }
-    });
-    // Inline math: $...$ (ensure not empty and not crossing lines if simple)
-    s = s.replace(/\$([^$\n]+?)\$/g, (match, tex) => {
-        const clean = tex.replace(/<br\s*\/?>/gi, ' ').trim();
-        if (!clean) return match;
-        try {
-            return katex.renderToString(clean, { displayMode: false, throwOnError: false });
-        } catch (e) {
-            return match;
-        }
-    });
-    // Inline math: \(...\)
-    s = s.replace(/\\\(([\s\S]*?)\\\)/g, (match, tex) => {
-        const clean = tex.replace(/<br\s*\/?>/gi, ' ').trim();
-        if (!clean) return match;
-        try {
-            return katex.renderToString(clean, { displayMode: false, throwOnError: false });
-        } catch (e) {
-            return match;
-        }
-    });
-    return s;
+}
+if (typeof window !== 'undefined') {
+    window.typesetMath = typesetMath;
+    window.tcTypeset = typesetMath;
+    window.renderMathInElement = function(el) {
+        return typesetMath(el);
+    };
 }

@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>INTRODUCTION TO THREE DIMENSIONAL GEOMETRY — Mathematics</title>
+  <meta name="description" content="INTRODUCTION TO THREE DIMENSIONAL GEOMETRY — Mathematics topic pages.">
+  <link rel="stylesheet" href="css/styles.v1.css">
+  
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   VISUAL EDGE QUIZZY SOFT DARK & MOBILE THEME
+   ============================================================ */
+
+/* Base overrides */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+}
+
+.page .figbox, .figbox {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove yellow highlights from bold terms */
+.page .card b,
+.page .card strong,
+.page ul.b li b,
+.page .kc li b,
+.page .mem p b,
+.page .figcap b,
+ul.b li b,
+.kc li b,
+.mem p b,
+.figcap b {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  color: #1f2a44;
+}
+
+/* Enhanced Table Styling (Light Mode) */
+.page .ctab {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ctab th {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  padding: 10px 14px !important;
+}
+
+.page .ctab td {
+  color: #1f2a44 !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #e6ebf3 !important;
+}
+
+.page .ctab tbody tr:nth-child(even) td {
+  background: var(--secbg) !important;
+}
+
+/* Enhanced Solved Q&A Card (Light Mode) */
+.page .ex, .ex {
+  background: #ffffff !important;
+  border: 1px solid var(--secbd) !important;
+  border-radius: 10px !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+  margin-bottom: 0.85rem !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+.page .ex .n, .ex .n {
+  background: var(--sec) !important;
+  color: #ffffff !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 6px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.page .ex .prob, .ex .prob {
+  color: #1f2a44 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.page .ex .sol, .ex .sol {
+  background: var(--secbg) !important;
+  border-left: 3.5px solid var(--sec) !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: #1f2a44 !important;
+  font-size: 0.92rem !important;
+}
+
+/* SOLVED Q&A ANSWER LABEL - VIBRANT GREEN (As Requested) */
+.page .ex .sol .lbl, .ex .sol .lbl {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+/* SOLVED Q&A ANSWER BOX - VIBRANT GREEN (As Requested) */
+.page .ex .ans, .ex .ans, .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  padding: 0.65rem 0.95rem !important;
+  border-radius: 8px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  display: inline-block !important;
+  margin-top: 0.6rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+/* KaTeX in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* ============================================================
+   QUIZZY SOFT DARK MODE FOR VISUAL EDGE (#0b111e, NOT PITCH BLACK)
+   ============================================================ */
+
+/* Page Background and Canvas */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+html.dark,
+html.dark body,
+body.dark-theme,
+.dark,
+.dark body {
+  background: #0b111e !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page,
+html.dark .page,
+body.dark-theme .page,
+.dark .page {
+  background: #131b2e !important;
+  background-image: none !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .page::before,
+html.dark .page::before,
+body.dark-theme .page::before,
+.dark .page::before {
+  display: none !important;
+}
+
+[data-theme="dark"] .watermark span,
+html.dark .watermark span,
+body.dark-theme .watermark span,
+.dark .watermark span {
+  color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Header & Topics */
+[data-theme="dark"] .chapter-hero h1,
+[data-theme="dark"] .hdr-mid h1,
+html.dark .chapter-hero h1,
+html.dark .hdr-mid h1,
+body.dark-theme .chapter-hero h1,
+body.dark-theme .hdr-mid h1,
+.dark .chapter-hero h1,
+.dark .hdr-mid h1 {
+  color: #00bfa5 !important;
+}
+
+[data-theme="dark"] .hdr-mid .eyebrow,
+[data-theme="dark"] .topic-hdr .eyebrow,
+html.dark .eyebrow,
+body.dark-theme .eyebrow,
+.dark .eyebrow {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .hdr-mid .crumb,
+html.dark .crumb,
+body.dark-theme .crumb,
+.dark .crumb {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .page-ind,
+html.dark .page-ind,
+body.dark-theme .page-ind,
+.dark .page-ind {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .topic-hdr,
+html.dark .topic-hdr,
+body.dark-theme .topic-hdr,
+.dark .topic-hdr {
+  border-bottom: 2px solid rgba(0, 191, 165, 0.35) !important;
+}
+
+[data-theme="dark"] .topic-hdr h2,
+html.dark .topic-hdr h2,
+body.dark-theme .topic-hdr h2,
+.dark .topic-hdr h2 {
+  color: #5eead4 !important;
+}
+
+[data-theme="dark"] .topic-hdr-text .htext,
+html.dark .topic-hdr-text .htext,
+body.dark-theme .topic-hdr-text .htext,
+.dark .topic-hdr-text .htext {
+  color: #f1f5f9 !important;
+}
+
+/* Cards */
+[data-theme="dark"] .page .card,
+[data-theme="dark"] .card,
+html.dark .page .card,
+html.dark .card,
+body.dark-theme .page .card,
+body.dark-theme .card,
+.dark .page .card,
+.dark .card {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  border-top: 4px solid var(--sec) !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+[data-theme="dark"] .card::after,
+html.dark .card::after,
+body.dark-theme .card::after,
+.dark .card::after {
+  opacity: 0.45 !important;
+}
+
+[data-theme="dark"] .page .card h2,
+[data-theme="dark"] .card h2,
+html.dark .card h2,
+body.dark-theme .card h2,
+.dark .card h2 {
+  color: #5eead4 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .card .secno,
+[data-theme="dark"] .card .secno,
+html.dark .secno,
+body.dark-theme .secno,
+.dark .secno {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border: 1px solid var(--sec) !important;
+}
+
+/* Dark Mode Typography in Cards & Lists */
+[data-theme="dark"] .page .card p,
+[data-theme="dark"] .page .card paragraph,
+[data-theme="dark"] .page .card li,
+[data-theme="dark"] .page .card span:not(.ic):not(.secno),
+[data-theme="dark"] .page .card b,
+[data-theme="dark"] .page .card strong,
+[data-theme="dark"] ul.b li,
+[data-theme="dark"] ul.b li b,
+[data-theme="dark"] ul.b li strong,
+[data-theme="dark"] .kc li,
+[data-theme="dark"] .kc li b,
+[data-theme="dark"] .mem p,
+[data-theme="dark"] .mem p b,
+[data-theme="dark"] .figcap,
+[data-theme="dark"] .figcap b,
+html.dark .page .card p,
+html.dark .page .card paragraph,
+html.dark .page .card li,
+html.dark .page .card span:not(.ic):not(.secno),
+html.dark .page .card b,
+html.dark .page .card strong,
+html.dark ul.b li,
+html.dark ul.b li b,
+html.dark ul.b li strong,
+html.dark .kc li,
+html.dark .kc li b,
+html.dark .mem p,
+html.dark .mem p b,
+html.dark .figcap,
+html.dark .figcap b,
+body.dark-theme .page .card p,
+body.dark-theme .page .card paragraph,
+body.dark-theme .page .card li,
+body.dark-theme .page .card span:not(.ic):not(.secno),
+body.dark-theme .page .card b,
+body.dark-theme .page .card strong,
+body.dark-theme ul.b li,
+body.dark-theme ul.b li b,
+body.dark-theme ul.b li strong,
+body.dark-theme .kc li,
+body.dark-theme .kc li b,
+body.dark-theme .mem p,
+body.dark-theme .mem p b,
+body.dark-theme .figcap,
+body.dark-theme .figcap b,
+.dark .page .card p,
+.dark .page .card paragraph,
+.dark .page .card li,
+.dark .page .card span:not(.ic):not(.secno),
+.dark .page .card b,
+.dark .page .card strong,
+.dark ul.b li,
+.dark ul.b li b,
+.dark ul.b li strong,
+.dark .kc li,
+.dark .kc li b,
+.dark .mem p,
+.dark .mem p b,
+.dark .figcap,
+.dark .figcap b {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] ul.b li::before,
+html.dark ul.b li::before,
+body.dark-theme ul.b li::before,
+.dark ul.b li::before {
+  background: #00bfa5 !important;
+}
+
+/* Solved Q&A in Dark Mode */
+[data-theme="dark"] .page .ex,
+[data-theme="dark"] .ex,
+html.dark .page .ex,
+html.dark .ex,
+body.dark-theme .page .ex,
+body.dark-theme .ex,
+.dark .page .ex,
+.dark .ex {
+  background: #182234 !important;
+  border: 1px solid rgba(148, 163, 184, 0.24) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .page .ex .n,
+[data-theme="dark"] .ex .n,
+html.dark .ex .n,
+body.dark-theme .ex .n,
+.dark .ex .n {
+  background: #00bfa5 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .page .ex .prob,
+[data-theme="dark"] .ex .prob,
+html.dark .ex .prob,
+body.dark-theme .ex .prob,
+.dark .ex .prob {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .page .ex .sol,
+[data-theme="dark"] .ex .sol,
+html.dark .ex .sol,
+body.dark-theme .ex .sol,
+.dark .ex .sol {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+/* Solved Q&A "Answer:" label in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .sol .lbl,
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer Box in Dark Mode - GREEN */
+[data-theme="dark"] .page .ex .ans,
+[data-theme="dark"] .ex .ans,
+[data-theme="dark"] .ans,
+html.dark .page .ex .ans,
+html.dark .ex .ans,
+html.dark .ans,
+body.dark-theme .page .ex .ans,
+body.dark-theme .ex .ans,
+body.dark-theme .ans,
+.dark .page .ex .ans,
+.dark .ex .ans,
+.dark .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Tables in Dark Mode */
+[data-theme="dark"] .tbl-scroll,
+html.dark .tbl-scroll,
+body.dark-theme .tbl-scroll,
+.dark .tbl-scroll {
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab,
+[data-theme="dark"] .ctab,
+html.dark .page .ctab,
+html.dark .ctab,
+body.dark-theme .page .ctab,
+body.dark-theme .ctab,
+.dark .page .ctab,
+.dark .ctab {
+  background: #131b2e !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+}
+
+[data-theme="dark"] .page .ctab th,
+[data-theme="dark"] .ctab th,
+html.dark .ctab th,
+body.dark-theme .ctab th,
+.dark .ctab th {
+  background: #1e293b !important;
+  color: #00bfa5 !important;
+  border-bottom: 2px solid rgba(0, 191, 165, 0.4) !important;
+}
+
+[data-theme="dark"] .page .ctab td,
+[data-theme="dark"] .ctab td,
+html.dark .ctab td,
+body.dark-theme .ctab td,
+.dark .ctab td {
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16) !important;
+}
+
+[data-theme="dark"] .page .ctab td:first-child,
+[data-theme="dark"] .ctab td:first-child,
+html.dark .ctab td:first-child,
+body.dark-theme .ctab td:first-child,
+.dark .ctab td:first-child {
+  color: #5eead4 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="dark"] .page .ctab tbody tr:nth-child(even) td,
+[data-theme="dark"] .ctab tbody tr:nth-child(even) td,
+html.dark .ctab tbody tr:nth-child(even) td,
+body.dark-theme .ctab tbody tr:nth-child(even) td,
+.dark .ctab tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Memory & Quick Recap in Dark Mode */
+[data-theme="dark"] .page .mem,
+[data-theme="dark"] .page .fs,
+[data-theme="dark"] .mem,
+[data-theme="dark"] .fs,
+html.dark .mem,
+html.dark .fs,
+body.dark-theme .page .mem,
+body.dark-theme .page .fs,
+.dark .page .mem,
+.dark .page .fs {
+  background: #1e293b !important;
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .page .fs .eq,
+[data-theme="dark"] .fs .eq,
+[data-theme="dark"] .eqbox,
+[data-theme="dark"] .hibox,
+html.dark .eqbox,
+html.dark .hibox,
+body.dark-theme .page .fs .eq,
+.dark .page .fs .eq {
+  background: #182234 !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-left: 3.5px solid #00bfa5 !important;
+}
+
+[data-theme="dark"] .page .mem .big,
+[data-theme="dark"] .mem .big,
+html.dark .mem .big,
+body.dark-theme .page .mem .big,
+.dark .page .mem .big {
+  color: #00bfa5 !important;
+}
+
+/* Footer in Dark Mode */
+[data-theme="dark"] .ftr,
+html.dark .ftr,
+body.dark-theme .ftr,
+.dark .ftr {
+  border-top: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+[data-theme="dark"] .ftr .fic,
+[data-theme="dark"] .ftr .fed,
+html.dark .ftr .fic,
+html.dark .ftr .fed,
+body.dark-theme .ftr .fic,
+body.dark-theme .ftr .fed,
+.dark .ftr .fic,
+.dark .ftr .fed {
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+[data-theme="dark"] .ftr .fmid,
+html.dark .ftr .fmid,
+body.dark-theme .ftr .fmid,
+.dark .ftr .fmid {
+  color: #cbd5e1 !important;
+}
+
+/* Visual Edge SVG Diagrams in Dark Mode */
+[data-theme="dark"] .figbox svg,
+html.dark .figbox svg,
+body.dark-theme .figbox svg,
+.dark .figbox svg {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+[data-theme="dark"] .figbox svg text,
+html.dark .figbox svg text,
+body.dark-theme .figbox svg text,
+.dark .figbox svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .figbox svg text[fill='#FFFFFF'],
+html.dark .figbox svg text[fill='#FFFFFF'],
+body.dark-theme .figbox svg text[fill='#FFFFFF'],
+.dark .figbox svg text[fill='#FFFFFF'] {
+  fill: #ffffff !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FFFFFF'],
+[data-theme="dark"] .figbox svg rect[fill='#ffffff'],
+html.dark .figbox svg rect[fill='#FFFFFF'],
+html.dark .figbox svg rect[fill='#ffffff'],
+body.dark-theme .figbox svg rect[fill='#FFFFFF'],
+body.dark-theme .figbox svg rect[fill='#ffffff'],
+.dark .figbox svg rect[fill='#FFFFFF'],
+.dark .figbox svg rect[fill='#ffffff'] {
+  fill: #131b2e !important;
+  stroke: rgba(148, 163, 184, 0.3) !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EEF4FF'],
+html.dark .figbox svg rect[fill='#EEF4FF'],
+body.dark-theme .figbox svg rect[fill='#EEF4FF'],
+.dark .figbox svg rect[fill='#EEF4FF'] {
+  fill: #1a253c !important;
+  stroke: #3b82f6 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#EAF7EF'],
+html.dark .figbox svg rect[fill='#EAF7EF'],
+body.dark-theme .figbox svg rect[fill='#EAF7EF'],
+.dark .figbox svg rect[fill='#EAF7EF'] {
+  fill: #142a22 !important;
+  stroke: #22c55e !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#F4EFFE'],
+html.dark .figbox svg rect[fill='#F4EFFE'],
+body.dark-theme .figbox svg rect[fill='#F4EFFE'],
+.dark .figbox svg rect[fill='#F4EFFE'] {
+  fill: #221838 !important;
+  stroke: #a855f7 !important;
+}
+
+[data-theme="dark"] .figbox svg rect[fill='#FEF5E4'],
+html.dark .figbox svg rect[fill='#FEF5E4'],
+body.dark-theme .figbox svg rect[fill='#FEF5E4'],
+.dark .figbox svg rect[fill='#FEF5E4'] {
+  fill: #2b1f14 !important;
+  stroke: #f59e0b !important;
+}
+
+[data-theme="dark"] .figbox svg line,
+html.dark .figbox svg line,
+body.dark-theme .figbox svg line,
+.dark .figbox svg line {
+  stroke: #94a3b8 !important;
+}
+
+[data-theme="dark"] .figbox svg polygon,
+html.dark .figbox svg polygon,
+body.dark-theme .figbox svg polygon,
+.dark .figbox svg polygon {
+  fill: #94a3b8 !important;
+}
+
+/* ===== MOBILE RESPONSIVENESS FOR VISUAL EDGE ===== */
+@media (max-width: 900px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 16px 12px !important;
+    overflow: visible !important;
+    border-radius: 12px !important;
+  }
+  .sheet, .body, .bodyinner {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .hdr {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .hdr-left, .hdr-mid, .hdr-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hdr-mid h1 {
+    font-size: 1.45rem !important;
+  }
+  .row, .row.c2, .row.c3, .row.c4, .f3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .tbl-scroll, .ctab {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+</style>
+</head>
+<body>
+  <main class="chapter-wrap" id="main-content">
+    <div class="page">
+      <div class="chapter-hero">
+        <div class="subj-badge">Class 12 &middot; Mathematics</div>
+        <h1>INTRODUCTION TO THREE DIMENSIONAL GEOMETRY</h1>
+      </div>
+      <div class="sheet">
+        <section class="topic" id="topic-1">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">1</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>NEED FOR 3D COORDINATES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>To locate a <b>point in space</b> uniquely, we need an ordered triplet <b>(x, y, z)</b>.</li><li>In a <b>plane</b>, two perpendicular distances from two axes fix a point: <b>(x, y)</b>.</li><li>In <b>space</b>, two numbers still allow movement <b>up/down</b>; a third number removes this ambiguity.</li><li>The three coordinates represent <b>perpendicular distances</b> from three mutually perpendicular reference planes.</li><li>Real-life locations (aeroplane, ball in flight, ceiling fan tip) are not confined to a plane, so 3D coordinates are needed.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg viewBox="0 0 620 620"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;background:transparent;">
+
+    <defs>
+      <marker id="arrow3DBig-t1-s1"
+              markerWidth="10"
+              markerHeight="10"
+              refX="9"
+              refY="5"
+              orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#F05B63"/>
+      </marker>
+    </defs>
+
+    <!-- Z Axis -->
+    <line x1="245" y1="350"
+          x2="245" y2="35"
+          stroke="#F05B63"
+          stroke-width="5"
+          marker-end="url(#arrow3DBig-t1-s1)"/>
+
+    <!-- Y Axis -->
+    <line x1="245" y1="350"
+          x2="580" y2="350"
+          stroke="#F05B63"
+          stroke-width="5"
+          marker-end="url(#arrow3DBig-t1-s1)"/>
+
+    <!-- X Axis -->
+    <line x1="245" y1="350"
+          x2="25" y2="570"
+          stroke="#F05B63"
+          stroke-width="5"
+          marker-end="url(#arrow3DBig-t1-s1)"/>
+
+    <!-- Origin -->
+    <text x="210" y="355"
+          font-size="34"
+          font-weight="500"
+          fill="#F05B63">O</text>
+
+    <!-- Main Axis Labels -->
+    <text x="210" y="48"
+          font-size="44"
+          font-weight="500"
+          fill="#F05B63">Z</text>
+
+    <text x="570" y="390"
+          font-size="44"
+          font-weight="500"
+          fill="#F05B63">Y</text>
+
+    <text x="25" y="610"
+          font-size="44"
+          font-weight="500"
+          fill="#F05B63">X</text>
+
+    <!-- Point P -->
+    <circle cx="395" cy="205"
+            r="9"
+            fill="#F05B63"/>
+
+    <text x="410" y="220"
+          font-size="36"
+          font-weight="500"
+          fill="#F05B63">
+      P(x,y,z)
+    </text>
+
+    <!-- Projection Lines -->
+    <line x1="395" y1="205"
+          x2="395" y2="445"
+          stroke="#F05B63"
+          stroke-width="3"
+          stroke-dasharray="8 7"/>
+
+    <line x1="395" y1="445"
+          x2="500" y2="350"
+          stroke="#F05B63"
+          stroke-width="3"
+          stroke-dasharray="8 7"/>
+
+    <line x1="395" y1="445"
+          x2="150" y2="445"
+          stroke="#F05B63"
+          stroke-width="3"
+          stroke-dasharray="8 7"/>
+
+    <!-- Coordinate Labels -->
+    <text x="365" y="330"
+          font-size="34"
+          font-weight="500"
+          fill="#F05B63">z</text>
+
+    <text x="480" y="325"
+          font-size="34"
+          font-weight="500"
+          fill="#F05B63">y</text>
+
+    <text x="115" y="460"
+          font-size="34"
+          font-weight="500"
+          fill="#F05B63">x</text>
+
+  </svg>  
+      
+      <div class="figcap">A point P in space is fixed by three independent perpendicular distances along x, y and z.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧱</span><span>Room model: two adjacent walls + floor are <b>three</b> mutually perpendicular planes.</span></li><li><span class="ic">📏</span><span>Coordinates are <b>perpendicular distances</b>: x from YZ-plane, y from ZX-plane, z from XY-plane.</span></li><li><span class="ic">🧭</span><span>Order matters: <b>(x, y, z)</b> is an ordered triplet; swapping changes the point.</span></li><li><span class="ic">🎯</span><span>With only (x, y), the point is fixed only on a <b>vertical line</b> above/below the plane.</span></li><li><span class="ic">✈️</span><span>Navigation: aircraft position needs east–west, north–south, and altitude (three independent measures).</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WHY 2 NUMBERS FAIL IN SPACE</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow2' markerWidth='8' markerHeight='8' refX='7' refY='4' orient='auto'><path d='M0,0 L8,4 L0,8 Z' fill='#123B7A'/></marker></defs><g><rect x='55' y='45' width='250' height='130' rx='6' fill='#EEF4FF' stroke='#2563EB' stroke-width='2'/><text x='70' y='65' font-size='13' fill='#1f2a44'>XY-plane</text><line x1='85' y1='145' x2='285' y2='145' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><line x1='85' y1='145' x2='85' y2='65' stroke='#123B7A' stroke-width='2' marker-end='url(#arrow2)'/><text x='290' y='149' font-size='12' fill='#1f2a44'>x</text><text x='78' y='65' font-size='12' fill='#1f2a44'>y</text><circle cx='185' cy='115' r='5' fill='#F59E0B' stroke='#1f2a44' stroke-width='1'/><text x='195' y='119' font-size='12' fill='#1f2a44'>(x,y)</text><line x1='185' y1='115' x2='185' y2='20' stroke='#7C3AED' stroke-width='2' marker-end='url(#arrow2)'/><text x='192' y='30' font-size='12' fill='#1f2a44'>many points</text><text x='192' y='44' font-size='12' fill='#1f2a44'>same (x,y)</text></g></svg></div><ul class="b"><li>In the plane, (x, y) pins a point by distances from two perpendicular axes.</li><li>In space, after fixing (x, y), the point can still slide along a <b>line parallel to z-axis</b>.</li><li>So infinitely many points share the same (x, y); a third number <b>z</b> selects exactly one.</li><li>Geometric idea: 2D needs two independent directions; 3D needs three independent directions.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">REAL-LIFE INTERPRETATION (ROOM / MOTION)</span></h2><ul class="b"><li>Room example: locate a bulb tip by distances from <b>two walls</b> and height from <b>floor</b>.</li><li>Ball thrown in space: at any instant, its position needs three measures: left-right, front-back, up-down.</li><li>Aeroplane: needs two horizontal coordinates plus <b>altitude</b>; 2D map alone is incomplete.</li><li>Thus 3D coordinates model <b>actual space</b>, not just drawings on paper.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">2D (Plane) vs 3D (Space): What changes?</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>2D coordinates</th><th>3D coordinates</th></tr></thead><tbody><tr><td>Reference objects</td><td>Two perpendicular <b>axes</b> in a plane</td><td>Three mutually perpendicular <b>planes/axes</b></td></tr><tr><td>Numbers needed</td><td>Ordered pair <b>(x, y)</b></td><td>Ordered triplet <b>(x, y, z)</b></td></tr><tr><td>Meaning of numbers</td><td>Perpendicular distances from y-axis and x-axis</td><td>Perpendicular distances from YZ, ZX, XY planes</td></tr><tr><td>If one number missing</td><td>Missing x or y ⇒ a <b>line</b> of possible points</td><td>Missing z ⇒ a <b>vertical line</b> of possible points</td></tr><tr><td>Typical use</td><td>Maps, graphs, flat surfaces</td><td>Rooms, flight, 3D motion in air/space</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A point in a room is 3 m from the left wall and 4 m from the back wall. Can you locate it uniquely? What extra information is needed?</div><div class="sol"><span class="lbl">Answer:</span><br>Distances from two perpendicular walls fix the point only on a <b>vertical line</b> above the floor point.<br>Any height on that vertical line has the same two wall distances.<br>So we also need the <b>height from the floor</b> (third distance) to pinpoint it.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Explain why (x, y) is sufficient on a map, but (x, y, z) is needed to specify an aeroplane’s position.</div><div class="sol"><span class="lbl">Answer:</span><br>A map represents a <b>plane</b> (Earth’s surface projection), so positions are on a 2D sheet.<br>An aeroplane can be above the same map point at <b>many altitudes</b>.<br>Altitude is independent of horizontal location, so it must be given separately as <b>z</b>.</div><div class="ans">✓&nbsp; Map points lie in 2D, but an aircraft adds altitude; hence three coordinates are required.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Space needs <b>three independent directions</b>; hence three numbers.</li><li>x, y, z are <b>perpendicular distances</b> from YZ-, ZX-, and XY-planes respectively.</li><li>Given (x, y), the point is still not fixed; it lies on a line parallel to the z-axis.</li><li>The coordinates are always written as an <b>ordered</b> triplet (x, y, z).</li><li>Room model (two walls + floor) is the standard intuition used in exams.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Thinking (x, y) determines a unique point even in space.</li><li>Mixing meanings: writing x as distance from x-axis (it is from the <b>YZ-plane</b> in 3D).</li><li>Treating (x, y, z) as unordered; swapping entries gives a different point.</li><li>Assuming the floor is always z = 0 without stating the chosen coordinate system.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“W-W-F rule for 3D location”</div><paragraph id="6aa538c10b4f47ae7600041b"><b>W</b>all distance 1 + <b>W</b>all distance 2 + <b>F</b>loor height.</paragraph><paragraph id="6aa538c1def9b6106500041c">Two walls give (x, y); floor height gives z.</paragraph><paragraph id="6aa538c1245e34e84900041d">If you can go up/down after fixing (x, y), you still need z.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Plane needs <b>2</b> numbers: (x, y). Space needs <b>3</b> numbers: (x, y, z).</span><span class="eq">3D meaning: x = distance from <b>YZ</b>-plane, y = distance from <b>ZX</b>-plane, z = distance from <b>XY</b>-plane.</span><span class="eq">Room model: two adjacent walls + floor are mutually perpendicular reference planes.</span><span class="eq">Given (x, y), the possible points form a line parallel to the z-axis; z selects one point.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-2">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">2</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>3D AXES AND PLANES</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A <b>3D rectangular coordinate system</b> is formed by three mutually perpendicular axes <b>OX</b>, <b>OY</b>, <b>OZ</b> meeting at the origin <b>O</b>.</li><li>These axes arise as lines of intersection of <b>three mutually perpendicular planes</b> through <b>O</b>.</li><li>The planes determined by each pair of axes are the <b>coordinate planes</b>: <b>XY-plane (XOY)</b>, <b>YZ-plane (YOZ)</b>, <b>ZX-plane (ZOX)</b>.</li><li>Convention: take <b>XY-plane</b> as the plane of the paper; <b>z-axis</b> is perpendicular to it (<b>+z</b> along OZ, <b>−z</b> along OZ′).</li><li>The three coordinate planes divide space into <b>8 regions</b> called <b>octants</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg viewBox="0 0 760 650"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <!-- XY plane -->
+    <polygon points="365,350 590,440 380,555 150,465"
+             fill="#CFE4CF"
+             fill-opacity="0.78"
+             stroke="#111"
+             stroke-width="2"/>
+
+    <!-- ZX plane -->
+    <polygon points="150,465 365,350 365,95 150,210"
+             fill="#F2DFC0"
+             fill-opacity="0.78"
+             stroke="#111"
+             stroke-width="2"/>
+
+    <!-- YZ plane -->
+    <polygon points="365,350 590,440 590,185 365,95"
+             fill="#D8CFDA"
+             fill-opacity="0.78"
+             stroke="#111"
+             stroke-width="2"/>
+
+    <!-- Grid on ZX plane -->
+    <g stroke="#9C927F" stroke-width="1.3" opacity="0.75">
+      <line x1="150" y1="410" x2="365" y2="295"/>
+      <line x1="150" y1="355" x2="365" y2="240"/>
+      <line x1="150" y1="300" x2="365" y2="185"/>
+      <line x1="150" y1="245" x2="365" y2="130"/>
+
+      <line x1="200" y1="438" x2="200" y2="184"/>
+      <line x1="250" y1="412" x2="250" y2="158"/>
+      <line x1="300" y1="385" x2="300" y2="132"/>
+    </g>
+
+    <!-- Grid on YZ plane -->
+    <g stroke="#8E858F" stroke-width="1.3" opacity="0.75">
+      <line x1="365" y1="300" x2="590" y2="390"/>
+      <line x1="365" y1="250" x2="590" y2="340"/>
+      <line x1="365" y1="200" x2="590" y2="290"/>
+      <line x1="365" y1="150" x2="590" y2="240"/>
+
+      <line x1="415" y1="115" x2="415" y2="370"/>
+      <line x1="465" y1="135" x2="465" y2="390"/>
+      <line x1="515" y1="155" x2="515" y2="410"/>
+      <line x1="565" y1="175" x2="565" y2="430"/>
+    </g>
+
+    <!-- Grid on XY plane -->
+    <g stroke="#8FA28F" stroke-width="1.3" opacity="0.75">
+      <line x1="190" y1="480" x2="405" y2="365"/>
+      <line x1="235" y1="498" x2="450" y2="382"/>
+      <line x1="280" y1="515" x2="495" y2="400"/>
+      <line x1="325" y1="535" x2="540" y2="418"/>
+
+      <line x1="185" y1="445" x2="410" y2="535"/>
+      <line x1="230" y1="422" x2="455" y2="512"/>
+      <line x1="275" y1="399" x2="500" y2="489"/>
+      <line x1="320" y1="376" x2="545" y2="466"/>
+    </g>
+
+    <!-- Main axes -->
+    <line x1="365" y1="350" x2="150" y2="465"
+          stroke="#111" stroke-width="3"/>
+    <line x1="365" y1="350" x2="590" y2="440"
+          stroke="#111" stroke-width="3"/>
+    <line x1="365" y1="350" x2="365" y2="95"
+          stroke="#111" stroke-width="3"/>
+
+    <!-- Origin -->
+    <circle cx="365" cy="350" r="7" fill="#1A0A00"/>
+    <text x="375" y="357" font-size="22" fill="#111">O(0,0,0)</text>
+
+    <!-- Plane labels -->
+    <text x="215" y="260"
+          font-size="24"
+          fill="#F28C00"
+          text-anchor="middle">
+      <tspan x="215" dy="0">ZX-plane</tspan>
+      <tspan x="215" dy="28">(y = 0)</tspan>
+    </text>
+
+    <text x="480" y="255"
+          font-size="24"
+          fill="#800080"
+          text-anchor="middle">
+      <tspan x="480" dy="0">YZ-plane</tspan>
+      <tspan x="480" dy="28">(x = 0)</tspan>
+    </text>
+
+    <text x="365" y="435"
+          font-size="24"
+          fill="#008000"
+          text-anchor="middle">
+      <tspan x="365" dy="0">XY-plane</tspan>
+      <tspan x="365" dy="28">(z = 0)</tspan>
+    </text>
+
+    <!-- Axis labels -->
+    <text x="500" y="565" font-size="24" fill="#111">X Axis</text>
+    <text x="210" y="575" font-size="24" fill="#111">Y Axis</text>
+
+    <!-- Z values -->
+    <g font-size="19" fill="#111">
+      <text x="55" y="470">0</text>
+      <text x="55" y="420">1</text>
+      <text x="55" y="370">2</text>
+      <text x="55" y="320">3</text>
+      <text x="55" y="270">4</text>
+      <text x="55" y="220">5</text>
+    </g>
+
+    <!-- Y ticks -->
+    <g font-size="18" fill="#111">
+      <text x="140" y="495">0</text>
+      <text x="185" y="515">1</text>
+      <text x="230" y="535">2</text>
+      <text x="275" y="555">3</text>
+      <text x="320" y="575">4</text>
+      <text x="365" y="595">5</text>
+    </g>
+
+    <!-- X ticks -->
+    <g font-size="18" fill="#111">
+      <text x="595" y="470">0</text>
+      <text x="550" y="490">1</text>
+      <text x="505" y="510">2</text>
+      <text x="460" y="530">3</text>
+      <text x="415" y="550">4</text>
+      <text x="370" y="570">5</text>
+    </g>
+
+  </svg><div class="figcap">Coordinate planes meet at O; their intersections are the x-, y-, z-axes.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>Axes are <b>mutually perpendicular</b>: OX ⟂ OY, OY ⟂ OZ, OZ ⟂ OX.</span></li><li><span class="ic">🧱</span><span>Each coordinate plane contains <b>two axes</b> and is ⟂ to the remaining axis.</span></li><li><span class="ic">➕</span><span>Signs depend on chosen directions of +x, +y, +z (standard NCERT setup).</span></li><li><span class="ic">🧩</span><span>On x-axis: <b>(x,0,0)</b>; on XY-plane: <b>(x,y,0)</b>; on YZ-plane: <b>(0,y,z)</b>; on ZX-plane: <b>(x,0,z)</b>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">ORIENTATION &amp; SIGN CONVENTION (NCERT SETUP)</span></h2><ul class="b"><li>Take <b>XOY</b> (XY-plane) as the plane of the paper.</li><li><b>Z′OZ</b> is perpendicular to the XY-plane.</li><li>Along OZ is <b>+z</b>; along OZ′ is <b>−z</b>.</li><li>In front of YZ-plane along OX is <b>+x</b>; behind along OX′ is <b>−x</b>.</li><li>To one chosen side of ZX-plane along OY is <b>+y</b>; opposite along OY′ is <b>−y</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">COORDINATE PLANES &amp; OCTANTS</span></h2><ul class="b"><li><b>XY-plane</b>: points satisfy <b>z = 0</b>; contains x- and y-axes.</li><li><b>YZ-plane</b>: points satisfy <b>x = 0</b>; contains y- and z-axes.</li><li><b>ZX-plane</b>: points satisfy <b>y = 0</b>; contains z- and x-axes.</li><li>The three planes split space into <b>8 octants</b>.</li><li>Octant depends on the signs of <b>(x, y, z)</b>.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Coordinate planes at a glance</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Plane</th><th>Axes contained</th><th>Equation form</th><th>Normal axis</th></tr></thead><tbody><tr><td>XY-plane (XOY)</td><td>x-axis, y-axis</td><td>z = 0</td><td>z-axis</td></tr><tr><td>YZ-plane (YOZ)</td><td>y-axis, z-axis</td><td>x = 0</td><td>x-axis</td></tr><tr><td>ZX-plane (ZOX)</td><td>z-axis, x-axis</td><td>y = 0</td><td>y-axis</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A point <b>P</b> lies on the <b>YZ-plane</b> and has <i>y</i> = −4 and <i>z</i> = 6. Write its coordinates.</div><div class="sol"><span class="lbl">Answer:</span><br>On the <b>YZ-plane</b>, the x-coordinate is <b>0</b>.<br>So the coordinates are <b>(0, y, z)</b> = <b>(0, −4, 6)</b>.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">A point is <b>(5, 0, −2)</b>. Identify (i) the plane/axis it lies on, and (ii) its perpendicular distances from the three coordinate planes (in coordinate units).</div><div class="sol"><span class="lbl">Answer:</span><br>Since <i>y</i> = 0, the point lies on the <b>ZX-plane</b> (ZOX-plane).<br>Perpendicular distance from YZ-plane depends on |x|, so it is <b>|5| = 5</b>.<br>Perpendicular distance from ZX-plane depends on |y|, so it is <b>|0| = 0</b>.<br>Perpendicular distance from XY-plane depends on |z|, so it is <b>|−2| = 2</b>.</div><div class="ans">✓&nbsp; (i) Lies on <b>ZX-plane</b>. (ii) Distances: from YZ = <b>5</b>, from ZX = <b>0</b>, from XY = <b>2</b>.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Three mutually perpendicular planes through <b>O</b> generate the 3D rectangular coordinate system.</li><li>Coordinate planes are named by the axes in them: <b>XY</b>, <b>YZ</b>, <b>ZX</b>.</li><li>Each coordinate plane is perpendicular to the remaining axis (e.g. XY-plane ⟂ z-axis).</li><li>Origin is the common intersection point: <b>O(0,0,0)</b>.</li><li>Plane tests: <b>z=0</b> (XY), <b>x=0</b> (YZ), <b>y=0</b> (ZX).</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Mixing up plane names: writing ZX-plane as x=0 (wrong; x=0 is YZ-plane).</li><li>On an axis, <b>two</b> coordinates are zero (not one).</li><li>Confusing signed coordinates with distances; distances are <b>non-negative</b> |x|, |y|, |z|.</li><li>Assuming +y is always left/right; it depends on the chosen convention.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>Missing letter is zero</b>”</div><paragraph id="6aa538c174fea19cf100041e">In <b>XY</b>, missing is <b>z</b> ⇒ <b>z = 0</b>.</paragraph><paragraph id="6aa538c1e1af19f6e400041f">In <b>YZ</b>, missing is <b>x</b> ⇒ <b>x = 0</b>.</paragraph><paragraph id="6aa538c1b303f9b5d9000420">In <b>ZX</b>, missing is <b>y</b> ⇒ <b>y = 0</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Origin: <b>O(0,0,0)</b></span><span class="eq">XY-plane: <b>z = 0</b>; YZ-plane: <b>x = 0</b>; ZX-plane: <b>y = 0</b></span><span class="eq">x-axis points: <b>(x,0,0)</b>; y-axis: <b>(0,y,0)</b>; z-axis: <b>(0,0,z)</b></span><span class="eq">For <b>P(x,y,z)</b>, x, y, z are signed perpendicular distances from YZ, ZX, XY planes respectively</span><span class="eq">Perpendicular distances (magnitudes) from planes are <b>|x|</b>, <b>|y|</b>, <b>|z|</b></span><span class="eq">The three coordinate planes divide space into <b>8 octants</b></span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-3">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">3</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SIGN CONVENTION IN SPACE (3D)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Sign convention assigns positive/negative directions along <i>x</i>, <i>y</i>, <i>z</i> using the three coordinate planes XY, YZ, ZX.</li><li>Distances measured <b>upwards</b> from XY-plane along OZ are <b>+z</b>; <b>downwards</b> along OZ′ are <b>−z</b>.</li><li>Distances measured <b>in front of</b> YZ-plane along OX are <b>+x</b>; <b>back of</b> YZ-plane along OX′ are <b>−x</b>.</li><li>Distances measured to the <b>right of</b> ZX-plane along OY are <b>+y</b>; to the <b>left of</b> ZX-plane along OY′ are <b>−y</b>.</li><li>For a point P(<i>x</i>,<i>y</i>,<i>z</i>): signs of (<i>x</i>,<i>y</i>,<i>z</i>) depend on which side of each coordinate plane P lies.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg viewBox="0 0 760 620"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;background:transparent;">
+
+    <defs>
+      <marker id="axisArrow3DBox-t3-s1" markerWidth="10" markerHeight="10"
+              refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#000"/>
+      </marker>
+    </defs>
+
+    <!-- Outer cube -->
+    <polygon points="120,180 420,70 620,160 310,280"
+             fill="none" stroke="#000" stroke-width="2"/>
+    <polygon points="120,180 120,430 310,560 310,280"
+             fill="none" stroke="#000" stroke-width="2"/>
+    <polygon points="310,280 620,160 620,400 310,560"
+             fill="none" stroke="#000" stroke-width="2"/>
+    <line x1="420" y1="70" x2="420" y2="310" stroke="#000" stroke-width="2"/>
+    <line x1="120" y1="430" x2="420" y2="310" stroke="#000" stroke-width="2"/>
+    <line x1="420" y1="310" x2="620" y2="400" stroke="#000" stroke-width="2"/>
+
+    <!-- XY plane -->
+    <polygon points="155,320 430,215 585,285 300,390"
+             fill="#8EB9E8" fill-opacity="0.78"
+             stroke="#000" stroke-width="1.6"/>
+
+    <!-- YZ plane -->
+    <polygon points="305,125 470,205 470,475 305,390"
+             fill="#FF8A3D" fill-opacity="0.85"
+             stroke="#000" stroke-width="1.6"/>
+
+    <!-- XZ plane -->
+    <polygon points="200,145 505,245 505,455 205,355"
+             fill="#6F2B8E" fill-opacity="0.88"
+             stroke="#000" stroke-width="1.6"/>
+
+    <!-- z-axis -->
+    <line x1="365" y1="300" x2="365" y2="55"
+          stroke="#000" stroke-width="3"
+          marker-end="url(#axisArrow3DBox-t3-s1)"/>
+    <text x="330" y="45" font-size="26" font-style="italic">z-axis</text>
+
+    <!-- y-axis -->
+    <line x1="365" y1="300" x2="520" y2="150"
+          stroke="#000" stroke-width="3"
+          marker-end="url(#axisArrow3DBox-t3-s1)"/>
+    <text x="500" y="140" font-size="25" font-style="italic">y-axis</text>
+
+    <!-- x-axis -->
+    <line x1="365" y1="300" x2="655" y2="365"
+          stroke="#000" stroke-width="3"
+          marker-end="url(#axisArrow3DBox-t3-s1)"/>
+    <text x="665" y="372" font-size="25" font-style="italic">x-axis</text>
+
+    <!-- Sign labels -->
+    <text x="215" y="135" font-size="24">(−, +, +)</text>
+    <text x="530" y="200" font-size="24">(+, +, +)</text>
+    <text x="180" y="260" font-size="24">(−, −, +)</text>
+    <text x="335" y="335" font-size="24">(+, −, +)</text>
+    <text x="545" y="410" font-size="24">(+, +, −)</text>
+    <text x="180" y="470" font-size="24">(−, −, −)</text>
+    <text x="330" y="535" font-size="24">(+, −, −)</text>
+
+  </svg>  
+      <div class="figcap">Positive/negative directions are fixed by which side of XY, YZ, ZX planes the point lies.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>Each coordinate is a signed perpendicular distance from a coordinate plane: <i>x</i> from YZ, <i>y</i> from ZX, <i>z</i> from XY.</span></li><li><span class="ic">⬆️</span><span>OZ is the positive <i>z</i>-direction; OZ′ is the negative <i>z</i>-direction.</span></li><li><span class="ic">➡️</span><span>OX is positive in front of YZ-plane; OX′ is negative behind it.</span></li><li><span class="ic">↔️</span><span>OY is positive to the right of ZX-plane; OY′ is negative to the left.</span></li><li><span class="ic">🧩</span><span>Three coordinate planes split space into 8 octants; the sign triple (<i>x</i>,<i>y</i>,<i>z</i>) identifies the octant.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO DECIDE SIGN OF EACH COORDINATE</span></h2><ul class="b"><li><b><i>x</i></b>: check position w.r.t. YZ-plane (<i>x</i>=0 plane). Front along OX ⇒ <b>+</b>, back along OX′ ⇒ <b>−</b>.</li><li><b><i>y</i></b>: check position w.r.t. ZX-plane (<i>y</i>=0 plane). Right along OY ⇒ <b>+</b>, left along OY′ ⇒ <b>−</b>.</li><li><b><i>z</i></b>: check position w.r.t. XY-plane (<i>z</i>=0 plane). Upwards along OZ ⇒ <b>+</b>, downwards along OZ′ ⇒ <b>−</b>.</li><li>If P lies on a coordinate plane, the coordinate perpendicular to it is <b>0</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">OCTANTS: SIGN TRIPLES (EXAM QUICK MAP)</span></h2><ul class="b"><li>I: (+,+,+), II: (−,+,+), III: (−,−,+), IV: (+,−,+).</li><li>V: (+,+,−), VI: (−,+,−), VII: (−,−,−), VIII: (+,−,−).</li><li>Opposite octants have all signs reversed (e.g. I ↔ VII).</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Plane-reference meaning of each coordinate</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Coordinate</th><th>Zero plane</th><th>Positive side</th><th>Negative side</th></tr></thead><tbody><tr><td><i>x</i></td><td>YZ-plane</td><td>Front of YZ along OX</td><td>Back of YZ along OX′</td></tr><tr><td><i>y</i></td><td>ZX-plane</td><td>Right of ZX along OY</td><td>Left of ZX along OY′</td></tr><tr><td><i>z</i></td><td>XY-plane</td><td>Upwards from XY along OZ</td><td>Downwards from XY along OZ′</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A point P is 4 units behind the YZ-plane, 3 units to the right of the ZX-plane, and 2 units above the XY-plane. Write P(<i>x</i>,<i>y</i>,<i>z</i>) and name the octant.</div><div class="sol"><span class="lbl">Answer:</span><br>Behind YZ-plane ⇒ along OX′ ⇒ <i>x</i> is negative ⇒ <i>x</i>=−4.<br>Right of ZX-plane ⇒ along OY ⇒ <i>y</i> is positive ⇒ <i>y</i>=+3.<br>Above XY-plane ⇒ along OZ ⇒ <i>z</i> is positive ⇒ <i>z</i>=+2.<br>Sign triple is (−,+,+) ⇒ octant II.</div><div class="ans">✓&nbsp; P(−4, 3, 2), in octant II.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Without calculation, decide where the point Q(0, −5, 7) lies: axis/plane/octant? Justify using sign convention.</div><div class="sol"><span class="lbl">Answer:</span><br><i>x</i>=0 ⇒ Q lies on the YZ-plane (because YZ-plane is <i>x</i>=0).<br><i>y</i>=−5 ⇒ Q is to the left of the ZX-plane (along OY′).<br><i>z</i>=7 ⇒ Q is above the XY-plane (along OZ).<br>Since one coordinate is 0, Q is not in any octant (octants exclude the coordinate planes).</div><div class="ans">✓&nbsp; Q lies on the YZ-plane, left of ZX-plane, above XY-plane; not in any octant.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Positive/negative directions are defined <b>relative to coordinate planes</b>, not relative to the viewer.</li><li><i>x</i>, <i>y</i>, <i>z</i> are signed distances from YZ, ZX, XY planes respectively.</li><li>Up/down convention: OZ is +<i>z</i>, OZ′ is −<i>z</i> (vertical if XY is taken as horizontal).</li><li>On axes: x-axis points are (<i>x</i>,0,0), y-axis (0,<i>y</i>,0), z-axis (0,0,<i>z</i>).</li><li>To identify octant quickly, read signs of (<i>x</i>,<i>y</i>,<i>z</i>) in order.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Mixing up planes: writing <i>x</i>=0 for ZX-plane (correct is <i>y</i>=0).</li><li>Taking +/− from drawing orientation; ignoring fixed directions OX, OY, OZ.</li><li>Assuming points with a zero coordinate belong to an octant.</li><li>Swapping meanings: ‘right of ZX-plane’ incorrectly linked to <i>x</i> instead of <i>y</i>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Plane tells the coordinate that becomes zero”</div><paragraph id="6aa538c19eea1029b5000421"><b>YZ ⇒ x=0</b>, <b>ZX ⇒ y=0</b>, <b>XY ⇒ z=0</b>.</paragraph><paragraph id="6aa538c1e6620f66b3000422">Remember: the plane name shows the axes it contains; the missing axis is the perpendicular coordinate.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Front/back of YZ-plane decides sign of <i>x</i>: front +, back −.</span><span class="eq">Right/left of ZX-plane decides sign of <i>y</i>: right +, left −.</span><span class="eq">Up/down from XY-plane decides sign of <i>z</i>: up +, down −.</span><span class="eq">I to VIII octants sign map: I(+,+,+), II(−,+,+), III(−,−,+), IV(+,−,+), V(+,+,−), VI(−,+,−), VII(−,−,−), VIII(+,−,−).</span><span class="eq">Coordinate planes: XY has <i>z</i>=0; YZ has <i>x</i>=0; ZX has <i>y</i>=0.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-4">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">4</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>OCTANTS AND THEIR SIGNS</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Octants</b> are the eight regions of 3D space formed by the coordinate planes XY, YZ, ZX.</li><li>The planes XY (<i>z</i>=0), YZ (<i>x</i>=0), ZX (<i>y</i>=0) intersect at origin O and are mutually perpendicular.</li><li>Each octant has a fixed sign pattern for coordinates (<i>x</i>, <i>y</i>, <i>z</i>).</li><li>Octants are named using axis directions: X or X′, Y or Y′, Z or Z′ (e.g., XOYZ, X′OY′Z′).</li><li>If any coordinate is 0, the point lies on a coordinate plane/axis and not strictly inside an octant.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg viewBox="0 0 760 620"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;background:transparent;">
+
+    <defs>
+      <marker id="axisArrow3DBox-t4-s1" markerWidth="10" markerHeight="10"
+              refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#000"/>
+      </marker>
+    </defs>
+
+    <!-- Outer cube -->
+    <polygon points="120,180 420,70 620,160 310,280"
+             fill="none" stroke="#000" stroke-width="2"/>
+    <polygon points="120,180 120,430 310,560 310,280"
+             fill="none" stroke="#000" stroke-width="2"/>
+    <polygon points="310,280 620,160 620,400 310,560"
+             fill="none" stroke="#000" stroke-width="2"/>
+    <line x1="420" y1="70" x2="420" y2="310" stroke="#000" stroke-width="2"/>
+    <line x1="120" y1="430" x2="420" y2="310" stroke="#000" stroke-width="2"/>
+    <line x1="420" y1="310" x2="620" y2="400" stroke="#000" stroke-width="2"/>
+
+    <!-- XY plane -->
+    <polygon points="155,320 430,215 585,285 300,390"
+             fill="#8EB9E8" fill-opacity="0.78"
+             stroke="#000" stroke-width="1.6"/>
+
+    <!-- YZ plane -->
+    <polygon points="305,125 470,205 470,475 305,390"
+             fill="#FF8A3D" fill-opacity="0.85"
+             stroke="#000" stroke-width="1.6"/>
+
+    <!-- XZ plane -->
+    <polygon points="200,145 505,245 505,455 205,355"
+             fill="#6F2B8E" fill-opacity="0.88"
+             stroke="#000" stroke-width="1.6"/>
+
+    <!-- z-axis -->
+    <line x1="365" y1="300" x2="365" y2="55"
+          stroke="#000" stroke-width="3"
+          marker-end="url(#axisArrow3DBox-t4-s1)"/>
+    <text x="330" y="45" font-size="26" font-style="italic">z-axis</text>
+
+    <!-- y-axis -->
+    <line x1="365" y1="300" x2="520" y2="150"
+          stroke="#000" stroke-width="3"
+          marker-end="url(#axisArrow3DBox-t4-s1)"/>
+    <text x="500" y="140" font-size="25" font-style="italic">y-axis</text>
+
+    <!-- x-axis -->
+    <line x1="365" y1="300" x2="655" y2="365"
+          stroke="#000" stroke-width="3"
+          marker-end="url(#axisArrow3DBox-t4-s1)"/>
+    <text x="665" y="372" font-size="25" font-style="italic">x-axis</text>
+
+    <!-- Sign labels -->
+    <text x="215" y="135" font-size="24">(−, +, +)</text>
+    <text x="530" y="200" font-size="24">(+, +, +)</text>
+    <text x="180" y="260" font-size="24">(−, −, +)</text>
+    <text x="335" y="335" font-size="24">(+, −, +)</text>
+    <text x="545" y="410" font-size="24">(+, +, −)</text>
+    <text x="180" y="470" font-size="24">(−, −, −)</text>
+    <text x="330" y="535" font-size="24">(+, −, −)</text>
+
+  </svg>  
+      
+      <div class="figcap">Three coordinate planes meet at O and divide space into 8 octants; octant I has (+,+,+).<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📌</span><span>Octant I (XOYZ) is where <i>x</i>, <i>y</i>, <i>z</i> are all positive.</span></li><li><span class="ic">🧩</span><span>Changing the sign of one coordinate reflects the point across the corresponding coordinate plane.</span></li><li><span class="ic">🧠</span><span>Use the sign triple (+/−, +/−, +/−) to map directly to an octant using the octant sign table.</span></li><li><span class="ic">📐</span><span>Coordinate planes: XY separates +<i>z</i> and −<i>z</i>; YZ separates +<i>x</i> and −<i>x</i>; ZX separates +<i>y</i> and −<i>y</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">TABLE: OCTANTS (I TO VIII) AND SIGN PATTERNS</span></h2><ul class="b"><li><b>I</b>: XOYZ  ⇒ (<i>x</i>,<i>y</i>,<i>z</i>) = (+,+,+)</li><li><b>II</b>: X′OYZ ⇒ (−,+,+)</li><li><b>III</b>: X′OY′Z ⇒ (−,−,+)</li><li><b>IV</b>: XOY′Z ⇒ (+,−,+)</li><li><b>V</b>: XOYZ′ ⇒ (+,+,−)</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">HOW TO DETERMINE THE OCTANT OF A POINT (x, y, z)</span></h2><div class="figbox" style="height:auto;margin-bottom:1.5mm">
+  <div style="
+  font-family:Arial,sans-serif;
+  max-width:650px;
+  margin:auto;
+  background:#EEF9FA;
+  padding:8px;
+  box-sizing:border-box;
+  color:#111;
+">
+
+  <div style="
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  ">
+
+    <!-- LEFT SIGN BOX -->
+    <div style="
+      width:265px;
+      border:3px solid #294A76;
+      border-radius:20px;
+      background:#F5F8FF;
+      padding:25px 20px;
+      box-sizing:border-box;
+    ">
+
+      <!-- X -->
+      <div style="
+        border:3px solid #DDA94E;
+        border-radius:15px;
+        background:#FFF8E8;
+        padding:14px 8px;
+        text-align:center;
+        font-size:21px;
+        margin-bottom:20px;
+        white-space:nowrap;">
+        Sign of x: + or −
+      </div>
+
+      <!-- Y -->
+      <div style="
+        border:3px solid #4DA576;
+        border-radius:15px;
+        background:#F1FBF5;
+        padding:14px 8px;
+        text-align:center;
+        font-size:21px;
+        margin-bottom:20px;
+        white-space:nowrap;">
+        Sign of y: + or −
+      </div>
+
+      <!-- Z -->
+      <div style="
+        border:3px solid #8954D0;
+        border-radius:15px;
+        background:#F8F1FF;
+        padding:14px 8px;
+        text-align:center;
+        font-size:21px;
+        white-space:nowrap;">
+        Sign of z: + or −
+      </div>
+
+    </div>
+
+
+    <!-- ARROWS -->
+    <div style="
+      width:65px;
+      height:245px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-around;
+      align-items:center;
+      color:#294A76;
+      font-size:48px;
+      line-height:1;">
+      <span>→</span>
+      <span>→</span>
+      <span>→</span>
+    </div>
+
+
+    <!-- RIGHT TABLE -->
+    <div style="width:345px;">
+
+      <div style="
+        text-align:center;
+        font-size:27px;
+        line-height:1;
+        font-weight:700;
+        margin-bottom:8px;">
+        Octant Sign Table
+      </div>
+
+      <table style="
+        width:100%;
+        border-collapse:collapse;
+        background:transparent;
+        text-align:center;
+        font-size:18px;
+        line-height:1.05;">
+
+        <tr>
+          <th style="
+            width:32%;
+            border:1.5px solid #111;
+            padding:5px 3px;
+            font-size:18px;">
+            Octant
+          </th>
+
+          <th style="
+            border:1.5px solid #111;
+            padding:5px 3px;
+            font-size:18px;">
+            Sign Pattern (x, y, z)
+          </th>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">I:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(+, +, +)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">II:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(−, +, +)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">III:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(−, −, +)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">IV:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(+, −, +)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">V:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(+, +, −)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">VI:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(−, +, −)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">VII:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(−, −, −)</td>
+        </tr>
+
+        <tr>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">VIII:</td>
+          <td style="border:1.5px solid #111;padding:5px;font-weight:bold;">(+, −, −)</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>  
+
+    <div style="
+  font-family:Arial,sans-serif;
+  max-width:890px;
+  margin:auto;
+  background:#EEF9FA;
+  padding:4px 8px;
+  box-sizing:border-box;
+  color:#111;
+  font-size:18px;
+  line-height:1.45;
+">
+
+  <div style="font-size:19px;font-weight:700;margin-bottom:2px;">
+    • 4-Step Process
+  </div>
+
+  <div style="padding-left:32px;">
+    1. Note the sign of <b><i>x</i></b> (position relative to YZ-plane: <b>+ or −</b>).<br>
+    2. Note the sign of <b><i>y</i></b> (position relative to ZX-plane: <b>+ or −</b>).<br>
+    3. Note the sign of <b><i>z</i></b> (position relative to XY-plane: <b>+ or −</b>).<br>
+    4. Match the resulting triplet (x-sign, y-sign, z-sign) with the Octant Sign Table.
+  </div>
+
+  <div style="margin-top:8px;">
+    <b style="font-size:19px;">• Boundary check:</b>
+    if any coordinate (x, y, or z) is zero, the point lies on a<br>
+    <span style="padding-left:21px;">
+      coordinate plane (e.g., XY, YZ, ZX) or axis, not within an octant.
+    </span>
+  </div>
+
+</div>
+    </div></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">OCTANT NUMBERING (I–VIII) VS SIGNS OF (x, y, z)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Octant (name)</th><th>Sign of <i>x</i></th><th>Sign of <i>y</i></th><th>Sign of <i>z</i></th></tr></thead><tbody><tr><td>I </td><td>+</td><td>+</td><td>+</td></tr><tr><td>II </td><td>−</td><td>+</td><td>+</td></tr><tr><td>III </td><td>−</td><td>−</td><td>+</td></tr><tr><td>IV </td><td>+</td><td>−</td><td>+</td></tr><tr><td>V </td><td>+</td><td>+</td><td>−</td></tr><tr><td>VI </td><td>−</td><td>+</td><td>−</td></tr><tr><td>VII </td><td>-</td><td>-</td><td>-</td></tr><tr><td>VIII </td><td>+</td><td>-</td><td>-</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Find the octant of P(4, −2, 5). Also write its octant name using X/X′, Y/Y′, Z/Z′.</div><div class="sol"><span class="lbl">Answer:</span><br>For P(4, −2, 5), the signs are (<i>x</i>,<i>y</i>,<i>z</i>) = (+, −, +).<br>From the octant sign table, (+, −, +) corresponds to <b>octant IV</b>.<br>The name of octant IV is <b>XOY′Z</b>.</div><div class="ans">✓&nbsp; P lies in <b>IV octant</b> (name: <b>XOY′Z</b>).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Determine the octant(s) for: (a) A(−3, 1, 2) (b) B(−3, 1, −2).</div><div class="sol"><span class="lbl">Answer:</span><br>(a) A(−3,1,2) has signs (−,+,+) ⇒ <b>octant II</b> (name: <b>X′OYZ</b>).<br>(b) B(−3,1,−2) has signs (−,+,−) ⇒ <b>octant VI</b> (name: <b>X′OYZ′</b>).</div><div class="ans">✓&nbsp; (a) <b>II</b> (X′OYZ)  (b) <b>VI</b> (X′OYZ′).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Coordinate planes split space into 8 octants; each octant fixes signs of (<i>x</i>,<i>y</i>,<i>z</i>).</li><li>YZ-plane (<i>x</i>=0) separates +<i>x</i> and −<i>x</i> half-spaces.</li><li>ZX-plane (<i>y</i>=0) separates +<i>y</i> and −<i>y</i> half-spaces.</li><li>XY-plane (<i>z</i>=0) separates +<i>z</i> and −<i>z</i> half-spaces.</li><li>If any coordinate is 0, the point is on a coordinate plane (or axis), not inside an octant.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using wrong plane: XY is <i>z</i>=0, YZ is <i>x</i>=0, ZX is <i>y</i>=0.</li><li>Forgetting that octants V–VIII have <i>z</i>&lt;0 (only I–IV have <i>z</i>&gt;0).</li><li>Treating a point with a zero coordinate as lying in an octant (it lies on a plane/axis).</li><li>Confusing the octant name order (X/X′, then Y/Y′, then Z/Z′) while writing XOYZ-type names.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“4+4 rule for <i>z</i>-sign”</div><paragraph id="6aa538c174c9c60068000423">Octants <b>I–IV</b>: <i>z</i> positive; Octants <b>V–VIII</b>: <i>z</i> negative.</paragraph><paragraph id="6aa538c190fdcc34c1000424">Within each group of four, (<i>x</i>,<i>y</i>) signs cycle like 2D quadrants: (+,+), (−,+), (−,−), (+,−).</paragraph><paragraph id="6aa538c116db8571a9000425">So I–IV match XY-quadrants at <i>z</i>&gt;0; V–VIII repeat them at <i>z</i>&lt;0.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Coordinate planes: XY-plane ⇒ <i>z</i>=0; YZ-plane ⇒ <i>x</i>=0; ZX-plane ⇒ <i>y</i>=0.</span><span class="eq">Octant I (XOYZ): (+,+,+).</span><span class="eq">Octants I–IV have <i>z</i>&gt;0; Octants V–VIII have <i>z</i>&lt;0.</span><span class="eq">If <i>x</i>=0 ⇒ point on YZ-plane; if <i>y</i>=0 ⇒ point on ZX-plane; if <i>z</i>=0 ⇒ point on XY-plane.</span><span class="eq">Sign triple (<i>x</i>,<i>y</i>,<i>z</i>) uniquely identifies the octant for nonzero <i>x</i>, <i>y</i>, <i>z</i>.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-5">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">5</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>COORDINATES OF A POINT (3D)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Coordinates of P</b> are the ordered triplet <b>P(x, y, z)</b> in a fixed 3D rectangular system.</li><li>Drop perpendicular <b>PM</b> to <b>XY-plane</b>; <b>M</b> is the foot (projection of P on XY-plane).</li><li>From <b>M</b>, draw perpendicular <b>ML</b> to <b>x-axis</b>, meeting it at <b>L</b> (so ML ∥ y-axis).</li><li>Define <b>OL = x</b>, <b>LM = y</b>, <b>MP = z</b> (with signs as per chosen positive directions).</li><li>Thus, to each point in space corresponds exactly one ordered triplet of real numbers, and conversely.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg viewBox="0 0 760 650"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <defs>
+      <marker id="arrow3d-t5-s1"
+              markerWidth="9"
+              markerHeight="9"
+              refX="8"
+              refY="4.5"
+              orient="auto">
+        <path d="M0,0 L9,4.5 L0,9 Z" fill="#111"/>
+      </marker>
+    </defs>
+
+    <!-- Back grid -->
+    <g stroke="#AFAFAF" stroke-width="1.4" fill="none">
+
+      <!-- left vertical grid -->
+      <line x1="110" y1="170" x2="110" y2="470"/>
+      <line x1="160" y1="145" x2="160" y2="445"/>
+      <line x1="210" y1="120" x2="210" y2="420"/>
+      <line x1="260" y1="95" x2="260" y2="395"/>
+      <line x1="310" y1="70" x2="310" y2="370"/>
+
+      <!-- right vertical grid -->
+      <line x1="360" y1="80" x2="360" y2="380"/>
+      <line x1="410" y1="90" x2="410" y2="390"/>
+      <line x1="460" y1="100" x2="460" y2="400"/>
+      <line x1="510" y1="110" x2="510" y2="410"/>
+      <line x1="560" y1="120" x2="560" y2="420"/>
+      <line x1="610" y1="130" x2="610" y2="430"/>
+
+      <!-- horizontal grid -->
+      <line x1="110" y1="170" x2="610" y2="130"/>
+      <line x1="110" y1="220" x2="610" y2="180"/>
+      <line x1="110" y1="270" x2="610" y2="230"/>
+      <line x1="110" y1="320" x2="610" y2="280"/>
+      <line x1="110" y1="370" x2="610" y2="330"/>
+      <line x1="110" y1="420" x2="610" y2="380"/>
+      <line x1="110" y1="470" x2="610" y2="430"/>
+
+    </g>
+
+    <!-- XY Plane -->
+    <polygon points="110,470 315,370 610,430 400,540"
+             fill="#CBECEF"
+             fill-opacity="0.65"
+             stroke="#8EA5A8"
+             stroke-width="1.2"/>
+
+    <!-- Main axes -->
+    <line x1="315" y1="370" x2="610" y2="430"
+          stroke="#111" stroke-width="2.8"/>
+
+    <line x1="315" y1="370" x2="110" y2="470"
+          stroke="#111" stroke-width="2.8"/>
+
+    <line x1="315" y1="370" x2="315" y2="65"
+          stroke="#111" stroke-width="2.8"/>
+
+    <!-- Origin -->
+    <circle cx="315" cy="370" r="7" fill="#111"/>
+    <text x="290" y="365" font-size="18">O(0,0,0)</text>
+
+    <!-- L -->
+    <circle cx="165" cy="445" r="7" fill="#F59E0B"/>
+    <text x="142" y="430" font-size="18" fill="#F59E0B">L</text>
+
+    <!-- M -->
+    <circle cx="460" cy="485" r="7" fill="#8B0F8B"/>
+    <text x="468" y="493" font-size="18" fill="#8B0F8B">(x,y,0)</text>
+
+    <!-- P -->
+    <circle cx="460" cy="220" r="9" fill="#008000"/>
+    <text x="458" y="205" font-size="21" fill="#008000">P (x,y,z)</text>
+
+    <!-- OL = x -->
+    <line x1="315" y1="370" x2="165" y2="445"
+          stroke="#FF9900"
+          stroke-width="5"/>
+
+    <!-- LM = y -->
+    <line x1="165" y1="445" x2="460" y2="485"
+          stroke="#900090"
+          stroke-width="5"/>
+
+    <!-- MP = z -->
+    <line x1="460" y1="485" x2="460" y2="220"
+          stroke="#008000"
+          stroke-width="5"/>
+
+    <!-- XY plane label -->
+    <text x="540" y="435" font-size="19" fill="#0000FF">XY-Plane</text>
+
+    <!-- axis labels -->
+    <text x="535" y="560" font-size="22">X Axis</text>
+    <text x="185" y="575" font-size="22">Y Axis</text>
+
+    <!-- Z ticks and values -->
+    <g font-size="16" fill="#111">
+      <text x="55" y="470">0</text>
+      <text x="55" y="420">1</text>
+      <text x="55" y="370">2</text>
+      <text x="55" y="320">3</text>
+      <text x="55" y="270">4</text>
+      <text x="55" y="220">5</text>
+      <text x="55" y="170">6</text>
+      <text x="55" y="120">7</text>
+    </g>
+
+    <!-- legend -->
+    <rect x="40" y="35" width="145" height="105" rx="5"
+          fill="#fff"
+          stroke="#ccc"
+          stroke-width="1.5"/>
+
+    <line x1="52" y1="55" x2="98" y2="55"
+          stroke="#FF9900"
+          stroke-width="6"/>
+    <text x="112" y="61" font-size="18">OL = x</text>
+
+    <line x1="52" y1="85" x2="98" y2="85"
+          stroke="#900090"
+          stroke-width="6"/>
+    <text x="112" y="91" font-size="18">LM = y</text>
+
+    <line x1="52" y1="115" x2="98" y2="115"
+          stroke="#008000"
+          stroke-width="6"/>
+    <text x="112" y="121" font-size="18">MP = z</text>
+
+  </svg>  
+      
+      <div class="figcap">Coordinates via projections: PM ⟂ XY-plane at M; ML ⟂ x-axis at L; OL=x, LM=y, MP=z.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>Projection idea: <b>M</b> fixes (x, y) in XY-plane; then <b>z</b> lifts the point to P.</span></li><li><span class="ic">📐</span><span><b>x</b>, <b>y</b>, <b>z</b> are signed perpendicular distances from <b>YZ</b>, <b>ZX</b>, <b>XY</b> planes respectively.</span></li><li><span class="ic">🔁</span><span><b>One-to-one correspondence</b>: Point P ↔ ordered triplet (x, y, z).</span></li><li><span class="ic">➕</span><span>Quick location checks: XY-plane → z=0; YZ-plane → x=0; ZX-plane → y=0.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">HOW TO ASSIGN (x, y, z) TO A GIVEN POINT P</span></h2><ul class="b"><li>Fix rectangular axes OX, OY, OZ and coordinate planes XY, YZ, ZX.</li><li>Drop <b>PM ⟂ XY-plane</b>; M is the projection of P on XY-plane.</li><li>In XY-plane, draw <b>ML ⟂ x-axis</b> meeting it at L (so ML ∥ y-axis).</li><li>Read signed lengths: <b>OL = x</b>, <b>LM = y</b>, <b>MP = z</b>; write <b>P(x, y, z)</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">CONVERSE (ORDERED TRIPLET → POINT) + WHY ONE-TO-ONE</span></h2><ul class="b"><li>Given (x, y, z): mark L on x-axis with <b>OL = x</b> (use sign).</li><li>From L, move parallel to y-axis to reach M in XY-plane with <b>LM = y</b>.</li><li>From M, go perpendicular to XY-plane to reach P with <b>MP = z</b>.</li><li>Uniqueness: fixed perpendicular constructions give exactly one P for each (x, y, z), and vice versa.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">SPECIAL LOCATIONS FROM COORDINATES</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Location</th><th>Condition on (x, y, z)</th><th>Typical form</th></tr></thead><tbody><tr><td>On x-axis</td><td>y=0, z=0</td><td>(x, 0, 0)</td></tr><tr><td>On y-axis</td><td>x=0, z=0</td><td>(0, y, 0)</td></tr><tr><td>On z-axis</td><td>x=0, y=0</td><td>(0, 0, z)</td></tr><tr><td>In XY-plane</td><td>z=0</td><td>(x, y, 0)</td></tr><tr><td>In YZ-plane</td><td>x=0</td><td>(0, y, z)</td></tr><tr><td>In ZX-plane</td><td>y=0</td><td>(x, 0, z)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A point P has projection M on the XY-plane. The directed lengths satisfy OL = 3, LM = −5 and MP = 4. Write coordinates of P.</div><div class="sol"><span class="lbl">Answer:</span><br>In the standard construction, x is read along the x-axis as OL, y is read in XY-plane as LM, and z is read perpendicular to XY-plane as MP.<br>So the coordinates are P(3, −5, 4).</div><div class="ans">✓&nbsp; P(3, −5, 4)</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Given P(−2, 6, −3). (i) Write coordinates of the projection M of P on the XY-plane. (ii) Write coordinates of the foot N of perpendicular from P to the YZ-plane.</div><div class="sol"><span class="lbl">Answer:</span><br>(i) Projection on XY-plane keeps x and y same but makes z=0, so M(−2, 6, 0).<br>(ii) YZ-plane has x=0; keeping y and z same gives N(0, 6, −3).</div><div class="ans">✓&nbsp; (i) M(−2, 6, 0)  (ii) N(0, 6, −3)</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Coordinates are written as an <b>ordered</b> triplet: (x, y, z); order cannot be changed.</li><li>In projection method: <b>P → M</b> by dropping perpendicular to XY-plane; then <b>M → L</b> perpendicular to x-axis in XY-plane.</li><li>Signs of x, y, z depend on the chosen positive directions of axes/planes (different octants give different signs).</li><li>Each triplet (x, y, z) locates exactly one point in space (existence + uniqueness).</li><li>Quick checks: XY-plane ⇒ z=0; YZ-plane ⇒ x=0; ZX-plane ⇒ y=0.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Mixing plane–coordinate link: <b>x↔YZ</b>, <b>y↔ZX</b>, <b>z↔XY</b> (distance from plane that misses the letter).</li><li>Forgetting signs when the point lies in other octants.</li><li>Swapping y and z while reading the projection idea (M is in XY-plane, so it fixes x and y).</li><li>Writing coordinates in a different order like (y, x, z); ordered triplet means position matters.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Plane missing-letter trick”</div><paragraph id="6aa538c1342d97e66b000426">Coordinate equals signed distance from the plane that <b>misses</b> that letter.</paragraph><paragraph id="6aa538c1aa130fff49000427"><b>x</b> from <b>YZ</b> (no x), <b>y</b> from <b>ZX</b> (no y), <b>z</b> from <b>XY</b> (no z).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">A point in space is written as an ordered triplet: P(x, y, z).</span><span class="eq">Projection method: PM ⟂ XY-plane at M; then ML ⟂ x-axis in XY-plane at L.</span><span class="eq">Read-off from construction: OL gives x, LM gives y, MP gives z (with sign).</span><span class="eq">Distance-from-plane meaning: x from YZ-plane, y from ZX-plane, z from XY-plane (signed).</span><span class="eq">Special forms: x-axis (x, 0, 0); y-axis (0, y, 0); z-axis (0, 0, z); XY-plane (x, y, 0); YZ-plane (0, y, z); ZX-plane (x, 0, z).</span><span class="eq">Origin has coordinates (0, 0, 0).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-6">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">6</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>PARALLEL PLANES METHOD (3D COORDINATES)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>Parallel planes method:</b> Through point <i>P</i>, draw three planes parallel to the coordinate planes <i>YZ</i>, <i>ZX</i>, <i>XY</i>; their common intersection point is <i>P</i>.</li><li>The plane parallel to <i>YZ</i> has equation <i>x</i>=constant and meets the x-axis at <i>A</i>=(<i>x</i>,0,0). Similarly, the plane parallel to <i>ZX</i> meets the y-axis at <i>B</i>=(0,<i>y</i>,0) and the plane parallel to <i>XY</i> meets the z-axis at <i>C</i>=(0,0,<i>z</i>).</li><li>Define <i>OA</i>=<i>x</i>, <i>OB</i>=<i>y</i>, <i>OC</i>=<i>z</i>; then <i>P</i> has coordinates <i>P</i>(<i>x</i>,<i>y</i>,<i>z</i>).</li><li><i>x</i>, <i>y</i>, <i>z</i> are <b>signed</b> perpendicular distances of <i>P</i> from planes <i>YZ</i>, <i>ZX</i>, <i>XY</i>, with signs decided by the octant.</li><li>Conversely, given (<i>x</i>,<i>y</i>,<i>z</i>), draw planes through (<i>x</i>,0,0), (0,<i>y</i>,0), (0,0,<i>z</i>) parallel to <i>YZ</i>, <i>ZX</i>, <i>XY</i>; their intersection gives <i>P</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg viewBox="0 0 760 650"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <!-- light grid -->
+    <g stroke="#B7B7B7" stroke-width="1.3" fill="none">
+      <line x1="95" y1="185" x2="590" y2="85"/>
+      <line x1="95" y1="235" x2="590" y2="135"/>
+      <line x1="95" y1="285" x2="590" y2="185"/>
+      <line x1="95" y1="335" x2="590" y2="235"/>
+      <line x1="95" y1="385" x2="590" y2="285"/>
+      <line x1="95" y1="435" x2="590" y2="335"/>
+
+      <line x1="150" y1="165" x2="150" y2="455"/>
+      <line x1="205" y1="145" x2="205" y2="475"/>
+      <line x1="260" y1="125" x2="260" y2="495"/>
+      <line x1="315" y1="105" x2="315" y2="515"/>
+      <line x1="370" y1="95" x2="370" y2="525"/>
+      <line x1="425" y1="105" x2="425" y2="515"/>
+      <line x1="480" y1="115" x2="480" y2="505"/>
+      <line x1="535" y1="125" x2="535" y2="495"/>
+    </g>
+
+    <!-- XY plane -->
+    <polygon points="120,465 365,555 605,440 360,350"
+             fill="#D8EEF0"
+             fill-opacity="0.55"
+             stroke="#777"
+             stroke-width="1.2"/>
+
+    <!-- XZ plane -->
+    <polygon points="120,465 360,350 360,95 120,205"
+             fill="#D9B8B8"
+             fill-opacity="0.45"
+             stroke="#111"
+             stroke-width="1.8"/>
+
+    <!-- YZ plane -->
+    <polygon points="360,350 605,440 605,180 360,95"
+             fill="#BFC0EE"
+             fill-opacity="0.55"
+             stroke="#111"
+             stroke-width="1.8"/>
+
+    <!-- axes -->
+    <line x1="360" y1="350" x2="120" y2="465"
+          stroke="#111" stroke-width="2.5"/>
+    <line x1="360" y1="350" x2="605" y2="440"
+          stroke="#111" stroke-width="2.5"/>
+    <line x1="360" y1="350" x2="360" y2="95"
+          stroke="#111" stroke-width="2.5"/>
+
+    <!-- dashed base -->
+    <line x1="120" y1="465" x2="365" y2="555"
+          stroke="#111" stroke-width="1.7"
+          stroke-dasharray="6 5"/>
+    <line x1="365" y1="555" x2="605" y2="440"
+          stroke="#111" stroke-width="1.7"
+          stroke-dasharray="6 5"/>
+
+    <!-- origin -->
+    <circle cx="360" cy="350" r="7" fill="#221010"/>
+    <text x="360" y="338" font-size="20" fill="#111">O</text>
+
+    <!-- A(x,0,0) -->
+    <circle cx="120" cy="465" r="8" fill="#E1272D"/>
+    <text x="98" y="448"
+          font-size="20"
+          fill="#E1272D">
+      A(x,0,0)
+    </text>
+
+    <!-- B(0,y,0) -->
+    <circle cx="605" cy="440" r="8" fill="#1E88C8"/>
+    <text x="622" y="430"
+          font-size="20"
+          fill="#1E88C8">
+      B(0,y,0)
+    </text>
+
+    <!-- (0,0,z) -->
+    <circle cx="360" cy="145" r="8" fill="#2A9D37"/>
+    <text x="368" y="151"
+          font-size="20"
+          fill="#2A9D37">
+      (0,0,z)
+    </text>
+
+    <!-- P(x,y,z) -->
+    <circle cx="455" cy="270" r="9" fill="#7A007A"/>
+    <text x="455" y="255"
+          font-size="22"
+          fill="#7A007A">
+      P(x,y,z)
+    </text>
+
+    <!-- coordinate guide lines -->
+    <line x1="455" y1="270" x2="455" y2="470"
+          stroke="#111"
+          stroke-width="2"/>
+
+    <!-- axis labels -->
+    <text x="545" y="555"
+          font-size="24"
+          fill="#111">X Axis</text>
+
+    <text x="190" y="570"
+          font-size="24"
+          fill="#111">Y Axis</text>
+
+    <!-- z-axis numbers -->
+    <g font-size="18" fill="#111">
+      <text x="45" y="475">0</text>
+      <text x="45" y="425">1</text>
+      <text x="45" y="375">2</text>
+      <text x="45" y="325">3</text>
+      <text x="45" y="275">4</text>
+      <text x="45" y="225">5</text>
+      <text x="45" y="175">6</text>
+    </g>
+
+    <!-- x ticks -->
+    <g font-size="17" fill="#111">
+      <text x="600" y="470">0</text>
+      <text x="555" y="490">1</text>
+      <text x="510" y="510">2</text>
+      <text x="465" y="530">3</text>
+      <text x="420" y="550">4</text>
+      <text x="375" y="570">5</text>
+      <text x="330" y="590">6</text>
+    </g>
+
+    <!-- y ticks -->
+    <g font-size="17" fill="#111">
+      <text x="115" y="492">0</text>
+      <text x="160" y="512">1</text>
+      <text x="205" y="532">2</text>
+      <text x="250" y="552">3</text>
+      <text x="295" y="572">4</text>
+      <text x="340" y="592">5</text>
+      <text x="385" y="612">6</text>
+    </g>
+
+  </svg>  
+      <div class="figcap">Through <i>P</i>, planes ∥ <i>YZ</i>, ∥ <i>ZX</i>, ∥ <i>XY</i> correspond to <i>x</i>=const, <i>y</i>=const, <i>z</i>=const; they meet axes at <i>A</i>=(<i>x</i>,0,0), <i>B</i>=(0,<i>y</i>,0), <i>C</i>=(0,0,<i>z</i>).<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">KC</span><span>Plane ∥ <i>YZ</i> has equation <i>x</i>=constant; it fixes the x-coordinate.</span></li><li><span class="ic">KC</span><span>Plane ∥ <i>ZX</i> has equation <i>y</i>=constant; it fixes the y-coordinate.</span></li><li><span class="ic">KC</span><span>Plane ∥ <i>XY</i> has equation <i>z</i>=constant; it fixes the z-coordinate.</span></li><li><span class="ic">KC</span><span><i>x</i>=signed distance from <i>YZ</i>-plane; <i>y</i> from <i>ZX</i>-plane; <i>z</i> from <i>XY</i>-plane.</span></li><li><span class="ic">KC</span><span>Three mutually perpendicular planes (<i>x</i>=const, <i>y</i>=const, <i>z</i>=const) intersect at exactly one point <i>P</i>.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">WORKING (CONSTRUCTION &amp; INTERPRETATION)</span></h2><ul class="b"><li>Through <i>P</i>, draw plane ∥ <i>YZ</i>. It has form <i>x</i>=constant and meets x-axis at <i>A</i>=(<i>x</i>,0,0).</li><li>Through <i>P</i>, draw plane ∥ <i>ZX</i>. It has form <i>y</i>=constant and meets y-axis at <i>B</i>=(0,<i>y</i>,0).</li><li>Through <i>P</i>, draw plane ∥ <i>XY</i>. It has form <i>z</i>=constant and meets z-axis at <i>C</i>=(0,0,<i>z</i>).</li><li>The three planes <i>x</i>=<i>x</i><sub>P</sub>, <i>y</i>=<i>y</i><sub>P</sub>, <i>z</i>=<i>z</i><sub>P</sub> are mutually perpendicular and intersect at a unique point <i>P</i>(<i>x</i>,<i>y</i>,<i>z</i>).</li><li>Meaning: <i>x</i>, <i>y</i>, <i>z</i> are signed perpendicular distances from <i>YZ</i>, <i>ZX</i>, <i>XY</i> planes respectively.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">FAST CHECKS (SPECIAL LOCATIONS)</span></h2><ul class="b"><li>On x-axis: (<i>x</i>,0,0) because it lies on both <i>ZX</i> (<i>y</i>=0) and <i>XY</i> (<i>z</i>=0) planes.</li><li>On y-axis: (0,<i>y</i>,0); on z-axis: (0,0,<i>z</i>).</li><li>In <i>XY</i>-plane: (<i>x</i>,<i>y</i>,0); in <i>YZ</i>-plane: (0,<i>y</i>,<i>z</i>); in <i>ZX</i>-plane: (<i>x</i>,0,<i>z</i>).</li><li>Sign check: if point is behind <i>YZ</i>-plane then <i>x</i>&lt;0; left of <i>ZX</i>-plane then <i>y</i>&lt;0; below <i>XY</i>-plane then <i>z</i>&lt;0.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Two ways to locate <i>P</i>(<i>x</i>,<i>y</i>,<i>z</i>)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Basis</th><th>Perpendicular-drop method</th><th>Parallel-planes method</th></tr></thead><tbody><tr><td>Main idea</td><td>Drop perpendicular to <i>XY</i>, then to x-axis</td><td>Draw planes through <i>P</i> parallel to coordinate planes</td></tr><tr><td>Objects used</td><td>Perpendicular segments <i>PM</i>, <i>ML</i></td><td>Three planes: <i>x</i>=const, <i>y</i>=const, <i>z</i>=const</td></tr><tr><td>How <i>x</i>,<i>y</i>,<i>z</i> appear</td><td><i>x</i>=<i>OL</i>, <i>y</i>=<i>LM</i>, <i>z</i>=<i>MP</i></td><td><i>x</i>=<i>OA</i>, <i>y</i>=<i>OB</i>, <i>z</i>=<i>OC</i></td></tr><tr><td>Geometric meaning</td><td>Lengths along axes via projections</td><td>Signed perpendicular distances from <i>YZ</i>, <i>ZX</i>, <i>XY</i> planes</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A point <i>P</i> has directed lengths <i>OA</i>=3, <i>OB</i>=−2, <i>OC</i>=5 in the parallel-planes construction. Write coordinates of <i>P</i> and state which coordinate plane is crossed due to the negative sign.</div><div class="sol"><span class="lbl">Answer:</span><br>In this method, coordinates are the directed intercepts: <i>x</i>=<i>OA</i>, <i>y</i>=<i>OB</i>, <i>z</i>=<i>OC</i>.<br>So <i>P</i>=(3,−2,5).<br>Negative <i>y</i> means the point is on the negative y-side, i.e., across the <i>ZX</i>-plane where <i>y</i>=0.</div><div class="ans">✓&nbsp; <i>P</i>(3,−2,5); negative sign corresponds to distance from <i>ZX</i>-plane (point lies on negative y-side).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">In the standard parallel-planes figure for <i>P</i>(2,4,5), point <i>F</i> is the point with the same <i>x</i> and <i>z</i> as <i>P</i> but lying on the plane <i>y</i>=0. Find coordinates of <i>F</i>.</div><div class="sol"><span class="lbl">Answer:</span><br>On the plane <i>y</i>=0, the y-coordinate is 0.<br>Keeping <i>x</i>=2 and <i>z</i>=5 (same as <i>P</i>), set <i>y</i>=0.</div><div class="ans">✓&nbsp; <i>F</i>(2,0,5).</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Plane through <i>P</i> parallel to <i>YZ</i> has form <i>x</i>=constant; its x-axis intercept gives directed length <i>OA</i>=<i>x</i>.</li><li>Plane through <i>P</i> parallel to <i>ZX</i> has form <i>y</i>=constant; y-axis intercept gives <i>OB</i>=<i>y</i>.</li><li>Plane through <i>P</i> parallel to <i>XY</i> has form <i>z</i>=constant; z-axis intercept gives <i>OC</i>=<i>z</i>.</li><li><i>x</i>, <i>y</i>, <i>z</i> are signed perpendicular distances from <i>YZ</i>, <i>ZX</i>, <i>XY</i> planes respectively.</li><li>Given (<i>x</i>,<i>y</i>,<i>z</i>), planes <i>x</i>=const, <i>y</i>=const, <i>z</i>=const intersect at a unique point.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Mixing up: distance from <i>YZ</i>-plane is <i>x</i>, not <i>y</i> or <i>z</i>.</li><li>Treating <i>OA</i>, <i>OB</i>, <i>OC</i> as always positive; signs depend on octant.</li><li>Assuming the plane ∥ <i>YZ</i> (or others) always passes through origin; it passes through <i>P</i>.</li><li>Writing points on <i>YZ</i>-plane as (<i>x</i>,<i>y</i>,0) instead of (0,<i>y</i>,<i>z</i>).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: <b>YZ→X, ZX→Y, XY→Z</b>”</div><paragraph id="6aa538c18aacc895a5000428">A coordinate plane is named by the two axes it contains.</paragraph><paragraph id="6aa538c170e6c5df1a000429">The distance from that plane is measured along the missing axis.</paragraph><paragraph id="6aa538c1549ec4052c00042a">So: <i>YZ</i>-plane gives <i>x</i>, <i>ZX</i>-plane gives <i>y</i>, <i>XY</i>-plane gives <i>z</i>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq"><i>YZ</i>-plane: <i>x</i>=0; any plane ∥ <i>YZ</i>: <i>x</i>=constant</span><span class="eq"><i>ZX</i>-plane: <i>y</i>=0; any plane ∥ <i>ZX</i>: <i>y</i>=constant</span><span class="eq"><i>XY</i>-plane: <i>z</i>=0; any plane ∥ <i>XY</i>: <i>z</i>=constant</span><span class="eq">For <i>P</i>(<i>x</i>,<i>y</i>,<i>z</i>): <i>x</i>, <i>y</i>, <i>z</i> are signed perpendicular distances from <i>YZ</i>, <i>ZX</i>, <i>XY</i> planes respectively</span><span class="eq">Quick check: on an axis, two coordinates are 0; on a coordinate plane, one coordinate is 0</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-7">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">7</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>SPECIAL POINT LOCATIONS (3D COORDINATES)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>A point in 3D is written as an ordered triplet <b>(x, y, z)</b> in a rectangular coordinate system.</li><li>If a point lies on a coordinate axis, the other two coordinates are <b>0</b> (the point lies on two coordinate planes).</li><li>If a point lies on a coordinate plane, the coordinate perpendicular to that plane is <b>0</b>.</li><li>Origin is the common intersection of all three axes and all three coordinate planes: <b>(0,0,0)</b>.</li><li>Coordinate-plane constraints: <b>YZ ⇒ x=0</b>, <b>ZX ⇒ y=0</b>, <b>XY ⇒ z=0</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+    <svg viewBox="0 0 760 650"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <!-- XY plane -->
+    <polygon points="365,350 590,440 380,555 150,465"
+             fill="#CFE4CF"
+             fill-opacity="0.78"
+             stroke="#111"
+             stroke-width="2"/>
+
+    <!-- ZX plane -->
+    <polygon points="150,465 365,350 365,95 150,210"
+             fill="#F2DFC0"
+             fill-opacity="0.78"
+             stroke="#111"
+             stroke-width="2"/>
+
+    <!-- YZ plane -->
+    <polygon points="365,350 590,440 590,185 365,95"
+             fill="#D8CFDA"
+             fill-opacity="0.78"
+             stroke="#111"
+             stroke-width="2"/>
+
+    <!-- Grid on ZX plane -->
+    <g stroke="#9C927F" stroke-width="1.3" opacity="0.75">
+      <line x1="150" y1="410" x2="365" y2="295"/>
+      <line x1="150" y1="355" x2="365" y2="240"/>
+      <line x1="150" y1="300" x2="365" y2="185"/>
+      <line x1="150" y1="245" x2="365" y2="130"/>
+
+      <line x1="200" y1="438" x2="200" y2="184"/>
+      <line x1="250" y1="412" x2="250" y2="158"/>
+      <line x1="300" y1="385" x2="300" y2="132"/>
+    </g>
+
+    <!-- Grid on YZ plane -->
+    <g stroke="#8E858F" stroke-width="1.3" opacity="0.75">
+      <line x1="365" y1="300" x2="590" y2="390"/>
+      <line x1="365" y1="250" x2="590" y2="340"/>
+      <line x1="365" y1="200" x2="590" y2="290"/>
+      <line x1="365" y1="150" x2="590" y2="240"/>
+
+      <line x1="415" y1="115" x2="415" y2="370"/>
+      <line x1="465" y1="135" x2="465" y2="390"/>
+      <line x1="515" y1="155" x2="515" y2="410"/>
+      <line x1="565" y1="175" x2="565" y2="430"/>
+    </g>
+
+    <!-- Grid on XY plane -->
+    <g stroke="#8FA28F" stroke-width="1.3" opacity="0.75">
+      <line x1="190" y1="480" x2="405" y2="365"/>
+      <line x1="235" y1="498" x2="450" y2="382"/>
+      <line x1="280" y1="515" x2="495" y2="400"/>
+      <line x1="325" y1="535" x2="540" y2="418"/>
+
+      <line x1="185" y1="445" x2="410" y2="535"/>
+      <line x1="230" y1="422" x2="455" y2="512"/>
+      <line x1="275" y1="399" x2="500" y2="489"/>
+      <line x1="320" y1="376" x2="545" y2="466"/>
+    </g>
+
+    <!-- Main axes -->
+    <line x1="365" y1="350" x2="150" y2="465"
+          stroke="#111" stroke-width="3"/>
+    <line x1="365" y1="350" x2="590" y2="440"
+          stroke="#111" stroke-width="3"/>
+    <line x1="365" y1="350" x2="365" y2="95"
+          stroke="#111" stroke-width="3"/>
+
+    <!-- Origin -->
+    <circle cx="365" cy="350" r="7" fill="#1A0A00"/>
+    <text x="375" y="357" font-size="22" fill="#111">O(0,0,0)</text>
+
+    <!-- Plane labels -->
+    <text x="215" y="260"
+          font-size="24"
+          fill="#F28C00"
+          text-anchor="middle">
+      <tspan x="215" dy="0">ZX-plane</tspan>
+      <tspan x="215" dy="28">(y = 0)</tspan>
+    </text>
+
+    <text x="480" y="255"
+          font-size="24"
+          fill="#800080"
+          text-anchor="middle">
+      <tspan x="480" dy="0">YZ-plane</tspan>
+      <tspan x="480" dy="28">(x = 0)</tspan>
+    </text>
+
+    <text x="365" y="435"
+          font-size="24"
+          fill="#008000"
+          text-anchor="middle">
+      <tspan x="365" dy="0">XY-plane</tspan>
+      <tspan x="365" dy="28">(z = 0)</tspan>
+    </text>
+
+    <!-- Axis labels -->
+    <text x="500" y="565" font-size="24" fill="#111">X Axis</text>
+    <text x="210" y="575" font-size="24" fill="#111">Y Axis</text>
+
+    <!-- Z values -->
+    <g font-size="19" fill="#111">
+      <text x="55" y="470">0</text>
+      <text x="55" y="420">1</text>
+      <text x="55" y="370">2</text>
+      <text x="55" y="320">3</text>
+      <text x="55" y="270">4</text>
+      <text x="55" y="220">5</text>
+    </g>
+
+    <!-- Y ticks -->
+    <g font-size="18" fill="#111">
+      <text x="140" y="495">0</text>
+      <text x="185" y="515">1</text>
+      <text x="230" y="535">2</text>
+      <text x="275" y="555">3</text>
+      <text x="320" y="575">4</text>
+      <text x="365" y="595">5</text>
+    </g>
+
+    <!-- X ticks -->
+    <g font-size="18" fill="#111">
+      <text x="595" y="470">0</text>
+      <text x="550" y="490">1</text>
+      <text x="505" y="510">2</text>
+      <text x="460" y="530">3</text>
+      <text x="415" y="550">4</text>
+      <text x="370" y="570">5</text>
+    </g>
+
+  </svg>  
+      
+      <div class="figcap">Coordinate planes impose one zero-coordinate; axes impose two zero-coordinates.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>Axis rule: on x-axis ⇒ <b>y=0</b> and <b>z=0</b>; similarly for y- and z-axes.</span></li><li><span class="ic">📄</span><span>Plane rule: in XY-plane ⇒ <b>z=0</b>; in YZ-plane ⇒ <b>x=0</b>; in ZX-plane ⇒ <b>y=0</b>.</span></li><li><span class="ic">🔁</span><span>Reading trick: the missing letter’s coordinate is zero (e.g., YZ-plane misses X ⇒ <b>x=0</b>).</span></li><li><span class="ic">✅</span><span>To test a location: check which coordinate(s) equal <b>0</b>; zeros decide axis/plane.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">ZERO-CONSTRAINT RULE (MOST USED IN QUESTIONS)</span></h2><ul class="b"><li>On x-axis: <b>(x,0,0)</b> because point is in both <b>XY</b> (z=0) and <b>ZX</b> (y=0).</li><li>On y-axis: <b>(0,y,0)</b> because point is in both <b>XY</b> (z=0) and <b>YZ</b> (x=0).</li><li>On z-axis: <b>(0,0,z)</b> because point is in both <b>YZ</b> (x=0) and <b>ZX</b> (y=0).</li><li>In planes: YZ → <b>(0,y,z)</b>, ZX → <b>(x,0,z)</b>, XY → <b>(x,y,0)</b>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">HOW TO IDENTIFY LOCATION FROM COORDINATES</span></h2><ul class="b"><li>Exactly two coordinates are zero ⇒ point lies on an axis (named by the nonzero coordinate).</li><li>Exactly one coordinate is zero ⇒ point lies in a coordinate plane (named by the two nonzero coordinate letters).</li><li>No coordinate is zero ⇒ point is in an octant (not on any axis/plane).</li><li>All three are zero ⇒ origin.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">Special Point Locations in 3D (Axes &amp; Coordinate Planes)</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Location</th><th>Constraint(s)</th><th>General coordinate form</th></tr></thead><tbody><tr><td>Origin</td><td>x=0, y=0, z=0</td><td>(0,0,0)</td></tr><tr><td>x-axis</td><td>y=0, z=0</td><td>(x,0,0)</td></tr><tr><td>y-axis</td><td>x=0, z=0</td><td>(0,y,0)</td></tr><tr><td>z-axis</td><td>x=0, y=0</td><td>(0,0,z)</td></tr><tr><td>XY-plane</td><td>z=0</td><td>(x,y,0)</td></tr><tr><td>YZ-plane</td><td>x=0</td><td>(0,y,z)</td></tr></tbody></table></div></div>
+    
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Q&amp;A</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">A point P lies on the x-axis and has x-coordinate 7. Write its coordinates and state which coordinate planes it lies in.</div><div class="sol"><span class="lbl">Answer:</span><br>On x-axis ⇒ <b>y=0</b> and <b>z=0</b>.<br>So P = <b>(7,0,0)</b>.<br>Since <b>z=0</b>, P lies in <b>XY-plane</b>; since <b>y=0</b>, P lies in <b>ZX-plane</b>.</div><div class="ans">✓&nbsp; P = (7,0,0); it lies in the XY-plane and ZX-plane.</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find the location (axis/plane/none) of A(0,−5,9), B(3,0,0), C(4,−2,0), D(0,0,−6).</div><div class="sol"><span class="lbl">Answer:</span><br>A(0,−5,9): only <b>x=0</b> ⇒ A lies in <b>YZ-plane</b>.<br>B(3,0,0): <b>y=0</b> and <b>z=0</b> ⇒ B lies on <b>x-axis</b>.<br>C(4,−2,0): only <b>z=0</b> ⇒ C lies in <b>XY-plane</b>.<br>D(0,0,−6): <b>x=0</b> and <b>y=0</b> ⇒ D lies on <b>z-axis</b>.</div><div class="ans">✓&nbsp; A in YZ-plane; B on x-axis; C in XY-plane; D on z-axis.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>YZ-plane means x is zero; ZX-plane means y is zero; XY-plane means z is zero.</li><li>Axis points have two zeros; plane points have one zero; origin has three zeros.</li><li>x-axis is the intersection of XY-plane and ZX-plane; similarly for other axes.</li><li>Order matters: (x,y,z) is not interchangeable; swapping changes the point.</li><li>Negative values are allowed on axes/planes; only the zero-constraints decide location.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Writing YZ-plane point as (x,y,0) instead of (0,y,z).</li><li>Mixing up ZX-plane and XZ-plane notation; both mean <b>y=0</b>.</li><li>Assuming points on axes must have positive coordinate; signs can be ±.</li><li>Thinking x-axis needs only one zero; actually it requires <b>y=0</b> and <b>z=0</b>.</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Missing Letter = Missing Coordinate (becomes 0)”</div><paragraph id="6aa538c1ea33ca6e3b00042b">XY-plane misses Z ⇒ <b>z=0</b>.</paragraph><paragraph id="6aa538c10891b0ace300042c">YZ-plane misses X ⇒ <b>x=0</b>.</paragraph><paragraph id="6aa538c1a5f9b58a8500042d">ZX-plane misses Y ⇒ <b>y=0</b>.</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">📌</span><span class="htext">Quick Recap</span></h2><div class="fs"><span class="eq">Triplet form of a point: <b>(x, y, z)</b> (ordered).</span><span class="eq">Origin: <b>(0,0,0)</b>.</span><span class="eq">On x-axis: <b>(x,0,0)</b>; on y-axis: <b>(0,y,0)</b>; on z-axis: <b>(0,0,z)</b>.</span><span class="eq">In XY-plane: <b>(x,y,0)</b>; in YZ-plane: <b>(0,y,z)</b>; in ZX-plane: <b>(x,0,z)</b>.</span><span class="eq">Quick map: <b>YZ ⇒ x=0</b>, <b>ZX ⇒ y=0</b>, <b>XY ⇒ z=0</b>.</span><span class="eq">Two zeros ⇒ axis; one zero ⇒ plane; three zeros ⇒ origin; no zeros ⇒ octant.</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-8">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">8</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>DISTANCE FORMULA IN 3D</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li>Distance between <b>P</b>(<i>x</i><sub>1</sub>,<i>y</i><sub>1</sub>,<i>z</i><sub>1</sub>) and <b>Q</b>(<i>x</i><sub>2</sub>,<i>y</i><sub>2</sub>,<i>z</i><sub>2</sub>) is the length of segment <b>PQ</b> in 3D.</li><li>Construct a rectangular parallelepiped with diagonal <b>PQ</b>; its edges are |<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>|, |<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>|, |<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>|.</li><li>Apply Pythagoras twice using two right triangles formed on adjacent faces.</li><li>Squared distance adds squared coordinate differences: <b>PQ</b><sup>2</sup> = Δ<i>x</i><sup>2</sup>+Δ<i>y</i><sup>2</sup>+Δ<i>z</i><sup>2</sup>.</li><li>Special case: distance from origin <b>O</b>(0,0,0) to <b>Q</b>(<i>x</i>,<i>y</i>,<i>z</i>) is <b>OQ</b> = √(<i>x</i><sup>2</sup>+<i>y</i><sup>2</sup>+<i>z</i><sup>2</sup>).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox">
+     <svg viewBox="0 0 760 560"
+       xmlns="http://www.w3.org/2000/svg"
+       style="width:100%;height:auto;display:block;">
+
+    <defs>
+      <marker id="arrowAxis-t8-s1" markerWidth="10" markerHeight="10"
+              refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#123B7A"/>
+      </marker>
+
+      <marker id="arrowDiag-t8-s1" markerWidth="10" markerHeight="10"
+              refX="9" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#123B7A"/>
+      </marker>
+    </defs>
+
+    <!-- Coordinate axes -->
+    <line x1="150" y1="420" x2="360" y2="420"
+          stroke="#123B7A" stroke-width="3"
+          marker-end="url(#arrowAxis-t8-s1)"/>
+
+    <line x1="150" y1="420" x2="225" y2="340"
+          stroke="#123B7A" stroke-width="3"
+          marker-end="url(#arrowAxis-t8-s1)"/>
+
+    <line x1="150" y1="420" x2="150" y2="220"
+          stroke="#123B7A" stroke-width="3"
+          marker-end="url(#arrowAxis-t8-s1)"/>
+
+    <line x1="150" y1="420" x2="100" y2="470"
+          stroke="#123B7A" stroke-width="3"
+          marker-end="url(#arrowAxis-t8-s1)"/>
+
+    <!-- Axis ticks -->
+    <g stroke="#123B7A" stroke-width="2">
+      <line x1="200" y1="410" x2="200" y2="430"/>
+      <line x1="250" y1="410" x2="250" y2="430"/>
+      <line x1="300" y1="410" x2="300" y2="430"/>
+
+      <line x1="170" y1="390" x2="185" y2="405"/>
+      <line x1="190" y1="370" x2="205" y2="385"/>
+
+      <line x1="140" y1="370" x2="160" y2="370"/>
+      <line x1="140" y1="325" x2="160" y2="325"/>
+      <line x1="140" y1="280" x2="160" y2="280"/>
+    </g>
+
+    <!-- Axis labels -->
+    <text x="370" y="438" font-size="23" fill="#111">x</text>
+    <text x="225" y="352" font-size="23" fill="#111">y</text>
+    <text x="125" y="225" font-size="23" fill="#111">z</text>
+    <text x="80" y="490" font-size="23" fill="#111">y</text>
+
+    <!-- Cuboid back/top -->
+    <polygon points="300,230 565,230 625,185 360,185"
+             fill="#F4F5FF"
+             fill-opacity="0.8"
+             stroke="#16A34A"
+             stroke-width="3"/>
+
+    <!-- Cuboid front -->
+    <polygon points="300,230 565,230 565,385 300,385"
+             fill="#EEF8F2"
+             fill-opacity="0.65"
+             stroke="#16A34A"
+             stroke-width="3"/>
+
+    <!-- Right face -->
+    <polygon points="565,230 625,185 625,340 565,385"
+             fill="#F6F1FF"
+             fill-opacity="0.7"
+             stroke="#16A34A"
+             stroke-width="3"/>
+
+    <!-- Internal/back edges -->
+    <line x1="360" y1="185" x2="360" y2="340"
+          stroke="#5B78C7" stroke-width="2"/>
+    <line x1="360" y1="340" x2="625" y2="340"
+          stroke="#5B78C7" stroke-width="2"/>
+    <line x1="360" y1="340" x2="300" y2="385"
+          stroke="#5B78C7" stroke-width="2"/>
+
+    <!-- Vertical edges -->
+    <line x1="300" y1="230" x2="300" y2="385"
+          stroke="#6B0E7F" stroke-width="3"/>
+    <line x1="565" y1="230" x2="565" y2="385"
+          stroke="#6B0E7F" stroke-width="3"/>
+    <line x1="625" y1="185" x2="625" y2="340"
+          stroke="#6B0E7F" stroke-width="3"/>
+
+    <!-- P and Q -->
+    <circle cx="300" cy="350" r="8" fill="#F59E0B"/>
+    <text x="275" y="345" font-size="22" fill="#111">P</text>
+
+    <circle cx="565" cy="230" r="8" fill="#F59E0B"/>
+    <text x="575" y="242" font-size="22" fill="#111">Q</text>
+
+    <!-- Space diagonal PQ -->
+    <line x1="300" y1="350" x2="560" y2="232"
+          stroke="#123B7A"
+          stroke-width="4"
+          marker-end="url(#arrowDiag-t8-s1)"/>
+
+    <text x="410" y="285"
+          font-size="22"
+          fill="#111">PQ</text>
+
+    <!-- Dimension labels -->
+    <text x="405" y="415" font-size="22" fill="#111">Δx</text>
+    <text x="610" y="372" font-size="22" fill="#111">Δy</text>
+    <text x="625" y="275" font-size="22" fill="#111">Δz</text>
+    <text x="285" y="210" font-size="22" fill="#111">Δy</text>
+
+  </svg>  
+    
+      
+      <div class="figcap">Rectangular parallelepiped with space diagonal <b>PQ</b>; edges represent Δ<i>x</i>, Δ<i>y</i>, Δ<i>z</i>.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">📦</span><span>Think of Δ<i>x</i>, Δ<i>y</i>, Δ<i>z</i> as three perpendicular edges of a box.</span></li><li><span class="ic">🧩</span><span>Use two right triangles: first on a face, then with the space diagonal.</span></li><li><span class="ic">🧮</span><span>Always compute <b>PQ</b><sup>2</sup> first; take square root at the end.</span></li><li><span class="ic">🎯</span><span>From origin: just plug <i>x</i><sub>1</sub>=<i>y</i><sub>1</sub>=<i>z</i><sub>1</sub>=0.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">PYTHAGORAS-BASED DERIVATION (BOX METHOD)</span></h2><ul class="b"><li>Let <b>P</b>(<i>x</i><sub>1</sub>,<i>y</i><sub>1</sub>,<i>z</i><sub>1</sub>), <b>Q</b>(<i>x</i><sub>2</sub>,<i>y</i><sub>2</sub>,<i>z</i><sub>2</sub>); define Δ<i>x</i>=<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>, Δ<i>y</i>=<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>, Δ<i>z</i>=<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>.</li><li>On a face, diagonal squared = Δ<i>x</i><sup>2</sup>+Δ<i>y</i><sup>2</sup> (2D distance on that face).</li><li>Space diagonal squared = (face diagonal)<sup>2</sup> + Δ<i>z</i><sup>2</sup> ⇒ Δ<i>x</i><sup>2</sup>+Δ<i>y</i><sup>2</sup>+Δ<i>z</i><sup>2</sup>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">FAST APPLICATION TIPS (EXAM SPEED)</span></h2><ul class="b"><li>Use differences first; signs don’t matter after squaring, but differences must be correct.</li><li>If one coordinate is same, its term becomes 0 (reduces to 2D or 1D distance).</li><li>To avoid √ early, compare squared lengths for right angle/collinearity checks.</li></ul></div></div>
+    
+    <div class="card " style="--sec:#7C3AED;--secbg:#F4EFFE;--secbd:#E1D3FB"><h2><span class="secno">6</span><span class="htext">Formulas</span></h2><div class="f3"><div><div class="fstep">On a face rectangle (right triangle in a coordinate plane):</div><div class="eqbox"><span class="eq"><b>AQ</b><sup>2</sup> = (Δ<i>x</i>)<sup>2</sup> + (Δ<i>z</i>)<sup>2</sup></span></div><div class="fstep">Then use the right triangle with <b>PQ</b> as hypotenuse:</div><div class="eqbox"><span class="eq"><b>PQ</b><sup>2</sup> = (Δ<i>y</i>)<sup>2</sup> + <b>AQ</b><sup>2</sup></span></div></div><div><div class="fstep">Substitute and simplify:</div><div class="eqbox blue"><span class="eq"><b>PQ</b><sup>2</sup> = (Δ<i>x</i>)<sup>2</sup> + (Δ<i>y</i>)<sup>2</sup> + (Δ<i>z</i>)<sup>2</sup></span></div><div class="fstep">Take square root (distance is non-negative):</div><div class="eqbox blue"><span class="eq"><b>PQ</b> = √((Δ<i>x</i>)<sup>2</sup>+(Δ<i>y</i>)<sup>2</sup>+(Δ<i>z</i>)<sup>2</sup>)</span></div></div><div><table class="wtab"><tr><td><b>P</b>(<i>x</i><sub>1</sub>,<i>y</i><sub>1</sub>,<i>z</i><sub>1</sub>)&nbsp;=</td><td>First point in 3D rectangular coordinate system</td></tr><tr><td><b>Q</b>(<i>x</i><sub>2</sub>,<i>y</i><sub>2</sub>,<i>z</i><sub>2</sub>)&nbsp;=</td><td>Second point</td></tr><tr><td>Δ<i>x</i>, Δ<i>y</i>, Δ<i>z</i>&nbsp;=</td><td>Coordinate differences: <i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>, <i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>, <i>z</i><sub>2</sub>−<i>z</i><sub>1</sub></td></tr><tr><td><b>O</b>(0,0,0)&nbsp;=</td><td>Origin</td></tr></table><div class="hibox">Most important result<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><b>PQ</b> = √((<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>)<sup>2</sup>+(<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>)<sup>2</sup>+(<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>)<sup>2</sup>)</span></div></div></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Find the distance between P(1, −3, 4) and Q(−4, 1, 2).</div><div class="sol"><span class="lbl">Solution:</span><br>Compute differences: Δ<i>x</i>=−4−1=−5, Δ<i>y</i>=1−(−3)=4, Δ<i>z</i>=2−4=−2.<br>Square and add: <b>PQ</b><sup>2</sup>=(−5)<sup>2</sup>+4<sup>2</sup>+(−2)<sup>2</sup>=25+16+4=45.<br>Distance: <b>PQ</b>=√45=√(9×5)=3√5.</div><div class="ans">✓&nbsp; <b>PQ</b> = 3√5 units</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find the distance of Q(−2, 6, −3) from the origin O(0,0,0).</div><div class="sol"><span class="lbl">Solution:</span><br>Use origin formula: <b>OQ</b>=√(<i>x</i><sup>2</sup>+<i>y</i><sup>2</sup>+<i>z</i><sup>2</sup>).<br>Substitute: <b>OQ</b>=√((−2)<sup>2</sup>+6<sup>2</sup>+(−3)<sup>2</sup>)=√(4+36+9)=√49.<br>So <b>OQ</b>=7.</div><div class="ans">✓&nbsp; <b>OQ</b> = 7 units</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Distance is always non-negative; final step is principal square root.</li><li>Order of points doesn’t matter: swapping P and Q changes signs of Δ’s only.</li><li>If two coordinates match, distance reduces to 2D formula in the remaining plane.</li><li>Use squared distances to check relations quickly (e.g., compare <b>a</b><sup>2</sup>+<b>b</b><sup>2</sup> with <b>c</b><sup>2</sup>).</li><li>Origin distance is a direct special case of the same formula.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using (<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub>) instead of (<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>).</li><li>Forgetting to square a difference or squaring only one term.</li><li>Taking √ too early and then adding roots incorrectly.</li><li>Arithmetic sign errors in Δ<i>y</i> when subtracting a negative value.</li></ul></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">10</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><b>PQ</b><sup>2</sup> = (<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>)<sup>2</sup> + (<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>)<sup>2</sup> + (<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>)<sup>2</sup></span><span class="eq"><b>PQ</b> = √((<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>)<sup>2</sup>+(<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>)<sup>2</sup>+(<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>)<sup>2</sup>)</span><span class="eq">Distance from origin: <b>OQ</b> = √(<i>x</i><sup>2</sup>+<i>y</i><sup>2</sup>+<i>z</i><sup>2</sup>)</span><span class="eq">If <i>z</i><sub>1</sub>=<i>z</i><sub>2</sub>, then <b>PQ</b> = √((Δ<i>x</i>)<sup>2</sup>+(Δ<i>y</i>)<sup>2</sup>) (lies in a plane parallel to XY).</span></div></div></div>
+          </div>
+        </section>
+        <section class="topic" id="topic-9">
+          <header class="topic-hdr">
+            <span class="shield"><span class="l">TOPIC</span><span class="n">9</span></span>
+            <div class="topic-hdr-text">
+              <div class="eyebrow"></div>
+              <h2>APPLICATIONS OF DISTANCE (3D)</h2>
+            </div>
+          </header>
+          <div class="bodyinner">
+<div class="row c3"><div class="card " style="--sec:#2563EB;--secbg:#EEF4FF;--secbd:#CFE0FF"><h2><span class="secno">1</span><span class="htext">Definition &amp; Introduction</span></h2><ul class="b"><li><b>3D distance formula</b> converts coordinate conditions into length relations between points in space.</li><li>Collinearity can be tested using segment-addition: <i>PQ</i> + <i>QR</i> = <i>PR</i> (with Q between P and R).</li><li>Triangle type checks use squared lengths: compare <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup> with <i>c</i><sup>2</sup> (take <i>c</i> as the largest side).</li><li>Quadrilateral properties can be verified by equal opposite sides or diagonal properties using distances.</li><li>Locus equations arise from distance constraints like <i>PA</i> = <i>PB</i> or <i>PA</i><sup>2</sup> + <i>PB</i><sup>2</sup> = constant (a real locus exists only if the constant is at least the minimum possible value).</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">2</span><span class="htext">Diagram</span></h2><div class="figbox"><svg preserveAspectRatio="xMidYMid meet" viewBox='0 0 360 200' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arr' markerWidth='10' markerHeight='10' refX='7' refY='3' orient='auto'><path d='M0,0 L8,3 L0,6 Z' fill='#2563EB'/></marker></defs><g><rect x='14' y='16' width='332' height='168' rx='10' fill='#EEF4FF' stroke='#123B7A' stroke-width='2'/><text x='24' y='38' font-size='13' fill='#1f2a44'>Distance-based checks</text><circle cx='70' cy='85' r='12' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='62' y='90' font-size='12' fill='#1f2a44'>P</text><circle cx='165' cy='85' r='12' fill='#FEF5E4' stroke='#F59E0B' stroke-width='2'/><text x='157' y='90' font-size='12' fill='#1f2a44'>Q</text><circle cx='260' cy='85' r='12' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='252' y='90' font-size='12' fill='#1f2a44'>R</text><line x1='82' y1='85' x2='153' y2='85' stroke='#2563EB' stroke-width='2' marker-end='url(#arr)'/><line x1='177' y1='85' x2='248' y2='85' stroke='#2563EB' stroke-width='2' marker-end='url(#arr)'/><text x='103' y='74' font-size='12' fill='#1f2a44'>PQ</text><text x='198' y='74' font-size='12' fill='#1f2a44'>QR</text><text x='118' y='110' font-size='12' fill='#1f2a44'>Collinear if PQ + QR = PR</text><rect x='40' y='128' width='130' height='40' rx='8' fill='#EAF7EF' stroke='#16A34A' stroke-width='2'/><text x='52' y='152' font-size='12' fill='#1f2a44'>Triangle check</text><rect x='190' y='128' width='130' height='40' rx='8' fill='#F4EFFE' stroke='#7C3AED' stroke-width='2'/><text x='204' y='152' font-size='12' fill='#1f2a44'>Locus by distance</text></g></svg><div class="figcap">Compute lengths using 3D distance, then apply standard length relations to conclude geometry.<br><br></div></div></div><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">3</span><span class="htext">Key Concepts</span></h2><ul class="kc"><li><span class="ic">🧭</span><span>Collinear test: compute <i>PQ</i>, <i>QR</i>, <i>PR</i> and check <i>PQ</i> + <i>QR</i> = <i>PR</i>.</span></li><li><span class="ic">📐</span><span>Right triangle: if largest side is <i>c</i>, check <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup> = <i>c</i><sup>2</sup>.</span></li><li><span class="ic">▱</span><span>Parallelogram: show <i>AB</i> = <i>CD</i> and <i>BC</i> = <i>AD</i> (or diagonals bisect).</span></li><li><span class="ic">▭</span><span>Rectangle: show parallelogram first, then check diagonals: <i>AC</i> = <i>BD</i>.</span></li><li><span class="ic">🎯</span><span>Locus <i>PA</i> = <i>PB</i>: the perpendicular bisector plane from <i>PA</i><sup>2</sup> = <i>PB</i><sup>2</sup> (linear equation).</span></li><li><span class="ic">⚖️</span><span>Locus <i>PA</i><sup>2</sup> + <i>PB</i><sup>2</sup> = const gives a sphere; it becomes a single point at the minimum, and no real points if const is smaller than the minimum.</span></li></ul></div></div>
+    <div class="row c2"><div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">4</span><span class="htext">CHECKLIST: WHAT TO COMPUTE FIRST</span></h2><ul class="b"><li>Prefer squared distances to avoid √ until the final comparison.</li><li>For collinearity, identify the possible middle point before using <i>PQ</i> + <i>QR</i> = <i>PR</i>.</li><li>For right triangle, compare the <b>largest</b> squared side with sum of other two.</li><li>For parallelogram, verify both pairs of opposite sides equal using distances.</li><li>For rectangle, show parallelogram first, then test diagonals: <i>AC</i> = <i>BD</i>.</li></ul></div><div class="card " style="--sec:#0D9488;--secbg:#E7F6F4;--secbd:#C2E8E2"><h2><span class="secno">5</span><span class="htext">LOCI FROM DISTANCE CONDITIONS (FAST EXPANSION TRICK)</span></h2><ul class="b"><li><b>Equidistant from A and B</b>: set <i>PA</i><sup>2</sup> = <i>PB</i><sup>2</sup> to cancel <i>x</i><sup>2</sup>, <i>y</i><sup>2</sup>, <i>z</i><sup>2</sup> → linear plane (perpendicular bisector plane).</li><li><b>Sum of squares fixed</b>: expand <i>PA</i><sup>2</sup> + <i>PB</i><sup>2</sup> = const → sphere after completing squares (or no real points if const is too small).</li><li>If M is midpoint of AB, then <i>PA</i><sup>2</sup> + <i>PB</i><sup>2</sup> = 2<i>PM</i><sup>2</sup> + <span class='frac'><span><i>AB</i><sup>2</sup></span><span>2</span></span>, so the minimum is <span class='frac'><span><i>AB</i><sup>2</sup></span><span>2</span></span> attained at P = M.</li></ul></div></div>
+    <div class="card " style="--sec:#123B7A;--secbg:#EDF1F8;--secbd:#CFDAEC"><h2><span class="secno">6</span><span class="htext">USING DISTANCE TO PROVE COMMON RESULTS</span></h2><div class="tbl-scroll"><table class="ctab"><thead><tr><th>Goal</th><th>Distance condition(s)</th><th>Conclusion</th></tr></thead><tbody><tr><td>Collinearity</td><td><i>PQ</i> + <i>QR</i> = <i>PR</i></td><td>P, Q, R lie on one line (Q between P and R)</td></tr><tr><td>Right-angled triangle</td><td>If <i>c</i> is largest: <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup> = <i>c</i><sup>2</sup></td><td>Angle opposite <i>c</i> is 90°</td></tr><tr><td>Parallelogram</td><td><i>AB</i> = <i>CD</i> and <i>BC</i> = <i>AD</i></td><td>ABCD is a parallelogram</td></tr><tr><td>Rectangle test</td><td>Parallelogram + diagonals <i>AC</i> = <i>BD</i></td><td>ABCD is a rectangle</td></tr><tr><td>Equidistant locus</td><td><i>PA</i><sup>2</sup> = <i>PB</i><sup>2</sup></td><td>Perpendicular bisector plane of segment AB</td></tr></tbody></table></div></div>
+    <div class="eqbox blue"><span class="eq">2(<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>)<i>x</i> + 2(<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>)<i>y</i> + 2(<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>)<i>z</i> = (<i>x</i><sub>2</sub><sup>2</sup>+<i>y</i><sub>2</sub><sup>2</sup>+<i>z</i><sub>2</sub><sup>2</sup>) − (<i>x</i><sub>1</sub><sup>2</sup>+<i>y</i><sub>1</sub><sup>2</sup>+<i>z</i><sub>1</sub><sup>2</sup>)</span></div><div><table class="wtab"><tr><td><i>PQ</i>&nbsp;=</td><td>Distance between points P and Q (units)</td></tr><tr><td><i>x</i><sub>1</sub>, <i>y</i><sub>1</sub>, <i>z</i><sub>1</sub>&nbsp;=</td><td>Coordinates of point P</td></tr><tr><td><i>x</i><sub>2</sub>, <i>y</i><sub>2</sub>, <i>z</i><sub>2</sub>&nbsp;=</td><td>Coordinates of point Q</td></tr></table><div class="hibox">Most used tool<div class="eqbox gold" style="margin-top:1mm"><span class="eq"><i>PQ</i> = √[(<i>x</i><sub>2</sub>−<i>x</i><sub>1</sub>)<sup>2</sup> + (<i>y</i><sub>2</sub>−<i>y</i><sub>1</sub>)<sup>2</sup> + (<i>z</i><sub>2</sub>−<i>z</i><sub>1</sub>)<sup>2</sup>]</span></div></div></div>
+    
+    <div class="card " style="--sec:#D97706;--secbg:#FEF5E4;--secbd:#F8DFB0"><h2><span class="secno">7</span><span class="htext">Solved Examples</span></h2><div class="row c2" style="gap:4mm"><div class="ex"><div class="n">1</div><div><div class="prob">Using distance formula, show that P(−2, 3, 5), Q(1, 2, 3), R(7, 0, −1) are collinear.</div><div class="sol"><span class="lbl">Solution:</span><br>Compute <i>PQ</i><sup>2</sup> = (1+2)<sup>2</sup> + (2−3)<sup>2</sup> + (3−5)<sup>2</sup> = 9 + 1 + 4 = 14 ⇒ <i>PQ</i> = √14.<br>Compute <i>QR</i><sup>2</sup> = (7−1)<sup>2</sup> + (0−2)<sup>2</sup> + (−1−3)<sup>2</sup> = 36 + 4 + 16 = 56 ⇒ <i>QR</i> = √56 = 2√14.<br>Compute <i>PR</i><sup>2</sup> = (7+2)<sup>2</sup> + (0−3)<sup>2</sup> + (−1−5)<sup>2</sup> = 81 + 9 + 36 = 126 ⇒ <i>PR</i> = √126 = 3√14.<br>Check segment addition: <i>PQ</i> + <i>QR</i> = √14 + 2√14 = 3√14 = <i>PR</i>.</div><div class="ans">✓&nbsp; Yes. Since <i>PQ</i> + <i>QR</i> = <i>PR</i>, the three points are collinear (Q lies between P and R).</div></div></div><div class="ex"><div class="n">2</div><div><div class="prob">Find the locus equation of points P(<i>x</i>,<i>y</i>,<i>z</i>) such that <i>PA</i><sup>2</sup> + <i>PB</i><sup>2</sup> = 2<i>k</i><sup>2</sup>, where A(3,4,5), B(−1,3,−7).</div><div class="sol"><span class="lbl">Solution:</span><br><i>PA</i><sup>2</sup> = (<i>x</i>−3)<sup>2</sup> + (<i>y</i>−4)<sup>2</sup> + (<i>z</i>−5)<sup>2</sup>.<br><i>PB</i><sup>2</sup> = (<i>x</i>+1)<sup>2</sup> + (<i>y</i>−3)<sup>2</sup> + (<i>z</i>+7)<sup>2</sup>.<br>Add and expand: (<i>x</i>−3)<sup>2</sup>+(<i>x</i>+1)<sup>2</sup> = 2<i>x</i><sup>2</sup> − 4<i>x</i> + 10.<br>(<i>y</i>−4)<sup>2</sup>+(<i>y</i>−3)<sup>2</sup> = 2<i>y</i><sup>2</sup> − 14<i>y</i> + 25.<br>(<i>z</i>−5)<sup>2</sup>+(<i>z</i>+7)<sup>2</sup> = 2<i>z</i><sup>2</sup> + 4<i>z</i> + 74.<br>So <i>PA</i><sup>2</sup>+<i>PB</i><sup>2</sup> = 2<i>x</i><sup>2</sup>+2<i>y</i><sup>2</sup>+2<i>z</i><sup>2</sup> − 4<i>x</i> − 14<i>y</i> + 4<i>z</i> + (10+25+74) = 2<i>x</i><sup>2</sup>+2<i>y</i><sup>2</sup>+2<i>z</i><sup>2</sup> − 4<i>x</i> − 14<i>y</i> + 4<i>z</i> + 109.</div><div class="ans">✓&nbsp; Locus: 2<i>x</i><sup>2</sup> + 2<i>y</i><sup>2</sup> + 2<i>z</i><sup>2</sup> − 4<i>x</i> − 14<i>y</i> + 4<i>z</i> = 2<i>k</i><sup>2</sup> − 109.</div></div></div></div></div>
+    <div class="row c4"><div class="card q" style="--sec:#16A34A;--secbg:#EAF7EF;--secbd:#C7EBD6"><h2><span class="secno">8</span><span class="hemoji">⭐</span><span class="htext">Important Points</span></h2><ul class="b"><li>Use squared distances for comparisons: avoids radicals and reduces arithmetic errors.</li><li>In collinearity by distances, the equality must match the correct order of points on the line.</li><li>Right-angle test needs <b>largest</b> side as hypotenuse; otherwise comparison is meaningless.</li><li>To prove rectangle: parallelogram alone is insufficient; also need diagonals <i>AC</i> = <i>BD</i>.</li><li>Locus <i>PA</i> = <i>PB</i> becomes a <b>plane</b> (linear equation) after expansion.</li></ul></div><div class="card q" style="--sec:#DC2626;--secbg:#FDECEC;--secbd:#F6CFCF"><h2><span class="secno">9</span><span class="hemoji">❌</span><span class="htext">Common Mistakes</span></h2><ul class="b"><li>Using <i>PQ</i> + <i>PR</i> = <i>QR</i> without checking which point lies between the other two.</li><li>Comparing <i>AB</i> + <i>BC</i> with <i>AC</i> using squared lengths (should use actual lengths there).</li><li>For right triangle, not identifying the largest side before applying Pythagoras.</li><li>Declaring rectangle from <i>AB</i> = <i>CD</i>, <i>BC</i> = <i>AD</i> only (that proves parallelogram).</li></ul></div><div class="card q" style="--sec:#B45309;--secbg:#FFF7DE;--secbd:#F3E2A0"><h2><span class="secno">10</span><span class="hemoji">💡</span><span class="htext">Memory Technique</span></h2><div class="mem"><div class="big">“Mnemonic: "ADD–SQ–OPP–DIA–LOC"”</div><paragraph id="6aa538c14b229c29d000042e"><b>ADD</b>: Collinear ⇒ add segments equals whole.</paragraph><paragraph id="6aa538c1536eaeb0bb00042f"><b>SQ</b>: Triangle type ⇒ compare squared sides.</paragraph><paragraph id="6aa538c1b99027d275000430"><b>OPP</b>: Parallelogram ⇒ opposite sides equal.</paragraph><paragraph id="6aa538c129a154169d000431"><b>DIA</b>: Rectangle ⇒ diagonals equal (after parallelogram).</paragraph></div></div><div class="card q" style="--sec:#DB2777;--secbg:#FDF0F7;--secbd:#F8CFE4"><h2><span class="secno">11</span><span class="hemoji">🧮</span><span class="htext">Formula Sheet</span></h2><div class="fs"><span class="eq"><i>PQ</i><sup>2</sup> = (Δ<i>x</i>)<sup>2</sup> + (Δ<i>y</i>)<sup>2</sup> + (Δ<i>z</i>)<sup>2</sup></span><span class="eq">Collinear (Q between): <i>PQ</i> + <i>QR</i> = <i>PR</i></span><span class="eq">Right triangle: if <i>c</i> largest, <i>a</i><sup>2</sup> + <i>b</i><sup>2</sup> = <i>c</i><sup>2</sup></span><span class="eq">Parallelogram test: <i>AB</i> = <i>CD</i> and <i>BC</i> = <i>AD</i></span><span class="eq">Rectangle test: parallelogram + diagonals <i>AC</i> = <i>BD</i></span><span class="eq">Equidistant locus: <i>PA</i><sup>2</sup> = <i>PB</i><sup>2</sup> ⇒ linear plane equation</span><span class="eq"><i>PA</i><sup>2</sup>+<i>PB</i><sup>2</sup>=constant ⇒ expand and complete squares to identify the locus (sphere / point / empty set)</span></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body>
+</html>

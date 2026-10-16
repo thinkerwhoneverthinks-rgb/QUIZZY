@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Ch-11 : Introduction to Three Dimensional Geometry</title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <style>math, math * { font-family:'Kalam',cursive !important; } math { font-size:1.08em; vertical-align:middle; }</style>  <link href="data:," rel="icon"/>
+
+  
+  
+
+
+
+
+
+
+<style id="quizzy-theme">
+
+/* ============================================================
+   QUIZZY-INSPIRED RESPONSIVE THEME (Light + Soft Dark)
+   ============================================================ */
+
+:root {
+  /* ===== LIGHT MODE (Approved Default) ===== */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #f8fafc;
+  --text-main: #1f2937;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+  
+  --accent: #0d9488;
+  --accent-light: #f0fdfa;
+  --accent-border: #99f6e4;
+
+  --key-bg: #f0fdfa;
+  --key-border: #0d9488;
+  --key-badge: #0d9488;
+
+  --hi-bg: #fffdf5;
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: #fef2f2;
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #ffffff;
+  --tile-border: #e2e8f0;
+  --tile-text: #0f172a;
+  --tile-sub: #475569;
+
+  --flow-bg: #ffffff;
+  --flow-border: #0d9488;
+  --flow-text: #0f172a;
+
+  --table-header-bg: #f0fdfa;
+  --table-header-color: #0d9488;
+  --table-row-alt: #f8fafc;
+  --table-border: #e2e8f0;
+
+  --qa-bg: #ffffff;
+  --qa-sol-bg: #f8fafc;
+
+  --img-filter: none;
+  --img-blend: normal;
+}
+
+/* ===== QUIZZY SOFT DARK MODE (Not Pitch Black) ===== */
+[data-theme="dark"], html.dark, body.dark-theme, .dark {
+  --bg-page: #0b111e;
+  --bg-card: #131b2e;
+  --bg-elevated: #1a253c;
+  --text-main: #e2e8f0;
+  --text-heading: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(148, 163, 184, 0.20);
+
+  --accent: #00bfa5;
+  --accent-light: rgba(0, 191, 165, 0.12);
+  --accent-border: rgba(0, 191, 165, 0.35);
+
+  --key-bg: rgba(0, 191, 165, 0.12);
+  --key-border: #00bfa5;
+  --key-badge: #00bfa5;
+
+  --hi-bg: rgba(245, 158, 11, 0.12);
+  --hi-border: #f59e0b;
+  --hi-badge: #f59e0b;
+
+  --rem-bg: rgba(239, 68, 68, 0.12);
+  --rem-border: #ef4444;
+  --rem-badge: #ef4444;
+
+  --tile-bg: #162035;
+  --tile-border: rgba(148, 163, 184, 0.24);
+  --tile-text: #f8fafc;
+  --tile-sub: #cbd5e1;
+
+  --flow-bg: #162035;
+  --flow-border: #00bfa5;
+  --flow-text: #f8fafc;
+
+  --table-header-bg: #1a253c;
+  --table-header-color: #00bfa5;
+  --table-row-alt: rgba(255, 255, 255, 0.03);
+  --table-border: rgba(148, 163, 184, 0.20);
+
+  --qa-bg: #131b2e;
+  --qa-sol-bg: #1a253c;
+
+  --img-filter: invert(1) hue-rotate(180deg) brightness(1.1);
+  --img-blend: screen;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--bg-page);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: clamp(15px, 2vw, 16px);
+  line-height: 1.68;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 32px 20px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container, main, .chapter-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px 48px;
+  box-sizing: border-box;
+}
+
+.page-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  padding: 3px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+}
+
+h1 {
+  font-size: clamp(1.45rem, 5vw, 2.1rem);
+  font-weight: 850;
+  color: var(--text-heading);
+  text-align: center;
+  padding-bottom: 14px;
+  margin: 10px 0 28px;
+  border-bottom: 2.5px solid var(--border-subtle);
+  line-height: 1.28;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  margin: 34px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 3.2vw, 1.18rem);
+  font-weight: 750;
+  color: var(--text-heading);
+  margin: 24px 0 10px;
+  line-height: 1.4;
+}
+
+p, paragraph {
+  display: block;
+  margin: 0 0 14px;
+  color: var(--text-main);
+  line-height: 1.68;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+ul, ol {
+  margin: 8px 0 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 7px;
+  color: var(--text-main);
+}
+
+/* Bullet Lists */
+ul.star-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.star-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.star-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 18px;
+}
+ul.check-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+ul.check-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* Callout Boxes */
+.key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box, .sticky-note {
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.key-box::before, .highlight-box::before, .remember-box::before, .mnemonic-box::before, .formula-box::before {
+  content: attr(data-label);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* ⭐ KEY CONCEPT */
+.key-box {
+  background: var(--key-bg);
+  border: 1.5px solid var(--accent-border);
+  border-left: 5px solid var(--key-border);
+}
+.key-box::before {
+  background: var(--key-badge);
+}
+
+/* 💡 IMPORTANT */
+.highlight-box {
+  background: var(--hi-bg);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-left: 5px solid var(--hi-border);
+}
+.highlight-box::before {
+  background: var(--hi-badge);
+}
+
+/* ⛔ Exam trap / ⚠ Exam tip */
+.remember-box {
+  background: var(--rem-bg);
+  border: 1.5px solid rgba(239, 68, 68, 0.35);
+  border-left: 5px solid var(--rem-border);
+  color: var(--text-main);
+}
+.remember-box::before {
+  background: var(--rem-badge);
+}
+
+/* Sticky Note / Summary */
+.sticky-note {
+  background: var(--bg-elevated);
+  border: 1.5px solid var(--border-subtle);
+  border-left: 5px solid var(--text-muted);
+  color: var(--text-main);
+}
+
+/* Mnemonic Box */
+.mnemonic-box {
+  background: rgba(168, 85, 247, 0.10);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
+  border-left: 5px solid #a855f7;
+}
+.mnemonic-box::before {
+  background: #a855f7;
+}
+.mnemonic-word {
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Formula Box */
+.formula-box {
+  background: rgba(59, 130, 246, 0.10);
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  border-left: 5px solid #3b82f6;
+}
+.formula-box::before {
+  background: #3b82f6;
+}
+
+/* Horizontal Flow Row */
+.flow-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  margin: 18px 0;
+  padding: 12px 4px;
+}
+
+.flow-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-border);
+  border-radius: 10px;
+  color: var(--flow-text);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  box-shadow: 0 1px 4px rgba(13, 148, 136, 0.12);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Comparison Tile Grid */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.tile {
+  background: var(--tile-bg);
+  border: 1px solid var(--tile-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--tile-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.tile-sub {
+  display: block;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: var(--tile-sub);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* Images & Diagrams */
+img, .zoomable, figure img {
+  pointer-events: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  display: block !important;
+  margin: 1.5rem auto !important;
+  transition: filter 0.3s ease, mix-blend-mode 0.3s ease;
+  filter: var(--img-filter) !important;
+  mix-blend-mode: var(--img-blend) !important;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Tables */
+.tbl-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--table-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+table.ctab, table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+table.ctab thead th, table thead th {
+  background: var(--table-header-bg);
+  color: var(--table-header-color);
+  font-weight: 800;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--accent-border);
+  text-align: left;
+}
+
+table.ctab tbody td, table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+table.ctab tbody tr:nth-child(even) td, table tbody tr:nth-child(even) td {
+  background: var(--table-row-alt);
+}
+
+/* KaTeX equations in dark mode */
+.katex, .katex-display, .katex-html {
+  color: inherit !important;
+}
+
+/* Solved Q&A */
+.ex {
+  background: var(--qa-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ex .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.ex .prob {
+  font-weight: 700;
+  color: var(--text-heading);
+  font-size: 0.98rem;
+}
+
+.ex .sol {
+  background: var(--qa-sol-bg);
+  border-left: 3.5px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-size: 0.92rem;
+}
+
+/* Answer Label - GREEN COLOUR */
+.ex .sol .lbl {
+  font-weight: 800;
+  color: #16a34a !important;
+}
+
+[data-theme="dark"] .ex .sol .lbl,
+html.dark .ex .sol .lbl,
+body.dark-theme .ex .sol .lbl,
+.dark .ex .sol .lbl {
+  color: #4ade80 !important;
+}
+
+/* Solved Q&A Answer - GREEN COLOUR */
+.ex .ans {
+  background: #f0fdf4 !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 4.5px solid #22c55e !important;
+  border-radius: 8px !important;
+  padding: 9px 14px !important;
+  color: #15803d !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  box-shadow: 0 1px 4px rgba(34, 197, 94, 0.12) !important;
+}
+
+[data-theme="dark"] .ex .ans,
+html.dark .ex .ans,
+body.dark-theme .ex .ans,
+.dark .ex .ans {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1.5px solid rgba(34, 197, 94, 0.4) !important;
+  border-left: 4.5px solid #22c55e !important;
+  color: #4ade80 !important;
+  box-shadow: 0 1px 6px rgba(34, 197, 94, 0.16) !important;
+}
+
+/* Mobile Responsiveness (≤ 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 10px 40px;
+  }
+  .container, main, .chapter-wrap {
+    padding: 0 4px 28px;
+  }
+  .key-box, .highlight-box, .remember-box, .mnemonic-box, .formula-box {
+    padding: 12px 14px;
+    margin: 16px 0;
+  }
+  .tile-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .flow-row {
+    gap: 6px 8px;
+    padding: 8px 0;
+  }
+  .flow-box {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+  .flow-arrow {
+    font-size: 1.1rem;
+  }
+}
+
+</style>
+</head>
+<body>
+<main class="container" id="main-content"><h1>Ch-11 : Introduction to Three Dimensional Geometry</h1>
+
+<h2>11.1 Introduction</h2>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="1347c90f553f400855e3debf"><b>Why we need 3D coordinates:</b> In a plane, to fix a point we need <b>2</b> perpendicular axes ⇒ <b>2 numbers</b>. In space (thrown ball / aeroplane / tip of ceiling fan), we need <b>3</b> perpendicular distances from <b>3 mutually perpendicular planes</b> (think: floor + two adjacent walls).</paragraph>
+  <paragraph id="057dc5b2526adf041d738de8"><b>So:</b> a point in space is written using <b>three coordinates</b> = its perpendicular distances from the <b>three coordinate planes</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="2e288cb8c10e5dab8a8584ff">This chapter starts 3D geometry by extending 2D coordinates to a <b>rectangular (orthogonal) 3D coordinate system</b>.</paragraph>
+</div>
+
+<h2>11.2 Coordinate Axes and Coordinate Planes in Three Dimensional Space</h2>
+<h3>Rectangular coordinate system in space</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="c3b21c4af6cba41640dda18d"><b>Construction:</b> Take <b>3 planes</b> intersecting at a point <b>O</b>, with the planes <b>mutually perpendicular</b>.</paragraph>
+  <ul>
+    <li>Their intersection lines are 3 mutually perpendicular lines: <b>X′OX</b>, <b>Y′OY</b>, <b>Z′OZ</b> → called <b>x-axis</b>, <b>y-axis</b>, <b>z-axis</b>.</li>
+    <li>These 3 perpendicular axes make the <b>rectangular coordinate system</b>.</li>
+    <li>The 3 planes are the <b>coordinate planes</b>:
+      <ul>
+        <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-14.webp" decoding="async" height="272" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-14.webp" srcset="img/Untitled-14.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="356"/>
+    </button>
+  </div>
+</figure>
+
+        <li><b>XOY</b> = <b>XY-plane</b></li>
+        <li><b>YOZ</b> = <b>YZ-plane</b></li>
+        <li><b>ZOX</b> = <b>ZX-plane</b></li>
+      </ul>
+    </li>
+    <li><b>O</b> is the <b>origin</b>.</li>
+  </ul>
+</div>
+
+<h3>Orientation and sign convention</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <ul>
+    <li>Take <b>XOY</b> (XY-plane) as the plane of the paper; <b>Z′OZ</b> is perpendicular to it (vertical if paper is horizontal).</li>
+    <li><b>z-sign:</b> measured <b>up</b> along <b>OZ</b> is <b>+</b>; measured <b>down</b> along <b>OZ′</b> is <b>−</b>.</li>
+    <li><b>y-sign:</b> to the <b>right of ZX-plane</b> along <b>OY</b> is <b>+</b>; to the left along <b>OY′</b> is <b>−</b>.</li>
+    <li><b>x-sign:</b> <b>in front of YZ-plane</b> along <b>OX</b> is <b>+</b>; to the back along <b>OX′</b> is <b>−</b>.</li>
+  </ul>
+</div>
+
+<h3>Octants</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="304e310a6aaef591e5da5f48">The 3 coordinate planes split space into <b>8</b> regions called <b>octants</b>.</paragraph>
+  <paragraph id="890097d1511568ef999129d9">Named as: <b>XOYZ</b>, <b>X′OYZ</b>, <b>X′OY′Z</b>, <b>XOY′Z</b>, <b>XOYZ′</b>, <b>X′OYZ′</b>, <b>X′OY′Z′</b>, <b>XOY′Z′</b> and denoted by <b>I, II, III, IV, V, VI, VII, VIII</b> respectively.</paragraph>
+</div>
+
+<h2>11.3 Coordinates of a Point in Space</h2>
+<h3>Finding coordinates of a given point (projection method)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="1239db2085f8e0eca009c207">Given a point <b>P</b> in space:</paragraph>
+  <ol>
+    <li>Drop perpendicular <b>PM</b> to the <b>XY-plane</b>; <b>M</b> is the foot on XY-plane.</li>
+    <li>From <b>M</b>, draw perpendicular <b>ML</b> to the <b>x-axis</b>, meeting it at <b>L</b>.</li>
+    <li>Let <b>OL = x</b>, <b>LM = y</b>, <b>MP = z</b>.</li>
+  </ol>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-15.webp" decoding="async" height="266" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-15.webp" srcset="img/Untitled-15.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="330"/>
+    </button>
+  </div>
+</figure>
+
+  <paragraph id="4c8446bdb87749647cf7ad63">Then <b>x, y, z</b> are the <b>x-, y-, z-coordinates</b> of <b>P</b> ⇒ write <b>P(x, y, z)</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="e17c8fee72bbb7f7d455e23f">If <b>P</b> lies in octant <b>XOYZ</b> (1st octant), then <b>x, y, z</b> are all <b>positive</b>. In other octants, the <b>signs</b> change as per the octant.</paragraph>
+</div>
+
+<h3>Locating a point from a given ordered triplet (x, y, z)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="a59fbb714db88d4cb8b17714">Given <b>(x, y, z)</b>:</paragraph>
+  <ol>
+    <li>Mark <b>L</b> on <b>x-axis</b> so that <b>OL = x</b>.</li>
+    <li>In the <b>XY-plane</b>, locate <b>M</b> with coordinates <b>(x, y)</b> such that <b>LM ⟂ x-axis</b> (i.e. <b>LM ∥ y-axis</b>).</li>
+    <li>Through <b>M</b>, draw perpendicular <b>MP</b> to the <b>XY-plane</b> and mark <b>P</b> so that <b>MP = z</b> (use sign +/− by direction).</li>
+  </ol>
+  <paragraph id="d230e2aae004d5256e0ca2ff">We get the point <b>P(x, y, z)</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="5d85f946a6c3e02ca2db9359">There is a <b>one-to-one correspondence</b> between points in space and ordered triplets <b>(x, y, z)</b> of real numbers.</paragraph>
+</div>
+
+<h3>Alternative description using planes parallel to coordinate planes</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="5b83fe6f20445b22ccf64d13">Through a point <b>P</b>, draw 3 planes parallel to the coordinate planes:</paragraph>
+  <ul>
+    <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-16.webp" decoding="async" height="301" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-16.webp" srcset="img/Untitled-16.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="377"/>
+    </button>
+  </div>
+</figure>
+
+    <li>Plane ∥ <b>YZ-plane</b> meets <b>x-axis</b> at <b>A</b>; take <b>OA = x</b>.</li>
+    <li>Plane ∥ <b>ZX-plane</b> meets <b>y-axis</b> at <b>B</b>; take <b>OB = y</b>.</li>
+    <li>Plane ∥ <b>XY-plane</b> meets <b>z-axis</b> at <b>C</b>; take <b>OC = z</b>.</li>
+  </ul>
+  <paragraph id="49067301fc963f82b499e404">Then <b>P</b> has coordinates <b>(x, y, z)</b>.</paragraph>
+  <paragraph id="9e7335f0dca644da7a11d23c"><b>Conversely:</b> given <b>x, y, z</b>, mark <b>A, B, C</b> on axes and draw planes through them ∥ <b>YZ, ZX, XY</b> respectively; their intersection gives the required point <b>P</b>.</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="9f68a06d79bfc12a7faf300c">If <b>P(x, y, z)</b> is any point in space, then:</paragraph>
+  <ul>
+    <li><b>x</b> = perpendicular distance from <b>YZ-plane</b></li>
+    <li><b>y</b> = perpendicular distance from <b>ZX-plane</b></li>
+    <li><b>z</b> = perpendicular distance from <b>XY-plane</b></li>
+  </ul>
+</div>
+
+<h3>Special cases (origin, axes, planes)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <ul>
+    <li><b>Origin:</b> <b>O(0, 0, 0)</b></li>
+    <li><b>Point on x-axis:</b> <b>(x, 0, 0)</b></li>
+    <li><b>Point in YZ-plane:</b> <b>(0, y, z)</b></li>
+  </ul>
+</div>
+
+<h3>Octant identification by signs (Table 11.1)</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="2cd66be1b74819effe710ea4"><b>Remark:</b> the octant is fixed by the signs of <b>x, y, z</b>.</paragraph>
+  <ul>
+    <li><b>Octant I:</b> (+, +, +)</li>
+    <li><b>Octant II:</b> (−, +, +)</li>
+    <li><b>Octant III:</b> (−, −, +)</li>
+    <li><b>Octant IV:</b> (+, −, +)</li>
+    <li><b>Octant V:</b> (+, +, −)</li>
+    <li><b>Octant VI:</b> (−, +, −)</li>
+    <li><b>Octant VII:</b> (−, −, −)</li>
+    <li><b>Octant VIII:</b> (+, −, −)</li>
+  </ul>
+</div>
+<div class="remember-box">
+  <paragraph id="d435ef6ec569ab89e801b0e8"><b>Exam tip:</b> don’t “eyeball” octants from a sketch—match the sign pattern of <b>(x, y, z)</b> exactly with the list.</paragraph>
+</div>
+
+<h3>Worked Example 1: Finding coordinates from the figure</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="2e510a3810b23757451790b8"><b>Example:</b> In the given 3D setup, if <b>P = (2, 4, 5)</b>, find coordinates of <b>F</b>.</paragraph>
+  <paragraph id="80c3414302518dd0a03d2708"><b>Reasoning:</b> At <b>F</b>, distance along <b>OY</b> is <b>0</b> ⇒ <b>y = 0</b>; <b>x</b> and <b>z</b> stay the same as aligned with <b>P</b>.</paragraph>
+  <paragraph id="ff3ab96b60112d325e6c3f1e"><b>Answer:</b> <b>F = (2, 0, 5)</b>.</paragraph>
+</div>
+
+<h3>Worked Example 2: Determining octants</h3>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="ad98d4e5f0c7c710f050f4d5"><b>Example:</b> Find the octant of (−3, 1, 2) and (−3, 1, −2).</paragraph>
+  <ul>
+    <li>(−3, 1, 2) has signs (−, +, +) ⇒ <b>Octant II</b></li>
+    <li>(−3, 1, −2) has signs (−, +, −) ⇒ <b>Octant VI</b></li>
+  </ul>
+</div>
+
+<h2>11.4 Distance between Two Points</h2>
+<h3>3D distance setup using a rectangular parallelepiped</h3>
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+  <paragraph id="d05629fa8b58bcdf8127b854">Let <b>P(x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>)</b> and <b>Q(x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>)</b> be two points w.r.t. rectangular axes <b>OX, OY, OZ</b>.</paragraph>
+  <paragraph id="73eae4b0efa0cfc6ab0cba43">Draw planes through <b>P</b> and <b>Q</b> parallel to coordinate planes → forms a <b>rectangular parallelepiped</b> with <b>PQ</b> as a diagonal.</paragraph>
+  <figure class="fig photo image-container" style="margin: 15px auto !important; width: 100% !important; text-align: center !important;">
+  <div class="figure-row" style="display: flex !important; justify-content: center !important; align-items: center !important;">
+    <button aria-label="Enlarge Diagram" class="image-zoom" style="border: none !important; background: none !important; padding: 0 !important; cursor: pointer !important;" type="button">
+      <img alt="Diagram" class="zoomable" data-full="img/Untitled-17.webp" decoding="async" height="379" loading="lazy" sizes="(max-width: 700px) 100vw, 640px" src="img/Untitled-17.webp" srcset="img/Untitled-17.webp 505w" style="max-width: 100% !important; height: auto !important; display: inline-block !important; border: 1.5px solid #38bff800 !important; border-radius: 6px !important; padding: 4px !important; background-color: #ffffff00 !important;" width="440"/>
+    </button>
+  </div>
+</figure>
+
+  <paragraph id="e11ca4cde5ac3e5039c3b0de">In right triangle <b>PAQ</b> (right angle at <b>A</b>):</paragraph>
+</div>
+<div class="formula-box" data-label="📐 FORMULA">
+  <paragraph id="b692c582d3fb0aabcccd9bc9"><b>Relation (1) from right △PAQ:</b> PQ<sup>2</sup> = PA<sup>2</sup> + AQ<sup>2</sup></paragraph>
+  <paragraph id="c1507ccaf83b95babf3cc0be"><b>PQ</b> = distance between points P and Q</paragraph>
+  <paragraph id="cd98033ddc980eefef5189fc"><b>PA, AQ</b> = perpendicular edges of the right triangle inside the parallelepiped</paragraph>
+</div>
+<div class="highlight-box" data-label="💡 IMPORTANT">
+  <paragraph id="cd45c1c250a130bfd5191e11">Also, triangle <b>ANQ</b> is right-angled with ∠ANQ = 90°. (Next step: use this to write <b>AQ</b> using coordinate differences.)</paragraph>
+</div>
+
+<h2>Distance Formula in Three Dimensions</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="9e683456718758948ff10e01">For points in 3D: P(x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>) and Q(x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>), distance PQ comes from Pythagoras applied step-by-step along perpendicular directions.</paragraph>
+<ul>
+<li>In a plane: if PA ⟂ AQ, then PQ<sup>2</sup> = PA<sup>2</sup> + AQ<sup>2</sup>.</li>
+<li>In 3D: if AN ⟂ NQ, then AQ<sup>2</sup> = AN<sup>2</sup> + NQ<sup>2</sup>.</li>
+<li>Combine: PQ<sup>2</sup> = PA<sup>2</sup> + AN<sup>2</sup> + NQ<sup>2</sup>.</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="934814570bc6b0e286d592df"><b>Distance between two points in 3D</b></paragraph>
+<paragraph id="f9eb9b9cc9bc560946977ceb"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>z</mi><mn>2</mn></msub><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph><ul>
+<li>x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub> = coordinates of P</li>
+<li>x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub> = coordinates of Q</li>
+<li>PQ = distance from P to Q</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="4c966b9fd5212780055c370b"><b>Distance from origin to a point</b></paragraph>
+<paragraph id="c79b46e054137efabd3a959e"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>f</mi><mi>P</mi><mi>i</mi><mi>s</mi><mi>o</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>O</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><mi>a</mi><mi>n</mi><mi>d</mi><mi>Q</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>O</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></msqrt><mi>.</mi></mrow></math></paragraph><ul>
+<li>O = origin (0, 0, 0)</li>
+<li>Q(x, y, z) = any point in space</li>
+<li>OQ = distance from origin to Q</li>
+</ul>
+</div>
+
+<div class="remember-box">
+<paragraph id="da67cb581ba7ce536d1bdf4c">Distance formula tip: subtract in a consistent order for each coordinate: (x<sub>2</sub>−x<sub>1</sub>), (y<sub>2</sub>−y<sub>1</sub>), (z<sub>2</sub>−z<sub>1</sub>). Squaring removes minus signs, but consistency avoids later algebra slips (esp. when expanding).</paragraph>
+</div>
+
+<h3>Example 3: Distance Between Two Given Points</h3>
+<paragraph id="e2b162556c5781276c6e61af"><b>Find</b> the distance between P(1, −3, 4) and Q(−4, 1, 2).</paragraph>
+<paragraph id="8c0fe3ddb4ad3ee5dc650aa5"><b>Solution</b></paragraph>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>4</mn><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></li><li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><msqrt><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mn>4</mn><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></li><li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>=</mo><msqrt><mrow><mn>25</mn><mo>+</mo><mn>16</mn><mo>+</mo><mn>4</mn></mrow></msqrt><mo>=</mo><msqrt><mn>45</mn></msqrt><mo>=</mo><mn>3</mn><msqrt><mn>5</mn></msqrt><mi>u</mi><mi>n</mi><mi>i</mi><mi>t</mi><mi>s</mi></mrow></math></li></ul>
+
+<h3>Example 4: Collinearity of Three Points Using Distances</h3>
+<paragraph id="55c8f8bcb7b2155280f88c4c"><b>Show</b> that P(−2, 3, 5), Q(1, 2, 3) and R(7, 0, −1) are collinear.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="635647d489369d5d4764a059"><b>Collinear points</b> = points on the same straight line.</paragraph>
+<paragraph id="e38280bf646e377616a0ba7c">Distance test: if one point lies between the other two, then</paragraph>
+<paragraph id="7ba15d05ddf2be1092ee1e89">PR = PQ + QR (or similar ordering).</paragraph>
+</div>
+
+<paragraph id="cddbf6f295bf9b95e29ea5f3"><b>Solution</b></paragraph>
+<ul>
+<ul>
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>PQ</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>1</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>3</mn><mo>−</mo><mn>5</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mn>3</mn><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>9</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>4</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>14</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>QR</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>7</mn><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>0</mn><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>1</mn><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mn>6</mn><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>4</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>36</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>16</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>56</mn></msqrt></mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><mn>2</mn><msqrt><mn>14</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>PR</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>7</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>0</mn><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>1</mn><mo>−</mo><mn>5</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mn>9</mn><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>6</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>81</mn><mo>+</mo><mn>9</mn><mo>+</mo><mn>36</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>126</mn></msqrt></mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><mn>3</mn><msqrt><mn>14</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mrow><mi>PQ</mi><mo>+</mo><mi>QR</mi></mrow></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt><mn>14</mn></msqrt>
+            <mo>+</mo>
+            <mn>2</mn><msqrt><mn>14</mn></msqrt>
+          </mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><mn>3</mn><msqrt><mn>14</mn></msqrt></mtd>
+        </mtr>
+
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><mi>PR</mi></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+</ul>
+<paragraph id="bc4c7c7d39eb1ff5ce86246c">Hence, P, Q and R are collinear.</paragraph>
+
+<div class="remember-box">
+<paragraph id="dfe1c1868271583449a593f2">Using PQ + QR = PR only works when Q is between P and R (on segment PR). If the order is different, compare the largest distance to the sum of the other two.</paragraph>
+</div>
+
+<h3>Example 5: Testing Whether a Triangle is Right-Angled</h3>
+<paragraph id="5c5229347e462d5dd934da61"><b>Check</b> whether A(3, 6, 9), B(10, 20, 30), C(25, −41, 5) form a right-angled triangle.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="c6d2b0ae9b486ba4b91b582e">Right-angled triangle test (some ordering):</paragraph>
+<paragraph id="1b0a0a004d385530c20ce4c9">(largest side)<sup>2</sup> = (other side)<sup>2</sup> + (third side)<sup>2</sup>.</paragraph>
+</div>
+
+<paragraph id="ffabf3c53cdb12d5e9bd63ec"><b>Solution</b> (compute squared lengths)</paragraph>
+<ul>
+<li>AB<sup>2</sup> = (10−3)<sup>2</sup> + (20−6)<sup>2</sup> + (30−9)<sup>2</sup>
+= 49 + 196 + 441 = 686</li>
+<li>BC<sup>2</sup> = (25−10)<sup>2</sup> + (−41−20)<sup>2</sup> + (5−30)<sup>2</sup>
+= 225 + 3721 + 625 = 4571</li>
+<li>CA<sup>2</sup> = (3−25)<sup>2</sup> + (6+41)<sup>2</sup> + (9−5)<sup>2</sup>
+= 484 + 2209 + 16 = 2709</li>
+<li>Check: CA<sup>2</sup> + AB<sup>2</sup> = 2709 + 686 = 3395 ≠ 4571 = BC<sup>2</sup></li>
+</ul>
+<paragraph id="f89312496ba6e68d577dea74">Hence, triangle ABC is <b>not</b> right-angled.</paragraph>
+
+<div class="remember-box">
+<paragraph id="f899c02d95665690fb774bb6">Use squared distances (AB<sup>2</sup>, etc.) to avoid square roots. Always identify the largest squared length first, then compare.</paragraph>
+</div>
+
+<h3>Example 6: Locus of a Point with Condition PA² + PB² Constant</h3>
+<paragraph id="0a336dfa569b4756e5046a46"><b>Find</b> the equation of the set of points P such that PA<sup>2</sup> + PB<sup>2</sup> = 2k<sup>2</sup>, where A(3, 4, 5) and B(−1, 3, −7).</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="8417ae7c860ceedbbdf67a42">A <b>locus</b> = all points satisfying a given condition. Here: the condition is written using squared distances to two fixed points.</paragraph>
+</div>
+
+<paragraph id="dea3dd189e9f7ca000e5469f"><b>Solution</b></paragraph>
+<ul>
+<li>Let P(x, y, z).</li>
+<li>PA<sup>2</sup> = (x−3)<sup>2</sup> + (y−4)<sup>2</sup> + (z−5)<sup>2</sup></li>
+<li>PB<sup>2</sup> = (x+1)<sup>2</sup> + (y−3)<sup>2</sup> + (z+7)<sup>2</sup></li>
+<li>Given: PA<sup>2</sup> + PB<sup>2</sup> = 2k<sup>2</sup></li>
+<li>(x−3)<sup>2</sup> + (y−4)<sup>2</sup> + (z−5)<sup>2</sup> + (x+1)<sup>2</sup> + (y−3)<sup>2</sup> + (z+7)<sup>2</sup> = 2k<sup>2</sup></li>
+<li>On simplification:
+2x<sup>2</sup> + 2y<sup>2</sup> + 2z<sup>2</sup> − 4x − 14y + 4z = 2k<sup>2</sup> − 109</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="62345ea61ab77e0579c4cc36">Expansion sign trap: (x−a)<sup>2</sup> = x<sup>2</sup> − 2ax + a<sup>2</sup>, but (x+a)<sup>2</sup> = x<sup>2</sup> + 2ax + a<sup>2</sup>.</paragraph>
+</div>
+
+<h2>Parallelogram and Rectangle in 3D Using Distances</h2>
+
+<h3>Example 7: Proving a Parallelogram and Showing It Is Not a Rectangle</h3>
+<paragraph id="6221b27b6be2dc42d50f026f"><b>Show</b> that A(1, 2, 3), B(−1, −2, −1), C(2, 3, 2), D(4, 7, 6) form a parallelogram ABCD, but not a rectangle.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li>Quadrilateral is a <b>parallelogram</b> if both pairs of opposite sides are equal (⇒ parallel).</li>
+<li>A parallelogram is a <b>rectangle</b> if (one test) its diagonals are equal in length.</li>
+</ul>
+</div>
+
+<paragraph id="1945d4f3619187b2aa0fdf25"><b>Solution: show opposite sides equal</b></paragraph>
+<ul>
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>AB</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>1</mn><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>2</mn><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mo>−</mo><mn>1</mn><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>4</mn><mo>+</mo><mn>16</mn><mo>+</mo><mn>16</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>36</mn></msqrt></mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><mn>6</mn></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>BC</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>3</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>9</mn><mo>+</mo><mn>25</mn><mo>+</mo><mn>9</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>43</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>CD</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>4</mn><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>7</mn><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>6</mn><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>4</mn><mo>+</mo><mn>16</mn><mo>+</mo><mn>16</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>36</mn></msqrt></mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><mn>6</mn></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>DA</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>1</mn><mo>−</mo><mn>4</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mn>7</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>3</mn><mo>−</mo><mn>6</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>9</mn><mo>+</mo><mn>25</mn><mo>+</mo><mn>9</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>43</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    So
+    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>AB</mi><mo>=</mo><mi>CD</mi>
+      <mspace width="0.5em"></mspace>
+      <mtext>and</mtext>
+      <mspace width="0.5em"></mspace>
+      <mi>BC</mi><mo>=</mo><mi>AD</mi>
+      <mo>⇒</mo>
+      <mi>ABCD</mi>
+    </math>
+    is a parallelogram.
+  </li>
+</ul>
+
+<paragraph id="8e95497bf03ebb9b16de2e43"><b>Solution: show it is not a rectangle (diagonals unequal)</b></paragraph>
+
+<ul>
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>AC</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>3</mn><mo>−</mo><mn>2</mn><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mn>3</mn><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>3</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mtable columnalign="left left" rowspacing="8px">
+        <mtr>
+          <mtd><mi>BD</mi></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow>
+                <msup><mrow><mo>(</mo><mn>4</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>7</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>2</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+                <mo>+</mo>
+                <msup><mrow><mo>(</mo><mn>6</mn><mo>−</mo><mo>(</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>)</mo></mrow><mn>2</mn></msup>
+              </mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd>
+            <mo>=</mo>
+            <msqrt>
+              <mrow><mn>25</mn><mo>+</mo><mn>81</mn><mo>+</mo><mn>49</mn></mrow>
+            </msqrt>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd></mtd>
+          <mtd><mo>=</mo><msqrt><mn>155</mn></msqrt></mtd>
+        </mtr>
+      </mtable>
+    </math>
+  </li>
+
+  <li>
+    Since
+    <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>AC</mi><mo>≠</mo><mi>BD</mi>
+    </math>,
+    ABCD is not a rectangle.
+  </li>
+</ul>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<paragraph id="4f0b7dddc853160a43758eb1"><b>Alt parallelogram test:</b> diagonals bisect each other (midpoints of AC and BD are the same). Can use this instead of side-length checking.</paragraph>
+</div>
+
+<h2>Equation of the Perpendicular Bisector Plane (Equidistant Points)</h2>
+
+<h3>Example 8: Locus of Points Equidistant from Two Fixed Points</h3>
+<paragraph id="9f0ceab3ec09ded26f9075d3"><b>Find</b> the equation of the set of points P such that distances from A(3, 4, −5) and B(−2, 1, 4) are equal.</paragraph>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<paragraph id="f5e9201a1720dc0cf3d2d5ef">All points equidistant from two fixed points A and B in 3D form a <b>plane</b>: the perpendicular bisector plane of AB.</paragraph>
+</div>
+
+<paragraph id="174cf28f3bd9d155ad268e19"><b>Solution</b></paragraph>
+<ul>
+<li>Let P(x, y, z), with PA = PB.</li>
+<li>PA<sup>2</sup> = (x−3)<sup>2</sup> + (y−4)<sup>2</sup> + (z+5)<sup>2</sup></li>
+<li>PB<sup>2</sup> = (x+2)<sup>2</sup> + (y−1)<sup>2</sup> + (z−4)<sup>2</sup></li>
+<li>Set equal: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>−</mo><mn>3</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>z</mi><mo>+</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>x</mi><mo>+</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>y</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mi>z</mi><mo>−</mo><mn>4</mn><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></math></li><li>On simplification: 10x + 6y − 18z − 29 = 0</li>
+</ul>
+
+<div class="remember-box">
+<paragraph id="66dce0ea41b51efa5e9c145e">Equidistant locus: skip square roots—use PA<sup>2</sup> = PB<sup>2</sup> directly so the algebra stays clean.</paragraph>
+</div>
+
+<h2>Centroid of a Triangle in 3D</h2>
+
+<h3>Example 9: Finding a Vertex Using the Centroid</h3>
+<paragraph id="dcda7fcd53eafbf08e2a08d6">Centroid of △ABC is G(1, 1, 1). Given A(3, −5, 7) and B(−1, 7, −6). <b>Find</b> C.</paragraph>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="72d7de0fca88b8dd4b3618b6"><b>Centroid of a triangle in 3D</b></paragraph>
+<paragraph id="eddd5fbaaf5870526e8fef3f">If A(x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>), B(x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>), C(x<sub>3</sub>, y<sub>3</sub>, z<sub>3</sub>), then</paragraph>
+<paragraph id="74490d760ccfd402e03b13f9"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>G</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>x</mi><mn>3</mn></msub></mrow><mn>3</mn></mfrac><mo>,</mo><mfrac><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><msub><mi>y</mi><mn>3</mn></msub></mrow><mn>3</mn></mfrac><mo>,</mo><mfrac><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>+</mo><msub><mi>z</mi><mn>2</mn></msub><mo>+</mo><msub><mi>z</mi><mn>3</mn></msub></mrow><mn>3</mn></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mrow></math></paragraph><ul>
+<li>G = centroid = intersection point of medians</li>
+<li>(x<sub>i</sub>, y<sub>i</sub>, z<sub>i</sub>) = vertex coordinates</li>
+</ul>
+</div>
+
+<paragraph id="bbc7e6052350556a24f3d8c6"><b>Solution</b></paragraph>
+<ul>
+<li>Let C(x, y, z) and G(1, 1, 1).</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>3</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>x</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mn>3</mn><mo>=</mo><mn>1</mn><mo>⇒</mo><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math></li><li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>5</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mn>7</mn><mo>+</mo><mi>y</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mn>3</mn><mo>=</mo><mn>1</mn><mo>⇒</mo><mi>y</mi><mo>=</mo><mn>1</mn></mrow></math></li><li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>7</mn><mo>+</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mn>6</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>z</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>/</mi><mn>3</mn><mo>=</mo><mn>1</mn><mo>⇒</mo><mi>z</mi><mo>=</mo><mn>2</mn></mrow></math></li></ul>
+<paragraph id="7573f531b59f59e988601cd8">Hence, C = (1, 1, 2).</paragraph>
+
+<div class="remember-box">
+<paragraph id="49779ea1e3ee69e6c25494c0">In centroid questions: solve x-part, then y-part, then z-part. Biggest trap = sign errors when adding negatives.</paragraph>
+</div>
+
+<h2>Chapter Summary (Key Facts to Revise)</h2>
+
+<div class="highlight-box" data-label="💡 IMPORTANT">
+<ul>
+<li>In 3D rectangular Cartesian coordinates, the x-, y-, and z-axes are <b>mutually perpendicular</b>.</li>
+<li>Coordinate planes:
+<ul>
+<li>XY-plane: z = 0</li>
+<li>YZ-plane: x = 0</li>
+<li>ZX-plane: y = 0</li>
+</ul>
+</li>
+<li>These 3 coordinate planes split space into <b>8</b> regions called <b>octants</b>.</li>
+<li>A point is written as an ordered triplet <b>(x, y, z)</b>, where:
+<ul>
+<li>x = directed distance from the <b>YZ-plane</b></li>
+<li>y = directed distance from the <b>ZX-plane</b></li>
+<li>z = directed distance from the <b>XY-plane</b></li>
+</ul>
+</li>
+<li>Special forms (points on axes):
+<ul>
+<li>On x-axis: (x, 0, 0)</li>
+<li>On y-axis: (0, y, 0)</li>
+<li>On z-axis: (0, 0, z)</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="formula-box" data-label="📐 FORMULA">
+<paragraph id="e21e4bace868430f61a340e9"><b>Distance between two points (recalled)</b></paragraph>
+<paragraph id="6d052a275fd8576a284e647a"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mi>Q</mi><mo>=</mo><msqrt><mrow><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>z</mi><mn>2</mn></msub><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub><mo form="postfix" stretchy="true">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math></paragraph><ul>
+<li>P(x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>), Q(x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>) = given points</li>
+<li>PQ = distance between them</li>
+</ul>
+</div>
+
+<h2>Historical Note (Development of 3D Coordinate Geometry)</h2>
+
+<div class="key-box" data-label="⭐ KEY CONCEPT">
+<ul>
+<li><b>René Descartes</b> (1596–1650): “father” of analytical geometry; mainly plane geometry (1637). He had the 3D idea but didn’t fully develop it.</li>
+<li><b>Pierre Fermat</b> (1601–1665) and <b>La Hire</b> (1640–1718): also mostly plane analytic geometry; 3D hints appear but not fully detailed.</li>
+<li><b>J. Bernoulli</b> (1667–1748): (1715 letter to Leibnitz) introduced the idea of the 3 coordinate planes used today.</li>
+<li><b>Antoine Parent</b> (1666–1716): first systematic analytical solid geometry (paper to French Academy, 1700).</li>
+<li><b>L. Euler</b> (1707–1783): treated 3D coordinate geometry systematically (1748) in an appendix (Chapter 5) to Vol. 2 of “Introduction to Geometry”.</li>
+<li>Geometry beyond 3D grew mainly from mid-19th century; famous application: <b>space-time continuum</b> in Einstein’s Theory of Relativity.</li>
+</ul>
+</div></ul></main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- QUIZZY THEME SWITCHER -->
+<div id="theme-toggle-bar" style="position:fixed;top:14px;right:14px;z-index:999999;">
+  <button id="themeToggleBtn" onclick="toggleQuizzyTheme()" style="background:var(--bg-elevated, #f8fafc);border:1.5px solid var(--border-subtle, #cbd5e1);color:var(--text-main, #1f2937);padding:6px 14px;border-radius:24px;font-size:0.84rem;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.12);display:flex;align-items:center;gap:6px;transition:all 0.2s ease;">
+    <span id="themeIcon">☀️</span> <span id="themeLabel">Light</span>
+  </button>
+</div>
+<script>
+function setQuizzyTheme(theme) {
+  var isDark = (theme === 'dark');
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark-theme');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light-theme');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '🌙';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Dark';
+    localStorage.setItem('quizzy_theme_pref', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.classList.remove('dark');
+    document.body.classList.add('light-theme');
+    document.body.classList.remove('dark-theme');
+    document.body.classList.remove('dark');
+    var icon = document.getElementById('themeIcon');
+    if (icon) icon.textContent = '☀️';
+    var lbl = document.getElementById('themeLabel');
+    if (lbl) lbl.textContent = 'Light';
+    localStorage.setItem('quizzy_theme_pref', 'light');
+  }
+}
+
+function toggleQuizzyTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+               document.documentElement.classList.contains('dark') ||
+               document.body.classList.contains('dark-theme') ||
+               document.body.classList.contains('dark');
+  setQuizzyTheme(isDark ? 'light' : 'dark');
+}
+
+// Listen for messages from host page (Quizzy)
+window.addEventListener('message', function(e) {
+  if (e && e.data) {
+    if (e.data.theme) setQuizzyTheme(e.data.theme);
+    if (e.data.type === 'setTheme' && e.data.payload) setQuizzyTheme(e.data.payload);
+  }
+});
+
+// Auto-detect saved or system preference
+(function() {
+  var saved = localStorage.getItem('quizzy_theme_pref');
+  if (!saved) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      saved = 'dark';
+    } else {
+      saved = 'light';
+    }
+  }
+  setQuizzyTheme(saved);
+})();
+</script>
+
+</body></html>
