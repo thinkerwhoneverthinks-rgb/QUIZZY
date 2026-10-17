@@ -1035,22 +1035,54 @@ body.tc-running { overflow-x: hidden; }
 .q-image-wrap {
     margin: 1.1rem 0 1.25rem 0;
     text-align: center;
-    background: transparent;
-    border: none;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .q-image {
-    max-width: 380px;
-    max-height: 190px;
+    max-width: 100%;
+    max-height: 42vh;
     width: auto;
     height: auto;
     object-fit: contain;
-    display: inline-block;
+    display: block;
     margin: 0 auto;
-    background: transparent;
+    background: transparent !important;
     padding: 0.25rem;
     border: none;
     border-radius: var(--radius-md);
+}
+
+/* Smart Image Color Inversion in Dark Mode (matching Question Cafe / Quizzy-v4) */
+.q-image,
+.q-image-wrap img,
+.q-images-container img,
+.q-text img,
+.opt-text img,
+.q-sol-body img,
+.q-sol-text img {
+    max-width: 100% !important;
+    height: auto;
+    object-fit: contain;
+    box-sizing: border-box;
+    transition: filter 0.3s ease;
+    filter: invert(1) hue-rotate(180deg) brightness(1.1);
+    mix-blend-mode: screen;
+}
+
+[data-theme="light"] .q-image,
+[data-theme="light"] .q-image-wrap img,
+[data-theme="light"] .q-images-container img,
+[data-theme="light"] .q-text img,
+[data-theme="light"] .opt-text img,
+[data-theme="light"] .q-sol-body img,
+[data-theme="light"] .q-sol-text img {
+    filter: none;
+    mix-blend-mode: darken;
 }
 
 /* ===== MATCH THE COLUMN / LIST-I / LIST-II TABLE ===== */

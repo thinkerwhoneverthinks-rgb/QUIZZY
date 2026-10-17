@@ -130,15 +130,26 @@ function safeHtml(text) {
         return `$${cleanLatex}$`;
     });
 
-    // 0.3. Clean rogue dollar signs around HTML tags
-    s = s.replace(/\$\s*(<\/?(?:table|tbody|thead|tr|td|th|div|span|p|br|strong|b|em|i|ul|ol|li)[^>]*>)\s*\$?/gi, '$1');
-    s = s.replace(/(<\/?(?:table|tbody|thead|tr|td|th|div|span|p|br|strong|b|em|i|ul|ol|li)[^>]*>)\s*\$/gi, '$1');
+    // 0.3. Protect all math blocks ($$, \[\], \(\), and inline $) BEFORE any tag/markdown manipulation!
+    const mathTokens = [];
+    s = s.replace(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$[^$\n]+?\$)/g, (match) => {
+        let clean = match.replace(/<br\s*\/?>/gi, ' ');
+        // If a $$...$$ block is single-line without multiline environments, treat as inline \(...\)
+        if (clean.startsWith('$$') && clean.endsWith('$$') && !clean.includes('\n') && !clean.includes('\\begin{') && !clean.includes('\\\\')) {
+            clean = '\\(' + clean.slice(2, -2).trim() + '\\)';
+        }
+        const token = `QQQMATHTOKEN${mathTokens.length}QQQ`;
+        mathTokens.push(clean);
+        return token;
+    });
+
+    // 0.4. Clean rogue isolated dollars around empty block containers and standard keywords
     s = s.replace(/\$\s*(Match|Assume|Which|Choose|Select|Following|Given|Statement|Assertion|Reason)\s*\$/gi, '$1');
 
-    // 0.4. Clean broken markdown bold closing
+    // 0.5. Clean broken markdown bold closing
     s = s.replace(/\*\*([^*<]+)<\/strong>/gi, '<strong>$1</strong>');
 
-    // 0.5. Convert markdown headers (e.g. ### Detailed Solution)
+    // 0.6. Convert markdown headers (e.g. ### Detailed Solution)
     s = s.replace(/^###\s+(.+)$/gm, '<h4 style="margin:0.8rem 0 0.35rem; font-size:1.02rem; font-weight:700; color:var(--text-primary);">$1</h4>');
     s = s.replace(/^##\s+(.+)$/gm, '<h3 style="margin:1rem 0 0.45rem; font-size:1.15rem; font-weight:700; color:var(--text-primary);">$1</h3>');
     s = s.replace(/^#\s+(.+)$/gm, '<h2 style="margin:1.2rem 0 0.55rem; font-size:1.25rem; font-weight:700; color:var(--text-primary);">$1</h2>');
@@ -189,7 +200,7 @@ function safeHtml(text) {
         const cleanAttrs = attrs
             .replace(/\s+on\w+\s*=\s*["'][^"']*["']/gi, '')
             .replace(/\s+on\w+\s*=\s*[^\s>]*/gi, '')
-            .replace(/href\s*=\s*["']javascript:[^"']*["']/gi, '');
+            .replace(/href\s*=\s*["']javascript:[^"']*["']/gi);
         return `<${slash}${t}${cleanAttrs}>`;
     });
 
@@ -204,20 +215,7 @@ function safeHtml(text) {
         return match;
     });
 
-    // 6. Protect all math blocks ($$, \[\], \(\), and inline $) so newlines and tags NEVER corrupt formulas
-    const mathTokens = [];
-    s = s.replace(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$[^$\n]+?\$)/g, (match) => {
-        let clean = match.replace(/<br\s*\/?>/gi, ' ');
-        // If a $$...$$ block is single-line without multiline environments, treat as inline \(...\)
-        if (clean.startsWith('$$') && clean.endsWith('$$') && !clean.includes('\n') && !clean.includes('\\begin{') && !clean.includes('\\\\')) {
-            clean = '\\(' + clean.slice(2, -2).trim() + '\\)';
-        }
-        const token = `QQQMATHTOKEN${mathTokens.length}QQQ`;
-        mathTokens.push(clean);
-        return token;
-    });
-
-    // 6.5. Smart newline normalization on plain text only (never inside math!)
+    // 6. Smart newline normalization on plain text only (never inside math!)
     const hasBlockHtml = /<(ul|ol|table|tbody|thead|tr|li)/i.test(s);
     if (!hasBlockHtml) {
         s = s.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
@@ -241,9 +239,7 @@ function safeHtml(text) {
         s = s.replace(/___PARABREAK___/g, '<br><br>');
     }
 
-    // 7. Math tokens protection: MathJax natively renders all math delimiters without token-splitting hacks
-
-    // 7.5. Restore math tokens
+    // 7. Restore all protected math tokens
     s = s.replace(/QQQMATHTOKEN(\d+)QQQ/g, (match, idx) => {
         return mathTokens[parseInt(idx, 10)] || match;
     });
