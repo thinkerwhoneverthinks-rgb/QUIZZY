@@ -40,6 +40,59 @@ function getActiveOptions(q) {
     return q.options || [];
 }
 
+function getActiveQuestionImage(q) {
+    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
+        return q.translations.hi.image_url || q.translations.hi.image || (Array.isArray(q.translations.hi.images) && q.translations.hi.images[0]) || q.image_url || q.image || null;
+    }
+    return q.image_url || q.image || (Array.isArray(q.images) && q.images[0]) || null;
+}
+
+function getActiveQuestionImages(q) {
+    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
+        if (Array.isArray(q.translations.hi.images) && q.translations.hi.images.length > 0) {
+            return q.translations.hi.images;
+        }
+        if (q.translations.hi.image_url || q.translations.hi.image) {
+            return [q.translations.hi.image_url || q.translations.hi.image];
+        }
+    }
+    if (Array.isArray(q.images) && q.images.length > 0) {
+        return q.images;
+    }
+    const single = q.image_url || q.image || null;
+    return single ? [single] : [];
+}
+
+function getActiveExplanationImage(q) {
+    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
+        return q.translations.hi.explanation_image || (Array.isArray(q.translations.hi.explanation_images) && q.translations.hi.explanation_images[0]) || q.explanation_image || (Array.isArray(q.explanation_images) && q.explanation_images[0]) || null;
+    }
+    return q.explanation_image || (Array.isArray(q.explanation_images) && q.explanation_images[0]) || null;
+}
+
+function getActiveExplanationImages(q) {
+    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
+        if (Array.isArray(q.translations.hi.explanation_images) && q.translations.hi.explanation_images.length > 0) {
+            return q.translations.hi.explanation_images;
+        }
+        if (q.translations.hi.explanation_image) {
+            return [q.translations.hi.explanation_image];
+        }
+    }
+    if (Array.isArray(q.explanation_images) && q.explanation_images.length > 0) {
+        return q.explanation_images;
+    }
+    const single = q.explanation_image || null;
+    return single ? [single] : [];
+}
+
+function getActiveOptionImages(q) {
+    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi && q.translations.hi.optionImages && q.translations.hi.optionImages.length) {
+        return q.translations.hi.optionImages;
+    }
+    return q.optionImages || [];
+}
+
 function isAcrollyContent(q) {
     if (!q) return false;
     if (q.id && (String(q.id).includes('acrolly') || String(q.id).includes('jee_mains_') || String(q.id).includes('jee_jee_'))) return true;
@@ -94,6 +147,14 @@ function renderSmartOptionText(q, opt) {
 window.renderSmartQuestionText = renderSmartQuestionText;
 window.renderSmartExplanationText = renderSmartExplanationText;
 window.renderSmartOptionText = renderSmartOptionText;
+window.getActiveQuestionText = getActiveQuestionText;
+window.getActiveExplanationText = getActiveExplanationText;
+window.getActiveOptions = getActiveOptions;
+window.getActiveQuestionImage = getActiveQuestionImage;
+window.getActiveQuestionImages = getActiveQuestionImages;
+window.getActiveExplanationImage = getActiveExplanationImage;
+window.getActiveExplanationImages = getActiveExplanationImages;
+window.getActiveOptionImages = getActiveOptionImages;
 
 function buildQuestionBody(q, idx) {
     if (q.type === 'image_mcq') return renderImageMCQ(q, idx);
@@ -118,6 +179,8 @@ function buildQuestionCardInner(q, idx, total) {
     const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
     const examBadge = buildExamBadge(q);
     const qText = getActiveQuestionText(q);
+    const qImages = getActiveQuestionImages(q);
+    const hasHi = Boolean(q.translations && q.translations.hi);
 
     return `
         <div class="question-card-header">
@@ -129,6 +192,11 @@ function buildQuestionCardInner(q, idx, total) {
                 ${examBadge}
             </div>
             <div class="question-card-top-actions">
+                ${hasHi ? `
+                    <button class="lang-toggle-btn ${currentLanguage === 'hi' ? 'active' : ''}" onclick="toggleQuestionLanguage()" title="Switch Language (English / हिन्दी)">
+                        ${currentLanguage === 'hi' ? '🇮🇳 HI' : '🇬🇧 EN'}
+                    </button>
+                ` : ''}
                 <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="${bookmarkAction}" title="${bookmarkTitle}">
                     🔖
                 </button>
@@ -143,17 +211,17 @@ function buildQuestionCardInner(q, idx, total) {
             </div>
         ` : ''}
         ${qText ? `<div class="question-text">${renderSmartQuestionText(q)}</div>` : ''}
-        ${q.images && q.images.length > 1 ? `
+        ${qImages.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
-                ${q.images.map((img, i) => `
+                ${qImages.map((img, i) => `
                     <div class="image-question-wrap">
                         <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
                     </div>
                 `).join('')}
             </div>
-        ` : (q.image_url && q.type !== 'image_mcq' ? `
+        ` : (qImages.length === 1 && q.type !== 'image_mcq' ? `
             <div class="image-question-wrap">
-                <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
+                <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)">
             </div>
         ` : '')}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
@@ -287,13 +355,22 @@ window.renderVideoFacade = renderVideoFacade;
 
 function renderExplanationBlock(q, revealed) {
     const expText = getActiveExplanationText(q);
+    const expImages = getActiveExplanationImages(q);
     const hasVideo = Boolean(q.video && (q.video.embed_url || q.video.url));
-    if (!expText && !q.explanation_image && !hasVideo) return '';
+    if (!expText && expImages.length === 0 && !hasVideo) return '';
     return `
         <div class="explanation-box ${revealed ? 'show' : ''}">
             <h4>💡 Explanation</h4>
             ${expText ? `<div class="explanation-text" style="line-height: 1.7; margin-top: 0.5rem;">${renderSmartExplanationText(q)}</div>` : ''}
-            ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
+            ${expImages.length > 1 ? `
+                <div class="exp-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
+                    ${expImages.map((img, i) => `
+                        <img class="explanation-img" src="${img}" alt="Explanation Diagram ${i + 1}" loading="lazy">
+                    `).join('')}
+                </div>
+            ` : (expImages.length === 1 ? `
+                <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy">
+            ` : '')}
             ${hasVideo ? renderVideoFacade(q.video, q.id) : ''}
         </div>
     `;
@@ -395,16 +472,23 @@ function renderImageMCQ(q, idx) {
     const saved = userAnswers[idx];
     const selected = saved && saved.selected !== undefined ? [saved.selected] : [];
     const revealed = saved && saved.revealed;
+    const qImages = getActiveQuestionImages(q);
+    const mainImg = qImages[0] || q.image_url || '';
 
     return `
-        <div class="image-question-wrap">
-            <img src="${q.image_url}" 
-                 class="question-image" 
-                 alt="Question ${idx + 1}" 
-                 loading="lazy"
-                 data-original-url="${q.image_url}"
-                 onerror="handleImageError(this)">
-        </div>
+        ${qImages.length > 1 ? `
+            <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
+                ${qImages.map((img, i) => `
+                    <div class="image-question-wrap">
+                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                    </div>
+                `).join('')}
+            </div>
+        ` : (mainImg ? `
+            <div class="image-question-wrap">
+                <img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="lazy" data-original-url="${mainImg}" onerror="handleImageError(this)">
+            </div>
+        ` : '')}
         ${buildOptionList(q, idx, {
             selected, revealed,
             handler: 'selectImageMCQ',
@@ -587,8 +671,9 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
         }
 
         const key = OPTION_LETTERS[i] || (i + 1);
-        const optImg = q.optionImages && q.optionImages[i]
-            ? `<img class="mcq-opt-image" src="${q.optionImages[i]}" alt="Option ${key}" loading="lazy">`
+        const optImages = getActiveOptionImages(q);
+        const optImg = optImages && optImages[i]
+            ? `<img class="mcq-opt-image" src="${optImages[i]}" alt="Option ${key}" loading="lazy">`
             : '';
         const label = opt && String(opt).trim() !== ''
             ? renderSmartOptionText(q, opt)

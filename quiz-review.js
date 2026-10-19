@@ -204,12 +204,24 @@ function renderReview() {
         }
 
         // Image display
+        const qImages = typeof getActiveQuestionImages === 'function' ? getActiveQuestionImages(q) : (Array.isArray(q.images) && q.images.length > 0 ? q.images : (q.image_url ? [q.image_url] : []));
         let imageHTML = '';
-        if (q.image_url) {
+        if (qImages.length > 1) {
+            imageHTML = `
+                <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
+                    ${qImages.map((img, k) => `
+                        <div class="image-question-wrap">
+                            <img src="${img}" class="question-image" alt="Question ${i + 1} Diagram ${k + 1}" 
+                                 loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        } else if (qImages.length === 1) {
             imageHTML = `
                 <div class="image-question-wrap">
-                    <img src="${q.image_url}" class="question-image" alt="Question ${i + 1}" 
-                         loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
+                    <img src="${qImages[0]}" class="question-image" alt="Question ${i + 1}" 
+                         loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)">
                 </div>
             `;
         }
@@ -217,14 +229,24 @@ function renderReview() {
         const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
         const qText = typeof getActiveQuestionText === 'function' ? getActiveQuestionText(q) : (q.question || '');
         const expText = typeof getActiveExplanationText === 'function' ? getActiveExplanationText(q) : (q.explanation || '');
+        const expImages = typeof getActiveExplanationImages === 'function' ? getActiveExplanationImages(q) : (Array.isArray(q.explanation_images) && q.explanation_images.length > 0 ? q.explanation_images : (q.explanation_image ? [q.explanation_image] : []));
+        const hasHi = Boolean(q.translations && q.translations.hi);
 
         let explanationHTML = '';
-        if (expText || q.explanation_image) {
+        if (expText || expImages.length > 0) {
             explanationHTML = `
                 <div class="explanation-box show" style="margin-top:1rem;">
                     <h4>💡 Explanation</h4>
                     ${expText ? `<div class="explanation-text" style="line-height:1.7;margin-top:0.5rem;">${typeof renderSmartExplanationText === 'function' ? renderSmartExplanationText(q) : (typeof safeHtml === 'function' ? safeHtml(expText) : escapeHtml(expText))}</div>` : ''}
-                    ${q.explanation_image ? `<img class="explanation-img" src="${q.explanation_image}" alt="Explanation Diagram" loading="lazy">` : ''}
+                    ${expImages.length > 1 ? `
+                        <div class="exp-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
+                            ${expImages.map((eimg, k) => `
+                                <img class="explanation-img" src="${eimg}" alt="Explanation Diagram ${k + 1}" loading="lazy">
+                            `).join('')}
+                        </div>
+                    ` : (expImages.length === 1 ? `
+                        <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy">
+                    ` : '')}
                 </div>
             `;
         }
@@ -239,7 +261,14 @@ function renderReview() {
                         ${topicLabel ? `<span class="meta-dot">·</span><span class="question-topic-tag" title="${escapeHtml(topicLabel)}">📂 ${escapeHtml(topicLabel)}</span>` : ''}
                         ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                     </div>
-                    <div class="review-status-badge ${status}">${statusText}</div>
+                    <div class="question-card-top-actions" style="display:flex;align-items:center;gap:0.5rem;">
+                        ${hasHi ? `
+                            <button class="lang-toggle-btn ${currentLanguage === 'hi' ? 'active' : ''}" onclick="toggleQuestionLanguage()" title="Switch Language (English / हिन्दी)">
+                                ${currentLanguage === 'hi' ? '🇮🇳 HI' : '🇬🇧 EN'}
+                            </button>
+                        ` : ''}
+                        <div class="review-status-badge ${status}">${statusText}</div>
+                    </div>
                 </div>
                 ${qText ? `<div class="question-text">${typeof renderSmartQuestionText === 'function' ? renderSmartQuestionText(q) : (typeof safeHtml === 'function' ? safeHtml(qText) : escapeHtml(qText))}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}

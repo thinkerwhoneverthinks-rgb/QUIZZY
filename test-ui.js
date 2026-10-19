@@ -1106,6 +1106,7 @@ function renderQuestion() {
 
             <div class="q-tags">
                 <span class="q-section-tag">${tcEsc(q.sectionName)}</span>
+                ${q.type === 'multi_mcq' ? '<span class="q-type-tag multi">☑ One or More Correct</span>' : (q.type === 'integer' ? '<span class="q-type-tag int">🔢 Numerical</span>' : '')}
                 ${markScheme}
             </div>
 
@@ -1212,6 +1213,7 @@ function renderMatchLists(q) {
 
 function renderOptions(q, rec) {
     const live = TS.mode === 'test';
+    const isMulti = q.type === 'multi_mcq';
     const options = q.options || [];
 
     const boxes = options.map((text, i) => {
@@ -1219,19 +1221,40 @@ function renderOptions(q, rec) {
         let flag = '';
 
         if (live) {
-            if (rec.selected === i) state = 'selected';
+            if (isMulti) {
+                if (Array.isArray(rec.selected) && rec.selected.includes(i)) state = 'selected';
+            } else {
+                if (rec.selected === i) state = 'selected';
+            }
         } else {
-            const isCorrect = q.correct === i;
-            const isChosen = rec.selected === i;
-            if (isCorrect && isChosen) {
-                state = 'correct';
-                flag = 'Correct (Marked By You)';
-            } else if (isCorrect) {
-                state = 'correct';
-                flag = 'Correct (Not Marked By You)';
-            } else if (isChosen) {
-                state = 'incorrect';
-                flag = 'Incorrect (Marked By You)';
+            if (isMulti) {
+                const correctList = Array.isArray(q.correct) ? q.correct : (q.correct !== null && q.correct !== undefined ? [q.correct] : []);
+                const chosenList = Array.isArray(rec.selected) ? rec.selected : (rec.selected !== null && rec.selected !== undefined ? [rec.selected] : []);
+                const isCorrect = correctList.includes(i);
+                const isChosen = chosenList.includes(i);
+                if (isCorrect && isChosen) {
+                    state = 'correct';
+                    flag = 'Correct (Marked By You)';
+                } else if (isCorrect) {
+                    state = 'correct';
+                    flag = 'Correct (Not Marked By You)';
+                } else if (isChosen) {
+                    state = 'incorrect';
+                    flag = 'Incorrect (Marked By You)';
+                }
+            } else {
+                const isCorrect = q.correct === i;
+                const isChosen = rec.selected === i;
+                if (isCorrect && isChosen) {
+                    state = 'correct';
+                    flag = 'Correct (Marked By You)';
+                } else if (isCorrect) {
+                    state = 'correct';
+                    flag = 'Correct (Not Marked By You)';
+                } else if (isChosen) {
+                    state = 'incorrect';
+                    flag = 'Incorrect (Marked By You)';
+                }
             }
         }
 
@@ -1243,7 +1266,7 @@ function renderOptions(q, rec) {
             : (optImage ? '' : `Option ${i + 1}`);
 
         return `
-            <button type="button" class="opt ${state}" ${live ? `onclick="selectOption(${i})"` : 'disabled'}>
+            <button type="button" class="opt ${state} ${isMulti ? 'multi-opt' : ''}" ${live ? `onclick="selectOption(${i})"` : 'disabled'}>
                 <span class="opt-key">${TC_LETTERS[i] || i + 1}</span>
                 <span class="opt-body">
                     ${label ? `<span class="opt-text">${label}</span>` : ''}
@@ -1253,11 +1276,14 @@ function renderOptions(q, rec) {
             </button>`;
     }).join('');
 
-    const clearBtn = live && rec.selected !== null && rec.selected !== undefined
+    const hasSelection = isMulti
+        ? Array.isArray(rec.selected) && rec.selected.length > 0
+        : rec.selected !== null && rec.selected !== undefined;
+    const clearBtn = live && hasSelection
         ? `<button class="q-clear-btn" onclick="clearAnswer()">Clear response</button>`
         : '';
 
-    return `<div class="q-options">${boxes}</div>${clearBtn}`;
+    return `<div class="q-options ${isMulti ? 'is-multi' : ''}">${boxes}</div>${clearBtn}`;
 }
 
 function renderIntegerInput(q, rec) {
@@ -1325,8 +1351,16 @@ function renderSolutionBlock(q) {
 // ---- interactions ----
 function selectOption(i) {
     if (TS.mode !== 'test') return;
+    const q = TS.flat[TS.currentIndex];
     const rec = TS.answers[TS.currentIndex];
-    rec.selected = rec.selected === i ? null : i;
+    if (q.type === 'multi_mcq') {
+        if (!Array.isArray(rec.selected)) rec.selected = [];
+        const idx = rec.selected.indexOf(i);
+        if (idx >= 0) rec.selected.splice(idx, 1);
+        else rec.selected.push(i);
+    } else {
+        rec.selected = rec.selected === i ? null : i;
+    }
     renderQuestion();
     saveInProgressTest();
 }

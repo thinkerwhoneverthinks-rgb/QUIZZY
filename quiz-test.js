@@ -216,6 +216,8 @@ function renderTestMode() {
         const isReviewed = userAnswers[idx] && userAnswers[idx].reviewed;
         const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
         const qText = typeof getActiveQuestionText === 'function' ? getActiveQuestionText(q) : (q.question || '');
+        const qImages = typeof getActiveQuestionImages === 'function' ? getActiveQuestionImages(q) : (Array.isArray(q.images) && q.images.length > 0 ? q.images : (q.image_url ? [q.image_url] : []));
+        const hasHi = Boolean(q.translations && q.translations.hi);
 
         return `
             <div class="question-card test-mode" id="testQ-${idx}">
@@ -228,6 +230,11 @@ function renderTestMode() {
                         ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                     </div>
                     <div class="question-card-top-actions">
+                        ${hasHi ? `
+                            <button class="lang-toggle-btn ${currentLanguage === 'hi' ? 'active' : ''}" onclick="toggleQuestionLanguage()" title="Switch Language (English / हिन्दी)">
+                                ${currentLanguage === 'hi' ? '🇮🇳 HI' : '🇬🇧 EN'}
+                            </button>
+                        ` : ''}
                         <button class="review-btn ${isReviewed ? 'active' : ''}" onclick="toggleReview(${idx})" title="Mark for review">
                             🚩 ${isReviewed ? 'Reviewed' : 'Review'}
                         </button>
@@ -235,11 +242,19 @@ function renderTestMode() {
                 </div>
                 ${qText ? `<div class="question-text">${typeof safeHtml === 'function' ? safeHtml(qText) : escapeHtml(qText)}</div>` : ''}
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
-                ${q.image_url && q.type !== 'image_mcq' ? `
-                    <div class="image-question-wrap">
-                        <img src="${q.image_url}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${q.image_url}" onerror="handleImageError(this)">
+                ${qImages.length > 1 ? `
+                    <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
+                        ${qImages.map((img, i) => `
+                            <div class="image-question-wrap">
+                                <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                            </div>
+                        `).join('')}
                     </div>
-                ` : ''}
+                ` : (qImages.length === 1 && q.type !== 'image_mcq' ? `
+                    <div class="image-question-wrap">
+                        <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)">
+                    </div>
+                ` : '')}
                 ${questionHTML}
             </div>
         `;
@@ -266,16 +281,28 @@ function renderTestMode() {
 function renderTestImageMCQ(q, idx) {
     const saved = userAnswers[idx];
     const selected = saved && saved.selected !== undefined ? [saved.selected] : [];
+    const qImages = typeof getActiveQuestionImages === 'function' ? getActiveQuestionImages(q) : (Array.isArray(q.images) && q.images.length > 0 ? q.images : (q.image_url ? [q.image_url] : []));
+    const mainImg = qImages[0] || q.image_url || '';
 
     return `
-        <div class="image-question-wrap">
-            <img src="${q.image_url}"
-                 class="question-image"
-                 alt="Question ${idx + 1}"
-                 loading="lazy"
-                 data-original-url="${q.image_url}"
-                 onerror="handleImageError(this)">
-        </div>
+        ${qImages.length > 1 ? `
+            <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
+                ${qImages.map((img, i) => `
+                    <div class="image-question-wrap">
+                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                    </div>
+                `).join('')}
+            </div>
+        ` : (mainImg ? `
+            <div class="image-question-wrap">
+                <img src="${mainImg}"
+                     class="question-image"
+                     alt="Question ${idx + 1}"
+                     loading="lazy"
+                     data-original-url="${mainImg}"
+                     onerror="handleImageError(this)">
+            </div>
+        ` : '')}
         ${buildOptionList(q, idx, {
             selected,
             handler: 'selectTestImageMCQ',

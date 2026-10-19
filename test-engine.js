@@ -184,6 +184,18 @@ function normalizeTest(raw, fileName) {
    the Question Cafe files already use. Letters ("B") and the literal option
    text are accepted too, since those show up in hand-written tests. */
 function resolveCorrectIndex(q, options) {
+    if (Array.isArray(q.correct)) {
+        return q.correct.map(c => {
+            if (typeof c === 'number') return c;
+            const s = String(c).trim();
+            if (/^[A-Za-z]$/.test(s)) return s.toUpperCase().charCodeAt(0) - 65;
+            if (/^[1-9]$/.test(s)) return Number(s) - 1;
+            return c;
+        });
+    }
+    if (Array.isArray(q.correct_answer)) {
+        return q.correct_answer.map(c => typeof c === 'number' && c > 0 ? c - 1 : c);
+    }
     if (typeof q.correct === 'number') return q.correct;
     if (typeof q.correct_index === 'number') return q.correct_index;
     if (typeof q.correct_answer === 'number') {
@@ -221,8 +233,10 @@ function normalizeTestQuestion(q, index, sectionMarking) {
 
     let type = (q.type || '').toLowerCase();
     if (type === 'numerical' || type === 'integer_type') type = 'integer';
+    if (type === 'multi' || type === 'multiple') type = 'multi_mcq';
     if (!type) {
-        if (options || (Array.isArray(optionImages) && optionImages.length > 0)) type = 'mcq';
+        if (Array.isArray(q.correct) && q.correct.length > 1) type = 'multi_mcq';
+        else if (options || (Array.isArray(optionImages) && optionImages.length > 0)) type = 'mcq';
         else if (q.image_url || q.image) type = 'mcq';           // image-only MCQ: 4 numbered boxes
         else if (q.answer !== undefined) type = 'integer';
         else type = 'mcq';
@@ -262,12 +276,14 @@ function normalizeTestQuestion(q, index, sectionMarking) {
         explanation_image: expImages[0] || null,
         explanation_images: expImages,
         video: q.video || null,
-        marking: marking
+        marking: marking,
+        is_bonus: Boolean(q.is_bonus || q.bonus)
     };
 
     if (type === 'integer') {
-        const ans = q.answer !== undefined ? q.answer
+        const rawAns = q.answer !== undefined ? q.answer
             : (q.correct_answer !== undefined ? q.correct_answer : q.correct);
+        const ans = rawAns !== null && rawAns !== undefined ? String(rawAns).trim() : null;
         return { ...base, options: null, optionImages: null, correct: null, answer: ans };
     }
 
@@ -277,11 +293,18 @@ function normalizeTestQuestion(q, index, sectionMarking) {
         ? optionImages.map(() => '')
         : ['', '', '', '']);
 
+    let resolvedCorrect = resolveCorrectIndex(q, options);
+    if (type === 'multi_mcq') {
+        if (!Array.isArray(resolvedCorrect)) {
+            resolvedCorrect = resolvedCorrect !== null && resolvedCorrect !== undefined ? [resolvedCorrect] : [];
+        }
+    }
+
     return {
         ...base,
         options: finalOptions,
         optionImages: Array.isArray(optionImages) ? optionImages : null,
-        correct: resolveCorrectIndex(q, options),
+        correct: resolvedCorrect,
         answer: null
     };
 }
@@ -467,10 +490,12 @@ function formatShortDuration(ms) {
 function isAnswered(rec, q) {
     if (!rec) return false;
     if (q.type === 'integer') return String(rec.value || '').trim() !== '';
+    if (q.type === 'multi_mcq') return Array.isArray(rec.selected) && rec.selected.length > 0;
     return rec.selected !== null && rec.selected !== undefined;
 }
 
 function isQuestionCorrect(q, rec) {
+    if (q && (q.is_bonus || q.bonus)) return true;
     if (!isAnswered(rec, q)) return false;
     if (q.type === 'integer') {
         const given = String(rec.value).trim();
@@ -481,6 +506,13 @@ function isQuestionCorrect(q, rec) {
         if (!isNaN(a) && !isNaN(b)) return Math.abs(a - b) < 1e-6;
         return given.toLowerCase() === expected.toLowerCase();
     }
+    if (q.type === 'multi_mcq') {
+        if (!Array.isArray(q.correct) || !Array.isArray(rec.selected)) return false;
+        if (q.correct.length !== rec.selected.length) return false;
+        const s1 = [...q.correct].map(Number).sort((x, y) => x - y);
+        const s2 = [...rec.selected].map(Number).sort((x, y) => x - y);
+        return s1.every((val, idx) => val === s2[idx]);
+    }
     if (q.correct === null || q.correct === undefined) return false;
     return rec.selected === q.correct;
 }
@@ -490,6 +522,7 @@ function isQuestionCorrect(q, rec) {
 function questionOutcome(globalIndex) {
     const q = TS.flat[globalIndex];
     const rec = TS.answers[globalIndex];
+    if (q && (q.is_bonus || q.bonus)) return 'correct';
     if (!isAnswered(rec, q)) return 'skipped';
     return isQuestionCorrect(q, rec) ? 'correct' : 'incorrect';
 }

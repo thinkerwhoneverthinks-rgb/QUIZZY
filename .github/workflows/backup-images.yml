@@ -1,0 +1,76 @@
+name: 📦 QUIZZY Image Backup
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_pw_test:
+        description: "Include pw-test (NEET/JEE test papers)"
+        required: false
+        default: "true"
+        type: boolean
+      batch_pw_modules:
+        description: "Include pw-modules (Digital modules)"
+        required: false
+        default: "true"
+        type: boolean
+      batch_pw_notes:
+        description: "Include pw-notes (Visual Edge, Formula Handbook, etc.)"
+        required: false
+        default: "true"
+        type: boolean
+      batch_notes:
+        description: "Include notes (Subject-wise chapter notes)"
+        required: false
+        default: "true"
+        type: boolean
+
+jobs:
+  backup:
+    name: Download Images & Package ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 📋 Show selected batches
+        run: |
+          echo "==============================="
+          echo "  QUIZZY Backup — Batch Config"
+          echo "==============================="
+          echo "  pw-test    : ${{ inputs.batch_pw_test }}"
+          echo "  pw-modules : ${{ inputs.batch_pw_modules }}"
+          echo "  pw-notes   : ${{ inputs.batch_pw_notes }}"
+          echo "  notes      : ${{ inputs.batch_notes }}"
+          echo "==============================="
+
+      - name: 🔍 Extract image URLs & copy JSON files
+        env:
+          BATCH_PW_TEST: ${{ inputs.batch_pw_test }}
+          BATCH_PW_MODULES: ${{ inputs.batch_pw_modules }}
+          BATCH_PW_NOTES: ${{ inputs.batch_pw_notes }}
+          BATCH_NOTES: ${{ inputs.batch_notes }}
+        run: node tools/backup-images.js
+
+      - name: 🗜️ Create ZIP archive(s)
+        run: node tools/create-zip.js
+
+      - name: 📤 Upload ZIP as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quizzy-backup-${{ github.run_id }}
+          path: backup-output/*.zip
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: 📊 Print summary
+        run: |
+          echo "### ✅ Backup Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat backup-output/summary.md >> $GITHUB_STEP_SUMMARY

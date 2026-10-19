@@ -44,8 +44,14 @@ function setQuizLanguage(lang) {
         renderTestMode();
     } else if (screenId === 'screenReview' && typeof renderReview === 'function') {
         renderReview();
+    } else if (screenId === 'screenBookmarks' && typeof renderBookmarks === 'function') {
+        renderBookmarks();
     } else if (typeof renderQuestion === 'function') {
         renderQuestion();
+    }
+    const gridModal = document.getElementById('gridModal');
+    if (gridModal && gridModal.style.display === 'flex' && typeof renderQuestionGrid === 'function') {
+        renderQuestionGrid();
     }
 }
 
