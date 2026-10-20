@@ -239,6 +239,15 @@ class QuizOfflineStorage {
             if (Array.isArray(q.optionImages)) {
                 q.optionImages.forEach(u => { if (u) urls.add(u); });
             }
+            if (q.translations && q.translations.hi) {
+                const hi = q.translations.hi;
+                if (hi.image_url) urls.add(hi.image_url);
+                if (hi.image) urls.add(hi.image);
+                if (Array.isArray(hi.images)) hi.images.forEach(u => { if (u) urls.add(u); });
+                if (hi.explanation_image) urls.add(hi.explanation_image);
+                if (Array.isArray(hi.explanation_images)) hi.explanation_images.forEach(u => { if (u) urls.add(u); });
+                if (Array.isArray(hi.optionImages)) hi.optionImages.forEach(u => { if (u) urls.add(u); });
+            }
             if (q.matchLists) {
                 (q.matchLists.listI?.items || []).forEach(it => {
                     const u = it.image_url || it.image || it.imageUrl;
@@ -262,7 +271,9 @@ class QuizOfflineStorage {
         let cdnCache = null;
         try {
             if ('caches' in window) {
-                cdnCache = await caches.open('quizzy-v14-cdn');
+                const keys = await caches.keys();
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v36-cdn';
+                cdnCache = await caches.open(cdnKey);
             }
         } catch (e) { /* ignore */ }
 
@@ -338,7 +349,9 @@ class QuizOfflineStorage {
         let cdnCache = null;
         try {
             if ('caches' in window) {
-                cdnCache = await caches.open('quizzy-v14-cdn');
+                const keys = await caches.keys();
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v36-cdn';
+                cdnCache = await caches.open(cdnKey);
             }
         } catch (e) { /* ignore */ }
 

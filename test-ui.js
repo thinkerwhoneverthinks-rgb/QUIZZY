@@ -155,6 +155,12 @@ function renderTestTree() {
         const clickArg = typeof file === 'object' ? tcAttr(JSON.stringify(file)) : `'${tbAttr(filePath)}'`;
         const clickHandler = typeof file === 'object' ? `openTestDetail(${clickArg})` : `openTestDetail('${tbAttr(filePath)}')`;
 
+        const btnId = `tcdl_${tcSlug(filePath)}`;
+        const dlBtn = `
+            <span class="tc-dl-btn" id="${btnId}" 
+                  onclick="event.stopPropagation(); handleTestDownload('${tbAttr(filePath)}', this);" 
+                  title="Download for offline">⬇️</span>`;
+
         html += `
             <button class="tc-row file" onclick="${clickHandler}">
                 <span class="tc-row-icon">📝</span>
@@ -163,11 +169,100 @@ function renderTestTree() {
                     <span class="tc-row-meta">Tap to see sections &amp; start</span>
                 </span>
                 ${sylBtn}
+                ${dlBtn}
                 <span class="tc-row-go">›</span>
             </button>`;
     });
 
     container.innerHTML = html;
+
+    files.forEach(file => {
+        const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
+        const btnId = `tcdl_${tcSlug(filePath)}`;
+        if (typeof offlineStorage !== 'undefined') {
+            offlineStorage.isFileDownloaded(filePath).then(isDl => {
+                const el = document.getElementById(btnId);
+                if (el && isDl) {
+                    el.innerHTML = '✅';
+                    el.classList.add('downloaded');
+                    el.title = 'Available offline (click to delete)';
+                }
+            }).catch(() => {});
+        }
+    });
+}
+
+async function handleTestDownload(filePath, btn) {
+    if (typeof offlineStorage === 'undefined') {
+        alert('Offline storage not available.');
+        return;
+    }
+    const isDl = await offlineStorage.isFileDownloaded(filePath);
+    if (isDl) {
+        if (confirm('This test is saved offline. Remove offline data?')) {
+            await offlineStorage.deleteFileOffline(filePath);
+            btn.innerHTML = '⬇️';
+            btn.classList.remove('downloaded');
+            btn.title = 'Download for offline';
+        }
+        return;
+    }
+
+    btn.innerHTML = '⏳';
+    btn.style.pointerEvents = 'none';
+
+    try {
+        const resp = await fetch('data/' + filePath);
+        if (!resp.ok) throw new Error('Could not download test file');
+        const raw = await resp.json();
+        await offlineStorage.saveQuizData(filePath, raw);
+
+        const qs = [];
+        if (Array.isArray(raw.sections)) {
+            raw.sections.forEach(s => (s.questions || []).forEach(q => qs.push(q)));
+        } else if (Array.isArray(raw.chapters)) {
+            raw.chapters.forEach(ch => (ch.topics || []).forEach(t => (t.questions || []).forEach(q => qs.push(q))));
+        } else if (Array.isArray(raw.questions)) {
+            raw.questions.forEach(q => qs.push(q));
+        } else if (Array.isArray(raw)) {
+            raw.forEach(q => qs.push(q));
+        }
+
+        const imgs = offlineStorage.extractAllImagesFromQuestions(qs);
+        let cdnCache = null;
+        try {
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v36-cdn';
+                cdnCache = await caches.open(cdnKey);
+            }
+        } catch (e) { /* ignore */ }
+
+        for (const u of imgs) {
+            try {
+                const imgResp = await fetch(u);
+                if (imgResp.ok) {
+                    const blob = await imgResp.blob();
+                    await offlineStorage.saveImage(u, blob);
+                    if (cdnCache) {
+                        try {
+                            await cdnCache.put(new Request(u), new Response(blob.slice(0), { headers: { 'Content-Type': blob.type || 'image/png' } }));
+                        } catch (err) {}
+                    }
+                }
+            } catch (err) {}
+        }
+
+        btn.innerHTML = '✅';
+        btn.classList.add('downloaded');
+        btn.title = 'Available offline (click to delete)';
+    } catch (e) {
+        console.error('Download error:', e);
+        btn.innerHTML = '❌';
+        setTimeout(() => { btn.innerHTML = '⬇️'; }, 2000);
+    } finally {
+        btn.style.pointerEvents = '';
+    }
 }
 
 function enterTestFolder(i) {
@@ -1112,11 +1207,18 @@ function renderQuestion() {
 
             ${q.question ? `<div class="q-text">${tcRenderText(q.question)}</div>` : ''}
 
-            ${q.images && q.images.length > 1 ? `
-                <div class="q-images-container">
-                    ${q.images.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy"></div>`).join('')}
-                </div>
-            ` : (q.image_url ? `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(q.image_url)}" alt="Question diagram" loading="lazy"></div>` : '')}
+            ${(() => {
+                const fnIsInText = typeof isImageInText === 'function' ? isImageInText : ((img, txt) => txt && txt.includes(img));
+                const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
+                const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
+                if (qImgs.length > 1) {
+                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy"></div>`).join('')}</div>`;
+                }
+                if (qImgs.length === 1) {
+                    return `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="lazy"></div>`;
+                }
+                return '';
+            })()}
 
             ${renderMatchLists(q)}
 
@@ -1407,8 +1509,9 @@ function nextQuestionTC() { goToQuestion(TS.currentIndex + 1); }
 function prevQuestionTC() { goToQuestion(TS.currentIndex - 1); }
 
 function switchSection(sectionIndex) {
-    const first = TS.flat.findIndex(q => q.sectionIndex === sectionIndex);
-    if (first >= 0) goToQuestion(first);
+    TS.activeSection = sectionIndex;
+    renderSectionTabs();
+    renderGrid();
 }
 
 function handleFooterNextClick() {

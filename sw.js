@@ -1,7 +1,7 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v36';
+const CACHE_VERSION = 'quizzy-v37';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
@@ -50,7 +50,17 @@ const APP_SHELL_FILES = [
 const CDN_URLS = [
     'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
     'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff',
     'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/noerrors.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/mhchem.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/cancel.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/enclose.js',
     'https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js'
 ];
 

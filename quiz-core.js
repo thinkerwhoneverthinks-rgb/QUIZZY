@@ -32,10 +32,25 @@ try {
     if (savedLang === 'hi' || savedLang === 'en') currentLanguage = savedLang;
 } catch (e) { /* ignore */ }
 
+function updateHeaderLangPills() {
+    const hasHi = typeof questions !== 'undefined' && questions && questions.some(q => q.translations && q.translations.hi);
+    ['headerLangPills', 'fullHeaderLangPills', 'testHeaderLangPills'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = hasHi ? 'inline-flex' : 'none';
+        }
+    });
+    document.querySelectorAll('.header-lang-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLanguage);
+    });
+}
+window.updateHeaderLangPills = updateHeaderLangPills;
+
 function setQuizLanguage(lang) {
     if (lang !== 'en' && lang !== 'hi') return;
     currentLanguage = lang;
     try { localStorage.setItem('quizzy-language', currentLanguage); } catch (e) { /* ignore */ }
+    updateHeaderLangPills();
     const activeScreen = document.querySelector('.screen.active');
     const screenId = activeScreen ? activeScreen.id : '';
     if (screenId === 'screenFullQuiz' && typeof renderFullQuiz === 'function') {
@@ -49,8 +64,7 @@ function setQuizLanguage(lang) {
     } else if (typeof renderQuestion === 'function') {
         renderQuestion();
     }
-    const gridModal = document.getElementById('gridModal');
-    if (gridModal && gridModal.style.display === 'flex' && typeof renderQuestionGrid === 'function') {
+    if (typeof renderQuestionGrid === 'function') {
         renderQuestionGrid();
     }
 }

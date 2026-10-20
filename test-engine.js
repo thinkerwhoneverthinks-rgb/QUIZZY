@@ -324,12 +324,36 @@ const TEST_FILE_FETCH_TIMEOUT_MS = 12000;
 
 async function loadTestFile(fileName) {
     if (loadedTests[fileName]) return loadedTests[fileName];
+    if (typeof offlineStorage !== 'undefined') {
+        try {
+            const cached = await offlineStorage.getQuizData(fileName);
+            if (cached) {
+                const test = normalizeTest(cached, fileName);
+                if (test && test.totalQuestions > 0) {
+                    loadedTests[fileName] = test;
+                    return test;
+                }
+            }
+        } catch (e) { /* fallback to fetch */ }
+    }
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TEST_FILE_FETCH_TIMEOUT_MS);
     let resp;
     try {
         resp = await fetch(TEST_DATA_DIR + fileName, { signal: controller.signal });
     } catch (e) {
+        if (typeof offlineStorage !== 'undefined') {
+            try {
+                const cached = await offlineStorage.getQuizData(fileName);
+                if (cached) {
+                    const test = normalizeTest(cached, fileName);
+                    if (test && test.totalQuestions > 0) {
+                        loadedTests[fileName] = test;
+                        return test;
+                    }
+                }
+            } catch (err) { /* ignore */ }
+        }
         throw new Error(e.name === 'AbortError' ? `Timed out loading ${fileName}` : e.message);
     } finally {
         clearTimeout(timer);

@@ -101,7 +101,7 @@
         <div class="menu-foot">Quizzy v3.0</div>
     </div>
 
-    <main class="container">
+    <main class="container qc-container">
 
         <!-- ===== SCREEN 1: SUBJECTS & FOLDERS ===== -->
         <div class="screen active" id="screenSubjects">
@@ -269,9 +269,9 @@
                         <div class="quiz-topic-name" id="quizTopicName">Epithelial Tissue</div>
                     </div>
                     <div style="display:flex; align-items:center; gap:0.4rem;">
-                        <div class="view-mode-toggle">
-                            <button class="view-mode-btn active" id="vmBtnQuizOne" onclick="switchQuizViewMode('onebyone')" title="One by one">📄</button>
-                            <button class="view-mode-btn" id="vmBtnQuizAll" onclick="switchQuizViewMode('fullquiz')" title="Scroll all">📜</button>
+                        <div class="header-lang-pills" id="headerLangPills">
+                            <button class="header-lang-pill active" data-lang="en" onclick="setQuizLanguage('en')">EN</button>
+                            <button class="header-lang-pill" data-lang="hi" onclick="setQuizLanguage('hi')">HI</button>
                         </div>
                         <button class="btn btn-ghost btn-sm" onclick="resetCurrentTopicProgress()" title="Reset progress for this topic" style="padding:0.25rem 0.5rem; font-size:0.75rem;">🔄</button>
                         <div class="quiz-progress" id="quizProgress">1 / 55</div>
@@ -281,10 +281,15 @@
                     <div class="progress-fill" id="progressFill" style="width: 2%"></div>
                 </div>
             </div>
-            <div id="quizContainer"></div>
-            <div class="quiz-nav">
-                <button class="nav-btn" id="btnPrev" onclick="prevQuestion()" disabled>← Previous</button>
-                <button class="nav-btn" id="btnNext" onclick="nextQuestion()">Next →</button>
+            <div class="qc-layout">
+                <div class="qc-main">
+                    <div id="quizContainer"></div>
+                    <div class="quiz-nav">
+                        <button class="nav-btn" id="btnPrev" onclick="prevQuestion()" disabled>← Previous</button>
+                        <button class="nav-btn" id="btnNext" onclick="nextQuestion()">Next →</button>
+                    </div>
+                </div>
+                <aside class="qc-pc-side" id="qcPcSideQuiz"></aside>
             </div>
         </div>
 
@@ -302,9 +307,9 @@
                         <div class="quiz-topic-name" id="fullQuizTopicName"></div>
                     </div>
                     <div style="display:flex; align-items:center; gap:0.4rem;">
-                        <div class="view-mode-toggle">
-                            <button class="view-mode-btn" id="vmBtnFullOne" onclick="switchQuizViewMode('onebyone')" title="One by one">📄</button>
-                            <button class="view-mode-btn active" id="vmBtnFullAll" onclick="switchQuizViewMode('fullquiz')" title="Scroll all">📜</button>
+                        <div class="header-lang-pills" id="fullHeaderLangPills">
+                            <button class="header-lang-pill active" data-lang="en" onclick="setQuizLanguage('en')">EN</button>
+                            <button class="header-lang-pill" data-lang="hi" onclick="setQuizLanguage('hi')">HI</button>
                         </div>
                         <button class="btn btn-ghost btn-sm" onclick="resetCurrentTopicProgress()" title="Reset progress for this topic" style="padding:0.25rem 0.5rem; font-size:0.75rem;">🔄</button>
                         <div class="quiz-progress" id="fullQuizProgress">0 / 55</div>
@@ -314,10 +319,15 @@
                     <div class="progress-fill" id="fullProgressFill" style="width: 0%"></div>
                 </div>
             </div>
-            <div class="full-quiz-container" id="fullQuizContainer"></div>
-            <div class="full-quiz-nav">
-                <button class="full-quiz-nav-btn" onclick="scrollToPrev()" title="Previous Question">↑</button>
-                <button class="full-quiz-nav-btn" onclick="scrollToNext()" title="Next Question">↓</button>
+            <div class="qc-layout">
+                <div class="qc-main">
+                    <div class="full-quiz-container" id="fullQuizContainer"></div>
+                    <div class="full-quiz-nav">
+                        <button class="full-quiz-nav-btn" onclick="scrollToPrev()" title="Previous Question">↑</button>
+                        <button class="full-quiz-nav-btn" onclick="scrollToNext()" title="Next Question">↓</button>
+                    </div>
+                </div>
+                <aside class="qc-pc-side" id="qcPcSideFullQuiz"></aside>
             </div>
         </div>
 
@@ -333,19 +343,30 @@
                     <div class="quiz-title-wrap">
                         <div class="quiz-title" id="testChapterTitle">Animal Tissues</div>
                     </div>
-                    <div class="quiz-timer" id="testTimer">30:00</div>
-                    <div class="quiz-progress" id="testProgress">0 / 20</div>
+                    <div style="display:flex; align-items:center; gap:0.4rem;">
+                        <div class="header-lang-pills" id="testHeaderLangPills" style="display:none;">
+                            <button class="header-lang-pill active" data-lang="en" onclick="setQuizLanguage('en')">EN</button>
+                            <button class="header-lang-pill" data-lang="hi" onclick="setQuizLanguage('hi')">HI</button>
+                        </div>
+                        <div class="quiz-timer" id="testTimer">30:00</div>
+                        <div class="quiz-progress" id="testProgress">0 / 20</div>
+                    </div>
                 </section>
                 <div class="progress-track">
                     <div class="progress-fill" id="testProgressFill" style="width: 0%"></div>
                 </div>
             </div>
-            <div class="test-question-list" id="testQuestionList"></div>
-            <div class="test-submit-bar">
-                <div class="test-answered-count">
-                    Answered: <span class="count" id="testAnsweredCount">0</span> / <span id="testTotalCount">20</span>
+            <div class="qc-layout">
+                <div class="qc-main">
+                    <div class="test-question-list" id="testQuestionList"></div>
+                    <div class="test-submit-bar">
+                        <div class="test-answered-count">
+                            Answered: <span class="count" id="testAnsweredCount">0</span> / <span id="testTotalCount">20</span>
+                        </div>
+                        <button class="test-submit-btn" onclick="submitTest()">Submit Test</button>
+                    </div>
                 </div>
-                <button class="test-submit-btn" onclick="submitTest()">Submit Test</button>
+                <aside class="qc-pc-side" id="qcPcSideTestMode"></aside>
             </div>
         </div>
 

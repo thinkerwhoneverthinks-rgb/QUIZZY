@@ -19,6 +19,27 @@ function getTypeLabel(q) {
     return 'single';
 }
 
+function formatQuizHeaderTitle(raw) {
+    if (!raw) return '';
+    const s = String(raw).trim();
+    // 1. Lecture DPP (e.g. "DPP of Lec 8", "DPP on Lecture 08", "DPP 08 (Lecture 08)", "Lec 04 DPP")
+    const mLec = s.match(/(?:dpp.*?lec(?:ture)?\s*[:#\-_]?\s*0*(\d+))|(?:lec(?:ture)?\s*[:#\-_]?\s*0*(\d+).*?dpp)/i);
+    if (mLec) {
+        const num = mLec[1] || mLec[2];
+        return `DPP L${num}`;
+    }
+    // 2. DPP Number (e.g. "Basic Concepts and Institutions : DPP 01 || MCQ QUIZ", "DPP-02", "DPP 3")
+    const mDpp = s.match(/\bdpp\s*[:#\-_]?\s*0*(\d+)/i);
+    if (mDpp) {
+        return `DPP ${mDpp[1]}`;
+    }
+    // 3. Plain DPP
+    if (/\bdpp\b/i.test(s)) {
+        return 'DPP';
+    }
+    return s;
+}
+
 function getActiveQuestionText(q) {
     if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi && q.translations.hi.question) {
         return q.translations.hi.question;
@@ -40,50 +61,72 @@ function getActiveOptions(q) {
     return q.options || [];
 }
 
-function getActiveQuestionImage(q) {
-    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
-        return q.translations.hi.image_url || q.translations.hi.image || (Array.isArray(q.translations.hi.images) && q.translations.hi.images[0]) || q.image_url || q.image || null;
+function isImageInText(imgUrl, text) {
+    if (!imgUrl || !text || typeof text !== 'string') return false;
+    if (!text.includes('<img')) return false;
+    if (text.includes(imgUrl)) return true;
+    const cleanImg = String(imgUrl).replace(/^https?:\/\//i, '').split('?')[0].split('#')[0];
+    if (text.includes(cleanImg)) return true;
+    const segments = cleanImg.split('/');
+    const filename = segments.pop();
+    if (filename && filename.length >= 6 && text.includes(filename)) {
+        return true;
     }
-    return q.image_url || q.image || (Array.isArray(q.images) && q.images[0]) || null;
+    return false;
 }
+window.isImageInText = isImageInText;
 
 function getActiveQuestionImages(q) {
+    let imgs = [];
     if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
         if (Array.isArray(q.translations.hi.images) && q.translations.hi.images.length > 0) {
-            return q.translations.hi.images;
-        }
-        if (q.translations.hi.image_url || q.translations.hi.image) {
-            return [q.translations.hi.image_url || q.translations.hi.image];
+            imgs = q.translations.hi.images;
+        } else if (q.translations.hi.image_url || q.translations.hi.image) {
+            imgs = [q.translations.hi.image_url || q.translations.hi.image];
         }
     }
-    if (Array.isArray(q.images) && q.images.length > 0) {
-        return q.images;
+    if (imgs.length === 0) {
+        if (Array.isArray(q.images) && q.images.length > 0) {
+            imgs = q.images;
+        } else {
+            const single = q.image_url || q.image || null;
+            if (single) imgs = [single];
+        }
     }
-    const single = q.image_url || q.image || null;
-    return single ? [single] : [];
+    const qText = getActiveQuestionText(q);
+    if (!qText || !qText.includes('<img')) return imgs;
+    return imgs.filter(img => !isImageInText(img, qText));
 }
 
-function getActiveExplanationImage(q) {
-    if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
-        return q.translations.hi.explanation_image || (Array.isArray(q.translations.hi.explanation_images) && q.translations.hi.explanation_images[0]) || q.explanation_image || (Array.isArray(q.explanation_images) && q.explanation_images[0]) || null;
-    }
-    return q.explanation_image || (Array.isArray(q.explanation_images) && q.explanation_images[0]) || null;
+function getActiveQuestionImage(q) {
+    const list = getActiveQuestionImages(q);
+    return list.length > 0 ? list[0] : null;
 }
 
 function getActiveExplanationImages(q) {
+    let imgs = [];
     if (typeof currentLanguage !== 'undefined' && currentLanguage === 'hi' && q.translations && q.translations.hi) {
         if (Array.isArray(q.translations.hi.explanation_images) && q.translations.hi.explanation_images.length > 0) {
-            return q.translations.hi.explanation_images;
-        }
-        if (q.translations.hi.explanation_image) {
-            return [q.translations.hi.explanation_image];
+            imgs = q.translations.hi.explanation_images;
+        } else if (q.translations.hi.explanation_image) {
+            imgs = [q.translations.hi.explanation_image];
         }
     }
-    if (Array.isArray(q.explanation_images) && q.explanation_images.length > 0) {
-        return q.explanation_images;
+    if (imgs.length === 0) {
+        if (Array.isArray(q.explanation_images) && q.explanation_images.length > 0) {
+            imgs = q.explanation_images;
+        } else if (q.explanation_image) {
+            imgs = [q.explanation_image];
+        }
     }
-    const single = q.explanation_image || null;
-    return single ? [single] : [];
+    const expText = getActiveExplanationText(q);
+    if (!expText || !expText.includes('<img')) return imgs;
+    return imgs.filter(img => !isImageInText(img, expText));
+}
+
+function getActiveExplanationImage(q) {
+    const list = getActiveExplanationImages(q);
+    return list.length > 0 ? list[0] : null;
 }
 
 function getActiveOptionImages(q) {
@@ -192,11 +235,6 @@ function buildQuestionCardInner(q, idx, total) {
                 ${examBadge}
             </div>
             <div class="question-card-top-actions">
-                ${hasHi ? `
-                    <button class="lang-toggle-btn ${currentLanguage === 'hi' ? 'active' : ''}" onclick="toggleQuestionLanguage()" title="Switch Language (English / हिन्दी)">
-                        ${currentLanguage === 'hi' ? '🇮🇳 HI' : '🇬🇧 EN'}
-                    </button>
-                ` : ''}
                 <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" onclick="${bookmarkAction}" title="${bookmarkTitle}">
                     🔖
                 </button>
@@ -412,8 +450,9 @@ function renderQuestion() {
 
     document.getElementById('quizProgress').textContent = `${currentQIndex + 1} / ${total}`;
     document.getElementById('progressFill').style.width = `${((currentQIndex + 1) / total) * 100}%`;
-    document.getElementById('quizChapterTitle').textContent = currentChapter ? currentChapter.name : '';
+    document.getElementById('quizChapterTitle').textContent = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
     document.getElementById('quizTopicName').textContent = q.topicName || '';
+    if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
 
     document.getElementById('btnPrev').disabled = currentQIndex === 0;
     const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
@@ -435,6 +474,7 @@ function renderQuestion() {
     loadOfflineImagesInContainer(container);
 
     if (typeof recordStudySession === 'function') recordStudySession();
+    if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
 }
 
 /* Shown on the last question so the user can jump straight into the next
@@ -748,7 +788,7 @@ function renderFullQuiz() {
 
     const topicNames = [...new Set(questions.map(q => q.topicName).filter(Boolean))];
 
-    document.getElementById('fullQuizTitle').textContent = currentChapter ? currentChapter.name : '';
+    document.getElementById('fullQuizTitle').textContent = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
     const topicEl = document.getElementById('fullQuizTopicName');
     if (topicEl) {
         topicEl.textContent = topicNames.length === 1

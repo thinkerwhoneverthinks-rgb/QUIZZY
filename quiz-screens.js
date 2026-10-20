@@ -450,7 +450,9 @@ function normalizeFlatQuestion(q) {
         exam_type: q.exam_type || null,
         exam_year: q.exam_year || null,
         exam_shift: q.exam_shift || null,
-        exam_reference: q.exam_reference || null
+        exam_reference: q.exam_reference || null,
+        passage: q.passage || null,
+        translations: q.translations || null
     };
 }
 
@@ -707,15 +709,7 @@ function renderQuestionGrid() {
     const doneCount = questions.reduce((n, _, i) => n + (isDone(i) ? 1 : 0), 0);
     const topicCount = Object.keys(groups).length;
     const hasHi = questions && questions.some(q => q.translations && q.translations.hi);
-    const langBarHtml = hasHi ? `
-        <div class="grid-lang-bar">
-            <span>🌐 Language:</span>
-            <div class="lang-pill-group">
-                <button class="lang-pill ${currentLanguage === 'en' ? 'active' : ''}" onclick="setQuizLanguage('en'); renderQuestionGrid();">EN</button>
-                <button class="lang-pill ${currentLanguage === 'hi' ? 'active' : ''}" onclick="setQuizLanguage('hi'); renderQuestionGrid();">HI</button>
-            </div>
-        </div>
-    ` : '';
+    const langBarHtml = '';
 
     const isRearranged = typeof isExerciseTopicRearranged === 'function' && isExerciseTopicRearranged();
     const orderBarHtml = isRearranged ? `
@@ -741,6 +735,17 @@ function renderQuestionGrid() {
         </div>
     ` : '';
 
+    const isPracticeView = (currentMode === 'onebyone' || currentMode === 'fullquiz');
+    const viewModeBarHtml = isPracticeView ? `
+        <div class="grid-viewmode-bar" style="display:flex;align-items:center;justify-content:space-between;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.45rem 0.85rem;margin-bottom:0.75rem;">
+            <span style="font-size:0.8rem;font-weight:600;color:var(--text-primary);">👁️ View Mode:</span>
+            <div class="lang-pill-group">
+                <button class="lang-pill ${currentMode === 'onebyone' ? 'active' : ''}" onclick="switchQuizViewMode('onebyone')">📄 One by One</button>
+                <button class="lang-pill ${currentMode === 'fullquiz' ? 'active' : ''}" onclick="switchQuizViewMode('fullquiz')">📜 Scroll All</button>
+            </div>
+        </div>
+    ` : '';
+
     let html = `
         <div class="grid-context">
             <div class="gc-chapter">${escapeHtml(chapterLabel)}</div>
@@ -750,6 +755,7 @@ function renderQuestionGrid() {
                 ${doneCount} ${isTestMode ? 'answered' : 'revealed'}
             </div>
         </div>
+        ${viewModeBarHtml}
         ${langBarHtml}
         ${orderBarHtml}
         ${topicFilterHtml}
@@ -818,6 +824,10 @@ function renderQuestionGrid() {
     }
 
     body.innerHTML = html;
+    const pcSides = document.querySelectorAll('.qc-pc-side');
+    pcSides.forEach(side => {
+        side.innerHTML = html;
+    });
 }
 
 function toggleQuestionGrid() {

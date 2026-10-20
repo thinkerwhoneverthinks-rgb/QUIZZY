@@ -230,11 +230,6 @@ function renderTestMode() {
                         ${typeof buildExamBadge === 'function' ? buildExamBadge(q) : ''}
                     </div>
                     <div class="question-card-top-actions">
-                        ${hasHi ? `
-                            <button class="lang-toggle-btn ${currentLanguage === 'hi' ? 'active' : ''}" onclick="toggleQuestionLanguage()" title="Switch Language (English / हिन्दी)">
-                                ${currentLanguage === 'hi' ? '🇮🇳 HI' : '🇬🇧 EN'}
-                            </button>
-                        ` : ''}
                         <button class="review-btn ${isReviewed ? 'active' : ''}" onclick="toggleReview(${idx})" title="Mark for review">
                             🚩 ${isReviewed ? 'Reviewed' : 'Review'}
                         </button>

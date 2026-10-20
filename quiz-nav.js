@@ -64,7 +64,9 @@ function showQuiz(startIndex = 0) {
     currentQIndex = startIndex;
     userAnswers = {};
     showScreen('screenQuiz');   // show first so render lands on a visible screen
+    if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderQuestion();
+    if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
     pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' });
 }
 
@@ -72,7 +74,9 @@ function showFullQuiz() {
     if (!currentChapter) { showChapters(); return; }
     userAnswers = {};
     showScreen('screenFullQuiz');   // show first so render lands on a visible screen
+    if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderFullQuiz();
+    if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
     pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' });
 }
 
