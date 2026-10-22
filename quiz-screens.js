@@ -140,6 +140,13 @@ function renderTree(node) {
                     📄 ${escapeHtml(fileSyllabus.buttonLabel || fileSyllabus.title || 'Syllabus')}
                 </span>` : '';
 
+            const btnId = `dlBtn-${filePath.replace(/[^a-zA-Z0-9]/g, '_')}`;
+            const dlBtn = `
+                <button class="download-file-btn" id="${btnId}" 
+                        onclick="event.stopPropagation(); handleFileDownload('${escapeHtmlAttr(filePath)}', this)" 
+                        title="Download for offline">⬇️</button>
+            `;
+
             const el = document.createElement('div');
             el.className = 'chapter-row file-card';
             el.innerHTML = `
@@ -148,9 +155,11 @@ function renderTree(node) {
                     <div class="chapter-title">${escapeHtml(displayName)}</div>
                 </div>
                 ${sylBtn}
+                ${dlBtn}
             `;
             el.onclick = () => loadFile(filePath);
             container.appendChild(el);
+            checkFileOfflineStatus(filePath);
         });
     }
 }
@@ -539,16 +548,70 @@ function renderChapters() {
     list.innerHTML = subjectData.chapters.map(ch => {
         const qCount = (ch.topics || []).reduce((sum, t) => sum + (t.questions || []).length, 0);
         const tCount = (ch.topics || []).length;
+        const btnId = `chdl_${ch.id.replace(/[^a-zA-Z0-9]/g, '_')}`;
         return `
             <div class="chapter-row" onclick="selectChapter('${ch.id}')">
                 <div class="chapter-icon">${ch.icon || '📘'}</div>
-                <div class="chapter-info">
+                <div class="chapter-info" style="flex:1;">
                     <div class="chapter-title">${escapeHtml(ch.name)}</div>
                     <div class="chapter-meta">${tCount} topic${tCount !== 1 ? 's' : ''} · ${qCount} questions</div>
                 </div>
+                <button class="download-file-btn" id="${btnId}" 
+                        onclick="event.stopPropagation(); downloadChapterOffline('${ch.id}', this)" 
+                        title="Download chapter offline">⬇️</button>
             </div>
         `;
     }).join('');
+
+    subjectData.chapters.forEach(ch => {
+        const btnId = `chdl_${ch.id.replace(/[^a-zA-Z0-9]/g, '_')}`;
+        const btn = document.getElementById(btnId);
+        if (btn && typeof offlineStorage !== 'undefined') {
+            offlineStorage.isTopicDownloaded(currentFileName, ch.id, 'all').then(isDl => {
+                if (isDl) {
+                    btn.innerHTML = '✅';
+                    btn.classList.add('downloaded');
+                    btn.title = 'Chapter available offline';
+                }
+            }).catch(() => {});
+        }
+    });
+}
+
+async function downloadChapterOffline(chapterId, btnElement) {
+    if (!subjectData || !subjectData.chapters) return;
+    const ch = subjectData.chapters.find(c => c.id === chapterId);
+    if (!ch) return;
+
+    const qs = [];
+    if (ch.topics && ch.topics.length > 0) {
+        ch.topics.forEach(t => (t.questions || []).forEach(q => qs.push(q)));
+    } else if (ch.questions && ch.questions.length > 0) {
+        ch.questions.forEach(q => qs.push(q));
+    }
+    if (!qs.length) return;
+
+    const originalText = btnElement.innerHTML;
+    btnElement.disabled = true;
+    btnElement.innerHTML = '⏳';
+
+    try {
+        await offlineStorage.downloadTopicForOffline(
+            currentFileName || 'quiz', chapterId, 'all', qs,
+            (done, total) => {
+                const pct = total > 0 ? Math.round((done / total) * 100) : 100;
+                btnElement.innerHTML = `⏳ ${pct}%`;
+            }
+        );
+        btnElement.innerHTML = '✅';
+        btnElement.classList.add('downloaded');
+        btnElement.title = 'Chapter available offline';
+        btnElement.disabled = false;
+    } catch (e) {
+        console.error('Download chapter failed:', e);
+        btnElement.innerHTML = '❌';
+        setTimeout(() => { btnElement.innerHTML = originalText; btnElement.disabled = false; }, 2000);
+    }
 }
 
 async function selectChapter(id) {

@@ -61,6 +61,7 @@ function showChapters() {
 
 function showQuiz(startIndex = 0) {
     if (!currentChapter) { showChapters(); return; }
+    currentMode = 'onebyone';
     currentQIndex = startIndex;
     userAnswers = {};
     showScreen('screenQuiz');   // show first so render lands on a visible screen
@@ -72,6 +73,7 @@ function showQuiz(startIndex = 0) {
 
 function showFullQuiz() {
     if (!currentChapter) { showChapters(); return; }
+    currentMode = 'fullquiz';
     userAnswers = {};
     showScreen('screenFullQuiz');   // show first so render lands on a visible screen
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
@@ -85,14 +87,22 @@ function switchQuizViewMode(mode) {
     currentMode = mode;
     if (currentMode === 'onebyone') {
         showScreen('screenQuiz');
+        if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
         renderQuestion();
         pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' }, true);
     } else if (currentMode === 'fullquiz') {
         showScreen('screenFullQuiz');
+        if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
         renderFullQuiz();
         pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' }, true);
         const card = document.getElementById(`fullQ-${currentQIndex}`);
-        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (card) {
+            setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }
+    }
+    if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
+    if (typeof isGridOpen !== 'undefined' && isGridOpen && typeof closeGrid === 'function') {
+        closeGrid();
     }
 }
 
@@ -223,6 +233,7 @@ function renderTopicSelect() {
                 <label style="font-weight:700;color:var(--accent);cursor:pointer;">✓ Select All Topics</label>
                 <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">All ${questions.length} questions ${isRearranged ? (practiceOrder === 'serial' ? '(Original serial order 1..' + questions.length + ')' : '(Grouped topic-wise)') : 'in serial order'}</div>
             </div>
+            <button class="download-file-btn" id="dlBtnAllTopics" onclick="event.stopPropagation(); downloadAllTopicsForOffline(this)" title="Download all topics for offline">⬇️</button>
             <span class="topic-meta-count">${questions.length} Qs</span>
         </div>
         <div style="border-top:1px solid var(--border);margin:0.5rem 0;"></div>
@@ -312,6 +323,33 @@ function downloadSingleTopic(topicIdx, btnElement) {
     const fileId = currentFileName || 'quiz';
     const chapterId = currentChapter ? currentChapter.id : 'ch1';
     downloadTopicUI(fileId, chapterId, topicIdx, btnElement);
+}
+
+async function downloadAllTopicsForOffline(btnElement) {
+    if (!currentChapter && !currentFileName) return;
+    const fileId = currentFileName || 'quiz';
+    const chapterId = currentChapter ? currentChapter.id : 'ch1';
+    const allQs = questions && questions.length > 0 ? questions : (topics ? topics.flatMap(t => t.questions || []) : []);
+    if (!allQs.length) return;
+
+    const originalText = btnElement.innerHTML;
+    btnElement.disabled = true;
+    btnElement.innerHTML = '⏳';
+
+    try {
+        await offlineStorage.downloadTopicForOffline(fileId, chapterId, 'all', allQs, (done, total) => {
+            const pct = total > 0 ? Math.round((done / total) * 100) : 100;
+            btnElement.innerHTML = `⏳ ${pct}%`;
+        });
+        btnElement.innerHTML = '✅';
+        btnElement.classList.add('downloaded');
+        btnElement.title = 'All topics available offline';
+        btnElement.disabled = false;
+    } catch (e) {
+        console.error('Download all failed:', e);
+        btnElement.innerHTML = '❌';
+        setTimeout(() => { btnElement.innerHTML = originalText; btnElement.disabled = false; }, 2000);
+    }
 }
 
 // ==================== TOPIC & CHAPTER CONTINUATION ====================

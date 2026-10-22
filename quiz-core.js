@@ -179,12 +179,15 @@ function safeHtml(text) {
     // 2. Convert *italic* markdown to <em> only when surrounded by word chars or spaces (not inside LaTeX)
     s = s.replace(/(?:^|(?<=[^*]))\*([^*\n]+?)\*(?=[^*]|$)/g, '<em>$1</em>');
 
-    // 3. Allowed tag names (case-insensitive)
+    // 3. Allowed tag names (case-insensitive) - including MathML for offline math formulas
     const ALLOWED = new Set([
         'b', 'strong', 'i', 'em', 'u', 'sup', 'sub', 'br', 'hr',
         'p', 'ul', 'ol', 'li',
         'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td',
-        'img', 'span', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'code', 'pre'
+        'img', 'span', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'code', 'pre',
+        'math', 'mrow', 'mi', 'mo', 'mn', 'mfrac', 'msup', 'msub', 'msubsup',
+        'msqrt', 'mroot', 'mspace', 'mtext', 'mtable', 'mtr', 'mtd', 'mover',
+        'munder', 'munderover', 'semantics', 'annotation', 'menclose'
     ]);
 
     // 4. Strip dangerous tags entirely (including their content for script/style)
@@ -204,7 +207,7 @@ function safeHtml(text) {
             const loading = 'lazy';
             src = resolveImageUrl(src);
             if (!src) return '';
-            return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" style="max-width:100%;height:auto;display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
+            return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" data-original-url="${src}" onerror="handleImageError(this)" style="max-width:100%;height:auto;display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
         }
         // For table tags: auto-attach match-table class for neat dual-column layout
         if (t === 'table' && !slash) {

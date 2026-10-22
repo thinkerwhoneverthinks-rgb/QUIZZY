@@ -1,7 +1,7 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v37';
+const CACHE_VERSION = 'quizzy-v38';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
@@ -64,18 +64,24 @@ const CDN_URLS = [
     'https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js'
 ];
 
-// Install: cache app shell
+// Install: cache app shell & math typesetting bundle
 self.addEventListener('install', (e) => {
     e.waitUntil(
-        caches.open(APP_SHELL_CACHE).then(cache => {
-            return cache.addAll(APP_SHELL_FILES).catch(err => {
-                console.warn('Some shell files failed to cache:', err);
-                // Cache what we can
+        Promise.all([
+            caches.open(APP_SHELL_CACHE).then(cache => {
+                return cache.addAll(APP_SHELL_FILES).catch(err => {
+                    console.warn('Some shell files failed to cache:', err);
+                    return Promise.allSettled(
+                        APP_SHELL_FILES.map(url => cache.add(url).catch(() => null))
+                    );
+                });
+            }),
+            caches.open(CDN_CACHE).then(cdnCache => {
                 return Promise.allSettled(
-                    APP_SHELL_FILES.map(url => cache.add(url).catch(() => null))
+                    CDN_URLS.map(url => cdnCache.add(url).catch(() => null))
                 );
-            });
-        }).then(() => self.skipWaiting())
+            })
+        ]).then(() => self.skipWaiting())
     );
 });
 

@@ -2,6 +2,23 @@
 const QUIZZY_DB = 'QuizzyOfflineDB';
 const QUIZZY_DB_VER = 2;
 
+const MATHJAX_OFFLINE_URLS = [
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/noerrors.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/mhchem.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/cancel.js',
+    'https://cdn.jsdelivr.net/npm/mathjax@3/es5/input/tex/extensions/enclose.js',
+    'https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js'
+];
+
 class QuizOfflineStorage {
     constructor() {
         this.db = null;
@@ -223,43 +240,108 @@ class QuizOfflineStorage {
         });
     }
 
-    // Helper: Collect all possible image URLs from an array of questions
+    // Helper: Collect all possible image URLs from an array of questions (including inline HTML)
     extractAllImagesFromQuestions(questionsArray) {
         const urls = new Set();
+        const normalize = (u) => {
+            if (!u || typeof u !== 'string') return null;
+            let str = u.trim();
+            if (str.startsWith('//')) str = 'https:' + str;
+            return str.length > 0 ? str : null;
+        };
+        const addUrl = (u) => {
+            const clean = normalize(u);
+            if (clean && !clean.startsWith('data:')) urls.add(clean);
+        };
+        const scanHtml = (html) => {
+            if (!html || typeof html !== 'string') return;
+            const imgRegex = /<img[^>]+src\s*=\s*["']([^"']+)["']/gi;
+            let m;
+            while ((m = imgRegex.exec(html)) !== null) {
+                if (m[1]) addUrl(m[1]);
+            }
+        };
+
         (questionsArray || []).forEach(q => {
             if (!q) return;
-            if (q.image_url) urls.add(q.image_url);
-            if (Array.isArray(q.images)) {
-                q.images.forEach(u => { if (u) urls.add(u); });
+            // Explicit image fields
+            if (q.image_url) addUrl(q.image_url);
+            if (Array.isArray(q.images)) q.images.forEach(addUrl);
+            if (q.explanation_image) addUrl(q.explanation_image);
+            if (Array.isArray(q.explanation_images)) q.explanation_images.forEach(addUrl);
+            if (Array.isArray(q.optionImages)) q.optionImages.forEach(addUrl);
+
+            // Inline images within text fields
+            scanHtml(q.question);
+            scanHtml(q.explanation);
+            scanHtml(q.solution);
+            scanHtml(q.solution_text);
+            scanHtml(q.hint);
+
+            if (Array.isArray(q.options)) {
+                q.options.forEach(opt => {
+                    if (typeof opt === 'string') {
+                        scanHtml(opt);
+                    } else if (opt && typeof opt === 'object') {
+                        if (opt.image || opt.imageUrl || opt.img) addUrl(opt.image || opt.imageUrl || opt.img);
+                        if (opt.text) scanHtml(opt.text);
+                    }
+                });
             }
-            if (q.explanation_image) urls.add(q.explanation_image);
-            if (Array.isArray(q.explanation_images)) {
-                q.explanation_images.forEach(u => { if (u) urls.add(u); });
-            }
-            if (Array.isArray(q.optionImages)) {
-                q.optionImages.forEach(u => { if (u) urls.add(u); });
-            }
+
+            // Translations (Hindi, etc.)
             if (q.translations && q.translations.hi) {
                 const hi = q.translations.hi;
-                if (hi.image_url) urls.add(hi.image_url);
-                if (hi.image) urls.add(hi.image);
-                if (Array.isArray(hi.images)) hi.images.forEach(u => { if (u) urls.add(u); });
-                if (hi.explanation_image) urls.add(hi.explanation_image);
-                if (Array.isArray(hi.explanation_images)) hi.explanation_images.forEach(u => { if (u) urls.add(u); });
-                if (Array.isArray(hi.optionImages)) hi.optionImages.forEach(u => { if (u) urls.add(u); });
+                if (hi.image_url) addUrl(hi.image_url);
+                if (hi.image) addUrl(hi.image);
+                if (Array.isArray(hi.images)) hi.images.forEach(addUrl);
+                if (hi.explanation_image) addUrl(hi.explanation_image);
+                if (Array.isArray(hi.explanation_images)) hi.explanation_images.forEach(addUrl);
+                if (Array.isArray(hi.optionImages)) hi.optionImages.forEach(addUrl);
+                scanHtml(hi.question);
+                scanHtml(hi.explanation);
+                scanHtml(hi.solution);
+                scanHtml(hi.hint);
+                if (Array.isArray(hi.options)) {
+                    hi.options.forEach(opt => {
+                        if (typeof opt === 'string') scanHtml(opt);
+                        else if (opt && typeof opt === 'object') {
+                            if (opt.image || opt.imageUrl || opt.img) addUrl(opt.image || opt.imageUrl || opt.img);
+                            if (opt.text) scanHtml(opt.text);
+                        }
+                    });
+                }
             }
+
+            // Match-the-following diagrams
             if (q.matchLists) {
                 (q.matchLists.listI?.items || []).forEach(it => {
                     const u = it.image_url || it.image || it.imageUrl;
-                    if (u) urls.add(u);
+                    if (u) addUrl(u);
+                    if (it.text) scanHtml(it.text);
                 });
                 (q.matchLists.listII?.items || []).forEach(it => {
                     const u = it.image_url || it.image || it.imageUrl;
-                    if (u) urls.add(u);
+                    if (u) addUrl(u);
+                    if (it.text) scanHtml(it.text);
                 });
             }
         });
         return Array.from(urls);
+    }
+
+    // Helper: Pre-cache MathJax bundle and webfonts into CDN_CACHE
+    async precacheMathJax(cdnCache) {
+        if (!cdnCache || !navigator.onLine) return;
+        for (const u of MATHJAX_OFFLINE_URLS) {
+            try {
+                const match = await cdnCache.match(u);
+                if (!match) {
+                    const resp = await fetch(u);
+                    if (resp.ok) await cdnCache.put(u, resp);
+                }
+            } catch (err) { /* ignore single asset failure */ }
+        }
     }
 
     // ==================== DOWNLOAD TOPIC WITH IMAGES ====================
@@ -272,8 +354,10 @@ class QuizOfflineStorage {
         try {
             if ('caches' in window) {
                 const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v36-cdn';
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v38-cdn';
                 cdnCache = await caches.open(cdnKey);
+                // Pre-cache math typesetting engine for offline math formulas
+                await this.precacheMathJax(cdnCache);
             }
         } catch (e) { /* ignore */ }
 
@@ -334,13 +418,22 @@ class QuizOfflineStorage {
         // Save the quiz data JSON
         await this.saveQuizData(fileName, normalizedData);
 
-        // Collect all image URLs across all chapters and topics
+        // Collect all questions across all chapters, topics, sections, and flat structures
         const allQuestions = [];
         (normalizedData.chapters || []).forEach(ch => {
             (ch.topics || []).forEach(t => {
                 (t.questions || []).forEach(q => allQuestions.push(q));
             });
+            if (Array.isArray(ch.questions)) {
+                ch.questions.forEach(q => allQuestions.push(q));
+            }
         });
+        if (Array.isArray(normalizedData.questions)) {
+            normalizedData.questions.forEach(q => allQuestions.push(q));
+        }
+        if (Array.isArray(normalizedData.sections)) {
+            normalizedData.sections.forEach(s => (s.questions || []).forEach(q => allQuestions.push(q)));
+        }
 
         const allImages = this.extractAllImagesFromQuestions(allQuestions);
         const total = allImages.length;
@@ -350,8 +443,10 @@ class QuizOfflineStorage {
         try {
             if ('caches' in window) {
                 const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v36-cdn';
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v38-cdn';
                 cdnCache = await caches.open(cdnKey);
+                // Pre-cache math typesetting engine for offline math formulas
+                await this.precacheMathJax(cdnCache);
             }
         } catch (e) { /* ignore */ }
 
@@ -450,21 +545,23 @@ async function downloadTopicUI(fileId, chapterId, topicIdx, btnElement) {
     }
 
     btnElement.disabled = true;
-    btnElement.innerHTML = '⏳ 0%';
+    btnElement.innerHTML = '⏳';
 
     try {
         await offlineStorage.downloadTopicForOffline(
             fileId, chapterId, topicIdx.toString(), qs,
             (done, total) => {
-                const pct = Math.round((done / total) * 100);
+                const pct = total > 0 ? Math.round((done / total) * 100) : 100;
                 btnElement.innerHTML = `⏳ ${pct}%`;
             }
         );
-        btnElement.innerHTML = '✅ Downloaded';
+        btnElement.innerHTML = '✅';
         btnElement.classList.add('downloaded');
+        btnElement.title = 'Available offline (click to remove)';
+        btnElement.disabled = false;
     } catch (e) {
         console.error('Download failed:', e);
-        btnElement.innerHTML = '❌ Failed';
+        btnElement.innerHTML = '❌';
         setTimeout(() => {
             btnElement.innerHTML = originalText;
             btnElement.disabled = false;
@@ -483,7 +580,7 @@ async function downloadFileUI(fileName, normalizedData, btnElement) {
     }
 
     btnElement.disabled = true;
-    btnElement.innerHTML = '⏳ Preparing...';
+    btnElement.innerHTML = '⏳';
 
     try {
         await offlineStorage.downloadFileForOffline(
@@ -493,11 +590,13 @@ async function downloadFileUI(fileName, normalizedData, btnElement) {
                 btnElement.innerHTML = `⏳ ${pct}%`;
             }
         );
-        btnElement.innerHTML = '✅ Saved Offline';
+        btnElement.innerHTML = '✅';
         btnElement.classList.add('downloaded');
+        btnElement.title = 'Available offline (click to remove)';
+        btnElement.disabled = false;
     } catch (e) {
         console.error('Download failed:', e);
-        btnElement.innerHTML = '❌ Failed';
+        btnElement.innerHTML = '❌';
         setTimeout(() => {
             btnElement.innerHTML = originalText;
             btnElement.disabled = false;

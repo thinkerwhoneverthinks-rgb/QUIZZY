@@ -403,11 +403,11 @@ function renderExplanationBlock(q, revealed) {
             ${expImages.length > 1 ? `
                 <div class="exp-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                     ${expImages.map((img, i) => `
-                        <img class="explanation-img" src="${img}" alt="Explanation Diagram ${i + 1}" loading="lazy">
+                        <img class="explanation-img" src="${img}" alt="Explanation Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
                     `).join('')}
                 </div>
             ` : (expImages.length === 1 ? `
-                <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy">
+                <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy" data-original-url="${expImages[0]}" onerror="handleImageError(this)">
             ` : '')}
             ${hasVideo ? renderVideoFacade(q.video, q.id) : ''}
         </div>
@@ -575,36 +575,39 @@ function revealImageAnswer(idx) {
 }
 
 function handleImageError(img) {
-    // Try to load from IndexedDB
+    if (!img || img.dataset.hasFailed) return;
     const originalUrl = img.dataset.originalUrl || img.src;
-    offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {
-        if (offlineUrl !== originalUrl) {
-            img.src = offlineUrl;
-        } else {
-            img.alt = 'Image unavailable offline';
-            img.style.minHeight = '100px';
-            img.style.display = 'flex';
-            img.style.alignItems = 'center';
-            img.style.justifyContent = 'center';
-            img.parentElement.innerHTML = `
-                <div class="image-offline-placeholder">
-                    📷 Image not available offline
-                    <span>Download this topic for offline access</span>
-                </div>
-            `;
-        }
-    });
+    if (typeof offlineStorage !== 'undefined') {
+        offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {
+            if (offlineUrl && offlineUrl !== originalUrl && offlineUrl !== img.src) {
+                img.dataset.hasFailed = '1';
+                img.src = offlineUrl;
+            } else {
+                img.dataset.hasFailed = '1';
+                img.alt = 'Image unavailable offline';
+                img.style.minHeight = '70px';
+                if (img.parentElement && !img.parentElement.querySelector('.image-offline-placeholder')) {
+                    img.parentElement.innerHTML = `
+                        <div class="image-offline-placeholder">
+                            📷 Diagram not downloaded
+                            <span>Download this topic for offline access</span>
+                        </div>
+                    `;
+                }
+            }
+        }).catch(() => { img.dataset.hasFailed = '1'; });
+    }
 }
 
 async function loadOfflineImagesInContainer(container) {
-    if (navigator.onLine) return; // Only needed when offline
-    
-    const images = container.querySelectorAll('img[data-original-url]');
+    if (!container || typeof offlineStorage === 'undefined') return;
+    const images = container.querySelectorAll('img[data-original-url], img.question-image, img.explanation-img, img.mcq-opt-image');
     for (const img of images) {
-        const url = img.dataset.originalUrl;
+        const url = img.dataset.originalUrl || img.getAttribute('src');
+        if (!url || url.startsWith('blob:') || url.startsWith('data:')) continue;
         try {
             const offlineUrl = await offlineStorage.getOfflineImageUrl(url);
-            if (offlineUrl !== url) {
+            if (offlineUrl && offlineUrl !== url && offlineUrl !== img.src) {
                 img.src = offlineUrl;
             }
         } catch (e) { /* ignore */ }
@@ -713,7 +716,7 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
         const key = OPTION_LETTERS[i] || (i + 1);
         const optImages = getActiveOptionImages(q);
         const optImg = optImages && optImages[i]
-            ? `<img class="mcq-opt-image" src="${optImages[i]}" alt="Option ${key}" loading="lazy">`
+            ? `<img class="mcq-opt-image" src="${optImages[i]}" alt="Option ${key}" loading="lazy" data-original-url="${optImages[i]}" onerror="handleImageError(this)">`
             : '';
         const label = opt && String(opt).trim() !== ''
             ? renderSmartOptionText(q, opt)
