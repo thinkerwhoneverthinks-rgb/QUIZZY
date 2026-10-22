@@ -145,7 +145,7 @@ function toggleCtTopic(chIdx, topIdx, isChecked) {
             fileDisplayName: ctActiveFile.displayName,
             chapterId: ch.id,
             chapterName: ch.name,
-            topicIdx,
+            topicIdx: topIdx,
             topicName: top.topic,
             totalQs: totalQs,
             count: totalQs,
@@ -173,7 +173,7 @@ function toggleCtChapterAll(chIdx, isChecked) {
                 fileDisplayName: ctActiveFile.displayName,
                 chapterId: ch.id,
                 chapterName: ch.name,
-                topicIdx,
+                topicIdx: topIdx,
                 topicName: top.topic,
                 totalQs,
                 count: totalQs,
@@ -422,8 +422,11 @@ function renderCustomTestBuilder() {
                     <button class="btn btn-ghost btn-sm" onclick="toggleCtDrawer(true)">
                         📋 View Selected (${selectedCount})
                     </button>
+                    <button class="btn btn-secondary btn-sm" onclick="startCustomPractice('onebyone')">
+                        🎯 Practice
+                    </button>
                     <button class="btn btn-primary btn-sm" onclick="startCustomTest()">
-                        🚀 Start Test →
+                        ⏱️ Timed Test →
                     </button>
                 ` : `
                     <button class="btn btn-ghost btn-sm" disabled style="opacity:0.5;">
@@ -492,13 +495,16 @@ function renderCustomTestBuilder() {
                         </button>
                     ` : ''}
                 </div>
-                <div style="display:flex;gap:0.75rem;justify-content:flex-end;">
+                <div style="display:flex;gap:0.75rem;justify-content:flex-end;flex-wrap:wrap;">
                     <button class="btn btn-ghost" onclick="toggleCtDrawer(false)">Keep Browsing</button>
-                    <button class="btn btn-primary" id="btnDrawerDownload" onclick="downloadCustomTestForOffline(this)" ${selectedCount === 0 ? 'disabled' : ''}>
+                    <button class="btn btn-ghost" id="btnDrawerDownload" onclick="downloadCustomTestForOffline(this)" ${selectedCount === 0 ? 'disabled' : ''}>
                         ⬇️ Save Offline
                     </button>
+                    <button class="btn btn-secondary" id="btnDrawerPractice" onclick="startCustomPractice('onebyone')" ${selectedCount === 0 ? 'disabled' : ''}>
+                        🎯 Practice Mode (${totalQuestionsCount} Qs)
+                    </button>
                     <button class="btn btn-primary" id="btnDrawerStart" onclick="startCustomTest()" ${selectedCount === 0 ? 'disabled' : ''}>
-                        🚀 Start Test (${totalQuestionsCount} Qs) →
+                        ⏱️ Timed Test (${totalQuestionsCount} Qs) →
                     </button>
                 </div>
             </div>
@@ -563,14 +569,59 @@ function startCustomTest() {
     // Set up test mode state
     questions = testQuestions;
     userAnswers = {};
-    currentChapter = { name: `Custom Test (${Object.keys(customTestSelection).length} topics)` };
+    testSubmitted = false;
+    currentChapter = { 
+        id: `custom_test_${Date.now()}`, 
+        name: `Custom Test (${Object.keys(customTestSelection).length} topics)` 
+    };
+    topics = Object.values(customTestSelection).map(item => ({
+        topic: item.topicName,
+        chapter: item.chapterName,
+        questions: item.questions
+    }));
     currentMode = 'test';
     testStartTime = Date.now();
 
     toggleCtDrawer(false);
     showScreen('screenTestMode');   // show first so render lands on a visible screen
+    if (typeof pushQuizHistory === 'function') {
+        pushQuizHistory({ cafe: 'question', screen: 'screenTestMode' });
+    }
     renderTestMode();
+    if (typeof renderQuestionGrid === 'function') {
+        renderQuestionGrid();
+    }
     startTestTimer();
+}
+
+function startCustomPractice(practiceViewMode = 'onebyone') {
+    const practiceQuestions = buildCustomTestQuestions();
+    if (practiceQuestions.length === 0) {
+        alert('Please select at least one topic with questions.');
+        return;
+    }
+
+    questions = practiceQuestions;
+    userAnswers = {};
+    testSubmitted = false;
+    currentChapter = { 
+        id: `custom_practice_${Date.now()}`, 
+        name: `Custom Practice (${Object.keys(customTestSelection).length} topics)` 
+    };
+    topics = Object.values(customTestSelection).map(item => ({
+        topic: item.topicName,
+        chapter: item.chapterName,
+        questions: item.questions
+    }));
+    currentMode = practiceViewMode;
+    currentQIndex = 0;
+
+    toggleCtDrawer(false);
+    if (practiceViewMode === 'fullquiz') {
+        showFullQuiz();
+    } else {
+        showQuiz(0);
+    }
 }
 
 async function downloadCustomTestForOffline(btnElement) {

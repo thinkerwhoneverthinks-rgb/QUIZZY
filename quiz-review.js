@@ -75,13 +75,17 @@ function restartQuiz() {
     userAnswers = {};
     testStartTime = null;
     if (currentMode === 'onebyone') {
-        showQuiz();
+        showQuiz(0);
     } else if (currentMode === 'fullquiz') {
         showFullQuiz();
     } else if (currentMode === 'test') {
-        showTestConfig();
+        if (currentChapter && currentChapter.id && currentChapter.id.startsWith('custom_test') && typeof startCustomTest === 'function') {
+            startCustomTest();
+        } else {
+            showTestConfig();
+        }
     } else {
-        showQuiz();
+        showQuiz(0);
     }
 }
 

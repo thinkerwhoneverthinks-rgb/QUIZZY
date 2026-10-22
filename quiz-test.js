@@ -130,6 +130,9 @@ function startTestMode() {
         pushQuizHistory({ cafe: 'question', screen: 'screenTestMode' });
     }
     renderTestMode();
+    if (typeof renderQuestionGrid === 'function') {
+        renderQuestionGrid();
+    }
     startTestTimer();
 }
 
@@ -203,6 +206,7 @@ function renderTestMode() {
     container.innerHTML = questions.map((q, idx) => {
         const typeLabel = typeof getTypeLabel === 'function' ? getTypeLabel(q) : (q.type === 'multi_mcq' ? 'multi' : (q.type === 'integer' ? 'integer' : (q.type === 'fill_blank' ? 'subjective' : 'single')));
 
+        let questionHTML = '';
         if (q.type === 'image_mcq') {
             questionHTML = renderTestImageMCQ(q, idx);
         } else if (q.type === 'fill_blank' || !q.type) {
@@ -421,6 +425,9 @@ function updateTestProgress() {
     document.getElementById('testAnsweredCount').textContent = answered;
     document.getElementById('testProgress').textContent = `${answered} / ${total}`;
     document.getElementById('testProgressFill').style.width = `${(answered / total) * 100}%`;
+    if (typeof renderQuestionGrid === 'function') {
+        renderQuestionGrid();
+    }
 }
 
 function submitTest() {

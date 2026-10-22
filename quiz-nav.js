@@ -59,11 +59,15 @@ function showChapters() {
     }
 }
 
-function showQuiz(startIndex = 0) {
+function showQuiz(startIndex) {
     if (!currentChapter) { showChapters(); return; }
     currentMode = 'onebyone';
-    currentQIndex = startIndex;
-    userAnswers = {};
+    if (typeof startIndex === 'number') {
+        currentQIndex = startIndex;
+    } else if (typeof currentQIndex !== 'number') {
+        currentQIndex = 0;
+    }
+    if (!userAnswers) userAnswers = {};
     showScreen('screenQuiz');   // show first so render lands on a visible screen
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderQuestion();
@@ -74,7 +78,7 @@ function showQuiz(startIndex = 0) {
 function showFullQuiz() {
     if (!currentChapter) { showChapters(); return; }
     currentMode = 'fullquiz';
-    userAnswers = {};
+    if (!userAnswers) userAnswers = {};
     showScreen('screenFullQuiz');   // show first so render lands on a visible screen
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderFullQuiz();
