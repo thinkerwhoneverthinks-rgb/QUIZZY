@@ -1042,12 +1042,50 @@ body.tc-running { overflow-x: hidden; }
     min-width: 0;
 }
 
+.q-text:has(p, table, div),
+.question-text:has(p, table, div) {
+    white-space: normal;
+}
+
+.q-text p,
+.q-text table,
+.q-text tbody,
+.q-text tr,
+.q-text td,
+.q-text th,
+.q-text div,
+.q-text ul,
+.q-text ol,
+.q-text li,
+.question-text p,
+.question-text table,
+.question-text tbody,
+.question-text tr,
+.question-text td,
+.question-text th,
+.question-text div,
+.question-text ul,
+.question-text ol,
+.question-text li {
+    white-space: normal;
+}
+
+.q-text p {
+    margin: 0.35rem 0;
+}
+.q-text p:first-child {
+    margin-top: 0;
+}
+.q-text p:last-child {
+    margin-bottom: 0;
+}
+
 /* Universal Image Containment in Question Cards */
 .q-card img,
 .q-text img,
 .opt-text img,
 .q-explain img {
-    max-width: 100% !important;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
     box-sizing: border-box;

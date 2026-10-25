@@ -187,13 +187,21 @@ function safeHtml(text) {
         'img', 'span', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'code', 'pre',
         'math', 'mrow', 'mi', 'mo', 'mn', 'mfrac', 'msup', 'msub', 'msubsup',
         'msqrt', 'mroot', 'mspace', 'mtext', 'mtable', 'mtr', 'mtd', 'mover',
-        'munder', 'munderover', 'semantics', 'annotation', 'menclose'
+        'munder', 'munderover', 'semantics', 'annotation', 'menclose',
+        'mfenced', 'mstyle', 'mmultiscripts', 'mprescripts', 'mpadded'
     ]);
 
-    // 4. Strip dangerous tags entirely (including their content for script/style)
+    // 4. Strip dangerous/garbage tags entirely (script, style, comments, and quillbot extension tags)
     s = s.replace(/<script[\s\S]*?<\/script>/gi, '');
     s = s.replace(/<style[\s\S]*?<\/style>/gi, '');
+    s = s.replace(/&lt;style[\s\S]*?&lt;\/style&gt;/gi, '');
     s = s.replace(/<iframe[\s\S]*?<\/iframe>/gi, '');
+    s = s.replace(/<!--[\s\S]*?-->/g, '');
+    s = s.replace(/&lt;!--[\s\S]*?--&gt;/g, '');
+    s = s.replace(/<quillbot[\w-]*[\s\S]*?<\/quillbot[\w-]*>/gi, '');
+    s = s.replace(/<quillbot[\w-]*[^>]*\/?>/gi, '');
+    s = s.replace(/&lt;quillbot[\w-]*[\s\S]*?&lt;\/quillbot[\w-]*&gt;/gi, '');
+    s = s.replace(/&lt;quillbot[\w-]*[^&]*&gt;/gi, '');
 
     // 5. For any remaining tag: allow if whitelisted, strip if not
     s = s.replace(/<(\/?)([\w-]+)([^>]*)>/g, (match, slash, tag, attrs) => {
@@ -207,7 +215,14 @@ function safeHtml(text) {
             const loading = 'lazy';
             src = resolveImageUrl(src);
             if (!src) return '';
-            return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" data-original-url="${src}" onerror="handleImageError(this)" style="max-width:100%;height:auto;display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
+            // Preserve explicit width if specified in tag attributes or inline style
+            const wAttr = (attrs.match(/width\s*=\s*["']?(\d+)(?:px)?["']?/i) || [])[1];
+            const wStyle = (attrs.match(/width\s*:\s*(\d+)px/i) || [])[1];
+            const explicitWidth = wAttr || wStyle;
+            const sizeStyle = explicitWidth
+                ? `width:${explicitWidth}px;max-width:100%;height:auto;`
+                : 'max-width:100%;height:auto;';
+            return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" data-original-url="${src}" onerror="handleImageError(this)" style="${sizeStyle}display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
         }
         // For table tags: auto-attach match-table class for neat dual-column layout
         if (t === 'table' && !slash) {
@@ -238,8 +253,8 @@ function safeHtml(text) {
         return match;
     });
 
-    // 6. Smart newline normalization on plain text only (never inside math!)
-    const hasBlockHtml = /<(ul|ol|table|tbody|thead|tr|li)/i.test(s);
+    // 6. Smart newline normalization on plain text only (never inside math or block HTML!)
+    const hasBlockHtml = /<(ul|ol|table|tbody|thead|tr|li|p|div)/i.test(s);
     if (!hasBlockHtml) {
         s = s.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
         s = s.replace(/\n{2,}/g, '___PARABREAK___');
@@ -260,6 +275,20 @@ function safeHtml(text) {
             s = result.join('<br>');
         }
         s = s.replace(/___PARABREAK___/g, '<br><br>');
+    } else {
+        // For block HTML (p, div, tables): collapse whitespace/newlines between tags and around br to avoid pre-wrap gaps
+        s = s.replace(/<br\s*\/?>\s*[\r\n]+/gi, '<br>');
+        s = s.replace(/[\r\n]+\s*(?=<br\s*\/?>)/gi, '');
+        s = s.replace(/(<\/(?:p|div|table|ul|ol|h[1-6])>)\s*(?:<br\s*\/?>\s*)+/gi, '$1');
+        s = s.replace(/(?:<br\s*\/?>\s*)+(<(?:p|div|table|ul|ol|h[1-6]))/gi, '$1');
+        for (let pass = 0; pass < 5; pass++) {
+            s = s.replace(/(<\/?(?:table|thead|tbody|tfoot|tr|ul|ol)[^>]*>)\s+(<\/?(?:table|thead|tbody|tfoot|tr|td|th|li)[^>]*>)/gi, '$1$2');
+            s = s.replace(/(<\/(?:td|th)>)\s+(<(?:td|th)[^>]*>)/gi, '$1$2');
+            s = s.replace(/(<\/(?:p|div|h[1-6])>)\s+(<(?:p|div|h[1-6]|table|ul|ol)[^>]*>)/gi, '$1$2');
+            s = s.replace(/\s*[\r\n]+\s*(<\/(?:tr|tbody|thead|tfoot|table|td|th)>)/gi, '$1');
+            s = s.replace(/(<(?:tr|tbody|thead|tfoot|table|td|th)[^>]*>)\s*[\r\n]+\s*/gi, '$1');
+        }
+        s = s.replace(/<p>\s*(?:&nbsp;)?\s*<\/p>\s*$/gi, '');
     }
 
     // 7. Restore all protected math tokens
@@ -276,7 +305,7 @@ function safeHtml(text) {
     s = s.replace(/(^|[^$])\\begin\{(aligned|gathered|matrix|cases)\}([\s\S]*?)\\end\{\2\}\$\$?/g, '$1$$\\begin{$2}$3\\end{$2}$$');
     s = s.replace(/(^|[^$])\\begin\{(aligned|gathered|matrix|cases)\}([\s\S]*?)\\end\{\2\}(?!\$)/g, '$1$$\\begin{$2}$3\\end{$2}$$');
 
-    return s;
+    return s.trim();
 }
 
 // ==================== MATHJAX 3 TYPESETTING QUEUE ====================
@@ -310,9 +339,13 @@ function typesetMath(el) {
     }
 }
 if (typeof window !== 'undefined') {
+    window.safeHtml = safeHtml;
     window.typesetMath = typesetMath;
     window.tcTypeset = typesetMath;
     window.renderMathInElement = function(el) {
         return typesetMath(el);
     };
+}
+if (typeof global !== 'undefined') {
+    global.safeHtml = safeHtml;
 }

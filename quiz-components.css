@@ -203,6 +203,44 @@
             min-width: 0;
         }
 
+        .question-text:has(p, table, div),
+        .q-text:has(p, table, div) {
+            white-space: normal;
+        }
+
+        .question-text p,
+        .question-text table,
+        .question-text tbody,
+        .question-text tr,
+        .question-text td,
+        .question-text th,
+        .question-text div,
+        .question-text ul,
+        .question-text ol,
+        .question-text li,
+        .q-text p,
+        .q-text table,
+        .q-text tbody,
+        .q-text tr,
+        .q-text td,
+        .q-text th,
+        .q-text div,
+        .q-text ul,
+        .q-text ol,
+        .q-text li {
+            white-space: normal;
+        }
+
+        .question-text p {
+            margin: 0.35rem 0;
+        }
+        .question-text p:first-child {
+            margin-top: 0;
+        }
+        .question-text p:last-child {
+            margin-bottom: 0;
+        }
+
         /* Smart Image Color Inversion in Dark Mode (from Quizzy-v4) */
         .question-image,
         .explanation-img,
@@ -211,13 +249,25 @@
         .question-text img,
         .explanation-text img,
         .q-explain img {
-            max-width: 100% !important;
+            max-width: 100%;
             height: auto;
             object-fit: contain;
             box-sizing: border-box;
             transition: filter 0.3s ease;
             filter: invert(1) hue-rotate(180deg) brightness(1.1);
             mix-blend-mode: screen;
+        }
+
+        .question-text img[style*="width"],
+        .question-text img[style*="height"],
+        .explanation-text img[style*="width"],
+        .explanation-text img[style*="height"] {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            vertical-align: middle;
         }
 
         [data-theme="light"] .question-image,

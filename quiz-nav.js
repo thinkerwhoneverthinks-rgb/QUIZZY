@@ -183,8 +183,8 @@ function isExerciseTopicRearranged() {
     }
     if (!questions || questions.length <= 1) return false;
     for (let i = 1; i < questions.length; i++) {
-        const prev = questions[i - 1].originalNumber;
-        const curr = questions[i].originalNumber;
+        const prev = questions[i - 1].originalOrder || questions[i - 1].originalNumber;
+        const curr = questions[i].originalOrder || questions[i].originalNumber;
         if (typeof prev === 'number' && typeof curr === 'number' && curr < prev) {
             return true;
         }
@@ -304,8 +304,8 @@ function startPractice() {
         filteredQuestions = [...questions];
     }
 
-    if (practiceOrder === 'serial' && filteredQuestions.some(q => typeof q.originalNumber === 'number')) {
-        filteredQuestions.sort((a, b) => (a.originalNumber || 0) - (b.originalNumber || 0));
+    if (practiceOrder === 'serial' && filteredQuestions.some(q => typeof q.originalNumber === 'number' || typeof q.originalOrder === 'number')) {
+        filteredQuestions.sort((a, b) => (a.originalOrder || a.originalNumber || 0) - (b.originalOrder || b.originalNumber || 0));
     }
 
     questions = filteredQuestions;

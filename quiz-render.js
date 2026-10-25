@@ -144,6 +144,13 @@ function isAcrollyContent(q) {
     return false;
 }
 
+function isPyqhubContent(q) {
+    if (!q) return false;
+    if (q.id && String(q.id).includes('pyqhub')) return true;
+    if (typeof currentFileName === 'string' && currentFileName.includes('pyqhub')) return true;
+    return false;
+}
+
 function renderSmartQuestionText(q) {
     const raw = getActiveQuestionText(q);
     if (!raw) return '';
@@ -152,7 +159,7 @@ function renderSmartQuestionText(q) {
     if (isAcrollyContent(q) && fnAcro) {
         return fnAcro(raw);
     }
-    if (fnPyq) {
+    if (isPyqhubContent(q) && fnPyq) {
         return fnPyq(raw);
     }
     return safeHtml(raw);
@@ -166,7 +173,7 @@ function renderSmartExplanationText(q) {
     if (isAcrollyContent(q) && fnAcro) {
         return fnAcro(raw);
     }
-    if (fnPyq) {
+    if (isPyqhubContent(q) && fnPyq) {
         return fnPyq(raw);
     }
     return safeHtml(raw);
@@ -180,7 +187,7 @@ function renderSmartOptionText(q, opt) {
         const cleaned = fnAcroOpt(opt);
         return safeHtml(cleaned);
     }
-    if (fnPyqOpt) {
+    if (isPyqhubContent(q) && fnPyqOpt) {
         const cleaned = fnPyqOpt(opt);
         return safeHtml(cleaned);
     }

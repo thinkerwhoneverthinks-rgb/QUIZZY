@@ -676,14 +676,14 @@ function setGridOrder(order) {
     if (questions && typeof userAnswers === 'object' && userAnswers) {
         questions.forEach((q, i) => {
             if (userAnswers[i] !== undefined) {
-                const key = q.id || (q.originalNumber !== undefined ? `orig_${q.originalNumber}` : `idx_${i}`);
+                const key = q.id || (q.originalOrder !== undefined ? `order_${q.originalOrder}` : (q.originalNumber !== undefined ? `orig_${q.originalNumber}` : `idx_${i}`));
                 answersByQId.set(key, userAnswers[i]);
             }
         });
     }
 
-    if (order === 'serial' && questions.some(q => typeof q.originalNumber === 'number')) {
-        questions.sort((a, b) => (a.originalNumber || 0) - (b.originalNumber || 0));
+    if (order === 'serial' && questions.some(q => typeof q.originalNumber === 'number' || typeof q.originalOrder === 'number')) {
+        questions.sort((a, b) => (a.originalOrder || a.originalNumber || 0) - (b.originalOrder || b.originalNumber || 0));
     } else if (order === 'topic') {
         if (typeof topics !== 'undefined' && topics && topics.length > 0) {
             questions = topics.flatMap(t => (t.questions || []).map(q => ({ ...q, topicName: t.topic })));
@@ -694,7 +694,7 @@ function setGridOrder(order) {
     if (questions && answersByQId.size > 0) {
         const newUserAnswers = {};
         questions.forEach((q, newIdx) => {
-            const key = q.id || (q.originalNumber !== undefined ? `orig_${q.originalNumber}` : `idx_${newIdx}`);
+            const key = q.id || (q.originalOrder !== undefined ? `order_${q.originalOrder}` : (q.originalNumber !== undefined ? `orig_${q.originalNumber}` : `idx_${newIdx}`));
             if (answersByQId.has(key)) {
                 newUserAnswers[newIdx] = answersByQId.get(key);
             }
@@ -704,7 +704,7 @@ function setGridOrder(order) {
 
     // Restore current question index to same question
     if (currentQ && questions) {
-        const newIdx = questions.findIndex(q => q === currentQ || (q.id && currentQ.id && q.id === currentQ.id) || (q.originalNumber && q.originalNumber === currentQ.originalNumber));
+        const newIdx = questions.findIndex(q => q === currentQ || (q.id && currentQ.id && q.id === currentQ.id) || (q.originalOrder && q.originalOrder === currentQ.originalOrder) || (q.originalNumber && q.originalNumber === currentQ.originalNumber));
         if (newIdx !== -1) currentQIndex = newIdx;
     }
 
