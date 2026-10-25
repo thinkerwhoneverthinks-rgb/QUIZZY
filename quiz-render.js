@@ -227,9 +227,6 @@ function buildQuestionCardInner(q, idx, total) {
     const questionLabel = `Q. ${displayNumber}`;
 
     const topicLabel = q.subtopic || q.sub_category || q.topicName || q.topic || (currentChapter ? currentChapter.name : '');
-    const origOrderBadge = q.originalOrder
-        ? `<span class="question-orig-order-tag" title="Original NEETprep Question #${q.originalOrder}" style="font-size:0.75rem;font-weight:700;color:var(--text-muted);background:var(--bg-secondary);padding:2px 7px;border-radius:6px;border:1px solid var(--border);">#${q.originalOrder}</span>`
-        : '';
     const examBadge = buildExamBadge(q);
     const qText = getActiveQuestionText(q);
     const qImages = getActiveQuestionImages(q);
@@ -239,7 +236,6 @@ function buildQuestionCardInner(q, idx, total) {
         <div class="question-card-header">
             <div class="question-meta-group">
                 <span class="question-number">${questionLabel}</span>
-                ${origOrderBadge ? `<span class="meta-dot">·</span>${origOrderBadge}` : ''}
                 <span class="meta-dot">·</span>
                 <span class="type-badge">${getTypeLabel(q)}</span>
                 ${topicLabel ? `<span class="meta-dot">·</span><span class="question-topic-tag" title="${escapeHtml(topicLabel)}">📂 ${escapeHtml(topicLabel)}</span>` : ''}

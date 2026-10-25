@@ -624,16 +624,9 @@ async function selectChapter(id) {
     }
 
     // Dynamic Logic: Handles topics OR flat questions
-    const isNeetprep = (currentChapter && currentChapter.id && currentChapter.id.startsWith('neetprep')) || (typeof currentFileName === 'string' && currentFileName.includes('neetprep'));
-    const defaultOrder = isNeetprep ? 'serial' : 'topic';
-
     if (currentChapter.topics && currentChapter.topics.length > 0) {
         topics = currentChapter.topics;
-        let flat = topics.flatMap(t => t.questions.map(q => ({...q, topicName: t.topic})));
-        if (defaultOrder === 'serial' && flat.some(q => typeof q.originalOrder === 'number' || typeof q.originalNumber === 'number')) {
-            flat.sort((a, b) => (a.originalOrder || a.originalNumber || 0) - (b.originalOrder || b.originalNumber || 0));
-        }
-        questions = flat;
+        questions = topics.flatMap(t => t.questions.map(q => ({...q, topicName: t.topic})));
     } else if (currentChapter.questions && currentChapter.questions.length > 0) {
         topics = [{
             topic: currentChapter.name, 
@@ -647,8 +640,8 @@ async function selectChapter(id) {
 
     selectedTopics = [];
     topicQuestionCounts = {};
-    currentPracticeOrder = defaultOrder;
-    if (typeof practiceOrder !== 'undefined') practiceOrder = defaultOrder;
+    currentPracticeOrder = 'topic';
+    if (typeof practiceOrder !== 'undefined') practiceOrder = 'topic';
     currentMode = 'onebyone';
     userAnswers = {};
     currentQIndex = 0;
@@ -861,9 +854,7 @@ function renderQuestionGrid() {
             if (isTestMode && ans && ans.reviewed) cls += ' reviewed';
             if (!isTestMode && index === currentQIndex) cls += ' current';
             const num = q.originalNumber || (index + 1);
-            const tip = q.originalOrder && q.originalOrder !== num
-                ? `Question ${num} (NEETprep #${q.originalOrder}) · ${q.topicName || q.subtopic || q.topic || ''}`
-                : (q.topicName ? `Question ${num} · ${q.topicName}` : `Question ${num}`);
+            const tip = q.topicName ? `Question ${num} · ${q.topicName}` : `Question ${num}`;
             html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="${escapeHtml(tip)}">${num}</div>`;
         });
         html += `</div></div>`;
@@ -890,10 +881,7 @@ function renderQuestionGrid() {
                 if (isTestMode && ans && ans.reviewed) cls += ' reviewed';
                 if (!isTestMode && index === currentQIndex) cls += ' current';
                 const num = q.originalNumber || (index + 1);
-                const tip = q.originalOrder
-                    ? `Question ${num} (NEETprep #${q.originalOrder})`
-                    : `Question ${num}`;
-                html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="${escapeHtml(tip)}">${num}</div>`;
+                html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="Question ${num}">${num}</div>`;
             });
             html += `</div></div>`;
         });
