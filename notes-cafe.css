@@ -941,6 +941,11 @@
     border-color: #00bfa5;
 }
 
+.notes-provider-card.pretty:hover {
+    border-color: #ec4899;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), 0 0 20px rgba(236, 72, 153, 0.35);
+}
+
 .notes-provider-badge {
     align-self: flex-start;
     font-size: 0.76rem;
@@ -962,6 +967,12 @@
     background: rgba(0, 191, 165, 0.14);
     color: #00bfa5;
     border: 1px solid rgba(0, 191, 165, 0.3);
+}
+
+.notes-provider-card.pretty .notes-provider-badge {
+    background: rgba(236, 72, 153, 0.14);
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.32);
 }
 
 .notes-provider-header {
@@ -1284,3 +1295,247 @@
     border: none;
     background: var(--bg-primary);
 }
+
+/* ==================== PRETTY NCERT STYLES ==================== */
+.pretty-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.35rem;
+    max-width: 960px;
+    margin: 1.5rem auto 3.5rem;
+}
+.pretty-cat-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.6rem;
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.2, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+.pretty-cat-card:hover {
+    transform: translateY(-5px);
+    border-color: #ec4899;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), 0 0 20px rgba(236, 72, 153, 0.35);
+}
+.pretty-cat-badge {
+    align-self: flex-start;
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    background: rgba(236, 72, 153, 0.14);
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+.pretty-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+.pretty-cat-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+}
+.pretty-cat-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+.pretty-cat-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+.pretty-cat-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    flex: 1;
+}
+.pretty-cat-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.pretty-cat-cta {
+    color: #ec4899;
+    transition: transform 0.2s ease;
+}
+.pretty-cat-card:hover .pretty-cat-cta {
+    transform: translateX(4px);
+}
+
+/* Pretty Chapters Container & Grid */
+.pretty-chapters-header {
+    margin-bottom: 1.75rem;
+}
+.pretty-chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.15rem;
+    margin-bottom: 3rem;
+}
+.pretty-chapter-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    padding: 1.25rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.24s ease;
+    cursor: pointer;
+    position: relative;
+}
+.pretty-chapter-card:hover {
+    border-color: #ec4899;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 16px rgba(236, 72, 153, 0.25);
+}
+.pretty-chapter-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+}
+.pretty-chapter-no {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #ec4899;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.pretty-part-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(139, 92, 246, 0.15);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+.pretty-chapter-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 1.15rem;
+    flex: 1;
+}
+.pretty-chapter-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+.btn-read-pdf {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    background: linear-gradient(135deg, #db2777, #ec4899);
+    border: none;
+    border-radius: var(--radius-sm, 8px);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.28);
+    transition: all 0.2s ease;
+}
+.btn-read-pdf:hover {
+    background: linear-gradient(135deg, #be185d, #db2777);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+}
+.btn-ext-pdf {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 8px);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.btn-ext-pdf:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+}
+
+/* Pretty Reader Specifics */
+.pretty-ext-btn {
+    background: rgba(236, 72, 153, 0.15) !important;
+    border-color: rgba(236, 72, 153, 0.4) !important;
+    color: #f472b6 !important;
+    text-decoration: none;
+}
+.pretty-ext-btn:hover {
+    background: #ec4899 !important;
+    color: #fff !important;
+}
+.pretty-pwa-banner {
+    background: rgba(236, 72, 153, 0.08);
+    border-bottom: 1px solid rgba(236, 72, 153, 0.2);
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+    .pw-reader-bar {
+        padding: 0.5rem 0.65rem;
+        gap: 0.4rem;
+    }
+    .pw-reader-info {
+        max-width: 48%;
+    }
+    .pw-reader-chap-title {
+        font-size: 0.84rem;
+    }
+    .pw-reader-actions {
+        gap: 0.3rem;
+    }
+    .pw-reader-btn {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.74rem;
+    }
+    .pretty-category-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .pretty-chapters-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+    .pretty-chapter-card {
+        padding: 1rem;
+    }
+}
+
+

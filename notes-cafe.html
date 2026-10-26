@@ -134,6 +134,22 @@
                         <span class="notes-provider-cta">Browse Books →</span>
                     </div>
                 </div>
+
+                <!-- Pretty NCERT Card -->
+                <div class="notes-provider-card pretty" onclick="openPrettyNcertHub()">
+                    <div>
+                        <div class="notes-provider-badge">🌸 Pretty NCERT</div>
+                        <div class="notes-provider-header">
+                            <span class="notes-provider-icon">🌸</span>
+                            <div class="notes-provider-title">Pretty NCERT Notes</div>
+                        </div>
+                        <p class="notes-provider-desc">Curated, high-yield highlighted NCERT notes & PDFs for Class 11 & 12 Biology and Chemistry.</p>
+                    </div>
+                    <div class="notes-provider-foot">
+                        <span>4 Subjects · 51 Chapters</span>
+                        <span class="notes-provider-cta">Browse Notes →</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -203,6 +219,30 @@
 
             <!-- PW Chapters List -->
             <div class="pw-chapters-grid" id="pwChaptersGrid"></div>
+        </div>
+
+        <!-- ===== SCREEN 1D: PRETTY NCERT HUB VIEW ===== -->
+        <div id="prettyNcertScreen" style="display: none;">
+            <div class="notes-view-bar">
+                <button class="notes-crumb-link" onclick="goNotesHome()">
+                    ← Back to Notes Cafe
+                </button>
+                <div class="notes-crumb-current" id="prettyNcertCrumb">
+                    🌸 Pretty NCERT Notes
+                </div>
+            </div>
+
+            <!-- Subject Tabs (Class 11 Bio, Class 12 Bio, Class 11 Chem, Class 12 Chem) -->
+            <div class="notes-subject-tabs" id="prettyNcertTabs"></div>
+
+            <!-- Pretty Category Options Grid (When browsing all 4 options) -->
+            <div class="pretty-category-grid" id="prettyCategoryGrid"></div>
+
+            <!-- Pretty Chapters List View (When an option is selected) -->
+            <div id="prettyChaptersContainer" style="display: none;">
+                <div class="pretty-chapters-header" id="prettyChaptersHeader"></div>
+                <div class="pretty-chapters-grid" id="prettyChaptersGrid"></div>
+            </div>
         </div>
 
         <!-- ===== SCREEN 2: READER VIEW (2-Column Layout for Allen) ===== -->
@@ -306,6 +346,34 @@
                 </div>
             </div>
             <iframe id="pwReaderFrame" class="pw-reader-frame" src="about:blank" title="Chapter Notes"></iframe>
+        </div>
+
+        <!-- ===== SCREEN 4: PRETTY NCERT PDF READER SCREEN ===== -->
+        <div class="pw-reader-screen pretty-pdf-reader" id="prettyPdfReaderScreen">
+            <div class="pw-reader-bar">
+                <button class="notes-back-btn" onclick="closePrettyPdfReader()">
+                    ← Back to Chapters
+                </button>
+                <div class="pw-reader-info">
+                    <div class="pw-reader-book-title" id="prettyReaderCatTitle">CLASS 11 BIOLOGY</div>
+                    <div class="pw-reader-chap-title" id="prettyReaderChapTitle">Chapter Title</div>
+                </div>
+                <div class="pw-reader-actions">
+                    <button class="pw-reader-btn" id="prettyPrevChapBtn" onclick="navPrettyChapter(-1)" title="Previous Chapter">
+                        ← Prev
+                    </button>
+                    <button class="pw-reader-btn" id="prettyNextChapBtn" onclick="navPrettyChapter(1)" title="Next Chapter">
+                        Next →
+                    </button>
+                    <a id="prettyReaderExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="pw-reader-btn pretty-ext-btn" title="Open in Browser / PDF App">
+                        ↗ Open in Browser
+                    </a>
+                </div>
+            </div>
+            <div class="pretty-pwa-banner" id="prettyPwaBanner">
+                💡 <strong>Reading in PWA:</strong> If the PDF preview doesn't display inside your phone app, tap <strong style="color:var(--accent);">↗ Open in Browser</strong> to read or download.
+            </div>
+            <iframe id="prettyPdfReaderFrame" class="pw-reader-frame" src="about:blank" title="Pretty NCERT PDF Reader"></iframe>
         </div>
 
     </main>

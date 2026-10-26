@@ -5,7 +5,7 @@
    ============================================================ */
 
 let notesManifest = null;
-let currentView = 'home'; // 'home' | 'allen' | 'pw' | 'pw-book' | 'reader-allen' | 'reader-pw'
+let currentView = 'home'; // 'home' | 'allen' | 'pw' | 'pw-book' | 'reader-allen' | 'reader-pw' | 'pretty-ncert' | 'pretty-ncert-cat' | 'reader-pretty'
 
 // Allen State
 let currentAllenSubject = 'all';
@@ -17,6 +17,11 @@ let currentPwFilter = 'all';
 let currentPwBook = null;
 let currentPwChapterIndex = 0;
 let currentPwChapter = null;
+
+// Pretty NCERT State
+let prettyNcertData = null;
+let currentPrettyCatId = null;
+let currentPrettyChapterIndex = -1;
 
 let isNotesHistoryNavigating = false;
 
@@ -80,10 +85,26 @@ function typesetNotesMath(el) {
 // ============================================================
 // MANIFEST LOADING
 // ============================================================
+async function loadPrettyNcert() {
+    if (prettyNcertData) return prettyNcertData;
+    try {
+        const res = await fetch('data/pretty-ncert.json');
+        prettyNcertData = await res.json();
+        return prettyNcertData;
+    } catch (e) {
+        console.warn('Could not load pretty-ncert.json:', e);
+        return null;
+    }
+}
+
 async function loadNotesManifest() {
     try {
-        const res = await fetch('data/notes-manifest.json');
-        notesManifest = await res.json();
+        const [notesRes, prettyRes] = await Promise.all([
+            fetch('data/notes-manifest.json').then(r => r.json()).catch(() => null),
+            fetch('data/pretty-ncert.json').then(r => r.json()).catch(() => null)
+        ]);
+        notesManifest = notesRes;
+        prettyNcertData = prettyRes;
         
         // Initial state
         goNotesHome(false);
@@ -112,13 +133,15 @@ function hideAllScreens() {
         document.getElementById('notesHomeScreen'),
         document.getElementById('allenScreen'),
         document.getElementById('pwScreen'),
-        document.getElementById('pwBookScreen')
+        document.getElementById('pwBookScreen'),
+        document.getElementById('prettyNcertScreen')
     ];
     screens.forEach(s => { if (s) s.style.display = 'none'; });
 
     const readers = [
         document.getElementById('notesReaderScreen'),
-        document.getElementById('pwReaderScreen')
+        document.getElementById('pwReaderScreen'),
+        document.getElementById('prettyPdfReaderScreen')
     ];
     readers.forEach(r => { if (r) r.classList.remove('active'); });
 }
@@ -466,7 +489,9 @@ function closePwReader() {
     const frame = document.getElementById('pwReaderFrame');
     if (frame) frame.src = 'about:blank';
 
-    if (currentPwBook) {
+    if (window.history.length > 1 && history.state && history.state.view === 'reader-pw') {
+        window.history.back();
+    } else if (currentPwBook) {
         openPwBook(currentPwBook.slug, false);
     } else {
         openPwHub(false);
@@ -747,6 +772,239 @@ function prevNotesModule() {
 }
 
 // ============================================================
+// 3. PRETTY NCERT NOTES HUB
+// ============================================================
+async function openPrettyNcertHub(pushHistory = true) {
+    if (!prettyNcertData) await loadPrettyNcert();
+    currentView = 'pretty-ncert';
+    currentPrettyCatId = null;
+    currentPrettyChapterIndex = -1;
+
+    hideAllScreens();
+    const hub = document.getElementById('prettyNcertScreen');
+    if (hub) hub.style.display = 'block';
+
+    const crumb = document.getElementById('prettyNcertCrumb');
+    if (crumb) crumb.textContent = '🌸 Pretty NCERT Notes';
+
+    renderPrettyTabs();
+    renderPrettyCategories();
+
+    const catGrid = document.getElementById('prettyCategoryGrid');
+    if (catGrid) catGrid.style.display = 'grid';
+
+    const chapCont = document.getElementById('prettyChaptersContainer');
+    if (chapCont) chapCont.style.display = 'none';
+
+    window.scrollTo(0, 0);
+
+    if (pushHistory && !isNotesHistoryNavigating) {
+        try { history.pushState({ cafe: 'notes', view: 'pretty-ncert' }, ''); } catch (e) { }
+    }
+}
+
+function renderPrettyTabs() {
+    const tabsContainer = document.getElementById('prettyNcertTabs');
+    if (!tabsContainer || !prettyNcertData) return;
+
+    const cats = prettyNcertData.categories || [];
+    let html = `
+        <button class="notes-tab-btn ${!currentPrettyCatId ? 'active' : ''}" onclick="openPrettyNcertHub()">
+            🌸 All Options (${cats.length})
+        </button>
+    `;
+    cats.forEach(c => {
+        const isActive = currentPrettyCatId === c.id;
+        html += `
+            <button class="notes-tab-btn ${isActive ? 'active' : ''}" onclick="selectPrettyNcertCategory('${c.id}')">
+                ${c.icon} ${escapeNotesHtml(c.name)}
+            </button>
+        `;
+    });
+    tabsContainer.innerHTML = html;
+}
+
+function renderPrettyCategories() {
+    const grid = document.getElementById('prettyCategoryGrid');
+    if (!grid || !prettyNcertData) return;
+
+    const cats = prettyNcertData.categories || [];
+    grid.innerHTML = cats.map(cat => {
+        return `
+            <div class="pretty-cat-card" onclick="selectPrettyNcertCategory('${cat.id}')">
+                <div class="pretty-cat-badge">${escapeNotesHtml(cat.badge || '')}</div>
+                <div class="pretty-cat-header">
+                    <span class="pretty-cat-icon">${cat.icon || '📖'}</span>
+                    <div>
+                        <div class="pretty-cat-title">${escapeNotesHtml(cat.name)}</div>
+                        <div class="pretty-cat-sub">${cat.chapters.length} Chapters · Direct PDF</div>
+                    </div>
+                </div>
+                <p class="pretty-cat-desc">${escapeNotesHtml(cat.description || '')}</p>
+                <div class="pretty-cat-foot">
+                    <span>${cat.chapters.length} Chapters</span>
+                    <span class="pretty-cat-cta">Open Chapters →</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+async function selectPrettyNcertCategory(catId, pushHistory = true) {
+    if (!prettyNcertData) await loadPrettyNcert();
+    if (!catId) {
+        openPrettyNcertHub(pushHistory);
+        return;
+    }
+
+    const cat = (prettyNcertData.categories || []).find(c => c.id === catId);
+    if (!cat) return;
+
+    currentView = 'pretty-ncert-cat';
+    currentPrettyCatId = catId;
+
+    hideAllScreens();
+    const hub = document.getElementById('prettyNcertScreen');
+    if (hub) hub.style.display = 'block';
+
+    const crumb = document.getElementById('prettyNcertCrumb');
+    if (crumb) crumb.textContent = `🌸 Pretty NCERT · ${cat.name}`;
+
+    renderPrettyTabs();
+
+    const catGrid = document.getElementById('prettyCategoryGrid');
+    if (catGrid) catGrid.style.display = 'none';
+
+    const chapCont = document.getElementById('prettyChaptersContainer');
+    if (chapCont) chapCont.style.display = 'block';
+
+    // Render Chapters Header Info
+    const header = document.getElementById('prettyChaptersHeader');
+    if (header) {
+        header.innerHTML = `
+            <div class="pw-chapters-hero-info">
+                <span class="pw-chapters-hero-icon">${cat.icon || '📖'}</span>
+                <div>
+                    <div class="pw-chapters-hero-title">${escapeNotesHtml(cat.name)}</div>
+                    <div class="pw-chapters-hero-meta">${cat.chapters.length} Chapters · Highlighted Revision PDFs</div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Render Chapters Grid
+    const chapGrid = document.getElementById('prettyChaptersGrid');
+    if (chapGrid) {
+        chapGrid.innerHTML = cat.chapters.map((ch, idx) => {
+            const partBadge = ch.part ? `<span class="pretty-part-tag">${escapeNotesHtml(ch.part)}</span>` : '';
+            return `
+                <div class="pretty-chapter-card" onclick="openPrettyNcertPdf('${cat.id}', ${idx})">
+                    <div class="pretty-chapter-top">
+                        <div class="pretty-chapter-no">Chapter ${ch.num}</div>
+                        ${partBadge}
+                    </div>
+                    <div class="pretty-chapter-title">${escapeNotesHtml(ch.name)}</div>
+                    <div class="pretty-chapter-actions">
+                        <button type="button" class="btn-read-pdf" onclick="openPrettyNcertPdf('${cat.id}', ${idx}); event.stopPropagation();">
+                            📄 Read Notes
+                        </button>
+                        <a href="${escapeNotesHtml(ch.pdfUrl)}" target="_blank" rel="noopener noreferrer" class="btn-ext-pdf" onclick="event.stopPropagation();" title="Open in External Browser / PDF App">
+                            ↗ Open PDF
+                        </a>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    window.scrollTo(0, 0);
+
+    if (pushHistory && !isNotesHistoryNavigating) {
+        try { history.pushState({ cafe: 'notes', view: 'pretty-ncert-cat', catId: catId }, ''); } catch (e) { }
+    }
+}
+
+function openPrettyNcertPdf(catId, chapIndex, pushHistory = true) {
+    if (!prettyNcertData) return;
+    const cat = (prettyNcertData.categories || []).find(c => c.id === catId);
+    if (!cat || !cat.chapters || !cat.chapters[chapIndex]) return;
+
+    const chapter = cat.chapters[chapIndex];
+    currentPrettyCatId = catId;
+    currentPrettyChapterIndex = chapIndex;
+    currentView = 'reader-pretty';
+
+    hideAllScreens();
+    const reader = document.getElementById('prettyPdfReaderScreen');
+    if (reader) reader.classList.add('active');
+
+    // Update Titles
+    const catTitleEl = document.getElementById('prettyReaderCatTitle');
+    if (catTitleEl) catTitleEl.textContent = cat.name.toUpperCase();
+
+    const chapTitleEl = document.getElementById('prettyReaderChapTitle');
+    if (chapTitleEl) {
+        const partStr = chapter.part ? ` (${chapter.part})` : '';
+        chapTitleEl.textContent = `Ch ${chapter.num}: ${chapter.name}${partStr}`;
+    }
+
+    // Prev / Next button states
+    const prevBtn = document.getElementById('prettyPrevChapBtn');
+    if (prevBtn) prevBtn.disabled = (chapIndex === 0);
+
+    const nextBtn = document.getElementById('prettyNextChapBtn');
+    if (nextBtn) nextBtn.disabled = (chapIndex === cat.chapters.length - 1);
+
+    // External button URL
+    const extBtn = document.getElementById('prettyReaderExternalBtn');
+    if (extBtn) extBtn.href = chapter.pdfUrl;
+
+    // Load iframe
+    const frame = document.getElementById('prettyPdfReaderFrame');
+    if (frame) {
+        frame.src = chapter.pdfUrl;
+    }
+
+    window.scrollTo(0, 0);
+
+    if (pushHistory && !isNotesHistoryNavigating) {
+        try {
+            history.pushState({ cafe: 'notes', view: 'reader-pretty', catId: catId, chapIndex: chapIndex }, '');
+        } catch (e) { }
+    }
+}
+
+function closePrettyPdfReader() {
+    const frame = document.getElementById('prettyPdfReaderFrame');
+    if (frame) frame.src = 'about:blank';
+
+    if (window.history.length > 1 && history.state && history.state.view === 'reader-pretty') {
+        window.history.back();
+    } else if (currentPrettyCatId) {
+        selectPrettyNcertCategory(currentPrettyCatId, false);
+    } else {
+        openPrettyNcertHub(false);
+    }
+}
+
+function navPrettyChapter(delta) {
+    if (!prettyNcertData || !currentPrettyCatId) return;
+    const cat = (prettyNcertData.categories || []).find(c => c.id === currentPrettyCatId);
+    if (!cat || !cat.chapters) return;
+
+    const newIdx = currentPrettyChapterIndex + delta;
+    if (newIdx >= 0 && newIdx < cat.chapters.length) {
+        openPrettyNcertPdf(currentPrettyCatId, newIdx, true);
+    }
+}
+
+window.openPrettyNcertHub = openPrettyNcertHub;
+window.selectPrettyNcertCategory = selectPrettyNcertCategory;
+window.openPrettyNcertPdf = openPrettyNcertPdf;
+window.closePrettyPdfReader = closePrettyPdfReader;
+window.navPrettyChapter = navPrettyChapter;
+
+// ============================================================
 // POPSTATE (BROWSER / MOBILE BACK BUTTON)
 // ============================================================
 window.addEventListener('popstate', function (e) {
@@ -769,6 +1027,12 @@ window.addEventListener('popstate', function (e) {
             openPwChapter(state.bookSlug, state.chapterId, false);
         } else if (state.view === 'reader-allen' && state.filePath) {
             openNotesChapter(state.filePath);
+        } else if (state.view === 'pretty-ncert') {
+            openPrettyNcertHub(false);
+        } else if (state.view === 'pretty-ncert-cat' && state.catId) {
+            selectPrettyNcertCategory(state.catId, false);
+        } else if (state.view === 'reader-pretty' && state.catId && typeof state.chapIndex === 'number') {
+            openPrettyNcertPdf(state.catId, state.chapIndex, false);
         } else {
             goNotesHome(false);
         }
@@ -777,7 +1041,29 @@ window.addEventListener('popstate', function (e) {
     }
 });
 
+// Desktop Escape key support to close reader
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        const prettyReader = document.getElementById('prettyPdfReaderScreen');
+        if (prettyReader && prettyReader.classList.contains('active')) {
+            closePrettyPdfReader();
+            return;
+        }
+        const pwReader = document.getElementById('pwReaderScreen');
+        if (pwReader && pwReader.classList.contains('active')) {
+            closePwReader();
+            return;
+        }
+        const allenReader = document.getElementById('notesReaderScreen');
+        if (allenReader && allenReader.classList.contains('active')) {
+            closeNotesReader();
+            return;
+        }
+    }
+});
+
 // Boot
 document.addEventListener('DOMContentLoaded', () => {
     loadNotesManifest();
 });
+

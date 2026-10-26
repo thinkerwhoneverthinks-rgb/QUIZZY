@@ -348,56 +348,119 @@ function buildMatchLists(matchLists) {
     `;
 }
 
-function renderVideoFacade(video, id) {
+function renderVideoFacade(video, id, questionText) {
     if (!video || (!video.embed_url && !video.url)) return '';
     let embedUrl = video.embed_url || '';
-    if (!embedUrl && video.url) {
-        const m = String(video.url).match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-        embedUrl = m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : video.url;
+    let directUrl = video.url || '';
+    let yId = '';
+    const m = String(video.url || video.embed_url || '').match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    if (m) {
+        yId = m[1];
+        if (!embedUrl) embedUrl = `https://www.youtube-nocookie.com/embed/${yId}`;
+        if (!directUrl) directUrl = `https://www.youtube.com/watch?v=${yId}`;
     }
-    const thumb = video.thumbnail || (video.image || '');
+    const thumb = video.thumbnail || (yId ? `https://img.youtube.com/vi/${yId}/hqdefault.jpg` : '');
     const duration = video.duration ? `<span class="solution-video-time-tag">⏱ ${escapeHtml(video.duration)}</span>` : '';
-    const vId = 'video-container-' + String(id || Math.random()).replace(/[^a-zA-Z0-9_-]/g, '_');
+    
+    let title = video.title || '';
+    if (!title && questionText) {
+        const cleanQ = (typeof stripHtml === 'function' ? stripHtml(questionText) : String(questionText).replace(/<[^>]*>/g, '')).trim();
+        title = cleanQ.length > 90 ? cleanQ.substring(0, 90) + '...' : cleanQ;
+    }
+    if (!title) title = 'Video Solution';
+
+    const safeTitle = escapeHtml(title);
+    const safeTitleAttr = escapeHtmlAttr(title);
+    const safeEmbed = escapeHtmlAttr(embedUrl);
+    const safeDirect = escapeHtmlAttr(directUrl);
 
     return `
-        <div class="solution-video-card" id="${vId}">
-            <div class="solution-video-facade" onclick="playSolutionVideo('${vId}', '${escapeHtmlAttr(embedUrl)}')">
-                ${thumb ? `<img src="${escapeHtmlAttr(thumb)}" alt="Video Solution" class="solution-video-thumb" loading="lazy">` : ''}
-                <div class="solution-video-play-btn" title="Click to play video solution">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" style="margin-left: 2px;">
-                        <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/>
-                    </svg>
+        <div class="solution-video-card">
+            <div class="solution-video-card-inner">
+                <div class="solution-video-thumb-col" onclick="openVideoModal('${safeEmbed}', '${safeDirect}', '${safeTitleAttr}')" title="Play Video Solution">
+                    ${thumb ? `<img src="${escapeHtmlAttr(thumb)}" alt="Video Solution" class="solution-video-thumb" loading="lazy">` : `<div class="solution-video-thumb-placeholder">▶</div>`}
+                    <div class="solution-video-play-overlay">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                            <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/>
+                        </svg>
+                    </div>
                 </div>
-                ${duration}
-            </div>
-            <div class="solution-video-bar" onclick="playSolutionVideo('${vId}', '${escapeHtmlAttr(embedUrl)}')">
-                <div class="solution-video-bar-left">
-                    <span class="solution-video-bar-icon">▶</span>
-                    <span class="solution-video-bar-title">Watch Video Solution</span>
+                <div class="solution-video-info-col">
+                    <div class="solution-video-title" onclick="openVideoModal('${safeEmbed}', '${safeDirect}', '${safeTitleAttr}')">${safeTitle}</div>
+                    ${duration ? `<div class="solution-video-meta">${duration}</div>` : ''}
+                    <div class="solution-video-actions">
+                        <button type="button" class="btn-play-video" onclick="openVideoModal('${safeEmbed}', '${safeDirect}', '${safeTitleAttr}')">
+                            <span class="btn-play-ico">▶</span> Play Video
+                        </button>
+                        ${directUrl ? `
+                        <a href="${safeDirect}" target="_blank" rel="noopener noreferrer" class="btn-yt-app">
+                            <span class="btn-yt-ico">↗</span> YouTube App
+                        </a>` : ''}
+                    </div>
                 </div>
-                <span class="solution-video-bar-hint">Plays right here</span>
             </div>
         </div>
     `;
 }
 
-function playSolutionVideo(containerId, embedUrl) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
+function openVideoModal(embedUrl, directUrl, title) {
+    let modal = document.getElementById('videoPlayerModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'videoPlayerModal';
+        modal.className = 'video-modal-overlay';
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeVideoModal();
+        });
+        document.body.appendChild(modal);
+    }
     const sep = embedUrl.includes('?') ? '&' : '?';
-    const autoplayUrl = embedUrl + sep + 'autoplay=1&rel=0';
-    container.innerHTML = `
-        <div class="solution-video-iframe-wrap">
-            <iframe src="${autoplayUrl}" 
-                    title="Video Solution" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
+    const autoplayEmbed = embedUrl + sep + 'autoplay=1&rel=0&enablejsapi=1';
+
+    modal.innerHTML = `
+        <div class="video-modal-dialog">
+            <div class="video-modal-header">
+                <div class="video-modal-title">
+                    <span class="vm-red-ico">▶</span>
+                    <span class="vm-title-text">${escapeHtml(title || 'Video Solution')}</span>
+                </div>
+                <div class="video-modal-header-actions">
+                    ${directUrl ? `
+                    <a href="${escapeHtmlAttr(directUrl)}" target="_blank" rel="noopener noreferrer" class="vm-btn-app">
+                        <span class="btn-yt-ico">↗</span> YouTube App
+                    </a>` : ''}
+                    <button type="button" class="vm-btn-close" onclick="closeVideoModal()" aria-label="Close video">✕</button>
+                </div>
+            </div>
+            <div class="video-modal-body">
+                <div class="video-modal-iframe-wrap">
+                    <iframe id="videoModalIframe" src="${escapeHtmlAttr(autoplayEmbed)}"
+                            title="Video Solution"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="video-modal-footer">
+                💡 If embedded video doesn't load on your device, tap <strong>↗ YouTube App</strong> to watch directly.
+            </div>
         </div>
     `;
+    modal.classList.add('active');
+    document.body.classList.add('video-modal-open');
 }
-window.playSolutionVideo = playSolutionVideo;
+
+function closeVideoModal() {
+    const modal = document.getElementById('videoPlayerModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.innerHTML = '';
+    }
+    document.body.classList.remove('video-modal-open');
+}
 window.renderVideoFacade = renderVideoFacade;
+window.openVideoModal = openVideoModal;
+window.closeVideoModal = closeVideoModal;
 
 function renderExplanationBlock(q, revealed) {
     const expText = getActiveExplanationText(q);
@@ -417,7 +480,7 @@ function renderExplanationBlock(q, revealed) {
             ` : (expImages.length === 1 ? `
                 <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy" data-original-url="${expImages[0]}" onerror="handleImageError(this)">
             ` : '')}
-            ${hasVideo ? renderVideoFacade(q.video, q.id) : ''}
+            ${hasVideo ? renderVideoFacade(q.video, q.id, q.question) : ''}
         </div>
     `;
 }

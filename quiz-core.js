@@ -224,15 +224,26 @@ function safeHtml(text) {
                 : 'max-width:100%;height:auto;';
             return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" data-original-url="${src}" onerror="handleImageError(this)" style="${sizeStyle}display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
         }
-        // For table tags: auto-attach match-table class for neat dual-column layout
-        if (t === 'table' && !slash) {
-            let tableAttrs = attrs;
-            if (!/class\s*=\s*["'][^"']*["']/i.test(tableAttrs)) {
-                tableAttrs += ' class="match-table"';
-            } else if (!tableAttrs.includes('match-table')) {
-                tableAttrs = tableAttrs.replace(/class\s*=\s*["']([^"']*)["']/i, 'class="$1 match-table"');
+        // For table tags: auto-wrap in .table-scroll-wrap for horizontal scrolling and attach match-table class
+        if (t === 'table') {
+            if (!slash) {
+                let tableAttrs = attrs;
+                // Remove restrictive inline width and height from table attributes
+                tableAttrs = tableAttrs.replace(/\s*(?:width|height)\s*=\s*["'][^"']*["']/gi, '');
+                // Clean fixed width/height from inline style attribute if present
+                tableAttrs = tableAttrs.replace(/style\s*=\s*["']([^"']*)["']/gi, (m, st) => {
+                    const cleanStyle = st.replace(/(?:width|height)\s*:[^;]+;?/gi, '').trim();
+                    return cleanStyle ? ` style="${cleanStyle}"` : '';
+                });
+                if (!/class\s*=\s*["'][^"']*["']/i.test(tableAttrs)) {
+                    tableAttrs += ' class="match-table"';
+                } else if (!tableAttrs.includes('match-table')) {
+                    tableAttrs = tableAttrs.replace(/class\s*=\s*["']([^"']*)["']/i, 'class="$1 match-table"');
+                }
+                return `<div class="table-scroll-wrap"><table${tableAttrs}>`;
+            } else {
+                return `</table></div>`;
             }
-            return `<table${tableAttrs}>`;
         }
         // For all other tags: strip any event handlers (onclick, onerror, etc.)
         const cleanAttrs = attrs
@@ -345,7 +356,44 @@ if (typeof window !== 'undefined') {
     window.renderMathInElement = function(el) {
         return typesetMath(el);
     };
+    window.getPedagogicalSortRank = getPedagogicalSortRank;
 }
+
+/**
+ * getPedagogicalSortRank(str)
+ * Orders study exercises according to the user-requested sequence:
+ * 1. NCERT Topic-wise MCQs
+ * 2. NCERT Exemplar MCQs
+ * 3. Statement Based MCQs
+ * 4. Assertion & Reason MCQs
+ * 5. Correct & Incorrect MCQs
+ * 6. Matching Type MCQs
+ * 7. Multi / Sequence Correct MCQs
+ * 8. HOTs (High Order Time-intensive MCQs)
+ * 9. Kattar NEET / Practice Sets
+ * 10. Past Year Questions (NEET / AIIMS / JEE PYQ)
+ * 11. Image-Based & other exercises
+ */
+function getPedagogicalSortRank(str) {
+    if (!str) return 999;
+    const s = String(str).toLowerCase().replace(/[-_]/g, ' ');
+
+    if (s.includes('topic wise') || s.includes('topicwise')) return 1;
+    if (s.includes('exemplar') || s.includes('exampler')) return 2;
+    if (s.includes('statement')) return 3;
+    if (s.includes('assertion')) return 4;
+    if (s.includes('sequence') || s.includes('multi')) return 7;
+    if (s.includes('correct incorrect') || s.includes('correct & incorrect') || s.includes('correct') || s.includes('incorrect')) return 5;
+    if (s.includes('matching') || s.includes('match the column') || s.includes('match')) return 6;
+    if (s.includes('high order') || s.includes('hots') || s.includes('time intensive')) return 8;
+    if (s.includes('kattar')) return 9;
+    if (s.includes('past year') || s.includes('pyq') || s.includes('aiims') || s.includes('past')) return 10;
+    if (s.includes('image based') || s.includes('image')) return 11;
+
+    return 100;
+}
+
 if (typeof global !== 'undefined') {
     global.safeHtml = safeHtml;
+    global.getPedagogicalSortRank = getPedagogicalSortRank;
 }

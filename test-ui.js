@@ -1446,7 +1446,7 @@ function renderSolutionBlock(q) {
                     ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy"></div>`).join('')}
                 </div>
             ` : ''}
-            ${hasVideo && typeof renderVideoFacade === 'function' ? renderVideoFacade(q.video, 'tc-' + (q.id || Math.random())) : ''}
+            ${hasVideo && typeof renderVideoFacade === 'function' ? renderVideoFacade(q.video, 'tc-' + (q.id || Math.random()), q.question) : ''}
         </div>`;
 }
 

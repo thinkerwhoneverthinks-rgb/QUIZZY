@@ -123,7 +123,23 @@ function renderTree(node) {
 
     // Render Files (Quizzes/Chapters)
     if (node.files) {
-        node.files.forEach(file => {
+        // Only rearrange files if they are pedagogical exercise types (Topic-wise, Exemplar, Assertion, etc.)
+        const isExerciseFolder = node.files.some(f => {
+            const n = typeof f === 'object' ? (f.displayName || f.name || f.path || '') : f;
+            return typeof getPedagogicalSortRank === 'function' && getPedagogicalSortRank(n) < 100;
+        });
+
+        const filesToRender = isExerciseFolder
+            ? [...node.files].sort((a, b) => {
+                const nameA = typeof a === 'object' ? (a.displayName || a.name || a.path || '') : a;
+                const nameB = typeof b === 'object' ? (b.displayName || b.name || b.path || '') : b;
+                const rankA = typeof getPedagogicalSortRank === 'function' ? getPedagogicalSortRank(nameA) : 100;
+                const rankB = typeof getPedagogicalSortRank === 'function' ? getPedagogicalSortRank(nameB) : 100;
+                return rankA - rankB;
+              })
+            : node.files;
+
+        filesToRender.forEach(file => {
             const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
             const fileDisplayName = typeof file === 'object' ? (file.displayName || file.name) : null;
             const fileSyllabus = typeof file === 'object' ? file.syllabus : null;
@@ -545,7 +561,7 @@ function renderChapters() {
         currentFileName ? currentFileName.replace('.json', '').replace(/_/g, ' ').replace(/,/g, ', ') : 'Select Chapter';
     
     const list = document.getElementById('chapterList');
-    list.innerHTML = subjectData.chapters.map(ch => {
+    list.innerHTML = (subjectData.chapters || []).map(ch => {
         const qCount = (ch.topics || []).reduce((sum, t) => sum + (t.questions || []).length, 0);
         const tCount = (ch.topics || []).length;
         const btnId = `chdl_${ch.id.replace(/[^a-zA-Z0-9]/g, '_')}`;

@@ -1,7 +1,7 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v39';
+const CACHE_VERSION = 'quizzy-v40';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
@@ -43,6 +43,7 @@ const APP_SHELL_FILES = [
     './data/manifest.json',
     './data/test-manifest.json',
     './data/notes-manifest.json',
+    './data/pretty-ncert.json',
     './icons/icon-512x512.png',
     './icons/quizzy-logo.svg'
 ];

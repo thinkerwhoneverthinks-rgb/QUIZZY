@@ -76,6 +76,26 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!isAdminUnlocked()) {
         document.querySelectorAll('[data-admin-only]').forEach(function (el) { el.remove(); });
     }
+
+    // Auto-inject Search Question into hamburger menu if not present
+    var menu = document.getElementById('mobileMenu');
+    if (menu && !document.getElementById('menuSearchQuestion')) {
+        var firstSection = menu.querySelector('.menu-section');
+        var searchLink = document.createElement('a');
+        searchLink.id = 'menuSearchQuestion';
+        searchLink.href = '#';
+        searchLink.innerHTML = '<span class="mi-ico">🔍</span> Search Question';
+        searchLink.onclick = function (e) {
+            e.preventDefault();
+            openQuestionSearch();
+            return false;
+        };
+        if (firstSection && firstSection.nextSibling) {
+            menu.insertBefore(searchLink, firstSection.nextSibling);
+        } else {
+            menu.appendChild(searchLink);
+        }
+    }
 });
 
 document.addEventListener('keydown', function (e) {
@@ -84,6 +104,12 @@ document.addEventListener('keydown', function (e) {
 
 /* ---- Universal Modal / Overlay Detector & Closer for Mobile Back Navigation ---- */
 function hasOpenOverlay() {
+    var qSearch = document.getElementById('questionSearchModal');
+    if (qSearch && qSearch.classList.contains('active')) return 'questionSearch';
+
+    var vidModal = document.getElementById('videoPlayerModal');
+    if (vidModal && vidModal.classList.contains('active')) return 'videoModal';
+
     var menu = document.getElementById('mobileMenu');
     if (menu && menu.classList.contains('active')) return 'menu';
 
@@ -121,6 +147,8 @@ function closeCurrentOverlay() {
     var overlay = hasOpenOverlay();
     if (!overlay) return false;
     switch (overlay) {
+        case 'questionSearch': closeQuestionSearch(); break;
+        case 'videoModal': if (typeof closeVideoModal === 'function') closeVideoModal(); break;
         case 'menu': closeMenu(); break;
         case 'dataPanel': closeDataPanel(); break;
         case 'syllabus': closeSyllabusModal(); break;
@@ -577,3 +605,361 @@ function buildSyllabusModal() {
     overlay.appendChild(panel);
     document.body.appendChild(overlay);
 }
+
+/* ============================================================
+   Question Search with Match Percentage
+   ============================================================ */
+
+function stripHtml(html) {
+    if (!html) return '';
+    return String(html)
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/&nbsp;/gi, ' ')
+        .replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;/gi, "'")
+        .replace(/\\text\{([^}]*)\}/g, '$1')
+        .replace(/\\[a-zA-Z]+/g, ' ')
+        .replace(/[\$\{\}\(\)\[\]\\]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function cleanTextForMatching(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/&nbsp;/gi, ' ')
+        .replace(/&[a-z0-9#]+;/gi, ' ')
+        .replace(/\\text\{([^}]*)\}/g, '$1')
+        .replace(/\\[a-zA-Z]+/g, ' ')
+        .replace(/[^a-zA-Z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .toLowerCase()
+        .trim();
+}
+
+function getActiveQuestionsForSearch() {
+    // 1. Question Cafe (quiz-core.js questions)
+    if (typeof questions !== 'undefined' && Array.isArray(questions) && questions.length > 0) {
+        var title = (typeof currentChapter !== 'undefined' && currentChapter && currentChapter.name) ||
+                    (typeof currentFileName !== 'undefined' && currentFileName ? currentFileName.replace('.json', '').replace(/[-_]/g, ' ') : null) ||
+                    'Active Topic';
+        return {
+            source: 'question-cafe',
+            title: title,
+            list: questions
+        };
+    }
+    // 2. Test Cafe (test-ui.js TS.flat)
+    if (typeof TS !== 'undefined' && TS && Array.isArray(TS.flat) && TS.flat.length > 0) {
+        return {
+            source: 'test-cafe',
+            title: TS.title || 'Active Test',
+            list: TS.flat
+        };
+    }
+    return null;
+}
+
+function ensureQuestionSearchModal() {
+    var modal = document.getElementById('questionSearchModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'questionSearchModal';
+        modal.className = 'qsearch-modal-overlay';
+        modal.innerHTML =
+            '<div class="qsearch-modal-dialog">' +
+                '<div class="qsearch-header">' +
+                    '<div class="qsearch-input-wrap">' +
+                        '<span class="qsearch-icon">🔍</span>' +
+                        '<input type="text" id="qSearchInput" class="qsearch-input" placeholder="Search questions (e.g. keywords, formula, phrase)..." autocomplete="off" spellcheck="false">' +
+                        '<button type="button" class="qsearch-clear-btn" id="qSearchClearBtn" onclick="clearQSearch()" title="Clear">✕</button>' +
+                    '</div>' +
+                    '<button class="qsearch-close-btn" onclick="closeQuestionSearch()">Close</button>' +
+                '</div>' +
+                '<div class="qsearch-context-bar" id="qSearchContextBar"></div>' +
+                '<div class="qsearch-results-list" id="qSearchResultsList"></div>' +
+            '</div>';
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeQuestionSearch();
+        });
+        document.body.appendChild(modal);
+
+        var input = modal.querySelector('#qSearchInput');
+        if (input) {
+            var debounceTimer = null;
+            input.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+                    performQuestionSearch(input.value);
+                }, 120);
+            });
+        }
+    }
+    return modal;
+}
+
+function openQuestionSearch() {
+    closeMenu();
+    var modal = ensureQuestionSearchModal();
+    modal.classList.add('active');
+    document.body.classList.add('qsearch-open');
+
+    var input = document.getElementById('qSearchInput');
+    var ctxBar = document.getElementById('qSearchContextBar');
+    var resList = document.getElementById('qSearchResultsList');
+    var activeData = getActiveQuestionsForSearch();
+
+    if (activeData) {
+        if (ctxBar) {
+            ctxBar.innerHTML = '<span class="qsearch-pill">📚 <strong>' + (typeof escapeHtml === 'function' ? escapeHtml(activeData.title) : activeData.title) + '</strong> (' + activeData.list.length + ' Questions)</span>';
+        }
+        if (input && !input.value.trim() && resList) {
+            resList.innerHTML = '<div class="qsearch-prompt-state">Type any keyword or sentence from a question above. Matched questions will appear with percentage scores.</div>';
+        }
+    } else {
+        if (ctxBar) {
+            ctxBar.innerHTML = '<span class="qsearch-pill empty">⚠️ No Active Quiz Open</span>';
+        }
+        if (resList) {
+            resList.innerHTML =
+                '<div class="qsearch-empty-state">' +
+                    '<div class="qsearch-empty-icon">☕</div>' +
+                    '<div class="qsearch-empty-title">No Active Questions Loaded</div>' +
+                    '<p>Open a chapter in <a href="question-cafe.html" class="qsearch-link">Question Cafe</a> or start a test in <a href="test-cafe.html" class="qsearch-link">Test Cafe</a> to search questions.</p>' +
+                '</div>';
+        }
+    }
+
+    if (input) {
+        setTimeout(function() {
+            input.focus();
+            if (input.value.trim()) performQuestionSearch(input.value);
+        }, 80);
+    }
+}
+
+function closeQuestionSearch() {
+    var modal = document.getElementById('questionSearchModal');
+    if (modal) modal.classList.remove('active');
+    document.body.classList.remove('qsearch-open');
+}
+
+function clearQSearch() {
+    var input = document.getElementById('qSearchInput');
+    if (input) {
+        input.value = '';
+        input.focus();
+    }
+    var resList = document.getElementById('qSearchResultsList');
+    if (resList) {
+        resList.innerHTML = '<div class="qsearch-prompt-state">Type any keyword or sentence from a question above.</div>';
+    }
+}
+
+function performQuestionSearch(rawQuery) {
+    var resList = document.getElementById('qSearchResultsList');
+    if (!resList) return;
+
+    var qClean = cleanTextForMatching(rawQuery);
+    if (!qClean || qClean.length < 2) {
+        resList.innerHTML = '<div class="qsearch-prompt-state">Type at least 2 characters to search...</div>';
+        return;
+    }
+
+    var activeData = getActiveQuestionsForSearch();
+    if (!activeData || !activeData.list || activeData.list.length === 0) {
+        resList.innerHTML = '<div class="qsearch-empty-state"><p>No active questions available to search.</p></div>';
+        return;
+    }
+
+    var queryTokens = qClean.split(/\s+/).filter(function(t) { return t.length > 1; });
+    var stopWords = new Set(['is', 'are', 'was', 'were', 'the', 'a', 'an', 'in', 'on', 'at', 'of', 'for', 'to', 'by', 'with', 'from', 'as', 'that', 'this', 'and', 'or', 'which']);
+    var significantTokens = queryTokens.filter(function(t) { return !stopWords.has(t); });
+    var tokensToSearch = significantTokens.length > 0 ? significantTokens : queryTokens;
+
+    var results = [];
+
+    activeData.list.forEach(function(q, idx) {
+        var qRawText = (q.question || q.questionText || '') + ' ' + (q.translations && q.translations.hi && q.translations.hi.question ? q.translations.hi.question : '');
+        var optText = Array.isArray(q.options) ? q.options.join(' ') : '';
+        var combinedRaw = qRawText + ' ' + optText;
+        var normalizedTarget = cleanTextForMatching(combinedRaw);
+
+        if (!normalizedTarget) return;
+
+        var score = 0;
+
+        // 1. Exact phrase match in question text
+        if (normalizedTarget.indexOf(qClean) !== -1) {
+            var lengthRatio = Math.min(1, qClean.length / Math.max(qClean.length, normalizedTarget.length));
+            score = Math.round(92 + (lengthRatio * 8)); // 92% to 100%
+        } else {
+            // 2. Token overlap matching
+            var matchedCount = 0;
+            var partialBonus = 0;
+
+            tokensToSearch.forEach(function(t) {
+                if (normalizedTarget.indexOf(t) !== -1) {
+                    matchedCount++;
+                } else if (t.length > 4) {
+                    var stem = t.substring(0, t.length - 2);
+                    if (normalizedTarget.indexOf(stem) !== -1) {
+                        matchedCount += 0.8;
+                        partialBonus += 2;
+                    }
+                }
+            });
+
+            if (matchedCount > 0) {
+                var tokenRatio = matchedCount / tokensToSearch.length;
+                var base = tokenRatio * 80;
+
+                // 3. Proximity / subsequence bonus if words appear close to each other
+                if (queryTokens.length >= 2) {
+                    var firstIdx = normalizedTarget.indexOf(tokensToSearch[0]);
+                    var lastIdx = normalizedTarget.indexOf(tokensToSearch[tokensToSearch.length - 1]);
+                    if (firstIdx !== -1 && lastIdx !== -1 && lastIdx > firstIdx && (lastIdx - firstIdx) < (qClean.length * 3)) {
+                        base += 12;
+                    }
+                }
+
+                score = Math.min(94, Math.round(base + partialBonus));
+            }
+
+            // 4. Consecutive subphrase matching (e.g. for "stretched by the application of a force")
+            if (queryTokens.length >= 3) {
+                var longestSubphraseLen = 0;
+                for (var i = 0; i < queryTokens.length; i++) {
+                    for (var j = i + 2; j <= queryTokens.length; j++) {
+                        var subphrase = queryTokens.slice(i, j).join(' ');
+                        if (normalizedTarget.indexOf(subphrase) !== -1) {
+                            if ((j - i) > longestSubphraseLen) {
+                                longestSubphraseLen = (j - i);
+                            }
+                        }
+                    }
+                }
+                if (longestSubphraseLen >= 3) {
+                    var phraseRatio = longestSubphraseLen / queryTokens.length;
+                    var phraseScore = Math.round(75 + (phraseRatio * 23)); // 75% to 98%
+                    if (phraseScore > score) score = phraseScore;
+                }
+            }
+        }
+
+        if (score >= 25) {
+            results.push({
+                index: idx,
+                q: q,
+                score: score,
+                rawText: qRawText
+            });
+        }
+    });
+
+    results.sort(function(a, b) { return b.score - a.score; });
+
+    if (results.length === 0) {
+        resList.innerHTML =
+            '<div class="qsearch-empty-state">' +
+                '<div class="qsearch-empty-icon">🔎</div>' +
+                '<div class="qsearch-empty-title">No matching questions found</div>' +
+                '<p>Try searching different keywords, or check spelling.</p>' +
+            '</div>';
+        return;
+    }
+
+    resList.innerHTML = results.map(function(item) {
+        var q = item.q;
+        var qNum = (typeof q.globalNumber === 'number' ? q.globalNumber : (item.index + 1));
+        var topicName = q.topicName || q.topic || q.sectionName || q.category || 'Question';
+        var cleanSnippet = stripHtml(item.rawText);
+        var highlightedSnippet = highlightSearchTokens(cleanSnippet, tokensToSearch);
+
+        var badgeCls = 'fair';
+        if (item.score >= 80) badgeCls = 'high';
+        else if (item.score >= 55) badgeCls = 'good';
+
+        var safeTopic = typeof escapeHtml === 'function' ? escapeHtml(topicName) : topicName;
+
+        return (
+            '<div class="qsearch-card" onclick="selectSearchResult(' + item.index + ')">' +
+                '<div class="qsearch-card-header">' +
+                    '<div class="qsearch-card-meta">' +
+                        '<span class="qsearch-qno">Q. ' + qNum + '</span>' +
+                        '<span class="qsearch-topic">' + safeTopic + '</span>' +
+                    '</div>' +
+                    '<span class="qsearch-pct ' + badgeCls + '">' + item.score + '% Match</span>' +
+                '</div>' +
+                '<div class="qsearch-snippet">' + highlightedSnippet + '</div>' +
+            '</div>'
+        );
+    }).join('');
+}
+
+function highlightSearchTokens(text, tokens) {
+    if (!text) return '';
+    var truncated = text.length > 220 ? text.substring(0, 220) + '...' : text;
+    var safe = typeof escapeHtml === 'function' ? escapeHtml(truncated) : truncated;
+
+    if (tokens && tokens.length > 0) {
+        tokens.forEach(function(tok) {
+            if (!tok || tok.length < 2) return;
+            var re = new RegExp('(' + tok.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+            safe = safe.replace(re, '<mark class="qsearch-hl">$1</mark>');
+        });
+    }
+    return safe;
+}
+
+function selectSearchResult(index) {
+    closeQuestionSearch();
+
+    // 1. If on Question Cafe:
+    if (typeof jumpToQuestion === 'function') {
+        var activeScreen = document.querySelector('.screen.active');
+        var screenId = activeScreen ? activeScreen.id : '';
+        if (screenId === 'screenQuiz' || screenId === 'screenFullQuiz' || screenId === 'screenTestMode') {
+            jumpToQuestion(index);
+        } else if (typeof showQuiz === 'function') {
+            showQuiz(index);
+        }
+        setTimeout(function() {
+            var el = document.getElementById('fullQ-' + index) ||
+                     document.getElementById('testQ-' + index) ||
+                     document.querySelector('#screenQuiz .quiz-card') ||
+                     document.getElementById('quizContainer');
+            if (el) {
+                el.classList.add('qsearch-jump-flash');
+                setTimeout(function() { el.classList.remove('qsearch-jump-flash'); }, 1800);
+            }
+        }, 120);
+        return;
+    }
+
+    // 2. If on Test Cafe:
+    if (typeof goToQuestion === 'function') {
+        goToQuestion(index);
+        var card = document.querySelector('.q-card');
+        if (card) {
+            card.classList.add('qsearch-jump-flash');
+            setTimeout(function() { card.classList.remove('qsearch-jump-flash'); }, 1800);
+        }
+        return;
+    }
+
+    // 3. Fallback: navigate to question-cafe.html
+    window.location.href = 'question-cafe.html#q' + index;
+}
+
+window.stripHtml = stripHtml;
+window.cleanTextForMatching = cleanTextForMatching;
+window.openQuestionSearch = openQuestionSearch;
+window.closeQuestionSearch = closeQuestionSearch;
+window.clearQSearch = clearQSearch;
+window.performQuestionSearch = performQuestionSearch;
+window.selectSearchResult = selectSearchResult;
