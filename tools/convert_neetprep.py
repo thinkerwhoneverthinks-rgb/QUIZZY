@@ -267,9 +267,12 @@ for cfg in SUBJECT_CONFIGS:
                 orig_order = int(q_num) if isinstance(q_num, int) else (q_idx + 1)
                 
                 # Exam badge logic
+                exam_badge = q.get("exam_badge")
                 exam_details = q.get("_questionDetails3wxeRf", {}).get("edges", [])
                 exam_name = "NEETprep Practice"
-                if exam_details and exam_details[0].get("node"):
+                if exam_badge:
+                    exam_name = exam_badge
+                elif exam_details and exam_details[0].get("node"):
                     node = exam_details[0]["node"]
                     ex = node.get("exam")
                     yr = node.get("year")
@@ -278,7 +281,7 @@ for cfg in SUBJECT_CONFIGS:
                     elif ex:
                         exam_name = f"{ex}"
                 
-                if q.get("ncert"):
+                if q.get("ncert") and not exam_badge:
                     if exam_name != "NEETprep Practice":
                         exam_name = f"{exam_name} · NCERT"
                     else:
