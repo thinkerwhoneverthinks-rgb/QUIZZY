@@ -67,6 +67,35 @@
     flex-wrap: wrap;
     margin-bottom: 2rem;
 }
+
+@media (max-width: 768px) {
+    /* Horizontal scrollable pills bar — native app feel */
+    .notes-subject-tabs {
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        gap: 0.55rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 0.4rem 1rem 0.85rem 1rem;
+        margin-bottom: 1.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .notes-subject-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    .notes-tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+        scroll-snap-align: start;
+        padding: 0.52rem 1.05rem;
+        font-size: 0.86rem;
+    }
+}
 .notes-tab-btn {
     display: inline-flex;
     align-items: center;
@@ -834,13 +863,109 @@
     .note-q-opt { font-size: 0.88rem; padding: 0.7rem 0.85rem; }
     .note-q-prompt { font-size: 0.95rem; }
 
-    /* Tables */
-    .note-table-wrap { margin: 0.75rem -0.1rem; }
-    .note-table th, .note-table td { padding: 0.5rem 0.65rem; font-size: 0.85rem; }
+    /* Tables — natural 100% fit, scrolls only when wide equations require it */
+    .note-table-wrap {
+        margin: 0.85rem 0;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+    }
+    .note-table {
+        width: 100%;
+        max-width: 100%;
+        table-layout: auto;
+    }
+    .note-table th, .note-table td {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.84rem;
+        white-space: normal;
+    }
 
-    /* Chapter cards */
-    .notes-chap-title { font-size: 1rem; }
-    .notes-chap-meta { font-size: 0.78rem; }
+    /* Chapter cards & grid on mobile (Allen notes cards fix) */
+    .notes-chapter-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        margin-bottom: 2rem;
+    }
+    .notes-chapter-card {
+        padding: 1.05rem 1.15rem;
+        border-radius: var(--radius-md);
+    }
+    .notes-chap-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.55rem;
+        flex-wrap: wrap;
+    }
+    .notes-chap-subj { font-size: 0.74rem; }
+    .notes-chap-dur { font-size: 0.72rem; padding: 0.15rem 0.5rem; }
+    .notes-chap-title { font-size: 1.05rem; line-height: 1.35; margin-bottom: 0.65rem; }
+    .notes-chap-meta { font-size: 0.78rem; gap: 0.75rem; flex-wrap: wrap; padding-top: 0.65rem; }
+
+    /* Provider Hub cards mobile */
+    .notes-provider-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1rem auto 2.5rem;
+    }
+    .notes-provider-card {
+        padding: 1.35rem 1.25rem;
+        border-radius: var(--radius-md);
+    }
+    .notes-provider-header {
+        gap: 0.75rem;
+        margin-bottom: 0.6rem;
+    }
+    .notes-provider-icon {
+        font-size: 1.85rem;
+    }
+    .notes-provider-title {
+        font-size: 1.2rem;
+    }
+    .notes-provider-desc {
+        font-size: 0.88rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    .notes-provider-badge {
+        padding: 0.22rem 0.7rem;
+        font-size: 0.72rem;
+        margin-bottom: 0.85rem;
+    }
+
+    /* PW Books on mobile */
+    .pw-books-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        margin-bottom: 2rem;
+    }
+    .pw-book-card {
+        padding: 1.15rem 1.2rem;
+        border-radius: var(--radius-md);
+    }
+    .pw-book-title {
+        font-size: 1.05rem;
+        margin-bottom: 0.6rem;
+    }
+    .pw-chapters-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+    .pw-chapter-card {
+        padding: 0.9rem 1rem;
+        border-radius: var(--radius-sm);
+    }
+    .pw-chapters-hero {
+        padding: 1rem 1.15rem;
+        gap: 1rem;
+    }
+    .pw-chapters-hero-title {
+        font-size: 1.15rem;
+    }
 
     /* Bottom navigation */
     .notes-nav-footer { flex-wrap: wrap; gap: 0.6rem; }

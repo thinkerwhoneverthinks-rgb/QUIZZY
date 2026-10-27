@@ -1401,6 +1401,7 @@ a:hover {
 }
 
 /* ===== HORIZONTAL TABLE SCROLLING WRAPPER (MOBILE-SAFE) ===== */
+/* Smart: only scrolls when the table actually overflows — no forced min-width */
 .table-scroll-wrap {
     width: 100%;
     max-width: 100%;
@@ -1410,17 +1411,38 @@ a:hover {
     overscroll-behavior-x: contain;
     margin: 0.85rem 0;
     border-radius: var(--radius-sm, 8px);
+    scrollbar-width: thin;
+    position: relative;
+    touch-action: pan-x pan-y;
 }
 .table-scroll-wrap table {
-    min-width: 480px;
+    /* Natural 100% width — table fits container without sliding unless content truly overflows */
     width: 100%;
+    max-width: 100%;
     table-layout: auto;
     border-collapse: collapse;
 }
-@media (max-width: 480px) {
-    .table-scroll-wrap table {
-        min-width: 440px;
-    }
+/* Scroll hint badge — only shown when table actually overflows */
+.table-scroll-wrap.is-scrollable::after {
+    content: '⟵  scroll  ⟶';
+    display: block;
+    text-align: center;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #8a9bb0);
+    padding: 2px 0 1px;
+    opacity: 0.75;
+}
+.table-scroll-wrap::-webkit-scrollbar {
+    height: 4px;
+}
+.table-scroll-wrap::-webkit-scrollbar-track {
+    background: var(--bg-secondary, #1a2230);
+    border-radius: 2px;
+}
+.table-scroll-wrap::-webkit-scrollbar-thumb {
+    background: var(--border-strong, #2d3f5a);
+    border-radius: 2px;
 }
 
 /* ===== VIDEO SOLUTION CARD & MODAL (RESPONSIVE) ===== */

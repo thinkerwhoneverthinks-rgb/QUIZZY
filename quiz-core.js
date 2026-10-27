@@ -360,6 +360,67 @@ if (typeof window !== 'undefined') {
 }
 
 /**
+ * initTableScrollHints(root)
+ * Scans all .table-scroll-wrap elements inside `root` (defaults to document)
+ * and adds .is-scrollable only when the inner table genuinely overflows the
+ * wrapper width. This prevents showing a scroll hint — or forcing scroll —
+ * on small 2-column tables that fit just fine on mobile.
+ *
+ * Uses ResizeObserver so it re-evaluates on orientation change / panel resize.
+ */
+function initTableScrollHints(root) {
+    const scope = root || document;
+    const wrappers = scope.querySelectorAll('.table-scroll-wrap');
+    if (!wrappers.length) return;
+
+    const markOverflow = (wrap) => {
+        // scrollWidth > clientWidth means the content overflows and needs scroll
+        const overflows = wrap.scrollWidth > wrap.clientWidth + 1;
+        wrap.classList.toggle('is-scrollable', overflows);
+    };
+
+    wrappers.forEach(wrap => {
+        markOverflow(wrap);
+        // Re-evaluate whenever the container width changes (e.g. orientation flip)
+        if (window.ResizeObserver) {
+            const ro = new ResizeObserver(() => markOverflow(wrap));
+            ro.observe(wrap);
+        }
+    });
+}
+
+if (typeof window !== 'undefined') {
+    window.initTableScrollHints = initTableScrollHints;
+
+    // Auto-run after every likely DOM mutation that adds table-scroll-wrap elements
+    if (window.MutationObserver) {
+        const _tableHintObserver = new MutationObserver((mutations) => {
+            let shouldCheck = false;
+            for (const m of mutations) {
+                for (const node of m.addedNodes) {
+                    if (node.nodeType === 1) {
+                        if (node.classList && node.classList.contains('table-scroll-wrap')) {
+                            shouldCheck = true; break;
+                        }
+                        if (node.querySelector && node.querySelector('.table-scroll-wrap')) {
+                            shouldCheck = true; break;
+                        }
+                    }
+                }
+                if (shouldCheck) break;
+            }
+            if (shouldCheck) {
+                // Small delay to let layout settle after innerHTML assignment
+                requestAnimationFrame(() => initTableScrollHints());
+            }
+        });
+        _tableHintObserver.observe(document.body || document.documentElement, {
+            childList: true, subtree: true
+        });
+    }
+}
+
+/**
  * getPedagogicalSortRank(str)
  * Orders study exercises according to the user-requested sequence:
  * 1. NCERT Topic-wise MCQs

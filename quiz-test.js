@@ -198,6 +198,12 @@ function renderTestMode() {
     const total = questions.length;
 
     document.getElementById('testChapterTitle').textContent = currentChapter ? currentChapter.name : 'Custom Test';
+    const testCtxBar = document.getElementById('testContextBar');
+    if (testCtxBar) {
+        const testCtxChap = document.getElementById('testCtxChapter');
+        if (testCtxChap) testCtxChap.textContent = currentChapter ? currentChapter.name : 'Custom Test';
+        testCtxBar.classList.add('visible');
+    }
     document.getElementById('testProgress').textContent = `0 / ${total}`;
     document.getElementById('testTotalCount').textContent = total;
     document.getElementById('testAnsweredCount').textContent = '0';

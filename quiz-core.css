@@ -449,6 +449,51 @@
         .quiz-sticky-head .quiz-header { margin-bottom: 0.5rem; }
         .quiz-sticky-head .progress-track { margin-bottom: 0; }
 
+        /* ===== CONTEXT BAR (slim breadcrumb strip below header: Chapter › Topic) ===== */
+        /* Populated by JS when entering quiz; hidden when empty */
+        .quiz-context-bar {
+            display: none; /* hidden by default; JS adds .visible when content is set */
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.28rem 0.85rem 0.32rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            margin-top: -0.5rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 0;
+            overflow: hidden;
+        }
+        .quiz-context-bar.visible {
+            display: flex;
+        }
+        .quiz-ctx-chapter {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--text-secondary);
+            font-weight: 700;
+            max-width: 45%;
+            flex-shrink: 1;
+        }
+        .quiz-ctx-sep {
+            color: var(--accent);
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        .quiz-ctx-topic {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: var(--accent);
+            font-weight: 700;
+            flex: 1;
+            min-width: 0;
+        }
+
         /* ===== STUDY HISTORY ===== */
         .history-list {
             display: flex;
@@ -997,30 +1042,18 @@
         @media (max-width: 600px) {
             /* Quiz header — keep Back + title + Grid on one row but compact */
             .quiz-header {
-                padding: 0.55rem 0.7rem;
+                padding: 0.5rem 0.7rem;
                 gap: 0.4rem;
                 border-radius: var(--radius-sm);
+                flex-wrap: nowrap; /* single row on mobile */
             }
+            /* HIDE BACK BUTTON ON MOBILE — browser/OS provides back navigation */
             .quiz-back {
-                padding: 0.35rem 0.55rem;
-                font-size: 0.78rem;
-                gap: 0.25rem;
+                display: none;
             }
+            /* Title wrap: hidden from header on mobile (shown in context bar below) */
             .quiz-title-wrap {
-                min-width: 0;
-                flex: 1;
-            }
-            .quiz-title {
-                font-size: 0.75rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .quiz-topic-name {
-                font-size: 0.65rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                display: none;
             }
             .grid-toggle-btn {
                 padding: 0.4rem 0.65rem;
@@ -1038,6 +1071,13 @@
                 font-size: 0.75rem;
                 padding: 0.28rem 0.55rem;
                 flex-shrink: 0;
+            }
+
+            /* Context bar: show full width below header on mobile */
+            .quiz-context-bar {
+                border-radius: 0;
+                margin-top: -0.5rem;
+                margin-bottom: 0.5rem;
             }
 
             /* Chapter list cards */
@@ -1064,7 +1104,8 @@
             .sticky-actions { gap: 0.5rem; padding-left: 1rem; padding-right: 1rem; }
             .sticky-actions .btn { min-width: 0; font-size: 0.85rem; padding: 0.7rem 0.75rem; }
             .config-actions { gap: 0.5rem; }
-            .quiz-back, .grid-toggle-btn { padding: 0.55rem 0.75rem; }
+            /* quiz-back already hidden on mobile, keep grid-toggle compact */
+            .grid-toggle-btn { padding: 0.45rem 0.6rem; }
             .grid-legend { gap: 0.5rem; }
             .grid-legend span { font-size: 0.68rem; }
             .history-card-top { flex-wrap: wrap; }
@@ -1072,17 +1113,6 @@
             .history-actions .btn { flex: 1 1 100%; }
             .chapter-row { padding: 0.85rem 1rem; gap: 0.75rem; }
             .chapter-icon { width: 40px; height: 40px; font-size: 1.35rem; }
-
-            /* Quiz header goes to 2-row layout on the smallest phones */
-            .quiz-header {
-                flex-wrap: wrap;
-            }
-            .quiz-title-wrap {
-                order: 3;
-                width: 100%;
-                text-align: left;
-                margin-top: 0.1rem;
-            }
         }
 
 

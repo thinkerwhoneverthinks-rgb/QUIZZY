@@ -525,6 +525,22 @@ function renderQuestion() {
     document.getElementById('quizTopicName').textContent = q.topicName || '';
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
 
+    // Populate mobile context bar (slim Chapter › Topic breadcrumb)
+    const ctxBar = document.getElementById('quizContextBar');
+    if (ctxBar) {
+        const ctxChap = document.getElementById('quizCtxChapter');
+        const ctxTopic = document.getElementById('quizCtxTopic');
+        const chapName = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
+        const topicName = q.topicName || '';
+        if (ctxChap) ctxChap.textContent = chapName;
+        if (ctxTopic) ctxTopic.textContent = topicName;
+        if (chapName || topicName) {
+            ctxBar.classList.add('visible');
+        } else {
+            ctxBar.classList.remove('visible');
+        }
+    }
+
     document.getElementById('btnPrev').disabled = currentQIndex === 0;
     const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
     const isLast = currentQIndex === total - 1;
@@ -868,6 +884,22 @@ function renderFullQuiz() {
         topicEl.textContent = topicNames.length === 1
             ? topicNames[0]
             : (topicNames.length > 1 ? `${topicNames.length} topics` : '');
+    }
+
+    // Populate mobile full quiz context bar
+    const fullCtxBar = document.getElementById('fullQuizContextBar');
+    if (fullCtxBar) {
+        const fullCtxChap = document.getElementById('fullQuizCtxChapter');
+        const fullCtxTopic = document.getElementById('fullQuizCtxTopic');
+        const chapName = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
+        const topicSummary = topicNames.length === 1 ? topicNames[0] : (topicNames.length > 1 ? `${topicNames.length} topics` : '');
+        if (fullCtxChap) fullCtxChap.textContent = chapName;
+        if (fullCtxTopic) fullCtxTopic.textContent = topicSummary;
+        if (chapName || topicSummary) {
+            fullCtxBar.classList.add('visible');
+        } else {
+            fullCtxBar.classList.remove('visible');
+        }
     }
     document.getElementById('fullQuizProgress').textContent = `${total} Questions`;
     document.getElementById('fullProgressFill').style.width = '100%';
