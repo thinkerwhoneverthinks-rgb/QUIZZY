@@ -421,37 +421,109 @@ if (typeof window !== 'undefined') {
 }
 
 /**
- * getPedagogicalSortRank(str)
- * Orders study exercises according to the user-requested sequence:
- * 1. NCERT Topic-wise MCQs
- * 2. NCERT Exemplar MCQs
- * 3. Statement Based MCQs
- * 4. Assertion & Reason MCQs
- * 5. Correct & Incorrect MCQs
- * 6. Matching Type MCQs
- * 7. Multi / Sequence Correct MCQs
- * 8. HOTs (High Order Time-intensive MCQs)
- * 9. Kattar NEET / Practice Sets
- * 10. Past Year Questions (NEET / AIIMS / JEE PYQ)
- * 11. Image-Based & other exercises
+ * getPedagogicalSortRank(str, filePath)
+ * Returns the sort order for in-chapter exercise / question set presentation.
+ * 
+ * 1. PW MODULES:
+ *    ARAMBH / AARAMBH -> PRARAMBH -> PRABAL -> PARIKSHIT -> PYQ -> Supplemental
+ * 
+ * 2. NEETPREP BIOLOGY (Botany & Zoology):
+ *    Full QBank -> Mini Q Bank -> Level 0.5 -> Recommended MCQs -> Recommended PYQs ->
+ *    NCERT Exemplar -> AR & Other Type -> Past Year (2019 onward) -> Past Year (2016-2018) ->
+ *    Past Year (2006-2015) -> Past Year (1998-2005) -> Excluded Topics -> NEET 2025 Level
+ * 
+ * 3. NEETPREP PHYSICS & CHEMISTRY:
+ *    Full QBank -> Absorb Before You Solve -> Level 0.5 -> Recommended MCQs -> Recommended PYQs ->
+ *    Mini Q Bank -> NCERT Solved Examples -> NCERT Exercise -> NCERT Exemplar -> AR & Other Type ->
+ *    HC Verma -> Past Year (2019 onward) -> Past Year (2016-2018) -> Past Year (2006-2015) ->
+ *    Past Year (1998-2005) -> NEET 2025 Level -> JEE-Mains MCQs
+ * 
+ * 4. General / NCERT Punch fallback: standard pedagogical sequence.
  */
-function getPedagogicalSortRank(str) {
-    if (!str) return 999;
-    const s = String(str).toLowerCase().replace(/[-_]/g, ' ');
+function getPedagogicalSortRank(str, filePath) {
+    if (!str && !filePath) return 999;
+    const s = (String(str || '') + ' ' + String(filePath || '')).toLowerCase().replace(/[-_]/g, ' ');
+    const p = String(filePath || '').toLowerCase();
 
-    if (s.includes('topic wise') || s.includes('topicwise')) return 1;
-    if (s.includes('exemplar') || s.includes('exampler')) return 2;
-    if (s.includes('statement')) return 3;
-    if (s.includes('assertion')) return 4;
-    if (s.includes('sequence') || s.includes('multi')) return 7;
-    if (s.includes('correct incorrect') || s.includes('correct & incorrect') || s.includes('correct') || s.includes('incorrect')) return 5;
-    if (s.includes('matching') || s.includes('match the column') || s.includes('match')) return 6;
-    if (s.includes('high order') || s.includes('hots') || s.includes('time intensive')) return 8;
-    if (s.includes('kattar')) return 9;
-    if (s.includes('past year') || s.includes('pyq') || s.includes('aiims') || s.includes('past')) return 10;
-    if (s.includes('image based') || s.includes('image')) return 11;
+    // Check if this is a PW Module
+    const isPW = p.includes('pw-modules') || p.includes('pw module') || 
+                 s.includes('prarambh') || s.includes('prabal') || s.includes('parikshit') || 
+                 s.includes('aarambh') || s.includes('arambh');
 
-    return 100;
+    if (isPW) {
+        if (s.includes('aarambh') || s.includes('arambh')) return 10;
+        if (s.includes('prarambh')) return 20;
+        if (s.includes('prabal')) return 30;
+        if (s.includes('parikshit')) return 40;
+        if (s.includes('pyq') || s.includes('past year')) return 50;
+        if (s.includes('setu') || s.includes('bridge')) return 60;
+        if (s.includes('challenger')) return 70;
+        return 80;
+    }
+
+    // Check if this is NEETPrep
+    const isNeetprep = p.includes('neetprep') || s.includes('neetprep');
+    if (isNeetprep) {
+        // Full QBank is always FIRST (Rank 1)
+        const isFullQbank = s.includes('full qbank') || s.includes('full q bank') || s.includes('full question bank') ||
+            (p.endsWith('.json') && !p.includes('/absorb') && !p.includes('/level') && !p.includes('/mini') && 
+             !p.includes('/recommended') && !p.includes('/ncert') && !p.includes('/ar-') && !p.includes('/past-year') && 
+             !p.includes('/excluded') && !p.includes('/neet-2025') && !p.includes('/jee-') && !p.includes('/hcv'));
+        if (isFullQbank) return 1;
+
+        const isBiology = p.includes('botany') || p.includes('zoology') || p.includes('biology') ||
+                          s.includes('botany') || s.includes('zoology') || s.includes('biology');
+
+        if (isBiology) {
+            if (s.includes('mini q bank') || s.includes('mini qbank') || s.includes('mini question bank')) return 2;
+            if (s.includes('level 0.5') || s.includes('level 0 5')) return 3;
+            if (s.includes('recommended mcq') && !s.includes('pyq')) return 4;
+            if (s.includes('recommended pyq')) return 5;
+            if (s.includes('exemplar') || s.includes('exampler')) return 6;
+            if (s.includes('ar & other') || s.includes('ar other') || s.includes('assertion')) return 7;
+            if (s.includes('2019 onward') || s.includes('2019 onwards') || (s.includes('past year') && s.includes('2019'))) return 8;
+            if (s.includes('2016 2018') || (s.includes('past year') && s.includes('2016'))) return 9;
+            if (s.includes('2006 2015') || (s.includes('past year') && s.includes('2006'))) return 10;
+            if (s.includes('1998 2005') || (s.includes('past year') && s.includes('1998'))) return 11;
+            if (s.includes('excluded topic') || s.includes('excluded')) return 12;
+            if (s.includes('neet 2025') || s.includes('2025 level')) return 13;
+            return 30;
+        } else {
+            if (s.includes('absorb before you solve') || s.includes('absorb')) return 2;
+            if (s.includes('level 0.5') || s.includes('level 0 5')) return 3;
+            if (s.includes('recommended mcq') && !s.includes('pyq')) return 4;
+            if (s.includes('recommended pyq')) return 5;
+            if (s.includes('mini q bank') || s.includes('mini qbank') || s.includes('mini question bank')) return 6;
+            if (s.includes('solved example') || s.includes('solved examples')) return 7;
+            if (s.includes('intext')) return 7.5;
+            if (s.includes('ncert exercise') || s.includes('exercise based')) return 8;
+            if (s.includes('exemplar') || s.includes('exampler')) return 9;
+            if (s.includes('ar & other') || s.includes('ar other') || s.includes('assertion')) return 10;
+            if (s.includes('h c verma') || s.includes('hc verma') || s.includes('hcv')) return 11;
+            if (s.includes('2019 onward') || s.includes('2019 onwards') || (s.includes('past year') && s.includes('2019'))) return 12;
+            if (s.includes('2016 2018') || (s.includes('past year') && s.includes('2016'))) return 13;
+            if (s.includes('2006 2015') || (s.includes('past year') && s.includes('2006'))) return 14;
+            if (s.includes('1998 2005') || (s.includes('past year') && s.includes('1998'))) return 15;
+            if (s.includes('neet 2025') || s.includes('2025 level')) return 16;
+            if (s.includes('jee main') || s.includes('jee mains') || s.includes('jee')) return 17;
+            return 30;
+        }
+    }
+
+    // General fallback for NCERT Punch / other books
+    if (s.includes('topic wise') || s.includes('topicwise')) return 101;
+    if (s.includes('exemplar') || s.includes('exampler')) return 102;
+    if (s.includes('statement')) return 103;
+    if (s.includes('assertion')) return 104;
+    if (s.includes('correct incorrect') || s.includes('correct & incorrect') || s.includes('correct') || s.includes('incorrect')) return 105;
+    if (s.includes('matching') || s.includes('match the column') || s.includes('match')) return 106;
+    if (s.includes('sequence') || s.includes('multi')) return 107;
+    if (s.includes('high order') || s.includes('hots') || s.includes('time intensive')) return 108;
+    if (s.includes('kattar')) return 109;
+    if (s.includes('past year') || s.includes('pyq') || s.includes('aiims') || s.includes('past')) return 110;
+    if (s.includes('image based') || s.includes('image')) return 111;
+
+    return 500;
 }
 
 if (typeof global !== 'undefined') {

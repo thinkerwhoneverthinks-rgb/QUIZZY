@@ -7,6 +7,8 @@
             margin-bottom: 1.5rem;
             box-shadow: var(--shadow-sm);
             transition: all var(--transition-fast);
+            max-width: 100%;
+            overflow-x: clip;
         }
         .question-card:hover {
             border-color: var(--border-hover);
@@ -312,7 +314,7 @@
         /* Scroll hint \u2014 only shown when table genuinely overflows */
         .table-scroll-wrap.is-scrollable::after,
         .match-table-wrap.is-scrollable::after {
-            content: '\u2190\ufe0f\u00a0 scroll \u00a0\u27f6';
+            content: '←  scroll  ⟶';
             display: block;
             text-align: center;
             font-size: 0.67rem;
@@ -1276,6 +1278,15 @@
             max-width: 100% !important;
             margin: 0.55em 0 !important;
             padding: 0.25rem 0 !important;
+            -webkit-overflow-scrolling: touch;
+        }
+        .math-tex,
+        mjx-container:not([display="true"]) {
+            display: inline-block;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            vertical-align: middle;
             -webkit-overflow-scrolling: touch;
         }
         .question-text .katex-html,

@@ -371,7 +371,26 @@ function renderCustomTestBuilder() {
         });
 
         // Render Files
-        files.forEach((file, fileIdx) => {
+        const isExerciseFolder = files.some(f => {
+            const n = typeof f === 'object' ? (f.displayName || f.name || f.path || '') : f;
+            const p = typeof f === 'object' ? (f.path || f.file || '') : '';
+            return typeof getPedagogicalSortRank === 'function' && getPedagogicalSortRank(n, p) < 500;
+        });
+
+        const filesToRender = isExerciseFolder
+            ? [...files].map((file, originalIdx) => ({ file, originalIdx })).sort((a, b) => {
+                const nameA = typeof a.file === 'object' ? (a.file.displayName || a.file.name || a.file.path || '') : a.file;
+                const nameB = typeof b.file === 'object' ? (b.file.displayName || b.file.name || b.file.path || '') : b.file;
+                const pathA = typeof a.file === 'object' ? (a.file.path || a.file.file || '') : '';
+                const pathB = typeof b.file === 'object' ? (b.file.path || b.file.file || '') : '';
+                const rankA = typeof getPedagogicalSortRank === 'function' ? getPedagogicalSortRank(nameA, pathA) : 500;
+                const rankB = typeof getPedagogicalSortRank === 'function' ? getPedagogicalSortRank(nameB, pathB) : 500;
+                return rankA - rankB;
+              })
+            : files.map((file, originalIdx) => ({ file, originalIdx }));
+
+        filesToRender.forEach(({ file, originalIdx }) => {
+            const fileIdx = originalIdx;
             const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
             const fileDisplayName = typeof file === 'object' ? (file.displayName || file.name) : null;
             const cleanFileName = filePath.startsWith('data/') ? filePath.substring(5) : filePath;
