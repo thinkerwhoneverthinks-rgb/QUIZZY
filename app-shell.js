@@ -664,6 +664,97 @@ function getActiveQuestionsForSearch() {
     return null;
 }
 
+// ==================== QUESTION SEARCH SCOPE & STATE ====================
+var _qsScopeMode = 'active'; // 'active' or 'custom'
+var _qsManifest = null;
+var _qsSubjectGroups = null;
+var _qsSelectedSubject = null;
+var _qsChapterScope = 'all'; // 'all' or 'select'
+var _qsSelectedChapterNames = new Set();
+var _qsLoadedPool = null;
+var _qsFileCache = {};
+var _qsCurrentResults = [];
+var _qsIsLoading = false;
+
+function buildQSSubjectGroups(manifest) {
+    var groups = [];
+    if (!manifest || !manifest.subsections) return groups;
+
+    manifest.subsections.forEach(function(topSec) {
+        var topName = topSec.displayName || topSec.name || '';
+        var group = { groupName: topName, subjects: [] };
+
+        function findSubjects(node, breadcrumbs) {
+            var nodeName = node.displayName || node.name || '';
+            var currentBrumbs = breadcrumbs.concat([nodeName]);
+
+            if (node.subsections && node.subsections.length > 0) {
+                var isSubject = /(Physics|Chemistry|Botany|Zoology|Math|Biology)/i.test(nodeName) &&
+                                node.subsections.every(function(s) {
+                                    return (s.files && s.files.length > 0) || (s.subsections && s.subsections.length > 0);
+                                });
+                if (isSubject) {
+                    var chapters = node.subsections.map(function(s) {
+                        var chName = s.displayName || s.name || '';
+                        var files = (s.files || []).map(function(f) {
+                            var p = typeof f === 'object' ? (f.path || f.file) : f;
+                            var dName = typeof f === 'object' ? (f.displayName || f.name) : null;
+                            return { path: p, displayName: dName, chapterName: chName };
+                        }).filter(function(f) { return Boolean(f.path); });
+                        return { name: chName, files: files };
+                    }).filter(function(c) { return c.files.length > 0; });
+
+                    if (chapters.length > 0) {
+                        group.subjects.push({
+                            id: currentBrumbs.join(' > '),
+                            name: nodeName,
+                            category: breadcrumbs.slice(-1)[0] || topName,
+                            label: (breadcrumbs.slice(-1)[0] ? breadcrumbs.slice(-1)[0] + ' · ' : '') + nodeName,
+                            chapters: chapters
+                        });
+                        return;
+                    }
+                }
+            }
+
+            if (node.files && node.files.length > 0 && /(Physics|Chemistry|Botany|Zoology|Math|Biology)/i.test(nodeName)) {
+                var directChapters = node.files.map(function(f) {
+                    var fName = typeof f === 'object' ? (f.displayName || f.name || f.path) : f;
+                    var fPath = typeof f === 'object' ? (f.path || f.file) : f;
+                    return {
+                        name: fName,
+                        files: [{ path: fPath, displayName: fName, chapterName: fName }]
+                    };
+                }).filter(function(c) { return c.files.length > 0 && c.files[0].path; });
+
+                if (directChapters.length > 0) {
+                    group.subjects.push({
+                        id: currentBrumbs.join(' > '),
+                        name: nodeName,
+                        category: breadcrumbs.slice(-1)[0] || topName,
+                        label: (breadcrumbs.slice(-1)[0] ? breadcrumbs.slice(-1)[0] + ' · ' : '') + nodeName,
+                        chapters: directChapters
+                    });
+                    return;
+                }
+            }
+
+            if (node.subsections) {
+                node.subsections.forEach(function(s) {
+                    findSubjects(s, currentBrumbs);
+                });
+            }
+        }
+
+        findSubjects(topSec, []);
+        if (group.subjects.length > 0) {
+            groups.push(group);
+        }
+    });
+
+    return groups;
+}
+
 function ensureQuestionSearchModal() {
     var modal = document.getElementById('questionSearchModal');
     if (!modal) {
@@ -679,6 +770,40 @@ function ensureQuestionSearchModal() {
                         '<button type="button" class="qsearch-clear-btn" id="qSearchClearBtn" onclick="clearQSearch()" title="Clear">✕</button>' +
                     '</div>' +
                     '<button class="qsearch-close-btn" onclick="closeQuestionSearch()">Close</button>' +
+                '</div>' +
+                '<div class="qsearch-scope-bar">' +
+                    '<div class="qsearch-scope-tabs">' +
+                        '<button type="button" class="qsearch-tab active" id="qsTabActive" onclick="setQSearchScopeMode(\'active\')">🎯 Active Quiz</button>' +
+                        '<button type="button" class="qsearch-tab" id="qsTabCustom" onclick="setQSearchScopeMode(\'custom\')">📚 Subject & Chapters ▾</button>' +
+                    '</div>' +
+                    '<div class="qsearch-scope-status" id="qsScopeStatus"></div>' +
+                '</div>' +
+                '<div class="qsearch-custom-panel" id="qsCustomPanel" style="display:none;">' +
+                    '<div class="qs-panel-row">' +
+                        '<label class="qs-label" for="qsSubjectSelect">Subject:</label>' +
+                        '<select id="qsSubjectSelect" class="qs-select" onchange="onQSSubjectChange()"></select>' +
+                    '</div>' +
+                    '<div class="qs-panel-row qs-mode-row">' +
+                        '<div class="qs-radio-group">' +
+                            '<label class="qs-radio-label">' +
+                                '<input type="radio" name="qsChapterScope" id="qsScopeAll" value="all" checked onchange="onQSChapterScopeToggle(\'all\')">' +
+                                '<span>Entire Subject (All Chapters)</span>' +
+                            '</label>' +
+                            '<label class="qs-radio-label">' +
+                                '<input type="radio" name="qsChapterScope" id="qsScopeSelect" value="select" onchange="onQSChapterScopeToggle(\'select\')">' +
+                                '<span>Select Specific Chapters (2+)</span>' +
+                            '</label>' +
+                        '</div>' +
+                        '<div class="qs-chapters-action-bar" id="qsChaptersActionBar" style="display:none;">' +
+                            '<button type="button" class="qs-mini-btn" onclick="selectAllQSChapters(true)">Select All</button>' +
+                            '<button type="button" class="qs-mini-btn" onclick="selectAllQSChapters(false)">Clear</button>' +
+                            '<span class="qs-selected-badge" id="qsSelectedCountBadge">0 selected</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="qs-chapters-checklist-wrap" id="qsChaptersChecklistWrap" style="display:none;">' +
+                        '<input type="text" id="qsChapterFilterInput" class="qs-chapter-filter" placeholder="Filter chapters..." oninput="filterQSChapters(this.value)">' +
+                        '<div class="qs-chapters-checklist" id="qsChaptersChecklist"></div>' +
+                    '</div>' +
                 '</div>' +
                 '<div class="qsearch-context-bar" id="qSearchContextBar"></div>' +
                 '<div class="qsearch-results-list" id="qSearchResultsList"></div>' +
@@ -708,32 +833,14 @@ function openQuestionSearch() {
     modal.classList.add('active');
     document.body.classList.add('qsearch-open');
 
-    var input = document.getElementById('qSearchInput');
-    var ctxBar = document.getElementById('qSearchContextBar');
-    var resList = document.getElementById('qSearchResultsList');
     var activeData = getActiveQuestionsForSearch();
-
-    if (activeData) {
-        if (ctxBar) {
-            ctxBar.innerHTML = '<span class="qsearch-pill">📚 <strong>' + (typeof escapeHtml === 'function' ? escapeHtml(activeData.title) : activeData.title) + '</strong> (' + activeData.list.length + ' Questions)</span>';
-        }
-        if (input && !input.value.trim() && resList) {
-            resList.innerHTML = '<div class="qsearch-prompt-state">Type any keyword or sentence from a question above. Matched questions will appear with percentage scores.</div>';
-        }
+    if (activeData && activeData.list && activeData.list.length > 0) {
+        setQSearchScopeMode('active');
     } else {
-        if (ctxBar) {
-            ctxBar.innerHTML = '<span class="qsearch-pill empty">⚠️ No Active Quiz Open</span>';
-        }
-        if (resList) {
-            resList.innerHTML =
-                '<div class="qsearch-empty-state">' +
-                    '<div class="qsearch-empty-icon">☕</div>' +
-                    '<div class="qsearch-empty-title">No Active Questions Loaded</div>' +
-                    '<p>Open a chapter in <a href="question-cafe.html" class="qsearch-link">Question Cafe</a> or start a test in <a href="test-cafe.html" class="qsearch-link">Test Cafe</a> to search questions.</p>' +
-                '</div>';
-        }
+        setQSearchScopeMode('custom');
     }
 
+    var input = document.getElementById('qSearchInput');
     if (input) {
         setTimeout(function() {
             input.focus();
@@ -760,19 +867,478 @@ function clearQSearch() {
     }
 }
 
+function setQSearchScopeMode(mode) {
+    _qsScopeMode = mode;
+    var tabActive = document.getElementById('qsTabActive');
+    var tabCustom = document.getElementById('qsTabCustom');
+    var customPanel = document.getElementById('qsCustomPanel');
+    var ctxBar = document.getElementById('qSearchContextBar');
+    var input = document.getElementById('qSearchInput');
+
+    if (tabActive) tabActive.classList.toggle('active', mode === 'active');
+    if (tabCustom) tabCustom.classList.toggle('active', mode === 'custom');
+
+    if (mode === 'active') {
+        if (customPanel) customPanel.style.display = 'none';
+        var activeData = getActiveQuestionsForSearch();
+        if (activeData && activeData.list && activeData.list.length > 0) {
+            if (ctxBar) {
+                var safeTitle = typeof escapeHtml === 'function' ? escapeHtml(activeData.title) : activeData.title;
+                ctxBar.innerHTML = '<span class="qsearch-pill">🎯 <strong>' + safeTitle + '</strong> (' + activeData.list.length + ' Questions)</span>';
+            }
+            if (input && input.value.trim()) performQuestionSearch(input.value);
+        } else {
+            // No active quiz open - switch to custom scope automatically
+            setQSearchScopeMode('custom');
+            return;
+        }
+    } else {
+        if (customPanel) customPanel.style.display = 'flex';
+        initQSSubjects();
+    }
+}
+
+function initQSSubjects() {
+    if (_qsSubjectGroups && _qsSubjectGroups.length > 0) {
+        populateQSSubjectSelect();
+        return;
+    }
+
+    var ctxBar = document.getElementById('qSearchContextBar');
+    if (ctxBar) ctxBar.innerHTML = '<span class="qsearch-pill">⏳ Loading subjects & chapters...</span>';
+
+    var manifestPromise = (typeof manifestRoot !== 'undefined' && manifestRoot)
+        ? Promise.resolve(manifestRoot)
+        : fetch('data/manifest.json').then(function(r) { return r.json(); });
+
+    manifestPromise.then(function(manifest) {
+        _qsManifest = manifest;
+        _qsSubjectGroups = buildQSSubjectGroups(manifest);
+        populateQSSubjectSelect();
+    }).catch(function(err) {
+        console.error('Failed to load manifest for question search:', err);
+        if (ctxBar) ctxBar.innerHTML = '<span class="qsearch-pill empty">⚠️ Failed to load subjects manifest</span>';
+    });
+}
+
+function populateQSSubjectSelect() {
+    var select = document.getElementById('qsSubjectSelect');
+    if (!select || !_qsSubjectGroups) return;
+
+    var html = '';
+    var defaultId = null;
+
+    _qsSubjectGroups.forEach(function(g) {
+        html += '<optgroup label="' + (typeof escapeHtml === 'function' ? escapeHtml(g.groupName) : g.groupName) + '">';
+        g.subjects.forEach(function(s) {
+            // Prioritize NEETprep Physics as default if available
+            if (!defaultId && /NEETprep.*Physics/i.test(s.label)) {
+                defaultId = s.id;
+            }
+            var optLabel = (typeof escapeHtml === 'function' ? escapeHtml(s.label) : s.label) + ' (' + s.chapters.length + ' chapters)';
+            html += '<option value="' + encodeURIComponent(s.id) + '">' + optLabel + '</option>';
+        });
+        html += '</optgroup>';
+    });
+
+    select.innerHTML = html;
+
+    if (defaultId) {
+        select.value = encodeURIComponent(defaultId);
+    } else if (select.options.length > 0) {
+        select.selectedIndex = 0;
+    }
+
+    onQSSubjectChange();
+}
+
+function findSubjectById(id) {
+    if (!_qsSubjectGroups) return null;
+    for (var i = 0; i < _qsSubjectGroups.length; i++) {
+        var g = _qsSubjectGroups[i];
+        for (var j = 0; j < g.subjects.length; j++) {
+            if (g.subjects[j].id === id) return g.subjects[j];
+        }
+    }
+    return null;
+}
+
+function onQSSubjectChange() {
+    var select = document.getElementById('qsSubjectSelect');
+    if (!select) return;
+
+    var subjectId = decodeURIComponent(select.value);
+    _qsSelectedSubject = findSubjectById(subjectId);
+    _qsLoadedPool = null;
+
+    renderQSChaptersChecklist();
+    updateQSScopeStatus();
+
+    var input = document.getElementById('qSearchInput');
+    if (input && input.value.trim().length >= 2) {
+        performQuestionSearch(input.value);
+    }
+}
+
+function onQSChapterScopeToggle(mode) {
+    _qsChapterScope = mode;
+    var chListWrap = document.getElementById('qsChaptersChecklistWrap');
+    var actBar = document.getElementById('qsChaptersActionBar');
+
+    if (mode === 'select') {
+        if (chListWrap) chListWrap.style.display = 'flex';
+        if (actBar) actBar.style.display = 'flex';
+        // Auto-select first 2 chapters if none selected yet
+        if (_qsSelectedChapterNames.size === 0 && _qsSelectedSubject && _qsSelectedSubject.chapters.length > 0) {
+            _qsSelectedChapterNames.add(_qsSelectedSubject.chapters[0].name);
+            if (_qsSelectedSubject.chapters.length > 1) {
+                _qsSelectedChapterNames.add(_qsSelectedSubject.chapters[1].name);
+            }
+            syncQSCheckboxes();
+        }
+    } else {
+        if (chListWrap) chListWrap.style.display = 'none';
+        if (actBar) actBar.style.display = 'none';
+    }
+
+    _qsLoadedPool = null;
+    updateQSScopeStatus();
+
+    var input = document.getElementById('qSearchInput');
+    if (input && input.value.trim().length >= 2) {
+        performQuestionSearch(input.value);
+    }
+}
+
+function renderQSChaptersChecklist() {
+    var container = document.getElementById('qsChaptersChecklist');
+    if (!container || !_qsSelectedSubject) return;
+
+    _qsSelectedChapterNames.clear();
+    // Default to first 2 chapters when in select mode
+    if (_qsChapterScope === 'select' && _qsSelectedSubject.chapters.length > 0) {
+        _qsSelectedChapterNames.add(_qsSelectedSubject.chapters[0].name);
+        if (_qsSelectedSubject.chapters.length > 1) {
+            _qsSelectedChapterNames.add(_qsSelectedSubject.chapters[1].name);
+        }
+    }
+
+    var html = _qsSelectedSubject.chapters.map(function(ch, idx) {
+        var isChecked = _qsSelectedChapterNames.has(ch.name);
+        var safeName = typeof escapeHtml === 'function' ? escapeHtml(ch.name) : ch.name;
+        var filesCount = ch.files.length;
+        var filesText = filesCount > 1 ? (filesCount + ' files') : '1 file';
+
+        return (
+            '<label class="qs-chapter-item" data-name="' + safeName.toLowerCase() + '">' +
+                '<input type="checkbox" value="' + encodeURIComponent(ch.name) + '" ' + (isChecked ? 'checked' : '') + ' onchange="onQSChapterCheckboxChange(this)">' +
+                '<span class="qs-chapter-name">' + safeName + '</span>' +
+                '<span class="qs-chapter-files-badge">' + filesText + '</span>' +
+            '</label>'
+        );
+    }).join('');
+
+    container.innerHTML = html;
+    updateQSSelectedCountBadge();
+}
+
+function syncQSCheckboxes() {
+    var container = document.getElementById('qsChaptersChecklist');
+    if (!container) return;
+
+    var boxes = container.querySelectorAll('input[type="checkbox"]');
+    boxes.forEach(function(box) {
+        var name = decodeURIComponent(box.value);
+        box.checked = _qsSelectedChapterNames.has(name);
+    });
+    updateQSSelectedCountBadge();
+}
+
+function onQSChapterCheckboxChange(cb) {
+    var name = decodeURIComponent(cb.value);
+    if (cb.checked) {
+        _qsSelectedChapterNames.add(name);
+    } else {
+        _qsSelectedChapterNames.delete(name);
+    }
+    _qsLoadedPool = null;
+    updateQSSelectedCountBadge();
+    updateQSScopeStatus();
+
+    var input = document.getElementById('qSearchInput');
+    if (input && input.value.trim().length >= 2) {
+        performQuestionSearch(input.value);
+    }
+}
+
+function selectAllQSChapters(selectAll) {
+    if (!_qsSelectedSubject) return;
+    _qsSelectedChapterNames.clear();
+    if (selectAll) {
+        _qsSelectedSubject.chapters.forEach(function(c) {
+            _qsSelectedChapterNames.add(c.name);
+        });
+    }
+    syncQSCheckboxes();
+    _qsLoadedPool = null;
+    updateQSScopeStatus();
+
+    var input = document.getElementById('qSearchInput');
+    if (input && input.value.trim().length >= 2) {
+        performQuestionSearch(input.value);
+    }
+}
+
+function filterQSChapters(query) {
+    var container = document.getElementById('qsChaptersChecklist');
+    if (!container) return;
+    var clean = (query || '').toLowerCase().trim();
+    var items = container.querySelectorAll('.qs-chapter-item');
+    items.forEach(function(item) {
+        var name = item.getAttribute('data-name') || '';
+        item.style.display = (!clean || name.indexOf(clean) !== -1) ? 'flex' : 'none';
+    });
+}
+
+function updateQSSelectedCountBadge() {
+    var badge = document.getElementById('qsSelectedCountBadge');
+    if (badge) {
+        badge.textContent = _qsSelectedChapterNames.size + ' selected';
+    }
+}
+
+function updateQSScopeStatus() {
+    var statusEl = document.getElementById('qsScopeStatus');
+    var ctxBar = document.getElementById('qSearchContextBar');
+    if (!_qsSelectedSubject) return;
+
+    var label = _qsSelectedSubject.label;
+    var safeLabel = typeof escapeHtml === 'function' ? escapeHtml(label) : label;
+
+    if (_qsChapterScope === 'all') {
+        var statusText = '📚 ' + safeLabel + ' (' + _qsSelectedSubject.chapters.length + ' Chapters)';
+        if (statusEl) statusEl.innerHTML = '<span>All ' + _qsSelectedSubject.chapters.length + ' chapters</span>';
+        if (ctxBar && !_qsIsLoading) {
+            ctxBar.innerHTML = '<span class="qsearch-pill">📚 Scope: <strong>' + statusText + '</strong></span>';
+        }
+    } else {
+        var count = _qsSelectedChapterNames.size;
+        var statusText = safeLabel + ' · ' + count + ' Chapter' + (count !== 1 ? 's' : '');
+        if (statusEl) statusEl.innerHTML = '<span>' + count + ' chapter' + (count !== 1 ? 's' : '') + ' selected</span>';
+        if (ctxBar && !_qsIsLoading) {
+            ctxBar.innerHTML = '<span class="qsearch-pill">📚 Scope: <strong>' + statusText + '</strong></span>';
+        }
+    }
+}
+
+function extractQuestionsFromFileData(data, filePath, chapterName, moduleName) {
+    var qs = [];
+    if (!data) return qs;
+
+    if (data.chapters && Array.isArray(data.chapters)) {
+        data.chapters.forEach(function(ch) {
+            var chTitle = ch.name || chapterName;
+            (ch.topics || []).forEach(function(top) {
+                var topTitle = top.topic || 'Practice';
+                (top.questions || []).forEach(function(q, qi) {
+                    qs.push({
+                        q: q,
+                        index: qi,
+                        filePath: filePath,
+                        chapterTitle: chTitle,
+                        topicTitle: topTitle,
+                        moduleName: moduleName
+                    });
+                });
+            });
+        });
+        if (qs.length > 0) return qs;
+    }
+
+    if (Array.isArray(data.questions)) {
+        data.questions.forEach(function(q, qi) {
+            qs.push({
+                q: q,
+                index: qi,
+                filePath: filePath,
+                chapterTitle: data.name || chapterName,
+                topicTitle: q.topicName || q.sub_category || q.topic || 'Question',
+                moduleName: moduleName
+            });
+        });
+        if (qs.length > 0) return qs;
+    }
+
+    if (Array.isArray(data.sections) || Array.isArray(data.subjects)) {
+        var secs = data.sections || data.subjects;
+        secs.forEach(function(sec) {
+            var secTitle = sec.name || sec.title || chapterName;
+            (sec.questions || sec.qs || []).forEach(function(q, qi) {
+                qs.push({
+                    q: q,
+                    index: qi,
+                    filePath: filePath,
+                    chapterTitle: secTitle,
+                    topicTitle: q.topic || q.sub_category || 'Question',
+                    moduleName: moduleName
+                });
+            });
+        });
+    }
+
+    return qs;
+}
+
+function loadCustomScopeQuestions(callback) {
+    if (!_qsSelectedSubject) {
+        callback({ title: 'No Subject Selected', list: [] });
+        return;
+    }
+
+    var chaptersToUse = _qsSelectedSubject.chapters.filter(function(c) {
+        return _qsChapterScope === 'all' || _qsSelectedChapterNames.has(c.name);
+    });
+
+    if (chaptersToUse.length === 0) {
+        callback({ title: 'No Chapters Selected', list: [] });
+        return;
+    }
+
+    var poolKey = _qsSelectedSubject.id + '__' + _qsChapterScope + '__' + Array.from(_qsSelectedChapterNames).sort().join('|');
+    if (_qsLoadedPool && _qsLoadedPool.key === poolKey) {
+        callback(_qsLoadedPool);
+        return;
+    }
+
+    var filesToLoad = [];
+    chaptersToUse.forEach(function(ch) {
+        ch.files.forEach(function(f) {
+            filesToLoad.push(f);
+        });
+    });
+
+    if (filesToLoad.length === 0) {
+        callback({ title: _qsSelectedSubject.label, list: [] });
+        return;
+    }
+
+    _qsIsLoading = true;
+    var ctxBar = document.getElementById('qSearchContextBar');
+    if (ctxBar) {
+        ctxBar.innerHTML = '<span class="qsearch-pill">⏳ Loading questions from ' + filesToLoad.length + ' modules...</span>';
+    }
+
+    var questionsPool = [];
+    var seenIds = new Set();
+    var loadedFilesCount = 0;
+
+    // Load files in parallel batches of 8 for high performance without overloading
+    var batchSize = 8;
+    var fileIdx = 0;
+
+    function processBatch() {
+        if (fileIdx >= filesToLoad.length) {
+            _qsIsLoading = false;
+            _qsLoadedPool = {
+                key: poolKey,
+                title: _qsSelectedSubject.label + ' (' + chaptersToUse.length + ' Chapters)',
+                list: questionsPool
+            };
+            if (ctxBar) {
+                ctxBar.innerHTML = '<span class="qsearch-pill">⚡ Ready: <strong>' + (typeof escapeHtml === 'function' ? escapeHtml(_qsLoadedPool.title) : _qsLoadedPool.title) + '</strong> (' + questionsPool.length + ' Questions loaded)</span>';
+            }
+            callback(_qsLoadedPool);
+            return;
+        }
+
+        var currentBatch = filesToLoad.slice(fileIdx, fileIdx + batchSize);
+        fileIdx += batchSize;
+
+        var promises = currentBatch.map(function(fileInfo) {
+            var filePath = fileInfo.path;
+            if (_qsFileCache[filePath]) {
+                return Promise.resolve({ info: fileInfo, data: _qsFileCache[filePath] });
+            }
+            return fetch('data/' + filePath)
+                .then(function(res) {
+                    if (!res.ok) return null;
+                    return res.json();
+                })
+                .then(function(json) {
+                    if (json) _qsFileCache[filePath] = json;
+                    return { info: fileInfo, data: json };
+                })
+                .catch(function() {
+                    return { info: fileInfo, data: null };
+                });
+        });
+
+        Promise.all(promises).then(function(results) {
+            results.forEach(function(res) {
+                if (res && res.data) {
+                    var extracted = extractQuestionsFromFileData(res.data, res.info.path, res.info.chapterName, res.info.displayName);
+                    extracted.forEach(function(item) {
+                        var dedupeKey = (item.q && item.q.id) ? item.q.id : (cleanTextForMatching(item.q ? (item.q.question || '') : '') || Math.random());
+                        if (!seenIds.has(dedupeKey)) {
+                            seenIds.add(dedupeKey);
+                            questionsPool.push(item);
+                        }
+                    });
+                }
+            });
+
+            loadedFilesCount += currentBatch.length;
+            if (ctxBar) {
+                var pct = Math.round((loadedFilesCount / filesToLoad.length) * 100);
+                ctxBar.innerHTML = '<span class="qsearch-pill">⏳ Loading: ' + loadedFilesCount + '/' + filesToLoad.length + ' files (' + pct + '%) · ' + questionsPool.length + ' Qs</span>';
+            }
+
+            processBatch();
+        });
+    }
+
+    processBatch();
+}
+
 function performQuestionSearch(rawQuery) {
     var resList = document.getElementById('qSearchResultsList');
     if (!resList) return;
 
     var qClean = cleanTextForMatching(rawQuery);
     if (!qClean || qClean.length < 2) {
-        resList.innerHTML = '<div class="qsearch-prompt-state">Type at least 2 characters to search...</div>';
+        resList.innerHTML = '<div class="qsearch-prompt-state">Type at least 2 characters to search questions...</div>';
         return;
     }
 
-    var activeData = getActiveQuestionsForSearch();
-    if (!activeData || !activeData.list || activeData.list.length === 0) {
-        resList.innerHTML = '<div class="qsearch-empty-state"><p>No active questions available to search.</p></div>';
+    if (_qsScopeMode === 'active') {
+        var activeData = getActiveQuestionsForSearch();
+        if (!activeData || !activeData.list || activeData.list.length === 0) {
+            resList.innerHTML = '<div class="qsearch-empty-state"><p>No active quiz open. Switch to <strong>Subject & Chapters</strong> above to search!</p></div>';
+            return;
+        }
+        executeSearchOverList(activeData.list, qClean, rawQuery, activeData.source);
+    } else {
+        if (_qsLoadedPool) {
+            executeSearchOverList(_qsLoadedPool.list, qClean, rawQuery, 'custom');
+        } else {
+            resList.innerHTML = '<div class="qsearch-prompt-state"><div class="spinner" style="width:24px;height:24px;margin:0 auto 0.5rem;border-width:2px;"></div>Loading questions from selected chapters...</div>';
+            loadCustomScopeQuestions(function(pool) {
+                var curInput = document.getElementById('qSearchInput');
+                var curVal = curInput ? curInput.value : '';
+                if (cleanTextForMatching(curVal) === qClean) {
+                    executeSearchOverList(pool.list, qClean, rawQuery, 'custom');
+                }
+            });
+        }
+    }
+}
+
+function executeSearchOverList(rawList, qClean, rawQuery, source) {
+    var resList = document.getElementById('qSearchResultsList');
+    if (!resList) return;
+
+    if (!rawList || rawList.length === 0) {
+        resList.innerHTML = '<div class="qsearch-empty-state"><div class="qsearch-empty-icon">📭</div><div class="qsearch-empty-title">No questions found in this selection</div></div>';
         return;
     }
 
@@ -783,7 +1349,8 @@ function performQuestionSearch(rawQuery) {
 
     var results = [];
 
-    activeData.list.forEach(function(q, idx) {
+    rawList.forEach(function(item, idx) {
+        var q = item.q || item;
         var qRawText = (q.question || q.questionText || '') + ' ' + (q.translations && q.translations.hi && q.translations.hi.question ? q.translations.hi.question : '');
         var optText = Array.isArray(q.options) ? q.options.join(' ') : '';
         var combinedRaw = qRawText + ' ' + optText;
@@ -793,7 +1360,7 @@ function performQuestionSearch(rawQuery) {
 
         var score = 0;
 
-        // 1. Exact phrase match in question text
+        // 1. Exact phrase match
         if (normalizedTarget.indexOf(qClean) !== -1) {
             var lengthRatio = Math.min(1, qClean.length / Math.max(qClean.length, normalizedTarget.length));
             score = Math.round(92 + (lengthRatio * 8)); // 92% to 100%
@@ -818,7 +1385,6 @@ function performQuestionSearch(rawQuery) {
                 var tokenRatio = matchedCount / tokensToSearch.length;
                 var base = tokenRatio * 80;
 
-                // 3. Proximity / subsequence bonus if words appear close to each other
                 if (queryTokens.length >= 2) {
                     var firstIdx = normalizedTarget.indexOf(tokensToSearch[0]);
                     var lastIdx = normalizedTarget.indexOf(tokensToSearch[tokensToSearch.length - 1]);
@@ -830,22 +1396,20 @@ function performQuestionSearch(rawQuery) {
                 score = Math.min(94, Math.round(base + partialBonus));
             }
 
-            // 4. Consecutive subphrase matching (e.g. for "stretched by the application of a force")
+            // 3. Consecutive subphrase matching
             if (queryTokens.length >= 3) {
                 var longestSubphraseLen = 0;
                 for (var i = 0; i < queryTokens.length; i++) {
                     for (var j = i + 2; j <= queryTokens.length; j++) {
                         var subphrase = queryTokens.slice(i, j).join(' ');
                         if (normalizedTarget.indexOf(subphrase) !== -1) {
-                            if ((j - i) > longestSubphraseLen) {
-                                longestSubphraseLen = (j - i);
-                            }
+                            if ((j - i) > longestSubphraseLen) longestSubphraseLen = (j - i);
                         }
                     }
                 }
                 if (longestSubphraseLen >= 3) {
                     var phraseRatio = longestSubphraseLen / queryTokens.length;
-                    var phraseScore = Math.round(75 + (phraseRatio * 23)); // 75% to 98%
+                    var phraseScore = Math.round(75 + (phraseRatio * 23));
                     if (phraseScore > score) score = phraseScore;
                 }
             }
@@ -853,30 +1417,35 @@ function performQuestionSearch(rawQuery) {
 
         if (score >= 25) {
             results.push({
-                index: idx,
+                index: typeof item.index === 'number' ? item.index : idx,
                 q: q,
                 score: score,
-                rawText: qRawText
+                rawText: qRawText,
+                filePath: item.filePath || null,
+                chapterTitle: item.chapterTitle || null,
+                topicTitle: item.topicTitle || null,
+                moduleName: item.moduleName || null,
+                source: source
             });
         }
     });
 
     results.sort(function(a, b) { return b.score - a.score; });
+    _qsCurrentResults = results;
 
     if (results.length === 0) {
         resList.innerHTML =
             '<div class="qsearch-empty-state">' +
                 '<div class="qsearch-empty-icon">🔎</div>' +
                 '<div class="qsearch-empty-title">No matching questions found</div>' +
-                '<p>Try searching different keywords, or check spelling.</p>' +
+                '<p>Try different keywords, or expand your chapter selection.</p>' +
             '</div>';
         return;
     }
 
-    resList.innerHTML = results.map(function(item) {
+    resList.innerHTML = results.map(function(item, rIdx) {
         var q = item.q;
         var qNum = (typeof q.globalNumber === 'number' ? q.globalNumber : (item.index + 1));
-        var topicName = q.topicName || q.topic || q.sectionName || q.category || 'Question';
         var cleanSnippet = stripHtml(item.rawText);
         var highlightedSnippet = highlightSearchTokens(cleanSnippet, tokensToSearch);
 
@@ -884,14 +1453,20 @@ function performQuestionSearch(rawQuery) {
         if (item.score >= 80) badgeCls = 'high';
         else if (item.score >= 55) badgeCls = 'good';
 
-        var safeTopic = typeof escapeHtml === 'function' ? escapeHtml(topicName) : topicName;
+        var chapterBadge = item.chapterTitle || '';
+        var topicBadge = item.topicTitle || q.topicName || q.topic || q.sectionName || q.category || 'Question';
+        var fullBadge = chapterBadge ? (chapterBadge + ' › ' + topicBadge) : topicBadge;
+        var safeBadge = typeof escapeHtml === 'function' ? escapeHtml(fullBadge) : fullBadge;
+
+        var moduleLabel = item.moduleName ? ('<span class="qsearch-module-tag">' + (typeof escapeHtml === 'function' ? escapeHtml(item.moduleName) : item.moduleName) + '</span>') : '';
 
         return (
-            '<div class="qsearch-card" onclick="selectSearchResult(' + item.index + ')">' +
+            '<div class="qsearch-card" onclick="selectSearchResult(' + rIdx + ')">' +
                 '<div class="qsearch-card-header">' +
                     '<div class="qsearch-card-meta">' +
                         '<span class="qsearch-qno">Q. ' + qNum + '</span>' +
-                        '<span class="qsearch-topic">' + safeTopic + '</span>' +
+                        '<span class="qsearch-topic" title="' + safeBadge + '">' + safeBadge + '</span>' +
+                        moduleLabel +
                     '</div>' +
                     '<span class="qsearch-pct ' + badgeCls + '">' + item.score + '% Match</span>' +
                 '</div>' +
@@ -916,34 +1491,75 @@ function highlightSearchTokens(text, tokens) {
     return safe;
 }
 
-function selectSearchResult(index) {
+function selectSearchResult(rIdx) {
     closeQuestionSearch();
 
-    // 1. If on Question Cafe:
+    var item = _qsCurrentResults && _qsCurrentResults[rIdx] ? _qsCurrentResults[rIdx] : null;
+    if (!item) return;
+
+    var targetIndex = item.index || 0;
+    var targetFile = item.filePath;
+
+    // Case 1: Result is from custom scope with a specific file path
+    if (targetFile) {
+        var isQuestionCafe = (typeof loadFile === 'function' && typeof showQuiz === 'function');
+
+        if (isQuestionCafe) {
+            // If already on question cafe and file is already loaded
+            if (typeof currentFileName !== 'undefined' && currentFileName === targetFile) {
+                if (typeof jumpToQuestion === 'function') {
+                    jumpToQuestion(targetIndex);
+                } else {
+                    showQuiz(targetIndex);
+                }
+                flashQuestionElement(targetIndex);
+            } else {
+                // Load the target file into Question Cafe
+                loadFile(targetFile).then(function() {
+                    // Find matching question index in the newly loaded file
+                    var qIdx = targetIndex;
+                    if (item.q && item.q.id && typeof questions !== 'undefined' && Array.isArray(questions)) {
+                        var foundIdx = questions.findIndex(function(q) { return q.id === item.q.id; });
+                        if (foundIdx !== -1) qIdx = foundIdx;
+                    }
+                    if (typeof currentMode !== 'undefined') currentMode = 'onebyone';
+                    showQuiz(qIdx);
+                    setTimeout(function() { flashQuestionElement(qIdx); }, 200);
+                }).catch(function(e) {
+                    console.error('Failed to load file on search jump:', e);
+                });
+            }
+            return;
+        }
+
+        // If on another page (e.g. index.html or test-cafe.html), navigate to Question Cafe with studycafe-goto
+        try {
+            sessionStorage.setItem('studycafe-goto', JSON.stringify({
+                file: targetFile,
+                qIndex: targetIndex,
+                qId: (item.q ? item.q.id : null)
+            }));
+        } catch (e) { /* ignore */ }
+        window.location.href = 'question-cafe.html';
+        return;
+    }
+
+    // Case 2: Result is from active quiz on Question Cafe
     if (typeof jumpToQuestion === 'function') {
         var activeScreen = document.querySelector('.screen.active');
         var screenId = activeScreen ? activeScreen.id : '';
         if (screenId === 'screenQuiz' || screenId === 'screenFullQuiz' || screenId === 'screenTestMode') {
-            jumpToQuestion(index);
+            jumpToQuestion(targetIndex);
         } else if (typeof showQuiz === 'function') {
-            showQuiz(index);
+            showQuiz(targetIndex);
         }
-        setTimeout(function() {
-            var el = document.getElementById('fullQ-' + index) ||
-                     document.getElementById('testQ-' + index) ||
-                     document.querySelector('#screenQuiz .quiz-card') ||
-                     document.getElementById('quizContainer');
-            if (el) {
-                el.classList.add('qsearch-jump-flash');
-                setTimeout(function() { el.classList.remove('qsearch-jump-flash'); }, 1800);
-            }
-        }, 120);
+        flashQuestionElement(targetIndex);
         return;
     }
 
-    // 2. If on Test Cafe:
+    // Case 3: Result is from active test on Test Cafe
     if (typeof goToQuestion === 'function') {
-        goToQuestion(index);
+        goToQuestion(targetIndex);
         var card = document.querySelector('.q-card');
         if (card) {
             card.classList.add('qsearch-jump-flash');
@@ -952,8 +1568,21 @@ function selectSearchResult(index) {
         return;
     }
 
-    // 3. Fallback: navigate to question-cafe.html
-    window.location.href = 'question-cafe.html#q' + index;
+    // Fallback:
+    window.location.href = 'question-cafe.html';
+}
+
+function flashQuestionElement(index) {
+    setTimeout(function() {
+        var el = document.getElementById('fullQ-' + index) ||
+                 document.getElementById('testQ-' + index) ||
+                 document.querySelector('#screenQuiz .quiz-card') ||
+                 document.getElementById('quizContainer');
+        if (el) {
+            el.classList.add('qsearch-jump-flash');
+            setTimeout(function() { el.classList.remove('qsearch-jump-flash'); }, 1800);
+        }
+    }, 140);
 }
 
 window.stripHtml = stripHtml;
@@ -963,3 +1592,10 @@ window.closeQuestionSearch = closeQuestionSearch;
 window.clearQSearch = clearQSearch;
 window.performQuestionSearch = performQuestionSearch;
 window.selectSearchResult = selectSearchResult;
+window.setQSearchScopeMode = setQSearchScopeMode;
+window.onQSSubjectChange = onQSSubjectChange;
+window.onQSChapterScopeToggle = onQSChapterScopeToggle;
+window.onQSChapterCheckboxChange = onQSChapterCheckboxChange;
+window.selectAllQSChapters = selectAllQSChapters;
+window.filterQSChapters = filterQSChapters;
+

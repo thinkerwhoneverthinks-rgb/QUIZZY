@@ -1271,7 +1271,13 @@
         }
 
         /* MathJax & KaTeX styling for dark/light themes and horizontal overflow */
-        .katex, mjx-container { color: var(--text-primary); max-width: 100%; outline: none; }
+        .katex, mjx-container {
+            color: var(--text-primary);
+            max-width: 100%;
+            outline: none;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+        }
         .katex-display, mjx-container[jax="CHTML"][display="true"] {
             overflow-x: auto !important;
             overflow-y: hidden !important;
@@ -1279,6 +1285,8 @@
             margin: 0.55em 0 !important;
             padding: 0.25rem 0 !important;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
         }
         .math-tex,
         mjx-container:not([display="true"]) {
@@ -1288,6 +1296,18 @@
             overflow-y: hidden;
             vertical-align: middle;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+        }
+        .math-tex::-webkit-scrollbar,
+        mjx-container::-webkit-scrollbar,
+        .katex::-webkit-scrollbar,
+        .katex-display::-webkit-scrollbar,
+        mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
         }
         .question-text .katex-html,
         .mcq-text .katex-html,
@@ -2837,6 +2857,199 @@
     border-color: var(--accent);
     color: var(--accent);
 }
+/* ==================== QUESTION SEARCH SCOPE SELECTOR ==================== */
+.qsearch-scope-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.45rem 0.85rem;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+.qsearch-scope-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--bg-secondary);
+    padding: 3px;
+    border-radius: var(--radius-sm, 8px);
+    border: 1px solid var(--border);
+}
+.qsearch-tab {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.qsearch-tab:hover {
+    color: var(--text-primary);
+}
+.qsearch-tab.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.qsearch-scope-status {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.qsearch-custom-panel {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0.65rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+.qs-panel-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.qs-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.qs-select {
+    flex: 1;
+    min-width: 200px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm, 6px);
+    color: var(--text-primary);
+    font-size: 0.84rem;
+    padding: 0.38rem 0.65rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.qs-select:focus {
+    border-color: var(--accent);
+}
+.qs-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+.qs-radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+}
+.qs-radio-label input[type="radio"] {
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+.qs-chapters-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: auto;
+}
+.qs-mini-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 0.2rem 0.45rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.qs-mini-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.qs-selected-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.18rem 0.5rem;
+    border-radius: 10px;
+    background: rgba(0, 212, 170, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    white-space: nowrap;
+}
+.qs-chapters-checklist-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 8px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.qs-chapter-filter {
+    border: none;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+    color: var(--text-primary);
+    outline: none;
+}
+.qs-chapter-filter::placeholder {
+    color: var(--text-muted);
+}
+.qs-chapters-checklist {
+    max-height: 140px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0.25rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+.qs-chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.32rem 0.65rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+}
+.qs-chapter-item:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+.qs-chapter-item input[type="checkbox"] {
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+.qs-chapter-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.qs-chapter-files-badge {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
 .qsearch-context-bar {
     padding: 0.45rem 1.15rem;
     font-size: 0.82rem;
@@ -2904,6 +3117,21 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 240px;
+}
+.qsearch-module-tag {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+    padding: 0.12rem 0.45rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+}
+@media (max-width: 540px) {
+    .qsearch-module-tag { display: none; }
+    .qsearch-topic { max-width: 170px; }
 }
 .qsearch-pct {
     font-size: 0.78rem;
