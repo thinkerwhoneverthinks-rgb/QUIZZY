@@ -238,7 +238,7 @@ function buildQuestionCardInner(q, idx, total) {
                 <span class="question-number">${questionLabel}</span>
                 <span class="meta-dot">·</span>
                 <span class="type-badge">${getTypeLabel(q)}</span>
-                ${topicLabel ? `<span class="meta-dot">·</span><span class="question-topic-tag" title="${escapeHtml(topicLabel)}">📂 ${escapeHtml(topicLabel)}</span>` : ''}
+
                 ${examBadge}
             </div>
             <div class="question-card-top-actions">

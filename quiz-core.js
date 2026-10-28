@@ -133,6 +133,59 @@ function safeHtml(text) {
     if (!text) return '';
     let s = String(text);
 
+    // -1. Convert OOXML / Word MathML namespace tags (<m:omath>, <m:r>, <m:ssup> …)
+    //     into LaTeX before any other processing. These appear when questions are
+    //     exported from MS Word / OOXML and not yet converted to LaTeX.
+    if (s.includes('<m:omath') || s.includes('&lt;m:omath')) {
+        // Decode HTML-entity-encoded OOXML if needed
+        if (s.includes('&lt;m:omath')) {
+            s = s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+        }
+        // Inner helper: strip all XML tags from a fragment and return plain text
+        function ooExtract(xml) {
+            return (xml || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        }
+        // Convert each <m:omath>...</m:omath> block to \(...\)
+        s = s.replace(/<m:omath[^>]*>([\s\S]*?)<\/m:omath>/gi, function(_, inner) {
+            var latex = inner;
+            // Superscript:  <m:sSup><m:e>base</m:e><m:sup>exp</m:sup></m:sSup>
+            latex = latex.replace(/<m:sSup[^>]*>([\s\S]*?)<\/m:sSup>/gi, function(__, c) {
+                var base = (c.match(/<m:e[^>]*>([\s\S]*?)<\/m:e>/i) || [])[1] || '';
+                var sup  = (c.match(/<m:sup[^>]*>([\s\S]*?)<\/m:sup>/i) || [])[1] || '';
+                return ooExtract(base) + '^{' + ooExtract(sup) + '}';
+            });
+            // Subscript:  <m:sSub>
+            latex = latex.replace(/<m:sSub[^>]*>([\s\S]*?)<\/m:sSub>/gi, function(__, c) {
+                var base = (c.match(/<m:e[^>]*>([\s\S]*?)<\/m:e>/i) || [])[1] || '';
+                var sub  = (c.match(/<m:sub[^>]*>([\s\S]*?)<\/m:sub>/i) || [])[1] || '';
+                return ooExtract(base) + '_{' + ooExtract(sub) + '}';
+            });
+            // SubSup
+            latex = latex.replace(/<m:sSubSup[^>]*>([\s\S]*?)<\/m:sSubSup>/gi, function(__, c) {
+                var base = (c.match(/<m:e[^>]*>([\s\S]*?)<\/m:e>/i) || [])[1] || '';
+                var sub  = (c.match(/<m:sub[^>]*>([\s\S]*?)<\/m:sub>/i) || [])[1] || '';
+                var sup  = (c.match(/<m:sup[^>]*>([\s\S]*?)<\/m:sup>/i) || [])[1] || '';
+                return ooExtract(base) + '_{' + ooExtract(sub) + '}^{' + ooExtract(sup) + '}';
+            });
+            // Fraction:  <m:f><m:num>...</m:num><m:den>...</m:den></m:f>
+            latex = latex.replace(/<m:f[^>]*>([\s\S]*?)<\/m:f>/gi, function(__, c) {
+                var num = (c.match(/<m:num[^>]*>([\s\S]*?)<\/m:num>/i) || [])[1] || '';
+                var den = (c.match(/<m:den[^>]*>([\s\S]*?)<\/m:den>/i) || [])[1] || '';
+                return '\\frac{' + ooExtract(num) + '}{' + ooExtract(den) + '}';
+            });
+            // Square root:  <m:rad>
+            latex = latex.replace(/<m:rad[^>]*>([\s\S]*?)<\/m:rad>/gi, function(__, c) {
+                var e = (c.match(/<m:e[^>]*>([\s\S]*?)<\/m:e>/i) || [])[1] || '';
+                return '\\sqrt{' + ooExtract(e) + '}';
+            });
+            // Strip any remaining m: namespace tags, keeping their text content
+            latex = latex.replace(/<\/?m:[a-zA-Z]+[^>]*>/g, '');
+            return '\\(' + latex.replace(/\s+/g, ' ').trim() + '\\)';
+        });
+        // Strip any leftover m: namespace tags outside <m:omath>
+        s = s.replace(/<\/?m:[a-zA-Z]+[^>]*>/g, '');
+    }
+
     // 0. Clean up triple-escaped JSON artifacts and excessive backslashes
     if (s.includes('\\\\\\\"')) s = s.replace(/\\\\\\"/g, '"');
     if (s.includes('\\\\\"')) s = s.replace(/\\\\"/g, '"');
