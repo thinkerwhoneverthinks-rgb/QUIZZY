@@ -1611,56 +1611,2024 @@
     color: #ec4899;
 }
 
-/* Pretty Reader Specifics */
-.pretty-ext-btn {
-    background: rgba(236, 72, 153, 0.15) !important;
-    border-color: rgba(236, 72, 153, 0.4) !important;
-    color: #f472b6 !important;
-    text-decoration: none;
+/* ============================================================
+   PRETTY NCERT NATIVE & BACKUP READER
+   ============================================================ */
+
+.pretty-reader-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--bg-primary);
+    z-index: 1050;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
 }
-.pretty-ext-btn:hover {
-    background: #ec4899 !important;
-    color: #fff !important;
-}
-.pretty-pwa-banner {
-    background: rgba(236, 72, 153, 0.08);
-    border-bottom: 1px solid rgba(236, 72, 153, 0.2);
-    padding: 0.5rem 1rem;
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    text-align: center;
-    line-height: 1.4;
+.pretty-reader-screen.active {
+    display: flex;
 }
 
-@media (max-width: 640px) {
-    .pw-reader-bar {
-        padding: 0.5rem 0.65rem;
+/* Scroll Progress Bar */
+.pretty-progress-bar-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5px;
+    background: transparent;
+    z-index: 1060;
+}
+.pretty-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ec4899, #a855f7, #06b6d4);
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.7);
+    transition: width 0.08s ease-out;
+}
+
+/* Responsive Reader Top Bar Helpers */
+.btn-short-text {
+    display: none;
+}
+.btn-full-text {
+    display: inline;
+}
+.pretty-mobile-nav,
+.cloze-mobile-nav {
+    display: none;
+}
+.pretty-desktop-nav,
+.cloze-desktop-nav {
+    display: flex;
+}
+
+/* Reader Top Bar */
+.pretty-reader-bar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0.65rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: 1055;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+.pretty-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 0;
+    flex: 1;
+}
+.pretty-back-btn {
+    white-space: nowrap;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.84rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm, 8px);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pretty-back-btn:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+    transform: translateX(-2px);
+}
+.pretty-reader-info {
+    min-width: 0;
+    overflow: hidden;
+}
+.pretty-reader-info .pretty-reader-book-title {
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ec4899;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pretty-reader-info .pretty-reader-chap-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Actions Group */
+.pretty-reader-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+}
+
+/* View Mode Segmented Control */
+.pretty-mode-toggle {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2px;
+    gap: 2px;
+}
+.pretty-mode-toggle .mode-btn {
+    border: none;
+    background: transparent;
+    padding: 0.35rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.pretty-mode-toggle .mode-btn:hover {
+    color: var(--text-primary);
+}
+.pretty-mode-toggle .mode-btn.active {
+    background: linear-gradient(135deg, #db2777, #ec4899);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.35);
+}
+
+/* Backup Button in Top Bar */
+.pretty-backup-ext-btn {
+    background: rgba(236, 72, 153, 0.12) !important;
+    border: 1.5px solid rgba(236, 72, 153, 0.4) !important;
+    color: #ec4899 !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-decoration: none;
+    border-radius: var(--radius-sm, 8px);
+    padding: 0.45rem 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.pretty-backup-ext-btn:hover {
+    background: #ec4899 !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+}
+
+.pretty-outline-btn,
+.pretty-settings-btn {
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--radius-sm, 8px);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pretty-outline-btn:hover,
+.pretty-settings-btn:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+}
+
+.pretty-nav-group {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.pretty-nav-group .pw-reader-btn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.82rem;
+    border-radius: var(--radius-sm, 8px);
+}
+
+/* Settings Floating Dropdown */
+.pretty-settings-panel {
+    position: absolute;
+    top: 54px;
+    right: 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    padding: 1.15rem 1.25rem;
+    width: 280px;
+    z-index: 1070;
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    animation: fadeInSlide 0.2s ease-out;
+}
+.pretty-settings-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.pretty-settings-row .settings-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.pretty-settings-row .settings-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.setting-pill {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.setting-pill:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+}
+.setting-pill.active {
+    background: #ec4899;
+    color: #fff;
+    border-color: #ec4899;
+}
+.font-size-indicator {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 38px;
+    text-align: center;
+}
+
+/* Table of Contents Drawer */
+.pretty-toc-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1080;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.24s ease;
+}
+.pretty-toc-overlay.active {
+    display: block;
+    opacity: 1;
+}
+.pretty-toc-drawer {
+    position: fixed;
+    top: 0;
+    right: -360px;
+    width: 340px;
+    max-width: 86vw;
+    height: 100vh;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border);
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.25);
+    z-index: 1085;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.28s cubic-bezier(0.2, 0, 0, 1);
+}
+.pretty-toc-drawer.active {
+    right: 0;
+}
+.pretty-toc-header {
+    padding: 1.15rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.pretty-toc-subtitle {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #ec4899;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.pretty-toc-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+.pretty-toc-search-wrap {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+.pretty-toc-search-wrap input {
+    width: 100%;
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--radius-sm, 8px);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.84rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.pretty-toc-search-wrap input:focus {
+    border-color: #ec4899;
+    box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
+}
+.pretty-toc-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem 0.5rem;
+}
+.pretty-toc-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    line-height: 1.35;
+}
+.pretty-toc-item:hover {
+    background: var(--bg-secondary);
+    color: #ec4899;
+    transform: translateX(3px);
+}
+.pretty-toc-item.pretty-toc-h1,
+.pretty-toc-item.pretty-toc-h2 {
+    font-weight: 800;
+    color: var(--text-primary);
+    border-bottom: 1px dashed var(--border);
+    margin-top: 0.5rem;
+}
+.pretty-toc-item.pretty-toc-h3 {
+    font-weight: 700;
+    padding-left: 1rem;
+}
+.pretty-toc-item.pretty-toc-h4 {
+    font-weight: 500;
+    padding-left: 1.6rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.pretty-toc-bullet {
+    color: #ec4899;
+    font-weight: 800;
+}
+.toc-badge-summary {
+    margin-left: auto;
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(234, 179, 8, 0.15);
+    color: #eab308;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+}
+.pretty-toc-foot {
+    padding: 0.85rem 1.25rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg-card);
+}
+.pretty-toc-backup-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--radius-sm, 8px);
+    background: rgba(236, 72, 153, 0.12);
+    border: 1px solid rgba(236, 72, 153, 0.35);
+    color: #ec4899;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+.pretty-toc-backup-btn:hover {
+    background: #ec4899;
+    color: #ffffff;
+}
+
+/* ============================================================
+   VIEW MODE 1: NATIVE PRETTY NCERT ARTICLE VIEW
+   ============================================================ */
+
+.pretty-native-view {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    background: var(--bg-primary);
+}
+.pretty-native-view.pretty-font-serif {
+    font-family: 'Merriweather', 'Georgia', 'Cambria', serif;
+}
+.pretty-native-view.pretty-tone-sepia {
+    background: #fbf7ee !important;
+    color: #2c251e !important;
+}
+.pretty-native-view.pretty-tone-sepia .pretty-heading,
+.pretty-native-view.pretty-tone-sepia .pretty-hero-title {
+    color: #1a1612 !important;
+}
+.pretty-native-view.pretty-tone-sepia .pretty-p {
+    color: #3f362c !important;
+}
+.pretty-native-view.pretty-tone-sepia .pretty-img-card,
+.pretty-native-view.pretty-tone-sepia .pretty-table-card,
+.pretty-native-view.pretty-tone-sepia .pretty-completion-card {
+    background: #f4eedd !important;
+    border-color: #e4dac2 !important;
+}
+
+.pretty-native-container {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 2.25rem 1.5rem 6.5rem;
+    box-sizing: border-box;
+}
+
+/* Loading State */
+.pretty-loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 1rem;
+    color: var(--text-muted);
+}
+.pretty-spinner {
+    width: 44px;
+    height: 44px;
+    border: 3.5px solid rgba(236, 72, 153, 0.15);
+    border-top-color: #ec4899;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Chapter Hero Card */
+.pretty-doc-hero {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 2px solid var(--border);
+}
+.pretty-hero-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+}
+.pretty-hero-badge {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    background: rgba(236, 72, 153, 0.14);
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+.pretty-hero-chap-no {
+    font-size: 0.78rem;
+    font-weight: 800;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+.pretty-hero-part {
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 20px;
+    background: rgba(139, 92, 246, 0.14);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+.pretty-hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    margin-bottom: 0.85rem;
+}
+.pretty-hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 1.35rem;
+    flex-wrap: wrap;
+}
+.pretty-hero-quick-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.85rem;
+    border-radius: 20px;
+    background: rgba(236, 72, 153, 0.12);
+    border: 1px solid rgba(236, 72, 153, 0.35);
+    color: #ec4899;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    margin-left: auto;
+}
+.pretty-hero-quick-switch:hover {
+    background: #ec4899;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+}
+
+/* Hero Backup Card (kept for backwards compatibility if needed) */
+.pretty-hero-backup-card {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(139, 92, 246, 0.06));
+    border: 1.5px dashed rgba(236, 72, 153, 0.35);
+    border-radius: var(--radius-md, 12px);
+    padding: 0.95rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.pretty-hero-backup-text {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+.pretty-hero-backup-text strong {
+    color: #ec4899;
+}
+.pretty-hero-backup-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+.pretty-hero-ext-btn {
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-sm, 8px);
+    background: #ec4899;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+}
+.pretty-hero-ext-btn:hover {
+    background: #db2777;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.45);
+}
+.pretty-hero-inline-btn {
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-sm, 8px);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.pretty-hero-inline-btn:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+}
+
+/* ============================================================
+   CANVAS BLOCKS (HEADINGS, PARAGRAPHS, FIGURES, TABLES)
+   ============================================================ */
+
+.pretty-blocks-canvas {
+    line-height: 1.8;
+}
+
+/* Headings */
+.pretty-heading {
+    position: relative;
+    scroll-margin-top: 85px;
+    color: var(--text-primary);
+    transition: background-color 0.4s ease;
+}
+.pretty-heading .pretty-heading-anchor {
+    position: absolute;
+    left: -1.2rem;
+    top: 0;
+    color: #ec4899;
+    opacity: 0;
+    cursor: pointer;
+    font-weight: 700;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+.pretty-heading:hover .pretty-heading-anchor {
+    opacity: 1;
+}
+.pretty-heading-flash {
+    background: rgba(236, 72, 153, 0.2) !important;
+    border-radius: 4px;
+}
+
+.pretty-heading.h1 {
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin: 2.25rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+}
+.pretty-heading.h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.3px;
+}
+.pretty-heading.h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin: 2.25rem 0 0.85rem;
+    padding-left: 0.85rem;
+    border-left: 4px solid #ec4899;
+}
+.pretty-heading.h4 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin: 1.75rem 0 0.65rem;
+    color: var(--text-primary);
+}
+
+/* Summary and Objectives Special Headings */
+.pretty-heading.pretty-summary-heading {
+    border-left: 4px solid #eab308;
+    color: #eab308;
+    background: rgba(234, 179, 8, 0.08);
+    padding: 0.5rem 0.85rem;
+    border-radius: 0 var(--radius-sm, 8px) var(--radius-sm, 8px) 0;
+}
+.pretty-heading.pretty-objectives-heading {
+    border-left: 4px solid #06b6d4;
+    color: #06b6d4;
+}
+
+/* Paragraphs */
+.pretty-p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.35rem;
+    line-height: 1.8;
+}
+.pretty-p.pretty-p-subtopic {
+    font-weight: 700;
+    color: var(--text-primary);
+    padding: 0.35rem 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm, 8px);
+    display: inline-block;
+    margin: 0.5rem 0 0.85rem;
+}
+
+/* Figures & Diagrams */
+.pretty-figure {
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 100%;
+}
+.pretty-img-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    padding: 1rem;
+    display: inline-block;
+    max-width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.28s cubic-bezier(0.2, 0, 0, 1);
+}
+.pretty-img-card:hover {
+    border-color: #ec4899;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22), 0 0 16px rgba(236, 72, 153, 0.25);
+}
+.pretty-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 520px;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+.pretty-img-overlay {
+    position: absolute;
+    bottom: 0.85rem;
+    right: 0.85rem;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+.pretty-img-card:hover .pretty-img-overlay {
+    opacity: 1;
+}
+.pretty-zoom-badge {
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 0.3rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Figcaptions */
+.pretty-figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.pretty-fig-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(236, 72, 153, 0.15);
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+.pretty-fig-text {
+    font-weight: 600;
+}
+
+/* Standalone & Table Captions */
+.pretty-unit-pill {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    background: rgba(6, 182, 212, 0.15);
+    color: #06b6d4;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 1.5rem 0 0.5rem;
+}
+.pretty-table-caption {
+    font-size: 0.94rem;
+    color: var(--text-primary);
+    margin: 1.75rem 0 0.75rem;
+    font-weight: 700;
+}
+.pretty-standalone-caption {
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 0.5rem 0 1.25rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--border);
+    border-radius: 0 6px 6px 0;
+}
+
+/* Tables */
+.pretty-table-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md, 12px);
+    margin: 1.75rem 0;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.pretty-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.pretty-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    text-align: left;
+}
+.pretty-table th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-weight: 800;
+    padding: 0.85rem 1.15rem;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+.pretty-table td {
+    padding: 0.8rem 1.15rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+.pretty-table tr:last-child td {
+    border-bottom: none;
+}
+.pretty-table tr:nth-child(even) td {
+    background: rgba(125, 125, 125, 0.03);
+}
+
+/* ============================================================
+   CHAPTER COMPLETION CARD (FOOTER)
+   ============================================================ */
+
+.pretty-doc-footer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border);
+}
+.pretty-completion-card {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(16, 185, 129, 0.08));
+    border: 1.5px solid rgba(236, 72, 153, 0.3);
+    border-radius: var(--radius-lg, 16px);
+    padding: 2.25rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+.pretty-completion-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+}
+.pretty-completion-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.pretty-completion-subtitle {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+}
+.pretty-completion-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.pretty-backup-big-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.85rem 1.75rem;
+    background: linear-gradient(135deg, #db2777, #ec4899);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-md, 12px);
+    box-shadow: 0 4px 16px rgba(236, 72, 153, 0.35);
+    transition: all 0.22s ease;
+}
+.pretty-backup-big-btn:hover {
+    background: linear-gradient(135deg, #be185d, #db2777);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.45);
+}
+.pretty-neetprep-ext-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 1.4rem;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-md, 12px);
+    transition: all 0.22s ease;
+}
+.pretty-neetprep-ext-btn:hover {
+    border-color: #06b6d4;
+    color: #06b6d4;
+    transform: translateY(-2px);
+}
+.pretty-completion-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+.pretty-nav-pill-btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pretty-nav-pill-btn:hover:not(:disabled) {
+    border-color: #ec4899;
+    color: #ec4899;
+}
+.pretty-nav-pill-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.pretty-nav-pill-btn.next-pill {
+    background: #ec4899;
+    color: #fff;
+    border-color: #ec4899;
+}
+.pretty-nav-pill-btn.next-pill:hover:not(:disabled) {
+    background: #db2777;
+    color: #fff;
+}
+.pretty-scroll-top-btn {
+    background: transparent;
+    border-color: transparent;
+    color: var(--text-muted);
+}
+.pretty-scroll-top-btn:hover {
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   VIEW MODE 2: EMBEDDED PREPPAGE PDF CONTAINER
+   ============================================================ */
+
+/* ============================================================
+   VIEW MODE 2: IN-PAGE PDF CANVAS READER (NO ACROBAT, NO NEW TAB)
+   ============================================================ */
+
+.pretty-pdf-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+/* In-Page PDF Toolbar */
+.pretty-pdf-toolbar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.pdf-tool-left {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+.pdf-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(236, 72, 153, 0.15);
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+.pdf-page-indicator {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.pdf-tool-center {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.pdf-ctrl-btn {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.pdf-ctrl-btn:hover {
+    border-color: #ec4899;
+    color: #ec4899;
+}
+.pdf-fit-btn {
+    font-size: 0.76rem;
+    padding: 0.3rem 0.75rem;
+}
+.pdf-zoom-val {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 44px;
+    text-align: center;
+}
+.pdf-tool-right {
+    display: flex;
+    align-items: center;
+}
+.pdf-switch-native-btn {
+    padding: 0.38rem 0.85rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #db2777, #ec4899);
+    border: none;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+    transition: all 0.2s ease;
+}
+.pdf-switch-native-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.45);
+}
+
+/* Canvas Scroll Area */
+.pretty-pdf-canvas-area {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 2rem 1rem 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-primary);
+}
+.pretty-pdf-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+.pretty-pdf-pages-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+}
+.pretty-pdf-page-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+    max-width: 100%;
+}
+.pretty-pdf-page-card:hover {
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+}
+.pretty-pdf-canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.pretty-pdf-page-footer {
+    width: 100%;
+    padding: 0.45rem 1rem;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #64748b;
+    text-align: right;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   LIGHTBOX ZOOM MODAL
+   ============================================================ */
+
+.pretty-lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: fadeIn 0.2s ease;
+}
+.pretty-lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ffffff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.pretty-lightbox-close:hover {
+    background: #ec4899;
+    transform: scale(1.1);
+}
+.pretty-lightbox-content {
+    max-width: 90vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.pretty-lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+.pretty-lightbox-caption {
+    color: #f1f5f9;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    max-width: 700px;
+}
+
+/* Chapter Card Backup Button in Chapter List */
+.pretty-card-backup-btn {
+    border-color: rgba(236, 72, 153, 0.35) !important;
+    color: #ec4899 !important;
+}
+.pretty-card-backup-btn:hover {
+    background: rgba(236, 72, 153, 0.15) !important;
+    border-color: #ec4899 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* 2-Tier Reader Top Bar (Both Pretty NCERT & Cloze) */
+    .pretty-reader-bar,
+    .cloze-reader-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.45rem 0.75rem 0.5rem;
         gap: 0.4rem;
+        background: var(--bg-card);
+        border-bottom: 1.5px solid var(--border);
     }
-    .pw-reader-info {
-        max-width: 48%;
+
+    /* Row 1: Back + Truncated Info + Compact ‹ › Nav */
+    .pretty-bar-left,
+    .cloze-bar-left {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.6rem;
+        min-width: 0;
     }
-    .pw-reader-chap-title {
-        font-size: 0.84rem;
+    .pretty-back-btn,
+    .cloze-back-btn {
+        padding: 0.32rem 0.6rem;
+        font-size: 0.76rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        border-radius: var(--radius-sm, 6px);
     }
-    .pw-reader-actions {
-        gap: 0.3rem;
+    .pretty-reader-info,
+    .cloze-reader-info {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
     }
-    .pw-reader-btn {
-        padding: 0.35rem 0.5rem;
+    .pretty-reader-info .pretty-reader-book-title,
+    .cloze-reader-info .cloze-reader-book-title {
+        font-size: 0.68rem;
+        letter-spacing: 0.4px;
+        line-height: 1.1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .pretty-reader-info .pretty-reader-chap-title,
+    .cloze-reader-info .cloze-reader-chap-title {
+        font-size: 0.88rem;
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Compact ‹ › Navigation in Row 1 */
+    .pretty-mobile-nav,
+    .cloze-mobile-nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
+    }
+    .pretty-mobile-nav .nav-arrow,
+    .cloze-mobile-nav .nav-arrow {
+        min-width: 32px;
+        height: 30px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 800;
+        line-height: 1;
+        border-radius: 6px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+    .pretty-mobile-nav .nav-arrow:active,
+    .cloze-mobile-nav .nav-arrow:active {
+        background: var(--bg-hover);
+        transform: scale(0.95);
+    }
+    .pretty-mobile-nav .nav-arrow:disabled,
+    .cloze-mobile-nav .nav-arrow:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+    }
+
+    /* Row 2: Action Tool Strip with horizontal scroll */
+    .pretty-reader-actions,
+    .cloze-reader-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 0.45rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        flex-wrap: nowrap;
+        padding: 2px 1px 3px 1px;
+    }
+    .pretty-reader-actions::-webkit-scrollbar,
+    .cloze-reader-actions::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Guarantee no items wrap or shrink unexpectedly */
+    .pretty-mode-toggle,
+    .cloze-mode-toggle,
+    .pretty-outline-btn,
+    .pretty-cloze-jump-btn,
+    .pretty-settings-btn,
+    .cloze-tool-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /* Switch full text to short text */
+    .btn-full-text {
+        display: none !important;
+    }
+    .btn-short-text {
+        display: inline !important;
+    }
+
+    /* Hide desktop nav buttons on mobile */
+    .pretty-desktop-nav,
+    .cloze-desktop-nav {
+        display: none !important;
+    }
+
+    /* Button and toggle pill sizing */
+    .pretty-mode-toggle .mode-btn,
+    .cloze-mode-btn {
+        padding: 0.3rem 0.6rem;
         font-size: 0.74rem;
+        white-space: nowrap;
     }
-    .pretty-category-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .pretty-outline-btn,
+    .pretty-cloze-jump-btn,
+    .pretty-settings-btn,
+    .cloze-tool-btn {
+        padding: 0.32rem 0.62rem;
+        font-size: 0.74rem;
+        white-space: nowrap;
     }
-    .pretty-chapters-grid {
-        grid-template-columns: 1fr;
-        gap: 0.85rem;
+    .pretty-native-container {
+        padding: 1.5rem 1rem 5rem;
     }
-    .pretty-chapter-card {
-        padding: 1rem;
+    .pretty-hero-title {
+        font-size: 1.7rem;
+    }
+    .pretty-hero-quick-switch {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .pretty-hero-backup-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .pretty-settings-panel {
+        right: 0.5rem;
+        width: 260px;
+    }
+    .pretty-completion-nav {
+        flex-direction: column;
+    }
+    .pretty-completion-nav button {
+        width: 100%;
     }
 }
+
+/* ============================================================
+   NCERT ACTIVE CLOZE — DESIGN SYSTEM (HUMAN-CRAFTED AESTHETIC)
+   ============================================================ */
+
+/* Provider Card on Home Screen */
+.notes-provider-card.cloze:hover {
+    border-color: #6366f1;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28), 0 0 20px rgba(99, 102, 241, 0.35);
+}
+.notes-provider-card.cloze .notes-provider-badge {
+    background: rgba(99, 102, 241, 0.14);
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* Chapter Card Cloze Badge */
+.cloze-card-stat {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+.cloze-stat-pill {
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+.cloze-stat-starred {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+/* Fullscreen Cloze Reader Screen */
+.cloze-reader-screen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--bg-primary);
+    flex-direction: column;
+    overflow: hidden;
+}
+.cloze-reader-screen.active {
+    display: flex;
+}
+
+/* Top Navigation Bar */
+.cloze-reader-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1.25rem;
+    background: var(--bg-card);
+    border-bottom: 1.5px solid var(--border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 10;
+    flex-shrink: 0;
+    gap: 1rem;
+}
+.cloze-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+.cloze-reader-info {
+    min-width: 0;
+}
+.cloze-reader-book-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #6366f1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cloze-reader-chap-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.25;
+}
+
+/* Reader Actions */
+.cloze-reader-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+}
+
+/* Segmented Mode Switcher (Book Layout vs Point by Point) */
+.cloze-mode-toggle {
+    display: inline-flex;
+    background: var(--bg-secondary);
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    padding: 2.5px;
+    gap: 2px;
+}
+.cloze-mode-btn {
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.cloze-mode-btn:hover {
+    color: var(--text-primary);
+}
+.cloze-mode-btn.active {
+    background: #6366f1;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+/* Tool Buttons (Saved Lines & Reveal All) */
+.cloze-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.85rem;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+.cloze-tool-btn:hover {
+    border-color: #6366f1;
+    color: var(--text-primary);
+}
+.cloze-tool-btn.active {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+.cloze-tool-btn.reveal-active {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+    color: #10b981;
+}
+.cloze-star-icon {
+    font-size: 0.95rem;
+}
+
+.cloze-nav-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Main Reader Scroll Area */
+.cloze-reader-canvas-wrap {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding: 2rem 1rem 6rem;
+}
+.cloze-reader-container {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* Hero Header */
+.cloze-doc-hero {
+    margin-bottom: 2.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+.cloze-hero-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+.cloze-hero-badge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 0.22rem 0.65rem;
+    border-radius: 6px;
+    background: rgba(99, 102, 241, 0.14);
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.28);
+}
+.cloze-hero-chap-no {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+.cloze-hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.85rem;
+}
+.cloze-hero-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    flex-wrap: wrap;
+}
+.cloze-hint-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #6366f1;
+    font-weight: 700;
+    background: rgba(99, 102, 241, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+}
+
+/* ============================================================
+   AUTHENTIC NCERT BOOK LAYOUT (Continuous Typography)
+   ============================================================ */
+.cloze-book-content {
+    font-size: 1.125rem; /* 18px comfortable reading size */
+    line-height: 1.85;
+    color: var(--text-primary);
+}
+
+/* Paragraphs */
+.cloze-book-p {
+    margin-bottom: 1.35rem;
+    text-align: justify;
+    text-justify: inter-word;
+}
+@media (max-width: 600px) {
+    .cloze-book-content {
+        font-size: 1.02rem;
+        line-height: 1.78;
+    }
+    .cloze-book-p {
+        text-align: left;
+        margin-bottom: 1.15rem;
+    }
+}
+
+/* Headings in Book Layout */
+.cloze-h2 {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 2.5rem 0 1rem;
+    border-left: 4px solid #6366f1;
+    padding-left: 0.85rem;
+    line-height: 1.3;
+}
+.cloze-h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 2rem 0 0.85rem;
+    line-height: 1.3;
+}
+.cloze-h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #6366f1;
+    margin: 1.5rem 0 0.65rem;
+    line-height: 1.35;
+}
+.cloze-caption {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 1.5rem 0 0.5rem;
+}
+
+/* Diagrams */
+.cloze-figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+.cloze-img-wrap {
+    display: inline-block;
+    max-width: 100%;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    box-shadow: var(--shadow-sm);
+}
+.cloze-img {
+    max-width: 100%;
+    max-height: 480px;
+    height: auto;
+    border-radius: var(--radius-sm);
+    display: block;
+    margin: 0 auto;
+}
+.cloze-figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Tables */
+.cloze-table-wrap {
+    margin: 1.75rem 0;
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    background: var(--bg-card);
+}
+.cloze-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+.cloze-table th, .cloze-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+.cloze-table th {
+    background: var(--bg-secondary);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   SENTENCES & BLURRED CLOZE WORDS (THE CORE INTERACTION)
+   ============================================================ */
+
+/* Sentence Container inside Paragraph */
+.cloze-sentence {
+    position: relative;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+.cloze-sentence:hover {
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+/* Authentic Stabilo/Faber-Castell Pastel Highlighter Effect */
+.cloze-sentence.starred {
+    background-color: rgba(254, 240, 138, 0.38) !important;
+    border-bottom: 2px solid #eab308;
+    border-radius: 3px;
+    padding: 2px 2px;
+}
+[data-theme="light"] .cloze-sentence.starred {
+    background-color: #fef08a !important;
+    color: #1e293b;
+    box-shadow: 0 0 0 2px #fef08a;
+}
+
+/* Star Indicator on Bookmarked Sentence */
+.cloze-sentence.starred::before {
+    content: "⭐ ";
+    font-size: 0.85em;
+    vertical-align: 1px;
+}
+
+/* The Blurred Term */
+.cloze-word {
+    display: inline-block;
+    padding: 0.08rem 0.45rem;
+    margin: 0 0.15rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    vertical-align: baseline;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Blurred State (Paper-like gentle blur, non-AI aesthetic) */
+.cloze-word.blurred {
+    filter: blur(5px);
+    background: rgba(99, 102, 241, 0.14);
+    color: transparent !important;
+    border-bottom: 2px dashed #6366f1;
+    transform: translateZ(0);
+}
+[data-theme="light"] .cloze-word.blurred {
+    background: rgba(99, 102, 241, 0.1);
+    border-bottom: 2px dashed #4f46e5;
+}
+
+/* Revealed State */
+.cloze-word.revealed {
+    filter: none;
+    background: rgba(16, 185, 129, 0.14);
+    color: #10b981;
+    border-bottom: 2px solid #10b981;
+}
+[data-theme="light"] .cloze-word.revealed {
+    background: rgba(16, 185, 129, 0.16);
+    color: #047857;
+    border-bottom: 2px solid #059669;
+}
+
+/* ============================================================
+   POINT-BY-POINT / DRILL VIEW (Numbered Sentence Cards)
+   ============================================================ */
+.cloze-point-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.cloze-point-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.85rem 1.15rem;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+.cloze-point-card:hover {
+    border-color: #6366f1;
+    box-shadow: var(--shadow-sm);
+}
+.cloze-point-card.starred {
+    border-left: 4px solid #f59e0b;
+    background: rgba(245, 158, 11, 0.06);
+}
+.cloze-point-index {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+.cloze-point-text {
+    flex: 1;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+.cloze-point-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+.cloze-point-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.cloze-point-btn:hover {
+    border-color: #6366f1;
+    color: var(--text-primary);
+}
+.cloze-point-btn.starred {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+
+/* ============================================================
+   SAVED LINES FEED (The 10–20 Highlighted Hard Lines Review)
+   ============================================================ */
+.cloze-saved-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.cloze-saved-section-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #6366f1;
+    margin: 1.25rem 0 0.5rem;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 0.35rem;
+}
+.cloze-empty-saved {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    background: var(--bg-card);
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius-lg);
+    margin: 2rem 0;
+}
+.cloze-empty-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+.cloze-empty-saved h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.cloze-empty-saved p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   FLOATING MICRO-ACTION PILL (Sentence Long-press)
+   ============================================================ */
+.cloze-action-pill {
+    position: fixed;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    background: var(--bg-secondary);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    padding: 3px 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 16px rgba(99, 102, 241, 0.25);
+    gap: 4px;
+    animation: pillPop 0.18s ease-out;
+}
+@keyframes pillPop {
+    from { opacity: 0; transform: translateY(6px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.cloze-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.cloze-pill-btn:hover {
+    background: var(--bg-card);
+}
+.cloze-pill-btn.star-action {
+    color: #f59e0b;
+}
+.cloze-pill-btn.reveal-action {
+    color: #10b981;
+}
+
+/* Completion Card in Reader Footer */
+.cloze-doc-footer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+/* Mobile Canvas Responsiveness for Cloze Reader */
+@media (max-width: 768px) {
+    .cloze-hero-title {
+        font-size: 1.65rem;
+    }
+    .cloze-reader-canvas-wrap {
+        padding: 1.25rem 0.75rem 5rem;
+    }
+}
+
+
 
 

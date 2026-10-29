@@ -44,6 +44,8 @@ const APP_SHELL_FILES = [
     './data/test-manifest.json',
     './data/notes-manifest.json',
     './data/pretty-ncert.json',
+    './vendor/pdf.min.js',
+    './vendor/pdf.worker.min.js',
     './icons/icon-512x512.png',
     './icons/quizzy-logo.svg'
 ];

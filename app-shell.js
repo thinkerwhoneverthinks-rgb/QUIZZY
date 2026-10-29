@@ -213,6 +213,7 @@ var QUIZZY_BACKUP_VERSION = 1;
 var QUIZZY_DATA_KEYS = {
     bookmarks: 'studycafe-bookmarks',
     testBookmarks: 'quizzy-test-bookmarks',
+    ncertBookmarks: 'quizzy-ncert-bookmarks',
     testAttempts: 'quizzy-test-attempts',
     testInProgress: 'quizzy-test-inprogress',
     history: 'quizzy-history',
@@ -237,6 +238,7 @@ function buildBackup() {
         data: {
             bookmarks: readJSON(QUIZZY_DATA_KEYS.bookmarks, {}),
             testBookmarks: readJSON(QUIZZY_DATA_KEYS.testBookmarks, {}),
+            ncertBookmarks: readJSON(QUIZZY_DATA_KEYS.ncertBookmarks, {}),
             testAttempts: readJSON(QUIZZY_DATA_KEYS.testAttempts, []),
             testInProgress: readJSON(QUIZZY_DATA_KEYS.testInProgress, null),
             history: readJSON(QUIZZY_DATA_KEYS.history, []),
@@ -262,14 +264,20 @@ function countBackup(backup) {
     var d = (backup && backup.data) || {};
     var q = tallyBookmarkStore(d.bookmarks, { marks: 0, folders: 0 });
     var t = tallyBookmarkStore(d.testBookmarks, { marks: 0, folders: 0 });
+    var nb = d.ncertBookmarks || {};
+    var ncertLines = 0;
+    Object.keys(nb).forEach(function (k) {
+        if (Array.isArray(nb[k])) ncertLines += nb[k].length;
+    });
     var attempts = Array.isArray(d.testAttempts) ? d.testAttempts : [];
     var papers = {};
     attempts.forEach(function (a) { if (a && a.testKey) papers[a.testKey] = true; });
 
     return {
-        bookmarks: q.marks + t.marks,
+        bookmarks: q.marks + t.marks + ncertLines,
         questionBookmarks: q.marks,
         testBookmarks: t.marks,
+        ncertBookmarks: ncertLines,
         folders: q.folders + t.folders,
         attempts: attempts.length,
         papers: Object.keys(papers).length,
@@ -333,6 +341,23 @@ function applyBackup(backup, mode) {
     // --- both bookmark stores: section -> subsection -> [entries], de-duped by key
     var target = mergeBookmarkStore(QUIZZY_DATA_KEYS.bookmarks, d.bookmarks, mode);
     mergeBookmarkStore(QUIZZY_DATA_KEYS.testBookmarks, d.testBookmarks, mode);
+
+    // --- NCERT Cloze saved lines: chapterId -> [sentenceIds]
+    var ncertTarget = mode === 'replace' ? {} : readJSON(QUIZZY_DATA_KEYS.ncertBookmarks, {});
+    if (!ncertTarget || typeof ncertTarget !== 'object') ncertTarget = {};
+    var incomingNcert = d.ncertBookmarks || {};
+    Object.keys(incomingNcert).forEach(function (cid) {
+        if (!Array.isArray(ncertTarget[cid])) ncertTarget[cid] = [];
+        var seenNcert = {};
+        ncertTarget[cid].forEach(function (id) { seenNcert[id] = true; });
+        (incomingNcert[cid] || []).forEach(function (sid) {
+            if (!seenNcert[sid]) {
+                ncertTarget[cid].push(sid);
+                seenNcert[sid] = true;
+            }
+        });
+    });
+    localStorage.setItem(QUIZZY_DATA_KEYS.ncertBookmarks, JSON.stringify(ncertTarget));
 
     // --- test attempts: de-duped by attempt id, newest first
     var attempts = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.testAttempts, []);
@@ -438,8 +463,9 @@ function buildDataPanel() {
         var c = countBackup(buildBackup());
         var s = document.getElementById('dataSummary');
         if (s) {
+            var ncertText = c.ncertBookmarks > 0 ? (' · <strong>' + c.ncertBookmarks + '</strong> NCERT saved line' + (c.ncertBookmarks === 1 ? '' : 's')) : '';
             s.innerHTML = '<strong>' + c.questionBookmarks + '</strong> question bookmark' + (c.questionBookmarks === 1 ? '' : 's') +
-                ' · <strong>' + c.testBookmarks + '</strong> test bookmark' + (c.testBookmarks === 1 ? '' : 's') +
+                ' · <strong>' + c.testBookmarks + '</strong> test bookmark' + (c.testBookmarks === 1 ? '' : 's') + ncertText +
                 ' in <strong>' + c.folders + '</strong> folder' + (c.folders === 1 ? '' : 's') +
                 '<br><strong>' + c.attempts + '</strong> test attempt' + (c.attempts === 1 ? '' : 's') +
                 ' across <strong>' + c.papers + '</strong> test' + (c.papers === 1 ? '' : 's') +

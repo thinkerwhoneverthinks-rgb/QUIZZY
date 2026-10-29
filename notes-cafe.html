@@ -39,6 +39,7 @@
     </script>
     <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js"></script>
+    <script src="vendor/pdf.min.js"></script>
     <style>
         mjx-container { color: inherit; outline: none; }
         mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; margin: 0.5rem 0; max-width: 100%; }
@@ -79,6 +80,9 @@
         <div class="menu-section">Saved</div>
         <a href="bookmarks.html"><span class="mi-ico">🔖</span> Question Bookmarks</a>
         <a href="test-bookmarks.html"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
 
         <div class="menu-section">Appearance</div>
         <div class="theme-option" onclick="toggleTheme()">
@@ -143,11 +147,27 @@
                             <span class="notes-provider-icon">🌸</span>
                             <div class="notes-provider-title">Pretty NCERT Notes</div>
                         </div>
-                        <p class="notes-provider-desc">Curated, high-yield highlighted NCERT notes & PDFs for Class 11 & 12 Biology and Chemistry.</p>
+                        <p class="notes-provider-desc">Native interactive NCERT reader with rich typography, diagram zoom & outline jumping + Preppage backup PDFs.</p>
                     </div>
                     <div class="notes-provider-foot">
                         <span>4 Subjects · 51 Chapters</span>
-                        <span class="notes-provider-cta">Browse Notes →</span>
+                        <span class="notes-provider-cta">Read Pretty NCERT →</span>
+                    </div>
+                </div>
+
+                <!-- NCERT Active Cloze Card -->
+                <div class="notes-provider-card cloze" onclick="openNcertClozeHub()">
+                    <div>
+                        <div class="notes-provider-badge">🧬 Active Recall Drill</div>
+                        <div class="notes-provider-header">
+                            <span class="notes-provider-icon">🧬</span>
+                            <div class="notes-provider-title">NCERT Active Cloze</div>
+                        </div>
+                        <p class="notes-provider-desc">Active recall memory testing for all 38 NCERT Biology chapters. Switch between authentic Book Layout and Point-by-Point drill, highlight tricky lines, and review saved facts.</p>
+                    </div>
+                    <div class="notes-provider-foot">
+                        <span>4 Units · 38 Chapters</span>
+                        <span class="notes-provider-cta">Start Active Cloze →</span>
                     </div>
                 </div>
             </div>
@@ -243,6 +263,36 @@
                 <div class="pretty-chapters-header" id="prettyChaptersHeader"></div>
                 <div class="pretty-chapters-grid" id="prettyChaptersGrid"></div>
             </div>
+        </div>
+
+        <!-- ===== SCREEN 1E: NCERT ACTIVE CLOZE HUB ===== -->
+        <div id="ncertClozeScreen" style="display: none;">
+            <div class="notes-view-bar">
+                <button class="notes-crumb-link" onclick="goNotesHome()">
+                    ← Back to Notes Cafe
+                </button>
+                <div class="notes-crumb-current">
+                    🧬 NCERT Active Cloze
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="notes-search-wrap">
+                <span class="notes-search-icon">🔍</span>
+                <input type="text" id="clozeSearchInput" class="notes-search-input" placeholder="Search NCERT Biology chapter..." oninput="filterNcertClozeChapters(this.value)">
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="notes-subject-tabs" id="clozeFilterTabs">
+                <button class="notes-tab-btn active" onclick="filterClozeTab('all')">📚 All Chapters (38)</button>
+                <button class="notes-tab-btn" onclick="filterClozeTab('Class 11 Botany')">🌿 Class 11 Botany (13)</button>
+                <button class="notes-tab-btn" onclick="filterClozeTab('Class 11 Zoology')">🐾 Class 11 Zoology (9)</button>
+                <button class="notes-tab-btn" onclick="filterClozeTab('Class 12 Botany')">🌸 Class 12 Botany (10)</button>
+                <button class="notes-tab-btn" onclick="filterClozeTab('Class 12 Zoology')">🦁 Class 12 Zoology (6)</button>
+            </div>
+
+            <!-- Chapters Grid -->
+            <div class="notes-chapter-grid" id="clozeChapterGrid"></div>
         </div>
 
         <!-- ===== SCREEN 2: READER VIEW (2-Column Layout for Allen) ===== -->
@@ -348,33 +398,280 @@
             <iframe id="pwReaderFrame" class="pw-reader-frame" src="about:blank" title="Chapter Notes"></iframe>
         </div>
 
-        <!-- ===== SCREEN 4: PRETTY NCERT PDF READER SCREEN ===== -->
-        <div class="pw-reader-screen pretty-pdf-reader" id="prettyPdfReaderScreen">
-            <div class="pw-reader-bar">
-                <button class="notes-back-btn" onclick="closePrettyPdfReader()">
-                    ← Back to Chapters
-                </button>
-                <div class="pw-reader-info">
-                    <div class="pw-reader-book-title" id="prettyReaderCatTitle">CLASS 11 BIOLOGY</div>
-                    <div class="pw-reader-chap-title" id="prettyReaderChapTitle">Chapter Title</div>
+        <!-- ===== SCREEN 4: PRETTY NCERT NATIVE & PREPPAGE BACKUP READER SCREEN ===== -->
+        <div class="pw-reader-screen pretty-reader-screen" id="prettyPdfReaderScreen">
+            <!-- Scroll Progress Indicator -->
+            <div class="pretty-progress-bar-wrap">
+                <div class="pretty-progress-bar" id="prettyProgressBar"></div>
+            </div>
+
+            <!-- Sticky Reader Top Bar -->
+            <div class="pretty-reader-bar">
+                <div class="pretty-bar-left">
+                    <button class="notes-back-btn pretty-back-btn" onclick="closePrettyPdfReader()" title="Back to chapter list">
+                        <span class="btn-full-text">← Chapters</span>
+                        <span class="btn-short-text">←</span>
+                    </button>
+                    <div class="pretty-reader-info">
+                        <div class="pretty-reader-book-title" id="prettyReaderCatTitle">CLASS 11 BIOLOGY</div>
+                        <div class="pretty-reader-chap-title" id="prettyReaderChapTitle">Chapter Title</div>
+                    </div>
+                    <!-- Mobile Prev / Next Navigation in Row 1 -->
+                    <div class="pretty-mobile-nav">
+                        <button class="pw-reader-btn nav-arrow" id="prettyPrevChapBtnMob" onclick="navPrettyChapter(-1)" title="Previous Chapter">‹</button>
+                        <button class="pw-reader-btn nav-arrow" id="prettyNextChapBtnMob" onclick="navPrettyChapter(1)" title="Next Chapter">›</button>
+                    </div>
                 </div>
-                <div class="pw-reader-actions">
-                    <button class="pw-reader-btn" id="prettyPrevChapBtn" onclick="navPrettyChapter(-1)" title="Previous Chapter">
-                        ← Prev
+
+                <div class="pretty-reader-actions">
+                    <!-- Segmented View Mode Toggle: Textbook View vs Pretty NCERT -->
+                    <div class="pretty-mode-toggle" id="prettyModeToggle">
+                        <button class="mode-btn active" id="prettyModeNativeBtn" onclick="setPrettyViewMode('native')" title="Formatted Textbook View">
+                            <span>📖</span> <span class="btn-full-text">Textbook View</span><span class="btn-short-text">Textbook</span>
+                        </button>
+                        <button class="mode-btn" id="prettyModePdfBtn" onclick="setPrettyViewMode('pdf')" title="Highlighted Pretty NCERT">
+                            <span>🌸</span> <span class="btn-full-text">Pretty NCERT</span><span class="btn-short-text">Pretty</span>
+                        </button>
+                    </div>
+
+                    <!-- Outline / Table of Contents Button -->
+                    <button class="pw-reader-btn pretty-outline-btn" id="prettyOutlineBtn" onclick="togglePrettyToc()" title="Table of Contents">
+                        <span>📑</span> <span class="btn-full-text">Outline</span><span class="btn-short-text">TOC</span>
                     </button>
-                    <button class="pw-reader-btn" id="prettyNextChapBtn" onclick="navPrettyChapter(1)" title="Next Chapter">
-                        Next →
+
+                    <!-- Cross link to Cloze Mode -->
+                    <button class="pw-reader-btn pretty-cloze-jump-btn" onclick="jumpToClozeFromPretty()" title="Test memory on this chapter in Active Cloze">
+                        <span>🧬</span> <span class="btn-full-text">Test in Cloze</span><span class="btn-short-text">Cloze</span>
                     </button>
-                    <a id="prettyReaderExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="pw-reader-btn pretty-ext-btn" title="Open in Browser / PDF App">
-                        ↗ Open in Browser
-                    </a>
+
+                    <!-- Appearance Controls Button -->
+                    <button class="pw-reader-btn pretty-settings-btn" id="prettySettingsBtn" onclick="togglePrettySettings()" title="Reading Appearance (Font size, tone)">
+                        Aa
+                    </button>
+
+                    <!-- Prev & Next Chapter Navigation (Desktop) -->
+                    <div class="pretty-nav-group pretty-desktop-nav">
+                        <button class="pw-reader-btn" id="prettyPrevChapBtn" onclick="navPrettyChapter(-1)" title="Previous Chapter">
+                            ← Prev
+                        </button>
+                        <button class="pw-reader-btn" id="prettyNextChapBtn" onclick="navPrettyChapter(1)" title="Next Chapter">
+                            Next →
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="pretty-pwa-banner" id="prettyPwaBanner">
-                💡 <strong>Reading in PWA:</strong> If the PDF preview doesn't display inside your phone app, tap <strong style="color:var(--accent);">↗ Open in Browser</strong> to read or download.
+
+            <!-- Appearance Settings Floating Panel -->
+            <div class="pretty-settings-panel" id="prettySettingsPanel" style="display: none;">
+                <div class="pretty-settings-row">
+                    <span class="settings-label">Font Size</span>
+                    <div class="settings-btn-group">
+                        <button class="setting-pill" onclick="adjustPrettyFontSize(-1)" title="Smaller text">A-</button>
+                        <span class="font-size-indicator" id="prettyFontSizeDisplay">100%</span>
+                        <button class="setting-pill" onclick="adjustPrettyFontSize(1)" title="Larger text">A+</button>
+                    </div>
+                </div>
+                <div class="pretty-settings-row">
+                    <span class="settings-label">Font Family</span>
+                    <div class="settings-btn-group">
+                        <button class="setting-pill active" id="fontSansBtn" onclick="setPrettyFontFamily('sans')">Modern Sans</button>
+                        <button class="setting-pill" id="fontSerifBtn" onclick="setPrettyFontFamily('serif')">Book Serif</button>
+                    </div>
+                </div>
+                <div class="pretty-settings-row">
+                    <span class="settings-label">Reader Tone</span>
+                    <div class="settings-btn-group">
+                        <button class="setting-pill active" id="toneAutoBtn" onclick="setPrettyReaderTone('auto')">Auto Theme</button>
+                        <button class="setting-pill" id="toneSepiaBtn" onclick="setPrettyReaderTone('sepia')">📜 Sepia</button>
+                    </div>
+                </div>
             </div>
-            <iframe id="prettyPdfReaderFrame" class="pw-reader-frame" src="about:blank" title="Pretty NCERT PDF Reader"></iframe>
+
+            <!-- Table of Contents Drawer & Overlay -->
+            <div class="pretty-toc-overlay" id="prettyTocOverlay" onclick="togglePrettyToc(false)"></div>
+            <div class="pretty-toc-drawer" id="prettyTocDrawer">
+                <div class="pretty-toc-header">
+                    <div>
+                        <div class="pretty-toc-subtitle" id="prettyTocCat">CLASS 11 BIOLOGY</div>
+                        <div class="pretty-toc-title" id="prettyTocChap">Chapter Outline</div>
+                    </div>
+                    <button class="menu-close" onclick="togglePrettyToc(false)" aria-label="Close Outline">✕</button>
+                </div>
+                <div class="pretty-toc-search-wrap">
+                    <input type="text" id="prettyTocSearch" placeholder="🔍 Search in chapter topics..." oninput="filterPrettyToc(this.value)">
+                </div>
+                <div class="pretty-toc-body" id="prettyTocList">
+                    <!-- Dynamic Toc list items -->
+                </div>
+                <div class="pretty-toc-foot">
+                    <button type="button" class="pretty-toc-backup-btn" onclick="togglePrettyToc(false); setPrettyViewMode('pdf');">
+                        🌸 Switch to Pretty NCERT View
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW MODE 1: NATIVE PRETTY NCERT READER CANVAS -->
+            <div class="pretty-native-view" id="prettyNativeView">
+                <div class="pretty-native-container" id="prettyNativeContainer">
+                    <!-- Loading Skeleton -->
+                    <div class="pretty-loading-state" id="prettyLoadingState">
+                        <div class="pretty-spinner"></div>
+                        <div class="pretty-loading-text">Loading Textbook View...</div>
+                    </div>
+
+                    <!-- Rendered Document Header & Blocks -->
+                    <div class="pretty-article" id="prettyArticle" style="display: none;">
+                        <header class="pretty-doc-hero" id="prettyDocHero">
+                            <!-- Injected Hero badges, Title, Read time, Switch button -->
+                        </header>
+                        <div class="pretty-blocks-canvas" id="prettyBlocksCanvas">
+                            <!-- Injected Headings, Paragraphs, Images, Tables, Summaries -->
+                        </div>
+                        <footer class="pretty-doc-footer" id="prettyDocFooter">
+                            <!-- Completion card & next/prev buttons -->
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW MODE 2: IN-PAGE PDF CANVAS READER (NO ACROBAT, NO NEW TAB) -->
+            <div class="pretty-pdf-view" id="prettyPdfView" style="display: none;">
+                <!-- PDF Controls Toolbar -->
+                <div class="pretty-pdf-toolbar">
+                    <div class="pdf-tool-left">
+                        <span class="pdf-badge">🌸 PRETTY NCERT</span>
+                        <span class="pdf-page-indicator" id="pdfPageIndicator">Page 1 of ...</span>
+                    </div>
+
+                    <div class="pdf-tool-center">
+                        <button class="pdf-ctrl-btn" onclick="zoomPrettyPdf(-0.15)" title="Zoom Out">−</button>
+                        <span class="pdf-zoom-val" id="pdfZoomVal">100%</span>
+                        <button class="pdf-ctrl-btn" onclick="zoomPrettyPdf(0.15)" title="Zoom In">+</button>
+                        <button class="pdf-ctrl-btn pdf-fit-btn" onclick="fitWidthPrettyPdf()" title="Fit to width">Fit Width</button>
+                    </div>
+
+                    <div class="pdf-tool-right">
+                        <button class="pdf-switch-native-btn" onclick="setPrettyViewMode('native')" title="Switch to Textbook View">
+                            📖 Switch to Textbook View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PDF Canvas Scroll Area -->
+                <div class="pretty-pdf-canvas-area" id="prettyPdfCanvasArea">
+                    <div class="pretty-pdf-loading" id="prettyPdfLoading">
+                        <div class="pretty-spinner"></div>
+                        <div class="pretty-pdf-loading-text">Rendering in-page PDF notes...</div>
+                    </div>
+                    <div class="pretty-pdf-pages-list" id="prettyPdfPagesList">
+                        <!-- Individual canvas page cards injected dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Lightbox Modal -->
+            <div class="pretty-lightbox-modal" id="prettyLightboxModal" onclick="closePrettyLightbox()" style="display: none;">
+                <button class="pretty-lightbox-close" onclick="closePrettyLightbox()" aria-label="Close Image">✕</button>
+                <div class="pretty-lightbox-content" onclick="event.stopPropagation()">
+                    <img id="prettyLightboxImg" src="" alt="NCERT Diagram Zoom">
+                    <div class="pretty-lightbox-caption" id="prettyLightboxCaption"></div>
+                </div>
+            </div>
         </div>
+
+        <!-- ===== SCREEN 5: NCERT ACTIVE CLOZE READER SCREEN ===== -->
+        <div class="pw-reader-screen cloze-reader-screen" id="ncertClozeReaderScreen">
+            <!-- Reader Top Bar -->
+            <div class="cloze-reader-bar">
+                <div class="cloze-bar-left">
+                    <button class="notes-back-btn cloze-back-btn" onclick="closeNcertClozeReader()" title="Back to chapter list">
+                        <span class="btn-full-text">← Chapters</span>
+                        <span class="btn-short-text">←</span>
+                    </button>
+                    <div class="cloze-reader-info">
+                        <div class="cloze-reader-book-title" id="clozeReaderSubj">CLASS 11 BOTANY</div>
+                        <div class="cloze-reader-chap-title" id="clozeReaderTitle">Chapter Title</div>
+                    </div>
+                    <!-- Mobile Prev / Next Navigation in Row 1 -->
+                    <div class="cloze-mobile-nav">
+                        <button class="pw-reader-btn nav-arrow" id="clozePrevChapBtnMob" onclick="navNcertClozeChapter(-1)" title="Previous Chapter">‹</button>
+                        <button class="pw-reader-btn nav-arrow" id="clozeNextChapBtnMob" onclick="navNcertClozeChapter(1)" title="Next Chapter">›</button>
+                    </div>
+                </div>
+
+                <div class="cloze-reader-actions">
+                    <!-- Segmented Mode Toggle: Book Layout vs Point by Point -->
+                    <div class="cloze-mode-toggle" id="clozeModeToggle">
+                        <button class="cloze-mode-btn active" id="clozeModeBookBtn" onclick="setNcertClozeMode('book')" title="Continuous NCERT Textbook Layout">
+                            <span>📖</span> <span class="btn-full-text">Book Layout</span><span class="btn-short-text">Book</span>
+                        </button>
+                        <button class="cloze-mode-btn" id="clozeModeListBtn" onclick="setNcertClozeMode('list')" title="Numbered Sentence-by-Sentence Drill">
+                            <span>📝</span> <span class="btn-full-text">Point by Point</span><span class="btn-short-text">Points</span>
+                        </button>
+                    </div>
+
+                    <!-- Saved Lines Filter Button -->
+                    <button class="cloze-tool-btn" id="clozeSavedFilterBtn" onclick="toggleNcertSavedFilter()" title="Filter to show only bookmarked hard lines">
+                        <span class="cloze-star-icon">⭐</span>
+                        <span id="clozeSavedCountText"><span class="btn-full-text">Saved Lines (0)</span><span class="btn-short-text">Saved (0)</span></span>
+                    </button>
+
+                    <!-- Reveal All / Blur All Button -->
+                    <button class="cloze-tool-btn" id="clozeRevealAllBtn" onclick="toggleNcertRevealAll()" title="Reveal or blur all blanks in this chapter">
+                        <span id="clozeRevealAllIcon">👁️</span>
+                        <span id="clozeRevealAllText"><span class="btn-full-text">Reveal All</span><span class="btn-short-text">Reveal</span></span>
+                    </button>
+
+                    <!-- Prev & Next Chapter Navigation (Desktop) -->
+                    <div class="cloze-nav-group cloze-desktop-nav">
+                        <button class="pw-reader-btn" id="clozePrevChapBtn" onclick="navNcertClozeChapter(-1)" title="Previous Chapter">
+                            ← Prev
+                        </button>
+                        <button class="pw-reader-btn" id="clozeNextChapBtn" onclick="navNcertClozeChapter(1)" title="Next Chapter">
+                            Next →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reader Canvas Scroll Area -->
+            <div class="cloze-reader-canvas-wrap" id="clozeReaderCanvasWrap">
+                <div class="cloze-reader-container" id="clozeReaderContainer">
+                    <!-- Loading Skeleton -->
+                    <div class="cloze-loading-state" id="clozeLoadingState">
+                        <div class="pretty-spinner"></div>
+                        <div class="cloze-loading-text">Loading NCERT Cloze Chapter...</div>
+                    </div>
+
+                    <!-- Hero Banner -->
+                    <header class="cloze-doc-hero" id="clozeDocHero" style="display: none;"></header>
+
+                    <!-- Active Content Canvas -->
+                    <div class="cloze-content-canvas" id="clozeContentCanvas" style="display: none;"></div>
+
+                    <!-- Saved Lines Empty State (when in Saved Lines mode with 0 bookmarks) -->
+                    <div class="cloze-empty-saved" id="clozeEmptySaved" style="display: none;">
+                        <div class="cloze-empty-icon">⭐</div>
+                        <h3>No Saved Lines in this Chapter</h3>
+                        <p>Long-press or tap any sentence (blurred or normal) to bookmark it as a hard line for quick revision!</p>
+                    </div>
+
+                    <!-- Completion Footer -->
+                    <footer class="cloze-doc-footer" id="clozeDocFooter" style="display: none;"></footer>
+                </div>
+            </div>
+
+            <!-- Floating Micro-Action Pill (triggered on long-press of a sentence) -->
+            <div class="cloze-action-pill" id="clozeActionPill" style="display: none;">
+                <button class="cloze-pill-btn star-action" id="pillStarBtn" onclick="onPillStarClick()">
+                    <span id="pillStarIcon">⭐</span> <span id="pillStarText">Bookmark Line</span>
+                </button>
+                <button class="cloze-pill-btn reveal-action" id="pillRevealBtn" onclick="onPillRevealClick()">
+                    👁️ Reveal Line
+                </button>
+            </div>
+        </div>
+
 
     </main>
 
