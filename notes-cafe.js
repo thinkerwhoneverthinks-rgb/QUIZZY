@@ -1266,8 +1266,13 @@ async function renderSinglePdfPage(pdfDoc, pageNum, token) {
         // Set dimensions for high-DPI crisp rendering
         canvas.width = Math.floor(viewport.width * dpr);
         canvas.height = Math.floor(viewport.height * dpr);
-        canvas.style.width = `${Math.floor(viewport.width)}px`;
-        canvas.style.height = `${Math.floor(viewport.height)}px`;
+        if (window.innerWidth <= 768) {
+            canvas.style.width = '100%';
+            canvas.style.height = 'auto';
+        } else {
+            canvas.style.width = `${Math.floor(viewport.width)}px`;
+            canvas.style.height = `${Math.floor(viewport.height)}px`;
+        }
 
         const ctx = canvas.getContext('2d', { alpha: false });
         ctx.fillStyle = '#ffffff';
@@ -1307,8 +1312,13 @@ async function fitWidthPrettyPdf() {
         const canvasArea = document.getElementById('prettyPdfCanvasArea');
         const firstPage = await currentPrettyPdfDoc.getPage(1);
         const unscaledViewport = firstPage.getViewport({ scale: 1.0 });
-        const availableWidth = Math.min((canvasArea ? canvasArea.clientWidth : window.innerWidth) - 48, 920);
-        currentPrettyPdfScale = Math.max(0.65, Math.min(2.0, (availableWidth > 300 ? availableWidth : 680) / unscaledViewport.width));
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            currentPrettyPdfScale = Math.max(0.9, window.innerWidth / unscaledViewport.width);
+        } else {
+            const availableWidth = Math.min((canvasArea ? canvasArea.clientWidth : window.innerWidth) - 48, 920);
+            currentPrettyPdfScale = Math.max(0.65, Math.min(2.0, (availableWidth > 300 ? availableWidth : 680) / unscaledViewport.width));
+        }
 
         const zoomVal = document.getElementById('pdfZoomVal');
         if (zoomVal) zoomVal.textContent = `${Math.round(currentPrettyPdfScale * 100)}%`;
@@ -2239,7 +2249,7 @@ function renderNcertClozeActiveView() {
                     openParagraph = true;
                 }
                 const isStarred = clozeStarredSet.has(el.id);
-                html += `<span class="cloze-sentence ${isStarred ? 'starred' : ''}" data-sid="${el.id}">${renderClozeSentenceTokens(el)} </span>`;
+                html += `<span class="cloze-sentence ${isStarred ? 'starred' : ''}" data-sid="${el.id}">${renderClozeSentenceTokens(el)}<button type="button" class="cloze-inline-star ${isStarred ? 'starred' : ''}" data-sid="${el.id}" title="${isStarred ? 'Bookmarked line (tap to remove)' : 'Bookmark line'}">${isStarred ? '★' : '☆'}</button> </span>`;
             } else {
                 if (openParagraph) {
                     html += `</p>`;
@@ -2411,8 +2421,14 @@ function toggleNcertSentenceStar(sentenceId) {
     saveNcertClozeStarred(currentClozeChapterId, clozeStarredSet);
 
     // Update DOM in Book View
+    const isStNow = clozeStarredSet.has(sentenceId);
     document.querySelectorAll(`.cloze-sentence[data-sid="${sentenceId}"]`).forEach(el => {
-        el.classList.toggle('starred', clozeStarredSet.has(sentenceId));
+        el.classList.toggle('starred', isStNow);
+    });
+    document.querySelectorAll(`.cloze-inline-star[data-sid="${sentenceId}"]`).forEach(star => {
+        star.classList.toggle('starred', isStNow);
+        star.textContent = isStNow ? '★' : '☆';
+        star.title = isStNow ? 'Bookmarked line (tap to remove)' : 'Bookmark line';
     });
 
     // Update DOM in Point by Point View
@@ -2434,7 +2450,7 @@ function toggleNcertSentenceStar(sentenceId) {
     }
 }
 
-// Touch & Pointer Gesture Tracking (Anti-Accidental Scroll + Long-press)
+// Touch & Pointer Gesture Tracking (Instant Tap / Click with Anti-Accidental Scroll)
 function setupClozeGestureTracking() {
     const canvasWrap = document.getElementById('clozeReaderCanvasWrap');
     if (!canvasWrap || canvasWrap._clozeGestureAttached) return;
@@ -2445,50 +2461,56 @@ function setupClozeGestureTracking() {
         clozeTouchStartX = e.clientX;
         clozeTouchStartY = e.clientY;
         clozeTouchMoved = false;
-
-        const targetWord = e.target.closest('.cloze-word');
-        const targetSentence = e.target.closest('.cloze-sentence');
-
-        clearTimeout(clozeLongPressTimer);
-        clozeLongPressTimer = setTimeout(() => {
-            if (clozeTouchMoved) return;
-            // Long-press triggered!
-            if (targetWord) {
-                toggleSingleClozeWord(targetWord);
-                if (navigator.vibrate) navigator.vibrate(25);
-            } else if (targetSentence) {
-                const sid = targetSentence.getAttribute('data-sid');
-                showClozeActionPill(sid, e.clientX, e.clientY);
-                if (navigator.vibrate) navigator.vibrate(25);
-            }
-        }, 350);
     });
 
     canvasWrap.addEventListener('pointermove', (e) => {
         const dx = Math.abs(e.clientX - clozeTouchStartX);
         const dy = Math.abs(e.clientY - clozeTouchStartY);
-        if (dx > 6 || dy > 6) {
+        if (dx > 8 || dy > 8) {
             clozeTouchMoved = true;
-            clearTimeout(clozeLongPressTimer);
             hideClozeActionPill();
         }
     });
 
     canvasWrap.addEventListener('pointerup', (e) => {
-        clearTimeout(clozeLongPressTimer);
-        if (clozeTouchMoved) return;
+        if (clozeTouchMoved) return; // User was scrolling, ignore tap
 
-        // Desktop mouse: simple click toggles blurred words
-        if (e.pointerType === 'mouse') {
-            const targetWord = e.target.closest('.cloze-word');
-            if (targetWord) {
-                toggleSingleClozeWord(targetWord);
+        const targetWord = e.target.closest('.cloze-word');
+        const starBtn = e.target.closest('.cloze-inline-star, .cloze-point-btn.starred');
+        const targetSentence = e.target.closest('.cloze-sentence');
+
+        // 1. Tapped a blurred or revealed cloze blank -> instant toggle!
+        if (targetWord) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleSingleClozeWord(targetWord);
+            hideClozeActionPill();
+            return;
+        }
+
+        // 2. Tapped the inline bookmark star -> instant toggle bookmark!
+        if (starBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const sid = starBtn.getAttribute('data-sid');
+            if (sid) toggleNcertSentenceStar(sid);
+            hideClozeActionPill();
+            return;
+        }
+
+        // 3. Tapped sentence text -> quick micro-pill with options
+        if (targetSentence) {
+            const sid = targetSentence.getAttribute('data-sid');
+            if (sid) {
+                showClozeActionPill(sid, e.clientX, e.clientY);
             }
+        } else {
+            hideClozeActionPill();
         }
     });
 
     canvasWrap.addEventListener('pointercancel', () => {
-        clearTimeout(clozeLongPressTimer);
+        clozeTouchMoved = false;
         hideClozeActionPill();
     });
 

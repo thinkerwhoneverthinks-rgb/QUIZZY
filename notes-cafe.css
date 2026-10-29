@@ -2993,11 +2993,50 @@
         font-size: 0.74rem;
         white-space: nowrap;
     }
+    /* Seamless Full-Bleed PDF Canvas on Mobile (No Weird Card Shrinking) */
+    .pretty-pdf-toolbar {
+        padding: 0.45rem 0.65rem;
+    }
+    .pretty-pdf-canvas-area {
+        padding: 0 0 5rem 0 !important;
+        background: #ffffff !important;
+        align-items: stretch !important;
+    }
+    .pretty-pdf-pages-list {
+        gap: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    .pretty-pdf-page-card {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+    }
+    .pretty-pdf-canvas {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+    }
+    .pretty-pdf-page-footer {
+        display: none !important;
+    }
+
+    /* Pretty Notes Adaptive Mobile View */
     .pretty-native-container {
-        padding: 1.5rem 1rem 5rem;
+        padding: 1.25rem 0.85rem 5rem;
+    }
+    .pretty-p {
+        font-size: 1.02rem;
+        line-height: 1.78;
     }
     .pretty-hero-title {
-        font-size: 1.7rem;
+        font-size: 1.65rem;
     }
     .pretty-hero-quick-switch {
         margin-left: 0;
@@ -3387,6 +3426,10 @@
     border-radius: 4px;
     transition: background-color 0.2s ease;
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .cloze-sentence:hover {
     background-color: rgba(99, 102, 241, 0.05);
@@ -3405,11 +3448,37 @@
     box-shadow: 0 0 0 2px #fef08a;
 }
 
-/* Star Indicator on Bookmarked Sentence */
-.cloze-sentence.starred::before {
-    content: "⭐ ";
-    font-size: 0.85em;
-    vertical-align: 1px;
+/* Inline Bookmark Star Button */
+.cloze-inline-star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 0.88rem;
+    line-height: 1;
+    padding: 2px 4px;
+    margin-left: 2px;
+    vertical-align: middle;
+    opacity: 0.35;
+    transition: all 0.18s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    border-radius: 4px;
+}
+.cloze-inline-star:hover,
+.cloze-sentence:hover .cloze-inline-star {
+    opacity: 1;
+    color: #f59e0b;
+    transform: scale(1.15);
+}
+.cloze-inline-star.starred {
+    opacity: 1;
+    color: #f59e0b;
+    filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.4));
 }
 
 /* The Blurred Term */
@@ -3424,6 +3493,8 @@
     transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
     user-select: none;
     -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Blurred State (Paper-like gentle blur, non-AI aesthetic) */
