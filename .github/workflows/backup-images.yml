@@ -23,12 +23,19 @@ on:
         required: false
         default: "true"
         type: boolean
+      publish_release:
+        description: "Publish to GitHub Releases (Direct download links for Telegram leech bots)"
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   backup:
     name: Download Images & Package ZIP
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    permissions:
+      contents: write
 
     steps:
       - name: ⬇️ Checkout repository
@@ -44,10 +51,11 @@ jobs:
           echo "==============================="
           echo "  QUIZZY Backup — Batch Config"
           echo "==============================="
-          echo "  pw-test    : ${{ inputs.batch_pw_test }}"
-          echo "  pw-modules : ${{ inputs.batch_pw_modules }}"
-          echo "  pw-notes   : ${{ inputs.batch_pw_notes }}"
-          echo "  notes      : ${{ inputs.batch_notes }}"
+          echo "  pw-test         : ${{ inputs.batch_pw_test }}"
+          echo "  pw-modules      : ${{ inputs.batch_pw_modules }}"
+          echo "  pw-notes        : ${{ inputs.batch_pw_notes }}"
+          echo "  notes           : ${{ inputs.batch_notes }}"
+          echo "  publish_release : ${{ inputs.publish_release }}"
           echo "==============================="
 
       - name: 🔍 Extract image URLs & copy JSON files
@@ -60,6 +68,17 @@ jobs:
 
       - name: 🗜️ Create ZIP archive(s)
         run: node tools/create-zip.js
+
+      - name: 🚀 Publish to GitHub Releases
+        if: ${{ inputs.publish_release != false }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: backup-${{ github.run_id }}
+          name: "📦 QUIZZY Backup — Run #${{ github.run_id }}"
+          body_path: backup-output/summary.md
+          files: backup-output/*.zip
+          draft: false
+          prerelease: false
 
       - name: 📤 Upload ZIP as artifact
         uses: actions/upload-artifact@v4
