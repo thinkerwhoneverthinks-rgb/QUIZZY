@@ -498,22 +498,6 @@ function getPedagogicalSortRank(str, filePath) {
     const s = (String(str || '') + ' ' + String(filePath || '')).toLowerCase().replace(/[-_]/g, ' ');
     const p = String(filePath || '').toLowerCase();
 
-    // Check if this is a PW Module
-    const isPW = p.includes('pw-modules') || p.includes('pw module') || 
-                 s.includes('prarambh') || s.includes('prabal') || s.includes('parikshit') || 
-                 s.includes('aarambh') || s.includes('arambh');
-
-    if (isPW) {
-        if (s.includes('aarambh') || s.includes('arambh')) return 10;
-        if (s.includes('prarambh')) return 20;
-        if (s.includes('prabal')) return 30;
-        if (s.includes('parikshit')) return 40;
-        if (s.includes('pyq') || s.includes('past year')) return 50;
-        if (s.includes('setu') || s.includes('bridge')) return 60;
-        if (s.includes('challenger')) return 70;
-        return 80;
-    }
-
     // Check if this is NEETPrep
     const isNeetprep = p.includes('neetprep') || s.includes('neetprep');
     if (isNeetprep) {
@@ -563,19 +547,7 @@ function getPedagogicalSortRank(str, filePath) {
         }
     }
 
-    // General fallback for NCERT Punch / other books
-    if (s.includes('topic wise') || s.includes('topicwise')) return 101;
-    if (s.includes('exemplar') || s.includes('exampler')) return 102;
-    if (s.includes('statement')) return 103;
-    if (s.includes('assertion')) return 104;
-    if (s.includes('correct incorrect') || s.includes('correct & incorrect') || s.includes('correct') || s.includes('incorrect')) return 105;
-    if (s.includes('matching') || s.includes('match the column') || s.includes('match')) return 106;
-    if (s.includes('sequence') || s.includes('multi')) return 107;
-    if (s.includes('high order') || s.includes('hots') || s.includes('time intensive')) return 108;
-    if (s.includes('kattar')) return 109;
-    if (s.includes('past year') || s.includes('pyq') || s.includes('aiims') || s.includes('past')) return 110;
-    if (s.includes('image based') || s.includes('image')) return 111;
-
+    // Default: respect manifest.json ordering directly
     return 500;
 }
 
