@@ -92,6 +92,7 @@ function _applyRevealInPlace(idx) {
     typesetMath(card);
 
     if (typeof recordStudySession === 'function') recordStudySession();
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
 /* Works for every question type, in one-by-one AND full-quiz mode. */

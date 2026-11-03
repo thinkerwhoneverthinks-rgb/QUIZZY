@@ -555,3 +555,44 @@ if (typeof global !== 'undefined') {
     global.safeHtml = safeHtml;
     global.getPedagogicalSortRank = getPedagogicalSortRank;
 }
+
+// ==================== ACTIVE EXERCISE PERSISTENCE ====================
+const ACTIVE_EXERCISE_KEY = 'quizzy-active-exercise';
+
+function saveActiveExercise() {
+    try {
+        if (!currentChapter || !currentFileName || currentMode === 'bookmark') {
+            return;
+        }
+        const activeScreen = document.querySelector('.screen.active');
+        const screenId = activeScreen ? activeScreen.id : '';
+        if (screenId !== 'screenQuiz' && screenId !== 'screenFullQuiz' && screenId !== 'screenTestMode' && screenId !== 'screenReview') {
+            return;
+        }
+        const payload = {
+            file: currentFileName,
+            chapterId: currentChapter.id,
+            chapterName: currentChapter.name,
+            mode: currentMode || 'onebyone',
+            screenId: screenId,
+            qIndex: typeof currentQIndex === 'number' ? currentQIndex : 0,
+            userAnswers: userAnswers || {},
+            selectedTopics: Array.isArray(selectedTopics) ? selectedTopics : [],
+            topicQuestionCounts: topicQuestionCounts || {},
+            practiceOrder: (typeof currentPracticeOrder !== 'undefined' ? currentPracticeOrder : 'topic'),
+            timestamp: Date.now()
+        };
+        localStorage.setItem(ACTIVE_EXERCISE_KEY, JSON.stringify(payload));
+    } catch (e) {
+        // quota exceeded or private mode
+    }
+}
+
+function clearActiveExercise() {
+    try {
+        localStorage.removeItem(ACTIVE_EXERCISE_KEY);
+    } catch (e) { /* ignore */ }
+}
+
+window.saveActiveExercise = saveActiveExercise;
+window.clearActiveExercise = clearActiveExercise;

@@ -3263,3 +3263,46 @@
     }
 }
 
+/* ===== IMAGE ZOOM LIGHTBOX ===== */
+.img-zoom-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    cursor: zoom-out;
+}
+.img-zoom-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.img-zoom-overlay img {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    filter: invert(1) hue-rotate(180deg) brightness(1.1);
+    mix-blend-mode: screen;
+}
+[data-theme="light"] .img-zoom-overlay img {
+    filter: none;
+    mix-blend-mode: normal;
+}
+/* Hint cursor on zoomable images */
+.question-image,
+.explanation-img,
+.q-image,
+.q-explain-img {
+    cursor: zoom-in;
+}

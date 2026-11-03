@@ -1,5 +1,70 @@
 // ==================== NAVIGATION LOGIC ====================
+async function checkResumeActiveExercise() {
+    try {
+        if (sessionStorage.getItem('studycafe-goto') || sessionStorage.getItem('studycafe-bookmark-practice')) {
+            return false;
+        }
+        if (location.hash && location.hash !== '#' && location.hash !== '#quiz') {
+            return false;
+        }
+
+        const raw = localStorage.getItem('quizzy-active-exercise');
+        if (!raw) return false;
+        const sess = JSON.parse(raw);
+        if (!sess || !sess.file || !sess.chapterId || (Date.now() - (sess.timestamp || 0) > 86400000)) {
+            localStorage.removeItem('quizzy-active-exercise');
+            return false;
+        }
+
+        fetch('data/manifest.json').then(r => r.json()).then(m => {
+            manifestRoot = m;
+        }).catch(() => {});
+
+        await loadFile(sess.file, true);
+        await selectChapter(sess.chapterId, true);
+
+        if (sess.userAnswers && typeof sess.userAnswers === 'object') {
+            userAnswers = sess.userAnswers;
+        }
+        if (sess.mode) currentMode = sess.mode;
+        if (sess.practiceOrder) currentPracticeOrder = sess.practiceOrder;
+        if (Array.isArray(sess.selectedTopics)) selectedTopics = sess.selectedTopics;
+        if (sess.topicQuestionCounts) topicQuestionCounts = sess.topicQuestionCounts;
+
+        const targetIndex = typeof sess.qIndex === 'number' ? sess.qIndex : 0;
+        if (sess.screenId === 'screenFullQuiz' || sess.mode === 'fullquiz') {
+            currentQIndex = targetIndex;
+            showFullQuiz();
+        } else if (sess.screenId === 'screenTestMode' || sess.mode === 'test') {
+            currentQIndex = targetIndex;
+            if (typeof renderTestMode === 'function') {
+                showScreen('screenTestMode');
+                renderTestMode();
+            } else {
+                showQuiz(targetIndex);
+            }
+        } else if (sess.screenId === 'screenReview') {
+            if (typeof reviewTest === 'function') {
+                reviewTest();
+            } else {
+                showQuiz(targetIndex);
+            }
+        } else {
+            showQuiz(targetIndex);
+        }
+
+        checkAndShowOfflineStatus();
+        return true;
+    } catch (e) {
+        console.warn("Could not resume active exercise:", e);
+        return false;
+    }
+}
+
 async function initNavigation() {
+    if (await checkResumeActiveExercise()) {
+        return;
+    }
     showScreen('screenSubjects'); 
     if (typeof pushQuizHistory === 'function') {
         pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: 0 }, true);
@@ -60,7 +125,11 @@ function checkGotoBookmarkPractice() {
         currentFileName = null;
         subjectData = null;
         currentMode = 'bookmark';
-        selectedTopics = [];
+        if (keepState) {
+        return;
+    }
+
+    selectedTopics = [];
 
         const startIndex = Math.min(payload.startIndex || 0, questions.length - 1);
         showQuiz(startIndex);
@@ -502,7 +571,7 @@ function slugify(text) {
 }
 
 // ==================== DATA LOADING (OFFLINE-FIRST) ====================
-async function loadFile(fileName) {
+async function loadFile(fileName, skipAutoNavigate = false) {
     showScreen('screenLoading');
     currentFileName = fileName;
 
@@ -542,6 +611,10 @@ async function loadFile(fileName) {
         const data = normalizeJsonData(rawData, fileName);
         loadedFiles[fileName] = data;
         subjectData = data;
+
+        if (skipAutoNavigate) {
+            return data;
+        }
 
         if (data.chapters && data.chapters.length > 1) {
             renderChapters();
@@ -633,7 +706,7 @@ async function downloadChapterOffline(chapterId, btnElement) {
     }
 }
 
-async function selectChapter(id) {
+async function selectChapter(id, keepState = false) {
     const chapters = subjectData && subjectData.chapters ? subjectData.chapters : [];
     currentChapter = chapters.find(c => c.id === id);
     
@@ -657,6 +730,10 @@ async function selectChapter(id) {
         return;
     }
 
+    if (keepState) {
+        return;
+    }
+
     selectedTopics = [];
     topicQuestionCounts = {};
     currentPracticeOrder = 'topic';
@@ -669,6 +746,7 @@ async function selectChapter(id) {
 
 function backFromQuiz() {
     closeGrid();
+    if (typeof clearActiveExercise === 'function') clearActiveExercise();
     if (window.history.length > 1 && history.state && history.state.cafe === 'question' && history.state.screen && history.state.screen !== 'screenSubjects') {
         window.history.back();
     } else {

@@ -260,13 +260,13 @@ function buildQuestionCardInner(q, idx, total) {
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                 ${qImages.map((img, i) => `
                     <div class="image-question-wrap">
-                        <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                        <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
                     </div>
                 `).join('')}
             </div>
         ` : (qImages.length === 1 && q.type !== 'image_mcq' ? `
             <div class="image-question-wrap">
-                <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)">
+                <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
             </div>
         ` : '')}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
@@ -474,11 +474,11 @@ function renderExplanationBlock(q, revealed) {
             ${expImages.length > 1 ? `
                 <div class="exp-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                     ${expImages.map((img, i) => `
-                        <img class="explanation-img" src="${img}" alt="Explanation Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                        <img class="explanation-img" src="${img}" alt="Explanation Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
                     `).join('')}
                 </div>
             ` : (expImages.length === 1 ? `
-                <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy" data-original-url="${expImages[0]}" onerror="handleImageError(this)">
+                <img class="explanation-img" src="${expImages[0]}" alt="Explanation Diagram" loading="lazy" data-original-url="${expImages[0]}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
             ` : '')}
             ${hasVideo ? renderVideoFacade(q.video, q.id, q.question) : ''}
         </div>
@@ -511,6 +511,7 @@ function refreshQuestionCard(idx) {
 
     // Revealing an answer is progress worth remembering.
     if (typeof recordStudySession === 'function') recordStudySession();
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
 // ==================== QUESTION RENDERING ====================
@@ -562,6 +563,7 @@ function renderQuestion() {
 
     if (typeof recordStudySession === 'function') recordStudySession();
     if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
 /* Shown on the last question so the user can jump straight into the next
@@ -607,13 +609,13 @@ function renderImageMCQ(q, idx) {
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                 ${qImages.map((img, i) => `
                     <div class="image-question-wrap">
-                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
+                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
                     </div>
                 `).join('')}
             </div>
         ` : (mainImg ? `
             <div class="image-question-wrap">
-                <img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="lazy" data-original-url="${mainImg}" onerror="handleImageError(this)">
+                <img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="lazy" data-original-url="${mainImg}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
             </div>
         ` : '')}
         ${buildOptionList(q, idx, {
@@ -917,6 +919,7 @@ function renderFullQuiz() {
     loadOfflineImagesInContainer(container);
 
     if (typeof recordStudySession === 'function') recordStudySession();
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
 function scrollToNext() {
@@ -940,3 +943,47 @@ function scrollToPrev() {
         }
     }
 }
+
+// ==================== IMAGE ZOOM LIGHTBOX ====================
+function openImageZoom(src) {
+    if (!src) return;
+    let overlay = document.getElementById('imgZoomOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'imgZoomOverlay';
+        overlay.className = 'img-zoom-overlay';
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closeImageZoom();
+            }
+        });
+        document.body.appendChild(overlay);
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeImageZoom();
+        });
+    }
+    overlay.innerHTML = `<img src="${src}" alt="" onclick="event.stopPropagation()">`;
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => {
+        overlay.classList.add('active');
+    });
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageZoom() {
+    const overlay = document.getElementById('imgZoomOverlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+            if (!overlay.classList.contains('active')) {
+                overlay.innerHTML = '';
+                overlay.style.display = 'none';
+            }
+        }, 200);
+    }
+    document.body.style.overflow = '';
+}
+window.openImageZoom = openImageZoom;
+window.closeImageZoom = closeImageZoom;

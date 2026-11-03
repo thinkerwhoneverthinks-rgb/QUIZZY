@@ -55,6 +55,19 @@ function tcTypeset(el) {
 async function initTestCafe() {
     if (resumeBookmarkReview()) return;
 
+    if (typeof getInProgressTest === 'function') {
+        const saved = getInProgressTest();
+        if (saved && saved.testKey && !saved.finished) {
+            showTcScreen('scLoading');
+            try {
+                await restoreInProgressSession(saved);
+                return;
+            } catch (resErr) {
+                console.warn('Auto-resume failed:', resErr);
+            }
+        }
+    }
+
     showTcScreen('scLoading');
     try {
         await loadTestManifest();
@@ -1212,10 +1225,10 @@ function renderQuestion() {
                 const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
                 const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
                 if (qImgs.length > 1) {
-                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy"></div>`).join('')}</div>`;
+                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy" onclick="openImageZoom(this.src)"></div>`).join('')}</div>`;
                 }
                 if (qImgs.length === 1) {
-                    return `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="lazy"></div>`;
+                    return `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="lazy" onclick="openImageZoom(this.src)"></div>`;
                 }
                 return '';
             })()}
@@ -1443,7 +1456,7 @@ function renderSolutionBlock(q) {
             ${hasExp ? `<div class="q-explain-text" style="line-height:1.7;margin-bottom:0.75rem;">${tcRenderText(q.explanation)}</div>` : ''}
             ${expImages.length > 0 ? `
                 <div class="q-explain-images">
-                    ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy"></div>`).join('')}
+                    ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy" onclick="openImageZoom(this.src)"></div>`).join('')}
                 </div>
             ` : ''}
             ${hasVideo && typeof renderVideoFacade === 'function' ? renderVideoFacade(q.video, 'tc-' + (q.id || Math.random()), q.question) : ''}

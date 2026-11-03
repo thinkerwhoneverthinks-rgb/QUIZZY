@@ -39,6 +39,7 @@ function showScreen(id) {
 }
 
 function showSubjects() {
+    if (typeof clearActiveExercise === 'function') clearActiveExercise();
     currentSubject = null;
     currentChapter = null;
     currentMode = null;
@@ -49,6 +50,7 @@ function showSubjects() {
 }
 
 function showChapters() {
+    if (typeof clearActiveExercise === 'function') clearActiveExercise();
     closeGrid();
     if (subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
         renderChapters();
@@ -73,6 +75,7 @@ function showQuiz(startIndex) {
     renderQuestion();
     if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
     pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' });
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
 function showFullQuiz() {
@@ -84,6 +87,7 @@ function showFullQuiz() {
     renderFullQuiz();
     if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
     pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' });
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
 function switchQuizViewMode(mode) {
