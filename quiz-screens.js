@@ -4,6 +4,9 @@ async function checkResumeActiveExercise() {
         if (sessionStorage.getItem('studycafe-goto') || sessionStorage.getItem('studycafe-bookmark-practice')) {
             return false;
         }
+        if (location.search && (location.search.includes('browse=1') || location.search.includes('fresh=1'))) {
+            return false;
+        }
         if (location.hash && location.hash !== '#' && location.hash !== '#quiz') {
             return false;
         }
@@ -19,6 +22,12 @@ async function checkResumeActiveExercise() {
         fetch('data/manifest.json').then(r => r.json()).then(m => {
             manifestRoot = m;
         }).catch(() => {});
+
+        // Establish proper browser history stack so pressing back navigates within app instead of closing
+        try {
+            history.replaceState({ cafe: 'question', screen: 'screenSubjects', dirLength: 0 }, '');
+            history.pushState({ cafe: 'question', screen: 'screenChapters', dirLength: 1 }, '');
+        } catch(e) {}
 
         await loadFile(sess.file, true);
         await selectChapter(sess.chapterId, true);
@@ -732,6 +741,44 @@ async function selectChapter(id, keepState = false) {
 
     if (keepState) {
         return;
+    }
+
+    const exKey = (currentFileName || '') + '::' + id;
+
+    // Check if exercise was already completed
+    if (typeof getLatestExerciseAttempt === 'function') {
+        const lastAttempt = getLatestExerciseAttempt(exKey);
+        if (lastAttempt && lastAttempt.userAnswers && Object.keys(lastAttempt.userAnswers).length > 0) {
+            userAnswers = lastAttempt.userAnswers;
+            currentMode = lastAttempt.mode || 'onebyone';
+            currentQIndex = 0;
+            // Directly show final summary page
+            if (typeof showResults === 'function') {
+                showResults();
+                return;
+            }
+        }
+    }
+
+    // Check if there is an in-progress session
+    if (typeof getExerciseSession === 'function') {
+        const inProgress = getExerciseSession(exKey);
+        if (inProgress && inProgress.userAnswers && Object.keys(inProgress.userAnswers).length > 0) {
+            const doResume = confirm('You have an unfinished session on this exercise. Would you like to resume where you left off?');
+            if (doResume) {
+                userAnswers = inProgress.userAnswers;
+                currentQIndex = inProgress.qIndex || 0;
+                currentMode = inProgress.mode || 'onebyone';
+                if (currentMode === 'fullquiz') {
+                    showFullQuiz();
+                } else {
+                    showQuiz(currentQIndex);
+                }
+                return;
+            } else {
+                if (typeof clearExerciseSession === 'function') clearExerciseSession(exKey);
+            }
+        }
     }
 
     selectedTopics = [];

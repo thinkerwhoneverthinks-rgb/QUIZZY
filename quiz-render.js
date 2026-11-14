@@ -361,7 +361,7 @@ function renderVideoFacade(video, id, questionText) {
     }
     const thumb = video.thumbnail || (yId ? `https://img.youtube.com/vi/${yId}/hqdefault.jpg` : '');
     const duration = video.duration ? `<span class="solution-video-time-tag">⏱ ${escapeHtml(video.duration)}</span>` : '';
-    
+
     let title = video.title || '';
     if (!title && questionText) {
         const cleanQ = (typeof stripHtml === 'function' ? stripHtml(questionText) : String(questionText).replace(/<[^>]*>/g, '')).trim();
@@ -389,12 +389,12 @@ function renderVideoFacade(video, id, questionText) {
                     <div class="solution-video-title" onclick="openVideoModal('${safeEmbed}', '${safeDirect}', '${safeTitleAttr}')">${safeTitle}</div>
                     ${duration ? `<div class="solution-video-meta">${duration}</div>` : ''}
                     <div class="solution-video-actions">
-                        <button type="button" class="btn-play-video" onclick="openVideoModal('${safeEmbed}', '${safeDirect}', '${safeTitleAttr}')">
-                            <span class="btn-play-ico">▶</span> Play Video
+                        <button type="button" class="btn-play-video" onclick="openVideoModal('${safeEmbed}', '${safeDirect}', '${safeTitleAttr}')" title="Play Video Solution">
+                            <span class="btn-play-ico">▶</span><span class="btn-play-text"> Play Video</span>
                         </button>
                         ${directUrl ? `
-                        <a href="${safeDirect}" target="_blank" rel="noopener noreferrer" class="btn-yt-app">
-                            <span class="btn-yt-ico">↗</span> YouTube App
+                        <a href="${safeDirect}" target="_blank" rel="noopener noreferrer" class="btn-yt-app" title="Watch in YouTube App">
+                            <span class="btn-yt-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle;display:inline-block;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span><span class="btn-yt-text"> YouTube App</span>
                         </a>` : ''}
                     </div>
                 </div>
@@ -426,8 +426,8 @@ function openVideoModal(embedUrl, directUrl, title) {
                 </div>
                 <div class="video-modal-header-actions">
                     ${directUrl ? `
-                    <a href="${escapeHtmlAttr(directUrl)}" target="_blank" rel="noopener noreferrer" class="vm-btn-app">
-                        <span class="btn-yt-ico">↗</span> YouTube App
+                    <a href="${escapeHtmlAttr(directUrl)}" target="_blank" rel="noopener noreferrer" class="vm-btn-app" title="Watch in YouTube App">
+                        <span class="btn-yt-ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:middle;display:inline-block;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span><span class="btn-yt-text"> YouTube App</span>
                     </a>` : ''}
                     <button type="button" class="vm-btn-close" onclick="closeVideoModal()" aria-label="Close video">✕</button>
                 </div>
@@ -601,8 +601,26 @@ function renderImageMCQ(q, idx) {
     const saved = userAnswers[idx];
     const selected = saved && saved.selected !== undefined ? [saved.selected] : [];
     const revealed = saved && saved.revealed;
+    const isFullQuiz = currentMode === 'fullquiz';
+    const solutionRequested = saved && (saved.solutionRequested || !isFullQuiz);
     const qImages = getActiveQuestionImages(q);
     const mainImg = qImages[0] || q.image_url || '';
+
+    let showBtnText = '💡 Show Answer';
+    let showBtnAction = `revealImageAnswer(${idx})`;
+    let showBtnClass = '';
+
+    if (revealed) {
+        if (isFullQuiz && !solutionRequested) {
+            showBtnText = '💡 Show Solution';
+            showBtnAction = `revealSolutionOnly(${idx})`;
+            showBtnClass = 'ready-solution';
+        } else {
+            showBtnText = '✅ Answer Revealed';
+            showBtnAction = '';
+            showBtnClass = 'revealed';
+        }
+    }
 
     return `
         ${qImages.length > 1 ? `
@@ -623,20 +641,21 @@ function renderImageMCQ(q, idx) {
             handler: 'selectImageMCQ',
             containerId: `imgMcqOptions-${idx}`
         })}
-        <button class="show-answer-btn ${revealed ? 'revealed' : ''}"
-                onclick="revealImageAnswer(${idx})" 
-                id="imgMcqBtn-${idx}">
-            ${revealed ? '✅ Answer Revealed' : '💡 Show Answer'}
+        <button class="show-answer-btn ${showBtnClass}"
+                ${showBtnAction ? `onclick="${showBtnAction}"` : ''}
+                id="imgMcqBtn-${idx}"
+                ${!showBtnAction ? 'style="cursor:default;"' : ''}>
+            ${showBtnText}
         </button>
-        ${renderExplanationBlock(q, revealed)}
+        ${renderExplanationBlock(q, revealed && solutionRequested)}
     `;
 }
 
-function updateCardInCurrentMode(idx) {
+function updateCardInCurrentMode(idx, opts) {
     /* Use the surgical in-place reveal if the function exists (loaded from
        quiz-interact.js).  Falls back to the old full-rebuild approach. */
     if (typeof _applyRevealInPlace === 'function') {
-        _applyRevealInPlace(idx);
+        _applyRevealInPlace(idx, opts);
     } else if (currentMode === 'fullquiz') {
         refreshQuestionCard(idx);
     } else {
@@ -654,13 +673,13 @@ function selectImageMCQ(idx, optIdx) {
     userAnswers[idx].correct = (optIdx === q.correct);
     userAnswers[idx].revealed = true;
 
-    updateCardInCurrentMode(idx);
+    updateCardInCurrentMode(idx, { autoShowSolution: currentMode !== 'fullquiz' });
 }
 
 function revealImageAnswer(idx) {
     if (!userAnswers[idx]) userAnswers[idx] = {};
     userAnswers[idx].revealed = true;
-    updateCardInCurrentMode(idx);
+    updateCardInCurrentMode(idx, { autoShowSolution: true });
 }
 
 function handleImageError(img) {
@@ -709,8 +728,8 @@ function renderFillBlank(q, idx) {
     const revealed = saved && saved.revealed;
 
     return `
-        <button class="show-answer-btn ${revealed ? 'revealed' : ''}" 
-                onclick="revealAnswer(${idx})" 
+        <button class="show-answer-btn ${revealed ? 'revealed' : ''}"
+                onclick="revealAnswer(${idx})"
                 id="fibBtn-${idx}">
             ${revealed ? '✅ Answer Revealed' : '💡 Show Answer'}
         </button>
@@ -740,17 +759,17 @@ function renderInteger(q, idx) {
 
     return `
         <div class="int-input-wrap">
-            <input type="text" 
-                   class="int-input" 
-                   placeholder="Type your answer..." 
+            <input type="text"
+                   class="int-input"
+                   placeholder="Type your answer..."
                    id="intInput-${idx}"
                    value="${hasAnswer ? escapeHtml(saved.userAnswer) : ''}"
                    onkeypress="if(event.key==='Enter')checkInteger(${idx})">
             <button class="int-check-btn" onclick="checkInteger(${idx})">Check</button>
         </div>
         ${feedbackHTML}
-        <button class="show-answer-btn ${revealed ? 'revealed' : ''}" 
-                onclick="revealAnswer(${idx})" 
+        <button class="show-answer-btn ${revealed ? 'revealed' : ''}"
+                onclick="revealAnswer(${idx})"
                 id="intShowBtn-${idx}">
             ${revealed ? '✅ Answer Revealed' : '💡 Show Answer'}
         </button>
@@ -765,6 +784,18 @@ function renderInteger(q, idx) {
 // ==================== MCQ RENDERING ====================
 const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
+function isCompactOptionList(options, optImages) {
+    if (!options || options.length === 0 || options.length > 6) return false;
+    const hasImages = optImages && optImages.some(img => Boolean(img));
+    if (hasImages) return false;
+    const keyPattern = /^\s*(\([1-6a-fA-D]\)|[1-6a-fA-D]|\([ivx]+\)|[ivx]+|Option\s*[1-6a-fA-D]?)\s*$/i;
+    return options.every(opt => {
+        if (opt === null || opt === undefined) return true;
+        const s = String(opt).trim();
+        return s === '' || keyPattern.test(s);
+    });
+}
+
 /* The single source of truth for what one option row looks like, shared by every
    question type and by both practice and test mode. It mirrors Test Cafe's
    `.opt` markup exactly (circular key, text, optional image, reveal flag), so an
@@ -778,6 +809,47 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
        Test Cafe engine applies. The blank labels render as "Option 1..4". */
     let options = getActiveOptions(q);
     if (options.length === 0 && q.type === 'image_mcq') options = ['', '', '', ''];
+
+    const optImages = getActiveOptionImages(q);
+    const isCompact = isCompactOptionList(options, optImages);
+
+    if (isCompact) {
+        const rows = options.map((opt, i) => {
+            const isChosen = selected.includes(i);
+            let stateCls = '';
+            let flag = '';
+
+            if (isChosen) stateCls += ' selected';
+            if (revealed) {
+                const isCorrect = isCorrectOption(q, i);
+                if (isCorrect && isChosen) {
+                    stateCls += ' correct';
+                    flag = 'Correct (Marked By You)';
+                } else if (isCorrect) {
+                    stateCls += ' correct';
+                    flag = 'Correct (Not Marked By You)';
+                } else if (isChosen) {
+                    stateCls += ' wrong';
+                    flag = 'Incorrect (Marked By You)';
+                }
+                if (isMulti && isChosen && isCorrect && !allCorrectSelected(q, selected)) {
+                    stateCls += ' partial';
+                }
+            }
+
+            const rawStr = opt ? String(opt).trim() : '';
+            const displayKey = rawStr || `(${i + 1})`;
+
+            return `
+                <div class="mcq-option mcq-compact-block${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`} title="Option ${displayKey}">
+                    <div class="mcq-compact-key">${escapeHtml(displayKey)}</div>
+                    ${revealed && flag ? `<div class="mcq-compact-flag-badge" title="${flag}">${flag.includes('Correct') ? '✓' : '✕'}</div>` : ''}
+                </div>
+            `;
+        }).join('');
+
+        return `<div class="mcq-options mcq-options-compact-grid" id="${containerId}" style="grid-template-columns: repeat(${options.length}, minmax(0, 1fr));">${rows}</div>`;
+    }
 
     const rows = options.map((opt, i) => {
         const isChosen = selected.includes(i);
@@ -803,7 +875,6 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
         }
 
         const key = OPTION_LETTERS[i] || (i + 1);
-        const optImages = getActiveOptionImages(q);
         const optImg = optImages && optImages[i]
             ? `<img class="mcq-opt-image" src="${optImages[i]}" alt="Option ${key}" loading="lazy" data-original-url="${optImages[i]}" onerror="handleImageError(this)">`
             : '';
@@ -831,6 +902,8 @@ function renderMCQ(q, idx) {
     const isMulti = q.type === 'multi_mcq';
     const selected = saved ? (isMulti ? (saved.selected || []) : (saved.selected !== undefined ? [saved.selected] : [])) : [];
     const revealed = saved && saved.revealed;
+    const isFullQuiz = currentMode === 'fullquiz';
+    const solutionRequested = saved && (saved.solutionRequested || !isFullQuiz);
 
     let submitHTML = '';
     if (isMulti && !revealed) {
@@ -843,6 +916,22 @@ function renderMCQ(q, idx) {
         `;
     }
 
+    let showBtnText = '💡 Show Answer';
+    let showBtnAction = `revealAnswer(${idx})`;
+    let showBtnClass = '';
+
+    if (revealed) {
+        if (isFullQuiz && !solutionRequested) {
+            showBtnText = '💡 Show Solution';
+            showBtnAction = `revealSolutionOnly(${idx})`;
+            showBtnClass = 'ready-solution';
+        } else {
+            showBtnText = '✅ Answer Revealed';
+            showBtnAction = '';
+            showBtnClass = 'revealed';
+        }
+    }
+
     return `
         ${buildOptionList(q, idx, {
             selected, revealed, isMulti,
@@ -850,12 +939,13 @@ function renderMCQ(q, idx) {
             containerId: `mcqOptions-${idx}`
         })}
         ${submitHTML}
-        <button class="show-answer-btn ${revealed ? 'revealed' : ''}" 
-                onclick="revealAnswer(${idx})" 
-                id="mcqBtn-${idx}">
-            ${revealed ? '✅ Answer Revealed' : '💡 Show Answer'}
+        <button class="show-answer-btn ${showBtnClass}"
+                ${showBtnAction ? `onclick="${showBtnAction}"` : ''}
+                id="mcqBtn-${idx}"
+                ${!showBtnAction ? 'style="cursor:default;"' : ''}>
+            ${showBtnText}
         </button>
-        ${renderExplanationBlock(q, revealed)}
+        ${renderExplanationBlock(q, revealed && solutionRequested)}
     `;
 }
 

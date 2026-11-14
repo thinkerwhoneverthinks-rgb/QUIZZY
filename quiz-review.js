@@ -49,15 +49,48 @@ function showResults() {
     document.getElementById('resultsPercentage').textContent = `${percentage}%`;
 
     let timeText = '';
+    const resTimeEl = document.getElementById('resultsTime');
     if (testStartTime && currentMode === 'test') {
         const elapsed = Math.floor((Date.now() - testStartTime) / 1000);
         const mins = Math.floor(elapsed / 60);
         const secs = elapsed % 60;
         timeText = `Time taken: ${mins}m ${secs}s`;
+        if (resTimeEl) {
+            resTimeEl.textContent = timeText;
+            resTimeEl.style.display = 'block';
+        }
     } else {
-        timeText = 'Practice Mode';
+        // Untimed practice mode: hide time taken
+        if (resTimeEl) {
+            resTimeEl.textContent = 'Practice Mode';
+            resTimeEl.style.display = 'none';
+        }
     }
-    document.getElementById('resultsTime').textContent = timeText;
+
+    // Save exercise attempt to history store (if not custom test)
+    if (currentMode !== 'test' && currentFileName && currentChapter) {
+        const exKey = (currentFileName || '') + '::' + currentChapter.id;
+        const attempt = {
+            id: 'ea_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            exerciseKey: exKey,
+            file: currentFileName,
+            chapterId: currentChapter.id,
+            chapterName: currentChapter.name,
+            mode: currentMode,
+            total: total,
+            correct: correct,
+            wrong: wrong,
+            skipped: skipped,
+            percentage: percentage,
+            userAnswers: JSON.parse(JSON.stringify(userAnswers || {})),
+            endedAt: Date.now()
+        };
+        if (typeof saveExerciseAttempt === 'function') saveExerciseAttempt(attempt);
+        if (typeof clearExerciseSession === 'function') clearExerciseSession(exKey);
+    }
+
+    // Render Redo and Reset buttons in results screen
+    renderResultsActions();
 
     document.getElementById('statCorrect').textContent = correct;
     document.getElementById('statWrong').textContent = wrong;
@@ -305,4 +338,43 @@ function renderReview() {
 function filterReview(filter) {
     reviewFilter = filter;
     renderReview();
+}
+
+function renderResultsActions() {
+    const actionsBox = document.querySelector('.results-actions');
+    if (!actionsBox) return;
+    const exKey = (currentFileName || '') + '::' + (currentChapter ? currentChapter.id : '');
+    actionsBox.innerHTML = `
+        <button class="btn btn-primary" onclick="reviewTest()">🔍 Review Answers</button>
+        <button class="btn btn-primary" onclick="redoExercise('${exKey}')">🔁 Redo (Fresh Attempt)</button>
+        <button class="btn btn-ghost" onclick="resetExercise('${exKey}')" style="color:var(--error);">🔄 Reset Progress</button>
+        <button class="btn btn-ghost" onclick="goToRoot()">← Choose Another Subject</button>
+    `;
+}
+
+function redoExercise(exKey) {
+    // Keep attempt history, start fresh session
+    userAnswers = {};
+    currentQIndex = 0;
+    if (typeof clearExerciseSession === 'function') clearExerciseSession(exKey);
+    if (typeof clearActiveExercise === 'function') clearActiveExercise();
+    if (currentMode === 'fullquiz') {
+        showFullQuiz();
+    } else {
+        showQuiz(0);
+    }
+}
+
+function resetExercise(exKey) {
+    if (!confirm('Are you sure you want to reset this exercise? All your previous attempts and saved answers for this exercise will be cleared.')) return;
+    if (typeof deleteExerciseAttemptsByKey === 'function') deleteExerciseAttemptsByKey(exKey);
+    if (typeof clearExerciseSession === 'function') clearExerciseSession(exKey);
+    if (typeof clearActiveExercise === 'function') clearActiveExercise();
+    userAnswers = {};
+    currentQIndex = 0;
+    if (currentMode === 'fullquiz') {
+        showFullQuiz();
+    } else {
+        showQuiz(0);
+    }
 }

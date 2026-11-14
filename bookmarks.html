@@ -210,6 +210,27 @@
             .bookmark-thin-actions { margin-left: auto; }
             .bookmark-action-btn { width: 40px; height: 40px; }
         }
+
+        .btn-rename-icon {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 2px 5px;
+            border-radius: 4px;
+            opacity: 0.7;
+            transition: all 0.2s;
+            line-height: 1;
+            margin-left: 0.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-rename-icon:hover {
+            opacity: 1;
+            background: rgba(255,255,255,0.12);
+            transform: scale(1.15);
+        }
     </style>
     <!-- MathJax 3.2.2 with Chemistry (mhchem), Physics (cancel), and NoErrors -->
     <script>
@@ -269,22 +290,22 @@
 
         <div class="menu-section">Study</div>
         <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
-        <a href="question-cafe.html"><span class="mi-ico">☕</span> Question Cafe</a>
-        <a href="test-cafe.html"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="question-cafe/"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe/"><span class="mi-ico">🧪</span> Test Cafe</a>
         <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
         <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
 
         <div class="menu-section">Saved</div>
-        <a href="bookmarks.html"><span class="mi-ico">🔖</span> Question Bookmarks</a>
-        <a href="test-bookmarks.html"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+        <a href="bookmarks/"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks/"><span class="mi-ico">🧷</span> Test Bookmarks</a>
 
         <div class="menu-section">Your Data</div>
         <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
 
         <div class="menu-section">More</div>
-        <a href="about.html"><span class="mi-ico">ℹ️</span> About Us</a>
-        <a href="contact.html"><span class="mi-ico">📧</span> Contact Us</a>
-        <a href="privacy.html"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="about/"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact/"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy/"><span class="mi-ico">🔒</span> Privacy Policy</a>
         <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
 
         <div class="menu-section">Appearance</div>
@@ -392,7 +413,7 @@
                         <div class="folder-header" onclick="toggleSection('${escapeId(section)}')">
                             <div class="folder-header-left">
                                 <span class="folder-icon">📁</span>
-                                <span class="folder-name">${escapeHtml(section)}</span>
+                                <span class="folder-name">${escapeHtml(section)}</span><button type="button" class="btn-rename-icon" onclick="event.stopPropagation(); renameSection('${secEsc}')" title="Rename folder">✏️</button>
                                 <span class="folder-count">${totalCount} items</span>
                             </div>
                             <span class="folder-arrow">▶</span>
@@ -409,7 +430,7 @@
                                     <div class="subfolder">
                                         <div class="subfolder-header" onclick="toggleSubfolder(this)">
                                             <span>📂</span>
-                                            <span>${escapeHtml(sub)} (${sortedItems.length})</span>
+                                            <span>${escapeHtml(sub)} (${sortedItems.length})</span><button type="button" class="btn-rename-icon" onclick="event.stopPropagation(); renameSubfolder('${secEsc}', '${subEsc}')" title="Rename subfolder">✏️</button>
                                         </div>
                                         <div class="subfolder-body" style="display:block;">
                                             ${sortedItems.map(item => renderThinCard(item, sub)).join('')}
@@ -423,6 +444,45 @@
             });
 
             container.innerHTML = html;
+        }
+
+        function renameSection(oldSection) {
+            const newName = prompt('Enter new folder name:', oldSection);
+            if (!newName || newName.trim() === '' || newName.trim() === oldSection) return;
+            const trimmed = newName.trim();
+            const bookmarks = getBookmarks();
+            if (bookmarks[trimmed] && trimmed !== oldSection) {
+                alert('A folder with that name already exists. Please choose a different name.');
+                return;
+            }
+            bookmarks[trimmed] = bookmarks[oldSection];
+            delete bookmarks[oldSection];
+            Object.keys(bookmarks[trimmed]).forEach(sub => {
+                (bookmarks[trimmed][sub] || []).forEach(item => {
+                    item.bookmarkSection = trimmed;
+                });
+            });
+            saveBookmarks(bookmarks);
+            renderBookmarkManager();
+        }
+
+        function renameSubfolder(section, oldSub) {
+            const newName = prompt('Enter new subfolder name:', oldSub);
+            if (!newName || newName.trim() === '' || newName.trim() === oldSub) return;
+            const trimmed = newName.trim();
+            const bookmarks = getBookmarks();
+            if (!bookmarks[section]) return;
+            if (bookmarks[section][trimmed] && trimmed !== oldSub) {
+                alert('A subfolder with that name already exists in this folder.');
+                return;
+            }
+            bookmarks[section][trimmed] = bookmarks[section][oldSub];
+            delete bookmarks[section][oldSub];
+            (bookmarks[section][trimmed] || []).forEach(item => {
+                item.bookmarkSubsection = trimmed;
+            });
+            saveBookmarks(bookmarks);
+            renderBookmarkManager();
         }
 
         function escapeId(str) {

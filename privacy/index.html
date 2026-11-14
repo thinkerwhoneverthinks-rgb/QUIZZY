@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
+        <style>
+        .page-hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .privacy-section {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .privacy-section:last-child { border-bottom: none; }
+        .privacy-section h2 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .privacy-section p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .privacy-section a { 
+            color: var(--accent); 
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .privacy-section a:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+        .privacy-summary {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            box-shadow: var(--shadow-sm);
+        }
+        .privacy-summary strong { 
+            color: var(--text-primary); 
+            font-weight: 700;
+        }
+    </style>
+    <!-- MathJax 3.2.2 with Chemistry (mhchem), Physics (cancel), and NoErrors -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {'[+]': ['noerrors', 'mhchem', 'cancel', 'enclose']}
+        },
+        loader: {
+            load: ['[tex]/noerrors', '[tex]/mhchem', '[tex]/cancel', '[tex]/enclose']
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        chtml: {
+            fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+        },
+        startup: {
+            typeset: false
+        }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js"></script>
+    <style>
+        mjx-container { color: inherit; outline: none; }
+        mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; margin: 0.5rem 0; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe/"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe/"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
+        <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks/"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks/"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
+
+        <div class="menu-section">More</div>
+        <a href="about/"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact/"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy/"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <main class="container">
+        <section class="page-hero">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: May 10, 2026</p>
+        </section>
+
+        <section class="section" style="border-bottom:none;">
+            <div class="privacy-summary">
+                <strong>Quick Summary:</strong> Quizzy does not collect personal data. No signups, no tracking cookies, no data sales. Your quiz scores stay in your browser only.
+            </div>
+        </section>
+
+        <section class="privacy-section">
+            <h2>What We Collect</h2>
+            <p>Nothing personal. We don't ask for your name, email, or phone. Quiz progress is saved via browser localStorage and never leaves your device.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>How We Use Data</h2>
+            <p>Any stored data is used only to track your quiz progress across sessions, show answered questions, and display score history.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>Data Storage</h2>
+            <p>All quiz data is stored locally in your browser. Clearing browser data will reset your progress. We have no access to your scores.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>Cookies</h2>
+            <p>No tracking cookies. We only store your theme preference (dark/light) and last visited subject.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>Third Parties</h2>
+            <p>Hosting via Kimi Page. Optional Telegram community. We don't share data with anyone.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>Children's Privacy</h2>
+            <p>Quizzy is intended for students of all ages. No personal information is collected from anyone, including children under 13.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>Changes</h2>
+            <p>We may update this policy. Changes will be posted here with an updated date. Continued use means acceptance.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>Contact</h2>
+            <p>Questions? Email <a href="mailto:contact@studycafe.edu">contact@studycafe.edu</a> or reach us on <a href="https://t.me/your_channel_link" target="_blank">Telegram</a>.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script>
+        // Theme + menu live in app-shell.js (loaded in <head>).
+    </script>
+</body>
+</html>

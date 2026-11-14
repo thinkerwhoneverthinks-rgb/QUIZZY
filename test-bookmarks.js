@@ -329,7 +329,7 @@ function renderTestBookmarkManager() {
                 <button type="button" class="tb-section-head" onclick="tbToggleManagerSection(${si})">
                     <span class="tb-section-left">
                         <span class="tb-section-icon">📁</span>
-                        <span class="tb-section-name">${tbEsc(section)}</span>
+                        <span class="tb-section-name">${tbEsc(section)}</span><button type="button" class="btn-rename-icon" onclick="event.stopPropagation(); renameTestSection('${tbAttr(section)}')" title="Rename folder">✏️</button>
                         <span class="tb-section-count">${total} item${total !== 1 ? 's' : ''}</span>
                     </span>
                     <span class="tb-arrow">▶</span>
@@ -338,7 +338,7 @@ function renderTestBookmarkManager() {
                     ${direct.length ? `<div class="tb-card-list">${tbSortItems(direct).map(i => card(i, TB_DIRECT)).join('')}</div>` : ''}
                     ${subs.map(sub => `
                         <div class="tb-subfolder">
-                            <div class="tb-subfolder-head">📂 ${tbEsc(sub)} <span>(${store[section][sub].length})</span></div>
+                            <div class="tb-subfolder-head"><span>📂 ${tbEsc(sub)} (${store[section][sub].length})</span><button type="button" class="btn-rename-icon" onclick="event.stopPropagation(); renameTestSubfolder('${tbAttr(section)}', '${tbAttr(sub)}')" title="Rename subfolder">✏️</button></div>
                             <div class="tb-card-list">${tbSortItems(store[section][sub]).map(i => card(i, sub)).join('')}</div>
                         </div>
                     `).join('')}
@@ -443,5 +443,36 @@ function importTestBookmarks() {
 function clearAllTestBookmarks() {
     if (!confirm('Delete ALL test bookmarks? This cannot be undone.')) return;
     localStorage.removeItem(TEST_BOOKMARK_STORE);
+    renderTestBookmarkManager();
+}
+
+function renameTestSection(oldSection) {
+    const newName = prompt('Enter new folder name:', oldSection);
+    if (!newName || newName.trim() === '' || newName.trim() === oldSection) return;
+    const trimmed = newName.trim();
+    const store = getTestBookmarks();
+    if (store[trimmed] && trimmed !== oldSection) {
+        alert('A folder with that name already exists. Please choose a different name.');
+        return;
+    }
+    store[trimmed] = store[oldSection];
+    delete store[oldSection];
+    saveTestBookmarks(store);
+    renderTestBookmarkManager();
+}
+
+function renameTestSubfolder(section, oldSub) {
+    const newName = prompt('Enter new subfolder name:', oldSub);
+    if (!newName || newName.trim() === '' || newName.trim() === oldSub) return;
+    const trimmed = newName.trim();
+    const store = getTestBookmarks();
+    if (!store[section]) return;
+    if (store[section][trimmed] && trimmed !== oldSub) {
+        alert('A subfolder with that name already exists in this folder.');
+        return;
+    }
+    store[section][trimmed] = store[section][oldSub];
+    delete store[section][oldSub];
+    saveTestBookmarks(store);
     renderTestBookmarkManager();
 }

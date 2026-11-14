@@ -1,3 +1,89 @@
+
+// ==================== EXERCISE ATTEMPTS & SESSION PROGRESS ====================
+const EXERCISE_ATTEMPTS_KEY = 'quizzy-exercise-attempts';
+const EXERCISE_SESSIONS_KEY = 'quizzy-exercise-sessions';
+const MAX_EXERCISE_ATTEMPTS = 500;
+
+function getExerciseAttempts() {
+    try {
+        const raw = JSON.parse(localStorage.getItem(EXERCISE_ATTEMPTS_KEY) || '[]');
+        return Array.isArray(raw) ? raw : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveExerciseAttempts(list) {
+    const trimmed = (list || [])
+        .slice()
+        .sort((a, b) => (b.endedAt || 0) - (a.endedAt || 0))
+        .slice(0, MAX_EXERCISE_ATTEMPTS);
+    try {
+        localStorage.setItem(EXERCISE_ATTEMPTS_KEY, JSON.stringify(trimmed));
+    } catch (e) {
+        console.warn('Could not save exercise attempt:', e);
+    }
+    return trimmed;
+}
+
+function getExerciseAttemptsByKey(exerciseKey) {
+    return getExerciseAttempts().filter(a => a.exerciseKey === exerciseKey);
+}
+
+function getLatestExerciseAttempt(exerciseKey) {
+    const list = getExerciseAttemptsByKey(exerciseKey);
+    return list.length > 0 ? list[0] : null;
+}
+
+function saveExerciseAttempt(attempt) {
+    if (!attempt || !attempt.exerciseKey) return;
+    const list = getExerciseAttempts();
+    list.unshift(attempt);
+    saveExerciseAttempts(list);
+}
+
+function deleteExerciseAttemptsByKey(exerciseKey) {
+    const list = getExerciseAttempts().filter(a => a.exerciseKey !== exerciseKey);
+    saveExerciseAttempts(list);
+}
+
+function getExerciseSessions() {
+    try {
+        const raw = JSON.parse(localStorage.getItem(EXERCISE_SESSIONS_KEY) || '{}');
+        return raw && typeof raw === 'object' ? raw : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+function saveExerciseSession(exerciseKey, data) {
+    if (!exerciseKey) return;
+    const sessions = getExerciseSessions();
+    sessions[exerciseKey] = Object.assign({}, data, { updatedAt: Date.now() });
+    try {
+        localStorage.setItem(EXERCISE_SESSIONS_KEY, JSON.stringify(sessions));
+    } catch (e) {
+        console.warn('Could not save exercise session:', e);
+    }
+}
+
+function getExerciseSession(exerciseKey) {
+    if (!exerciseKey) return null;
+    const sessions = getExerciseSessions();
+    return sessions[exerciseKey] || null;
+}
+
+function clearExerciseSession(exerciseKey) {
+    if (!exerciseKey) return;
+    const sessions = getExerciseSessions();
+    delete sessions[exerciseKey];
+    try {
+        localStorage.setItem(EXERCISE_SESSIONS_KEY, JSON.stringify(sessions));
+    } catch (e) {
+        console.warn('Could not clear exercise session:', e);
+    }
+}
+
 /* ============================================================
    Quizzy — Study History
    Remembers what the user was solving (file → chapter → topics →

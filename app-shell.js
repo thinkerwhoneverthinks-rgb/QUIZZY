@@ -216,6 +216,8 @@ var QUIZZY_DATA_KEYS = {
     ncertBookmarks: 'quizzy-ncert-bookmarks',
     testAttempts: 'quizzy-test-attempts',
     testInProgress: 'quizzy-test-inprogress',
+    exerciseAttempts: 'quizzy-exercise-attempts',
+    exerciseSessions: 'quizzy-exercise-sessions',
     history: 'quizzy-history',
     theme: QUIZZY_THEME_KEY
 };
@@ -241,6 +243,8 @@ function buildBackup() {
             ncertBookmarks: readJSON(QUIZZY_DATA_KEYS.ncertBookmarks, {}),
             testAttempts: readJSON(QUIZZY_DATA_KEYS.testAttempts, []),
             testInProgress: readJSON(QUIZZY_DATA_KEYS.testInProgress, null),
+            exerciseAttempts: readJSON(QUIZZY_DATA_KEYS.exerciseAttempts, []),
+            exerciseSessions: readJSON(QUIZZY_DATA_KEYS.exerciseSessions, {}),
             history: readJSON(QUIZZY_DATA_KEYS.history, []),
             theme: (function () {
                 try { return localStorage.getItem(QUIZZY_DATA_KEYS.theme); } catch (e) { return null; }
@@ -378,6 +382,31 @@ function applyBackup(backup, mode) {
     if (d.testInProgress && (mode === 'replace' || !localStorage.getItem(QUIZZY_DATA_KEYS.testInProgress))) {
         localStorage.setItem(QUIZZY_DATA_KEYS.testInProgress, JSON.stringify(d.testInProgress));
     }
+
+    // --- exercise attempts: de-duped by attempt id, newest first
+    var exAttempts = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.exerciseAttempts, []);
+    if (!Array.isArray(exAttempts)) exAttempts = [];
+    var seenExAttempts = {};
+    exAttempts.forEach(function (a) { if (a && a.id) seenExAttempts[a.id] = true; });
+    (Array.isArray(d.exerciseAttempts) ? d.exerciseAttempts : []).forEach(function (a) {
+        if (a && a.id && !seenExAttempts[a.id]) {
+            exAttempts.push(a);
+            seenExAttempts[a.id] = true;
+        }
+    });
+    exAttempts.sort(function (a, b) { return (b.endedAt || 0) - (a.endedAt || 0); });
+    localStorage.setItem(QUIZZY_DATA_KEYS.exerciseAttempts, JSON.stringify(exAttempts.slice(0, 500)));
+
+    // --- exercise sessions: in-progress sessions
+    var exSessions = mode === 'replace' ? {} : readJSON(QUIZZY_DATA_KEYS.exerciseSessions, {});
+    if (!exSessions || typeof exSessions !== 'object') exSessions = {};
+    var incExSessions = d.exerciseSessions || {};
+    Object.keys(incExSessions).forEach(function (k) {
+        if (!exSessions[k] || (incExSessions[k].updatedAt || 0) > (exSessions[k].updatedAt || 0)) {
+            exSessions[k] = incExSessions[k];
+        }
+    });
+    localStorage.setItem(QUIZZY_DATA_KEYS.exerciseSessions, JSON.stringify(exSessions));
 
     // --- history: newest wins per session id, most recent first
     var hist = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.history, []);
@@ -1566,7 +1595,7 @@ function selectSearchResult(rIdx) {
                 qId: (item.q ? item.q.id : null)
             }));
         } catch (e) { /* ignore */ }
-        window.location.href = 'question-cafe.html';
+        window.location.href = 'question-cafe/';
         return;
     }
 
@@ -1595,7 +1624,7 @@ function selectSearchResult(rIdx) {
     }
 
     // Fallback:
-    window.location.href = 'question-cafe.html';
+    window.location.href = 'question-cafe/';
 }
 
 function flashQuestionElement(index) {

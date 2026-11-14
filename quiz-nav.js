@@ -70,6 +70,8 @@ function showQuiz(startIndex) {
         currentQIndex = 0;
     }
     if (!userAnswers) userAnswers = {};
+    const fullContainer = document.getElementById('fullQuizContainer');
+    if (fullContainer) fullContainer.innerHTML = '';
     showScreen('screenQuiz');   // show first so render lands on a visible screen
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderQuestion();
@@ -82,6 +84,8 @@ function showFullQuiz() {
     if (!currentChapter) { showChapters(); return; }
     currentMode = 'fullquiz';
     if (!userAnswers) userAnswers = {};
+    const oneByOneContainer = document.getElementById('quizContainer');
+    if (oneByOneContainer) oneByOneContainer.innerHTML = '';
     showScreen('screenFullQuiz');   // show first so render lands on a visible screen
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderFullQuiz();
@@ -364,22 +368,31 @@ async function downloadAllTopicsForOffline(btnElement) {
 function getNextTopicInfo() {
     if (!topics || topics.length === 0) return null;
 
-    const lastQ = questions[questions.length - 1];
-    const currentTopicName = lastQ ? lastQ.topicName : null;
-    let currentTopicIndex = -1;
+    // In serial / original order, or when all topics are already selected in the session,
+    // the user is practicing the entire exercise from Q1 to Q_last.
+    // Reaching the end means the whole exercise is done — do NOT suggest an already-solved "next topic".
+    const isFullOrSerial = (typeof currentPracticeOrder !== 'undefined' && currentPracticeOrder === 'serial') ||
+        (Array.isArray(selectedTopics) && topics && selectedTopics.length >= topics.length) ||
+        (typeof practiceOrder !== 'undefined' && practiceOrder === 'serial');
 
-    if (currentTopicName) {
-        currentTopicIndex = topics.findIndex(t => t.topic === currentTopicName);
-    }
+    if (!isFullOrSerial) {
+        const lastQ = questions && questions.length > 0 ? questions[questions.length - 1] : null;
+        const currentTopicName = lastQ ? lastQ.topicName : null;
+        let currentTopicIndex = -1;
 
-    if (currentTopicIndex >= 0 && currentTopicIndex < topics.length - 1) {
-        const nextT = topics[currentTopicIndex + 1];
-        return {
-            type: 'topic',
-            index: currentTopicIndex + 1,
-            name: nextT.topic,
-            count: nextT.questions ? nextT.questions.length : 0
-        };
+        if (currentTopicName) {
+            currentTopicIndex = topics.findIndex(t => t.topic === currentTopicName);
+        }
+
+        if (currentTopicIndex >= 0 && currentTopicIndex < topics.length - 1) {
+            const nextT = topics[currentTopicIndex + 1];
+            return {
+                type: 'topic',
+                index: currentTopicIndex + 1,
+                name: nextT.topic,
+                count: nextT.questions ? nextT.questions.length : 0
+            };
+        }
     }
 
     // Check if next chapter exists
@@ -534,6 +547,24 @@ window.addEventListener('popstate', function (e) {
     }
 
     // 4. If e.state is null or popped past root:
+    const activeScr = document.querySelector('.screen.active');
+    const actId = activeScr ? activeScr.id : '';
+    if (actId === 'screenQuiz' || actId === 'screenFullQuiz' || actId === 'screenTestMode' || actId === 'screenResults' || actId === 'screenReview') {
+        if (typeof closeGrid === 'function') closeGrid();
+        if (typeof subjectData !== 'undefined' && subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
+            if (typeof showChapters === 'function') {
+                showChapters();
+                pushQuizHistory({ cafe: 'question', screen: 'screenChapters' }, true);
+                return;
+            }
+        }
+        if (typeof showSubjects === 'function') {
+            showSubjects();
+            pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: 0 }, true);
+            return;
+        }
+    }
+
     if (typeof currentDirectory !== 'undefined' && currentDirectory && currentDirectory.length > 0) {
         currentDirectory.pop();
         if (currentDirectory.length === 0) {

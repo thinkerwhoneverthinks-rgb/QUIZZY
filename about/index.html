@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
+    <style>
+        .page-hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .about-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 1rem;
+            border: 1px solid var(--border-hover);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.25rem;
+            background: var(--bg-card);
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .about-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-md);
+        }
+        .about-card h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+        .about-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .about-card p strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .about-quote {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .about-quote blockquote {
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+        .about-quote cite {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .value-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .value-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+        .value-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .value-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+        .value-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 2rem 0 1rem;
+        }
+        .cta-section p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+    </style>
+    <!-- MathJax 3.2.2 with Chemistry (mhchem), Physics (cancel), and NoErrors -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {'[+]': ['noerrors', 'mhchem', 'cancel', 'enclose']}
+        },
+        loader: {
+            load: ['[tex]/noerrors', '[tex]/mhchem', '[tex]/cancel', '[tex]/enclose']
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        chtml: {
+            fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+        },
+        startup: {
+            typeset: false
+        }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js"></script>
+    <style>
+        mjx-container { color: inherit; outline: none; }
+        mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; margin: 0.5rem 0; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe/"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe/"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
+        <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks/"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks/"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
+
+        <div class="menu-section">More</div>
+        <a href="about/"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact/"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy/"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <main class="container">
+        <section class="page-hero">
+            <div class="about-badge">Our Story</div>
+            <h1>About Quizzy</h1>
+            <p>By a Student, For Students.</p>
+        </section>
+
+        <section class="section" style="border-bottom:none;">
+            <div class="about-card">
+                <h2>Hey there! 👋</h2>
+                <p>I'm the face behind <strong>Quizzy</strong>. Like most of you, I spend my days buried in PDFs, test planners, and exam schedules. I realized that finding the right questions to practice shouldn't be harder than the exam itself.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>Why I Built This ☕</h2>
+                <p>I'm using my tech background to take the best material from complex PDFs and turn them into easy-to-use quizzes. No more scrolling through hundreds of pages or juggling multiple apps — everything you need is right here, clean and simple.</p>
+            </div>
+
+            <div class="about-quote">
+                <blockquote>"Quizzy is my way of making exam prep less stressful and a lot more focused."</blockquote>
+                <cite>— Founder, Quizzy</cite>
+            </div>
+
+            <div class="about-card">
+                <h2>What We Stand For 🎯</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">📚</div>
+                        <div class="value-title">Student-First</div>
+                        <div class="value-desc">Built by someone who actually takes the exams</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⚡</div>
+                        <div class="value-title">No Clutter</div>
+                        <div class="value-desc">Clean interface, zero distractions</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🔒</div>
+                        <div class="value-title">Privacy First</div>
+                        <div class="value-desc">No signups, no tracking, your data stays yours</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <p>Ready to start practicing?</p>
+                <a href="question-cafe/" class="btn btn-primary">☕ Enter Question Cafe →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script>
+        // Theme + menu live in app-shell.js (loaded in <head>).
+    </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
    explanation box IN PLACE so the browser never tears down / recreates the
    card's DOM tree.  This eliminates the visible blink that the old full
    `refreshQuestionCard(innerHTML)` approach caused. ---- */
-function _applyRevealInPlace(idx) {
+function _applyRevealInPlace(idx, opts = {}) {
     const q = questions[idx];
     const saved = userAnswers[idx] || {};
     const isMulti = q.type === 'multi_mcq';
@@ -12,9 +12,12 @@ function _applyRevealInPlace(idx) {
     const card = getQuestionCardElement(idx);
     if (!card) { refreshQuestionCard(idx); return; } // fallback
 
-    /* -- 1. Determine the options container id -- */
+    const isFullQuiz = currentMode === 'fullquiz';
+    const autoShowSolution = opts.autoShowSolution !== undefined ? opts.autoShowSolution : !isFullQuiz;
+
+    /* -- 1. Determine the options container id (scoped to active card) -- */
     const containerId = q.type === 'image_mcq' ? `imgMcqOptions-${idx}` : `mcqOptions-${idx}`;
-    const optContainer = document.getElementById(containerId);
+    const optContainer = card.querySelector('.mcq-options') || card.querySelector('#' + containerId) || document.getElementById(containerId);
 
     if (optContainer) {
         const optEls = optContainer.querySelectorAll('.mcq-option');
@@ -63,34 +66,82 @@ function _applyRevealInPlace(idx) {
             } else if (flagEl) {
                 flagEl.remove();
             }
+
+            // Compact badge handling
+            let badgeEl = el.querySelector('.mcq-compact-flag-badge');
+            if (flagText) {
+                if (!badgeEl && el.classList.contains('mcq-compact-block')) {
+                    badgeEl = document.createElement('div');
+                    badgeEl.className = 'mcq-compact-flag-badge';
+                    el.appendChild(badgeEl);
+                }
+                if (badgeEl) {
+                    badgeEl.textContent = flagText.includes('Correct') ? '✓' : '✕';
+                    badgeEl.title = flagText;
+                }
+            } else if (badgeEl) {
+                badgeEl.remove();
+            }
         });
     }
 
-    /* -- 2. Update show-answer button -- */
-    const btnIds = [`mcqBtn-${idx}`, `imgMcqBtn-${idx}`, `fibBtn-${idx}`, `intShowBtn-${idx}`];
-    btnIds.forEach(id => {
-        const btn = document.getElementById(id);
-        if (btn) {
+    /* -- 2. Update show-answer button (scoped to active card) -- */
+    const btn = card.querySelector('.show-answer-btn') || document.getElementById(`mcqBtn-${idx}`) || document.getElementById(`imgMcqBtn-${idx}`) || document.getElementById(`fibBtn-${idx}`) || document.getElementById(`intShowBtn-${idx}`);
+    if (btn) {
+        if (!autoShowSolution) {
+            btn.classList.remove('revealed');
+            btn.classList.add('ready-solution');
+            btn.textContent = '💡 Show Solution';
+            btn.setAttribute('onclick', `revealSolutionOnly(${idx})`);
+            btn.removeAttribute('disabled');
+            btn.style.cursor = 'pointer';
+        } else {
+            btn.classList.remove('ready-solution');
             btn.classList.add('revealed');
-            btn.textContent = '✅ Answer Revealed';
+            btn.textContent = '✅ Solution Revealed';
             btn.removeAttribute('onclick');
             btn.style.cursor = 'default';
         }
-    });
+    }
 
-    /* -- 3. Show explanation & answer boxes -- */
-    card.querySelectorAll('.explanation-box').forEach(el => el.classList.add('show'));
-    card.querySelectorAll('.fib-answer-box').forEach(el => el.classList.add('show'));
+    /* -- 3. Show explanation & answer boxes only if autoShowSolution is true -- */
+    if (autoShowSolution) {
+        card.querySelectorAll('.explanation-box').forEach(el => el.classList.add('show'));
+        card.querySelectorAll('.fib-answer-box').forEach(el => el.classList.add('show'));
+        if (saved) saved.solutionRequested = true;
+    }
 
-    /* -- 4. Remove multi-submit controls if present -- */
-    const countEl = document.getElementById(`multiCount-${idx}`);
-    const submitBtn = document.getElementById(`multiSubmit-${idx}`);
+    /* -- 4. Remove multi-submit controls if present (scoped to active card) -- */
+    const countEl = card.querySelector('.multi-selected-count') || document.getElementById(`multiCount-${idx}`);
+    const submitBtn = card.querySelector('.multi-submit-btn') || document.getElementById(`multiSubmit-${idx}`);
     if (countEl) countEl.remove();
     if (submitBtn) submitBtn.remove();
 
     /* -- 5. Re-render math if needed -- */
     typesetMath(card);
 
+    if (typeof recordStudySession === 'function') recordStudySession();
+    if (typeof saveActiveExercise === 'function') saveActiveExercise();
+}
+
+function revealSolutionOnly(idx) {
+    const card = getQuestionCardElement(idx);
+    if (card) {
+        card.querySelectorAll('.explanation-box').forEach(el => el.classList.add('show'));
+        card.querySelectorAll('.fib-answer-box').forEach(el => el.classList.add('show'));
+        const btn = card.querySelector('.show-answer-btn') || document.getElementById(`mcqBtn-${idx}`) || document.getElementById(`imgMcqBtn-${idx}`) || document.getElementById(`fibBtn-${idx}`) || document.getElementById(`intShowBtn-${idx}`);
+        if (btn) {
+            btn.classList.remove('ready-solution');
+            btn.classList.add('revealed');
+            btn.textContent = '✅ Solution Revealed';
+            btn.removeAttribute('onclick');
+            btn.style.cursor = 'default';
+        }
+        typesetMath(card);
+    }
+    if (userAnswers[idx]) {
+        userAnswers[idx].solutionRequested = true;
+    }
     if (typeof recordStudySession === 'function') recordStudySession();
     if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
@@ -164,13 +215,14 @@ function selectMCQ(idx, optionIdx) {
         userAnswers[idx].selected = selected;
         userAnswers[idx].type = 'mcq';
 
-        const options = document.querySelectorAll(`#mcqOptions-${idx} .mcq-option`);
+        const card = getQuestionCardElement(idx);
+        const options = card ? card.querySelectorAll('.mcq-option') : document.querySelectorAll(`#mcqOptions-${idx} .mcq-option`);
         options.forEach((opt, i) => {
             opt.classList.toggle('selected', selected.includes(i));
         });
 
-        const countEl = document.getElementById(`multiCount-${idx}`);
-        const submitBtn = document.getElementById(`multiSubmit-${idx}`);
+        const countEl = card ? card.querySelector('.multi-selected-count') : document.getElementById(`multiCount-${idx}`);
+        const submitBtn = card ? card.querySelector('.multi-submit-btn') : document.getElementById(`multiSubmit-${idx}`);
         if (countEl) {
             countEl.textContent = `${selected.length} option${selected.length !== 1 ? 's' : ''} selected`;
         }
@@ -181,9 +233,9 @@ function selectMCQ(idx, optionIdx) {
         // Single correct: one click answers AND reveals — surgical update, no blink.
         userAnswers[idx].selected = optionIdx;
         userAnswers[idx].type = 'mcq';
-        userAnswers[idx].correct = (optionIdx === q.correct);
+        userAnswers[idx].correct = isCorrectOption(q, optionIdx);
         userAnswers[idx].revealed = true;
-        _applyRevealInPlace(idx);
+        _applyRevealInPlace(idx, { autoShowSolution: currentMode !== 'fullquiz' });
     }
 }
 
@@ -193,7 +245,7 @@ function submitMultiMCQ(idx) {
 
     userAnswers[idx].revealed = true;
     userAnswers[idx].correct = allCorrectSelected(q, userAnswers[idx].selected || []);
-    _applyRevealInPlace(idx);
+    _applyRevealInPlace(idx, { autoShowSolution: currentMode !== 'fullquiz' });
 }
 
 function nextQuestion() {

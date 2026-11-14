@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app-shell.js"></script>
+        <style>
+        .page-hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.125rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: var(--radius-sm);
+            margin: 0 -0.5rem;
+        }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row:hover { 
+            background: var(--bg-hover);
+            padding-left: 1.25rem;
+        }
+        .contact-row:hover .contact-title { color: var(--accent); }
+        .contact-icon {
+            font-size: 1.4rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-shrink: 0;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+        .contact-content { flex: 1; }
+        .contact-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+            transition: color 0.2s ease;
+        }
+        .contact-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .contact-arrow {
+            color: var(--text-subtle);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        .contact-row:hover .contact-arrow {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+    </style>
+    <!-- MathJax 3.2.2 with Chemistry (mhchem), Physics (cancel), and NoErrors -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+            packages: {'[+]': ['noerrors', 'mhchem', 'cancel', 'enclose']}
+        },
+        loader: {
+            load: ['[tex]/noerrors', '[tex]/mhchem', '[tex]/cancel', '[tex]/enclose']
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        },
+        chtml: {
+            fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+        },
+        startup: {
+            typeset: false
+        }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/smiles-drawer@2.4.1/dist/smiles-drawer.min.js"></script>
+    <style>
+        mjx-container { color: inherit; outline: none; }
+        mjx-container[jax="CHTML"][display="true"] { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; margin: 0.5rem 0; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe/"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe/"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
+        <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="bookmarks/"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks/"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
+
+        <div class="menu-section">More</div>
+        <a href="about/"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact/"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy/"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <main class="container">
+        <section class="page-hero">
+            <h1>Contact Us</h1>
+            <p>Reach out through any channel below.</p>
+        </section>
+
+        <section class="section" style="border-bottom:none;">
+            <div class="contact-row" onclick="window.open('https://t.me/+gCPe2h82QrhjZGI9','_blank')">
+                <div class="contact-icon">📱</div>
+                <div class="contact-content">
+                    <div class="contact-title">Telegram Channel</div>
+                    <div class="contact-meta">Daily updates, study tips, and discussions</div>
+                </div>
+                <div class="contact-arrow">→</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script>
+        // Theme + menu live in app-shell.js (loaded in <head>).
+    </script>
+</body>
+</html>

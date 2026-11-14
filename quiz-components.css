@@ -1335,7 +1335,7 @@
         .explanation-text mjx-container {
             max-width: 100%;
         }
-    
+
         /* ===== TEST MODE CARD - ATTRACTIVE RECTANGLE ===== */
         .mode-card.test-mode-card {
             grid-column: 1 / -1;
@@ -2219,6 +2219,28 @@
     .qc-main {
         min-width: 0;
         max-width: 820px;
+        padding-bottom: 2.5rem !important;
+    }
+    .quiz-nav {
+        position: static !important;
+        width: 100% !important;
+        max-width: 820px !important;
+        margin: 1.25rem 0 3rem 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    .quiz-nav #btnPrev {
+        margin-right: auto !important;
+    }
+    .quiz-nav #btnNext {
+        margin-left: auto !important;
     }
     .quiz-sticky-head {
         max-width: 100%;
@@ -3305,4 +3327,215 @@
 .q-image,
 .q-explain-img {
     cursor: zoom-in;
+}
+
+
+
+
+/* ==================== COMPACT 4-BLOCK OPTIONS GRID ==================== */
+
+.mcq-options.mcq-options-compact-grid {
+
+    display: grid !important;
+
+    gap: 0.65rem !important;
+
+    margin-top: 0.85rem !important;
+
+    margin-bottom: 1.15rem !important;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box !important;
+
+}
+
+.mcq-options.mcq-options-compact-grid .mcq-compact-block {
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    padding: 0.75rem 0.5rem !important;
+
+    min-height: 52px !important;
+
+    min-width: 0 !important;
+
+    text-align: center !important;
+
+    background: var(--bg-secondary) !important;
+
+    border: 1.5px solid var(--border) !important;
+
+    border-radius: var(--radius-md) !important;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+
+    position: relative !important;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition: all var(--transition-fast);
+
+}
+
+.mcq-options.mcq-options-compact-grid .mcq-compact-block:not(.read-only):hover {
+
+    border-color: var(--accent) !important;
+
+    background: var(--bg-hover) !important;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12) !important;
+
+    transform: translateY(-1px);
+
+}
+
+.mcq-compact-key {
+
+    font-size: 1.15rem;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    color: var(--text-primary);
+
+}
+
+.mcq-compact-block.selected .mcq-compact-key {
+
+    color: var(--accent);
+
+}
+
+.mcq-compact-block.correct .mcq-compact-key {
+
+    color: var(--st-green);
+
+}
+
+.mcq-compact-block.wrong .mcq-compact-key {
+
+    color: var(--st-red);
+
+}
+
+.mcq-compact-flag-badge {
+
+    position: absolute;
+
+    top: 4px;
+
+    right: 6px;
+
+    font-size: 0.72rem;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+}
+
+.mcq-compact-block.correct .mcq-compact-flag-badge {
+
+    color: var(--st-green);
+
+}
+
+.mcq-compact-block.wrong .mcq-compact-flag-badge {
+
+    color: var(--st-red);
+
+}
+
+
+
+/* Scroll mode Show Solution button */
+
+.show-answer-btn.ready-solution {
+
+    background: var(--bg-card);
+
+    border-color: var(--accent);
+
+    color: var(--accent);
+
+    box-shadow: 0 0 10px var(--accent-glow);
+
+}
+
+.show-answer-btn.ready-solution:hover {
+
+    background: var(--accent);
+
+    color: #fff;
+
+}
+
+
+
+/* Mobile video solution compact logos & tighter spacing */
+
+@media (max-width: 600px) {
+
+    .btn-play-text, .btn-yt-text {
+
+        display: none !important;
+
+    }
+
+    .btn-play-video, .btn-yt-app, .vm-btn-app {
+
+        padding: 0.35rem 0.6rem !important;
+
+        gap: 0 !important;
+
+        min-width: 38px !important;
+
+        justify-content: center !important;
+
+    }
+
+    .btn-play-ico, .btn-yt-ico {
+
+        font-size: 0.85rem !important;
+
+        margin: 0 !important;
+
+    }
+
+    .quiz-sticky-head {
+
+        top: calc(var(--nav-h, 53px) - 1px);
+
+        margin-bottom: 0.65rem !important;
+
+        padding-top: 0.25rem !important;
+
+        padding-bottom: 0.25rem !important;
+
+    }
+
+    .question-card {
+
+        margin-bottom: 0.85rem !important;
+
+        padding: 1.1rem 0.95rem !important;
+
+    }
+
+    #screenQuiz .qc-main {
+
+        padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)) !important;
+
+    }
+
 }
