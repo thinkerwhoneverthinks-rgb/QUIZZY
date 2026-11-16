@@ -253,12 +253,39 @@ function buildBackup() {
     };
 }
 
+/* Normalizes any bookmark store shape into section -> subsection -> [entries].
+   Handles legacy flat arrays { "Section": [ ... ] }, single-object entries,
+   and standard { "Section": { "Sub": [ ... ] } } or { "Section": { "__direct__": [ ... ] } }. */
+function normalizeBookmarkStore(raw) {
+    var out = {};
+    if (!raw || typeof raw !== 'object') return out;
+    Object.keys(raw).forEach(function (sec) {
+        var val = raw[sec];
+        if (!val) return;
+        if (!out[sec]) out[sec] = {};
+        if (Array.isArray(val)) {
+            out[sec]['__direct__'] = val.filter(Boolean);
+        } else if (typeof val === 'object') {
+            Object.keys(val).forEach(function (sub) {
+                var subVal = val[sub];
+                if (Array.isArray(subVal)) {
+                    out[sec][sub] = subVal.filter(Boolean);
+                } else if (subVal && typeof subVal === 'object') {
+                    out[sec][sub] = [subVal];
+                }
+            });
+        }
+    });
+    return out;
+}
+
 /* Both bookmark stores share the section -> subsection -> [entries] shape. */
 function tallyBookmarkStore(store, tally) {
-    Object.keys(store || {}).forEach(function (section) {
-        Object.keys(store[section] || {}).forEach(function (sub) {
+    var norm = normalizeBookmarkStore(store);
+    Object.keys(norm).forEach(function (section) {
+        Object.keys(norm[section] || {}).forEach(function (sub) {
             tally.folders++;
-            if (Array.isArray(store[section][sub])) tally.marks += store[section][sub].length;
+            if (Array.isArray(norm[section][sub])) tally.marks += norm[section][sub].length;
         });
     });
     return tally;
@@ -310,20 +337,19 @@ function exportQuizzyData() {
 /* Writes one bookmark store back to localStorage, keeping local entries
    (unless mode is 'replace') and skipping incoming ones already held. */
 function mergeBookmarkStore(storageKey, incoming, mode) {
-    var target = mode === 'replace' ? {} : readJSON(storageKey, {});
-    if (!target || typeof target !== 'object') target = {};
-    incoming = incoming || {};
+    var target = mode === 'replace' ? {} : normalizeBookmarkStore(readJSON(storageKey, {}));
+    var normIncoming = normalizeBookmarkStore(incoming || {});
 
-    Object.keys(incoming).forEach(function (section) {
+    Object.keys(normIncoming).forEach(function (section) {
         if (!target[section]) target[section] = {};
-        Object.keys(incoming[section] || {}).forEach(function (sub) {
+        Object.keys(normIncoming[section] || {}).forEach(function (sub) {
             if (!Array.isArray(target[section][sub])) target[section][sub] = [];
             var seen = {};
             target[section][sub].forEach(function (b) {
                 var k = typeof b === 'string' ? b : (b && b.key);
                 if (k) seen[k] = true;
             });
-            (incoming[section][sub] || []).forEach(function (b) {
+            (normIncoming[section][sub] || []).forEach(function (b) {
                 var k = typeof b === 'string' ? b : (b && b.key);
                 if (!k || !seen[k]) {
                     target[section][sub].push(b);
@@ -438,6 +464,30 @@ function importQuizzyFile(file, mode) {
             setDataStatus('err', 'That file is not valid JSON.');
             return;
         }
+
+        // Support direct bookmark JSON files (exported from Bookmarks or Test Bookmarks)
+        if (backup && typeof backup === 'object' && backup.type !== QUIZZY_BACKUP_TYPE) {
+            var fileName = (file && file.name) ? file.name.toLowerCase() : '';
+            var isTestBm = fileName.indexOf('test-bookmark') !== -1;
+            var isQuestBm = fileName.indexOf('bookmark') !== -1 || fileName.indexOf('studycafe') !== -1;
+            var bmKey = isTestBm ? QUIZZY_DATA_KEYS.testBookmarks : QUIZZY_DATA_KEYS.bookmarks;
+            var normDirect = normalizeBookmarkStore(backup);
+            var directSecs = Object.keys(normDirect);
+            if (directSecs.length > 0 || isTestBm || isQuestBm) {
+                try {
+                    mergeBookmarkStore(bmKey, normDirect, mode);
+                    var tCount = tallyBookmarkStore(normDirect, { marks: 0, folders: 0 });
+                    setDataStatus('ok', (mode === 'replace' ? 'Restored ' : 'Merged in ') +
+                        tCount.marks + ' bookmark(s) from ' + (file.name || 'file') + '. Reloading…');
+                    setTimeout(function () { location.reload(); }, 1200);
+                    return;
+                } catch (bmErr) {
+                    setDataStatus('err', 'Could not import bookmarks: ' + bmErr.message);
+                    return;
+                }
+            }
+        }
+
         if (!backup || backup.type !== QUIZZY_BACKUP_TYPE) {
             setDataStatus('err', 'That is not a Quizzy backup file.');
             return;

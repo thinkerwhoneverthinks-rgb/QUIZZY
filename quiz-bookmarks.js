@@ -2,9 +2,36 @@
 // Reserved subsection key for bookmarks saved directly to a section (no subsection chosen).
 const DIRECT_BOOKMARK_KEY = '__direct__';
 
+function normalizeBookmarkStore(raw) {
+    if (typeof window !== 'undefined' && typeof window.normalizeBookmarkStore === 'function') {
+        return window.normalizeBookmarkStore(raw);
+    }
+    var out = {};
+    if (!raw || typeof raw !== 'object') return out;
+    Object.keys(raw).forEach(function (sec) {
+        var val = raw[sec];
+        if (!val) return;
+        if (!out[sec]) out[sec] = {};
+        if (Array.isArray(val)) {
+            out[sec]['__direct__'] = val.filter(Boolean);
+        } else if (typeof val === 'object') {
+            Object.keys(val).forEach(function (sub) {
+                var subVal = val[sub];
+                if (Array.isArray(subVal)) {
+                    out[sec][sub] = subVal.filter(Boolean);
+                } else if (subVal && typeof subVal === 'object') {
+                    out[sec][sub] = [subVal];
+                }
+            });
+        }
+    });
+    return out;
+}
+
 function getBookmarks() {
     try {
-        return JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
+        var parsed = JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
+        return normalizeBookmarkStore(parsed);
     } catch (e) {
         return {};
     }

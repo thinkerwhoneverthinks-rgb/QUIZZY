@@ -3517,3 +3517,186 @@
     }
 
 }
+
+
+/* ==================== 2x2 GRID OPTIONS & SPLIT QUESTION CARD ==================== */
+/* When a question card ends and options start below in a 2x2 grid */
+.question-card.has-split-options {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.question-stem-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.4rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 0.85rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.question-stem-card:hover {
+    border-color: var(--border-hover);
+}
+
+.question-options-wrapper {
+    width: 100%;
+}
+
+/* 2x2 Grid options container: 2 columns, 2 rows */
+.mcq-options.mcq-options-grid-2x2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.85rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Individual option card in 2x2 grid */
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.85rem 1rem !important;
+    box-shadow: var(--shadow-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    cursor: pointer !important;
+    transition: all var(--transition-fast);
+    min-height: 52px !important;
+    min-width: 0 !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2:not(.read-only):hover {
+    border-color: var(--accent) !important;
+    background: var(--bg-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Blank / placeholder key option in 2x2 grid (centered, clean, no dummy text) */
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.is-blank {
+    justify-content: center !important;
+    padding: 0.85rem 0.5rem !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.is-blank .mcq-letter {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+/* Option states: selected, correct, wrong */
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.selected {
+    border-color: var(--accent) !important;
+    background: var(--accent-subtle, rgba(59, 130, 246, 0.1)) !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.correct {
+    border-color: var(--success) !important;
+    background: var(--success-subtle, rgba(34, 197, 94, 0.1)) !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.wrong {
+    border-color: var(--error) !important;
+    background: var(--error-subtle, rgba(239, 68, 68, 0.1)) !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-letter {
+    width: 28px;
+    height: 28px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-opt-text {
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+/* Flag badges for 2x2 grid */
+.mcq-options.mcq-options-grid-2x2 .mcq-compact-flag-badge {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.correct .mcq-compact-flag-badge {
+    background: var(--success);
+    color: #fff;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.wrong .mcq-compact-flag-badge {
+    background: var(--error);
+    color: #fff;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 480px) {
+    .question-stem-card {
+        padding: 1.1rem 0.95rem;
+        margin-bottom: 0.65rem;
+    }
+    .mcq-options.mcq-options-grid-2x2 {
+        gap: 0.5rem !important;
+        margin-bottom: 0.65rem !important;
+    }
+    .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 {
+        padding: 0.7rem 0.6rem !important;
+        min-height: 48px !important;
+        gap: 0.5rem !important;
+    }
+    .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-letter {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 0.75rem !important;
+    }
+    .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-opt-text {
+        font-size: 0.85rem !important;
+    }
+    .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.is-blank .mcq-letter {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 0.88rem !important;
+    }
+}
+
+/* Responsive adjustments for desktop/PC */
+@media (min-width: 769px) {
+    .question-stem-card {
+        padding: 1.65rem 1.85rem;
+    }
+    .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 {
+        padding: 0.95rem 1.15rem !important;
+    }
+}

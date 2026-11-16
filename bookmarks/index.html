@@ -349,9 +349,36 @@
         // ==================== BOOKMARK MANAGER ====================
         const DIRECT_BOOKMARK_KEY = '__direct__';
 
+        function normalizeBookmarkStore(raw) {
+            if (typeof window !== 'undefined' && typeof window.normalizeBookmarkStore === 'function') {
+                return window.normalizeBookmarkStore(raw);
+            }
+            var out = {};
+            if (!raw || typeof raw !== 'object') return out;
+            Object.keys(raw).forEach(function (sec) {
+                var val = raw[sec];
+                if (!val) return;
+                if (!out[sec]) out[sec] = {};
+                if (Array.isArray(val)) {
+                    out[sec]['__direct__'] = val.filter(Boolean);
+                } else if (typeof val === 'object') {
+                    Object.keys(val).forEach(function (sub) {
+                        var subVal = val[sub];
+                        if (Array.isArray(subVal)) {
+                            out[sec][sub] = subVal.filter(Boolean);
+                        } else if (subVal && typeof subVal === 'object') {
+                            out[sec][sub] = [subVal];
+                        }
+                    });
+                }
+            });
+            return out;
+        }
+
         function getBookmarks() {
             try {
-                return JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
+                var parsed = JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
+                return normalizeBookmarkStore(parsed);
             } catch (e) {
                 return {};
             }
@@ -366,12 +393,43 @@
             const bookmarks = getBookmarks();
             const sections = Object.keys(bookmarks);
 
-            if (sections.length === 0) {
+            // Calculate total items across all sections
+            let totalAllItems = 0;
+            sections.forEach(sec => {
+                const sObj = bookmarks[sec] || {};
+                Object.keys(sObj).forEach(sub => {
+                    if (Array.isArray(sObj[sub])) totalAllItems += sObj[sub].length;
+                });
+            });
+
+            if (sections.length === 0 || totalAllItems === 0) {
+                let testNotice = '';
+                try {
+                    const testStore = normalizeBookmarkStore(JSON.parse(localStorage.getItem('quizzy-test-bookmarks') || '{}'));
+                    let testCount = 0;
+                    Object.keys(testStore).forEach(s => {
+                        Object.keys(testStore[s] || {}).forEach(sub => {
+                            if (Array.isArray(testStore[s][sub])) testCount += testStore[s][sub].length;
+                        });
+                    });
+                    if (testCount > 0) {
+                        testNotice = `
+                            <div style="margin-top:1.25rem;padding:1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-md);">
+                                <p style="font-size:0.9rem;margin-bottom:0.5rem;color:var(--text-primary);">
+                                    You have <strong>${testCount}</strong> test bookmark${testCount > 1 ? 's' : ''} saved from Test Cafe tests.
+                                </p>
+                                <a href="test-bookmarks.html" class="btn btn-primary" style="display:inline-block;font-size:0.85rem;">View Test Bookmarks →</a>
+                            </div>
+                        `;
+                    }
+                } catch (e) {}
+
                 container.innerHTML = `
                     <div class="empty-bookmarks">
                         <div class="empty-bookmarks-icon">📚</div>
-                        <h3>No Bookmarks Yet</h3>
+                        <h3>No Question Bookmarks Yet</h3>
                         <p>Go to Question Cafe and click the 🔖 icon on any question to save it here.</p>
+                        ${testNotice}
                     </div>
                 `;
                 return;
@@ -379,19 +437,24 @@
 
             let html = '';
             sections.forEach(section => {
-                const subsections = Object.keys(bookmarks[section]).filter(sub => sub !== DIRECT_BOOKMARK_KEY);
-                const directItems = bookmarks[section][DIRECT_BOOKMARK_KEY] || [];
+                const secObj = bookmarks[section] || {};
+                const directItems = Array.isArray(secObj[DIRECT_BOOKMARK_KEY]) ? secObj[DIRECT_BOOKMARK_KEY] : [];
+                const subsections = Object.keys(secObj).filter(sub => sub !== DIRECT_BOOKMARK_KEY);
                 let totalCount = directItems.length;
                 subsections.forEach(sub => {
-                    totalCount += bookmarks[section][sub].length;
+                    const list = Array.isArray(secObj[sub]) ? secObj[sub] : [];
+                    totalCount += list.length;
                 });
 
-                const sortItems = (rawItems) => [...rawItems].sort((a, b) => {
-                    const topicA = (a.topic || a.chapter || '').toLowerCase();
-                    const topicB = (b.topic || b.chapter || '').toLowerCase();
-                    if (topicA !== topicB) return topicA.localeCompare(topicB);
-                    return (a.index || 0) - (b.index || 0);
-                });
+                const sortItems = (rawItems) => {
+                    const arr = Array.isArray(rawItems) ? rawItems : [];
+                    return [...arr].sort((a, b) => {
+                        const topicA = (a.topic || a.chapter || '').toLowerCase();
+                        const topicB = (b.topic || b.chapter || '').toLowerCase();
+                        if (topicA !== topicB) return topicA.localeCompare(topicB);
+                        return (a.index || 0) - (b.index || 0);
+                    });
+                };
 
                 const renderThinCard = (item, sub) => {
                     const tagLabel = `--${item.topic || item.chapter || 'Question'} Q${(item.originalNumber || (item.index || 0) + 1)}`;
@@ -426,7 +489,8 @@
                                 </div>
                             ` : ''}
                             ${subsections.map(sub => {
-                                const sortedItems = sortItems(bookmarks[section][sub]);
+                                const list = Array.isArray(secObj[sub]) ? secObj[sub] : [];
+                                const sortedItems = sortItems(list);
                                 return `
                                     <div class="subfolder">
                                         <div class="subfolder-header" onclick="toggleSubfolder(this)">
@@ -590,32 +654,61 @@
         function importBookmarks() {
             const input = document.createElement('input');
             input.type = 'file';
-            input.accept = '.json';
+            input.accept = '.json,application/json';
             input.onchange = (e) => {
-                const file = e.target.files[0];
+                const file = e.target.files && e.target.files[0];
                 if (!file) return;
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     try {
-                        const imported = JSON.parse(event.target.result);
+                        const parsed = JSON.parse(event.target.result);
+                        // If user selected a full Quizzy backup file:
+                        const rawBm = (parsed && parsed.data && parsed.data.bookmarks) ? parsed.data.bookmarks : parsed;
+                        const incoming = normalizeBookmarkStore(rawBm);
+
+                        // If the backup also had test bookmarks, merge them into testBookmarks store too
+                        if (parsed && parsed.data && parsed.data.testBookmarks) {
+                            try {
+                                const currentTest = normalizeBookmarkStore(JSON.parse(localStorage.getItem('quizzy-test-bookmarks') || '{}'));
+                                const incomingTest = normalizeBookmarkStore(parsed.data.testBookmarks);
+                                Object.keys(incomingTest).forEach(sec => {
+                                    if (!currentTest[sec]) currentTest[sec] = {};
+                                    Object.keys(incomingTest[sec]).forEach(sub => {
+                                        if (!Array.isArray(currentTest[sec][sub])) currentTest[sec][sub] = [];
+                                        const seen = new Set(currentTest[sec][sub].map(b => b && b.key));
+                                        (incomingTest[sec][sub] || []).forEach(item => {
+                                            if (item && !seen.has(item.key)) {
+                                                currentTest[sec][sub].push(item);
+                                                seen.add(item.key);
+                                            }
+                                        });
+                                    });
+                                });
+                                localStorage.setItem('quizzy-test-bookmarks', JSON.stringify(currentTest));
+                            } catch (e) { /* ignore */ }
+                        }
+
                         const current = getBookmarks();
-                        // Merge imported into current
-                        Object.keys(imported).forEach(section => {
+                        let addedCount = 0;
+                        Object.keys(incoming).forEach(section => {
                             if (!current[section]) current[section] = {};
-                            Object.keys(imported[section]).forEach(sub => {
-                                if (!current[section][sub]) current[section][sub] = [];
-                                imported[section][sub].forEach(item => {
-                                    if (!current[section][sub].find(b => b.key === item.key)) {
+                            Object.keys(incoming[section]).forEach(sub => {
+                                if (!Array.isArray(current[section][sub])) current[section][sub] = [];
+                                const seen = new Set(current[section][sub].map(b => b && b.key));
+                                (incoming[section][sub] || []).forEach(item => {
+                                    if (item && !seen.has(item.key)) {
                                         current[section][sub].push(item);
+                                        seen.add(item.key);
+                                        addedCount++;
                                     }
                                 });
                             });
                         });
                         saveBookmarks(current);
                         renderBookmarkManager();
-                        alert('Bookmarks imported successfully!');
+                        alert(`Bookmarks merged successfully! Added ${addedCount} new bookmark(s).`);
                     } catch (err) {
-                        alert('Invalid file format');
+                        alert('Could not import bookmarks: ' + (err && err.message ? err.message : 'Invalid file format'));
                     }
                 };
                 reader.readAsText(file);

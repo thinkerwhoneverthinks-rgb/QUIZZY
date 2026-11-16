@@ -20,10 +20,36 @@ function tbEsc(text) {
     return div.innerHTML;
 }
 
+function normalizeBookmarkStore(raw) {
+    if (typeof window !== 'undefined' && typeof window.normalizeBookmarkStore === 'function') {
+        return window.normalizeBookmarkStore(raw);
+    }
+    var out = {};
+    if (!raw || typeof raw !== 'object') return out;
+    Object.keys(raw).forEach(function (sec) {
+        var val = raw[sec];
+        if (!val) return;
+        if (!out[sec]) out[sec] = {};
+        if (Array.isArray(val)) {
+            out[sec]['__direct__'] = val.filter(Boolean);
+        } else if (typeof val === 'object') {
+            Object.keys(val).forEach(function (sub) {
+                var subVal = val[sub];
+                if (Array.isArray(subVal)) {
+                    out[sec][sub] = subVal.filter(Boolean);
+                } else if (subVal && typeof subVal === 'object') {
+                    out[sec][sub] = [subVal];
+                }
+            });
+        }
+    });
+    return out;
+}
+
 function getTestBookmarks() {
     try {
         const parsed = JSON.parse(localStorage.getItem(TEST_BOOKMARK_STORE) || '{}');
-        return parsed && typeof parsed === 'object' ? parsed : {};
+        return normalizeBookmarkStore(parsed);
     } catch (e) {
         return {};
     }
@@ -290,13 +316,43 @@ function renderTestBookmarkManager() {
     const store = getTestBookmarks();
     const sections = Object.keys(store);
 
-    if (sections.length === 0) {
+    let totalItems = 0;
+    sections.forEach(sec => {
+        const sObj = store[sec] || {};
+        Object.keys(sObj).forEach(sub => {
+            if (Array.isArray(sObj[sub])) totalItems += sObj[sub].length;
+        });
+    });
+
+    if (sections.length === 0 || totalItems === 0) {
+        let questNotice = '';
+        try {
+            const qStore = normalizeBookmarkStore(JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}'));
+            let qCount = 0;
+            Object.keys(qStore).forEach(s => {
+                Object.keys(qStore[s] || {}).forEach(sub => {
+                    if (Array.isArray(qStore[s][sub])) qCount += qStore[s][sub].length;
+                });
+            });
+            if (qCount > 0) {
+                questNotice = `
+                    <div style="margin-top:1.25rem;padding:1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-md);">
+                        <p style="font-size:0.9rem;margin-bottom:0.5rem;color:var(--text-primary);">
+                            You have <strong>${qCount}</strong> bookmark${qCount > 1 ? 's' : ''} saved in Question Cafe.
+                        </p>
+                        <a href="bookmarks.html" class="btn btn-primary" style="display:inline-block;font-size:0.85rem;">View Question Bookmarks →</a>
+                    </div>
+                `;
+            }
+        } catch (e) {}
+
         container.innerHTML = `
             <div class="tb-empty">
                 <div class="tb-empty-icon">🧪</div>
                 <h3>No test bookmarks yet</h3>
                 <p>Open a test's <strong>Detailed Analysis</strong> and tap 🔖 on any question to save it here.</p>
                 <a class="btn btn-primary" href="test-cafe.html" style="margin-top:1.25rem;">🧪 Go to Test Cafe</a>
+                ${questNotice}
             </div>
         `;
         return;
@@ -417,23 +473,27 @@ function importTestBookmarks() {
                 alert('That does not look like a test bookmarks file.');
                 return;
             }
+            const rawBm = (incoming && incoming.data && incoming.data.testBookmarks) ? incoming.data.testBookmarks : incoming;
+            const normIncoming = normalizeBookmarkStore(rawBm);
             const target = getTestBookmarks();
-            Object.keys(incoming).forEach(section => {
+            let addedCount = 0;
+            Object.keys(normIncoming).forEach(section => {
                 if (!target[section]) target[section] = {};
-                Object.keys(incoming[section] || {}).forEach(sub => {
+                Object.keys(normIncoming[section] || {}).forEach(sub => {
                     if (!Array.isArray(target[section][sub])) target[section][sub] = [];
                     const seen = new Set(target[section][sub].map(b => b && b.key));
-                    (incoming[section][sub] || []).forEach(item => {
+                    (normIncoming[section][sub] || []).forEach(item => {
                         if (item && !seen.has(item.key)) {
                             target[section][sub].push(item);
                             seen.add(item.key);
+                            addedCount++;
                         }
                     });
                 });
             });
             saveTestBookmarks(target);
             renderTestBookmarkManager();
-            alert('Test bookmarks imported.');
+            alert(`Test bookmarks merged successfully! Added ${addedCount} new bookmark(s).`);
         };
         reader.readAsText(file);
     };

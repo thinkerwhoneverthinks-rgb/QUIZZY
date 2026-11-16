@@ -232,7 +232,9 @@ function buildQuestionCardInner(q, idx, total) {
     const qImages = getActiveQuestionImages(q);
     const hasHi = Boolean(q.translations && q.translations.hi);
 
-    return `
+    const isSplit = shouldUseTwoByTwoGrid(q);
+
+    const stemContent = `
         <div class="question-card-header">
             <div class="question-meta-group">
                 <span class="question-number">${questionLabel}</span>
@@ -270,6 +272,21 @@ function buildQuestionCardInner(q, idx, total) {
             </div>
         ` : '')}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
+    `;
+
+    if (isSplit) {
+        return `
+            <div class="question-stem-card">
+                ${stemContent}
+            </div>
+            <div class="question-options-wrapper">
+                ${buildQuestionBody(q, idx)}
+            </div>
+        `;
+    }
+
+    return `
+        ${stemContent}
         ${buildQuestionBody(q, idx)}
     `;
 }
@@ -505,6 +522,8 @@ function refreshQuestionCard(idx) {
         ? getQuestionCardElement(idx)
         : document.getElementById(`fullQ-${idx}`);
     if (!card) return;
+    const isSplit = shouldUseTwoByTwoGrid(questions[idx]);
+    card.classList.toggle('has-split-options', isSplit);
     card.innerHTML = buildQuestionCardInner(questions[idx], idx, questions.length);
     typesetMath(card);
     loadOfflineImagesInContainer(card);
@@ -551,8 +570,9 @@ function renderQuestion() {
         document.getElementById('btnNext').textContent = 'Next →';
     }
 
+    const isSplit = shouldUseTwoByTwoGrid(q);
     container.innerHTML = `
-        <div class="question-card">
+        <div class="question-card${isSplit ? ' has-split-options' : ''}">
             ${buildQuestionCardInner(q, currentQIndex, total)}
         </div>
         ${isLast ? buildContinuePanel(nextInfo) : ''}
@@ -784,36 +804,52 @@ function renderInteger(q, idx) {
 // ==================== MCQ RENDERING ====================
 const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-function isCompactOptionList(options, optImages) {
-    if (!options || options.length === 0 || options.length > 6) return false;
-    const hasImages = optImages && optImages.some(img => Boolean(img));
-    if (hasImages) return false;
-    const keyPattern = /^\s*(\([1-6a-fA-D]\)|[1-6a-fA-D]|\([ivx]+\)|[ivx]+|Option\s*[1-6a-fA-D]?)\s*$/i;
+const OPTION_KEY_PATTERN = /^\s*(\([1-6a-fA-D]\)|[1-6a-fA-D]|\([ivx]+\)|[ivx]+|Option\s*[1-6a-fA-D]?)\s*$/i;
+
+function isBlankOption(str) {
+    if (!str) return true;
+    return OPTION_KEY_PATTERN.test(String(str).trim());
+}
+
+/* Returns true if all 4 options are either blank/key or have <= 15 plain characters,
+   and options has no images. In that case, the 2x2 grid layout is used.
+   If ANY option > 15 characters, or has images, or not 4 options: returns false (zero change). */
+function shouldUseTwoByTwoGrid(q) {
+    if (!q) return false;
+    if (q.type === 'fill_blank' || q.type === 'numeric') return false;
+
+    let options = getActiveOptions(q);
+    if (options.length === 0 && q.type === 'image_mcq') options = ['', '', '', ''];
+    if (options.length !== 4) return false;
+
+    const optImages = getActiveOptionImages(q);
+    if (optImages && optImages.some(img => Boolean(img))) return false;
+
     return options.every(opt => {
         if (opt === null || opt === undefined) return true;
-        const s = String(opt).trim();
-        return s === '' || keyPattern.test(s);
+        let s = String(opt).trim();
+        if (s === '' || OPTION_KEY_PATTERN.test(s)) return true;
+        // Strip HTML tags and entities
+        const stripped = s.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').trim();
+        return stripped.length <= 15;
     });
+}
+window.shouldUseTwoByTwoGrid = shouldUseTwoByTwoGrid;
+
+function isCompactOptionList(options, optImages) {
+    return false; // Replaced by 2x2 grid layout
 }
 
 /* The single source of truth for what one option row looks like, shared by every
-   question type and by both practice and test mode. It mirrors Test Cafe's
-   `.opt` markup exactly (circular key, text, optional image, reveal flag), so an
-   image question with placeholder options reads as "A / B / C / D" in the
-   Question Cafe just like it does in the Test Cafe — no separate 4-box grid.
-
-   `revealed` is false in test mode, which is what keeps the grading colours and
-   flags off screen while the test is running. */
+   question type and by both practice and test mode. */
 function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = false, handler = 'selectMCQ', containerId, readOnly = false }) {
-    /* An image-only question still needs four clickable rows — same fallback the
-       Test Cafe engine applies. The blank labels render as "Option 1..4". */
     let options = getActiveOptions(q);
     if (options.length === 0 && q.type === 'image_mcq') options = ['', '', '', ''];
 
     const optImages = getActiveOptionImages(q);
-    const isCompact = isCompactOptionList(options, optImages);
+    const is2x2 = shouldUseTwoByTwoGrid(q);
 
-    if (isCompact) {
+    if (is2x2) {
         const rows = options.map((opt, i) => {
             const isChosen = selected.includes(i);
             let stateCls = '';
@@ -838,17 +874,25 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
             }
 
             const rawStr = opt ? String(opt).trim() : '';
-            const displayKey = rawStr || `(${i + 1})`;
+            const isBlank = isBlankOption(rawStr);
+            const letterKey = OPTION_LETTERS[i] || (i + 1);
+            const displayBadge = (isBlank && rawStr) ? rawStr : letterKey;
+            const label = isBlank ? '' : renderSmartOptionText(q, opt);
 
             return `
-                <div class="mcq-option mcq-compact-block${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`} title="Option ${displayKey}">
-                    <div class="mcq-compact-key">${escapeHtml(displayKey)}</div>
-                    ${revealed && flag ? `<div class="mcq-compact-flag-badge" title="${flag}">${flag.includes('Correct') ? '✓' : '✕'}</div>` : ''}
+                <div class="mcq-option mcq-option-2x2${isBlank ? ' is-blank' : ''}${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`} title="${isBlank ? displayBadge : ('Option ' + displayBadge)}">
+                    <div class="mcq-letter">${escapeHtml(displayBadge)}</div>
+                    ${label ? `
+                        <div class="mcq-text">
+                            <span class="mcq-opt-text">${label}</span>
+                            ${flag ? `<div class="mcq-flag">${flag}</div>` : ''}
+                        </div>
+                    ` : (revealed && flag ? `<div class="mcq-compact-flag-badge" title="${flag}">${flag.includes('Correct') ? '✓' : '✕'}</div>` : '')}
                 </div>
             `;
         }).join('');
 
-        return `<div class="mcq-options mcq-options-compact-grid" id="${containerId}" style="grid-template-columns: repeat(${options.length}, minmax(0, 1fr));">${rows}</div>`;
+        return `<div class="mcq-options mcq-options-grid-2x2" id="${containerId}">${rows}</div>`;
     }
 
     const rows = options.map((opt, i) => {
@@ -996,11 +1040,14 @@ function renderFullQuiz() {
     document.getElementById('fullQuizProgress').textContent = `${total} Questions`;
     document.getElementById('fullProgressFill').style.width = '100%';
 
-    container.innerHTML = questions.map((q, idx) => `
-        <div class="question-card" id="fullQ-${idx}">
-            ${buildQuestionCardInner(q, idx, total)}
-        </div>
-    `).join('');
+    container.innerHTML = questions.map((q, idx) => {
+        const isSplit = shouldUseTwoByTwoGrid(q);
+        return `
+            <div class="question-card${isSplit ? ' has-split-options' : ''}" id="fullQ-${idx}">
+                ${buildQuestionCardInner(q, idx, total)}
+            </div>
+        `;
+    }).join('');
 
     const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
     container.insertAdjacentHTML('beforeend', buildContinuePanel(nextInfo));
