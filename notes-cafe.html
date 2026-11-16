@@ -622,6 +622,12 @@
                         <span id="clozeRevealAllText"><span class="btn-full-text">Reveal All</span><span class="btn-short-text">Reveal</span></span>
                     </button>
 
+                    <!-- Offline Download Button -->
+                    <button class="cloze-tool-btn" id="clozeDownloadBtn" onclick="toggleNcertClozeReaderDownload()" title="Download chapter for offline reading">
+                        <span id="clozeDownloadIcon">⬇️</span>
+                        <span id="clozeDownloadText"><span class="btn-full-text">Save Offline</span><span class="btn-short-text">Offline</span></span>
+                    </button>
+
                     <!-- Prev & Next Chapter Navigation (Desktop) -->
                     <div class="cloze-nav-group cloze-desktop-nav">
                         <button class="pw-reader-btn" id="clozePrevChapBtn" onclick="navNcertClozeChapter(-1)" title="Previous Chapter">
@@ -661,20 +667,31 @@
                 </div>
             </div>
 
-            <!-- Floating Micro-Action Pill (triggered on long-press of a sentence) -->
+            <!-- Floating Micro-Action Pill (triggered on tap/long-press of a sentence in Book Mode) -->
             <div class="cloze-action-pill" id="clozeActionPill" style="display: none;">
                 <button class="cloze-pill-btn star-action" id="pillStarBtn" onclick="onPillStarClick()">
                     <span id="pillStarIcon">⭐</span> <span id="pillStarText">Bookmark Line</span>
                 </button>
+                <button class="cloze-pill-btn highlight-action" id="pillHighlightBtn" onclick="onPillHighlightClick()">
+                    <span>✏️</span> <span>Highlight Words</span>
+                </button>
                 <button class="cloze-pill-btn reveal-action" id="pillRevealBtn" onclick="onPillRevealClick()">
                     👁️ Reveal Line
                 </button>
+            </div>
+
+            <!-- Floating Book Layout Highlight Toolbar -->
+            <div class="cloze-book-hl-bar" id="clozeBookHlBar" style="display: none;">
+                <span class="cloze-book-hl-text">🖍️ Tap words to mark</span>
+                <button class="cloze-point-btn cloze-btn-clear" onclick="clearBookClozeHighlights()" title="Clear">↺</button>
+                <button class="cloze-point-btn cloze-btn-done" onclick="finishBookClozeHighlights()" title="Done">✓ Done</button>
             </div>
         </div>
 
 
     </main>
 
+    <script src="quiz-offline.js"></script>
     <script src="notes-cafe.js"></script>
 </body>
 </html>

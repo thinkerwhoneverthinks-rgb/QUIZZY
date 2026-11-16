@@ -1225,10 +1225,10 @@ function renderQuestion() {
                 const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
                 const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
                 if (qImgs.length > 1) {
-                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy" onclick="openImageZoom(this.src)"></div>`).join('')}</div>`;
+                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`).join('')}</div>`;
                 }
                 if (qImgs.length === 1) {
-                    return `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="lazy" onclick="openImageZoom(this.src)"></div>`;
+                    return `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(qImgs[0])}')"></div>`;
                 }
                 return '';
             })()}
@@ -1388,7 +1388,7 @@ function renderOptions(q, rec) {
         }
 
         const optImage = q.optionImages && q.optionImages[i]
-            ? `<img class="opt-image" src="${tcAttr(q.optionImages[i])}" alt="Option ${TC_LETTERS[i]}" loading="lazy">`
+            ? `<img class="opt-image" src="${tcAttr(q.optionImages[i])}" alt="Option ${TC_LETTERS[i]}" loading="lazy" onerror="handleTcOfflineImage(this, '${tcAttr(q.optionImages[i])}')">`
             : '';
         const label = text && String(text).trim() !== ''
             ? tcRenderText(text)
@@ -1471,7 +1471,7 @@ function renderSolutionBlock(q) {
             ${hasExp ? `<div class="q-explain-text" style="line-height:1.7;margin-bottom:0.75rem;">${tcRenderText(q.explanation)}</div>` : ''}
             ${expImages.length > 0 ? `
                 <div class="q-explain-images">
-                    ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy" onclick="openImageZoom(this.src)"></div>`).join('')}
+                    ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`).join('')}
                 </div>
             ` : ''}
             ${hasVideo && typeof renderVideoFacade === 'function' ? renderVideoFacade(q.video, 'tc-' + (q.id || Math.random()), q.question) : ''}
@@ -2073,3 +2073,16 @@ window.addEventListener('popstate', function (e) {
         return;
     }
 });
+
+// Offline Image Fallback for Test Cafe
+function handleTcOfflineImage(imgEl, originalUrl) {
+    if (!imgEl || !originalUrl) return;
+    if (typeof offlineStorage !== 'undefined') {
+        offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {
+            if (offlineUrl && offlineUrl !== originalUrl) {
+                imgEl.src = offlineUrl;
+            }
+        }).catch(() => {});
+    }
+}
+window.handleTcOfflineImage = handleTcOfflineImage;

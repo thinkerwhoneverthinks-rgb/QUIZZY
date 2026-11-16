@@ -1720,16 +1720,19 @@
 .offline-indicator {
     display: none;
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    top: calc(0.75rem + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
     background: #ef4444;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 0.85rem;
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
     z-index: 9999;
+    pointer-events: none;
+    white-space: nowrap;
 }
 .offline-indicator.show {
     display: flex;

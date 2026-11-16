@@ -214,6 +214,7 @@ var QUIZZY_DATA_KEYS = {
     bookmarks: 'studycafe-bookmarks',
     testBookmarks: 'quizzy-test-bookmarks',
     ncertBookmarks: 'quizzy-ncert-bookmarks',
+    ncertHighlights: 'quizzy-ncert-highlights',
     testAttempts: 'quizzy-test-attempts',
     testInProgress: 'quizzy-test-inprogress',
     exerciseAttempts: 'quizzy-exercise-attempts',
@@ -241,6 +242,7 @@ function buildBackup() {
             bookmarks: readJSON(QUIZZY_DATA_KEYS.bookmarks, {}),
             testBookmarks: readJSON(QUIZZY_DATA_KEYS.testBookmarks, {}),
             ncertBookmarks: readJSON(QUIZZY_DATA_KEYS.ncertBookmarks, {}),
+            ncertHighlights: readJSON(QUIZZY_DATA_KEYS.ncertHighlights, {}),
             testAttempts: readJSON(QUIZZY_DATA_KEYS.testAttempts, []),
             testInProgress: readJSON(QUIZZY_DATA_KEYS.testInProgress, null),
             exerciseAttempts: readJSON(QUIZZY_DATA_KEYS.exerciseAttempts, []),
@@ -388,6 +390,16 @@ function applyBackup(backup, mode) {
         });
     });
     localStorage.setItem(QUIZZY_DATA_KEYS.ncertBookmarks, JSON.stringify(ncertTarget));
+
+    // --- NCERT Cloze word highlights: chapterId -> { sentenceId: [widx...] }
+    var ncertHlTarget = mode === 'replace' ? {} : readJSON(QUIZZY_DATA_KEYS.ncertHighlights, {});
+    if (!ncertHlTarget || typeof ncertHlTarget !== 'object') ncertHlTarget = {};
+    var incomingNcertHl = d.ncertHighlights || {};
+    Object.keys(incomingNcertHl).forEach(function (cid) {
+        if (!ncertHlTarget[cid] || typeof ncertHlTarget[cid] !== 'object') ncertHlTarget[cid] = {};
+        Object.assign(ncertHlTarget[cid], incomingNcertHl[cid]);
+    });
+    localStorage.setItem(QUIZZY_DATA_KEYS.ncertHighlights, JSON.stringify(ncertHlTarget));
 
     // --- test attempts: de-duped by attempt id, newest first
     var attempts = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.testAttempts, []);

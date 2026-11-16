@@ -1832,6 +1832,10 @@ let currentClozeMode = 'book'; // 'book' | 'list'
 let isClozeSavedOnly = false;
 let clozeStarredSet = new Set();
 let clozeRevealedSet = new Set();
+let chapterHighlightsMap = {}; // sentenceId -> [widx1, widx2, ...]
+let activeEditingSentenceId = null;
+let activeEditingHighlights = new Set();
+let activeEditingMode = null; // 'list' | 'book'
 let activePillSentenceId = null;
 let clozeLongPressTimer = null;
 let clozeTouchStartX = 0;
@@ -1862,6 +1866,30 @@ function saveNcertClozeStarred(chapterId, set) {
         all[chapterId] = Array.from(set);
         localStorage.setItem('quizzy-ncert-bookmarks', JSON.stringify(all));
         localStorage.setItem('ncert_starred_' + chapterId, JSON.stringify(Array.from(set)));
+    } catch (e) { }
+}
+
+// Word Highlights Storage Helpers
+function getNcertClozeHighlights(chapterId) {
+    try {
+        const all = JSON.parse(localStorage.getItem('quizzy-ncert-highlights') || '{}');
+        const chap = all[chapterId];
+        if (chap && typeof chap === 'object') return chap;
+    } catch (e) { }
+    return {};
+}
+
+function saveNcertClozeHighlights(chapterId, map) {
+    try {
+        const all = JSON.parse(localStorage.getItem('quizzy-ncert-highlights') || '{}');
+        const clean = {};
+        Object.keys(map || {}).forEach(k => {
+            if (Array.isArray(map[k]) && map[k].length > 0) {
+                clean[k] = map[k];
+            }
+        });
+        all[chapterId] = clean;
+        localStorage.setItem('quizzy-ncert-highlights', JSON.stringify(all));
     } catch (e) { }
 }
 
@@ -1947,10 +1975,17 @@ function renderNcertClozeChapters() {
     }
 
     let allStars = {};
+    let allHighlights = {};
     try { allStars = JSON.parse(localStorage.getItem('quizzy-ncert-bookmarks') || '{}'); } catch (e) { }
+    try { allHighlights = JSON.parse(localStorage.getItem('quizzy-ncert-highlights') || '{}'); } catch (e) { }
 
     grid.innerHTML = filtered.map(ch => {
-        const stars = (allStars[ch.id] || []).length;
+        const starSet = new Set(allStars[ch.id] || []);
+        const chHls = allHighlights[ch.id] || {};
+        Object.keys(chHls).forEach(sid => {
+            if (Array.isArray(chHls[sid]) && chHls[sid].length > 0) starSet.add(sid);
+        });
+        const stars = starSet.size;
         const starBadge = stars > 0 ? `<span class="cloze-stat-starred">⭐ ${stars} saved</span>` : '';
         return `
             <div class="notes-chapter-card" onclick="openNcertClozeReader('${ch.id}')">
@@ -1966,13 +2001,29 @@ function renderNcertClozeChapters() {
                         ${starBadge}
                     </div>
                 </div>
-                <div class="notes-chapter-foot" style="margin-top: 1.25rem;">
-                    <span style="font-size: 0.85rem; color: var(--text-muted);">Active Recall</span>
+                <div class="notes-chapter-foot" style="margin-top: 1.25rem; display: flex; align-items: center; justify-content: space-between;">
+                    <button class="cloze-dl-btn" id="clozeCardDl_${ch.id}" onclick="event.stopPropagation(); toggleNcertClozeCardDownload('${ch.id}', this)" title="Save chapter for offline">
+                        ⬇️ Save
+                    </button>
                     <span style="color: #6366f1; font-weight: 800;">Start Drill →</span>
                 </div>
             </div>
         `;
     }).join('');
+
+    // Check offline status for each chapter
+    if (typeof offlineStorage !== 'undefined') {
+        filtered.forEach(ch => {
+            offlineStorage.getMetadata('ncert_cloze_' + ch.id).then(meta => {
+                const btn = document.getElementById('clozeCardDl_' + ch.id);
+                if (btn && meta && meta.status === 'complete') {
+                    btn.classList.add('downloaded');
+                    btn.innerHTML = '✅ Offline';
+                    btn.title = 'Available offline (click to remove)';
+                }
+            }).catch(() => {});
+        });
+    }
 }
 
 // Reader Screen
@@ -1980,6 +2031,13 @@ async function openNcertClozeReader(chapterId, pushHistory = true) {
     currentClozeChapterId = chapterId;
     currentView = 'cloze-reader';
     clozeStarredSet = getNcertClozeStarred(chapterId);
+    chapterHighlightsMap = getNcertClozeHighlights(chapterId);
+    activeEditingSentenceId = null;
+    activeEditingHighlights.clear();
+    activeEditingMode = null;
+    const bookBar = document.getElementById('clozeBookHlBar');
+    if (bookBar) bookBar.style.display = 'none';
+
     clozeRevealedSet.clear();
     isClozeSavedOnly = false;
     hideAllScreens();
@@ -2010,6 +2068,12 @@ async function openNcertClozeReader(chapterId, pushHistory = true) {
 
 function closeNcertClozeReader() {
     hideClozeActionPill();
+    activeEditingSentenceId = null;
+    activeEditingHighlights.clear();
+    activeEditingMode = null;
+    const bookBar = document.getElementById('clozeBookHlBar');
+    if (bookBar) bookBar.style.display = 'none';
+
     if (window.history.length > 1 && history.state && history.state.view === 'cloze-reader') {
         window.history.back();
     } else {
@@ -2018,14 +2082,21 @@ function closeNcertClozeReader() {
 }
 
 function updateClozeTopBarButtons() {
-    // Count starred sentences in current chapter
+    // Count starred sentences or sentences with word highlights in current chapter
     let starredCount = 0;
     if (currentClozeChapterData && Array.isArray(currentClozeChapterData.elements)) {
         currentClozeChapterData.elements.forEach(el => {
-            if (el.type === 'sentence' && clozeStarredSet.has(el.id)) starredCount++;
+            if (el.type === 'sentence') {
+                const hasHl = chapterHighlightsMap[el.id] && chapterHighlightsMap[el.id].length > 0;
+                if (clozeStarredSet.has(el.id) || hasHl) starredCount++;
+            }
         });
     } else {
-        starredCount = clozeStarredSet.size;
+        const union = new Set(clozeStarredSet);
+        Object.keys(chapterHighlightsMap || {}).forEach(k => {
+            if (Array.isArray(chapterHighlightsMap[k]) && chapterHighlightsMap[k].length > 0) union.add(k);
+        });
+        starredCount = union.size;
     }
 
     const savedCountEl = document.getElementById('clozeSavedCountText');
@@ -2052,6 +2123,21 @@ function updateClozeTopBarButtons() {
         if (revealText) revealText.innerHTML = `<span class="btn-full-text">Reveal All</span><span class="btn-short-text">Reveal</span>`;
         if (revealIcon) revealIcon.textContent = '👁️';
         if (revealBtn) revealBtn.classList.remove('reveal-active');
+    }
+
+    const dlBtn = document.getElementById('clozeDownloadBtn');
+    const dlText = document.getElementById('clozeDownloadText');
+    const dlIcon = document.getElementById('clozeDownloadIcon');
+    if (dlBtn && typeof offlineStorage !== 'undefined' && currentClozeChapterId) {
+        offlineStorage.getMetadata('ncert_cloze_' + currentClozeChapterId).then(m => {
+            const isDl = (m && m.status === 'complete');
+            dlBtn.classList.toggle('dl-active', isDl);
+            if (dlText) dlText.innerHTML = isDl
+                ? `<span class="btn-full-text">Saved Offline</span><span class="btn-short-text">Offline</span>`
+                : `<span class="btn-full-text">Save Offline</span><span class="btn-short-text">Offline</span>`;
+            if (dlIcon) dlIcon.textContent = isDl ? '✅' : '⬇️';
+            dlBtn.title = isDl ? 'Available offline (click to remove)' : 'Download chapter for offline';
+        }).catch(() => {});
     }
 
     if (ncertClozeManifest && currentClozeChapterId) {
@@ -2081,6 +2167,18 @@ async function loadAndRenderNcertClozeData(chapterId, meta) {
     if (hero) hero.style.display = 'none';
     if (canvas) canvas.style.display = 'none';
     if (footer) footer.style.display = 'none';
+
+    // 0. Check offline storage
+    if (typeof offlineStorage !== 'undefined') {
+        try {
+            const offlineData = await offlineStorage.getQuizData('ncert_cloze_' + chapterId);
+            if (offlineData) {
+                currentClozeChapterData = offlineData;
+                finalizeClozeRender(currentClozeChapterData, meta);
+                return;
+            }
+        } catch (e) { }
+    }
 
     // 1. Check window cache
     if (window.NCERT_CLOZE_DATA && window.NCERT_CLOZE_DATA[chapterId]) {
@@ -2174,7 +2272,7 @@ function renderNcertClozeActiveView() {
     hideClozeActionPill();
     updateClozeTopBarButtons();
 
-    // 1. FILTERED VIEW: Show only bookmarked hard lines
+    // 1. FILTERED VIEW: Show only bookmarked hard lines & word highlights
     if (isClozeSavedOnly) {
         const savedSentences = [];
         let currentSectionTitle = 'General NCERT Points';
@@ -2182,11 +2280,14 @@ function renderNcertClozeActiveView() {
         currentClozeChapterData.elements.forEach(el => {
             if (el.type === 'h2' || el.type === 'h3' || el.type === 'h4') {
                 currentSectionTitle = el.content || 'NCERT Section';
-            } else if (el.type === 'sentence' && clozeStarredSet.has(el.id)) {
-                savedSentences.push({
-                    sentence: el,
-                    section: currentSectionTitle
-                });
+            } else if (el.type === 'sentence') {
+                const hasHl = chapterHighlightsMap[el.id] && chapterHighlightsMap[el.id].length > 0;
+                if (clozeStarredSet.has(el.id) || hasHl) {
+                    savedSentences.push({
+                        sentence: el,
+                        section: currentSectionTitle
+                    });
+                }
             }
         });
 
@@ -2203,7 +2304,7 @@ function renderNcertClozeActiveView() {
             <div class="cloze-saved-feed">
                 <div style="background: rgba(245, 158, 11, 0.1); border: 1.5px solid rgba(245, 158, 11, 0.3); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem;">
                     <div style="font-weight: 800; color: #f59e0b; margin-bottom: 0.25rem;">⭐ Your Saved Hard Lines (${savedSentences.length})</div>
-                    <div style="font-size: 0.88rem; color: var(--text-muted);">Showing only the sentences you bookmarked in this chapter for quick revision. Blanks remain active.</div>
+                    <div style="font-size: 0.88rem; color: var(--text-muted);">Showing your bookmarked lines and word highlights in this chapter. Whole sentences appear for full context, with your chosen keywords highlighted.</div>
                 </div>
         `;
 
@@ -2213,17 +2314,31 @@ function renderNcertClozeActiveView() {
                 lastSec = item.section;
                 html += `<div class="cloze-saved-section-title">📌 ${escapeNotesHtml(lastSec)}</div>`;
             }
+            const isSt = clozeStarredSet.has(item.sentence.id);
+            const hasHl = chapterHighlightsMap[item.sentence.id] && chapterHighlightsMap[item.sentence.id].length > 0;
+
             html += `
-                <div class="cloze-point-card starred" data-sid="${item.sentence.id}">
-                    <span class="cloze-point-index">#${idx + 1}</span>
-                    <div class="cloze-point-text">
-                        <span class="cloze-sentence starred" data-sid="${item.sentence.id}">
-                            ${renderClozeSentenceTokens(item.sentence)}
-                        </span>
+                <div class="cloze-point-card ${isSt ? 'starred' : ''} ${hasHl ? 'has-highlights' : ''}" data-sid="${item.sentence.id}" id="clozeCard_${item.sentence.id}">
+                    <div class="cloze-point-header">
+                        <div class="cloze-point-header-left">
+                            <span class="cloze-point-index">#${idx + 1}</span>
+                            ${hasHl ? `<span class="cloze-hl-tag">🖍️ Highlights</span>` : `<span class="cloze-star-tag">⭐ Full Line</span>`}
+                            <span class="cloze-point-edit-hint" id="clozeEditHint_${item.sentence.id}" style="display: none;">🖍️ Tap words to mark</span>
+                        </div>
+                        <div class="cloze-point-actions">
+                            <button class="cloze-point-btn cloze-highlight-btn ${hasHl ? 'active' : ''}" id="clozeHlBtn_${item.sentence.id}" onclick="startEditingClozeHighlights('${item.sentence.id}')" title="Edit word highlights">✏️</button>
+                            <button class="cloze-point-btn" onclick="revealSentenceBlanks('${item.sentence.id}')" title="Reveal blanks">👁️</button>
+                            <button class="cloze-point-btn ${isSt ? 'starred' : ''}" id="clozeStarBtn_${item.sentence.id}" onclick="toggleNcertSentenceStar('${item.sentence.id}')" title="Remove bookmark">${isSt ? '★' : '☆'}</button>
+                            <button class="cloze-point-btn cloze-btn-clear" id="clozeHlClear_${item.sentence.id}" style="display: none;" onclick="clearClozeHighlights('${item.sentence.id}')" title="Clear highlights">↺</button>
+                            <button class="cloze-point-btn cloze-btn-done" id="clozeHlDone_${item.sentence.id}" style="display: none;" onclick="finishEditingClozeHighlights('${item.sentence.id}')" title="Done">✓ Done</button>
+                        </div>
                     </div>
-                    <div class="cloze-point-actions">
-                        <button class="cloze-point-btn" onclick="revealSentenceBlanks('${item.sentence.id}')" title="Reveal this line">👁️</button>
-                        <button class="cloze-point-btn starred" onclick="toggleNcertSentenceStar('${item.sentence.id}')" title="Remove bookmark">★</button>
+                    <div class="cloze-point-body">
+                        <div class="cloze-point-text">
+                            <span class="cloze-sentence ${isSt && !hasHl ? 'starred' : ''} ${hasHl ? 'has-highlights' : ''}" data-sid="${item.sentence.id}" id="clozeSentence_${item.sentence.id}">
+                                ${renderClozeSentenceTokens(item.sentence)}
+                            </span>
+                        </div>
                     </div>
                 </div>
             `;
@@ -2249,7 +2364,8 @@ function renderNcertClozeActiveView() {
                     openParagraph = true;
                 }
                 const isStarred = clozeStarredSet.has(el.id);
-                html += `<span class="cloze-sentence ${isStarred ? 'starred' : ''}" data-sid="${el.id}">${renderClozeSentenceTokens(el)}<button type="button" class="cloze-inline-star ${isStarred ? 'starred' : ''}" data-sid="${el.id}" title="${isStarred ? 'Bookmarked line (tap to remove)' : 'Bookmark line'}">${isStarred ? '★' : '☆'}</button> </span>`;
+                const hasHl = chapterHighlightsMap[el.id] && chapterHighlightsMap[el.id].length > 0;
+                html += `<span class="cloze-sentence ${isStarred && !hasHl ? 'starred' : ''} ${hasHl ? 'has-highlights' : ''}" data-sid="${el.id}" id="clozeSentence_${el.id}">${renderClozeSentenceTokens(el)}<button type="button" class="cloze-inline-star ${isStarred ? 'starred' : ''}" data-sid="${el.id}" title="${isStarred ? 'Bookmarked line (tap to remove)' : 'Bookmark line'}">${isStarred ? '★' : '☆'}</button> </span>`;
             } else {
                 if (openParagraph) {
                     html += `</p>`;
@@ -2270,7 +2386,7 @@ function renderNcertClozeActiveView() {
                     html += `
                         <figure class="cloze-figure">
                             <div class="cloze-img-wrap" onclick="openPrettyImageModal('${escapeNotesHtml(src)}', '${escapeNotesHtml(cap)}')">
-                                <img src="${escapeNotesHtml(src)}" alt="${escapeNotesHtml(cap)}" class="cloze-img" loading="lazy">
+                                <img src="${escapeNotesHtml(src)}" alt="${escapeNotesHtml(cap)}" class="cloze-img" loading="lazy" onerror="handleOfflineClozeImage(this, '${escapeNotesHtml(src)}')">
                             </div>
                             <figcaption class="cloze-figcaption">${escapeNotesHtml(cap)}</figcaption>
                         </figure>
@@ -2305,17 +2421,29 @@ function renderNcertClozeActiveView() {
             if (el.type === 'sentence') {
                 sentenceCount++;
                 const isStarred = clozeStarredSet.has(el.id);
+                const hasHl = chapterHighlightsMap[el.id] && chapterHighlightsMap[el.id].length > 0;
                 html += `
-                    <div class="cloze-point-card ${isStarred ? 'starred' : ''}" data-sid="${el.id}">
-                        <span class="cloze-point-index">#${sentenceCount}</span>
-                        <div class="cloze-point-text">
-                            <span class="cloze-sentence ${isStarred ? 'starred' : ''}" data-sid="${el.id}">
-                                ${renderClozeSentenceTokens(el)}
-                            </span>
+                    <div class="cloze-point-card ${isStarred ? 'starred' : ''} ${hasHl ? 'has-highlights' : ''}" data-sid="${el.id}" id="clozeCard_${el.id}">
+                        <div class="cloze-point-header">
+                            <div class="cloze-point-header-left">
+                                <span class="cloze-point-index">#${sentenceCount}</span>
+                                ${hasHl ? `<span class="cloze-hl-tag">🖍️ Marked</span>` : ''}
+                                <span class="cloze-point-edit-hint" id="clozeEditHint_${el.id}" style="display: none;">🖍️ Tap words to mark</span>
+                            </div>
+                            <div class="cloze-point-actions">
+                                <button class="cloze-point-btn cloze-highlight-btn ${hasHl ? 'active' : ''}" id="clozeHlBtn_${el.id}" onclick="startEditingClozeHighlights('${el.id}')" title="Highlight particular words">✏️</button>
+                                <button class="cloze-point-btn" onclick="revealSentenceBlanks('${el.id}')" title="Reveal this line">👁️</button>
+                                <button class="cloze-point-btn ${isStarred ? 'starred' : ''}" id="clozeStarBtn_${el.id}" onclick="toggleNcertSentenceStar('${el.id}')" title="Bookmark line">${isStarred ? '★' : '☆'}</button>
+                                <button class="cloze-point-btn cloze-btn-clear" id="clozeHlClear_${el.id}" style="display: none;" onclick="clearClozeHighlights('${el.id}')" title="Clear highlights">↺</button>
+                                <button class="cloze-point-btn cloze-btn-done" id="clozeHlDone_${el.id}" style="display: none;" onclick="finishEditingClozeHighlights('${el.id}')" title="Done">✓ Done</button>
+                            </div>
                         </div>
-                        <div class="cloze-point-actions">
-                            <button class="cloze-point-btn" onclick="revealSentenceBlanks('${el.id}')" title="Reveal this line">👁️</button>
-                            <button class="cloze-point-btn ${isStarred ? 'starred' : ''}" onclick="toggleNcertSentenceStar('${el.id}')" title="Bookmark hard line">${isStarred ? '★' : '☆'}</button>
+                        <div class="cloze-point-body">
+                            <div class="cloze-point-text">
+                                <span class="cloze-sentence ${isStarred && !hasHl ? 'starred' : ''} ${hasHl ? 'has-highlights' : ''}" data-sid="${el.id}" id="clozeSentence_${el.id}">
+                                    ${renderClozeSentenceTokens(el)}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -2335,15 +2463,34 @@ function renderNcertClozeActiveView() {
     }
 }
 
-function renderClozeSentenceTokens(sentence) {
+function renderClozeSentenceTokens(sentence, isEditing = false, editSet = null) {
+    const highlightSet = editSet || (chapterHighlightsMap[sentence.id] ? new Set(chapterHighlightsMap[sentence.id]) : new Set());
+    let wordIndex = 0;
     let out = '';
+
     (sentence.tokens || []).forEach(tok => {
         if (tok.t === 'cloze') {
+            const widx = wordIndex++;
             const isRevealed = clozeRevealedSet.has(tok.v);
             const cls = isRevealed ? 'revealed' : 'blurred';
-            out += `<span class="cloze-word ${cls}" data-val="${escapeNotesHtml(tok.v)}" data-sid="${sentence.id}">${escapeNotesHtml(tok.v)}</span>`;
+            const isHl = highlightSet.has(widx);
+            const pickClass = isEditing ? 'hl-pickable' : '';
+            const hlClass = isHl ? 'highlighted' : '';
+            out += `<span class="cloze-word ${cls} ${hlClass} ${pickClass}" data-val="${escapeNotesHtml(tok.v)}" data-sid="${sentence.id}" data-widx="${widx}">${escapeNotesHtml(tok.v)}</span>`;
         } else {
-            out += escapeNotesHtml(tok.v);
+            const parts = (tok.v || '').split(/(\s+)/);
+            parts.forEach(part => {
+                if (!part) return;
+                if (/^\s+$/.test(part)) {
+                    out += escapeNotesHtml(part);
+                } else {
+                    const widx = wordIndex++;
+                    const isHl = highlightSet.has(widx);
+                    const pickClass = isEditing ? 'hl-pickable' : '';
+                    const hlClass = isHl ? 'highlighted' : '';
+                    out += `<span class="cloze-hl-word ${hlClass} ${pickClass}" data-sid="${sentence.id}" data-widx="${widx}">${escapeNotesHtml(part)}</span>`;
+                }
+            });
         }
     });
     return out;
@@ -2413,17 +2560,30 @@ function revealSentenceBlanks(sentenceId) {
 function toggleNcertSentenceStar(sentenceId) {
     if (!currentClozeChapterId) return;
 
+    const hadHl = chapterHighlightsMap[sentenceId] && chapterHighlightsMap[sentenceId].length > 0;
+
     if (clozeStarredSet.has(sentenceId)) {
         clozeStarredSet.delete(sentenceId);
+        // Also clear word highlights if completely unbookmarking the line
+        if (hadHl) {
+            delete chapterHighlightsMap[sentenceId];
+            saveNcertClozeHighlights(currentClozeChapterId, chapterHighlightsMap);
+        }
     } else {
         clozeStarredSet.add(sentenceId);
     }
     saveNcertClozeStarred(currentClozeChapterId, clozeStarredSet);
 
-    // Update DOM in Book View
     const isStNow = clozeStarredSet.has(sentenceId);
+    const hasHlNow = chapterHighlightsMap[sentenceId] && chapterHighlightsMap[sentenceId].length > 0;
+
+    // Update DOM in Book View
     document.querySelectorAll(`.cloze-sentence[data-sid="${sentenceId}"]`).forEach(el => {
-        el.classList.toggle('starred', isStNow);
+        el.classList.toggle('starred', isStNow && !hasHlNow);
+        el.classList.toggle('has-highlights', hasHlNow);
+        if (!isStNow) {
+            el.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(w => w.classList.remove('highlighted'));
+        }
     });
     document.querySelectorAll(`.cloze-inline-star[data-sid="${sentenceId}"]`).forEach(star => {
         star.classList.toggle('starred', isStNow);
@@ -2433,12 +2593,19 @@ function toggleNcertSentenceStar(sentenceId) {
 
     // Update DOM in Point by Point View
     document.querySelectorAll(`.cloze-point-card[data-sid="${sentenceId}"]`).forEach(card => {
-        const isSt = clozeStarredSet.has(sentenceId);
-        card.classList.toggle('starred', isSt);
-        const btn = card.querySelector('.cloze-point-btn.starred, .cloze-point-btn:last-child');
+        card.classList.toggle('starred', isStNow);
+        card.classList.toggle('has-highlights', hasHlNow);
+        const btn = card.querySelector('#clozeStarBtn_' + sentenceId + ', .cloze-point-btn.starred, .cloze-point-btn:nth-child(3)');
         if (btn) {
-            btn.classList.toggle('starred', isSt);
-            btn.textContent = isSt ? '★' : '☆';
+            btn.classList.toggle('starred', isStNow);
+            btn.textContent = isStNow ? '★' : '☆';
+        }
+        const hlBtn = card.querySelector('#clozeHlBtn_' + sentenceId + ', .cloze-highlight-btn');
+        if (hlBtn) {
+            hlBtn.classList.toggle('active', hasHlNow);
+        }
+        if (!isStNow) {
+            card.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(w => w.classList.remove('highlighted'));
         }
     });
 
@@ -2447,6 +2614,164 @@ function toggleNcertSentenceStar(sentenceId) {
     // If in Saved Lines mode and unstarred, re-render to prune
     if (isClozeSavedOnly) {
         renderNcertClozeActiveView();
+    }
+}
+
+// Word Highlighting Handlers
+function startEditingClozeHighlights(sentenceId, mode = 'list') {
+    if (activeEditingSentenceId && activeEditingSentenceId !== sentenceId) {
+        finishEditingClozeHighlights(activeEditingSentenceId);
+    }
+
+    activeEditingSentenceId = sentenceId;
+    activeEditingMode = mode;
+    activeEditingHighlights = new Set(chapterHighlightsMap[sentenceId] || []);
+
+    if (mode === 'list') {
+        const card = document.getElementById(`clozeCard_${sentenceId}`);
+        if (card) {
+            card.classList.add('is-editing');
+            const hint = document.getElementById(`clozeEditHint_${sentenceId}`);
+            if (hint) hint.style.display = 'inline-block';
+            const hlBtn = document.getElementById(`clozeHlBtn_${sentenceId}`);
+            if (hlBtn) hlBtn.style.display = 'none';
+            const clearBtn = document.getElementById(`clozeHlClear_${sentenceId}`);
+            if (clearBtn) clearBtn.style.display = 'inline-flex';
+            const doneBtn = document.getElementById(`clozeHlDone_${sentenceId}`);
+            if (doneBtn) doneBtn.style.display = 'inline-flex';
+        }
+        const sentEl = document.getElementById(`clozeSentence_${sentenceId}`);
+        if (sentEl) {
+            sentEl.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(el => {
+                el.classList.add('hl-pickable');
+            });
+        }
+    } else if (mode === 'book') {
+        hideClozeActionPill();
+        const sentEl = document.getElementById(`clozeSentence_${sentenceId}`);
+        if (sentEl) {
+            sentEl.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(el => {
+                el.classList.add('hl-pickable');
+            });
+        }
+        const bar = document.getElementById('clozeBookHlBar');
+        if (bar) bar.style.display = 'flex';
+    }
+}
+
+function toggleWordHighlightInActiveSentence(wordEl) {
+    if (!activeEditingSentenceId || !wordEl) return;
+    const widx = parseInt(wordEl.getAttribute('data-widx'), 10);
+    if (isNaN(widx)) return;
+
+    if (activeEditingHighlights.has(widx)) {
+        activeEditingHighlights.delete(widx);
+        wordEl.classList.remove('highlighted');
+    } else {
+        activeEditingHighlights.add(widx);
+        wordEl.classList.add('highlighted');
+    }
+}
+
+function clearClozeHighlights(sentenceId) {
+    if (!sentenceId) sentenceId = activeEditingSentenceId;
+    if (!sentenceId) return;
+
+    activeEditingHighlights.clear();
+    const card = document.getElementById(`clozeCard_${sentenceId}`);
+    if (card) {
+        card.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(w => w.classList.remove('highlighted'));
+    }
+    const sentEl = document.getElementById(`clozeSentence_${sentenceId}`);
+    if (sentEl) {
+        sentEl.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(w => w.classList.remove('highlighted'));
+    }
+    delete chapterHighlightsMap[sentenceId];
+    saveNcertClozeHighlights(currentClozeChapterId, chapterHighlightsMap);
+}
+
+function finishEditingClozeHighlights(sentenceId) {
+    if (!sentenceId) sentenceId = activeEditingSentenceId;
+    if (!sentenceId) return;
+
+    if (activeEditingHighlights.size > 0) {
+        chapterHighlightsMap[sentenceId] = Array.from(activeEditingHighlights);
+        clozeStarredSet.add(sentenceId);
+    } else {
+        delete chapterHighlightsMap[sentenceId];
+    }
+
+    saveNcertClozeHighlights(currentClozeChapterId, chapterHighlightsMap);
+    saveNcertClozeStarred(currentClozeChapterId, clozeStarredSet);
+
+    const hasHl = chapterHighlightsMap[sentenceId] && chapterHighlightsMap[sentenceId].length > 0;
+    const isSt = clozeStarredSet.has(sentenceId);
+
+    // Reset Point by Point Card
+    const card = document.getElementById(`clozeCard_${sentenceId}`);
+    if (card) {
+        card.classList.remove('is-editing');
+        card.classList.toggle('has-highlights', hasHl);
+        card.classList.toggle('starred', isSt);
+
+        const hint = document.getElementById(`clozeEditHint_${sentenceId}`);
+        if (hint) hint.style.display = 'none';
+        const hlBtn = document.getElementById(`clozeHlBtn_${sentenceId}`);
+        if (hlBtn) {
+            hlBtn.style.display = 'inline-flex';
+            hlBtn.classList.toggle('active', hasHl);
+        }
+        const clearBtn = document.getElementById(`clozeHlClear_${sentenceId}`);
+        if (clearBtn) clearBtn.style.display = 'none';
+        const doneBtn = document.getElementById(`clozeHlDone_${sentenceId}`);
+        if (doneBtn) doneBtn.style.display = 'none';
+        const starBtn = document.getElementById(`clozeStarBtn_${sentenceId}`);
+        if (starBtn) {
+            starBtn.classList.toggle('starred', isSt);
+            starBtn.textContent = isSt ? '★' : '☆';
+        }
+    }
+
+    // Reset Sentence in DOM
+    document.querySelectorAll(`.cloze-sentence[data-sid="${sentenceId}"]`).forEach(sentEl => {
+        sentEl.querySelectorAll('.cloze-hl-word, .cloze-word').forEach(el => {
+            el.classList.remove('hl-pickable');
+        });
+        sentEl.classList.toggle('has-highlights', hasHl);
+        sentEl.classList.toggle('starred', isSt && !hasHl);
+    });
+
+    const bar = document.getElementById('clozeBookHlBar');
+    if (bar) bar.style.display = 'none';
+
+    activeEditingSentenceId = null;
+    activeEditingHighlights.clear();
+    activeEditingMode = null;
+
+    updateClozeTopBarButtons();
+
+    if (isClozeSavedOnly) {
+        renderNcertClozeActiveView();
+    }
+}
+
+function clearBookClozeHighlights() {
+    if (activeEditingSentenceId) {
+        clearClozeHighlights(activeEditingSentenceId);
+    }
+}
+
+function finishBookClozeHighlights() {
+    if (activeEditingSentenceId) {
+        finishEditingClozeHighlights(activeEditingSentenceId);
+    }
+}
+
+function onPillHighlightClick() {
+    const sid = activePillSentenceId;
+    hideClozeActionPill();
+    if (sid) {
+        startEditingClozeHighlights(sid, 'book');
     }
 }
 
@@ -2475,11 +2800,33 @@ function setupClozeGestureTracking() {
     canvasWrap.addEventListener('pointerup', (e) => {
         if (clozeTouchMoved) return; // User was scrolling, ignore tap
 
+        // 0. If clicking an action button, let its onclick handle it
+        if (e.target.closest('.cloze-point-btn, .cloze-inline-star, .cloze-pill-btn, .pretty-nav-pill-btn')) {
+            return;
+        }
+
+        // 1. If currently editing highlights on a sentence:
+        if (activeEditingSentenceId) {
+            const pickableWord = e.target.closest(`.cloze-hl-word[data-sid="${activeEditingSentenceId}"], .cloze-word[data-sid="${activeEditingSentenceId}"]`);
+            if (pickableWord) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleWordHighlightInActiveSentence(pickableWord);
+                return;
+            }
+            // Clicked outside active sentence: finish editing
+            const insideActiveSentence = e.target.closest(`[data-sid="${activeEditingSentenceId}"]`);
+            if (!insideActiveSentence) {
+                finishEditingClozeHighlights(activeEditingSentenceId);
+            }
+            return;
+        }
+
         const targetWord = e.target.closest('.cloze-word');
         const starBtn = e.target.closest('.cloze-inline-star, .cloze-point-btn.starred');
         const targetSentence = e.target.closest('.cloze-sentence');
 
-        // 1. Tapped a blurred or revealed cloze blank -> instant toggle!
+        // 2. Tapped a blurred or revealed cloze blank -> instant toggle!
         if (targetWord) {
             e.preventDefault();
             e.stopPropagation();
@@ -2488,7 +2835,7 @@ function setupClozeGestureTracking() {
             return;
         }
 
-        // 2. Tapped the inline bookmark star -> instant toggle bookmark!
+        // 3. Tapped the inline bookmark star -> instant toggle bookmark!
         if (starBtn) {
             e.preventDefault();
             e.stopPropagation();
@@ -2498,8 +2845,8 @@ function setupClozeGestureTracking() {
             return;
         }
 
-        // 3. Tapped sentence text -> quick micro-pill with options
-        if (targetSentence) {
+        // 4. In Book Mode: Tapped sentence text -> quick micro-pill with options
+        if (targetSentence && currentClozeMode === 'book' && !isClozeSavedOnly) {
             const sid = targetSentence.getAttribute('data-sid');
             if (sid) {
                 showClozeActionPill(sid, e.clientX, e.clientY);
@@ -2533,7 +2880,7 @@ function showClozeActionPill(sentenceId, clientX, clientY) {
     if (starIcon) starIcon.textContent = isStarred ? '★' : '⭐';
 
     pill.style.display = 'flex';
-    const pillWidth = 240;
+    const pillWidth = 320;
     const pillHeight = 44;
     let posX = clientX - (pillWidth / 2);
     let posY = clientY - pillHeight - 16;
@@ -2601,6 +2948,163 @@ async function jumpToClozeFromPretty() {
     }
 }
 
+// ============================================================
+// NCERT ACTIVE CLOZE OFFLINE DOWNLOAD & STORAGE MANAGEMENT
+// ============================================================
+function handleOfflineClozeImage(imgEl, originalUrl) {
+    if (!imgEl || !originalUrl) return;
+    if (typeof offlineStorage !== 'undefined') {
+        offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {
+            if (offlineUrl && offlineUrl !== originalUrl) {
+                imgEl.src = offlineUrl;
+            }
+        }).catch(() => {});
+    }
+}
+
+async function downloadNcertClozeChapter(chapterId, progressCb) {
+    if (typeof offlineStorage === 'undefined') throw new Error('Offline storage unavailable');
+
+    // 1. Fetch chapter JSON
+    let data = currentClozeChapterData;
+    if (!data || data.id !== chapterId) {
+        const res = await fetch(`data/ncert-cloze/${chapterId}.json`);
+        if (!res.ok) throw new Error('Could not fetch chapter data');
+        data = await res.json();
+    }
+
+    // 2. Save chapter JSON in IndexedDB
+    await offlineStorage.saveQuizData('ncert_cloze_' + chapterId, data);
+
+    // 3. Extract all diagram images from chapter
+    const images = [];
+    (data.elements || []).forEach(el => {
+        if (el.type === 'image') {
+            const u = el.src || el.url;
+            if (u && !images.includes(u)) images.push(u);
+        }
+    });
+
+    // 4. Download images into IndexedDB & Cache API
+    let cdnCache = null;
+    try {
+        if ('caches' in window) {
+            const keys = await caches.keys();
+            const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v42-cdn';
+            cdnCache = await caches.open(cdnKey);
+        }
+    } catch (e) {}
+
+    let done = 0;
+    const total = images.length;
+    for (const u of images) {
+        try {
+            const cached = await offlineStorage.isImageCached(u);
+            if (!cached) {
+                const imgResp = await fetch(u);
+                if (imgResp.ok) {
+                    const blob = await imgResp.blob();
+                    await offlineStorage.saveImage(u, blob);
+                    if (cdnCache) {
+                        try {
+                            await cdnCache.put(new Request(u), new Response(blob.slice(0), {
+                                headers: { 'Content-Type': blob.type || 'image/png' }
+                            }));
+                        } catch (err) {}
+                    }
+                }
+            }
+        } catch (err) {
+            console.warn('Failed to cache cloze diagram for offline:', u, err);
+        }
+        done++;
+        if (progressCb) progressCb(done, total);
+    }
+
+    // 5. Save metadata
+    await offlineStorage.saveMetadata('ncert_cloze_' + chapterId, {
+        id: 'ncert_cloze_' + chapterId,
+        chapterId,
+        title: data.title,
+        imagesCount: total,
+        downloadedAt: Date.now(),
+        status: 'complete'
+    });
+}
+
+async function deleteNcertClozeOffline(chapterId) {
+    if (typeof offlineStorage === 'undefined') return;
+    const data = await offlineStorage.getQuizData('ncert_cloze_' + chapterId);
+    if (data && Array.isArray(data.elements)) {
+        try {
+            const db = await offlineStorage.open();
+            const tx = db.transaction('images', 'readwrite');
+            const store = tx.objectStore('images');
+            data.elements.forEach(el => {
+                if (el.type === 'image') {
+                    const u = el.src || el.url;
+                    if (u) store.delete(u);
+                }
+            });
+        } catch (e) {}
+    }
+    await offlineStorage.deleteQuizData('ncert_cloze_' + chapterId);
+    try {
+        const db = await offlineStorage.open();
+        const tx = db.transaction('metadata', 'readwrite');
+        tx.objectStore('metadata').delete('ncert_cloze_' + chapterId);
+    } catch (e) {}
+}
+
+async function toggleNcertClozeCardDownload(chapterId, btn) {
+    if (typeof offlineStorage === 'undefined') {
+        alert('Offline storage is not available in this browser.');
+        return;
+    }
+
+    const meta = await offlineStorage.getMetadata('ncert_cloze_' + chapterId);
+    const isDl = (meta && meta.status === 'complete');
+
+    if (isDl) {
+        if (confirm('This chapter is saved offline. Remove it to clear storage?')) {
+            await deleteNcertClozeOffline(chapterId);
+            btn.classList.remove('downloaded');
+            btn.innerHTML = '⬇️ Save';
+            btn.title = 'Download chapter for offline';
+            updateClozeTopBarButtons();
+        }
+        return;
+    }
+
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '⏳ 0%';
+
+    try {
+        await downloadNcertClozeChapter(chapterId, (done, total) => {
+            const pct = total > 0 ? Math.round((done / total) * 100) : 100;
+            btn.innerHTML = `⏳ ${pct}%`;
+        });
+        btn.classList.add('downloaded');
+        btn.innerHTML = '✅ Offline';
+        btn.title = 'Available offline (click to remove)';
+        updateClozeTopBarButtons();
+    } catch (e) {
+        console.error('Download error:', e);
+        btn.innerHTML = '❌ Failed';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+    } finally {
+        btn.disabled = false;
+    }
+}
+
+async function toggleNcertClozeReaderDownload() {
+    if (!currentClozeChapterId) return;
+    const btn = document.getElementById('clozeDownloadBtn');
+    if (!btn) return;
+    await toggleNcertClozeCardDownload(currentClozeChapterId, btn);
+}
+
 // Expose Cloze API on window
 window.openNcertClozeHub = openNcertClozeHub;
 window.filterClozeTab = filterClozeTab;
@@ -2613,10 +3117,21 @@ window.toggleNcertRevealAll = toggleNcertRevealAll;
 window.toggleNcertSentenceStar = toggleNcertSentenceStar;
 window.revealSentenceBlanks = revealSentenceBlanks;
 window.onPillStarClick = onPillStarClick;
+window.onPillHighlightClick = onPillHighlightClick;
 window.onPillRevealClick = onPillRevealClick;
+window.startEditingClozeHighlights = startEditingClozeHighlights;
+window.finishEditingClozeHighlights = finishEditingClozeHighlights;
+window.clearClozeHighlights = clearClozeHighlights;
+window.clearBookClozeHighlights = clearBookClozeHighlights;
+window.finishBookClozeHighlights = finishBookClozeHighlights;
 window.navNcertClozeChapter = navNcertClozeChapter;
 window.scrollClozeToTop = scrollClozeToTop;
 window.jumpToClozeFromPretty = jumpToClozeFromPretty;
+window.handleOfflineClozeImage = handleOfflineClozeImage;
+window.downloadNcertClozeChapter = downloadNcertClozeChapter;
+window.deleteNcertClozeOffline = deleteNcertClozeOffline;
+window.toggleNcertClozeCardDownload = toggleNcertClozeCardDownload;
+window.toggleNcertClozeReaderDownload = toggleNcertClozeReaderDownload;
 
 
 // ============================================================

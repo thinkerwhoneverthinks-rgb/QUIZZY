@@ -3222,6 +3222,38 @@
     border-color: #10b981;
     color: #10b981;
 }
+.cloze-tool-btn.dl-active {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+    color: #10b981;
+}
+
+/* Download button on chapter card */
+.cloze-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.cloze-dl-btn:hover {
+    border-color: #6366f1;
+    color: var(--text-primary);
+}
+.cloze-dl-btn.downloaded {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+}
 .cloze-star-icon {
     font-size: 0.95rem;
 }
@@ -3431,21 +3463,65 @@
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
 }
-.cloze-sentence:hover {
-    background-color: rgba(99, 102, 241, 0.05);
+@media (hover: hover) {
+    .cloze-sentence:hover {
+        background-color: rgba(99, 102, 241, 0.05);
+    }
 }
 
-/* Authentic Stabilo/Faber-Castell Pastel Highlighter Effect */
-.cloze-sentence.starred {
+/* Authentic Stabilo/Faber-Castell Pastel Highlighter Effect (Whole Line) */
+.cloze-sentence.starred:not(.has-highlights) {
     background-color: rgba(254, 240, 138, 0.38) !important;
     border-bottom: 2px solid #eab308;
     border-radius: 3px;
     padding: 2px 2px;
 }
-[data-theme="light"] .cloze-sentence.starred {
+[data-theme="light"] .cloze-sentence.starred:not(.has-highlights) {
     background-color: #fef08a !important;
     color: #1e293b;
     box-shadow: 0 0 0 2px #fef08a;
+}
+
+/* Individual Word Highlighting */
+.cloze-hl-word {
+    display: inline;
+    position: relative;
+    border-radius: 3px;
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Authentic Stabilo Highlighter on Words (Yellow) */
+.cloze-hl-word.highlighted {
+    background-color: #fef08a !important;
+    color: #1e293b !important;
+    padding: 1px 3px;
+    margin: 0 1px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(234, 179, 8, 0.45);
+}
+[data-theme="dark"] .cloze-hl-word.highlighted {
+    background-color: rgba(254, 240, 138, 0.28) !important;
+    color: #fef08a !important;
+    border-bottom: 2px solid #eab308;
+    box-shadow: none;
+}
+
+/* Highlighted Cloze Blanks */
+.cloze-word.highlighted {
+    box-shadow: 0 0 0 2px #eab308 !important;
+}
+
+/* Tappable Words during Highlight Editing Mode */
+.cloze-hl-word.hl-pickable,
+.cloze-word.hl-pickable {
+    cursor: pointer !important;
+    border-radius: 3px;
+    padding: 1px 2px;
+}
+.cloze-hl-word.hl-pickable:hover,
+.cloze-word.hl-pickable:hover {
+    outline: 1.5px dashed #6366f1;
+    background-color: rgba(99, 102, 241, 0.14);
 }
 
 /* Inline Bookmark Star Button */
@@ -3529,13 +3605,13 @@
 .cloze-point-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.85rem;
 }
 .cloze-point-card {
     display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    padding: 0.85rem 1.15rem;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0.95rem 1.15rem;
     background: var(--bg-card);
     border: 1.5px solid var(--border);
     border-radius: var(--radius-md);
@@ -3545,26 +3621,83 @@
     border-color: #6366f1;
     box-shadow: var(--shadow-sm);
 }
-.cloze-point-card.starred {
+.cloze-point-card.is-editing {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25), 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    background: var(--bg-card);
+}
+.cloze-point-card.starred:not(.has-highlights) {
     border-left: 4px solid #f59e0b;
     background: rgba(245, 158, 11, 0.06);
+}
+.cloze-point-card.has-highlights {
+    border-left: 4px solid #eab308;
+}
+
+/* Card Top Header (Index Badge + Temporary Prompts + Actions) */
+.cloze-point-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+}
+.cloze-point-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
 }
 .cloze-point-index {
     font-size: 0.76rem;
     font-weight: 800;
     color: var(--text-muted);
     background: var(--bg-secondary);
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.55rem;
     border-radius: 6px;
     flex-shrink: 0;
-    margin-top: 0.15rem;
+}
+.cloze-point-edit-hint {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 0.18rem 0.55rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    animation: fadeIn 0.15s ease-out;
+}
+.cloze-hl-tag {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #d97706;
+    background: rgba(245, 158, 11, 0.12);
+    padding: 0.15rem 0.45rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+.cloze-star-tag {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+    padding: 0.15rem 0.45rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+/* Card Body (Full Width Text) */
+.cloze-point-body {
+    width: 100%;
 }
 .cloze-point-text {
-    flex: 1;
+    width: 100%;
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--text-primary);
 }
+
+/* Actions in Card Header */
 .cloze-point-actions {
     display: flex;
     align-items: center;
@@ -3572,18 +3705,21 @@
     flex-shrink: 0;
 }
 .cloze-point-btn {
-    width: 32px;
+    min-width: 32px;
     height: 32px;
+    padding: 0 0.45rem;
     border-radius: 6px;
     border: 1px solid var(--border);
     background: var(--bg-secondary);
     color: var(--text-muted);
     font-size: 0.88rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
+    user-select: none;
+    -webkit-user-select: none;
 }
 .cloze-point-btn:hover {
     border-color: #6366f1;
@@ -3592,6 +3728,45 @@
 .cloze-point-btn.starred {
     border-color: #f59e0b;
     color: #f59e0b;
+}
+.cloze-point-btn.cloze-highlight-btn.active {
+    border-color: #eab308;
+    color: #d97706;
+    background: rgba(245, 158, 11, 0.15);
+}
+.cloze-point-btn.cloze-btn-clear {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+.cloze-point-btn.cloze-btn-clear:hover {
+    color: #ef4444;
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+.cloze-point-btn.cloze-btn-done {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+    color: #10b981;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0 0.65rem;
+    gap: 0.25rem;
+    animation: fadeIn 0.15s ease-out;
+}
+.cloze-point-btn.cloze-btn-done:hover {
+    background: #10b981;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .cloze-point-card {
+        padding: 0.85rem 0.85rem;
+    }
+    .cloze-point-text {
+        font-size: 0.98rem;
+        line-height: 1.68;
+    }
 }
 
 /* ============================================================
@@ -3679,8 +3854,34 @@
 .cloze-pill-btn.star-action {
     color: #f59e0b;
 }
+.cloze-pill-btn.highlight-action {
+    color: #6366f1;
+}
 .cloze-pill-btn.reveal-action {
     color: #10b981;
+}
+
+/* Floating Book Layout Highlight Toolbar */
+.cloze-book-hl-bar {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2005;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--bg-card);
+    border: 1.5px solid #6366f1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.25);
+    padding: 0.45rem 0.95rem;
+    border-radius: 30px;
+    animation: pillPop 0.18s ease-out;
+}
+.cloze-book-hl-text {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 /* Completion Card in Reader Footer */
