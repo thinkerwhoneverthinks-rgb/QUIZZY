@@ -1326,6 +1326,20 @@ function renderMatchLists(q) {
     `;
 }
 
+function tcShouldUseCompactGrid(q) {
+    if (!q || !Array.isArray(q.options) || q.options.length < 2) return false;
+    if (q.type === 'integer' || q.type === 'fill_blank' || q.type === 'numeric') return false;
+    if (q.optionImages && q.optionImages.some(img => Boolean(img))) return false;
+
+    return q.options.every(opt => {
+        if (opt === null || opt === undefined) return true;
+        let s = String(opt).trim();
+        if (s === '') return true;
+        const stripped = s.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').trim();
+        return stripped.length <= 15;
+    });
+}
+
 function renderOptions(q, rec) {
     const live = TS.mode === 'test';
     const isMulti = q.type === 'multi_mcq';
@@ -1398,7 +1412,8 @@ function renderOptions(q, rec) {
         ? `<button class="q-clear-btn" onclick="clearAnswer()">Clear response</button>`
         : '';
 
-    return `<div class="q-options ${isMulti ? 'is-multi' : ''}">${boxes}</div>${clearBtn}`;
+    const isCompact = tcShouldUseCompactGrid(q);
+    return `<div class="q-options ${isMulti ? 'is-multi' : ''} ${isCompact ? 'q-options-grid-2col' : ''}">${boxes}</div>${clearBtn}`;
 }
 
 function renderIntegerInput(q, rec) {

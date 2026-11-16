@@ -820,7 +820,7 @@ function shouldUseTwoByTwoGrid(q) {
 
     let options = getActiveOptions(q);
     if (options.length === 0 && q.type === 'image_mcq') options = ['', '', '', ''];
-    if (options.length !== 4) return false;
+    if (options.length < 2) return false;
 
     const optImages = getActiveOptionImages(q);
     if (optImages && optImages.some(img => Boolean(img))) return false;
@@ -882,12 +882,10 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
             return `
                 <div class="mcq-option mcq-option-2x2${isBlank ? ' is-blank' : ''}${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`} title="${isBlank ? displayBadge : ('Option ' + displayBadge)}">
                     <div class="mcq-letter">${escapeHtml(displayBadge)}</div>
-                    ${label ? `
-                        <div class="mcq-text">
-                            <span class="mcq-opt-text">${label}</span>
-                            ${flag ? `<div class="mcq-flag">${flag}</div>` : ''}
-                        </div>
-                    ` : (revealed && flag ? `<div class="mcq-compact-flag-badge" title="${flag}">${flag.includes('Correct') ? '✓' : '✕'}</div>` : '')}
+                    <div class="mcq-text">
+                        ${label ? `<span class="mcq-opt-text">${label}</span>` : ''}
+                        ${flag ? `<div class="mcq-flag">${flag}</div>` : ''}
+                    </div>
                 </div>
             `;
         }).join('');

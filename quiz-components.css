@@ -3559,16 +3559,16 @@
     box-sizing: border-box !important;
 }
 
-/* Individual option card in 2x2 grid */
+/* Individual option card in 2-column grid (matching Test Cafe screenshot) */
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border) !important;
+    background: var(--bg-secondary) !important;
+    border: 1.5px solid var(--border) !important;
     border-radius: var(--radius-md) !important;
-    padding: 0.85rem 1rem !important;
+    padding: 0.9rem 1rem !important;
     box-shadow: var(--shadow-sm) !important;
     display: flex !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
     cursor: pointer !important;
     transition: all var(--transition-fast);
     min-height: 52px !important;
@@ -3585,41 +3585,81 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Blank / placeholder key option in 2x2 grid (centered, clean, no dummy text) */
-.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.is-blank {
-    justify-content: center !important;
-    padding: 0.85rem 0.5rem !important;
+/* If odd number of options, the last item spans both columns */
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2:last-child:nth-child(odd) {
+    grid-column: span 2 !important;
 }
 
-.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.is-blank .mcq-letter {
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-    width: 32px !important;
-    height: 32px !important;
+/* Left-aligned circular pill badge matching Test Cafe */
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-letter {
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: var(--bg-primary) !important;
+    border: 1px solid var(--border) !important;
+    font-size: 0.78rem !important;
+    font-weight: 800 !important;
+    color: var(--text-muted) !important;
+    margin-top: 1px !important;
 }
 
 /* Option states: selected, correct, wrong */
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.selected {
     border-color: var(--accent) !important;
-    background: var(--accent-subtle, rgba(59, 130, 246, 0.1)) !important;
+    background: var(--accent-glow, rgba(0, 191, 165, 0.12)) !important;
+    color: var(--text-primary) !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.selected .mcq-letter {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: #fff !important;
 }
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.correct {
-    border-color: var(--success) !important;
-    background: var(--success-subtle, rgba(34, 197, 94, 0.1)) !important;
+    border-color: var(--st-green, #10b981) !important;
+    background: var(--st-green-bg, rgba(34, 197, 94, 0.12)) !important;
+    color: var(--text-primary) !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.correct .mcq-letter {
+    background: var(--st-green, #10b981) !important;
+    border-color: var(--st-green, #10b981) !important;
+    color: #fff !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.correct .mcq-flag {
+    color: var(--st-green, #10b981) !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.2px !important;
+    text-transform: uppercase !important;
+    margin-top: 0.35rem !important;
 }
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.wrong {
-    border-color: var(--error) !important;
-    background: var(--error-subtle, rgba(239, 68, 68, 0.1)) !important;
+    border-color: var(--st-red, #ef4444) !important;
+    background: var(--st-red-bg, rgba(239, 68, 68, 0.12)) !important;
+    color: var(--text-primary) !important;
 }
 
-.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-letter {
-    width: 28px;
-    height: 28px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    flex-shrink: 0;
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.wrong .mcq-letter {
+    background: var(--st-red, #ef4444) !important;
+    border-color: var(--st-red, #ef4444) !important;
+    color: #fff !important;
+}
+
+.mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.wrong .mcq-flag {
+    color: var(--st-red, #ef4444) !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.2px !important;
+    text-transform: uppercase !important;
+    margin-top: 0.35rem !important;
 }
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-text {

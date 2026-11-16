@@ -1376,6 +1376,26 @@ body.tc-running { overflow-x: hidden; }
 
 /* ===== OPTIONS ===== */
 .q-options { display: flex; flex-direction: column; gap: 0.6rem; }
+
+/* ===== COMPACT 2-COLUMN GRID (options <= 15 chars) ===== */
+.q-options.q-options-grid-2col {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+}
+.q-options.q-options-grid-2col .opt {
+    margin-bottom: 0 !important;
+    min-height: 52px;
+}
+/* If odd number of options, the last item spans both columns */
+.q-options.q-options-grid-2col .opt:last-child:nth-child(odd) {
+    grid-column: span 2 !important;
+}
+@media (max-width: 480px) {
+    .q-options.q-options-grid-2col {
+        gap: 0.5rem !important;
+    }
+}
 .opt {
     width: 100%;
     display: flex;
