@@ -1031,14 +1031,17 @@ function populateQSSubjectSelect() {
     if (!select || !_qsSubjectGroups) return;
 
     var html = '';
-    var defaultId = null;
+    var savedId = null;
+    try {
+        savedId = localStorage.getItem('quizzy_last_search_subject');
+    } catch (e) {}
+    var foundSaved = false;
 
     _qsSubjectGroups.forEach(function(g) {
         html += '<optgroup label="' + (typeof escapeHtml === 'function' ? escapeHtml(g.groupName) : g.groupName) + '">';
         g.subjects.forEach(function(s) {
-            // Prioritize NEETprep Physics as default if available
-            if (!defaultId && /NEETprep.*Physics/i.test(s.label)) {
-                defaultId = s.id;
+            if (savedId && s.id === savedId) {
+                foundSaved = true;
             }
             var optLabel = (typeof escapeHtml === 'function' ? escapeHtml(s.label) : s.label) + ' (' + s.chapters.length + ' chapters)';
             html += '<option value="' + encodeURIComponent(s.id) + '">' + optLabel + '</option>';
@@ -1048,8 +1051,8 @@ function populateQSSubjectSelect() {
 
     select.innerHTML = html;
 
-    if (defaultId) {
-        select.value = encodeURIComponent(defaultId);
+    if (foundSaved && savedId) {
+        select.value = encodeURIComponent(savedId);
     } else if (select.options.length > 0) {
         select.selectedIndex = 0;
     }
@@ -1073,6 +1076,9 @@ function onQSSubjectChange() {
     if (!select) return;
 
     var subjectId = decodeURIComponent(select.value);
+    try {
+        localStorage.setItem('quizzy_last_search_subject', subjectId);
+    } catch (e) {}
     _qsSelectedSubject = findSubjectById(subjectId);
     _qsLoadedPool = null;
 

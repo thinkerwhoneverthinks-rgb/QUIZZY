@@ -101,20 +101,11 @@ function escapeHtmlAttr(str) {
 
 /**
  * resolveImageUrl(src)
- * Resolves local, relative, or custom protocol URLs into fully-qualified CDN URLs:
- * - pyq-asset://... → https://www.neetpulse.online/api/pyq/asset?file=...
- * - Bare numeric Allen images → https://d2lbh14zkcqlst.cloudfront.net/content_data/content_images/...
+ * Returns trimmed image URL string.
  */
 function resolveImageUrl(src) {
     if (!src) return '';
-    let url = String(src).trim();
-    if (url.startsWith('pyq-asset://')) {
-        return url.replace('pyq-asset://', 'https://www.neetpulse.online/api/pyq/asset?file=');
-    }
-    if (/^[0-9]{10,}[a-zA-Z0-9_-]*\.(?:png|jpg|webp|jpeg)$/i.test(url)) {
-        return `https://d2lbh14zkcqlst.cloudfront.net/content_data/content_images/${url}`;
-    }
-    return url;
+    return String(src).trim();
 }
 if (typeof window !== 'undefined') window.resolveImageUrl = resolveImageUrl;
 
@@ -409,7 +400,6 @@ if (typeof window !== 'undefined') {
     window.renderMathInElement = function(el) {
         return typesetMath(el);
     };
-    window.getPedagogicalSortRank = getPedagogicalSortRank;
 }
 
 /**
@@ -473,87 +463,8 @@ if (typeof window !== 'undefined') {
     }
 }
 
-/**
- * getPedagogicalSortRank(str, filePath)
- * Returns the sort order for in-chapter exercise / question set presentation.
- * 
- * 1. PW MODULES:
- *    ARAMBH / AARAMBH -> PRARAMBH -> PRABAL -> PARIKSHIT -> PYQ -> Supplemental
- * 
- * 2. NEETPREP BIOLOGY (Botany & Zoology):
- *    Full QBank -> Mini Q Bank -> Level 0.5 -> Recommended MCQs -> Recommended PYQs ->
- *    NCERT Exemplar -> AR & Other Type -> Past Year (2019 onward) -> Past Year (2016-2018) ->
- *    Past Year (2006-2015) -> Past Year (1998-2005) -> Excluded Topics -> NEET 2025 Level
- * 
- * 3. NEETPREP PHYSICS & CHEMISTRY:
- *    Full QBank -> Absorb Before You Solve -> Level 0.5 -> Recommended MCQs -> Recommended PYQs ->
- *    Mini Q Bank -> NCERT Solved Examples -> NCERT Exercise -> NCERT Exemplar -> AR & Other Type ->
- *    HC Verma -> Past Year (2019 onward) -> Past Year (2016-2018) -> Past Year (2006-2015) ->
- *    Past Year (1998-2005) -> NEET 2025 Level -> JEE-Mains MCQs
- * 
- * 4. General / NCERT Punch fallback: standard pedagogical sequence.
- */
-function getPedagogicalSortRank(str, filePath) {
-    if (!str && !filePath) return 999;
-    const s = (String(str || '') + ' ' + String(filePath || '')).toLowerCase().replace(/[-_]/g, ' ');
-    const p = String(filePath || '').toLowerCase();
-
-    // Check if this is NEETPrep
-    const isNeetprep = p.includes('neetprep') || s.includes('neetprep');
-    if (isNeetprep) {
-        // Full QBank is always FIRST (Rank 1)
-        const isFullQbank = s.includes('full qbank') || s.includes('full q bank') || s.includes('full question bank') ||
-            (p.endsWith('.json') && !p.includes('/absorb') && !p.includes('/level') && !p.includes('/mini') && 
-             !p.includes('/recommended') && !p.includes('/ncert') && !p.includes('/ar-') && !p.includes('/past-year') && 
-             !p.includes('/excluded') && !p.includes('/neet-2025') && !p.includes('/jee-') && !p.includes('/hcv'));
-        if (isFullQbank) return 1;
-
-        const isBiology = p.includes('botany') || p.includes('zoology') || p.includes('biology') ||
-                          s.includes('botany') || s.includes('zoology') || s.includes('biology');
-
-        if (isBiology) {
-            if (s.includes('mini q bank') || s.includes('mini qbank') || s.includes('mini question bank')) return 2;
-            if (s.includes('level 0.5') || s.includes('level 0 5')) return 3;
-            if (s.includes('recommended mcq') && !s.includes('pyq')) return 4;
-            if (s.includes('recommended pyq')) return 5;
-            if (s.includes('exemplar') || s.includes('exampler')) return 6;
-            if (s.includes('ar & other') || s.includes('ar other') || s.includes('assertion')) return 7;
-            if (s.includes('2019 onward') || s.includes('2019 onwards') || (s.includes('past year') && s.includes('2019'))) return 8;
-            if (s.includes('2016 2018') || (s.includes('past year') && s.includes('2016'))) return 9;
-            if (s.includes('2006 2015') || (s.includes('past year') && s.includes('2006'))) return 10;
-            if (s.includes('1998 2005') || (s.includes('past year') && s.includes('1998'))) return 11;
-            if (s.includes('excluded topic') || s.includes('excluded')) return 12;
-            if (s.includes('neet 2025') || s.includes('2025 level')) return 13;
-            return 30;
-        } else {
-            if (s.includes('absorb before you solve') || s.includes('absorb')) return 2;
-            if (s.includes('level 0.5') || s.includes('level 0 5')) return 3;
-            if (s.includes('recommended mcq') && !s.includes('pyq')) return 4;
-            if (s.includes('recommended pyq')) return 5;
-            if (s.includes('mini q bank') || s.includes('mini qbank') || s.includes('mini question bank')) return 6;
-            if (s.includes('solved example') || s.includes('solved examples')) return 7;
-            if (s.includes('intext')) return 7.5;
-            if (s.includes('ncert exercise') || s.includes('exercise based')) return 8;
-            if (s.includes('exemplar') || s.includes('exampler')) return 9;
-            if (s.includes('ar & other') || s.includes('ar other') || s.includes('assertion')) return 10;
-            if (s.includes('h c verma') || s.includes('hc verma') || s.includes('hcv')) return 11;
-            if (s.includes('2019 onward') || s.includes('2019 onwards') || (s.includes('past year') && s.includes('2019'))) return 12;
-            if (s.includes('2016 2018') || (s.includes('past year') && s.includes('2016'))) return 13;
-            if (s.includes('2006 2015') || (s.includes('past year') && s.includes('2006'))) return 14;
-            if (s.includes('1998 2005') || (s.includes('past year') && s.includes('1998'))) return 15;
-            if (s.includes('neet 2025') || s.includes('2025 level')) return 16;
-            if (s.includes('jee main') || s.includes('jee mains') || s.includes('jee')) return 17;
-            return 30;
-        }
-    }
-
-    // Default: respect manifest.json ordering directly
-    return 500;
-}
-
 if (typeof global !== 'undefined') {
     global.safeHtml = safeHtml;
-    global.getPedagogicalSortRank = getPedagogicalSortRank;
 }
 
 // ==================== ACTIVE EXERCISE PERSISTENCE ====================

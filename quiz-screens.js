@@ -199,28 +199,9 @@ function renderTree(node) {
         });
     }
 
-    // Render Files (Quizzes/Chapters)
+    // Render Files (Quizzes/Chapters) in manifest.json order
     if (node.files) {
-        // Only rearrange files if they are pedagogical exercise types or structured question sets (PW, NEETPrep, NCERT)
-        const isExerciseFolder = node.files.some(f => {
-            const n = typeof f === 'object' ? (f.displayName || f.name || f.path || '') : f;
-            const p = typeof f === 'object' ? (f.path || f.file || '') : '';
-            return typeof getPedagogicalSortRank === 'function' && getPedagogicalSortRank(n, p) < 500;
-        });
-
-        const filesToRender = isExerciseFolder
-            ? [...node.files].sort((a, b) => {
-                const nameA = typeof a === 'object' ? (a.displayName || a.name || a.path || '') : a;
-                const nameB = typeof b === 'object' ? (b.displayName || b.name || b.path || '') : b;
-                const pathA = typeof a === 'object' ? (a.path || a.file || '') : '';
-                const pathB = typeof b === 'object' ? (b.path || b.file || '') : '';
-                const rankA = typeof getPedagogicalSortRank === 'function' ? getPedagogicalSortRank(nameA, pathA) : 500;
-                const rankB = typeof getPedagogicalSortRank === 'function' ? getPedagogicalSortRank(nameB, pathB) : 500;
-                return rankA - rankB;
-              })
-            : node.files;
-
-        filesToRender.forEach(file => {
+        node.files.forEach(file => {
             const filePath = typeof file === 'object' ? (file.path || file.file || '') : file;
             const fileDisplayName = typeof file === 'object' ? (file.displayName || file.name) : null;
             const fileSyllabus = typeof file === 'object' ? file.syllabus : null;
