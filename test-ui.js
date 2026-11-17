@@ -1166,6 +1166,7 @@ function handleTimeUp() {
 
 // ==================== TEST MODE IMAGE PRELOADER ====================
 const _preloadedTcImageUrls = new Set();
+const _fullyLoadedTcImageUrls = new Set();
 let _idleTcPreloadHandle = null;
 
 function extractTestQuestionImageUrls(q) {
@@ -1177,11 +1178,34 @@ function extractTestQuestionImageUrls(q) {
     return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
 }
 
+function markTcImageLoaded(img, url) {
+    if (url) _fullyLoadedTcImageUrls.add(url);
+    if (img) {
+        img.classList.add('loaded');
+        const wrap = img.closest('.q-image-wrap') || img.parentElement;
+        if (wrap) {
+            wrap.classList.remove('is-loading');
+            const shimmer = wrap.querySelector('.image-skeleton-shimmer');
+            if (shimmer) shimmer.remove();
+        }
+    }
+}
+window.markTcImageLoaded = markTcImageLoaded;
+
+function renderTcImageWrapHtml(url, altText) {
+    const isReady = _fullyLoadedTcImageUrls.has(url);
+    const loadingCls = isReady ? '' : ' is-loading';
+    const shimmerHtml = isReady ? '' : `<div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>`;
+    return `<div class="q-image-wrap${loadingCls}">${shimmerHtml}<img class="q-image${isReady ? ' loaded' : ''}" src="${tcAttr(url)}" alt="${tcAttr(altText || 'Question diagram')}" loading="eager" fetchpriority="high" decoding="async" onload="markTcImageLoaded(this, '${tcAttr(url)}')" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(url)}')"></div>`;
+}
+window.renderTcImageWrapHtml = renderTcImageWrapHtml;
+
 function preloadSingleTcImageUrl(url) {
     if (!url || _preloadedTcImageUrls.has(url)) return;
     _preloadedTcImageUrls.add(url);
     const img = new Image();
     img.decoding = 'async';
+    img.onload = () => _fullyLoadedTcImageUrls.add(url);
     img.src = url;
 }
 
@@ -1299,10 +1323,10 @@ function renderQuestion() {
                 const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
                 const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
                 if (qImgs.length > 1) {
-                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap is-loading"><div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="eager" fetchpriority="high" decoding="async" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`).join('')}</div>`;
+                    return `<div class="q-images-container">${qImgs.map((img, i) => renderTcImageWrapHtml(img, `Question diagram ${i + 1}`)).join('')}</div>`;
                 }
                 if (qImgs.length === 1) {
-                    return `<div class="q-image-wrap is-loading"><div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="eager" fetchpriority="high" decoding="async" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(qImgs[0])}')"></div>`;
+                    return renderTcImageWrapHtml(qImgs[0], 'Question diagram');
                 }
                 return '';
             })()}
@@ -1318,8 +1342,7 @@ function renderQuestion() {
     // Instantly reveal any images that are already complete in browser/memory cache
     main.querySelectorAll('.q-image-wrap img').forEach(img => {
         if (img.complete && img.naturalHeight !== 0) {
-            if (img.parentElement) img.parentElement.classList.remove('is-loading');
-            img.classList.add('loaded');
+            markTcImageLoaded(img, img.getAttribute('src'));
         }
     });
 
@@ -2160,7 +2183,12 @@ window.addEventListener('popstate', function (e) {
 // Offline Image Fallback for Test Cafe
 function handleTcOfflineImage(imgEl, originalUrl) {
     if (!imgEl || !originalUrl) return;
-    if (imgEl.parentElement) imgEl.parentElement.classList.remove('is-loading');
+    const wrap = imgEl.closest('.q-image-wrap') || imgEl.parentElement;
+    if (wrap) {
+        wrap.classList.remove('is-loading');
+        const shimmer = wrap.querySelector('.image-skeleton-shimmer');
+        if (shimmer) shimmer.remove();
+    }
     if (typeof offlineStorage !== 'undefined') {
         offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {
             if (offlineUrl && offlineUrl !== originalUrl) {

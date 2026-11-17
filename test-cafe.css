@@ -1136,17 +1136,16 @@ body.tc-running { overflow-x: hidden; }
     align-items: center;
     position: relative;
     border-radius: var(--radius-md, 12px);
-    transition: min-height 0.2s ease, background 0.2s ease;
+    transition: min-height 0.2s ease;
 }
 .q-image-wrap.is-loading {
     min-height: clamp(140px, 26vh, 210px);
-    background: var(--bg-secondary, rgba(255, 255, 255, 0.03)) !important;
-    border: 1px dashed var(--border, rgba(255, 255, 255, 0.12)) !important;
+    background: transparent !important;
     box-sizing: border-box;
-    overflow: hidden;
 }
 .q-image-wrap .image-skeleton-shimmer {
     display: none;
+    opacity: 0;
 }
 .q-image-wrap.is-loading .image-skeleton-shimmer {
     display: flex;
@@ -1159,15 +1158,20 @@ body.tc-running { overflow-x: hidden; }
     color: var(--text-muted, #8b949e);
     font-size: 0.85rem;
     font-weight: 500;
+    border-radius: var(--radius-md, 12px);
     background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(99, 102, 241, 0.08) 50%, 
-        transparent 100%);
+        rgba(150, 150, 150, 0.03) 0%, 
+        rgba(99, 102, 241, 0.07) 50%, 
+        rgba(150, 150, 150, 0.03) 100%);
     background-size: 200% 100%;
-    animation: quizImgShimmer 1.8s ease-in-out infinite;
+    animation: quizImgShimmer 1.8s ease-in-out infinite, quizSkeletonFadeIn 0.25s ease 0.2s forwards;
     pointer-events: none;
     user-select: none;
     z-index: 1;
+}
+@keyframes quizSkeletonFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 @keyframes quizImgShimmer {
     0% { background-position: 200% 0; }
@@ -1182,12 +1186,6 @@ body.tc-running { overflow-x: hidden; }
     0%, 100% { transform: scale(1); opacity: 0.7; }
     50% { transform: scale(1.08); opacity: 1; }
 }
-.q-image-wrap.is-loading .q-image {
-    opacity: 0;
-    position: absolute;
-    pointer-events: none;
-    visibility: hidden;
-}
 .q-image {
     max-width: 100%;
     max-height: 42vh;
@@ -1200,8 +1198,10 @@ body.tc-running { overflow-x: hidden; }
     padding: 0.25rem;
     border: none;
     border-radius: var(--radius-md);
-    opacity: 1;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.15s ease;
+}
+.q-image-wrap.is-loading .q-image {
+    opacity: 0;
 }
 .q-image.loaded {
     opacity: 1;

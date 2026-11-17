@@ -208,6 +208,7 @@ window.getActiveOptionImages = getActiveOptionImages;
 
 // ==================== AHEAD-OF-TIME IMAGE PRELOADER ====================
 const _preloadedImageUrls = new Set();
+const _fullyLoadedImageUrls = new Set();
 let _idlePreloadHandle = null;
 
 function extractQuestionImageUrls(q) {
@@ -231,24 +232,59 @@ function extractQuestionImageUrls(q) {
     return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
 }
 
+function markQuestionImageLoaded(img, url) {
+    if (url) _fullyLoadedImageUrls.add(url);
+    if (img) {
+        img.classList.add('loaded');
+        const wrap = img.closest('.image-question-wrap') || img.parentElement;
+        if (wrap) {
+            wrap.classList.remove('is-loading');
+            const shimmer = wrap.querySelector('.image-skeleton-shimmer');
+            if (shimmer) shimmer.remove();
+        }
+    }
+}
+window.markQuestionImageLoaded = markQuestionImageLoaded;
+
+function renderQuestionImageWrapHtml(url, altText, extraClass) {
+    const isReady = _fullyLoadedImageUrls.has(url);
+    const loadingCls = isReady ? '' : ' is-loading';
+    const shimmerHtml = isReady ? '' : `<div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>`;
+    return `
+        <div class="image-question-wrap${loadingCls}${extraClass ? ' ' + extraClass : ''}">
+            ${shimmerHtml}
+            <img src="${url}" class="question-image${isReady ? ' loaded' : ''}" alt="${escapeHtml(altText || 'Question Diagram')}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${url}" onload="markQuestionImageLoaded(this, '${url}')" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+        </div>
+    `;
+}
+window.renderQuestionImageWrapHtml = renderQuestionImageWrapHtml;
+
 function preloadSingleImageUrl(url) {
     if (!url || _preloadedImageUrls.has(url)) return;
     _preloadedImageUrls.add(url);
 
+    const onDone = () => _fullyLoadedImageUrls.add(url);
+
     if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getImage === 'function') {
         offlineStorage.getImage(url).then(blob => {
-            if (blob) return;
+            if (blob) {
+                _fullyLoadedImageUrls.add(url);
+                return;
+            }
             const img = new Image();
             img.decoding = 'async';
+            img.onload = onDone;
             img.src = url;
         }).catch(() => {
             const img = new Image();
             img.decoding = 'async';
+            img.onload = onDone;
             img.src = url;
         });
     } else {
         const img = new Image();
         img.decoding = 'async';
+        img.onload = onDone;
         img.src = url;
     }
 }
@@ -360,18 +396,10 @@ function buildQuestionCardInner(q, idx, total) {
         ${qText ? `<div class="question-text">${renderSmartQuestionText(q)}</div>` : ''}
         ${qImages.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
-                ${qImages.map((img, i) => `
-                    <div class="image-question-wrap is-loading">
-                        <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
-                        <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${img}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
-                    </div>
-                `).join('')}
+                ${qImages.map((img, i) => renderQuestionImageWrapHtml(img, `Question Diagram ${i + 1}`)).join('')}
             </div>
         ` : (qImages.length === 1 && q.type !== 'image_mcq' ? `
-            <div class="image-question-wrap is-loading">
-                <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
-                <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="eager" fetchpriority="high" decoding="async" data-original-url="${qImages[0]}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
-            </div>
+            ${renderQuestionImageWrapHtml(qImages[0], 'Question Diagram')}
         ` : '')}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
     `;
@@ -752,18 +780,10 @@ function renderImageMCQ(q, idx) {
     return `
         ${qImages.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
-                ${qImages.map((img, i) => `
-                    <div class="image-question-wrap is-loading">
-                        <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
-                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${img}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
-                    </div>
-                `).join('')}
+                ${qImages.map((img, i) => renderQuestionImageWrapHtml(img, `Question ${idx + 1} Diagram ${i + 1}`)).join('')}
             </div>
         ` : (mainImg ? `
-            <div class="image-question-wrap is-loading">
-                <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
-                <img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${mainImg}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
-            </div>
+            ${renderQuestionImageWrapHtml(mainImg, `Question ${idx + 1}`)}
         ` : '')}
         ${buildOptionList(q, idx, {
             selected, revealed,
@@ -813,8 +833,11 @@ function revealImageAnswer(idx) {
 
 function handleImageError(img) {
     if (!img || img.dataset.hasFailed) return;
-    if (img.parentElement) {
-        img.parentElement.classList.remove('is-loading');
+    const wrap = img.closest('.image-question-wrap') || img.parentElement;
+    if (wrap) {
+        wrap.classList.remove('is-loading');
+        const shimmer = wrap.querySelector('.image-skeleton-shimmer');
+        if (shimmer) shimmer.remove();
     }
     const originalUrl = img.dataset.originalUrl || img.src;
     if (typeof offlineStorage !== 'undefined') {
