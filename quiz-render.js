@@ -206,6 +206,108 @@ window.getActiveExplanationImage = getActiveExplanationImage;
 window.getActiveExplanationImages = getActiveExplanationImages;
 window.getActiveOptionImages = getActiveOptionImages;
 
+// ==================== AHEAD-OF-TIME IMAGE PRELOADER ====================
+const _preloadedImageUrls = new Set();
+let _idlePreloadHandle = null;
+
+function extractQuestionImageUrls(q) {
+    if (!q) return [];
+    const urls = [];
+    const qImgs = typeof getActiveQuestionImages === 'function' 
+        ? getActiveQuestionImages(q) 
+        : ((q.images && q.images.length) ? q.images : (q.image_url ? [q.image_url] : []));
+    if (Array.isArray(qImgs)) urls.push(...qImgs);
+
+    const optImgs = typeof getActiveOptionImages === 'function'
+        ? getActiveOptionImages(q)
+        : (q.optionImages || []);
+    if (Array.isArray(optImgs)) urls.push(...optImgs);
+
+    const expImgs = typeof getActiveExplanationImages === 'function'
+        ? getActiveExplanationImages(q)
+        : (q.explanation_images || (q.explanation_image ? [q.explanation_image] : []));
+    if (Array.isArray(expImgs)) urls.push(...expImgs);
+
+    return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
+}
+
+function preloadSingleImageUrl(url) {
+    if (!url || _preloadedImageUrls.has(url)) return;
+    _preloadedImageUrls.add(url);
+
+    if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getImage === 'function') {
+        offlineStorage.getImage(url).then(blob => {
+            if (blob) return;
+            const img = new Image();
+            img.decoding = 'async';
+            img.src = url;
+        }).catch(() => {
+            const img = new Image();
+            img.decoding = 'async';
+            img.src = url;
+        });
+    } else {
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = url;
+    }
+}
+
+function preloadUpcomingImages(currentIndex, windowSize = 5) {
+    if (!Array.isArray(questions) || questions.length === 0) return;
+
+    for (let i = 1; i <= windowSize; i++) {
+        const nextIdx = currentIndex + i;
+        if (nextIdx < questions.length) {
+            const urls = extractQuestionImageUrls(questions[nextIdx]);
+            urls.forEach(preloadSingleImageUrl);
+        }
+    }
+
+    if (currentIndex > 0) {
+        const prevUrls = extractQuestionImageUrls(questions[currentIndex - 1]);
+        prevUrls.forEach(preloadSingleImageUrl);
+    }
+
+    scheduleIdlePreload();
+}
+
+function scheduleIdlePreload() {
+    if (_idlePreloadHandle) {
+        if (typeof cancelIdleCallback === 'function') cancelIdleCallback(_idlePreloadHandle);
+        else clearTimeout(_idlePreloadHandle);
+    }
+
+    const runIdle = () => {
+        if (!Array.isArray(questions)) return;
+        let idx = 0;
+        const total = questions.length;
+        
+        function processNext() {
+            while (idx < total) {
+                const q = questions[idx++];
+                const urls = extractQuestionImageUrls(q);
+                const unhandled = urls.filter(u => !_preloadedImageUrls.has(u));
+                if (unhandled.length > 0) {
+                    unhandled.forEach(preloadSingleImageUrl);
+                    _idlePreloadHandle = setTimeout(processNext, 120);
+                    return;
+                }
+            }
+        }
+        processNext();
+    };
+
+    if (typeof requestIdleCallback === 'function') {
+        _idlePreloadHandle = requestIdleCallback(runIdle, { timeout: 3000 });
+    } else {
+        _idlePreloadHandle = setTimeout(runIdle, 800);
+    }
+}
+
+window.preloadUpcomingImages = preloadUpcomingImages;
+window.extractQuestionImageUrls = extractQuestionImageUrls;
+
 function buildQuestionBody(q, idx) {
     if (q.type === 'image_mcq') return renderImageMCQ(q, idx);
     if (q.type === 'integer' || q.type === 'paragraph_integer') return renderInteger(q, idx);
@@ -259,14 +361,16 @@ function buildQuestionCardInner(q, idx, total) {
         ${qImages.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                 ${qImages.map((img, i) => `
-                    <div class="image-question-wrap">
-                        <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+                    <div class="image-question-wrap is-loading">
+                        <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
+                        <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${img}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
                     </div>
                 `).join('')}
             </div>
         ` : (qImages.length === 1 && q.type !== 'image_mcq' ? `
-            <div class="image-question-wrap">
-                <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+            <div class="image-question-wrap is-loading">
+                <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
+                <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="eager" fetchpriority="high" decoding="async" data-original-url="${qImages[0]}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
             </div>
         ` : '')}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
@@ -511,6 +615,15 @@ function refreshQuestionCard(idx) {
     if (!card) return;
     card.classList.remove('has-split-options');
     card.innerHTML = buildQuestionCardInner(questions[idx], idx, questions.length);
+
+    // Instantly reveal any images that are already complete in browser/memory cache
+    card.querySelectorAll('.image-question-wrap img').forEach(img => {
+        if (img.complete && img.naturalHeight !== 0) {
+            if (img.parentElement) img.parentElement.classList.remove('is-loading');
+            img.classList.add('loaded');
+        }
+    });
+
     typesetMath(card);
     loadOfflineImagesInContainer(card);
 
@@ -563,8 +676,17 @@ function renderQuestion() {
         ${isLast ? buildContinuePanel(nextInfo) : ''}
     `;
 
+    // Instantly reveal any images that are already complete in browser/memory cache
+    container.querySelectorAll('.image-question-wrap img').forEach(img => {
+        if (img.complete && img.naturalHeight !== 0) {
+            if (img.parentElement) img.parentElement.classList.remove('is-loading');
+            img.classList.add('loaded');
+        }
+    });
+
     typesetMath(container);
     loadOfflineImagesInContainer(container);
+    preloadUpcomingImages(currentQIndex, 5);
 
     if (typeof recordStudySession === 'function') recordStudySession();
     if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
@@ -631,14 +753,16 @@ function renderImageMCQ(q, idx) {
         ${qImages.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
                 ${qImages.map((img, i) => `
-                    <div class="image-question-wrap">
-                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+                    <div class="image-question-wrap is-loading">
+                        <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
+                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${img}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
                     </div>
                 `).join('')}
             </div>
         ` : (mainImg ? `
-            <div class="image-question-wrap">
-                <img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="lazy" data-original-url="${mainImg}" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+            <div class="image-question-wrap is-loading">
+                <div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>
+                <img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${mainImg}" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
             </div>
         ` : '')}
         ${buildOptionList(q, idx, {
@@ -689,6 +813,9 @@ function revealImageAnswer(idx) {
 
 function handleImageError(img) {
     if (!img || img.dataset.hasFailed) return;
+    if (img.parentElement) {
+        img.parentElement.classList.remove('is-loading');
+    }
     const originalUrl = img.dataset.originalUrl || img.src;
     if (typeof offlineStorage !== 'undefined') {
         offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {

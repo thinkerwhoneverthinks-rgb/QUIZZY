@@ -1164,6 +1164,81 @@ function handleTimeUp() {
     doSubmit();
 }
 
+// ==================== TEST MODE IMAGE PRELOADER ====================
+const _preloadedTcImageUrls = new Set();
+let _idleTcPreloadHandle = null;
+
+function extractTestQuestionImageUrls(q) {
+    if (!q) return [];
+    const urls = [];
+    const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
+    if (Array.isArray(rawImgs)) urls.push(...rawImgs);
+    if (Array.isArray(q.optionImages)) urls.push(...q.optionImages);
+    return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
+}
+
+function preloadSingleTcImageUrl(url) {
+    if (!url || _preloadedTcImageUrls.has(url)) return;
+    _preloadedTcImageUrls.add(url);
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = url;
+}
+
+function preloadUpcomingTestImages(currentIndex, windowSize = 5) {
+    if (!TS || !Array.isArray(TS.flat) || TS.flat.length === 0) return;
+
+    for (let i = 1; i <= windowSize; i++) {
+        const nextIdx = currentIndex + i;
+        if (nextIdx < TS.flat.length) {
+            const urls = extractTestQuestionImageUrls(TS.flat[nextIdx]);
+            urls.forEach(preloadSingleTcImageUrl);
+        }
+    }
+
+    if (currentIndex > 0) {
+        const prevUrls = extractTestQuestionImageUrls(TS.flat[currentIndex - 1]);
+        prevUrls.forEach(preloadSingleTcImageUrl);
+    }
+
+    scheduleIdleTcPreload();
+}
+
+function scheduleIdleTcPreload() {
+    if (_idleTcPreloadHandle) {
+        if (typeof cancelIdleCallback === 'function') cancelIdleCallback(_idleTcPreloadHandle);
+        else clearTimeout(_idleTcPreloadHandle);
+    }
+
+    const runIdle = () => {
+        if (!TS || !Array.isArray(TS.flat)) return;
+        let idx = 0;
+        const total = TS.flat.length;
+        
+        function processNext() {
+            while (idx < total) {
+                const q = TS.flat[idx++];
+                const urls = extractTestQuestionImageUrls(q);
+                const unhandled = urls.filter(u => !_preloadedTcImageUrls.has(u));
+                if (unhandled.length > 0) {
+                    unhandled.forEach(preloadSingleTcImageUrl);
+                    _idleTcPreloadHandle = setTimeout(processNext, 120);
+                    return;
+                }
+            }
+        }
+        processNext();
+    };
+
+    if (typeof requestIdleCallback === 'function') {
+        _idleTcPreloadHandle = requestIdleCallback(runIdle, { timeout: 3000 });
+    } else {
+        _idleTcPreloadHandle = setTimeout(runIdle, 800);
+    }
+}
+
+window.preloadUpcomingTestImages = preloadUpcomingTestImages;
+
 // ---- question area ----
 function renderQuestion() {
     const main = document.getElementById('trMain');
@@ -1224,10 +1299,10 @@ function renderQuestion() {
                 const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
                 const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
                 if (qImgs.length > 1) {
-                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`).join('')}</div>`;
+                    return `<div class="q-images-container">${qImgs.map((img, i) => `<div class="q-image-wrap is-loading"><div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div><img class="q-image" src="${tcAttr(img)}" alt="Question diagram ${i + 1}" loading="eager" fetchpriority="high" decoding="async" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`).join('')}</div>`;
                 }
                 if (qImgs.length === 1) {
-                    return `<div class="q-image-wrap"><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(qImgs[0])}')"></div>`;
+                    return `<div class="q-image-wrap is-loading"><div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div><img class="q-image" src="${tcAttr(qImgs[0])}" alt="Question diagram" loading="eager" fetchpriority="high" decoding="async" onload="this.parentElement.classList.remove('is-loading'); this.classList.add('loaded');" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(qImgs[0])}')"></div>`;
                 }
                 return '';
             })()}
@@ -1240,9 +1315,18 @@ function renderQuestion() {
         </div>
     `;
 
+    // Instantly reveal any images that are already complete in browser/memory cache
+    main.querySelectorAll('.q-image-wrap img').forEach(img => {
+        if (img.complete && img.naturalHeight !== 0) {
+            if (img.parentElement) img.parentElement.classList.remove('is-loading');
+            img.classList.add('loaded');
+        }
+    });
+
     updateFooterNav();
     renderGrid();
     tcTypeset(main);
+    preloadUpcomingTestImages(TS.currentIndex, 5);
 }
 
 function tcRenderText(text) {
@@ -2076,6 +2160,7 @@ window.addEventListener('popstate', function (e) {
 // Offline Image Fallback for Test Cafe
 function handleTcOfflineImage(imgEl, originalUrl) {
     if (!imgEl || !originalUrl) return;
+    if (imgEl.parentElement) imgEl.parentElement.classList.remove('is-loading');
     if (typeof offlineStorage !== 'undefined') {
         offlineStorage.getOfflineImageUrl(originalUrl).then(offlineUrl => {
             if (offlineUrl && offlineUrl !== originalUrl) {

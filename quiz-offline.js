@@ -124,7 +124,7 @@ class QuizOfflineStorage {
         if (!('caches' in window)) return null;
         try {
             const keys = await caches.keys();
-            const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v43-cdn';
+            const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v44-cdn';
             return await caches.open(cdnKey);
         } catch (e) {
             return null;
@@ -141,7 +141,7 @@ class QuizOfflineStorage {
         if ('caches' in window) {
             try {
                 const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v43-cdn';
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v44-cdn';
                 const cache = await caches.open(cdnKey);
                 const match = await cache.match(url, { ignoreSearch: true });
                 if (match) return true;
