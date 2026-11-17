@@ -649,14 +649,7 @@ async function downloadCustomTestForOffline(btnElement) {
 
     for (const url of imageToCache) {
         try {
-            const cached = await offlineStorage.isImageCached(url);
-            if (!cached && navigator.onLine) {
-                const resp = await fetch(url);
-                if (resp.ok) {
-                    const blob = await resp.blob();
-                    await offlineStorage.saveImage(url, blob);
-                }
-            }
+            await offlineStorage.cacheSingleImage(url);
         } catch (e) {
             console.warn('Failed caching image for custom test:', url, e);
         }

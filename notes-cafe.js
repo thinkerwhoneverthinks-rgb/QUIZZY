@@ -2999,21 +2999,7 @@ async function downloadNcertClozeChapter(chapterId, progressCb) {
     const total = images.length;
     for (const u of images) {
         try {
-            const cached = await offlineStorage.isImageCached(u);
-            if (!cached) {
-                const imgResp = await fetch(u);
-                if (imgResp.ok) {
-                    const blob = await imgResp.blob();
-                    await offlineStorage.saveImage(u, blob);
-                    if (cdnCache) {
-                        try {
-                            await cdnCache.put(new Request(u), new Response(blob.slice(0), {
-                                headers: { 'Content-Type': blob.type || 'image/png' }
-                            }));
-                        } catch (err) {}
-                    }
-                }
-            }
+            await offlineStorage.cacheSingleImage(u, cdnCache);
         } catch (err) {
             console.warn('Failed to cache cloze diagram for offline:', u, err);
         }

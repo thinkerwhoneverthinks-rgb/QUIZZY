@@ -169,27 +169,60 @@ class QuizOfflineStorage {
 
         if (!navigator.onLine) return false;
 
-        // 1. Try CORS fetch first (to get Blob for IndexedDB if server allows CORS)
+        // 1. Try direct CORS fetch first (for same-origin or CORS-enabled CDNs)
         try {
             const resp = await fetch(url, { mode: 'cors' });
             if (resp.ok) {
                 const blob = await resp.blob();
-                await this.saveImage(url, blob);
-                if (cdnCache) {
-                    try {
-                        await cdnCache.put(new Request(url), new Response(blob.slice(0), {
-                            headers: { 'Content-Type': blob.type || 'image/png' }
-                        }));
-                    } catch (err) {}
+                if (blob && blob.size > 0) {
+                    await this.saveImage(url, blob);
+                    if (cdnCache) {
+                        try {
+                            await cdnCache.put(new Request(url), new Response(blob.slice(0), {
+                                headers: {
+                                    'Content-Type': blob.type || 'image/png',
+                                    'Access-Control-Allow-Origin': '*'
+                                }
+                            }));
+                        } catch (err) {}
+                    }
+                    return true;
                 }
-                return true;
             }
         } catch (corsErr) {
             // CORS blocked (common for AWS CloudFront, S3 without CORS headers)
         }
 
-        // 2. Fallback: Fetch in 'no-cors' mode and store directly into Service Worker CacheStorage.
-        // Opaque responses are fully accepted by cache.put() and served to <img> tags offline!
+        // 2. High-speed CORS gateway via images.weserv.nl
+        // Enables CORS so the browser can read the true image bytes as a Blob for IndexedDB.
+        // Storing directly in IndexedDB eliminates the browser's ~7 MB "opaque response padding" penalty.
+        try {
+            const cleanUrl = url.replace(/^https?:\/\//i, '');
+            const proxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}`;
+            const proxyResp = await fetch(proxyUrl, { mode: 'cors' });
+            if (proxyResp.ok) {
+                const blob = await proxyResp.blob();
+                if (blob && blob.size > 0) {
+                    await this.saveImage(url, blob);
+                    if (cdnCache) {
+                        try {
+                            await cdnCache.put(new Request(url), new Response(blob.slice(0), {
+                                headers: {
+                                    'Content-Type': blob.type || 'image/png',
+                                    'Access-Control-Allow-Origin': '*'
+                                }
+                            }));
+                        } catch (err) {}
+                    }
+                    return true;
+                }
+            }
+        } catch (proxyErr) {
+            // Proxy unavailable or network issue, proceed to fallback
+        }
+
+        // 3. Fallback: Fetch in 'no-cors' mode and store directly into Service Worker CacheStorage.
+        // Opaque responses are accepted by cache.put() and served to <img> tags offline.
         if (cdnCache) {
             try {
                 const noCorsResp = await fetch(url, { mode: 'no-cors' });
@@ -207,17 +240,36 @@ class QuizOfflineStorage {
     async deleteImagesForFile(fileId) {
         // Get the quiz data to find all image URLs
         const data = await this.getQuizData(fileId);
-        if (!data || !data.chapters) return;
+        if (!data) return;
+
+        const allQuestions = [];
+        (data.chapters || []).forEach(ch => {
+            (ch.topics || []).forEach(t => {
+                (t.questions || []).forEach(q => allQuestions.push(q));
+            });
+            if (Array.isArray(ch.questions)) ch.questions.forEach(q => allQuestions.push(q));
+        });
+        if (Array.isArray(data.questions)) data.questions.forEach(q => allQuestions.push(q));
+        if (Array.isArray(data.sections)) data.sections.forEach(s => (s.questions || []).forEach(q => allQuestions.push(q)));
+
+        const allImages = this.extractAllImagesFromQuestions(allQuestions);
         const db = await this.open();
         const tx = db.transaction('images', 'readwrite');
         const store = tx.objectStore('images');
-        data.chapters.forEach(ch => {
-            (ch.topics || []).forEach(t => {
-                (t.questions || []).forEach(q => {
-                    if (q.image_url) store.delete(q.image_url);
-                });
-            });
+        allImages.forEach(u => {
+            if (u) store.delete(u);
         });
+
+        // Also clean up from CacheStorage to purge any old opaque responses
+        try {
+            const cdnCache = await this.getActiveCdnCache();
+            if (cdnCache) {
+                for (const u of allImages) {
+                    if (u) cdnCache.delete(u).catch(() => {});
+                }
+            }
+        } catch (e) {}
+
         return new Promise((resolve, reject) => {
             tx.oncomplete = () => resolve();
             tx.onerror = (e) => reject(e.target.error);
