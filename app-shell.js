@@ -110,7 +110,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Auto-inject Offline Downloads into hamburger menu under Saved section if not present
-    if (menu && !document.getElementById('menuOfflineDownloads')) {
+    var alreadyHasOfflineDl = menu && (
+        document.getElementById('menuOfflineDownloads') ||
+        menu.querySelector('[onclick*="openOfflineDownloadsModal"]') ||
+        Array.prototype.slice.call(menu.querySelectorAll('a')).some(function (a) {
+            return a.textContent.indexOf('Offline Downloads') !== -1;
+        })
+    );
+    if (menu && !alreadyHasOfflineDl) {
         var sections = menu.querySelectorAll('.menu-section');
         var savedSec = null;
         for (var i = 0; i < sections.length; i++) {
