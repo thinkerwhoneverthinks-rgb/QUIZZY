@@ -660,16 +660,118 @@ function refreshQuestionCard(idx) {
     if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
+// ==================== PRE-RENDERED QUESTION BUFFER ====================
+let _renderedChapterId = null;
+let _renderedTopicName = null;
+let _renderedLanguage = null;
+
+function clearQuestionBuffer() {
+    _renderedChapterId = null;
+    _renderedTopicName = null;
+    _renderedLanguage = null;
+    const container = document.getElementById('quizContainer');
+    if (container) container.innerHTML = '';
+}
+window.clearQuestionBuffer = clearQuestionBuffer;
+
+function createQuestionCardElement(idx) {
+    if (!Array.isArray(questions) || idx < 0 || idx >= questions.length) return null;
+    const q = questions[idx];
+    if (!q) return null;
+    const total = questions.length;
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = `qCard-${idx}`;
+    card.dataset.qIndex = String(idx);
+    card.innerHTML = buildQuestionCardInner(q, idx, total);
+
+    // Instantly reveal any images that are already complete in browser/memory cache
+    card.querySelectorAll('.image-question-wrap img').forEach(img => {
+        if (img.complete && img.naturalHeight !== 0) {
+            if (img.parentElement) img.parentElement.classList.remove('is-loading');
+            img.classList.add('loaded');
+        }
+    });
+
+    // Run math typesetting on this card element ahead of time
+    typesetMath(card);
+
+    // Load offline images from IndexedDB if downloaded
+    loadOfflineImagesInContainer(card);
+
+    return card;
+}
+window.createQuestionCardElement = createQuestionCardElement;
+
+function preloadAheadCards(centerIndex, bufferSize = 5) {
+    const container = document.getElementById('quizContainer');
+    if (!container || !Array.isArray(questions)) return;
+    const total = questions.length;
+    const contPanel = document.getElementById('quizContinuePanel');
+
+    // Pre-render upcoming questions ahead
+    for (let i = 1; i <= bufferSize; i++) {
+        const nextIdx = centerIndex + i;
+        if (nextIdx < total && !document.getElementById(`qCard-${nextIdx}`)) {
+            const aheadCard = createQuestionCardElement(nextIdx);
+            if (aheadCard) {
+                aheadCard.style.display = 'none';
+                if (contPanel && contPanel.parentNode === container) {
+                    container.insertBefore(aheadCard, contPanel);
+                } else {
+                    container.appendChild(aheadCard);
+                }
+            }
+        }
+    }
+
+    // Also ensure immediate previous card is ready if not present
+    if (centerIndex > 0 && !document.getElementById(`qCard-${centerIndex - 1}`)) {
+        const prevCard = createQuestionCardElement(centerIndex - 1);
+        if (prevCard) {
+            prevCard.style.display = 'none';
+            const curCard = document.getElementById(`qCard-${centerIndex}`);
+            if (curCard && curCard.parentNode === container) {
+                container.insertBefore(prevCard, curCard);
+            } else {
+                container.appendChild(prevCard);
+            }
+        }
+    }
+}
+
 // ==================== QUESTION RENDERING ====================
 function renderQuestion() {
+    const total = Array.isArray(questions) ? questions.length : 0;
+    if (total === 0 || currentQIndex < 0 || currentQIndex >= total) return;
     const q = questions[currentQIndex];
     const container = document.getElementById('quizContainer');
-    const total = questions.length;
+    if (!container) return;
 
-    document.getElementById('quizProgress').textContent = `${currentQIndex + 1} / ${total}`;
-    document.getElementById('progressFill').style.width = `${((currentQIndex + 1) / total) * 100}%`;
-    document.getElementById('quizChapterTitle').textContent = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
-    document.getElementById('quizTopicName').textContent = q.topicName || '';
+    // Check if context (chapter, topic, or language) has changed
+    const currLang = typeof currentLanguage !== 'undefined' ? currentLanguage : 'en';
+    const currChapId = currentChapter ? currentChapter.id : null;
+    const currTopic = q.topicName || null;
+    if (currChapId !== _renderedChapterId || currTopic !== _renderedTopicName || currLang !== _renderedLanguage) {
+        container.innerHTML = '';
+        _renderedChapterId = currChapId;
+        _renderedTopicName = currTopic;
+        _renderedLanguage = currLang;
+    }
+
+    // Header & progress updates
+    const progEl = document.getElementById('quizProgress');
+    if (progEl) progEl.textContent = `${currentQIndex + 1} / ${total}`;
+
+    const progFill = document.getElementById('progressFill');
+    if (progFill) progFill.style.width = `${((currentQIndex + 1) / total) * 100}%`;
+
+    const chapTitle = document.getElementById('quizChapterTitle');
+    if (chapTitle) chapTitle.textContent = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
+
+    const topicName = document.getElementById('quizTopicName');
+    if (topicName) topicName.textContent = q.topicName || '';
+
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
 
     // Populate mobile context bar (slim Chapter › Topic breadcrumb)
@@ -678,42 +780,82 @@ function renderQuestion() {
         const ctxChap = document.getElementById('quizCtxChapter');
         const ctxTopic = document.getElementById('quizCtxTopic');
         const chapName = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
-        const topicName = q.topicName || '';
+        const topicStr = q.topicName || '';
         if (ctxChap) ctxChap.textContent = chapName;
-        if (ctxTopic) ctxTopic.textContent = topicName;
-        if (chapName || topicName) {
+        if (ctxTopic) ctxTopic.textContent = topicStr;
+        if (chapName || topicStr) {
             ctxBar.classList.add('visible');
         } else {
             ctxBar.classList.remove('visible');
         }
     }
 
-    document.getElementById('btnPrev').disabled = currentQIndex === 0;
+    const btnPrev = document.getElementById('btnPrev');
+    if (btnPrev) btnPrev.disabled = currentQIndex === 0;
+
     const nextInfo = typeof getNextTopicInfo === 'function' ? getNextTopicInfo() : null;
     const isLast = currentQIndex === total - 1;
-    if (isLast) {
-        document.getElementById('btnNext').textContent = nextInfo ? `Next: ${nextInfo.name} →` : 'Finish →';
-    } else {
-        document.getElementById('btnNext').textContent = 'Next →';
+    const btnNext = document.getElementById('btnNext');
+    if (btnNext) {
+        if (isLast) {
+            btnNext.textContent = nextInfo ? `Next: ${nextInfo.name} →` : 'Finish →';
+        } else {
+            btnNext.textContent = 'Next →';
+        }
     }
 
-    container.innerHTML = `
-        <div class="question-card">
-            ${buildQuestionCardInner(q, currentQIndex, total)}
-        </div>
-        ${isLast ? buildContinuePanel(nextInfo) : ''}
-    `;
-
-    // Instantly reveal any images that are already complete in browser/memory cache
-    container.querySelectorAll('.image-question-wrap img').forEach(img => {
-        if (img.complete && img.naturalHeight !== 0) {
-            if (img.parentElement) img.parentElement.classList.remove('is-loading');
-            img.classList.add('loaded');
+    // Hide any currently visible question cards
+    const visibleCards = container.querySelectorAll('.question-card:not([style*="display: none"])');
+    visibleCards.forEach(c => {
+        if (c.id !== `qCard-${currentQIndex}`) {
+            c.style.display = 'none';
         }
     });
 
-    typesetMath(container);
-    loadOfflineImagesInContainer(container);
+    // Ensure continue panel container exists
+    let contPanel = document.getElementById('quizContinuePanel');
+    if (!contPanel) {
+        contPanel = document.createElement('div');
+        contPanel.id = 'quizContinuePanel';
+        container.appendChild(contPanel);
+    }
+    if (isLast) {
+        contPanel.innerHTML = buildContinuePanel(nextInfo);
+        contPanel.style.display = '';
+    } else {
+        contPanel.innerHTML = '';
+        contPanel.style.display = 'none';
+    }
+
+    // Show or create target card
+    let targetCard = document.getElementById(`qCard-${currentQIndex}`);
+    if (!targetCard) {
+        targetCard = createQuestionCardElement(currentQIndex);
+        if (targetCard) {
+            if (contPanel && contPanel.parentNode === container) {
+                container.insertBefore(targetCard, contPanel);
+            } else {
+                container.appendChild(targetCard);
+            }
+        }
+    }
+    if (targetCard) {
+        targetCard.style.display = '';
+        // Ensure any cached images complete in browser are visible
+        targetCard.querySelectorAll('.image-question-wrap img').forEach(img => {
+            if (img.complete && img.naturalHeight !== 0) {
+                if (img.parentElement) img.parentElement.classList.remove('is-loading');
+                img.classList.add('loaded');
+            }
+        });
+        // Typeset math if not yet processed
+        typesetMath(targetCard);
+    }
+
+    // Preload next 5 question cards in background
+    preloadAheadCards(currentQIndex, 5);
+
+    // Warm up image cache (ahead-of-time preloader)
     preloadUpcomingImages(currentQIndex, 5);
 
     if (typeof recordStudySession === 'function') recordStudySession();

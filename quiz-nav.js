@@ -40,6 +40,7 @@ function showScreen(id) {
 
 function showSubjects() {
     if (typeof clearActiveExercise === 'function') clearActiveExercise();
+    if (typeof clearQuestionBuffer === 'function') clearQuestionBuffer();
     currentSubject = null;
     currentChapter = null;
     currentMode = null;
@@ -51,6 +52,7 @@ function showSubjects() {
 
 function showChapters() {
     if (typeof clearActiveExercise === 'function') clearActiveExercise();
+    if (typeof clearQuestionBuffer === 'function') clearQuestionBuffer();
     closeGrid();
     if (subjectData && subjectData.chapters && subjectData.chapters.length > 1) {
         renderChapters();
@@ -72,6 +74,9 @@ function showQuiz(startIndex) {
     if (!userAnswers) userAnswers = {};
     const fullContainer = document.getElementById('fullQuizContainer');
     if (fullContainer) fullContainer.innerHTML = '';
+    const oneByOneContainer = document.getElementById('quizContainer');
+    if (oneByOneContainer) oneByOneContainer.innerHTML = '';
+    if (typeof clearQuestionBuffer === 'function') clearQuestionBuffer();
     showScreen('screenQuiz');   // show first so render lands on a visible screen
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
     renderQuestion();

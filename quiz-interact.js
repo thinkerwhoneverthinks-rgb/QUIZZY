@@ -194,6 +194,8 @@ function getQuestionCardElement(idx) {
     if (currentMode === 'fullquiz') {
         return document.getElementById(`fullQ-${idx}`);
     }
+    const card = document.getElementById(`qCard-${idx}`);
+    if (card) return card;
     const container = document.getElementById('quizContainer');
     return container ? container.querySelector('.question-card') : null;
 }
@@ -252,7 +254,9 @@ function nextQuestion() {
     if (currentQIndex < questions.length - 1) {
         currentQIndex++;
         renderQuestion();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (window.scrollY > 40) {
+            window.scrollTo(0, 0);
+        }
     } else {
         // On the last question the "Continue / Show results" panel is already
         // on screen, so Next simply follows it instead of raising a confirm().
@@ -269,7 +273,9 @@ function prevQuestion() {
     if (currentQIndex > 0) {
         currentQIndex--;
         renderQuestion();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (window.scrollY > 40) {
+            window.scrollTo(0, 0);
+        }
     }
 }
 
