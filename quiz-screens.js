@@ -90,9 +90,36 @@ async function initNavigation() {
     }
     // Check offline status
     checkAndShowOfflineStatus();
-    // Check if coming from a bookmark link (either flow)
+    // Check if coming from a bookmark link or offline launch
     if (!checkGotoBookmarkPractice()) {
         checkGotoBookmark();
+    }
+    checkOfflineLaunch();
+}
+
+async function checkOfflineLaunch() {
+    if (!location.hash || !location.hash.startsWith('#offline:')) return;
+    try {
+        const parts = location.hash.substring('#offline:'.length).split(':');
+        history.replaceState(null, '', location.pathname);
+        const fileId = decodeURIComponent(parts[0]);
+        const chapterId = decodeURIComponent(parts[1] || 'all');
+        const topicId = decodeURIComponent(parts[2] || 'all');
+
+        await loadFile(fileId);
+        if (chapterId && chapterId !== 'all') {
+            await selectChapter(chapterId);
+            if (topicId && topicId !== 'all') {
+                const idx = parseInt(topicId, 10);
+                if (!isNaN(idx) && typeof selectTopic === 'function') {
+                    selectTopic(idx);
+                }
+            } else if (typeof selectAllTopics === 'function') {
+                selectAllTopics();
+            }
+        }
+    } catch (e) {
+        console.warn('Could not launch offline quiz from hash:', e);
     }
 }
 
@@ -678,12 +705,14 @@ async function downloadChapterOffline(chapterId, btnElement) {
     btnElement.innerHTML = '⏳';
 
     try {
+        const fullQuiz = (typeof loadedFiles !== 'undefined' && loadedFiles[currentFileName]) || (typeof subjectData !== 'undefined' ? subjectData : null);
         await offlineStorage.downloadTopicForOffline(
             currentFileName || 'quiz', chapterId, 'all', qs,
             (done, total) => {
                 const pct = total > 0 ? Math.round((done / total) * 100) : 100;
                 btnElement.innerHTML = `⏳ ${pct}%`;
-            }
+            },
+            fullQuiz
         );
         btnElement.innerHTML = '✅';
         btnElement.classList.add('downloaded');

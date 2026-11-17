@@ -334,7 +334,8 @@ function startPractice() {
 function downloadSingleTopic(topicIdx, btnElement) {
     const fileId = currentFileName || 'quiz';
     const chapterId = currentChapter ? currentChapter.id : 'ch1';
-    downloadTopicUI(fileId, chapterId, topicIdx, btnElement);
+    const fullQuiz = (typeof loadedFiles !== 'undefined' && loadedFiles[fileId]) || (typeof subjectData !== 'undefined' ? subjectData : null);
+    downloadTopicUI(fileId, chapterId, topicIdx, btnElement, fullQuiz);
 }
 
 async function downloadAllTopicsForOffline(btnElement) {
@@ -344,6 +345,7 @@ async function downloadAllTopicsForOffline(btnElement) {
     const allQs = questions && questions.length > 0 ? questions : (topics ? topics.flatMap(t => t.questions || []) : []);
     if (!allQs.length) return;
 
+    const fullQuiz = (typeof loadedFiles !== 'undefined' && loadedFiles[fileId]) || (typeof subjectData !== 'undefined' ? subjectData : null);
     const originalText = btnElement.innerHTML;
     btnElement.disabled = true;
     btnElement.innerHTML = '⏳';
@@ -352,7 +354,7 @@ async function downloadAllTopicsForOffline(btnElement) {
         await offlineStorage.downloadTopicForOffline(fileId, chapterId, 'all', allQs, (done, total) => {
             const pct = total > 0 ? Math.round((done / total) * 100) : 100;
             btnElement.innerHTML = `⏳ ${pct}%`;
-        });
+        }, fullQuiz);
         btnElement.innerHTML = '✅';
         btnElement.classList.add('downloaded');
         btnElement.title = 'All topics available offline';

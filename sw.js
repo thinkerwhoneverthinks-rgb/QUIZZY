@@ -1,7 +1,7 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v42';
+const CACHE_VERSION = 'quizzy-v43';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
 
@@ -135,28 +135,36 @@ self.addEventListener('fetch', (e) => {
         return;
     }
 
-    // Image URLs (S3, Allen CDN, Cloudinary, ibb, etc.): cache-first with network fallback
+    // Image URLs (S3, CloudFront, Allen CDN, Cloudinary, ibb, etc.): cache-first with network fallback
     if (
         e.request.destination === 'image' ||
         url.hostname.includes('s3') ||
         url.hostname.includes('amazonaws.com') ||
+        url.hostname.includes('cloudfront.net') ||
         url.hostname.includes('allen') ||
         url.hostname.includes('cloudinary') ||
         url.hostname.includes('ibb.co') ||
+        url.hostname.includes('googleusercontent.com') ||
         /\.(png|jpg|jpeg|gif|webp|svg)($|\?)/i.test(url.pathname)
     ) {
         e.respondWith(
             caches.open(CDN_CACHE).then(cache => {
-                return cache.match(e.request).then(cached => {
+                return cache.match(e.request, { ignoreSearch: true }).then(cached => {
                     if (cached) return cached;
                     return fetch(e.request).then(resp => {
-                        if (resp.ok) cache.put(e.request, resp.clone());
+                        // Crucial: Opaque responses from cross-origin CDN (status 0) must be cached!
+                        if (resp.ok || resp.type === 'opaque') {
+                            try { cache.put(e.request, resp.clone()); } catch (err) {}
+                        }
                         return resp;
                     }).catch(() => {
-                        return new Response('', { status: 404, statusText: 'Offline' });
+                        return caches.match(e.request, { ignoreSearch: true }).then(anyCached => {
+                            if (anyCached) return anyCached;
+                            return new Response('', { status: 404, statusText: 'Offline' });
+                        });
                     });
                 });
-            })
+            }).catch(() => caches.match(e.request, { ignoreSearch: true }))
         );
         return;
     }

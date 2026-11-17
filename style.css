@@ -57,7 +57,7 @@
     --shadow-glow: 0 0 20px var(--accent-glow);
 
     /* Height of the sticky top navbar — sub-headers stick right below it. */
-    --nav-h: 57px;
+    --nav-h: 61px;
 }
 
 [data-theme="light"] {
@@ -1362,9 +1362,108 @@ mjx-container[jax="CHTML"][display="true"]::-webkit-scrollbar {
 .data-status.ok { color: var(--success); }
 .data-status.err { color: var(--error); }
 
+/* ===== OFFLINE DOWNLOADS MANAGER MODAL ===== */
+.offline-dl-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(600px, 94vw);
+    max-height: 88vh;
+    z-index: 1102;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg-primary);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+.offline-dl-panel.active { display: flex; }
+.offline-dl-tabs {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.5rem 1.25rem 0;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+}
+.offline-dl-tab {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.offline-dl-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+.offline-dl-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+}
+.offline-dl-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: transform 0.15s, border-color 0.15s;
+}
+.offline-dl-item:hover {
+    border-color: var(--accent);
+}
+.offline-dl-item-info {
+    flex: 1;
+    min-width: 0;
+}
+.offline-dl-item-title {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.25rem;
+}
+.offline-dl-item-meta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.offline-dl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.12rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: rgba(34, 197, 94, 0.12);
+    color: #16a34a;
+}
+.offline-dl-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
-    :root { --nav-h: 53px; }
+    :root { --nav-h: 57px; }
     .navbar {
         padding: 0.75rem 1rem;
     }

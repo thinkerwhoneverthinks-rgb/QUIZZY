@@ -837,7 +837,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem max(1.25rem, calc(50% - 410px)) calc(0.75rem + env(safe-area-inset-bottom, 0px));
+            padding: 0.75rem 1.5rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
             background: var(--bg-primary);
             border-top: 1.5px solid var(--border);
             box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.16);
@@ -3496,7 +3496,7 @@
 
     .quiz-sticky-head {
 
-        top: calc(var(--nav-h, 53px) - 1px);
+        top: var(--nav-h, 57px);
 
         margin-bottom: 0.65rem !important;
 
@@ -3523,41 +3523,31 @@
 }
 
 
-/* ==================== 2x2 GRID OPTIONS & SPLIT QUESTION CARD ==================== */
-/* When a question card ends and options start below in a 2x2 grid */
+/* ==================== 2x2 GRID OPTIONS (<= 15 CHARACTERS) ==================== */
+/* Safe reset for legacy containers if encountered */
 .question-card.has-split-options {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.question-stem-card,
+.question-options-wrapper {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
-    margin-bottom: 1.5rem !important;
-}
-
-.question-stem-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.4rem;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 0.85rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.question-stem-card:hover {
-    border-color: var(--border-hover);
-}
-
-.question-options-wrapper {
+    margin: 0 !important;
     width: 100%;
 }
 
-/* 2x2 Grid options container: 2 columns, 2 rows */
+/* 2x2 Grid options container inside question card: 2 columns, 2 rows */
 .mcq-options.mcq-options-grid-2x2 {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 0.65rem !important;
     margin-top: 0 !important;
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 1.25rem !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
 }
@@ -3707,13 +3697,9 @@
 
 /* Responsive adjustments for mobile */
 @media (max-width: 480px) {
-    .question-stem-card {
-        padding: 1.1rem 0.95rem;
-        margin-bottom: 0.65rem;
-    }
     .mcq-options.mcq-options-grid-2x2 {
         gap: 0.5rem !important;
-        margin-bottom: 0.65rem !important;
+        margin-bottom: 0.85rem !important;
     }
     .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 {
         padding: 0.7rem 0.6rem !important;
@@ -3737,9 +3723,6 @@
 
 /* Responsive adjustments for desktop/PC */
 @media (min-width: 769px) {
-    .question-stem-card {
-        padding: 1.65rem 1.85rem;
-    }
     .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 {
         padding: 0.95rem 1.15rem !important;
     }

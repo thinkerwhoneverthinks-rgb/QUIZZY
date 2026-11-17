@@ -53,6 +53,13 @@ function tcTypeset(el) {
 
 // ==================== BOOT ====================
 async function initTestCafe() {
+    if (location.hash && location.hash.startsWith('#test:')) {
+        const fn = decodeURIComponent(location.hash.substring('#test:'.length));
+        history.replaceState(null, '', location.pathname);
+        openTestDetail(fn);
+        return;
+    }
+
     if (resumeBookmarkReview()) return;
 
     if (typeof getInProgressTest === 'function') {
@@ -242,29 +249,21 @@ async function handleTestDownload(filePath, btn) {
         }
 
         const imgs = offlineStorage.extractAllImagesFromQuestions(qs);
-        let cdnCache = null;
-        try {
-            if ('caches' in window) {
-                const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v36-cdn';
-                cdnCache = await caches.open(cdnKey);
-            }
-        } catch (e) { /* ignore */ }
+        const cdnCache = await offlineStorage.getActiveCdnCache();
 
         for (const u of imgs) {
             try {
-                const imgResp = await fetch(u);
-                if (imgResp.ok) {
-                    const blob = await imgResp.blob();
-                    await offlineStorage.saveImage(u, blob);
-                    if (cdnCache) {
-                        try {
-                            await cdnCache.put(new Request(u), new Response(blob.slice(0), { headers: { 'Content-Type': blob.type || 'image/png' } }));
-                        } catch (err) {}
-                    }
-                }
+                await offlineStorage.cacheSingleImage(u, cdnCache);
             } catch (err) {}
         }
+
+        await offlineStorage.saveMetadata(`file__${filePath}`, {
+            fileName: filePath,
+            totalQuestions: qs.length,
+            totalImages: imgs.length,
+            downloadedAt: Date.now(),
+            status: 'complete'
+        });
 
         btn.innerHTML = '✅';
         btn.classList.add('downloaded');

@@ -232,8 +232,6 @@ function buildQuestionCardInner(q, idx, total) {
     const qImages = getActiveQuestionImages(q);
     const hasHi = Boolean(q.translations && q.translations.hi);
 
-    const isSplit = shouldUseTwoByTwoGrid(q);
-
     const stemContent = `
         <div class="question-card-header">
             <div class="question-meta-group">
@@ -273,17 +271,6 @@ function buildQuestionCardInner(q, idx, total) {
         ` : '')}
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
     `;
-
-    if (isSplit) {
-        return `
-            <div class="question-stem-card">
-                ${stemContent}
-            </div>
-            <div class="question-options-wrapper">
-                ${buildQuestionBody(q, idx)}
-            </div>
-        `;
-    }
 
     return `
         ${stemContent}
@@ -522,8 +509,7 @@ function refreshQuestionCard(idx) {
         ? getQuestionCardElement(idx)
         : document.getElementById(`fullQ-${idx}`);
     if (!card) return;
-    const isSplit = shouldUseTwoByTwoGrid(questions[idx]);
-    card.classList.toggle('has-split-options', isSplit);
+    card.classList.remove('has-split-options');
     card.innerHTML = buildQuestionCardInner(questions[idx], idx, questions.length);
     typesetMath(card);
     loadOfflineImagesInContainer(card);
@@ -570,9 +556,8 @@ function renderQuestion() {
         document.getElementById('btnNext').textContent = 'Next →';
     }
 
-    const isSplit = shouldUseTwoByTwoGrid(q);
     container.innerHTML = `
-        <div class="question-card${isSplit ? ' has-split-options' : ''}">
+        <div class="question-card">
             ${buildQuestionCardInner(q, currentQIndex, total)}
         </div>
         ${isLast ? buildContinuePanel(nextInfo) : ''}
@@ -714,13 +699,19 @@ function handleImageError(img) {
                 img.dataset.hasFailed = '1';
                 img.alt = 'Image unavailable offline';
                 img.style.minHeight = '70px';
-                if (img.parentElement && !img.parentElement.querySelector('.image-offline-placeholder')) {
-                    img.parentElement.innerHTML = `
-                        <div class="image-offline-placeholder">
-                            📷 Diagram not downloaded
-                            <span>Download this topic for offline access</span>
-                        </div>
-                    `;
+                const placeholder = document.createElement('div');
+                placeholder.className = 'image-offline-placeholder';
+                placeholder.innerHTML = `
+                    📷 Diagram not downloaded
+                    <span>Download this topic for offline access</span>
+                `;
+                if (img.parentElement) {
+                    if (img.parentElement.classList.contains('image-question-wrap')) {
+                        img.parentElement.innerHTML = '';
+                        img.parentElement.appendChild(placeholder);
+                    } else if (!img.parentElement.querySelector('.image-offline-placeholder')) {
+                        img.replaceWith(placeholder);
+                    }
                 }
             }
         }).catch(() => { img.dataset.hasFailed = '1'; });
@@ -1039,9 +1030,8 @@ function renderFullQuiz() {
     document.getElementById('fullProgressFill').style.width = '100%';
 
     container.innerHTML = questions.map((q, idx) => {
-        const isSplit = shouldUseTwoByTwoGrid(q);
         return `
-            <div class="question-card${isSplit ? ' has-split-options' : ''}" id="fullQ-${idx}">
+            <div class="question-card" id="fullQ-${idx}">
                 ${buildQuestionCardInner(q, idx, total)}
             </div>
         `;

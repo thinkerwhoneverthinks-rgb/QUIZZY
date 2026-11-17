@@ -120,9 +120,88 @@ class QuizOfflineStorage {
         });
     }
 
+    async getActiveCdnCache() {
+        if (!('caches' in window)) return null;
+        try {
+            const keys = await caches.keys();
+            const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v43-cdn';
+            return await caches.open(cdnKey);
+        } catch (e) {
+            return null;
+        }
+    }
+
     async isImageCached(url) {
-        const blob = await this.getImage(url);
-        return blob !== null;
+        if (!url) return false;
+        try {
+            const blob = await this.getImage(url);
+            if (blob) return true;
+        } catch (e) {}
+
+        if ('caches' in window) {
+            try {
+                const keys = await caches.keys();
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v43-cdn';
+                const cache = await caches.open(cdnKey);
+                const match = await cache.match(url, { ignoreSearch: true });
+                if (match) return true;
+            } catch (e) {}
+        }
+        return false;
+    }
+
+    async cacheSingleImage(url, cdnCache) {
+        if (!url || typeof url !== 'string' || url.startsWith('data:') || url.startsWith('blob:')) return false;
+
+        // Check if already in IndexedDB
+        try {
+            const blob = await this.getImage(url);
+            if (blob) return true;
+        } catch (e) {}
+
+        // Check if already in CDN CacheStorage
+        if (cdnCache) {
+            try {
+                const match = await cdnCache.match(url, { ignoreSearch: true });
+                if (match) return true;
+            } catch (e) {}
+        }
+
+        if (!navigator.onLine) return false;
+
+        // 1. Try CORS fetch first (to get Blob for IndexedDB if server allows CORS)
+        try {
+            const resp = await fetch(url, { mode: 'cors' });
+            if (resp.ok) {
+                const blob = await resp.blob();
+                await this.saveImage(url, blob);
+                if (cdnCache) {
+                    try {
+                        await cdnCache.put(new Request(url), new Response(blob.slice(0), {
+                            headers: { 'Content-Type': blob.type || 'image/png' }
+                        }));
+                    } catch (err) {}
+                }
+                return true;
+            }
+        } catch (corsErr) {
+            // CORS blocked (common for AWS CloudFront, S3 without CORS headers)
+        }
+
+        // 2. Fallback: Fetch in 'no-cors' mode and store directly into Service Worker CacheStorage.
+        // Opaque responses are fully accepted by cache.put() and served to <img> tags offline!
+        if (cdnCache) {
+            try {
+                const noCorsResp = await fetch(url, { mode: 'no-cors' });
+                if (noCorsResp && (noCorsResp.ok || noCorsResp.type === 'opaque')) {
+                    await cdnCache.put(new Request(url), noCorsResp);
+                    return true;
+                }
+            } catch (noCorsErr) {
+                console.warn('Failed to cache image in no-cors mode:', url, noCorsErr);
+            }
+        }
+        return false;
     }
 
     async deleteImagesForFile(fileId) {
@@ -345,39 +424,29 @@ class QuizOfflineStorage {
     }
 
     // ==================== DOWNLOAD TOPIC WITH IMAGES ====================
-    async downloadTopicForOffline(fileId, chapterId, topicId, questionsArray, progressCb) {
+    async downloadTopicForOffline(fileId, chapterId, topicId, questionsArray, progressCb, fullQuizData = null) {
+        // If full quiz data is passed, save it to quizData so the quiz can be loaded offline
+        if (fullQuizData) {
+            try {
+                await this.saveQuizData(fileId, fullQuizData);
+            } catch (e) {
+                console.warn('Could not save quiz data for offline topic:', e);
+            }
+        }
+
         const allImages = this.extractAllImagesFromQuestions(questionsArray);
         const total = allImages.length;
         let done = 0;
 
-        let cdnCache = null;
-        try {
-            if ('caches' in window) {
-                const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v38-cdn';
-                cdnCache = await caches.open(cdnKey);
-                // Pre-cache math typesetting engine for offline math formulas
-                await this.precacheMathJax(cdnCache);
-            }
-        } catch (e) { /* ignore */ }
+        const cdnCache = await this.getActiveCdnCache();
+        if (cdnCache) {
+            // Pre-cache math typesetting engine for offline math formulas
+            await this.precacheMathJax(cdnCache);
+        }
 
         for (const url of allImages) {
             try {
-                const cached = await this.isImageCached(url);
-                if (!cached && navigator.onLine) {
-                    const resp = await fetch(url);
-                    if (resp.ok) {
-                        const blob = await resp.blob();
-                        await this.saveImage(url, blob);
-                        if (cdnCache) {
-                            try {
-                                await cdnCache.put(new Request(url), new Response(blob.slice(0), {
-                                    headers: { 'Content-Type': blob.type || 'image/png' }
-                                }));
-                            } catch (err) { /* ignore cross-origin cache errors */ }
-                        }
-                    }
-                }
+                await this.cacheSingleImage(url, cdnCache);
             } catch (e) {
                 console.warn('Failed to cache image for offline:', url, e);
             }
@@ -439,34 +508,15 @@ class QuizOfflineStorage {
         const total = allImages.length;
         let done = 0;
 
-        let cdnCache = null;
-        try {
-            if ('caches' in window) {
-                const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v38-cdn';
-                cdnCache = await caches.open(cdnKey);
-                // Pre-cache math typesetting engine for offline math formulas
-                await this.precacheMathJax(cdnCache);
-            }
-        } catch (e) { /* ignore */ }
+        const cdnCache = await this.getActiveCdnCache();
+        if (cdnCache) {
+            // Pre-cache math typesetting engine for offline math formulas
+            await this.precacheMathJax(cdnCache);
+        }
 
         for (const url of allImages) {
             try {
-                const cached = await this.isImageCached(url);
-                if (!cached && navigator.onLine) {
-                    const resp = await fetch(url);
-                    if (resp.ok) {
-                        const blob = await resp.blob();
-                        await this.saveImage(url, blob);
-                        if (cdnCache) {
-                            try {
-                                await cdnCache.put(new Request(url), new Response(blob.slice(0), {
-                                    headers: { 'Content-Type': blob.type || 'image/png' }
-                                }));
-                            } catch (err) { /* ignore cross-origin cache errors */ }
-                        }
-                    }
-                }
+                await this.cacheSingleImage(url, cdnCache);
             } catch (e) {
                 console.warn('Failed to cache image:', url, e);
             }
@@ -521,7 +571,12 @@ class QuizOfflineStorage {
         if (blob) {
             return URL.createObjectURL(blob);
         }
-        return originalUrl; // fallback to network
+        return originalUrl; // fallback to network / Service Worker cache
+    }
+
+    async getAllDownloadedItems() {
+        const metas = await this.getAllMetadata();
+        return (metas || []).filter(m => m && m.status === 'complete');
     }
 }
 
@@ -529,7 +584,7 @@ class QuizOfflineStorage {
 const offlineStorage = new QuizOfflineStorage();
 
 // ==================== UI HELPERS FOR DOWNLOAD ====================
-async function downloadTopicUI(fileId, chapterId, topicIdx, btnElement) {
+async function downloadTopicUI(fileId, chapterId, topicIdx, btnElement, fullQuizData = null) {
     if (!topics || !topics[topicIdx]) return;
 
     const topic = topics[topicIdx];
@@ -553,7 +608,8 @@ async function downloadTopicUI(fileId, chapterId, topicIdx, btnElement) {
             (done, total) => {
                 const pct = total > 0 ? Math.round((done / total) * 100) : 100;
                 btnElement.innerHTML = `⏳ ${pct}%`;
-            }
+            },
+            fullQuizData
         );
         btnElement.innerHTML = '✅';
         btnElement.classList.add('downloaded');
