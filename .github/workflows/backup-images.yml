@@ -6,78 +6,84 @@ on:
       batch_pw_test:
         description: "Include pw-test (NEET/JEE/Dropper/Board test papers)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_pw_modules:
         description: "Include pw-modules (All digital books — Arjuna, Lakshya, Yakeen, Punch, etc.)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_pw_notes:
         description: "Include pw-notes (Visual Edge, Formula Handbooks)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_notes:
         description: "Include notes (Notes Cafe — subject-wise chapter notes)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_neetprep:
         description: "Include neetprep (NeetPrep full question bank)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_batch_tests:
         description: "Include batch-tests (NEET & Banking batch tests)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_dpp:
         description: "Include dpp (JEE/NEET/Banking/UGC-NET DPP vaults)"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_jee_pyq:
         description: "Include jee-5year-pyq-tests"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_neet_pyq:
         description: "Include neet-pyq-tests"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_ncert_json:
         description: "Include ncert-json"
         required: false
-        default: "true"
+        default: true
         type: boolean
       batch_ncert_cloze:
         description: "Include ncert-cloze"
         required: false
-        default: "true"
+        default: true
         type: boolean
       concurrency:
         description: "Download concurrency (parallel image downloads)"
         required: false
-        default: "48"
+        default: "64"
         type: string
       publish_release:
-        description: "Publish to GitHub Releases (direct download links for Telegram leech bots)"
+        description: "Publish live to GitHub Releases every 5 ZIPs (direct Telegram leech links)"
         required: false
         default: true
         type: boolean
 
 jobs:
   backup:
-    name: Download Images & Package ZIPs
+    name: Download Images & Package Self-Contained ZIPs
     runs-on: ubuntu-latest
     timeout-minutes: 360
     permissions:
       contents: write
 
     steps:
+      - name: 🧹 Free runner disk space
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h /
+
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
 
@@ -106,7 +112,7 @@ jobs:
           echo "  publish_release  : ${{ inputs.publish_release }}"
           echo "======================================================="
 
-      - name: 🔍 Extract image URLs & copy JSON files
+      - name: 🔍 Extract image URLs & download to cache (self-contained layout)
         env:
           BATCH_PW_TEST: ${{ inputs.batch_pw_test }}
           BATCH_PW_MODULES: ${{ inputs.batch_pw_modules }}
@@ -122,33 +128,22 @@ jobs:
           CONCURRENCY: ${{ inputs.concurrency }}
         run: node tools/backup-images.js
 
-      - name: 🗜️ Create ZIP archives (1 per book / batch)
+      - name: 🗜️ Create self-contained ZIPs & upload live every 5 ZIPs
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_SHA: ${{ github.sha }}
+          PUBLISH_RELEASE: ${{ inputs.publish_release }}
         run: node tools/create-zip.js
 
-      - name: 🚀 Publish to GitHub Releases
-        if: ${{ inputs.publish_release != false }}
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: backup-${{ github.run_id }}
-          name: "📦 QUIZZY Backup — Run #${{ github.run_id }}"
-          body_path: backup-output/summary.md
-          files: backup-output/*.zip
-          draft: false
-          prerelease: false
-
-      - name: 📤 Upload ZIPs as artifact (fallback, 90 days)
-        uses: actions/upload-artifact@v4
-        with:
-          name: quizzy-backup-${{ github.run_id }}
-          path: backup-output/*.zip
-          retention-days: 90
-          if-no-files-found: error
-
       - name: 📊 Print summary
+        if: always()
         run: |
-          echo "### ✅ Backup Complete" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Backup Workflow Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          cat backup-output/summary.md >> $GITHUB_STEP_SUMMARY
+          if [ -f backup-output/summary.md ]; then
+            cat backup-output/summary.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "No summary.md generated." >> $GITHUB_STEP_SUMMARY
+          fi
