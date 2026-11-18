@@ -4,34 +4,74 @@ on:
   workflow_dispatch:
     inputs:
       batch_pw_test:
-        description: "Include pw-test (NEET/JEE test papers)"
+        description: "Include pw-test (NEET/JEE/Dropper/Board test papers)"
         required: false
         default: "true"
         type: boolean
       batch_pw_modules:
-        description: "Include pw-modules (Digital modules)"
+        description: "Include pw-modules (All digital books — Arjuna, Lakshya, Yakeen, Punch, etc.)"
         required: false
         default: "true"
         type: boolean
       batch_pw_notes:
-        description: "Include pw-notes (Visual Edge, Formula Handbook, etc.)"
+        description: "Include pw-notes (Visual Edge, Formula Handbooks)"
         required: false
         default: "true"
         type: boolean
       batch_notes:
-        description: "Include notes (Subject-wise chapter notes)"
+        description: "Include notes (Notes Cafe — subject-wise chapter notes)"
         required: false
         default: "true"
         type: boolean
+      batch_neetprep:
+        description: "Include neetprep (NeetPrep full question bank)"
+        required: false
+        default: "true"
+        type: boolean
+      batch_batch_tests:
+        description: "Include batch-tests (NEET & Banking batch tests)"
+        required: false
+        default: "true"
+        type: boolean
+      batch_dpp:
+        description: "Include dpp (JEE/NEET/Banking/UGC-NET DPP vaults)"
+        required: false
+        default: "true"
+        type: boolean
+      batch_jee_pyq:
+        description: "Include jee-5year-pyq-tests"
+        required: false
+        default: "true"
+        type: boolean
+      batch_neet_pyq:
+        description: "Include neet-pyq-tests"
+        required: false
+        default: "true"
+        type: boolean
+      batch_ncert_json:
+        description: "Include ncert-json"
+        required: false
+        default: "true"
+        type: boolean
+      batch_ncert_cloze:
+        description: "Include ncert-cloze"
+        required: false
+        default: "true"
+        type: boolean
+      concurrency:
+        description: "Download concurrency (parallel image downloads)"
+        required: false
+        default: "48"
+        type: string
       publish_release:
-        description: "Publish to GitHub Releases (Direct download links for Telegram leech bots)"
+        description: "Publish to GitHub Releases (direct download links for Telegram leech bots)"
         required: false
         default: true
         type: boolean
 
 jobs:
   backup:
-    name: Download Images & Package ZIP
+    name: Download Images & Package ZIPs
     runs-on: ubuntu-latest
     timeout-minutes: 360
     permissions:
@@ -48,15 +88,23 @@ jobs:
 
       - name: 📋 Show selected batches
         run: |
-          echo "==============================="
+          echo "======================================================="
           echo "  QUIZZY Backup — Batch Config"
-          echo "==============================="
-          echo "  pw-test         : ${{ inputs.batch_pw_test }}"
-          echo "  pw-modules      : ${{ inputs.batch_pw_modules }}"
-          echo "  pw-notes        : ${{ inputs.batch_pw_notes }}"
-          echo "  notes           : ${{ inputs.batch_notes }}"
-          echo "  publish_release : ${{ inputs.publish_release }}"
-          echo "==============================="
+          echo "======================================================="
+          echo "  pw-test          : ${{ inputs.batch_pw_test }}"
+          echo "  pw-modules       : ${{ inputs.batch_pw_modules }}"
+          echo "  pw-notes         : ${{ inputs.batch_pw_notes }}"
+          echo "  notes            : ${{ inputs.batch_notes }}"
+          echo "  neetprep         : ${{ inputs.batch_neetprep }}"
+          echo "  batch-tests      : ${{ inputs.batch_batch_tests }}"
+          echo "  dpp              : ${{ inputs.batch_dpp }}"
+          echo "  jee-5year-pyq    : ${{ inputs.batch_jee_pyq }}"
+          echo "  neet-pyq-tests   : ${{ inputs.batch_neet_pyq }}"
+          echo "  ncert-json       : ${{ inputs.batch_ncert_json }}"
+          echo "  ncert-cloze      : ${{ inputs.batch_ncert_cloze }}"
+          echo "  concurrency      : ${{ inputs.concurrency }}"
+          echo "  publish_release  : ${{ inputs.publish_release }}"
+          echo "======================================================="
 
       - name: 🔍 Extract image URLs & copy JSON files
         env:
@@ -64,9 +112,20 @@ jobs:
           BATCH_PW_MODULES: ${{ inputs.batch_pw_modules }}
           BATCH_PW_NOTES: ${{ inputs.batch_pw_notes }}
           BATCH_NOTES: ${{ inputs.batch_notes }}
+          BATCH_NEETPREP: ${{ inputs.batch_neetprep }}
+          BATCH_BATCH_TESTS: ${{ inputs.batch_batch_tests }}
+          BATCH_DPP: ${{ inputs.batch_dpp }}
+          BATCH_JEE_PYQ: ${{ inputs.batch_jee_pyq }}
+          BATCH_NEET_PYQ: ${{ inputs.batch_neet_pyq }}
+          BATCH_NCERT_JSON: ${{ inputs.batch_ncert_json }}
+          BATCH_NCERT_CLOZE: ${{ inputs.batch_ncert_cloze }}
+          CONCURRENCY: ${{ inputs.concurrency }}
         run: node tools/backup-images.js
 
-      - name: 🗜️ Create ZIP archive(s)
+      - name: 🗜️ Create ZIP archives (1 per book / batch)
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
         run: node tools/create-zip.js
 
       - name: 🚀 Publish to GitHub Releases
@@ -80,7 +139,7 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: 📤 Upload ZIP as artifact
+      - name: 📤 Upload ZIPs as artifact (fallback, 90 days)
         uses: actions/upload-artifact@v4
         with:
           name: quizzy-backup-${{ github.run_id }}

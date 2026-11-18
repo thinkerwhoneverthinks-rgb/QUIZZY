@@ -26,7 +26,7 @@ const httpsAgent = new https.Agent({ keepAlive: true, maxSockets: 32 });
 const httpAgent = new http.Agent({ keepAlive: true, maxSockets: 32 });
 
 // ─── Config ────────────────────────────────────────────────
-const CONCURRENCY = parseInt(process.env.CONCURRENCY || "24", 10);
+const CONCURRENCY = parseInt(process.env.CONCURRENCY || "48", 10);
 const TIMEOUT_MS = 30_000;
 const RETRY_COUNT = 3;
 const DATA_DIR = path.resolve("data");
@@ -39,9 +39,13 @@ const BATCHES = {
   "pw-modules": (process.env.BATCH_PW_MODULES ?? "true") === "true",
   "pw-notes": (process.env.BATCH_PW_NOTES ?? "true") === "true",
   notes: (process.env.BATCH_NOTES ?? "true") === "true",
-  neetprep: (process.env.BATCH_NEETPREP ?? "false") === "true",
-  "batch-tests": (process.env.BATCH_BATCH_TESTS ?? "false") === "true",
-  dpp: (process.env.BATCH_DPP ?? "false") === "true",
+  neetprep: (process.env.BATCH_NEETPREP ?? "true") === "true",
+  "batch-tests": (process.env.BATCH_BATCH_TESTS ?? "true") === "true",
+  dpp: (process.env.BATCH_DPP ?? "true") === "true",
+  "jee-5year-pyq-tests": (process.env.BATCH_JEE_PYQ ?? "true") === "true",
+  "neet-pyq-tests": (process.env.BATCH_NEET_PYQ ?? "true") === "true",
+  "ncert-json": (process.env.BATCH_NCERT_JSON ?? "true") === "true",
+  "ncert-cloze": (process.env.BATCH_NCERT_CLOZE ?? "true") === "true",
 };
 
 // ─── Stats ─────────────────────────────────────────────────
