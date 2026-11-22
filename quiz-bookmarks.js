@@ -3,9 +3,6 @@
 const DIRECT_BOOKMARK_KEY = '__direct__';
 
 function normalizeBookmarkStore(raw) {
-    if (typeof window !== 'undefined' && typeof window.normalizeBookmarkStore === 'function') {
-        return window.normalizeBookmarkStore(raw);
-    }
     var out = {};
     if (!raw || typeof raw !== 'object') return out;
     Object.keys(raw).forEach(function (sec) {
@@ -95,7 +92,7 @@ function removeFromBookmarkFolder(idx) {
    data shapes that don't carry an id. */
 function getCanonicalPosition(qIndexInQuestions) {
     const q = questions[qIndexInQuestions];
-    if (!q || !Array.isArray(topics)) return qIndexInQuestions;
+    if (!q || typeof topics === 'undefined' || !Array.isArray(topics)) return qIndexInQuestions;
     let pos = 0;
     for (const t of topics) {
         const list = t.questions || [];
@@ -273,6 +270,9 @@ function saveBookmark() {
     };
 
     const subKey = selectedBookmarkSubsection === DIRECT_BOOKMARK_KEY ? DIRECT_BOOKMARK_KEY : selectedBookmarkSubsection;
+    if (!bookmarks[selectedBookmarkSection]) {
+        bookmarks[selectedBookmarkSection] = {};
+    }
     if (!bookmarks[selectedBookmarkSection][subKey]) {
         bookmarks[selectedBookmarkSection][subKey] = [];
     }

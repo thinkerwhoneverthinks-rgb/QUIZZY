@@ -21,9 +21,6 @@ function tbEsc(text) {
 }
 
 function normalizeBookmarkStore(raw) {
-    if (typeof window !== 'undefined' && typeof window.normalizeBookmarkStore === 'function') {
-        return window.normalizeBookmarkStore(raw);
-    }
     var out = {};
     if (!raw || typeof raw !== 'object') return out;
     Object.keys(raw).forEach(function (sec) {
