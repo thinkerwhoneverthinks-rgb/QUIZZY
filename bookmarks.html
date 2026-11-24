@@ -442,6 +442,8 @@
                     totalCount += list.length;
                 });
 
+                const secEsc = escapeAttr(section);
+
                 const sortItems = (rawItems) => {
                     const arr = Array.isArray(rawItems) ? rawItems : [];
                     return [...arr].sort((a, b) => {
@@ -454,15 +456,16 @@
 
                 const renderThinCard = (item, sub) => {
                     const tagLabel = `--${item.topic || item.chapter || 'Question'} Q${(item.originalNumber || (item.index || 0) + 1)}`;
-                    const secEsc = section.replace(/'/g, "\\'");
-                    const subEsc = sub.replace(/'/g, "\\'");
+                    const subEsc = escapeAttr(sub);
+                    const keyEsc = escapeAttr(item.key);
+                    const qText = item.question || (item.image_url ? '(Image Question)' : '(No text)');
                     return `
                         <div class="bookmark-thin-card">
                             <span class="bookmark-thin-title">${escapeHtml(tagLabel)}</span>
-                            <span class="bookmark-thin-text" title="${escapeHtml(item.question)}">${escapeHtml(item.question)}</span>
+                            <span class="bookmark-thin-text" title="${escapeHtml(qText)}">${escapeHtml(qText)}</span>
                             <div class="bookmark-thin-actions">
-                                <button class="bookmark-action-btn go" onclick="openBookmarkPractice('${secEsc}', '${subEsc}', '${item.key}')" title="Practice this question">→</button>
-                                <button class="bookmark-action-btn" onclick="deleteBookmarkByKey('${secEsc}', '${subEsc}', '${item.key}')" title="Delete">✕</button>
+                                <button class="bookmark-action-btn go" onclick="openBookmarkPractice('${secEsc}', '${subEsc}', '${keyEsc}')" title="Practice this question">→</button>
+                                <button class="bookmark-action-btn" onclick="deleteBookmarkByKey('${secEsc}', '${subEsc}', '${keyEsc}')" title="Delete">✕</button>
                             </div>
                         </div>
                     `;
@@ -485,6 +488,7 @@
                                 </div>
                             ` : ''}
                             ${subsections.map(sub => {
+                                const subEsc = escapeAttr(sub);
                                 const list = Array.isArray(secObj[sub]) ? secObj[sub] : [];
                                 const sortedItems = sortItems(list);
                                 return `
@@ -544,6 +548,14 @@
             });
             saveBookmarks(bookmarks);
             renderBookmarkManager();
+        }
+
+        function escapeAttr(str) {
+            return String(str === null || str === undefined ? '' : str)
+                .replace(/\\/g, '\\\\')
+                .replace(/'/g, "\\'")
+                .replace(/"/g, '&quot;')
+                .replace(/\n/g, ' ');
         }
 
         function escapeId(str) {
