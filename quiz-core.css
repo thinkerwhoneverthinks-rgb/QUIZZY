@@ -466,6 +466,8 @@
             font-size: 0.72rem;
             font-weight: 600;
             color: var(--text-muted);
+            max-width: 100%;
+            min-width: 0;
             /* Horizontal scroll — lets user swipe to read long topic names */
             overflow-x: auto;
             overflow-y: hidden;
@@ -477,6 +479,12 @@
         .quiz-context-bar::-webkit-scrollbar { display: none; }
         .quiz-context-bar.visible {
             display: flex;
+        }
+        .quiz-ctx-source {
+            white-space: nowrap;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            font-weight: 600;
         }
         .quiz-ctx-chapter {
             white-space: nowrap;
@@ -494,6 +502,12 @@
             white-space: nowrap;
             flex-shrink: 0;
             color: var(--accent);
+            font-weight: 700;
+        }
+        .quiz-ctx-qnum {
+            white-space: nowrap;
+            flex-shrink: 0;
+            color: var(--text-secondary);
             font-weight: 700;
         }
 

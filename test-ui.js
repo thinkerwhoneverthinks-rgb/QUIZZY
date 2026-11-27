@@ -807,17 +807,17 @@ function renderCustomBuilder() {
     html += `
         <div class="tc-breadcrumbs" style="margin-bottom:1.25rem;">
             <button class="tc-back-link" onclick="ctGoBackTestCustom()" style="margin-bottom:0;padding:0.35rem 0.75rem;">← Back</button>
-            <div class="tc-crumb-list" style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;">
+            <div class="tc-crumb-list">
                 <span class="tc-crumb" onclick="ctGoToTestRoot()" style="cursor:pointer;color:var(--text-muted);font-weight:600;">🏠 Home</span>
                 ${ctTestDirectory.map((dir, i) => `
-                    <span style="color:var(--text-muted);">›</span>
+                    <span class="tc-crumb-sep" style="color:var(--text-muted);">›</span>
                     <span class="tc-crumb ${(!ctActiveTestFile && i === ctTestDirectory.length - 1) ? 'active' : ''}" 
                           onclick="ctGoToTestLevel(${i})" style="cursor:pointer;font-weight:700;color:${(!ctActiveTestFile && i === ctTestDirectory.length - 1) ? 'var(--text-primary)' : 'var(--text-muted)'};">
                         ${tcEsc(dir.displayName || dir.name || 'Folder')}
                     </span>
                 `).join('')}
                 ${ctActiveTestFile ? `
-                    <span style="color:var(--text-muted);">›</span>
+                    <span class="tc-crumb-sep" style="color:var(--text-muted);">›</span>
                     <span class="tc-crumb active" style="font-weight:800;color:var(--accent);">📝 ${tcEsc(ctActiveTestFile.displayName)}</span>
                 ` : ''}
             </div>
@@ -1175,10 +1175,14 @@ function extractTestQuestionImageUrls(q) {
     const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
     if (Array.isArray(rawImgs)) urls.push(...rawImgs);
     if (Array.isArray(q.optionImages)) urls.push(...q.optionImages);
+    if (q.explanation_image) urls.push(q.explanation_image);
+    if (Array.isArray(q.explanation_images)) urls.push(...q.explanation_images);
     return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
 }
 
 function markTcImageLoaded(img, url) {
+    const keyUrl = (img && img.dataset && img.dataset.originalUrl) || url;
+    if (keyUrl) _fullyLoadedTcImageUrls.add(keyUrl);
     if (url) _fullyLoadedTcImageUrls.add(url);
     if (img) {
         img.classList.add('loaded');
@@ -1193,20 +1197,66 @@ function markTcImageLoaded(img, url) {
 window.markTcImageLoaded = markTcImageLoaded;
 
 function renderTcImageWrapHtml(url, altText) {
-    const isReady = _fullyLoadedTcImageUrls.has(url);
+    const offlineSrc = (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getCachedOfflineImageUrlSync === 'function')
+        ? offlineStorage.getCachedOfflineImageUrlSync(url)
+        : null;
+    const initialSrc = offlineSrc || url;
+    const isReady = Boolean(offlineSrc) || _fullyLoadedTcImageUrls.has(url);
     const loadingCls = isReady ? '' : ' is-loading';
     const shimmerHtml = isReady ? '' : `<div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>`;
-    return `<div class="q-image-wrap${loadingCls}">${shimmerHtml}<img class="q-image${isReady ? ' loaded' : ''}" src="${tcAttr(url)}" alt="${tcAttr(altText || 'Question diagram')}" loading="eager" fetchpriority="high" decoding="async" onload="markTcImageLoaded(this, '${tcAttr(url)}')" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(url)}')"></div>`;
+    return `<div class="q-image-wrap${loadingCls}">${shimmerHtml}<img class="q-image${isReady ? ' loaded' : ''}" src="${tcAttr(initialSrc)}" data-original-url="${tcAttr(url)}" alt="${tcAttr(altText || 'Question diagram')}" loading="eager" fetchpriority="high" decoding="async" onload="markTcImageLoaded(this, '${tcAttr(url)}')" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(url)}')"></div>`;
 }
 window.renderTcImageWrapHtml = renderTcImageWrapHtml;
 
 function preloadSingleTcImageUrl(url) {
     if (!url || _preloadedTcImageUrls.has(url)) return;
     _preloadedTcImageUrls.add(url);
+    if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.resolveOfflineImageUrl === 'function') {
+        offlineStorage.resolveOfflineImageUrl(url).then(resolved => {
+            const target = resolved || url;
+            const img = new Image();
+            img.decoding = 'async';
+            img.onload = () => _fullyLoadedTcImageUrls.add(url);
+            img.src = target;
+        }).catch(() => {
+            const img = new Image();
+            img.decoding = 'async';
+            img.onload = () => _fullyLoadedTcImageUrls.add(url);
+            img.src = url;
+        });
+        return;
+    }
     const img = new Image();
     img.decoding = 'async';
     img.onload = () => _fullyLoadedTcImageUrls.add(url);
     img.src = url;
+}
+
+function loadTcOfflineImagesInCard(container) {
+    if (!container || typeof offlineStorage === 'undefined') return;
+    const resolveFn = offlineStorage.resolveOfflineImageUrl
+        ? (u) => offlineStorage.resolveOfflineImageUrl(u)
+        : (u) => offlineStorage.getOfflineImageUrl(u);
+    const images = container.querySelectorAll('img[data-original-url], img.q-image, img.opt-image, img.q-explain-img');
+    images.forEach(img => {
+        const origUrl = img.dataset.originalUrl || img.getAttribute('src');
+        if (!origUrl || origUrl.startsWith('blob:') || origUrl.startsWith('data:')) return;
+        const syncBlob = offlineStorage.getCachedOfflineImageUrlSync ? offlineStorage.getCachedOfflineImageUrlSync(origUrl) : null;
+        if (syncBlob && img.src !== syncBlob) {
+            img.src = syncBlob;
+            markTcImageLoaded(img, origUrl);
+            return;
+        }
+        Promise.resolve(resolveFn(origUrl)).then(resolved => {
+            if (!resolved || resolved === origUrl || img.src === resolved) return;
+            const pre = new Image();
+            pre.onload = () => {
+                img.src = resolved;
+                markTcImageLoaded(img, origUrl);
+            };
+            pre.src = resolved;
+        }).catch(() => {});
+    });
 }
 
 function preloadUpcomingTestImages(currentIndex, windowSize = 5) {
@@ -1263,20 +1313,26 @@ function scheduleIdleTcPreload() {
 
 window.preloadUpcomingTestImages = preloadUpcomingTestImages;
 
-// ---- question area ----
-function renderQuestion() {
-    const main = document.getElementById('trMain');
-    if (!main || !TS.flat.length) return;
+// ---- question area (buffered cards to prevent nav/attempt blink) ----
+let _renderedTcFlatRef = null;
+let _renderedTcMode = null;
+let _renderedTcTestKey = null;
 
-    const q = TS.flat[TS.currentIndex];
-    const rec = TS.answers[TS.currentIndex] || {};
+function clearTcQuestionBuffer() {
+    _renderedTcFlatRef = null;
+    _renderedTcMode = null;
+    _renderedTcTestKey = null;
+    const main = document.getElementById('trMain');
+    if (main) main.innerHTML = '';
+}
+window.clearTcQuestionBuffer = clearTcQuestionBuffer;
+
+function buildTcQuestionCardHtml(index) {
+    const q = TS.flat[index];
+    const rec = TS.answers[index] || {};
     const live = TS.mode === 'test';
 
-    if (live) rec.visited = true;
-    TS.activeSection = q.sectionIndex;
-
-    // Bookmark review has no attempt behind it, so it gets no correct/incorrect chip.
-    const outcome = TS.mode === 'analysis' ? questionOutcome(TS.currentIndex) : null;
+    const outcome = TS.mode === 'analysis' ? questionOutcome(index) : null;
     const bookmarked = isTestQuestionBookmarked(q);
 
     const timeBadge = TS.mode === 'analysis'
@@ -1297,59 +1353,133 @@ function renderQuestion() {
         ? `<span class="q-marks">+${q.marking.correct} / ${q.marking.incorrect}</span>`
         : '';
 
-    main.innerHTML = `
-        <div class="q-card">
-            <div class="q-card-top">
-                <div class="q-no">Q. ${q.globalNumber || (q.globalIndex + 1)}</div>
-                <div class="q-top-actions">
-                    ${timeBadge}
-                    ${outcomeChip}
-                    ${markBtn}
-                    <button class="q-bm-btn ${bookmarked ? 'on' : ''}" onclick="bookmarkCurrentQuestion()"
-                            title="${bookmarked ? 'Remove bookmark' : 'Bookmark this question'}">🔖</button>
-                </div>
+    const fnIsInText = typeof isImageInText === 'function' ? isImageInText : ((img, txt) => txt && txt.includes(img));
+    const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
+    const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
+    let qImgsHtml = '';
+    if (qImgs.length > 1) {
+        qImgsHtml = `<div class="q-images-container">${qImgs.map((img, i) => renderTcImageWrapHtml(img, `Question diagram ${i + 1}`)).join('')}</div>`;
+    } else if (qImgs.length === 1) {
+        qImgsHtml = renderTcImageWrapHtml(qImgs[0], 'Question diagram');
+    }
+
+    return `
+        <div class="q-card-top">
+            <div class="q-no">Q. ${q.globalNumber || (q.globalIndex + 1)}</div>
+            <div class="q-top-actions">
+                ${timeBadge}
+                ${outcomeChip}
+                ${markBtn}
+                <button class="q-bm-btn ${bookmarked ? 'on' : ''}" onclick="bookmarkCurrentQuestion()"
+                        title="${bookmarked ? 'Remove bookmark' : 'Bookmark this question'}">🔖</button>
             </div>
-
-            <div class="q-tags">
-                <span class="q-section-tag">${tcEsc(q.sectionName)}</span>
-                ${q.type === 'multi_mcq' ? '<span class="q-type-tag multi">☑ One or More Correct</span>' : (q.type === 'integer' ? '<span class="q-type-tag int">🔢 Numerical</span>' : '')}
-                ${markScheme}
-            </div>
-
-            ${q.question ? `<div class="q-text">${tcRenderText(q.question)}</div>` : ''}
-
-            ${(() => {
-                const fnIsInText = typeof isImageInText === 'function' ? isImageInText : ((img, txt) => txt && txt.includes(img));
-                const rawImgs = (q.images && q.images.length > 0) ? q.images : (q.image_url ? [q.image_url] : []);
-                const qImgs = rawImgs.filter(img => !fnIsInText(img, q.question));
-                if (qImgs.length > 1) {
-                    return `<div class="q-images-container">${qImgs.map((img, i) => renderTcImageWrapHtml(img, `Question diagram ${i + 1}`)).join('')}</div>`;
-                }
-                if (qImgs.length === 1) {
-                    return renderTcImageWrapHtml(qImgs[0], 'Question diagram');
-                }
-                return '';
-            })()}
-
-            ${renderMatchLists(q)}
-
-            ${q.type === 'integer' ? renderIntegerInput(q, rec) : renderOptions(q, rec)}
-
-            ${TS.mode !== 'test' ? renderSolutionBlock(q) : ''}
         </div>
-    `;
 
-    // Instantly reveal any images that are already complete in browser/memory cache
-    main.querySelectorAll('.q-image-wrap img').forEach(img => {
+        <div class="q-tags">
+            <span class="q-section-tag">${tcEsc(q.sectionName)}</span>
+            ${q.type === 'multi_mcq' ? '<span class="q-type-tag multi">☑ One or More Correct</span>' : (q.type === 'integer' ? '<span class="q-type-tag int">🔢 Numerical</span>' : '')}
+            ${markScheme}
+        </div>
+
+        ${q.question ? `<div class="q-text">${tcRenderText(q.question)}</div>` : ''}
+        ${qImgsHtml}
+        ${renderMatchLists(q)}
+        ${q.type === 'integer' ? renderIntegerInput(q, rec) : renderOptions(q, rec)}
+        ${TS.mode !== 'test' ? renderSolutionBlock(q) : ''}
+    `;
+}
+
+function createTcQuestionCardElement(index) {
+    if (!TS || !Array.isArray(TS.flat) || index < 0 || index >= TS.flat.length) return null;
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `tcQCard-${index}`;
+    card.dataset.tcIndex = String(index);
+    card.innerHTML = buildTcQuestionCardHtml(index);
+
+    card.querySelectorAll('.q-image-wrap img').forEach(img => {
         if (img.complete && img.naturalHeight !== 0) {
-            markTcImageLoaded(img, img.getAttribute('src'));
+            markTcImageLoaded(img, img.getAttribute('data-original-url') || img.getAttribute('src'));
         }
     });
 
+    loadTcOfflineImagesInCard(card);
+    tcTypeset(card);
+    return card;
+}
+
+function preloadAheadTcCards(centerIndex, bufferSize = 5) {
+    const main = document.getElementById('trMain');
+    if (!main || !TS || !Array.isArray(TS.flat)) return;
+    const total = TS.flat.length;
+
+    for (let i = 1; i <= bufferSize; i++) {
+        const nextIdx = centerIndex + i;
+        if (nextIdx < total && !document.getElementById(`tcQCard-${nextIdx}`)) {
+            const aheadCard = createTcQuestionCardElement(nextIdx);
+            if (aheadCard) {
+                aheadCard.style.display = 'none';
+                main.appendChild(aheadCard);
+            }
+        }
+    }
+
+    if (centerIndex > 0 && !document.getElementById(`tcQCard-${centerIndex - 1}`)) {
+        const prevCard = createTcQuestionCardElement(centerIndex - 1);
+        if (prevCard) {
+            prevCard.style.display = 'none';
+            const curCard = document.getElementById(`tcQCard-${centerIndex}`);
+            if (curCard && curCard.parentNode === main) {
+                main.insertBefore(prevCard, curCard);
+            } else {
+                main.appendChild(prevCard);
+            }
+        }
+    }
+}
+
+function renderQuestion() {
+    const main = document.getElementById('trMain');
+    if (!main || !TS.flat.length) return;
+
+    const testKey = TS.test ? (TS.test.fileName || TS.test.name || '') : '';
+    if (_renderedTcFlatRef !== TS.flat || _renderedTcMode !== TS.mode || _renderedTcTestKey !== testKey) {
+        main.innerHTML = '';
+        _renderedTcFlatRef = TS.flat;
+        _renderedTcMode = TS.mode;
+        _renderedTcTestKey = testKey;
+    }
+
+    const q = TS.flat[TS.currentIndex];
+    const rec = TS.answers[TS.currentIndex] || {};
+    if (TS.mode === 'test') rec.visited = true;
+    TS.activeSection = q.sectionIndex;
+
+    preloadUpcomingTestImages(TS.currentIndex, 5);
+
+    main.querySelectorAll('.q-card:not([style*="display: none"])').forEach(c => {
+        if (c.id !== `tcQCard-${TS.currentIndex}`) {
+            c.style.display = 'none';
+        }
+    });
+
+    let targetCard = document.getElementById(`tcQCard-${TS.currentIndex}`);
+    if (!targetCard) {
+        targetCard = createTcQuestionCardElement(TS.currentIndex);
+        if (targetCard) main.appendChild(targetCard);
+    } else {
+        targetCard.style.display = '';
+        targetCard.querySelectorAll('.q-image-wrap img').forEach(img => {
+            if (img.complete && img.naturalHeight !== 0) {
+                markTcImageLoaded(img, img.getAttribute('data-original-url') || img.getAttribute('src'));
+            }
+        });
+        tcTypeset(targetCard);
+    }
+
     updateFooterNav();
     renderGrid();
-    tcTypeset(main);
-    preloadUpcomingTestImages(TS.currentIndex, 5);
+    preloadAheadTcCards(TS.currentIndex, 5);
 }
 
 function tcRenderText(text) {
@@ -1437,7 +1567,8 @@ function tcShouldUseCompactGrid(q) {
     if (q.type === 'integer' || q.type === 'fill_blank' || q.type === 'numeric') return false;
     if (q.optionImages && q.optionImages.some(img => Boolean(img))) return false;
 
-    return q.options.every(opt => {
+    return q.options.every((opt, i) => {
+        if (typeof parseOptionBadge === 'function' && parseOptionBadge(opt, i, q.options).isBlank) return true;
         if (opt === null || opt === undefined) return true;
         let s = String(opt).trim();
         if (s === '') return true;
@@ -1493,16 +1624,23 @@ function renderOptions(q, rec) {
             }
         }
 
-        const optImage = q.optionImages && q.optionImages[i]
-            ? `<img class="opt-image" src="${tcAttr(q.optionImages[i])}" alt="Option ${TC_LETTERS[i]}" loading="lazy" onerror="handleTcOfflineImage(this, '${tcAttr(q.optionImages[i])}')">`
+        const parsed = typeof parseOptionBadge === 'function'
+            ? parseOptionBadge(text, i, options)
+            : { isBlank: !text || !String(text).trim(), badge: TC_LETTERS[i] || String(i + 1) };
+        const rawOptImg = q.optionImages && q.optionImages[i];
+        const optImgSrc = rawOptImg
+            ? ((typeof offlineStorage !== 'undefined' && typeof offlineStorage.getCachedOfflineImageUrlSync === 'function' && offlineStorage.getCachedOfflineImageUrlSync(rawOptImg)) || rawOptImg)
             : '';
-        const label = text && String(text).trim() !== ''
-            ? tcRenderText(text)
-            : (optImage ? '' : `Option ${i + 1}`);
+        const optImage = rawOptImg
+            ? `<img class="opt-image" src="${tcAttr(optImgSrc)}" data-original-url="${tcAttr(rawOptImg)}" alt="Option ${tcAttr(parsed.badge)}" loading="lazy" onerror="handleTcOfflineImage(this, '${tcAttr(rawOptImg)}')">`
+            : '';
+        const label = parsed.isBlank
+            ? ''
+            : (text && String(text).trim() !== '' ? tcRenderText(text) : '');
 
         return `
-            <button type="button" class="opt ${state} ${isMulti ? 'multi-opt' : ''}" ${live ? `onclick="selectOption(${i})"` : 'disabled'}>
-                <span class="opt-key">${TC_LETTERS[i] || i + 1}</span>
+            <button type="button" class="opt ${state} ${isMulti ? 'multi-opt' : ''} ${parsed.isBlank && !optImage ? 'is-blank' : ''}" data-opt-index="${i}" ${live ? `onclick="selectOption(${i})"` : 'disabled'}>
+                <span class="opt-key">${tcEsc(parsed.badge)}</span>
                 <span class="opt-body">
                     ${label ? `<span class="opt-text">${label}</span>` : ''}
                     ${optImage}
@@ -1577,11 +1715,63 @@ function renderSolutionBlock(q) {
             ${hasExp ? `<div class="q-explain-text" style="line-height:1.7;margin-bottom:0.75rem;">${tcRenderText(q.explanation)}</div>` : ''}
             ${expImages.length > 0 ? `
                 <div class="q-explain-images">
-                    ${expImages.map((img, idx) => `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`).join('')}
+                    ${expImages.map((img, idx) => {
+                        const cachedExp = (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getCachedOfflineImageUrlSync === 'function')
+                            ? offlineStorage.getCachedOfflineImageUrlSync(img)
+                            : null;
+                        return `<div class="q-explain-img-wrap"><img class="q-explain-img" src="${tcAttr(cachedExp || img)}" data-original-url="${tcAttr(img)}" alt="Explanation diagram ${idx + 1}" loading="lazy" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(img)}')"></div>`;
+                    }).join('')}
                 </div>
             ` : ''}
             ${hasVideo && typeof renderVideoFacade === 'function' ? renderVideoFacade(q.video, 'tc-' + (q.id || Math.random()), q.question) : ''}
         </div>`;
+}
+
+function _getActiveTcCard() {
+    return document.getElementById(`tcQCard-${TS.currentIndex}`) || document.querySelector('#trMain .q-card');
+}
+
+function _syncTcOptionDomInPlace() {
+    const card = _getActiveTcCard();
+    if (!card || !TS || !Array.isArray(TS.flat)) {
+        renderQuestion();
+        return;
+    }
+    const q = TS.flat[TS.currentIndex];
+    const rec = TS.answers[TS.currentIndex] || {};
+    const isMulti = q && q.type === 'multi_mcq';
+
+    card.querySelectorAll('.q-options .opt').forEach(btn => {
+        const optIdx = parseInt(btn.getAttribute('data-opt-index'), 10);
+        if (isNaN(optIdx)) return;
+        const chosen = isMulti
+            ? (Array.isArray(rec.selected) && rec.selected.includes(optIdx))
+            : (rec.selected === optIdx);
+        btn.classList.toggle('selected', Boolean(chosen));
+    });
+
+    const hasSelection = isMulti
+        ? (Array.isArray(rec.selected) && rec.selected.length > 0)
+        : (rec.selected !== null && rec.selected !== undefined);
+
+    let clearBtn = card.querySelector('.q-clear-btn');
+    if (hasSelection) {
+        if (!clearBtn) {
+            const optsWrap = card.querySelector('.q-options');
+            if (optsWrap) {
+                clearBtn = document.createElement('button');
+                clearBtn.className = 'q-clear-btn';
+                clearBtn.textContent = 'Clear response';
+                clearBtn.setAttribute('onclick', 'clearAnswer()');
+                optsWrap.insertAdjacentElement('afterend', clearBtn);
+            }
+        }
+    } else if (clearBtn) {
+        clearBtn.remove();
+    }
+
+    updateFooterNav();
+    renderGrid();
 }
 
 // ---- interactions ----
@@ -1597,7 +1787,7 @@ function selectOption(i) {
     } else {
         rec.selected = rec.selected === i ? null : i;
     }
-    renderQuestion();
+    _syncTcOptionDomInPlace();
     saveInProgressTest();
 }
 
@@ -1610,17 +1800,36 @@ function setIntegerAnswer(value) {
 }
 
 function clearAnswer() {
+    const q = TS.flat[TS.currentIndex];
     const rec = TS.answers[TS.currentIndex];
     rec.selected = null;
     rec.value = '';
-    renderQuestion();
+    const card = _getActiveTcCard();
+    if (q && q.type === 'integer' && card) {
+        const inp = card.querySelector('#trIntInput, .q-int-input');
+        if (inp) inp.value = '';
+        const clearBtn = card.querySelector('.q-clear-btn');
+        if (clearBtn) clearBtn.remove();
+        updateFooterNav();
+        renderGrid();
+    } else {
+        _syncTcOptionDomInPlace();
+    }
     saveInProgressTest();
 }
 
 function toggleMarkForReview() {
     const rec = TS.answers[TS.currentIndex];
     rec.marked = !rec.marked;
-    renderQuestion();
+    const card = _getActiveTcCard();
+    const markBtn = card ? card.querySelector('.q-mark-btn') : null;
+    if (markBtn) {
+        markBtn.classList.toggle('on', Boolean(rec.marked));
+        markBtn.textContent = rec.marked ? '🚩 Marked' : '🚩 Mark for Review';
+        renderGrid();
+    } else {
+        renderQuestion();
+    }
     saveInProgressTest();
 }
 
@@ -1708,6 +1917,15 @@ function bookmarkCurrentQuestion() {
 
 /* Called by test-bookmarks.js after a save or an un-save. */
 function onTestBookmarkChanged() {
+    const q = TS && Array.isArray(TS.flat) ? TS.flat[TS.currentIndex] : null;
+    const card = typeof _getActiveTcCard === 'function' ? _getActiveTcCard() : null;
+    const bmBtn = card ? card.querySelector('.q-bm-btn') : null;
+    if (q && bmBtn) {
+        const bookmarked = isTestQuestionBookmarked(q);
+        bmBtn.classList.toggle('on', Boolean(bookmarked));
+        bmBtn.title = bookmarked ? 'Remove bookmark' : 'Bookmark this question';
+        return;
+    }
     renderQuestion();
 }
 

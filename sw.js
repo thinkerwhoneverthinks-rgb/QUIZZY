@@ -1,9 +1,40 @@
 // ==================== SERVICE WORKER ====================
 // Bump this on every deploy — same-origin files are served cache-first, so a
 // stale version here means returning visitors keep the old CSS/JS.
-const CACHE_VERSION = 'quizzy-v46';
+const CACHE_VERSION = 'quizzy-v50';
 const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const CDN_CACHE = `${CACHE_VERSION}-cdn`;
+
+function getOfflineImageFromDB(url) {
+    return new Promise((resolve) => {
+        try {
+            const req = indexedDB.open('QuizzyOfflineDB', 2);
+            req.onerror = () => resolve(null);
+            req.onupgradeneeded = () => resolve(null);
+            req.onsuccess = (ev) => {
+                const db = ev.target.result;
+                if (!db.objectStoreNames.contains('images')) {
+                    db.close();
+                    resolve(null);
+                    return;
+                }
+                try {
+                    const tx = db.transaction('images', 'readonly');
+                    const getReq = tx.objectStore('images').get(url);
+                    getReq.onsuccess = () => {
+                        const rec = getReq.result;
+                        resolve(rec && rec.blob ? rec.blob : null);
+                    };
+                    getReq.onerror = () => resolve(null);
+                } catch (err) {
+                    resolve(null);
+                }
+            };
+        } catch (e) {
+            resolve(null);
+        }
+    });
+}
 
 const APP_SHELL_FILES = [
     './',
@@ -15,6 +46,7 @@ const APP_SHELL_FILES = [
     './contact.html',
     './privacy.html',
     './bookmarks.html',
+    './downloads.html',
     './test-bookmarks.html',
     './style.css',
     './quiz-core.css',
@@ -150,16 +182,28 @@ self.addEventListener('fetch', (e) => {
         e.respondWith(
             caches.open(CDN_CACHE).then(cache => {
                 return cache.match(e.request, { ignoreSearch: true }).then(cached => {
-                    if (cached) return cached;
-                    return fetch(e.request).then(resp => {
-                        // Crucial: Opaque responses from cross-origin CDN (status 0) must be cached!
-                        if (resp.ok || resp.type === 'opaque') {
-                            try { cache.put(e.request, resp.clone()); } catch (err) {}
+                    if (cached && cached.type !== 'opaque') return cached;
+                    if (cached && cached.type === 'opaque') {
+                        try { cache.delete(e.request, { ignoreSearch: true }); } catch (err) {}
+                    }
+                    return getOfflineImageFromDB(e.request.url).then(blob => {
+                        if (blob) {
+                            return new Response(blob, {
+                                status: 200,
+                                headers: {
+                                    'Content-Type': blob.type || 'image/png',
+                                    'Cache-Control': 'max-age=31536000'
+                                }
+                            });
                         }
-                        return resp;
-                    }).catch(() => {
-                        return caches.match(e.request, { ignoreSearch: true }).then(anyCached => {
-                            if (anyCached) return anyCached;
+                        return fetch(e.request).then(resp => {
+                            // Never store opaque (no-cors, status 0) responses in CacheStorage:
+                            // Chrome pads each opaque entry by ~7-14 MB in quota estimates.
+                            if (resp && resp.ok && resp.type !== 'opaque') {
+                                try { cache.put(e.request, resp.clone()); } catch (err) {}
+                            }
+                            return resp;
+                        }).catch(() => {
                             return new Response('', { status: 404, statusText: 'Offline' });
                         });
                     });

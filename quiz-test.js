@@ -249,17 +249,15 @@ function renderTestMode() {
                 ${q.matchLists && typeof buildMatchLists === 'function' ? buildMatchLists(q.matchLists) : ''}
                 ${qImages.length > 1 ? `
                     <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
-                        ${qImages.map((img, i) => `
-                            <div class="image-question-wrap">
-                                <img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
-                            </div>
-                        `).join('')}
+                        ${qImages.map((img, i) => typeof renderQuestionImageWrapHtml === 'function'
+                            ? renderQuestionImageWrapHtml(img, `Question Diagram ${i + 1}`)
+                            : `<div class="image-question-wrap"><img src="${img}" class="question-image" alt="Question Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)"></div>`
+                        ).join('')}
                     </div>
-                ` : (qImages.length === 1 && q.type !== 'image_mcq' ? `
-                    <div class="image-question-wrap">
-                        <img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)">
-                    </div>
-                ` : '')}
+                ` : (qImages.length === 1 && q.type !== 'image_mcq' ? (typeof renderQuestionImageWrapHtml === 'function'
+                    ? renderQuestionImageWrapHtml(qImages[0], 'Question Diagram')
+                    : `<div class="image-question-wrap"><img src="${qImages[0]}" class="question-image" alt="Question Diagram" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)"></div>`
+                ) : '')}
                 ${questionHTML}
             </div>
         `;
@@ -292,22 +290,15 @@ function renderTestImageMCQ(q, idx) {
     return `
         ${qImages.length > 1 ? `
             <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
-                ${qImages.map((img, i) => `
-                    <div class="image-question-wrap">
-                        <img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
-                    </div>
-                `).join('')}
+                ${qImages.map((img, i) => typeof renderQuestionImageWrapHtml === 'function'
+                    ? renderQuestionImageWrapHtml(img, `Question ${idx + 1} Diagram ${i + 1}`)
+                    : `<div class="image-question-wrap"><img src="${img}" class="question-image" alt="Question ${idx + 1} Diagram ${i + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)"></div>`
+                ).join('')}
             </div>
-        ` : (mainImg ? `
-            <div class="image-question-wrap">
-                <img src="${mainImg}"
-                     class="question-image"
-                     alt="Question ${idx + 1}"
-                     loading="lazy"
-                     data-original-url="${mainImg}"
-                     onerror="handleImageError(this)">
-            </div>
-        ` : '')}
+        ` : (mainImg ? (typeof renderQuestionImageWrapHtml === 'function'
+            ? renderQuestionImageWrapHtml(mainImg, `Question ${idx + 1}`)
+            : `<div class="image-question-wrap"><img src="${mainImg}" class="question-image" alt="Question ${idx + 1}" loading="lazy" data-original-url="${mainImg}" onerror="handleImageError(this)"></div>`
+        ) : '')}
         ${buildOptionList(q, idx, {
             selected,
             handler: 'selectTestImageMCQ',

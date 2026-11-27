@@ -112,7 +112,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Auto-inject Offline Downloads into hamburger menu under Saved section if not present
     var alreadyHasOfflineDl = menu && (
         document.getElementById('menuOfflineDownloads') ||
-        menu.querySelector('[onclick*="openOfflineDownloadsModal"]') ||
+        menu.querySelector('a[href="downloads/"]') ||
+        menu.querySelector('a[href="downloads.html"]') ||
         Array.prototype.slice.call(menu.querySelectorAll('a')).some(function (a) {
             return a.textContent.indexOf('Offline Downloads') !== -1;
         })
@@ -126,13 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (savedSec) {
             var dlLink = document.createElement('a');
             dlLink.id = 'menuOfflineDownloads';
-            dlLink.href = '#';
+            dlLink.href = 'downloads/';
             dlLink.innerHTML = '<span class="mi-ico">📥</span> Offline Downloads';
-            dlLink.onclick = function (e) {
-                e.preventDefault();
-                openOfflineDownloadsModal();
-                return false;
-            };
             savedSec.parentNode.insertBefore(dlLink, savedSec.nextSibling);
         }
     }
@@ -325,8 +321,59 @@ function normalizeBookmarkStore(raw) {
     return out;
 }
 
-/* Both bookmark stores share the section -> subsection -> [entries] shape. */
+function normalizeBookmarkTree(raw) {
+    var root = { __tree__: 1, folders: {}, bookmarks: [] };
+    if (!raw || typeof raw !== 'object') return root;
+    function normNode(n) {
+        var out = { folders: {}, bookmarks: [] };
+        if (!n || typeof n !== 'object') return out;
+        if (Array.isArray(n.bookmarks)) out.bookmarks = n.bookmarks.filter(Boolean);
+        if (n.folders && typeof n.folders === 'object') {
+            Object.keys(n.folders).forEach(function (k) {
+                if (k) out.folders[k] = normNode(n.folders[k]);
+            });
+        }
+        return out;
+    }
+    if (raw.__tree__ === 1 && raw.folders && typeof raw.folders === 'object') {
+        var norm = normNode(raw);
+        root.folders = norm.folders;
+        root.bookmarks = norm.bookmarks;
+        return root;
+    }
+    var legacy = normalizeBookmarkStore(raw);
+    Object.keys(legacy).forEach(function (sec) {
+        var secNode = { folders: {}, bookmarks: [] };
+        Object.keys(legacy[sec] || {}).forEach(function (sub) {
+            var list = Array.isArray(legacy[sec][sub]) ? legacy[sec][sub] : [];
+            if (sub === '__direct__') {
+                secNode.bookmarks = secNode.bookmarks.concat(list);
+            } else {
+                secNode.folders[sub] = { folders: {}, bookmarks: list };
+            }
+        });
+        root.folders[sec] = secNode;
+    });
+    return root;
+}
+
+function tallyBookmarkTree(node, tally) {
+    if (!node || typeof node !== 'object') return tally;
+    if (Array.isArray(node.bookmarks)) tally.marks += node.bookmarks.length;
+    if (node.folders && typeof node.folders === 'object') {
+        Object.keys(node.folders).forEach(function (k) {
+            tally.folders++;
+            tallyBookmarkTree(node.folders[k], tally);
+        });
+    }
+    return tally;
+}
+
+/* Both bookmark stores share tallying; question bookmarks use recursive tree, test bookmarks use 2-level. */
 function tallyBookmarkStore(store, tally) {
+    if (store && store.__tree__ === 1) {
+        return tallyBookmarkTree(store, tally);
+    }
     var norm = normalizeBookmarkStore(store);
     Object.keys(norm).forEach(function (section) {
         Object.keys(norm[section] || {}).forEach(function (sub) {
@@ -380,9 +427,40 @@ function exportQuizzyData() {
         ' test attempt(s) and ' + c.history + ' session(s).');
 }
 
+function mergeBookmarkTreeNodes(targetNode, incomingNode) {
+    if (!targetNode.folders) targetNode.folders = {};
+    if (!Array.isArray(targetNode.bookmarks)) targetNode.bookmarks = [];
+    var seen = {};
+    targetNode.bookmarks.forEach(function (b) {
+        var k = typeof b === 'string' ? b : (b && b.key);
+        if (k) seen[k] = true;
+    });
+    (incomingNode.bookmarks || []).forEach(function (b) {
+        var k = typeof b === 'string' ? b : (b && b.key);
+        if (!k || !seen[k]) {
+            targetNode.bookmarks.push(b);
+            if (k) seen[k] = true;
+        }
+    });
+    Object.keys(incomingNode.folders || {}).forEach(function (fname) {
+        if (!targetNode.folders[fname]) targetNode.folders[fname] = { folders: {}, bookmarks: [] };
+        mergeBookmarkTreeNodes(targetNode.folders[fname], incomingNode.folders[fname]);
+    });
+}
+
 /* Writes one bookmark store back to localStorage, keeping local entries
    (unless mode is 'replace') and skipping incoming ones already held. */
 function mergeBookmarkStore(storageKey, incoming, mode) {
+    if (storageKey === QUIZZY_DATA_KEYS.bookmarks || (incoming && incoming.__tree__ === 1)) {
+        var targetTree = mode === 'replace'
+            ? { __tree__: 1, folders: {}, bookmarks: [] }
+            : normalizeBookmarkTree(readJSON(storageKey, {}));
+        var incomingTree = normalizeBookmarkTree(incoming || {});
+        mergeBookmarkTreeNodes(targetTree, incomingTree);
+        localStorage.setItem(storageKey, JSON.stringify(targetTree));
+        return targetTree;
+    }
+
     var target = mode === 'replace' ? {} : normalizeBookmarkStore(readJSON(storageKey, {}));
     var normIncoming = normalizeBookmarkStore(incoming || {});
 
@@ -524,11 +602,12 @@ function importQuizzyFile(file, mode) {
         // Support direct bookmark JSON files (exported from Bookmarks or Test Bookmarks)
         if (backup && typeof backup === 'object' && backup.type !== QUIZZY_BACKUP_TYPE) {
             var fileName = (file && file.name) ? file.name.toLowerCase() : '';
-            var isTestBm = fileName.indexOf('test-bookmark') !== -1;
-            var isQuestBm = fileName.indexOf('bookmark') !== -1 || fileName.indexOf('studycafe') !== -1;
+            var isTreeBm = backup.__tree__ === 1;
+            var isTestBm = !isTreeBm && fileName.indexOf('test-bookmark') !== -1;
+            var isQuestBm = isTreeBm || fileName.indexOf('bookmark') !== -1 || fileName.indexOf('studycafe') !== -1;
             var bmKey = isTestBm ? QUIZZY_DATA_KEYS.testBookmarks : QUIZZY_DATA_KEYS.bookmarks;
-            var normDirect = normalizeBookmarkStore(backup);
-            var directSecs = Object.keys(normDirect);
+            var normDirect = isTreeBm ? normalizeBookmarkTree(backup) : normalizeBookmarkStore(backup);
+            var directSecs = isTreeBm ? Object.keys(normDirect.folders || {}) : Object.keys(normDirect);
             if (directSecs.length > 0 || isTestBm || isQuestBm) {
                 try {
                     mergeBookmarkStore(bmKey, normDirect, mode);
@@ -1766,251 +1845,32 @@ window.onQSChapterCheckboxChange = onQSChapterCheckboxChange;
 window.selectAllQSChapters = selectAllQSChapters;
 window.filterQSChapters = filterQSChapters;
 
-/* ==================== UNIVERSAL OFFLINE DOWNLOADS MANAGER ==================== */
+/* ==================== OFFLINE DOWNLOADS REDIRECT ==================== */
+/* Replaced modal popup with dedicated clean downloads/ page. */
 function openOfflineDownloadsModal() {
     closeMenu();
-    buildOfflineDownloadsPanel();
-    var p = document.getElementById('offlineDownloadsPanel');
-    var o = document.getElementById('offlineDownloadsOverlay');
-    if (p) p.classList.add('active');
-    if (o) o.classList.add('active');
-    renderOfflineDownloadsList();
+    window.location.href = 'downloads/';
 }
 
-function closeOfflineDownloadsModal() {
-    var p = document.getElementById('offlineDownloadsPanel');
-    var o = document.getElementById('offlineDownloadsOverlay');
-    if (p) p.classList.remove('active');
-    if (o) o.classList.remove('active');
-}
-
-var currentOfflineFilter = 'all';
-
-function setOfflineFilter(filter) {
-    currentOfflineFilter = filter;
-    document.querySelectorAll('.offline-dl-tab').forEach(function(tab) {
-        tab.classList.toggle('active', tab.dataset.filter === filter);
-    });
-    renderOfflineDownloadsList();
-}
-
-function buildOfflineDownloadsPanel() {
-    if (document.getElementById('offlineDownloadsPanel')) return;
-
-    var overlay = document.createElement('div');
-    overlay.className = 'data-overlay';
-    overlay.id = 'offlineDownloadsOverlay';
-    overlay.onclick = closeOfflineDownloadsModal;
-
-    var panel = document.createElement('div');
-    panel.className = 'offline-dl-panel';
-    panel.id = 'offlineDownloadsPanel';
-    panel.innerHTML =
-        '<div class="data-panel-header">' +
-            '<h3>📥 Saved Offline Downloads</h3>' +
-            '<button class="menu-close" onclick="closeOfflineDownloadsModal()" aria-label="Close">✕</button>' +
-        '</div>' +
-        '<div class="offline-dl-tabs">' +
-            '<button class="offline-dl-tab active" data-filter="all" onclick="setOfflineFilter(\'all\')">All</button>' +
-            '<button class="offline-dl-tab" data-filter="question" onclick="setOfflineFilter(\'question\')">☕ Questions</button>' +
-            '<button class="offline-dl-tab" data-filter="test" onclick="setOfflineFilter(\'test\')">🧪 Tests</button>' +
-            '<button class="offline-dl-tab" data-filter="notes" onclick="setOfflineFilter(\'notes\')">📖 Notes</button>' +
-        '</div>' +
-        '<div class="data-panel-body" style="padding: 1rem 1.25rem;">' +
-            '<div class="data-summary" id="offlineStorageSummary" style="margin-bottom: 0.75rem;">' +
-                'Calculating storage...' +
-            '</div>' +
-            '<div id="offlineDownloadsContainer">' +
-                '<p style="text-align:center;color:var(--text-muted);padding:1.5rem;">Loading offline items...</p>' +
-            '</div>' +
-        '</div>';
-
-    document.body.appendChild(overlay);
-    document.body.appendChild(panel);
-}
-
-async function renderOfflineDownloadsList() {
-    var container = document.getElementById('offlineDownloadsContainer');
-    var summaryEl = document.getElementById('offlineStorageSummary');
-    if (!container) return;
-
-    if (typeof offlineStorage === 'undefined') {
-        container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:1rem;">Offline storage is not initialized on this page.</p>';
-        return;
-    }
-
-    try {
-        var est = await offlineStorage.getStorageEstimate();
-        if (summaryEl) {
-            summaryEl.innerHTML =
-                '💾 Storage: <strong>' + est.usageMB + ' MB</strong> used' +
-                (est.quotaMB !== '?' ? ' of ' + est.quotaMB + ' MB (' + est.percentUsed + '%)' : '') +
-                ' · <strong>All questions &amp; diagrams available for full offline viewing</strong>';
-        }
-
-        var allMeta = await offlineStorage.getAllMetadata();
-        var completed = (allMeta || []).filter(function(m) { return m && m.status === 'complete'; });
-
-        var items = [];
-        completed.forEach(function(m) {
-            if (m.id && m.id.startsWith('ncert_cloze_')) {
-                items.push({
-                    type: 'notes',
-                    metaId: m.id,
-                    title: m.chapterName || m.title || ('NCERT Chapter ' + (m.chapterId || m.id.replace('ncert_cloze_', ''))),
-                    subtitle: 'NCERT Cloze Reading',
-                    questions: m.lineCount || m.questionCount || 0,
-                    images: m.imageCount || 0,
-                    date: m.downloadedAt || m.savedAt,
-                    raw: m
-                });
-            } else if (m.id && m.id.startsWith('file__')) {
-                var fileName = m.fileName || m.id.replace('file__', '');
-                var isTest = fileName.includes('Test') || fileName.includes('batch-tests') || fileName.includes('test-');
-                items.push({
-                    type: isTest ? 'test' : 'question',
-                    metaId: m.id,
-                    title: fileName.replace(/\.json$/i, '').replace(/.*[/\\]/, ''),
-                    subtitle: fileName,
-                    questions: m.totalQuestions || m.questionCount || 0,
-                    images: m.totalImages || m.imageCount || 0,
-                    date: m.downloadedAt || m.savedAt,
-                    raw: m
-                });
-            } else if (m.fileId) {
-                var title = m.fileId.replace(/\.json$/i, '').replace(/.*[/\\]/, '');
-                var sub = (m.chapterId && m.chapterId !== 'all' ? 'Chapter ' + m.chapterId : 'All Chapters');
-                if (m.topicId && m.topicId !== 'all') sub += ' · Topic ' + (parseInt(m.topicId, 10) + 1);
-                items.push({
-                    type: 'question',
-                    metaId: m.id,
-                    title: title,
-                    subtitle: sub,
-                    questions: m.questionCount || 0,
-                    images: m.imageCount || 0,
-                    date: m.downloadedAt || m.savedAt,
-                    raw: m
-                });
-            }
-        });
-
-        if (currentOfflineFilter !== 'all') {
-            items = items.filter(function(it) { return it.type === currentOfflineFilter; });
-        }
-
-        if (items.length === 0) {
-            container.innerHTML =
-                '<div style="text-align:center;padding:2rem 1rem;color:var(--text-muted);">' +
-                    '<div style="font-size:2.5rem;margin-bottom:0.5rem;">📥</div>' +
-                    '<h4 style="color:var(--text-primary);margin-bottom:0.4rem;">No Offline Downloads Found</h4>' +
-                    '<p style="font-size:0.85rem;line-height:1.5;">Tap the ⬇️ download button next to any chapter, topic, or test paper to save questions and diagrams completely offline.</p>' +
-                '</div>';
-            return;
-        }
-
-        var html = '<div class="offline-dl-list">';
-        items.forEach(function(it, idx) {
-            var icon = it.type === 'test' ? '🧪' : (it.type === 'notes' ? '📖' : '☕');
-            var dateStr = it.date ? new Date(it.date).toLocaleDateString() : '';
-
-            html +=
-                '<div class="offline-dl-item">' +
-                    '<div class="offline-dl-item-info">' +
-                        '<div class="offline-dl-item-title">' + icon + ' ' + (it.title || 'Untitled') + '</div>' +
-                        '<div class="offline-dl-item-meta">' +
-                            '<span>' + (it.subtitle || '') + '</span>' +
-                            '<span>•</span>' +
-                            '<span>' + it.questions + ' Qs</span>' +
-                            (it.images > 0 ? ('<span>•</span><span>' + it.images + ' Diagrams</span>') : '') +
-                            (dateStr ? ('<span>•</span><span>' + dateStr + '</span>') : '') +
-                            '<span class="offline-dl-badge">✅ Offline</span>' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="offline-dl-item-actions">' +
-                        '<button class="btn btn-primary" style="padding:0.4rem 0.75rem;font-size:0.82rem;" onclick="launchOfflineItem(' + idx + ')">▶️ Practice</button>' +
-                        '<button class="btn btn-ghost" style="padding:0.4rem 0.6rem;font-size:0.82rem;color:var(--text-muted);" onclick="deleteOfflineItemByIndex(' + idx + ')" title="Remove from offline">🗑️</button>' +
-                    '</div>' +
-                '</div>';
-        });
-        html += '</div>';
-
-        window._offlineDisplayItems = items;
-        container.innerHTML = html;
-    } catch (err) {
-        console.error('Failed to render offline downloads:', err);
-        container.innerHTML = '<p style="text-align:center;color:red;padding:1rem;">Failed to load downloads list.</p>';
-    }
-}
-
-function launchOfflineItem(idx) {
-    if (!window._offlineDisplayItems || !window._offlineDisplayItems[idx]) return;
-    var item = window._offlineDisplayItems[idx];
-    closeOfflineDownloadsModal();
-
-    if (item.type === 'question') {
-        var fileId = item.raw.fileId || item.raw.fileName;
-        var chId = item.raw.chapterId || 'all';
-        var tId = item.raw.topicId || 'all';
-        if (typeof loadFile === 'function') {
-            loadFile(fileId).then(function() {
-                if (chId && chId !== 'all' && typeof selectChapter === 'function') {
-                    selectChapter(chId).then(function() {
-                        if (tId && tId !== 'all') {
-                            var tIdx = parseInt(tId, 10);
-                            if (!isNaN(tIdx) && typeof selectTopic === 'function') selectTopic(tIdx);
-                        } else if (typeof selectAllTopics === 'function') {
-                            selectAllTopics();
-                        }
-                    });
-                }
-            });
-        } else {
-            window.location.href = 'question-cafe.html#offline:' + encodeURIComponent(fileId) + ':' + encodeURIComponent(chId) + ':' + encodeURIComponent(tId);
-        }
-    } else if (item.type === 'test') {
-        var fn = item.raw.fileName || (item.raw.id || '').replace('file__', '');
-        if (typeof openTestDetail === 'function') {
-            openTestDetail(fn);
-        } else {
-            window.location.href = 'test-cafe.html#test:' + encodeURIComponent(fn);
-        }
-    } else if (item.type === 'notes') {
-        var chId = item.raw.chapterId || (item.raw.id || '').replace('ncert_cloze_', '');
-        if (typeof openClozeChapter === 'function') {
-            openClozeChapter(chId);
-        } else {
-            window.location.href = 'notes-cafe.html#cloze:' + encodeURIComponent(chId);
-        }
-    }
-}
-
-async function deleteOfflineItemByIndex(idx) {
-    if (!window._offlineDisplayItems || !window._offlineDisplayItems[idx]) return;
-    var item = window._offlineDisplayItems[idx];
-    if (!confirm('Remove "' + item.title + '" from offline storage?')) return;
-
-    if (item.type === 'test' || item.type === 'file') {
-        var fn = item.raw.fileName || (item.raw.id || '').replace('file__', '');
-        await offlineStorage.deleteFileOffline(fn);
-    } else if (item.type === 'question') {
-        if (item.raw.fileId && item.raw.chapterId && item.raw.topicId) {
-            await offlineStorage.deleteTopicOffline(item.raw.fileId, item.raw.chapterId, item.raw.topicId);
-        } else {
-            var fn = item.raw.fileId || item.raw.fileName;
-            await offlineStorage.deleteFileOffline(fn);
-        }
-    } else if (item.type === 'notes') {
-        var db = await offlineStorage.open();
-        var tx = db.transaction('metadata', 'readwrite');
-        tx.objectStore('metadata').delete(item.metaId);
-    }
-    renderOfflineDownloadsList();
-}
+function closeOfflineDownloadsModal() {}
 
 window.openOfflineDownloadsModal = openOfflineDownloadsModal;
 window.closeOfflineDownloadsModal = closeOfflineDownloadsModal;
-window.setOfflineFilter = setOfflineFilter;
-window.renderOfflineDownloadsList = renderOfflineDownloadsList;
-window.launchOfflineItem = launchOfflineItem;
-window.deleteOfflineItemByIndex = deleteOfflineItemByIndex;
+
+// Translate vertical mouse-wheel scrolling into horizontal scrolling on single-line breadcrumbs.
+if (!window._quizzyBreadcrumbWheelBound) {
+    window._quizzyBreadcrumbWheelBound = true;
+    document.addEventListener('wheel', function(e) {
+        if (!e.deltaY || Math.abs(e.deltaX) >= Math.abs(e.deltaY)) return;
+        var el = e.target && e.target.closest
+            ? e.target.closest('.breadcrumb-path, .tc-crumb-path, .tc-crumb-list')
+            : null;
+        if (!el || el.scrollWidth <= el.clientWidth + 1) return;
+        var prev = el.scrollLeft;
+        el.scrollLeft += e.deltaY;
+        if (el.scrollLeft !== prev) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+}
 

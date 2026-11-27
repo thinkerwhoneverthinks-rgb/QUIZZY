@@ -324,13 +324,24 @@ function renderTestBookmarkManager() {
     if (sections.length === 0 || totalItems === 0) {
         let questNotice = '';
         try {
-            const qStore = normalizeBookmarkStore(JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}'));
+            const rawQ = JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
             let qCount = 0;
-            Object.keys(qStore).forEach(s => {
-                Object.keys(qStore[s] || {}).forEach(sub => {
-                    if (Array.isArray(qStore[s][sub])) qCount += qStore[s][sub].length;
+            if (rawQ && rawQ.__tree__ === 1) {
+                const countTree = (node) => {
+                    if (!node || typeof node !== 'object') return 0;
+                    let n = Array.isArray(node.bookmarks) ? node.bookmarks.length : 0;
+                    if (node.folders) Object.keys(node.folders).forEach(k => { n += countTree(node.folders[k]); });
+                    return n;
+                };
+                qCount = countTree(rawQ);
+            } else {
+                const qStore = normalizeBookmarkStore(rawQ);
+                Object.keys(qStore).forEach(s => {
+                    Object.keys(qStore[s] || {}).forEach(sub => {
+                        if (Array.isArray(qStore[s][sub])) qCount += qStore[s][sub].length;
+                    });
                 });
-            });
+            }
             if (qCount > 0) {
                 questNotice = `
                     <div style="margin-top:1.25rem;padding:1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-md);">

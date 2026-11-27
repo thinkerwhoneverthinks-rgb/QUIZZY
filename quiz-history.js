@@ -121,6 +121,7 @@ function historySessionId(file, chapterId, mode, topicNames) {
 /* Called as the user moves through questions. Cheap enough to run on every
    render — it writes one small array. */
 function recordStudySession(extra) {
+    if (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) return;
     if (!currentChapter || !questions || questions.length === 0) return;
     if (!currentMode || currentMode === 'test') return; // tests are scored, not resumed
 
@@ -162,6 +163,7 @@ function recordStudySession(extra) {
 }
 
 function restoreSavedTopicProgress() {
+    if (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) return;
     if (!currentChapter || !questions || questions.length === 0) return;
     if (!currentMode || currentMode === 'test') return;
 

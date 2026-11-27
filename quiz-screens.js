@@ -74,6 +74,21 @@ async function initNavigation() {
     if (await checkResumeActiveExercise()) {
         return;
     }
+
+    // Launch bookmark practice immediately without blocking on manifest.json
+    if (checkGotoBookmarkPractice()) {
+        checkAndShowOfflineStatus();
+        fetch('data/manifest.json').then(r => r.json()).then(m => {
+            manifestRoot = m;
+            if (document.querySelector('#screenQuiz.active') && typeof renderQuestion === 'function') {
+                renderQuestion();
+            } else if (document.querySelector('#screenFullQuiz.active') && typeof renderFullQuiz === 'function') {
+                renderFullQuiz();
+            }
+        }).catch(() => {});
+        return;
+    }
+
     showScreen('screenSubjects'); 
     if (typeof pushQuizHistory === 'function') {
         pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: 0 }, true);
@@ -91,9 +106,7 @@ async function initNavigation() {
     // Check offline status
     checkAndShowOfflineStatus();
     // Check if coming from a bookmark link or offline launch
-    if (!checkGotoBookmarkPractice()) {
-        checkGotoBookmark();
-    }
+    checkGotoBookmark();
     checkOfflineLaunch();
 }
 
@@ -155,17 +168,24 @@ function checkGotoBookmarkPractice() {
         const payload = JSON.parse(raw);
         if (!payload || !Array.isArray(payload.items) || payload.items.length === 0) return false;
 
+        if (typeof isBookmarkSession !== 'undefined') isBookmarkSession = true;
         questions = payload.items;
-        topics = [{ topic: payload.label || 'Bookmarks', questions: payload.items }];
+
+        // Group topics by topicName so the Question Grid matches Question Cafe's layout
+        const topicMap = new Map();
+        payload.items.forEach(item => {
+            const tName = item.topicName || payload.label || 'Bookmarks';
+            if (!topicMap.has(tName)) topicMap.set(tName, []);
+            topicMap.get(tName).push(item);
+        });
+        topics = Array.from(topicMap.entries()).map(([topic, qs]) => ({ topic, questions: qs }));
+
         currentChapter = { id: 'bookmark', name: payload.label || 'Bookmarked Questions' };
         currentFileName = null;
         subjectData = null;
-        currentMode = 'bookmark';
-        if (keepState) {
-        return;
-    }
-
-    selectedTopics = [];
+        selectedTopics = [];
+        userAnswers = {};
+        currentPracticeOrder = 'topic';
 
         const startIndex = Math.min(payload.startIndex || 0, questions.length - 1);
         showQuiz(startIndex);
@@ -804,6 +824,15 @@ async function selectChapter(id, keepState = false) {
 function backFromQuiz() {
     closeGrid();
     if (typeof clearActiveExercise === 'function') clearActiveExercise();
+    if (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) {
+        if (typeof window.exitBookmarkPracticeScreen === 'function') {
+            window.exitBookmarkPracticeScreen();
+            return;
+        }
+        isBookmarkSession = false;
+        window.location.href = 'bookmarks/';
+        return;
+    }
     if (window.history.length > 1 && history.state && history.state.cafe === 'question' && history.state.screen && history.state.screen !== 'screenSubjects') {
         window.history.back();
     } else {
@@ -909,7 +938,7 @@ function renderQuestionGrid() {
     const isBookmarked = (idx) => {
         if (typeof isQuestionBookmarked !== 'function') return false;
         const q = questions[idx];
-        if (currentMode === 'bookmark') {
+        if ((typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark') {
             return !!(q && q.origChapterId != null && isQuestionBookmarked(q.origChapterId, q.origIndex));
         }
         return !!(currentChapter && isQuestionBookmarked(currentChapter.id, idx));
@@ -923,13 +952,15 @@ function renderQuestionGrid() {
         groups[topicName].push({ q, index: i });
     });
 
+    const isBmGrid = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
+
     const chapterLabel = currentChapter ? currentChapter.name : 'Custom Test';
     const doneCount = questions.reduce((n, _, i) => n + (isDone(i) ? 1 : 0), 0);
     const topicCount = Object.keys(groups).length;
     const hasHi = questions && questions.some(q => q.translations && q.translations.hi);
     const langBarHtml = '';
 
-    const isRearranged = typeof isExerciseTopicRearranged === 'function' && isExerciseTopicRearranged();
+    const isRearranged = !isBmGrid && typeof isExerciseTopicRearranged === 'function' && isExerciseTopicRearranged();
     const orderBarHtml = isRearranged ? `
         <div class="grid-order-bar">
             <span>🔀 Order:</span>
@@ -940,7 +971,7 @@ function renderQuestionGrid() {
         </div>
     ` : '';
 
-    const topicFilterHtml = (currentPracticeOrder !== 'serial' && topics && topics.length > 1) ? `
+    const topicFilterHtml = (!isBmGrid && currentPracticeOrder !== 'serial' && topics && topics.length > 1) ? `
         <div class="grid-filter-bar">
             <span>📂 Jump to Topic:</span>
             <select class="grid-topic-select" id="gridTopicSelect" onchange="jumpToTopicFromGrid(this.value)">
@@ -964,14 +995,14 @@ function renderQuestionGrid() {
         </div>
     ` : '';
 
+    const gcMetaText = isBmGrid
+        ? `${questions.length} question${questions.length !== 1 ? 's' : ''} · ${doneCount} revealed`
+        : `${currentPracticeOrder === 'serial' ? 'Original Serial Order · ' : (topicCount + ' topic' + (topicCount !== 1 ? 's' : '') + ' · ')}${questions.length} question${questions.length !== 1 ? 's' : ''} · ${doneCount} ${isTestMode ? 'answered' : 'revealed'}`;
+
     let html = `
         <div class="grid-context">
             <div class="gc-chapter">${escapeHtml(chapterLabel)}</div>
-            <div class="gc-meta">
-                ${currentPracticeOrder === 'serial' ? 'Original Serial Order · ' : (topicCount + ' topic' + (topicCount !== 1 ? 's' : '') + ' · ')}
-                ${questions.length} question${questions.length !== 1 ? 's' : ''} ·
-                ${doneCount} ${isTestMode ? 'answered' : 'revealed'}
-            </div>
+            <div class="gc-meta">${gcMetaText}</div>
         </div>
         ${viewModeBarHtml}
         ${langBarHtml}
@@ -987,7 +1018,32 @@ function renderQuestionGrid() {
         </div>
     `;
 
-    if (currentPracticeOrder === 'serial') {
+    if (isBmGrid) {
+        // Unified sequential grid (1..N) with no topic headers in bookmark mode
+        html += `<div class="grid-topic-section">`;
+        html += `
+            <div class="grid-topic-title">
+                <span>🔖 Bookmarked Questions</span>
+                <span class="gt-count">${doneCount} / ${questions.length}</span>
+            </div>`;
+        html += `<div class="grid-nums">`;
+        questions.forEach((q, index) => {
+            const ans = userAnswers[index];
+            const bookmarked = isBookmarked(index);
+            const status = showCorrectness ? getAnswerStatus(index) : 'skipped';
+            let cls = 'grid-num';
+            if (isDone(index)) cls += ' answered';
+            if (bookmarked) cls += ' bookmarked';
+            if (status === 'correct') cls += ' correct';
+            if (status === 'wrong') cls += ' wrong';
+            if (!isTestMode && index === currentQIndex) cls += ' current';
+            const num = index + 1;
+            const origLabel = q.originalNumber ? `Orig Q.${q.originalNumber}` : '';
+            const tip = [origLabel, q.topicName].filter(Boolean).join(' · ') || `Question ${num}`;
+            html += `<div class="${cls}" onclick="jumpToQuestion(${index})" title="${escapeHtml(tip)}">${num}</div>`;
+        });
+        html += `</div></div>`;
+    } else if (currentPracticeOrder === 'serial') {
         // Continuous, unified sequential grid without topic divider headers
         html += `<div class="grid-topic-section">`;
         html += `
@@ -1076,8 +1132,12 @@ function jumpToQuestion(idx) {
         renderQuestion();
         closeGrid();
     } else if (activeScreen.id === 'screenFullQuiz') {
-        const card = document.getElementById(`fullQ-${idx}`);
-        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (typeof scrollFullQuizToCard === 'function') {
+            scrollFullQuizToCard(idx);
+        } else {
+            const card = document.getElementById(`fullQ-${idx}`);
+            if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         closeGrid();
     } else if (activeScreen.id === 'screenTestMode') {
         const card = document.getElementById(`testQ-${idx}`);

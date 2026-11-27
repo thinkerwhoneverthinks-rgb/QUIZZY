@@ -1,41 +1,121 @@
-// ==================== BOOKMARK SYSTEM ====================
-// Reserved subsection key for bookmarks saved directly to a section (no subsection chosen).
+// ==================== BOOKMARK SYSTEM (INFINITE FOLDER TREE) ====================
 const DIRECT_BOOKMARK_KEY = '__direct__';
+const BOOKMARK_STORAGE_KEY = 'studycafe-bookmarks';
+
+function createEmptyBookmarkNode() {
+    return { folders: {}, bookmarks: [] };
+}
+
+/* Normalizes any bookmark store (legacy 2-level section/subsection OR v2 recursive tree)
+   into the canonical recursive tree:
+   { __tree__: 1, folders: { [name]: { folders: {}, bookmarks: [...] } }, bookmarks: [] } */
+function normalizeBookmarkNode(node) {
+    const out = createEmptyBookmarkNode();
+    if (!node || typeof node !== 'object') return out;
+    if (Array.isArray(node.bookmarks)) {
+        out.bookmarks = node.bookmarks.filter(Boolean);
+    }
+    if (node.folders && typeof node.folders === 'object') {
+        Object.keys(node.folders).forEach(name => {
+            if (!name) return;
+            out.folders[name] = normalizeBookmarkNode(node.folders[name]);
+        });
+    }
+    return out;
+}
 
 function normalizeBookmarkStore(raw) {
-    var out = {};
-    if (!raw || typeof raw !== 'object') return out;
-    Object.keys(raw).forEach(function (sec) {
-        var val = raw[sec];
+    const root = { __tree__: 1, folders: {}, bookmarks: [] };
+    if (!raw || typeof raw !== 'object') return root;
+
+    // Already v2 tree
+    if (raw.__tree__ === 1 && raw.folders && typeof raw.folders === 'object') {
+        const norm = normalizeBookmarkNode(raw);
+        root.folders = norm.folders;
+        root.bookmarks = norm.bookmarks;
+        return root;
+    }
+
+    // Legacy 2-level { section: { subsection: [...], __direct__: [...] } } or { section: [...] }
+    Object.keys(raw).forEach(sec => {
+        if (sec === '__tree__') return;
+        const val = raw[sec];
         if (!val) return;
-        if (!out[sec]) out[sec] = {};
+        const secNode = createEmptyBookmarkNode();
         if (Array.isArray(val)) {
-            out[sec]['__direct__'] = val.filter(Boolean);
+            secNode.bookmarks = val.filter(Boolean);
         } else if (typeof val === 'object') {
-            Object.keys(val).forEach(function (sub) {
-                var subVal = val[sub];
-                if (Array.isArray(subVal)) {
-                    out[sec][sub] = subVal.filter(Boolean);
-                } else if (subVal && typeof subVal === 'object') {
-                    out[sec][sub] = [subVal];
+            Object.keys(val).forEach(sub => {
+                const subVal = val[sub];
+                if (sub === DIRECT_BOOKMARK_KEY) {
+                    if (Array.isArray(subVal)) {
+                        secNode.bookmarks = secNode.bookmarks.concat(subVal.filter(Boolean));
+                    } else if (subVal && typeof subVal === 'object') {
+                        secNode.bookmarks.push(subVal);
+                    }
+                } else {
+                    const subNode = createEmptyBookmarkNode();
+                    if (Array.isArray(subVal)) {
+                        subNode.bookmarks = subVal.filter(Boolean);
+                    } else if (subVal && typeof subVal === 'object') {
+                        subNode.bookmarks = [subVal];
+                    }
+                    secNode.folders[sub] = subNode;
                 }
             });
         }
+        root.folders[sec] = secNode;
     });
-    return out;
+
+    return root;
 }
 
 function getBookmarks() {
     try {
-        var parsed = JSON.parse(localStorage.getItem('studycafe-bookmarks') || '{}');
+        const parsed = JSON.parse(localStorage.getItem(BOOKMARK_STORAGE_KEY) || '{}');
         return normalizeBookmarkStore(parsed);
     } catch (e) {
-        return {};
+        return { __tree__: 1, folders: {}, bookmarks: [] };
     }
 }
 
-function saveBookmarks(bookmarks) {
-    localStorage.setItem('studycafe-bookmarks', JSON.stringify(bookmarks));
+function saveBookmarks(tree) {
+    const norm = normalizeBookmarkStore(tree);
+    localStorage.setItem(BOOKMARK_STORAGE_KEY, JSON.stringify(norm));
+}
+
+function getBookmarkNodeAtPath(tree, pathArr) {
+    let curr = tree;
+    if (!Array.isArray(pathArr)) return curr;
+    for (let i = 0; i < pathArr.length; i++) {
+        const seg = pathArr[i];
+        if (!curr || !curr.folders || !curr.folders[seg]) return null;
+        curr = curr.folders[seg];
+    }
+    return curr;
+}
+
+function ensureBookmarkNodeAtPath(tree, pathArr) {
+    let curr = tree;
+    if (!Array.isArray(pathArr)) return curr;
+    for (let i = 0; i < pathArr.length; i++) {
+        const seg = pathArr[i];
+        if (!curr.folders) curr.folders = {};
+        if (!curr.folders[seg]) curr.folders[seg] = createEmptyBookmarkNode();
+        curr = curr.folders[seg];
+    }
+    return curr;
+}
+
+function countNodeBookmarks(node) {
+    if (!node || typeof node !== 'object') return 0;
+    let total = Array.isArray(node.bookmarks) ? node.bookmarks.length : 0;
+    if (node.folders && typeof node.folders === 'object') {
+        Object.keys(node.folders).forEach(k => {
+            total += countNodeBookmarks(node.folders[k]);
+        });
+    }
+    return total;
 }
 
 /* Entries are objects ({key, chapter, ...}); older data may hold bare strings,
@@ -45,18 +125,39 @@ function bookmarkKeyOf(entry) {
     return entry && entry.key ? entry.key : null;
 }
 
-function isQuestionBookmarked(chapterId, qIndex) {
-    const bookmarks = getBookmarks();
-    const key = `${chapterId}_q${qIndex}`;
-    for (const section in bookmarks) {
-        for (const subsection in bookmarks[section]) {
-            const list = bookmarks[section][subsection];
-            if (Array.isArray(list) && list.some(b => bookmarkKeyOf(b) === key)) {
-                return true;
-            }
+function nodeContainsBookmarkKey(node, key) {
+    if (!node || !key) return false;
+    if (Array.isArray(node.bookmarks) && node.bookmarks.some(b => bookmarkKeyOf(b) === key)) {
+        return true;
+    }
+    if (node.folders && typeof node.folders === 'object') {
+        for (const name in node.folders) {
+            if (nodeContainsBookmarkKey(node.folders[name], key)) return true;
         }
     }
     return false;
+}
+
+function isQuestionBookmarked(chapterId, qIndex) {
+    const tree = getBookmarks();
+    const key = `${chapterId}_q${qIndex}`;
+    return nodeContainsBookmarkKey(tree, key);
+}
+
+function removeBookmarkKeyFromSubtree(node, key) {
+    if (!node || typeof node !== 'object') return false;
+    let removed = false;
+    if (Array.isArray(node.bookmarks)) {
+        const before = node.bookmarks.length;
+        node.bookmarks = node.bookmarks.filter(b => bookmarkKeyOf(b) !== key);
+        if (node.bookmarks.length !== before) removed = true;
+    }
+    if (node.folders && typeof node.folders === 'object') {
+        Object.keys(node.folders).forEach(name => {
+            if (removeBookmarkKeyFromSubtree(node.folders[name], key)) removed = true;
+        });
+    }
+    return removed;
 }
 
 /* Used by the bookmark-practice card's bookmark button (buildQuestionCardInner)
@@ -64,21 +165,34 @@ function isQuestionBookmarked(chapterId, qIndex) {
    rather than reopening the folder-picker panel. */
 function removeFromBookmarkFolder(idx) {
     const q = questions[idx];
-    if (!q || !q.bookmarkSection || !q.bookmarkKey) return;
+    if (!q || !q.bookmarkKey) return;
     if (!confirm('Remove this question from your bookmarks?')) return;
 
-    const bookmarks = getBookmarks();
-    const sub = q.bookmarkSubsection;
-    const list = bookmarks[q.bookmarkSection] && bookmarks[q.bookmarkSection][sub];
-    if (list) {
-        bookmarks[q.bookmarkSection][sub] = list.filter(b => bookmarkKeyOf(b) !== q.bookmarkKey);
-        if (bookmarks[q.bookmarkSection][sub].length === 0) delete bookmarks[q.bookmarkSection][sub];
-        if (Object.keys(bookmarks[q.bookmarkSection]).length === 0) delete bookmarks[q.bookmarkSection];
-        saveBookmarks(bookmarks);
+    const tree = getBookmarks();
+    if (Array.isArray(q.bookmarkPath) && q.bookmarkPath.length > 0) {
+        const node = getBookmarkNodeAtPath(tree, q.bookmarkPath);
+        if (node && Array.isArray(node.bookmarks)) {
+            node.bookmarks = node.bookmarks.filter(b => bookmarkKeyOf(b) !== q.bookmarkKey);
+        }
+    } else if (q.bookmarkSection) {
+        const path = q.bookmarkSubsection && q.bookmarkSubsection !== DIRECT_BOOKMARK_KEY
+            ? [q.bookmarkSection, q.bookmarkSubsection]
+            : [q.bookmarkSection];
+        const node = getBookmarkNodeAtPath(tree, path);
+        if (node && Array.isArray(node.bookmarks)) {
+            node.bookmarks = node.bookmarks.filter(b => bookmarkKeyOf(b) !== q.bookmarkKey);
+        }
+    } else {
+        removeBookmarkKeyFromSubtree(tree, q.bookmarkKey);
     }
+    saveBookmarks(tree);
 
     const activeScreen = document.querySelector('.screen.active');
-    if (activeScreen && activeScreen.id === 'screenQuiz') renderQuestion();
+    if (activeScreen) {
+        if (activeScreen.id === 'screenQuiz') renderQuestion();
+        else if (activeScreen.id === 'screenFullQuiz') renderFullQuiz();
+    }
+    if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
 }
 
 /* `questions` can be a shuffled/filtered array (Test Mode, Custom Test), so a raw
@@ -110,18 +224,82 @@ function getCanonicalPosition(qIndexInQuestions) {
     return qIndexInQuestions;
 }
 
+function findManifestFileMeta(node, targetPath, trail) {
+    if (!node || !targetPath) return null;
+    const nodeName = node.displayName || node.name || '';
+    const curTrail = (trail || []).concat(nodeName && nodeName !== 'Quizzy' ? [nodeName] : []);
+    if (Array.isArray(node.files)) {
+        for (const f of node.files) {
+            const p = typeof f === 'object' ? (f.path || f.file || '') : f;
+            if (p === targetPath) {
+                const baseName = p.split('/').pop().split('\\').pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ').trim();
+                const title = (typeof f === 'object' && (f.displayName || f.name)) || baseName;
+                return { title, trail: curTrail };
+            }
+        }
+    }
+    if (Array.isArray(node.subsections)) {
+        for (const sub of node.subsections) {
+            const found = findManifestFileMeta(sub, targetPath, curTrail);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+function resolveCurrentSourceLabel() {
+    const chapName = (typeof currentChapter !== 'undefined' && currentChapter && currentChapter.name)
+        ? currentChapter.name.trim().toLowerCase()
+        : '';
+
+    if (typeof manifestRoot !== 'undefined' && manifestRoot && currentFileName) {
+        const meta = findManifestFileMeta(manifestRoot, currentFileName, []);
+        if (meta) {
+            if (meta.title && meta.title.trim().toLowerCase() !== chapName) {
+                return meta.title;
+            }
+            if (Array.isArray(meta.trail) && meta.trail.length > 0) {
+                const cleanTrail = meta.trail
+                    .map(t => String(t).replace(/^[^\w\d(]+/, '').trim())
+                    .filter(Boolean);
+                if (cleanTrail.length > 0) {
+                    return cleanTrail.slice(-2).join(' · ');
+                }
+            }
+        }
+    }
+    if (typeof subjectData !== 'undefined' && subjectData && (subjectData.displayName || subjectData.name)) {
+        const sName = subjectData.displayName || subjectData.name;
+        if (sName.trim().toLowerCase() !== chapName) return sName;
+    }
+    if (typeof currentDirectory !== 'undefined' && Array.isArray(currentDirectory) && currentDirectory.length > 0) {
+        const cleanDir = currentDirectory
+            .map(d => String(d.displayName || d.name || '').replace(/^[^\w\d(]+/, '').trim())
+            .filter(Boolean);
+        if (cleanDir.length > 0) return cleanDir.slice(-2).join(' · ');
+    }
+    if (currentFileName) {
+        return currentFileName.split('/').pop().split('\\').pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ').trim();
+    }
+    return '';
+}
+
 function toggleBookmark(qIndex) {
     currentBookmarkQuestion = qIndex;
     openBookmarkPanel();
 }
 
 let currentBookmarkQuestion = null;
-let selectedBookmarkSection = null;
-let selectedBookmarkSubsection = null;
+let bookmarkPanelPath = [];
 
 function openBookmarkPanel() {
     const panel = document.getElementById('bookmarkPanel');
     const overlay = document.getElementById('bookmarkOverlay');
+    // Keep current path valid if folders were deleted elsewhere
+    const tree = getBookmarks();
+    if (!getBookmarkNodeAtPath(tree, bookmarkPanelPath)) {
+        bookmarkPanelPath = [];
+    }
     renderBookmarkPanel();
     panel.classList.add('active');
     overlay.classList.add('active');
@@ -130,129 +308,160 @@ function openBookmarkPanel() {
 function closeBookmarkPanel() {
     document.getElementById('bookmarkPanel').classList.remove('active');
     document.getElementById('bookmarkOverlay').classList.remove('active');
-    selectedBookmarkSection = null;
-    selectedBookmarkSubsection = null;
 }
 
 function renderBookmarkPanel() {
     const body = document.getElementById('bookmarkPanelBody');
-    const bookmarks = getBookmarks();
+    const panel = document.getElementById('bookmarkPanel');
+    if (!body) return;
 
-    if (Object.keys(bookmarks).length === 0) {
-        body.innerHTML = `
-            <div class="bookmark-empty">
-                <p>No bookmark folders yet.</p>
-                <p style="margin-top:0.5rem;font-size:0.8rem;">Create a section below to get started.</p>
-            </div>
-            <input type="text" class="bookmark-input" id="newSectionInput" placeholder="New section name...">
-            <button class="btn btn-primary" style="width:100%;" onclick="createBookmarkSection()">Create Section</button>
-        `;
-        return;
+    const tree = getBookmarks();
+    let currentNode = getBookmarkNodeAtPath(tree, bookmarkPanelPath);
+    if (!currentNode) {
+        bookmarkPanelPath = [];
+        currentNode = tree;
     }
 
-    let html = '<div style="margin-bottom:1rem;">';
+    const folderNames = Object.keys(currentNode.folders || {});
+    const directCount = Array.isArray(currentNode.bookmarks) ? currentNode.bookmarks.length : 0;
 
-    for (const section in bookmarks) {
-        const isExpanded = selectedBookmarkSection === section;
-        html += `
-            <div class="bookmark-section">
-                <div class="bookmark-section-title ${isExpanded ? 'expanded' : ''}" onclick="selectBookmarkSection('${section}')">
-                    <span>📁 ${escapeHtml(section)}</span>
-                    <span class="arrow">▶</span>
-                </div>
-                <div class="bookmark-subsections ${isExpanded ? 'show' : ''}">
-                    <div class="bookmark-subsection bookmark-subsection-direct ${selectedBookmarkSubsection === DIRECT_BOOKMARK_KEY ? 'selected' : ''}"
-                         onclick="selectBookmarkSubsection('${DIRECT_BOOKMARK_KEY}')">
-                        💾 Save directly to this section
-                    </div>
-                    ${Object.keys(bookmarks[section]).filter(sub => sub !== DIRECT_BOOKMARK_KEY).map(sub => `
-                        <div class="bookmark-subsection ${selectedBookmarkSubsection === sub ? 'selected' : ''}"
-                             onclick="selectBookmarkSubsection('${sub}')">
-                            📂 ${escapeHtml(sub)}
-                        </div>
-                    `).join('')}
-                    ${isExpanded ? `
-                        <div style="padding:0.5rem;">
-                            <input type="text" class="bookmark-input" id="newSubsectionInput" placeholder="New subsection name...">
-                            <button class="btn btn-ghost" style="width:100%;margin-top:0.5rem;" onclick="createBookmarkSubsection('${section}')">+ Add Subsection</button>
-                        </div>
-                    ` : ''}
-                </div>
-            </div>
-        `;
+    // Update Save button state & label in footer
+    if (panel) {
+        const saveBtn = panel.querySelector('.bookmark-actions .btn-primary');
+        if (saveBtn) {
+            if (bookmarkPanelPath.length > 0) {
+                const targetName = bookmarkPanelPath[bookmarkPanelPath.length - 1];
+                saveBtn.disabled = false;
+                saveBtn.textContent = `Save in "${targetName.length > 18 ? targetName.slice(0, 17) + '…' : targetName}"`;
+            } else {
+                saveBtn.disabled = true;
+                saveBtn.textContent = 'Select or Create Folder';
+            }
+        }
     }
 
-    html += '</div>';
-    html += `
-        <div style="border-top:1px solid var(--border);padding-top:1rem;">
-            <input type="text" class="bookmark-input" id="newSectionInput" placeholder="New section name...">
-            <button class="btn btn-primary" style="width:100%;" onclick="createBookmarkSection()">Create New Section</button>
+    const breadcrumbHtml = `
+        <div class="bm-panel-crumb">
+            <span class="bm-crumb-item ${bookmarkPanelPath.length === 0 ? 'active' : ''}" onclick="bmPanelGoTo(-1)">🏠 Folders</span>
+            ${bookmarkPanelPath.map((seg, i) => `
+                <span class="bm-crumb-sep">›</span>
+                <span class="bm-crumb-item ${i === bookmarkPanelPath.length - 1 ? 'active' : ''}" onclick="bmPanelGoTo(${i})">${escapeHtml(seg)}</span>
+            `).join('')}
         </div>
     `;
 
-    body.innerHTML = html;
+    const destinationHtml = bookmarkPanelPath.length > 0 ? `
+        <div class="bm-panel-dest">
+            <span>📌 Saving to: <strong>${escapeHtml(bookmarkPanelPath.join(' › '))}</strong></span>
+            ${directCount > 0 ? `<span class="bm-dest-count">${directCount} saved</span>` : ''}
+        </div>
+    ` : `
+        <div class="bm-panel-hint">
+            Choose a folder or create a new one below. You can nest folders as deep as you like.
+        </div>
+    `;
+
+    const listHtml = folderNames.length > 0 ? `
+        <div class="bm-panel-list">
+            ${folderNames.map((name, idx) => {
+                const child = currentNode.folders[name];
+                const subCount = Object.keys(child.folders || {}).length;
+                const qCount = countNodeBookmarks(child);
+                const metaParts = [];
+                if (subCount > 0) metaParts.push(`${subCount} folder${subCount !== 1 ? 's' : ''}`);
+                if (qCount > 0) metaParts.push(`${qCount} Q${qCount !== 1 ? 's' : ''}`);
+                const metaText = metaParts.length > 0 ? metaParts.join(' · ') : 'Empty';
+                return `
+                    <div class="bm-panel-folder-row" onclick="bmPanelEnterFolder(${idx})">
+                        <span class="bm-panel-folder-ico">📁</span>
+                        <div class="bm-panel-folder-info">
+                            <div class="bm-panel-folder-name">${escapeHtml(name)}</div>
+                            <div class="bm-panel-folder-meta">${metaText}</div>
+                        </div>
+                        <span class="bm-panel-folder-arrow">›</span>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+    ` : `
+        <div class="bookmark-empty" style="padding:1rem 0.5rem;">
+            <p>${bookmarkPanelPath.length === 0 ? 'No folders yet. Create one below to get started.' : 'No subfolders inside this folder yet.'}</p>
+        </div>
+    `;
+
+    const createLabel = bookmarkPanelPath.length === 0 ? 'New folder name...' : `New subfolder in "${bookmarkPanelPath[bookmarkPanelPath.length - 1]}"...`;
+
+    body.innerHTML = `
+        ${breadcrumbHtml}
+        ${destinationHtml}
+        ${listHtml}
+        <div style="border-top:1px solid var(--border);padding-top:0.85rem;margin-top:0.75rem;">
+            <input type="text" class="bookmark-input" id="newBmFolderInput" placeholder="${escapeHtml(createLabel)}"
+                   onkeydown="if(event.key==='Enter'){event.preventDefault();createBookmarkFolderInPanel();}">
+            <button type="button" class="btn btn-ghost" style="width:100%;" onclick="createBookmarkFolderInPanel()">+ Create Folder</button>
+        </div>
+    `;
 }
 
-function selectBookmarkSection(section) {
-    if (selectedBookmarkSection === section) {
-        selectedBookmarkSection = null;
+function bmPanelGoTo(levelIndex) {
+    if (levelIndex < 0) {
+        bookmarkPanelPath = [];
     } else {
-        selectedBookmarkSection = section;
+        bookmarkPanelPath = bookmarkPanelPath.slice(0, levelIndex + 1);
     }
-    selectedBookmarkSubsection = null;
     renderBookmarkPanel();
 }
 
-function selectBookmarkSubsection(subsection) {
-    selectedBookmarkSubsection = subsection;
+function bmPanelEnterFolder(idx) {
+    const tree = getBookmarks();
+    const currentNode = getBookmarkNodeAtPath(tree, bookmarkPanelPath);
+    if (!currentNode || !currentNode.folders) return;
+    const names = Object.keys(currentNode.folders);
+    const name = names[idx];
+    if (!name) return;
+    bookmarkPanelPath.push(name);
     renderBookmarkPanel();
 }
 
-function createBookmarkSection() {
-    const input = document.getElementById('newSectionInput');
+function createBookmarkFolderInPanel() {
+    const input = document.getElementById('newBmFolderInput');
+    if (!input) return;
     const name = input.value.trim();
     if (!name) return;
 
-    const bookmarks = getBookmarks();
-    if (!bookmarks[name]) {
-        bookmarks[name] = {};
-        saveBookmarks(bookmarks);
+    const tree = getBookmarks();
+    const currentNode = ensureBookmarkNodeAtPath(tree, bookmarkPanelPath);
+    if (!currentNode.folders[name]) {
+        currentNode.folders[name] = createEmptyBookmarkNode();
+        saveBookmarks(tree);
     }
-    input.value = '';
-    renderBookmarkPanel();
-}
-
-function createBookmarkSubsection(section) {
-    const input = document.getElementById('newSubsectionInput');
-    const name = input.value.trim();
-    if (!name || !section) return;
-
-    const bookmarks = getBookmarks();
-    if (!bookmarks[section][name]) {
-        bookmarks[section][name] = [];
-        saveBookmarks(bookmarks);
-    }
+    // Automatically step into the created folder so saving or nesting deeper is 1 click
+    bookmarkPanelPath.push(name);
     renderBookmarkPanel();
 }
 
 function saveBookmark() {
-    if (!selectedBookmarkSection || !selectedBookmarkSubsection || currentBookmarkQuestion === null) {
-        alert('Please select a section and a subsection (or "Save directly to this section")');
+    if (bookmarkPanelPath.length === 0 || currentBookmarkQuestion === null) {
+        alert('Please select or create a folder first.');
         return;
     }
 
-    const bookmarks = getBookmarks();
+    const tree = getBookmarks();
+    const targetNode = ensureBookmarkNodeAtPath(tree, bookmarkPanelPath);
+
     // Resolve to the question's stable position in the chapter, not its (possibly
     // shuffled) index in the live `questions` array — see getCanonicalPosition().
     const canonicalIndex = getCanonicalPosition(currentBookmarkQuestion);
     const key = `${currentChapter.id}_q${canonicalIndex}`;
     const q = questions[currentBookmarkQuestion];
+    const sourceLabel = resolveCurrentSourceLabel();
 
     // Store a full snapshot of the question (not just its text) so a bookmark can be
     // re-rendered standalone, without depending on the source chapter being loaded.
     const bookmarkData = {
         key: key,
         file: currentFileName || '',
+        source: sourceLabel,
         chapter: currentChapter.name,
         chapterId: currentChapter.id,
         question: q.question || '',
@@ -261,25 +470,28 @@ function saveBookmark() {
         index: canonicalIndex,
         originalNumber: canonicalIndex + 1,
         options: q.options,
+        optionImages: q.optionImages,
         images: q.images,
         correct: q.correct,
         answer: q.answer,
         explanation: q.explanation,
+        explanation_image: q.explanation_image,
+        explanation_images: q.explanation_images,
         image_url: q.image_url,
+        matchLists: q.matchLists,
+        passage: q.passage,
+        video: q.video,
+        exam_name: q.exam_name,
+        exam_type: q.exam_type,
+        exam_reference: q.exam_reference,
+        translations: q.translations,
         date: new Date().toISOString()
     };
 
-    const subKey = selectedBookmarkSubsection === DIRECT_BOOKMARK_KEY ? DIRECT_BOOKMARK_KEY : selectedBookmarkSubsection;
-    if (!bookmarks[selectedBookmarkSection]) {
-        bookmarks[selectedBookmarkSection] = {};
-    }
-    if (!bookmarks[selectedBookmarkSection][subKey]) {
-        bookmarks[selectedBookmarkSection][subKey] = [];
-    }
-    const list = bookmarks[selectedBookmarkSection][subKey];
-    if (!list.some(b => bookmarkKeyOf(b) === key)) {
-        list.push(bookmarkData);
-        saveBookmarks(bookmarks);
+    if (!Array.isArray(targetNode.bookmarks)) targetNode.bookmarks = [];
+    if (!targetNode.bookmarks.some(b => bookmarkKeyOf(b) === key)) {
+        targetNode.bookmarks.push(bookmarkData);
+        saveBookmarks(tree);
     }
 
     closeBookmarkPanel();
@@ -290,6 +502,7 @@ function saveBookmark() {
         if (activeScreen.id === 'screenQuiz') renderQuestion();
         else if (activeScreen.id === 'screenFullQuiz') renderFullQuiz();
     }
+    if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
 }
 
 function toggleReview(idx) {

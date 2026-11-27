@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Offline Downloads — Quizzy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quiz-core.css">
+    <link rel="stylesheet" href="quiz-components.css">
+    <script src="app-shell.js"></script>
+    <style>
+        .page-hero {
+            text-align: center;
+            padding: 2.25rem 0 1.25rem;
+        }
+        .page-hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.45rem;
+            letter-spacing: -0.5px;
+        }
+        .page-hero p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .downloads-wrap {
+            padding: 0.5rem 0 3rem;
+        }
+        .dl-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .dl-tabs {
+            display: flex;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+        }
+        .dl-tab {
+            padding: 0.45rem 0.9rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .dl-tab:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .dl-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .dl-storage-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            padding: 0.85rem 1.1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 1.25rem;
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+        }
+        .dl-storage-card strong {
+            color: var(--text-primary);
+        }
+        .dl-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .dl-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+        .dl-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .dl-card-left {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            flex: 1;
+            min-width: 0;
+        }
+        .dl-card-ico {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+        .dl-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .dl-card-title {
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.35;
+        }
+        .dl-card-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .dl-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.14rem 0.55rem;
+            border-radius: 50px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+        .dl-chip.offline {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #10b981;
+        }
+        .dl-card-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .dl-empty {
+            text-align: center;
+            padding: 3rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            color: var(--text-muted);
+        }
+        .dl-empty-ico {
+            font-size: 3rem;
+            margin-bottom: 0.85rem;
+            opacity: 0.65;
+        }
+        .dl-empty h3 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.45rem;
+        }
+        .dl-empty p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 420px;
+            margin: 0 auto 1.25rem;
+        }
+        @media (max-width: 560px) {
+            .page-hero { padding: 1.6rem 0 0.9rem; }
+            .page-hero h1 { font-size: 1.5rem; }
+            .dl-card { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+            .dl-card-actions { justify-content: flex-end; }
+            .dl-card-actions .btn-primary { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="icons/quizzy-logo.svg" alt="" class="logo-img">
+            Quizzy
+        </a>
+        <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-head">
+            <img src="icons/quizzy-logo.svg" alt="" class="menu-logo">
+            <div>
+                <div class="menu-brand">Quizzy</div>
+                <div class="menu-tag">Study · Learn · Smile</div>
+            </div>
+            <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <div class="menu-section">Study</div>
+        <a href="index.html"><span class="mi-ico">🏠</span> Home</a>
+        <a href="question-cafe/"><span class="mi-ico">☕</span> Question Cafe</a>
+        <a href="test-cafe/"><span class="mi-ico">🧪</span> Test Cafe</a>
+        <a href="notes-cafe/"><span class="mi-ico">📖</span> Notes Cafe</a>
+        <a href="question-cafe.html#history"><span class="mi-ico">🕐</span> Study History</a>
+        <a href="test-cafe.html#history"><span class="mi-ico">📊</span> Test History</a>
+
+        <div class="menu-section">Saved</div>
+        <a href="downloads/" id="menuOfflineDownloads" class="current"><span class="mi-ico">📥</span> Offline Downloads</a>
+        <a href="bookmarks/"><span class="mi-ico">🔖</span> Question Bookmarks</a>
+        <a href="test-bookmarks/"><span class="mi-ico">🧷</span> Test Bookmarks</a>
+
+        <div class="menu-section">Your Data</div>
+        <a href="#" onclick="openDataPanel(); return false;"><span class="mi-ico">💾</span> Backup &amp; Restore</a>
+
+        <div class="menu-section">More</div>
+        <a href="about/"><span class="mi-ico">ℹ️</span> About Us</a>
+        <a href="contact/"><span class="mi-ico">📧</span> Contact Us</a>
+        <a href="privacy/"><span class="mi-ico">🔒</span> Privacy Policy</a>
+        <a href="manifest-editor.html" data-admin-only><span class="mi-ico">🛠️</span> Manifest Editor</a>
+
+        <div class="menu-section">Appearance</div>
+        <div class="theme-option" onclick="toggleTheme()">
+            <span class="mi-ico" id="themeIcon">🌙</span>
+            <span id="themeText">Dark Mode</span>
+            <span class="theme-switch" id="themeSwitch"><i></i></span>
+        </div>
+
+        <div class="menu-foot">Quizzy v3.0</div>
+    </div>
+
+    <main class="container qc-container">
+        <section class="page-hero">
+            <h1>📥 Offline Downloads</h1>
+            <p>Access your saved chapters, tests, and notes anytime without internet</p>
+        </section>
+
+        <section class="downloads-wrap">
+            <div class="dl-storage-card">
+                <div id="dlStorageSummary">💾 Checking storage...</div>
+                <button class="btn btn-ghost btn-sm" id="dlClearAllBtn" onclick="clearAllDownloads()" style="color:var(--error);display:none;">🗑️ Clear All</button>
+            </div>
+
+            <div class="dl-toolbar">
+                <div class="dl-tabs">
+                    <button class="dl-tab active" data-filter="all" onclick="setDownloadsFilter('all')">All</button>
+                    <button class="dl-tab" data-filter="question" onclick="setDownloadsFilter('question')">☕ Questions</button>
+                    <button class="dl-tab" data-filter="test" onclick="setDownloadsFilter('test')">🧪 Tests</button>
+                    <button class="dl-tab" data-filter="notes" onclick="setDownloadsFilter('notes')">📖 Notes</button>
+                </div>
+            </div>
+
+            <div id="downloadsContainer">
+                <div class="loading-wrap" style="padding:2rem 0;">
+                    <div class="spinner"></div>
+                    <p>Loading your downloads...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Quizzy v3.0 — Built for learners</p>
+    </footer>
+
+    <script src="quiz-offline.js"></script>
+    <script>
+        let currentDlFilter = 'all';
+        let displayDownloads = [];
+        let manifestLookup = null;
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = String(text);
+            return div.innerHTML;
+        }
+
+        function cleanFileFallbackName(path) {
+            if (!path) return 'Untitled';
+            return String(path)
+                .split('/').pop().split('\\').pop()
+                .replace(/\.json$/i, '')
+                .replace(/[_-]+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function formatRelativeTime(ts) {
+            if (!ts) return '';
+            const secs = Math.floor((Date.now() - ts) / 1000);
+            if (secs < 60) return 'Just now';
+            const mins = Math.floor(secs / 60);
+            if (mins < 60) return `${mins}m ago`;
+            const hrs = Math.floor(mins / 60);
+            if (hrs < 24) return `${hrs}h ago`;
+            const days = Math.floor(hrs / 24);
+            if (days < 30) return `${days}d ago`;
+            return new Date(ts).toLocaleDateString();
+        }
+
+        async function buildManifestLookup() {
+            if (manifestLookup) return manifestLookup;
+            manifestLookup = {};
+
+            function walk(node, trail) {
+                if (!node || typeof node !== 'object') return;
+                const nodeName = node.displayName || node.name || '';
+                const nextTrail = nodeName && nodeName !== 'Quizzy' ? trail.concat([nodeName]) : trail;
+
+                if (Array.isArray(node.files)) {
+                    node.files.forEach(f => {
+                        const path = typeof f === 'object' ? (f.path || f.file || '') : f;
+                        if (!path) return;
+                        const dName = typeof f === 'object' ? (f.displayName || f.name) : null;
+                        // Keep the last 2 meaningful folder names (e.g. "Arjuna JEE 2026 · Physics")
+                        const cleanTrail = nextTrail
+                            .map(t => t.replace(/^[^\w\d(]+/, '').trim())
+                            .filter(Boolean)
+                            .slice(-2);
+                        manifestLookup[path] = {
+                            title: dName || cleanFileFallbackName(path),
+                            group: cleanTrail.join(' · ')
+                        };
+                    });
+                }
+
+                if (Array.isArray(node.subsections)) {
+                    node.subsections.forEach(sub => walk(sub, nextTrail));
+                }
+                if (Array.isArray(node.tests)) {
+                    node.tests.forEach(t => {
+                        const path = typeof t === 'object' ? (t.path || t.file || '') : t;
+                        if (!path) return;
+                        manifestLookup[path] = {
+                            title: (typeof t === 'object' && (t.displayName || t.name || t.title)) || cleanFileFallbackName(path),
+                            group: nextTrail.slice(-2).join(' · ')
+                        };
+                    });
+                }
+            }
+
+            await Promise.allSettled([
+                fetch('data/manifest.json').then(r => r.ok ? r.json() : null).then(m => { if (m) walk(m, []); }),
+                fetch('data/test-manifest.json').then(r => r.ok ? r.json() : null).then(m => { if (m) walk(m, []); })
+            ]);
+
+            return manifestLookup;
+        }
+
+        async function resolveFriendlyDetails(meta, lookup) {
+            const rawPath = meta.fileName || meta.fileId || '';
+            const fromManifest = lookup && rawPath ? lookup[rawPath] : null;
+            let title = (fromManifest && fromManifest.title) || cleanFileFallbackName(rawPath);
+            let group = (fromManifest && fromManifest.group) || '';
+            let subInfo = '';
+
+            // For chapter/topic downloads, read chapter/topic names directly from offline IndexedDB quizData
+            if (meta.fileId) {
+                try {
+                    const qData = await offlineStorage.getQuizData(meta.fileId);
+                    if (qData) {
+                        if (!fromManifest && (qData.displayName || qData.name)) {
+                            title = qData.displayName || qData.name;
+                        }
+                        if (!group && qData.subject) {
+                            group = qData.batch ? `${qData.batch} · ${qData.subject}` : qData.subject;
+                        }
+                        const chapters = Array.isArray(qData.chapters) ? qData.chapters : [];
+                        if (meta.chapterId && meta.chapterId !== 'all') {
+                            const ch = chapters.find(c => c.id === meta.chapterId);
+                            if (ch) {
+                                subInfo = ch.name || '';
+                                if (meta.topicId && meta.topicId !== 'all') {
+                                    const tIdx = parseInt(meta.topicId, 10);
+                                    if (!isNaN(tIdx) && ch.topics && ch.topics[tIdx]) {
+                                        subInfo = subInfo ? `${subInfo} › ${ch.topics[tIdx].topic}` : ch.topics[tIdx].topic;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (e) { /* ignore */ }
+            }
+
+            return { title, group, subInfo };
+        }
+
+        function setDownloadsFilter(filter) {
+            currentDlFilter = filter;
+            document.querySelectorAll('.dl-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.filter === filter);
+            });
+            renderDownloadsPage();
+        }
+
+        async function renderDownloadsPage() {
+            const container = document.getElementById('downloadsContainer');
+            const summaryEl = document.getElementById('dlStorageSummary');
+            const clearAllBtn = document.getElementById('dlClearAllBtn');
+            if (!container) return;
+
+            try {
+                if (typeof offlineStorage.purgeOpaqueCaches === 'function') {
+                    await offlineStorage.purgeOpaqueCaches();
+                }
+                const [realUsage, allMeta, lookup] = await Promise.all([
+                    typeof offlineStorage.getActualOfflineUsage === 'function'
+                        ? offlineStorage.getActualOfflineUsage()
+                        : offlineStorage.getStorageEstimate(),
+                    offlineStorage.getAllMetadata(),
+                    buildManifestLookup()
+                ]);
+
+                if (summaryEl) {
+                    const countInfo = typeof realUsage.imageCount === 'number' && realUsage.imageCount > 0
+                        ? ` (${realUsage.imageCount} diagram${realUsage.imageCount !== 1 ? 's' : ''})`
+                        : '';
+                    const quotaInfo = realUsage.quotaMB && realUsage.quotaMB !== '?'
+                        ? ` · Device limit ${realUsage.quotaMB} MB`
+                        : '';
+                    summaryEl.innerHTML =
+                        `💾 Offline storage used: <strong>${realUsage.usageMB} MB</strong>${countInfo}${quotaInfo}`;
+                }
+
+                const completed = (allMeta || []).filter(m => m && m.status === 'complete');
+                completed.sort((a, b) => (b.downloadedAt || b.savedAt || 0) - (a.downloadedAt || a.savedAt || 0));
+
+                if (clearAllBtn) {
+                    clearAllBtn.style.display = completed.length > 0 ? '' : 'none';
+                }
+
+                const items = [];
+                for (const m of completed) {
+                    if (m.id && m.id.startsWith('ncert_cloze_')) {
+                        items.push({
+                            type: 'notes',
+                            metaId: m.id,
+                            title: m.chapterName || m.title || ('NCERT Chapter ' + (m.chapterId || m.id.replace('ncert_cloze_', ''))),
+                            group: 'Notes Cafe',
+                            subInfo: 'NCERT Cloze Reading',
+                            questions: m.lineCount || m.questionCount || 0,
+                            images: m.imageCount || 0,
+                            date: m.downloadedAt || m.savedAt,
+                            raw: m
+                        });
+                    } else if (m.id && m.id.startsWith('file__')) {
+                        const fileName = m.fileName || m.id.replace('file__', '');
+                        const isTest = fileName.includes('Test') || fileName.includes('batch-tests') || fileName.includes('test-');
+                        const info = await resolveFriendlyDetails(m, lookup);
+                        items.push({
+                            type: isTest ? 'test' : 'question',
+                            metaId: m.id,
+                            title: info.title,
+                            group: info.group,
+                            subInfo: '',
+                            questions: m.totalQuestions || m.questionCount || 0,
+                            images: m.totalImages || m.imageCount || 0,
+                            date: m.downloadedAt || m.savedAt,
+                            raw: m
+                        });
+                    } else if (m.fileId) {
+                        const info = await resolveFriendlyDetails(m, lookup);
+                        items.push({
+                            type: 'question',
+                            metaId: m.id,
+                            title: info.title,
+                            group: info.group,
+                            subInfo: info.subInfo,
+                            questions: m.questionCount || 0,
+                            images: m.imageCount || 0,
+                            date: m.downloadedAt || m.savedAt,
+                            raw: m
+                        });
+                    }
+                }
+
+                const filtered = currentDlFilter === 'all'
+                    ? items
+                    : items.filter(it => it.type === currentDlFilter);
+
+                displayDownloads = filtered;
+
+                if (filtered.length === 0) {
+                    container.innerHTML = `
+                        <div class="dl-empty">
+                            <div class="dl-empty-ico">📥</div>
+                            <h3>${items.length === 0 ? 'No Offline Downloads Yet' : 'No Downloads in This Category'}</h3>
+                            <p>Tap the ⬇️ download button next to any chapter, topic, or test to save questions and diagrams for offline study.</p>
+                            <a href="question-cafe/?browse=1" class="btn btn-primary">☕ Browse Question Cafe</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = `<div class="dl-list">${filtered.map((it, idx) => {
+                    const icon = it.type === 'test' ? '🧪' : (it.type === 'notes' ? '📖' : '☕');
+                    const dateStr = formatRelativeTime(it.date);
+                    const countLabel = it.type === 'notes' ? `${it.questions} lines` : `${it.questions} Qs`;
+
+                    return `
+                        <div class="dl-card">
+                            <div class="dl-card-left">
+                                <div class="dl-card-ico">${icon}</div>
+                                <div class="dl-card-info">
+                                    <div class="dl-card-title">${escapeHtml(it.title)}</div>
+                                    <div class="dl-card-meta">
+                                        ${it.group ? `<span class="dl-chip">${escapeHtml(it.group)}</span>` : ''}
+                                        ${it.subInfo ? `<span class="dl-chip">${escapeHtml(it.subInfo)}</span>` : ''}
+                                        <span>${escapeHtml(countLabel)}</span>
+                                        ${it.images > 0 ? `<span>· ${it.images} diagrams</span>` : ''}
+                                        ${dateStr ? `<span>· ${escapeHtml(dateStr)}</span>` : ''}
+                                        <span class="dl-chip offline">✅ Offline</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dl-card-actions">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="openDownloadedItem(${idx})">▶️ Open</button>
+                                <button type="button" class="btn btn-ghost btn-sm" onclick="removeDownloadedItem(${idx})" title="Remove offline copy" style="color:var(--error);">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}</div>`;
+            } catch (err) {
+                console.error('Failed to load offline downloads:', err);
+                container.innerHTML = `
+                    <div class="dl-empty">
+                        <div class="dl-empty-ico">⚠️</div>
+                        <h3>Could Not Load Downloads</h3>
+                        <p>Offline storage could not be read on this browser.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function openDownloadedItem(idx) {
+            const item = displayDownloads[idx];
+            if (!item) return;
+
+            if (item.type === 'question') {
+                const fileId = item.raw.fileId || item.raw.fileName;
+                const chId = item.raw.chapterId || 'all';
+                const tId = item.raw.topicId || 'all';
+                window.location.href = `question-cafe.html#offline:${encodeURIComponent(fileId)}:${encodeURIComponent(chId)}:${encodeURIComponent(tId)}`;
+            } else if (item.type === 'test') {
+                const fn = item.raw.fileName || (item.raw.id || '').replace('file__', '');
+                window.location.href = `test-cafe.html#test:${encodeURIComponent(fn)}`;
+            } else if (item.type === 'notes') {
+                const chId = item.raw.chapterId || (item.raw.id || '').replace('ncert_cloze_', '');
+                window.location.href = `notes-cafe.html#cloze:${encodeURIComponent(chId)}`;
+            }
+        }
+
+        async function removeDownloadedItem(idx) {
+            const item = displayDownloads[idx];
+            if (!item) return;
+            if (!confirm(`Remove "${item.title}" from offline storage?`)) return;
+
+            if (item.type === 'test') {
+                const fn = item.raw.fileName || (item.raw.id || '').replace('file__', '');
+                await offlineStorage.deleteFileOffline(fn);
+            } else if (item.type === 'question') {
+                if (item.raw.fileId && item.raw.chapterId && item.raw.topicId) {
+                    await offlineStorage.deleteTopicOffline(item.raw.fileId, item.raw.chapterId, item.raw.topicId);
+                } else {
+                    const fn = item.raw.fileId || item.raw.fileName;
+                    await offlineStorage.deleteFileOffline(fn);
+                }
+            } else if (item.type === 'notes') {
+                const db = await offlineStorage.open();
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction('metadata', 'readwrite');
+                    tx.objectStore('metadata').delete(item.metaId);
+                    tx.oncomplete = () => resolve();
+                    tx.onerror = (e) => reject(e.target.error);
+                });
+            }
+
+            renderDownloadsPage();
+        }
+
+        async function clearAllDownloads() {
+            if (!confirm('Remove ALL offline downloads and cached diagrams from this device?')) return;
+            const db = await offlineStorage.open();
+            await new Promise((resolve, reject) => {
+                const tx = db.transaction(['metadata', 'quizData', 'images'], 'readwrite');
+                tx.objectStore('metadata').clear();
+                tx.objectStore('quizData').clear();
+                tx.objectStore('images').clear();
+                tx.oncomplete = () => resolve();
+                tx.onerror = (e) => reject(e.target.error);
+            });
+            renderDownloadsPage();
+        }
+
+        renderDownloadsPage();
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>

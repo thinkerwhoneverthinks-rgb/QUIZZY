@@ -12,6 +12,7 @@ let topics = [];
 let currentQIndex = 0;
 let userAnswers = {};
 let isGridOpen = false;
+let isBookmarkSession = false;
 let selectedTopics = [];
 let subjectData = null; 
 let topicQuestionCounts = {}; 
@@ -367,38 +368,143 @@ function safeHtml(text) {
 let mathJaxQueue = Promise.resolve();
 
 /**
- * typesetMath(el)
- * High-performance, queue-safe MathJax 3 typesetter for dynamic DOM updates.
- * Guarantees zero-conflict execution, handles Chemistry (mhchem), Physics (cancel),
- * and suppresses errors cleanly (noerrors).
+ * Returns true if `root` contains raw, un-typeset TeX delimiters outside
+ * already-rendered <mjx-container>, <code>, <pre>, <script>, or <style> tags.
  */
-function typesetMath(el) {
+function _hasPendingMath(root) {
+    if (!root) return false;
+    const texRe = /\$|\\\(|\\\[|\\begin\{/;
+    if (!document.createTreeWalker || typeof NodeFilter === 'undefined') {
+        return texRe.test(root.textContent || '');
+    }
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+            if (!node.nodeValue || !texRe.test(node.nodeValue)) return NodeFilter.FILTER_SKIP;
+            let p = node.parentNode;
+            while (p && p !== root) {
+                const tag = p.tagName;
+                if (tag === 'MJX-CONTAINER' || tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA' || tag === 'CODE' || tag === 'PRE') {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                p = p.parentNode;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+        }
+    });
+    return Boolean(walker.nextNode());
+}
+
+/**
+ * typesetMath(el, opts)
+ * High-performance, queue-safe MathJax 3 typesetter for dynamic DOM updates.
+ * Skips already-typeset subtrees so clicks/navigation never blink existing math.
+ */
+function typesetMath(el, opts) {
     if (!el) return Promise.resolve();
+    const force = Boolean(opts && opts.force);
+    const hasMjx = Boolean(el.querySelector && el.querySelector('mjx-container'));
+
+    if (!force && el.__mjxDone && hasMjx) {
+        return Promise.resolve();
+    }
+    if (!force && !hasMjx && !_hasPendingMath(el)) {
+        el.__mjxDone = true;
+        return Promise.resolve();
+    }
+
     if (window.MathJax && window.MathJax.typesetPromise) {
-        if (window.MathJax.typesetClear) {
+        if (force && hasMjx && window.MathJax.typesetClear) {
             try { window.MathJax.typesetClear([el]); } catch (e) { /* ignore */ }
         }
         mathJaxQueue = mathJaxQueue
-            .then(() => window.MathJax.typesetPromise([el]))
+            .then(() => {
+                if (!el.isConnected && !document.contains(el)) {
+                    // Buffered off-DOM/attached element still gets typeset safely if in DOM tree
+                }
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    return window.MathJax.typesetPromise([el]);
+                }
+            })
+            .then(() => {
+                el.__mjxDone = true;
+            })
             .catch(err => console.warn('MathJax typeset error:', err));
         return mathJaxQueue;
     } else {
-        const interval = setInterval(() => {
+        if (el._mjxPollTimer) return Promise.resolve();
+        let tries = 0;
+        el._mjxPollTimer = setInterval(() => {
+            tries++;
             if (window.MathJax && window.MathJax.typesetPromise) {
-                clearInterval(interval);
-                typesetMath(el);
+                clearInterval(el._mjxPollTimer);
+                el._mjxPollTimer = null;
+                typesetMath(el, opts);
+            } else if (tries >= 120) {
+                clearInterval(el._mjxPollTimer);
+                el._mjxPollTimer = null;
             }
         }, 50);
-        setTimeout(() => clearInterval(interval), 6000);
         return Promise.resolve();
     }
 }
+
+/**
+ * Single source of truth for option badge keys across Question Cafe & Test Cafe.
+ * Never renders brackets: `(1)` -> `1`, `(a)`/`(A)` -> `A`, `(i)` -> `i`,
+ * empty/`Option N` -> `A`..`F`. Only blanks bare digits/letters when the whole
+ * option array uses placeholder keys (preserving real numeric choices like ["0","1","2","3"]).
+ */
+const _SHARED_OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+const _WRAPPED_OPT_KEY_RE = /^\s*\(\s*([1-6a-fA-F]|i{1,3}|iv|vi{0,3}|ix|x)\s*\)\s*$/i;
+const _OPTION_WORD_RE = /^\s*Option(?:\s*([1-6a-fA-F]))?\s*$/i;
+const _BARE_OPT_KEY_RE = /^\s*([1-6a-fA-F]|i{1,3}|iv|vi{0,3}|ix|x)\s*\.?\s*$/i;
+
+function _cleanOptKeyToken(token, index) {
+    if (!token) return _SHARED_OPTION_LETTERS[index] || String(index + 1);
+    const t = String(token).trim().replace(/\.$/, '');
+    if (/^[1-6]$/.test(t)) return t;
+    if (/^(?:i{1,3}|iv|vi{0,3}|ix|x)$/i.test(t) && t.length > 0 && t.toUpperCase() !== 'A' && t.toUpperCase() !== 'C' && t.toUpperCase() !== 'D') {
+        return t === 'I' ? 'I' : t.toLowerCase();
+    }
+    if (/^[a-f]$/i.test(t)) return t.toUpperCase();
+    return _SHARED_OPTION_LETTERS[index] || String(index + 1);
+}
+
+function parseOptionBadge(rawOpt, index, allOpts) {
+    const rawStr = (rawOpt === null || rawOpt === undefined) ? '' : String(rawOpt).trim();
+    const defaultLetter = _SHARED_OPTION_LETTERS[index] || String(index + 1);
+
+    if (!rawStr) {
+        return { isBlank: true, badge: defaultLetter };
+    }
+    if (_OPTION_WORD_RE.test(rawStr)) {
+        return { isBlank: true, badge: defaultLetter };
+    }
+    const wrapped = rawStr.match(_WRAPPED_OPT_KEY_RE);
+    if (wrapped) {
+        return { isBlank: true, badge: _cleanOptKeyToken(wrapped[1], index) };
+    }
+    const bare = rawStr.match(_BARE_OPT_KEY_RE);
+    if (bare) {
+        const list = Array.isArray(allOpts) ? allOpts : null;
+        const allPlaceholders = !list || list.every(o => {
+            const s = (o === null || o === undefined) ? '' : String(o).trim();
+            return !s || _OPTION_WORD_RE.test(s) || _WRAPPED_OPT_KEY_RE.test(s) || _BARE_OPT_KEY_RE.test(s);
+        });
+        if (allPlaceholders) {
+            return { isBlank: true, badge: _cleanOptKeyToken(bare[1], index) };
+        }
+    }
+    return { isBlank: false, badge: defaultLetter };
+}
+
 if (typeof window !== 'undefined') {
     window.safeHtml = safeHtml;
     window.typesetMath = typesetMath;
     window.tcTypeset = typesetMath;
-    window.renderMathInElement = function(el) {
-        return typesetMath(el);
+    window.parseOptionBadge = parseOptionBadge;
+    window.renderMathInElement = function(el, opts) {
+        return typesetMath(el, opts);
     };
 }
 
@@ -472,7 +578,7 @@ const ACTIVE_EXERCISE_KEY = 'quizzy-active-exercise';
 
 function saveActiveExercise() {
     try {
-        if (!currentChapter || !currentFileName || currentMode === 'bookmark') {
+        if (!currentChapter || !currentFileName || currentMode === 'bookmark' || (typeof isBookmarkSession !== 'undefined' && isBookmarkSession)) {
             return;
         }
         const activeScreen = document.querySelector('.screen.active');

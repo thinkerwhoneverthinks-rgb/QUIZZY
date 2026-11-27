@@ -22,6 +22,8 @@ const MATHJAX_OFFLINE_URLS = [
 class QuizOfflineStorage {
     constructor() {
         this.db = null;
+        this._blobUrlCache = new Map();
+        this._pendingBlobResolves = new Map();
     }
 
     async open() {
@@ -124,7 +126,7 @@ class QuizOfflineStorage {
         if (!('caches' in window)) return null;
         try {
             const keys = await caches.keys();
-            const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v45-cdn';
+            const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v50-cdn';
             return await caches.open(cdnKey);
         } catch (e) {
             return null;
@@ -141,13 +143,25 @@ class QuizOfflineStorage {
         if ('caches' in window) {
             try {
                 const keys = await caches.keys();
-                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v45-cdn';
+                const cdnKey = keys.find(k => k.endsWith('-cdn')) || 'quizzy-v50-cdn';
                 const cache = await caches.open(cdnKey);
                 const match = await cache.match(url, { ignoreSearch: true });
-                if (match) return true;
+                if (match && match.type !== 'opaque') return true;
             } catch (e) {}
         }
         return false;
+    }
+
+    _revokeCachedBlobUrl(url) {
+        if (!url || !this._blobUrlCache) return;
+        const blobUrl = this._blobUrlCache.get(url);
+        if (blobUrl) {
+            try { URL.revokeObjectURL(blobUrl); } catch (e) {}
+            this._blobUrlCache.delete(url);
+        }
+        if (this._pendingBlobResolves) {
+            this._pendingBlobResolves.delete(url);
+        }
     }
 
     async cacheSingleImage(url, cdnCache) {
@@ -159,33 +173,29 @@ class QuizOfflineStorage {
             if (blob) return true;
         } catch (e) {}
 
-        // Check if already in CDN CacheStorage
+        // Check if already cleanly cached (non-opaque) in CDN CacheStorage
         if (cdnCache) {
             try {
                 const match = await cdnCache.match(url, { ignoreSearch: true });
-                if (match) return true;
+                if (match && match.type !== 'opaque') {
+                    const blob = await match.clone().blob();
+                    if (blob && blob.size > 0) {
+                        await this.saveImage(url, blob);
+                        return true;
+                    }
+                }
             } catch (e) {}
         }
 
         if (!navigator.onLine) return false;
 
-        // 1. Try direct CORS fetch first (for same-origin or CORS-enabled CDNs)
+        // 1. Try direct CORS fetch first (saves real bytes directly to IndexedDB)
         try {
             const resp = await fetch(url, { mode: 'cors' });
             if (resp.ok) {
                 const blob = await resp.blob();
                 if (blob && blob.size > 0) {
                     await this.saveImage(url, blob);
-                    if (cdnCache) {
-                        try {
-                            await cdnCache.put(new Request(url), new Response(blob.slice(0), {
-                                headers: {
-                                    'Content-Type': blob.type || 'image/png',
-                                    'Access-Control-Allow-Origin': '*'
-                                }
-                            }));
-                        } catch (err) {}
-                    }
                     return true;
                 }
             }
@@ -194,8 +204,7 @@ class QuizOfflineStorage {
         }
 
         // 2. High-speed CORS gateway via images.weserv.nl
-        // Enables CORS so the browser can read the true image bytes as a Blob for IndexedDB.
-        // Storing directly in IndexedDB eliminates the browser's ~7 MB "opaque response padding" penalty.
+        // Fetches real image bytes into IndexedDB without Chrome's ~7-14 MB opaque padding.
         try {
             const cleanUrl = url.replace(/^https?:\/\//i, '');
             const proxyUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanUrl)}`;
@@ -204,36 +213,14 @@ class QuizOfflineStorage {
                 const blob = await proxyResp.blob();
                 if (blob && blob.size > 0) {
                     await this.saveImage(url, blob);
-                    if (cdnCache) {
-                        try {
-                            await cdnCache.put(new Request(url), new Response(blob.slice(0), {
-                                headers: {
-                                    'Content-Type': blob.type || 'image/png',
-                                    'Access-Control-Allow-Origin': '*'
-                                }
-                            }));
-                        } catch (err) {}
-                    }
                     return true;
                 }
             }
         } catch (proxyErr) {
-            // Proxy unavailable or network issue, proceed to fallback
+            // Proxy unavailable or network issue
         }
 
-        // 3. Fallback: Fetch in 'no-cors' mode and store directly into Service Worker CacheStorage.
-        // Opaque responses are accepted by cache.put() and served to <img> tags offline.
-        if (cdnCache) {
-            try {
-                const noCorsResp = await fetch(url, { mode: 'no-cors' });
-                if (noCorsResp && (noCorsResp.ok || noCorsResp.type === 'opaque')) {
-                    await cdnCache.put(new Request(url), noCorsResp);
-                    return true;
-                }
-            } catch (noCorsErr) {
-                console.warn('Failed to cache image in no-cors mode:', url, noCorsErr);
-            }
-        }
+        // Do NOT write 'no-cors' opaque responses to CacheStorage: Chrome inflates quota by ~7-14 MB per image.
         return false;
     }
 
@@ -257,7 +244,10 @@ class QuizOfflineStorage {
         const tx = db.transaction('images', 'readwrite');
         const store = tx.objectStore('images');
         allImages.forEach(u => {
-            if (u) store.delete(u);
+            if (u) {
+                store.delete(u);
+                this._revokeCachedBlobUrl(u);
+            }
         });
 
         // Also clean up from CacheStorage to purge any old opaque responses
@@ -617,13 +607,141 @@ class QuizOfflineStorage {
         return { usage: 0, quota: 0, usageMB: '?', quotaMB: '?', percentUsed: 0 };
     }
 
-    // ==================== GET OFFLINE IMAGE URL ====================
-    async getOfflineImageUrl(originalUrl) {
-        const blob = await this.getImage(originalUrl);
-        if (blob) {
-            return URL.createObjectURL(blob);
+    async getActualOfflineUsage() {
+        let imageBytes = 0;
+        let imageCount = 0;
+        let dataBytes = 0;
+
+        try {
+            const db = await this.open();
+            await new Promise((resolve) => {
+                const tx = db.transaction('images', 'readonly');
+                const req = tx.objectStore('images').openCursor();
+                req.onsuccess = (ev) => {
+                    const cursor = ev.target.result;
+                    if (cursor) {
+                        const blob = cursor.value && cursor.value.blob;
+                        if (blob && typeof blob.size === 'number') {
+                            imageBytes += blob.size;
+                        }
+                        imageCount++;
+                        cursor.continue();
+                    }
+                };
+                tx.oncomplete = () => resolve();
+                tx.onerror = () => resolve();
+            });
+
+            const enc = typeof TextEncoder !== 'undefined' ? new TextEncoder() : null;
+            const stores = ['quizData', 'metadata', 'customTests', 'testResults']
+                .filter(s => db.objectStoreNames.contains(s));
+            for (const storeName of stores) {
+                await new Promise((resolve) => {
+                    const tx = db.transaction(storeName, 'readonly');
+                    const req = tx.objectStore(storeName).openCursor();
+                    req.onsuccess = (ev) => {
+                        const cursor = ev.target.result;
+                        if (cursor) {
+                            try {
+                                const json = JSON.stringify(cursor.value);
+                                dataBytes += enc ? enc.encode(json).length : json.length;
+                            } catch (e) {}
+                            cursor.continue();
+                        }
+                    };
+                    tx.oncomplete = () => resolve();
+                    tx.onerror = () => resolve();
+                });
+            }
+        } catch (e) {}
+
+        const usageBytes = imageBytes + dataBytes;
+        let quota = 0;
+        if (navigator.storage && navigator.storage.estimate) {
+            try {
+                const est = await navigator.storage.estimate();
+                quota = est.quota || 0;
+            } catch (e) {}
         }
-        return originalUrl; // fallback to network / Service Worker cache
+
+        return {
+            usage: usageBytes,
+            usageBytes,
+            usageMB: (usageBytes / 1024 / 1024).toFixed(1),
+            imageBytes,
+            imageMB: (imageBytes / 1024 / 1024).toFixed(1),
+            dataBytes,
+            dataMB: (dataBytes / 1024 / 1024).toFixed(1),
+            imageCount,
+            quota,
+            quotaMB: quota ? (quota / 1024 / 1024).toFixed(0) : '?',
+            percentUsed: quota ? ((usageBytes / quota) * 100).toFixed(1) : 0
+        };
+    }
+
+    async purgeOpaqueCaches() {
+        if (!('caches' in window)) return 0;
+        let purged = 0;
+        try {
+            const keys = await caches.keys();
+            for (const key of keys) {
+                if (!key.endsWith('-cdn')) continue;
+                if (key !== 'quizzy-v50-cdn') {
+                    await caches.delete(key);
+                    purged++;
+                    continue;
+                }
+                const cache = await caches.open(key);
+                const reqs = await cache.keys();
+                for (const req of reqs) {
+                    const resp = await cache.match(req);
+                    if (resp && (resp.type === 'opaque' || resp.status === 0)) {
+                        await cache.delete(req);
+                        purged++;
+                    }
+                }
+            }
+        } catch (e) {}
+        return purged;
+    }
+
+    // ==================== GET OFFLINE IMAGE URL ====================
+    getCachedOfflineImageUrlSync(originalUrl) {
+        if (!originalUrl || !this._blobUrlCache) return null;
+        return this._blobUrlCache.get(originalUrl) || null;
+    }
+
+    async resolveOfflineImageUrl(originalUrl) {
+        if (!originalUrl || typeof originalUrl !== 'string') return originalUrl;
+        if (originalUrl.startsWith('blob:') || originalUrl.startsWith('data:')) return originalUrl;
+        const cached = this._blobUrlCache.get(originalUrl);
+        if (cached) return cached;
+        if (this._pendingBlobResolves.has(originalUrl)) {
+            return this._pendingBlobResolves.get(originalUrl);
+        }
+        const pending = (async () => {
+            try {
+                const blob = await this.getImage(originalUrl);
+                if (blob) {
+                    const existing = this._blobUrlCache.get(originalUrl);
+                    if (existing) return existing;
+                    const blobUrl = URL.createObjectURL(blob);
+                    this._blobUrlCache.set(originalUrl, blobUrl);
+                    return blobUrl;
+                }
+            } catch (e) {}
+            return originalUrl;
+        })();
+        this._pendingBlobResolves.set(originalUrl, pending);
+        try {
+            return await pending;
+        } finally {
+            this._pendingBlobResolves.delete(originalUrl);
+        }
+    }
+
+    async getOfflineImageUrl(originalUrl) {
+        return this.resolveOfflineImageUrl(originalUrl);
     }
 
     async getAllDownloadedItems() {
@@ -643,10 +761,10 @@ async function downloadTopicUI(fileId, chapterId, topicIdx, btnElement, fullQuiz
     const qs = topic.questions || [];
     const originalText = btnElement.innerHTML;
 
-    // Check storage
-    const est = await offlineStorage.getStorageEstimate();
-    if (est.usage > 500 * 1024 * 1024) {
-        if (!confirm(`⚠️ Storage usage is over 500MB (${est.usageMB}MB used). Downloading more may slow your device. Continue?`)) {
+    // Check actual downloaded bytes (ignores Chrome's ~7MB/image opaque padding)
+    const realUsage = await offlineStorage.getActualOfflineUsage();
+    if (realUsage.usage > 500 * 1024 * 1024) {
+        if (!confirm(`⚠️ Offline downloads use over 500MB (${realUsage.usageMB}MB used). Downloading more may slow your device. Continue?`)) {
             return;
         }
     }
@@ -680,9 +798,9 @@ async function downloadTopicUI(fileId, chapterId, topicIdx, btnElement, fullQuiz
 async function downloadFileUI(fileName, normalizedData, btnElement) {
     const originalText = btnElement.innerHTML;
 
-    const est = await offlineStorage.getStorageEstimate();
-    if (est.usage > 500 * 1024 * 1024) {
-        if (!confirm(`⚠️ Storage usage is over 500MB (${est.usageMB}MB used). Downloading more content may slow your device. Continue?`)) {
+    const realUsage = await offlineStorage.getActualOfflineUsage();
+    if (realUsage.usage > 500 * 1024 * 1024) {
+        if (!confirm(`⚠️ Offline downloads use over 500MB (${realUsage.usageMB}MB used). Downloading more content may slow your device. Continue?`)) {
             return;
         }
     }

@@ -20,8 +20,10 @@ function showScreen(id) {
     const target = document.getElementById(id);
     if (target) target.classList.add('active');
     window.scrollTo(0, 0);
-    // Typeset math on target screen synchronously without delay
-    if (target) {
+    // Skip blanket screen-level MathJax typeset on quiz screens — their renderers
+    // incrementally typeset each card/reveal without wiping already-rendered math.
+    const isQuizScreen = id === 'screenQuiz' || id === 'screenFullQuiz' || id === 'screenTestMode' || id === 'screenReview';
+    if (target && !isQuizScreen) {
         if (typeof typesetMath === 'function') {
             typesetMath(target);
         } else if (typeof renderMathInElement !== 'undefined') {
@@ -41,6 +43,12 @@ function showScreen(id) {
 function showSubjects() {
     if (typeof clearActiveExercise === 'function') clearActiveExercise();
     if (typeof clearQuestionBuffer === 'function') clearQuestionBuffer();
+    if (typeof isBookmarkSession !== 'undefined' && isBookmarkSession && typeof window.exitBookmarkPracticeScreen === 'function') {
+        closeGrid();
+        window.exitBookmarkPracticeScreen();
+        return;
+    }
+    if (typeof isBookmarkSession !== 'undefined') isBookmarkSession = false;
     currentSubject = null;
     currentChapter = null;
     currentMode = null;
@@ -106,15 +114,23 @@ function switchQuizViewMode(mode) {
         showScreen('screenQuiz');
         if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
         renderQuestion();
-        pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' }, true);
+        if (!(typeof isBookmarkSession !== 'undefined' && isBookmarkSession && typeof window.handleBookmarkPopstate === 'function')) {
+            pushQuizHistory({ cafe: 'question', screen: 'screenQuiz' }, true);
+        }
     } else if (currentMode === 'fullquiz') {
         showScreen('screenFullQuiz');
         if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
         renderFullQuiz();
-        pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' }, true);
-        const card = document.getElementById(`fullQ-${currentQIndex}`);
-        if (card) {
-            setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        if (!(typeof isBookmarkSession !== 'undefined' && isBookmarkSession && typeof window.handleBookmarkPopstate === 'function')) {
+            pushQuizHistory({ cafe: 'question', screen: 'screenFullQuiz' }, true);
+        }
+        if (typeof scrollFullQuizToCard === 'function') {
+            setTimeout(() => scrollFullQuizToCard(currentQIndex), 50);
+        } else {
+            const card = document.getElementById(`fullQ-${currentQIndex}`);
+            if (card) {
+                setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+            }
         }
     }
     if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
@@ -373,6 +389,7 @@ async function downloadAllTopicsForOffline(btnElement) {
 
 // ==================== TOPIC & CHAPTER CONTINUATION ====================
 function getNextTopicInfo() {
+    if (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) return null;
     if (!topics || topics.length === 0) return null;
 
     // In serial / original order, or when all topics are already selected in the session,
@@ -491,6 +508,12 @@ window.addEventListener('popstate', function (e) {
             pushQuizHistory({ cafe: 'question', screen: activeScreen.id });
             return;
         }
+        return;
+    }
+
+    // 2.5 Bookmark page folder/quiz popstate handling
+    if (typeof window.handleBookmarkPopstate === 'function' && (!e.state || e.state.bmPath !== undefined)) {
+        window.handleBookmarkPopstate(e.state);
         return;
     }
 

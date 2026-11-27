@@ -108,12 +108,21 @@ body.tc-running { overflow-x: hidden; }
     flex-wrap: wrap;
 }
 
-.tc-crumbs {
+.tc-crumbs,
+.tc-breadcrumbs {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+    gap: 0.65rem;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
     padding: 0.5rem 0 1rem;
+}
+.tc-crumb-back,
+.tc-breadcrumbs .tc-back-link {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 .tc-crumb-back,
 .tc-crumb {
@@ -125,6 +134,8 @@ body.tc-running { overflow-x: hidden; }
     cursor: pointer;
     padding: 0.25rem 0;
     font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 .tc-crumb-back {
     background: var(--bg-card);
@@ -134,8 +145,66 @@ body.tc-running { overflow-x: hidden; }
 }
 .tc-crumb-back:hover, .tc-crumb:hover { color: var(--accent); }
 .tc-crumb.active { color: var(--text-primary); }
-.tc-crumb-path { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
-.tc-crumb-sep { color: var(--text-subtle); font-size: 0.8rem; }
+.tc-crumb-path,
+.tc-crumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: nowrap;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.tc-crumb-path::-webkit-scrollbar,
+.tc-crumb-list::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+@media (min-width: 601px) and (hover: hover) and (pointer: fine) {
+    .tc-crumb-path,
+    .tc-crumb-list {
+        scrollbar-width: auto;
+        padding-bottom: 3px;
+    }
+    .tc-crumb-path::-webkit-scrollbar,
+    .tc-crumb-list::-webkit-scrollbar {
+        display: block;
+        height: 4px;
+    }
+    .tc-crumb-path::-webkit-scrollbar-track,
+    .tc-crumb-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .tc-crumb-path::-webkit-scrollbar-thumb,
+    .tc-crumb-list::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 999px;
+    }
+    .tc-crumb-path::-webkit-scrollbar-thumb:hover,
+    .tc-crumb-list::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
+    }
+    @supports not selector(::-webkit-scrollbar) {
+        .tc-crumb-path,
+        .tc-crumb-list {
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+    }
+}
+.tc-crumb-sep,
+.tc-crumb-list > span {
+    color: var(--text-subtle);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
 
 .tc-row {
     width: 100%;
@@ -1444,6 +1513,13 @@ body.tc-running { overflow-x: hidden; }
 .q-options.q-options-grid-2col .opt {
     margin-bottom: 0 !important;
     min-height: 52px;
+    align-items: center;
+}
+.q-options.q-options-grid-2col .opt.is-blank .opt-body:empty {
+    display: none;
+}
+.q-options.q-options-grid-2col .opt.is-blank {
+    padding: 0.72rem 1rem;
 }
 /* If odd number of options, the last item spans both columns */
 .q-options.q-options-grid-2col .opt:last-child:nth-child(odd) {

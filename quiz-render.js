@@ -247,13 +247,17 @@ function markQuestionImageLoaded(img, url) {
 window.markQuestionImageLoaded = markQuestionImageLoaded;
 
 function renderQuestionImageWrapHtml(url, altText, extraClass) {
-    const isReady = _fullyLoadedImageUrls.has(url);
+    const offlineSrc = (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getCachedOfflineImageUrlSync === 'function')
+        ? offlineStorage.getCachedOfflineImageUrlSync(url)
+        : null;
+    const initialSrc = offlineSrc || url;
+    const isReady = Boolean(offlineSrc) || _fullyLoadedImageUrls.has(url);
     const loadingCls = isReady ? '' : ' is-loading';
     const shimmerHtml = isReady ? '' : `<div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>`;
     return `
         <div class="image-question-wrap${loadingCls}${extraClass ? ' ' + extraClass : ''}">
             ${shimmerHtml}
-            <img src="${url}" class="question-image${isReady ? ' loaded' : ''}" alt="${escapeHtml(altText || 'Question Diagram')}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${url}" onload="markQuestionImageLoaded(this, '${url}')" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+            <img src="${initialSrc}" class="question-image${isReady ? ' loaded' : ''}" alt="${escapeHtml(altText || 'Question Diagram')}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${url}" onload="markQuestionImageLoaded(this, '${url}')" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
         </div>
     `;
 }
@@ -265,16 +269,14 @@ function preloadSingleImageUrl(url) {
 
     const onDone = () => _fullyLoadedImageUrls.add(url);
 
-    if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getImage === 'function') {
-        offlineStorage.getImage(url).then(blob => {
-            if (blob) {
-                _fullyLoadedImageUrls.add(url);
-                return;
-            }
+    // Resolve local IndexedDB offline blob first so downloaded exercises never swap URLs on render
+    if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.resolveOfflineImageUrl === 'function') {
+        offlineStorage.resolveOfflineImageUrl(url).then(resolved => {
+            const target = resolved || url;
             const img = new Image();
             img.decoding = 'async';
             img.onload = onDone;
-            img.src = url;
+            img.src = target;
         }).catch(() => {
             const img = new Image();
             img.decoding = 'async';
@@ -353,7 +355,7 @@ function buildQuestionBody(q, idx) {
 
 /* Inner HTML of a question card (everything inside .question-card). */
 function buildQuestionCardInner(q, idx, total) {
-    const inBookmarkMode = currentMode === 'bookmark';
+    const inBookmarkMode = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
     const isBookmarked = inBookmarkMode
         ? (typeof isQuestionBookmarked === 'function' && q.origChapterId ? isQuestionBookmarked(q.origChapterId, q.origIndex) : true)
         : ((typeof isQuestionBookmarked === 'function' && currentChapter) ? isQuestionBookmarked(currentChapter.id, idx) : false);
@@ -361,7 +363,7 @@ function buildQuestionCardInner(q, idx, total) {
     const bookmarkTitle = inBookmarkMode
         ? (isBookmarked ? 'Remove from this folder' : 'Bookmark this question')
         : (isBookmarked ? 'Bookmarked' : 'Bookmark this question');
-    const displayNumber = q.originalNumber || (idx + 1);
+    const displayNumber = inBookmarkMode ? (idx + 1) : (q.originalNumber || (idx + 1));
     const questionLabel = `Q. ${displayNumber}`;
 
     const topicLabel = q.subtopic || q.sub_category || q.topicName || q.topic || (currentChapter ? currentChapter.name : '');
@@ -621,19 +623,17 @@ function renderExplanationBlock(q, revealed) {
     `;
 }
 
-function typesetMath(el) {
-    if (!el) return;
-    if (typeof window !== 'undefined' && typeof window.typesetMath === 'function' && window.typesetMath !== typesetMath) {
-        return window.typesetMath(el);
-    }
-    if (typeof window !== 'undefined' && window.MathJax && window.MathJax.typesetPromise) {
-        if (window.MathJax.typesetClear) {
-            try { window.MathJax.typesetClear([el]); } catch (e) { /* ignore */ }
+// Shared `typesetMath` lives in quiz-core.js (queued & blink-free). Keep a
+// local safety fallback ONLY if quiz-render.js is loaded without quiz-core.js.
+if (typeof window !== 'undefined' && typeof window.typesetMath !== 'function') {
+    window.typesetMath = function(el) {
+        if (!el) return Promise.resolve();
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            return window.MathJax.typesetPromise([el]).catch(err => console.warn('MathJax error:', err));
         }
-        return window.MathJax.typesetPromise([el]).catch(err => console.warn('MathJax error:', err));
-    }
+        return Promise.resolve();
+    };
 }
-window.typesetMath = typesetMath;
 
 /* Redraw a single card wherever it currently lives (practice or full quiz). */
 function refreshQuestionCard(idx) {
@@ -669,6 +669,7 @@ function clearQuestionBuffer() {
     _renderedChapterId = null;
     _renderedTopicName = null;
     _renderedLanguage = null;
+    window._renderedQuestionsRef = null;
     const container = document.getElementById('quizContainer');
     if (container) container.innerHTML = '';
 }
@@ -740,6 +741,104 @@ function preloadAheadCards(centerIndex, bufferSize = 5) {
     }
 }
 
+function resolveBookmarkQuestionSource(q) {
+    if (!q) return '';
+    const chapLower = (q.origChapter || '').trim().toLowerCase();
+    const chapFormattedLower = q.origChapter ? formatQuizHeaderTitle(q.origChapter).trim().toLowerCase() : '';
+
+    if (q.origFile && typeof manifestRoot !== 'undefined' && manifestRoot && typeof findManifestFileMeta === 'function') {
+        const meta = findManifestFileMeta(manifestRoot, q.origFile, []);
+        if (meta) {
+            const titleLower = (meta.title || '').trim().toLowerCase();
+            if (meta.title && titleLower !== chapLower && titleLower !== chapFormattedLower) {
+                return meta.title;
+            }
+            if (Array.isArray(meta.trail) && meta.trail.length > 0) {
+                const cleanTrail = meta.trail
+                    .map(t => String(t).replace(/^[^\w\d(]+/, '').trim())
+                    .filter(Boolean);
+                if (cleanTrail.length > 0) {
+                    return cleanTrail.slice(-2).join(' · ');
+                }
+            }
+        }
+    }
+
+    if (q.origSource) {
+        const srcLower = q.origSource.trim().toLowerCase();
+        if (srcLower !== chapLower && srcLower !== chapFormattedLower) {
+            return q.origSource;
+        }
+    }
+
+    if (q.origFile) {
+        const parts = String(q.origFile).replace(/\\/g, '/').split('/').filter(Boolean);
+        if (parts.length >= 2) {
+            const parentFolder = parts[parts.length - 2].replace(/[_-]+/g, ' ').trim();
+            if (parentFolder && parentFolder.toLowerCase() !== chapLower) {
+                return parentFolder;
+            }
+        }
+        const base = parts.pop().replace(/\.json$/i, '').replace(/[_-]+/g, ' ').trim();
+        if (base.toLowerCase() !== chapLower) return base;
+    }
+    return '';
+}
+
+function updateQuizContextBar(prefix, sourceStr, chapStr, topicStr, qNumStr) {
+    const bar = document.getElementById(prefix + 'ContextBar');
+    if (!bar) return;
+    const srcEl = document.getElementById(prefix + 'CtxSource');
+    const srcSep = document.getElementById(prefix + 'CtxSourceSep');
+    const chapEl = document.getElementById(prefix + 'CtxChapter');
+    const sepEl = document.getElementById(prefix + 'CtxSep');
+    const topicEl = document.getElementById(prefix + 'CtxTopic');
+    const qNumSep = document.getElementById(prefix + 'CtxQNumSep');
+    const qNumEl = document.getElementById(prefix + 'CtxQNum');
+
+    const s = (sourceStr || '').trim();
+    let c = (chapStr || '').trim();
+    let t = (topicStr || '').trim();
+    const qn = (qNumStr || '').trim();
+
+    // Avoid showing two identical adjacent segments
+    if (s && c && s.toLowerCase() === c.toLowerCase()) c = '';
+    if (c && t && c.toLowerCase() === t.toLowerCase()) t = '';
+    if (s && !c && t && s.toLowerCase() === t.toLowerCase()) t = '';
+
+    if (srcEl) {
+        srcEl.textContent = s;
+        srcEl.style.display = s ? '' : 'none';
+    }
+    if (srcSep) {
+        srcSep.style.display = (s && (c || t || qn)) ? '' : 'none';
+    }
+    if (chapEl) {
+        chapEl.textContent = c;
+        chapEl.style.display = c ? '' : 'none';
+    }
+    if (sepEl) {
+        sepEl.style.display = (c && t) ? '' : 'none';
+    }
+    if (topicEl) {
+        topicEl.textContent = t;
+        topicEl.style.display = t ? '' : 'none';
+    }
+    if (qNumSep) {
+        qNumSep.style.display = (qn && (s || c || t)) ? '' : 'none';
+    }
+    if (qNumEl) {
+        qNumEl.textContent = qn;
+        qNumEl.style.display = qn ? '' : 'none';
+    }
+
+    if (s || c || t || qn) {
+        bar.classList.add('visible');
+    } else {
+        bar.classList.remove('visible');
+    }
+}
+
 // ==================== QUESTION RENDERING ====================
 function renderQuestion() {
     const total = Array.isArray(questions) ? questions.length : 0;
@@ -748,14 +847,14 @@ function renderQuestion() {
     const container = document.getElementById('quizContainer');
     if (!container) return;
 
-    // Check if context (chapter, topic, or language) has changed
+    // Reset DOM card buffer only when the underlying question set, chapter, or language changes
+    // (never wipe buffered cards just because the user crossed into a new topic within a chapter)
     const currLang = typeof currentLanguage !== 'undefined' ? currentLanguage : 'en';
     const currChapId = currentChapter ? currentChapter.id : null;
-    const currTopic = q.topicName || null;
-    if (currChapId !== _renderedChapterId || currTopic !== _renderedTopicName || currLang !== _renderedLanguage) {
+    if (currChapId !== _renderedChapterId || window._renderedQuestionsRef !== questions || currLang !== _renderedLanguage) {
         container.innerHTML = '';
         _renderedChapterId = currChapId;
-        _renderedTopicName = currTopic;
+        window._renderedQuestionsRef = questions;
         _renderedLanguage = currLang;
     }
 
@@ -766,28 +865,27 @@ function renderQuestion() {
     const progFill = document.getElementById('progressFill');
     if (progFill) progFill.style.width = `${((currentQIndex + 1) / total) * 100}%`;
 
+    const inBm = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
+
     const chapTitle = document.getElementById('quizChapterTitle');
     if (chapTitle) chapTitle.textContent = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
 
     const topicName = document.getElementById('quizTopicName');
-    if (topicName) topicName.textContent = q.topicName || '';
+    if (topicName) topicName.textContent = inBm ? '' : (q.topicName || '');
 
     if (typeof updateHeaderLangPills === 'function') updateHeaderLangPills();
 
-    // Populate mobile context bar (slim Chapter › Topic breadcrumb)
-    const ctxBar = document.getElementById('quizContextBar');
-    if (ctxBar) {
-        const ctxChap = document.getElementById('quizCtxChapter');
-        const ctxTopic = document.getElementById('quizCtxTopic');
+    // Populate context bar: 4 steps (Source › Chapter › Topic › Q#) in bookmark mode, 2 steps otherwise
+    if (inBm) {
+        const srcStr = resolveBookmarkQuestionSource(q);
+        const chapStr = q.origChapter ? formatQuizHeaderTitle(q.origChapter) : '';
+        const topicStr = q.topicName || '';
+        const qNumStr = q.originalNumber ? `Q. ${q.originalNumber}` : '';
+        updateQuizContextBar('quiz', srcStr, chapStr, topicStr, qNumStr);
+    } else {
         const chapName = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
         const topicStr = q.topicName || '';
-        if (ctxChap) ctxChap.textContent = chapName;
-        if (ctxTopic) ctxTopic.textContent = topicStr;
-        if (chapName || topicStr) {
-            ctxBar.classList.add('visible');
-        } else {
-            ctxBar.classList.remove('visible');
-        }
+        updateQuizContextBar('quiz', '', chapName, topicStr, '');
     }
 
     const btnPrev = document.getElementById('btnPrev');
@@ -1010,19 +1108,34 @@ function handleImageError(img) {
     }
 }
 
-async function loadOfflineImagesInContainer(container) {
+function loadOfflineImagesInContainer(container) {
     if (!container || typeof offlineStorage === 'undefined') return;
+    const resolveFn = offlineStorage.resolveOfflineImageUrl
+        ? (u) => offlineStorage.resolveOfflineImageUrl(u)
+        : (u) => offlineStorage.getOfflineImageUrl(u);
     const images = container.querySelectorAll('img[data-original-url], img.question-image, img.explanation-img, img.mcq-opt-image');
-    for (const img of images) {
-        const url = img.dataset.originalUrl || img.getAttribute('src');
-        if (!url || url.startsWith('blob:') || url.startsWith('data:')) continue;
-        try {
-            const offlineUrl = await offlineStorage.getOfflineImageUrl(url);
-            if (offlineUrl && offlineUrl !== url && offlineUrl !== img.src) {
+    images.forEach(img => {
+        const curSrc = img.getAttribute('src') || '';
+        const origUrl = img.dataset.originalUrl || curSrc;
+        if (!origUrl || curSrc.startsWith('blob:') || curSrc.startsWith('data:')) return;
+        const syncBlob = offlineStorage.getCachedOfflineImageUrlSync
+            ? offlineStorage.getCachedOfflineImageUrlSync(origUrl)
+            : null;
+        if (syncBlob && img.src !== syncBlob) {
+            img.src = syncBlob;
+            markQuestionImageLoaded(img, origUrl);
+            return;
+        }
+        Promise.resolve(resolveFn(origUrl)).then(offlineUrl => {
+            if (!offlineUrl || offlineUrl === origUrl || img.src === offlineUrl) return;
+            const pre = new Image();
+            pre.onload = () => {
                 img.src = offlineUrl;
-            }
-        } catch (e) { /* ignore */ }
-    }
+                markQuestionImageLoaded(img, origUrl);
+            };
+            pre.src = offlineUrl;
+        }).catch(() => {});
+    });
 }
 
 // ==================== FILL IN THE BLANK ====================
@@ -1089,7 +1202,10 @@ const OPTION_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 const OPTION_KEY_PATTERN = /^\s*(\([1-6a-fA-D]\)|[1-6a-fA-D]|\([ivx]+\)|[ivx]+|Option\s*[1-6a-fA-D]?)\s*$/i;
 
-function isBlankOption(str) {
+function isBlankOption(str, index, allOpts) {
+    if (typeof parseOptionBadge === 'function') {
+        return parseOptionBadge(str, index || 0, allOpts).isBlank;
+    }
     if (!str) return true;
     return OPTION_KEY_PATTERN.test(String(str).trim());
 }
@@ -1108,10 +1224,11 @@ function shouldUseTwoByTwoGrid(q) {
     const optImages = getActiveOptionImages(q);
     if (optImages && optImages.some(img => Boolean(img))) return false;
 
-    return options.every(opt => {
+    return options.every((opt, i) => {
+        if (isBlankOption(opt, i, options)) return true;
         if (opt === null || opt === undefined) return true;
-        let s = String(opt).trim();
-        if (s === '' || OPTION_KEY_PATTERN.test(s)) return true;
+        const s = String(opt).trim();
+        if (s === '') return true;
         // Strip HTML tags and entities
         const stripped = s.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, ' ').trim();
         return stripped.length <= 15;
@@ -1131,6 +1248,11 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
 
     const optImages = getActiveOptionImages(q);
     const is2x2 = shouldUseTwoByTwoGrid(q);
+    const getBadgeInfo = (rawOpt, i) => {
+        if (typeof parseOptionBadge === 'function') return parseOptionBadge(rawOpt, i, options);
+        const s = rawOpt ? String(rawOpt).trim() : '';
+        return { isBlank: !s || OPTION_KEY_PATTERN.test(s), badge: OPTION_LETTERS[i] || String(i + 1) };
+    };
 
     if (is2x2) {
         const rows = options.map((opt, i) => {
@@ -1156,14 +1278,11 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
                 }
             }
 
-            const rawStr = opt ? String(opt).trim() : '';
-            const isBlank = isBlankOption(rawStr);
-            const letterKey = OPTION_LETTERS[i] || (i + 1);
-            const displayBadge = (isBlank && rawStr) ? rawStr : letterKey;
+            const { isBlank, badge: displayBadge } = getBadgeInfo(opt, i);
             const label = isBlank ? '' : renderSmartOptionText(q, opt);
 
             return `
-                <div class="mcq-option mcq-option-2x2${isBlank ? ' is-blank' : ''}${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`} title="${isBlank ? displayBadge : ('Option ' + displayBadge)}">
+                <div class="mcq-option mcq-option-2x2${isBlank ? ' is-blank' : ''}${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`} title="${isBlank ? escapeHtml(displayBadge) : ('Option ' + escapeHtml(displayBadge))}">
                     <div class="mcq-letter">${escapeHtml(displayBadge)}</div>
                     <div class="mcq-text">
                         ${label ? `<span class="mcq-opt-text">${label}</span>` : ''}
@@ -1199,17 +1318,21 @@ function buildOptionList(q, idx, { selected = [], revealed = false, isMulti = fa
             }
         }
 
-        const key = OPTION_LETTERS[i] || (i + 1);
-        const optImg = optImages && optImages[i]
-            ? `<img class="mcq-opt-image" src="${optImages[i]}" alt="Option ${key}" loading="lazy" data-original-url="${optImages[i]}" onerror="handleImageError(this)">`
+        const { isBlank, badge: key } = getBadgeInfo(opt, i);
+        const rawOptImg = optImages && optImages[i];
+        const cachedOptSrc = rawOptImg && typeof offlineStorage !== 'undefined' && typeof offlineStorage.getCachedOfflineImageUrlSync === 'function'
+            ? offlineStorage.getCachedOfflineImageUrlSync(rawOptImg)
+            : null;
+        const optImg = rawOptImg
+            ? `<img class="mcq-opt-image" src="${cachedOptSrc || rawOptImg}" alt="Option ${escapeHtml(key)}" loading="lazy" data-original-url="${rawOptImg}" onerror="handleImageError(this)">`
             : '';
-        const label = opt && String(opt).trim() !== ''
-            ? renderSmartOptionText(q, opt)
-            : (optImg ? '' : `Option ${i + 1}`);
+        const label = isBlank
+            ? ''
+            : (opt && String(opt).trim() !== '' ? renderSmartOptionText(q, opt) : '');
 
         return `
-            <div class="mcq-option${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`}>
-                <div class="mcq-letter">${key}</div>
+            <div class="mcq-option${isBlank && !optImg ? ' is-blank' : ''}${stateCls}${readOnly ? ' read-only' : ''}"${readOnly ? '' : ` onclick="${handler}(${idx}, ${i})"`}>
+                <div class="mcq-letter">${escapeHtml(key)}</div>
                 <div class="mcq-text">
                     ${label ? `<span class="mcq-opt-text">${label}</span>` : ''}
                     ${optImg}
@@ -1295,28 +1418,31 @@ function renderFullQuiz() {
 
     const topicNames = [...new Set(questions.map(q => q.topicName).filter(Boolean))];
 
+    const inBmFull = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
+
     document.getElementById('fullQuizTitle').textContent = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
     const topicEl = document.getElementById('fullQuizTopicName');
     if (topicEl) {
-        topicEl.textContent = topicNames.length === 1
-            ? topicNames[0]
-            : (topicNames.length > 1 ? `${topicNames.length} topics` : '');
+        topicEl.textContent = inBmFull
+            ? ''
+            : (topicNames.length === 1
+                ? topicNames[0]
+                : (topicNames.length > 1 ? `${topicNames.length} topics` : ''));
     }
 
-    // Populate mobile full quiz context bar
-    const fullCtxBar = document.getElementById('fullQuizContextBar');
-    if (fullCtxBar) {
-        const fullCtxChap = document.getElementById('fullQuizCtxChapter');
-        const fullCtxTopic = document.getElementById('fullQuizCtxTopic');
+    // Populate full quiz context bar (3-4 steps in bookmark mode, 2 steps otherwise)
+    if (inBmFull) {
+        const sources = [...new Set(questions.map(q => resolveBookmarkQuestionSource(q)).filter(Boolean))];
+        const chapters = [...new Set(questions.map(q => q.origChapter ? formatQuizHeaderTitle(q.origChapter) : '').filter(Boolean))];
+        const srcStr = sources.length === 1 ? sources[0] : (sources.length > 1 ? `${sources.length} sources` : '');
+        const chapStr = chapters.length === 1 ? chapters[0] : (chapters.length > 1 ? `${chapters.length} chapters` : '');
+        const topicSummary = topicNames.length === 1 ? topicNames[0] : (topicNames.length > 1 ? `${topicNames.length} topics` : '');
+        const qCountStr = `${total} Qs`;
+        updateQuizContextBar('fullQuiz', srcStr, chapStr, topicSummary, qCountStr);
+    } else {
         const chapName = currentChapter ? formatQuizHeaderTitle(currentChapter.name) : '';
         const topicSummary = topicNames.length === 1 ? topicNames[0] : (topicNames.length > 1 ? `${topicNames.length} topics` : '');
-        if (fullCtxChap) fullCtxChap.textContent = chapName;
-        if (fullCtxTopic) fullCtxTopic.textContent = topicSummary;
-        if (chapName || topicSummary) {
-            fullCtxBar.classList.add('visible');
-        } else {
-            fullCtxBar.classList.remove('visible');
-        }
+        updateQuizContextBar('fullQuiz', '', chapName, topicSummary, '');
     }
     document.getElementById('fullQuizProgress').textContent = `${total} Questions`;
     document.getElementById('fullProgressFill').style.width = '100%';
@@ -1339,27 +1465,147 @@ function renderFullQuiz() {
     if (typeof saveActiveExercise === 'function') saveActiveExercise();
 }
 
-function scrollToNext() {
-    const cards = document.querySelectorAll('.full-quiz-container .question-card');
-    const scrollPos = window.scrollY + 150;
-    for (let card of cards) {
-        if (card.offsetTop > scrollPos) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+let _fqNavState = null;
+if (typeof window !== 'undefined' && !window._quizzyFqScrollResetBound) {
+    window._quizzyFqScrollResetBound = true;
+    const clearFqState = () => { _fqNavState = null; };
+    window.addEventListener('wheel', clearFqState, { passive: true });
+    window.addEventListener('touchstart', clearFqState, { passive: true });
+}
+
+function getFullQuizStickyAnchorY() {
+    const screen = document.getElementById('screenFullQuiz');
+    const head = screen ? screen.querySelector('.quiz-sticky-head') : null;
+    if (head) {
+        const cs = getComputedStyle(head);
+        const rect = head.getBoundingClientRect();
+        const pinnedTop = parseFloat(cs.top);
+        const isPinnedPos = cs.position === 'sticky' || cs.position === 'fixed';
+        const topBase = (isPinnedPos && !isNaN(pinnedTop)) ? pinnedTop : Math.max(0, rect.top);
+        if (rect.height > 0) {
+            return Math.round(topBase + rect.height + 12);
+        }
+    }
+    const navbar = document.querySelector('.navbar');
+    return navbar ? Math.round(navbar.getBoundingClientRect().bottom + 12) : 135;
+}
+
+function scrollFullQuizToCard(idx, instant) {
+    const card = document.getElementById(`fullQ-${idx}`);
+    if (!card) return;
+    const anchorY = getFullQuizStickyAnchorY();
+    const rawY = Math.round(window.scrollY + card.getBoundingClientRect().top - anchorY);
+    const destY = (idx === 0 && rawY < 55) ? 0 : Math.max(0, rawY);
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const clampedY = Math.min(maxScroll, destY);
+    _fqNavState = { y: clampedY, ts: Date.now() };
+    window.scrollTo({ top: clampedY, behavior: instant ? 'auto' : 'smooth' });
+}
+
+function scrollFullQuizStep(direction) {
+    const cards = Array.from(document.querySelectorAll('#fullQuizContainer .question-card'));
+    if (cards.length === 0) return;
+
+    const anchorY = getFullQuizStickyAnchorY();
+    const viewH = window.innerHeight;
+    const usableH = Math.max(180, viewH - anchorY - 24);
+    const curY = (_fqNavState && (Date.now() - _fqNavState.ts < 520)) ? _fqNavState.y : window.scrollY;
+    const realScrollY = window.scrollY;
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - viewH);
+
+    const docTops = cards.map(c => realScrollY + c.getBoundingClientRect().top);
+    const docBottoms = cards.map(c => realScrollY + c.getBoundingClientRect().bottom);
+
+    const cardTargetY = (idx) => {
+        const raw = Math.round(docTops[idx] - anchorY);
+        return (idx === 0 && raw < 55) ? 0 : Math.max(0, raw);
+    };
+
+    const snapToY = (y) => {
+        const destY = Math.max(0, Math.min(maxScroll, Math.round(y)));
+        _fqNavState = { y: destY, ts: Date.now() };
+        window.scrollTo({ top: destY, behavior: 'smooth' });
+    };
+
+    let curIdx = -1;
+    for (let i = 0; i < cards.length; i++) {
+        if ((docBottoms[i] - curY) > anchorY + 28) {
+            curIdx = i;
+            break;
+        }
+    }
+
+    if (direction > 0) {
+        if (curIdx === -1) return;
+
+        const relTop = docTops[curIdx] - curY;
+        const relBottom = docBottoms[curIdx] - curY;
+
+        // If the active card itself starts well below anchor (not Q1 at top-of-page), align to it first
+        if (!(curIdx === 0 && curY < 55) && relTop > anchorY + 48) {
+            snapToY(cardTargetY(curIdx));
             return;
+        }
+
+        // Tall card: step down cleanly inside it until its bottom is visible
+        if (relBottom > viewH - 18) {
+            const endOfCardY = Math.round(docBottoms[curIdx] - viewH + 24);
+            if (endOfCardY > curY + 24) {
+                const stepY = Math.min(endOfCardY, Math.round(curY + Math.max(240, usableH * 0.78)));
+                snapToY(stepY);
+                return;
+            }
+        }
+
+        if (curIdx + 1 < cards.length) {
+            snapToY(cardTargetY(curIdx + 1));
+            return;
+        }
+
+        const cont = document.querySelector('#fullQuizContainer .continue-panel');
+        if (cont) {
+            const contBottom = realScrollY + cont.getBoundingClientRect().bottom;
+            if ((contBottom - curY) > viewH - 18) {
+                snapToY(contBottom - viewH + 24);
+            }
+        }
+    } else {
+        if (curIdx === -1) {
+            snapToY(cardTargetY(cards.length - 1));
+            return;
+        }
+
+        const relTop = docTops[curIdx] - curY;
+        const topY = cardTargetY(curIdx);
+
+        // Tall card scrolled past its top: return to top (stepping cleanly if very tall)
+        if (relTop < anchorY - 24 && topY < curY - 24) {
+            const stepY = Math.max(topY, Math.round(curY - Math.max(240, usableH * 0.78)));
+            snapToY(stepY);
+            return;
+        }
+
+        if (curIdx > 0) {
+            snapToY(cardTargetY(curIdx - 1));
+        } else if (curY > 4) {
+            snapToY(0);
         }
     }
 }
 
-function scrollToPrev() {
-    const cards = Array.from(document.querySelectorAll('.full-quiz-container .question-card'));
-    const scrollPos = window.scrollY - 100;
-    for (let i = cards.length - 1; i >= 0; i--) {
-        if (cards[i].offsetTop < scrollPos) {
-            cards[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
-            return;
-        }
-    }
+function scrollToNext() {
+    scrollFullQuizStep(1);
 }
+
+function scrollToPrev() {
+    scrollFullQuizStep(-1);
+}
+
+window.getFullQuizStickyAnchorY = getFullQuizStickyAnchorY;
+window.scrollFullQuizToCard = scrollFullQuizToCard;
+window.scrollFullQuizStep = scrollFullQuizStep;
+window.scrollToNext = scrollToNext;
+window.scrollToPrev = scrollToPrev;
 
 // ==================== IMAGE ZOOM LIGHTBOX ====================
 function openImageZoom(src) {

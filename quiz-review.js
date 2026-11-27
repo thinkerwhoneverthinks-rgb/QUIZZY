@@ -246,21 +246,16 @@ function renderReview() {
         if (qImages.length > 1) {
             imageHTML = `
                 <div class="q-images-container" style="display:flex;flex-direction:column;gap:0.75rem;margin:0.75rem 0;">
-                    ${qImages.map((img, k) => `
-                        <div class="image-question-wrap">
-                            <img src="${img}" class="question-image" alt="Question ${i + 1} Diagram ${k + 1}" 
-                                 loading="lazy" data-original-url="${img}" onerror="handleImageError(this)">
-                        </div>
-                    `).join('')}
+                    ${qImages.map((img, k) => typeof renderQuestionImageWrapHtml === 'function'
+                        ? renderQuestionImageWrapHtml(img, `Question ${i + 1} Diagram ${k + 1}`)
+                        : `<div class="image-question-wrap"><img src="${img}" class="question-image" alt="Question ${i + 1} Diagram ${k + 1}" loading="lazy" data-original-url="${img}" onerror="handleImageError(this)"></div>`
+                    ).join('')}
                 </div>
             `;
         } else if (qImages.length === 1) {
-            imageHTML = `
-                <div class="image-question-wrap">
-                    <img src="${qImages[0]}" class="question-image" alt="Question ${i + 1}" 
-                         loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)">
-                </div>
-            `;
+            imageHTML = typeof renderQuestionImageWrapHtml === 'function'
+                ? renderQuestionImageWrapHtml(qImages[0], `Question ${i + 1}`)
+                : `<div class="image-question-wrap"><img src="${qImages[0]}" class="question-image" alt="Question ${i + 1}" loading="lazy" data-original-url="${qImages[0]}" onerror="handleImageError(this)"></div>`;
         }
 
         const topicLabel = q.topic || q.topicName || (currentChapter ? currentChapter.name : '');
@@ -343,6 +338,15 @@ function filterReview(filter) {
 function renderResultsActions() {
     const actionsBox = document.querySelector('.results-actions');
     if (!actionsBox) return;
+    const inBm = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
+    if (inBm) {
+        actionsBox.innerHTML = `
+            <button class="btn btn-primary" onclick="reviewTest()">🔍 Review Answers</button>
+            <button class="btn btn-primary" onclick="redoExercise('bookmark')">🔁 Redo (Fresh Attempt)</button>
+            <button class="btn btn-ghost" onclick="backFromQuiz()">← Back to Bookmarks</button>
+        `;
+        return;
+    }
     const exKey = (currentFileName || '') + '::' + (currentChapter ? currentChapter.id : '');
     actionsBox.innerHTML = `
         <button class="btn btn-primary" onclick="reviewTest()">🔍 Review Answers</button>

@@ -117,8 +117,10 @@ function _applyRevealInPlace(idx, opts = {}) {
     if (countEl) countEl.remove();
     if (submitBtn) submitBtn.remove();
 
-    /* -- 5. Re-render math if needed -- */
-    typesetMath(card);
+    /* -- 5. Re-render math only in newly revealed explanation/answer boxes -- */
+    card.querySelectorAll('.explanation-box.show, .fib-answer-box.show').forEach(box => {
+        typesetMath(box);
+    });
 
     if (typeof recordStudySession === 'function') recordStudySession();
     if (typeof saveActiveExercise === 'function') saveActiveExercise();
@@ -127,8 +129,14 @@ function _applyRevealInPlace(idx, opts = {}) {
 function revealSolutionOnly(idx) {
     const card = getQuestionCardElement(idx);
     if (card) {
-        card.querySelectorAll('.explanation-box').forEach(el => el.classList.add('show'));
-        card.querySelectorAll('.fib-answer-box').forEach(el => el.classList.add('show'));
+        card.querySelectorAll('.explanation-box').forEach(el => {
+            el.classList.add('show');
+            typesetMath(el);
+        });
+        card.querySelectorAll('.fib-answer-box').forEach(el => {
+            el.classList.add('show');
+            typesetMath(el);
+        });
         const btn = card.querySelector('.show-answer-btn') || document.getElementById(`mcqBtn-${idx}`) || document.getElementById(`imgMcqBtn-${idx}`) || document.getElementById(`fibBtn-${idx}`) || document.getElementById(`intShowBtn-${idx}`);
         if (btn) {
             btn.classList.remove('ready-solution');
@@ -137,7 +145,6 @@ function revealSolutionOnly(idx) {
             btn.removeAttribute('onclick');
             btn.style.cursor = 'default';
         }
-        typesetMath(card);
     }
     if (userAnswers[idx]) {
         userAnswers[idx].solutionRequested = true;
@@ -285,6 +292,25 @@ document.addEventListener('keydown', function(e) {
     if (!activeScreen) return;
 
     const screenId = activeScreen.id;
+
+    // Scroll All mode keyboard shortcuts (smart two-step ArrowUp / ArrowDown)
+    if (screenId === 'screenFullQuiz') {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+
+        const tag = e.target && e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target && e.target.isContentEditable)) {
+            return;
+        }
+        if (typeof hasOpenOverlay === 'function' && hasOpenOverlay()) return;
+        if (document.querySelector('#imgZoomOverlay.active, #videoPlayerModal.active')) return;
+
+        e.preventDefault();
+        if (typeof scrollFullQuizStep === 'function') {
+            scrollFullQuizStep(e.key === 'ArrowDown' ? 1 : -1);
+        }
+        return;
+    }
 
     // One by One mode keyboard shortcuts
     if (screenId === 'screenQuiz') {
