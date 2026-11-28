@@ -75,13 +75,19 @@
             gap: 0.75rem;
         }
         .bm-folder-actions {
+            position: relative;
             display: flex;
             align-items: center;
-            gap: 0.35rem;
-            z-index: 2;
+            z-index: 5;
             flex-shrink: 0;
         }
-        .bm-icon-btn {
+        .bm-grid .subject-rect.folder-card {
+            overflow: visible;
+        }
+        .bm-grid .subject-rect.folder-card.menu-open {
+            z-index: 40;
+        }
+        .bm-more-btn {
             width: 34px;
             height: 34px;
             display: inline-flex;
@@ -91,18 +97,61 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1;
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .bm-icon-btn:hover {
+        .bm-more-btn:hover,
+        .bm-more-btn.active {
             border-color: var(--accent);
             color: var(--accent);
-            transform: scale(1.06);
         }
-        .bm-icon-btn.danger:hover {
-            border-color: var(--error);
+        .bm-popover-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            min-width: 162px;
+            background: var(--bg-elevated, var(--bg-card));
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+            padding: 0.32rem;
+            z-index: 60;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .bm-popover-menu.open {
+            display: flex;
+        }
+        .bm-popover-item {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            width: 100%;
+            padding: 0.5rem 0.65rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: transparent;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.83rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .bm-popover-item:hover {
+            background: var(--bg-hover);
+            color: var(--accent);
+        }
+        .bm-popover-item.danger {
             color: var(--error);
+        }
+        .bm-popover-item.danger:hover {
+            background: var(--error-bg, rgba(239, 68, 68, 0.1));
         }
         .empty-bookmarks {
             text-align: center;
@@ -494,11 +543,13 @@
                                 <div class="rect-meta">${metaHtml}</div>
                             </div>
                             <div class="bm-folder-actions" onclick="event.stopPropagation()">
-                                <button type="button" class="bm-icon-btn" onclick="createSubfolderOnCard(${idx})" title="Add subfolder inside">📁+</button>
-                                <button type="button" class="bm-icon-btn" onclick="renameFolderAtIndex(${idx})" title="Rename folder">✏️</button>
-                                <button type="button" class="bm-icon-btn danger" onclick="deleteFolderAtIndex(${idx})" title="Delete folder">🗑️</button>
+                                <button type="button" class="bm-more-btn" id="bmMoreBtn-${idx}" onclick="toggleBookmarkFolderMenu(event, ${idx})" aria-label="Folder options" title="Options">⋮</button>
+                                <div class="bm-popover-menu" id="bmMenu-${idx}">
+                                    <button type="button" class="bm-popover-item" onclick="closeBookmarkFolderMenus(); createSubfolderOnCard(${idx})"><span>📁+</span><span>Add Subfolder</span></button>
+                                    <button type="button" class="bm-popover-item" onclick="closeBookmarkFolderMenus(); renameFolderAtIndex(${idx})"><span>✏️</span><span>Rename</span></button>
+                                    <button type="button" class="bm-popover-item danger" onclick="closeBookmarkFolderMenus(); deleteFolderAtIndex(${idx})"><span>🗑️</span><span>Delete</span></button>
+                                </div>
                             </div>
-                            <div class="rect-arrow">→</div>
                         </div>
                     `;
                 });
@@ -515,6 +566,32 @@
             html += '</div>';
             container.innerHTML = html;
         }
+
+        function closeBookmarkFolderMenus() {
+            document.querySelectorAll('.bm-popover-menu.open').forEach(m => m.classList.remove('open'));
+            document.querySelectorAll('.bm-more-btn.active').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.subject-rect.folder-card.menu-open').forEach(c => c.classList.remove('menu-open'));
+        }
+
+        function toggleBookmarkFolderMenu(event, idx) {
+            if (event) event.stopPropagation();
+            const menu = document.getElementById(`bmMenu-${idx}`);
+            const btn = document.getElementById(`bmMoreBtn-${idx}`);
+            const wasOpen = menu && menu.classList.contains('open');
+            closeBookmarkFolderMenus();
+            if (!wasOpen && menu) {
+                menu.classList.add('open');
+                if (btn) btn.classList.add('active');
+                const card = menu.closest('.subject-rect.folder-card');
+                if (card) card.classList.add('menu-open');
+            }
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.bm-folder-actions')) {
+                closeBookmarkFolderMenus();
+            }
+        });
 
         function onFolderCardClick(idx) {
             const tree = getBookmarks();
@@ -711,7 +788,8 @@
                 origChapterId: item.chapterId,
                 origIndex: item.index,
                 bookmarkKey: item.key,
-                bookmarkPath: [...pathArr]
+                bookmarkPath: [...pathArr],
+                bookmarkNote: item.note || ''
             }));
 
             const label = pathArr[pathArr.length - 1] || 'Bookmarks';

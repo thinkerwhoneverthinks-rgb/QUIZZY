@@ -446,7 +446,8 @@ function openTestBookmarkReview(section, sub, key) {
     const label = sub === TB_DIRECT ? section : `${section} / ${sub}`;
 
     sessionStorage.setItem(TB_REVIEW_KEY, JSON.stringify({ items, startIndex, label }));
-    window.location.href = 'test-cafe.html';
+    if (typeof quizzyNavigate === 'function') quizzyNavigate('test-cafe.html');
+    else window.location.href = 'test-cafe.html';
 }
 
 function exportTestBookmarks() {

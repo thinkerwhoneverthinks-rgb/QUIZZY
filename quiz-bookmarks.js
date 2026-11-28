@@ -284,17 +284,77 @@ function resolveCurrentSourceLabel() {
     return '';
 }
 
+function findBookmarkEntryLocation(node, key, path = []) {
+    if (!node || !key) return null;
+    if (Array.isArray(node.bookmarks)) {
+        const entry = node.bookmarks.find(b => bookmarkKeyOf(b) === key);
+        if (entry) return { node, entry, path };
+    }
+    if (node.folders && typeof node.folders === 'object') {
+        for (const name of Object.keys(node.folders)) {
+            const found = findBookmarkEntryLocation(node.folders[name], key, path.concat(name));
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
+function getQuestionBookmarkNote(q, qIndex) {
+    if (!q) return '';
+    if (typeof q.bookmarkNote === 'string' && q.bookmarkNote) return q.bookmarkNote;
+    const inBm = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
+    let key = q.bookmarkKey || null;
+    if (!key && !inBm && typeof currentChapter !== 'undefined' && currentChapter) {
+        const pos = getCanonicalPosition(qIndex);
+        key = `${currentChapter.id}_q${pos}`;
+    }
+    if (!key) return '';
+    const found = findBookmarkEntryLocation(getBookmarks(), key);
+    if (found && found.entry && typeof found.entry === 'object' && found.entry.note) {
+        return String(found.entry.note);
+    }
+    return '';
+}
+
+function updateBookmarkNoteDirect(key, noteText, preferredPath) {
+    if (!key) return false;
+    const tree = getBookmarks();
+    let updated = false;
+    if (Array.isArray(preferredPath) && preferredPath.length > 0) {
+        const node = getBookmarkNodeAtPath(tree, preferredPath);
+        if (node && Array.isArray(node.bookmarks)) {
+            const item = node.bookmarks.find(b => bookmarkKeyOf(b) === key);
+            if (item && typeof item === 'object') {
+                item.note = noteText;
+                updated = true;
+            }
+        }
+    }
+    if (!updated) {
+        const found = findBookmarkEntryLocation(tree, key);
+        if (found && found.entry && typeof found.entry === 'object') {
+            found.entry.note = noteText;
+            updated = true;
+        }
+    }
+    if (updated) saveBookmarks(tree);
+    return updated;
+}
+
 function toggleBookmark(qIndex) {
+    pendingBookmarkNote = '';
     currentBookmarkQuestion = qIndex;
     openBookmarkPanel();
 }
 
 let currentBookmarkQuestion = null;
 let bookmarkPanelPath = [];
+let pendingBookmarkNote = '';
 
 function openBookmarkPanel() {
     const panel = document.getElementById('bookmarkPanel');
     const overlay = document.getElementById('bookmarkOverlay');
+    if (!panel || !overlay) return;
     // Keep current path valid if folders were deleted elsewhere
     const tree = getBookmarks();
     if (!getBookmarkNodeAtPath(tree, bookmarkPanelPath)) {
@@ -306,8 +366,11 @@ function openBookmarkPanel() {
 }
 
 function closeBookmarkPanel() {
-    document.getElementById('bookmarkPanel').classList.remove('active');
-    document.getElementById('bookmarkOverlay').classList.remove('active');
+    pendingBookmarkNote = '';
+    const panel = document.getElementById('bookmarkPanel');
+    const overlay = document.getElementById('bookmarkOverlay');
+    if (panel) panel.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
 }
 
 function renderBookmarkPanel() {
@@ -391,7 +454,15 @@ function renderBookmarkPanel() {
 
     const createLabel = bookmarkPanelPath.length === 0 ? 'New folder name...' : `New subfolder in "${bookmarkPanelPath[bookmarkPanelPath.length - 1]}"...`;
 
+    const notePreviewHtml = pendingBookmarkNote ? `
+        <div class="bm-note-preview">
+            <span class="bm-note-preview-label">📝 Note attached:</span>
+            <span class="bm-note-preview-text">${escapeHtml(pendingBookmarkNote)}</span>
+        </div>
+    ` : '';
+
     body.innerHTML = `
+        ${notePreviewHtml}
         ${breadcrumbHtml}
         ${destinationHtml}
         ${listHtml}
@@ -456,6 +527,8 @@ function saveBookmark() {
     const q = questions[currentBookmarkQuestion];
     const sourceLabel = resolveCurrentSourceLabel();
 
+    const noteToSave = pendingBookmarkNote || '';
+
     // Store a full snapshot of the question (not just its text) so a bookmark can be
     // re-rendered standalone, without depending on the source chapter being loaded.
     const bookmarkData = {
@@ -485,24 +558,132 @@ function saveBookmark() {
         exam_type: q.exam_type,
         exam_reference: q.exam_reference,
         translations: q.translations,
+        note: noteToSave,
         date: new Date().toISOString()
     };
 
     if (!Array.isArray(targetNode.bookmarks)) targetNode.bookmarks = [];
-    if (!targetNode.bookmarks.some(b => bookmarkKeyOf(b) === key)) {
+    const existingIdx = targetNode.bookmarks.findIndex(b => bookmarkKeyOf(b) === key);
+    if (existingIdx === -1) {
         targetNode.bookmarks.push(bookmarkData);
+        saveBookmarks(tree);
+    } else if (noteToSave) {
+        if (typeof targetNode.bookmarks[existingIdx] === 'string') {
+            targetNode.bookmarks[existingIdx] = bookmarkData;
+        } else {
+            targetNode.bookmarks[existingIdx].note = noteToSave;
+        }
         saveBookmarks(tree);
     }
 
+    const savedIdx = currentBookmarkQuestion;
+    pendingBookmarkNote = '';
     closeBookmarkPanel();
 
-    // Re-render current question to show bookmark state
-    const activeScreen = document.querySelector('.screen.active');
-    if (activeScreen) {
-        if (activeScreen.id === 'screenQuiz') renderQuestion();
-        else if (activeScreen.id === 'screenFullQuiz') renderFullQuiz();
+    // Update bookmark button & note footer in place (or re-render card if needed)
+    if (savedIdx !== null && typeof _syncQuestionCardNoteFooter === 'function') {
+        _syncQuestionCardNoteFooter(savedIdx);
+        const card = typeof getQuestionCardElement === 'function' ? getQuestionCardElement(savedIdx) : null;
+        if (card) {
+            const bmBtn = card.querySelector('.bookmark-btn');
+            if (bmBtn) {
+                bmBtn.classList.add('active');
+                bmBtn.title = 'Bookmarked';
+            }
+        }
+    } else {
+        const activeScreen = document.querySelector('.screen.active');
+        if (activeScreen) {
+            if (activeScreen.id === 'screenQuiz') renderQuestion();
+            else if (activeScreen.id === 'screenFullQuiz') renderFullQuiz();
+        }
     }
     if (typeof renderQuestionGrid === 'function') renderQuestionGrid();
+}
+
+function openQuestionNoteEditor(idx) {
+    const card = typeof getQuestionCardElement === 'function'
+        ? getQuestionCardElement(idx)
+        : (document.getElementById(`qCard-${idx}`) || document.getElementById(`fullQ-${idx}`));
+    if (!card) return;
+    const footer = card.querySelector('.question-card-footer');
+    if (!footer) return;
+    const q = questions[idx];
+    const existingNote = getQuestionBookmarkNote(q, idx);
+    footer.innerHTML = `
+        <div class="q-note-editor">
+            <div class="q-note-editor-label">📝 Your Note</div>
+            <textarea class="q-note-textarea" id="qNoteInput-${idx}" rows="2" placeholder="Write your note for this question...">${escapeHtml(existingNote)}</textarea>
+            <div class="q-note-editor-actions">
+                <button type="button" class="btn btn-ghost btn-sm" onclick="cancelQuestionNoteEditor(${idx})">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="submitQuestionNote(${idx})">📝 Add Notes</button>
+            </div>
+        </div>
+    `;
+    const ta = footer.querySelector(`#qNoteInput-${idx}`);
+    if (ta) {
+        const autoResize = () => {
+            ta.style.height = 'auto';
+            ta.style.height = Math.min(260, Math.max(64, ta.scrollHeight)) + 'px';
+        };
+        ta.addEventListener('input', autoResize);
+        autoResize();
+        ta.focus();
+        ta.setSelectionRange(ta.value.length, ta.value.length);
+    }
+}
+
+function cancelQuestionNoteEditor(idx) {
+    _syncQuestionCardNoteFooter(idx);
+}
+
+function submitQuestionNote(idx) {
+    const card = typeof getQuestionCardElement === 'function'
+        ? getQuestionCardElement(idx)
+        : (document.getElementById(`qCard-${idx}`) || document.getElementById(`fullQ-${idx}`));
+    const ta = card ? card.querySelector(`#qNoteInput-${idx}`) : document.getElementById(`qNoteInput-${idx}`);
+    const noteText = ta ? ta.value.trim() : '';
+    if (!noteText) {
+        alert('Please write a note first.');
+        if (ta) ta.focus();
+        return;
+    }
+
+    const q = questions[idx];
+    const inBm = (typeof isBookmarkSession !== 'undefined' && isBookmarkSession) || currentMode === 'bookmark';
+
+    // In Bookmark Practice mode (bookmarks/ page), update the saved bookmark's note directly
+    if (inBm || !document.getElementById('bookmarkPanel')) {
+        if (q && q.bookmarkKey && updateBookmarkNoteDirect(q.bookmarkKey, noteText, q.bookmarkPath)) {
+            q.bookmarkNote = noteText;
+            _syncQuestionCardNoteFooter(idx);
+            return;
+        }
+    }
+
+    // In Question Cafe: trigger the bookmark folder modal so user chooses where to save it
+    pendingBookmarkNote = noteText;
+    currentBookmarkQuestion = idx;
+    if (typeof currentChapter !== 'undefined' && currentChapter) {
+        const canonicalIndex = getCanonicalPosition(idx);
+        const key = `${currentChapter.id}_q${canonicalIndex}`;
+        const existingLoc = findBookmarkEntryLocation(getBookmarks(), key);
+        if (existingLoc && existingLoc.path && existingLoc.path.length > 0) {
+            bookmarkPanelPath = [...existingLoc.path];
+        }
+    }
+    openBookmarkPanel();
+}
+
+function _syncQuestionCardNoteFooter(idx) {
+    const card = typeof getQuestionCardElement === 'function'
+        ? getQuestionCardElement(idx)
+        : (document.getElementById(`qCard-${idx}`) || document.getElementById(`fullQ-${idx}`));
+    if (!card || typeof renderQuestionCardFooter !== 'function') return;
+    const footer = card.querySelector('.question-card-footer');
+    if (footer) {
+        footer.outerHTML = renderQuestionCardFooter(questions[idx], idx);
+    }
 }
 
 function toggleReview(idx) {

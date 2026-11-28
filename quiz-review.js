@@ -67,8 +67,23 @@ function showResults() {
         }
     }
 
-    // Save exercise attempt to history store (if not custom test)
-    if (currentMode !== 'test' && currentFileName && currentChapter) {
+    // Save exercise attempt to history store (or custom history store for custom tests)
+    if (currentChapter && String(currentChapter.id || '').startsWith('custom_')) {
+        const elapsedSec = testStartTime && currentMode === 'test'
+            ? Math.floor((Date.now() - testStartTime) / 1000)
+            : 0;
+        if (typeof recordCustomHistorySession === 'function') {
+            recordCustomHistorySession({
+                kind: currentMode === 'test' ? 'test' : 'practice',
+                submitted: currentMode === 'test',
+                correct,
+                wrong,
+                skipped,
+                percentage,
+                elapsedSec
+            });
+        }
+    } else if (currentMode !== 'test' && currentFileName && currentChapter) {
         const exKey = (currentFileName || '') + '::' + currentChapter.id;
         const attempt = {
             id: 'ea_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),

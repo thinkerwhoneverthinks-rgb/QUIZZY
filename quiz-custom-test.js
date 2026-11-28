@@ -544,7 +544,9 @@ function buildCustomTestQuestions() {
                 type: q.type || 'mcq',
                 topicName: item.topicName,
                 chapterName: item.chapterName,
-                fileDisplayName: item.fileDisplayName
+                fileDisplayName: item.fileDisplayName,
+                _srcFile: item.fileName,
+                _srcChapterId: item.chapterId
             });
         });
     });
@@ -573,9 +575,17 @@ function startCustomTest() {
     questions = testQuestions;
     userAnswers = {};
     testSubmitted = false;
+    currentFileName = null;
+    const sessionId = `custom_test_${Date.now()}`;
+    const sessionName = `Custom Test (${Object.keys(customTestSelection).length} topics)`;
     currentChapter = { 
-        id: `custom_test_${Date.now()}`, 
-        name: `Custom Test (${Object.keys(customTestSelection).length} topics)` 
+        id: sessionId, 
+        name: sessionName 
+    };
+    window._activeCustomSessionMeta = {
+        id: sessionId,
+        title: sessionName,
+        questionRefs: questions.map(q => ({ f: q._srcFile || '', c: q._srcChapterId || '', t: q.topicName || '', id: q.id || '' }))
     };
     topics = Object.values(customTestSelection).map(item => ({
         topic: item.topicName,
@@ -584,6 +594,9 @@ function startCustomTest() {
     }));
     currentMode = 'test';
     testStartTime = Date.now();
+    if (typeof recordCustomHistorySession === 'function') {
+        recordCustomHistorySession({ kind: 'test', submitted: false });
+    }
 
     toggleCtDrawer(false);
     showScreen('screenTestMode');   // show first so render lands on a visible screen
@@ -607,9 +620,17 @@ function startCustomPractice(practiceViewMode = 'onebyone') {
     questions = practiceQuestions;
     userAnswers = {};
     testSubmitted = false;
+    currentFileName = null;
+    const sessionId = `custom_practice_${Date.now()}`;
+    const sessionName = `Custom Practice (${Object.keys(customTestSelection).length} topics)`;
     currentChapter = { 
-        id: `custom_practice_${Date.now()}`, 
-        name: `Custom Practice (${Object.keys(customTestSelection).length} topics)` 
+        id: sessionId, 
+        name: sessionName 
+    };
+    window._activeCustomSessionMeta = {
+        id: sessionId,
+        title: sessionName,
+        questionRefs: questions.map(q => ({ f: q._srcFile || '', c: q._srcChapterId || '', t: q.topicName || '', id: q.id || '' }))
     };
     topics = Object.values(customTestSelection).map(item => ({
         topic: item.topicName,

@@ -1141,7 +1141,10 @@ function renderRunnerChrome() {
         if (submitBtn) {
             submitBtn.textContent = '← Bookmarks';
             submitBtn.className = 'tr-submit ghost';
-            submitBtn.onclick = () => { window.location.href = 'test-bookmarks.html'; };
+            submitBtn.onclick = () => {
+                if (typeof quizzyNavigate === 'function') quizzyNavigate('test-bookmarks.html');
+                else window.location.href = 'test-bookmarks.html';
+            };
         }
     }
 }
@@ -1168,6 +1171,16 @@ function handleTimeUp() {
 const _preloadedTcImageUrls = new Set();
 const _fullyLoadedTcImageUrls = new Set();
 let _idleTcPreloadHandle = null;
+const _tcImageDimensionCache = new Map();
+
+function _scanTcInlineImgs(html, out) {
+    if (!html || typeof html !== 'string') return;
+    const re = /<img[^>]+src\s*=\s*["']([^"']+)["'][^>]*>/gi;
+    let m;
+    while ((m = re.exec(html)) !== null) {
+        if (m[1]) out.push(m[1].trim());
+    }
+}
 
 function extractTestQuestionImageUrls(q) {
     if (!q) return [];
@@ -1177,6 +1190,8 @@ function extractTestQuestionImageUrls(q) {
     if (Array.isArray(q.optionImages)) urls.push(...q.optionImages);
     if (q.explanation_image) urls.push(q.explanation_image);
     if (Array.isArray(q.explanation_images)) urls.push(...q.explanation_images);
+    _scanTcInlineImgs(q.question, urls);
+    _scanTcInlineImgs(q.explanation, urls);
     return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
 }
 
@@ -1185,10 +1200,16 @@ function markTcImageLoaded(img, url) {
     if (keyUrl) _fullyLoadedTcImageUrls.add(keyUrl);
     if (url) _fullyLoadedTcImageUrls.add(url);
     if (img) {
+        if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+            _tcImageDimensionCache.set(keyUrl || url, { w: img.naturalWidth, h: img.naturalHeight });
+        }
         img.classList.add('loaded');
         const wrap = img.closest('.q-image-wrap') || img.parentElement;
         if (wrap) {
             wrap.classList.remove('is-loading');
+            wrap.style.aspectRatio = '';
+            wrap.style.width = '';
+            wrap.style.minHeight = '';
             const shimmer = wrap.querySelector('.image-skeleton-shimmer');
             if (shimmer) shimmer.remove();
         }
@@ -1203,32 +1224,43 @@ function renderTcImageWrapHtml(url, altText) {
     const initialSrc = offlineSrc || url;
     const isReady = Boolean(offlineSrc) || _fullyLoadedTcImageUrls.has(url);
     const loadingCls = isReady ? '' : ' is-loading';
+    const dim = _tcImageDimensionCache.get(url);
+    const wrapStyle = (!isReady && dim && dim.w > 0 && dim.h > 0)
+        ? ` style="aspect-ratio:${dim.w} / ${dim.h};width:min(${dim.w}px, 100%);max-height:42vh;min-height:0;"`
+        : '';
+    const dimAttrs = (dim && dim.w > 0 && dim.h > 0) ? ` width="${dim.w}" height="${dim.h}"` : '';
     const shimmerHtml = isReady ? '' : `<div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>`;
-    return `<div class="q-image-wrap${loadingCls}">${shimmerHtml}<img class="q-image${isReady ? ' loaded' : ''}" src="${tcAttr(initialSrc)}" data-original-url="${tcAttr(url)}" alt="${tcAttr(altText || 'Question diagram')}" loading="eager" fetchpriority="high" decoding="async" onload="markTcImageLoaded(this, '${tcAttr(url)}')" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(url)}')"></div>`;
+    return `<div class="q-image-wrap${loadingCls}"${wrapStyle}>${shimmerHtml}<img class="q-image${isReady ? ' loaded' : ''}" src="${tcAttr(initialSrc)}" data-original-url="${tcAttr(url)}" alt="${tcAttr(altText || 'Question diagram')}"${dimAttrs} loading="eager" fetchpriority="high" decoding="async" onload="markTcImageLoaded(this, '${tcAttr(url)}')" onclick="openImageZoom(this.src)" onerror="handleTcOfflineImage(this, '${tcAttr(url)}')"></div>`;
 }
 window.renderTcImageWrapHtml = renderTcImageWrapHtml;
 
 function preloadSingleTcImageUrl(url) {
     if (!url || _preloadedTcImageUrls.has(url)) return;
     _preloadedTcImageUrls.add(url);
+    const onDone = (imgEl) => {
+        _fullyLoadedTcImageUrls.add(url);
+        if (imgEl && imgEl.naturalWidth > 0 && imgEl.naturalHeight > 0) {
+            _tcImageDimensionCache.set(url, { w: imgEl.naturalWidth, h: imgEl.naturalHeight });
+        }
+    };
     if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.resolveOfflineImageUrl === 'function') {
         offlineStorage.resolveOfflineImageUrl(url).then(resolved => {
             const target = resolved || url;
             const img = new Image();
             img.decoding = 'async';
-            img.onload = () => _fullyLoadedTcImageUrls.add(url);
+            img.onload = () => onDone(img);
             img.src = target;
         }).catch(() => {
             const img = new Image();
             img.decoding = 'async';
-            img.onload = () => _fullyLoadedTcImageUrls.add(url);
+            img.onload = () => onDone(img);
             img.src = url;
         });
         return;
     }
     const img = new Image();
     img.decoding = 'async';
-    img.onload = () => _fullyLoadedTcImageUrls.add(url);
+    img.onload = () => onDone(img);
     img.src = url;
 }
 

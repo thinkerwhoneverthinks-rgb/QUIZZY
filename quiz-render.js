@@ -209,7 +209,39 @@ window.getActiveOptionImages = getActiveOptionImages;
 // ==================== AHEAD-OF-TIME IMAGE PRELOADER ====================
 const _preloadedImageUrls = new Set();
 const _fullyLoadedImageUrls = new Set();
+const _imageDimensionCache = new Map();
 let _idlePreloadHandle = null;
+
+try {
+    const savedDims = JSON.parse(sessionStorage.getItem('quizzy-img-dims') || '{}');
+    if (savedDims && typeof savedDims === 'object') {
+        Object.keys(savedDims).forEach(k => {
+            const d = savedDims[k];
+            if (d && d.w > 0 && d.h > 0) _imageDimensionCache.set(k, d);
+        });
+    }
+} catch (e) {}
+
+function _recordImageDimensions(url, w, h) {
+    if (!url || !w || !h) return;
+    _imageDimensionCache.set(url, { w, h });
+    try {
+        const stored = JSON.parse(sessionStorage.getItem('quizzy-img-dims') || '{}');
+        const keys = Object.keys(stored);
+        if (keys.length > 400) delete stored[keys[0]];
+        stored[url] = { w, h };
+        sessionStorage.setItem('quizzy-img-dims', JSON.stringify(stored));
+    } catch (e) {}
+}
+
+function _scanInlineImgUrls(html, out) {
+    if (!html || typeof html !== 'string') return;
+    const re = /<img[^>]+src\s*=\s*["']([^"']+)["'][^>]*>/gi;
+    let m;
+    while ((m = re.exec(html)) !== null) {
+        if (m[1]) out.push(m[1].trim());
+    }
+}
 
 function extractQuestionImageUrls(q) {
     if (!q) return [];
@@ -229,16 +261,28 @@ function extractQuestionImageUrls(q) {
         : (q.explanation_images || (q.explanation_image ? [q.explanation_image] : []));
     if (Array.isArray(expImgs)) urls.push(...expImgs);
 
+    _scanInlineImgUrls(typeof getActiveQuestionText === 'function' ? getActiveQuestionText(q) : q.question, urls);
+    _scanInlineImgUrls(typeof getActiveExplanationText === 'function' ? getActiveExplanationText(q) : q.explanation, urls);
+
     return urls.filter(u => u && typeof u === 'string' && !u.startsWith('data:') && !u.startsWith('blob:'));
 }
 
 function markQuestionImageLoaded(img, url) {
+    const keyUrl = (img && img.dataset && img.dataset.originalUrl) || url;
+    if (keyUrl) _fullyLoadedImageUrls.add(keyUrl);
     if (url) _fullyLoadedImageUrls.add(url);
     if (img) {
+        if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+            _recordImageDimensions(keyUrl || url, img.naturalWidth, img.naturalHeight);
+        }
         img.classList.add('loaded');
         const wrap = img.closest('.image-question-wrap') || img.parentElement;
         if (wrap) {
             wrap.classList.remove('is-loading');
+            wrap.style.aspectRatio = '';
+            wrap.style.width = '';
+            wrap.style.maxWidth = '';
+            wrap.style.minHeight = '';
             const shimmer = wrap.querySelector('.image-skeleton-shimmer');
             if (shimmer) shimmer.remove();
         }
@@ -246,18 +290,31 @@ function markQuestionImageLoaded(img, url) {
 }
 window.markQuestionImageLoaded = markQuestionImageLoaded;
 
-function renderQuestionImageWrapHtml(url, altText, extraClass) {
+function renderQuestionImageWrapHtml(url, altText, extraClass, dimHint) {
     const offlineSrc = (typeof offlineStorage !== 'undefined' && typeof offlineStorage.getCachedOfflineImageUrlSync === 'function')
         ? offlineStorage.getCachedOfflineImageUrlSync(url)
         : null;
     const initialSrc = offlineSrc || url;
     const isReady = Boolean(offlineSrc) || _fullyLoadedImageUrls.has(url);
     const loadingCls = isReady ? '' : ' is-loading';
+
+    const cachedDim = _imageDimensionCache.get(url);
+    const w = (dimHint && dimHint.width > 0) ? dimHint.width : (cachedDim ? cachedDim.w : 0);
+    const h = (dimHint && dimHint.height > 0) ? dimHint.height : (cachedDim ? cachedDim.h : 0);
+    const explicitW = dimHint && dimHint.explicitWidth > 0 ? dimHint.explicitWidth : 0;
+
+    let wrapStyle = '';
+    if (!isReady && w > 0 && h > 0) {
+        wrapStyle = ` style="aspect-ratio:${w} / ${h};width:min(${w}px, 100%);max-height:42vh;min-height:0;"`;
+    }
+    const imgStyle = explicitW ? ` style="width:${explicitW}px;max-width:100%;height:auto;"` : '';
+    const dimAttrs = `${w > 0 ? ` width="${w}"` : ''}${h > 0 ? ` height="${h}"` : ''}`;
+
     const shimmerHtml = isReady ? '' : `<div class="image-skeleton-shimmer"><span class="image-skeleton-icon">🖼️</span><span>Loading diagram...</span></div>`;
     return `
-        <div class="image-question-wrap${loadingCls}${extraClass ? ' ' + extraClass : ''}">
+        <div class="image-question-wrap${loadingCls}${extraClass ? ' ' + extraClass : ''}"${wrapStyle}>
             ${shimmerHtml}
-            <img src="${initialSrc}" class="question-image${isReady ? ' loaded' : ''}" alt="${escapeHtml(altText || 'Question Diagram')}" loading="eager" fetchpriority="high" decoding="async" data-original-url="${url}" onload="markQuestionImageLoaded(this, '${url}')" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
+            <img src="${initialSrc}" class="question-image${isReady ? ' loaded' : ''}" alt="${escapeHtml(altText || 'Question Diagram')}"${dimAttrs}${imgStyle} loading="eager" fetchpriority="high" decoding="async" data-original-url="${url}" onload="markQuestionImageLoaded(this, '${url}')" onerror="handleImageError(this)" onclick="openImageZoom(this.src)">
         </div>
     `;
 }
@@ -267,7 +324,12 @@ function preloadSingleImageUrl(url) {
     if (!url || _preloadedImageUrls.has(url)) return;
     _preloadedImageUrls.add(url);
 
-    const onDone = () => _fullyLoadedImageUrls.add(url);
+    const onDone = (imgEl) => {
+        _fullyLoadedImageUrls.add(url);
+        if (imgEl && imgEl.naturalWidth > 0 && imgEl.naturalHeight > 0) {
+            _recordImageDimensions(url, imgEl.naturalWidth, imgEl.naturalHeight);
+        }
+    };
 
     // Resolve local IndexedDB offline blob first so downloaded exercises never swap URLs on render
     if (typeof offlineStorage !== 'undefined' && typeof offlineStorage.resolveOfflineImageUrl === 'function') {
@@ -275,18 +337,18 @@ function preloadSingleImageUrl(url) {
             const target = resolved || url;
             const img = new Image();
             img.decoding = 'async';
-            img.onload = onDone;
+            img.onload = () => onDone(img);
             img.src = target;
         }).catch(() => {
             const img = new Image();
             img.decoding = 'async';
-            img.onload = onDone;
+            img.onload = () => onDone(img);
             img.src = url;
         });
     } else {
         const img = new Image();
         img.decoding = 'async';
-        img.onload = onDone;
+        img.onload = () => onDone(img);
         img.src = url;
     }
 }
@@ -406,9 +468,33 @@ function buildQuestionCardInner(q, idx, total) {
         ${q.matchLists ? buildMatchLists(q.matchLists) : ''}
     `;
 
+function renderQuestionCardFooter(q, idx) {
+    const savedNote = typeof getQuestionBookmarkNote === 'function' ? getQuestionBookmarkNote(q, idx) : '';
+    if (savedNote) {
+        return `
+            <div class="question-card-footer">
+                <div class="q-note-saved-box">
+                    <div class="q-note-saved-head">
+                        <span>📝 Note</span>
+                        <button type="button" class="q-note-edit-btn" onclick="openQuestionNoteEditor(${idx})">✏️ Edit</button>
+                    </div>
+                    <div class="q-note-saved-text">${escapeHtml(savedNote)}</div>
+                </div>
+            </div>
+        `;
+    }
+    return `
+        <div class="question-card-footer">
+            <button type="button" class="q-note-add-btn" onclick="openQuestionNoteEditor(${idx})">📝 Add Note</button>
+        </div>
+    `;
+}
+window.renderQuestionCardFooter = renderQuestionCardFooter;
+
     return `
         ${stemContent}
         ${buildQuestionBody(q, idx)}
+        ${renderQuestionCardFooter(q, idx)}
     `;
 }
 window.buildQuestionCardInner = buildQuestionCardInner;

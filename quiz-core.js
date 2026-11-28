@@ -252,22 +252,38 @@ function safeHtml(text) {
     s = s.replace(/<(\/?)([\w-]+)([^>]*)>/g, (match, slash, tag, attrs) => {
         const t = tag.toLowerCase();
         if (!ALLOWED.has(t)) return ''; // strip unknown/dangerous tags
-        // For img tags: resolve source and ensure clean responsive styling
+        // For img tags: resolve source, preserve explicit dimensions, and use skeleton wrapper for diagrams
         if (t === 'img') {
             let src = (attrs.match(/src\s*=\s*["']([^"']*)["']/i) || [])[1] || '';
             const alt = (attrs.match(/alt\s*=\s*["']([^"']*)["']/i) || [])[1] || '';
             const cls = (attrs.match(/class\s*=\s*["']([^"']*)["']/i) || [])[1] || 'question-image';
-            const loading = 'lazy';
             src = resolveImageUrl(src);
             if (!src) return '';
-            // Preserve explicit width if specified in tag attributes or inline style
-            const wAttr = (attrs.match(/width\s*=\s*["']?(\d+)(?:px)?["']?/i) || [])[1];
+
+            const wAttr = (attrs.match(/\bwidth\s*=\s*["']?(\d+)(?:px)?["']?/i) || [])[1];
             const wStyle = (attrs.match(/width\s*:\s*(\d+)px/i) || [])[1];
-            const explicitWidth = wAttr || wStyle;
+            const explicitWidth = parseInt(wAttr || wStyle || '0', 10) || 0;
+
+            const hAttr = (attrs.match(/\bheight\s*=\s*["']?(\d+)(?:px)?["']?/i) || [])[1];
+            const hStyle = (attrs.match(/height\s*:\s*(\d+)px/i) || [])[1];
+            const explicitHeight = parseInt(hAttr || hStyle || '0', 10) || 0;
+
+            const isSmallInline = (explicitHeight > 0 && explicitHeight <= 44) ||
+                /\b(inline|formula|equation|math)\b/i.test(cls);
+
+            if (!isSmallInline && typeof window !== 'undefined' && typeof window.renderQuestionImageWrapHtml === 'function') {
+                return window.renderQuestionImageWrapHtml(src, alt, 'inline-question-img-wrap', {
+                    width: explicitWidth,
+                    height: explicitHeight,
+                    explicitWidth: explicitWidth
+                });
+            }
+
             const sizeStyle = explicitWidth
-                ? `width:${explicitWidth}px;max-width:100%;height:auto;`
+                ? `width:${explicitWidth}px;max-width:100%;${explicitHeight ? `height:${explicitHeight}px;` : 'height:auto;'}`
                 : 'max-width:100%;height:auto;';
-            return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}" loading="${loading}" data-original-url="${src}" onerror="handleImageError(this)" style="${sizeStyle}display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
+            const dimAttrs = `${explicitWidth ? ` width="${explicitWidth}"` : ''}${explicitHeight ? ` height="${explicitHeight}"` : ''}`;
+            return `<img src="${src}" alt="${escapeHtml(alt)}" class="${escapeHtml(cls)}"${dimAttrs} loading="eager" data-original-url="${src}" onerror="handleImageError(this)" style="${sizeStyle}display:inline-block;vertical-align:middle;margin:0.2rem 0.15rem;">`;
         }
         // For table tags: auto-wrap in .table-scroll-wrap for horizontal scrolling and attach match-table class
         if (t === 'table') {

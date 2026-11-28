@@ -89,6 +89,24 @@ async function initNavigation() {
         return;
     }
 
+    // Direct hash navigation to Study History (from Home or other pages)
+    if (location.hash === '#history') {
+        if (typeof showStudyHistory === 'function') {
+            showStudyHistory();
+        }
+        if (typeof pushQuizHistory === 'function') {
+            pushQuizHistory({ cafe: 'question', screen: 'screenHistory' }, true);
+        }
+        checkAndShowOfflineStatus();
+        fetch('data/manifest.json').then(r => r.json()).then(m => {
+            manifestRoot = m;
+            currentDirectory = [];
+            renderTree(manifestRoot);
+            if (typeof renderStudyHistory === 'function') renderStudyHistory();
+        }).catch(() => {});
+        return;
+    }
+
     showScreen('screenSubjects'); 
     if (typeof pushQuizHistory === 'function') {
         pushQuizHistory({ cafe: 'question', screen: 'screenSubjects', dirLength: 0 }, true);
@@ -811,6 +829,51 @@ async function selectChapter(id, keepState = false) {
         }
     }
 
+    // Restore previous study session from Study History when entering via Question Cafe
+    if (typeof findLatestStudySessionForChapter === 'function') {
+        const prevSession = findLatestStudySessionForChapter(currentFileName, id);
+        if (prevSession && prevSession.userAnswers && (Object.keys(prevSession.userAnswers).length > 0 || (prevSession.qIndex || 0) > 0)) {
+            let chosen = Array.isArray(prevSession.topicNames)
+                ? prevSession.topicNames.map(name => topics.findIndex(t => t.topic === name)).filter(i => i >= 0)
+                : [];
+            if (chosen.length === 0 && Array.isArray(prevSession.topicIndexes)) {
+                chosen = prevSession.topicIndexes.filter(i => topics[i]);
+            }
+            if (chosen.length > 0 && chosen.length < topics.length) {
+                selectedTopics = chosen.sort((a, b) => a - b);
+                questions = [];
+                selectedTopics.forEach(i => {
+                    (topics[i].questions || []).forEach(q => {
+                        questions.push({ ...q, topicName: topics[i].topic });
+                    });
+                });
+            } else {
+                selectedTopics = [];
+            }
+
+            userAnswers = JSON.parse(JSON.stringify(prevSession.userAnswers || {}));
+            currentPracticeOrder = 'topic';
+            if (typeof practiceOrder !== 'undefined') practiceOrder = 'topic';
+            currentMode = prevSession.mode === 'fullquiz' ? 'fullquiz' : 'onebyone';
+
+            let firstUnsolved = -1;
+            for (let i = 0; i < questions.length; i++) {
+                if (!userAnswers[i] || !userAnswers[i].revealed) {
+                    firstUnsolved = i;
+                    break;
+                }
+            }
+            currentQIndex = firstUnsolved !== -1 ? firstUnsolved : Math.max(0, questions.length - 1);
+
+            if (currentMode === 'fullquiz') {
+                showFullQuiz();
+            } else {
+                showQuiz(currentQIndex);
+            }
+            return;
+        }
+    }
+
     selectedTopics = [];
     topicQuestionCounts = {};
     currentPracticeOrder = 'topic';
@@ -830,7 +893,8 @@ function backFromQuiz() {
             return;
         }
         isBookmarkSession = false;
-        window.location.href = 'bookmarks/';
+        if (typeof quizzyNavigate === 'function') quizzyNavigate('bookmarks/');
+        else window.location.href = 'bookmarks/';
         return;
     }
     if (window.history.length > 1 && history.state && history.state.cafe === 'question' && history.state.screen && history.state.screen !== 'screenSubjects') {

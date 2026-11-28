@@ -132,7 +132,182 @@ document.addEventListener('DOMContentLoaded', function () {
             savedSec.parentNode.insertBefore(dlLink, savedSec.nextSibling);
         }
     }
+
+    // Auto-inject Full View (fullscreen) button directly left of menu-close (✕)
+    var menuHead = menu ? menu.querySelector('.menu-head') : null;
+    var menuCloseBtn = menuHead ? menuHead.querySelector('.menu-close') : null;
+    if (menuHead && menuCloseBtn && !document.getElementById('menuFullscreenBtn')) {
+        var fsBtn = document.createElement('button');
+        fsBtn.type = 'button';
+        fsBtn.id = 'menuFullscreenBtn';
+        fsBtn.className = 'menu-fullscreen-btn';
+        fsBtn.setAttribute('aria-label', 'Toggle Full View');
+        fsBtn.title = 'Full View';
+        fsBtn.textContent = '⛶';
+        fsBtn.onclick = function (ev) {
+            ev.stopPropagation();
+            toggleQuizzyFullscreen();
+        };
+        menuHead.insertBefore(fsBtn, menuCloseBtn);
+        updateFullscreenMenuBtn();
+    }
+
+    initPersistentFullView();
 });
+
+var _fvInFrame = (function () {
+    try { return window.self !== window.top && Boolean(window.top && window.top.document); }
+    catch (e) { return false; }
+})();
+
+function isQuizzyFullscreen() {
+    try {
+        var doc = _fvInFrame ? window.top.document : document;
+        return Boolean(doc.fullscreenElement || doc.webkitFullscreenElement);
+    } catch (e) {
+        return false;
+    }
+}
+
+function _requestNativeFullscreen() {
+    var targetDoc = _fvInFrame ? window.top.document : document;
+    var el = targetDoc.documentElement;
+    if (el.requestFullscreen) {
+        try {
+            return Promise.resolve(el.requestFullscreen({ navigationUI: 'hide' })).catch(function () {
+                try { return Promise.resolve(el.requestFullscreen()); } catch (err) {}
+            });
+        } catch (e) {
+            try { return Promise.resolve(el.requestFullscreen()); } catch (err) {}
+        }
+    } else if (el.webkitRequestFullscreen) {
+        try { el.webkitRequestFullscreen(); } catch (e) {}
+    }
+    return Promise.resolve();
+}
+
+function _exitNativeFullscreen() {
+    var targetDoc = _fvInFrame ? window.top.document : document;
+    var exitFn = targetDoc.exitFullscreen || targetDoc.webkitExitFullscreen;
+    if (exitFn) {
+        try { Promise.resolve(exitFn.call(targetDoc)).catch(function () {}); } catch (e) {}
+    }
+}
+
+function updateFullscreenMenuBtn() {
+    var fsBtn = document.getElementById('menuFullscreenBtn');
+    var active = isQuizzyFullscreen();
+    if (fsBtn) {
+        fsBtn.classList.toggle('active', active);
+        fsBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        fsBtn.title = active ? 'Exit Full View' : 'Full View';
+    }
+}
+
+function openInFullscreenShell(url) {
+    if (!url || _fvInFrame) return false;
+    if (!isQuizzyFullscreen()) return false;
+    try {
+        var target = new URL(url, window.location.href);
+        if (target.origin !== window.location.origin) return false;
+        closeMenu();
+        var frame = document.getElementById('quizzyFvFrame');
+        if (!frame) {
+            frame = document.createElement('iframe');
+            frame.id = 'quizzyFvFrame';
+            frame.className = 'quizzy-fv-frame';
+            frame.setAttribute('allowfullscreen', '');
+            document.documentElement.style.overflow = 'hidden';
+            document.body.appendChild(frame);
+        }
+        frame.src = target.href;
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
+function quizzyNavigate(url) {
+    if (!url) return;
+    if (openInFullscreenShell(url)) return;
+    window.location.href = url;
+}
+window.quizzyNavigate = quizzyNavigate;
+
+function toggleQuizzyFullscreen() {
+    closeMenu();
+    if (_fvInFrame) {
+        try {
+            if (window.top && typeof window.top.exitQuizzyFullViewFromChild === 'function') {
+                window.top.exitQuizzyFullViewFromChild(window.location.href);
+                return;
+            }
+        } catch (e) {}
+    }
+    if (isQuizzyFullscreen()) {
+        _exitNativeFullscreen();
+        return;
+    }
+    _requestNativeFullscreen().then(function () {
+        updateFullscreenMenuBtn();
+    });
+    updateFullscreenMenuBtn();
+}
+
+window.exitQuizzyFullViewFromChild = function (childUrl) {
+    window._fvPendingExitUrl = childUrl || '';
+    _exitNativeFullscreen();
+};
+
+function initPersistentFullView() {
+    if (_fvInFrame) {
+        updateFullscreenMenuBtn();
+        return;
+    }
+    document.addEventListener('click', function (e) {
+        if (!isQuizzyFullscreen()) return;
+        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        if (!href || href.charAt(0) === '#' || href.indexOf('javascript:') === 0 || a.hasAttribute('download') || a.target === '_blank') {
+            return;
+        }
+        if (openInFullscreenShell(a.href)) {
+            e.preventDefault();
+        }
+    }, true);
+}
+
+function handleFullscreenChange() {
+    updateFullscreenMenuBtn();
+    if (_fvInFrame) return;
+    if (!isQuizzyFullscreen()) {
+        var frame = document.getElementById('quizzyFvFrame');
+        if (frame) {
+            var destUrl = window._fvPendingExitUrl || '';
+            window._fvPendingExitUrl = '';
+            if (!destUrl) {
+                try { destUrl = frame.contentWindow.location.href; } catch (e) {}
+            }
+            frame.remove();
+            document.documentElement.style.overflow = '';
+            if (destUrl && destUrl !== window.location.href) {
+                window.location.replace(destUrl);
+            }
+        } else {
+            document.documentElement.style.overflow = '';
+        }
+    }
+}
+
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+if (_fvInFrame) {
+    try {
+        window.top.document.addEventListener('fullscreenchange', updateFullscreenMenuBtn);
+        window.top.document.addEventListener('webkitfullscreenchange', updateFullscreenMenuBtn);
+    } catch (e) {}
+}
 
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { closeCurrentOverlay(); }
@@ -260,6 +435,7 @@ var QUIZZY_DATA_KEYS = {
     exerciseAttempts: 'quizzy-exercise-attempts',
     exerciseSessions: 'quizzy-exercise-sessions',
     history: 'quizzy-history',
+    customHistory: 'quizzy-custom-history',
     theme: QUIZZY_THEME_KEY
 };
 
@@ -288,6 +464,7 @@ function buildBackup() {
             exerciseAttempts: readJSON(QUIZZY_DATA_KEYS.exerciseAttempts, []),
             exerciseSessions: readJSON(QUIZZY_DATA_KEYS.exerciseSessions, {}),
             history: readJSON(QUIZZY_DATA_KEYS.history, []),
+            customHistory: readJSON(QUIZZY_DATA_KEYS.customHistory, []),
             theme: (function () {
                 try { return localStorage.getItem(QUIZZY_DATA_KEYS.theme); } catch (e) { return null; }
             })()
@@ -582,6 +759,21 @@ function applyBackup(backup, mode) {
     });
     hist.sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); });
     localStorage.setItem(QUIZZY_DATA_KEYS.history, JSON.stringify(hist.slice(0, 40)));
+
+    // --- custom test history: newest wins per session id ---
+    var cHist = mode === 'replace' ? [] : readJSON(QUIZZY_DATA_KEYS.customHistory, []);
+    if (!Array.isArray(cHist)) cHist = [];
+    (Array.isArray(d.customHistory) ? d.customHistory : []).forEach(function (entry) {
+        if (!entry || !entry.id) return;
+        var at = -1;
+        for (var i = 0; i < cHist.length; i++) {
+            if (cHist[i] && cHist[i].id === entry.id) { at = i; break; }
+        }
+        if (at === -1) cHist.push(entry);
+        else if ((entry.updatedAt || 0) > (cHist[at].updatedAt || 0)) cHist[at] = entry;
+    });
+    cHist.sort(function (a, b) { return (b.updatedAt || 0) - (a.updatedAt || 0); });
+    localStorage.setItem(QUIZZY_DATA_KEYS.customHistory, JSON.stringify(cHist.slice(0, 40)));
 
     if (d.theme === 'light' || d.theme === 'dark') applyTheme(d.theme);
 
@@ -1786,7 +1978,7 @@ function selectSearchResult(rIdx) {
                 qId: (item.q ? item.q.id : null)
             }));
         } catch (e) { /* ignore */ }
-        window.location.href = 'question-cafe/';
+        quizzyNavigate('question-cafe/');
         return;
     }
 
@@ -1815,7 +2007,7 @@ function selectSearchResult(rIdx) {
     }
 
     // Fallback:
-    window.location.href = 'question-cafe/';
+    quizzyNavigate('question-cafe/');
 }
 
 function flashQuestionElement(index) {
@@ -1849,7 +2041,7 @@ window.filterQSChapters = filterQSChapters;
 /* Replaced modal popup with dedicated clean downloads/ page. */
 function openOfflineDownloadsModal() {
     closeMenu();
-    window.location.href = 'downloads/';
+    quizzyNavigate('downloads/');
 }
 
 function closeOfflineDownloadsModal() {}

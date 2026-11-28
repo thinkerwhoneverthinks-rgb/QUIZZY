@@ -1678,12 +1678,15 @@
 }
 .image-question-wrap.is-loading {
     min-height: clamp(140px, 26vh, 210px);
-    background: transparent !important;
+    margin: 0.4rem auto 1.1rem;
+    background: var(--bg-secondary, rgba(255, 255, 255, 0.03)) !important;
+    border: 1px dashed var(--border, rgba(148, 163, 184, 0.22)) !important;
     box-sizing: border-box;
+    overflow: hidden;
 }
 .image-skeleton-shimmer {
     display: none;
-    opacity: 0;
+    opacity: 1;
 }
 .image-question-wrap.is-loading .image-skeleton-shimmer {
     display: flex;
@@ -1699,10 +1702,10 @@
     border-radius: var(--radius-md, 12px);
     background: linear-gradient(90deg, 
         rgba(150, 150, 150, 0.03) 0%, 
-        rgba(99, 102, 241, 0.07) 50%, 
+        rgba(99, 102, 241, 0.08) 50%, 
         rgba(150, 150, 150, 0.03) 100%);
     background-size: 200% 100%;
-    animation: quizImgShimmer 1.8s ease-in-out infinite, quizSkeletonFadeIn 0.25s ease 0.2s forwards;
+    animation: quizImgShimmer 1.8s ease-in-out infinite;
     pointer-events: none;
     user-select: none;
     z-index: 1;
@@ -2299,6 +2302,125 @@
     border-color: var(--accent);
     color: var(--accent);
     box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* ===== QUESTION CARD NOTES FOOTER ===== */
+.question-card-footer {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+}
+.q-note-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.38rem 0.75rem;
+    border-radius: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.q-note-add-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+}
+.q-note-saved-box {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.8rem;
+}
+.q-note-saved-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+}
+.q-note-edit-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.45rem;
+    cursor: pointer;
+}
+.q-note-edit-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.q-note-saved-text {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.q-note-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.q-note-editor-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+.q-note-textarea {
+    width: 100%;
+    min-height: 64px;
+    max-height: 260px;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg-primary);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    resize: vertical;
+    outline: none;
+}
+.q-note-textarea:focus {
+    border-color: var(--accent);
+}
+.q-note-editor-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+.bm-note-preview {
+    background: rgba(0, 212, 170, 0.08);
+    border: 1px solid rgba(0, 212, 170, 0.28);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+.bm-note-preview-label {
+    display: block;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+.bm-note-preview-text {
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 /* Bilingual Language Toggle Button */
@@ -3797,11 +3919,12 @@
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.correct .mcq-flag {
     color: var(--st-green, #10b981) !important;
-    font-size: 0.72rem !important;
+    font-size: 0.56rem !important;
     font-weight: 800 !important;
-    letter-spacing: 0.2px !important;
+    letter-spacing: 0.1px !important;
+    line-height: 1.15 !important;
     text-transform: uppercase !important;
-    margin-top: 0.35rem !important;
+    margin-top: 0.15rem !important;
 }
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.wrong {
@@ -3818,11 +3941,12 @@
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2.wrong .mcq-flag {
     color: var(--st-red, #ef4444) !important;
-    font-size: 0.72rem !important;
+    font-size: 0.56rem !important;
     font-weight: 800 !important;
-    letter-spacing: 0.2px !important;
+    letter-spacing: 0.1px !important;
+    line-height: 1.15 !important;
     text-transform: uppercase !important;
-    margin-top: 0.35rem !important;
+    margin-top: 0.15rem !important;
 }
 
 .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-text {
@@ -3888,6 +4012,10 @@
         width: 28px !important;
         height: 28px !important;
         font-size: 0.88rem !important;
+    }
+    .mcq-options.mcq-options-grid-2x2 .mcq-option.mcq-option-2x2 .mcq-flag {
+        font-size: 0.52rem !important;
+        margin-top: 0.12rem !important;
     }
 }
 
